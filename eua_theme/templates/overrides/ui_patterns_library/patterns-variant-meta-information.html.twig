@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * UI Pattern variant meta information.
+ */
+#}
+
+{% if variant is not empty %}
+  <div class="my-3">
+    <h3>{{ variant.label }} (<code>{{ variant.name }}</code>)</h3>
+    {{ variant.description }}
+  </div>
+{% endif %}

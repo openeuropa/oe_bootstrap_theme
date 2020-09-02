@@ -1,0 +1,123 @@
+eua_theme_grid_row_1:
+  label: "Grid row (1 col) [EUA Theme]"
+  category: "Columns: 1"
+  path: templates/layouts
+  template: layout--grid
+  class: '\Drupal\layout_options\Plugin\Layout\LayoutOptions'
+  default_region: main
+  icon_map:
+    - [main]
+  regions:
+    main:
+      label: Main
+
+eua_theme_grid_row_2:
+  label: "Grid row (2 cols) [EUA Theme]"
+  category: "Columns: 2"
+  path: templates/layouts
+  template: layout--grid
+  class: '\Drupal\layout_options\Plugin\Layout\LayoutOptions'
+  default_region: main
+  icon_map:
+    - [main, second]
+  regions:
+    main:
+      label: Main
+    second:
+      label: Second
+
+eua_theme_grid_row_3:
+  label: "Grid row (3 cols) [EUA Theme]"
+  category: "Columns: 3"
+  path: templates/layouts
+  template: layout--grid
+  class: '\Drupal\layout_options\Plugin\Layout\LayoutOptions'
+  default_region: main
+  icon_map:
+    - [main, second, third]
+  regions:
+    main:
+      label: Main
+    second:
+      label: Second
+    third:
+      label: Third
+
+eua_theme_grid_row_4:
+  label: "Grid row (4 cols) [EUA Theme]"
+  category: "Columns: 4"
+  path: templates/layouts
+  template: layout--grid
+  class: '\Drupal\layout_options\Plugin\Layout\LayoutOptions'
+  default_region: main
+  icon_map:
+    - [main, second, third, fourth]
+  regions:
+    main:
+      label: Main
+    second:
+      label: Second
+    third:
+      label: Third
+    fourth:
+      label: Fourth
+
+eua_theme_card_basic:
+  label: "Card basic [EUA Theme]"
+  category: "Cards"
+  path: templates/layouts
+  template: layout--card-basic
+  default_region: first
+  icon_map:
+    - [first]
+  regions:
+    first:
+      label: Content
+
+eua_theme_card_top_image:
+  label: "Card top image [EUA Theme]"
+  category: "Cards"
+  path: templates/layouts
+  template: layout--card-top-image
+  default_region: second
+  icon_map:
+    - [top]
+    - [middle]
+  regions:
+    first:
+      label: Image
+    second:
+      label: Content
+
+eua_theme_card_image_overlay:
+  label: "Card image overlay [EUA Theme]"
+  category: "Cards"
+  path: templates/layouts
+  template: layout--card-image-overlay
+  default_region: second
+  icon_map:
+    - [top]
+    - [middle]
+  regions:
+    first:
+      label: Image
+    second:
+      label: Content
+
+eua_theme_card_header_footer:
+  label: "Card header footer [EUA Theme]"
+  category: "Cards"
+  path: templates/layouts
+  template: layout--card-header-footer
+  default_region: second
+  icon_map:
+    - [top]
+    - [middle]
+    - [bottom]
+  regions:
+    first:
+      label: Header
+    second:
+      label: Content
+    third:
+      label: Footer

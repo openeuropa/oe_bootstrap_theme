@@ -1,0 +1,18 @@
+{% if with_container %}
+<div class="container">
+  {% endif %}
+
+  {% set attributes = no_gutters ? attributes.addClass('no-gutters') : attributes %}
+
+  <div{{ attributes.addClass('row') }}>
+    {% for item in content %}
+      {% set col_sizes = [col, col_sm, col_md, col_lg, col_xl, spacing_margin_bottom] %}
+      <div{{ create_attribute({'class': col_sizes}) }}>
+        {{ item }}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if with_container %}
+</div>
+{% endif %}

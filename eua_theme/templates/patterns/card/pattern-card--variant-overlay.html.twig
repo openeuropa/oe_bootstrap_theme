@@ -1,0 +1,8 @@
+<div class="card bg-dark text-white">
+  {{ image }}
+  <div class="card-img-overlay">
+    {% block card_content %}
+      {{ include('@eua_theme/patterns/card/_card-content.html.twig') }}
+    {% endblock %}
+  </div>
+</div>

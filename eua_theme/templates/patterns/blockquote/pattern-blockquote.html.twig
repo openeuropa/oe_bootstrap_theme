@@ -1,0 +1,6 @@
+<blockquote{{ attributes.addClass('blockquote') }}>
+  {{ content }}
+  {% if footer %}
+    <footer class="blockquote-footer">{{ footer }}</footer>
+  {% endif %}
+</blockquote>

@@ -1,0 +1,134 @@
+grid_row:
+  label: "Grid Row"
+  description: "The grid system uses a series of containers, rows, and columns to layout and align content https://getbootstrap.com/docs/4.5/layout/grid/ For simple use cases only. For more powerful needs, please use bootstrap_grid_row_* layouts."
+  settings:
+    with_container:
+      type: "boolean"
+      label: "With container?"
+      preview: false
+      description: "Is the row wrapped in a container? Containers provide a means to center and horizontally pad your site’s contents."
+    no_gutters:
+      type: "boolean"
+      label: "No gutters?"
+      preview: false
+      description: "The gutters between columns in our predefined grid classes can be removed with .no-gutters. This removes the negative margins from .row and the horizontal padding from all immediate children columns."
+    col:
+      label: "Column width of items at 'xs' breakpoint"
+      description: "Set the number of columns each item should take up at the 'xs' breakpoint and higher."
+      type: "select"
+      preview: ""
+      options:
+        col: "Equal"
+        col-auto: "Fit to content"
+        col-1: "1 (12 columns per row)"
+        col-2: "2 (6 columns per row)"
+        col-3: "3 (4 columns per row)"
+        col-4: "4 (3 columns per row)"
+        col-6: "6 (2 columns per row)"
+        col-12: "12 (1 column per row)"
+    col_sm:
+      label: "Column width of items at 'sm' breakpoint"
+      description: "Set the number of columns each item should take up at the 'sm' breakpoint and higher."
+      type: "select"
+      preview: ""
+      options:
+        col-sm: "Equal"
+        col-sm-auto: "Fit to content"
+        col-sm-1: "1 (12 columns per row)"
+        col-sm-2: "2 (6 columns per row)"
+        col-sm-3: "3 (4 columns per row)"
+        col-sm-4: "4 (3 columns per row)"
+        col-sm-6: "6 (2 columns per row)"
+        col-sm-12: "12 (1 column per row)"
+    col_md:
+      label: "Column width of items at 'md' breakpoint"
+      description: "Set the number of columns each item should take up at the 'md' breakpoint and higher."
+      type: "select"
+      preview: "col-md-3"
+      options:
+        col-md: "Equal"
+        col-md-auto: "Fit to content"
+        col-md-1: "1 (12 columns per row)"
+        col-md-2: "2 (6 columns per row)"
+        col-md-3: "3 (4 columns per row)"
+        col-md-4: "4 (3 columns per row)"
+        col-md-6: "6 (2 columns per row)"
+        col-md-12: "12 (1 column per row)"
+    col_lg:
+      label: "Column width of items at 'lg' breakpoint"
+      description: "Set the number of columns each item should take up at the 'lg' breakpoint and higher."
+      type: "select"
+      preview: ""
+      options:
+        col-lg: "Equal"
+        col-lg-auto: "Fit to content"
+        col-lg-1: "1 (12 columns per row)"
+        col-lg-2: "2 (6 columns per row)"
+        col-lg-3: "3 (4 columns per row)"
+        col-lg-4: "4 (3 columns per row)"
+        col-lg-6: "6 (2 columns per row)"
+        col-lg-12: "12 (1 column per row)"
+    col_xl:
+      label: "Column width of items at 'xl' breakpoint"
+      description: "Set the number of columns each item should take up at the 'xl' breakpoint and higher."
+      type: "select"
+      preview: ""
+      options:
+        col-xl: "Equal"
+        col-xl-auto: "Fit to content"
+        col-xl-1: "1 (12 columns per row)"
+        col-xl-2: "2 (6 columns per row)"
+        col-xl-3: "3 (4 columns per row)"
+        col-xl-4: "4 (3 columns per row)"
+        col-xl-6: "6 (2 columns per row)"
+        col-xl-12: "12 (1 column per row)"
+    spacing_margin_bottom:
+      label: "Cols margin bottom"
+      type: "select"
+      preview: ""
+      options:
+        mb-0: "0"
+        mb-1: "1"
+        mb-2: "2"
+        mb-3: "3"
+        mb-4: "4"
+        mb-5: "5"
+        mb-auto: "Auto"
+  fields:
+    content:
+      type: "render"
+      label: "Content"
+      description: "The content of each column"
+      preview:
+        - type: pattern
+          id: card
+          fields:
+            title: "Card example"
+            text: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."
+            body:
+              - type: "pattern"
+                id: "button"
+                variant: "primary"
+                fields:
+                  label: "Go somewhere"
+        - type: pattern
+          id: card
+          fields:
+            title: "Small card"
+            text: "Cras justo odio, dapibus ac facilisis in, egestas eget quam."
+        - type: pattern
+          id: card
+          fields:
+            title: "Card example"
+            text: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."
+            body:
+              - type: "pattern"
+                id: "button"
+                variant: "primary"
+                fields:
+                  label: "Go somewhere"
+        - type: pattern
+          id: card
+          fields:
+            title: "Small card"
+            text: "Cras justo odio, dapibus ac facilisis in, egestas eget quam."

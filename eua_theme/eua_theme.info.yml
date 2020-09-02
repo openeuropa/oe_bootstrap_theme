@@ -1,0 +1,28 @@
+name: EU Agency base theme
+type: theme
+description: EU Agency base theme.
+base theme: false
+core_version_requirement: ^8.9 || ^9
+dependencies:
+  - ui_patterns:ui_patterns
+
+stylesheets-remove:
+  - system.theme.css
+  - system.menus.css
+  - system.admin.css
+
+libraries:
+  - eua_theme/bootstrap
+  - eua_theme/style
+
+libraries-override:
+  seven/global-styling: false
+
+regions:
+  navbar_branding: Navbar branding
+  navbar_left:  Navbar left
+  navbar_right: Navbar right
+  header: Header
+  content: Content
+  page_bottom: Page bottom
+  footer: Footer

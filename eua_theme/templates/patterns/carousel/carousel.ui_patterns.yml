@@ -1,0 +1,53 @@
+carousel:
+  label: "Carousel"
+  description: "A slideshow component for cycling through elements, like a carousel. https://getbootstrap.com/docs/4.5/components/carousel/"
+  variants:
+    default:
+      label: Default
+    fade:
+      label: Crossfade
+      description: Animate slides with a fade transition instead of a slide.
+  settings:
+    with_controls:
+      type: boolean
+      label: "With controls?"
+      description: "Adding in the previous and next controls"
+      preview: true
+    with_indicators:
+      type: boolean
+      label: "With indicators?"
+      description: "You can also add the indicators to the carousel, alongside the controls, too."
+      preview: true
+  fields:
+    slides:
+      type: render
+      label: "Slides"
+      description: "Each slide is a collection of title, subtitle and slide image."
+      preview:
+        -
+          - theme: "image"
+            uri: "https://images.unsplash.com/photo-1533282960533-51328aa49826?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1140&h=385&q=80"
+          - type: html_tag
+            tag: h5
+            value: "First slide label"
+          - type: html_tag
+            tag: p
+            value: "Nulla vitae elit libero, a pharetra augue mollis interdum."
+        -
+          - theme: "image"
+            uri: "https://images.unsplash.com/photo-1442033025416-c6a7da752d71?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1140&h=385&q=80"
+          - type: html_tag
+            tag: h5
+            value: "Second slide label"
+          - type: html_tag
+            tag: p
+            value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        -
+          - theme: "image"
+            uri: "https://images.unsplash.com/photo-1550331976-0b9cc48c4d78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1140&h=385&q=80"
+          - type: html_tag
+            tag: h5
+            value: "Third slide label"
+          - type: html_tag
+            tag: p
+            value: "Praesent commodo cursus magna, vel scelerisque nisl consectetur."

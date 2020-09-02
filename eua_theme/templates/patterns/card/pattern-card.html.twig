@@ -1,0 +1,9 @@
+<div{{ attributes.addClass('card') }}>
+  {% if image and image_position != 'bottom' %}
+    {{ image }}
+  {% endif %}
+  {{ include('@eua_theme/patterns/card/_card-content.html.twig') }}
+  {% if image and image_position == 'bottom' %}
+    {{ image }}
+  {% endif %}
+</div>
