@@ -5,17 +5,19 @@
 
 {% import _self as menus %}
 
+{% set id = 'navbarNav-' ~ random(1000) %}
+
 <nav{{ attributes.addClass(['navbar', 'navbar-expand-lg', 'bg-light']) }}>
   <div class="container-fluid">
     {% if brand %}
       <span class="navbar-brand" href="#">{{ brand }}</span>
     {% endif %}
     {% if items %}
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#{{id}}"
               aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="collapse navbar-collapse" id="{{id}}">
         {{ menus.menu_links(items, attributes, 0, text) }}
       </div>
     {% endif %}
