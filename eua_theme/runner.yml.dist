@@ -44,7 +44,7 @@ commands:
     - { task: "process-php", type: "write", config: "drupal.settings", source: "${drupal.root}/sites/default/default.settings.php", destination: "${drupal.root}/sites/default/settings.testing.php", override: true }
     - { task: "run", command: "setup:phpunit" }
     - { task: "run", command: "setup:behat" }
-    - "${runner.bin_dir}/run eua_theme:npm-run dev --npm-dir=./"
+    - "${runner.bin_dir}/run eua_theme:npm-run prod --npm-dir=./"
   setup:phpunit:
     - { task: "process", source: "phpunit.xml.dist", destination: "phpunit.xml" }
   setup:behat:
