@@ -1,8 +1,4 @@
-{% if variant != '' and variant|lower != 'default' %}
-  {% set attributes = attributes.addClass('jumbotron-' ~ variant|lower|replace({'_': '-'})) %}
-{% endif %}
-
-<div{{ attributes.addClass('jumbotron') }}>
+<div{{ attributes.addClass('jumbotron bg-light p-5 rounded-lg m-3') }}>
   {% if 'fluid' in variant %}
   <div class="container">
     {% endif %}
