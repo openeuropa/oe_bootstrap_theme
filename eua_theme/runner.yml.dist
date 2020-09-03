@@ -1,11 +1,11 @@
 drupal:
   root: "build"
-  base_url: "http://web:8080/build"
+  base_url: "http://127.0.0.1:8888/build"
   site:
     name: "EU Agencies base theme"
     profile: "minimal"
   database:
-    host: "mysql"
+    host: "127.0.0.1"
     port: "3306"
     name: "eua_theme"
     user: "root"

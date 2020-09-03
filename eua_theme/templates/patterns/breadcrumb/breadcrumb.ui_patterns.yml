@@ -1,6 +1,6 @@
 breadcrumb:
   label: Breadcrumb
-  description: Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS. https://getbootstrap.com/docs/4.5/components/breadcrumb/
+  description: Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS. https://v5.getbootstrap.com/docs/5.0/components/breadcrumb/
   fields:
     items:
       type: render
