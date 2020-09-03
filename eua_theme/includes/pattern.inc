@@ -94,9 +94,9 @@ function eua_theme_preprocess_pattern_carousel(array &$variables) {
   }
 
   // Nicer preview with fixed width and local backgrounds.
-  if ($variables['context']->getType() == 'preview') {
-    $variables['attributes']['style'] = "width: 800px";
-  }
+  // if ($variables['context']->getType() == 'preview') {
+  //  $variables['attributes']['style'] = "width: 800px";
+  // }
 
 }
 
