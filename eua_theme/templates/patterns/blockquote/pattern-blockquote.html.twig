@@ -1,6 +1,15 @@
-<blockquote{{ attributes.addClass('blockquote') }}>
-  {{ content }}
-  {% if footer %}
-    <footer class="blockquote-footer">{{ footer }}</footer>
-  {% endif %}
-</blockquote>
+{% if variant != '' and variant|lower != 'left' %}
+  {% set variants = variant|split('__') %}
+  {% for variant in variants %}
+    {% set attributes = attributes.addClass('text-' ~ variant|lower) %}
+  {% endfor %}
+{% endif %}
+
+<figure{{ attributes }}>
+  <blockquote class="blockquote">
+    {{ content }}
+    {% if footer %}
+      <figcaption class="blockquote-footer">{{ footer }}</figcaption>
+    {% endif %}
+  </blockquote>
+</figure>

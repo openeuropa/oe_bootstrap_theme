@@ -1,6 +1,13 @@
 blockquote:
   label: "Blockquote"
-  description: "For quoting blocks of content from another source within your document. https://getbootstrap.com/docs/4.5/content/typography/#blockquotes"
+  description: "For quoting blocks of content from another source within your document. https://v5.getbootstrap.com/docs/5.0/content/typography/#blockquotes"
+  variants:
+    left:
+      label: Align left
+    center:
+      label: Align center
+    right:
+      label: Align right
   fields:
     content:
       type: "render"
@@ -10,9 +17,6 @@ blockquote:
         - type: html_tag
           tag: p
           value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
-          attributes:
-            class:
-              - "mb-0"
     footer:
       type: "render"
       label: "Footer"
