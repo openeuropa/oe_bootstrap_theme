@@ -16,6 +16,7 @@
         "drupal-composer/drupal-scaffold": "~2.2",
         "drupal/config_devel": "~1.2",
         "drupal/drupal-extension": "~4.0",
+        "drupal/styleguide": "^1.0@alpha",
         "drush/drush": "~9.0@stable",
         "guzzlehttp/guzzle": "~6.3",
         "openeuropa/code-review": "~1.0.0-beta2",
