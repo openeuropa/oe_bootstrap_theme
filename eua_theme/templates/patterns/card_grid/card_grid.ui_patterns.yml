@@ -1,5 +1,5 @@
 card_grid:
-  label: "Card grid"
+  label: "Card Grid"
   description: "Use the Bootstrap grid system and its .row-cols classes to control how many grid columns (wrapped around your cards) you show per row. https://v5.getbootstrap.com/docs/5.0/components/card/#grid-cards"
   variants:
     col_2:
