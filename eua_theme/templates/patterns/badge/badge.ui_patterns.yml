@@ -19,37 +19,21 @@ badge:
     dark:
       label: Dark
     pill__primary:
-      label: Pill Primary
-    pill___secondary:
-      label: Pill Secondary
+      label: Primary
+    pill__secondary:
+      label: Secondary
     pill__success:
-      label: Pill Success
+      label: Success
     pill__danger:
-      label: Pill Danger
+      label: Danger
     pill__warning:
-      label: Pill Warning
+      label: Warning
     pill__info:
-      label: Pill Info
+      label: Info
     pill__light:
-      label: Pill Light
+      label: Light
     pill__dark:
-      label: Pill Dark
-    link__primary:
-      label: Link Primary
-    link__secondary:
-      label: Link Secondary
-    link__success:
-      label: Link Success
-    link__danger:
-      label: Link Danger
-    link__warning:
-      label: Link Warning
-    link__info:
-      label: Link Info
-    link__light:
-      label: Link Light
-    link__dark:
-      label: Link Dark
+      label: Dark
   fields:
     label:
       type: text
