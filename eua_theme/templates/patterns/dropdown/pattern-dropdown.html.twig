@@ -1,10 +1,8 @@
-{% if variant != '' and variant|lower != 'default' %}
-  {% set variants = variant|split('__') %}
-  {% for variant in variants %}
-    {% set attributes = attributes.addClass('btn-' ~ variant|lower|replace({'_': '-'})) %}
-  {% endfor %}
-{% endif %}
-
+{% set btnBaseClass = btnoutline ? 'btn-outline-' : 'btn-' %}
+{% set attributes = attributes.addClass([
+  btnBaseClass ~ btncolor,
+  'btn-' ~ btnsize,
+  ]) %}
 <div class="btn-group {{ directions }}">
   <button type="button" {{ attributes.addClass(['btn', 'dropdown-toggle']) }} data-toggle="dropdown" aria-expanded="false">
     {{ label }}

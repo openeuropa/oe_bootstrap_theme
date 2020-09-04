@@ -1,68 +1,36 @@
 dropdown:
   label: Dropdown
-  description: Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. https://v5.getbootstrap.com/docs/5.0/components/dropdowns/
-  variants:
-    primary:
-      label: Primary
-    secondary:
-      label: Secondary
-    success:
-      label: Success
-    danger:
-      label: Danger
-    warning:
-      label: Warning
-    info:
-      label: Info
-    light:
-      label: Light
-    dark:
-      label: Dark
-    link:
-      label: Link
-    outline_primary:
-      label: Outline Primary
-    outline_secondary:
-      label: Outline Secondary
-    outline_success:
-      label: Outline Success
-    outline_danger:
-      label: Outline Danger
-    outline_warning:
-      label: Outline Warning
-    outline_info:
-      label: Outline Info
-    outline_light:
-      label: Outline Light
-    outline_dark:
-      label: Outline Dark
-    primary__lg:
-      label: Large Primary
-    primary__lg__block:
-      label: Large Primary Block
-    secondary__lg__block:
-      label: Large Secondary Block
-    primary__sm:
-      label: Small Primary
-    secondary__sm:
-      label: Small Secondary
-    outline_primary__sm:
-      label: Small Outline Primary
-    outline_secondary__sm:
-      label: Small Outline Secondary
-    outline_primary__lg:
-      label: Large Outline Primary
-    outline_primary__lg__block:
-      label: Large Outline Primary Block
-    outline_secondary__lg__block:
-      label: Large Outline Secondary Block
-    link_primary:
-      label: Link Primary
+  description: Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. https://v5.getbootstrap.com/docs/5.0/components/dropdowns/{''}
   settings:
+    btncolor:
+      type: select
+      label: Button color
+      options:
+        primary: primary
+        secondary: secondary
+        success: success
+        danger: danger
+        warning: warning
+        info: info
+        light: light
+        dark: dark
+        link: link
+      preview: dark
+    btnoutline:
+      type: boolean
+      label: Button outline
+      preview: true
+    btnsize:
+      type: select
+      label: Button size
+      options:
+        xs: small
+        sm: medium
+        lg: large
+      preview: lg
     directions:
       type: select
-      label: directions
-      description: dropdown directions
+      label: Dropdown direction
       options:
         dropdown: dropdown
         dropleft: dropleft
