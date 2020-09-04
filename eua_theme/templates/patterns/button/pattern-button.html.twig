@@ -1,6 +1,6 @@
-{% set btnBaseClass = outline ? 'btn-outline-' : 'btn-' %}
+{% set baseClass = outline ? 'btn-outline-' : 'btn-' %}
 {% set attributes = attributes.addClass([
-  color ? btnBaseClass ~ color,
+  color ? baseClass ~ color,
   size ? 'btn-' ~ size,
   ]) %}
 
