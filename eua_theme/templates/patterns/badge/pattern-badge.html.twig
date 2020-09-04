@@ -1,15 +1,7 @@
-{% if variant != '' and variant|lower != 'default' %}
-  {% set variants = variant|split('__') %}
-  {% for variant in variants %}
-    {% if 'pill' in variant %}
-      {% set attributes = attributes.addClass('rounded-pill') %}
-    {% endif %}
-    {% if 'light' in variant %}
-      {% set attributes = attributes.addClass('text-dark') %}
-    {% endif %}
-    {% set attributes = attributes.addClass('bg-' ~ variant|lower|replace({'_': '-'})) %}
-  {% endfor %}
-{% endif %}
+{% set attributes = attributes.addClass([
+  type,
+  color ? 'bg-' ~ color
+  ]) %}
 
 {% if url or attributes.href %}
   {% set url = url ?: attributes.href %}
