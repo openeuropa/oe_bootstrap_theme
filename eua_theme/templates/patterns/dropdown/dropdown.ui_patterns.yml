@@ -1,6 +1,6 @@
 dropdown:
   label: Dropdown
-  description: Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. https://v5.getbootstrap.com/docs/5.0/components/dropdowns/{''}
+  description: Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. https://v5.getbootstrap.com/docs/5.0/components/dropdowns/
   settings:
     btncolor:
       type: select
@@ -32,10 +32,10 @@ dropdown:
       type: select
       label: Dropdown direction
       options:
-        dropdown: dropdown
-        dropleft: dropleft
-        dropright: dropright
-        dropup: dropup
+        dropdown: down
+        dropleft: left
+        dropright: right
+        dropup: up
       preview: dropdown
   fields:
     label:
