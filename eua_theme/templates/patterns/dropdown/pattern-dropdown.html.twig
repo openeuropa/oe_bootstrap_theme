@@ -1,0 +1,17 @@
+{% if variant != '' and variant|lower != 'default' %}
+  {% set variants = variant|split('__') %}
+  {% for variant in variants %}
+    {% set attributes = attributes.addClass('btn-' ~ variant|lower|replace({'_': '-'})) %}
+  {% endfor %}
+{% endif %}
+
+<div class="btn-group {{ directions }}">
+  <button type="button" {{ attributes.addClass(['btn', 'dropdown-toggle']) }} data-toggle="dropdown" aria-expanded="false">
+    {{ label }}
+  </button>
+  <ul class="dropdown-menu">
+    {% for item in items %}
+      <li><a class="dropdown-item" href="{{ item.url }}">{{ item.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
