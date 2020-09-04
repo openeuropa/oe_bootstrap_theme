@@ -1,9 +1,6 @@
-{% if variant != '' and variant|lower != 'default' %}
-  {% set variants = variant|split('__') %}
-  {% for variant in variants %}
-    {% set attributes = attributes.addClass('alert-' ~ variant|lower|replace({'_': '-'})) %}
-  {% endfor %}
-{% endif %}
+{% set attributes = attributes.addClass([
+  color ? 'alert-' ~ color
+  ]) %}
 
 {% if dismissible %}
   {% set attributes = attributes.addClass(['alert-dismissible', 'fade', 'show']) %}
