@@ -1,19 +1,10 @@
-bootstrap:
-  version: VERSION
-  js:
-    node_modules/popper.js/dist/umd/popper.min.js: {}
-    node_modules/bootstrap/dist/js/bootstrap.min.js: {}
-  css:
-    theme:
-      assets/css/eua_theme.bootstrap.css: {}
-  dependencies:
-    - core/jquery
-
 style:
   version: VERSION
+  js:
+    assets/js/scripts.js: {}
   css:
     theme:
-      assets/css/eua_theme.style.css: {}
+      assets/css/styles.css: {}
   dependencies:
     - core/jquery
     - core/drupal

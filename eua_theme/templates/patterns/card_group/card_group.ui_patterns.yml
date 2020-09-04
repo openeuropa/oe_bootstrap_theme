@@ -1,0 +1,27 @@
+card_group:
+  label: "Card Group"
+  description: "Use card groups to render cards as a single, attached element with equal width and height columns. Card groups start off stacked and use display: flex; to become attached with uniform dimensions starting at the sm breakpoint. https://v5.getbootstrap.com/docs/5.0/components/card/#card-groups"
+  fields:
+    cards:
+      type: "render"
+      label: "Cards"
+      description: "An array of card patterns."
+      preview:
+        - type: pattern
+          id: card
+          fields:
+            title: "Card title"
+            text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+            footer: "Last updated 3 mins ago"
+        - type: pattern
+          id: card
+          fields:
+            title: "Card title"
+            text: "This card has supporting text below as a natural lead-in to additional content."
+            footer: "Last updated 3 mins ago"
+        - type: pattern
+          id: card
+          fields:
+            title: "Card title"
+            text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+            footer: "Last updated 3 mins ago"

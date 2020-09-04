@@ -6,9 +6,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
+        "php": ">=7.2",
         "drupal/core": "^8.7",
         "drupal/ui_patterns": "^1.0",
-        "php": ">=7.2"
+        "drupal/ui_patterns_settings": "^1.0"
     },
     "require-dev": {
         "composer/installers": "~1.5",

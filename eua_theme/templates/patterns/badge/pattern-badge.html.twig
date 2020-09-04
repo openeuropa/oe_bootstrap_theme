@@ -1,7 +1,13 @@
 {% if variant != '' and variant|lower != 'default' %}
   {% set variants = variant|split('__') %}
   {% for variant in variants %}
-    {% set attributes = attributes.addClass('badge-' ~ variant|lower|replace({'_': '-'})) %}
+    {% if 'pill' in variant %}
+      {% set attributes = attributes.addClass('rounded-pill') %}
+    {% endif %}
+    {% if 'light' in variant %}
+      {% set attributes = attributes.addClass('text-dark') %}
+    {% endif %}
+    {% set attributes = attributes.addClass('bg-' ~ variant|lower|replace({'_': '-'})) %}
   {% endfor %}
 {% endif %}
 

@@ -1,0 +1,48 @@
+card_grid:
+  label: "Card Grid"
+  description: "Use the Bootstrap grid system and its .row-cols classes to control how many grid columns (wrapped around your cards) you show per row. https://v5.getbootstrap.com/docs/5.0/components/card/#grid-cards"
+  variants:
+    col_2:
+      label: Two columns
+    col_3:
+      label: Three columns
+    col_4:
+      label: Four columns
+  fields:
+    cards:
+      type: "render"
+      label: "Cards"
+      description: "An array of card patterns."
+      preview:
+        - type: pattern
+          id: card
+          fields:
+            title: "Card title"
+            text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+            footer: "Last updated 3 mins ago"
+          settings:
+            equal_height: true
+        - type: pattern
+          id: card
+          fields:
+            title: "Card title"
+            text: "This card has supporting text below as a natural lead-in to additional content."
+            footer: "Last updated 3 mins ago"
+          settings:
+            equal_height: true
+        - type: pattern
+          id: card
+          fields:
+            title: "Card title"
+            text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+            footer: "Last updated 3 mins ago"
+          settings:
+            equal_height: true
+        - type: pattern
+          id: card
+          fields:
+            title: "Card title"
+            text: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+            footer: "Last updated 3 mins ago"
+          settings:
+            equal_height: true

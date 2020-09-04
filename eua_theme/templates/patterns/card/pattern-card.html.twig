@@ -1,3 +1,7 @@
+{% if equal_height %}
+  {% set attributes = attributes.addClass('h-100') %}
+{% endif %}
+
 <div{{ attributes.addClass('card') }}>
   {% if image and image_position != 'bottom' %}
     {{ image }}

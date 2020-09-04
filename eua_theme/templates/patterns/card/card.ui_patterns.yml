@@ -1,6 +1,6 @@
 card:
   label: "Card"
-  description: "A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. https://getbootstrap.com/docs/4.5/components/card/"
+  description: "A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. https://v5.getbootstrap.com/docs/5.0/components/card"
   variants:
     default:
       label: Default
@@ -27,6 +27,11 @@ card:
         5: h5 (Default)
         6: h6
       preview: 5
+    equal_height:
+      type: boolean
+      label: "Equal height"
+      description: "cards of the same height in a grid."
+      preview: true
   fields:
     image:
       type: "render"

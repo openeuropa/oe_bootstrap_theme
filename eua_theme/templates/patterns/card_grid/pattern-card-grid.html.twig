@@ -1,0 +1,14 @@
+{% if variant != '' %}
+  {% set variants = variant|split('__') %}
+  {% for variant in variants %}
+    {% set attributes = attributes.addClass('row-cols-md-' ~ variant|lower|replace({'col_': ''})) %}
+  {% endfor %}
+{% endif %}
+
+<div{{ attributes.addClass('row row-cols-1 g-4') }}>
+  {% for card in cards %}
+    <div class="col">
+      {{ card }}
+    </div>
+  {% endfor %}
+</div>

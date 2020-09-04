@@ -1,0 +1,57 @@
+modal:
+  label: Modal
+  description: Use Bootstrap’s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content. https://v5.getbootstrap.com/docs/5.0/components/modal/
+  settings:
+    btncolor:
+      type: select
+      label: Button color
+      options:
+        primary: primary
+        secondary: secondary
+        success: success
+        danger: danger
+        warning: warning
+        info: info
+        light: light
+        dark: dark
+        link: link
+      preview: dark
+    btnoutline:
+      type: boolean
+      label: Button outline
+      preview: true
+    btnsize:
+      type: select
+      label: Button size
+      options:
+        xs: small
+        sm: medium
+        lg: large
+      preview: lg
+    directions:
+      type: select
+      label: Dropdown direction
+      options:
+        dropdown: down
+        dropleft: left
+        dropright: right
+        dropup: up
+      preview: dropdown
+  fields:
+    label:
+      type: text
+      label: Label
+      description: The button label
+      preview: Submit
+    items:
+      type: render
+      label: Menu items
+      description: Full-height and lightweight navigation (including support for dropdowns).
+      preview:
+        - title: Home
+          url: "#"
+        - title: Library
+          url: "#"
+        - title: Data
+          url: "#"
+
