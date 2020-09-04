@@ -24,16 +24,16 @@ button_group:
       preview:
         - type: "pattern"
           id: "button"
-          variant: "secondary"
+          color: "secondary"
           fields:
             label: "First"
         - type: "pattern"
           id: "button"
-          variant: "secondary"
+          color: "secondary"
           fields:
             label: "Second"
         - type: "pattern"
           id: "button"
-          variant: "secondary"
+          color: "secondary"
           fields:
             label: "Third"

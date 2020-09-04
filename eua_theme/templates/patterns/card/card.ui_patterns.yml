@@ -16,7 +16,7 @@ card:
       options:
         top: Top (Default)
         bottom: Bottom
-      preview: top
+      preview: top"
     heading_level:
       type: select
       label: "Heading level"
@@ -67,7 +67,7 @@ card:
       preview:
         - type: "pattern"
           id: "button"
-          variant: "primary"
+          color: "primary"
           fields:
             label: "Go somewhere"
     links:
