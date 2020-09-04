@@ -41,7 +41,7 @@ dropdown:
       type: text
       label: Label
       description: The button label
-      preview: Submit
+      preview: Dropdown
     items:
       type: render
       label: Menu items

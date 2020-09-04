@@ -30,7 +30,7 @@ card:
     equal_height:
       type: boolean
       label: "Equal height"
-      description: "cards of the same height in a grid."
+      description: "Same height cards in a grid?"
       preview: true
   fields:
     image:
