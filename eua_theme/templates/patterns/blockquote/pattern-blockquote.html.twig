@@ -1,9 +1,6 @@
-{% if variant != '' and variant|lower != 'left' %}
-  {% set variants = variant|split('__') %}
-  {% for variant in variants %}
-    {% set attributes = attributes.addClass('text-' ~ variant|lower) %}
-  {% endfor %}
-{% endif %}
+{% set attributes = attributes.addClass([
+  align ? 'text-' ~ align
+  ]) %}
 
 <figure{{ attributes }}>
   <blockquote class="blockquote">
