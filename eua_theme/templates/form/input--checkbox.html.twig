@@ -4,4 +4,10 @@
  * Template for a checkbox input.
  */
 #}
-<input{{ attributes.addClass('form-check-input') }} />{{ children }}
+{%
+  set classes = [
+   'form-check-input',
+   attributes.hasClass('error') ? 'is-invalid',
+  ]
+%}
+<input{{ attributes.addClass(classes) }} />

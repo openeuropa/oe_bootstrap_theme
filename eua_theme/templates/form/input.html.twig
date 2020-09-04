@@ -11,7 +11,12 @@
  */
 #}
 {% if type != 'file' %}
-  {% set css_classes = ['form-control'] %}
+  {%
+    set classes = [
+      'form-control',
+       attributes.hasClass('error') ? 'is-invalid',
+    ]
+  %}
 {% endif %}
 
-<input{{ attributes.addClass(css_classes).removeClass('form-text') }} />{{ children }}
+<input{{ attributes.addClass(classes).removeClass('form-text') }} />{{ children }}

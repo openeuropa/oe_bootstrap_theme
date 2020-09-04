@@ -43,10 +43,9 @@
   </legend>
   <div class="fieldset-wrapper">
     {% if errors %}
-      {{ pattern('alert', {
-        'variant': 'danger',
-        'message': errors
-      }) }}
+      <div class="form-item--error-message invalid-feedback d-block">
+        {{ errors }}
+      </div>
     {% endif %}
     {% if prefix %}
       <span class="field-prefix">{{ prefix }}</span>

@@ -88,10 +88,9 @@
     {{ label }}
   {% endif %}
   {% if errors %}
-    {{ pattern('alert', {
-      'variant': 'danger',
-      'message': errors
-    }) }}
+    <div class="form-item--error-message invalid-feedback">
+      {{ errors }}
+    </div>
   {% endif %}
   {% if description_display in ['after', 'invisible'] and description.content %}
     <small{{ description.attributes.addClass(description_classes) }}>

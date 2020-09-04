@@ -4,4 +4,10 @@
  * Template for a textarea form element.
  */
 #}
-<textarea{{ attributes.addClass('form-control') }}>{{ value }}</textarea>
+{%
+  set classes = [
+    'form-control',
+    attributes.hasClass('error') ? 'is-invalid',
+  ]
+%}
+<textarea{{ attributes.addClass(classes) }}>{{ value }}</textarea>

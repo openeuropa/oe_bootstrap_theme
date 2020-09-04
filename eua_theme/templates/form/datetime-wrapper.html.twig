@@ -25,10 +25,9 @@
 {% endif %}
 {{ content }}
 {% if errors %}
-  {{ pattern('alert', {
-    'variant': 'danger',
-    'message': errors
-  }) }}
+  <div class="form-item--error-message invalid-feedback d-block">
+    {{ errors }}
+  </div>
 {% endif %}
 {% if description %}
   <small class="description text-muted">{{ description }}</small>

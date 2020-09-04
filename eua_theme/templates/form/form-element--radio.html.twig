@@ -7,25 +7,25 @@
  */
 #}
 {%
-set classes = [
-  'js-form-item',
-  'form-item',
-  'js-form-type-' ~ type|clean_class,
-  'form-item-' ~ name|clean_class,
-  'js-form-item-' ~ name|clean_class,
-  title_display not in ['after', 'before'] ? 'form-no-label',
-  disabled == 'disabled' ? 'form-disabled',
-  errors ? 'form-item--error',
-  'form-check',
-]
+  set classes = [
+    'js-form-item',
+    'form-item',
+    'js-form-type-' ~ type|clean_class,
+    'form-item-' ~ name|clean_class,
+    'js-form-item-' ~ name|clean_class,
+    title_display not in ['after', 'before'] ? 'form-no-label',
+    disabled == 'disabled' ? 'form-disabled',
+    errors ? 'form-item--error',
+    'form-check',
+  ]
 %}
 {%
-set description_classes = [
-  'description',
-  'form-text',
-  'text-muted',
-  description_display == 'invisible' ? 'visually-hidden',
-]
+  set description_classes = [
+    'description',
+    'form-text',
+    'text-muted',
+    description_display == 'invisible' ? 'visually-hidden',
+  ]
 %}
 <div{{ attributes.addClass(classes) }}>
   {{ children }}
@@ -33,10 +33,9 @@ set description_classes = [
   {{ label }}
 
   {% if errors %}
-    {{ pattern('alert', {
-      'variant': 'danger',
-      'message': errors
-    }) }}
+    <div class="form-item--error-message invalid-feedback">
+      {{ errors }}
+    </div>
   {% endif %}
 
   {% if description.content %}
