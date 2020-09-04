@@ -1,13 +1,12 @@
-{% if variant != '' and variant|lower != 'default' %}
-  {% set variants = variant|split('__') %}
-  {% for variant in variants %}
-    {% set attributes = attributes.addClass('btn-' ~ variant|lower|replace({'_': '-'})) %}
-  {% endfor %}
-{% endif %}
+{% set btnBaseClass = outline ? 'btn-outline-' : 'btn-' %}
+{% set attributes = attributes.addClass([
+  btnBaseClass ~ color,
+  'btn-' ~ size,
+  ]) %}
 
 {% if url or attributes.href %}
   {% set url = url ?: attributes.href %}
   <a{{ attributes.addClass('btn').setAttribute('href', url) }}>{{ label }}</a>
 {% else %}
-  <span{{ attributes.addClass('btn') }}>{{ label }}</span>
+  <button type="button"{{ attributes.addClass('btn') }}>{{ label }}</button>
 {% endif %}

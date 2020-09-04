@@ -1,63 +1,33 @@
 button:
   label: Button
   description: For actions in forms, dialogs, and more with support for multiple sizes, states, and more. https://v5.getbootstrap.com/docs/5.0/components/buttons/
-  variants:
-    primary:
-      label: Primary
-    secondary:
-      label: Secondary
-    success:
-      label: Success
-    danger:
-      label: Danger
-    warning:
-      label: Warning
-    info:
-      label: Info
-    light:
-      label: Light
-    dark:
-      label: Dark
-    link:
-      label: Link
-    outline_primary:
-      label: Outline Primary
-    outline_secondary:
-      label: Outline Secondary
-    outline_success:
-      label: Outline Success
-    outline_danger:
-      label: Outline Danger
-    outline_warning:
-      label: Outline Warning
-    outline_info:
-      label: Outline Info
-    outline_light:
-      label: Outline Light
-    outline_dark:
-      label: Outline Dark
-    primary__lg:
-      label: Large Primary
-    primary__lg__block:
-      label: Large Primary Block
-    secondary__lg__block:
-      label: Large Secondary Block
-    primary__sm:
-      label: Small Primary
-    secondary__sm:
-      label: Small Secondary
-    outline_primary__sm:
-      label: Small Outline Primary
-    outline_secondary__sm:
-      label: Small Outline Secondary
-    outline_primary__lg:
-      label: Large Outline Primary
-    outline_primary__lg__block:
-      label: Large Outline Primary Block
-    outline_secondary__lg__block:
-      label: Large Outline Secondary Block
-    link_primary:
-      label: Link Primary
+  settings:
+    color:
+      type: select
+      label: Button color
+      options:
+        primary: primary
+        secondary: secondary
+        success: success
+        danger: danger
+        warning: warning
+        info: info
+        light: light
+        dark: dark
+        link: link
+      preview: primary
+    outline:
+      type: boolean
+      label: Button outline
+      preview: false
+    size:
+      type: select
+      label: Button size
+      options:
+        xs: small
+        sm: medium
+        lg: large
+      preview: xs
   fields:
     label:
       type: text
