@@ -1,7 +1,7 @@
 {% set btnBaseClass = outline ? 'btn-outline-' : 'btn-' %}
 {% set attributes = attributes.addClass([
-  btnBaseClass ~ color,
-  'btn-' ~ size,
+  color ? btnBaseClass ~ color,
+  size ? 'btn-' ~ size,
   ]) %}
 
 {% if url or attributes.href %}

@@ -24,7 +24,6 @@ dropdown:
       type: select
       label: Button size
       options:
-        xs: small
         sm: medium
         lg: large
       preview: lg
