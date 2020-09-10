@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Template for a checkbox input.
+ */
+#}
+{%
+  set classes = [
+   'form-check-input',
+   attributes.hasClass('error') ? 'is-invalid',
+  ]
+%}
+<input{{ attributes.addClass(classes) }} />
