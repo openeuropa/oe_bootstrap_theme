@@ -1,15 +1,14 @@
 {% set id = 'modal-' ~ random(1000) %}
 
-{% set attributes = create_attribute({})
-  .setAttribute('data-toggle', 'modal')
-  .setAttribute('data-target', '#' ~ id)
-%}
 {{ pattern('button', {
   label: label,
   color: color,
   outline: outline,
   size: size,
-  attributes: attributes
+  attributes: create_attribute({
+    'data-toggle': 'modal',
+    'data-target': '#' ~ id
+  })
 }) }}
 
 <!-- Modal -->
@@ -28,14 +27,13 @@
         {{ content }}
       </div>
       <div class="modal-footer">
-        {% set attributes = create_attribute({})
-          .setAttribute('data-dismiss', 'modal')
-        %}
         {{ pattern('button', {
           label: closelabel,
           color: color,
           outline: false,
-          attributes: attributes
+          attributes: create_attribute({
+            'data-dismiss', 'modal'
+          })
         }) }}
       </div>
     </div>

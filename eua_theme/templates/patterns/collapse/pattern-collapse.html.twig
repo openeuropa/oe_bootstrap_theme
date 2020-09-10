@@ -1,18 +1,17 @@
 {% set id = 'collapse-' ~ random(1000) %}
 <p>
-  {% set btnAttributes = create_attribute({})
-    .setAttribute('data-toggle', 'collapse')
-    .setAttribute('role', 'button')
-    .setAttribute('aria-expanded', 'false')
-    .setAttribute('aria-controls', id)
-  %}
   {{ pattern('button', {
     label: label,
     color: color,
     outline: outline,
     url: '#' ~ id,
     size: size,
-    attributes: btnAttributes
+    attributes: create_attribute({
+      'data-toggle': 'collapse',
+      'role': 'button',
+      'aria-expanded': 'false',
+      'aria-controls', id
+    })
   }) }}
 </p>
 <div class="collapse" id="{{id}}">

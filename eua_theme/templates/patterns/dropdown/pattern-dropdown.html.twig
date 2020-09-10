@@ -1,15 +1,16 @@
 <div class="btn-group {{ directions }}">
-  {% set attributes = create_attribute({})
-    .setAttribute('data-toggle', 'dropdown')
-    .setAttribute('aria-expanded', 'false')
-    .addClass('dropdown-toggle') 
+  {% set attributes =  
   %}
   {{ pattern('button', {
     label: label,
     color: color,
     outline: outline,
     size: size,
-    attributes: attributes
+    attributes: create_attribute({
+      'class': 'dropdown-toggle',
+      'data-toggle': 'dropdown',
+      'aria-expanded': 'false'
+    })
   }) }}
   <ul class="dropdown-menu">
     {% for item in items %}
