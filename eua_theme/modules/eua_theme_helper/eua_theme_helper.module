@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * @file
+ * The EUA Theme Helper module.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\WidgetInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_field_widget_third_party_settings_form().
+ */
+function eua_theme_helper_field_widget_third_party_settings_form(WidgetInterface $plugin, FieldDefinitionInterface $field_definition, $form_mode, array $form, FormStateInterface $form_state) {
+  $element = [];
+  if ($plugin->getPluginId() == 'boolean_checkbox'
+    || ($plugin->getPluginId() == 'options_buttons' && $field_definition->getFieldStorageDefinition()->isMultiple())
+  ) {
+    $element['switch'] = [
+      '#type' => 'checkbox',
+      '#title' => \Drupal::translation()
+        ->formatPlural($plugin->getPluginId() === 'boolean_checkbox', 'Switch', 'Switches'),
+      '#default_value' => $plugin->getThirdPartySetting('eua_theme_helper', 'switch'),
+    ];
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_settings_summary_alter().
+ */
+function eua_theme_helper_field_widget_settings_summary_alter(array &$summary, array $context) {
+  if ($context['widget']->getPluginId() == 'boolean_checkbox'
+    || ($context['widget']->getPluginId() == 'options_buttons' && $context['field_definition']->getFieldStorageDefinition()->isMultiple())
+  ) {
+    $summary[] = \Drupal::translation()
+      ->formatPlural($context['widget']->getPluginId() === 'boolean_checkbox', 'Switch: @is_switch', 'Switches: @is_switch', ['@is_switch' => ($context['widget']->getThirdPartySetting('eua_theme_helper', 'switch') ? t('Yes') : t('No'))]);
+  }
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function eua_theme_helper_field_widget_boolean_checkbox_form_alter(&$element, FormStateInterface $form_state, $context) {
+  /** @var \Drupal\Core\Field\Plugin\Field\FieldWidget\BooleanCheckboxWidget $widget */
+  $widget = $context['widget'];
+  if (isset($element['value']['#type'])
+    && $element['value']['#type'] === 'checkbox'
+    && $widget->getThirdPartySetting('eua_theme_helper', 'switch')
+  ) {
+    $element['value']['#switch'] = TRUE;
+  }
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function eua_theme_helper_field_widget_options_buttons_form_alter(&$element, FormStateInterface $form_state, $context) {
+  /** @var \Drupal\Core\Field\Plugin\Field\FieldWidget\OptionsButtonsWidget $widget */
+  $widget = $context['widget'];
+  if ($widget->getThirdPartySetting('eua_theme_helper', 'switch')) {
+    $element['#switch'] = TRUE;
+  }
+}

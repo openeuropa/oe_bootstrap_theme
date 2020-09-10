@@ -1,0 +1,7 @@
+field.widget.third_party.eua_theme_helper:
+  type: mapping
+  label: 'Widget settings'
+  mapping:
+    switch:
+      type: boolean
+      label: Change the widget of checkboxes into switches
