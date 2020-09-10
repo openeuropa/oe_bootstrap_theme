@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Render\Element;
+use Drupal\eua_theme\Theme\EuaThemePreRender;
 
 /**
  * Implements hook_element_info_alter().
@@ -17,6 +18,16 @@ function eua_theme_element_info_alter(&$info) {
 
   if (isset($info['datelist'])) {
     $info['datelist']['#process'][] = '_eua_theme_process_element_grid_row';
+  }
+
+  // Add a pre-render function that handles checkbox variants.
+  if (isset($info['checkbox'])) {
+    $info['checkbox']['#pre_render'][] = [EuaThemePreRender::class, 'checkbox'];
+  }
+
+  // Add a pre-render function that handles checkboxes variants.
+  if (isset($info['checkboxes'])) {
+    $info['checkboxes']['#pre_render'][] = [EuaThemePreRender::class, 'checkboxes'];
   }
 }
 
