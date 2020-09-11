@@ -32,12 +32,12 @@
 
     {% for message in messages %}
       {{ pattern('alert', {
-        'variant': variant,
-        'attributes': attributes,
-        'message': message
+        'color': variant,
+        'message': message,
+        'dismissible': true,
+        'attributes': attributes
       }) }}
     {% endfor %}
 
   {% endfor %}
 </div>
-

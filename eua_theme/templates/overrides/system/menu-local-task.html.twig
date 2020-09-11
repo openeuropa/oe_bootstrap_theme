@@ -19,7 +19,7 @@
 {% set variant = is_active ? 'light' : '' %}
 {% set attributes = is_active ? attributes.addClass('border-primary') : attributes %}
 {{ pattern('button', {
-  'variant': variant,
+  'color': variant,
   'attributes': attributes,
   'label': link
 }) }}
