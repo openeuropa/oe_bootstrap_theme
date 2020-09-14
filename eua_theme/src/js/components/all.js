@@ -1,5 +1,2 @@
-// Page: Content
+// Import custom components js that will be shared with the sub themes
 // -----------------------------------------------------------------------------
-.page__content {
-
-}
