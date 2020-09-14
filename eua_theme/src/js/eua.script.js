@@ -1,7 +1,6 @@
 // Option 1
 // -----------------------------------------------------
 // Import all of Bootstrap's JS
-
 import 'bootstrap';
 
 // Option 2
@@ -20,6 +19,9 @@ import 'bootstrap';
 // import "bootstrap/js/dist/toast.js";
 // import "bootstrap/js/dist/tooltip.js";
 
+// Popper
+// -----------------------------------------------------------------------------
+import 'popper.js';
 
 // Drupal base (shared with sub themes)
 // -----------------------------------------------------------------------------
