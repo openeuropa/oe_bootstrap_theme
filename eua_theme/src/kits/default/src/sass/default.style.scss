@@ -65,17 +65,15 @@
 @import "base/helpers";
 @import "base/elements";
 
-// Base theme Sass inheritance
-// -----------------------------------------------------------------------------
-// Base theme Drupal overrides
+// Base theme Drupal overrides inheritance
 // -----------------------------------------------------------------------------
 @import "~eua_scss/overrides/all";
 
-// Base theme Components
+// Base theme Components inheritance
 // -----------------------------------------------------------------------------
 @import "~eua_scss/components/all";
 
-// Base theme Layout
+// Base theme Layout inheritance
 // -----------------------------------------------------------------------------
 @import "~eua_scss/layout/all";
 
