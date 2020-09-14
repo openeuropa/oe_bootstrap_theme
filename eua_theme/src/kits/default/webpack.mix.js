@@ -7,8 +7,30 @@
  | for your application. See https://github.com/JeffreyWay/laravel-mix.
  |
  */
+
+/* Specify base_theme relative path */
+const baseTheme = "../eua_theme/";
+const baseThemePath = path.resolve(__dirname, baseTheme);
+
+/* Live reloads URL pushing */
 const proxy = 'http://drupal.local';
+
+const path = require("path");
 const mix = require('laravel-mix');
+
+/*
+ |--------------------------------------------------------------------------
+ | Configuration
+ |--------------------------------------------------------------------------
+ */
+mix.webpackConfig({
+  resolve: {
+    alias: {
+      "eua_scss": `${baseThemePath}/src/sass`,
+      "@eua_js": `${baseThemePath}/src/js`,
+    },
+  },
+});
 
 if (!mix.inProduction()) {
   // Enable source maps.
@@ -62,11 +84,11 @@ mix.browserSync({
  | SASS
  |--------------------------------------------------------------------------
  */
-mix.sass('src/sass/eua.style.scss', 'css');
+mix.sass('src/sass/default.style.scss', 'css');
 
 /*
  |--------------------------------------------------------------------------
  | JS
  |--------------------------------------------------------------------------
  */
-mix.js('src/js/eua.script.js', 'js');
+mix.js('src/js/default.script.js', 'js');

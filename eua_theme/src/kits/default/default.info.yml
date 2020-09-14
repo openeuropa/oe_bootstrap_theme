@@ -1,8 +1,8 @@
-name: EU Agency base theme
-description: EU Agency base theme.
+name: RADIX_SUBTHEME_NAME
+description: RADIX_SUBTHEME_DESCRIPTION
 screenshot: screenshot.png
 type: theme
-base theme: true
+base theme: eua_theme
 core_version_requirement: ^8.9 || ^9
 dependencies:
   - ui_patterns:ui_patterns
@@ -14,10 +14,10 @@ stylesheets-remove:
   - system.admin.css
 
 libraries:
-  - eua_theme/style
+  - RADIX_SUBTHEME_MACHINE_NAME/style
 
 libraries-override:
-  seven/global-styling: false
+  eua_theme/style: false
 
 regions:
   navbar_branding: Navbar branding
