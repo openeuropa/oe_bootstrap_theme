@@ -1,5 +1,5 @@
-name: RADIX_SUBTHEME_NAME
-description: RADIX_SUBTHEME_DESCRIPTION
+name: EUA_SUBTHEME_NAME
+description: EUA_SUBTHEME_DESCRIPTION
 screenshot: screenshot.png
 type: theme
 base theme: eua_theme
@@ -14,7 +14,7 @@ stylesheets-remove:
   - system.admin.css
 
 libraries:
-  - RADIX_SUBTHEME_MACHINE_NAME/style
+  - EUA_SUBTHEME_MACHINE_NAME/style
 
 libraries-override:
   eua_theme/style: false
