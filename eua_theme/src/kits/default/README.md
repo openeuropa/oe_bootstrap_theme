@@ -1,6 +1,6 @@
 # Installation
 
-RADIX_SUBTHEME_NAME theme uses [Webpack](https://webpack.js.org) to compile and bundle SASS and JS.
+EUA_SUBTHEME_NAME theme uses [Webpack](https://webpack.js.org) to compile and bundle SASS and JS.
 
 #### Step 1
 Make sure you have Node and npm installed. 
@@ -12,6 +12,9 @@ If you prefer to use [Yarn](https://yarnpkg.com) instead of npm, install Yarn by
 Go to the root of RADIX_SUBTHEME_NAME theme and run the following commands: `npm install` or `yarn install`.
 
 #### Step 3
+Update `baseTheme` in **webpack.mix.json**.
+
+#### Step 4
 Update `proxy` in **webpack.mix.json**.
 
 #### Step 4
