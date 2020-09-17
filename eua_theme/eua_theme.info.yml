@@ -1,5 +1,6 @@
 name: EU Agency base theme
 description: EU Agency base theme.
+screenshot: screenshot.png
 type: theme
 base theme: false
 core_version_requirement: ^8.9 || ^9
