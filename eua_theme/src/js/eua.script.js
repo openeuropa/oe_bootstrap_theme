@@ -1,7 +1,3 @@
-// Compile scss file
-import "@scss/styles.scss";
-
-
 // Option 1
 // -----------------------------------------------------
 // Import all of Bootstrap's JS
@@ -25,7 +21,10 @@ import 'bootstrap';
 // import "bootstrap/js/dist/tooltip.js";
 
 
-// Custom CSS
-// -----------------------------------------------------
+// Drupal base (shared with sub themes)
+// -----------------------------------------------------------------------------
+import "./base/all.js";
 
-// import "custom.js"
+// Custom component (shared with sub themes)
+// -----------------------------------------------------------------------------
+import "./components/all.js";
