@@ -1,0 +1,41 @@
+nav:
+  label: Nav
+  description: https://v5.getbootstrap.com/docs/5.0/components/navs/
+  settings:
+    style:
+      type: select
+      label: Style
+      options:
+        tabs: tabs
+        pills: pills
+      preview: tabs
+    alignment:
+      type: select
+      label: Alignment
+      options:
+        center: center
+        right: right
+        vertical: vertical
+    fill:
+      type: select
+      label: Fill
+      options:
+        fill: fill
+        justify: justify
+  fields:
+    items:
+      type: render
+      label: Menu items
+      description: Full-height and lightweight navigation (including support for dropdowns).
+      preview:
+        - title: Home
+          url: "#"
+        - title: Library
+          url: "#"
+          below:
+            - title: Sub 1
+              url: "#"
+            - title: Sub 2
+              url: "#"
+        - title: Data
+          url: "#"
