@@ -1,4 +1,6 @@
 .DS_Store
+*.codekit
+.idea
 /vendor/
 /node_modules/
 /build/
@@ -13,4 +15,5 @@
 /phpunit.xml
 /.stylelintrc.json
 /docker-compose.*.yml
+/.sass-cache
 /assets/
