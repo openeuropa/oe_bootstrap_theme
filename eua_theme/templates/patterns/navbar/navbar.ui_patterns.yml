@@ -27,8 +27,7 @@ navbar:
             - title: Sub 2
               url: "#"
         - title: Data
-    text:
-      type: text
-      label: Text
-      description: Vertically centered strings of text.
-      preview: " Navbar text with an inline element "
+    right:
+      type: render
+      label: Right Content
+      description: Right Content block.
