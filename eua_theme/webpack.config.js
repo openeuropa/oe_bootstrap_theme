@@ -6,7 +6,7 @@ const globImporter = require('node-sass-glob-importer');
 // const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 var config = {
-  entry: "./src/assets/js/index.js",
+  entry: "./src/js/eua.script.js",
   output: {
     path: path.resolve(__dirname, "assets/"),
     filename: "js/scripts.js",
@@ -48,7 +48,7 @@ var config = {
   },
   resolve: {
     alias: {
-      '@scss': path.resolve(__dirname, 'src/assets/scss'),
+      '@scss': path.resolve(__dirname, 'src/sass'),
       '@': path.resolve(__dirname, 'src')
     },
     modules: [
@@ -58,7 +58,7 @@ var config = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/styles.css"
+      filename: "css/eua.style.css"
     }),
     /*
     new BrowserSyncPlugin({
