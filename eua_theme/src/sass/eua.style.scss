@@ -65,18 +65,14 @@
 @import "base/helpers";
 @import "base/elements";
 
-// Layout
+// Drupal overrides (shared with sub themes)
 // -----------------------------------------------------------------------------
-@import "layout/page.header";
-@import "layout/page.content";
-@import "layout/page.footer";
+@import "overrides/all";
 
-// Component
+// Custom component (shared with sub themes)
 // -----------------------------------------------------------------------------
-@import "components/node";
+@import "components/all";
 
-// Other
+// Layout (shared with sub themes)
 // -----------------------------------------------------------------------------
-@import "block/block";
-@import "content/node.page";
-@import "content/node.article";
+@import "layout/all";
