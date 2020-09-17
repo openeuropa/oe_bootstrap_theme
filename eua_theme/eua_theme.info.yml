@@ -14,7 +14,6 @@ stylesheets-remove:
   - system.admin.css
 
 libraries:
-  - eua_theme/bootstrap
   - eua_theme/style
 
 libraries-override:
