@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Template for field_tags.
+ */
+#}
+{% for item in items %}
+  {{ pattern('badge', {
+    'color': 'light',
+    'label': item.content['#title'],
+    'url': item.content['#url']
+  }) }}
+{% endfor %}
