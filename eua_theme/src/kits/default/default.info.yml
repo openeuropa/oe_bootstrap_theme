@@ -8,15 +8,6 @@ type: theme
 base theme: eua_theme
 hidden: true
 
-regions:
-  navbar_branding: Navbar branding
-  navbar_left:  Navbar left
-  navbar_right: Navbar right
-  header: Header
-  content: Content
-  page_bottom: Page bottom
-  footer: Footer
-
 libraries:
   - eua_theme/style
   - EUA_SUBTHEME_MACHINE_NAME/style
@@ -26,6 +17,15 @@ libraries-override:
 
 ckeditor_stylesheets:
   - assets/css/EUA_SUBTHEME_MACHINE_NAME.style.css
+
+regions:
+  navbar_branding: Navbar branding
+  navbar_left:  Navbar left
+  navbar_right: Navbar right
+  header: Header
+  content: Content
+  page_bottom: Page bottom
+  footer: Footer
 
 component-libraries:
   EUA_SUBTHEME_MACHINE_NAME:
