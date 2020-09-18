@@ -7,8 +7,10 @@
  | for your application. See https://github.com/JeffreyWay/laravel-mix.
  |
  */
-const proxy = 'http://localhost';
 const mix = require('laravel-mix');
+
+/* Live reloads URL pushing */
+const proxy = 'http://drupal.local';
 
 if (!mix.inProduction()) {
   // Enable source maps.
