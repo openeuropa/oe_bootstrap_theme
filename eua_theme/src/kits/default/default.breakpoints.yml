@@ -24,7 +24,13 @@ default.lg:
     - 1x
 default.xl:
   label: XL
-  mediaQuery: '(min-width: 1200px)'
+  mediaQuery: '(min-width: 1200px) and (max-width: 1399px)'
+  weight: 1
+  multipliers:
+    - 1x
+default.xxl:
+  label: XXL
+  mediaQuery: '(min-width: 1400px)'
   weight: 1
   multipliers:
     - 1x
