@@ -9,9 +9,9 @@ badge:
         badge: badge
         pill: pill
       preview: badge
-    color:
+    style:
       type: select
-      label: Badge color
+      label: Badge style
       options:
         primary: primary
         secondary: secondary

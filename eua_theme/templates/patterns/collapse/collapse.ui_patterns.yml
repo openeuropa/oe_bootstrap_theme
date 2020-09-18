@@ -2,9 +2,9 @@ collapse:
   label: "Collapse"
   description: "The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. https://v5.getbootstrap.com/docs/5.0/components/collapse/"
   settings:
-    color:
+    style:
       type: select
-      label: Button color
+      label: Button style
       options:
         primary: primary
         secondary: secondary

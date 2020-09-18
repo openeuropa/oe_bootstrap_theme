@@ -2,7 +2,7 @@
 
 {{ pattern('button', {
   label: label,
-  color: color,
+  style: style,
   outline: outline,
   size: size,
   attributes: create_attribute({
@@ -29,10 +29,10 @@
       <div class="modal-footer">
         {{ pattern('button', {
           label: closelabel,
-          color: color,
+          style: style,
           outline: false,
           attributes: create_attribute({
-            'data-dismiss', 'modal'
+            'data-dismiss': 'modal'
           })
         }) }}
       </div>

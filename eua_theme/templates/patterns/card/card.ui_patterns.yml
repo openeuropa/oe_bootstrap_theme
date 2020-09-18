@@ -16,7 +16,7 @@ card:
       options:
         top: Top (Default)
         bottom: Bottom
-      preview: top"
+      preview: top
     heading_level:
       type: select
       label: "Heading level"
