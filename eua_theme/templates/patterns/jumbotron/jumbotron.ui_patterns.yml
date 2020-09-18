@@ -35,7 +35,7 @@ jumbotron:
           value: "It uses utility classes for typography and spacing to space content out within the larger container."
         - type: "pattern"
           id: "button"
-          color: "primary"
+          style: "primary"
           size: "lg"
           fields:
             label: "Learn more"

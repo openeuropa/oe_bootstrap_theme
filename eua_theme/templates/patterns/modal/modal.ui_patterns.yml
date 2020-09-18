@@ -15,11 +15,10 @@ modal:
         light: light
         dark: dark
         link: link
-      preview: dark
+      preview: primary
     outline:
       type: boolean
       label: Button outline
-      preview: true
     size:
       type: select
       label: Button size

@@ -67,7 +67,7 @@ card:
       preview:
         - type: "pattern"
           id: "button"
-          color: "primary"
+          style: "primary"
           fields:
             label: "Go somewhere"
     links:

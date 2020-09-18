@@ -1,6 +1,6 @@
 {% set attributes = attributes.addClass([
   type,
-  color ? 'bg-' ~ color
+  style ? 'bg-' ~ style
   ]) %}
 
 {% if url or attributes.href %}
