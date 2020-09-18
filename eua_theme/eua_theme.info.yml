@@ -1,6 +1,6 @@
 name: EU Agency base theme
-type: theme
 description: EU Agency base theme.
+type: theme
 base theme: false
 core_version_requirement: ^8.9 || ^9
 dependencies:
