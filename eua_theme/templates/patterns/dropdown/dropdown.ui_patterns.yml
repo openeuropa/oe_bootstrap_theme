@@ -23,7 +23,7 @@ dropdown:
       type: select
       label: Button size
       options:
-        sm: medium
+        sm: small
         lg: large
       preview: lg
     directions:
