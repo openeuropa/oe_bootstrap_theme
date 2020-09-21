@@ -1,8 +1,8 @@
-{% if variant != '' and variant|lower != 'default' %}
-  {% set attributes = attributes.addClass('btn-group-' ~ variant|lower|replace({'_': '-'})) %}
-{% else %}
-  {% set attributes = attributes.addClass('btn-group') %}
-{% endif %}
+{% set baseClass = 'btn-group' %}
+{% set attributes = attributes.addClass([
+  vertical ? baseClass ~ '-vertical' : baseClass,
+  size ? baseClass ~ '-' ~ size
+  ]) %}
 
 <div{{ attributes.setAttribute('role', 'group').setAttribute('aria-label', label) }}>
   {% for button in buttons %}
