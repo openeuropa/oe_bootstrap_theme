@@ -24,8 +24,14 @@ button:
       type: select
       label: Button size
       options:
-        sm: medium
+        sm: small
         lg: large
+    block:
+      type: boolean
+      label: Block display
+    disabled:
+      type: boolean
+      label: Disabled
   fields:
     label:
       type: text

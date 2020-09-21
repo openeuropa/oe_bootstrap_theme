@@ -1,12 +1,18 @@
 {% set baseClass = outline ? 'btn-outline-' : 'btn-' %}
 {% set attributes = attributes.addClass([
+  'btn',
   style ? baseClass ~ style,
   size ? 'btn-' ~ size,
+  block ? 'btn-block',
+  disabled ? 'disabled'
   ]) %}
 
 {% if url or attributes.href %}
-  {% set url = url ?: attributes.href %}
-  <a{{ attributes.addClass('btn').setAttribute('href', url) }}>{{ label }}</a>
+  {% set url = url ?: attributes.href %} 
+  <a{{ attributes.setAttribute('href', url) }}>{{ label }}</a>
 {% else %}
-  <button type="button"{{ attributes.addClass('btn') }}>{{ label }}</button>
+  {% if disabled %}
+    {% set attributes = attributes.setAttribute('disabled', true) %}
+  {% endif %}
+  <button type="button"{{ attributes }}>{{ label }}</button>
 {% endif %}
