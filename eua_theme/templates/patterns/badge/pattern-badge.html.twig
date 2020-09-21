@@ -1,11 +1,13 @@
 {% set attributes = attributes.addClass([
-  type,
-  style ? 'bg-' ~ style
+  'badge',
+  type == 'pill' ? 'rounded-pill',
+  style ? 'bg-' ~ style,
+  text_dark ? 'text-dark'
   ]) %}
 
 {% if url or attributes.href %}
   {% set url = url ?: attributes.href %}
-  <a {{ attributes.addClass('badge').setAttribute('href', url) }}>{{ label }}</a>
+  <a {{ attributes.setAttribute('href', url) }}>{{ label }}</a>
 {% else %}
-  <span {{ attributes.addClass('badge') }}>{{ label }}</span>
+  <span {{ attributes }}>{{ label }}</span>
 {% endif %}
