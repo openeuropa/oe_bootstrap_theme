@@ -26,6 +26,10 @@ dropdown:
         sm: small
         lg: large
       preview: lg
+    disabled:
+      type: boolean
+      label: Disabled
+      preview: true
     directions:
       type: select
       label: Dropdown direction
