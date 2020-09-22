@@ -2,9 +2,9 @@
 
 {{ pattern('button', {
   label: label,
-  style: style,
-  outline: outline,
-  size: size,
+  style: btn_style,
+  outline: btn_outline,
+  size: btn_size,
   attributes: create_attribute({
     'data-toggle': 'modal',
     'data-target': '#' ~ id
@@ -12,8 +12,20 @@
 }) }}
 
 <!-- Modal -->
-<div class="modal fade" id="{{id}}" tabindex="-1" aria-labelledby="{{id}}Label" aria-hidden="true">
-  <div class="modal-dialog">
+{% set attributes = attributes.addClass(['modal', 'fade']) %}
+{% if static_backdrop %}
+  {% set attributes = attributes.setAttribute('data-backdrop', 'static') %}
+  {% set attributes = attributes.setAttribute('data-keyboard', false) %}
+{% endif %}
+
+<div {{ attributes }} id="{{id}}" tabindex="-1" aria-labelledby="{{id}}Label" aria-hidden="true">
+  <div class="modal-dialog
+    {{- vertically_centered ? ' modal-dialog-centered' -}}
+    {{- scrollable ? ' modal-dialog-scrollable' -}}
+    {{- modal_size ? ' modal-' ~ modal_size -}}
+    {{- fullscreen == 'always' ? ' modal-fullscreen' -}}
+    {{- fullscreen and fullscreen != 'always' ? ' modal-fullscreen-' ~ fullscreen ~ '-down' -}}
+    ">
     <div class="modal-content">
       <div class="modal-header">
         {% if title %}
@@ -29,7 +41,7 @@
       <div class="modal-footer">
         {{ pattern('button', {
           label: closelabel,
-          style: style,
+          style: btn_style,
           outline: false,
           attributes: create_attribute({
             'data-dismiss': 'modal'
