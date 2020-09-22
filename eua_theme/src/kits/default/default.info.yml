@@ -5,7 +5,7 @@ core: 8.x
 # version: VERSION
 engine: twig
 type: theme
-base theme: radix
+base theme: eua_theme
 hidden: true
 
 regions:
@@ -18,11 +18,11 @@ regions:
   footer: Footer
 
 libraries:
-  - radix/style
+  - eua_theme/style
   - EUA_SUBTHEME_MACHINE_NAME/style
 
 libraries-override:
-  radix/bootstrap: false
+  eua_theme/bootstrap: false
 
 ckeditor_stylesheets:
   - assets/css/EUA_SUBTHEME_MACHINE_NAME.style.css
