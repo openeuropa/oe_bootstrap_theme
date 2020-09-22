@@ -7,11 +7,29 @@
  | for your application. See https://github.com/JeffreyWay/laravel-mix.
  |
  */
+const path = require("path");
+const mix = require('laravel-mix');
+
+/* Specify base_theme relative path */
+const baseTheme = "../eua_theme/";
+const baseThemePath = path.resolve(__dirname, baseTheme);
 
 /* Live reloads URL pushing */
 const proxy = 'http://drupal.local';
 
-const mix = require('laravel-mix');
+/*
+ |--------------------------------------------------------------------------
+ | Configuration
+ |--------------------------------------------------------------------------
+ */
+mix.webpackConfig({
+  resolve: {
+    alias: {
+      "eua_scss": `${baseThemePath}/src/sass`,
+      "@eua_js": `${baseThemePath}/src/js`,
+    },
+  },
+});
 
 /*
  |--------------------------------------------------------------------------
