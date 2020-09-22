@@ -7,7 +7,10 @@
  | for your application. See https://github.com/JeffreyWay/laravel-mix.
  |
  */
+
+/* Live reloads URL pushing */
 const proxy = 'http://drupal.local';
+
 const mix = require('laravel-mix');
 
 /*
