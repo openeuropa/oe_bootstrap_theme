@@ -1,39 +1,29 @@
 badge:
   label: Badge
   description: A small count and labeling component. Badges scale to match the size of the immediate parent element by using relative font sizing and em units. https://v5.getbootstrap.com/docs/5.0/components/alerts/
-  variants:
-    primary:
-      label: Primary
-    secondary:
-      label: Secondary
-    success:
-      label: Success
-    danger:
-      label: Danger
-    warning:
-      label: Warning
-    info:
-      label: Info
-    light:
-      label: Light
-    dark:
-      label: Dark
-    pill__primary:
-      label: Primary
-    pill__secondary:
-      label: Secondary
-    pill__success:
-      label: Success
-    pill__danger:
-      label: Danger
-    pill__warning:
-      label: Warning
-    pill__info:
-      label: Info
-    pill__light:
-      label: Light
-    pill__dark:
-      label: Dark
+  settings:
+    style:
+      type: select
+      label: Badge style
+      options:
+        primary: primary
+        secondary: secondary
+        success: success
+        danger: danger
+        warning: warning
+        info: info
+        light: light
+        dark: dark
+        link: link
+      preview: primary
+    text_dark:
+      type: boolean
+      label: Text dark. Optional
+      description: Make text more darker.
+    pill:
+      type: boolean
+      label: Pill badge. Optional
+      description: Make badge more rounded.
   fields:
     label:
       type: text

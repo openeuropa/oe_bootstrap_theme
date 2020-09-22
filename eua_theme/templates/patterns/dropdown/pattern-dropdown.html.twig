@@ -1,13 +1,16 @@
-{% set btnBaseClass = btnoutline ? 'btn-outline-' : 'btn-' %}
-{% set attributes = attributes.addClass([
-  btnBaseClass ~ btncolor,
-  'btn-' ~ btnsize,
-  ]) %}
-
 <div class="btn-group {{ directions }}">
-  <button type="button" {{ attributes.addClass(['btn', 'dropdown-toggle']) }} data-toggle="dropdown" aria-expanded="false">
-    {{ label }}
-  </button>
+  {{ pattern('button', {
+    label: label,
+    style: style,
+    outline: outline,
+    size: size,
+    disabled: disabled,
+    attributes: create_attribute({
+      'class': 'dropdown-toggle',
+      'data-toggle': 'dropdown',
+      'aria-expanded': 'false'
+    })
+  }) }}
   <ul class="dropdown-menu">
     {% for item in items %}
       <li><a class="dropdown-item" href="{{ item.url }}">{{ item.title }}</a></li>

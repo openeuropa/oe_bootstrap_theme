@@ -1,19 +1,13 @@
-{% if variant != '' and variant|lower != 'default' %}
-  {% set variants = variant|split('__') %}
-  {% for variant in variants %}
-    {% if 'pill' in variant %}
-      {% set attributes = attributes.addClass('rounded-pill') %}
-    {% endif %}
-    {% if 'light' in variant %}
-      {% set attributes = attributes.addClass('text-dark') %}
-    {% endif %}
-    {% set attributes = attributes.addClass('bg-' ~ variant|lower|replace({'_': '-'})) %}
-  {% endfor %}
-{% endif %}
+{% set attributes = attributes.addClass([
+  'badge',
+  type == 'pill' ? 'rounded-pill',
+  style ? 'bg-' ~ style,
+  text_dark ? 'text-dark'
+  ]) %}
 
 {% if url or attributes.href %}
   {% set url = url ?: attributes.href %}
-  <a {{ attributes.addClass('badge').setAttribute('href', url) }}>{{ label }}</a>
+  <a {{ attributes.setAttribute('href', url) }}>{{ label }}</a>
 {% else %}
-  <span {{ attributes.addClass('badge') }}>{{ label }}</span>
+  <span {{ attributes }}>{{ label }}</span>
 {% endif %}

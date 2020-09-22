@@ -108,7 +108,7 @@ grid_row:
             body:
               - type: "pattern"
                 id: "button"
-                variant: "primary"
+                style: "primary"
                 fields:
                   label: "Go somewhere"
         - type: pattern
@@ -124,7 +124,7 @@ grid_row:
             body:
               - type: "pattern"
                 id: "button"
-                variant: "primary"
+                style: "primary"
                 fields:
                   label: "Go somewhere"
         - type: pattern

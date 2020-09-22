@@ -25,19 +25,19 @@
 <div data-drupal-messages>
   {% for type, messages in message_list %}
 
-    {% set variant = '' %}
-    {% set variant = (type == 'status') ? 'info' : variant %}
-    {% set variant = (type == 'warning') ? 'warning' : variant %}
-    {% set variant = (type == 'error') ? 'danger' : variant %}
+    {% set style = '' %}
+    {% set style = (type == 'status') ? 'info' : style %}
+    {% set style = (type == 'warning') ? 'warning' : style %}
+    {% set style = (type == 'error') ? 'danger' : style %}
 
     {% for message in messages %}
       {{ pattern('alert', {
-        'variant': variant,
-        'attributes': attributes,
-        'message': message
+        'style': style,
+        'message': message,
+        'dismissible': true,
+        'attributes': attributes
       }) }}
     {% endfor %}
 
   {% endfor %}
 </div>
-

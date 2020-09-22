@@ -30,7 +30,7 @@ card:
     equal_height:
       type: boolean
       label: "Equal height"
-      description: "cards of the same height in a grid."
+      description: "Same height cards in a grid?"
       preview: true
   fields:
     image:
@@ -67,22 +67,9 @@ card:
       preview:
         - type: "pattern"
           id: "button"
-          variant: "primary"
+          style: "primary"
           fields:
             label: "Go somewhere"
-    links:
-      type: "render"
-      label: "Links"
-      description: "Array of link elements"
-      preview:
-        - type: "link"
-          url: "#"
-          title: Card link
-        - type: "html_tag"
-          tag: "a"
-          attributes:
-            href: "#"
-            title: Another link
     footer:
       type: "render"
       label: "Footer"

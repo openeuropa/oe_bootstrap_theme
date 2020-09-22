@@ -2,9 +2,9 @@ modal:
   label: Modal
   description: Use Bootstrap’s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content. https://v5.getbootstrap.com/docs/5.0/components/modal/
   settings:
-    btncolor:
+    btn_style:
       type: select
-      label: Button color
+      label: Button style
       options:
         primary: primary
         secondary: secondary
@@ -15,43 +15,69 @@ modal:
         light: light
         dark: dark
         link: link
-      preview: dark
-    btnoutline:
+      preview: primary
+    btn_outline:
       type: boolean
       label: Button outline
-      preview: true
-    btnsize:
+    btn_size:
       type: select
       label: Button size
       options:
-        xs: small
         sm: medium
         lg: large
       preview: lg
-    directions:
+    modal_size:
       type: select
-      label: Dropdown direction
+      label: Modal size
       options:
-        dropdown: down
-        dropleft: left
-        dropright: right
-        dropup: up
-      preview: dropdown
+        sm: small
+        lg: large
+        xl: extra large
+    fullscreen:
+      type: select
+      label: Fullscreen size
+      options:
+        always: always
+        sm: below 576px
+        md: below 768px
+        lg: below 992px
+        xl: below 1200px
+    static_backdrop: 
+      type: boolean
+      label: Static backdrop
+      description: When backdrop is set to static, the modal will not close when clicking outside it.
+    vertically_centered: 
+      type: boolean
+      label: Vertically centered
+      description: Vertically center the modal.
+      preview: true
+    scrollable: 
+      type: boolean
+      label: Scrollable
+      description: When modals become too long for the user’s viewport or device, they scroll independent of the page itself.
+      preview: true
   fields:
     label:
       type: text
-      label: Label
-      description: The button label
-      preview: Submit
-    items:
+      label: label
+      description: The toggle button label
+      preview: Open modal
+    title:
+      type: text
+      label: Title
+      preview: My Modal Title
+    closelabel:
+      type: text
+      label: close label
+      description: The close button label
+      preview: Close
+    content:
       type: render
-      label: Menu items
-      description: Full-height and lightweight navigation (including support for dropdowns).
+      label: Content
+      description: "Modal Content"
       preview:
-        - title: Home
-          url: "#"
-        - title: Library
-          url: "#"
-        - title: Data
-          url: "#"
+        - type: html_tag
+          tag: p
+          value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+
 

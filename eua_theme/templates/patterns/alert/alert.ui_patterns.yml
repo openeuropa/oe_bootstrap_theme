@@ -1,24 +1,21 @@
 alert:
   label: Alert
   description: Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. https://v5.getbootstrap.com/docs/5.0/components/alerts/
-  variants:
-    primary:
-      label: Primary
-    secondary:
-      label: Secondary
-    success:
-      label: Success
-    danger:
-      label: Danger
-    warning:
-      label: Warning
-    info:
-      label: Info
-    light:
-      label: Light
-    dark:
-      label: Dark
   settings:
+    style:
+      type: select
+      label: Alert style
+      options:
+        primary: primary
+        secondary: secondary
+        success: success
+        danger: danger
+        warning: warning
+        info: info
+        light: light
+        dark: dark
+        link: link
+      preview: primary
     dismissible:
       type: boolean
       label: Dismissible?

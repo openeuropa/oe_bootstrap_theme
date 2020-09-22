@@ -1,32 +1,52 @@
-{% set btnBaseClass = btnoutline ? 'btn-outline-' : 'btn-' %}
-{% set attributes = attributes.addClass([
-  btnBaseClass ~ btncolor,
-  'btn-' ~ btnsize,
-  ]) %}
-
 {% set id = 'modal-' ~ random(1000) %}
 
-<!-- Button trigger modal -->
-<button type="button" {{ attributes }} data-toggle="modal" data-target="#{{id}}">
-  {{label}}
-</button>
+{{ pattern('button', {
+  label: label,
+  style: btn_style,
+  outline: btn_outline,
+  size: btn_size,
+  attributes: create_attribute({
+    'data-toggle': 'modal',
+    'data-target': '#' ~ id
+  })
+}) }}
 
 <!-- Modal -->
-<div class="modal fade" id="{{id}}" tabindex="-1" aria-labelledby="{{id}}Label" aria-hidden="true">
-  <div class="modal-dialog">
+{% set attributes = attributes.addClass(['modal', 'fade']) %}
+{% if static_backdrop %}
+  {% set attributes = attributes.setAttribute('data-backdrop', 'static') %}
+  {% set attributes = attributes.setAttribute('data-keyboard', false) %}
+{% endif %}
+
+<div {{ attributes }} id="{{id}}" tabindex="-1" aria-labelledby="{{id}}Label" aria-hidden="true">
+  <div class="modal-dialog
+    {{- vertically_centered ? ' modal-dialog-centered' -}}
+    {{- scrollable ? ' modal-dialog-scrollable' -}}
+    {{- modal_size ? ' modal-' ~ modal_size -}}
+    {{- fullscreen == 'always' ? ' modal-fullscreen' -}}
+    {{- fullscreen and fullscreen != 'always' ? ' modal-fullscreen-' ~ fullscreen ~ '-down' -}}
+    ">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="{{id}}Label">Modal title</h5>
+        {% if title %}
+          <h5 class="modal-title" id="{{id}}Label">{{ title }}</h5>
+        {% endif %}
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        {{ content }}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        {{ pattern('button', {
+          label: closelabel,
+          style: btn_style,
+          outline: false,
+          attributes: create_attribute({
+            'data-dismiss': 'modal'
+          })
+        }) }}
       </div>
     </div>
   </div>

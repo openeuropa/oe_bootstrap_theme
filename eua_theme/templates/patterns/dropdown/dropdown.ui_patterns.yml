@@ -2,9 +2,9 @@ dropdown:
   label: Dropdown
   description: Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. https://v5.getbootstrap.com/docs/5.0/components/dropdowns/
   settings:
-    btncolor:
+    style:
       type: select
-      label: Button color
+      label: Button style
       options:
         primary: primary
         secondary: secondary
@@ -15,19 +15,20 @@ dropdown:
         light: light
         dark: dark
         link: link
-      preview: dark
-    btnoutline:
+      preview: primary
+    outline:
       type: boolean
       label: Button outline
-      preview: true
-    btnsize:
+    size:
       type: select
       label: Button size
       options:
-        xs: small
-        sm: medium
+        sm: small
         lg: large
       preview: lg
+    disabled:
+      type: boolean
+      label: Disabled
     directions:
       type: select
       label: Dropdown direction
@@ -42,7 +43,7 @@ dropdown:
       type: text
       label: Label
       description: The button label
-      preview: Submit
+      preview: Dropdown
     items:
       type: render
       label: Menu items
