@@ -1,6 +1,6 @@
 {
-  "name": "RADIX_SUBTHEME_MACHINE_NAME",
-  "description": "RADIX_SUBTHEME_DESCRIPTION",
+  "name": "EUA_SUBTHEME_MACHINE_NAME",
+  "description": "EUA_SUBTHEME_DESCRIPTION",
   "private": true,
   "scripts": {
     "postinstall": "find node_modules/ -name '*.info' -type f -delete",

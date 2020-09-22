@@ -1,5 +1,5 @@
-name: RADIX_SUBTHEME_NAME
-description: RADIX_SUBTHEME_DESCRIPTION
+name: EUA_SUBTHEME_NAME
+description: EUA_SUBTHEME_DESCRIPTION
 screenshot: screenshot.png
 core: 8.x
 # version: VERSION
@@ -19,15 +19,15 @@ regions:
 
 libraries:
   - radix/style
-  - RADIX_SUBTHEME_MACHINE_NAME/style
+  - EUA_SUBTHEME_MACHINE_NAME/style
 
 libraries-override:
   radix/bootstrap: false
 
 ckeditor_stylesheets:
-  - assets/css/RADIX_SUBTHEME_MACHINE_NAME.style.css
+  - assets/css/EUA_SUBTHEME_MACHINE_NAME.style.css
 
 component-libraries:
-  RADIX_SUBTHEME_MACHINE_NAME:
+  EUA_SUBTHEME_MACHINE_NAME:
     paths:
       - ./src/components

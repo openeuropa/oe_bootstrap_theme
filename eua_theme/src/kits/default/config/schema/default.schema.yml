@@ -1,5 +1,5 @@
-# Schema for the configuration files of the RADIX_SUBTHEME_NAME theme.
+# Schema for the configuration files of the EUA_SUBTHEME_NAME theme.
 
-RADIX_SUBTHEME_MACHINE_NAME.settings:
+EUA_SUBTHEME_MACHINE_NAME.settings:
   type: theme_settings
-  label: 'RADIX_SUBTHEME_NAME settings'
+  label: 'EUA_SUBTHEME_NAME settings'
