@@ -31,6 +31,16 @@ mix.webpackConfig({
   },
 });
 
+if (!mix.inProduction()) {
+  // Enable source maps.
+  // See https://www.drupal.org/project/radix/issues/3021020#comment-13116504
+  mix
+    .webpackConfig({
+      devtool: 'source-map'
+    })
+    .sourceMaps();
+}
+
 /*
  |--------------------------------------------------------------------------
  | Configuration
