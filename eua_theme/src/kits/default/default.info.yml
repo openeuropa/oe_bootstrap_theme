@@ -1,10 +1,10 @@
 name: EUA_SUBTHEME_NAME
 description: EUA_SUBTHEME_DESCRIPTION
 screenshot: screenshot.png
-core: 8.x
 type: theme
 base theme: eua_theme
 hidden: true
+core_version_requirement: ^8.9 || ^9
 
 libraries:
   - eua_theme/style
