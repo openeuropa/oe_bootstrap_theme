@@ -31,8 +31,3 @@ regions:
   content: Content
   page_bottom: Page bottom
   footer: Footer
-
-component-libraries:
-  EUA_SUBTHEME_MACHINE_NAME:
-    paths:
-      - ./src/components
