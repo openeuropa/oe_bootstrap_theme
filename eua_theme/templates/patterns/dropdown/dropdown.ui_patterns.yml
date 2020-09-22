@@ -29,7 +29,6 @@ dropdown:
     disabled:
       type: boolean
       label: Disabled
-      preview: true
     directions:
       type: select
       label: Dropdown direction
