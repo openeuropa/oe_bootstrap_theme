@@ -52,6 +52,16 @@ mix
   .options({
     processCssUrls: false,
     postCss: [require("autoprefixer")],
+  })
+  .webpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.scss$/,
+          loader: 'import-glob-loader',
+        }
+      ]
+    }
   });
 
 /*
