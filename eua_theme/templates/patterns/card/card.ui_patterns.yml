@@ -70,19 +70,6 @@ card:
           style: "primary"
           fields:
             label: "Go somewhere"
-    links:
-      type: "render"
-      label: "Links"
-      description: "Array of link elements"
-      preview:
-        - type: "link"
-          url: "#"
-          title: Card link
-        - type: "html_tag"
-          tag: "a"
-          attributes:
-            href: "#"
-            title: Another link
     footer:
       type: "render"
       label: "Footer"
