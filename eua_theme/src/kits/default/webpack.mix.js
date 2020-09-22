@@ -51,6 +51,7 @@ mix
   .disableNotifications()
   .options({
     processCssUrls: false,
+    postCss: [require("autoprefixer")],
   });
 
 /*
