@@ -19,7 +19,7 @@ mix
   .setPublicPath('assets')
   .disableNotifications()
   .options({
-    processCssUrls: false
+    processCssUrls: false,
   });
 
 /*
