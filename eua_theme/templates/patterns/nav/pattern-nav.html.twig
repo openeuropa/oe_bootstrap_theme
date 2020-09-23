@@ -11,15 +11,12 @@
 #}
 {% import _self as menus %}
 
-{% if alignment == 'right' %}
-  {% set alignment = 'justify-content-end' %}
-{% elseif alignment == 'center' %}
-  {% set alignment = 'justify-content-center' %}
-{% elseif alignment == 'vertical' %}
-  {% set alignment = 'flex-column' %}
-{% else %}
-  {% set alignment = '' %}
-{% endif %}
+{% set _alignments = {
+'right': 'justify-content-end',
+'center': 'justify-content-center',
+'vertical': 'flex-column',
+} %}
+{% set alignment = alignment ? _alignments[alignment] : '' %}
 
 {% set style = style ? 'nav-' ~ style : '' %}
 {% set fill = fill ? 'nav-' ~ fill : '' %}
