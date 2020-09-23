@@ -32,26 +32,46 @@
   {% if items %}
     {% if menu_level == 0 %}
       <ul{{ attributes.addClass(nav_classes) }}>
-        {% for item in items %}
-          {% if item.below %}
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false">
-                {{ item.title }}
-              </a>
+      {% for item in items %}
+        {% set nav_item_classes = [
+          'nav-item',
+          item.is_expanded and item.below ? 'dropdown'
+        ] %}
+        {% set nav_link_classes = [
+          'nav-link',
+          item.in_active_trail ? 'active'
+          ] %}
+        {% if item.url.options.attributes.class is iterable %}
+          {% set nav_link_classes = nav_link_classes|merge(item.url.options.attributes.class) %}
+        {% elseif item.url.options.attributes.class %}
+          {% set nav_link_classes = nav_link_classes|merge([item.url.options.attributes.class]) %}
+        {% endif %}
+        <li class="{{- nav_item_classes|join(' ') -}}">
+          {% if item.is_expanded and item.below %}
+            {% set nav_link_classes = nav_link_classes|merge(['dropdown-toggle']) %}
+            <a class="{{ nav_link_classes|join(' ') }}" data-toggle="dropdown" role="button" aria-expanded="false" href="#">{{ item.title }}</a>
+            {% if item.below %}
               {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-            </li>
+            {% endif %}
           {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ item.url }}">{{ item.title }}</a>
-            </li>
+            <a class="{{ nav_link_classes|join(' ') }}" href="{{ item.url }}">{{ item.title }}</a>
           {% endif %}
-        {% endfor %}
+        </li>
+      {% endfor %}
       </ul>
     {% else %}
       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
         {% for item in items %}
-          <li><a class="dropdown-item" href="{{ item.url }}">{{ item.title }}</a></li>
+          {% set nav_link_classes = [
+            'dropdown-item',
+            item.in_active_trail ? 'active'
+          ] %}
+          {% if item.url.options.attributes.class is iterable %}
+            {% set nav_link_classes = nav_link_classes|merge(item.url.options.attributes.class) %}
+          {% elseif item.url.options.attributes.class %}
+            {% set nav_link_classes = nav_link_classes|merge([item.url.options.attributes.class]) %}
+          {% endif %}
+          <li><a class="{{ nav_link_classes|join(' ') }}" href="{{ item.url }}">{{ item.title }}</a></li>
         {% endfor %}
       </ul>
     {% endif %}

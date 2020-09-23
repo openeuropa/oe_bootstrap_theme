@@ -30,8 +30,10 @@ nav:
       preview:
         - title: Home
           url: "#"
+          in_active_trail: true
         - title: Library
           url: "#"
+          is_expanded: true
           below:
             - title: Sub 1
               url: "#"
