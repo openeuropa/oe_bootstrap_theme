@@ -22,6 +22,9 @@ nav:
       options:
         fill: fill
         justify: justify
+    attributes:
+      type: attributes
+      label: Attributes
   fields:
     items:
       type: render
