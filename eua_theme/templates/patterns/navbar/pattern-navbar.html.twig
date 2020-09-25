@@ -1,65 +1,39 @@
-{% if variant != '' and variant|lower != 'default' %}
-  {% set attributes = attributes.addClass('navbar-' ~ variant|lower|replace({'_': '-'})) %}
-  {% set attributes = attributes.addClass('bg-' ~ variant|lower|replace({'_': '-'})) %}
-{% endif %}
+{% set _placements = {
+'fixed_top': 'fixed-top',
+'fixed_bottom': 'fixed_bottom',
+'sticky_top': 'sticky-top',
+} %}
+{% set placement = placement ? _placements[placement] : '' %}
+
+{% set attributes = attributes.addClass([
+  'navbar',
+  'navbar-expand-lg',
+  style ? 'navbar-' ~ style,
+  style ? 'bg-' ~ style,
+  placement
+  ]) %}
 
 {% import _self as menus %}
 
-{% set id = 'navbarNav-' ~ random(1000) %}
-
-<nav{{ attributes.addClass(['navbar', 'navbar-expand-lg', 'bg-light']) }}>
-  <div class="container-fluid">
-    {% if brand %}
-      <span class="navbar-brand" href="#">{{ brand }}</span>
+<nav{{ attributes.addClass() }}>
+  <div class="{{ container_fixed ? 'container' : 'container-fluid' }}">
+    {% if navbar_branding %}
+      <div class="navbar-brand">{{ navbar_branding }}</div>
     {% endif %}
-    {% if items %}
+    
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#{{id}}"
               aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="{{id}}">
-        {{ menus.menu_links(items, attributes, 0, text) }}
+        <div class="mr-auto mb-2 mb-lg-0">
+        {% if navbar_left %}
+          {{ navbar_left }}
+        {% endif %}
+        </div>
+        {% if navbar_right %}
+          {{ navbar_right }}
+        {% endif %}
       </div>
-    {% endif %}
-    {% if right %}
-      <div class="d-flex">
-        {{ right }}
-      </div>
-    {% endif %}
-    </div>
   </div>
 </nav>
-
-{% macro menu_links(items, attributes, menu_level, text) %}
-  {% import _self as menus %}
-  {% if items %}
-    {% if menu_level == 0 %}
-      <ul class="navbar-nav mr-auto">
-        {% for item in items %}
-          {% if item.below %}
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false">
-                {{ item.title }}
-              </a>
-              {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-            </li>
-          {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ item.url }}">{{ item.title }}</a>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-      {% if text %}
-        <span class="navbar-text">{{ text }}</span>
-      {% endif %}
-    {% else %}
-      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        {% for item in items %}
-          <li><a class="dropdown-item" href="{{ item.url }}">{{ item.title }}</a></li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  {% endif %}
-{% endmacro %}
