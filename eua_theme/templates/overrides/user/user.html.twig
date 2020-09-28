@@ -10,7 +10,7 @@
 ] %}
 <article{{ attributes.addClass(classes) }}>
   {% block content %}
-    {{- content|without('summary') -}}
+    {{- content -}}
   {% endblock %}
 </article>
 
