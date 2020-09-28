@@ -10,13 +10,13 @@
  */
 #}
 
-{% if alignment == 'right' %}
-  {% set alignment = 'justify-content-end' %}
-{% elseif alignment == 'center' %}
-  {% set alignment = 'justify-content-center' %}
-{% else %}
-  {% set alignment = '' %}
-{% endif %}
+{% set _alignments = {
+'right': 'justify-content-end',
+'center': 'justify-content-center',
+'left': '',
+} %}
+
+{% set alignment = alignment ? _alignments[alignment] : _alignments['center'] %}
 
 {% if items %}
   <nav class="{{ utility_classes|join(' ') }}" role="navigation" aria-labelledby="pagination-heading">
