@@ -1,7 +1,6 @@
 {
-  "name": "eua_theme",
-  "version": "1.0.0",
-  "description": "EU Agency base theme.",
+  "name": "EUA_SUBTHEME_MACHINE_NAME",
+  "description": "EUA_SUBTHEME_DESCRIPTION",
   "private": true,
   "scripts": {
     "postinstall": "find node_modules/ -name '*.info' -type f -delete",
