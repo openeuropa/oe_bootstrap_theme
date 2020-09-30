@@ -71,4 +71,10 @@ mix.sass('src/sass/eua.style.scss', 'css');
  | JS
  |--------------------------------------------------------------------------
  */
+
+// Load bootstrap globally
+mix.autoload({
+'bootstrap': ['bootstrap'],
+});
+
 mix.js('src/js/eua.script.js', 'js');
