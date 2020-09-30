@@ -90,4 +90,10 @@ mix.sass('src/sass/EUA_SUBTHEME_MACHINE_NAME.style.scss', 'css');
  | JS
  |--------------------------------------------------------------------------
  */
+
+ // Load bootstrap globally
+mix.autoload({
+  'bootstrap': ['bootstrap'],
+});
+
 mix.js('src/js/EUA_SUBTHEME_MACHINE_NAME.script.js', 'js');
