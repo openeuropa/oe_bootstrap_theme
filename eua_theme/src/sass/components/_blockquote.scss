@@ -1,0 +1,11 @@
+// Blockquote 
+// https://v5.getbootstrap.com/docs/5.0/content/typography/#blockquotes
+// -----------------------------------------------------------------------------
+
+// By default the field "field_oe_text" is wrapped with a "div" tag. 
+// This makes the blockquote looks differently with oe_paragraph.
+.blockquote-footer {
+  * {
+    display: inline;
+  }
+}
