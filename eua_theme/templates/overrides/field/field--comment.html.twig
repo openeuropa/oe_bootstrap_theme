@@ -12,16 +12,12 @@
 
   {% if comment_form %}
     <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-10">
-        <div class="card">
-          <div class="card-header">
-            {{ 'Add new comment'|t }}
-          </div>
-          <div class="card-body">
-            {{ comment_form }}
-          </div>
-        </div>
+      <div class="col-md-12">
+        {{ pattern('card', {
+          'variants': 'default',
+          'header': 'Add new comment'|t,
+          'body': comment_form
+        }) }}
       </div>
     </div>
   {% endif %}
