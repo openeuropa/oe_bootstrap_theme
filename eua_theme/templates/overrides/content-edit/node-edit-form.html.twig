@@ -15,14 +15,14 @@
  * @see eua_theme_form_node_form_alter()
  */
 #}
-<div class="content clearfix row">
-  <div class="col-12 layout-region layout-region-node-main">
+<div class="clearfix">
+  <div>
     {{ form|without('advanced', 'actions') }}
   </div>
-  <div class="col-12 layout-region-node-secondary">
+  <div>
     {{ form.advanced }}
   </div>
-  <div class="col-12 layout-region-node-footer">
+  <div>
     {{ form.actions }}
   </div>
 </div>
