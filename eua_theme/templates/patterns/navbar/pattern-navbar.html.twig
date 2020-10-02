@@ -18,42 +18,13 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="{{id}}">
-        {{ menus.menu_links(items, attributes, 0, text) }}
+        {{ pattern('nav', {
+          'items': items,
+          'attributes': create_attribute({
+            'class': 'navbar-nav mr-auto',
+          })
+        }) }}
       </div>
     {% endif %}
   </div>
 </nav>
-
-{% macro menu_links(items, attributes, menu_level, text) %}
-  {% import _self as menus %}
-  {% if items %}
-    {% if menu_level == 0 %}
-      <ul class="navbar-nav mr-auto">
-        {% for item in items %}
-          {% if item.below %}
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false">
-                {{ item.title }}
-              </a>
-              {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-            </li>
-          {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ item.url }}">{{ item.title }}</a>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-      {% if text %}
-        <span class="navbar-text">{{ text }}</span>
-      {% endif %}
-    {% else %}
-      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        {% for item in items %}
-          <li><a class="dropdown-item" href="{{ item.url }}">{{ item.title }}</a></li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  {% endif %}
-{% endmacro %}
