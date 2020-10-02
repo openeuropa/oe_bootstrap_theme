@@ -1,10 +1,10 @@
 style:
   version: VERSION
   js:
-    assets/js/scripts.js: {}
+    assets/js/eua.script.js: {}
   css:
     theme:
-      assets/css/styles.css: {}
+      assets/css/eua.style.css: {}
   dependencies:
     - core/jquery
     - core/drupal

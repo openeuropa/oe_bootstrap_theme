@@ -5,8 +5,8 @@
 <figure{{ attributes }}>
   <blockquote class="blockquote">
     {{ content }}
-    {% if footer %}
-      <figcaption class="blockquote-footer">{{ footer }}</figcaption>
-    {% endif %}
   </blockquote>
+  {% if footer %}
+    <figcaption class="blockquote-footer">{{ footer }}</figcaption>
+  {% endif %}
 </figure>
