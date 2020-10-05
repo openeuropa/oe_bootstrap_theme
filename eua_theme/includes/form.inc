@@ -5,6 +5,8 @@
  * Theme and preprocess functions for forms.
  */
 
+use Drupal\Core\Form\FormStateInterface;
+
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
@@ -54,4 +56,11 @@ function eua_theme_preprocess_form_element(&$variables) {
   if (in_array($element['#type'], ['checkbox', 'radio'])) {
     $variables['label']['#attributes']['class'][] = 'form-check-label';
   }
+}
+
+/**
+ * Implements hook_theme_HOOK_form_alter() for node add/edit.
+ */
+function eua_theme_form_node_form_alter(&$form, FormStateInterface $form_state) {
+  $form['#theme'] = ['node_edit_form'];
 }
