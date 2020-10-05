@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Link block.
+ */
+#}
+
+{% set attributes = attributes.addClass([
+  'bg-light',
+  'p-3',
+  'mb-3'
+  ]) %}
+
+<div{{ attributes }}>
+  {% if title is not empty %}
+    <h5>{{ title }}</h5>
+  {% endif %}
+  {% if links is not empty and links is iterable %}
+    <ul class="list-unstyled mb-0">
+      {% for link in links %}
+        <li class="mt-2">
+          <a href="{{ link.url }}">{{ link.label }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
