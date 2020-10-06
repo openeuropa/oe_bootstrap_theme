@@ -25,8 +25,8 @@ const proxy = 'http://drupal.local';
 mix.webpackConfig({
   resolve: {
     alias: {
-      "eua_scss": `${baseThemePath}/src/sass`,
-      "@eua_js": `${baseThemePath}/src/js`,
+      "eua_scss": `${baseThemePath}/resources/sass`,
+      "@eua_js": `${baseThemePath}/resources/js`,
     },
   },
 });
@@ -83,7 +83,7 @@ mix.browserSync({
  | SASS
  |--------------------------------------------------------------------------
  */
-mix.sass('src/sass/EUA_SUBTHEME_MACHINE_NAME.style.scss', 'css');
+mix.sass('resources/sass/EUA_SUBTHEME_MACHINE_NAME.style.scss', 'css');
 
 // Bootstrap Ie11 support scss files:
 // https://coliff.github.io/bootstrap-ie11/
@@ -100,4 +100,4 @@ mix.autoload({
   'bootstrap': ['bootstrap'],
 });
 
-mix.js('src/js/EUA_SUBTHEME_MACHINE_NAME.script.js', 'js');
+mix.js('resources/js/EUA_SUBTHEME_MACHINE_NAME.script.js', 'js');

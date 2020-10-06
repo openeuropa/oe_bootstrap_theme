@@ -64,7 +64,7 @@ mix.browserSync({
  | SASS
  |--------------------------------------------------------------------------
  */
-mix.sass('src/sass/eua.style.scss', 'css');
+mix.sass('resources/sass/eua.style.scss', 'css');
 
 // Bootstrap Ie11 support scss files:
 // https://coliff.github.io/bootstrap-ie11/
@@ -81,4 +81,4 @@ mix.autoload({
   'bootstrap': ['bootstrap'],
 });
 
-mix.js('src/js/eua.script.js', 'js');
+mix.js('resources/js/eua.script.js', 'js');
