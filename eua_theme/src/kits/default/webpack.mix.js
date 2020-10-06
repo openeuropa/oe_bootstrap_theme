@@ -91,7 +91,7 @@ mix.sass('src/sass/EUA_SUBTHEME_MACHINE_NAME.style.scss', 'css');
  |--------------------------------------------------------------------------
  */
 
- // Load bootstrap globally
+// Load bootstrap globally
 mix.autoload({
   'bootstrap': ['bootstrap'],
 });
