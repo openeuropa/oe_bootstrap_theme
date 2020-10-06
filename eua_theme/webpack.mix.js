@@ -28,7 +28,6 @@ if (!mix.inProduction()) {
  |--------------------------------------------------------------------------
  */
 mix
-  .setPublicPath('assets')
   .disableNotifications()
   .options({
     processCssUrls: false,
@@ -64,7 +63,7 @@ mix.browserSync({
  | SASS
  |--------------------------------------------------------------------------
  */
-mix.sass('src/sass/eua.style.scss', 'css');
+mix.sass('src/sass/eua.style.scss', 'assets/css');
 
 /*
  |--------------------------------------------------------------------------
@@ -77,4 +76,4 @@ mix.autoload({
 'bootstrap': ['bootstrap'],
 });
 
-mix.js('src/js/eua.script.js', 'js');
+mix.js('src/js/eua.script.js', 'assets/js');

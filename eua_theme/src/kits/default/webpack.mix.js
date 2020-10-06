@@ -47,7 +47,6 @@ if (!mix.inProduction()) {
  |--------------------------------------------------------------------------
  */
 mix
-  .setPublicPath('assets')
   .disableNotifications()
   .options({
     processCssUrls: false,
@@ -83,7 +82,7 @@ mix.browserSync({
  | SASS
  |--------------------------------------------------------------------------
  */
-mix.sass('src/sass/EUA_SUBTHEME_MACHINE_NAME.style.scss', 'css');
+mix.sass('src/sass/EUA_SUBTHEME_MACHINE_NAME.style.scss', 'assets/css');
 
 /*
  |--------------------------------------------------------------------------
@@ -96,4 +95,4 @@ mix.autoload({
   'bootstrap': ['bootstrap'],
 });
 
-mix.js('src/js/EUA_SUBTHEME_MACHINE_NAME.script.js', 'js');
+mix.js('src/js/EUA_SUBTHEME_MACHINE_NAME.script.js', 'assets/js');
