@@ -1,30 +1,37 @@
-{% if variant != '' and variant|lower != 'default' %}
-  {% set attributes = attributes.addClass('navbar-' ~ variant|lower|replace({'_': '-'})) %}
-  {% set attributes = attributes.addClass('bg-' ~ variant|lower|replace({'_': '-'})) %}
-{% endif %}
+{% set _placements = {
+'fixed_top': 'fixed-top',
+'fixed_bottom': 'fixed_bottom',
+'sticky_top': 'sticky-top',
+} %}
+{% set placement = placement ? _placements[placement] : '' %}
 
-{% import _self as menus %}
+{% set attributes = attributes.addClass([
+  'navbar',
+  'navbar-expand-lg',
+  style ? 'navbar-' ~ style,
+  style ? 'bg-' ~ style,
+  placement
+  ]) %}
 
-{% set id = 'navbarNav-' ~ random(1000) %}
-
-<nav{{ attributes.addClass(['navbar', 'navbar-expand-lg', 'bg-light']) }}>
-  <div class="container-fluid">
-    {% if brand %}
-      <span class="navbar-brand" href="#">{{ brand }}</span>
+<nav{{ attributes.addClass() }}>
+  <div class="{{ container_fixed ? 'container' : 'container-fluid' }}">
+    {% if navbar_branding %}
+      <div class="navbar-brand">{{ navbar_branding }}</div>
     {% endif %}
-    {% if items %}
+    
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#{{id}}"
               aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="{{id}}">
-        {{ pattern('nav', {
-          'items': items,
-          'attributes': create_attribute({
-            'class': 'navbar-nav mr-auto',
-          })
-        }) }}
+        <div class="mr-auto mb-2 mb-lg-0">
+        {% if navbar_left %}
+          {{ navbar_left }}
+        {% endif %}
+        </div>
+        {% if navbar_right %}
+          {{ navbar_right }}
+        {% endif %}
       </div>
-    {% endif %}
   </div>
 </nav>
