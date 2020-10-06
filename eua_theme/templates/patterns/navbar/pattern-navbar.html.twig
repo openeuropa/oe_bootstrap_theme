@@ -13,6 +13,8 @@
   placement
   ]) %}
 
+{% set id = 'navbar-' ~ random(1000) %}
+
 <nav{{ attributes.addClass() }}>
   <div class="{{ container_fixed ? 'container' : 'container-fluid' }}">
     {% if navbar_branding %}
