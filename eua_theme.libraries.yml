@@ -8,3 +8,7 @@ style:
   dependencies:
     - core/jquery
     - core/drupal
+
+drupal.progress:
+  js:
+    assets/js/libraries/extend/progress.js: {}
