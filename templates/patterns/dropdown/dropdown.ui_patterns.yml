@@ -29,15 +29,13 @@ dropdown:
     disabled:
       type: boolean
       label: Disabled
-    directions:
+    direction:
       type: select
       label: Dropdown direction
       options:
-        dropdown: down
         dropleft: left
         dropright: right
         dropup: up
-      preview: dropdown
   fields:
     label:
       type: text
