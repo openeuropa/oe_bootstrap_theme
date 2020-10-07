@@ -19,6 +19,7 @@
     "css-loader": "^2.1.1",
     "import-glob-loader": "^1.1.0",
     "laravel-mix": "^5.0.5",
+    "laravel-mix-glob": "^1.1.4",
     "popper.js": "1.16.1-lts",
     "sass": "^1.26.10",
     "sass-loader": "^8.0.2",
