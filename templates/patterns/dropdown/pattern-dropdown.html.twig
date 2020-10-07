@@ -1,4 +1,9 @@
-<div class="dropdown {{ directions }}">
+{% set attributes = attributes.addClass([
+  'dropdown',
+  direction ? direction
+  ]) %}
+
+<div{{ attributes }}>
   {{ pattern('button', {
     label: label,
     style: style,
