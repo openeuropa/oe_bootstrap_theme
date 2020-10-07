@@ -2,16 +2,21 @@
 
 /**
  * @file
- * Theme and preprocess functions for paragraphs.
+ * Theme and preprocess functions for the 'oe_content_row' paragraph type.
  */
 
 use Drupal\Component\Utility\Html;
 
 /**
- * Implements hook_preprocess_paragraph() for paragraph--oe-content-row--variant-inpage_navigation.html.twig.
+ * Implements hook_preprocess_HOOK() for a paragraph variant.
  *
- * Prepares the inpage navigation by creating links for the inner paragraphs
- * that implement a title.
+ * Prepares the in-page navigation, by creating links for any of the inner
+ * paragraphs that provide a title.
+ *
+ * This is copied/adapted from the equivalent function in 'oe_theme'.
+ *
+ * @see eua_theme_theme_suggestions_paragraph_alter()
+ * @see oe_theme_preprocess_paragraph__oe_content_row__variant_inpage_navigation()
  */
 function eua_theme_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
