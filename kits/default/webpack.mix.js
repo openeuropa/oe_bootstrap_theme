@@ -7,10 +7,29 @@
  | for your application. See https://github.com/JeffreyWay/laravel-mix.
  |
  */
+const path = require("path");
 const mix = require('laravel-mix');
+
+/* Specify base_theme relative path */
+const baseTheme = "../eua_theme/";
+const baseThemePath = path.resolve(__dirname, baseTheme);
 
 /* Live reloads URL pushing */
 const proxy = 'http://drupal.local';
+
+/*
+ |--------------------------------------------------------------------------
+ | Configuration
+ |--------------------------------------------------------------------------
+ */
+mix.webpackConfig({
+  resolve: {
+    alias: {
+      "eua_scss": `${baseThemePath}/resources/sass`,
+      "@eua_js": `${baseThemePath}/resources/js`,
+    },
+  },
+});
 
 if (!mix.inProduction()) {
   // Enable source maps.
@@ -32,7 +51,7 @@ mix
   .disableNotifications()
   .options({
     processCssUrls: false,
-    postCss: [require("autoprefixer")]
+    postCss: [require("autoprefixer")],
   })
   .webpackConfig({
     module: {
@@ -64,7 +83,7 @@ mix.browserSync({
  | SASS
  |--------------------------------------------------------------------------
  */
-mix.sass('src/sass/eua.style.scss', 'css');
+mix.sass('resources/sass/EUA_SUBTHEME_MACHINE_NAME.style.scss', 'css');
 
 // Bootstrap Ie11 support scss files:
 // https://coliff.github.io/bootstrap-ie11/
@@ -81,4 +100,4 @@ mix.autoload({
   'bootstrap': ['bootstrap'],
 });
 
-mix.js('src/js/eua.script.js', 'js');
+mix.js('resources/js/EUA_SUBTHEME_MACHINE_NAME.script.js', 'js');

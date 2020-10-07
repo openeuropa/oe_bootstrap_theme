@@ -3,7 +3,6 @@ description: EUA_SUBTHEME_DESCRIPTION
 screenshot: screenshot.png
 type: theme
 base theme: eua_theme
-hidden: true
 core_version_requirement: ^8.9 || ^9
 dependencies:
   - ui_patterns:ui_patterns
