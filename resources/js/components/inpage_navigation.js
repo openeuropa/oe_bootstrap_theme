@@ -10,6 +10,6 @@ if(navInpage.length) {
     var scrollSpy = new bootstrap.ScrollSpy(document.body, {
       target: '#' + nav.getAttribute("id"),
       offset: 10
-    });  
+    });
   });
 }
