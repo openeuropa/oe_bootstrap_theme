@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Inpage navigation horizontal component.
+ */
+#}
+
+{% set id = random(1000) %}
+
+<div class="inpage-wrapper">
+  <nav id="navbar-inpage-{{ id }}" class="navbar navbar-light bg-light px-3 navbar-inpage">
+    <a class="navbar-brand" href="#">{{ title }}</a>
+    <nav class="nav nav-pills">
+      {% for item in links %}
+        <a class="nav-link" href="{{ item.url }}">{{item.title}}</a>
+      {% endfor %}
+    </nav>
+  </nav>
+  <div>
+    {{ content }}
+  </div>
+</div>

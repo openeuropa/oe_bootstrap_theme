@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Inpage navigation vertical component.
+ */
+#}
+
+{% set id = random(1000) %}
+{% set hide_breakpoint = 'md' %}
+
+<div class="inpage-wrapper">
+  <div class="row">
+    <div class="col-{{ hide_breakpoint }}-4 d-none d-{{ hide_breakpoint }}-block">
+      <nav id="navbar-inpage-{{ id }}" class="navbar navbar-inpage navbar-light bg-light flex-column">
+        <a class="navbar-brand" href="#">{{ title }}</a>
+        <nav class="nav nav-pills flex-column">
+          {% for item in links %}
+            <a class="nav-link" href="{{ item.url }}">{{item.title}}</a>
+          {% endfor %}
+        </nav>
+      </nav>
+    </div>
+    <div class="col-{{ hide_breakpoint }}-8">
+      {{ content }}
+    </div>
+  </div>
+</div>
