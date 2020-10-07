@@ -8,6 +8,7 @@
  |
  */
 const mix = require('laravel-mix');
+const MixGlob = require('laravel-mix-glob');
 
 /* Live reloads URL pushing */
 const proxy = 'http://drupal.local';
@@ -61,10 +62,23 @@ mix.browserSync({
 
 /*
  |--------------------------------------------------------------------------
+ | Globs: https://www.npmjs.com/package/laravel-mix-glob
+ |--------------------------------------------------------------------------
+ */
+
+const mixGlob = new MixGlob({mix});
+
+/*
+ |--------------------------------------------------------------------------
  | SASS
  |--------------------------------------------------------------------------
  */
-mix.sass('resources/sass/eua.style.scss', 'css');
+
+// Every file named *.compile.scss within resources/sass/ folder,
+// will be compiled to assets/css folder keeping same folder strucure from base parameter.
+mixGlob.sass(['resources/sass/**/*.compile.scss'], 'css', null, {
+  base: 'resources/sass/'
+});
 
 // Bootstrap Ie11 support scss files:
 // https://coliff.github.io/bootstrap-ie11/
@@ -76,9 +90,13 @@ mix.sass('./node_modules/bootstrap-ie11/scss/bootstrap-ie11.scss', 'css');
  |--------------------------------------------------------------------------
  */
 
-// Load bootstrap globally
+// Load Bootstrap globally
 mix.autoload({
   'bootstrap': ['bootstrap'],
 });
 
-mix.js('resources/js/eua.script.js', 'js');
+// Every file named *.compile.js within resources/js/ folder,
+// will be compiled to assets/js folder keeping same folder strucure from base parameter.
+mixGlob.js(['resources/js/**/*.compile.js'], 'js', null, {
+  base: 'resources/js'
+});
