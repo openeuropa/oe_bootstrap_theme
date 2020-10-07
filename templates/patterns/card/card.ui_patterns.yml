@@ -31,7 +31,6 @@ card:
       type: boolean
       label: "Equal height"
       description: "Same height cards in a grid?"
-      preview: true
   fields:
     image:
       type: "render"
