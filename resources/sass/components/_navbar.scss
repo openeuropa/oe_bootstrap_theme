@@ -1,0 +1,22 @@
+// navbar 
+// https://v5.getbootstrap.com/docs/5.0/components/navbar/
+// -----------------------------------------------------------------------------
+
+// Custom css for fixed/sticky navbar overlapping admin toolbar
+body.toolbar-fixed {
+  .navbar {
+    &.fixed-top,
+    &.sticky-top {
+      top: 39px;
+    }
+  }
+
+  &.toolbar-tray-open.toolbar-horizontal {
+    .navbar {
+      &.fixed-top,
+      &.sticky-top {
+        top: 79px;
+      }
+    }
+  }
+}
