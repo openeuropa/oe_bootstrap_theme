@@ -1,0 +1,11 @@
+// Inpage navigation component
+// https://v5.getbootstrap.com/docs/5.0/components/scrollspy/#usage
+// -----------------------------------------------------------------------------
+body {
+  position: relative;
+}
+
+.navbar-inpage {
+  position: sticky;
+  top: 10px;
+}
