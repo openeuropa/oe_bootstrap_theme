@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Theme override to display the "content row" type paragraph in the "inpage" variant.
+ *
+ * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
+ */
+#}
+{{ pattern('scrollspy', {
+  'variant': 'vertical',
+  'title': title,
+  'links': links,
+  'content': content.field_oe_paragraphs
+}) }}
