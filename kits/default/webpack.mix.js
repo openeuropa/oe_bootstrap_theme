@@ -9,6 +9,7 @@
  */
 const path = require("path");
 const mix = require('laravel-mix');
+const MixGlob = require('laravel-mix-glob');
 
 /* Specify base_theme relative path */
 const baseTheme = "../eua_theme/";
@@ -80,10 +81,23 @@ mix.browserSync({
 
 /*
  |--------------------------------------------------------------------------
+ | Globs: https://www.npmjs.com/package/laravel-mix-glob
+ |--------------------------------------------------------------------------
+ */
+
+const mixGlob = new MixGlob({mix});
+
+/*
+ |--------------------------------------------------------------------------
  | SASS
  |--------------------------------------------------------------------------
  */
-mix.sass('resources/sass/EUA_SUBTHEME_MACHINE_NAME.style.scss', 'css');
+
+// Every file named *.compile.scss within resources/sass/ folder,
+// will be compiled to assets/css folder keeping same folder strucure from base parameter.
+mixGlob.sass(['resources/sass/**/*.compile.scss'], 'css', null, {
+  base: 'resources/sass/'
+});
 
 // Bootstrap Ie11 support scss files:
 // https://coliff.github.io/bootstrap-ie11/
@@ -95,9 +109,13 @@ mix.sass('./node_modules/bootstrap-ie11/scss/bootstrap-ie11.scss', 'css');
  |--------------------------------------------------------------------------
  */
 
-// Load bootstrap globally
+// Load Bootstrap globally
 mix.autoload({
   'bootstrap': ['bootstrap'],
 });
 
-mix.js('resources/js/EUA_SUBTHEME_MACHINE_NAME.script.js', 'js');
+// Every file named *.compile.js within resources/js/ folder,
+// will be compiled to assets/js folder keeping same folder strucure from base parameter.
+mixGlob.js(['resources/js/**/*.compile.js'], 'js', null, {
+  base: 'resources/js'
+});
