@@ -9,6 +9,18 @@ use Drupal\Core\Render\Element;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Registers theme hook suggestions for paragraphs variants, for those
+ * paragraphs types that are known to have variants.
+ *
+ * The concept is introduced in 'oe_paragraphs' module, which adds a
+ * 'oe_paragraphs_variant' field to all paragraphs entities.
+ * Variants correspond to form modes of the paragraph type.
+ *
+ * This function is copied/adapted from the equivalent function in 'oe_theme'.
+ *
+ * @see oe_theme_theme_suggestions_paragraph_alter()
+ * @see \Drupal\oe_paragraphs\Plugin\Field\FieldWidget\ParagraphVariantsWidget
  */
 function eua_theme_theme_suggestions_paragraph_alter(array &$suggestions, array $variables): void {
   /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
