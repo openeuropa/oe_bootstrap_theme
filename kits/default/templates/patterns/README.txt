@@ -1,1 +1,1 @@
-Place paragraphs template files here.
+Place patterns template files here.
