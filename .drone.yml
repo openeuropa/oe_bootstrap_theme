@@ -71,6 +71,22 @@ pipeline:
     when:
       status: failure
 
+  before-release:
+    image: fpfis/httpd-php-dev:${PHP_VERSION}
+    commands:
+      - ./vendor/bin/run release:create-archive --tag=${DRONE_TAG}
+    when:
+      event: tag
+
+  github-release:
+    image: plugins/github-release
+    secrets: [ github_token ]
+    files: eua_theme-${DRONE_TAG}.tar.gz
+    when:
+      event: tag
+      matrix:
+        COMPOSER_BOUNDARY: highest
+
 matrix:
   COMPOSER_BOUNDARY:
     - lowest
