@@ -13,6 +13,13 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
 
 pipeline:
+  npm-build:
+    group: prepare
+    image: node:9.5.0
+    commands:
+      - npm install --unsafe-perm
+      - NODE_ENV=production npm run production
+
   composer-install:
     group: prepare
     image: fpfis/httpd-php-ci:${PHP_VERSION}
