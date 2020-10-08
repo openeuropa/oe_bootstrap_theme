@@ -12,8 +12,8 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",
-    "bootstrap": "5.0.0-alpha1",
-    "bootstrap-ie11": "^5.0.0-alpha1",
+    "bootstrap": "5.0.0-alpha2",
+    "bootstrap-ie11": "^5.0.0-alpha2",
     "browser-sync": "^2.26.12",
     "browser-sync-webpack-plugin": "^2.0.1",
     "cross-env": "^5.1",
