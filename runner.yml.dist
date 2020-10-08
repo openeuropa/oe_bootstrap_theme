@@ -53,3 +53,11 @@ commands:
 release:
   tasks:
     - { task: "copy", from: "assets", to: "eua_theme/assets" }
+    - task: "append"
+      file: "eua_theme/eua_theme.info.yml"
+      text: |
+
+        # Information added by OpenEuropa packaging script on ${release.date} at ${release.time}.
+        project: eua_theme
+        version: ${release.version}
+        datestamp: ${release.timestamp}
