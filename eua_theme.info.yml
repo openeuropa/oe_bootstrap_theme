@@ -19,6 +19,10 @@ libraries:
 libraries-override:
   seven/global-styling: false
 
+libraries-extend:
+  core/drupal.progress:
+    - eua_theme/drupal.progress
+
 regions:
   navbar_branding: Navbar branding
   navbar_left:  Navbar left
