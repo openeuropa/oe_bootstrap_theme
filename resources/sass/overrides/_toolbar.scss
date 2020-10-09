@@ -1,0 +1,9 @@
+// Drupal overrides for the admin toolbar
+// -----------------------------------------------------------------------------
+
+// Increase admin toolbar z-index
+#toolbar-administration {
+  #toolbar-bar {
+    z-index: 5000;
+  }
+}
