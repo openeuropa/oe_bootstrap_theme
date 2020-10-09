@@ -10,9 +10,6 @@
 const mix = require('laravel-mix');
 const MixGlob = require('laravel-mix-glob');
 
-/* Live reloads URL pushing */
-const proxy = 'http://drupal.local';
-
 if (!mix.inProduction()) {
   // Enable source maps.
   // See https://www.drupal.org/project/radix/issues/3021020#comment-13116504
@@ -51,6 +48,11 @@ mix
  | Browsersync
  |--------------------------------------------------------------------------
  */
+
+// Add MIX_PROXY setting in your .env file,
+// duplicate .env.dist to .env and change setting according to your environment.
+const proxy = process.env.MIX_PROXY;
+
 mix.browserSync({
   proxy: proxy,
   files: [
