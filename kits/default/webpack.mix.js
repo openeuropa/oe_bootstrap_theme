@@ -15,9 +15,6 @@ const MixGlob = require('laravel-mix-glob');
 const baseTheme = "../eua_theme/";
 const baseThemePath = path.resolve(__dirname, baseTheme);
 
-/* Live reloads URL pushing */
-const proxy = 'http://drupal.local';
-
 /*
  |--------------------------------------------------------------------------
  | Configuration
@@ -70,6 +67,11 @@ mix
  | Browsersync
  |--------------------------------------------------------------------------
  */
+
+// Add MIX_PROXY setting in your .env file,
+// duplicate .env.dist to .env and change setting according to your environment.
+const proxy = process.env.MIX_PROXY;
+
 mix.browserSync({
   proxy: proxy,
   files: [

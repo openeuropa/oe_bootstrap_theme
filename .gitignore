@@ -17,3 +17,4 @@
 /docker-compose.*.yml
 /.sass-cache
 /assets/
+/.env
