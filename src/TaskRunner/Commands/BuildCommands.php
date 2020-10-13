@@ -9,7 +9,7 @@ use Robo\Exception\TaskException;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
- * Class BuildCommands.
+ * Task runner commands for build steps.
  *
  * @package Drupal\eua_theme\TaskRunner\Commands
  */
@@ -86,7 +86,7 @@ class BuildCommands extends AbstractCommands {
     }
 
     if (!is_file($npmDirArg . '/package.json')) {
-      throw new TaskException(sprintf('No package.json found in directory %s.', $npmDirArg));
+      throw new TaskException($this, sprintf('No package.json found in directory %s.', $npmDirArg));
     }
 
     return $npmDirArg;
