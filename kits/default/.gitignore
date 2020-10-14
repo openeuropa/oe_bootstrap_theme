@@ -6,12 +6,9 @@
 /build/
 /npm-debug.log
 /grumphp.yml
-/composer.lock
-/yarn.lock
 /behat.yml
 /runner.yml
 /.idea/
-/package-lock.json
 /phpunit.xml
 /.stylelintrc.json
 /docker-compose.*.yml
