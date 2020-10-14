@@ -8,12 +8,24 @@
  |
  */
 const path = require("path");
+const fs = require("fs");
 const mix = require('laravel-mix');
 const MixGlob = require('laravel-mix-glob');
 
 /* Specify base_theme relative path */
-const baseTheme = "../eua_theme/";
-const baseThemePath = path.resolve(__dirname, baseTheme);
+const baseThemeCandidates = [
+  // From lib folder (DEV build).
+  "../../../web/themes/contrib/eua_theme",
+  // From dist/web/themes/custom folder (DIST build).
+  "../../contrib/eua_theme"
+];
+const baseThemePath = baseThemeCandidates
+  .map(function (value) {
+    return path.resolve(__dirname, value);
+  })
+  .find(function (value) {
+    return fs.existsSync(value);
+  });
 
 /*
  |--------------------------------------------------------------------------
