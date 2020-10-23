@@ -3,3 +3,7 @@ type: module
 description: EUA theme helpers and tools.
 package: EUA
 core: 8.x
+dependencies:
+  - ui_patterns:ui_patterns
+  - ui_patterns:ui_patterns_library
+  - ui_patterns_settings:ui_patterns_settings
