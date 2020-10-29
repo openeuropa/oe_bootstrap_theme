@@ -1,23 +1,26 @@
 {% set id = 'modal-' ~ random(1000) %}
 
-{{ pattern('button', {
-  label: label,
-  style: btn_style,
-  outline: btn_outline,
-  size: btn_size,
-  attributes: create_attribute({
-    'data-toggle': 'modal',
-    'data-target': '#' ~ id
-  })
-}) }}
-
-<!-- Modal -->
 {% set attributes = attributes.addClass(['modal', 'fade']) %}
 {% if static_backdrop %}
   {% set attributes = attributes.setAttribute('data-backdrop', 'static') %}
   {% set attributes = attributes.setAttribute('data-keyboard', false) %}
 {% endif %}
 
+{% block trigger %}
+  {{ pattern('button', {
+    label: label,
+    style: btn_style,
+    outline: btn_outline,
+    size: btn_size,
+    attributes: create_attribute({
+      'data-toggle': 'modal',
+      'data-target': '#' ~ id
+    })
+  }) }}
+{% endblock %}
+
+<!-- Modal -->
+{% block modal %}
 <div {{ attributes }} id="{{id}}" tabindex="-1" aria-labelledby="{{id}}Label" aria-hidden="true">
   <div class="modal-dialog
     {{- vertically_centered ? ' modal-dialog-centered' -}}
@@ -26,26 +29,41 @@
     {{- fullscreen == 'always' ? ' modal-fullscreen' -}}
     {{- fullscreen and fullscreen != 'always' ? ' modal-fullscreen-' ~ fullscreen ~ '-down' -}}
     ">
-    <div class="modal-content">
-      <div class="modal-header">
-        {% if title %}
-          <h5 class="modal-title" id="{{id}}Label">{{ title }}</h5>
-        {% endif %}
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+    <!-- Modal content -->
+    {% block modal_content %}
+      <div class="modal-content">
+        <!-- Modal header -->
+        {% block modal_header %}
+          <div class="modal-header">
+            {% if title %}
+              <h5 class="modal-title" id="{{id}}Label">{{ title }}</h5>
+            {% endif %}
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+          </div>
+        {% endblock %}
+        <!-- Modal body -->
+        {% block modal_body %}
+          <div class="modal-body">
+            {{ content }}
+          </div>
+        {% endblock %}
+        <!-- Modal footer -->
+        {% block modal_footer %}
+          <div class="modal-footer">
+            {% if closelabel %}
+              {{ pattern('button', {
+                label: closelabel,
+                style: btn_style,
+                outline: false,
+                attributes: create_attribute({
+                  'data-dismiss': 'modal'
+                })
+              }) }}
+            {% endif %}
+          </div>
+        {% endblock %}
       </div>
-      <div class="modal-body">
-        {{ content }}
-      </div>
-      <div class="modal-footer">
-        {{ pattern('button', {
-          label: closelabel,
-          style: btn_style,
-          outline: false,
-          attributes: create_attribute({
-            'data-dismiss': 'modal'
-          })
-        }) }}
-      </div>
-    </div>
+    {% endblock %}
   </div>
 </div>
+{% endblock %}
