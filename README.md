@@ -1,6 +1,28 @@
 # EU Agency base theme
 
-TODO
+Drupal 8 theme based on [Bootstrap 5](https://v5.getbootstrap.com/) and [UI Patterns](https://github.com/nuvoleweb/ui_patterns/).
+
+## Requirements
+
+This depends on the following software:
+
+* [PHP 7.2 or 7.3](http://php.net/)
+
+## Installation
+
+The recommended way of installing the EU Agency base theme is via [Composer](https://www.drupal.org/docs/develop/using-composer/using-composer-to-manage-drupal-site-dependencies#managing-contributed).
+
+```bash
+composer config repositories.eua_theme vcs https://github.com/ec-europa/eu-agencies-theme
+composer require ec-europa/eu-agencies-theme
+```
+
+### Enable the theme
+
+In order to enable the theme in your project perform the following steps:
+
+1. Enable the EUA Theme Helper module ```./vendor/bin/drush en eua_theme_helper```
+2. Enable the EUA Theme and set it as default ```./vendor/bin/drush config-set system.theme default eua_theme```
 
 ## Development setup
 
