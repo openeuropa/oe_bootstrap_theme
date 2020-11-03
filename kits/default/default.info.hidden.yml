@@ -4,9 +4,6 @@ screenshot: screenshot.png
 type: theme
 base theme: eua_theme
 core_version_requirement: ^8.9 || ^9
-dependencies:
-  - ui_patterns:ui_patterns
-  - ui_patterns_settings:ui_patterns_settings
 
 stylesheets-remove:
   - system.theme.css
