@@ -4,7 +4,9 @@
   ]) %}
 
 <div{{ attributes }}>
-  {{ include('@eua_theme/patterns/dropdown/_dropdown-button.html.twig') }}
+  {% block button %}
+    {{ include('@eua_theme/patterns/dropdown/_dropdown-button.html.twig') }}
+  {% endblock %}
   <div class="dropdown-menu">
     {% if content and content_position == 'top' %}
       {{ content }}
