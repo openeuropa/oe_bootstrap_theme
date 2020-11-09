@@ -5,6 +5,8 @@
  * Theme and preprocess functions for patterns.
  */
 
+use Drupal\Core\Url;
+
 /**
  * Implements hook_preprocess_HOOK() for badge_preview patterns.
  */
@@ -36,6 +38,40 @@ function eua_theme_preprocess_pattern_card(array &$variables) {
     foreach ($variables['links'] as &$item) {
       _eua_theme_add_card_link_class($item);
     }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for dropdown pattern.
+ */
+function eua_theme_preprocess_pattern_dropdown(array &$variables) {
+  if (array_key_exists('items', $variables) && is_array($variables['items'])) {
+    foreach ($variables['items'] as &$item) {
+      $item['#attributes']['class'][] = 'dropdown-item';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for dropdown pattern preview.
+ */
+function eua_theme_preprocess_pattern_dropdown__preview(array &$variables) {
+  _eua_theme_preprocess_pattern_dropdown_preview($variables);
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for dropdown pattern custom preview.
+ */
+function eua_theme_preprocess_pattern_dropdown__variant_custom__preview(array &$variables) {
+  _eua_theme_preprocess_pattern_dropdown_preview($variables);
+}
+
+/**
+ * Convert URL string to object.
+ */
+function _eua_theme_preprocess_pattern_dropdown_preview(&$variables) {
+  foreach ($variables['items'] as &$item) {
+    $item['#url'] = Url::fromUri($item['#url']);
   }
 }
 

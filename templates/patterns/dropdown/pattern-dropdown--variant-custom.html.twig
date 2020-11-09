@@ -5,10 +5,15 @@
 
 <div{{ attributes }}>
   {{ include('@eua_theme/patterns/dropdown/_dropdown-button.html.twig') }}
-
-  <ul class="dropdown-menu">
+  <div class="dropdown-menu">
+    {% if content and content_position == 'top' %}
+      {{ content }}
+    {% endif %}
     {% for item in items %}
-      <li>{{ item }}</li>
+      {{ item }}
     {% endfor %}
-  </ul>
+    {% if content and content_position != 'top' %}
+      {{ content }}
+    {% endif %}
+  </div>
 </div>
