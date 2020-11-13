@@ -1,0 +1,15 @@
+{% extends 'pattern-dropdown.html.twig' %}
+
+{% block menu %}
+  <div class="dropdown-menu">
+    {% if content_prefix %}
+      {{ content_prefix }}
+    {% endif %}
+    {% for item in items %}
+      {{ item }}
+    {% endfor %}
+    {% if content_suffix %}
+      {{ content_suffix }}
+    {% endif %}
+  </div>
+{% endblock %}

@@ -1,6 +1,11 @@
 dropdown:
   label: Dropdown
   description: Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. https://v5.getbootstrap.com/docs/5.0/components/dropdowns/
+  variants:
+    default:
+      label: Default
+    custom:
+      label: Custom content
   settings:
     style:
       type: select
@@ -47,10 +52,31 @@ dropdown:
       label: Menu items
       description: Full-height and lightweight navigation (including support for dropdowns).
       preview:
-        - title: Home
-          url: "#"
-        - title: Library
-          url: "#"
-        - title: Data
-          url: "#"
-
+        - type: link
+          title: "Lorem ipsum"
+          url: "http://example.com"
+        - type: link
+          title: "Nulla vitae"
+          url: "http://example.com"
+    content_prefix:
+      type: render
+      label: Content prefix
+      description: Custom dropdown content displayed before items. Only for custom variant.
+      preview:
+        - type: html_tag
+          tag: h3
+          value: "Nulla vitae elit"
+    content_suffix:
+      type: render
+      label: Content suffix
+      description: Custom dropdown content displayed after items. Only for custom variant.
+      preview:
+        - type: html_tag
+          tag: hr
+          attributes:
+            class: 'dropdown-divider'
+        - type: html_tag
+          tag: p
+          attributes:
+            class: 'px-3'
+          value: "Nulla vitae elit libero, a pharetra augue mollis interdum."

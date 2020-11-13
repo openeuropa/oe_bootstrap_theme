@@ -4,22 +4,26 @@
   ]) %}
 
 <div{{ attributes }}>
-  {{ pattern('button', {
-    label: label,
-    style: style,
-    outline: outline,
-    size: size,
-    disabled: disabled,
-    attributes: create_attribute({
-      'class': 'dropdown-toggle',
-      'data-toggle': 'dropdown',
-      'data-boundary': 'window',
-      'aria-expanded': 'false'
-    })
-  }) }}
-  <ul class="dropdown-menu">
-    {% for item in items %}
-      <li><a class="dropdown-item" href="{{ item.url }}">{{ item.title }}</a></li>
-    {% endfor %}
-  </ul>
+  {% block button %}
+    {{ pattern('button', {
+      label: label,
+      style: style,
+      outline: outline,
+      size: size,
+      disabled: disabled,
+      attributes: create_attribute({
+        'class': 'dropdown-toggle',
+        'data-toggle': 'dropdown',
+        'data-boundary': 'window',
+        'aria-expanded': 'false'
+      })
+    }) }}
+  {% endblock %}
+  {% block menu %}
+    <ul class="dropdown-menu">
+      {% for item in items %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  {% endblock %}
 </div>
