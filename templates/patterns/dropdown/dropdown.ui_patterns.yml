@@ -41,14 +41,6 @@ dropdown:
         dropleft: left
         dropright: right
         dropup: up
-    content_position:
-      type: select
-      label: "Content position"
-      description: "Position of custom content block. Only for custom variant."
-      options:
-        top: Top
-        bottom: Bottom (Default)
-      preview: bottom
   fields:
     label:
       type: text
@@ -66,10 +58,18 @@ dropdown:
         - type: link
           title: "Nulla vitae"
           url: "http://example.com"
-    content:
+    content_prefix:
       type: render
-      label: Content
-      description: Custom dropdown content. Only for custom variant.
+      label: Content prefix
+      description: Custom dropdown content displayed before items. Only for custom variant.
+      preview:
+        - type: html_tag
+          tag: h3
+          value: "Nulla vitae elit"
+    content_suffix:
+      type: render
+      label: Content suffix
+      description: Custom dropdown content displayed after items. Only for custom variant.
       preview:
         - type: html_tag
           tag: hr

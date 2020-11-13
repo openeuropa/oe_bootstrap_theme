@@ -2,14 +2,14 @@
 
 {% block menu %}
   <div class="dropdown-menu">
-    {% if content and content_position == 'top' %}
-      {{ content }}
+    {% if content_prefix %}
+      {{ content_prefix }}
     {% endif %}
     {% for item in items %}
       {{ item }}
     {% endfor %}
-    {% if content and content_position != 'top' %}
-      {{ content }}
+    {% if content_suffix %}
+      {{ content_suffix }}
     {% endif %}
   </div>
 {% endblock %}
