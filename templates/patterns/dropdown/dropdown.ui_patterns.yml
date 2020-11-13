@@ -64,7 +64,9 @@ dropdown:
       description: Custom dropdown content displayed before items. Only for custom variant.
       preview:
         - type: html_tag
-          tag: h3
+          tag: h6
+          attributes:
+            class: 'dropdown-header'
           value: "Nulla vitae elit"
     content_suffix:
       type: render
