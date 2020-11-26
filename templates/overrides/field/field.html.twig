@@ -6,7 +6,8 @@
 #}
 {%
   set classes = [
-  bundle|clean_class ~ '__' ~ field_name_clean|clean_class,
+  'bundle--' ~ bundle|clean_class,
+  'field--' ~ field_name_clean|clean_class,
   label_display == 'inline' ? 'd-flex',
 ]
 %}
