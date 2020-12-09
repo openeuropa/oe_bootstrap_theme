@@ -56,7 +56,7 @@
         },
         "patches": {
             "drupal/ui_patterns": {
-                "Fix unable to detect a pattern from default theme having same id as the pattern in the base theme @see https://github.com/nuvoleweb/ui_patterns/issues/304": "https://patch-diff.githubusercontent.com/raw/nuvoleweb/ui_patterns/pull/305.diff"
+                "Fix unable to detect a pattern from default theme having same id as the pattern in the base theme @see https://github.com/nuvoleweb/ui_patterns/issues/304": "https://patch-diff.githubusercontent.com/raw/nuvoleweb/ui_patterns/pull/318.diff"
             }
         }
     },
