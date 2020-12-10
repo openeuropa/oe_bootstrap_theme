@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace Drupal\eua_theme\TaskRunner\Commands;
 
 use Drupal\eua_theme\CommandUtil;
-use Symfony\Component\Finder\Finder;
+use Drupal\eua_theme\Finder;
 use OpenEuropa\TaskRunner\Commands\AbstractCommands;
 use OpenEuropa\TaskRunner\Contract\FilesystemAwareInterface;
 use OpenEuropa\TaskRunner\Traits\FilesystemAwareTrait;
@@ -89,7 +89,8 @@ class SubthemeCommands extends AbstractCommands implements FilesystemAwareInterf
     // Process all files that occur in both the origin and destination dir.
     foreach (Finder::create()
       ->files()
-      ->in($destination) as $file
+      ->in($kit_path)
+      ->swapBase($destination, TRUE) as $file
     ) {
       // Replace file contents, if applicable.
       $contents_orig = $file->getContents();
