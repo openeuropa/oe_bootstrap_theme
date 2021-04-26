@@ -12,8 +12,8 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",
-    "bootstrap": "5.0.0-alpha2",
-    "bootstrap-ie11": "^5.0.0-alpha2",
+    "bootstrap": "^5.0.0-beta3",
+    "bootstrap-ie11": "^5.0.0-beta3",
     "browser-sync": "^2.26.12",
     "browser-sync-webpack-plugin": "^2.0.1",
     "cross-env": "^5.1",
@@ -21,7 +21,7 @@
     "import-glob-loader": "^1.1.0",
     "laravel-mix": "^5.0.5",
     "laravel-mix-glob": "^1.1.4",
-    "popper.js": "1.16.1-lts",
+    "popper.js": "^2.9.1",
     "sass": "^1.26.10",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.12"
