@@ -12,7 +12,7 @@
     <div class="card">
       <div class="card-header" id="heading-{{id}}-{{loop.index}}">
         <h2 class="mb-0">
-          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse-{{id}}-{{loop.index}}" aria-expanded="true" aria-controls="collapse-{{id}}-{{loop.index}}">
+          <button class="btn btn-link btn-block text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{id}}-{{loop.index}}" aria-expanded="true" aria-controls="collapse-{{id}}-{{loop.index}}">
             {{_item.title}}
           </button>
         </h2>
@@ -23,7 +23,7 @@
         {% set collapse_classes = collapse_classes|merge(['show']) %}
       {% endif %}
 
-      <div id="collapse-{{id}}-{{loop.index}}" class="{{ collapse_classes|join(' ') }}" aria-labelledby="heading-{{id}}-{{loop.index}}" data-parent="#{{id}}">
+      <div id="collapse-{{id}}-{{loop.index}}" class="{{ collapse_classes|join(' ') }}" aria-labelledby="heading-{{id}}-{{loop.index}}" data-bs-parent="#{{id}}">
         <div class="card-body">
           {{_item.body}}
         </div>

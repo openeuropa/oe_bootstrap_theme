@@ -6,16 +6,16 @@
   outline: btn_outline,
   size: btn_size,
   attributes: create_attribute({
-    'data-toggle': 'modal',
-    'data-target': '#' ~ id
+    'data-bs-toggle': 'modal',
+    'data-bs-target': '#' ~ id
   })
 }) }}
 
 <!-- Modal -->
 {% set attributes = attributes.addClass(['modal', 'fade']) %}
 {% if static_backdrop %}
-  {% set attributes = attributes.setAttribute('data-backdrop', 'static') %}
-  {% set attributes = attributes.setAttribute('data-keyboard', false) %}
+  {% set attributes = attributes.setAttribute('data-bs-backdrop', 'static') %}
+  {% set attributes = attributes.setAttribute('data-bs-keyboard', false) %}
 {% endif %}
 
 <div {{ attributes }} id="{{id}}" tabindex="-1" aria-labelledby="{{id}}Label" aria-hidden="true">
@@ -31,7 +31,7 @@
         {% if title %}
           <h5 class="modal-title" id="{{id}}Label">{{ title }}</h5>
         {% endif %}
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         {{ content }}
@@ -42,7 +42,7 @@
           style: btn_style,
           outline: false,
           attributes: create_attribute({
-            'data-dismiss': 'modal'
+            'data-bs-dismiss': 'modal'
           })
         }) }}
       </div>
