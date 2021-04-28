@@ -38,8 +38,8 @@ dropdown:
       type: select
       label: Dropdown direction
       options:
-        dropleft: left
-        dropright: right
+        dropstart: start
+        dropend: end
         dropup: up
   fields:
     label:

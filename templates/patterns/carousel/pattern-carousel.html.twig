@@ -4,15 +4,15 @@
 
 {% set id = 'carousel-' ~ random(1000) %}
 
-<div{{ attributes.addClass('carousel').addClass('slide') }} id="{{ id }}" data-ride="carousel">
+<div{{ attributes.addClass('carousel').addClass('slide') }} id="{{ id }}" data-bs-ride="carousel">
 
   {% if with_indicators %}
-    <ol class="carousel-indicators">
+    <div class="carousel-indicators">
       {% for slide in slides %}
-        <li data-target="#{{ id }}"
-            data-slide-to="{{ loop.index0 }}"{% if loop.first %} class="active"{% endif %}></li>
+        <button type="button" data-bs-target="#{{ id }}"
+            data-bs-slide-to="{{ loop.index0 }}"{% if loop.first %} class="active"{% endif %}></button>
       {% endfor %}
-    </ol>
+    </div>
   {% endif %}
 
   <div class="carousel-inner" role="listbox">
@@ -27,14 +27,14 @@
   </div>
 
   {% if with_controls %}
-    <a class="carousel-control-prev" href="#{{ id }}" role="button" data-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#{{ id }}" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">{{ 'Previous'|t }}</span>
-    </a>
-    <a class="carousel-control-next" href="#{{ id }}" role="button" data-slide="next">
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#{{ id }}" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">{{ 'Next'|t }}</span>
-    </a>
+    </button>
   {% endif %}
 
 </div>
