@@ -13,7 +13,7 @@
 {%
   set title_classes = [
   'field__label',
-  'font-weight-bold',
+  'fw-bold',
   label_display == 'visually_hidden' ? 'visually-hidden',
 ]
 %}
@@ -33,7 +33,7 @@
 {% else %}
   <div{{ attributes.addClass(classes) }}>
     <div{{ title_attributes.addClass(title_classes) }}>
-      {{ label }}{% if label_display == 'inline' %}<span class="mr-1">:</span>{% endif %}
+      {{ label }}{% if label_display == 'inline' %}<span class="me-1">:</span>{% endif %}
     </div>
     {% if multiple %}
     <div class="field__items">

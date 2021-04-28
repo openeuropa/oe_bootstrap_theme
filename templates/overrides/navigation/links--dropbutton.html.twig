@@ -11,23 +11,25 @@
   {% endif %}
 
   {% if links %}
-    <button type="button" class="btn btn-sm btn-outline-primary dropdown-toggle {{ split ? 'dropdown-toggle-split' }}" data-toggle="dropdown" data-boundary="window">
+    <button type="button" class="btn btn-sm btn-outline-primary dropdown-toggle {{ split ? 'dropdown-toggle-split' }}" data-bs-toggle="dropdown" data-boundary="window">
       {% if split %}
         <span class="visually-hidden">{{ 'Toggle Dropdown'|t }}</span>
       {% else %}
         {{ button }}
       {% endif %}
     </button>
-    <div class="dropdown-menu dropdown-menu-right">
+    <ul class="dropdown-menu dropdown-menu-end">
       {%- for item in links -%}
-        {%- if item.link -%}
-          {{ item.link }}
-        {%- elseif item.text_attributes -%}
-          <span{{ item.text_attributes }}>{{ item.text }}</span>
-        {%- else -%}
-          {{ item.text }}
-        {%- endif -%}
+        <li>
+          {%- if item.link -%}
+            {{ item.link }}
+          {%- elseif item.text_attributes -%}
+            <span{{ item.text_attributes }}>{{ item.text }}</span>
+          {%- else -%}
+            {{ item.text }}
+          {%- endif -%}
+        </li>
       {%- endfor -%}
-    </div>
+    </ul>
   {% endif %}
 </div>

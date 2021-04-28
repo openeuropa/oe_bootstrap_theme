@@ -50,7 +50,7 @@
         <li class="{{- nav_item_classes|join(' ') -}}">
           {% if item.is_expanded and item.below %}
             {% set nav_link_classes = nav_link_classes|merge(['dropdown-toggle']) %}
-            <a class="{{ nav_link_classes|join(' ') }}" data-toggle="dropdown" role="button" aria-expanded="false" href="#">{{ item.title }}</a>
+            <a class="{{ nav_link_classes|join(' ') }}" data-bs-toggle="dropdown" role="button" aria-expanded="false" href="#">{{ item.title }}</a>
             {% if item.below %}
               {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
             {% endif %}
