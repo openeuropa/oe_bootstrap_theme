@@ -19,7 +19,7 @@
   {{ title_suffix }}
 
   {% block content %}
-    {% if not page %}
+    {% if label and not page %}
       <h2{{ title_attributes }}>
         <a href="{{ url }}" rel="bookmark">{{ label }}</a>
       </h2>
