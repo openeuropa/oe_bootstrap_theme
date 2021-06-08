@@ -5,7 +5,7 @@ dependencies:
     - system
   theme:
     - oe_bootstrap_theme
-id: oe_bootstrap_thememessages
+id: oe_bootstrap_theme_messages
 theme: oe_bootstrap_theme
 region: header
 weight: -2

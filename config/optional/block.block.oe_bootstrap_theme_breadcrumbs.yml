@@ -5,7 +5,7 @@ dependencies:
     - system
   theme:
     - oe_bootstrap_theme
-id: oe_bootstrap_themebreadcrumbs
+id: oe_bootstrap_theme_breadcrumbs
 theme: oe_bootstrap_theme
 region: header
 weight: -3

@@ -3,7 +3,7 @@ status: true
 dependencies:
   theme:
     - oe_bootstrap_theme
-id: oe_bootstrap_themelocal_actions
+id: oe_bootstrap_theme_local_actions
 theme: oe_bootstrap_theme
 region: content
 weight: -10

@@ -7,7 +7,7 @@ dependencies:
     - system
   theme:
     - oe_bootstrap_theme
-id: oe_bootstrap_themeuseraccountmenu
+id: oe_bootstrap_theme_useraccountmenu
 theme: oe_bootstrap_theme
 region: navbar_right
 weight: -3
