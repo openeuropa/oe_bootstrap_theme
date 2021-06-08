@@ -1,16 +1,16 @@
 <?php
 
-namespace Drupal\eua_theme\Theme;
+namespace Drupal\oe_bootstrap_theme\Theme;
 
 use Drupal\Core\Render\Element;
 use Drupal\Core\Security\TrustedCallbackInterface;
 
 /**
- * Implements trusted prerender callbacks for the EUA theme.
+ * Implements trusted prerender callbacks for the OpenEuropa Bootstrap Theme.
  *
  * @internal
  */
-class EuaThemePreRender implements TrustedCallbackInterface {
+class OpenEuropaBoostrapThemePreRender implements TrustedCallbackInterface {
 
   /**
    * Pre-render callback for 'checkbox' element type.

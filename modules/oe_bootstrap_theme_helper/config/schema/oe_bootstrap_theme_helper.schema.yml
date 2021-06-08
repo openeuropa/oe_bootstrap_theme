@@ -1,4 +1,4 @@
-field.widget.third_party.eua_theme_helper:
+field.widget.third_party.oe_bootstrap_theme_helper:
   type: mapping
   label: 'Widget settings'
   mapping:

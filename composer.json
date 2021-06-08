@@ -1,6 +1,6 @@
 {
-    "name": "ec-europa/eua_theme",
-    "description": "EU Agencies base theme.",
+    "name": "openeuropa/oe_bootstrap_theme",
+    "description": "OpenEuropa Bootstrap base theme.",
     "type": "drupal-theme",
     "license": "EUPL-1.2",
     "minimum-stability": "dev",
@@ -37,12 +37,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Drupal\\eua_theme\\": "./src/"
+            "Drupal\\oe_bootstrap_theme\\": "./src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Drupal\\Tests\\eua_theme\\": "./tests/"
+            "Drupal\\Tests\\oe_bootstrap_theme\\": "./tests/"
         }
     },
     "extra": {

@@ -8,7 +8,7 @@
 /**
  * Implements hook_preprocess_field().
  */
-function eua_theme_preprocess_field(&$variables) {
+function oe_bootstrap_theme_preprocess_field(&$variables) {
   $element = $variables['element'];
   $field_name = $element['#field_name'];
   $bundle = $element['#bundle'];
@@ -26,7 +26,7 @@ function eua_theme_preprocess_field(&$variables) {
  *
  * Adds a bare, markup-free template suggestion to all paragraph fields.
  */
-function eua_theme_theme_suggestions_field_alter(array &$suggestions, array $variables): void {
+function oe_bootstrap_theme_theme_suggestions_field_alter(array &$suggestions, array $variables): void {
   $element = $variables['element'];
 
   // Do not output field labels and wrapping markup for paragraph fields.

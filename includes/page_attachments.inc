@@ -12,7 +12,7 @@ use Drupal\Core\Render\Markup;
 /**
  * Implements hook_page_attachments_alter().
  */
-function eua_theme_page_attachments_alter(array &$attachments) {
+function oe_bootstrap_theme_page_attachments_alter(array &$attachments) {
   global $base_url;
   $theme = \Drupal::theme()->getActiveTheme();
   $theme_path = $base_url.'/'. $theme->getPath();

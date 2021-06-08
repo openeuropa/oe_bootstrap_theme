@@ -15,9 +15,9 @@ const MixGlob = require('laravel-mix-glob');
 /* Specify base_theme relative path */
 const baseThemeCandidates = [
   // From lib folder (DEV build).
-  "../../../web/themes/contrib/eua_theme",
+  "../../../web/themes/contrib/oe_bootstrap_theme",
   // From dist/web/themes/custom folder (DIST build).
-  "../../contrib/eua_theme"
+  "../../contrib/oe_bootstrap_theme"
 ];
 const baseThemePath = baseThemeCandidates
   .map(function (value) {
@@ -35,8 +35,8 @@ const baseThemePath = baseThemeCandidates
 mix.webpackConfig({
   resolve: {
     alias: {
-      "eua_scss": `${baseThemePath}/resources/sass`,
-      "@eua_js": `${baseThemePath}/resources/js`,
+      "oe_bootstrap_theme_scss": `${baseThemePath}/resources/sass`,
+      "@oe_bootstrap_theme_js": `${baseThemePath}/resources/js`,
     },
   },
 });

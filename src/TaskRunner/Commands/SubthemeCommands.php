@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\eua_theme\TaskRunner\Commands;
+namespace Drupal\oe_bootstrap_theme\TaskRunner\Commands;
 
-use Drupal\eua_theme\CommandUtil;
+use Drupal\oe_bootstrap_theme\CommandUtil;
 use Symfony\Component\Finder\Finder;
 use OpenEuropa\TaskRunner\Commands\AbstractCommands;
 use OpenEuropa\TaskRunner\Contract\FilesystemAwareInterface;
@@ -33,7 +33,7 @@ class SubthemeCommands extends AbstractCommands implements FilesystemAwareInterf
    * @param array $options
    *   Destination path for the new sub-theme, with the name as last fragment.
    *
-   * @command eua_theme:create-subtheme
+   * @command oe_bootstrap_theme:create-subtheme
    *
    * @option name
    *   Human name for the new sub-theme.
@@ -79,9 +79,9 @@ class SubthemeCommands extends AbstractCommands implements FilesystemAwareInterf
     }
 
     $replacements = [
-      'EUA_SUBTHEME_MACHINE_NAME' => $machine_name,
-      'EUA_SUBTHEME_NAME' => $options['name'],
-      'EUA_SUBTHEME_DESCRIPTION' => $options['description'],
+      'OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME' => $machine_name,
+      'OE_BOOTSTRAP_THEME_SUBTHEME_NAME' => $options['name'],
+      'OE_BOOTSTRAP_THEME_SUBTHEME_DESCRIPTION' => $options['description'],
     ];
 
     $rename_pattern = '@^' . preg_quote($kit_name, '@') . '((?:\.\w+)+)$@';

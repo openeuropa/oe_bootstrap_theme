@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\Tests\eua_theme\Behat;
+namespace Drupal\Tests\oe_bootstrap_theme\Behat;
 
 use Drupal\DrupalExtension\Context\RawDrupalContext;
 

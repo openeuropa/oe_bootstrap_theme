@@ -6,37 +6,37 @@
  */
 
 use Drupal\Core\Render\Element;
-use Drupal\eua_theme\Theme\EuaThemePreRender;
+use Drupal\oe_bootstrap_theme\Theme\OpenEuropaBoostrapThemePreRender;
 
 /**
  * Implements hook_element_info_alter().
  */
-function eua_theme_element_info_alter(&$info) {
+function oe_bootstrap_theme_element_info_alter(&$info) {
   if (isset($info['datetime'])) {
-    $info['datetime']['#process'][] = '_eua_theme_process_element_grid_row';
+    $info['datetime']['#process'][] = '_oe_bootstrap_theme_process_element_grid_row';
   }
 
   if (isset($info['datelist'])) {
-    $info['datelist']['#process'][] = '_eua_theme_process_element_grid_row';
+    $info['datelist']['#process'][] = '_oe_bootstrap_theme_process_element_grid_row';
   }
 
   // Add a pre-render function that handles checkbox variants.
   if (isset($info['checkbox'])) {
-    $info['checkbox']['#pre_render'][] = [EuaThemePreRender::class, 'checkbox'];
+    $info['checkbox']['#pre_render'][] = [OpenEuropaBoostrapThemePreRender::class, 'checkbox'];
   }
 
   // Add a pre-render function that handles checkboxes variants.
   if (isset($info['checkboxes'])) {
-    $info['checkboxes']['#pre_render'][] = [EuaThemePreRender::class, 'checkboxes'];
+    $info['checkboxes']['#pre_render'][] = [OpenEuropaBoostrapThemePreRender::class, 'checkboxes'];
   }
 }
 
 /**
  * Process callback for applying a grid on elements.
  *
- * @see eua_theme_element_info_alter
+ * @see oe_bootstrap_theme_element_info_alter
  */
-function _eua_theme_process_element_grid_row(&$element) {
+function _oe_bootstrap_theme_process_element_grid_row(&$element) {
   $element['#attributes']['class'][] = 'row';
   foreach (Element::children($element) as $key) {
     $element[$key]['#col_class'] = 'col-auto';
