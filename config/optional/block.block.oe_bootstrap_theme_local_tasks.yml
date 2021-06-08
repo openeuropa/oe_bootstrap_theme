@@ -3,15 +3,17 @@ status: true
 dependencies:
   theme:
     - oe_bootstrap_theme
-id: eua_theme_page_title
+id: oe_bootstrap_themelocal_tasks
 theme: oe_bootstrap_theme
 region: content
-weight: -30
+weight: -20
 provider: null
-plugin: page_title_block
+plugin: local_tasks_block
 settings:
-  id: page_title_block
-  label: 'Page title'
+  id: local_tasks_block
+  label: Tabs
   provider: core
   label_display: '0'
+  primary: true
+  secondary: true
 visibility: {  }

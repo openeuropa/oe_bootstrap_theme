@@ -2,20 +2,20 @@ langcode: en
 status: true
 dependencies:
   config:
-    - system.menu.account
+    - system.menu.main
   module:
     - system
   theme:
     - oe_bootstrap_theme
-id: eua_theme_useraccountmenu
+id: oe_bootstrap_thememainnavigation
 theme: oe_bootstrap_theme
-region: navbar_right
+region: navbar_left
 weight: -3
 provider: null
-plugin: 'system_menu_block:account'
+plugin: 'system_menu_block:main'
 settings:
-  id: 'system_menu_block:account'
-  label: 'User account menu'
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
   provider: system
   label_display: '0'
   level: 1
