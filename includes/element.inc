@@ -22,12 +22,18 @@ function oe_bootstrap_theme_element_info_alter(&$info) {
 
   // Add a pre-render function that handles checkbox variants.
   if (isset($info['checkbox'])) {
-    $info['checkbox']['#pre_render'][] = [OpenEuropaBoostrapThemePreRender::class, 'checkbox'];
+    $info['checkbox']['#pre_render'][] = [
+      OpenEuropaBoostrapThemePreRender::class,
+      'checkbox',
+    ];
   }
 
   // Add a pre-render function that handles checkboxes variants.
   if (isset($info['checkboxes'])) {
-    $info['checkboxes']['#pre_render'][] = [OpenEuropaBoostrapThemePreRender::class, 'checkboxes'];
+    $info['checkboxes']['#pre_render'][] = [
+      OpenEuropaBoostrapThemePreRender::class,
+      'checkboxes',
+    ];
   }
 }
 

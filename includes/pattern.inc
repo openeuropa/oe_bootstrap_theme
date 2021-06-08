@@ -20,8 +20,8 @@ function oe_bootstrap_theme_preprocess_pattern_badge__preview(array &$variables)
  * Implements hook_preprocess_HOOK() for page templates.
  */
 function oe_bootstrap_theme_preprocess_page(&$variables) {
-  // @TODO It would be better to have a setting, like bootstrap_barrio do with
-  // bootstrap_barrio_fluid_container ('container-fluid' : 'container')
+  // @todo It would be better to have a setting, like bootstrap_barrio do with
+  //   bootstrap_barrio_fluid_container ('container-fluid' : 'container')
   $variables['container'] = 'container';
 }
 
@@ -130,10 +130,11 @@ function oe_bootstrap_theme_preprocess_pattern_carousel(array &$variables) {
   }
 
   // Nicer preview with fixed width and local backgrounds.
+  // @code
   // if ($variables['context']->getType() == 'preview') {
-  //  $variables['attributes']['style'] = "width: 800px";
+  //   $variables['attributes']['style'] = "width: 800px";
   // }
-
+  // @endcode
 }
 
 /**

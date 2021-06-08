@@ -17,7 +17,7 @@ function oe_bootstrap_theme_theme_suggestions_paragraph_alter(array &$suggestion
   if ($paragraph->bundle() === 'oe_content_row') {
     $variant = $paragraph->get('oe_paragraphs_variant')->first()->value;
     $suggestions[] = 'paragraph__' . $paragraph->bundle() . '__variant_' . $variant;
-   }
+  }
 }
 
 /**
