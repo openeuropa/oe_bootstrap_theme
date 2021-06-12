@@ -6,7 +6,7 @@
  */
 
 use Drupal\Core\Render\Element;
-use Drupal\oe_bootstrap_theme\Theme\OpenEuropaBoostrapThemePreRender;
+use Drupal\oe_bootstrap_theme\Theme\OpenEuropaBootstrapThemePreRender;
 
 /**
  * Implements hook_element_info_alter().
@@ -23,7 +23,7 @@ function oe_bootstrap_theme_element_info_alter(&$info) {
   // Add a pre-render function that handles checkbox variants.
   if (isset($info['checkbox'])) {
     $info['checkbox']['#pre_render'][] = [
-      OpenEuropaBoostrapThemePreRender::class,
+      OpenEuropaBootstrapThemePreRender::class,
       'checkbox',
     ];
   }
@@ -31,7 +31,7 @@ function oe_bootstrap_theme_element_info_alter(&$info) {
   // Add a pre-render function that handles checkboxes variants.
   if (isset($info['checkboxes'])) {
     $info['checkboxes']['#pre_render'][] = [
-      OpenEuropaBoostrapThemePreRender::class,
+      OpenEuropaBootstrapThemePreRender::class,
       'checkboxes',
     ];
   }

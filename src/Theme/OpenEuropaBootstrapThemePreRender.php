@@ -10,7 +10,7 @@ use Drupal\Core\Security\TrustedCallbackInterface;
  *
  * @internal
  */
-class OpenEuropaBoostrapThemePreRender implements TrustedCallbackInterface {
+class OpenEuropaBootstrapThemePreRender implements TrustedCallbackInterface {
 
   /**
    * Pre-render callback for 'checkbox' element type.
