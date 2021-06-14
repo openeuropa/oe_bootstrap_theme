@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\eua_theme;
+namespace Drupal\oe_bootstrap_theme;
 
 use Symfony\Component\Console\Input\InputOption;
 

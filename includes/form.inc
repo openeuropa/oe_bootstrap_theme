@@ -10,7 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function eua_theme_theme_suggestions_form_alter(array &$suggestions, array &$variables) {
+function oe_bootstrap_theme_theme_suggestions_form_alter(array &$suggestions, array &$variables) {
   $element = $variables['element'];
 
   // Add a suggestion based on the form id name.
@@ -18,10 +18,11 @@ function eua_theme_theme_suggestions_form_alter(array &$suggestions, array &$var
     $suggestions[] = $variables['theme_hook_original'] . '__' . $element['#form_id'];
   }
 }
+
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function eua_theme_theme_suggestions_form_element_alter(array &$suggestions, array &$variables) {
+function oe_bootstrap_theme_theme_suggestions_form_element_alter(array &$suggestions, array &$variables) {
   $element = $variables['element'];
 
   // Add a suggestion based on the element type.
@@ -33,7 +34,7 @@ function eua_theme_theme_suggestions_form_element_alter(array &$suggestions, arr
 /**
  * Implements hook_preprocess_input().
  */
-function eua_theme_preprocess_input(&$variables) {
+function oe_bootstrap_theme_preprocess_input(&$variables) {
   $element = $variables['element'];
 
   // Add the element type to the theme.
@@ -43,7 +44,7 @@ function eua_theme_preprocess_input(&$variables) {
 /**
  * Implements hook_preprocess_form_element().
  */
-function eua_theme_preprocess_form_element(&$variables) {
+function oe_bootstrap_theme_preprocess_form_element(&$variables) {
   $element = $variables['element'];
 
   // Add column class.
@@ -61,6 +62,6 @@ function eua_theme_preprocess_form_element(&$variables) {
 /**
  * Implements hook_theme_HOOK_form_alter() for node add/edit.
  */
-function eua_theme_form_node_form_alter(&$form, FormStateInterface $form_state) {
+function oe_bootstrap_theme_form_node_form_alter(&$form, FormStateInterface $form_state) {
   $form['#theme'] = ['node_edit_form'];
 }

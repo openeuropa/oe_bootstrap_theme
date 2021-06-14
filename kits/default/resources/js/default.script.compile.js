@@ -35,7 +35,7 @@ import 'bootstrap';
  |--------------------------------------------------------------------------
  */
 
-import "@eua_js/base/all.js";
+import "@oe_bootstrap_theme_js/base/all.js";
 
 /*
  |--------------------------------------------------------------------------
@@ -43,4 +43,4 @@ import "@eua_js/base/all.js";
  |--------------------------------------------------------------------------
  */
 
-import "@eua_js/components/all.js";
+import "@oe_bootstrap_theme_js/components/all.js";

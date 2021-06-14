@@ -2,7 +2,7 @@
 
 /**
  * @file
- * The eua_theme hooks.
+ * The oe_bootstrap_theme hooks.
  */
 
 // Include all files from the includes directory.

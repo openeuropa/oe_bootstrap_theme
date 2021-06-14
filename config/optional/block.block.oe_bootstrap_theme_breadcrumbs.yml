@@ -4,9 +4,9 @@ dependencies:
   module:
     - system
   theme:
-    - eua_theme
-id: eua_theme_breadcrumbs
-theme: eua_theme
+    - oe_bootstrap_theme
+id: oe_bootstrap_theme_breadcrumbs
+theme: oe_bootstrap_theme
 region: header
 weight: -3
 provider: null

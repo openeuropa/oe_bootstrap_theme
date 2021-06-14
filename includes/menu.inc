@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Theme and preprocess functions for menus.
@@ -7,12 +8,12 @@
 /**
  * Implements hook_preprocess_menu().
  */
-function eua_theme_preprocess_menu(&$variables, $hook) {
+function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
   // No changes for menu toolbar.
   if ($hook == 'menu__toolbar') {
     return;
   }
-  
+
   // Get the current path.
   $current_path = \Drupal::request()->getRequestUri();
 
@@ -29,7 +30,7 @@ function eua_theme_preprocess_menu(&$variables, $hook) {
 /**
  * Implements template_preprocess_menu_local_action().
  */
-function eua_theme_preprocess_menu_local_action(&$variables) {
+function oe_bootstrap_theme_preprocess_menu_local_action(&$variables) {
   // Add button classes.
   $variables['link']['#options']['attributes']['class'][] = 'btn';
   $variables['link']['#options']['attributes']['class'][] = 'btn-sm';
@@ -39,7 +40,7 @@ function eua_theme_preprocess_menu_local_action(&$variables) {
 /**
  * Implements template_preprocess_links__dropbutton().
  */
-function eua_theme_preprocess_links__dropbutton(&$variables) {
+function oe_bootstrap_theme_preprocess_links__dropbutton(&$variables) {
   $links = &$variables['links'];
 
   // Do nothing if we have no links.

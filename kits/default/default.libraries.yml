@@ -2,9 +2,9 @@ style:
   version: VERSION
   css:
     theme:
-      assets/css/EUA_SUBTHEME_MACHINE_NAME.style.css: {}
+      assets/css/OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME.style.css: {}
   js:
-    assets/js/EUA_SUBTHEME_MACHINE_NAME.script.js: {}
+    assets/js/OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME.script.js: {}
   dependencies:
     - core/jquery
     - core/drupal

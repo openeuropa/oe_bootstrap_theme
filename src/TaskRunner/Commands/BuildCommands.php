@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\eua_theme\TaskRunner\Commands;
+namespace Drupal\oe_bootstrap_theme\TaskRunner\Commands;
 
 use OpenEuropa\TaskRunner\Commands\AbstractCommands;
 use Robo\Exception\TaskException;
@@ -10,8 +10,6 @@ use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Task runner commands for build steps.
- *
- * @package Drupal\eua_theme\TaskRunner\Commands
  */
 class BuildCommands extends AbstractCommands {
 
@@ -31,7 +29,7 @@ class BuildCommands extends AbstractCommands {
    * @return \Robo\Collection\CollectionBuilder
    *   Collection builder with a list of tasks.
    *
-   * @command eua_theme:npm-run
+   * @command oe_bootstrap_theme:npm-run
    *
    * @throws \Exception
    *   The task could not be constructed with the given parameters.

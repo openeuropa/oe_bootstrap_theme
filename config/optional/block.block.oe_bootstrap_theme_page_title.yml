@@ -2,9 +2,9 @@ langcode: en
 status: true
 dependencies:
   theme:
-    - eua_theme
-id: eua_theme_page_title
-theme: eua_theme
+    - oe_bootstrap_theme
+id: oe_bootstrap_theme_page_title
+theme: oe_bootstrap_theme
 region: content
 weight: -30
 provider: null

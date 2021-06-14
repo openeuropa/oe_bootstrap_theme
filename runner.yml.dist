@@ -2,12 +2,12 @@ drupal:
   root: "build"
   base_url: "http://web:8080/build"
   site:
-    name: "EU Agencies base theme"
+    name: "OpenEuropa Bootstrap base theme"
     profile: "minimal"
   database:
     host: "mysql"
     port: "3306"
-    name: "eua_theme"
+    name: "oe_bootstrap_theme"
     user: "root"
     password: ""
   post_install:
@@ -15,9 +15,9 @@ drupal:
     - "./vendor/bin/drush en ui_patterns ui_patterns_library ui_patterns_settings styleguide -y"
     - "./vendor/bin/drush en field_ui -y"
     - "./vendor/bin/drush en toolbar -y"
-    - "./vendor/bin/drush theme:enable eua_theme -y"
+    - "./vendor/bin/drush theme:enable oe_bootstrap_theme -y"
     - "./vendor/bin/drush theme:enable claro -y"
-    - "./vendor/bin/drush config-set system.theme default eua_theme -y"
+    - "./vendor/bin/drush config-set system.theme default oe_bootstrap_theme -y"
     - "./vendor/bin/drush config-set system.theme admin claro -y"
     - "./vendor/bin/drush config-set node.settings use_admin_theme 1 -y"
     - "./vendor/bin/drush config-set system.logging error_level verbose -y"
@@ -37,14 +37,14 @@ selenium:
 
 commands:
   drupal:site-setup:
-    - { task: "symlink", from: "../../..", to: "${drupal.root}/themes/custom/eua_theme" }
+    - { task: "symlink", from: "../../..", to: "${drupal.root}/themes/custom/oe_bootstrap_theme" }
     - { task: "run", command: "drupal:drush-setup" }
     - { task: "run", command: "drupal:settings-setup" }
     # Generate settings.testing.php, it will be used when running functional tests.
     - { task: "process-php", type: "write", config: "drupal.settings", source: "${drupal.root}/sites/default/default.settings.php", destination: "${drupal.root}/sites/default/settings.testing.php", override: true }
     - { task: "run", command: "setup:phpunit" }
     - { task: "run", command: "setup:behat" }
-    - "${runner.bin_dir}/run eua_theme:npm-run production --npm-dir=./"
+    - "${runner.bin_dir}/run oe_bootstrap_theme:npm-run production --npm-dir=./"
   setup:phpunit:
     - { task: "process", source: "phpunit.xml.dist", destination: "phpunit.xml" }
   setup:behat:
@@ -52,12 +52,12 @@ commands:
 
 release:
   tasks:
-    - { task: "copy", from: "assets", to: "eua_theme/assets" }
+    - { task: "copy", from: "assets", to: "oe_bootstrap_theme/assets" }
     - task: "append"
-      file: "eua_theme/eua_theme.info.yml"
+      file: "oe_bootstrap_theme/oe_bootstrap_theme.info.yml"
       text: |
 
         # Information added by OpenEuropa packaging script on ${release.date} at ${release.time}.
-        project: eua_theme
+        project: oe_bootstrap_theme
         version: ${release.version}
         datestamp: ${release.timestamp}

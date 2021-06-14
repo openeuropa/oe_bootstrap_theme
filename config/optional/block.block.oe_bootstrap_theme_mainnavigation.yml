@@ -6,9 +6,9 @@ dependencies:
   module:
     - system
   theme:
-    - eua_theme
-id: eua_theme_mainnavigation
-theme: eua_theme
+    - oe_bootstrap_theme
+id: oe_bootstrap_theme_mainnavigation
+theme: oe_bootstrap_theme
 region: navbar_left
 weight: -3
 provider: null

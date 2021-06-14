@@ -1,10 +1,10 @@
 style:
   version: VERSION
   js:
-    assets/js/eua.script.js: {}
+    assets/js/oe_bootstrap_theme.script.js: {}
   css:
     theme:
-      assets/css/eua.style.css: {}
+      assets/css/oe_bootstrap_theme.style.css: {}
   dependencies:
     - core/jquery
     - core/drupal

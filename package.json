@@ -1,7 +1,7 @@
 {
-  "name": "eua_theme",
+  "name": "oe_bootstrap_theme",
   "version": "1.0.0",
-  "description": "EU Agency base theme.",
+  "description": "OpenEuropa Bootstrap base theme for Drupal.",
   "private": true,
   "scripts": {
     "postinstall": "find node_modules/ -name '*.info' -type f -delete",

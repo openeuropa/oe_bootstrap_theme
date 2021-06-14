@@ -1,12 +1,12 @@
 workspace:
   base: /test
-  path: eua_theme
+  path: oe_bootstrap_theme
 
 services:
   web:
     image: fpfis/httpd-php-ci:${PHP_VERSION}
     environment:
-      - DOCUMENT_ROOT=/test/eua_theme
+      - DOCUMENT_ROOT=/test/oe_bootstrap_theme
   mysql:
     image: percona/percona-server:5.6
     environment:
@@ -81,7 +81,7 @@ pipeline:
   github-release:
     image: plugins/github-release
     secrets: [ github_token ]
-    files: eua_theme-${DRONE_TAG}.tar.gz
+    files: oe_bootstrap_theme-${DRONE_TAG}.tar.gz
     when:
       event: tag
       matrix:

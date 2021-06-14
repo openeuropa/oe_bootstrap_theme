@@ -4,9 +4,9 @@ dependencies:
   module:
     - system
   theme:
-    - eua_theme
-id: eua_theme_branding
-theme: eua_theme
+    - oe_bootstrap_theme
+id: oe_bootstrap_theme_branding
+theme: oe_bootstrap_theme
 region: navbar_branding
 weight: -4
 provider: null

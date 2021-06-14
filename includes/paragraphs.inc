@@ -10,21 +10,22 @@ use Drupal\Core\Render\Element;
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function eua_theme_theme_suggestions_paragraph_alter(array &$suggestions, array $variables): void {
+function oe_bootstrap_theme_theme_suggestions_paragraph_alter(array &$suggestions, array $variables): void {
   /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['elements']['#paragraph'];
 
   if ($paragraph->bundle() === 'oe_content_row') {
     $variant = $paragraph->get('oe_paragraphs_variant')->first()->value;
     $suggestions[] = 'paragraph__' . $paragraph->bundle() . '__variant_' . $variant;
-   }
+  }
 }
 
 /**
  * Implements hook_preprocess_paragraph__oe_accordion().
  */
-function eua_theme_preprocess_paragraph__oe_accordion(array &$variables): void {
-  // Massage data to be compliant with EUA accordion component data structure.
+function oe_bootstrap_theme_preprocess_paragraph__oe_accordion(array &$variables): void {
+  // Massage data to be compliant with OE Bootstrap Theme accordion component
+  // data structure.
   $builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
   $variables['items'] = [];
 
@@ -41,7 +42,7 @@ function eua_theme_preprocess_paragraph__oe_accordion(array &$variables): void {
 /**
  * Implements hook_preprocess_paragraph().
  */
-function eua_theme_preprocess_paragraph__oe_links_block(array &$variables): void {
+function oe_bootstrap_theme_preprocess_paragraph__oe_links_block(array &$variables): void {
   // Massage data to be compliant with ECL links block component data structure.
   foreach (Element::children($variables['content']['field_oe_links']) as $index) {
     $variables['links'][] = [

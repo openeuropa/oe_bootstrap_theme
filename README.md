@@ -1,4 +1,4 @@
-# EU Agency base theme
+# OpenEuropa Bootstrap base theme
 
 Drupal 8 theme based on [Bootstrap 5](https://v5.getbootstrap.com/) and [UI Patterns](https://github.com/nuvoleweb/ui_patterns/).
 
@@ -10,19 +10,19 @@ This depends on the following software:
 
 ## Installation
 
-The recommended way of installing the EU Agency base theme is via [Composer](https://www.drupal.org/docs/develop/using-composer/using-composer-to-manage-drupal-site-dependencies#managing-contributed).
+The recommended way of installing the OpenEuropa Bootstrap Theme is via [Composer](https://www.drupal.org/docs/develop/using-composer/using-composer-to-manage-drupal-site-dependencies#managing-contributed).
 
 ```bash
-composer config repositories.eua_theme vcs https://github.com/ec-europa/eu-agencies-theme
-composer require ec-europa/eu-agencies-theme
+composer config repositories.oe_bootstrap_theme vcs https://github.com/openeuropa/oe_bootstrap_theme
+composer require openeuropa/oe_bootstrap_theme
 ```
 
 ### Enable the theme
 
 In order to enable the theme in your project perform the following steps:
 
-1. Enable the EUA Theme Helper module ```./vendor/bin/drush en eua_theme_helper```
-2. Enable the EUA Theme and set it as default ```./vendor/bin/drush config-set system.theme default eua_theme```
+1. Enable the OpenEuropa Bootstrap Theme Helper module ```./vendor/bin/drush en oe_bootstrap_theme_helper```
+2. Enable the OpenEuropa Bootstrap Theme and set it as default ```./vendor/bin/drush config-set system.theme default oe_bootstrap_theme```
 
 ## Development setup
 
@@ -121,4 +121,4 @@ Please read [the full documentation](https://github.com/openeuropa/openeuropa) f
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the available versions, see the [tags on this repository](https://github.com/ec-europa/eu-agencies-theming/tags).
+We use [SemVer](http://semver.org/) for versioning. For the available versions, see the [tags on this repository](https://github.com/openeuropa/oe_bootstrap_theme/tags).

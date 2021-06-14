@@ -1,0 +1,3 @@
+oe_bootstrap_theme.settings:
+  type: theme_settings
+  label: 'OpenEuropa Bootstrap Theme settings'
