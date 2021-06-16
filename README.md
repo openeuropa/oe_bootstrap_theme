@@ -28,16 +28,17 @@ In order to enable the theme in your project perform the following steps:
 
 You can build the development site by running the following steps:
 
-* Install the NPM and Composer dependencies:
+* Install the Composer dependencies:
 
 ```bash
-npm install
 composer install
 ```
 
 A post command hook (`drupal:site-setup`) is triggered automatically after `composer install`.
 It will make sure that the necessary symlinks are properly setup in the development site.
 It will also perform token substitution in development configuration files such as `behat.yml.dist`.
+
+The NPM dependencies are being automatically installed as part of `composer install`.
 
 * Install test site by running:
 

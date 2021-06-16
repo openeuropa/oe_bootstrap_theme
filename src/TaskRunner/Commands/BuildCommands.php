@@ -46,6 +46,10 @@ class BuildCommands extends AbstractCommands {
       ->dir($npmDir)
       ->stopOnFail();
 
+    if (!file_exists($npmDir . '/package-lock.json')) {
+      $stack->exec('npm install');
+    }
+
     // If node_modules dir doesn't exist, run 'npm ci'.
     // See https://stackoverflow.com/questions/52499617/what-is-the-difference-between-npm-install-and-npm-ci
     if (!is_dir($npmDir . '/node_modules')) {
