@@ -6,7 +6,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.3",
+        "php": ">=7.1",
         "drupal/components": "^2.4",
         "drupal/core": "^8.9 || ^9.1",
         "drupal/ui_patterns": "^1.0",
@@ -19,14 +19,7 @@
         "drupal/drupal-extension": "^4.1",
         "drupal/styleguide": "^1.0@alpha",
         "drush/drush": "^10.3",
-        "openeuropa/code-review": "~1.6",
-        "openeuropa/drupal-core-require-dev": "^8.9 || ^9.1",
-        "openeuropa/task-runner-drupal-project-symlink": "^1.0",
         "phpspec/prophecy-phpunit": "^1 || ^2"
-    },
-    "scripts": {
-        "post-install-cmd": "./vendor/bin/run drupal:site-setup",
-        "post-update-cmd": "./vendor/bin/run drupal:site-setup"
     },
     "repositories": [
         {
@@ -65,6 +58,9 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "7.1.9"
+        }
     }
 }
