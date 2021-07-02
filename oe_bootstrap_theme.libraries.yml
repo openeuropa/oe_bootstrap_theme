@@ -1,3 +1,10 @@
+bcl:
+  js:
+    assets/js/oe-bcl-default.bundle.min.js: {}
+  css:
+    theme:
+      assets/css/oe-bcl-default.min.css: {}
+
 style:
   version: VERSION
   js:

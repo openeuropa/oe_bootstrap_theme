@@ -64,6 +64,18 @@ mix.browserSync({
 
 /*
  |--------------------------------------------------------------------------
+ | BCL assets
+ | Copy all css, js, icons files from default BCL theme into the assets folder
+ |--------------------------------------------------------------------------
+ */
+
+mix.copy('./node_modules/@openeuropa/bcl-theme-default/css/*', 'assets/css');
+mix.copy('./node_modules/@openeuropa/bcl-theme-default/js/*', 'assets/js');
+mix.copy('./node_modules/@openeuropa/bcl-bootstrap/bootstrap-icons.*', 'assets/icons');
+mix.copy('./node_modules/@openeuropa/bcl-theme-default/templates', 'templates/bcl');
+
+/*
+ |--------------------------------------------------------------------------
  | Globs: https://www.npmjs.com/package/laravel-mix-glob
  |--------------------------------------------------------------------------
  */
@@ -91,11 +103,6 @@ mix.sass('./node_modules/bootstrap-ie11/scss/bootstrap-ie11.scss', 'css');
  | JS
  |--------------------------------------------------------------------------
  */
-
-// Load Bootstrap globally
-mix.autoload({
-  'bootstrap': ['bootstrap'],
-});
 
 // Every file named *.compile.js within resources/js/ folder,
 // will be compiled to assets/js folder keeping same folder strucure from base parameter.

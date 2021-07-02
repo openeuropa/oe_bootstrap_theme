@@ -11,6 +11,7 @@ stylesheets-remove:
   - system.admin.css
 
 libraries:
+  - oe_bootstrap_theme/bcl
   - oe_bootstrap_theme/style
 
 libraries-override:
