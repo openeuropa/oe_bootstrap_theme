@@ -18,10 +18,9 @@ function oe_bootstrap_theme_page_attachments_alter(array &$attachments) {
   $theme_path = $base_url . '/' . $theme->getPath();
   $theme_path_safe = Html::escape($theme_path);
   $markup = '<link rel="stylesheet" href="' . $theme_path_safe . '/assets/css/bootstrap-ie11.css">'
-    . '<script src="https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js"></script>'
-    . '<script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js"></script>'
-    . '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>'
-    . '<script>!function () { var e, t; ((e = document.createEvent("CustomEvent")).initEvent("Bootstrap", !0, !0), e.preventDefault(), e.defaultPrevented) || (t = Event.prototype.preventDefault, Event.prototype.preventDefault = function () { this.cancelable && (t.call(this), Object.defineProperty(this, "defaultPrevented", { get: function () { return !0 }, configurable: !0 })) }) }();</script>';
+    . '<script src="https://cdn.jsdelivr.net/combine/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js,npm/ie11-custom-properties@4,npm/element-qsa-scope@1"></script>'
+    . '<script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=default%2CNumber.parseInt%2CNumber.parseFloat%2CArray.prototype.find%2CArray.prototype.includes"></script>'
+    . '<script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>';
 
   // Bootstrap-ie11 inline JS which will load the CSS and JS just for IE users.
   // https://github.com/coliff/bootstrap-ie11
