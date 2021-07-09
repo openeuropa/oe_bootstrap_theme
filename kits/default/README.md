@@ -12,10 +12,7 @@ If you prefer to use [Yarn](https://yarnpkg.com) instead of npm, install Yarn by
 Go to the root of OE_BOOTSTRAP_THEME_SUBTHEME_NAME theme and run the following commands: `npm install` or `yarn install`.
 
 #### Step 3
-Update `baseTheme` variable in **webpack.mix.json** file to inherit some sass and javascript files needed from the base theme. A relative path to the base theme must be specified.
+Update `baseThemeCandidates` variable in **bcl-builder.config.js** file to inherit some sass and javascript files needed from the base theme. A relative path to the base theme must be specified.
 
 #### Step 4
-Update `proxy` variable in **webpack.mix.json** file for live CSS Reload & Browser Syncing during watch task.
-
-#### Step 5
-Run the following command to compile Sass and watch for changes: `npm run watch` or `yarn watch`.
+Run the following command to compile Sass and watch for changes: `npm run build:styles` or `yarn build:styles`.

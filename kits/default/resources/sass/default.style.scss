@@ -1,0 +1,15 @@
+// Layout
+// -----------------------------------------------------------------------------
+@import "layout/page.header";
+@import "layout/page.content";
+@import "layout/page.footer";
+
+// Component
+// -----------------------------------------------------------------------------
+@import "components/my.component";
+
+// Other
+// -----------------------------------------------------------------------------
+@import "block/block";
+@import "content/node.page";
+@import "content/node.article";
