@@ -7,8 +7,6 @@ bcl:
 
 style:
   version: VERSION
-  js:
-    assets/js/oe_bootstrap_theme.script.js: {}
   css:
     theme:
       assets/css/oe_bootstrap_theme.style.css: {}
@@ -18,4 +16,4 @@ style:
 
 drupal.progress:
   js:
-    assets/js/libraries/extend/progress.js: {}
+    assets/js/progress.js: {}
