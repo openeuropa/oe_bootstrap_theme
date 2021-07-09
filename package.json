@@ -10,9 +10,9 @@
     "prepublish": "npm-run-all build:*"
   },
   "devDependencies": {
-    "@openeuropa/bcl-builder": "^0.1.3",
-    "@openeuropa/bcl-theme-default": "^0.1.3",
-    "bootstrap-ie11": "5.0.1",
+    "@openeuropa/bcl-builder": "0.2.0",
+    "@openeuropa/bcl-theme-default": "0.2.0",
+    "bootstrap-ie11": "5.0.2",
     "copyfiles": "2.4.1",
     "cross-env": "7.0.3",
     "glob": "7.1.7",
