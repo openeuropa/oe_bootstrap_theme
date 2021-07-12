@@ -1,10 +1,6 @@
-style:
-  version: VERSION
+bcl:
+  js:
+    assets/js/oe-bcl-default.bundle.min.js: {}
   css:
     theme:
-      assets/css/OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME.style.css: {}
-  js:
-    assets/js/OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME.script.js: {}
-  dependencies:
-    - core/jquery
-    - core/drupal
+      assets/css/oe-bcl-default.min.css: {}
