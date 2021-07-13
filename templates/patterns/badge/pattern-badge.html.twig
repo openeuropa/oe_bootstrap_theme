@@ -1,14 +1,12 @@
-{# Parameters:
-  - label (string) (default: '')
-  - background: (string) (default: 'primary')
-  - url (string) (default: '')
-  - title (string) (default: label)
-  - hidden_text (string) (default: '')
+{#
+/**
+ * @file
+ * Badge component.
+ */
 #}
-
 {% include '@oe-bcl/bcl-badge/badge.html.twig' with {
   'label': label,
-  'hidden_text': hidden_text,
+  'assistive_text': assistive_text,
   'url': url,
   'rounded_pill': rounded_pill,
   'background': variant,

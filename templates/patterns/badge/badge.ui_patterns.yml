@@ -26,9 +26,9 @@ badge:
       label: Label
       description: The badge label
       preview: New
-    hidden_text:
+    assistive_text:
       type: text
-      label: Hidden text
+      label: Assistive text
       description: Additional text hidden with the .visually-hidden class.
       preview: ''
     url:
