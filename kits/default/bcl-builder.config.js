@@ -20,32 +20,17 @@ module.exports = {
   ],
   copy: [
     {
-      from: [
-        path.resolve(
-          nodeModules,
-          "@openeuropa/bcl-theme-default/css/**"
-        ),
-      ],
+      from: ["node_modules/@openeuropa/bcl-theme-default/css/**"],
       to: path.resolve(outputFolder, "assets/css"),
       options: { up: true },
     },
     {
-      from: [
-        path.resolve(
-          nodeModules,
-          "@openeuropa/bcl-theme-default/js/**"
-        ),
-      ],
+      from: ["node_modules/@openeuropa/bcl-theme-default/js/**"],
       to: path.resolve(outputFolder, "assets/js"),
       options: { up: true },
     },
     {
-      from: [
-        path.resolve(
-          nodeModules,
-          "@openeuropa/bcl-theme-default/icons/bootstrap-icons.svg"
-        ),
-      ],
+      from: ["node_modules/@openeuropa/bcl-theme-default/icons/bootstrap-icons.svg"],
       to: path.resolve(outputFolder, "assets/icons"),
       options: { up: true },
     },
