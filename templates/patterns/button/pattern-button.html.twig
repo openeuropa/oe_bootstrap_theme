@@ -1,18 +1,22 @@
-{% set baseClass = outline ? 'btn-outline-' : 'btn-' %}
-{% set attributes = attributes.addClass([
-  'btn',
-  style ? baseClass ~ style,
-  size ? 'btn-' ~ size,
-  block ? 'btn-block',
-  disabled ? 'disabled'
-  ]) %}
-
-{% if url or attributes.href %}
-  {% set url = url ?: attributes.href %} 
-  <a{{ attributes.setAttribute('href', url) }}>{{ label }}</a>
-{% else %}
-  {% if disabled %}
-    {% set attributes = attributes.setAttribute('disabled', true) %}
-  {% endif %}
-  <button type="button"{{ attributes }}>{{ label }}</button>
-{% endif %}
+{#
+/**
+ * @file
+ * Badge component.
+ */
+#}
+{% include '@oe-bcl/bcl-button/button.html.twig' with {
+  'label': label,
+  'variant': variant,
+  'size': size,
+  'type': type,
+  'outline': outline,
+  'disabled': disabled,
+  'text_nowrap': text_nowrap,
+  'assistive_text': assistive_text,
+  'id': id,
+  'icon': icon,
+  'icon_position': icon_position,
+  'clean_class': clean_class,
+  'spinner': spinner,
+  'show_spinner': show_spinner
+} %}
