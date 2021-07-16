@@ -1,0 +1,46 @@
+progress:
+  label: "Progress"
+  description: "Indicate the progress as a bar. https://getbootstrap.com/docs/5.0/components/progress/"
+  settings:
+    variant:
+      type: "select"
+      label: "Bar style"
+      options:
+        primary: "primary"
+        secondary: "secondary"
+        success: "success"
+        danger: "danger"
+        warning: "warning"
+        info: "info"
+        light: "light"
+        dark: "dark"
+      preview: "danger"
+    striped:
+      type: "boolean"
+      label: "Striped style of state"
+      preview: false
+    animated:
+      type: "boolean"
+      label: "Animation on striped style of state"
+      preview: false
+    small:
+      type: "boolean"
+      label: "Small spinner"
+      preview: false
+  fields:
+    label:
+      type: "text"
+      label: "Label in the bar"
+      preview: "Progress 50"
+    progress:
+      type: "text"
+      label: "State of progress in the bar"
+      preview: "50"
+    min:
+      type: "text"
+      label: "Minimum state of prorgress bar"
+      preview: "0"
+    max:
+      type: "text"
+      label: "Maximum state of prorgress bar"
+      preview: "100"
