@@ -6,18 +6,22 @@
  * Note that the core Batch API uses this only for non-JavaScript batch jobs.
  *
  * Available variables:
- * - label: The label of the working task.
- * - percent: The percentage of the progress.
- * - message: A string containing information to be displayed.
+ * - progress: Percentage of progress in the bar.
+ * - min: Minimum state of prorgress bar.
+ * - max: Maximum state of prorgress bar.
+ * - striped: Striped style of state.
+ * - animated: Animation on striped style of state.
+ * - label: Label in the bar.
+ * - variant: Bar style.
  */
 #}
 
-<div data-drupal-progress>
-  {% if label %}
-    <label class="progress-bar-label">{{ label }}</label>
-  {% endif %}
-  <div class="progress">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{ percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent }}%">{{ percent }}%</div>
-  </div>
-  <small class="form-text text-muted progress-bar-message">{{ message }}</small>
-</div>
+{{ pattern('progress', {
+  'progress': progress,
+  'min': min,
+  'max': max,
+  'striped': striped,
+  'animated': animated,
+  'label': label,
+  'variant': variant,
+}) }}

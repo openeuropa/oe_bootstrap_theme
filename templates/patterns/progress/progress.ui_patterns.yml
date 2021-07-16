@@ -34,7 +34,7 @@ progress:
       preview: "Progress 50"
     progress:
       type: "text"
-      label: "State of progress in the bar"
+      label: "Percentage of progress in the bar"
       preview: "50"
     min:
       type: "text"
