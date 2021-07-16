@@ -6,22 +6,17 @@
  * Note that the core Batch API uses this only for non-JavaScript batch jobs.
  *
  * Available variables:
- * - progress: Percentage of progress in the bar.
- * - min: Minimum state of prorgress bar.
- * - max: Maximum state of prorgress bar.
- * - striped: Striped style of state.
- * - animated: Animation on striped style of state.
- * - label: Label in the bar.
- * - variant: Bar style.
+ * - label: Text before progress bar.
+ * - percent: Percentage of progress in the bar.
+ * - message: Text under progress bar.
  */
 #}
 
 {{ pattern('progress', {
-  'progress': progress,
-  'min': min,
-  'max': max,
-  'striped': striped,
-  'animated': animated,
+  'progress': percent,
+  'striped': true,
+  'animated': true,
   'label': label,
-  'variant': variant,
+  'variant': 'primary',
+  'message': message
 }) }}
