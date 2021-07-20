@@ -1,57 +1,70 @@
 dropdown:
-  label: Dropdown
-  description: Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. https://v5.getbootstrap.com/docs/5.0/components/dropdowns/
-  trigger:
-    label: Dropdown Toggle
-    path: "#"
-  link: link
+  label: "Dropdown"
+  description: "Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. https://v5.getbootstrap.com/docs/5.0/components/dropdowns/"
   settings:
+    link:
+      type: boolean
+      label: link
+      description: Treat as a link
+      preview: false
     direction:
       type: select
       label: Direction
       options:
-        dropup: dropup
-        dropend: dropend
-        dropstart: dropstart
+        dropup: "dropup"
+        dropend: "dropend"
+        dropstart: "dropstart"
     alignment:
       type: select
       label: Alignment
       options:
-        dropdown-menu-end: dropdown-menu-end
-        dropdown-menu-sm-end: dropdown-menu-sm-end
-        dropdown-menu-md-end: dropdown-menu-md-end
-        dropdown-menu-lg-end: dropdown-menu-lg-end
-        dropdown-menu-xl-end: dropdown-menu-xl-end
-        dropdown-menu-xxl-end: dropdown-menu-xxl-end
-        dropdown-menu-start: dropdown-menu-start
-        dropdown-menu-sm-start: dropdown-menu-sm-start
-        dropdown-menu-md-start: dropdown-menu-md-start
-        dropdown-menu-lg-start: dropdown-menu-lg-start
-        dropdown-menu-xl-start: dropdown-menu-xl-start
-        dropdown-menu-xxl-start: dropdown-menu-xxl-start
+        dropdown-menu-end: "dropdown-menu-end"
+        dropdown-menu-sm-end: "dropdown-menu-sm-end"
+        dropdown-menu-md-end: "dropdown-menu-md-end"
+        dropdown-menu-lg-end: "dropdown-menu-lg-end"
+        dropdown-menu-xl-end: "dropdown-menu-xl-end"
+        dropdown-menu-xxl-end: "dropdown-menu-xxl-end"
+        dropdown-menu-start: "dropdown-menu-start"
+        dropdown-menu-sm-start: "dropdown-menu-sm-start"
+        dropdown-menu-md-start: "dropdown-menu-md-start"
+        dropdown-menu-lg-start: "dropdown-menu-lg-start"
+        dropdown-menu-xl-start: "dropdown-menu-xl-start"
+        dropdown-menu-xxl-start: "dropdown-menu-xxl-start"
     dark:
-      type: "boolean"
-      label: "Dark mode"
+      type: boolean
+      label: Dark mode
+      description: Set dark mode
       preview: false
-      description: "Set dark mode (Default: false)"
     remove_wrapper:
-      type: "boolean"
-      label: "Remove wrapper"
+      type: boolean
+      label: Remove wrapper
+      description: Remove wrapper for this component
       preview: false
-      description: "Remove wrapper for this component (Default: false)"
-  id : ''
+    id:
+      type: textfield
+      label: Button id
+      preview: ''
   fields:
-    items:
-      type: "array"
-      label: "Accordion items"
-      description: "List of Dropdown items"
+    trigger:
+      type: object
+      label: "Dropdown toggle"
+      description: "Object of Button or Link component"
       preview:
-        - type: link
-          label: "Lorem ipsum"
-          url: "http://example.com"
-        - type: link
-          label: "Nulla vitae"
-          url: "http://example.com"
-        - type: link
-          label: "Nulla vitae dolor"
-          url: "http://example.com"
+        label: "Dropdown toggle"
+        path: "#"
+    dropdown_items:
+      type: array
+      label: "dropdown items"
+      description: "Array of dropdown items"
+      preview:
+        - label: "I'm a link"
+          path: "#"
+        - label: "I'm a button"
+          button: true
+        - divider: true
+        - label: "I'm a disabled button"
+          button: true
+          disabled: true
+        - label: "I'm a active button"
+          button: true
+          active: true
