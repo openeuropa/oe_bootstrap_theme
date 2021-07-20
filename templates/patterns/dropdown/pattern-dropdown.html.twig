@@ -1,29 +1,45 @@
-{% set attributes = attributes.addClass([
-  'dropdown',
-  direction ? direction
-  ]) %}
+{# Parameters:
+  - id (string) (default: '')
+  - trigger (object of Button or Link component)
+  - link (boolean) (default: false)
+  - direction (string) (default: '')
+    - options ['dropup', 'dropend', 'dropstart']
+  - alignment (string) (default: '')
+    - options [
+      'dropdown-menu-end',
+      'dropdown-menu-sm-end',
+      'dropdown-menu-md-end',
+      'dropdown-menu-lg-end',
+      'dropdown-menu-xl-end',
+      'dropdown-menu-xxl-end',
+      'dropdown-menu-start',
+      'dropdown-menu-sm-start',
+      'dropdown-menu-md-start',
+      'dropdown-menu-lg-start',
+      'dropdown-menu-xl-start',
+      'dropdown-menu-xxl-start'
+    ]
+  - dark (boolean) (default: false)
+  - remove_wrapper (boolean) (default: false)
+  - items (array of objects)
+    format: [
+      {
+        - Link or Button object component
+        - active (boolean)
+        - divider (bolean) - show divider
+        - button (boolean) - set to button
+      }
+    ]
+#}
 
-<div{{ attributes }}>
-  {% block button %}
-    {{ pattern('button', {
-      label: label,
-      style: style,
-      outline: outline,
-      size: size,
-      disabled: disabled,
-      attributes: create_attribute({
-        'class': 'dropdown-toggle',
-        'data-bs-toggle': 'dropdown',
-        'data-boundary': 'window',
-        'aria-expanded': 'false'
-      })
-    }) }}
-  {% endblock %}
-  {% block menu %}
-    <ul class="dropdown-menu">
-      {% for item in items %}
-        <li>{{ item }}</li>
-      {% endfor %}
-    </ul>
-  {% endblock %}
-</div>
+{% include '@oe-bcl/bcl-dropdown/dropdown.html.twig' with {
+  'label': label,
+  'trigger': trigger,
+  'link': link,
+  'direction': direction,
+  'alignment': alignment,
+  'dark': dark,
+  'remove_wrapper': remove_wrapper,
+  'id': id,
+  'items': items
+} %}
