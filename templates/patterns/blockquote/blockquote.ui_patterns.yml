@@ -2,34 +2,27 @@ blockquote:
   label: "Blockquote"
   description: "For quoting blocks of content from another source within your document. https://v5.getbootstrap.com/docs/5.0/content/typography/#blockquotes"
   settings:
-    align:
+    alignment:
       type: select
-      label: Text alignement
+      label: "Text alignment (default: left)"
       options:
         left: left
         center: center
-        right: right
+        end: end
       preview: left
   fields:
-    content:
+    quote:
       type: "render"
       label: "Content"
       description: "The quote"
-      preview:
-        - type: html_tag
-          tag: p
-          value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
-    footer:
+      preview: "A well-known quote, contained in a blockquote element."
+    attribution:
       type: "render"
-      label: "Footer"
-      description: "For identifying the source. Wrap the name of the source work in <cite>."
-      preview:
-        - type: html_tag
-          tag: span
-          value: "Someone famous in "
-        - type: html_tag
-          tag: cite
-          value: "Source Title"
-          attributes:
-            title:
-              - "Source Title"
+      label: "Attribution"
+      description: "To identify the quote author."
+      preview: "Someone famous in "
+    cite:
+      type: "render"
+      label: "Cite"
+      description: "To identify the quote source. Wrapped in a <cite> html tag."
+      preview: "Source value"

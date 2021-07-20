@@ -1,12 +1,15 @@
-{% set attributes = attributes.addClass([
-  align ? 'text-' ~ align
-  ]) %}
+{# Parameters:
+  - quote (string) (default: '')
+  - attribution (string) (default: '')
+  - cite (string) (default: '')
+  - alignment (string) (default: 'left')
+    - options ["left", "center", "end"]
+#}
 
-<figure{{ attributes }}>
-  <blockquote class="blockquote">
-    {{ content }}
-  </blockquote>
-  {% if footer %}
-    <figcaption class="blockquote-footer">{{ footer }}</figcaption>
-  {% endif %}
-</figure>
+{% include '@oe-bcl/bcl-blockquote/blockquote.html.twig' with {
+  'quote': quote,
+  'attribution': attribution,
+  'cite': cite,
+  'direction': direction,
+  'alignment': alignment,
+} %}
