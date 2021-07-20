@@ -7,7 +7,8 @@
     "build": "npm-run-all build:*",
     "build:styles": "cross-env bcl-builder styles",
     "build:copy": "cross-env bcl-builder copy",
-    "prepublishOnly": "npm-run-all build:*"
+    "prepublishOnly": "npm-run-all build:*",
+    "production": "npm-run-all build:*"
   },
   "devDependencies": {
     "@openeuropa/bcl-builder": "0.4.0",
