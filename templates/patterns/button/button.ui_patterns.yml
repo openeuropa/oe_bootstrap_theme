@@ -2,7 +2,7 @@ button:
   label: Button
   description: For actions in forms, dialogs, and more with support for multiple sizes, states, and more. https://v5.getbootstrap.com/docs/5.0/components/buttons/
   settings:
-    variant:
+    style:
       type: select
       label: Button style
       options:
