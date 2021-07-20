@@ -42,7 +42,7 @@ dropdown:
       preview: false
     id:
       type: textfield
-      label: Button id
+      label: Dropdown id
       preview: ''
   fields:
     trigger:
