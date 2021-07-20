@@ -1,53 +1,84 @@
 carousel:
   label: "Carousel"
   description: "A slideshow component for cycling through elements, like a carousel. https://v5.getbootstrap.com/docs/5.0/components/carousel/"
-  variants:
-    default:
-      label: Default
-    fade:
-      label: Crossfade
-      description: Animate slides with a fade transition instead of a slide.
   settings:
+    autoplay:
+      type: boolean
+      label: "Autoplay?"
+      description: "Autoplay the carousel on load (default: true)."
+      preview: true
+    autoinit:
+      type: boolean
+      label: "Autoinit?"
+      description: "Autoinit the carousel on load (default: true)."
+      preview: true
+    dark:
+      type: boolean
+      label: "Dark"
+      description: "Dark variant (default: false)."
+      preview: false
+    active_item:
+      type: select
+      label: "Active item."
+      description: "The active item on load (default: 1)."
+      options:
+        1: "1"
+        2: "2"
+        3: "3"
+      preview: 1
+    fade:
+      type: boolean
+      label: "Fade"
+      description: "With fade (default: false)."
+      preview: false
     with_controls:
       type: boolean
-      label: "With controls?"
-      description: "Adding in the previous and next controls"
+      label: "With controls"
+      description: "With controls (default: false)."
       preview: true
+    previous_label:
+      type: select
+      label: "Previous label"
+      description: "The previous label value."
+      options:
+        1: "Previous"
+        2: "Previous slide"
+      preview: 1
+    next_label:
+      type: select
+      label: "Next label"
+      description: "The next label value."
+      options:
+        1: "Next"
+        2: "Next slide"
+      preview: 1
     with_indicators:
       type: boolean
-      label: "With indicators?"
-      description: "You can also add the indicators to the carousel, alongside the controls, too."
+      label: "With indicators"
+      description: "With indicators (default: false)."
       preview: true
+  id: ''
   fields:
-    slides:
-      type: render
+    items:
+      type: "array"
       label: "Slides"
       description: "Each slide is a collection of title, subtitle and slide image."
       preview:
-        -
-          - theme: "image"
-            uri: "https://images.unsplash.com/photo-1533282960533-51328aa49826?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1140&h=385&q=80"
-          - type: html_tag
-            tag: h5
-            value: "First slide label"
-          - type: html_tag
-            tag: p
-            value: "Nulla vitae elit libero, a pharetra augue mollis interdum."
-        -
-          - theme: "image"
-            uri: "https://images.unsplash.com/photo-1442033025416-c6a7da752d71?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1140&h=385&q=80"
-          - type: html_tag
-            tag: h5
-            value: "Second slide label"
-          - type: html_tag
-            tag: p
-            value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        -
-          - theme: "image"
-            uri: "https://images.unsplash.com/photo-1550331976-0b9cc48c4d78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1140&h=385&q=80"
-          - type: html_tag
-            tag: h5
-            value: "Third slide label"
-          - type: html_tag
-            tag: p
-            value: "Praesent commodo cursus magna, vel scelerisque nisl consectetur."
+        - image:
+            src: "https://images.unsplash.com/photo-1533282960533-51328aa49826?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1140&h=385&q=80"
+            alt: "Alt text"
+          caption: "First slide caption"
+          caption_classes: 'h3 '
+          interval: 0
+        - image:
+            src: "https://images.unsplash.com/photo-1550331976-0b9cc48c4d78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1140&h=385&q=80"
+            alt: "Alt text"
+          caption: "Second slide caption"
+          caption_classes: 'h3'
+          interval: 0
+        - image:
+            src: "https://images.unsplash.com/photo-1442033025416-c6a7da752d71?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1140&h=385&q=80"
+            alt: "Alt text"
+          caption: "Third slide caption"
+          caption_classes: 'h3'
+          interval: 0
