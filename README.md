@@ -45,7 +45,19 @@ It will also perform token substitution in development configuration files such 
 ./vendor/bin/run drupal:site-install
 ```
 
-The development site web root should be available in the `build` directory.
+Your test site will be available at `./build`.
+
+**Please note:** project files and directories are symlinked within the test site by using the
+[OpenEuropa Task Runner's Drupal project symlink](https://github.com/openeuropa/task-runner-drupal-project-symlink) command.
+
+If you add a new file or directory in the root of the project, you need to re-run `drupal:site-setup` in order to make
+sure they are be correctly symlinked.
+
+If you don't want to re-run a full site setup for that, you can simply run:
+
+```
+$ ./vendor/bin/run drupal:symlink-project
+```
 
 ### Using Docker Compose
 

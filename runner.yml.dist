@@ -37,7 +37,7 @@ selenium:
 
 commands:
   drupal:site-setup:
-    - { task: "symlink", from: "../../..", to: "${drupal.root}/themes/custom/oe_bootstrap_theme" }
+    - { task: "run", command: "drupal:symlink-project" }
     - { task: "run", command: "drupal:drush-setup" }
     - { task: "run", command: "drupal:settings-setup" }
     # Generate settings.testing.php, it will be used when running functional tests.
