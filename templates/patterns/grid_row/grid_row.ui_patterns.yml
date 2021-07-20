@@ -105,12 +105,6 @@ grid_row:
           fields:
             title: "Card example"
             text: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."
-            body:
-              - type: "pattern"
-                id: "button"
-                style: "primary"
-                fields:
-                  label: "Go somewhere"
         - type: pattern
           id: card
           fields:
@@ -121,12 +115,6 @@ grid_row:
           fields:
             title: "Card example"
             text: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."
-            body:
-              - type: "pattern"
-                id: "button"
-                style: "primary"
-                fields:
-                  label: "Go somewhere"
         - type: pattern
           id: card
           fields:

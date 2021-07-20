@@ -33,10 +33,4 @@ jumbotron:
         - type: html_tag
           tag: p
           value: "It uses utility classes for typography and spacing to space content out within the larger container."
-        - type: "pattern"
-          id: "button"
-          style: "primary"
-          size: "lg"
-          fields:
-            label: "Learn more"
-            url: "#"
+

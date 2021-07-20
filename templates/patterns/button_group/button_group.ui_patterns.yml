@@ -23,19 +23,3 @@ button_group:
       type: render
       label: Buttons
       description: An array of 'button' patterns. Or an array of arrays of 'button' patterns, if 'toolbar'variant.
-      preview:
-        - type: "pattern"
-          id: "button"
-          style: "primary"
-          fields:
-            label: "First"
-        - type: "pattern"
-          id: "button"
-          style: "primary"
-          fields:
-            label: "Second"
-        - type: "pattern"
-          id: "button"
-          style: "primary"
-          fields:
-            label: "Third"

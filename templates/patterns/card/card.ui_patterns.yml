@@ -63,12 +63,6 @@ card:
       type: "render"
       label: "Body"
       description: "Card body."
-      preview:
-        - type: "pattern"
-          id: "button"
-          style: "primary"
-          fields:
-            label: "Go somewhere"
     footer:
       type: "render"
       label: "Footer"
