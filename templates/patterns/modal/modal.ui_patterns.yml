@@ -5,79 +5,46 @@ modal:
     btn_style:
       type: select
       label: Button style
-      options:
-        primary: primary
-        secondary: secondary
-        success: success
-        danger: danger
-        warning: warning
-        info: info
-        light: light
-        dark: dark
-        link: link
       preview: primary
-    btn_outline:
-      type: boolean
-      label: Button outline
-    btn_size:
-      type: select
-      label: Button size
-      options:
-        sm: medium
-        lg: large
-      preview: lg
-    modal_size:
+    size:
       type: select
       label: Modal size
       options:
-        sm: small
-        lg: large
-        xl: extra large
-    fullscreen:
-      type: select
-      label: Fullscreen size
-      options:
-        always: always
-        sm: below 576px
-        md: below 768px
-        lg: below 992px
-        xl: below 1200px
-    static_backdrop: 
-      type: boolean
-      label: Static backdrop
-      description: When backdrop is set to static, the modal will not close when clicking outside it.
-    vertically_centered: 
-      type: boolean
-      label: Vertically centered
-      description: Vertically center the modal.
-      preview: true
-    scrollable: 
-      type: boolean
-      label: Scrollable
-      description: When modals become too long for the user’s viewport or device, they scroll independent of the page itself.
-      preview: true
+        sm: sm
+        lg: lg
+        xl: xl
+        fullscreen: fullscreen
+      preview: lg
+  id : ''
   fields:
-    label:
+    btn_label:
       type: text
-      label: label
-      description: The toggle button label
-      preview: Open modal
-    title:
+      label: Btn label
+      description: The copy for the button to trigger the modal.
+      preview: "Open the modal"
+    btn_target:
       type: text
-      label: Title
-      preview: My Modal Title
-    closelabel:
+      label: Btn target
+      description: The id to trigger the modal.
+      preview: "#defaultModalId"
+    header:
       type: text
-      label: close label
-      description: The close button label
-      preview: Close
-    content:
+      label: Header
+      description: Modal header
+      preview: "My Modal header"
+    body:
       type: render
-      label: Content
-      description: "Modal Content"
+      label: Body
+      description: "Modal body content"
       preview:
         - type: html_tag
           tag: p
           value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-
-
+    footer:
+      type: render
+      label: Footer
+      description: "Modal footer"
+      preview:
+        - type: html_tag
+          tag: p
+          value: "Modal footer content"
