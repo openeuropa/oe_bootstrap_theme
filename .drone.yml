@@ -61,6 +61,8 @@ pipeline:
       # @link https://webgate.ec.europa.eu/CITnet/jira/browse/OPENEUROPA-1234
       - composer update --prefer-lowest --prefer-stable --ansi --no-suggest --no-progress
     when:
+      event:
+        exclude: tag
       matrix:
         COMPOSER_BOUNDARY: lowest
 
@@ -68,24 +70,36 @@ pipeline:
     image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
     commands:
       - ./vendor/bin/run drupal:site-install
+    when:
+      event:
+        exclude: tag
 
   grumphp:
     group: test
     image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
     commands:
       - ./vendor/bin/grumphp run
+    when:
+      event:
+        exclude: tag
 
   phpunit:
     group: test
     image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
     commands:
       - ./vendor/bin/phpunit
+    when:
+      event:
+        exclude: tag
 
   behat:
     group: test
     image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
     commands:
       - ./vendor/bin/behat --strict
+    when:
+      event:
+        exclude: tag
 
   debug:
     image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
