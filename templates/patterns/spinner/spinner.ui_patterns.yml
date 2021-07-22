@@ -8,7 +8,7 @@ spinner:
       options:
         border: "border"
         grow: "grow"
-      preview: "grow"
+      preview: "border"
     variant:
       type: "select"
       label: "Spinner color"
