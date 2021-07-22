@@ -1,6 +1,6 @@
 modal:
-  label: Modal
-  description: Use Bootstrap’s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content. https://v5.getbootstrap.com/docs/5.0/components/modal/
+  label: "Modal"
+  description: "Use Bootstrap’s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content. https://v5.getbootstrap.com/docs/5.0/components/modal/"
   settings:
     btn_style:
       type: select
@@ -10,31 +10,29 @@ modal:
       type: select
       label: Modal size
       options:
-        sm: sm
-        lg: lg
-        xl: xl
-        fullscreen: fullscreen
+        sm: "sm"
+        lg: "lg"
+        xl: "xl"
+        fullscreen: "fullscreen"
       preview: lg
-  id : ''
+    id:
+      type: textfield
+      label: "Modal id"
+      preview: ''
   fields:
     btn_label:
       type: text
-      label: Btn label
-      description: The copy for the button to trigger the modal.
+      label: "Button label"
+      description: "The button text to trigger the modal."
       preview: "Open the modal"
-    btn_target:
-      type: text
-      label: Btn target
-      description: The id to trigger the modal.
-      preview: "#defaultModalId"
     header:
       type: text
-      label: Header
-      description: Modal header
+      label: "Header"
+      description: "Modal header"
       preview: "My Modal header"
     body:
       type: render
-      label: Body
+      label: "Body"
       description: "Modal body content"
       preview:
         - type: html_tag
@@ -42,7 +40,7 @@ modal:
           value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     footer:
       type: render
-      label: Footer
+      label: "Footer"
       description: "Modal footer"
       preview:
         - type: html_tag

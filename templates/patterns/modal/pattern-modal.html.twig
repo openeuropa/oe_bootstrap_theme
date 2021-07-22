@@ -1,9 +1,8 @@
-{# Parameters:
-  - size (sm, lg, xl, fullscreen)
-  - id
-  - header (block)
-  - body (block)
-  - footer (block)
+{#
+/**
+ * @file
+ * Modal component.
+ */
 #}
 
 {% block trigger %}
@@ -14,7 +13,7 @@
     size: btn_size,
     attributes: create_attribute({
       'data-bs-toggle': 'modal',
-      'data-bs-target': btn_target
+      'data-bs-target': '#' ~ id
     })
   }) }}
 {% endblock %}
