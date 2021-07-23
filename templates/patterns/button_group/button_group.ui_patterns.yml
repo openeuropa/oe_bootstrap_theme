@@ -6,7 +6,7 @@ button_group:
       type: "boolean"
       label: "Toolbar"
       description: "Used in the case of a combination of sets of button-groups into more complex components called toolbars."
-      preview: false
+      preview: true
     vertical:
       type: "boolean"
       label: "Vertical"
@@ -36,12 +36,10 @@ button_group:
       label: "Buttons"
       description: "An array of 'button' patterns. Or an array of arrays of 'button' patterns, if 'toolbar' variant."
       preview:
-        - 
-          label: "Primary"
-        - 
-          label: "Secondary"
-          variant: "secondary"
-        - 
-          label: "Outline disabled"
-          disabled: true
-          outline: true
+        -
+          - label: "Primary"
+          - label: "Secondary"
+            variant: "secondary"
+          - label: "Outline disabled"
+            disabled: true
+            outline: true
