@@ -1,20 +1,31 @@
 {% set id = 'collapse-' ~ random(1000) %}
-<p>
+{% set attributes =  create_attribute({
+  'data-bs-toggle': 'collapse',
+  'autocomplete': 'off',
+  'aria-expanded': 'false',
+  'aria-controls': id,
+}) %}
+{% if link %}
+  <a{{attributes
+      .setAttribute('role', 'button')
+      .setAttribute('href', '#' ~ id)
+    }}
+  >
+    {{- label -}}
+  </a>
+{% else %}
   {{ pattern('button', {
     label: label,
-    style: style,
+    variant: variant,
     outline: outline,
-    url: '#' ~ id,
     size: size,
-    attributes: create_attribute({
-      'data-bs-toggle': 'collapse',
-      'role': 'button',
-      'aria-expanded': 'false',
-      'aria-controls': id
-    })
+    attributes: attributes
+      .setAttribute('type', 'button')
+      .setAttribute('data-bs-target', '#' ~ id),
   }) }}
-</p>
-<div class="collapse" id="{{id}}">
+{% endif %}
+
+<div class="collapse mt-3" id="{{id}}">
   <div class="card card-body">
     {{content}}
   </div>
