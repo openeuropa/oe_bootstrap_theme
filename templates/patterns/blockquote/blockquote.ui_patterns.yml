@@ -8,7 +8,7 @@ blockquote:
       options:
         left: left
         center: center
-        right: right
+        end: end
       preview: left
   fields:
     content:
@@ -18,18 +18,17 @@ blockquote:
       preview:
         - type: html_tag
           tag: p
-          value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
-    footer:
+          value: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit."
+    attribution:
       type: "render"
-      label: "Footer"
-      description: "For identifying the source. Wrap the name of the source work in <cite>."
+      label: "Attribution"
+      description: "The name of the quoted person or entity."
       preview:
         - type: html_tag
           tag: span
-          value: "Someone famous in "
-        - type: html_tag
-          tag: cite
-          value: "Source Title"
-          attributes:
-            title:
-              - "Source Title"
+          value: "Cicero in "
+    cite:
+      type: "render"
+      label: "Citation"
+      description: "The creative work in which the referenced quote was published. Optional."
+      preview: "de Finibus Bonorum et Malorum"

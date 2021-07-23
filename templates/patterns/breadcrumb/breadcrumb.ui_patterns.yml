@@ -6,8 +6,10 @@ breadcrumb:
       type: render
       label: Items
       preview:
-        - text: Home
-          url: "#"
-        - text: Library
-          url: "#"
-        - text: Data
+        - label: Home
+          path: "#home"
+          id: "#hom"
+        - label: Library
+          path: "#library"
+          id: "#lib"
+        - label: Data

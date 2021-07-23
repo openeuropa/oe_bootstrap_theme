@@ -1,12 +1,12 @@
-{% set attributes = attributes.addClass([
-  align ? 'text-' ~ align
-  ]) %}
-
-<figure{{ attributes }}>
-  <blockquote class="blockquote">
-    {{ content }}
-  </blockquote>
-  {% if footer %}
-    <figcaption class="blockquote-footer">{{ footer }}</figcaption>
-  {% endif %}
-</figure>
+{#
+/**
+ * @file
+ * Blockquote.
+ */
+#}
+{% include '@oe-bcl/bcl-blockquote/blockquote.html.twig' with {
+  'quote': content,
+  'attribution': attribution,
+  'cite': cite,
+  'alignment': align
+} %}

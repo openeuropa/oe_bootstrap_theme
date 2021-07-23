@@ -1,25 +1,47 @@
 button_group:
-  label: Button Group
+  label: "Button Group"
   description: "Group a series of buttons together on a single line with the button group, and super-power them with JavaScript. https://v5.getbootstrap.com/docs/5.0/components/button-group/"
   settings:
+    toolbar:
+      type: "boolean"
+      label: "Toolbar"
+      description: "Used in the case of a combination of sets of button-groups into more complex components called toolbars."
+      preview: false
     vertical:
-      type: boolean
-      label: Vertical
-      description: Make a set of buttons appear vertically stacked rather than horizontally.
+      type: "boolean"
+      label: "Vertical"
+      description: "Make a set of buttons appear vertically stacked rather than horizontally."
+      preview: false
     size:
-      type: select
-      label: Button group size
+      type: "select"
+      label: "Button group size"
       options:
-        sm: small
-        lg: large
-      preview: lg
+        sm: "small"
+        md: "medium"
+        lg: "large"
+      preview: "md"
   fields:
-    label:
-      type: text
-      label: Role
-      description: The group label. Visually hidden. Used with assistive technologies.
-      preview: Basic example
-    buttons:
-      type: render
-      label: Buttons
-      description: An array of 'button' patterns. Or an array of arrays of 'button' patterns, if 'toolbar'variant.
+    toolbar_aria_label: 
+      type: "text"
+      label: "Role"
+      description: "The upper group label. Visually hidden. Used with assistive technologies."
+      preview: "Toolbar basic example"
+    aria_label:
+      type: "text"
+      label: "Role"
+      description: "The group label. Visually hidden. Used with assistive technologies."
+      preview: "Basic example"
+    items:
+      type: "array"
+      label: "Buttons"
+      description: "An array of 'button' patterns. Or an array of arrays of 'button' patterns, if 'toolbar' variant."
+      preview:
+        - 
+          label: "Primary"
+        - 
+          label: "Secondary"
+          variant: "secondary"
+        - 
+          label: "Outline disabled"
+          disabled: true
+          outline: true
