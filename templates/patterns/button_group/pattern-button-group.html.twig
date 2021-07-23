@@ -5,5 +5,10 @@
  */
 #}
 {% include '@oe-bcl/bcl-button-group/button-group.html.twig' with {
+  'toolbar': toolbar,
+  'vertical': vertical,
+  'size': size,
+  'toolbar_aria_label': toolbar_aria_label,
+  'aria_label': aria_label,
   'items': [items]
-} %}
+} only %}
