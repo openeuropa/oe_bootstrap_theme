@@ -5,14 +5,15 @@
   'aria-expanded': 'false',
   'aria-controls': id,
 }) %}
+
 {% if link %}
-  <a{{attributes
+  {{ pattern('link', {
+    label: label,
+    variant: variant,
+    path: '#' ~ id,
+    attributes: attributes
       .setAttribute('role', 'button')
-      .setAttribute('href', '#' ~ id)
-    }}
-  >
-    {{- label -}}
-  </a>
+  }) }}
 {% else %}
   {{ pattern('button', {
     label: label,
