@@ -9,6 +9,15 @@
  * @ingroup themeable
  */
 #}
+{% set _breadcrumb_links = {} %}
+{% for breadcrumb_item in breadcrumb %}
+  {% set _links = {
+    'label' : breadcrumb_item.text,
+    'path' : breadcrumb_item.url
+  } %}
+  {% set _breadcrumb_links = _breadcrumb_links|merge([_links]) %}
+{% endfor %}
+
 {% if breadcrumb %}
   {{ pattern('breadcrumb', {
     'items': breadcrumb

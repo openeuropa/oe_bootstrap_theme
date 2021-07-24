@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * offcanvas.
+ */
+#}
+{% include '@oe-bcl/bcl-offcanvas/offcanvas.html.twig' with {
+  'title': title,
+  'placement': placement,
+  'id': offcanvas_id,
+  'body': body,
+  'with_body_scroll': with_body_scroll,
+  'with_backdrop': with_backdrop,
+} %}
+{% if with_trigger %}
+  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offcanvas_id }}" aria-controls="{{ offcanvas_id }}">
+    Toggle offcanvas
+  </button>
+{% endif %}

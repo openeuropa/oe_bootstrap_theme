@@ -8,7 +8,7 @@ breadcrumb:
       preview:
         - label: Home
           path: "#home"
-          id: "#hom"
+          id: "#home"
         - label: Library
           path: "#library"
           id: "#lib"
