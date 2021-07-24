@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Tooltip component.
+ */
+#}
+{% set attributes =  create_attribute({
+  'title': title,
+  'data-bs-original-title': title,
+  'data-bs-toggle': 'tooltip',
+  'autocomplete': 'off',
+}) %}
+
+{% if placement is defined %}
+  {% set attributes = attributes.setAttribute('data-bs-placement', placement) %}
+{% endif %}
+
+{% if link %}
+  {{ pattern('link', {
+    label: label,
+    variant: variant,
+    path: '#' ~ id,
+    attributes: attributes
+      .setAttribute('role', 'button')
+  }) }}
+{% else %}
+  {{ pattern('button', {
+    label: label,
+    variant: variant,
+    outline: outline,
+    size: size,
+    attributes: attributes
+      .setAttribute('type', 'button')
+  }) }}
+{% endif %}
+
