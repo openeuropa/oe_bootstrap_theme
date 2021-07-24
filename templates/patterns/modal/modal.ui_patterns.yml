@@ -29,7 +29,19 @@ modal:
       type: text
       label: "Header"
       description: "Modal header"
-      preview: "My Modal header"
+      preview: 
+        - type: html_tag
+          tag: h5
+          attributes:
+            class: "modal-title"
+            id: "exampleModalLabel"
+          value: "Modal title"
+        - type: html_tag
+          tag: button
+          attributes:
+            class: "btn-close"
+            data-bs-dismiss: "modal"
+            aria-label: "Close"
     body:
       type: render
       label: "Body"
@@ -44,5 +56,13 @@ modal:
       description: "Modal footer"
       preview:
         - type: html_tag
-          tag: p
-          value: "Modal footer content"
+          tag: button
+          attributes:
+            class: "btn btn-secondary"
+            data-bs-dismiss: "modal"
+          value: "Close"
+        - type: html_tag
+          tag: button
+          attributes:
+            class: "btn btn-primary"
+          value: "Save changes"
