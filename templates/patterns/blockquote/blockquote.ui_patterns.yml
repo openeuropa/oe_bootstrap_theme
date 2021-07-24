@@ -2,16 +2,16 @@ blockquote:
   label: "Blockquote"
   description: "For quoting blocks of content from another source within your document. https://v5.getbootstrap.com/docs/5.0/content/typography/#blockquotes"
   settings:
-    align:
+    alignment:
       type: select
-      label: Text alignement
+      label: "Text alignment (default: left)"
       options:
         left: left
         center: center
         end: end
       preview: left
   fields:
-    content:
+    quote:
       type: "render"
       label: "Content"
       description: "The quote"

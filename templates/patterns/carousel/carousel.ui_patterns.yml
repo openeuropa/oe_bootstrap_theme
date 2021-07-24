@@ -9,13 +9,29 @@ carousel:
       preview: true
     with_controls:
       type: boolean
-      label: "With controls?"
-      description: "Adding in the previous and next controls"
+      label: "With controls"
+      description: "With controls (default: false)."
       preview: true
+    previous_label:
+      type: select
+      label: "Previous label"
+      description: "The previous label value."
+      options:
+        1: "Previous"
+        2: "Previous slide"
+      preview: 1
+    next_label:
+      type: select
+      label: "Next label"
+      description: "The next label value."
+      options:
+        1: "Next"
+        2: "Next slide"
+      preview: 1
     with_indicators:
       type: boolean
-      label: "With indicators?"
-      description: "You can also add the indicators to the carousel, alongside the controls, too."
+      label: "With indicators"
+      description: "With indicators (default: false)."
       preview: true
     autoplay:
       type: boolean
@@ -54,3 +70,4 @@ carousel:
               alt: "alt image 2"
               attributes:
                 class: d-block w-100
+
