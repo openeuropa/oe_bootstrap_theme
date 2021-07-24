@@ -1,12 +1,12 @@
-{% if variant != '' and variant|lower != 'default' %}
-  {% set attributes = attributes.addClass('list-group-' ~ variant|lower|replace({'_': '-'})) %}
-{% endif %}
-
-<ul{{ attributes.addClass('list-group') }}>
-  {% for item in items %}
-    {% set item_attributes = create_attribute({'class': ['list-group-item']}) %}
-    {% set item_attributes = item['#active'] ? item_attributes.addClass('active') : item_attributes %}
-    {% set item_attributes = item['#disabled'] ? item_attributes.addClass('disabled') : item_attributes %}
-    <li{{ item_attributes }}>{{ item }}</li>
-  {% endfor %}
-</ul>
+{#
+/**
+ * @file
+ * List group component.
+ */
+#}
+{% include '@oe-bcl/bcl-list-group/list-group.html.twig' with {
+  'flush': flush,
+  'horizontal': horizontal,
+  'type': type,
+  'items': items,
+} %}
