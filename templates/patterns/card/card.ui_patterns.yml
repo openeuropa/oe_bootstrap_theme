@@ -32,15 +32,6 @@ card:
       options:
         dark: dark
         white: white
-    image_position:
-      type: select
-      label: "Image position"
-      description: "Only for vertical card"
-      options:
-        top: Top (Default)
-        bottom: Bottom
-        background: background
-      preview: top
     horizontal:
       type: boolean
       label: "Horizontal"
@@ -69,13 +60,13 @@ card:
         content: "Text card with longer text which is supported"
         classes: "mb-2"
     image:
-      type: "render"
+      type: "array"
       label: "Image"
-      description: "Card image"
+      description: "Card image [path, alt, position]"
       preview:
-        - theme: "image"
-          uri: "https://placeimg.com/1000/500/arch"
-          alt: "Alternative text for card image"
+        path: "https://placeimg.com/1000/500/arch"
+        alt: "Alternative text for card image"
+        position: "top"
     content:
       type: "render"
       label: "Content"
