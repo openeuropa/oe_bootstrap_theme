@@ -7,7 +7,7 @@
     "build": "npm-run-all build:*",
     "build:styles": "cross-env bcl-builder styles",
     "build:copy": "cross-env bcl-builder copy",
-    "watch:styles": "chokidar \"./resources/sass/**/*.scss\" -i \"/node_modules/\" -c \"stylelint {path} & npm run build:styles\"",
+    "watch:styles": "chokidar \"./resources/sass/**/*.scss\" -i \"/node_modules/\" -c \"npm run build:styles\"",
     "watch": "npm-run-all --parallel watch:* -ln",
     "postinstall": "npm-run-all build:*",
     "production": "npm-run-all build:*"
