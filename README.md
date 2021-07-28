@@ -72,8 +72,6 @@ If you don't want to re-run a full site setup for that, you can simply run:
 $ ./vendor/bin/run drupal:symlink-project
 ```
 
-*Important:* The [components](https://www.drupal.org/project/component) module needs to be enabled to allow the use of the BCL library with the `@oe-bcl` namespace.
-
 ### Using Docker Compose
 
 Alternatively, you can build a development site using [Docker](https://www.docker.com/get-docker) and
@@ -121,10 +119,7 @@ docker-compose exec web composer install
 docker-compose exec web ./vendor/bin/run drupal:site-install
 ```
 
-Using default configuration, the development site files should be available in the `build` directory and the development site
-should be available at: [http://127.0.0.1:8080/build](http://127.0.0.1:8080/build).
-
-*Important:* The [components](https://www.drupal.org/project/component) module needs to be enabled to allow the use of the BCL library with the `@oe_bcl` namespace.
+Using default configuration, the development site files should be available in the `build` directory and the development site should be available at: [http://127.0.0.1:8080/build](http://127.0.0.1:8080/build).
 
 #### Running the tests
 
@@ -145,6 +140,13 @@ To run the behat tests:
 ```bash
 docker-compose exec web ./vendor/bin/behat
 ```
+
+## sub-theme
+
+All the necessary files for sub-theme creation can be found in the `kits` folder, 
+read the related [documentation](kits/README.md)
+
+*Important:* The [components](https://www.drupal.org/project/component) module needs to be enabled to allow the use of the BCL library with the `@oe_bcl` namespace.
 
 ## Contributing
 

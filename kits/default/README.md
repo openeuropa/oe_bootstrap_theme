@@ -16,3 +16,6 @@ Run the following command to compile Sass and watch for changes: `npm run watch`
 
 *Important:* `style` and `copy` tasks are defined in the bcl-builder config file. You can change or improve them based on your needs. [bcl-builder.config.js](bcl-builder.config.js)
 
+## Overriding inherited templates
+Add template file with the same name in your sub-theme folder to have it override the template from the parent theme.
+[layout](layout), [overrides](overrides), [paragraphs](paragraphs), [patterns](patterns) folders are there for this purpose.
