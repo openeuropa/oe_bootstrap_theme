@@ -26,7 +26,6 @@ services:
   selenium:
     # Newer Selenium Chrome images are not supported at the moment by behat/mink-selenium2-driver.
     image: registry.fpfis.eu/fpfis/selenium:standalone-chrome-3.141.59-oxygen
-    shm_size: 2g
     environment:
       - DISPLAY=:99
       - SE_OPTS=-debug
@@ -57,9 +56,7 @@ pipeline:
     volumes:
       - /cache:/cache
     commands:
-      # @todo remove "composer install" step once the following issue is fixed.
-      # @link https://webgate.ec.europa.eu/CITnet/jira/browse/OPENEUROPA-1234
-      - composer update --prefer-lowest --prefer-stable --ansi --no-suggest --no-progress
+      - composer update --prefer-lowest --ansi --no-suggest --no-progress
     when:
       event:
         exclude: tag
