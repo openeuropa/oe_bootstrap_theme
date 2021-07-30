@@ -37,7 +37,7 @@ services:
 pipeline:
   npm-build:
     group: prepare
-    image: registry.fpfis.eu/fpfis/node:12.21.0
+    image: node:14.17.3
     commands:
       - npm install --unsafe-perm
       - NODE_ENV=production npm run production
