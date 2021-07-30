@@ -9,7 +9,7 @@ style:
   version: VERSION
   css:
     theme:
-      assets/css/oe_bootstrap_theme.style.css: {}
+      assets/css/oe_bootstrap_theme.style.min.css: {}
   dependencies:
     - core/jquery
     - core/drupal
