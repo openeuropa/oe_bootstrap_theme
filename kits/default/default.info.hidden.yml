@@ -2,7 +2,7 @@ name: OE_BOOTSTRAP_THEME_SUBTHEME_NAME
 description: OE_BOOTSTRAP_THEME_SUBTHEME_DESCRIPTION
 screenshot: screenshot.png
 type: theme
-base theme: oe_bootstrap_theme
+base theme: OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME
 core_version_requirement: ^8.9 || ^9.1
 
 stylesheets-remove:
@@ -12,6 +12,7 @@ stylesheets-remove:
 
 libraries:
   - OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME/bcl
+  - OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME/custom_styles
 
 libraries-override:
   oe_bootstrap_theme/bcl: false

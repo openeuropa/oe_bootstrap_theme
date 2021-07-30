@@ -4,3 +4,9 @@ bcl:
   css:
     theme:
       assets/css/oe-bcl-default.min.css: {}
+
+custom_style:
+  version: VERSION
+  css:
+    theme:
+      assets/css/OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME.style.min.css: {}
