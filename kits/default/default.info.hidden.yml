@@ -15,6 +15,11 @@ libraries:
   - OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME/custom_styles
 
 libraries-override:
+  system/admin:
+    css:
+      theme:
+        css/system.admin.css: false
+  oe_bootstrap_theme/bcl: false
   oe_bootstrap_theme/bcl: false
 
 ckeditor_stylesheets:
