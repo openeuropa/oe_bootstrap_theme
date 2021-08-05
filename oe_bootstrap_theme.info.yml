@@ -5,16 +5,15 @@ type: theme
 base theme: false
 core_version_requirement: ^8.9 || ^9.1
 
-stylesheets-remove:
-  - system.theme.css
-  - system.menus.css
-  - system.admin.css
-
 libraries:
   - oe_bootstrap_theme/bcl
   - oe_bootstrap_theme/style
 
 libraries-override:
+  system/admin:
+    css:
+      theme:
+        css/system.admin.css: false
   seven/global-styling: false
 
 libraries-extend:

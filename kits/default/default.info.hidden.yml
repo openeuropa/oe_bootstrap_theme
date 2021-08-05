@@ -5,11 +5,6 @@ type: theme
 base theme: OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME
 core_version_requirement: ^8.9 || ^9.1
 
-stylesheets-remove:
-  - system.theme.css
-  - system.menus.css
-  - system.admin.css
-
 libraries:
   - OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME/bcl
   - OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME/custom_styles
