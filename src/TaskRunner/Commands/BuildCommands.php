@@ -49,7 +49,7 @@ class BuildCommands extends AbstractCommands {
     // If node_modules dir doesn't exist, run 'npm ci'.
     // See https://stackoverflow.com/questions/52499617/what-is-the-difference-between-npm-install-and-npm-ci
     if (!is_dir($npmDir . '/node_modules')) {
-      $stack->exec('npm ci');
+      $stack->exec('npm install');
     }
 
     $stack->exec('npm run ' . $npmCommand);
