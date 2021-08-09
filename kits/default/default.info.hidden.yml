@@ -2,23 +2,17 @@ name: OE_BOOTSTRAP_THEME_SUBTHEME_NAME
 description: OE_BOOTSTRAP_THEME_SUBTHEME_DESCRIPTION
 screenshot: screenshot.png
 type: theme
-base theme: OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME
+base theme: oe_bootstrap_theme
 core_version_requirement: ^8.9 || ^9.1
 
 libraries:
-  - OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME/bcl
-  - OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME/custom_styles
+  - OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME/style
 
 libraries-override:
   system/admin:
     css:
       theme:
         css/system.admin.css: false
-  oe_bootstrap_theme/bcl: false
-  oe_bootstrap_theme/bcl: false
-
-ckeditor_stylesheets:
-  - assets/css/oe-bcl-default.min.css
 
 regions:
   navbar_branding: Navbar branding
