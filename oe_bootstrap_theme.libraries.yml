@@ -1,14 +1,19 @@
-style:
-  version: VERSION
+bcl:
   js:
-    assets/js/oe_bootstrap_theme.script.js: {}
+    assets/js/oe-bcl-default.bundle.min.js: {}
   css:
     theme:
-      assets/css/oe_bootstrap_theme.style.css: {}
+      assets/css/oe-bcl-default.min.css: {}
+
+style:
+  version: VERSION
+  css:
+    theme:
+      assets/css/oe_bootstrap_theme.style.min.css: {}
   dependencies:
     - core/jquery
     - core/drupal
 
 drupal.progress:
   js:
-    assets/js/libraries/extend/progress.js: {}
+    assets/js/progress.js: {}

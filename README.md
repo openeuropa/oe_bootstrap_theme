@@ -28,10 +28,23 @@ In order to enable the theme in your project perform the following steps:
 
 You can build the development site by running the following steps:
 
-* Install the NPM and Composer dependencies:
+To install required Node.js dependencies run:
 
 ```bash
 npm install
+```
+
+To build the final artifacts run:
+
+```bash
+npm run build
+```
+
+This will compile all SASS and JavaScript files into self-contained assets that are exposed as [Drupal libraries][11].
+
+In order to download all required PHP code run:
+
+```bash
 composer install
 ```
 
@@ -100,12 +113,13 @@ docker-compose up -d
 Then:
 
 ```bash
+docker-compose exec -u node node npm install
+docker-compose exec -u node node npm run build
 docker-compose exec web composer install
 docker-compose exec web ./vendor/bin/run drupal:site-install
 ```
 
-Using default configuration, the development site files should be available in the `build` directory and the development site
-should be available at: [http://127.0.0.1:8080/build](http://127.0.0.1:8080/build).
+Using default configuration, the development site files should be available in the `build` directory and the development site should be available at: [http://127.0.0.1:8080/build](http://127.0.0.1:8080/build).
 
 #### Running the tests
 
@@ -126,6 +140,13 @@ To run the behat tests:
 ```bash
 docker-compose exec web ./vendor/bin/behat
 ```
+
+## sub-theme
+
+All the necessary files for sub-theme creation can be found in the `kits` folder, 
+read the related [documentation](kits/README.md)
+
+*Important:* The [components](https://www.drupal.org/project/component) module needs to be enabled to allow the use of the BCL library with the `@oe_bcl` namespace.
 
 ## Contributing
 

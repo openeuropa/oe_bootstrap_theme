@@ -12,10 +12,10 @@ If you prefer to use [Yarn](https://yarnpkg.com) instead of npm, install Yarn by
 Go to the root of OE_BOOTSTRAP_THEME_SUBTHEME_NAME theme and run the following commands: `npm install` or `yarn install`.
 
 #### Step 3
-Update `baseTheme` variable in **webpack.mix.json** file to inherit some sass and javascript files needed from the base theme. A relative path to the base theme must be specified.
-
-#### Step 4
-Update `proxy` variable in **webpack.mix.json** file for live CSS Reload & Browser Syncing during watch task.
-
-#### Step 5
 Run the following command to compile Sass and watch for changes: `npm run watch` or `yarn watch`.
+
+*Important:* `style` and `copy` tasks are defined in the bcl-builder config file. You can change or improve them based on your needs. [bcl-builder.config.js](bcl-builder.config.js)
+
+## Overriding inherited templates
+Add template file with the same name in your sub-theme folder to have it override the template from the parent theme.
+[layout](layout), [overrides](overrides), [paragraphs](paragraphs), [patterns](patterns) folders are there for this purpose.

@@ -1,28 +1,23 @@
 {
   "name": "OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME",
+  "version": "1.0.0",
   "description": "OE_BOOTSTRAP_THEME_SUBTHEME_DESCRIPTION",
   "private": true,
   "scripts": {
-    "postinstall": "find node_modules/ -name '*.info' -type f -delete",
-    "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "build": "npm-run-all build:*",
+    "build:styles": "cross-env bcl-builder styles",
+    "build:copy": "cross-env bcl-builder copy",
+    "watch:styles": "chokidar \"./resources/sass/**/*.scss\" -i \"/node_modules/\" -c \"npm run build:styles\"",
+    "watch": "npm-run-all --parallel watch:* -ln",
+    "postinstall": "npm-run-all build:*",
+    "production": "npm-run-all build:*"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.7.2",
-    "bootstrap": "5.0.0-alpha2",
-    "bootstrap-ie11": "^5.0.0-alpha2",
-    "browser-sync": "^2.26.12",
-    "browser-sync-webpack-plugin": "^2.0.1",
-    "cross-env": "^5.1",
-    "css-loader": "^2.1.1",
-    "import-glob-loader": "^1.1.0",
-    "laravel-mix": "^5.0.5",
-    "laravel-mix-glob": "^1.1.4",
-    "popper.js": "1.16.1-lts",
-    "sass": "^1.26.10",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.12"
+    "@openeuropa/bcl-builder": "0.4.0",
+    "chokidar-cli": "^3.0.0",
+    "copyfiles": "2.4.1",
+    "cross-env": "7.0.3",
+    "glob": "7.1.7",
+    "npm-run-all": "4.1.5"
   }
 }
