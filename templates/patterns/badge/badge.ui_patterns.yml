@@ -20,6 +20,10 @@ badge:
       type: boolean
       label: Pill badge. Optional
       description: Make badge more rounded.
+    dismissible:
+      type: boolean
+      label: Dismissible badge. Optional
+      description: Add a close icon at the end of the badge.
   fields:
     label:
       type: text
@@ -36,3 +40,6 @@ badge:
       label: URL
       description: The badge URL. Optional.
       preview: ""
+    icons_path:
+      type: "text"
+      label: "Path to the svg sprite file for close icon"

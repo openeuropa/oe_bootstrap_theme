@@ -39,3 +39,12 @@ offcanvas:
       type: "render"
       label: "Offcanvas body content"
       preview: "This is the offcanvas body content."
+    extra_classes_body:
+      type: "text"
+      label: "Extra classes for offcanvas body"
+    extra_classes_header:
+      type: "text"
+      label: "Extra classes for offcanvas header"
+    extra_classes_close:
+      type: "text"
+      label: "Extra classes for offcanvas close button"
