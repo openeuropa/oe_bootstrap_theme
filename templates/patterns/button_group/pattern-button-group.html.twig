@@ -1,11 +1,14 @@
-{% set baseClass = 'btn-group' %}
-{% set attributes = attributes.addClass([
-  vertical ? baseClass ~ '-vertical' : baseClass,
-  size ? baseClass ~ '-' ~ size
-  ]) %}
-
-<div{{ attributes.setAttribute('role', 'group').setAttribute('aria-label', label) }}>
-  {% for button in buttons %}
-    {{ button }}
-  {% endfor %}
-</div>
+{#
+/**
+ * @file
+ * Button-group.
+ */
+#}
+{% include '@oe-bcl/bcl-button-group/button-group.html.twig' with {
+  'toolbar': toolbar,
+  'vertical': vertical,
+  'size': size,
+  'toolbar_aria_label': toolbar_aria_label,
+  'aria_label': aria_label,
+  'items': items
+} %}
