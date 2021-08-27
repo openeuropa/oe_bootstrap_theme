@@ -1,0 +1,101 @@
+card_layout:
+  label: "Card layout"
+  description: "In addition to styling the content within cards, Bootstrap includes a few options for laying out series of cards. https://v5.getbootstrap.com/docs/5.0/components/card/#grid-cards"
+  settings:
+    type:
+      type: select
+      label: Card layout type
+      options:
+        group: group
+        grid: grid
+        masonry: masonry
+      preview: grid
+    grid_columns:
+      type: select
+      label: Card layout columns number
+      options:
+        1: 1
+        2: 2
+        3: 3
+      preview: 1
+    responsiveness:
+      type: select
+      label: Card layout type
+      options:
+        sm: sm
+        md: md
+        lg: lg
+        xl: xl
+        xxl: xxl
+      preview: md
+    responsive_colums:
+      type: select
+      label: Card layout type
+      options:
+        1: 1
+        2: 2
+        3: 3
+      preview: 3
+    gutter:
+      type: select
+      label: Card layout type
+      options:
+        1: 1
+        2: 2
+        3: 3
+        4: 4
+        5: 5
+      preview: 3
+    equal_height:
+      type: boolean
+      label: "Equal height"
+      description: "Cards with equal height?"
+      preview: false
+  fields:
+    items:
+      type: "array"
+      label: "Card items"
+      description: "An array of card items"
+      preview:
+        - title:
+            content: "Title card"
+            tag: "h5"
+          subtitle:
+            content: "Subtitle card"
+            classes: "mb-2"
+          text:
+            content: "Text card with longer text which is supported"
+            classes: "mb-2"
+          image:
+            path: "https://placeimg.com/1000/500/arch"
+            alt: "Alternative text for card image"
+            position: "top"
+          content: "<button class='btn btn-primary'>Custom action</button>"
+        - title:
+            content: "Title card"
+            tag: "h5"
+          subtitle:
+            content: "Subtitle card"
+            classes: "mb-2"
+          text:
+            content: "Text card with longer text which is supported"
+            classes: "mb-2"
+          image:
+            path: "https://placeimg.com/1000/500/arch"
+            alt: "Alternative text for card image"
+            position: "top"
+          content: "<button class='btn btn-primary'>Custom action</button>"
+        - title:
+            content: "Title card"
+            tag: "h5"
+          subtitle:
+            content: "Subtitle card"
+            classes: "mb-2"
+          text:
+            content: "Text card with longer text which is supported"
+            classes: "mb-2"
+          image:
+            path: "https://placeimg.com/1000/500/arch"
+            alt: "Alternative text for card image"
+            position: "top"
+          content: "<button class='btn btn-primary'>Custom action</button>"
