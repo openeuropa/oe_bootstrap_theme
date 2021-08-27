@@ -70,8 +70,10 @@ function oe_bootstrap_theme_preprocess_pattern_dropdown__variant_custom__preview
  * Convert URL string to object.
  */
 function _oe_bootstrap_theme_preprocess_pattern_dropdown_preview(&$variables) {
-  foreach ($variables['items'] as &$item) {
-    $item['#url'] = Url::fromUri($item['#url']);
+  foreach ($variables['dropdown_items'] as &$item) {
+    if (isset($item['#url'])) {
+      $item['#url'] = Url::fromUri($item['#url']);
+    }
   }
 }
 
