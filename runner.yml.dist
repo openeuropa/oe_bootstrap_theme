@@ -28,6 +28,7 @@ drupal:
         - "node_modules"
         - "bower_components"
         - "vendor"
+        - "bcl"
         - "${drupal.root}"
 
 commands:
