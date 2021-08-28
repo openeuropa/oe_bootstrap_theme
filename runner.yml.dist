@@ -18,9 +18,9 @@ drupal:
     - "./vendor/bin/drush theme:enable oe_bootstrap_theme -y"
     - "./vendor/bin/drush theme:enable claro -y"
     - "./vendor/bin/drush cset system.theme default --value=oe_bootstrap_theme -y"
-    - "./vendor/bin/drush config-set system.theme admin claro -y"
-    - "./vendor/bin/drush config-set node.settings use_admin_theme 1 -y"
-    - "./vendor/bin/drush config-set system.logging error_level verbose -y"
+    - "./vendor/bin/drush config-set system.theme admin --value=claro -y"
+    - "./vendor/bin/drush config-set node.settings use_admin_theme --value=1 -y"
+    - "./vendor/bin/drush config-set system.logging error_level --value=verbose -y"
     - "./vendor/bin/drush cr"
   settings:
     settings:
