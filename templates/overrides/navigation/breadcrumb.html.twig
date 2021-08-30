@@ -18,8 +18,8 @@
   {% set _breadcrumb_links = _breadcrumb_links|merge([_links]) %}
 {% endfor %}
 
-{% if breadcrumb %}
+{% if _breadcrumb_links %}
   {{ pattern('breadcrumb', {
-    'items': breadcrumb
+    'items': _breadcrumb_links
   }) }}
 {% endif %}
