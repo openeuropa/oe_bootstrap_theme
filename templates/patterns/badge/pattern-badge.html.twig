@@ -1,13 +1,17 @@
-{% set attributes = attributes.addClass([
-  'badge',
-  pill == 'pill' ? 'rounded-pill',
-  style ? 'bg-' ~ style,
-  text_dark ? 'text-dark'
-  ]) %}
+{#
+/**
+ * @file
+ * Badge component.
+ */
+#}
 
-{% if url or attributes.href %}
-  {% set url = url ?: attributes.href %}
-  <a {{ attributes.setAttribute('href', url) }}>{{ label }}</a>
-{% else %}
-  <span {{ attributes }}>{{ label }}</span>
-{% endif %}
+{% include '@oe-bcl/bcl-badge/badge.html.twig' with {
+  'label': label,
+  'assistive_text': assistive_text,
+  'url': url,
+  'rounded_pill': rounded_pill,
+  'background': variant,
+  'icons_path': icons_path,
+  'dismissible': dismissible,
+  'animated_dismiss': animated_dismiss
+} %}

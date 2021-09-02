@@ -2,7 +2,7 @@ badge:
   label: Badge
   description: A small count and labeling component. Badges scale to match the size of the immediate parent element by using relative font sizing and em units. https://v5.getbootstrap.com/docs/5.0/components/badge/
   settings:
-    style:
+    variant:
       type: select
       label: Badge style
       options:
@@ -16,22 +16,30 @@ badge:
         dark: dark
         link: link
       preview: primary
-    text_dark:
-      type: boolean
-      label: Text dark. Optional
-      description: Make text more darker.
-    pill:
+    rounded_pill:
       type: boolean
       label: Pill badge. Optional
       description: Make badge more rounded.
+    dismissible:
+      type: boolean
+      label: Dismissible badge. Optional
+      description: Add a close icon at the end of the badge.
   fields:
     label:
       type: text
       label: Label
       description: The badge label
       preview: New
+    assistive_text:
+      type: text
+      label: Assistive text
+      description: Additional text hidden with the .visually-hidden class.
+      preview: ''
     url:
       type: text
       label: URL
       description: The badge URL. Optional.
       preview: ""
+    icons_path:
+      type: "text"
+      label: "Path to the svg sprite file for close icon"
