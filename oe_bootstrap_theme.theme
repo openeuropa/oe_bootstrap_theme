@@ -12,3 +12,10 @@ foreach (glob($includes_path) as $filename) {
   // phpcs:ignore QualityAssurance.Functions.DrupalWrappers.FoundWithAlternative
   require_once __DIR__ . '/includes/' . basename($filename);
 }
+
+/**
+ * Implements hook_preprocess().
+ */
+function oe_bootstrap_theme_preprocess(&$variables) {
+  $variables['bcl_icon_path'] = base_path() . drupal_get_path('theme', 'oe_bootstrap_theme') . '/assets/icons/bootstrap-icons.svg';
+}

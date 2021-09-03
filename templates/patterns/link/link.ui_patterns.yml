@@ -1,0 +1,50 @@
+link:
+  label: Link
+  description: Link component 
+  settings:
+    variant:
+      type: select
+      label: Button style
+      options:
+        primary: primary
+        secondary: secondary
+        success: success
+        danger: danger
+        warning: warning
+        info: info
+        light: light
+        dark: dark
+        link: link
+      preview: primary
+    disabled:
+      type: boolean
+      label: Disabled
+    icon_position:
+      type: select
+      label: Icon position
+      options:
+        before: before
+        after: after
+    id:
+      type: textfield
+      label: Button id
+      preview: ''
+  fields:
+    label:
+      type: text
+      label: Label
+      description: The button label
+      preview: Submit
+    path:
+      type: text
+      label: URL
+      description: The button URL. Optional.
+      preview: http://example.com
+    icon:
+      type: array
+      label: icon
+      description: The button Icon. Optional.
+      preview:
+        name: arrow-right
+        size: s
+        transformation: rotate-0

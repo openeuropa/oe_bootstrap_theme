@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Link component.
+ */
+#}
+{% if icon %}
+  {% set _icon = icon|merge({
+      path: bcl_icon_path
+    })
+  %}
+{% endif %}
+{% include '@oe-bcl/bcl-link/link.html.twig' with {
+  'label': label,
+  'path': path,
+  'variant': variant,
+  'disabled': disabled,
+  'id': id,
+  'icon': _icon,
+  'icon_position': icon_position,
+} %}
