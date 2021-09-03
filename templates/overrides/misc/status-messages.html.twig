@@ -32,10 +32,9 @@
 
     {% for message in messages %}
       {{ pattern('alert', {
-        'style': style,
+        'variant': style,
         'message': message,
-        'dismissible': true,
-        'attributes': attributes
+        'dismissible': true
       }) }}
     {% endfor %}
 

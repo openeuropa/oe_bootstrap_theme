@@ -1,19 +1,13 @@
-{% set attributes = attributes.addClass([
-  style ? 'alert-' ~ style
-  ]) %}
-
-{% if dismissible %}
-  {% set attributes = attributes.addClass(['alert-dismissible', 'fade', 'show']) %}
-{% endif %}
-
-<div{{ attributes.addClass('alert').setAttribute('role', alert) }}>
-  {% if heading %}
-    <h4 class="alert-heading">{{ heading }}</h4>
-  {% endif %}
-  {{ message }}
-  {% if dismissible %}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  {% endif %}
-</div>
-
-
+{#
+/**
+ * @file
+ * Alert component.
+ */
+#}
+{% include '@oe-bcl/bcl-alert/alert.html.twig' with {
+  'heading': heading,
+  'message': message,
+  'variant': variant,
+  'dismissible': dismissible,
+  'animated_dismiss': animated_dismiss
+} %}
