@@ -46,7 +46,7 @@ module.exports = {
     },
     {
       from: ["node_modules/@openeuropa/bcl-theme-default/templates/**/*.twig"],
-      to: path.resolve(outputFolder, "templates/bcl"),
+      to: path.resolve(outputFolder, "assets/bcl"),
       options: { up: 4 },
     },
   ],

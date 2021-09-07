@@ -22,7 +22,7 @@ libraries-extend:
 
 components:
   namespaces:
-    oe-bcl: templates/bcl
+    oe-bcl: assets/bcl
 
 regions:
   navbar_branding: Navbar branding
