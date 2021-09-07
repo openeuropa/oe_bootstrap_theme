@@ -1,6 +1,17 @@
 accordion:
   label: "Accordion"
   description: "List of items that can be clicked to hide or reveal additional content."
+  settings:
+    flush: 
+      type: boolean
+      label: "Flush"
+      description: "set Flush to remove the default background-color, some borders, and some rounded corners to render accordions edge-to-edge with their parent container."
+      preview: false
+    open_item_id: 
+      type: number
+      label: "Open item id"
+      description: "Id of the default item to open, starting from 1"
+      preview: 1
   fields:
     items:
       type: "array"
@@ -8,6 +19,6 @@ accordion:
       description: "List of accordion items"
       preview:
         - title: "Jobs, Growth, Investment and Competitiveness with an additional quite long string"
-          body: "Bullfights. Bull hockey. Do you like this? The bull is stabbed, prodded, beaten. The bull is wounded. The bull is tired before the matador ever steps into the ring. Now, is that victory? Of course it is. Wanna know the secret to winning? Creative sportsmanship. In other words, one has to rig the game."
+          content: "Bullfights. Bull hockey. Do you like this? The bull is stabbed, prodded, beaten. The bull is wounded. The bull is tired before the matador ever steps into the ring. Now, is that victory? Of course it is. Wanna know the secret to winning? Creative sportsmanship. In other words, one has to rig the game."
         - title: "Energy Union"
-          body: "Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer."
+          content: "Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer."

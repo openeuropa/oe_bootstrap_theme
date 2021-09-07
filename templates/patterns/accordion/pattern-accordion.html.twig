@@ -4,28 +4,8 @@
  * Accordion component.
  */
 #}
-
-{% set id = 'accordion-' ~ random(1000) %}
-
-<div class="accordion" id="{{id}}">
-  {% for _item in items %}
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="heading-{{id}}-{{loop.index}}">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{id}}-{{loop.index}}" aria-expanded="true" aria-controls="collapse-{{id}}-{{loop.index}}">
-            {{_item.title}}
-          </button>
-      </h2>
-
-      {% set collapse_classes = ['collapse', 'accordion-collapse'] %}
-      {% if loop.index == 1 %}
-        {% set collapse_classes = collapse_classes|merge(['show']) %}
-      {% endif %}
-
-      <div id="collapse-{{id}}-{{loop.index}}" class="{{ collapse_classes|join(' ') }}" aria-labelledby="heading-{{id}}-{{loop.index}}" data-bs-parent="#{{id}}">
-        <div class="accordion-body">
-          {{_item.body}}
-        </div>
-      </div>
-    </div>
-  {% endfor %}
-</div>
+{% include '@oe-bcl/bcl-accordion/accordion.html.twig' with {
+  'flush': flush,
+  'items': items,
+  'open_item_id': open_item_id
+} %}

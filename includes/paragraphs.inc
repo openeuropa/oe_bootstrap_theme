@@ -34,7 +34,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_accordion(array &$variables
     $paragraph = \Drupal::service('entity.repository')->getTranslationFromContext($field_item->entity);
     $variables['items'][] = [
       'title' => $builder->viewField($paragraph->get('field_oe_text')),
-      'body' => $builder->viewField($paragraph->get('field_oe_text_long')),
+      'content' => $builder->viewField($paragraph->get('field_oe_text_long')),
     ];
   }
 }
