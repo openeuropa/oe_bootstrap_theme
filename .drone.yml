@@ -27,7 +27,7 @@ services:
 pipeline:
   npm-build:
     group: prepare
-    image: node:14.17.3
+    image: registry.fpfis.eu/fpfis/node:12.21.0
     commands:
       - npm install --unsafe-perm
       - NODE_ENV=production npm run production
@@ -87,13 +87,6 @@ pipeline:
     when:
       event:
         exclude: tag
-
-  debug:
-    image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
-    commands:
-      - ./vendor/bin/drush ws --count 500
-    when:
-      status: failure
 
   before-release:
     image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
