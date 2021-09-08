@@ -1,79 +1,88 @@
 card:
   label: "Card"
   description: "A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. https://v5.getbootstrap.com/docs/5.0/components/card"
-  variants:
-    default:
-      label: Default
-    overlay:
-      label: Image overlay
-    horizontal:
-      label: Horizontal
   settings:
-    image_position:
+    variant:
       type: select
-      label: "Image position"
-      description: "Only for default variant."
+      label: Card style
       options:
-        top: Top (Default)
-        bottom: Bottom
-      preview: top
-    heading_level:
+        primary: primary
+        secondary: secondary
+        success: success
+        danger: danger
+        warning: warning
+        info: info
+        light: light
+        dark: dark
+    border_variant:
       type: select
-      label: "Heading level"
+      label: Card border style
       options:
-        2: h2
-        3: h3
-        4: h4
-        5: h5 (Default)
-        6: h6
-      preview: 5
-    equal_height:
+        primary: primary
+        secondary: secondary
+        success: success
+        danger: danger
+        warning: warning
+        info: info
+        light: light
+        dark: dark
+    text_color:
+      type: select
+      label: Card text color
+      options:
+        dark: dark
+        white: white
+    horizontal:
       type: boolean
-      label: "Equal height"
-      description: "Same height cards in a grid?"
+      label: "Horizontal"
+      description: "Horizontal card?"
+      preview: false
   fields:
-    image:
-      type: "render"
-      label: "Image"
-      description: "Card image."
-      preview:
-        - theme: "image"
-          uri: "https://placeimg.com/1000/500/arch"
-          alt: "Alternative text for card image"
-    header:
-      type: "render"
-      label: "Header"
-      description: "Card header."
     title:
-      type: "text"
+      type: "array"
       label: "Title"
-      description: "Card title. Plain text."
-      preview: "Card title"
+      description: "Card title [content, tag, classes]"
+      preview:
+        content: "Title card"
+        tag: "h5"
     subtitle:
-      type: "text"
+      type: "array"
       label: "Subtitle"
-      description: "Card subtitle. Plain text."
-      preview: "Card subtitle"
+      description: "Card subtitle [content, tag, classes]"
+      preview:
+        content: "Subtitle card"
+        classes: "mb-2"
     text:
-      type: "text"
+      type: "array"
       label: "Text"
-      description: "Card text. Plain text."
-      preview: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."
-    body:
-      type: "render"
-      label: "Body"
-      description: "Card body."
+      description: "Card text [content, tag, classes]"
       preview:
-        - type: "pattern"
-          id: "button"
-          style: "primary"
-          fields:
-            label: "Go somewhere"
-    footer:
-      type: "render"
-      label: "Footer"
-      description: "Card footer."
+        content: "Text card with longer text which is supported"
+        classes: "mb-2"
+    image:
+      type: "array"
+      label: "Image"
+      description: "Card image [path, alt, position]"
       preview:
-        - type: html_tag
-          tag: "span"
-          value: "2 days ago"
+        path: "https://placeimg.com/1000/500/arch"
+        alt: "Alternative text for card image"
+        position: "top"
+    content:
+      type: "render"
+      label: "Content"
+      description: "Card content"
+      preview: "<button class='btn btn-primary'>Custom action</button>"
+    card_header:
+      type: "render"
+      label: "Card header"
+      description: "Card header content"
+      preview: "Header of card"
+    card_footer:
+      type: "render"
+      label: "Card footer"
+      description: "Card footer content"
+      preview: "Footer of card"
+    horizontal_grid:
+      type: "array"
+      label: "Horizontal grid"
+      description: "Horizontal grid layout [left_col, right_col, gutter]"
