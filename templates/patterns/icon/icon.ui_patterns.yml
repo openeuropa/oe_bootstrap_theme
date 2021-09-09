@@ -1,0 +1,41 @@
+icon:
+  label: "Icon"
+  description: "Icons available here: https://icons.getbootstrap.com/"
+  settings:
+    name:
+      type: "select"
+      label: "Name of icon"
+      options:
+        award: "award"
+        box-arrow-up: "box-arrow-up"
+        check: "check"
+        enevlope: "enevlope"
+        eye: "eye"
+        hand-index: "info"
+      preview: "eye"
+    size:
+      type: "select"
+      label: "Size of icon"
+      options:
+        2xs: "2xs"
+        xs: "xs"
+        s: "s"
+        m: "m"
+        l: "l"
+        xl: "xl"
+        2xl: "2xl"
+        fluid: "fluid"
+      preview: "xl"
+    transformation:
+      type: "select"
+      label: "Transformation of icon"
+      options:
+        rotate-90: "rotate-90"
+        rotate-180: "rotate-180"
+        rotate-270: "rotate-270"
+        flip-horizontal: "flip-horizontal"
+        flip-vertical: "flip-vertical"
+  fields:
+    path:
+      type: "text"
+      label: "Path to the svg sprite file"
