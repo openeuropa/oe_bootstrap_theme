@@ -5,7 +5,11 @@
  */
 #}
 {% include '@oe-bcl/bcl-offcanvas/offcanvas.html.twig' with {
-  'title': title,
+  'title': {
+      'label': title,
+      'heading': 4,
+      'extra_classes': "mb-lg-4",
+   },
   'placement': placement,
   'id': offcanvas_id,
   'body': body,
@@ -16,7 +20,7 @@
   'extra_classes_close': extra_classes_close,
 } %}
 {% if with_trigger %}
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offcanvas_id }}" aria-controls="{{ offcanvas_id }}">
+  <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offcanvas_id }}" aria-controls="{{ offcanvas_id }}">
     Toggle offcanvas
   </button>
 {% endif %}
