@@ -86,3 +86,23 @@ card:
       type: "array"
       label: "Horizontal grid"
       description: "Horizontal grid layout [left_col, right_col, gutter]"
+    extra_classes_body:
+      type: "text"
+      label: "Extra classes for card body"
+      preview: "body-class"
+    extra_classes_header:
+      type: "text"
+      label: "Extra classes for card header"
+      preview: "header-class"
+    extra_classes_footer:
+      type: "text"
+      label: "Extra classes for card footer"
+      preview: "footer-class"
+    badges:
+      type: "array"
+      label: "Badges for the card"
+      preview:
+        - label: "Primary badge"
+        - label: "Secondary badge"
+          assistive_text: "Assistive text for secondary badge"
+          rounded_pill: true
