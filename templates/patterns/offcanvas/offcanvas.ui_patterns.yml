@@ -1,0 +1,50 @@
+offcanvas:
+  label: "Offcanvas"
+  description: "Hidden sidebar with activation. https://getbootstrap.com/docs/5.0/components/offcanvas/"
+  settings:
+    placement:
+      type: "select"
+      label: "Placement of offcanvas"
+      options:
+        start: "start"
+        end: "end"
+        top: "top"
+        bottom: "bottom"
+      preview: "start"
+    with_body_scroll:
+      type: "boolean"
+      label: "Enable body scroll when offcanvas is activated"
+      preview: false
+    with_backdrop:
+      type: "boolean"
+      label: "Disable backdrop behind offcanvas"
+      preview: true
+    with_trigger:
+      type: "boolean"
+      label: "Enable a button trigger for offcanvas"
+      preview: true
+  fields:
+    title:
+      type: render
+      label: "Title of offcanvas"
+      preview:
+        label: Offcanvas title
+        id: "1"
+        heading: "2"
+    offcanvas_id:
+      type: "text"
+      label: "Offcanvas id"
+      preview: offcanvasExample
+    body:
+      type: "render"
+      label: "Offcanvas body content"
+      preview: "This is the offcanvas body content."
+    extra_classes_body:
+      type: "text"
+      label: "Extra classes for offcanvas body"
+    extra_classes_header:
+      type: "text"
+      label: "Extra classes for offcanvas header"
+    extra_classes_close:
+      type: "text"
+      label: "Extra classes for offcanvas close button"
