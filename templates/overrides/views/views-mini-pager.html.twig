@@ -9,10 +9,10 @@
   {% set next = items.next ? {'label':  items.next.text, 'path': items.next.href } : {} %}
   {% set pages = {} %}
   {% set pages = pages|merge([{ 'label': items.current, 'disabled': true }]) %}
-  {% include '@oe-bcl/bcl-pagination/pagination.html.twig' with {
+  {{ pattern('pagination', {
     items: pages,
     alignment: 'center',
     prev: previous,
     next: next,
-  } %}
+  }) }}
 {% endif %}

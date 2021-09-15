@@ -15,10 +15,10 @@
     {% endif %}
     {% set pages = pages|merge([values]) %}
   {% endfor %}
-  {% include '@oe-bcl/bcl-pagination/pagination.html.twig' with {
+  {{ pattern('pagination', {
     items: pages,
     alignment: 'center',
     prev: previous,
     next: next,
-  } %}
+  }) }}
 {% endif %}

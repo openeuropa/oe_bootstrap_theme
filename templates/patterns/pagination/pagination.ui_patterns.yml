@@ -1,0 +1,44 @@
+pagination:
+  label: "Pagination"
+  description: "Pagination. https://getbootstrap.com/docs/5.0/components/pagination/"
+  fields:
+    size:
+      type: "text"
+      label: "Size"
+      preview: "sm"
+    alignment:
+      type: "text"
+      label: "Alignement"
+      preview: "center"
+    aria_label:
+      type: "text"
+      label: "Aria label"
+      preview: ""
+    enable_icon:
+      type: boolean
+      label: "Enable icon"
+      preview: false
+    prev:
+      type: "render"
+      label: "Previous link"
+      preview:
+        path: "#"
+        label: "Previous"
+    next:
+      type: "render"
+      label: "Next link"
+      preview:
+        path: "#"
+        label: "Next"
+    items:
+      type: "array"
+      label: "Pagination items"
+      preview:
+        - path: "#"
+          label: "1"
+          active: true
+        - path: "#"
+          label: "2"
+    extra_classes:
+      type: "text"
+      label: "Extra classes"

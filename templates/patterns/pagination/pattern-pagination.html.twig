@@ -1,0 +1,17 @@
+{#
+{#
+/**
+ * @file
+ * Pagination.
+ */
+#}
+{% include '@oe-bcl/bcl-pagination/pagination.html.twig' with {
+  size: size,
+  alignment: alignment,
+  aria_label: aria_label,
+  enable_icon: enable_icon,
+  prev: prev,
+  next: next,
+  items: items,
+  extra_classes: extra_classes
+} %}
