@@ -48,3 +48,6 @@ offcanvas:
     extra_classes_close:
       type: "text"
       label: "Extra classes for offcanvas close button"
+    toggle_button_label:
+      type: "text"
+      label: "The title for the toggle button"
