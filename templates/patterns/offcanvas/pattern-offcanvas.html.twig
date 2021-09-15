@@ -14,9 +14,10 @@
   'extra_classes_body': extra_classes_body,
   'extra_classes_header': extra_classes_header,
   'extra_classes_close': extra_classes_close,
+  'toggle_button_label': toggle_button_label,
 } %}
 {% if with_trigger %}
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offcanvas_id }}" aria-controls="{{ offcanvas_id }}">
-    Toggle offcanvas
+  <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offcanvas_id }}" aria-controls="{{ offcanvas_id }}">
+    {{ toggle_button_label ?: 'Toggle offcanvas' }}
   </button>
 {% endif %}
