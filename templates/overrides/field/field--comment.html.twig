@@ -14,9 +14,11 @@
     <div class="row">
       <div class="col-md-12">
         {{ pattern('card', {
-          'variants': 'default',
-          'header': 'Add new comment'|t,
-          'body': comment_form
+          'variant': 'default',
+          'border_variant': border_variant,
+          'card_header': 'Add new comment'|t,
+          'content': comment_form,
+          'text_color': 'dark'
         }) }}
       </div>
     </div>

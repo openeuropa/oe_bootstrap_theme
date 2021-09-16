@@ -1,13 +1,24 @@
-{% if equal_height %}
-  {% set attributes = attributes.addClass('h-100') %}
-{% endif %}
-
-<div{{ attributes.addClass('card') }}>
-  {% if image and image_position != 'bottom' %}
-    {{ image }}
-  {% endif %}
-  {{ include('@oe_bootstrap_theme/patterns/card/_card-content.html.twig') }}
-  {% if image and image_position == 'bottom' %}
-    {{ image }}
-  {% endif %}
-</div>
+{#
+/**
+ * @file
+ * Card component.
+ */
+#}
+{% include '@oe-bcl/bcl-card/card.html.twig' with {
+  'title': title,
+  'subtitle': subtitle,
+  'text': text,
+  'content': content,
+  'image': image,
+  'horizontal': horizontal,
+  'horizontal_grid': horizontal_grid,
+  'variant': variant,
+  'border_variant': border_variant,
+  'text_color': text_color,
+  'card_header': card_header,
+  'card_footer': card_footer,
+  'extra_classes_body': extra_classes_body,
+  'extra_classes_header': extra_classes_header,
+  'extra_classes_footer': extra_classes_footer,
+  'badges': badges,
+} %}
