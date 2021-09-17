@@ -15,7 +15,7 @@
   "devDependencies": {
     "@openeuropa/bcl-builder": "0.7.0",
     "@openeuropa/bcl-theme-default": "0.7.0",
-    "bootstrap-ie11": "5.0.2",
+    "bootstrap-ie11": "5.1.1",
     "chokidar-cli": "^3.0.0",
     "copyfiles": "2.4.1",
     "cross-env": "7.0.3",
