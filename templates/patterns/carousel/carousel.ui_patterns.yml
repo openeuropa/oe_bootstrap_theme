@@ -12,7 +12,7 @@ carousel:
       label: "With controls"
       description: "With controls (default: false)."
       preview: true
-    previous_label:
+    prev_label:
       type: select
       label: "Previous label"
       description: "The previous label value."
@@ -42,6 +42,11 @@ carousel:
       type: boolean
       label: "Disable autoinit"
       description: "Disable carousel autoinit on page load."
+      preview: false
+    disable_touch:
+      type: boolean
+      label: "Disable touch"
+      description: "Disable carousel swipe on touch."
       preview: false
   fields:
     active_item:
