@@ -18,7 +18,7 @@ progress:
     striped:
       type: "boolean"
       label: "Striped style of state"
-      preview: false
+      preview: true
     animated:
       type: "boolean"
       label: "Animation on striped style of state"
@@ -44,3 +44,7 @@ progress:
       type: "text"
       label: "Maximum state of prorgress bar"
       preview: "100"
+  libraries:
+    - pattern_progress:
+        js:
+          progress.js: {}
