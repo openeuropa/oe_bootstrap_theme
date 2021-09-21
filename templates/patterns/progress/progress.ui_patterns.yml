@@ -44,7 +44,3 @@ progress:
       type: "text"
       label: "Maximum state of prorgress bar"
       preview: "100"
-  libraries:
-    - pattern_progress:
-        js:
-          progress.js: {}
