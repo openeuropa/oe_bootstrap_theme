@@ -4,6 +4,9 @@
  * Popover component.
  */
 #}
+
+{% set id = 'popover-' ~ random(1000) %}
+
 {% set attributes = create_attribute({
   'data-bs-toggle': 'popover',
   'autocomplete': 'off',
@@ -26,15 +29,15 @@
     label: label,
     variant: variant,
     attributes: attributes,
-    path: '#popover',
+    path: '#' ~ id,
   }) }}
 {% else %}
-<p> Variante es: {{ variant }}</p>
   {{ pattern('button', {
     label: label,
     variant: variant,
     outline: outline,
     size: size,
-    attributes: attributes
+    attributes: attributes,
+    url: '#' ~ id,
   }) }}
 {% endif %}
