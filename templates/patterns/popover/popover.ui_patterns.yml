@@ -1,6 +1,15 @@
 popover:
   label: "Popover"
   description: "The Popover JavaScript plugin is used to show and hide content. Buttons are used as triggers that are mapped to specific elements you toggle. https://v5.getbootstrap.com/docs/5.0/components/popover/"
+  variants:
+    primary:
+      label: Button
+      description: Show popover in a button.
+    link:
+      label: Link
+      description: Show popover in a link.
+      path:
+        preview: '#popover'
   settings:
     variant:
       type: select
@@ -15,7 +24,7 @@ popover:
         light: light
         dark: dark
         link: link
-      preview: primary
+      preview: link
     outline:
       type: boolean
       label: Button outline
@@ -50,11 +59,6 @@ popover:
       label: "Content"
       description: "Popover content"
       preview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    path:
-      type: text
-      label: Path
-      description: Path provided when link is used. Optional.
-      preview: "#home"
   libraries:
     - pattern_popover:
         js:
