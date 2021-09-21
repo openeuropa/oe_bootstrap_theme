@@ -31,11 +31,11 @@ progress:
     label:
       type: "text"
       label: "Label in the bar"
-      preview: "Progress 50"
+      preview: "Progress Bar"
     progress:
       type: "text"
       label: "Percentage of progress in the bar"
-      preview: "50"
+      preview: "0"
     min:
       type: "text"
       label: "Minimum state of prorgress bar"
