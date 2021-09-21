@@ -19,9 +19,11 @@
 {% if with_trigger %}
   <button class="d-lg-none w-100 mb-4 btn btn-primary btn-md" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offcanvas_id }}" aria-controls="{{ offcanvas_id }}">
     {{ toggle_button_label ?: 'Toggle offcanvas' }}
-    {{ pattern('icon', {
-      name: 'sliders',
-      path: bcl_icon_path
-    }) }}
+    {% if icon_name %}
+      {{ pattern('icon', {
+        name: icon_name,
+        path: bcl_icon_path
+      }) }}
+    {% endif %}
   </button>
 {% endif %}

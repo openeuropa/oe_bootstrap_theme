@@ -51,3 +51,8 @@ offcanvas:
     toggle_button_label:
       type: "text"
       label: "The title for the toggle button"
+    icon_name:
+      type: "text"
+      label: icon
+      description: "The button icon name. Optional."
+      preview: "sliders"
