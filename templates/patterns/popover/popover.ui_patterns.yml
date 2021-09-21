@@ -8,8 +8,6 @@ popover:
     link:
       label: Link
       description: Show popover in a link.
-      path:
-        preview: '#popover'
   settings:
     variant:
       type: select
