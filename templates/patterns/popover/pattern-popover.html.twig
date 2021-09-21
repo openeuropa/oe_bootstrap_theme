@@ -21,10 +21,19 @@
   {% set attributes = attributes.setAttribute('data-bs-original-title', title) %}
 {% endif %}
 
-{{ pattern('button', {
-  label: label,
-  variant: variant,
-  outline: outline,
-  size: size,
-  attributes: attributes
- }) }}
+{% if path %}
+  {{ pattern('link', {
+    label: label,
+    variant: variant,
+    attributes: attributes,
+    path: path
+  }) }}
+{% else %}
+  {{ pattern('button', {
+    label: label,
+    variant: variant,
+    outline: outline,
+    size: size,
+    attributes: attributes
+  }) }}
+{% endif %}

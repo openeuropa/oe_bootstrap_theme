@@ -50,6 +50,11 @@ popover:
       label: "Content"
       description: "Popover content"
       preview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    path:
+      type: text
+      label: Path
+      description: Path provided when link is used. Optional.
+      preview: "#home"
   libraries:
     - pattern_popover:
         js:
