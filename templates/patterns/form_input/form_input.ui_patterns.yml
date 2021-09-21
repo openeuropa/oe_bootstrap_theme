@@ -1,0 +1,40 @@
+form_input:
+  label: "Form input"
+  description: "Form input. https://getbootstrap.com/docs/5.0/forms/input-group/"
+  variants:
+    default:
+      label: Text
+      description: Default input text.
+    checkbox:
+      input_type: checkbox
+      label: Checkbox
+      description: Default checkbox input.
+    file:
+      input_type: file
+      label: File
+      description: File input.
+  settings:
+    switch:
+      type: "boolean"
+      label: "Turns a checkbox into a switcher"
+      preview: FALSE
+    placeholder:
+      type: "textfield"
+      label: "Placeholder text"
+      preview: "Text here"
+    helper_text:
+      type: "textfield"
+      label: "Helper text of the form element"
+      preview: "Helper text for the form input"
+  fields:
+    size:
+      type: "text"
+      label: "Size"
+      preview: "sm"
+    readonly:
+      type: "boolean"
+      label: "Marks the form element as readonly"
+    label:
+      type: "text"
+      label: "Label of the form element"
+      preview: "Example form input"
