@@ -23,24 +23,16 @@ progress:
       type: "boolean"
       label: "Animation on striped style of state"
       preview: false
-    small:
-      type: "boolean"
-      label: "Small spinner"
-      preview: false
   fields:
     label:
       type: "text"
       label: "Label in the bar"
-      preview: "Progress Bar"
+      preview: "This is the label of progress bar"
     progress:
       type: "text"
       label: "Percentage of progress in the bar"
-      preview: "0"
-    min:
+      preview: "50"
+    bar_label:
       type: "text"
-      label: "Minimum state of prorgress bar"
-      preview: "0"
-    max:
-      type: "text"
-      label: "Maximum state of prorgress bar"
-      preview: "100"
+      label: "Text indicating the percentage of progress in the bar"
+      preview: "50%"
