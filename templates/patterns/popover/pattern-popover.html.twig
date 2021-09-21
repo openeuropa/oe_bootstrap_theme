@@ -21,12 +21,12 @@
   {% set attributes = attributes.setAttribute('data-bs-original-title', title) %}
 {% endif %}
 
-{% if path %}
+{% if 'link' in variant %}
   {{ pattern('link', {
     label: label,
     variant: variant,
     attributes: attributes,
-    path: path
+    path: '#popover',
   }) }}
 {% else %}
   {{ pattern('button', {
