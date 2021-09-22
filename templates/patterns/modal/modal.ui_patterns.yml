@@ -15,7 +15,7 @@ modal:
         xl: "xl"
         fullscreen: "fullscreen"
       preview: lg
-    id:
+    modal_id:
       type: textfield
       label: "Modal id"
       preview: ''
@@ -23,13 +23,13 @@ modal:
     btn_label:
       type: text
       label: "Button label"
-      description: "The button text to trigger the modal."
+      description: "The button text to trigger the modal. If is not present, then button will not be printed, only the modal container."
       preview: "Open the modal"
     header:
       type: text
       label: "Header"
       description: "Modal header"
-      preview: 
+      preview:
         - type: html_tag
           tag: h5
           attributes:

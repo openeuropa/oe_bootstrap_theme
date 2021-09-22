@@ -5,6 +5,9 @@
  */
 #}
 
+{% set _modal_id = modal_id ? 'modal_' ~ modal_id : 'modal' %}
+
+{% if btn_label is not empty %}
 {% block trigger %}
   {{ pattern('button', {
     label: btn_label,
@@ -13,14 +16,15 @@
     size: btn_size,
     attributes: create_attribute({
       'data-bs-toggle': 'modal',
-      'data-bs-target': '#' ~ id
+      'data-bs-target': '#' ~ _modal_id
     })
   }) }}
 {% endblock %}
+{% endif %}
 
 {% include '@oe-bcl/bcl-modal/modal.html.twig' with {
   'size': size,
-  'id': id,
+  'id': _modal_id,
   'header': header,
   'body': body,
   'footer': footer
