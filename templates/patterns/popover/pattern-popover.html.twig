@@ -24,20 +24,11 @@
   {% set attributes = attributes.setAttribute('data-bs-original-title', title) %}
 {% endif %}
 
-{% if 'link' in variant %}
-  {{ pattern('link', {
-    label: label,
-    variant: variant,
-    attributes: attributes,
-    path: '#' ~ id,
-  }) }}
-{% else %}
   {{ pattern('button', {
     label: label,
-    variant: variant,
+    style: style,
     outline: outline,
     size: size,
     attributes: attributes,
     url: '#' ~ id,
   }) }}
-{% endif %}
