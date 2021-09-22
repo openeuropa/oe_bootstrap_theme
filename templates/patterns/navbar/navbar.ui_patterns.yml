@@ -35,34 +35,9 @@ navbar:
         dark: dark
       preview: light
   fields:
-    brand:
-      type: array
-      label: Brand
-      description: Logo as label or image
-      preview:
-        label: Navbar
-        link: "/example.html"
-    navigation:
-      type: array
-      label: Navigation
-      description: Links and labels for navigation.
-    form:
+    navbar_branding:
       type: render
-      label: Form
-      description: Input in navigation.
-      preview:
-        submit:
-          wrapper: "ms-2"
-          items:
-            - type: button
-              variant: "secondary"
-              label: Search
-        attributes: "class='d-flex'"
-        items:
-          -
-            - type: "text"
-              required: true
-              label: "Search"
-              hidden_label: true
-              placeholder: "Search"
-              id: "inlineFormInputGroupSearch"
+      label: Branding
+    navbar_right:
+      type: render
+      label: Nav bar right

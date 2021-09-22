@@ -1,16 +1,65 @@
+{% spaceless %}
 
-{#
-/**
- * @file
- * navbar.
- */
+{# Parameters:
+  - collapse_id (string) (default: '')
+  - background (string) (default: '')
+  - brand (object) (default: {})
+    format: {
+      src: '',
+      alt: '',
+      class: '',
+      label: '', (optional: only for string label)
+      link: '',
+    }
+  - navigation (object Navigation) (default: {})
+  - form (object Form) (default: {})
+  - expand (string) (default: 'lg')
+    options: ['sm', 'md', 'lg']
+  - color_set (string) (default: 'light')
+    options ['light', 'dark']
 #}
-{% include '@oe-bcl/bcl-navbar/navbar.html.twig' with {
-  'collapse_id': collapse_id,
-  'background': background,
-  'brand': brand,
-  'navigation': navigation,
-  'form': form,
-  'expand': expand,
-  'color_set': color_set,
-} %}
+{% set _collapse_id = collapse_id|default('') %}
+{% set _background = background|default('') %}
+{% set _expand = expand|default('lg') %}
+{% set _color_set = color_set|default('light') %}
+{% set _classes = ['navbar', 'navbar-expand-' ~ _expand] %}
+{% if _background is not empty %}
+  {% set _classes = _classes|merge(['bg-' ~ _background]) %}
+{% endif %}
+{% if _color_set is not empty %}
+  {% set _classes = _classes|merge(['navbar-' ~ _color_set]) %}
+{% endif %}
+
+{% if attributes is empty %}
+  {% set attributes = create_attribute() %}
+{% endif %}
+
+{% set attributes = attributes.addClass(_classes) %}
+
+<nav
+  {{ attributes }}
+>
+  <div class='container'>
+    {% if navbar_branding is not empty %}
+      {{ navbar_branding }}
+    {% endif %}
+    <button
+      class='navbar-toggler'
+      type='button'
+      data-bs-toggle='collapse'
+      data-bs-target='#{{ _collapse_id }}'
+      aria-controls='{{ _collapse_id }}'
+      aria-expanded='false'
+      aria-label='Toggle navigation'
+    >
+      <span class='navbar-toggler-icon'></span>
+    </button>
+    <div class='collapse navbar-collapse' id='{{ _collapse_id }}'>
+      {% if navbar_right is not empty %}
+        {{ navbar_right }}
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+{% endspaceless %}
