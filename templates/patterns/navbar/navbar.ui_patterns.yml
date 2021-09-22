@@ -2,63 +2,68 @@ navbar:
   label: Navbar
   description: Powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin. https://v5.getbootstrap.com/docs/5.0/components/navbar/
   settings:
-    style:
+    collapse_id:
+      type: textfield
+      label: Collapse identifier
+      preview: "navbar"
+    background:
       type: select
-      label: Navbar style
+      label: Background of navbar
+      options:
+        primary: primary
+        secondary: secondary
+        success: success
+        danger: danger
+        warning: warning
+        info: info
+        light: light
+        dark: dark
+      preview: light
+    expand:
+      type: select
+      label: Placement
+      options:
+        sm: small
+        md: medium
+        lg: large
+      preview: lg
+    color_set:
+      type: select
+      label: Available set of color
       options:
         light: light
         dark: dark
       preview: light
-    container_fixed:
-      type: boolean
-      label: Fluid container
-      description: Navbars and their contents are fluid by default. Change the container to limit their horizontal width in different ways.
-      preview: false
-    placement:
-      type: select
-      label: Placement
-      options:
-        fixed_top: fixed top
-        fixed_bottom: fixed bottom
-        sticky_top: sticky top
-    attributes:
-      type: attributes
-      label: Attributes
   fields:
-    navbar_branding:
-      type: text
-      label: Brand title
-      description: Your company, product, or project name.
+    brand:
+      type: array
+      label: Brand
+      description: Logo as label or image
       preview:
-        - type: html_tag
-          tag: span
-          value: "Brand"
-    navbar_left:
-      type: render
-      label: Left content of navbar (main menu)
-      description: Full-height and lightweight navigation (including support for dropdowns).
+        label: Navbar
+        link: "/example.html"
+    navigation:
+      type: array
+      label: Navigation
+      description: Links and labels for navigation.
+    form:
+      type: array
+      label: Form
+      description: Input in navigation.
       preview:
-        - type: pattern
-          id: nav
-          settings:
-            attributes: "class='navbar-nav'"
-          fields:
-            items: 
-              - title: Home
-                url: "#"
-                in_active_trail: true
-              - title: Library
-                url: "#"
-                is_expanded: true
-                below:
-                  - title: Sub 1
-                    url: "#"
-                  - title: Sub 2
-                    url: "#"
-              - title: Data
-                url: "#"
-    navbar_right:
-      type: text
-      label: Text
-      description: Vertically centered strings of text.
-      preview: "Navbar text with an inline element"
+        submit:
+          wrapper: "ms-2"
+          label: "Search"
+          type: "Search"
+          variant: "primary"
+        attributes:
+          class:
+            - "d-flex"
+        items:
+          -
+            - type: "text"
+              required: true
+              label: "Search"
+              hidden_label: true
+              placeholder: "Search"
+              id: "inlineFormInputGroupSearch"
