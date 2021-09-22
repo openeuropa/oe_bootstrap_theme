@@ -1,46 +1,107 @@
 nav:
   label: Nav
   description: https://v5.getbootstrap.com/docs/5.0/components/navs/
+  use: "@oe-bcl/bcl-navigation/navigation.html.twig"
   settings:
-    style:
-      type: select
-      label: Style
-      options:
-        tabs: tabs
-        pills: pills
-      preview: tabs
+    pills:
+      type: "boolean"
+      label: "Display as pills?"
+    tabs:
+      type: "boolean"
+      label: "Display as tabs?"
+      preview: true
+    vertical:
+      type: "boolean"
+      label: "Display verticaly?"
+    full_width:
+      type: "boolean"
+      label: "Full with?"
+    full_width:
+      type: "boolean"
+      label: "Full with?"
     alignment:
       type: select
       label: Alignment
       options:
+        start: start
         center: center
-        right: right
-        vertical: vertical
-    fill:
-      type: select
-      label: Fill
-      options:
-        fill: fill
-        justify: justify
-    attributes:
-      type: attributes
-      label: Attributes
+        end: end
+    tabs_content:
+      type: "boolean"
+      label: "Display tabs content container?"
+      preview: true
+    nav:
+      type: "boolean"
+      label: "Use <nav> tag insteal of default <ul>?"
+    navbar:
+      type: "boolean"
+      label: "Add .navbar-nav class?"
   fields:
     items:
-      type: render
-      label: Menu items
-      description: Full-height and lightweight navigation (including support for dropdowns).
+      type: "array"
+      label: "Navigation items"
+      description: "Array of navigation items"
       preview:
-        - title: Home
-          url: "#"
-          in_active_trail: true
-        - title: Library
-          url: "#"
-          is_expanded: true
-          below:
-            - title: Sub 1
-              url: "#"
-            - title: Sub 2
-              url: "#"
-        - title: Data
-          url: "#"
+        - label: "I'm a link"
+          path: "#first"
+          content: "This is a demo content for the First Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          id: "first-tab"
+          target: "first"
+          attributes:
+            data-bs-toggle: "tab"
+            role: "button"
+            saria-controls: "first"
+        - label: "I'm a button"
+          button: true
+          content: "This is a demo content for the Second Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          id: "second-tab"
+          target: "second"
+          attributes:
+            data-bs-toggle: "tab"
+            autocomplete: "off"
+            data-bs-target: "#second"
+            aria-controls: "second"
+        - label: "I'm a disabled button"
+          button: true
+          disabled: true
+          content: "This is a demo content for the Third Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          id: "third-tab"
+          target: "third"
+          attributes:
+            data-bs-toggle: "tab"
+            autocomplete: "off"
+            data-bs-target: "#third"
+            aria-controls: "third"
+        - id: "dropdown-1"
+          link: true
+          dropdown: true
+          trigger:
+            label: "Dropdown Toggle"
+            path: "#"
+            attributes:
+              class: "nav-link"
+          items:
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a button"
+              button: true
+            - divider: true
+            - label: "I'm a disabled button"
+              button: true
+              disabled: true
+            - label: "I'm a active button"
+              button: true
+              active: true
+        - label: "I'm a active button"
+          button: true
+          active: true
+          content: "This is a demo content for the Fourth Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          id: "fourth-tab"
+          target: "fourth"
+          attributes:
+            aria-controls: "fourth"
+            data-bs-toggle: "tab"
+            autocomplete: "off"
+            data-bs-target: "#fourth"
+            aria-controls: "fourth"
+            class: "nav-link active"
