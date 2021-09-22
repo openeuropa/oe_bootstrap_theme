@@ -47,7 +47,7 @@ navbar:
       label: Navigation
       description: Links and labels for navigation.
     form:
-      type: array
+      type: render
       label: Form
       description: Input in navigation.
       preview:
@@ -57,9 +57,7 @@ navbar:
             - type: button
               variant: "secondary"
               label: Search
-        attributes:
-          class:
-            - "d-flex"
+        attributes: "class='d-flex'"
         items:
           -
             - type: "text"
