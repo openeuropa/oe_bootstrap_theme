@@ -15,7 +15,7 @@
    */
   Drupal.theme.progressBar = function(id) {
     return (
-      `<div id="${id}" aria-live="polite">` +
+      "<div id=\"".concat(id, "\" class=\"progress\" aria-live=\"polite\">") +
       '<label class="progress-bar-label"></label>' +
       '<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div>' +
       '<small class="form-text text-muted progress-bar-message"></small>' +
@@ -38,11 +38,12 @@
        */
       setProgress(percentage, message, label) {
         if (percentage >= 0 && percentage <= 100) {
+          alert("In");
           $(this.element)
             .find('div.progress-bar')
-            .css('width', `${percentage}%`)
+            .css('width', "" . concat(percentage, "%"))
             .attr('aria-valuenow', percentage)
-            .html(`${percentage}%`);
+            .html("" . concat(percentage, "%"));
         }
         $('label.progress-bar-label', this.element).html(label);
         $('small.progress-bar-message', this.element).html(message);
