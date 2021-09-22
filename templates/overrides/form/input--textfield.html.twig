@@ -18,7 +18,7 @@
     ]
   %}
 {% if attributes.placeholder is empty %}
-  {% set attributes = attributes.setAttribute('placeholder', 'text here')  %}
+  {% set attributes = attributes.setAttribute('placeholder', 'text here'|t)  %}
 {% endif %}
 
 <input{{ attributes.addClass(classes).removeClass('form-text') }} />{{ children }}
