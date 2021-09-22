@@ -50,7 +50,7 @@ nav:
           attributes:
             data-bs-toggle: "tab"
             role: "button"
-            saria-controls: "first"
+            aria-controls: "first"
         - label: "I'm a button"
           button: true
           content: "This is a demo content for the Second Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
