@@ -33,14 +33,26 @@ toasts:
       preview:
         - role: "alert"
           aria_live: "assertive"
-          header: '<strong class="me-auto">Bootstrap</strong><small class="text-muted">just now</small>'
+          header:
+            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">just now</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
           body: "See? Just like this."
           close_aria_label: "Close"
+          aria-live: "assertive"
+          role: "alert"
+          attributes:
+            class: 'toast fade show'
+            aria-atomic: 'true'
         - role: "alert"
           aria_live: "assertive"
-          header: '<strong class="me-auto">Bootstrap</strong><small class="text-muted">2 seconds ago</small>'
+          header:
+            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">2 seconds ago</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
           body: "Heads up, toasts will stack automatically."
           close_aria_label: "Close"
+          aria-live: "assertive"
+          role: "alert"
+          attributes:
+            class: 'toast fade show'
+            aria-atomic: 'true'
   libraries:
     - pattern_toasts:
         js:
