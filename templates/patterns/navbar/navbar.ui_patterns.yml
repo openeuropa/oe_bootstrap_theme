@@ -51,6 +51,16 @@ navbar:
       type: render
       label: Navigation bar right
       preview:
+        - type: html_tag
+          tag: form
+          attributes:
+            class: "d-flex"
+          children:
+            '<label for="inlineFormInputGroupSearch" class="form-label visually-hidden">Search</label><input class="form-control" type="text" id="inlineFormInputGroupSearch" required="true" placeholder="Search"/><div class="ms-2"><button class="btn btn-primary btn-md" type="Search">Search</button></div>'
+    navbar_left:
+      type: render
+      label: Navigation bar left
+      preview:
         - type: pattern
           id: link
           label: "I'm a link"
@@ -83,23 +93,3 @@ navbar:
                 id: link
                 path: "#navbar"
                 label:  "I'm a button"
-        - type: html_tag
-          tag: label
-          label: "Search"
-          attributes:
-            for: 'inlineFormInputGroupSearch'
-            class: "form-label visually-hidden"
-        - type: html_tag
-          tag: input
-          label: ""
-          attributes:
-            id: 'inlineFormInputGroupSearch'
-            class: "form-control"
-            required: "true"
-            placeholder: "Search"
-        - type: html_tag
-          tag: button
-          value: "Search"
-          attributes:
-            class: "btn btn-primary btn-md"
-            type: "Search"

@@ -43,27 +43,28 @@
 <nav
   {{ attributes }}
 >
-  <div class='container'>
+  <div class="container">
     {% if navbar_branding is not empty %}
       {{ navbar_branding }}
     {% endif %}
     <button
-      class='navbar-toggler'
-      type='button'
-      data-bs-toggle='collapse'
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
       data-bs-target='#{{ _collapse_id }}'
       aria-controls='{{ _collapse_id }}'
-      aria-expanded='false'
-      aria-label='Toggle navigation'
+      aria-expanded="false"
+      aria-label="Toggle navigation"
     >
-      <span class='navbar-toggler-icon'></span>
+      <span class="navbar-toggler-icon"></span>
     </button>
-      <div class='collapse navbar-collapse' id='{{ _collapse_id }}'>
-        {% if navbar_right is not empty %}
-          <div class="me-auto navbar-nav">
-            {{ navbar_right }}
-          </div>
-        {% endif %}
+    <div class="collapse navbar-collapse" id='{{ _collapse_id }}'>
+      <div class="me-auto  navbar-nav">
+        {{ navbar_left }}
+      </div>
+      <div>
+        {{ navbar_right }}
+      </div>
     </div>
   </div>
 </nav>
