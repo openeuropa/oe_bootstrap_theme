@@ -90,6 +90,6 @@ navbar:
                 path: "#navbar"
                 label: "I'm a link"
               - type: pattern
-                id: link
+                id: button
                 path: "#navbar"
                 label:  "I'm a button"
