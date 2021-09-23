@@ -46,7 +46,7 @@ popover:
       description: "Popover title"
       preview: "Lorem ipsum dolor sit amet"
     content:
-      type: "render"
+      type: "text"
       label: "Content"
       description: "Popover content"
       preview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
