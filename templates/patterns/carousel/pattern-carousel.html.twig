@@ -1,40 +1,20 @@
-{% if variant != '' and variant|lower != 'default' %}
-  {% set attributes = attributes.addClass('carousel-' ~ variant|lower|replace({'_': '-'})) %}
-{% endif %}
-
-{% set id = 'carousel-' ~ random(1000) %}
-
-<div{{ attributes.addClass('carousel').addClass('slide') }} id="{{ id }}" data-bs-ride="carousel">
-
-  {% if with_indicators %}
-    <div class="carousel-indicators">
-      {% for slide in slides %}
-        <button type="button" data-bs-target="#{{ id }}"
-            data-bs-slide-to="{{ loop.index0 }}"{% if loop.first %} class="active"{% endif %}></button>
-      {% endfor %}
-    </div>
-  {% endif %}
-
-  <div class="carousel-inner" role="listbox">
-    {% for slide in slides %}
-      <div class="carousel-item{% if loop.first %} active{% endif %}">
-        {{ slide.image }}
-        <div class="carousel-caption">
-          {{ slide|without('image') }}
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-
-  {% if with_controls %}
-    <button class="carousel-control-prev" type="button" data-bs-target="#{{ id }}" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">{{ 'Previous'|t }}</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#{{ id }}" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">{{ 'Next'|t }}</span>
-    </button>
-  {% endif %}
-
-</div>
+{#
+/**
+ * @file
+ * Carousel.
+ */
+#}
+{% include '@oe-bcl/bcl-carousel/carousel.html.twig' with {
+  'id': 'carousel-' ~ random(1000),
+  'autoplay': autoplay,
+  'autoinit': autoinit,
+  'dark': dark,
+  'active_item': active_item,
+  'items': slides,
+  'fade': fade,
+  'with_controls': with_controls,
+  'prev_label': 'Previous'|t,
+  'next_label': 'Next'|t,
+  'with_indicators': with_indicators,
+  'disable_touch': disable_touch,
+} %}
