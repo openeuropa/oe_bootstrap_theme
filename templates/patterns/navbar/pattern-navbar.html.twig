@@ -58,12 +58,12 @@
     >
       <span class='navbar-toggler-icon'></span>
     </button>
-    <div class="float-right">
       <div class='collapse navbar-collapse' id='{{ _collapse_id }}'>
         {% if navbar_right is not empty %}
-          {{ navbar_right }}
+          <div class="me-auto navbar-nav">
+            {{ navbar_right }}
+          </div>
         {% endif %}
-      </div>
     </div>
   </div>
 </nav>
