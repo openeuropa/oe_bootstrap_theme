@@ -10,15 +10,11 @@
  * @see template_preprocess_input()
  */
 #}
-
-  {%
-    set classes = [
-      'form-control',
-       attributes.hasClass('error') ? 'is-invalid',
-    ]
-  %}
-{% if attributes.placeholder is empty %}
-  {% set attributes = attributes.setAttribute('placeholder', 'text here'|t)  %}
-{% endif %}
+{%
+  set classes = [
+    'form-control',
+     attributes.hasClass('error') ? 'is-invalid',
+  ]
+%}
 
 <input{{ attributes.addClass(classes).removeClass('form-text') }} />{{ children }}
