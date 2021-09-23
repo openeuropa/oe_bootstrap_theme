@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Theme override for an 'input' #type form element.
+ * Theme override for an 'input' #type textfield element.
  *
  * Available variables:
  * - attributes: A list of HTML attributes for the input element.
@@ -16,5 +16,4 @@
      attributes.hasClass('error') ? 'is-invalid',
   ]
 %}
-
 <input{{ attributes.addClass(classes).removeClass('form-text') }} />{{ children }}

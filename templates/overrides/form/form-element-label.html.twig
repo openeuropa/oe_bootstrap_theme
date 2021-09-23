@@ -14,12 +14,12 @@
 #}
 {%
   set classes = [
-  title_display == 'after' ? 'option',
-  title_display == 'invisible' ? 'visually-hidden',
-  required ? 'js-form-required',
-  required ? 'form-required',
-  'form-label',
-]
+     title_display == 'after' ? 'option',
+     title_display == 'invisible' ? 'visually-hidden',
+     required ? 'js-form-required',
+     required ? 'form-required',
+     'form-label',
+  ]
 %}
 {% if title is not empty or required -%}
   <label{{ attributes.addClass(classes) }}>{{ title }}</label>
