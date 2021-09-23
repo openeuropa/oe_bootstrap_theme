@@ -58,44 +58,57 @@ card_layout:
       description: "An array of card items"
       preview:
         - title:
-            content: "Title card"
+            content: "Title card 1"
             tag: "h5"
           subtitle:
-            content: "Subtitle card"
+            content: "Subtitle card 1"
             classes: "mb-2"
           text:
-            content: "Text card with longer text which is supported"
+            content: "Text card with longer text which is supported 1"
             classes: "mb-2"
           image:
             path: "https://placeimg.com/1000/500/arch"
             alt: "Alternative text for card image"
             position: "top"
-          content: "<button class='btn btn-primary'>Custom action</button>"
+          content:
+            - type: html_tag
+              tag: button
+              value: Custom action
+              attributes:
+                class:
+                  - "btn"
+                  - "btn-primary"
+          card_header: "Header of card 1"
+          card_footer: "Footer of card 1"
         - title:
-            content: "Title card"
+            content: "Title card 2"
             tag: "h5"
           subtitle:
-            content: "Subtitle card"
+            content: "Subtitle card 2"
             classes: "mb-2"
           text:
-            content: "Text card with longer text which is supported"
+            content: "Text card with longer text which is supported 2"
             classes: "mb-2"
           image:
-            path: "https://placeimg.com/1000/500/arch"
+            path: "https://placeimg.com/1000/500/nature"
             alt: "Alternative text for card image"
             position: "top"
-          content: "<button class='btn btn-primary'>Custom action</button>"
+          content: "Custom test"
+          card_header: "Header of card 2"
+          card_footer: "Footer of card 2"
         - title:
-            content: "Title card"
+            content: "Title card 3"
             tag: "h5"
           subtitle:
-            content: "Subtitle card"
+            content: "Subtitle card 3"
             classes: "mb-2"
           text:
-            content: "Text card with longer text which is supported"
+            content: "Text card with longer text which is supported 3"
             classes: "mb-2"
           image:
-            path: "https://placeimg.com/1000/500/arch"
+            path: "https://placeimg.com/1000/500/tech"
             alt: "Alternative text for card image"
-            position: "top"
-          content: "<button class='btn btn-primary'>Custom action</button>"
+            position: "bottom"
+          content: "Some representative placeholder content for the first card."
+          card_header: "Header of card 3"
+          card_footer: "Footer of card 3"
