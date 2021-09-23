@@ -40,7 +40,7 @@ dropdown:
       label: Remove wrapper
       description: Remove wrapper for this component
       preview: false
-    id:
+    dropdown_id:
       type: textfield
       label: Dropdown id
       preview: ''
