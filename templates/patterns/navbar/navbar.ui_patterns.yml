@@ -37,7 +37,7 @@ navbar:
   fields:
     navbar_branding:
       type: render
-      label: Branding
+      label: Navigation bar branding
     navbar_right:
       type: render
-      label: Nav bar right
+      label: Navigation bar right
