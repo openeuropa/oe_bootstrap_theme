@@ -17,7 +17,7 @@
     return (
       '<div id="' + id + '" aria-live="polite">' +
       '<label class="progress-bar-label"></label>' +
-      '<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div>' +
+      '<div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div>' +
       '<small class="form-text text-muted progress-bar-message"></small>' +
       '</div>'
     );
