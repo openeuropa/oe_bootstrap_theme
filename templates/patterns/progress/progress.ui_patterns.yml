@@ -2,7 +2,7 @@ progress:
   label: "Progress"
   description: "Indicate the progress as a bar. https://getbootstrap.com/docs/5.0/components/progress/"
   settings:
-    variant:
+    style:
       type: "select"
       label: "Bar style"
       options:
@@ -14,7 +14,7 @@ progress:
         info: "info"
         light: "light"
         dark: "dark"
-      preview: "danger"
+      preview: "primary"
     striped:
       type: "boolean"
       label: "Striped style of state"
@@ -22,7 +22,7 @@ progress:
     animated:
       type: "boolean"
       label: "Animation on striped style of state"
-      preview: false
+      preview: true
   fields:
     label:
       type: "text"
