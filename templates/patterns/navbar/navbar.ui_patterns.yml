@@ -38,6 +38,53 @@ navbar:
     navbar_branding:
       type: render
       label: Navigation bar branding
+      preview:
+        - type: html_tag
+          tag: a
+          value: "Navbar"
+          attributes:
+            href: '#navbar'
+            rel: home
+            class: "navbar-brand"
+
     navbar_right:
       type: render
       label: Navigation bar right
+      preview:
+        - type: pattern
+          id: link
+          label: "I'm a link"
+          path: "#first"
+          attributes:
+            class: "nav-link"
+        - type: pattern
+          id: link
+          label: "I'm a link 2"
+          path: "#second"
+          attributes:
+            class: "nav-link"
+        - type: pattern
+          id: link
+          label: "I'm a link 3"
+          path: "#third"
+          attributes:
+            class: "nav-link"
+        - type: pattern
+          id: dropdown
+          variant: default
+          fields:
+            label: "Dropdown Toggle"
+            items:
+              - type: pattern
+                id: link
+                path: "#navbar"
+                label: "I'm a link"
+              - type: pattern
+                id: link
+                path: "#navbar"
+                label:  "I'm a button"
+        - type: html_tag
+          attributes:
+            class: 'd-flex'
+          tag: form
+          value: '<label for="inlineFormInputGroupSearch" class="form-label visually-hidden">Search</label><input class="form-control" type="text" id="inlineFormInputGroupSearch" required="true" placeholder="Search"/><div class="ms-2"><button class="btn btn-primary btn-md" type="Search">Search</button></div>'
