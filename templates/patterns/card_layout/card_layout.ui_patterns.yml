@@ -1,0 +1,114 @@
+card_layout:
+  label: "Card layout"
+  description: "In addition to styling the content within cards, Bootstrap includes a few options for laying out series of cards. https://v5.getbootstrap.com/docs/5.0/components/card/#grid-cards"
+  settings:
+    type:
+      type: select
+      label: Card layout type
+      options:
+        group: group
+        grid: grid
+        masonry: masonry
+      preview: grid
+    grid_columns:
+      type: select
+      label: Card layout columns number
+      options:
+        1: 1
+        2: 2
+        3: 3
+      preview: 1
+    responsiveness:
+      type: select
+      label: Card layout type
+      options:
+        sm: sm
+        md: md
+        lg: lg
+        xl: xl
+        xxl: xxl
+      preview: md
+    responsive_colums:
+      type: select
+      label: Card layout type
+      options:
+        1: 1
+        2: 2
+        3: 3
+      preview: 3
+    gutter:
+      type: select
+      label: Card layout type
+      options:
+        1: 1
+        2: 2
+        3: 3
+        4: 4
+        5: 5
+      preview: 3
+    equal_height:
+      type: boolean
+      label: "Equal height"
+      description: "Cards with equal height?"
+      preview: false
+  fields:
+    items:
+      type: "array"
+      label: "Card items"
+      description: "An array of card items"
+      preview:
+        - title:
+            content: "Title card 1"
+            tag: "h5"
+          subtitle:
+            content: "Subtitle card 1"
+            classes: "mb-2"
+          text:
+            content: "Text card with longer text which is supported 1"
+            classes: "mb-2"
+          image:
+            path: "https://placeimg.com/1000/500/arch"
+            alt: "Alternative text for card image"
+            position: "top"
+          content:
+            - type: html_tag
+              tag: button
+              value: Custom action
+              attributes:
+                class:
+                  - "btn"
+                  - "btn-primary"
+          card_header: "Header of card 1"
+          card_footer: "Footer of card 1"
+        - title:
+            content: "Title card 2"
+            tag: "h5"
+          subtitle:
+            content: "Subtitle card 2"
+            classes: "mb-2"
+          text:
+            content: "Text card with longer text which is supported 2"
+            classes: "mb-2"
+          image:
+            path: "https://placeimg.com/1000/500/nature"
+            alt: "Alternative text for card image"
+            position: "top"
+          content: "Custom test"
+          card_header: "Header of card 2"
+          card_footer: "Footer of card 2"
+        - title:
+            content: "Title card 3"
+            tag: "h5"
+          subtitle:
+            content: "Subtitle card 3"
+            classes: "mb-2"
+          text:
+            content: "Text card with longer text which is supported 3"
+            classes: "mb-2"
+          image:
+            path: "https://placeimg.com/1000/500/tech"
+            alt: "Alternative text for card image"
+            position: "bottom"
+          content: "Some representative placeholder content for the first card."
+          card_header: "Header of card 3"
+          card_footer: "Footer of card 3"
