@@ -1,0 +1,47 @@
+table:
+  label: "Table"
+  description: "https://v5.getbootstrap.com/docs/5.0/content/typography/#table"
+  fields:
+    caption:
+      type: "text"
+      label: caption
+      description: Table title
+      preview: "List of users"
+    table_head:
+      type: "array"
+      label: table_head
+      description: An array of a table head items
+      preview:
+        cells:
+          - content: "ID"
+          - content: "NAME"
+          - content: "DESCRIPTION"
+          - content: "POSITION"
+    table_footer:
+      type: "array"
+      label: table_footer
+      description: An array of a table footer items
+      preview:
+        cells:
+          - content: "ID"
+          - content: "NAME"
+          - content: "DESCRIPTION"
+          - content: "POSITION"
+    rows:
+      type: "array"
+      label: rows
+      description: An array of a row items
+      preview:
+        - cells:
+          - content: "1"
+          - content: "asda"
+          - content: "asdasd"
+          - content: "asdasd"
+          variant: primary
+        - cells:
+          - content: "2"
+          - content: "asda"
+          - content: "asdasd"
+          - content: "asdasd"
+          variant: secondary
+
