@@ -1,6 +1,15 @@
 button:
   label: Button
   description: For actions in forms, dialogs, and more with support for multiple sizes, states, and more. https://v5.getbootstrap.com/docs/5.0/components/buttons/
+  variants:
+    primary:
+      label: Default
+    secondary:
+      label: Secondary
+      description: Demo sSecondary button with icon.
+    warning:
+      label: Warning
+      description: Demo warning button with spinner.
   settings:
     variant:
       type: select
@@ -51,7 +60,7 @@ button:
     show_spinner:
       type: boolean
       label: Show spinner
-    id:
+    button_id:
       type: textfield
       label: Button id
       preview: ''
@@ -79,3 +88,7 @@ button:
         name: arrow-right
         size: s
         transformation: rotate-0
+    spinner:
+      type: array
+      label: spinner
+      description: The spinner object. Optional.

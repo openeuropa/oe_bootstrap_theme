@@ -1,14 +1,21 @@
 {#
 /**
  * @file
- * Badge component.
+ * Button component.
  */
 #}
-{% if icon %}
+{%  if variant == "secondary" %}
   {% set _icon = icon|merge({
     path: bcl_icon_path
-  })
-  %}
+})  %}
+{% endif %}
+{%  if variant == "warning" %}
+  {% set show_spinner = true %}
+  {% set spinner = {
+    'type': "border",
+    'variant': "info",
+    'small': true,
+  } %}
 {% endif %}
 {% include '@oe-bcl/bcl-button/button.html.twig' with {
   'label': label,
@@ -19,7 +26,7 @@
   'disabled': disabled,
   'text_nowrap': text_nowrap,
   'assistive_text': assistive_text,
-  'id': id,
+  'id': button_id,
   'icon': _icon,
   'icon_position': icon_position,
   'clean_class': clean_class,
