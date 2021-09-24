@@ -5,12 +5,13 @@ dropdown:
     link:
       type: boolean
       label: link
-      description: Treat as a link
+      description: Show as a link
       preview: false
     direction:
       type: select
       label: Direction
       options:
+        dropdown: "dropdown"
         dropup: "dropup"
         dropend: "dropend"
         dropstart: "dropstart"
