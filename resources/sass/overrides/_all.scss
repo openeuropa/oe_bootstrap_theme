@@ -2,3 +2,15 @@
 // -----------------------------------------------------------------------------
 @import 'toolbar';
 @import 'table';
+
+button.link {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  font-size: 1em;
+  text-decoration: underline;
+  appearance: none;
+}
