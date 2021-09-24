@@ -1,0 +1,45 @@
+button:
+  label: Button
+  description: For actions in forms, dialogs, and more with support for multiple sizes, states, and more. https://v5.getbootstrap.com/docs/5.0/components/buttons/
+  settings:
+    style:
+      type: select
+      label: Button style
+      options:
+        primary: primary
+        secondary: secondary
+        success: success
+        danger: danger
+        warning: warning
+        info: info
+        light: light
+        dark: dark
+        link: link
+      preview: primary
+    outline:
+      type: boolean
+      label: Button outline
+      preview: false
+    size:
+      type: select
+      label: Button size
+      options:
+        sm: small
+        lg: large
+    block:
+      type: boolean
+      label: Block display
+    disabled:
+      type: boolean
+      label: Disabled
+  fields:
+    label:
+      type: text
+      label: Label
+      description: The button label
+      preview: Submit
+    url:
+      type: text
+      label: URL
+      description: The button URL. Optional.
+      preview: http://example.com
