@@ -6,10 +6,10 @@ button:
       label: Default
     secondary:
       label: Secondary
-      description: Demo sSecondary button with icon.
+      description: Demo secondary button.
     warning:
       label: Warning
-      description: Demo warning button with spinner.
+      description: Demo warning button.
   settings:
     variant:
       type: select

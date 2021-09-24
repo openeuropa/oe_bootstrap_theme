@@ -4,13 +4,12 @@
  * Button component.
  */
 #}
-{%  if variant == "secondary" %}
+{%  if _icon %}
   {% set _icon = icon|merge({
     path: bcl_icon_path
 })  %}
 {% endif %}
-{%  if variant == "warning" %}
-  {% set show_spinner = true %}
+{%  if show_spinner %}
   {% set spinner = {
     'type': "border",
     'variant': "info",

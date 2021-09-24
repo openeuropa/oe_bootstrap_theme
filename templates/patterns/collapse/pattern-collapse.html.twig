@@ -18,13 +18,13 @@
       label: label,
       style: style,
       outline: outline,
-      url: '#' ~ id,
       size: size,
       attributes: create_attribute({
         'data-bs-toggle': 'collapse',
         'role': 'button',
         'aria-expanded': 'false',
-        'aria-controls': id
+        'aria-controls': id,
+        'href': '#' ~ id
       })
     }) }}
   {% endif %}
