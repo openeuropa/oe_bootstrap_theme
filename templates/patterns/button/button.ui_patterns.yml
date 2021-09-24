@@ -2,7 +2,7 @@ button:
   label: Button
   description: For actions in forms, dialogs, and more with support for multiple sizes, states, and more. https://v5.getbootstrap.com/docs/5.0/components/buttons/
   settings:
-    style:
+    variant:
       type: select
       label: Button style
       options:
@@ -26,20 +26,56 @@ button:
       options:
         sm: small
         lg: large
-    block:
-      type: boolean
-      label: Block display
+    type:
+      type: select
+      label: Button type
+      options:
+        button: buttom
+        submit: submit
+        reset: reset
     disabled:
       type: boolean
       label: Disabled
+    text_nowrap:
+      type: boolean
+      label: Text nowrap
+    clean_class:
+      type: boolean
+      label: Clean class
+    icon_position:
+      type: select
+      label: Icon position
+      options:
+        before: before
+        after: after
+    show_spinner:
+      type: boolean
+      label: Show spinner
+    id:
+      type: textfield
+      label: Button id
+      preview: ''
   fields:
     label:
       type: text
       label: Label
       description: The button label
       preview: Submit
+    assistive_text:
+      type: text
+      label: Assistive text
+      description: Additional text hidden with the .visually-hidden class.
+      preview: ''
     url:
       type: text
       label: URL
       description: The button URL. Optional.
       preview: http://example.com
+    icon:
+      type: array
+      label: icon
+      description: The button Icon. Optional.
+      preview:
+        name: arrow-right
+        size: s
+        transformation: rotate-0
