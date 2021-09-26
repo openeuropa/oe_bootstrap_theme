@@ -16,7 +16,7 @@ use Symfony\Component\DomCrawler\Crawler;
 /**
  * Tests components and patterns markup.
  *
- * This kernel test is heavily inspired from OpenEuropa Theme (oe_theme) similar
+ * This kernel test is heavily inspired by OpenEuropa Theme (oe_theme) similar
  * test: \Drupal\Tests\oe_theme\Kernel\RenderingTest.
  *
  * @see https://github.com/openeuropa/oe_theme/blob/HEAD/tests/Kernel/RenderingTest.php
