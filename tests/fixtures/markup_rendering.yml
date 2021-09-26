@@ -1,0 +1,13 @@
+form assertion:
+  render:
+    markup:
+      '#markup': Hello World!
+    plain:
+      '#plain_text': Papa Was A Rolling Stone <1972>
+  assert:
+    count:
+      # TODO: Replace with OE Boostrap Theme form class, when implemented.
+      'form.oe-bootstrap-theme-markup-rendering-test-form': 1
+    contains:
+      - Hello World!
+      - Papa Was A Rolling Stone &lt;1972&gt;
