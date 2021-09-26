@@ -42,8 +42,6 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
   protected function setUp(): void {
     parent::setUp();
 
-    unlink(__DIR__ . '/../../assets/bcl/bcl-form/form.html.twig');
-
     // Replicate 'file_scan_ignore_directories' from settings.php.
     $settings = Settings::getAll();
     $settings['file_scan_ignore_directories'] = [
@@ -70,6 +68,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * @dataProvider markupRenderingProvider
    */
   public function testMarkupRendering(array $render_array, array $expectations): void {
+    print_r($this->container->get('theme.registry')->get('oe_bootstrap_theme')['form']);
     // Wrap all the test structure inside a form. This will allow proper
     // processing of form elements and invocation of form alter hooks. Even if
     // the elements being tested are not form related, the form can host them
