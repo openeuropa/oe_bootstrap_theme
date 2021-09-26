@@ -67,6 +67,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * @dataProvider markupRenderingProvider
    */
   public function testMarkupRendering(array $render_array, array $expectations): void {
+    print_r(Settings::getAll());
     // Wrap all the test structure inside a form. This will allow proper
     // processing of form elements and invocation of form alter hooks. Even if
     // the elements being tested are not form related, the form can host them
