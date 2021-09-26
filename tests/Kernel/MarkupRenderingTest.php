@@ -49,11 +49,12 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
       'bower_components',
       'vendor',
       'build',
+      'assets',
     ];
     new Settings($settings);
 
     $this->container->get('theme_installer')->install(['oe_bootstrap_theme']);
-    \Drupal::theme()->setActiveTheme(\Drupal::service('theme.initialization')->initTheme('oe_bootstrap_theme'));
+    $this->config('system.theme')->set('default', 'oe_bootstrap_theme')->save();
     $this->container->set('theme.registry', NULL);
   }
 
@@ -68,7 +69,6 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * @dataProvider markupRenderingProvider
    */
   public function testMarkupRendering(array $render_array, array $expectations): void {
-    print_r($this->container->get('theme.registry')->get('oe_bootstrap_theme')['form']);
     // Wrap all the test structure inside a form. This will allow proper
     // processing of form elements and invocation of form alter hooks. Even if
     // the elements being tested are not form related, the form can host them
