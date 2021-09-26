@@ -42,7 +42,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
   protected function setUp(): void {
     parent::setUp();
 
-    unlink(__DIR__ . '/../../node_modules/@openeuropa/bcl-theme-default/templates/bcl-form/form.html.twig');
+    unlink(__DIR__ . '/../../assets/bcl/bcl-form/form.html.twig');
 
     // Replicate 'file_scan_ignore_directories' from settings.php.
     $settings = Settings::getAll();
