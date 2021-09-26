@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Serialization\Yaml;
+use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -28,6 +29,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * {@inheritdoc}
    */
   protected static $modules = [
+    'components',
     'filter',
     'oe_bootstrap_theme_helper',
     'system',
@@ -39,8 +41,19 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    */
   protected function setUp(): void {
     parent::setUp();
+
     $this->container->get('theme_installer')->install(['oe_bootstrap_theme']);
     $this->config('system.theme')->set('default', 'oe_bootstrap_theme')->save();
+
+    // Replicate 'file_scan_ignore_directories' from settings.php.
+    $settings = Settings::getAll();
+    $settings['file_scan_ignore_directories'] = [
+      'node_modules',
+      'bower_components',
+      'vendor',
+      'build',
+    ];
+    new Settings($settings);
   }
 
   /**
