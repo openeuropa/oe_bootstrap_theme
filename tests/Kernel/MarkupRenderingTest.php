@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
+namespace Drupal\Tests\oe_bootstrap_theme\src\Kernel;
 
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormState;
