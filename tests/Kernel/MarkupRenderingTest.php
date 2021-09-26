@@ -29,6 +29,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * {@inheritdoc}
    */
   protected static $modules = [
+    'components',
     'filter',
     'oe_bootstrap_theme_helper',
     'system',
@@ -43,6 +44,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
 
     $this->container->get('theme_installer')->install(['oe_bootstrap_theme']);
     $this->config('system.theme')->set('default', 'oe_bootstrap_theme')->save();
+    $this->container->set('theme.registry', NULL);
 
     // Replicate 'file_scan_ignore_directories' from settings.php.
     $settings = Settings::getAll();
@@ -66,7 +68,6 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * @dataProvider markupRenderingProvider
    */
   public function testMarkupRendering(array $render_array, array $expectations): void {
-    print_r(Settings::getAll());
     // Wrap all the test structure inside a form. This will allow proper
     // processing of form elements and invocation of form alter hooks. Even if
     // the elements being tested are not form related, the form can host them
