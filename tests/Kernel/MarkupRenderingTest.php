@@ -42,10 +42,6 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
   protected function setUp(): void {
     parent::setUp();
 
-    $this->container->get('theme_installer')->install(['oe_bootstrap_theme']);
-    $this->config('system.theme')->set('default', 'oe_bootstrap_theme')->save();
-    $this->container->set('theme.registry', NULL);
-
     // Replicate 'file_scan_ignore_directories' from settings.php.
     $settings = Settings::getAll();
     $settings['file_scan_ignore_directories'] = [
@@ -55,6 +51,10 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
       'build',
     ];
     new Settings($settings);
+
+    $this->container->get('theme_installer')->install(['oe_bootstrap_theme']);
+    \Drupal::theme()->setActiveTheme(\Drupal::service('theme.initialization')->initTheme('oe_bootstrap_theme'));
+    $this->container->set('theme.registry', NULL);
   }
 
   /**
