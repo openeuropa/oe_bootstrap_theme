@@ -1,6 +1,63 @@
 table:
   label: "Table"
   description: "https://v5.getbootstrap.com/docs/5.0/content/typography/#table"
+  settings:
+    striped:
+      type: boolean
+      label: Striped
+    hoverable:
+      type: boolean
+      label: Hoverable
+    table_responsive:
+      type: select
+      label: Table Responsive
+      options:
+        all: all
+        sm: sm
+        md: md
+        lg: lg
+        xl: xl
+        xxl: xxl
+    variant:
+      type: select
+      label: Variant
+      options:
+        primary: primary
+        secondary: secondary
+        success: success
+        danger: danger
+        warning: warning
+        info: info
+        light: light
+        dark: dark
+    small:
+      type: boolean
+      label: Small
+    alignment:
+      type: select
+      label: Alignment
+      options:
+        bottom: bottom
+        middle: middle
+        top: top
+    caption_top:
+      type: boolean
+      label: Caption top
+    border:
+      type: select
+      label: Border
+      options:
+        primary: primary
+        secondary: secondary
+        success: success
+        danger: danger
+        warning: warning
+        info: info
+        light: light
+        dark: dark
+    borderless:
+      type: boolean
+      label: Borderless
   fields:
     caption:
       type: "text"
