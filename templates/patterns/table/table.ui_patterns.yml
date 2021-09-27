@@ -71,9 +71,9 @@ table:
       preview:
         cells:
           - content: "ID"
-          - content: "NAME"
-          - content: "DESCRIPTION"
-          - content: "POSITION"
+          - content: "Name"
+          - content: "Description"
+          - content: "Position"
     table_footer:
       type: "array"
       label: table_footer
@@ -81,9 +81,9 @@ table:
       preview:
         cells:
           - content: "ID"
-          - content: "NAME"
-          - content: "DESCRIPTION"
-          - content: "POSITION"
+          - content: "Name"
+          - content: "Description"
+          - content: "Position"
     rows:
       type: "array"
       label: rows
@@ -91,13 +91,18 @@ table:
       preview:
         - cells:
           - content: "1"
-          - content: "asda"
-          - content: "asdasd"
-          - content: "asdasd"
-          variant: primary
+          - content: "Name 1"
+          - content: "Description 1"
+          - content: "Position 1"
         - cells:
           - content: "2"
-          - content: "asda"
-          - content: "asdasd"
-          - content: "asdasd"
+          - content: "Name 2"
+          - content: "Description 2"
+          - content: "Position 2"
+          variant: primary
+        - cells:
+          - content: "3"
+          - content: "Name 3"
+          - content: "Description 3"
+          - content: "Position 3"
           variant: secondary
