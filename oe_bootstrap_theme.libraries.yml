@@ -17,3 +17,8 @@ style:
 drupal.progress:
   js:
     assets/js/progress.js: {}
+
+slimselect:
+  js:
+    assets/js/slimselect.min.js: {}
+    assets/js/form_select_multiple.js: {}
