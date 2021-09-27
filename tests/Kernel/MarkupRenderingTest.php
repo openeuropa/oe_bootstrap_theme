@@ -49,7 +49,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
       'bower_components',
       'vendor',
       'build',
-      'assets',
+      'bcl',
     ];
     new Settings($settings);
 
