@@ -10,7 +10,4 @@
     attributes.hasClass('error') ? 'is-invalid',
   ]
 %}
-{% if attributes.placeholder %}
-  {% set attributes = attributes.setAttribute('placeholder', 'text here'|t) %}
-{% endif %}
 <textarea{{ attributes.addClass(classes) }}>{{ value }}</textarea>
