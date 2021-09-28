@@ -29,3 +29,15 @@ button:
       'button svg': 1
     contains:
       'button.btn-secondary': "Button label"
+textarea:
+  render:
+    '#type': textarea
+    '#title': Textarea
+    '#value': Text
+  assert:
+    contains:
+      - 'Textarea'
+      - 'Text'
+    count:
+      'textarea.form-textarea': 1
+      'textarea.form-control': 1
