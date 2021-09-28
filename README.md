@@ -50,7 +50,6 @@ composer install
 
 A post command hook (`drupal:site-setup`) is triggered automatically after `composer install`.
 It will make sure that the necessary symlinks are properly setup in the development site.
-It will also perform token substitution in development configuration files such as `behat.yml.dist`.
 
 * Install test site by running:
 
@@ -135,15 +134,9 @@ To run the phpunit tests:
 docker-compose exec web ./vendor/bin/phpunit
 ```
 
-To run the behat tests:
-
-```bash
-docker-compose exec web ./vendor/bin/behat
-```
-
 ## sub-theme
 
-All the necessary files for sub-theme creation can be found in the `kits` folder, 
+All the necessary files for sub-theme creation can be found in the `kits` folder,
 read the related [documentation](kits/README.md)
 
 *Important:* The [components](https://www.drupal.org/project/component) module needs to be enabled to allow the use of the BCL library with the `@oe_bcl` namespace.

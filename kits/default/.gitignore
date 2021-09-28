@@ -6,7 +6,6 @@
 /build/
 /npm-debug.log
 /grumphp.yml
-/behat.yml
 /runner.yml
 /.idea/
 /phpunit.xml
