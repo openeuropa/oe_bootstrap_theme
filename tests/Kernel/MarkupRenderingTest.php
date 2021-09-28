@@ -34,6 +34,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'oe_bootstrap_theme_helper',
     'system',
     'ui_patterns',
+    'ui_patterns_library',
   ];
 
   /**

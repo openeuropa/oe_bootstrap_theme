@@ -11,3 +11,53 @@ form assertion:
     contains:
       - Hello World!
       - Papa Was A Rolling Stone &lt;1972&gt;
+table:
+  render:
+    '#type': pattern
+    '#id': table
+    '#fields':
+      'table_head':
+        cells:
+          - content: 'Name'
+          - content: 'Registration date'
+          - content: 'Email'
+          - content:
+              data:
+                '#markup': '<b>Bold header</b>'
+      'rows':
+        - cells:
+            - content: 'John Doe'
+            - content: '01/01/2016'
+            - content: 'john.doe@mail.com'
+        - cells:
+            - content: 'Jack Doe'
+            - content: '03/05/2017'
+            - content: 'jack.doe@mail.com'
+        - cells:
+            - content: 'June Doe'
+            - content: '03/05/2018'
+            - content:
+                data:
+                  '#markup': '<b>Bold cell</b>'
+  assert:
+    count:
+      'table.table': 1
+      'thead': 1
+      'thead tr': 1
+      'thead td': 4
+      'tbody': 1
+      'tbody tr': 3
+      'tbody td': 9
+    equals:
+      'thead td:nth-child(1)': "Name"
+      'thead td:nth-child(2)': "Registration date"
+      'thead td:nth-child(3)': "Email"
+      'tbody td:nth-child(1)': "John Doe"
+      'tbody td:nth-child(2)': "01/01/2016"
+      'tbody td:nth-child(3)': "john.doe@mail.com"
+      'tbody tr:nth-child(2) td:nth-child(1)': "Jack Doe"
+      'tbody tr:nth-child(2) td:nth-child(2)': "03/05/2017"
+      'tbody tr:nth-child(2) td:nth-child(3)': "jack.doe@mail.com"
+    contains:
+      'thead th:nth-child(1)': '<b>Bold header</b>'
+      'tbody tr:nth-child(3) td:nth-child(3)': '<b>Bold cell</b>'
