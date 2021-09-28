@@ -11,6 +11,25 @@ form assertion:
     contains:
       - Hello World!
       - Papa Was A Rolling Stone &lt;1972&gt;
+<<<<<<< HEAD
+button:
+  render:
+    '#type': pattern
+    '#id': button
+    '#variant': secondary
+    '#fields':
+      type: text
+      label: "Button label"
+      icon:
+        name: arrow-right
+        size: s
+        transformation: rotate-0
+  assertions:
+    count:
+      'button[data-drupal-selector="button"]': 1
+      'button svg': 1
+    contains:
+      'button.btn-secondary': "Button label"
 textarea:
   render:
     '#type': textarea
@@ -23,3 +42,18 @@ textarea:
     count:
       'textarea.form-textarea': 1
       'textarea.form-control': 1
+=======
+checkbox_assertion:
+  render:
+    '#type': checkbox
+    '#title': Checkbox
+    '#attributes':
+      'foo': bar
+  assert:
+    contains:
+      - 'Checkbox'
+      - 'foo="bar"'
+    count:
+      'label.form-check-label': 1
+      'input.form-checkbox.form-check-input': 1
+>>>>>>> OEL-474: Add checkbox at rendering test.
