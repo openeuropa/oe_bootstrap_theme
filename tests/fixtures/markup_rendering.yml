@@ -56,4 +56,31 @@ checkbox_assertion:
     count:
       'label.form-check-label': 1
       'input.form-checkbox.form-check-input': 1
+<<<<<<< HEAD
 >>>>>>> OEL-474: Add checkbox at rendering test.
+=======
+breadcrumb_assertion:
+  render:
+    '#type': pattern
+    '#id': breadcrumb
+    '#fields':
+      items:
+        - path: "/index"
+          label: "Home"
+        - path: "/example"
+          label: "About the European Commission"
+        - path: "https://example.com"
+          label: "Link title"
+  assertions:
+    count:
+      "nav[aria-label=\"breadcrumb\"]": 1
+      'ol.breadcrumb': 1
+      'li.breadcrumb-item': 3
+      'li.breadcrumb-item:nth-child(1) a[href="/index"]': 1
+      'li.breadcrumb-item:nth-child(2) a[href="/example"]': 1
+      'li.breadcrumb-item:nth-child(3) a[href="https://example.com"]': 1
+    equals:
+      'li.breadcrumb-item:nth-child(2) a': "Home"
+      'li.breadcrumb-item:nth-child(2) a': "About the European Commission"
+      'li.breadcrumb-item:nth-child(3) a': "Link title"
+>>>>>>> OEL-474: Add breadcrumbs and checkbox tests.
