@@ -1,3 +1,17 @@
+blockquote:
+  render:
+    '#type': pattern
+    '#id': blockquote
+    '#fields':
+      quote: Foo
+      attribution: Bar
+      cite: Cite me
+      alignment: left
+  assert:
+    contains:
+      - Foo
+      - Cite me
+
 form assertion:
   render:
     markup:
