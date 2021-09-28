@@ -23,6 +23,9 @@ collapse:
         dark: dark
         link: link
       preview: primary
+    link:
+      type: boolean
+      label: Toggle as a link
     outline:
       type: boolean
       label: Button outline
