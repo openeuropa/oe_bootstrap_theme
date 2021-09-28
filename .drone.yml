@@ -79,15 +79,6 @@ pipeline:
       event:
         exclude: tag
 
-  behat:
-    group: test
-    image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
-    commands:
-      - ./vendor/bin/behat --strict
-    when:
-      event:
-        exclude: tag
-
   before-release:
     image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
     commands:
