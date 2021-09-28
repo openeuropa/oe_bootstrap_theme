@@ -10,5 +10,13 @@
  * @see template_preprocess_input()
  */
 #}
-{# @TODO Revisit after refactoring the button pattern. #}
-<input{{ attributes.addClass(['btn', 'btn-primary']) }} />{{ children }}
+{% if attributes.hasClass('button--primary') or (attributes['data-drupal-selector'] == 'edit-submit') %}
+  {% set attributes = attributes.addClass(['btn-primary']) %}
+{% else %}
+  {% set attributes = attributes.addClass(['btn-secondary']) %}
+{% endif %}
+{% if attributes.disabled == 'disabled' %}
+  {% set attributes = attributes.addClass(['disabled']) %}
+{% endif %}
+
+<input{{ attributes.addClass(['btn']) }} />{{ children }}

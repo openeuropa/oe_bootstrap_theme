@@ -1,6 +1,6 @@
 {% set id = 'collapse-' ~ random(1000) %}
 <p>
-  {% if 'link' in variant %}
+  {% if link %}
     {{ pattern('link', {
       label: label,
       style: style,
@@ -16,20 +16,20 @@
   {% else %}
     {{ pattern('button', {
       label: label,
-      style: style,
+      variant: style,
       outline: outline,
-      url: '#' ~ id,
       size: size,
       attributes: create_attribute({
         'data-bs-toggle': 'collapse',
         'role': 'button',
         'aria-expanded': 'false',
-        'aria-controls': id
+        'aria-controls': id,
+        'href': '#' ~ id
       })
     }) }}
   {% endif %}
 </p>
-<div class="collapse" id="{{id}}">
+<div class="collapse" id="{{ id }}">
   {{ pattern('card', {
     'content': content,
   }) }}
