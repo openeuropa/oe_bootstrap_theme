@@ -1,19 +1,21 @@
 {#
 /**
  * @file
- * Button component.
+ * Button pattern.
  */
 #}
-{%  if _icon %}
+{%  if icon %}
   {% set _icon = icon|merge({
     path: bcl_icon_path
-})  %}
+  })  %}
 {% endif %}
 {%  if show_spinner %}
+  {% set attributes_spinner =  create_attribute().addClass('me-1') %}
   {% set spinner = {
     'type': "border",
     'variant': "info",
     'small': true,
+    'attributes': attributes_spinner,
   } %}
 {% endif %}
 {% include '@oe-bcl/bcl-button/button.html.twig' with {
