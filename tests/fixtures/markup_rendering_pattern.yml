@@ -42,18 +42,6 @@ button:
       'button svg': 1
     contains:
       'button.btn-secondary': "Button label"
-textarea:
-  render:
-    '#type': textarea
-    '#title': Textarea
-    '#value': Text
-  assert:
-    contains:
-      - 'Textarea'
-      - 'Text'
-    count:
-      'textarea.form-textarea': 1
-      'textarea.form-control': 1
 breadcrumb:
   render:
     '#type': pattern
@@ -380,6 +368,480 @@ dropdown_link:
     contains:
       'button.dropdown-item': "A disabled button"
       'button.dropdown-item': "A button"
+card:
+  render:
+    '#type': pattern
+    '#id': card
+    '#variant': warning
+    '#fields':
+      settings:
+        border_variant: info
+      title:
+        content: "Title card"
+        tag: "h5"
+      subtitle:
+        content: "Subtitle card"
+        classes: "mb-2"
+      text:
+        content: "Text card with longer text which is supported"
+        classes: "mb-2"
+      image:
+        path: "https://placeimg.com/1000/500/arch"
+        alt: "Alternative text for card image"
+        position: "top"
+      content: "<button class='btn btn-primary'>Custom action</button>"
+      card_header: "Header of card"
+      card_footer: "Footer of card"
+  assert:
+    count:
+      'div[data-drupal-selector="card"]': 1
+      'img[alt="Alternative text for card image"]': 1
+    equals:
+      'div.card-header': "Header of card"
+      'h5.card-title': "Title card"
+      'h6.card-subtitle': "Subtitle card"
+      'p.card-text': "Text card with longer text which is supported"
+    contains:
+      'button.btn-primary': "Custom action"
+grid-row:
+  render:
+    '#type': pattern
+    '#id': grid_row
+    '#fields':
+      'settings':
+        with_container: true
+        no_gutters: true
+        col: "4 (3 columns per row)"
+        spacing_margin_bottom: "2"
+      'content':
+        - '#type': pattern
+          '#id': card
+          '#variant': warning
+          '#fields':
+            title:
+              content: "Title card"
+              tag: "h5"
+            text:
+              content: "Text card with longer text which is supported"
+              classes: "mb-2"
+            image:
+              path: "https://placeimg.com/1000/500/arch"
+              alt: "Alternative text for card image"
+              position: "top"
+            badges:
+                - '#type': pattern
+                  '#id': badge
+                  '#variant': "primary"
+                  '#fields':
+                  label: "Primary badge"
+                  assistive_text: "Additional text hidden with the .visually-hidden class."
+  assertions:
+    count:
+      'div[data-drupal-selector="grid-row"]': 1
+      'div.no-gutters': 1
+      'div[class="4 (3 columns per row) 2"]': 1
+      'img[src="https://placeimg.com/1000/500/arch"]': 1
+      'img[alt="Alternative text for card image"]': 1
+      'img[class="card-img-top"]': 1
+      'span.badge.bg-primary': 1
+    equals:
+      'h5.card-title': "Title card"
+      'p.card-text': "Text card with longer text which is supported"
+      'span.badge .visually-hidden': "Additional text hidden with the .visually-hidden class."
+    contains:
+      'span.badge': "Primary badge"
+icon:
+  render:
+    '#type': pattern
+    '#id': icon
+    '#fields':
+      settings:
+        name: 'award'
+        size: '2xl'
+        transformation: 'rotate-90'
+  assertions:
+    count:
+      'svg.icon--2xl': 1
+      'svg.icon--rotate-90': 1
+    contains:
+      'svg': "#award"
+jumbotron:
+  render:
+    '#type': pattern
+    '#id': jumbotron
+    '#variant': default
+    '#fields':
+      content:
+         - '#type': html_tag
+           '#tag': h1
+           '#value': "Hello, world!"
+         - '#type': html_tag
+           '#tag': p
+           '#value': "It uses utility classes for typography and spacing to space content out within the larger container."
+         - '#type': html_tag
+           '#tag': p
+           '#value': "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information."
+           '#attributes':
+             class:
+               "lead"
+         - '#type': html_tag
+           '#tag': hr
+           '#attributes':
+             class:
+               - "my-4"
+         - '#type': pattern
+           '#id': button
+           '#style': "primary"
+           '#size': "lg"
+           '#fields':
+             label: "Learn more"
+             url: "#"
+  assertions:
+    count:
+      'div[data-drupal-selector="jumbotron"]': 1
+      'p': 2
+      'p.lead': 1
+      'hr.my-4': 1
+      'button.btn-lg': 1
+    equals:
+      'h1': "Hello, world!"
+      'button.btn-primary': "Learn more"
+    contains:
+      'div.jumbotron:nth-child(1)': "It uses utility classes"
+link:
+  render:
+    '#type': pattern
+    '#id': link
+    '#fields':
+      settings:
+        type: 'secondary'
+        icon_position: 'before'
+        disabled: true
+      label: 'Link to example'
+      path: 'https://example.com'
+      icon:
+        name: 'alarm'
+  assert:
+    contains:
+      - '#alarm'
+      - 'Link to example'
+    count:
+      'a[data-drupal-selector=link].disabled': 1
+      'svg.icon--s': 1
+link_block:
+  render:
+    '#type': pattern
+    '#id': link_block
+    '#fields':
+      title: 'Title Link Block'
+      links:
+        - label: 'Link number one'
+          url: 'https://example.com'
+        - label: 'Link number two'
+          url: 'https://google.com'
+  assertions:
+    count:
+      'ul.list-unstyled': 1
+      'li': 2
+      'a': 2
+    contains:
+      - "Title Link Block"
+      - "Link number one"
+      - "Link number two"
+list_group:
+  render:
+    '#type': pattern
+    '#id': list_group
+    '#fields':
+      settings:
+        type: 'unordered'
+        flush: false
+      items:
+        - variant: 'danger'
+          html: 'Label 1'
+        - variant: 'primary'
+          html: 'Label 2'
+        - html: "Label 3"
+          variant: 'secondary'
+          extra_classes: "d-flex justify-content-between align-items-center"
+          badge:
+            label: "10"
+            rounded_pill: TRUE
+  assert:
+    contains:
+      - 'Label 1'
+      - 'Label 2'
+      - 'Label 3'
+    count:
+      'ul.list-group': 1
+      'li.list-group-item-danger': 1
+      'li.list-group-item-primary': 1
+      'li.list-group-item-secondary span.badge': 1
+modal:
+  render:
+    '#type': pattern
+    '#id': modal
+    '#fields':
+      settings:
+        btn_style: "secondary"
+        size: 'sm'
+        modal_id: 'custom_modal'
+      btn_label: 'Open Modal'
+      header: 'Header text'
+      body: 'Lorem Ipsum dolor sit amet'
+      footer: 'Footer text'
+
+  assert:
+    contains:
+      - 'Open Modal'
+      - 'Header text'
+      - 'Lorem Ipsum dolor sit amet'
+      - 'Footer text'
+    count:
+      'button[data-bs-toggle=modal]': 1
+      'button[data-bs-target="#modal_custom_modal"]': 1
+      'div#modal_custom_modal': 1
+      '.modal-sm': 1
+      '.btn-secondary': 1
+nav:
+  render:
+    '#type': pattern
+    '#id': nav
+    '#variant': secondary
+    '#fields':
+      settings:
+        style: tabs
+        alignment: center
+        fill: justify
+      items:
+        - title: Home
+          url: "#"
+          in_active_trail: true
+        - title: Library
+          url: "#"
+          is_expanded: true
+          below:
+            - title: Sub 1
+              url: "#"
+            - title: Sub 2
+              url: "#"
+        - title: Data
+          url: "#"
+  assertions:
+    count:
+      'ul[data-drupal-selector="nav"]': 1
+      'ul.nav-tabs': 1
+      'ul.justify-content-center.nav-justify': 1
+    equals:
+      'a.nav-link.active': "Home"
+      'a.nav-link.dropdown-toggle': "Library"
+      'ul.dropdown-menu li:nth-child(1)  a': "Sub 1"
+      'ul.dropdown-menu li:nth-child(2)  a': "Sub 2"
+      'li.nav-item:nth-child(3) a': "Data"
+navbar:
+  render:
+    '#type': pattern
+    '#id': navbar
+    '#fields':
+      settings:
+        background: light
+        expand: lg
+        color_set: light
+      navbar_left:
+        - '#type': pattern
+          '#id': link
+          '#fields':
+            label: "I'm a link"
+            path: "#first"
+            attributes:
+              class: "nav-link"
+        - '#type': pattern
+          '#id': link
+          '#fields':
+            label: "I'm a link 2"
+            path: "#second"
+            attributes:
+              class: "nav-link"
+        - '#type': pattern
+          '#id': link
+          '#fields':
+            label: "I'm a link 3"
+            path: "#third"
+            attributes:
+              class: "nav-link"
+        - '#type': pattern
+          '#id': dropdown
+          '#variant': default
+          '#fields':
+            label: "Dropdown Toggle"
+            dropdown_items:
+              - label: "I'm a link"
+                path: "#navbar-dropdown-link"
+              - label: "I'm a button"
+                button: true
+      navbar_right:
+        - '#type': html_tag
+          '#tag': form
+          '#children':
+            '<label for="inlineFormInputGroupSearch" class="form-label visually-hidden">Search</label><input class="form-control" type="text" id="inlineFormInputGroupSearch" required="true" placeholder="Search"/><div class="ms-2"><button class="btn btn-primary btn-md" type="Search">Search</button></div>'
+          '#attributes':
+            class: "d-flex"
+  assertions:
+    count:
+      'nav[data-drupal-selector="navbar"]': 1
+      'nav.bg-light': 1
+      'nav.navbar-expand-lg': 1
+      'nav.navbar-light': 1
+      'form[class="d-flex"]': 1
+    equals:
+      'div.navbar-nav a:nth-child(1)': "I'm a link"
+      'div.navbar-nav a:nth-child(2)': "I'm a link 2"
+      'div.navbar-nav a:nth-child(3)': "I'm a link 3"
+      'ul.dropdown-menu li .dropdown-item': "I'm a link"
+      'button.dropdown-item': "I'm a button"
+      'label': "Search"
+pagination:
+  render:
+    '#type': pattern
+    '#id': pagination
+    '#variant': secondary
+    '#fields':
+      size: "sm"
+      alignment: "center"
+      prev:
+        path: "#prev"
+        label: "Previous"
+      next:
+        path: "#next"
+        label: "Next"
+      items:
+        - path: "#1"
+          label: "1"
+          active: true
+        - path: "#2"
+          label: "2"
+  assertions:
+    count:
+      'nav[data-drupal-selector="pagination"]': 1
+      'ul.pagination-sm.justify-content-center': 1
+      'a.page-link[href="#prev"]': 1
+      'li.page-item:nth-child(2) a[href="#1"]': 1
+      'li.page-item:nth-child(3) a[href="#2"]': 1
+      'li.page-item:nth-child(4) a[href="#next"]': 1
+    equals:
+      'li.page-item:nth-child(1) a': "Previous"
+      'li.page-item:nth-child(2) a': '1'
+      'li.page-item:nth-child(3) a': '2'
+      'li.page-item:nth-child(4) a': 'Next'
+offcanvas:
+  render:
+    '#type': pattern
+    '#id': offcanvas
+    '#variant': secondary
+    '#fields':
+      settings:
+        placement: start
+      title:
+        label: Offcanvas title
+        id: "1"
+        heading: "2"
+      offcanvas_id: offcanvasExample
+      body: "This is the offcanvas body content."
+  assertions:
+    count:
+      'div[data-drupal-selector="offcanvas"]': 1
+      'div[id="offcanvasExample"]': 1
+    equals:
+      'h2.offcanvas-title': "Offcanvas title"
+      'div.offcanvas-body': "This is the offcanvas body content."
+popover:
+  render:
+    '#type': pattern
+    '#id': popover
+    '#fields':
+      settings:
+        style: primary
+        size: small
+        placement: top
+      label: "Toggle element"
+      title: "Lorem ipsum dolor sit amet"
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  assertions:
+    count:
+      'button[data-bs-toggle="popover"]': 1
+      'button[data-bs-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit."]': 1
+      'button[title="Lorem ipsum dolor sit amet"]': 1
+      'button[data-bs-placement="top"]': 1
+      'button.btn-small': 1
+    equals:
+      'button.btn-primary': "Toggle element"
+spinner:
+  render:
+    '#type': pattern
+    '#id': spinner
+    '#variant': primary
+    '#fields':
+      settings:
+        small: true
+        type: "border"
+      assistive_text: "Text for assistive technologies"
+  assertions:
+    count:
+      'div[data-drupal-selector="spinner"]': 1
+      'div.spinner-border': 1
+      'div.spinner-border-sm': 1
+    equals:
+      'span.visually-hidden': "Text for assistive technologies"
+table:
+  render:
+    '#type': pattern
+    '#id': table
+    '#fields':
+      'table_head':
+        cells:
+          - content: 'Name'
+          - content: 'Registration date'
+          - content: 'Email'
+          - content:
+              data:
+                '#markup': '<b>Bold header</b>'
+      'rows':
+        - cells:
+            - content: 'John Doe'
+            - content: '01/01/2016'
+            - content: 'john.doe@mail.com'
+        - cells:
+            - content: 'Jack Doe'
+            - content: '03/05/2017'
+            - content: 'jack.doe@mail.com'
+        - cells:
+            - content: 'June Doe'
+            - content: '03/05/2018'
+            - content:
+                data:
+                  '#markup': '<b>Bold cell</b>'
+  assert:
+    count:
+      'table.table': 1
+      'thead': 1
+      'thead tr': 1
+      'thead td': 4
+      'tbody': 1
+      'tbody tr': 3
+      'tbody td': 9
+    equals:
+      'thead td:nth-child(1)': "Name"
+      'thead td:nth-child(2)': "Registration date"
+      'thead td:nth-child(3)': "Email"
+      'tbody td:nth-child(1)': "John Doe"
+      'tbody td:nth-child(2)': "01/01/2016"
+      'tbody td:nth-child(3)': "john.doe@mail.com"
+      'tbody tr:nth-child(2) td:nth-child(1)': "Jack Doe"
+      'tbody tr:nth-child(2) td:nth-child(2)': "03/05/2017"
+      'tbody tr:nth-child(2) td:nth-child(3)': "jack.doe@mail.com"
+    contains:
+      'thead th:nth-child(1)': '<b>Bold header</b>'
+      'tbody tr:nth-child(3) td:nth-child(3)': '<b>Bold cell</b>'
 toast:
   render:
     '#type': pattern
