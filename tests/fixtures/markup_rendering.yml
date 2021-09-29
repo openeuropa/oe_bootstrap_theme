@@ -41,7 +41,7 @@ textarea:
     count:
       'textarea.form-textarea': 1
       'textarea.form-control': 1
-breadcrumb_assertion:
+breadcrumb:
   render:
     '#type': pattern
     '#id': breadcrumb
@@ -65,7 +65,7 @@ breadcrumb_assertion:
       'li.breadcrumb-item:nth-child(2) a': "Home"
       'li.breadcrumb-item:nth-child(2) a': "About the European Commission"
       'li.breadcrumb-item:nth-child(3) a': "Link title"
-accordion_assertion:
+accordion:
   render:
     '#type': pattern
     '#id': accordion
@@ -91,7 +91,7 @@ accordion_assertion:
       'div.accordion-item:nth-child(1) button.accordion-button': "Accordion Item #1"
       'div.accordion-item:nth-child(2) button.accordion-button': "Accordion Item #2"
       'div.accordion-item:nth-child(3) button.accordion-button': "Accordion Item #3"
-alert_assertion:
+alert:
   render:
     '#type': pattern
     '#id': alert
@@ -111,7 +111,7 @@ alert_assertion:
       'h4.alert-heading': "Well done!"
     contains:
       'div.alert span': "A simple alert. check it out!"
-badge_assertion:
+badge:
   render:
     '#type': pattern
     '#id': badge
@@ -131,7 +131,7 @@ badge_assertion:
      'span.badge.bg-primary': "A simple badge!"
     equals:
       'span.visually-hidden': "A simple badge assistive text."
-blockquote_assertion:
+blockquote:
   render:
     '#type': pattern
     '#id': blockquote
@@ -152,7 +152,7 @@ blockquote_assertion:
     equals:
       'blockquote.blockquote p': "A well-known quote, contained in a blockquote element."
       'cite[title="Source title"]': "Source title"
-button_group_assertion:
+button_group:
   render:
     '#type': pattern
     '#id': button_group
