@@ -109,4 +109,25 @@ alert_assertion:
       'button.btn-close': 1
     equals:
       'h4.alert-heading': "Well done!"
+      # @TODO - Waiting for FRONT if possible to add span and make alert testable for the text.
       # 'div.alert span': "A simple alert. check it out!"
+badge_assertion:
+  render:
+    '#type': pattern
+    '#id': badge
+    '#fields':
+      settings:
+        dismissible: true
+        rounded_pill: true
+        variant: 'primary'
+      label: "A simple badge!"
+      assistive_text: "A simple badge assistive text."
+  assertions:
+    count:
+      'span.badge.bg-primary': 1
+      'span.icon--close': 1
+      'span.visually-hidden': 1
+    equals:
+      # @TODO - Waiting for FRONT if possible to add span and make alert testable for the text.
+      # 'span.badge.bg-primary:nth-child(2)': "A simple badge!"
+      'span.visually-hidden': "A simple badge assistive text."
