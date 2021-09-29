@@ -11,7 +11,6 @@ form assertion:
     contains:
       - Hello World!
       - Papa Was A Rolling Stone &lt;1972&gt;
-<<<<<<< HEAD
 button:
   render:
     '#type': pattern
@@ -42,23 +41,6 @@ textarea:
     count:
       'textarea.form-textarea': 1
       'textarea.form-control': 1
-=======
-checkbox_assertion:
-  render:
-    '#type': checkbox
-    '#title': Checkbox
-    '#attributes':
-      'foo': bar
-  assert:
-    contains:
-      - 'Checkbox'
-      - 'foo="bar"'
-    count:
-      'label.form-check-label': 1
-      'input.form-checkbox.form-check-input': 1
-<<<<<<< HEAD
->>>>>>> OEL-474: Add checkbox at rendering test.
-=======
 breadcrumb_assertion:
   render:
     '#type': pattern
@@ -83,4 +65,28 @@ breadcrumb_assertion:
       'li.breadcrumb-item:nth-child(2) a': "Home"
       'li.breadcrumb-item:nth-child(2) a': "About the European Commission"
       'li.breadcrumb-item:nth-child(3) a': "Link title"
->>>>>>> OEL-474: Add breadcrumbs and checkbox tests.
+accordion_assertion:
+  render:
+    '#type': pattern
+    '#id': accordion
+    'settings':
+      '#open_item_id': 1
+    '#fields':
+      items:
+        - title: "Accordion Item #1"
+          content: "Bullfights. Bull hockey. Do you like this? The bull is stabbed, prodded, beaten. The bull is wounded. The bull is tired before the matador ever steps into the ring. Now, is that victory? Of course it is. Wanna know the secret to winning? Creative sportsmanship. In other words, one has to rig the game."
+        - title: "Accordion Item #2"
+          content: "Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer."
+        - title: "Accordion Item #3"
+          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  assertions:
+    count:
+      'div.accordion': 1
+      'div.accordion-item': 3
+      'div.accordion-item h2.accordion-header': 3
+      'div.accordion-item button.accordion-button': 3
+      'div.accordion-item div.accordion-collapse.collapse': 3
+    equals:
+      'div.accordion-item:nth-child(1) button.accordion-button': "Accordion Item #1"
+      'div.accordion-item:nth-child(2) button.accordion-button': "Accordion Item #2"
+      'div.accordion-item:nth-child(3) button.accordion-button': "Accordion Item #3"
