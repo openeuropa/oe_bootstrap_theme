@@ -99,11 +99,12 @@ alert_assertion:
       settings:
         dismissible: true
         animated_dismiss: true
+        variant: 'primary'
       heading: "Well done!"
       message: "A simple alert. check it out!"
   assertions:
     count:
-      'div.alert[role="alert"]': 1
+      'div.alert.alert-primary.alert-dismissible.fade[role="alert"]': 1
       'h4.alert-heading': 1
       'button.btn-close': 1
     equals:
