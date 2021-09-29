@@ -91,3 +91,21 @@ accordion_assertion:
       'div.accordion-item:nth-child(1) button.accordion-button': "Accordion Item #1"
       'div.accordion-item:nth-child(2) button.accordion-button': "Accordion Item #2"
       'div.accordion-item:nth-child(3) button.accordion-button': "Accordion Item #3"
+alert_assertion:
+  render:
+    '#type': pattern
+    '#id': alert
+    '#fields':
+      settings:
+        dismissible: true
+        animated_dismiss: true
+      heading: "Well done!"
+      message: "A simple alert. check it out!"
+  assertions:
+    count:
+      'div.alert[role="alert"]': 1
+      'h4.alert-heading': 1
+      'button.btn-close': 1
+    equals:
+      'h4.alert-heading': "Well done!"
+      # 'div.alert span': "A simple alert. check it out!"
