@@ -109,8 +109,8 @@ alert_assertion:
       'button.btn-close': 1
     equals:
       'h4.alert-heading': "Well done!"
-      # @TODO - Waiting for FRONT if possible to add span and make alert testable for the text.
-      # 'div.alert span': "A simple alert. check it out!"
+    contains:
+      'div.alert span': "A simple alert. check it out!"
 badge_assertion:
   render:
     '#type': pattern
@@ -127,7 +127,28 @@ badge_assertion:
       'span.badge.bg-primary': 1
       'span.icon--close': 1
       'span.visually-hidden': 1
+    contains:
+     'span.badge.bg-primary': "A simple badge!"
     equals:
-      # @TODO - Waiting for FRONT if possible to add span and make alert testable for the text.
-      # 'span.badge.bg-primary:nth-child(2)': "A simple badge!"
       'span.visually-hidden': "A simple badge assistive text."
+blockquote_assertion:
+  render:
+    '#type': pattern
+    '#id': blockquote
+    '#fields':
+      settings:
+        alignment: "left"
+      quote: "A well-known quote, contained in a blockquote element."
+      attribution: "Someone famous in"
+      cite: "Source title"
+  assertions:
+    count:
+      'figure.text-left': 1
+      'blockquote.blockquote': 1
+      'figcaption.blockquote-footer': 1
+      'cite[title="Source title"]': 1
+    contains:
+     'figcaption.blockquote-footer': "Someone famous in"
+    equals:
+      'blockquote.blockquote p': "A well-known quote, contained in a blockquote element."
+      'cite[title="Source title"]': "Source title"
