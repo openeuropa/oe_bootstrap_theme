@@ -1,84 +1,71 @@
 dropdown:
-  label: Dropdown
-  description: Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. https://v5.getbootstrap.com/docs/5.0/components/dropdowns/
-  variants:
-    default:
-      label: Default
-    custom:
-      label: Custom content
+  label: "Dropdown"
+  description: "Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. https://v5.getbootstrap.com/docs/5.0/components/dropdowns/"
   settings:
-    style:
-      type: select
-      label: Button style
-      options:
-        primary: primary
-        secondary: secondary
-        success: success
-        danger: danger
-        warning: warning
-        info: info
-        light: light
-        dark: dark
-        link: link
-      preview: primary
-    outline:
+    link:
       type: boolean
-      label: Button outline
-    size:
-      type: select
-      label: Button size
-      options:
-        sm: small
-        lg: large
-      preview: lg
-    disabled:
-      type: boolean
-      label: Disabled
+      label: link
+      description: Show as a link
+      preview: false
     direction:
       type: select
-      label: Dropdown direction
+      label: Direction
       options:
-        dropstart: start
-        dropend: end
-        dropup: up
+        dropdown: "dropdown"
+        dropup: "dropup"
+        dropend: "dropend"
+        dropstart: "dropstart"
+    alignment:
+      type: select
+      label: Alignment
+      options:
+        dropdown-menu-end: "dropdown-menu-end"
+        dropdown-menu-sm-end: "dropdown-menu-sm-end"
+        dropdown-menu-md-end: "dropdown-menu-md-end"
+        dropdown-menu-lg-end: "dropdown-menu-lg-end"
+        dropdown-menu-xl-end: "dropdown-menu-xl-end"
+        dropdown-menu-xxl-end: "dropdown-menu-xxl-end"
+        dropdown-menu-start: "dropdown-menu-start"
+        dropdown-menu-sm-start: "dropdown-menu-sm-start"
+        dropdown-menu-md-start: "dropdown-menu-md-start"
+        dropdown-menu-lg-start: "dropdown-menu-lg-start"
+        dropdown-menu-xl-start: "dropdown-menu-xl-start"
+        dropdown-menu-xxl-start: "dropdown-menu-xxl-start"
+    dark:
+      type: boolean
+      label: Dark mode
+      description: Set dark mode
+      preview: false
+    remove_wrapper:
+      type: boolean
+      label: Remove wrapper
+      description: Remove wrapper for this component
+      preview: false
+    dropdown_id:
+      type: textfield
+      label: Dropdown id
+      preview: ''
   fields:
-    label:
-      type: text
-      label: Label
-      description: The button label
-      preview: Dropdown
-    items:
-      type: render
-      label: Menu items
-      description: Full-height and lightweight navigation (including support for dropdowns).
+    trigger:
+      type: object
+      label: "Dropdown toggle"
+      description: "Object of Button or Link component"
       preview:
-        - type: link
-          title: "Lorem ipsum"
-          url: "http://example.com"
-        - type: link
-          title: "Nulla vitae"
-          url: "http://example.com"
-    content_prefix:
-      type: render
-      label: Content prefix
-      description: Custom dropdown content displayed before items. Only for custom variant.
+        label: "Dropdown toggle"
+        path: "#"
+    dropdown_items:
+      type: array
+      label: "dropdown items"
+      description: "Array of dropdown items"
       preview:
-        - type: html_tag
-          tag: h6
-          attributes:
-            class: 'dropdown-header'
-          value: "Nulla vitae elit"
-    content_suffix:
-      type: render
-      label: Content suffix
-      description: Custom dropdown content displayed after items. Only for custom variant.
-      preview:
-        - type: html_tag
-          tag: hr
-          attributes:
-            class: 'dropdown-divider'
-        - type: html_tag
-          tag: p
-          attributes:
-            class: 'px-3'
-          value: "Nulla vitae elit libero, a pharetra augue mollis interdum."
+        - label: "I'm a link"
+          path: "#"
+        - label: "I'm a button"
+          button: true
+        - divider: true
+        - label: "I'm a disabled button"
+          button: true
+          disabled: true
+        - label: "I'm a active button"
+          button: true
+          active: true

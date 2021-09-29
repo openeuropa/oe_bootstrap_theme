@@ -1,29 +1,17 @@
-{% set attributes = attributes.addClass([
-  'dropdown',
-  direction ? direction
-  ]) %}
+{#
+/**
+ * @file
+ * Dropdown pattern.
+ */
+#}
 
-<div{{ attributes }}>
-  {% block button %}
-    {{ pattern('button', {
-      label: label,
-      style: style,
-      outline: outline,
-      size: size,
-      disabled: disabled,
-      attributes: create_attribute({
-        'class': 'dropdown-toggle',
-        'data-bs-toggle': 'dropdown',
-        'data-boundary': 'window',
-        'aria-expanded': 'false'
-      })
-    }) }}
-  {% endblock %}
-  {% block menu %}
-    <ul class="dropdown-menu">
-      {% for item in items %}
-        <li>{{ item }}</li>
-      {% endfor %}
-    </ul>
-  {% endblock %}
-</div>
+{% include '@oe-bcl/bcl-dropdown/dropdown.html.twig' with {
+  'trigger': trigger,
+  'link': link,
+  'direction': direction,
+  'alignment': alignment,
+  'dark': dark,
+  'remove_wrapper': remove_wrapper,
+  'id': dropdown_id,
+  'items': dropdown_items
+} %}
