@@ -23,7 +23,6 @@ textarea:
     count:
       'textarea.form-textarea': 1
       'textarea.form-control': 1
-<<<<<<< HEAD
 modal:
   render:
     '#type': pattern
@@ -50,5 +49,24 @@ modal:
       'div#modal_custom_modal': 1
       '.modal-sm': 1
       '.btn-secondary': 1
-=======
->>>>>>> OEL-474: Pagination added into rendering pattern yml.
+popover:
+  render:
+    '#type': pattern
+    '#id': popover
+    '#fields':
+      settings:
+        style: primary
+        size: small
+        placement: top
+      label: "Toggle element"
+      title: "Lorem ipsum dolor sit amet"
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  assertions:
+    count:
+      'button[data-bs-toggle="popover"]': 1
+      'button[data-bs-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit."]': 1
+      'button[title="Lorem ipsum dolor sit amet"]': 1
+      'button[data-bs-placement="top"]': 1
+      'button.btn-small': 1
+    equals:
+      'button.btn-primary': "Toggle element"
