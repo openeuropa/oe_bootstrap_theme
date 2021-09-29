@@ -152,3 +152,31 @@ blockquote_assertion:
     equals:
       'blockquote.blockquote p': "A well-known quote, contained in a blockquote element."
       'cite[title="Source title"]': "Source title"
+button_group_assertion:
+  render:
+    '#type': pattern
+    '#id': button_group
+    '#fields':
+      settings:
+        toolbar: true
+        vertical: false
+        size: "md"
+      toolbar_aria_label: "Toolbar basic example"
+      aria_label: "Basic example"
+      items:
+        -
+          - label: "Primary"
+            variant: "primary"
+          - label: "Secondary"
+            variant: "secondary"
+          - label: "Outline disabled"
+            disabled: true
+            outline: true
+  assertions:
+    count:
+      'div.btn-group.btn-group-md[role="group"]': 1
+      'button.btn.btn-md': 3
+    equals:
+      'button.btn.btn-primary.btn-md': "Primary"
+      'button.btn.btn-secondary.btn-md': "Secondary"
+      'button.btn.btn-outline-primary.btn-md': "Outline disabled"
