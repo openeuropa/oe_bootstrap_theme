@@ -4,6 +4,16 @@
  * Template for a views table.
  */
 #}
+{% if (summary is not empty) or (description is not empty) %}
+  <details>
+    {% if summary is not empty %}
+      <summary>{{ summary }}</summary>
+    {% endif %}
+    {% if description is not empty %}
+      {{ description }}
+    {% endif %}
+  </details>
+{% endif %}
 {% set table_head = {'cells': header} %}
 {% set rows_items = {} %}
 {% for row in rows %}
