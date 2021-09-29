@@ -69,9 +69,9 @@ accordion_assertion:
   render:
     '#type': pattern
     '#id': accordion
-    'settings':
-      '#open_item_id': 1
     '#fields':
+      settings:
+        open_item_id: 1
       items:
         - title: "Accordion Item #1"
           content: "Bullfights. Bull hockey. Do you like this? The bull is stabbed, prodded, beaten. The bull is wounded. The bull is tired before the matador ever steps into the ring. Now, is that victory? Of course it is. Wanna know the secret to winning? Creative sportsmanship. In other words, one has to rig the game."
@@ -86,6 +86,7 @@ accordion_assertion:
       'div.accordion-item h2.accordion-header': 3
       'div.accordion-item button.accordion-button': 3
       'div.accordion-item div.accordion-collapse.collapse': 3
+      'div.accordion-item div.accordion-collapse.collapse.show': 1
     equals:
       'div.accordion-item:nth-child(1) button.accordion-button': "Accordion Item #1"
       'div.accordion-item:nth-child(2) button.accordion-button': "Accordion Item #2"
