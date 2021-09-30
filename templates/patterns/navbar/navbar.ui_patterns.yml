@@ -83,13 +83,18 @@ navbar:
           id: dropdown
           variant: default
           fields:
-            label: "Dropdown Toggle"
-            items:
-              - type: pattern
-                id: link
-                path: "#navbar"
+            trigger:
+              label: "Dropdown Toggle"
+              path: "#"
+            dropdown_items:
+              - path: "#navbar"
                 label: "I'm a link"
-              - type: pattern
-                id: button
-                path: "#navbar"
-                label:  "I'm a button"
+              - path: "#navbar"
+                label: "I'm an active button"
+                button: true
+                active: true
+              - divider: true
+              - path: "#navbar"
+                button: true
+                disabled: true
+                label: "I'm a disabled button"
