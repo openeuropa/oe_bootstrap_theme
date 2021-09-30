@@ -46,7 +46,6 @@ navbar:
             href: '#navbar'
             rel: home
             class: "navbar-brand"
-
     navbar_right:
       type: render
       label: Navigation bar right
