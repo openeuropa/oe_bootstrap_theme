@@ -28,19 +28,24 @@ modal:
     '#type': pattern
     '#id': modal
     '#fields':
+      settings:
+        btn_style: "secondary"
+        size: 'sm'
+        modal_id: 'custom_modal'
       btn_label: 'Open Modal'
       header: 'Header text'
       body: 'Lorem Ipsum dolor sit amet'
       footer: 'Footer text'
-    '#settings':
-      btn_style: 'secondary'
-      size: 'sm'
+
   assert:
     contains:
       - 'Open Modal'
       - 'Header text'
       - 'Lorem Ipsum dolor sit amet'
-      - 'Gooter text'
+      - 'Footer text'
     count:
       'button[data-bs-toggle=modal]': 1
+      'button[data-bs-target="#modal_custom_modal"]': 1
+      'div#modal_custom_modal': 1
+      '.modal-sm': 1
       '.btn-secondary': 1
