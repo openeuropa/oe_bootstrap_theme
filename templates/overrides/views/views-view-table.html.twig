@@ -4,6 +4,11 @@
  * Template for a views table.
  */
 #}
+{% if sticky %}
+  {% set attributes = create_attribute({
+    'class': 'sticky-enabled',
+  }) %}
+{% endif %}
 {% if (summary is not empty) or (description is not empty) %}
   <details>
     {% if summary is not empty %}
@@ -31,4 +36,5 @@
   caption: caption,
   rows: rows_items,
   table_head: table_head,
+  attributes: attributes,
 }) }}
