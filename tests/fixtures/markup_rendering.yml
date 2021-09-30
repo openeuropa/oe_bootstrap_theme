@@ -180,3 +180,60 @@ button_group:
       'button.btn.btn-primary.btn-md': "Primary"
       'button.btn.btn-secondary.btn-md': "Secondary"
       'button.btn.btn-outline-primary.btn-md': "Outline disabled"
+carousel:
+  render:
+    '#type': pattern
+    '#id': carousel
+    '#fields':
+      settings:
+        fade: true
+        with_controls: true
+        prev_label: 1
+        next_label: 1
+        with_indicators: true
+        autoplay: true
+        autoinit: false
+        disable_touch: true
+      active_item: 2
+      slides:
+        - caption: first slide label
+          caption_classes: "class-1 class-2"
+          interval: 0
+          image:
+            "#theme": "image"
+            "#uri": "https://images.site.example1"
+            "#alt": "alt image 1"
+            "#attributes":
+              class: d-block w-100
+        - caption: second slide label
+          caption_classes: "class-1 class-2"
+          interval: 0
+          image:
+            "#theme": "image"
+            "#uri": "https://images.site.example2"
+            "#alt": "alt image 2"
+            "#attributes":
+              class: d-block w-100
+  assertions:
+    count:
+      'div.carousel.slide.carousel-fade[data-drupal-selector="carousel"]': 1
+      'div.carousel-indicators button[type="button"]': 2
+      'div.carousel-indicators button[aria-label="Slide 1"]': 1
+      'div.carousel-indicators button[aria-label="Slide 2"]': 1
+      'div.carousel-indicators button[data-bs-slide-to="0"]': 1
+      'div.carousel-indicators button[data-bs-slide-to="1"]': 1
+      'div.carousel-indicators button.active': 1
+      'div.carousel-inner': 1
+      'div.carousel-item': 2
+      'div.carousel-item.active': 1
+      'button.carousel-control-prev[data-bs-slide="prev"]': 1
+      'button.carousel-control-next[data-bs-slide="next"]': 1
+      'img[src="https://images.site.example1"]': 1
+      'img[src="https://images.site.example2"]': 1
+      'img[alt="alt image 1"]': 1
+      'img[alt="alt image 2"]': 1
+    contains:
+      'div.carousel-caption': "first slide label"
+      'div.carousel-caption': "second slide label"
+      'span.visually-hidden': "Previous"
+      'span.visually-hidden': "Next"
