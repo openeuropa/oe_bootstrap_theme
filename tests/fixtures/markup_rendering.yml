@@ -23,3 +23,24 @@ textarea:
     count:
       'textarea.form-textarea': 1
       'textarea.form-control': 1
+modal:
+  render:
+    '#type': pattern
+    '#id': modal
+    '#fields':
+      btn_label: 'Open Modal'
+      header: 'Header text'
+      body: 'Lorem Ipsum dolor sit amet'
+      footer: 'Footer text'
+    '#settings':
+      btn_style: 'secondary'
+      size: 'sm'
+  assert:
+    contains:
+      - 'Open Modal'
+      - 'Header text'
+      - 'Lorem Ipsum dolor sit amet'
+      - 'Gooter text'
+    count:
+      'button[data-bs-toggle=modal]': 1
+      '.btn-secondary': 1
