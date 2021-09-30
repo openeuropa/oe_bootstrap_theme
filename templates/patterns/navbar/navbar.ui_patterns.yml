@@ -2,63 +2,98 @@ navbar:
   label: Navbar
   description: Powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin. https://v5.getbootstrap.com/docs/5.0/components/navbar/
   settings:
-    style:
+    collapse_id:
+      type: textfield
+      label: Collapse identifier
+      preview: "navbar"
+    background:
       type: select
-      label: Navbar style
+      label: Background of navbar
+      options:
+        primary: primary
+        secondary: secondary
+        success: success
+        danger: danger
+        warning: warning
+        info: info
+        light: light
+        dark: dark
+      preview: light
+    expand:
+      type: select
+      label: Placement
+      options:
+        sm: small
+        md: medium
+        lg: large
+      preview: lg
+    color_set:
+      type: select
+      label: Available set of color
       options:
         light: light
         dark: dark
       preview: light
-    container_fixed:
-      type: boolean
-      label: Fluid container
-      description: Navbars and their contents are fluid by default. Change the container to limit their horizontal width in different ways.
-      preview: false
-    placement:
-      type: select
-      label: Placement
-      options:
-        fixed_top: fixed top
-        fixed_bottom: fixed bottom
-        sticky_top: sticky top
-    attributes:
-      type: attributes
-      label: Attributes
   fields:
     navbar_branding:
-      type: text
-      label: Brand title
-      description: Your company, product, or project name.
+      type: render
+      label: Navigation bar branding
       preview:
         - type: html_tag
-          tag: span
-          value: "Brand"
+          tag: a
+          value: "Navbar"
+          attributes:
+            href: '#navbar'
+            rel: home
+            class: "navbar-brand"
+    navbar_right:
+      type: render
+      label: Navigation bar right
+      preview:
+        - type: html_tag
+          tag: form
+          attributes:
+            class: "d-flex"
+          children:
+            '<label for="inlineFormInputGroupSearch" class="form-label visually-hidden">Search</label><input class="form-control" type="text" id="inlineFormInputGroupSearch" required="true" placeholder="Search"/><div class="ms-2"><button class="btn btn-primary btn-md" type="Search">Search</button></div>'
     navbar_left:
       type: render
-      label: Left content of navbar (main menu)
-      description: Full-height and lightweight navigation (including support for dropdowns).
+      label: Navigation bar left
       preview:
         - type: pattern
-          id: nav
-          settings:
-            attributes: "class='navbar-nav'"
+          id: link
+          label: "I'm a link"
+          path: "#first"
+          attributes:
+            class: "nav-link"
+        - type: pattern
+          id: link
+          label: "I'm a link 2"
+          path: "#second"
+          attributes:
+            class: "nav-link"
+        - type: pattern
+          id: link
+          label: "I'm a link 3"
+          path: "#third"
+          attributes:
+            class: "nav-link"
+        - type: pattern
+          id: dropdown
+          variant: default
           fields:
-            items: 
-              - title: Home
-                url: "#"
-                in_active_trail: true
-              - title: Library
-                url: "#"
-                is_expanded: true
-                below:
-                  - title: Sub 1
-                    url: "#"
-                  - title: Sub 2
-                    url: "#"
-              - title: Data
-                url: "#"
-    navbar_right:
-      type: text
-      label: Text
-      description: Vertically centered strings of text.
-      preview: "Navbar text with an inline element"
+            trigger:
+              label: "Dropdown Toggle"
+              path: "#"
+            dropdown_items:
+              - path: "#navbar"
+                label: "I'm a link"
+              - path: "#navbar"
+                label: "I'm an active button"
+                button: true
+                active: true
+              - divider: true
+              - path: "#navbar"
+                button: true
+                disabled: true
+                label: "I'm a disabled button"

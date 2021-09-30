@@ -1,39 +1,72 @@
-{% set _placements = {
-'fixed_top': 'fixed-top',
-'fixed_bottom': 'fixed_bottom',
-'sticky_top': 'sticky-top',
-} %}
-{% set placement = placement ? _placements[placement] : '' %}
+{% spaceless %}
 
-{% set attributes = attributes.addClass([
-  'navbar',
-  'navbar-expand-lg',
-  style ? 'navbar-' ~ style,
-  style ? 'bg-' ~ style,
-  placement
-  ]) %}
+{# Parameters:
+  - collapse_id (string) (default: '')
+  - background (string) (default: '')
+  - brand (object) (default: {})
+    format: {
+      src: '',
+      alt: '',
+      class: '',
+      label: '', (optional: only for string label)
+      link: '',
+    }
+  - navigation (object Navigation) (default: {})
+  - form (object Form) (default: {})
+  - expand (string) (default: 'lg')
+    options: ['sm', 'md', 'lg']
+  - color_set (string) (default: 'light')
+    options ['light', 'dark']
+#}
+{% set _collapse_id = collapse_id|default('') %}
+{% set _background = background|default('') %}
+{% set _expand = expand|default('lg') %}
+{% set _color_set = color_set|default('light') %}
+{% set _classes = ['navbar', 'navbar-expand-' ~ _expand] %}
+{% if _background is not empty %}
+  {% set _classes = _classes|merge(['bg-' ~ _background]) %}
+{% endif %}
+{% if _color_set is not empty %}
+  {% set _classes = _classes|merge(['navbar-' ~ _color_set]) %}
+{% endif %}
 
-{% set id = 'navbar-' ~ random(1000) %}
+{% if attributes is empty %}
+  {% set attributes = create_attribute() %}
+{% endif %}
 
-<nav{{ attributes.addClass() }}>
-  <div class="{{ container_fixed ? 'container' : 'container-fluid' }}">
-    {% if navbar_branding %}
-      <div class="navbar-brand">{{ navbar_branding }}</div>
+{% set attributes = attributes.addClass(_classes) %}
+
+{% if _collapse_id is empty %}
+  {% set _collapse_id = 'navbar-' ~ random(1000) %}
+{% endif %}
+
+<nav
+  {{ attributes }}
+>
+  <div class="container">
+    {% if navbar_branding is not empty %}
+      {{ navbar_branding }}
     {% endif %}
-    
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#{{id}}"
-              aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="{{id}}">
-        <div class="me-auto mb-2 mb-lg-0">
-        {% if navbar_left %}
-          {{ navbar_left }}
-        {% endif %}
-        </div>
-        {% if navbar_right %}
-          {{ navbar_right }}
-        {% endif %}
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target='#{{ _collapse_id }}'
+      aria-controls='{{ _collapse_id }}'
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id='{{ _collapse_id }}'>
+      <div class="me-auto  navbar-nav">
+        {{ navbar_left }}
       </div>
+      <div>
+        {{ navbar_right }}
+      </div>
+    </div>
   </div>
 </nav>
+
+{% endspaceless %}
