@@ -2,6 +2,20 @@
 
 Drupal 8 theme based on [Bootstrap 5](https://v5.getbootstrap.com/) and [UI Patterns](https://github.com/nuvoleweb/ui_patterns/).
 
+## Paragraphs
+
+The paragraphs below are not yet themed therefore not recommended for usage:
+
+- Contextual navigation
+- Document
+- Fact
+- Facts and figures
+- Listing item
+- Listing item block
+- Rich text
+- Social media follow
+- Text with Featured media
+
 ## Requirements
 
 This depends on the following software:
