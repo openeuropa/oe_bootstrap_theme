@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Tooltip component.
+ * Tooltip pattern.
  */
 #}
 
@@ -21,18 +21,19 @@
 {% if link %}
   {{ pattern('link', {
     label: label,
-    path: '#' ~ id,
+    path: url|default('#' ~ id),
+    variant: style,
     attributes: attributes
       .setAttribute('role', 'button')
   }) }}
 {% else %}
   {{ pattern('button', {
     label: label,
-    style: style,
+    variant: style,
     outline: outline,
     size: size,
+    type: 'button',
     attributes: attributes
-      .setAttribute('type', 'button')
   }) }}
 {% endif %}
 
