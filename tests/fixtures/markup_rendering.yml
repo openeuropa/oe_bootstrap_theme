@@ -23,32 +23,3 @@ textarea:
     count:
       'textarea.form-textarea': 1
       'textarea.form-control': 1
-list_group:
-  render:
-    '#type': pattern
-    '#id': list_group
-    '#fields':
-      settings:
-        type: 'unordered'
-        flush: false
-      items:
-        - variant: 'danger'
-          html: 'Label 1'
-        - variant: 'primary'
-          html: 'Label 2'
-        - html: "Label 3"
-          variant: 'secondary'
-          extra_classes: "d-flex justify-content-between align-items-center"
-          badge:
-            label: "10"
-            rounded_pill: TRUE
-  assert:
-    contains:
-      - 'Label 1'
-      - 'Label 2'
-      - 'Label 3'
-    count:
-      'ul.list-group': 1
-      'li.list-group-item-danger': 1
-      'li.list-group-item-primary': 1
-      'li.list-group-item-secondary span.badge': 1
