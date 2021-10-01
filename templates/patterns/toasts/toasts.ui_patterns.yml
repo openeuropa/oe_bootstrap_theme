@@ -15,7 +15,7 @@ toasts:
       type: "text"
       label: "Wrapper classes"
       description: "Classes for the toasts wrapper"
-      preview: "position-relative"
+      preview: "toast fade show"
     wrapper_aria_live:
       type: "text"
       label: "Aria-live text"
@@ -32,27 +32,23 @@ toasts:
       description: "Array of toast items"
       preview:
         - role: "alert"
-          aria_live: "assertive"
           header:
             '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">just now</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
           body: "See? Just like this."
           close_aria_label: "Close"
           aria-live: "assertive"
-          role: "alert"
+          aria-atomic: 'true'
           attributes:
-            class: 'toast fade show'
-            aria-atomic: 'true'
+            class: show fade
         - role: "alert"
-          aria_live: "assertive"
           header:
             '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">2 seconds ago</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
           body: "Heads up, toasts will stack automatically."
           close_aria_label: "Close"
           aria-live: "assertive"
-          role: "alert"
+          aria-atomic: 'true'
           attributes:
-            class: 'toast fade show'
-            aria-atomic: 'true'
+            class: show fade
   libraries:
     - pattern_toasts:
         js:
