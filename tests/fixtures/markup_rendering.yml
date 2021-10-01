@@ -23,3 +23,23 @@ textarea:
     count:
       'textarea.form-textarea': 1
       'textarea.form-control': 1
+link:
+  render:
+    '#type': pattern
+    '#id': link
+    '#fields':
+      settings:
+        type: 'secondary'
+        icon_position: 'before'
+        disabled: true
+      label: 'Link to example'
+      path: 'https://example.com'
+      icon:
+        name: 'alarm'
+  assert:
+    contains:
+      - '#alarm'
+      - 'Link to example'
+    count:
+      'a[data-drupal-selector=link].disabled': 1
+      'svg.icon--s': 1
