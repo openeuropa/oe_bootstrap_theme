@@ -42,6 +42,300 @@ button:
       'button svg': 1
     contains:
       'button.btn-secondary': "Button label"
+textarea:
+  render:
+    '#type': textarea
+    '#title': Textarea
+    '#value': Text
+  assert:
+    contains:
+      - 'Textarea'
+      - 'Text'
+    count:
+      'textarea.form-textarea': 1
+      'textarea.form-control': 1
+breadcrumb:
+  render:
+    '#type': pattern
+    '#id': breadcrumb
+    '#fields':
+      items:
+        - path: "/index"
+          label: "Home"
+        - path: "/example"
+          label: "About the European Commission"
+        - path: "https://example.com"
+          label: "Link title"
+  assertions:
+    count:
+      "nav[aria-label=\"breadcrumb\"]": 1
+      'ol.breadcrumb': 1
+      'li.breadcrumb-item': 3
+      'li.breadcrumb-item:nth-child(1) a[href="/index"]': 1
+      'li.breadcrumb-item:nth-child(2) a[href="/example"]': 1
+      'li.breadcrumb-item:nth-child(3) a[href="https://example.com"]': 1
+    equals:
+      'li.breadcrumb-item:nth-child(2) a': "Home"
+      'li.breadcrumb-item:nth-child(2) a': "About the European Commission"
+      'li.breadcrumb-item:nth-child(3) a': "Link title"
+accordion:
+  render:
+    '#type': pattern
+    '#id': accordion
+    '#fields':
+      settings:
+        open_item_id: 1
+      items:
+        - title: "Accordion Item #1"
+          content: "Bullfights. Bull hockey. Do you like this? The bull is stabbed, prodded, beaten. The bull is wounded. The bull is tired before the matador ever steps into the ring. Now, is that victory? Of course it is. Wanna know the secret to winning? Creative sportsmanship. In other words, one has to rig the game."
+        - title: "Accordion Item #2"
+          content: "Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer."
+        - title: "Accordion Item #3"
+          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  assertions:
+    count:
+      'div.accordion': 1
+      'div.accordion-item': 3
+      'div.accordion-item h2.accordion-header': 3
+      'div.accordion-item button.accordion-button': 3
+      'div.accordion-item div.accordion-collapse.collapse': 3
+      'div.accordion-item div.accordion-collapse.collapse.show': 1
+    equals:
+      'div.accordion-item:nth-child(1) button.accordion-button': "Accordion Item #1"
+      'div.accordion-item:nth-child(2) button.accordion-button': "Accordion Item #2"
+      'div.accordion-item:nth-child(3) button.accordion-button': "Accordion Item #3"
+alert:
+  render:
+    '#type': pattern
+    '#id': alert
+    '#fields':
+      settings:
+        dismissible: true
+        animated_dismiss: true
+        variant: 'primary'
+      heading: "Well done!"
+      message: "A simple alert. check it out!"
+  assertions:
+    count:
+      'div.alert.alert-primary.alert-dismissible.fade[role="alert"]': 1
+      'h4.alert-heading': 1
+      'button.btn-close': 1
+    equals:
+      'h4.alert-heading': "Well done!"
+    contains:
+      'div.alert span': "A simple alert. check it out!"
+badge:
+  render:
+    '#type': pattern
+    '#id': badge
+    '#fields':
+      settings:
+        dismissible: true
+        rounded_pill: true
+        variant: 'primary'
+      label: "A simple badge!"
+      assistive_text: "A simple badge assistive text."
+  assertions:
+    count:
+      'span.badge.bg-primary': 1
+      'span.icon--close': 1
+      'span.visually-hidden': 1
+    contains:
+     'span.badge.bg-primary': "A simple badge!"
+    equals:
+      'span.visually-hidden': "A simple badge assistive text."
+blockquote:
+  render:
+    '#type': pattern
+    '#id': blockquote
+    '#fields':
+      settings:
+        alignment: "left"
+      quote: "A well-known quote, contained in a blockquote element."
+      attribution: "Someone famous in"
+      cite: "Source title"
+  assertions:
+    count:
+      'figure.text-left': 1
+      'blockquote.blockquote': 1
+      'figcaption.blockquote-footer': 1
+      'cite[title="Source title"]': 1
+    contains:
+     'figcaption.blockquote-footer': "Someone famous in"
+    equals:
+      'blockquote.blockquote p': "A well-known quote, contained in a blockquote element."
+      'cite[title="Source title"]': "Source title"
+button_group:
+  render:
+    '#type': pattern
+    '#id': button_group
+    '#fields':
+      settings:
+        toolbar: true
+        vertical: false
+        size: "md"
+      toolbar_aria_label: "Toolbar basic example"
+      aria_label: "Basic example"
+      items:
+        -
+          - label: "Primary"
+            variant: "primary"
+          - label: "Secondary"
+            variant: "secondary"
+          - label: "Outline disabled"
+            disabled: true
+            outline: true
+  assertions:
+    count:
+      'div.btn-group.btn-group-md[role="group"]': 1
+      'button.btn.btn-md': 3
+    equals:
+      'button.btn.btn-primary.btn-md': "Primary"
+      'button.btn.btn-secondary.btn-md': "Secondary"
+      'button.btn.btn-outline-primary.btn-md': "Outline disabled"
+carousel:
+  render:
+    '#type': pattern
+    '#id': carousel
+    '#fields':
+      settings:
+        fade: true
+        with_controls: true
+        prev_label: 1
+        next_label: 1
+        with_indicators: true
+        autoplay: true
+        autoinit: false
+        disable_touch: true
+      active_item: 2
+      slides:
+        - caption: first slide label
+          caption_classes: "class-1 class-2"
+          interval: 0
+          image:
+            "#theme": "image"
+            "#uri": "https://images.site.example1"
+            "#alt": "alt image 1"
+            "#attributes":
+              class: d-block w-100
+        - caption: second slide label
+          caption_classes: "class-1 class-2"
+          interval: 0
+          image:
+            "#theme": "image"
+            "#uri": "https://images.site.example2"
+            "#alt": "alt image 2"
+            "#attributes":
+              class: d-block w-100
+  assertions:
+    count:
+      'div.carousel.slide.carousel-fade[data-drupal-selector="carousel"]': 1
+      'div.carousel-indicators button[type="button"]': 2
+      'div.carousel-indicators button[aria-label="Slide 1"]': 1
+      'div.carousel-indicators button[aria-label="Slide 2"]': 1
+      'div.carousel-indicators button[data-bs-slide-to="0"]': 1
+      'div.carousel-indicators button[data-bs-slide-to="1"]': 1
+      'div.carousel-indicators button.active': 1
+      'div.carousel-inner': 1
+      'div.carousel-item': 2
+      'div.carousel-item.active': 1
+      'button.carousel-control-prev[data-bs-slide="prev"]': 1
+      'button.carousel-control-next[data-bs-slide="next"]': 1
+      'img[src="https://images.site.example1"]': 1
+      'img[src="https://images.site.example2"]': 1
+      'img[alt="alt image 1"]': 1
+      'img[alt="alt image 2"]': 1
+    contains:
+      'div.carousel-caption': "first slide label"
+      'div.carousel-caption': "second slide label"
+      'span.visually-hidden': "Previous"
+      'span.visually-hidden': "Next"
+collapse_link:
+  render:
+    '#type': pattern
+    '#id': collapse
+    '#variant': link
+    '#fields':
+      settings:
+        style: link
+        outline: false
+        link: "https://link.example.com"
+      label: "I am a link"
+      content:
+        - "#type": html_tag
+          "#tag": p
+          "#value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  assertions:
+    count:
+      'a.link-link[data-bs-toggle="collapse"]': 1
+      'div.collapse': 1
+    equals:
+      'a.link-link': "I am a link"
+      'div.card-body > p': "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+collapse_button:
+  render:
+    '#type': pattern
+    '#id': collapse
+    '#variant': default
+    '#fields':
+      settings:
+        style: link
+        outline: false
+      label: "I am a button"
+      content:
+        - "#type": html_tag
+          "#tag": p
+          "#value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  assertions:
+    count:
+      'button.btn-link[data-bs-toggle="collapse"]': 1
+      'div.collapse': 1
+    equals:
+      'button.btn-link': "I am a button"
+      'div.card-body > p': "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+dropdown_button:
+  render:
+    '#type': pattern
+    '#id': dropdown
+    '#fields':
+      settings:
+        link: false
+        alignment: "dropdown-menu-md-end"
+        dark: false
+        remove_wrapper: false
+        dropdown_id: "dd-test"
+      trigger:
+        label: "Dropdown toggle"
+        path: "#"
+      dropdown_items:
+        - label: "A link"
+          path: "#"
+        - label: "A button"
+          button: true
+        - divider: true
+        - label: "A disabled button"
+          button: true
+          disabled: true
+        - label: "An active button"
+          button: true
+          active: true
+  assertions:
+    count:
+      'div.dropdown': 1
+      'button.dropdown-toggle[data-bs-toggle="dropdown"]': 1
+      'ul.dropdown-menu.dropdown-menu-md-end': 1
+      'li': 5
+      'hr.dropdown-divider': 1
+      'a.dropdown-item': 1
+      'button.dropdown-item': 3
+      'button.dropdown-item.active': 1
+      'button.dropdown-item[aria-disabled="true"]': 1
+    equals:
+      'a.dropdown-item': "A link"
+      'button.dropdown-item.active': "An active button"
+    contains:
+      'button.dropdown-item': "A disabled button"
+      'button.dropdown-item': "A button"
 toast:
   render:
     '#type': pattern
