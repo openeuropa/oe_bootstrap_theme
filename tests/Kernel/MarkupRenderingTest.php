@@ -93,10 +93,19 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * @see tests/fixtures/markup_rendering.yml
    */
   public function markupRenderingProvider(): array {
-    $yaml_rendering = Yaml::decode(file_get_contents(__DIR__ . '/../fixtures/markup_rendering.yml'));
-    $yaml_rendering_pattern = Yaml::decode(file_get_contents(__DIR__ . '/../fixtures/markup_rendering_pattern.yml'));
-    $yaml = array_merge($yaml_rendering, $yaml_rendering_pattern);
-    return $yaml;
+    $path = __DIR__ . '/../fixtures';
+    $test_cases = Yaml::decode(file_get_contents("{$path}/markup_rendering.yml"));
+    foreach (Yaml::decode(file_get_contents("{$path}/markup_rendering_pattern.yml")) as $key => $test_case) {
+      // Ensure unique test case key as the two files might share the same keys.
+      $suffix = 0;
+      do {
+        $candidate_key = $key . ($suffix ? sprintf(' (%s)', $suffix) : '');
+        $suffix++;
+      } while (isset($test_cases[$candidate_key]));
+      $key = $candidate_key;
+      $test_cases[$key] = $test_case;
+    }
+    return $test_cases;
   }
 
   /**
