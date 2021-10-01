@@ -21,9 +21,7 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
 
   foreach ($items as $key => $item) {
     $variables['items'][$key]['label'] = $item['title'];
-    /** @var \Drupal\Core\Url $url */
-    $url = $item['url'];
-    $variables['items'][$key]['path'] = $url->toString();
+    $variables['items'][$key]['path'] = $item['url']->toString();
     // If path is current_path, set active to li.
     if ($item['url']->toString() == $current_path) {
       // Add active link.
