@@ -237,3 +237,46 @@ carousel:
       'div.carousel-caption': "second slide label"
       'span.visually-hidden': "Previous"
       'span.visually-hidden': "Next"
+collapse_link:
+  render:
+    '#type': pattern
+    '#id': collapse
+    '#variant': link
+    '#fields':
+      settings:
+        style: link
+        outline: false
+        link: "https://link.example.com"
+      label: "I am a link"
+      content:
+        - "#type": html_tag
+          "#tag": p
+          "#value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  assertions:
+    count:
+      'a.link-link[data-bs-toggle="collapse"]': 1
+      'div.collapse': 1
+    equals:
+      'a.link-link': "I am a link"
+      'div.card-body > p': "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+collapse_button:
+  render:
+    '#type': pattern
+    '#id': collapse
+    '#variant': default
+    '#fields':
+      settings:
+        style: link
+        outline: false
+      label: "I am a button"
+      content:
+        - "#type": html_tag
+          "#tag": p
+          "#value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  assertions:
+    count:
+      'button.btn-link[data-bs-toggle="collapse"]': 1
+      'div.collapse': 1
+    equals:
+      'button.btn-link': "I am a button"
+      'div.card-body > p': "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
