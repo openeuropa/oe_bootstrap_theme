@@ -92,7 +92,10 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * @see tests/fixtures/markup_rendering.yml
    */
   public function markupRenderingProvider(): array {
-    return Yaml::decode(file_get_contents(__DIR__ . '/../fixtures/markup_rendering.yml'));
+    $yaml_rendering = Yaml::decode(file_get_contents(__DIR__ . '/../fixtures/markup_rendering.yml'));
+    $yaml_rendering_pattern = Yaml::decode(file_get_contents(__DIR__ . '/../fixtures/markup_rendering_pattern.yml'));
+    $yaml = array_merge($yaml_rendering, $yaml_rendering_pattern);
+    return $yaml;
   }
 
   /**
@@ -110,15 +113,14 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    *   @code
    *   [
    *     'count' => [
-   *       '.ecl-page-header' => 1,
+   *        "button[data-drupal-selector="button"]" => 1,
+   *        "button svg" => 1,
    *     ],
    *     'equals' => [
-   *       '.ecl-page-header__identity' => 'Digital single market',
+   *        "button label" => "Button label",
    *     ],
    *     'contains' => [
-   *       'Digital',
-   *       'single',
-   *       'market',
+   *         "button.btn-secondary" => "Button label",
    *     ],
    *   ]
    *   @endcode
