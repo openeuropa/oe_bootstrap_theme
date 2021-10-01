@@ -20,10 +20,6 @@ libraries-extend:
   core/drupal.progress:
     - oe_bootstrap_theme/drupal.progress
 
-components:
-  namespaces:
-    oe-bcl: assets/bcl
-
 regions:
   navbar_branding: Navbar branding
   navbar_left: Navbar left

@@ -29,7 +29,6 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * {@inheritdoc}
    */
   protected static $modules = [
-    'components',
     'filter',
     'oe_bootstrap_theme_helper',
     'system',
@@ -51,7 +50,6 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
       'bower_components',
       'vendor',
       'build',
-      'bcl',
     ];
     new Settings($settings);
 
