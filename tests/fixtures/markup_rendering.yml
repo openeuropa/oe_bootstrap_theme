@@ -280,3 +280,46 @@ collapse_button:
     equals:
       'button.btn-link': "I am a button"
       'div.card-body > p': "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+dropdown_button:
+  render:
+    '#type': pattern
+    '#id': dropdown
+    '#fields':
+      settings:
+        link: false
+        alignment: "dropdown-menu-md-end"
+        dark: false
+        remove_wrapper: false
+        dropdown_id: "dd-test"
+      trigger:
+        label: "Dropdown toggle"
+        path: "#"
+      dropdown_items:
+        - label: "A link"
+          path: "#"
+        - label: "A button"
+          button: true
+        - divider: true
+        - label: "A disabled button"
+          button: true
+          disabled: true
+        - label: "An active button"
+          button: true
+          active: true
+  assertions:
+    count:
+      'div.dropdown': 1
+      'button.dropdown-toggle[data-bs-toggle="dropdown"]': 1
+      'ul.dropdown-menu.dropdown-menu-md-end': 1
+      'li': 5
+      'hr.dropdown-divider': 1
+      'a.dropdown-item': 1
+      'button.dropdown-item': 3
+      'button.dropdown-item.active': 1
+      'button.dropdown-item[aria-disabled="true"]': 1
+    equals:
+      'a.dropdown-item': "A link"
+      'button.dropdown-item.active': "An active button"
+    contains:
+      'button.dropdown-item': "A disabled button"
+      'button.dropdown-item': "A button"
