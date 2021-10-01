@@ -130,7 +130,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    *        "button label" => "Button label",
    *     ],
    *     'contains' => [
-   *         "button.btn-secondary" => "Button label",
+   *        "button.btn-secondary" => "Button label",
    *     ],
    *   ]
    *   @endcode
