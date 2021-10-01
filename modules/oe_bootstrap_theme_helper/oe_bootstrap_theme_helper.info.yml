@@ -4,7 +4,6 @@ description: OpenEuropa Bootstrap Theme helpers and tools.
 package: OpenEuropa Bootstrap Theme
 core_version_requirement: ^8.9 || ^9.1
 dependencies:
-  - components:components
   - drupal:responsive_image
   - ui_patterns:ui_patterns
   - ui_patterns:ui_patterns_library

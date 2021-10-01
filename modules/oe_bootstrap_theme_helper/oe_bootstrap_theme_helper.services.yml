@@ -1,0 +1,8 @@
+services:
+  oe_bootstrap_theme_helper.twig_loader.component_library:
+    class: Drupal\oe_bootstrap_theme_helper\Template\Loader\BclComponentLibraryLoader
+    arguments:
+      - '@app.root'
+      - '@theme_handler'
+    tags:
+      - { name: twig.loader, priority: -100 }
