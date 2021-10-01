@@ -23,6 +23,7 @@ textarea:
     count:
       'textarea.form-textarea': 1
       'textarea.form-control': 1
+<<<<<<< HEAD
 modal:
   render:
     '#type': pattern
@@ -49,3 +50,5 @@ modal:
       'div#modal_custom_modal': 1
       '.modal-sm': 1
       '.btn-secondary': 1
+=======
+>>>>>>> OEL-474: Pagination added into rendering pattern yml.
