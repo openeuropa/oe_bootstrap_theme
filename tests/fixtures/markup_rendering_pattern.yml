@@ -336,6 +336,50 @@ dropdown_button:
     contains:
       'button.dropdown-item': "A disabled button"
       'button.dropdown-item': "A button"
+dropdown_link:
+  render:
+    '#type': pattern
+    '#id': dropdown
+    '#fields':
+      settings:
+        link: true
+        alignment: "dropdown-menu-lg-start"
+        dark: false
+        remove_wrapper: false
+        dropdown_id: "dd-test"
+        direction: dropend
+      trigger:
+        label: "Dropdown toggle"
+        path: "#"
+      dropdown_items:
+        - label: "A link"
+          path: "#"
+        - label: "A button"
+          button: true
+        - divider: true
+        - label: "A disabled button"
+          button: true
+          disabled: true
+        - label: "An active button"
+          button: true
+          active: true
+  assertions:
+    count:
+      'div.dropdown': 1
+      'a.dropdown-toggle[data-bs-toggle="dropdown"]': 1
+      'ul.dropdown-menu.dropdown-menu-lg-start': 1
+      'li': 5
+      'hr.dropdown-divider': 1
+      'a.dropdown-item': 1
+      'button.dropdown-item': 3
+      'button.dropdown-item.active': 1
+      'button.dropdown-item[aria-disabled="true"]': 1
+    equals:
+      'a.dropdown-item': "A link"
+      'button.dropdown-item.active': "An active button"
+    contains:
+      'button.dropdown-item': "A disabled button"
+      'button.dropdown-item': "A button"
 toast:
   render:
     '#type': pattern
