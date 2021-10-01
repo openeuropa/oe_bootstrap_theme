@@ -16,9 +16,6 @@ nav:
     full_width:
       type: "boolean"
       label: "Full with?"
-    full_width:
-      type: "boolean"
-      label: "Full with?"
     alignment:
       type: select
       label: Alignment
@@ -99,7 +96,6 @@ nav:
           id: "fourth-tab"
           target: "fourth"
           attributes:
-            aria-controls: "fourth"
             data-bs-toggle: "tab"
             autocomplete: "off"
             data-bs-target: "#fourth"
