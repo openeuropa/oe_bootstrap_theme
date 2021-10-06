@@ -12,10 +12,6 @@ use Drupal\oe_bootstrap_theme\Theme\OpenEuropaBootstrapThemePreRender;
  * Implements hook_element_info_alter().
  */
 function oe_bootstrap_theme_element_info_alter(&$info) {
-  if (isset($info['datetime'])) {
-    $info['datetime']['#process'][] = '_oe_bootstrap_theme_process_element_grid_row';
-  }
-
   if (isset($info['datelist'])) {
     $info['datelist']['#process'][] = '_oe_bootstrap_theme_process_element_grid_row';
   }
