@@ -51,7 +51,7 @@ function oe_bootstrap_theme_preprocess_form_element(&$variables) {
   $variables['col_class'] = $element['#col_class'] ?? '';
 
   // Add default margin.
-  $variables['margin_class'] = $element['#margin_class'] ?? 'mb-3';
+  $variables['margin_class'] = $element['#margin_class'] ?? 'mb-2';
 
   // Add required class for checkbox and radio labels.
   if (in_array($element['#type'], ['checkbox', 'radio'])) {
