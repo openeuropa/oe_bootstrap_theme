@@ -35,6 +35,11 @@ module.exports = {
       options: { up: true },
     },
     {
+      from: [path.resolve(outputFolder, "resources/js/libraries/bootstrap-ie11/**")],
+      to: path.resolve(outputFolder, "assets/js"),
+      options: { up: true },
+    },
+    {
       from: [path.resolve(outputFolder, "resources/js/libraries/extend/progress.js")],
       to: path.resolve(outputFolder, "assets/js"),
       options: { up: true },
