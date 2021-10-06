@@ -6,6 +6,9 @@ progress:
       progress: 60
       label: "Progress label"
       bar_label: "Bar label"
+      message: "Progress bar description"
+      min: 10
+      max: 90
   assertions:
     count:
       'div[data-drupal-selector="progress"]': 1
@@ -14,11 +17,13 @@ progress:
       'div[role="progressbar"]': 1
       'div[style="width: 60%"]': 1
       'div[aria-valuenow="60"]': 1
-      'div[aria-valuemin="0"]': 1
-      'div[aria-valuemax="100"]': 1
+      'div[aria-valuemin="10"]': 1
+      'div[aria-valuemax="90"]': 1
+      'small.progress-bar-message': 1
     contains:
       'label.progress-bar-label': "Progress label"
       'div.progress': "Bar label"
+      'small.progress-bar-message': "Progress bar description"
 button:
   render:
     '#type': pattern

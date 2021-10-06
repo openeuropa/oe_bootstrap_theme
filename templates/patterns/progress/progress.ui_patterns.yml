@@ -36,3 +36,14 @@ progress:
       type: "text"
       label: "Text indicating the percentage of progress in the bar"
       preview: "50%"
+    message:
+      type: "text"
+      label: "Optional description text below the progress bar"
+    min:
+      type: "text"
+      label: "Minimum state of prorgress bar"
+      preview: "0"
+    max:
+      type: "text"
+      label: "Maximum state of prorgress bar"
+      preview: "100"
