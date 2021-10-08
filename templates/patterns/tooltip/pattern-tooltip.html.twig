@@ -22,7 +22,7 @@
   {{ pattern('link', {
     label: label,
     path: url|default('#' ~ id),
-    variant: style,
+    link_style: style,
     attributes: attributes
       .setAttribute('role', 'button')
   }) }}

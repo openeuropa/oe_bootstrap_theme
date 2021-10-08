@@ -1,13 +1,6 @@
 collapse:
   label: "Collapse"
   description: "The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. https://v5.getbootstrap.com/docs/5.0/components/collapse/"
-  variants:
-    default:
-      label: Button
-      description: Show collapse text in a button.
-    link:
-      label: Link
-      description: Show collapse text in a link.
   settings:
     style:
       type: select
