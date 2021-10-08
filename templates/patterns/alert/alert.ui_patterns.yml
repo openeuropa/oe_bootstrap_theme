@@ -2,7 +2,7 @@ alert:
   label: Alert
   description: Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. https://v5.getbootstrap.com/docs/5.0/components/alerts/
   settings:
-    variant:
+    style:
       type: select
       label: Alert style
       options:

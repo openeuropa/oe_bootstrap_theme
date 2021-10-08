@@ -4,7 +4,7 @@ popover:
   settings:
     style:
       type: select
-      label: Button or link style
+      label: Button style
       options:
         primary: primary
         secondary: secondary
@@ -38,7 +38,7 @@ popover:
     label:
       type: "text"
       label: "Label"
-      description: "Button or link label"
+      description: "Button label"
       preview: "Toggle element"
     title:
       type: "render"

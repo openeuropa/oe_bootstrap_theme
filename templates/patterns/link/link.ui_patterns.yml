@@ -1,10 +1,10 @@
 link:
   label: Link
-  description: Link component 
+  description: Link component
   settings:
-    variant:
+    link_style:
       type: select
-      label: Button style
+      label: Link style
       options:
         primary: primary
         secondary: secondary
@@ -25,7 +25,7 @@ link:
       options:
         before: before
         after: after
-    id:
+    link_id:
       type: textfield
       label: Button id
       preview: ''

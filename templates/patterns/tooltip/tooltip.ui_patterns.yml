@@ -52,7 +52,7 @@ tooltip:
       type: "render"
       label: "Title"
       description: "Tooltip title"
-      preview: "Lorem ipsum dolor sit amet"
+      preview: "Lorem ipsum dolor sit amet<"
   libraries:
     - pattern_tooltip:
         js:

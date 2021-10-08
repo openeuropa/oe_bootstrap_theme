@@ -39,7 +39,7 @@ button:
       type: select
       label: Button type
       options:
-        button: buttom
+        button: button
         submit: submit
         reset: reset
     disabled:
