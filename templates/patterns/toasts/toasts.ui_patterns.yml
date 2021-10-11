@@ -43,8 +43,7 @@ toasts:
           body: "Heads up, toasts will stack automatically."
           close_aria_label: "Close"
           aria_live: "assertive"
-          attributes:
-            class: "test-class"
+          class: test-class
   libraries:
     - pattern_toasts:
         js:
