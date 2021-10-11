@@ -4,6 +4,26 @@
  * Card component.
  */
 #}
+{% if title is iterable and '#items' in title|keys %}
+  {% set title = {
+    content: title,
+    class: 'mb-4'
+  } %}
+{% endif %}
+
+{% if text is iterable and '#items' in text|keys %}
+  {% set text = {
+    content: text,
+    class: 'mb-4'
+  } %}
+{% endif %}
+
+{% if image is iterable and '#items' in image|keys %}
+  {% set image = {
+    path: image
+  } %}
+{% endif %}
+
 {% include '@oe-bcl/bcl-card/card.html.twig' with {
   'title': title,
   'subtitle': subtitle,
