@@ -156,18 +156,21 @@ alert:
       settings:
         dismissible: true
         animated_dismiss: true
-        style: 'secondary'
+        style: 'danger'
       heading: "Well done!"
       message: "A simple alert. check it out!"
+      icons_path: "/assets/icons/bootstrap-icons.svg"
+      icon_name: "alarm"
   assertions:
     count:
-      'div.alert.alert-secondary.alert-dismissible.fade[role="alert"]': 1
+      'div.alert.alert-danger.alert-dismissible.fade[role="alert"]': 1
       'h4.alert-heading': 1
       'button.btn-close': 1
     equals:
       'h4.alert-heading': "Well done!"
     contains:
       'div.alert span': "A simple alert. check it out!"
+      'svg': "#alarm"
 badge:
   render:
     '#type': pattern
@@ -176,7 +179,7 @@ badge:
       settings:
         dismissible: true
         rounded_pill: true
-        style: 'secondary'
+        background: 'secondary'
       label: "A simple badge!"
       assistive_text: "A simple badge assistive text."
   assertions:
@@ -1287,14 +1290,14 @@ spinner:
     '#variant': primary
     '#fields':
       settings:
-        small: true
+        size: "lg"
         type: "border"
       assistive_text: "Text for assistive technologies"
   assertions:
     count:
       'div[data-drupal-selector="spinner"]': 1
       'div.spinner-border': 1
-      'div.spinner-border-sm': 1
+      'div.spinner-border-lg': 1
     equals:
       'span.visually-hidden': "Text for assistive technologies"
 table:
