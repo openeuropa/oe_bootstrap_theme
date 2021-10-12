@@ -22,10 +22,13 @@ spinner:
         light: "light"
         dark: "dark"
       preview: "success"
-    small:
-      type: "boolean"
-      label: "Small spinner"
-      preview: false
+    size:
+      type: "select"
+      label: "Spinner size"
+      options:
+        sm: "small"
+        lg: "large"
+      preview: "sm"
   fields:
     assistive_text:
       type: "text"
