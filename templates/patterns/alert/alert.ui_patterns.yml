@@ -37,3 +37,11 @@ alert:
       label: Message
       description: The alert message.
       preview: " A simple alert—check it out! "
+    icons_path:
+      type: text
+      label: Path to icons
+      preview: "/assets/icons/bootstrap-icons.svg"
+    icon_name:
+      type: text
+      label: icon to add to the alert
+      preview: "alarm"
