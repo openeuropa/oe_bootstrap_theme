@@ -12,24 +12,19 @@
 #}
 {{ attach_library('oe_bootstrap_theme/slimselect') }}
 
-
 {% if element['#multiple'] %}
-  {%
-    set classes = [
+  {% set classes = [
     'multi-select',
-  ]
-  %}
+  ] %}
 
   {% set attributes = attributes.removeClass('form-select') %}
 
-  {% else %}
+{% else %}
 
-    {%
-      set classes = [
-      'form-select',
-      attributes.hasClass('error') ? 'is-invalid',
-    ]
-    %}
+  {% set classes = [
+    'form-select',
+    attributes.hasClass('error') ? 'is-invalid',
+  ] %}
 
 {% endif %}
 
