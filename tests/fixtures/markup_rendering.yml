@@ -19,11 +19,10 @@ textarea:
   assert:
     equals:
       'label.form-label': "Textarea"
-      'textarea.form-control-sm': "Text"
+      'textarea.form-control': "Text"
     count:
       'textarea.form-textarea': 1
       'textarea.form-control': 1
-      'textarea.form-control-sm': 1
 checkbox_assertion:
   render:
     '#type': checkbox
@@ -53,7 +52,7 @@ select:
       'option[value=2]': "Three"
     count:
       'label.form-label': 1
-      'select.form-select-sm': 1
+      'select.form-select': 1
 submit:
   render:
     '#type': submit

@@ -987,13 +987,14 @@ link_block:
           url: 'https://google.com'
   assertions:
     count:
-      'ul.list-unstyled': 1
-      'li': 2
-      'a': 2
+      'h5.fw-bold.pb-3.mb-3.border-bottom': 1
+      'ul.ps-0.mb-0': 1
+      'li.list-unstyled.me-4-5': 2
+      'a.pb-3.d-inline-block': 2
     equals:
       'h5': "Title Link Block"
-      'ul.list-unstyled li:nth-child(1) a': "Link number one"
-      'ul.list-unstyled li:nth-child(2) a': "Link number two"
+      'ul li:nth-child(1) a': "Link number one"
+      'ul li:nth-child(2) a': "Link number two"
 list_default:
   render:
     '#type': pattern
