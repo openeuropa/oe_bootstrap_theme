@@ -6,6 +6,10 @@ navbar:
       type: textfield
       label: Collapse identifier
       preview: "navbar"
+    disable_collapse:
+      type: boolean
+      label: Disable Collapse
+      preview: false
     background:
       type: select
       label: Background of navbar
@@ -35,6 +39,12 @@ navbar:
         dark: dark
       preview: light
   fields:
+    brand:
+      type: object
+      label: Branding object
+      preview:
+        label: "OpenEuropa Site"
+        link: "https://europa.eu/"
     navbar_branding:
       type: render
       label: Navigation bar branding

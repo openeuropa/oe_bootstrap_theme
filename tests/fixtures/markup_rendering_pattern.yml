@@ -1158,6 +1158,9 @@ navbar:
         background: light
         expand: lg
         color_set: light
+      brand:
+        label: "OpenEuropa Site"
+        link: "https://europa.eu/"
       navbar_left:
         - '#type': pattern
           '#id': link
@@ -1211,6 +1214,9 @@ navbar:
       'ul.dropdown-menu li .dropdown-item': "I'm a link"
       'button.dropdown-item': "I'm a button"
       'label': "Search"
+      'a.navbar-brand': "OpenEuropa Site"
+    contains:
+      'a': "https://europa.eu/"
 pagination:
   render:
     '#type': pattern
