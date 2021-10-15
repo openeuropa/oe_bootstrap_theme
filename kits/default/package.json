@@ -13,7 +13,7 @@
     "production": "npm-run-all build:*"
   },
   "devDependencies": {
-    "@openeuropa/bcl-builder": "0.8.0",
+    "@openeuropa/bcl-builder": "0.9.0",
     "chokidar-cli": "^3.0.0",
     "copyfiles": "2.4.1",
     "cross-env": "7.0.3",
