@@ -1,0 +1,48 @@
+toasts:
+  label: "Toasts"
+  description: "Push notifications to your visitors with a toast, a lightweight and easily customizable alert message. https://v5.getbootstrap.com/docs/5.0/components/toasts/"
+  settings:
+    with_wrapper:
+      type: boolean
+      label: With wrapper?
+      preview: true
+    with_container:
+      type: boolean
+      label: With container?
+      preview: true
+  fields:
+    wrapper_classes:
+      type: "text"
+      label: "Wrapper classes"
+      description: "Classes for the toasts wrapper"
+      preview: "position-relative"
+    wrapper_aria_live:
+      type: "text"
+      label: "Aria-live text"
+      description: "Text for aria-live wrapper attribute"
+      preview: "polite"
+    container_classes:
+      type: "text"
+      label: "Container classes"
+      description: "Classes for the toasts container"
+      preview: "top-0 end-0 p-3"
+    toasts:
+      type: "array"
+      label: "Toast items"
+      description: "Array of toast items"
+      preview:
+        - role: "alert"
+          header:
+            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">just now</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
+          body: "See? Just like this."
+          aria_live: "assertive"
+        - role: "alert"
+          header:
+            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">2 seconds ago</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
+          body: "Heads up, toasts will stack automatically."
+          aria_live: "assertive"
+          class: test-class
+  libraries:
+    - pattern_toasts:
+        js:
+          toasts.js: {}
