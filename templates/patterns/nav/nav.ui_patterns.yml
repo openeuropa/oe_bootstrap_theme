@@ -5,21 +5,21 @@ nav:
   settings:
     pills:
       type: "boolean"
-      label: "Display as pills?"
+      label: "Menu items as pills"
       preview: false
     tabs:
       type: "boolean"
-      label: "Display as tabs?"
+      label: "Display as tabs"
       preview: true
     vertical:
       type: "boolean"
-      label: "Display verticaly?"
+      label: "Vertical menu"
     full_width:
       type: "boolean"
-      label: "Full with?"
+      label: "Full width menu"
     alignment:
       type: select
-      label: Alignment
+      label: "Alignment menu"
       options:
         start: start
         center: center
@@ -30,14 +30,14 @@ nav:
       preview: true
     nav:
       type: "boolean"
-      label: "Use <nav> tag insteal of default <ul>?"
+      label: "Use <nav> tag instead of default <ul>"
       preview: false
     navbar:
       type: "boolean"
       label: "Add .navbar-nav class?"
   fields:
     items:
-      type: "array"
+      type: array
       label: "Navigation items"
       description: "Array of navigation items"
       preview:
@@ -48,6 +48,7 @@ nav:
           target: "first"
           attributes:
             data-bs-toggle: "tab"
+            data-bs-target: "#first"
             role: "button"
             aria-controls: "first"
         - label: "I'm a button"
