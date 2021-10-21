@@ -46,18 +46,18 @@
 >
   <div class="container">
     {% if _brand is not empty %}
-      <a class='navbar-brand' href='{{ _brand.link }}'>
+      <a class="navbar-brand" href="{{ _brand.link }}">
         {%- if _brand.label is defined -%}
           {{- _brand.label -}}
         {%- else -%}
           {% for logo in _brand.logos %}
             <img
-              src='{{ logo.src }}'
+              src="{{ logo.src }}"
               {% if logo.alt is not empty %}
-                alt='{{ logo.alt }}'
+                alt="{{ logo.alt }}"
               {% endif %}
               {% if logo.class is not empty %}
-                class='{{ logo.class }}'
+                class="{{ logo.class }}"
               {% endif %}
             />
           {% endfor %}
@@ -68,17 +68,17 @@
     {% endif %}
     {% if not _disable_collapse %}
     <button
-      class='navbar-toggler'
-      type='button'
-      data-bs-toggle='collapse'
-      data-bs-target='#{{ _collapse_id }}'
-      aria-controls='{{ _collapse_id }}'
-      aria-expanded='false'
-      aria-label='Toggle navigation'
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#{{ _collapse_id }}"
+      aria-controls="{{ _collapse_id }}"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id='{{ _collapse_id }}'>
+    <div class="collapse navbar-collapse" id="{{ _collapse_id }}">
     {% endif %}
       <div class="me-auto  navbar-nav">
         {{ navbar_left }}
