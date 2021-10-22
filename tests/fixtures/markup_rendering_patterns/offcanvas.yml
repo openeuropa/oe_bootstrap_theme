@@ -1,0 +1,51 @@
+offcanvas_top_with_backdrop_and_trigger:
+  render:
+    '#type': pattern
+    '#id': offcanvas
+    '#fields':
+      settings:
+        placement: top
+        with_body_scroll: false
+        with_backdrop: true
+        with_trigger: true
+      title:
+        label: Offcanvas title
+        id: "1"
+        heading: "2"
+      offcanvas_id: offcanvasExample
+      body: "This is the offcanvas body content."
+  assertions:
+    count:
+      'button[data-bs-toggle="offcanvas"]': 1
+      'div[data-drupal-selector="offcanvas"]': 1
+      'div[id="offcanvasExample"]': 1
+      'div.offcanvas.offcanvas-top': 1
+    equals:
+      'h2.offcanvas-title': "Offcanvas title"
+      'div.offcanvas-body': "This is the offcanvas body content."
+      'button[data-bs-toggle="offcanvas"]': "Toggle offcanvas"
+offcanvas_start_with_body_scroll:
+  render:
+    '#type': pattern
+    '#id': offcanvas
+    '#fields':
+      settings:
+        placement: start
+        with_body_scroll: true
+        with_backdrop: false
+        with_trigger: false
+      title:
+        label: Offcanvas title
+        id: "1"
+        heading: "2"
+      offcanvas_id: offcanvasExample
+      body: "This is the offcanvas body content."
+  assertions:
+    count:
+      'div[data-drupal-selector="offcanvas"]': 1
+      'div[id="offcanvasExample"]': 1
+      'div.offcanvas.offcanvas-start': 1
+      'button[data-bs-toggle="offcanvas"]': 0
+    equals:
+      'h2.offcanvas-title': "Offcanvas title"
+      'div.offcanvas-body': "This is the offcanvas body content."

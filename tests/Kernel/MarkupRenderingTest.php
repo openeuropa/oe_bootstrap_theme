@@ -39,6 +39,44 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
   ];
 
   /**
+   * List of patterns to be tested.
+   *
+   * @var string[]
+   */
+  private static $patternList = [
+    'accordion',
+    'alert',
+    'badge',
+    'blockquote',
+    'breadcrumb',
+    'button',
+    'button_group',
+    'card',
+    'card_grid',
+    'card_group',
+    'card_layout',
+    'carousel',
+    'collapse',
+    'dropdown',
+    'grid_row',
+    'icon',
+    'jumbotron',
+    'link',
+    'list',
+    'list_group',
+    'modal',
+    'navbar',
+    'offcanvas',
+    'pagination',
+    'popover',
+    'progress',
+    'spinner',
+    'table',
+    'tooltip',
+    'toast',
+  ];
+
+  /**
    * {@inheritdoc}
    */
   protected function setUp(): void {
@@ -94,17 +132,21 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    */
   public function markupRenderingProvider(): array {
     $path = __DIR__ . '/../fixtures';
+    $patterns_path = "{$path}/markup_rendering_patterns";
     $test_cases = Yaml::decode(file_get_contents("{$path}/markup_rendering.yml"));
-    foreach (Yaml::decode(file_get_contents("{$path}/markup_rendering_pattern.yml")) as $key => $test_case) {
-      // Ensure unique test case key as the two files might share the same keys.
-      $suffix = 0;
-      do {
-        $candidate_key = $key . ($suffix ? sprintf(' (%s)', $suffix) : '');
-        $suffix++;
-      } while (isset($test_cases[$candidate_key]));
-      $key = $candidate_key;
-      $test_cases[$key] = $test_case;
+    foreach (self::$patternList as $pattern) {
+      foreach (Yaml::decode(file_get_contents("{$patterns_path}/{$pattern}.yml")) as $key => $test_case) {
+        // Ensure unique test case key as the two files might share same keys.
+        $suffix = 0;
+        do {
+          $candidate_key = $key . ($suffix ? sprintf(' (%s)', $suffix) : '');
+          $suffix++;
+        } while (isset($test_cases[$candidate_key]));
+        $key = $candidate_key;
+        $test_cases[$key] = $test_case;
+      }
     }
+
     return $test_cases;
   }
 

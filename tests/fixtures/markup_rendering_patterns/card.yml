@@ -1,0 +1,82 @@
+card_warning_horizontal_with_border_variant_info_and_text_white:
+  render:
+    '#type': pattern
+    '#id': card
+    '#variant': warning
+    '#fields':
+      settings:
+        border_variant: info
+        text_color: white
+        horizontal: true
+      title:
+        content: "Title card"
+        tag: "h5"
+      subtitle:
+        content: "Subtitle card"
+        classes: "mb-2"
+      text:
+        content: "Text card with longer text which is supported"
+        classes: "mb-2"
+      image:
+        path: "https://placeimg.com/1000/500/arch"
+        alt: "Alternative text for card image"
+        position: "top"
+      content: "<button class='btn btn-primary'>Custom action</button>"
+      card_header: "Header of card"
+      card_footer: "Footer of card"
+  assert:
+    count:
+      'div.text-white': 1
+      'div.bg-warning': 1
+      'div.border-info': 1
+      'div[data-drupal-selector="card"]': 1
+      'img[alt="Alternative text for card image"]': 1
+      'div.row div.col-4': 1
+    equals:
+      'div.card-header': "Header of card"
+      'h5.card-title': "Title card"
+      'h6.card-subtitle': "Subtitle card"
+      'p.card-text': "Text card with longer text which is supported"
+    contains:
+      'button.btn-primary': "Custom action"
+card_secondary_vertical_with_border_variant_success_and_text_dark:
+  render:
+    '#type': pattern
+    '#id': card
+    '#variant': secondary
+    '#fields':
+      settings:
+        border_variant: success
+        text_color: dark
+        horizontal: false
+      title:
+        content: "Title card"
+        tag: "h5"
+      subtitle:
+        content: "Subtitle card"
+        classes: "mb-2"
+      text:
+        content: "Text card with longer text which is supported"
+        classes: "mb-2"
+      image:
+        path: "https://placeimg.com/1000/500/arch"
+        alt: "Alternative text for card image"
+        position: "top"
+      content: "<button class='btn btn-primary'>Custom action</button>"
+      card_header: "Header of card"
+      card_footer: "Footer of card"
+  assert:
+    count:
+      'div.text-dark': 1
+      'div.bg-secondary': 1
+      'div.border-success': 1
+      'div[data-drupal-selector="card"]': 1
+      'img[alt="Alternative text for card image"]': 1
+      'div.row': 0
+    equals:
+      'div.card-header': "Header of card"
+      'h5.card-title': "Title card"
+      'h6.card-subtitle': "Subtitle card"
+      'p.card-text': "Text card with longer text which is supported"
+    contains:
+      'button.btn-primary': "Custom action"

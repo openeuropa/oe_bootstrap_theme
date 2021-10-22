@@ -1,0 +1,65 @@
+card_group:
+  render:
+    '#type': pattern
+    '#id': card_group
+    '#fields':
+      cards:
+        - '#type': pattern
+          '#id': card
+          '#fields':
+            title:
+              content: "Card title 1"
+            text:
+              content: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+            card_footer: "Footer of card 1"
+          settings:
+            equal_height: true
+        - '#type': pattern
+          '#id': card
+          '#fields':
+            title:
+              content: "Card title 2"
+            text:
+              content: "This card has supporting text below as a natural lead-in to additional content."
+            card_footer: "Footer of card 2"
+          settings:
+            equal_height: true
+        - '#type': pattern
+          '#id': card
+          '#fields':
+            title:
+              content: "Card title 3"
+            text:
+              content: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+            card_footer: "Footer of card 3"
+          settings:
+            equal_height: true
+        - '#type': pattern
+          '#id': card
+          '#fields':
+            title:
+              content: "Card title 4"
+            text:
+              content: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+            card_footer: "Footer of card 4"
+          settings:
+            equal_height: true
+  assert:
+    count:
+      'div.card-group': 1
+      'div.card': 4
+      'h5.card-title': 4
+      'p.card-text': 4
+    contains:
+      'div.row.row-cols-1 h5.title_1': "Card title 1"
+      'div.row.row-cols-1 h5.title_2': "Card title 2"
+      'div.row.row-cols-1 h5.title_3': "Card title 3"
+      'div.row.row-cols-1 h5.title_4': "Card title 4"
+      'div.row.row-cols-1 p.card-text_1': "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+      'div.row.row-cols-1 p.card-text_2': "This card has supporting text below as a natural lead-in to additional content."
+      'div.row.row-cols-1 p.card-text_3': "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+      'div.row.row-cols-1 p.card-text_4': "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+      'div.row.row-cols-1 div.card-footer_1': "Footer of card 1"
+      'div.row.row-cols-1 div.card-footer_2': "Footer of card 2"
+      'div.row.row-cols-1 div.card-footer_3': "Footer of card 3"
+      'div.row.row-cols-1 div.card-footer_4': "Footer of card 4"

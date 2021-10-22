@@ -1,0 +1,44 @@
+collapse_link_secondary:
+  render:
+    '#type': pattern
+    '#id': collapse
+    '#fields':
+      settings:
+        style: "secondary"
+        outline: false
+        link: true
+      label: "I am a link"
+      content:
+        - "#type": html_tag
+          "#tag": p
+          "#value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  assertions:
+    count:
+      'a.link-secondary[data-bs-toggle="collapse"]': 1
+      'div.collapse': 1
+    equals:
+      'a.link-secondary': "I am a link"
+      'div.card-body > p': "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+collapse_button_dark_outlined_large:
+  render:
+    '#type': pattern
+    '#id': collapse
+    '#fields':
+      settings:
+        style: dark
+        outline: true
+        link: false
+        size: "lg"
+      label: "I am a button"
+      content:
+        - "#type": html_tag
+          "#tag": p
+          "#value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  assertions:
+    count:
+      'button.btn-outline-dark[data-bs-toggle="collapse"]': 1
+      'button.btn-lg': 1
+      'div.collapse': 1
+    equals:
+      'button.btn-outline-dark': "I am a button"
+      'div.card-body > p': "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."

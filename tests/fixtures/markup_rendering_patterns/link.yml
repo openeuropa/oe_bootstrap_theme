@@ -1,0 +1,43 @@
+link_secondary_disabled_with_icon:
+  render:
+    '#type': pattern
+    '#id': link
+    '#fields':
+      settings:
+        disabled: true
+        icon_position: 'before'
+        link_id: 'custom_id'
+        link_style: 'secondary'
+      label: 'Link to example'
+      path: 'https://example.com'
+      icon:
+        name: 'alarm'
+  assert:
+    contains:
+      'svg': "#alarm"
+      'a[data-drupal-selector=link]': "Link to example"
+    count:
+      'a[data-drupal-selector=link]': 1
+      'svg.icon--s': 1
+      'a.link-secondary': 1
+      '#custom_id': 1
+      'a.disabled': 1
+link_dark_enabled_without_icon:
+  render:
+    '#type': pattern
+    '#id': link
+    '#fields':
+      settings:
+        disabled: false
+        link_id: 'custom_id'
+        link_style: 'dark'
+      label: 'Link to example'
+      path: 'https://example.com'
+  assert:
+    contains:
+      'a[data-drupal-selector=link]': "Link to example"
+    count:
+      'a[data-drupal-selector=link]': 1
+      'a.link-dark': 1
+      '#custom_id': 1
+      'a.disabled': 0
