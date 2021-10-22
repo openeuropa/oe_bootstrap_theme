@@ -7,9 +7,9 @@ list_group:
       label: Type
       description: The most basic list group is an unordered list with list items and the proper classes. Build upon it with the options that follow, or with your own CSS as needed. ['unordered', 'ordered', 'actionable']
       options:
-        primary: unordered
-        secondary: ordered
-        success: actionable
+        unordered: unordered
+        ordered: ordered
+        actionable: actionable
       preview: unordered
     flush:
       type: boolean

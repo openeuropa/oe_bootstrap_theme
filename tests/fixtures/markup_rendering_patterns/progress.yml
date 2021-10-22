@@ -1,0 +1,66 @@
+progress_primary_stripped_animated:
+  render:
+    '#type': pattern
+    '#id': progress
+    '#fields':
+      settings:
+        style: "primary"
+        striped: true
+        animated: true
+      progress: 60
+      label: "Progress label"
+      bar_label: "Bar label"
+      message: "Progress bar description"
+      min: 10
+      max: 90
+  assertions:
+    count:
+      'div[data-drupal-selector="progress"]': 1
+      'div.progress-bar': 1
+      'div.progress': 1
+      'div[role="progressbar"]': 1
+      'div[style="width: 60%"]': 1
+      'div[aria-valuenow="60"]': 1
+      'div[aria-valuemin="10"]': 1
+      'div[aria-valuemax="90"]': 1
+      'small.progress-bar-message': 1
+      'div.bg-primary': 1
+      'div.progress-bar-animated': 1
+      'div.progress-bar-striped': 1
+    contains:
+      'label.progress-bar-label': "Progress label"
+      'div.progress': "Bar label"
+      'small.progress-bar-message': "Progress bar description"
+progress_secondary_non_stripped_non_animated:
+  render:
+    '#type': pattern
+    '#id': progress
+    '#fields':
+      settings:
+        style: "secondary"
+        strippd: false
+        animated: false
+      progress: 60
+      label: "Progress label"
+      bar_label: "Bar label"
+      message: "Progress bar description"
+      min: 10
+      max: 90
+  assertions:
+    count:
+      'div[data-drupal-selector="progress"]': 1
+      'div.progress-bar': 1
+      'div.progress': 1
+      'div[role="progressbar"]': 1
+      'div[style="width: 60%"]': 1
+      'div[aria-valuenow="60"]': 1
+      'div[aria-valuemin="10"]': 1
+      'div[aria-valuemax="90"]': 1
+      'small.progress-bar-message': 1
+      'div.bg-secondary': 1
+      'div.progress-bar-animated': 0
+      'div.progress-bar-striped': 0
+    contains:
+      'label.progress-bar-label': "Progress label"
+      'div.progress': "Bar label"
+      'small.progress-bar-message': "Progress bar description"

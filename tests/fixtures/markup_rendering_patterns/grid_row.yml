@@ -1,0 +1,96 @@
+grid-row_with_container_and_no_gutter:
+  render:
+    '#type': pattern
+    '#id': grid_row
+    '#fields':
+      'settings':
+        with_container: true
+        no_gutters: true
+        col: "4 (3 columns per row)"
+        spacing_margin_bottom: "2"
+      'content':
+        - '#type': pattern
+          '#id': card
+          '#variant': warning
+          '#fields':
+            title:
+              content: "Title card"
+              tag: "h5"
+            text:
+              content: "Text card with longer text which is supported"
+              classes: "mb-2"
+            image:
+              path: "https://placeimg.com/1000/500/arch"
+              alt: "Alternative text for card image"
+              position: "top"
+            badges:
+              - '#type': pattern
+                '#id': badge
+                '#variant': "primary"
+                '#fields':
+                label: "Primary badge"
+                assistive_text: "Additional text hidden with the .visually-hidden class."
+  assertions:
+    count:
+      'div.container': 1
+      'div[data-drupal-selector="grid-row"]': 1
+      'div.no-gutters': 1
+      'div[class="4 (3 columns per row) 2"]': 1
+      'img[src="https://placeimg.com/1000/500/arch"]': 1
+      'img[alt="Alternative text for card image"]': 1
+      'img[class="card-img-top"]': 1
+      'span.badge.bg-primary': 1
+    equals:
+      'h5.card-title': "Title card"
+      'p.card-text': "Text card with longer text which is supported"
+      'span.badge .visually-hidden': "Additional text hidden with the .visually-hidden class."
+    contains:
+      'span.badge': "Primary badge"
+grid-row_without_container_and_without_no_gutter:
+  render:
+    '#type': pattern
+    '#id': grid_row
+    '#fields':
+      'settings':
+        with_container: false
+        no_gutters: false
+        col: "auto"
+        spacing_margin_bottom: "2"
+      'content':
+        - '#type': pattern
+          '#id': card
+          '#variant': warning
+          '#fields':
+            title:
+              content: "Title card"
+              tag: "h5"
+            text:
+              content: "Text card with longer text which is supported"
+              classes: "mb-2"
+            image:
+              path: "https://placeimg.com/1000/500/arch"
+              alt: "Alternative text for card image"
+              position: "top"
+            badges:
+              - '#type': pattern
+                '#id': badge
+                '#variant': "primary"
+                '#fields':
+                label: "Primary badge"
+                assistive_text: "Additional text hidden with the .visually-hidden class."
+  assertions:
+    count:
+      'div.container': 0
+      'div[data-drupal-selector="grid-row"]': 1
+      'div.no-gutters': 0
+      'div[class="auto 2"]': 1
+      'img[src="https://placeimg.com/1000/500/arch"]': 1
+      'img[alt="Alternative text for card image"]': 1
+      'img[class="card-img-top"]': 1
+      'span.badge.bg-primary': 1
+    equals:
+      'h5.card-title': "Title card"
+      'p.card-text': "Text card with longer text which is supported"
+      'span.badge .visually-hidden': "Additional text hidden with the .visually-hidden class."
+    contains:
+      'span.badge': "Primary badge"

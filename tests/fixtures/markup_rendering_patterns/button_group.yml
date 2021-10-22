@@ -1,0 +1,67 @@
+button_group_medium_with_toolbar:
+  render:
+    '#type': pattern
+    '#id': button_group
+    '#fields':
+      settings:
+        toolbar: true
+        vertical: false
+        size: "md"
+      toolbar_aria_label: "Toolbar basic example"
+      aria_label: "Basic example"
+      items:
+        -
+          - label: "Primary"
+            variant: "primary"
+          - label: "Secondary"
+            variant: "secondary"
+          - label: "Outline disabled"
+            disabled: true
+            outline: true
+  assertions:
+    count:
+      'div[data-drupal-selector="button-group"]': 1
+      'div.btn-group.btn-group-md[role="group"]': 1
+      'div.btn-group-vertical': 0
+      'div.btn-toolbar': 1
+      'button.btn.btn-md': 3
+      'button.btn-primary': 1
+      'button.btn-secondary': 1
+      'button.btn-outline-primary': 1
+    equals:
+      'button.btn.btn-primary.btn-md': "Primary"
+      'button.btn.btn-secondary.btn-md': "Secondary"
+      'button.btn.btn-outline-primary.btn-md': "Outline disabled"
+button_group_large_vertical:
+  render:
+    '#type': pattern
+    '#id': button_group
+    '#fields':
+      settings:
+        toolbar: false
+        vertical: true
+        size: "lg"
+      aria_label: "Basic example"
+      items:
+        -
+          - label: "Primary"
+            variant: "primary"
+          - label: "Secondary"
+            variant: "secondary"
+          - label: "Outline disabled"
+            disabled: true
+            outline: true
+  assertions:
+    count:
+      'div[data-drupal-selector="button-group"]': 1
+      'div.btn-group-lg[role="group"]': 1
+      'div.btn-group-vertical': 1
+      'div.btn-toolbar': 0
+      'button.btn.btn-md': 3
+      'button.btn-primary': 1
+      'button.btn-secondary': 1
+      'button.btn-outline-primary': 1
+    equals:
+      'button.btn.btn-primary.btn-md': "Primary"
+      'button.btn.btn-secondary.btn-md': "Secondary"
+      'button.btn.btn-outline-primary.btn-md': "Outline disabled"

@@ -35,7 +35,7 @@ card:
     horizontal:
       type: boolean
       label: "Horizontal"
-      description: "Horizontal card?"
+      description: "Horizontal card"
       preview: false
   fields:
     title:

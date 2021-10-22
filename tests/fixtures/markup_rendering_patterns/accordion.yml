@@ -1,0 +1,33 @@
+accordion:
+  render:
+    '#type': pattern
+    '#id': accordion
+    '#fields':
+      settings:
+        open_item_id: 1
+        flush: true
+      items:
+        - title: "Accordion Item #1"
+          content: "Bullfights. Bull hockey. Do you like this? The bull is stabbed, prodded, beaten. The bull is wounded. The bull is tired before the matador ever steps into the ring. Now, is that victory? Of course it is. Wanna know the secret to winning? Creative sportsmanship. In other words, one has to rig the game."
+        - title: "Accordion Item #2"
+          content: "Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer."
+        - title: "Accordion Item #3"
+          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  assertions:
+    count:
+      'div.accordion': 1
+      'div[data-drupal-selector=accordion]': 1
+      'div.accordion.accordion-flush': 1
+      'div.accordion-item': 3
+      'div.accordion-item h2.accordion-header': 3
+      'div.accordion-item button.accordion-button': 3
+      'div.accordion-item div.accordion-collapse.collapse': 3
+      'div.accordion-item div.accordion-collapse.collapse.show': 1
+    equals:
+      'div.accordion-item:nth-child(1) button.accordion-button': "Accordion Item #1"
+      'div.accordion-item:nth-child(2) button.accordion-button': "Accordion Item #2"
+      'div.accordion-item:nth-child(3) button.accordion-button': "Accordion Item #3"
+    contains:
+      - "Bullfights. Bull hockey"
+      - "Advice on living, working or travelling in the EU"
+      - "Lorem ipsum dolor sit amet"

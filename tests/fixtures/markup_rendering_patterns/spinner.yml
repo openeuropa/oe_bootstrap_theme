@@ -1,0 +1,34 @@
+spinner_primary_large_border:
+  render:
+    '#type': pattern
+    '#id': spinner
+    '#variant': primary
+    '#fields':
+      settings:
+        size: "lg"
+        type: "border"
+      assistive_text: "Text for assistive technologies"
+  assertions:
+    count:
+      'div[data-drupal-selector="spinner"]': 1
+      'div.spinner-border': 1
+      'div.spinner-border-lg': 1
+    equals:
+      'span.visually-hidden': "Text for assistive technologies"
+spinner_secondary_small_grow:
+  render:
+    '#type': pattern
+    '#id': spinner
+    '#variant': secondary
+    '#fields':
+      settings:
+        size: "sm"
+        type: "grow"
+      assistive_text: "Text for assistive technologies"
+  assertions:
+    count:
+      'div[data-drupal-selector="spinner"]': 1
+      'div.spinner-grow': 1
+      'div.spinner-grow-sm': 1
+    equals:
+      'span.visually-hidden': "Text for assistive technologies"

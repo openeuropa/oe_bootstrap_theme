@@ -1,0 +1,30 @@
+icon_award_2xl_rotate_90:
+  render:
+    '#type': pattern
+    '#id': icon
+    '#fields':
+      settings:
+        name: 'award'
+        size: '2xl'
+        transformation: 'rotate-90'
+  assertions:
+    count:
+      'svg.icon--2xl': 1
+      'svg.icon--rotate-90': 1
+    contains:
+      'svg': "#award"
+icon_eye_fluid_flip_horizontal:
+  render:
+    '#type': pattern
+    '#id': icon
+    '#fields':
+      settings:
+        name: 'eye'
+        size: 'fluid'
+        transformation: 'flip-horizontal'
+  assertions:
+    count:
+      'svg.icon--fluid': 1
+      'svg.icon--flip-horizontal': 1
+    contains:
+      'svg': "#eye"

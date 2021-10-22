@@ -1,0 +1,32 @@
+pagination:
+  render:
+    '#type': pattern
+    '#id': pagination
+    '#fields':
+      size: "sm"
+      alignment: "center"
+      prev:
+        path: "#prev"
+        label: "Previous"
+      next:
+        path: "#next"
+        label: "Next"
+      items:
+        - path: "#1"
+          label: "1"
+          active: true
+        - path: "#2"
+          label: "2"
+  assertions:
+    count:
+      'nav[data-drupal-selector="pagination"]': 1
+      'ul.pagination-sm.justify-content-center': 1
+      'a.page-link[href="#prev"]': 1
+      'li.page-item:nth-child(2) a[href="#1"]': 1
+      'li.page-item:nth-child(3) a[href="#2"]': 1
+      'li.page-item:nth-child(4) a[href="#next"]': 1
+    equals:
+      'li.page-item:nth-child(1) a': "Previous"
+      'li.page-item:nth-child(2) a': '1'
+      'li.page-item:nth-child(3) a': '2'
+      'li.page-item:nth-child(4) a': 'Next'
