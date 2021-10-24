@@ -22,8 +22,8 @@ class BclComponentLibraryLoader extends EuropaComponentLibraryLoader {
    */
   public function __construct(string $root, ThemeHandlerInterface $theme_handler) {
     // Make sure the theme exists before getting its path. This is necessary
-    // when the "oe_bootstrap_theme_helper" module is enabled before the theme
-    // is or the theme is disabled and the "oe_bootstrap_theme_helper" is not.
+    // when the theme is not yet installed while the "oe_bootstrap_theme_helper"
+    // module is enabled. Typically, this happens on site install.
     $bcl_path = '';
     if ($theme_handler->themeExists('oe_bootstrap_theme')) {
       $theme_path = $theme_handler->getTheme('oe_bootstrap_theme')->getPath();
@@ -32,5 +32,6 @@ class BclComponentLibraryLoader extends EuropaComponentLibraryLoader {
 
     parent::__construct(['oe-bcl'], $bcl_path, $root, 'bcl-');
   }
+
 
 }
