@@ -24,13 +24,13 @@ class BclComponentLibraryLoader extends EuropaComponentLibraryLoader {
     // Make sure the theme exists before getting its path. This is necessary
     // when the "oe_bootstrap_theme_helper" module is enabled before the theme
     // is or the theme is disabled and the "oe_bootstrap_theme_helper" is not.
-    $path = '';
+    $bcl_path = '';
     if ($theme_handler->themeExists('oe_bootstrap_theme')) {
       $theme_path = $theme_handler->getTheme('oe_bootstrap_theme')->getPath();
-      $path = $theme_path . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'bcl';
+      $bcl_path = $theme_path . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'bcl';
     }
 
-    parent::__construct(['oe-bcl'], $path, $root, 'bcl-');
+    parent::__construct(['oe-bcl'], $bcl_path, $root, 'bcl-');
   }
 
 }
