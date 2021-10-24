@@ -30,8 +30,7 @@ class BclComponentLibraryLoader extends EuropaComponentLibraryLoader {
       $bcl_path = $theme_path . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'bcl';
     }
 
-    parent::__construct(['oe-bcl'], $bcl_path, $root, 'bcl-');
+    parent::__construct(['oe-bcl'], $bcl_path, $root, 'bcl-', 'bcl-');
   }
-
 
 }
