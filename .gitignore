@@ -15,7 +15,6 @@
 /.stylelintrc.json
 /docker-compose.*.yml
 /.sass-cache
-/assets/
 /.env
 /.gitattributes
 /templates/bcl
