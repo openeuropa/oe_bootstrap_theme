@@ -20,6 +20,14 @@
 
 {% if _breadcrumb_links %}
   {{ pattern('breadcrumb', {
-    'items': _breadcrumb_links
+    'items': _breadcrumb_links,
+    'attributes': {
+      'class': [
+        'mt-3',
+        'd-none',
+        'd-lg-block'
+      ],
+      'aria-label': "breadcrumb"
+    }
   }) }}
 {% endif %}
