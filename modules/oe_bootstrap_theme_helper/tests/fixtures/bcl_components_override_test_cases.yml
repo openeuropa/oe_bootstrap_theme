@@ -1,0 +1,15 @@
+oe_bootstrap_theme:
+  alert: 'Alert: oe_bootstrap_theme version'
+  badge: 'Badge: oe_bootstrap_theme version'
+  blockquote: 'Blockquote: oe_bootstrap_theme version'
+  card: 'Card: oe_bootstrap_theme version'
+oe_bootstrap_theme_test_subtheme1:
+  alert: 'Alert: oe_bootstrap_theme version'
+  badge: 'Badge: oe_bootstrap_theme_test_subtheme1 version'
+  blockquote: 'Blockquote: oe_bootstrap_theme_test_subtheme1 version'
+  card: 'Card: oe_bootstrap_theme version'
+oe_bootstrap_theme_test_subtheme2:
+  alert: 'Alert: oe_bootstrap_theme_test_subtheme2 version'
+  badge: 'Badge: oe_bootstrap_theme_test_subtheme1 version'
+  blockquote: 'Blockquote: oe_bootstrap_theme_test_subtheme2 version'
+  card: 'Card: oe_bootstrap_theme version'
