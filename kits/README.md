@@ -26,3 +26,11 @@ To create a sub-theme from the `/kits/default/` starterkit:
 1. Review the changes, especially for the human name and description.
   This is also a good time for a git commit!
 1. Check the README.md in your new sub-theme for additional steps.
+
+## Overriding BCL components
+
+Bootstrap Component Library (BCL) components, provided in OE Bootstrap Theme,
+can be overridden by sub-theme similar components. Such overrides should have
+the same name as the original BCL components and are placed, usually, under
+`assets/bcl` directory, relative to sub-theme root. If the sub-theme needs a
+different location, check `kits/default/default.info.hidden.yml` for details.

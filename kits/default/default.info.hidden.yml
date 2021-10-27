@@ -22,3 +22,13 @@ regions:
   content: Content
   page_bottom: Page bottom
   footer: Footer
+
+# Bootstrap Component Library (BCL) components, provided in OE Bootstrap Theme,
+# can be overridden by sub-theme similar components. Such overrides should have
+# the same name as the original BCL component and are placed, usually, under
+# `assets/bcl` directory, relative to sub-theme root. If the sub-theme needs a
+# different location, you'll need to uncomment the following lines, and replace
+# `components/templates` with the custom path of BCL components overrides:
+# openeuropa:
+#    bootstrap_component_library:
+#      components_location: components/templates
