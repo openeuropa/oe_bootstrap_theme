@@ -1,0 +1,8 @@
+name: OpenEuropa Bootstrap Theme Test Subtheme 1
+type: theme
+base theme: oe_bootstrap_theme
+core_version_requirement: ^8.9 || ^9
+
+openeuropa:
+  bootstrap_component_library:
+    components_location: components/templates
