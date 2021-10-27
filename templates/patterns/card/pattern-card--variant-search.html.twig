@@ -1,0 +1,41 @@
+{% set badges = [] %}
+{% if content is not empty %}
+  {% set badge_attr = create_attribute({'class': ['me-2']}) %}
+  {% for key,item in content %}
+    {% if key|first != '#' %}
+      {% set badges = badges|merge([{
+        '#type': 'pattern',
+        '#id': 'badge',
+        '#fields': {
+          label: item['#title'],
+          attributes: badge_attr
+        }
+      }]) %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% if image is defined and image['#markup'] is not empty %}
+  {% set _image = {
+    path: image['#markup'],
+    position: "top",
+  } %}
+{% endif %}
+{{ pattern('card', {
+  horizontal: true,
+  horizontal_grid: {
+    left_col_classes: "col-md-3",
+    right_col_classes: "col-md-9",
+    gutter: 0,
+  },
+  title: {
+    content: title,
+    classes: "mb-4",
+  },
+  text: {
+    content: text|render|striptags,
+    classes: "mb-4",
+  },
+  attributes: attributes.addClass(["border-0", "mb-5"]),
+  image:_image,
+  content: badges|render
+}) }}

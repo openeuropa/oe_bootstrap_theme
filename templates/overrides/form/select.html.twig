@@ -16,16 +16,12 @@
   {% set classes = [
     'multi-select',
   ] %}
-
   {% set attributes = attributes.removeClass('form-select') %}
-
 {% else %}
-
   {% set classes = [
     'form-select',
     attributes.hasClass('error') ? 'is-invalid',
   ] %}
-
 {% endif %}
 
 {% spaceless %}

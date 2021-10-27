@@ -3,6 +3,9 @@ breadcrumb:
     '#type': pattern
     '#id': breadcrumb
     '#fields':
+      attributes:
+        class:
+          - "mt-3"
       items:
         - path: "/index"
           label: "Home"
@@ -12,7 +15,7 @@ breadcrumb:
           label: "Link title"
   assertions:
     count:
-      "nav[aria-label=\"breadcrumb\"]": 1
+      "nav.mt-3[aria-label=\"breadcrumb\"]": 1
       'ol.breadcrumb': 1
       'li.breadcrumb-item': 3
       'li.breadcrumb-item:nth-child(1) a[href="/index"]': 1

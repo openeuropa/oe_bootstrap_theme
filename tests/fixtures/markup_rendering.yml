@@ -6,7 +6,6 @@ form assertion:
       '#plain_text': Papa Was A Rolling Stone <1972>
   assert:
     count:
-      # TODO: Replace with OE Boostrap Theme form class, when implemented.
       'form.oe-bootstrap-theme-markup-rendering-test-form': 1
     contains:
       - Hello World!
@@ -61,9 +60,9 @@ select_multiple_required:
       - One
       - Two
       - Three
+    '#multiple': true
     '#attributes':
       'required': "required"
-      'multiple': "multiple"
   assert:
     equals:
       'label.form-label': "Select Multiple"
@@ -72,7 +71,7 @@ select_multiple_required:
       'option[value=2]': "Three"
     count:
       'label.form-label': 1
-      'select.form-select': 1
+      'select.multi-select': 1
       'select[required]': 1
       'select[multiple]': 1
 submit_primary:
