@@ -13,7 +13,7 @@
 {%
   set classes = [
     'form-control',
-     attributes.hasClass('error') ? 'is-invalid',
+    attributes.hasClass('error') ? 'is-invalid',
   ]
 %}
 <input{{ attributes.addClass(classes).removeClass('form-text') }} />{{ children }}

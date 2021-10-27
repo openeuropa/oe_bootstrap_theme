@@ -72,7 +72,6 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'spinner',
     'table',
     'tooltip',
-    'toast',
   ];
 
   /**
@@ -129,7 +128,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * @see tests/fixtures/markup_rendering.yml
    */
   public function markupRenderingProvider(): array {
-    $path = __DIR__ . '/../fixtures';
+    $path = __DIR__ . '/../../fixtures';
     $patterns_path = "{$path}/markup_rendering_patterns";
     $test_cases = Yaml::decode(file_get_contents("{$path}/markup_rendering.yml"));
     foreach (self::$patternList as $pattern) {
@@ -177,7 +176,6 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    */
   protected function assertMarkupRendering(array $assertions, string $html): void {
     $crawler = new Crawler($html);
-
     $assertions += array_fill_keys(['count', 'equals', 'contains'], []);
 
     // Assert presence of given strings.

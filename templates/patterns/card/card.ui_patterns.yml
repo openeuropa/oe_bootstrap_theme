@@ -1,8 +1,13 @@
 card:
   label: "Card"
   description: "A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. https://v5.getbootstrap.com/docs/5.0/components/card"
+  variants:
+    default:
+      label: Default
+    search:
+      label: Search
   settings:
-    variant:
+    style:
       type: select
       label: Card style
       options:
