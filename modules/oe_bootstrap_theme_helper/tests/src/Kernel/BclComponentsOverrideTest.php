@@ -46,7 +46,7 @@ class BclComponentsOverrideTest extends KernelTestBase {
     new Settings($settings);
 
     // Replace some original BCL components just to make it easy to test.
-    $path = __DIR__ . '/../../../../assets/bcl';
+    $path = __DIR__ . '/../../../../../assets/bcl';
     file_put_contents("$path/bcl-alert/bcl-alert.html.twig", 'Alert: oe_bootstrap_theme version');
     file_put_contents("$path/bcl-badge/bcl-badge.html.twig", 'Badge: oe_bootstrap_theme version');
     file_put_contents("$path/bcl-blockquote/bcl-blockquote.html.twig", 'Blockquote: oe_bootstrap_theme version');
@@ -88,7 +88,7 @@ class BclComponentsOverrideTest extends KernelTestBase {
    * @see self::testBclComponentsOverriding()
    */
   public function bclComponentsOverridingTestCasesProvider(): array {
-    $cases = Yaml::decode(file_get_contents(__DIR__ . '/../fixtures/bcl_components_override_test_cases.yml'));
+    $cases = Yaml::decode(file_get_contents(__DIR__ . '/../../fixtures/bcl_components_override_test_cases.yml'));
     array_walk($cases, function (array &$case, string $theme): void {
       $case = [$theme, $case];
     });
