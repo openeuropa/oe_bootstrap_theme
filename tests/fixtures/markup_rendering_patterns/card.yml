@@ -1,13 +1,13 @@
-card_warning_horizontal_with_border_variant_info_and_text_white:
+card_warning_horizontal_with_border_variant_info_and_text_white_with_rounded_image:
   render:
     '#type': pattern
     '#id': card
+    '#variant': "horizontal"
     '#fields':
       settings:
         style: warning
         border_variant: info
         text_color: white
-        horizontal: true
       title:
         content: "Title card"
         tag: "h5"
@@ -21,9 +21,14 @@ card_warning_horizontal_with_border_variant_info_and_text_white:
         path: "https://placeimg.com/1000/500/arch"
         alt: "Alternative text for card image"
         position: "top"
+        rounded: 3
       content: "<button class='btn btn-primary'>Custom action</button>"
       card_header: "Header of card"
       card_footer: "Footer of card"
+      horizontal_grid:
+        left_col_classes: "col-4"
+        right_col_classes: "col-8"
+        gutter: "1"
   assert:
     count:
       'div.text-white': 1
@@ -31,7 +36,9 @@ card_warning_horizontal_with_border_variant_info_and_text_white:
       'div.border-info': 1
       'div[data-drupal-selector="card"]': 1
       'img[alt="Alternative text for card image"]': 1
-      'div.row div.col-4': 1
+      'div.row.g-1 div.col-4': 1
+      'div.row.g-1 div.col-8': 1
+      'img.card-img-top.rounded-3': 1
     equals:
       'div.card-header': "Header of card"
       'h5.card-title': "Title card"
@@ -39,7 +46,7 @@ card_warning_horizontal_with_border_variant_info_and_text_white:
       'p.card-text': "Text card with longer text which is supported"
     contains:
       'button.btn-primary': "Custom action"
-card_secondary_vertical_with_border_variant_success_and_text_dark:
+card_default_secondary_vertical_with_border_variant_success_and_text_dark:
   render:
     '#type': pattern
     '#id': card
@@ -61,7 +68,7 @@ card_secondary_vertical_with_border_variant_success_and_text_dark:
       image:
         path: "https://placeimg.com/1000/500/arch"
         alt: "Alternative text for card image"
-        position: "top"
+        position: "bottom"
       content: "<button class='btn btn-primary'>Custom action</button>"
       card_header: "Header of card"
       card_footer: "Footer of card"
@@ -73,6 +80,7 @@ card_secondary_vertical_with_border_variant_success_and_text_dark:
       'div[data-drupal-selector="card"]': 1
       'img[alt="Alternative text for card image"]': 1
       'div.row': 0
+      'img.card-img-bottom': 1
     equals:
       'div.card-header': "Header of card"
       'h5.card-title': "Title card"
