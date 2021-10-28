@@ -1,0 +1,37 @@
+featured_media:
+  label: "Featured Media"
+  description: "Featured Media"
+  settings:
+    ratio:
+      options:
+        1x1: "1x1"
+        4x3: "4x3"
+        16x9: "16x9"
+        21x9: "21x9"
+    alignment:
+      options:
+        left: "left"
+        right: "right"
+  fields:
+    embedded_media:
+      type: "text"
+      label: "embedded_media"
+    image:
+      type: "text"
+      label: "image"
+    poster_image:
+      type: "text"
+      label: "poster image"
+    content:
+      type: "text"
+      label: "content"
+      description: "Media description text goes here."
+    content_classes:
+      type: "text"
+      label: "content classes"
+    sources:
+      type: "array"
+      label: "Sources"
+    tracks:
+      type: "array"
+      label: "tracks"
