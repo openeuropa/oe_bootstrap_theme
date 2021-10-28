@@ -40,6 +40,11 @@ module.exports = {
       options: { up: true },
     },
     {
+      from: [path.resolve(outputFolder, "resources/js/libraries/extend/form_select_multiple.js")],
+      to: path.resolve(outputFolder, "assets/js"),
+      options: { up: true },
+    },
+    {
       from: ["node_modules/@openeuropa/bcl-theme-default/icons/bootstrap-icons.svg"],
       to: path.resolve(outputFolder, "assets/icons"),
       options: { up: true },

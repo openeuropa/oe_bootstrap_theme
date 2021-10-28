@@ -18,9 +18,9 @@ table:
         lg: lg
         xl: xl
         xxl: xxl
-    variant:
+    style:
       type: select
-      label: Variant
+      label: Table style
       options:
         primary: primary
         secondary: secondary

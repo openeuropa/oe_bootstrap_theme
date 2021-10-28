@@ -12,14 +12,20 @@
 {% set _breadcrumb_links = {} %}
 {% for breadcrumb_item in breadcrumb %}
   {% set _links = {
-    'label' : breadcrumb_item.text,
-    'path' : breadcrumb_item.url
+    'label': breadcrumb_item.text,
+    'path': breadcrumb_item.url
   } %}
   {% set _breadcrumb_links = _breadcrumb_links|merge([_links]) %}
 {% endfor %}
 
 {% if _breadcrumb_links %}
   {{ pattern('breadcrumb', {
-    'items': _breadcrumb_links
+    'items': _breadcrumb_links,
+    'attributes': {
+      'class': [
+        'mt-3'
+      ],
+      'aria-label': "breadcrumb"
+    }
   }) }}
 {% endif %}

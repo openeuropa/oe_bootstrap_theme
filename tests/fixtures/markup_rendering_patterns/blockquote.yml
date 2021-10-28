@@ -1,0 +1,42 @@
+blockquote:
+  render:
+    '#type': pattern
+    '#id': blockquote
+    '#fields':
+      settings:
+        alignment: "left"
+      quote: "A well-known quote, contained in a blockquote element."
+      attribution: "Someone famous in"
+      cite: "Source title"
+  assertions:
+    count:
+      'figure.text-left': 1
+      'blockquote.blockquote': 1
+      'figcaption.blockquote-footer': 1
+      'cite[title="Source title"]': 1
+    contains:
+      'figcaption.blockquote-footer': "Someone famous in"
+    equals:
+      'blockquote.blockquote p': "A well-known quote, contained in a blockquote element."
+      'cite[title="Source title"]': "Source title"
+blockquote_right_alignment:
+  render:
+    '#type': pattern
+    '#id': blockquote
+    '#fields':
+      settings:
+        alignment: "end"
+      quote: "A well-known quote, contained in a blockquote element."
+      attribution: "Someone famous in"
+      cite: "Source title"
+  assertions:
+    count:
+      'figure.text-end': 1
+      'blockquote.blockquote': 1
+      'figcaption.blockquote-footer': 1
+      'cite[title="Source title"]': 1
+    contains:
+      'figcaption.blockquote-footer': "Someone famous in"
+    equals:
+      'blockquote.blockquote p': "A well-known quote, contained in a blockquote element."
+      'cite[title="Source title"]': "Source title"

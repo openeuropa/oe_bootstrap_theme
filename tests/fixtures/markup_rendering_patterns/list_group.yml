@@ -1,0 +1,91 @@
+list_group_unordered_without_flush_vertical:
+  render:
+    '#type': pattern
+    '#id': list_group
+    '#fields':
+      settings:
+        type: 'unordered'
+        flush: false
+      items:
+        - variant: 'danger'
+          html: 'Label 1'
+        - variant: 'primary'
+          html: 'Label 2'
+        - html: "Label 3"
+          variant: 'secondary'
+          extra_classes: "d-flex justify-content-between align-items-center"
+          badge:
+            label: "10"
+            rounded_pill: TRUE
+  assert:
+    equals:
+      'li.list-group-item-danger': "Label 1"
+      'li.list-group-item-primary': "Label 2"
+      'li.list-group-item-secondary span.badge': "10"
+    contains:
+      - "Label 3"
+    count:
+      'ul[data-drupal-selector="list-group"]': 1
+      'ul.list-group': 1
+      'li.list-group-item-danger': 1
+      'li.list-group-item-primary': 1
+      'li.list-group-item-secondary span.badge': 1
+      '.list-group-flush': 0
+list_group_ordered_with_flush_horizontal:
+  render:
+    '#type': pattern
+    '#id': list_group
+    '#fields':
+      settings:
+        type: 'ordered'
+        flush: true
+        horizontal: "horizontal-lg"
+      items:
+        - variant: 'danger'
+          html: 'Label 1'
+        - variant: 'primary'
+          html: 'Label 2'
+        - html: "Label 3"
+          variant: 'secondary'
+          extra_classes: "d-flex justify-content-between align-items-center"
+          badge:
+            label: "10"
+            rounded_pill: TRUE
+  assert:
+    equals:
+      'li.list-group-item-danger': "Label 1"
+      'li.list-group-item-primary': "Label 2"
+      'li.list-group-item-secondary span.badge': "10"
+    contains:
+      - "Label 3"
+    count:
+      'ol[data-drupal-selector="list-group"]': 1
+      'ol.list-group': 1
+      'ol.list-group-numbered': 1
+      'ol.list-group-horizontal-lg': 1
+      'li.list-group-item-danger': 1
+      'li.list-group-item-primary': 1
+      'li.list-group-item-secondary span.badge': 1
+      '.list-group-flush': 1
+list_group_actionable_without_flush_vertical:
+  render:
+    '#type': pattern
+    '#id': list_group
+    '#fields':
+      settings:
+        type: 'actionable'
+        flush: false
+      items:
+         - label: 'Label 1'
+         - label: 'Label 2'
+         - label: "Label 3"
+  assert:
+    contains:
+      'a.list-group-item-danger': "Label 1"
+      'a.list-group-item-primary': "Label 2"
+      'a.list-group-item-secondary': "Label 3"
+    count:
+      'div[data-drupal-selector="list-group"]': 1
+      'div.list-group': 1
+      'a.list-group-item-action': 3
+      '.list-group-flush': 0
