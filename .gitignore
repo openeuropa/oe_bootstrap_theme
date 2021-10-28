@@ -17,5 +17,4 @@
 /.sass-cache
 /.env
 /.gitattributes
-/templates/bcl
 /.phpunit.result.cache
