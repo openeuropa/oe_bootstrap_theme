@@ -25,6 +25,9 @@ link:
       options:
         before: before
         after: after
+    remove_icon_spacers:
+      type: boolean
+      label: Remove icon spacers
     link_id:
       type: textfield
       label: Button id
