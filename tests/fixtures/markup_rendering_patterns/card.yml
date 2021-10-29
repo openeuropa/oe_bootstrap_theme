@@ -114,6 +114,7 @@ card_variant_search:
       'img.d-none.d-md-block.card-img-top': 1
       'img[src="https://placeimg.com/1000/500/arch"]': 1
       'span.me-2.badge.bg-primary': 2
+      'hr.d-md-none.mb-4-5': 1
     equals:
       'a.card-title.fs-5.text-decoration-none.mb-2': "Title card"
       'p.card-text.mb-3': "Text card with longer text which is supported"
