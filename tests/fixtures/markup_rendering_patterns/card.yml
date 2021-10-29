@@ -94,28 +94,28 @@ card_variant_search:
     '#id': card
     '#variant': search
     '#fields':
-      title: "Title card"
+      title:
+        content: "Title card"
       text: "Text card with longer text which is supported"
       image:
         '#markup': "https://placeimg.com/1000/500/arch"
-      content:
+      badges:
         - first: "first key"
           '#title': 'Category 1'
         - first: "first key"
           '#title': 'Category 2'
   assert:
     count:
-      'div[data-drupal-selector="card"]': 1
-      'div.border-0.mb-5.card': 1
+      'div.border-0.p-0.mb-4-5.mb-md-4-75.card.text-dark.bg-search': 1
       'div.row.g-0': 1
       'div.col-md-3': 1
       'div.col-md-9': 1
-      'div.card-body': 1
-      'img.card-img-top': 1
+      'div.card-body.p-0.p-md-3': 1
+      'img.d-none.d-md-block.card-img-top': 1
       'img[src="https://placeimg.com/1000/500/arch"]': 1
       'span.me-2.badge.bg-primary': 2
     equals:
-      'h5.card-title.mb-4': "Title card"
-      'p.card-text.mb-4': "Text card with longer text which is supported"
+      'a.card-title.fs-5.text-decoration-none.mb-2': "Title card"
+      'p.card-text.mb-3': "Text card with longer text which is supported"
     contains:
       'span.me-2.badge.bg-primary': "Category 1"
