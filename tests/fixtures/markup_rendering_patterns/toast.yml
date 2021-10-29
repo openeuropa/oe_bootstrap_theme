@@ -1,0 +1,175 @@
+toast_with_all:
+  render:
+    '#type': pattern
+    '#id': toasts
+    '#fields':
+      settings:
+        with_wrapper: true
+        with_container: true
+      wrapper_classes: "position-relative"
+      wrapper_aria_live: "Text for aria-live wrapper attribute"
+      container_classes: "top-0 end-0 p-3"
+      toasts:
+        - role: "alert"
+          header:
+            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">just now</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
+          body: "See? Just like this."
+          aria_live: "assertive"
+        - role: "alert"
+          header:
+            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">2 seconds ago</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
+          body: "Heads up, toasts will stack automatically."
+          aria_live: "assertive"
+          class: test-class
+  assertions:
+    count:
+      'div[data-drupal-selector="toasts"]': 1
+      'div[aria-live="Text for aria-live wrapper attribute"]': 1
+      'div.toast-container.top-0.end-0.p-3': 1
+      'div.toast-body': 2
+    contains:
+      'toast-body_1': "See? Just like this."
+      'toast-body_2"': "Heads up, toasts will stack automatically."
+toast_with_wrapper:
+  render:
+    '#type': pattern
+    '#id': toasts
+    '#fields':
+      settings:
+        with_wrapper: true
+        with_container: false
+      wrapper_classes: "position-relative"
+      wrapper_aria_live: "Text for aria-live wrapper attribute"
+      toasts:
+        - role: "alert"
+          header:
+            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">just now</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
+          body: "See? Just like this."
+          aria_live: "assertive"
+        - role: "alert"
+          header:
+            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">2 seconds ago</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
+          body: "Heads up, toasts will stack automatically."
+          aria_live: "assertive"
+          class: test-class
+  assertions:
+    count:
+      'div[data-drupal-selector="toasts"]': 1
+      'div[aria-live="Text for aria-live wrapper attribute"]': 1
+      'div.toast-container': 0
+      'div.toast-body': 2
+    contains:
+      'toast-body_1': "See? Just like this."
+      'toast-body_2"': "Heads up, toasts will stack automatically."
+toast_with_container:
+  render:
+    '#type': pattern
+    '#id': toasts
+    '#fields':
+      settings:
+        with_wrapper: false
+        with_container: true
+      container_classes: "top-0 end-0 p-3"
+      toasts:
+        - role: "alert"
+          header:
+            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">just now</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
+          body: "See? Just like this."
+          aria_live: "assertive"
+        - role: "alert"
+          header:
+            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">2 seconds ago</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
+          body: "Heads up, toasts will stack automatically."
+          aria_live: "assertive"
+          class: test-class
+  assertions:
+    count:
+      'div.toast-container': 1
+      'div.toast-container.top-0.end-0.p-3': 1
+      'div.toast-body': 2
+    contains:
+      'toast-body_1': "See? Just like this."
+      'toast-body_2"': "Heads up, toasts will stack automatically."
+toast_with_nothing:
+  render:
+    '#type': pattern
+    '#id': toasts
+    '#fields':
+      settings:
+        with_wrapper: false
+        with_container: false
+      toasts:
+        - role: "alert"
+          header:
+            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">just now</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
+          body: "See? Just like this."
+          aria_live: "assertive"
+        - role: "alert"
+          header:
+            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">2 seconds ago</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
+          body: "Heads up, toasts will stack automatically."
+          aria_live: "assertive"
+          class: test-class
+  assertions:
+    count:
+      'div.toast': 2
+      'div[aria-live="Text for aria-live wrapper attribute"]': 0
+      'div.toast-container.top-0.end-0.p-3': 0
+      'div.toast-body': 2
+    contains:
+      'toast-body_1': "See? Just like this."
+      'toast-body_2"': "Heads up, toasts will stack automatically."
+toast_body_wrappers:
+  render:
+    '#type': pattern
+    '#id': toasts
+    '#fields':
+      settings:
+        with_wrapper: true
+        with_container: true
+      wrapper_classes: "position-relative"
+      wrapper_aria_live: "Text for aria-live wrapper attribute"
+      container_classes: "top-0 end-0 p-3"
+      toasts:
+        - role: "alert"
+          header:
+            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">just now</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
+          body: "See? Just like this."
+          aria_live: "assertive"
+          with_body_wrapper: true
+          body_wrapper_classes: "body-test-class"
+        - role: "alert"
+          header:
+            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">2 seconds ago</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
+          body: "Heads up, toasts will stack automatically."
+          aria_live: "assertive"
+          class: test-class
+  assertions:
+    count:
+      'div[data-drupal-selector="toasts"]': 1
+      'div[aria-live="Text for aria-live wrapper attribute"]': 1
+      'div.toast-container.top-0.end-0.p-3': 1
+      'div.toast-body': 2
+      'div.body-test-class': 1
+    contains:
+      'toast-body_1': "See? Just like this."
+      'toast-body_2"': "Heads up, toasts will stack automatically."
+toast_single:
+  render:
+    '#type': pattern
+    '#id': toasts
+    '#fields':
+      toasts:
+        - role: "alert"
+          body: 'Hello, world! This is a toast message.'
+          aria_live: "assertive"
+  assertions:
+    count:
+      'div.toast[aria-atomic="true"]': 1
+      'div.toast[aria-live="assertive"]': 1
+      'div.toast[role="alert"]': 1
+      'div.toast-header': 1
+      'div.toast-body': 1
+      'button.btn-close[data-bs-dismiss="toast"]': 1
+    contains:
+      'toast-body': ">Hello, world! This is a toast message."
