@@ -7,6 +7,7 @@ namespace Drupal\Tests\oe_bootstrap_theme_helper\Kernel;
 use Drupal\Core\Serialization\Yaml;
 use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * Tests that OE Boostrap Theme BCL components are overridable by sub-themes.
@@ -45,12 +46,8 @@ class BclComponentsOverrideTest extends KernelTestBase {
     ];
     new Settings($settings);
 
-    // Replace some original BCL components just to make it easy to test.
-    $path = __DIR__ . '/../../../../../assets/bcl';
-    file_put_contents("$path/bcl-alert/bcl-alert.html.twig", 'Alert: oe_bootstrap_theme version');
-    file_put_contents("$path/bcl-badge/bcl-badge.html.twig", 'Badge: oe_bootstrap_theme version');
-    file_put_contents("$path/bcl-blockquote/bcl-blockquote.html.twig", 'Blockquote: oe_bootstrap_theme version');
-    file_put_contents("$path/bcl-card/bcl-card.html.twig", 'Card: oe_bootstrap_theme version');
+    // Create testing BCL components and patterns.
+    $this->createTestingPatterns();
   }
 
   /**
@@ -93,6 +90,41 @@ class BclComponentsOverrideTest extends KernelTestBase {
       $case = [$theme, $case];
     });
     return $cases;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function tearDown(): void {
+    // Symfony file system class knows to remove non-empty directories.
+    $file_system = new Filesystem();
+    // Cleanup testing BCL components and patterns.
+    // @see self::createTestingPatterns()
+    for ($i = 1; $i <= 4; $i++) {
+      $file_system->remove(__DIR__ . "/../../../../../assets/bcl/bcl-component$i");
+      $file_system->remove(__DIR__ . "/../../../../../templates/patterns/component$i");
+    }
+  }
+
+  /**
+   * Creates testing BCL components and patterns.
+   */
+  protected function createTestingPatterns(): void {
+    $file_system = $this->container->get('file_system');
+    $assets_path = __DIR__ . '/../../../../../assets/bcl';
+    $patterns_path = __DIR__ . '/../../../../../templates/patterns';
+    for ($i = 1; $i <= 4; $i++) {
+      // Create testing BCL component.
+      $file_system->mkdir("$assets_path/bcl-component$i");
+      file_put_contents("$assets_path/bcl-component$i/bcl-component$i.html.twig", "Component $i: oe_bootstrap_theme version");
+      // Create testing pattern.
+      $file_system->mkdir("$patterns_path/component$i");
+      file_put_contents(
+        "$patterns_path/component$i/component$i.ui_patterns.yml",
+        Yaml::encode(["component$i" => ['label' => "Component $i"]])
+      );
+      file_put_contents("$patterns_path/component$i/pattern-component$i.html.twig", "{% include '@oe-bcl/component$i' %}");
+    }
   }
 
 }
