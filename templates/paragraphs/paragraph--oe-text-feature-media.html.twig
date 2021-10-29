@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Theme override to display the 'featured_media' type paragraph.
+ *
+ * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
+ */
+#}
+
+{% set content_classes = attributes.addClass([
+  'bg-light',
+  'p-3'
+]) %}
+
+{{ pattern('featured_media', {
+  'embedded_media': embedded_media,
+  'image': image,
+  'poster_image': poster_image,
+  'content': content,
+  'content_classes': content_classes,
+  'ratio': ratio,
+  'sources': sources,
+  'tracks': tracks,
+}) }}
