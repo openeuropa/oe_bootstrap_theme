@@ -1,15 +1,14 @@
 card_layout:
   label: "Card layout"
   description: "In addition to styling the content within cards, Bootstrap includes a few options for laying out series of cards. https://v5.getbootstrap.com/docs/5.0/components/card/#grid-cards"
+  variants:
+    group:
+      label: "Group"
+    grid:
+      label: "Grid"
+    masonry:
+      label: "Masonry"
   settings:
-    type:
-      type: select
-      label: Card layout type
-      options:
-        group: group
-        grid: grid
-        masonry: masonry
-      preview: grid
     grid_columns:
       type: select
       label: Card layout columns number
@@ -17,7 +16,7 @@ card_layout:
         1: 1
         2: 2
         3: 3
-      preview: 1
+      preview: 3
     responsiveness:
       type: select
       label: Card layout type
@@ -28,11 +27,10 @@ card_layout:
         xl: xl
         xxl: xxl
       preview: md
-    responsive_colums:
+    responsive_columns:
       type: select
       label: Card layout type
       options:
-        1: 1
         2: 2
         3: 3
       preview: 3
@@ -40,6 +38,7 @@ card_layout:
       type: select
       label: Card layout type
       options:
+        0: 0
         1: 1
         2: 2
         3: 3
@@ -92,7 +91,7 @@ card_layout:
           image:
             path: "https://placeimg.com/1000/500/nature"
             alt: "Alternative text for card image"
-            position: "top"
+            position: "bottom"
           content: "Custom test"
           card_header: "Header of card 2"
           card_footer: "Footer of card 2"
@@ -112,3 +111,22 @@ card_layout:
           content: "Some representative placeholder content for the first card."
           card_header: "Header of card 3"
           card_footer: "Footer of card 3"
+        - title:
+            content: "Title card 4"
+            tag: "h5"
+          subtitle:
+            content: "Subtitle card 4"
+            classes: "mb-2"
+          text:
+            content: "Text card with longer text which is supported 1"
+            classes: "mb-2"
+          content:
+            - type: html_tag
+              tag: button
+              value: Custom action
+              attributes:
+                class:
+                  - "btn"
+                  - "btn-primary"
+          card_header: "Header of card 4"
+          card_footer: "Footer of card 4"
