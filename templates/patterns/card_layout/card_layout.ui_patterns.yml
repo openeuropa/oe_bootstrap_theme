@@ -28,7 +28,7 @@ card_layout:
         xl: xl
         xxl: xxl
       preview: md
-    responsive_colums:
+    responsive_columns:
       type: select
       label: Card layout type
       options:

@@ -101,7 +101,7 @@ card_layout_grid_without_equal_height:
     '#fields':
       settings:
         grid_columns: 3
-        responsive_colums: 2
+        responsive_columns: 2
         responsiveness: "xxl"
         gutter: 4
         equal_height: false
@@ -200,7 +200,7 @@ card_layout_masonry_with_3_responsive_columns:
     '#id': card_layout
     '#fields':
       settings:
-        responsive_colums: 3
+        responsive_columns: 3
         grid_columns: 3
         responsiveness: "xl"
         gutter: 2
