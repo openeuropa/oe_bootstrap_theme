@@ -23,6 +23,12 @@
     classes: "d-none d-md-block",
   } %}
 {% endif %}
+{% if text is defined and text.classes is not defined %}
+  {% set text = {
+    content: text|render|striptags,
+    classes: "mb-3",
+  } %}
+{% endif %}
 {% include '@oe-bcl/bcl-card/card.html.twig' with {
   horizontal: true,
   horizontal_grid: {
@@ -37,10 +43,7 @@
     classes: title.classes|default("fs-5 text-decoration-none mb-2"),
     content: title.content,
   },
-  text: {
-    content: text|render|striptags,
-    classes: "mb-3",
-  },
+  text: text,
   attributes: create_attribute({'class': [
     "border-0",
     "p-0",
