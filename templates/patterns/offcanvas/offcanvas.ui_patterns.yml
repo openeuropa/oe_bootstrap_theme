@@ -23,6 +23,13 @@ offcanvas:
       type: "boolean"
       label: "Enable a button trigger for offcanvas"
       preview: true
+    icon_position:
+      type: "select"
+      label: "Icon position"
+      options:
+        start: "before"
+        end: "after"
+      preview: "before"
   fields:
     title:
       type: render
@@ -51,8 +58,9 @@ offcanvas:
     toggle_button_label:
       type: "text"
       label: "The title for the toggle button"
-    icon_name:
-      type: "text"
-      label: icon
-      description: "The button icon name. Optional."
-      preview: "sliders"
+    icon:
+      type: "array"
+      label: "icon"
+      description: "The button Icon. Optional."
+      preview:
+        name: "filter"

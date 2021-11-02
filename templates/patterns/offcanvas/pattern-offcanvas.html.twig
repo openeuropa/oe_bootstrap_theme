@@ -17,13 +17,26 @@
   'toggle_button_label': toggle_button_label,
 } %}
 {% if with_trigger %}
-  <button class="d-lg-none w-100 mb-4 btn btn-primary btn-md" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offcanvas_id }}" aria-controls="{{ offcanvas_id }}">
-    {{ toggle_button_label ?: 'Toggle offcanvas' }}
-    {% if icon_name %}
-      {{ pattern('icon', {
-        name: icon_name,
-        path: bcl_icon_path
-      }) }}
-    {% endif %}
-  </button>
+  {%  if icon %}
+    {% set _icon = icon|merge({
+      path: bcl_icon_path
+    })  %}
+  {% endif %}
+  {{ pattern('button', {
+    label: toggle_button_label ?: 'Toggle offcanvas',
+    variant: 'light',
+    size: 'md',
+    icon: _icon,
+    icon_position: icon_position,
+    attributes: {
+      'data-bs-toggle': 'offcanvas',
+      'data-bs-target': '#' ~  offcanvas_id,
+      'aria-controls': offcanvas_id,
+      'class': [
+        'd-lg-none',
+        'w-100',
+        'mb-4',
+      ],
+    }
+  }) }}
 {% endif %}
