@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Theme override to display the 'quote' type paragraph.
+ *
+ * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
+ */
+#}
+{% set _link = {
+  'label': content.field_oe_link[0]['#title'],
+  'path': content.field_oe_link[0]['#url'].uri
+} %}
+{{ pattern('banner', {
+  'variant': 'simple',
+  'title': content.field_oe_title,
+  'description': content.field_oe_text,
+  'link': _link,
+}) }}

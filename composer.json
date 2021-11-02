@@ -10,7 +10,9 @@
         "drupal/components": "^2.4",
         "drupal/core": "^8.9 || ^9.1",
         "drupal/ui_patterns": "^1.0",
-        "drupal/ui_patterns_settings": "^1.0"
+        "drupal/ui_patterns_settings": "^1.0",
+        "openeuropa/oe_media": "~1.14",
+        "openeuropa/oe_paragraphs": "~1.10"
     },
     "require-dev": {
         "composer/installers": "^1.11",
