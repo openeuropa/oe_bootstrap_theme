@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Default implementation for the highlight list item component.
+ */
+#}
+{% if url %}
+  {% set _title = pattern('link', {
+    label: title,
+    path: url,
+  }) %}
+{% else %}
+  {% set _title = title %}
+{% endif %}
+
+{% include '@oe-bcl/bcl-card/card.html.twig' with {
+  'title': {
+    content: _title,
+  },
+  'text': text,
+  'content': detail,
+  'image': image,
+  'variant': '',
+} %}

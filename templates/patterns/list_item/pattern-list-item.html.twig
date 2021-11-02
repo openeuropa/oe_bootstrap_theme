@@ -1,0 +1,28 @@
+{% spaceless %}
+{#
+@file
+Default item list component.
+
+Parameters:
+  - "meta" (array) (default: []): Meta information for the Content Item.
+  - "title" (string) (default: ''): Title for the list Content Item.
+  - "url" (string) (default: ''): url path for the title Content Item.
+  - "detail" (string) (default: ''): Description of Content Item.
+  - "image" (array) (default: []): Image for the item.
+  - "image_position" (string) (default: ''): Image before of after the item.
+  - "length" (int) (default: 0): Max length of detail field.
+  - "additional_information" (array): Additional information to be displayed right below the 'Detail' field.
+  - "icon" (string) (default: ''): Icon used for the link item.
+#}
+  {% include '@oe-bcl/bcl-card/card.html.twig' with {
+    'title': {
+      content: title,
+    },
+    'text': text,
+    'content': detail,
+    'image': image,
+    'variant': '',
+  } %}
+
+
+{% endspaceless %}
