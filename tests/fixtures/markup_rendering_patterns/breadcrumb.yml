@@ -26,7 +26,7 @@ breadcrumb:
       'svg.d-md-none.ms-0.me-2.me-2-5.bi.icon--s': 1
     equals:
       'li.breadcrumb-item:nth-child(1) a': "Home"
-      'li.breadcrumb-item:nth-child(2) a': "<svg class=\"d-md-none ms-0 me-2 me-2-5 bi icon--s\"><use xlink:href=\"#arrow-left\"></use></svg>About the European Commission"
+      'li.breadcrumb-item:nth-child(2) a': "<svg class=\"d-md-none ms-0 me-2 me-2-5 bi icon--s\"><use xlink:href=\"/file/to/svg/icons.svg#arrow-left\"></use></svg>About the European Commission"
       'li.breadcrumb-item:nth-child(3) a': "Link title"
     contains:
       'child_2': "About the European Commission"
