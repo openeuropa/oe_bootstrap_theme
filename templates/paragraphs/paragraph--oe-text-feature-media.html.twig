@@ -7,17 +7,19 @@
  */
 #}
 
-{% set content_classes = attributes.addClass([
-  'bg-light',
-  'p-3'
-]) %}
+{% set _content_classes = "bg-light p-3" %}
+
+{% if image %}
+{% set variant = 'image' %}
+{% endif %}
 
 {{ pattern('featured_media', {
+  'variant': variant,
   'embedded_media': embedded_media,
   'image': image,
   'poster_image': poster_image,
   'content': content,
-  'content_classes': content_classes,
+  'content_classes': _content_classes,
   'ratio': ratio,
   'sources': sources,
   'tracks': tracks,

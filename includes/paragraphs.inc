@@ -6,6 +6,8 @@
  */
 
 use Drupal\Core\Render\Element;
+use Drupal\media\MediaInterface;
+use Drupal\media\Plugin\media\Source\Image;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
@@ -49,5 +51,38 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_links_block(array &$variabl
       'label' => $variables['content']['field_oe_links'][$index]['#title'],
       'url' => $variables['content']['field_oe_links'][$index]['#url'],
     ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for paragraph--oe-text-feature-media.html.twig.
+ */
+function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$variables): void {
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['elements']['#paragraph'];
+
+  // Bail out if there is no media present.
+  if ($paragraph->get('field_oe_media')->isEmpty()) {
+    return;
+  }
+
+  /** @var \Drupal\media\Entity\Media $media */
+  $media = $paragraph->get('field_oe_media')->entity;
+  if (!$media instanceof MediaInterface) {
+    // The media entity is not available anymore, bail out.
+    return;
+  }
+
+  /** @var \Drupal\media\Entity\Media $media */
+  $media = $paragraph->get('field_oe_media')->entity;
+  if (!$media instanceof MediaInterface) {
+    // The media entity is not available anymore, bail out.
+    return;
+  }
+
+  $source = $media->getSource();
+  // We only support images for now.
+  if ($source instanceof Image) {
+    $variables['variant'] = 'image';
   }
 }
