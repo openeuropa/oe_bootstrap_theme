@@ -4,6 +4,8 @@ card:
   variants:
     default:
       label: Default
+    horizontal:
+      label: Horizontal
     search:
       label: Search
   settings:
@@ -72,6 +74,7 @@ card:
         path: "https://placeimg.com/1000/500/arch"
         alt: "Alternative text for card image"
         position: "top"
+        rounded: 3
     content:
       type: "render"
       label: "Content"

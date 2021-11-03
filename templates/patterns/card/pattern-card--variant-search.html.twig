@@ -1,15 +1,17 @@
-{% set badges = [] %}
-{% if content is not empty %}
+{#
+/**
+ * @file
+ * Card pattern search variant.
+ */
+#}
+{% set _badges = [] %}
+{% if badges is not empty %}
   {% set badge_attr = create_attribute({'class': ['me-2']}) %}
-  {% for key,item in content %}
+  {% for key,item in badges %}
     {% if key|first != '#' %}
-      {% set badges = badges|merge([{
-        '#type': 'pattern',
-        '#id': 'badge',
-        '#fields': {
-          label: item['#title'],
-          attributes: badge_attr
-        }
+      {% set _badges = _badges|merge([{
+        label: item['#title'],
+        attributes: badge_attr
       }]) %}
     {% endif %}
   {% endfor %}
@@ -18,24 +20,38 @@
   {% set _image = {
     path: image['#markup'],
     position: "top",
+    classes: "d-none d-md-block",
   } %}
 {% endif %}
-{{ pattern('card', {
+{% if text is defined and text.classes is not defined %}
+  {% set text = {
+    content: text|render|striptags,
+    classes: "mb-3",
+  } %}
+{% endif %}
+{% include '@oe-bcl/bcl-card/card.html.twig' with {
   horizontal: true,
   horizontal_grid: {
     left_col_classes: "col-md-3",
     right_col_classes: "col-md-9",
     gutter: 0,
   },
+  extra_classes_body: "p-0 p-md-3",
+  badges: _badges,
   title: {
-    content: title,
-    classes: "mb-4",
+    tag: title.tag|default('a'),
+    classes: title.classes|default("fs-5 text-decoration-none mb-2"),
+    content: title.content,
   },
-  text: {
-    content: text|render|striptags,
-    classes: "mb-4",
-  },
-  attributes: attributes.addClass(["border-0", "mb-5"]),
+  text: text,
+  attributes: create_attribute({'class': [
+    "border-0",
+    "p-0",
+    "mb-4-5",
+    "mb-md-4-75",
+  ]}),
+  text_color: 'dark',
   image:_image,
-  content: badges|render
-}) }}
+  content: content
+} %}
+<hr class="d-md-none mb-4-5">

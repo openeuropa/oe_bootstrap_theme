@@ -49,3 +49,35 @@ offcanvas_start_with_body_scroll:
     equals:
       'h2.offcanvas-title': "Offcanvas title"
       'div.offcanvas-body': "This is the offcanvas body content."
+offcanvas_with_trigger_with_icon:
+  render:
+    '#type': pattern
+    '#id': offcanvas
+    '#fields':
+      settings:
+        placement: top
+        with_body_scroll: false
+        with_backdrop: true
+        with_trigger: true
+        icon_position: before
+      title:
+        label: Offcanvas title
+        id: "1"
+        heading: "2"
+      offcanvas_id: offcanvasExample
+      body: "This is the offcanvas body content."
+      icon:
+        name: "filter"
+  assertions:
+    count:
+      'button[data-bs-toggle="offcanvas"]': 1
+      'div[data-drupal-selector="offcanvas"]': 1
+      'div[id="offcanvasExample"]': 1
+      'div.offcanvas.offcanvas-top': 1
+      'svg.bi': 1
+    equals:
+      'h2.offcanvas-title': "Offcanvas title"
+      'div.offcanvas-body': "This is the offcanvas body content."
+    contains:
+      'button[data-bs-toggle="offcanvas"]': "Toggle offcanvas"
+      'icon': 'bootstrap-icons.svg#filter'

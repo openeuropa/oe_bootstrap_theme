@@ -1,14 +1,116 @@
-card_layout_group_responsive_equal_height:
+card_group:
   render:
     '#type': pattern
     '#id': card_layout
+    '#variant': group
+    '#fields':
+      settings:
+        equal_height: true
+      items:
+        - title:
+            content: "Card title 1"
+          text:
+            content: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+          card_footer: "Footer of card 1"
+        - title:
+            content: "Card title 2"
+          text:
+            content: "This card has supporting text below as a natural lead-in to additional content."
+          card_footer: "Footer of card 2"
+        - title:
+            content: "Card title 3"
+          text:
+            content: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+          card_footer: "Footer of card 3"
+        - title:
+            content: "Card title 4"
+          text:
+            content: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+          card_footer: "Footer of card 4"
+  assert:
+    count:
+      'div.card-group': 1
+      'div.card': 4
+      'h5.card-title': 4
+      'p.card-text': 4
+    contains:
+      'div.row.row-cols-1 h5.title_1': "Card title 1"
+      'div.row.row-cols-1 h5.title_2': "Card title 2"
+      'div.row.row-cols-1 h5.title_3': "Card title 3"
+      'div.row.row-cols-1 h5.title_4': "Card title 4"
+      'div.row.row-cols-1 p.card-text_1': "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+      'div.row.row-cols-1 p.card-text_2': "This card has supporting text below as a natural lead-in to additional content."
+      'div.row.row-cols-1 p.card-text_3': "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+      'div.row.row-cols-1 p.card-text_4': "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+      'div.row.row-cols-1 div.card-footer_1': "Footer of card 1"
+      'div.row.row-cols-1 div.card-footer_2': "Footer of card 2"
+      'div.row.row-cols-1 div.card-footer_3': "Footer of card 3"
+      'div.row.row-cols-1 div.card-footer_4': "Footer of card 4"
+card_grid_responsive_xxl_3_responsive_columns:
+  render:
+    '#type': pattern
+    '#id': card_layout
+    '#variant': grid
+    '#fields':
+      settings:
+        responsiveness: "xxl"
+        responsive_columns: 3
+        gutter: 0
+        equal_height: false
+      items:
+        - title:
+            content: "Card title 1"
+          text:
+            content: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+          card_footer: "Footer of card 1"
+        - title:
+            content: "Card title 2"
+          text:
+            content: "This card has supporting text below as a natural lead-in to additional content."
+          card_footer: "Footer of card 2"
+        - title:
+            content: "Card title 3"
+          text:
+            content: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+          card_footer: "Footer of card 3"
+        - title:
+            content: "Card title 4"
+          text:
+            content: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+          card_footer: "Footer of card 4"
+  assert:
+    count:
+      'div.card': 4
+      'h5.card-title': 4
+      'p.card-text': 4
+      'div.card.h-100': 0
+      'div.g-0': 1
+      'div.row-cols-xxl-3': 1
+    contains:
+      'div.row.row-cols-1 h5.title_1': "Card title 1"
+      'div.row.row-cols-1 h5.title_2': "Card title 2"
+      'div.row.row-cols-1 h5.title_3': "Card title 3"
+      'div.row.row-cols-1 h5.title_4': "Card title 4"
+      'div.row.row-cols-1 p.card-text_1': "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+      'div.row.row-cols-1 p.card-text_2': "This card has supporting text below as a natural lead-in to additional content."
+      'div.row.row-cols-1 p.card-text_3': "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+      'div.row.row-cols-1 p.card-text_4': "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+      'div.row.row-cols-1 div.card-footer_1': "Footer of card 1"
+      'div.row.row-cols-1 div.card-footer_2': "Footer of card 2"
+      'div.row.row-cols-1 div.card-footer_3': "Footer of card 3"
+      'div.row.row-cols-1 div.card-footer_4': "Footer of card 4"
+card_grid_responsive_columns_2_md_equal_height:
+  render:
+    '#type': pattern
+    '#id': card_layout
+    '#variant': grid
     '#fields':
       settings:
         grid_columns: 2
         responsiveness: "md"
         gutter: 2
         equal_height: true
-        type: "group"
+        responsive_columns: 2
       items:
         - title:
             content: "Title card 1"
@@ -68,7 +170,6 @@ card_layout_group_responsive_equal_height:
           card_footer: "Footer of card 3"
   assert:
     count:
-      'div.card-group[data-drupal-selector="card-layout"]': 1
       'div.h-100.card': 3
       'img.card-img-top': 2
       'img.card-img-bottom': 1
@@ -94,118 +195,72 @@ card_layout_group_responsive_equal_height:
       'h6.card-subtitle.mb-2_3': "Subtitle card 3"
       'p.card-text.mb-2_3': "Text card with longer text which is supported 3"
       'div.card-footer_3': "Footer of card 3"
-card_layout_grid_without_equal_height:
+card_masonry_responsive_xxl_3_responsive_columns:
   render:
     '#type': pattern
     '#id': card_layout
+    '#variant': masonry
     '#fields':
       settings:
-        grid_columns: 3
-        responsive_colums: 2
         responsiveness: "xxl"
-        gutter: 4
+        responsive_columns: 3
+        gutter: 0
         equal_height: false
-        type: "grid"
       items:
         - title:
-            content: "Title card 1"
-            tag: "h5"
-          subtitle:
-            content: "Subtitle card 1"
-            classes: "mb-2"
+            content: "Card title 1"
           text:
-            content: "Text card with longer text which is supported 1"
-            classes: "mb-2"
-          image:
-            path: "https://placeimg.com/1000/500/arch"
-            alt: "Alternative text for card image"
-            position: "top"
-          content:
-            - "#type": html_tag
-              "#tag": button
-              '#fields':
-                value: Custom action
-                attributes:
-                  class:
-                    - "btn"
-                    - "btn-primary"
-          card_header: "Header of card 1"
+            content: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
           card_footer: "Footer of card 1"
         - title:
-            content: "Title card 2"
-            tag: "h5"
-          subtitle:
-            content: "Subtitle card 2"
-            classes: "mb-2"
+            content: "Card title 2"
           text:
-            content: "Text card with longer text which is supported 2"
-            classes: "mb-2"
-          image:
-            path: "https://placeimg.com/1000/500/nature"
-            alt: "Alternative text for card image"
-            position: "top"
-          content: "Custom test"
-          card_header: "Header of card 2"
+            content: "This card has supporting text below as a natural lead-in to additional content."
           card_footer: "Footer of card 2"
         - title:
-            content: "Title card 3"
-            tag: "h5"
-          subtitle:
-            content: "Subtitle card 3"
-            classes: "mb-2"
+            content: "Card title 3"
           text:
-            content: "Text card with longer text which is supported 3"
-            classes: "mb-2"
-          image:
-            path: "https://placeimg.com/1000/500/tech"
-            alt: "Alternative text for card image"
-            position: "bottom"
-          content: "Some representative placeholder content for the first card."
-          card_header: "Header of card 3"
+            content: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
           card_footer: "Footer of card 3"
+        - title:
+            content: "Card title 4"
+          text:
+            content: "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+          card_footer: "Footer of card 4"
   assert:
     count:
-      'div.row.row-cols-3[data-drupal-selector="card-layout"]': 1
-      'div.col div.card': 3
-      'img.card-img-top': 2
-      'img.card-img-bottom': 1
-      'div.card-header': 3
-      'div.card-body': 3
-      'h5.card-title': 3
-      'h6.card-subtitle.mb-2': 3
-      'p.card-text.mb-2': 3
-      'div.card-footer': 3
-      'div.g-4': 1
-      'div.row-cols-3': 1
-      'div.row-cols-xxl-2': 1
+      'div.card': 4
+      'h5.card-title': 4
+      'p.card-text': 4
+      'div.card.h-100': 0
+      'div.g-0': 1
+      'div.row-cols-xxl-3': 1
+      "div[data-masonry='{\"percentPosition\": true }']": 1
     contains:
-      'div.card-header_1': "Header of card 1"
-      'h5.card-title_1': "Title card 1"
-      'h6.card-subtitle.mb-2_1': "Subtitle card 1"
-      'p.card-text.mb-2_1': "Text card with longer text which is supported 1"
-      'div.card-footer_1': "Footer of card 1"
-      'div.card-header_2': "Header of card 2"
-      'h5.card-title_2': "Title card 2"
-      'h6.card-subtitle.mb-2_2': "Subtitle card 2"
-      'p.card-text.mb-2_2': "Text card with longer text which is supported 2"
-      'div.card-footer_2': "Footer of card 2"
-      'div.card-header_3': "Header of card 3"
-      'h5.card-title_3': "Title card 3"
-      'h6.card-subtitle.mb-2_3': "Subtitle card 3"
-      'p.card-text.mb-2_3': "Text card with longer text which is supported 3"
-      'div.card-footer_3': "Footer of card 3"
-card_layout_masonry_with_3_responsive_columns:
+      'div.row.row-cols-1 h5.title_1': "Card title 1"
+      'div.row.row-cols-1 h5.title_2': "Card title 2"
+      'div.row.row-cols-1 h5.title_3': "Card title 3"
+      'div.row.row-cols-1 h5.title_4': "Card title 4"
+      'div.row.row-cols-1 p.card-text_1': "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+      'div.row.row-cols-1 p.card-text_2': "This card has supporting text below as a natural lead-in to additional content."
+      'div.row.row-cols-1 p.card-text_3': "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+      'div.row.row-cols-1 p.card-text_4': "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+      'div.row.row-cols-1 div.card-footer_1': "Footer of card 1"
+      'div.row.row-cols-1 div.card-footer_2': "Footer of card 2"
+      'div.row.row-cols-1 div.card-footer_3': "Footer of card 3"
+      'div.row.row-cols-1 div.card-footer_4': "Footer of card 4"
+card_masonry_responsive_columns_2_md_equal_height:
   render:
     '#type': pattern
     '#id': card_layout
+    '#variant': masonry
     '#fields':
       settings:
-        responsive_colums: 3
-        grid_columns: 3
-        responsiveness: "xl"
+        grid_columns: 2
+        responsiveness: "md"
         gutter: 2
-        equal_height: false
-        type: "masonry"
+        equal_height: true
+        responsive_columns: 2
       items:
         - title:
             content: "Title card 1"
@@ -265,9 +320,7 @@ card_layout_masonry_with_3_responsive_columns:
           card_footer: "Footer of card 3"
   assert:
     count:
-      'div.row.row-cols-3[data-drupal-selector="card-layout"]': 1
-      'div.row.row-cols-xl-3': 1
-      'div.col div.card': 3
+      'div.h-100.card': 3
       'img.card-img-top': 2
       'img.card-img-bottom': 1
       'div.card-header': 3
@@ -276,6 +329,7 @@ card_layout_masonry_with_3_responsive_columns:
       'h6.card-subtitle.mb-2': 3
       'p.card-text.mb-2': 3
       'div.card-footer': 3
+      "div[data-masonry='{\"percentPosition\": true }']": 1
     contains:
       'div.card-header_1': "Header of card 1"
       'h5.card-title_1': "Title card 1"
@@ -292,4 +346,3 @@ card_layout_masonry_with_3_responsive_columns:
       'h6.card-subtitle.mb-2_3': "Subtitle card 3"
       'p.card-text.mb-2_3': "Text card with longer text which is supported 3"
       'div.card-footer_3': "Footer of card 3"
-      'masonry': "data-masonry='{\"percentPosition\": true }'"

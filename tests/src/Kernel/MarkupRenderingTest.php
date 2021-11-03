@@ -52,8 +52,6 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'button',
     'button_group',
     'card',
-    'card_grid',
-    'card_group',
     'card_layout',
     'carousel',
     'collapse',
@@ -187,7 +185,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
 
     // Assert occurrences of given elements.
     foreach ($assertions['count'] as $name => $expected) {
-      $this->assertCount($expected, $crawler->filter($name));
+      $this->assertCount($expected, $crawler->filter($name), "Error counting {$name}");
     }
 
     // Assert that a given element content equals a given string.
