@@ -6,13 +6,41 @@
  * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
  */
 #}
-{% set _link = {
-  'label': content.field_oe_link[0]['#title'],
-  'path': content.field_oe_link[0]['#url'].uri
-} %}
+{% set attributes = create_attribute() %}
+{% if url.uri %}
+  {% set _link = {
+    'label': label,
+    'path': url.uri,
+    'attributes': create_attribute({
+      'class': [
+        'btn',
+        variant == 'primary' ? 'btn-light' : 'btn-primary',
+      ],
+    }),
+    'icon': {
+      'name': 'chevron-right',
+      'size': 's',
+      'path': bcl_icon_path,
+    },
+  } %}
+{% endif %}
+{% set _hero = 'hero' in pattern %}
+{% set _shade = 'shade' in variant %}
+{% set _centered = 'center' in alignment %}
+{% if centered %}
+  {% set attributes = attributes.addClass(['text-center'])%}
+{% endif %}
+
 {{ pattern('banner', {
-  'variant': 'simple',
+  'variant': variant,
   'title': content.field_oe_title,
   'description': content.field_oe_text,
   'link': _link,
+  'image': image.src,
+  'hero': _hero,
+  'shade': _shade,
+  'full_width': full_width,
+  'centered': _centered,
+  'attributes': attributes,
 }) }}
+

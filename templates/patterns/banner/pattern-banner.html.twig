@@ -4,6 +4,11 @@
  * Banner component.
  */
 #}
+{% set attributes = attributes.addClass([
+    'bg-light',
+    'text-dark',
+  ])
+%}
 {% include '@oe-bcl/bcl-banner/banner.html.twig' with {
   'title': title,
   'description': description,
@@ -11,6 +16,7 @@
   'shade': shade,
   'hero': hero,
   'full_width': full_width,
-  'image': ''
+  'image': '',
+  'attributes': attributes
 } %}
 

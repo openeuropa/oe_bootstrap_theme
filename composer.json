@@ -9,6 +9,7 @@
         "php": ">=7.3",
         "drupal/components": "^2.4",
         "drupal/core": "^8.9 || ^9.1",
+        "drupal/twig_vardumper": "^3.0",
         "drupal/ui_patterns": "^1.0",
         "drupal/ui_patterns_settings": "^1.0",
         "openeuropa/oe_media": "~1.14",

@@ -4,14 +4,19 @@
  * Banner component.
  */
 #}
+{% set attributes = attributes.addClass([
+    'bg-primary',
+    'text-white',
+  ])
+%}
 {% include '@oe-bcl/bcl-banner/banner.html.twig' with {
   'title': title,
   'description': description,
   'link': link,
-  'image': image,
   'shade': shade,
   'hero': hero,
   'full_width': full_width,
+  'image': '',
   'attributes': attributes,
 } %}
 

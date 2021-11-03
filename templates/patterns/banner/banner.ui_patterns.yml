@@ -2,10 +2,14 @@ banner:
   label: "Banner composition"
   description: "Hidden sidebar with activation. https://getbootstrap.com/docs/5.0/components/offcanvas/"
   variants:
-    simple:
-      label: Simple
+    default:
+      label: Default text banner
+    primary:
+      label: Primary text banner
     image:
-      label: Image
+      label: Image banner
+    image_shade:
+      label: Image shade banner
   settings:
     shade:
       type: "boolean"
