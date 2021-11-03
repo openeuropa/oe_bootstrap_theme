@@ -14,11 +14,27 @@ Parameters:
   - "additional_information" (array): Additional information to be displayed right below the 'Detail' field.
   - "icon" (string) (default: ''): Icon used for the link item.
 #}
+  {% if url %}
+    {% set _title = pattern('link', {
+      label: title,
+      path: url,
+    }) %}
+  {% else %}
+    {% set _title = title %}
+  {% endif %}
+
+  {% if image and image_position%}
+    {% set image = image|merge({ 'position': image_position }) %}
+  {% endif %}
+
   {% include '@oe-bcl/bcl-card/card.html.twig' with {
     'title': {
-      content: title,
+      content: _title,
     },
-    'text': text,
+    'text': {
+      content: text,
+      classes: 'mb-3',
+    },
     'content': detail,
     'image': image,
     'variant': '',
