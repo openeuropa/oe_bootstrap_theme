@@ -23,8 +23,16 @@ Parameters:
     {% set _title = title %}
   {% endif %}
 
-  {% if image and image_position%}
-    {% set image = image|merge({ 'position': image_position }) %}
+  {% if image and variant == 'thumbnail_primary' %}
+    {% set image = image|merge({ 'position': 'top' }) %}
+  {% elseif image and variant == 'thumbnail_secondary' %}
+    {% set image = image|merge({ 'position': 'bottom' }) %}
+  {% endif %}
+
+  {% if variant == 'highlight' %}
+    {% set _text_classes = 'mb-2' %}
+  {% else %}
+    {% set _text_classes = 'mb-3' %}
   {% endif %}
 
   {% include '@oe-bcl/bcl-card/card.html.twig' with {
@@ -33,7 +41,7 @@ Parameters:
     },
     'text': {
       content: text,
-      classes: 'mb-3',
+      classes: _text_classes,
     },
     'content': detail,
     'image': image,
