@@ -120,3 +120,34 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
 
   $cacheability->applyTo($variables);
 }
+
+/**
+ * Implements hook_preprocess_paragraph() for paragraph--oe-list-item-block.html.twig.
+ */
+function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  // Set up the correct variant name.
+  $variables['variant'] = 'list_item_block_' . $paragraph->get('field_oe_list_item_block_layout')->first()->value;
+
+  $variables['items'] = [];
+
+  foreach ($variables['paragraph']->get('field_oe_paragraphs') as $delta => $item) {
+    $variables['items'][] = [
+      'title' => [
+        'content' => 'Whatever',
+      ],
+    ];
+  }
+
+  // Prepare the button variables if a link has been specified.
+  if ($paragraph->get('field_oe_link')->isEmpty()) {
+    return;
+  }
+
+  /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $link_item */
+  $link_item = $paragraph->get('field_oe_link')->first();
+  $variables['button_url'] = $link_item->getUrl();
+  $variables['button_label'] = $link_item->get('title')->getValue();
+}
