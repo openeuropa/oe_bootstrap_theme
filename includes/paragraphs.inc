@@ -12,8 +12,9 @@ use Drupal\Core\Render\Element;
 use Drupal\media\MediaInterface;
 use Drupal\media\Plugin\media\Source\Image;
 use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalPhotoSource;
+use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalSourceInterface;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
-
+use Drupal\paragraphs\Entity\Paragraph;
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
@@ -227,4 +228,149 @@ function get_bcl_layout_mapping(string $layout): string {
   }
 
   return 'highlight-1-col';
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for oe_banner paragraph.
+ */
+function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): void {
+  /** @var Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  set_title($paragraph, $variables);
+
+  $variables['description'] = $paragraph->get('field_oe_text')->value;
+
+  set_link($paragraph, $variables);
+
+  $variables['full_width'] = (bool) $paragraph->get('field_oe_banner_full_width')->value;
+
+  // The alignment field value contains the information regarding the pattern
+  // type and centering.
+  $alignment = $paragraph->get('field_oe_banner_type')->value;
+  [$banner_type, $banner_alignment] = explode('_', $alignment);
+  // The beginning of the string determines the pattern.
+  $variables['pattern'] = 'banner_' . $banner_type;
+  // The end of the string determines the position.
+  $variables['alignment'] = $banner_alignment;
+
+  set_variant($paragraph, $variables);
+
+  if ($variables['variant'] === 'default' || $variables['variant'] === 'primary') {
+    return;
+  }
+
+  // Bail out if there is no media present.
+  if ($paragraph->get('field_oe_media')->isEmpty()) {
+    return;
+  }
+  $cacheability = CacheableMetadata::createFromRenderArray($variables);
+
+  /** @var \Drupal\media\Entity\Media $media */
+  $media = $paragraph->get('field_oe_media')->entity;
+  if (!$media instanceof MediaInterface) {
+    // The media entity is not available anymore, bail out.
+    return;
+  }
+
+  // Retrieve the correct translation to display.
+  $media = \Drupal::service('entity.repository')->getTranslationFromContext($media, $paragraph->language()->getId());
+
+  // Caches are handled by the formatter usually. Since we are not rendering
+  // the original render arrays, we need to propagate our caches to the
+  // paragraph template.
+  $cacheability->addCacheableDependency($media);
+
+  // Run access checks on the media entity.
+  $access = $media->access('view', $variables['user'], TRUE);
+  $cacheability->addCacheableDependency($access);
+  if (!$access->isAllowed()) {
+    $cacheability->applyTo($variables);
+    return;
+  }
+
+  $source = $media->getSource();
+  // We only support images and AV Portal photos for now.
+  if (!$source instanceof MediaAvPortalSourceInterface && !$source instanceof Image) {
+    $cacheability->applyTo($variables);
+    return;
+  }
+
+  $uri = get_uri($source, $media, $cacheability);
+
+  // The uri might be empty if the source is of type Image and the file entity
+  // was deleted.
+  if (empty($uri)) {
+    $cacheability->applyTo($variables);
+    return;
+  }
+
+  set_image($uri, $source, $media, $variables);
+
+  $cacheability->applyTo($variables);
+}
+
+/**
+ * Auxiliary function to set image on variables.
+ */
+function set_image($uri, $source, $media, array &$variables): array {
+  $values = [
+    'src' => file_create_url($uri),
+    'alt' => $source->getMetadata($media, 'thumbnail_alt_value') ?? $media->label(),
+    'name' => $media->getName(),
+  ];
+  $variables['image'] = ImageValueObject::fromArray($values);
+  return $variables;
+}
+
+/**
+ * Auxiliary function to get the uri.
+ */
+function get_uri($source, $media, CacheableMetadata $cacheability) {
+  $field_name = $source->getConfiguration()['source_field'];
+  if ($source instanceof Image && ($file_entity = $media->get($field_name)->entity)) {
+    $uri = $file_entity->getFileUri();
+    $cacheability->addCacheableDependency($file_entity);
+  }
+  elseif ($source instanceof MediaAvPortalSourceInterface) {
+    $resource_ref = $media->get($field_name)->value;
+    $uri = 'avportal://' . $resource_ref . '.jpg';
+  }
+  return $uri;
+}
+
+/**
+ * Auxiliary function to set the variant on variables.
+ */
+function set_variant(Paragraph $paragraph, array &$variables): array {
+  $variant = $paragraph->get('oe_paragraphs_variant')->first()->value;
+  if ($variant) {
+    $variables['variant'] = str_replace('oe_banner_', '', $variant);
+  }
+  else {
+    $variables['variant'] = 'default';
+  }
+  return $variables;
+}
+
+/**
+ * Auxiliary function to set link on variables.
+ */
+function set_link(Paragraph $paragraph, array &$variables): array {
+  if (!$paragraph->get('field_oe_link')->isEmpty()) {
+    $link = $paragraph->get('field_oe_link')->first();
+    $variables['url'] = $link->getUrl();
+    $variables['label'] = $link->get('title')->getValue();
+  }
+  return $variables;
+}
+
+/**
+ * Auxiliary function to set title on variables.
+ */
+function set_title(Paragraph $paragraph, array &$variables): array {
+  if (!$paragraph->get('field_oe_title')->isEmpty()) {
+    $variables['title'] = $paragraph->get('field_oe_title')->value;
+  }
+  return $variables;
 }
