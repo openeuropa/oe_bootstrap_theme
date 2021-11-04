@@ -35,6 +35,10 @@ Parameters:
     {% set _text_classes = 'mb-3' %}
   {% endif %}
 
+  {% if date %}
+    {%  set _content = '<div><span class="d-lg-inline d-block text-muted mb-2 mb-md-0">'  ~ date.day ~ ' ' ~ date.month_fullname ~ ' ' ~ date.year ~  '</span></div>' %}
+  {% endif %}
+
   {% include '@oe-bcl/bcl-card/card.html.twig' with {
     'title': {
       content: _title,
@@ -43,7 +47,7 @@ Parameters:
       content: detail,
       classes: _text_classes,
     },
-    'content': content,
+    'content': _content|striptags(['<div>','span'])|raw,
     'image': image,
     'variant': '',
     'badges' : meta
