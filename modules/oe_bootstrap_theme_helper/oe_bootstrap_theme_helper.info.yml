@@ -5,6 +5,10 @@ package: OpenEuropa Bootstrap Theme
 core_version_requirement: ^8.9 || ^9.1
 dependencies:
   - components:components
+  - drupal:responsive_image
   - ui_patterns:ui_patterns
   - ui_patterns:ui_patterns_library
   - ui_patterns_settings:ui_patterns_settings
+config_devel:
+  install:
+    - image.style.oe_bootstrap_theme_medium_no_crop

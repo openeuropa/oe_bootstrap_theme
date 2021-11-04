@@ -6,17 +6,21 @@
  * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
  */
 #}
-
 {% set _content_classes = "bg-light p-3" %}
+{% set content = content.field_oe_plain_text_long %}
 
 {% if image %}
-{% set variant = 'image' %}
+  {% set imagestyle = {
+    '#theme':      'image',
+    '#uri':        image.src,
+    '#alt':        image.alt,
+  } %}
 {% endif %}
 
 {{ pattern('featured_media', {
   'variant': variant,
   'embedded_media': embedded_media,
-  'image': image,
+  'image': imagestyle|render,
   'poster_image': poster_image,
   'content': content,
   'content_classes': _content_classes,
