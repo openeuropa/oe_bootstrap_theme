@@ -47,6 +47,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'accordion',
     'alert',
     'badge',
+    'banner',
     'blockquote',
     'breadcrumb',
     'button',

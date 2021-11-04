@@ -26,10 +26,6 @@
 {% endif %}
 {% set _hero = 'hero' in pattern %}
 {% set _shade = 'shade' in variant %}
-{% set _centered = 'center' in alignment %}
-{% if centered %}
-  {% set attributes = attributes.addClass(['text-center'])%}
-{% endif %}
 
 {{ pattern('banner', {
   'variant': variant,
@@ -40,7 +36,7 @@
   'hero': _hero,
   'shade': _shade,
   'full_width': full_width,
-  'centered': _centered,
+  'centered': 'center' in alignment
   'attributes': attributes,
 }) }}
 
