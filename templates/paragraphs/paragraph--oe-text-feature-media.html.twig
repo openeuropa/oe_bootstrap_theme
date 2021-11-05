@@ -7,8 +7,6 @@
  */
 #}
 {% set _content_classes = "bg-light p-3" %}
-{% set content = content.field_oe_plain_text_long %}
-
 {% if image %}
   {% set imagestyle = {
     '#theme':      'image',
@@ -20,9 +18,9 @@
 {{ pattern('featured_media', {
   'variant': variant,
   'embedded_media': embedded_media,
-  'image': imagestyle|render,
+  'image': imagestyle ? imagestyle|render : '',
   'poster_image': poster_image,
-  'content': content,
+  'content': not paragraph.field_oe_plain_text_long.isEmpty ? content.field_oe_plain_text_long,
   'content_classes': _content_classes,
   'ratio': ratio,
   'sources': sources,
