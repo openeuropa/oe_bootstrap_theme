@@ -4,22 +4,14 @@
  * Banner component.
  */
 #}
-{% set attributes = attributes.addClass([
+
+{% extends 'pattern-banner.html.twig' %}
+{% block attributes %}
+  {% set attributes = attributes.addClass([
     'bg-primary',
     'text-white',
   ])
-%}
-{% if centered  %}
-  {% set attributes = attributes.addClass(['text-center'])%}
-{% endif %}
-{% include '@oe-bcl/bcl-banner/banner.html.twig' with {
-  'title': title,
-  'description': description,
-  'link': link,
-  'shade': shade,
-  'hero': hero,
-  'full_width': full_width,
-  'image': '',
-  'attributes': attributes,
-} %}
-
+  %}
+{% endblock %}
+{% block image %}
+{% endblock %}

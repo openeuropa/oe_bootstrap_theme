@@ -45,11 +45,6 @@ module.exports = {
       options: { up: true },
     },
     {
-      from: [path.resolve(outputFolder, "templates/patterns/banner/banner.html.twig")],
-      to: path.resolve(outputFolder, "assets/bcl/bcl-banner"),
-      options: { up: true },
-    },
-    {
       from: ["node_modules/@openeuropa/bcl-theme-default/icons/bootstrap-icons.svg"],
       to: path.resolve(outputFolder, "assets/icons"),
       options: { up: true },
