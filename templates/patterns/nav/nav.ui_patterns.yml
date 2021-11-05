@@ -1,12 +1,18 @@
 nav:
-  label: Nav
+  label: Navigation
   description: https://v5.getbootstrap.com/docs/5.0/components/navs/
-  use: "@oe-bcl/bcl-navigation/navigation.html.twig"
+  variants:
+    default:
+      label: "Default navigation"
+    tabs:
+      label: "Navigation with tabs"
+    custom_tabs:
+      label: "Navigation with custom tabs"
   settings:
     pills:
       type: "boolean"
       label: "Menu items as pills"
-      preview: false
+      preview: true
     tabs:
       type: "boolean"
       label: "Display as tabs"
@@ -14,9 +20,11 @@ nav:
     vertical:
       type: "boolean"
       label: "Vertical menu"
+      preview: false
     full_width:
       type: "boolean"
       label: "Full width menu"
+      preview: true
     alignment:
       type: select
       label: "Alignment menu"
@@ -26,81 +34,40 @@ nav:
         end: end
     tabs_content:
       type: "boolean"
-      label: "Display tabs content container?"
+      label: "Display tabs content container"
       preview: true
     nav:
       type: "boolean"
       label: "Use <nav> tag instead of default <ul>"
-      preview: false
+      preview: true
     navbar:
       type: "boolean"
-      label: "Add .navbar-nav class?"
+      label: "Add .navbar-nav class"
   fields:
     items:
       type: array
       label: "Navigation items"
       description: "Array of navigation items"
       preview:
-        - label: "I'm a link"
+        - label: "I'm a link 1"
           path: "#first"
           content: "This is a demo content for the First Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          id: "first-tab"
-          target: "first"
-          attributes:
-            data-bs-toggle: "tab"
-            data-bs-target: "#first"
-            role: "button"
-            aria-controls: "first"
-        - label: "I'm a button"
-          button: true
+        - label: "I'm a link 2"
           content: "This is a demo content for the Second Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           id: "second-tab"
+          path: "#second"
           target: "second"
-          attributes:
-            data-bs-toggle: "tab"
-            autocomplete: "off"
-            data-bs-target: "#second"
-            aria-controls: "second"
-        - label: "I'm a disabled button"
-          button: true
-          disabled: true
+        - label: "I'm a link 3"
           content: "This is a demo content for the Third Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           id: "third-tab"
+          path: "#third"
           target: "third"
-          attributes:
-            data-bs-toggle: "tab"
-            autocomplete: "off"
-            data-bs-target: "#third"
-            aria-controls: "third"
-        - id: "dropdown-1"
-          link: true
-          dropdown: true
-          trigger:
-            label: "Dropdown Toggle"
-            path: "#"
-            attributes:
-              class: "nav-link"
-          items:
-            - label: "I'm a link"
-              path: "/example.html"
-            - label: "I'm a button"
-              button: true
-            - divider: true
-            - label: "I'm a disabled button"
-              button: true
-              disabled: true
-            - label: "I'm a active button"
-              button: true
-              active: true
-        - label: "I'm a active button"
-          button: true
+        - label: "I'm a link active"
           active: true
           content: "This is a demo content for the Fourth Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           id: "fourth-tab"
           target: "fourth"
-          attributes:
-            data-bs-toggle: "tab"
-            autocomplete: "off"
-            data-bs-target: "#fourth"
-            aria-controls: "fourth"
-            class: "nav-link active"
+        - label: "I'm a link disabled"
+          disabled: true
+          id: "fifth-tab"
+          target: "fifth"

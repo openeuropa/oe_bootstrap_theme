@@ -1,0 +1,62 @@
+navigation_default_full_width_with_pills_horizontal_with_dropdown:
+  render:
+    '#type': pattern
+    '#id': nav
+    '#variant': default
+    '#fields':
+      settings:
+        pills: true
+        tabs: false
+        vertical: false
+        full_width: true
+        tabs_content: false
+        nav: true
+        navbar: true
+      items:
+        - label: "I'm a link"
+          path: "#first"
+        - label: "I'm a button"
+          button: true
+        - label: "I'm a disabled button"
+          button: true
+          disabled: true
+        - id: "dropdown-1"
+          link: true
+          dropdown: true
+          trigger:
+            label: "Dropdown Toggle"
+            path: "#"
+            attributes:
+              class: "nav-link"
+          items:
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a button"
+              button: true
+            - divider: true
+            - label: "I'm a disabled button"
+              button: true
+              disabled: true
+            - label: "I'm a active button"
+              button: true
+              active: true
+        - label: "I'm a active button"
+          button: true
+          active: true
+  assertions:
+    count:
+      'ul[data-drupal-selector="nav"]': 1
+      'ul.nav-pills': 1
+      'ul.nav-tabs': 1
+      'ul.nav-fill': 1
+      'ul.justify-content-center': 1
+      'li.nav-item': 5
+      'div.tab-content': 1
+      'div.tab-pane': 4
+      'button.nav-link': 3
+      'button.active': 2
+    equals:
+      'div[aria-labelledby="first-tab"]': "This is a demo content for the First Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      'div[aria-labelledby="second-tab"]': "This is a demo content for the Second Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      'div[aria-labelledby="third-tab"]': "This is a demo content for the Third Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      'div[aria-labelledby="fourth-tab"]': "This is a demo content for the Fourth Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
