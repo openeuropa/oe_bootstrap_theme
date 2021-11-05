@@ -15,6 +15,7 @@ use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalPhotoSource;
 use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalSourceInterface;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\paragraphs\Entity\Paragraph;
+
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
