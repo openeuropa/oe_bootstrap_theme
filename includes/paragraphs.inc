@@ -6,6 +6,8 @@
  */
 
 use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Entity\Entity\EntityViewDisplay;
+use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
 use Drupal\media\MediaInterface;
 use Drupal\media\Plugin\media\Source\Image;
@@ -128,48 +130,37 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
   $variables['title'] = $paragraph->get('field_oe_title')->first()->value;
-  // Set up the correct variant name.
-  $variant_block = $paragraph->get('field_oe_list_item_block_layout')->first()->value;
-  set_variant_block($variant_block);
-  $variables['columns'] = 'highlight-' . $variant_block;
+  $variables['columns'] = get_bcl_layout_mapping($paragraph->get('field_oe_list_item_block_layout')->first()->value);
   $variables['items'] = [];
 
   foreach ($variables['paragraph']->get('field_oe_paragraphs') as $delta => $item) {
-    $variant = $item->entity->get('oe_paragraphs_variant')->first()->value;
-    if ($variant == 'highlight') {
-      $text_classes = 'mb-2';
-    }
-    else {
-      $text_classes = 'mb-3';
-    }
-
     $image = [];
     if (!$item->entity->get('field_oe_image')->isEmpty()) {
       /** @var \Drupal\file\Plugin\Field\FieldType\FileItem $image_item */
       $image_item = $item->entity->get('field_oe_image')->first();
       $file = $image_item->get('entity')->getValue();
-
       $image = [
         'path' => file_url_transform_relative(file_create_url($file->getFileUri())),
         'alt' => $image_item->get('alt')->getValue(),
+        'position' => 'top',
       ];
-
-      set_image($variant, $image);
-    }
-    $title_content = $item->entity->field_oe_title->value;
-    $url_title = $item->entity->get('field_oe_link')->first()->getUrl()->toString();
-    if (!empty($url_title)) {
-      $title_content = [
-        '#markup' => '<a href="' . $url_title . '">' . $title_content . '</a>',
-      ];
+      if ($item->entity->get('oe_paragraphs_variant')->first()->value === 'thumbnail_secondary') {
+        $image['position'] = 'bottom';
+      }
     }
 
     // Prepare the date fields if date is available.
-    $contentItem = "";
+    $contentItem = '';
     if (!$item->entity->get('field_oe_date')->isEmpty()) {
+      $display_options = EntityViewDisplay::load('paragraph.oe_list_item.default')
+        ->getComponent('field_oe_date');
       $dateItem = $item->entity->get('field_oe_date')->first();
       $contentItem = [
-        '#markup' => '<div><span class="d-md-inline d-block text-muted mb-2 mb-md-0">' . $dateItem->date->format("j F Y") . '</span></div>',
+        '#type' => 'inline_template',
+        '#template' => '<div><span class="d-md-inline d-block text-muted mb-2 mb-md-0">{{ date }}</span></div>',
+        '#context' => [
+          'date' => $dateItem->view($display_options),
+        ],
       ];
     }
 
@@ -186,11 +177,14 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
 
     $variables['items'][] = [
       'title' => [
-        'content' => $title_content,
+        'content' => Link::fromTextAndUrl(
+          $item->entity->field_oe_title->value,
+          $item->entity->get('field_oe_link')->first()->getUrl()
+        ),
       ],
       'text' => [
         'content' => $item->entity->field_oe_text_long->value,
-        'classes' => $text_classes,
+        'classes' => 'mb-2',
       ],
       'image' => $image,
       'badges' => $metas,
@@ -216,35 +210,21 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
 }
 
 /**
- * Sets variant block.
+ * Gets the mapped layout.
+ *
+ * @param string $layout
+ *   The paragraph layout.
+ *
+ * @return string
+ *   The BCL layout.
  */
-function set_variant_block(&$variant_block): void {
-  switch ($variant_block) {
-    case 'one_column':
-      $variant_block = '1-col';
-      break;
+function get_bcl_layout_mapping(string $layout): string {
+  if ($layout === 'three_columns') {
+    return 'highlight-3-col';
+  }
+  if ($layout === 'two_columns') {
+    return 'highlight-2-col';
+  }
 
-    case 'two_columns':
-      $variant_block = '2-col';
-      break;
-
-    case 'three_columns':
-      $variant_block = '3-col';
-      break;
-  }
-}
-
-/**
- * Sets image position and rounded.
- */
-function set_image($variant, array &$image): void {
-  if ($variant == 'thumbnail_secondary') {
-    $image['position'] = 'bottom';
-  }
-  elseif ($variant == 'thumbnail_secondary') {
-    $image['position'] = 'top';
-  }
-  else {
-    $image['rounded'] = 1;
-  }
+  return 'highlight-1-col';
 }
