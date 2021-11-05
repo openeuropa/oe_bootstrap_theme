@@ -9,7 +9,9 @@ use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
+use Drupal\media\Entity\Media;
 use Drupal\media\MediaInterface;
+use Drupal\media\MediaSourceInterface;
 use Drupal\media\Plugin\media\Source\Image;
 use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalPhotoSource;
 use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalSourceInterface;
@@ -237,14 +239,10 @@ function get_bcl_layout_mapping(string $layout): string {
 function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): void {
   /** @var Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
-
-  set_title($paragraph, $variables);
-
+  $variables['title'] = $paragraph->get('field_oe_title')->value;
   $variables['description'] = $paragraph->get('field_oe_text')->value;
-
-  set_link($paragraph, $variables);
-
   $variables['full_width'] = (bool) $paragraph->get('field_oe_banner_full_width')->value;
+  set_banner_link($paragraph, $variables);
 
   // The alignment field value contains the information regarding the pattern
   // type and centering.
@@ -254,8 +252,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): 
   $variables['pattern'] = 'banner_' . $banner_type;
   // The end of the string determines the position.
   $variables['alignment'] = $banner_alignment;
-
-  set_variant($paragraph, $variables);
+  $variables['variant'] = get_bcl_variant($paragraph);
 
   if ($variables['variant'] === 'default' || $variables['variant'] === 'primary') {
     return;
@@ -297,7 +294,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): 
     return;
   }
 
-  $uri = get_uri($source, $media, $cacheability);
+  $uri = get_media_uri($source, $media, $cacheability);
 
   // The uri might be empty if the source is of type Image and the file entity
   // was deleted.
@@ -306,72 +303,79 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): 
     return;
   }
 
-  set_image($uri, $source, $media, $variables);
-
+  $variables['image'] = ImageValueObject::fromArray([
+    'src' => file_create_url($uri),
+    'alt' => $source->getMetadata($media, 'thumbnail_alt_value') ?? $media->label(),
+    'name' => $media->getName(),
+  ]);
   $cacheability->applyTo($variables);
 }
 
 /**
- * Auxiliary function to set image on variables.
+ * Sets link variable for banner paragraph.
+ *
+ * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
+ *   The paragraph.
+ * @param array $variables
+ *   The render array.
  */
-function set_image($uri, $source, $media, array &$variables): array {
-  $values = [
-    'src' => file_create_url($uri),
-    'alt' => $source->getMetadata($media, 'thumbnail_alt_value') ?? $media->label(),
-    'name' => $media->getName(),
-  ];
-  $variables['image'] = ImageValueObject::fromArray($values);
-  return $variables;
+function set_banner_link(Paragraph $paragraph, array &$variables): void {
+  if ($paragraph->get('field_oe_link')->isEmpty()) {
+    return;
+  }
+
+  $link = $paragraph->get('field_oe_link')->first();
+  $variables['url'] = $link->getUrl()->toString();
+  $variables['label'] = $link->get('title')->getValue();
 }
 
 /**
- * Auxiliary function to get the uri.
+ * Gets the uri from a media object.
+ *
+ * @param \Drupal\media\MediaSourceInterface $source
+ *   The media source.
+ * @param \Drupal\media\Entity\Media $media
+ *   The media object.
+ * @param \Drupal\Core\Cache\CacheableMetadata $cacheability
+ *   The cacheability object.
+ *
+ * @return string
+ *   The uri string.
  */
-function get_uri($source, $media, CacheableMetadata $cacheability) {
+function get_media_uri(MediaSourceInterface $source, Media $media, CacheableMetadata $cacheability): string {
   $field_name = $source->getConfiguration()['source_field'];
+
   if ($source instanceof Image && ($file_entity = $media->get($field_name)->entity)) {
-    $uri = $file_entity->getFileUri();
     $cacheability->addCacheableDependency($file_entity);
+    return $file_entity->getFileUri();
   }
-  elseif ($source instanceof MediaAvPortalSourceInterface) {
+
+  if ($source instanceof MediaAvPortalSourceInterface) {
     $resource_ref = $media->get($field_name)->value;
-    $uri = 'avportal://' . $resource_ref . '.jpg';
+    return 'avportal://' . $resource_ref . '.jpg';
   }
-  return $uri;
+
+  return '';
 }
 
 /**
- * Auxiliary function to set the variant on variables.
+ * Gets the BCL variant name.
+ *
+ * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
+ *   The paragraph.
+ *
+ * @return string
+ *   The computed pattern variant name.
  */
-function set_variant(Paragraph $paragraph, array &$variables): array {
+function get_bcl_variant(Paragraph $paragraph): string {
+  if ($paragraph->get('oe_paragraphs_variant')->isEmpty()) {
+    return 'default';
+  }
+
   $variant = $paragraph->get('oe_paragraphs_variant')->first()->value;
-  if ($variant) {
-    $variables['variant'] = str_replace('oe_banner_', '', $variant);
+  if (!$variant) {
+    return 'default';
   }
-  else {
-    $variables['variant'] = 'default';
-  }
-  return $variables;
-}
 
-/**
- * Auxiliary function to set link on variables.
- */
-function set_link(Paragraph $paragraph, array &$variables): array {
-  if (!$paragraph->get('field_oe_link')->isEmpty()) {
-    $link = $paragraph->get('field_oe_link')->first();
-    $variables['url'] = $link->getUrl()->toString();
-    $variables['label'] = $link->get('title')->getValue();
-  }
-  return $variables;
-}
-
-/**
- * Auxiliary function to set title on variables.
- */
-function set_title(Paragraph $paragraph, array &$variables): array {
-  if (!$paragraph->get('field_oe_title')->isEmpty()) {
-    $variables['title'] = $paragraph->get('field_oe_title')->value;
-  }
-  return $variables;
+  return str_replace('oe_banner_', '', $variant);
 }
