@@ -360,7 +360,7 @@ function set_variant(Paragraph $paragraph, array &$variables): array {
 function set_link(Paragraph $paragraph, array &$variables): array {
   if (!$paragraph->get('field_oe_link')->isEmpty()) {
     $link = $paragraph->get('field_oe_link')->first();
-    $variables['url'] = $link->getUrl();
+    $variables['url'] = $link->getUrl()->toString();
     $variables['label'] = $link->get('title')->getValue();
   }
   return $variables;
