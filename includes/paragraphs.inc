@@ -131,7 +131,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
   // Set up the correct variant name.
   $variant_block = $paragraph->get('field_oe_list_item_block_layout')->first()->value;
   set_variant_block($variant_block);
-  $variables['variant'] = 'highlight-' . $variant_block;
+  $variables['columns'] = 'highlight-' . $variant_block;
   $variables['items'] = [];
 
   foreach ($variables['paragraph']->get('field_oe_paragraphs') as $delta => $item) {

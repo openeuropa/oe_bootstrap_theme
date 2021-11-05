@@ -1,0 +1,52 @@
+listing:
+  label: "Listing"
+  description: "Listing used for the List item block."
+  settings:
+    columns:
+      type: "select"
+      label: "Variant"
+      options:
+        default-1-col: "default-1-col"
+        default-2-col: "default-2-col"
+        default-3-col: "default-3-col"
+        highlight-1-col: "highlight-1-col"
+        highlight-2-col: "highlight-2-col"
+        highlight-3-col: "highlight-3-col"
+      preview: "highlight-3-col"
+  fields:
+    items:
+      type: "array"
+      label: "List items"
+      description: "List of items"
+      preview:
+        - title:
+            content:
+              '#markup' : '<a href="/example">Card title</a>'
+            tag: "h5"
+          text:
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
+            classes: "mb-3"
+          image:
+            path: "https://picsum.photos/160?random=1"
+            alt: "alt img"
+            rounded: 1
+          content:
+            '#markup': '<div>
+              <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
+              <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Brussels, Belgium</span>
+              <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 October 2019</span>
+              </div>'
+    link:
+      type: "array"
+      label: "Link"
+      description: "Link object"
+      preview:
+        label: 'European Commission'
+        path: 'http://link-1.com'
+        icon:
+          path: "/icons.svg"
+    title:
+      type: "text"
+      label: "Title"
+      description: "List item block title"
+      preview: " Listing item block title "

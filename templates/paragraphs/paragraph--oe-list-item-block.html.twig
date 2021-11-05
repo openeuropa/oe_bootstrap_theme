@@ -1,12 +1,15 @@
 {#
 /**
  * @file
- * Listing pattern.
+ * Theme override to display the 'List item block' type paragraph.
+ *
+ * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
  */
 #}
-{% include '@oe-bcl/bcl-listing/listing.html.twig' with {
-  'variant': variant,
+{{ pattern('listing', {
+  'columns': columns,
   'items': items,
   'link': link,
   'title': title,
-} %}
+}) }}
+
