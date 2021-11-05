@@ -6,6 +6,8 @@
  */
 
 use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Entity\Entity\EntityViewDisplay;
+use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
 use Drupal\media\MediaInterface;
 use Drupal\media\Plugin\media\Source\Image;
@@ -119,4 +121,110 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
   }
 
   $cacheability->applyTo($variables);
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for paragraph--oe-list-item-block.html.twig.
+ */
+function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  $variables['title'] = $paragraph->get('field_oe_title')->first()->value;
+  $variables['columns'] = get_bcl_layout_mapping($paragraph->get('field_oe_list_item_block_layout')->first()->value);
+  $variables['items'] = [];
+
+  foreach ($variables['paragraph']->get('field_oe_paragraphs') as $delta => $item) {
+    $image = [];
+    if (!$item->entity->get('field_oe_image')->isEmpty()) {
+      /** @var \Drupal\file\Plugin\Field\FieldType\FileItem $image_item */
+      $image_item = $item->entity->get('field_oe_image')->first();
+      $file = $image_item->get('entity')->getValue();
+      $image = [
+        'path' => file_url_transform_relative(file_create_url($file->getFileUri())),
+        'alt' => $image_item->get('alt')->getValue(),
+        'position' => 'top',
+      ];
+      if ($item->entity->get('oe_paragraphs_variant')->first()->value === 'thumbnail_secondary') {
+        $image['position'] = 'bottom';
+      }
+    }
+
+    // Prepare the date fields if date is available.
+    $contentItem = '';
+    if (!$item->entity->get('field_oe_date')->isEmpty()) {
+      $display_options = EntityViewDisplay::load('paragraph.oe_list_item.default')
+        ->getComponent('field_oe_date');
+      $dateItem = $item->entity->get('field_oe_date')->first();
+      $contentItem = [
+        '#type' => 'inline_template',
+        '#template' => '<div><span class="d-md-inline d-block text-muted mb-2 mb-md-0">{{ date }}</span></div>',
+        '#context' => [
+          'date' => $dateItem->view($display_options),
+        ],
+      ];
+    }
+
+    // Prepare the metas if available.
+    $metas = [];
+    if (!$item->entity->get('field_oe_meta')->isEmpty()) {
+      foreach ($item->entity->get('field_oe_meta') as $item_meta) {
+        $metas[] = [
+          'label' => $item_meta->value,
+          'background' => 'primary',
+        ];
+      }
+    }
+
+    $variables['items'][] = [
+      'title' => [
+        'content' => Link::fromTextAndUrl(
+          $item->entity->field_oe_title->value,
+          $item->entity->get('field_oe_link')->first()->getUrl()
+        ),
+      ],
+      'text' => [
+        'content' => $item->entity->field_oe_text_long->value,
+        'classes' => 'mb-2',
+      ],
+      'image' => $image,
+      'badges' => $metas,
+      'content' => $contentItem,
+    ];
+  }
+
+  // Prepare the button variables if a link has been specified.
+  if ($paragraph->get('field_oe_link')->isEmpty()) {
+    return;
+  }
+
+  /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $link_item */
+  $link_item = $paragraph->get('field_oe_link')->first();
+  $variables['link'] = [
+    'path' => $link_item->getUrl()->toString(),
+    'label' => $link_item->get('title')->getValue(),
+    'icon' => [
+      'path' => $variables['bcl_icon_path'],
+      'name' => 'chevron-right',
+    ],
+  ];
+}
+
+/**
+ * Gets the mapped layout.
+ *
+ * @param string $layout
+ *   The paragraph layout.
+ *
+ * @return string
+ *   The BCL layout.
+ */
+function get_bcl_layout_mapping(string $layout): string {
+  if ($layout === 'three_columns') {
+    return 'highlight-3-col';
+  }
+  if ($layout === 'two_columns') {
+    return 'highlight-2-col';
+  }
+
+  return 'highlight-1-col';
 }
