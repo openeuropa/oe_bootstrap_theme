@@ -208,7 +208,10 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
   $variables['link'] = [
     'path' => $link_item->getUrl()->toString(),
     'label' => $link_item->get('title')->getValue(),
-    'icon' => [],
+    'icon' => [
+      'path' => $variables['bcl_icon_path'],
+      'name' => 'chevron-right',
+    ],
   ];
 }
 
