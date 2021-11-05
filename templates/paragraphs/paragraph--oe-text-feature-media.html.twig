@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Theme override to display the 'featured_media' type paragraph.
+ *
+ * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
+ */
+#}
+{% set _content_classes = "bg-light p-3" %}
+{% if image %}
+  {% set imagestyle = {
+    '#theme':      'image',
+    '#uri':        image.src,
+    '#alt':        image.alt,
+  } %}
+{% endif %}
+
+{{ pattern('featured_media', {
+  'variant': variant,
+  'embedded_media': embedded_media,
+  'image': imagestyle ? imagestyle|render : '',
+  'poster_image': poster_image,
+  'content': not paragraph.field_oe_plain_text_long.isEmpty ? content.field_oe_plain_text_long,
+  'content_classes': _content_classes,
+  'ratio': ratio,
+  'sources': sources,
+  'tracks': tracks,
+}) }}
