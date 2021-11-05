@@ -127,17 +127,74 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
 function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
-
+  $variables['title'] = $paragraph->get('field_oe_title')->first()->value;
   // Set up the correct variant name.
-  $variables['variant'] = 'list_item_block_' . $paragraph->get('field_oe_list_item_block_layout')->first()->value;
-
+  $variant_block = $paragraph->get('field_oe_list_item_block_layout')->first()->value;
+  set_variant_block($variant_block);
+  $variables['variant'] = 'highlight-' . $variant_block;
   $variables['items'] = [];
 
   foreach ($variables['paragraph']->get('field_oe_paragraphs') as $delta => $item) {
+    $variant = $item->entity->get('oe_paragraphs_variant')->first()->value;
+    if ($variant == 'highlight') {
+      $text_classes = 'mb-2';
+    }
+    else {
+      $text_classes = 'mb-3';
+    }
+
+    $image = [];
+    if (!$item->entity->get('field_oe_image')->isEmpty()) {
+      /** @var \Drupal\file\Plugin\Field\FieldType\FileItem $image_item */
+      $image_item = $item->entity->get('field_oe_image')->first();
+      $file = $image_item->get('entity')->getValue();
+
+      $image = [
+        'path' => file_url_transform_relative(file_create_url($file->getFileUri())),
+        'alt' => $image_item->get('alt')->getValue(),
+      ];
+
+      set_image($variant, $image);
+    }
+    $title_content = $item->entity->field_oe_title->value;
+    $url_title = $item->entity->get('field_oe_link')->first()->getUrl()->toString();
+    if (!empty($url_title)) {
+      $title_content = [
+        '#markup' => '<a href="' . $url_title . '">' . $title_content . '</a>',
+      ];
+    }
+
+    // Prepare the date fields if date is available.
+    $contentItem = "";
+    if (!$item->entity->get('field_oe_date')->isEmpty()) {
+      $dateItem = $item->entity->get('field_oe_date')->first();
+      $contentItem = [
+        '#markup' => '<div><span class="d-md-inline d-block text-muted mb-2 mb-md-0">' . $dateItem->date->format("j F Y") . '</span></div>',
+      ];
+    }
+
+    // Prepare the metas if available.
+    $metas = [];
+    if (!$item->entity->get('field_oe_meta')->isEmpty()) {
+      foreach ($item->entity->get('field_oe_meta') as $item_meta) {
+        $metas[] = [
+          'label' => $item_meta->value,
+          'background' => 'primary',
+        ];
+      }
+    }
+
     $variables['items'][] = [
       'title' => [
-        'content' => 'Whatever',
+        'content' => $title_content,
       ],
+      'text' => [
+        'content' => $item->entity->field_oe_text_long->value,
+        'classes' => $text_classes,
+      ],
+      'image' => $image,
+      'badges' => $metas,
+      'content' => $contentItem,
     ];
   }
 
@@ -148,6 +205,43 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
 
   /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $link_item */
   $link_item = $paragraph->get('field_oe_link')->first();
-  $variables['button_url'] = $link_item->getUrl();
-  $variables['button_label'] = $link_item->get('title')->getValue();
+  $variables['link'] = [
+    'path' => $link_item->getUrl()->toString(),
+    'label' => $link_item->get('title')->getValue(),
+    'icon' => [],
+  ];
+}
+
+/**
+ * Sets variant block.
+ */
+function set_variant_block(&$variant_block): void {
+  switch ($variant_block) {
+    case 'one_column':
+      $variant_block = '1-col';
+      break;
+
+    case 'two_columns':
+      $variant_block = '2-col';
+      break;
+
+    case 'three_columns':
+      $variant_block = '3-col';
+      break;
+  }
+}
+
+/**
+ * Sets image position and rounded.
+ */
+function set_image($variant, array &$image): void {
+  if ($variant == 'thumbnail_secondary') {
+    $image['position'] = 'bottom';
+  }
+  elseif ($variant == 'thumbnail_secondary') {
+    $image['position'] = 'top';
+  }
+  else {
+    $image['rounded'] = 1;
+  }
 }
