@@ -28,7 +28,7 @@ featured_media:
       label: "Embedded media"
       description: "Embedded media."
     image:
-      type: "array"
+      type: "ImageValueObject"
       label: "Image"
       description: "Image for the image variant."
       preview:
