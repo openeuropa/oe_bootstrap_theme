@@ -9,10 +9,14 @@ use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
+use Drupal\media\Entity\Media;
 use Drupal\media\MediaInterface;
+use Drupal\media\MediaSourceInterface;
 use Drupal\media\Plugin\media\Source\Image;
 use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalPhotoSource;
+use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalSourceInterface;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Drupal\paragraphs\Entity\Paragraph;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
@@ -227,4 +231,151 @@ function get_bcl_layout_mapping(string $layout): string {
   }
 
   return 'highlight-1-col';
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for oe_banner paragraph.
+ */
+function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): void {
+  /** @var Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  $variables['title'] = $paragraph->get('field_oe_title')->value;
+  $variables['description'] = $paragraph->get('field_oe_text')->value;
+  $variables['full_width'] = (bool) $paragraph->get('field_oe_banner_full_width')->value;
+  set_banner_link($paragraph, $variables);
+
+  // The alignment field value contains the information regarding the pattern
+  // type and centering.
+  $alignment = $paragraph->get('field_oe_banner_type')->value;
+  [$banner_type, $banner_alignment] = explode('_', $alignment);
+  // The beginning of the string determines the pattern.
+  $variables['pattern'] = 'banner_' . $banner_type;
+  // The end of the string determines the position.
+  $variables['alignment'] = $banner_alignment;
+  $variables['variant'] = get_bcl_variant($paragraph);
+
+  if ($variables['variant'] === 'default' || $variables['variant'] === 'primary') {
+    return;
+  }
+
+  // Bail out if there is no media present.
+  if ($paragraph->get('field_oe_media')->isEmpty()) {
+    return;
+  }
+  $cacheability = CacheableMetadata::createFromRenderArray($variables);
+
+  /** @var \Drupal\media\Entity\Media $media */
+  $media = $paragraph->get('field_oe_media')->entity;
+  if (!$media instanceof MediaInterface) {
+    // The media entity is not available anymore, bail out.
+    return;
+  }
+
+  // Retrieve the correct translation to display.
+  $media = \Drupal::service('entity.repository')->getTranslationFromContext($media, $paragraph->language()->getId());
+
+  // Caches are handled by the formatter usually. Since we are not rendering
+  // the original render arrays, we need to propagate our caches to the
+  // paragraph template.
+  $cacheability->addCacheableDependency($media);
+
+  // Run access checks on the media entity.
+  $access = $media->access('view', $variables['user'], TRUE);
+  $cacheability->addCacheableDependency($access);
+  if (!$access->isAllowed()) {
+    $cacheability->applyTo($variables);
+    return;
+  }
+
+  $source = $media->getSource();
+  // We only support images and AV Portal photos for now.
+  if (!$source instanceof MediaAvPortalSourceInterface && !$source instanceof Image) {
+    $cacheability->applyTo($variables);
+    return;
+  }
+
+  $uri = get_media_uri($source, $media, $cacheability);
+
+  // The uri might be empty if the source is of type Image and the file entity
+  // was deleted.
+  if (empty($uri)) {
+    $cacheability->applyTo($variables);
+    return;
+  }
+
+  $variables['image'] = ImageValueObject::fromArray([
+    'src' => file_create_url($uri),
+    'alt' => $source->getMetadata($media, 'thumbnail_alt_value') ?? $media->label(),
+    'name' => $media->getName(),
+  ]);
+  $cacheability->applyTo($variables);
+}
+
+/**
+ * Sets link variable for banner paragraph.
+ *
+ * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
+ *   The paragraph.
+ * @param array $variables
+ *   The render array.
+ */
+function set_banner_link(Paragraph $paragraph, array &$variables): void {
+  if ($paragraph->get('field_oe_link')->isEmpty()) {
+    return;
+  }
+
+  $link = $paragraph->get('field_oe_link')->first();
+  $variables['url'] = $link->getUrl()->toString();
+  $variables['label'] = $link->get('title')->getValue();
+}
+
+/**
+ * Gets the uri from a media object.
+ *
+ * @param \Drupal\media\MediaSourceInterface $source
+ *   The media source.
+ * @param \Drupal\media\Entity\Media $media
+ *   The media object.
+ * @param \Drupal\Core\Cache\CacheableMetadata $cacheability
+ *   The cacheability object.
+ *
+ * @return string
+ *   The uri string.
+ */
+function get_media_uri(MediaSourceInterface $source, Media $media, CacheableMetadata $cacheability): string {
+  $field_name = $source->getConfiguration()['source_field'];
+
+  if ($source instanceof Image && ($file_entity = $media->get($field_name)->entity)) {
+    $cacheability->addCacheableDependency($file_entity);
+    return $file_entity->getFileUri();
+  }
+
+  if ($source instanceof MediaAvPortalSourceInterface) {
+    $resource_ref = $media->get($field_name)->value;
+    return 'avportal://' . $resource_ref . '.jpg';
+  }
+
+  return '';
+}
+
+/**
+ * Gets the BCL variant name.
+ *
+ * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
+ *   The paragraph.
+ *
+ * @return string
+ *   The computed pattern variant name.
+ */
+function get_bcl_variant(Paragraph $paragraph): string {
+  if ($paragraph->get('oe_paragraphs_variant')->isEmpty()) {
+    return 'default';
+  }
+
+  $variant = $paragraph->get('oe_paragraphs_variant')->first()->value;
+  if (!$variant) {
+    return 'default';
+  }
+
+  return str_replace('oe_banner_', '', $variant);
 }
