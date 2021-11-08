@@ -39,26 +39,6 @@ commands:
     # Generate settings.testing.php, it will be used when running functional tests.
     - { task: "process-php", type: "write", config: "drupal.settings", source: "${drupal.root}/sites/default/default.settings.php", destination: "${drupal.root}/sites/default/settings.testing.php", override: true }
     - { task: "run", command: "setup:phpunit" }
-
-    # This is a temporary solution until the renaming will be moved in BCL or as
-    # part of NPM build.
-    # Renames
-    #   From: assets/bcl/bcl-accordion/accordion.html.twig
-    #   To:   assets/bcl/bcl-accordion/bcl-accordion.html.twig
-    - task: exec
-      command: |
-        php -r 'require_once("vendor/autoload.php");
-        $finder = new \Symfony\Component\Finder\Finder();
-        $files = array_keys(iterator_to_array($finder->files()->name("/\.html\.twig$/")->in("assets/bcl")));
-        array_walk($files, function (string $old_path): void {
-          $old_path = realpath($old_path);
-          $filename = pathinfo($old_path, PATHINFO_BASENAME);
-          if (strpos($filename, "bcl-") !== 0) {
-            $new_path = pathinfo($old_path, PATHINFO_DIRNAME) . "/bcl-$filename";
-            rename($old_path, $new_path);
-          }
-        });'
-
   setup:phpunit:
     - { task: "process", source: "phpunit.xml.dist", destination: "phpunit.xml" }
 
