@@ -1,0 +1,2 @@
+release-branch=1.x
+exclude-tags-regex=^0.[0-9]+.[0-9]+.*
