@@ -1,0 +1,59 @@
+featured_media:
+  label: "Featured Media"
+  description: "Featured Media"
+  variants:
+    image:
+      label: "Image"
+      description: "Image paragraph example."
+  settings:
+    ratio:
+      type: select
+      label: "Ratio"
+      description: "Ratio for iframe."
+      options:
+        1x1: "1x1"
+        4x3: "4x3"
+        16x9: "16x9"
+        21x9: "21x9"
+    alignment:
+      type: select
+      label: "Alignment"
+      description: "Alignment inside text contaiter"
+      options:
+        left: "left"
+        right: "right"
+  fields:
+    embedded_media:
+      type: "text"
+      label: "Embedded media"
+      description: "Embedded media."
+    image:
+      type: "ImageValueObject"
+      label: "Image"
+      description: "Image for the image variant."
+      preview:
+        - theme: "image"
+          uri: "https://placeimg.com/1200/600/tech"
+          alt: "Alternative text for paragraph image"
+    poster_image:
+      type: "text"
+      label: "poster image"
+      description: "Poster image used for the video variant."
+    content:
+      type: "text"
+      label: "Content"
+      description: "Content under featured media."
+      preview: "Media description text goes here."
+    content_classes:
+      type: "text"
+      label: "Content classes"
+      description: "Classes for content under featured media."
+      preview: "bg-light p-3"
+    sources:
+      type: "array"
+      label: "Sources"
+      description: "Sources for embedded media."
+    tracks:
+      type: "array"
+      label: "Tracks"
+      description: "Embed Text Track element."

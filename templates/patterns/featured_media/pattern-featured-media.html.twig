@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Featured media component.
+ */
+#}
+
+{% include '@oe-bcl/bcl-featured-media/featured-media.html.twig' with {
+  'embedded_media': embedded_media,
+  'image': image,
+  'poster_image': poster_image,
+  'content': content,
+  'content_classes': content_classes,
+  'ratio': ratio,
+  'sources': sources,
+  'tracks': tracks,
+} %}

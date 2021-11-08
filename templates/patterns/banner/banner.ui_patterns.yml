@@ -1,0 +1,60 @@
+banner:
+  label: "Banner composition"
+  description: "Hidden sidebar with activation. https://getbootstrap.com/docs/5.0/components/offcanvas/"
+  variants:
+    default:
+      label: Default text banner
+    primary:
+      label: Primary text banner
+    image:
+      label: Image banner
+    image_shade:
+      label: Image shade banner
+  settings:
+    shade:
+      type: "boolean"
+      label: "Shade"
+      preview: false
+    hero:
+      type: "boolean"
+      label: "Hero"
+      description: "Display banner as hero banner"
+      preview: false
+    full_width:
+      type: "boolean"
+      label: "Full width"
+      description: "Possibility of having a full-width banner within a bootstrap container"
+      preview: false
+    centered:
+      type: "boolean"
+      label: "Centered"
+      description: "Whether the content of the banner is centered or not"
+      preview: true
+  fields:
+    title:
+      type: "text"
+      label: "Title"
+      description: "Heading of the banner"
+      preview: "EU Budget for the future"
+    description:
+      type: "text"
+      label: "Description"
+      description: "Sub-heading of the banner"
+      preview: "Innovation, economy, environment and geopolitics"
+    link:
+      type: "array"
+      label: "Link"
+      description: "Call to action link"
+      preview:
+        label: "Subscribe"
+        path: "https://example.com"
+        variant: "primary"
+        icon_position: "after"
+        icon:
+          name: "chevron-right"
+          size: s
+          path: "/assets/icons/bootstrap-icons.svg"
+    image:
+      type: "text"
+      label: "Image"
+      preview:  "https://placeimg.com/1000/500/arch"
