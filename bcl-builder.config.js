@@ -55,4 +55,14 @@ module.exports = {
       options: { up: 4 },
     },
   ],
+  "rename": [
+    {
+      from: path.resolve(outputFolder, "assets/bcl/**/*"),
+      to: "bcl-",
+      options: {
+        search: "!(bcl-)*.html.twig",
+        operation: "prefix",
+      },
+    },
+  ],
 };
