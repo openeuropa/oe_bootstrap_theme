@@ -8,7 +8,7 @@
   <div class="col-12 col-md-4">
     {% include '@oe-bcl/bcl-featured-media/featured-media.html.twig' with {
       'image': image,
-      'content': content,
+      'content': not paragraph.field_oe_plain_text_long.isEmpty ? content.field_oe_plain_text_long,
       'content_classes': content_classes,
     } %}
   </div>

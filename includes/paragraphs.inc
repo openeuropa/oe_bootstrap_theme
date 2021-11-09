@@ -13,9 +13,12 @@ use Drupal\media\Entity\Media;
 use Drupal\media\MediaInterface;
 use Drupal\media\MediaSourceInterface;
 use Drupal\media\Plugin\media\Source\Image;
+use Drupal\media\Plugin\media\Source\OEmbed;
 use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalPhotoSource;
 use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalSourceInterface;
+use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalVideoSource;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Drupal\oe_media_iframe\Plugin\media\Source\Iframe;
 use Drupal\paragraphs\Entity\Paragraph;
 
 /**
@@ -72,30 +75,19 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
-  // Link field doesn't exist in oe_paragraphs <= 1.8.0, so ensure it exists.
-  if ($paragraph->hasField('field_oe_link') && !$paragraph->get('field_oe_link')->isEmpty()) {
-    $link_field = $paragraph->get('field_oe_link')->first();
-    $variables['link'] = [
-      'path' => $link_field->getUrl()->toString(),
-      'label' => $link_field->get('title')->getValue(),
-    ];
-  }
+  /** @var \Drupal\media\Entity\Media $media */
+  $media = $paragraph->get('field_oe_media')->entity;
 
-  // Bail out if there is no media present.
-  if ($paragraph->get('field_oe_media')->isEmpty()) {
+  // Bail out if media entity is not available or there is no media present.
+  $no_media = !$media instanceof MediaInterface || $paragraph->get('field_oe_media')->isEmpty();
+  if ($no_media) {
     return;
   }
 
   $cacheability = CacheableMetadata::createFromRenderArray($variables);
 
-  /** @var \Drupal\media\Entity\Media $media */
-  $media = $paragraph->get('field_oe_media')->entity;
-  if (!$media instanceof MediaInterface) {
-    // The media entity is not available anymore, bail out.
-    return;
-  }
-
   // Retrieve the correct media translation.
+  /** @var \Drupal\media\Entity\Media $media */
   $media = \Drupal::service('entity.repository')->getTranslationFromContext($media, $paragraph->language()->getId());
 
   // Caches are handled by the formatter usually. Since we are not rendering
@@ -114,17 +106,34 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
   // Get the media source.
   $source = $media->getSource();
 
-  // If it's an image media, render it and assign it to the image variable.
-  if ($source instanceof MediaAvPortalPhotoSource || $source instanceof Image) {
-    $thumbnail = $media->get('thumbnail')->first();
-    $variables['image'] = ImageValueObject::fromStyledImageItem($thumbnail, 'oe_bootstrap_theme_medium_no_crop');
-    $cacheability->applyTo($variables);
-    // Overwrite the variant because is an image.
-    $variables['variant'] = 'image';
+  $is_image = $source instanceof MediaAvPortalPhotoSource || $source instanceof Image;
+  $is_video = $source instanceof MediaAvPortalVideoSource || $source instanceof OEmbed || $source instanceof Iframe;
+
+  // If it's no image or no video, bail out.
+  if (!$is_image && !$is_video) {
     return;
   }
 
+  // If it's an image media, render it and assign it to the image variable.
+  set_image($is_image, $media, $variables, $cacheability);
+  set_embedded_media($variables, $paragraph, $media, $cacheability, $source);
+}
+
+/**
+ * Set the image.
+ */
+function set_image(bool $is_image, Media $media, array &$variables, CacheableMetadata $cacheability): array {
+  if (!$is_image) {
+    return $variables;
+  }
+
+  $thumbnail = $media->get('thumbnail')->first();
+  $variables['image'] = ImageValueObject::fromStyledImageItem($thumbnail, 'oe_bootstrap_theme_medium_no_crop');
+  // Overwrite the variant because is an image.
+  $variables['variant'] = 'image';
   $cacheability->applyTo($variables);
+
+  return $variables;
 }
 
 /**
@@ -377,5 +386,62 @@ function get_bcl_variant(Paragraph $paragraph): string {
     return 'default';
   }
 
-  return str_replace('oe_banner_', '', $variant);
+  switch ($paragraph->getType()) {
+    case 'oe_banner':
+      return str_replace('oe_banner_', '', $variant);
+
+    case 'oe_text_feature_media':
+      return str_replace(['_featured', '_simple'], '', $variant);
+
+    default:
+      return $variant;
+  }
+
+}
+
+/**
+ * Gets the BCL variant name.
+ */
+function set_embedded_media(array &$variables, Paragraph $paragraph, Media $media, CacheableMetadata $cacheability, $source) {
+  $variables['variant'] = 'inside_text';
+  $variables['alignment'] = get_bcl_variant($paragraph);
+  // Default video aspect ratio is set to 16x9.
+  $variables['ratio'] = '16x9';
+
+  // Load information about the media and the display.
+  $media_type = \Drupal::entityTypeManager()->getStorage('media_type')->load($media->bundle());
+  $cacheability->addCacheableDependency($media_type);
+  $source_field = $source->getSourceFieldDefinition($media_type);
+  $display = EntityViewDisplay::collectRenderDisplay($media, 'oe_theme_main_content');
+  $cacheability->addCacheableDependency($display);
+  $display_options = $display->getComponent($source_field->getName());
+
+  // If it is an OEmbed resource, render it and pass it as embeddable data
+  // only if it is of type video or html.
+  if ($source instanceof OEmbed) {
+    $oembed_type = $source->getMetadata($media, 'type');
+    if (in_array($oembed_type, ['video', 'html'])) {
+      $variables['embedded_media'] = $media->{$source_field->getName()}->view($display_options);
+      $cacheability->applyTo($variables);
+      return;
+    }
+  }
+
+  // If its an AvPortal video or an iframe video, render it.
+  $variables['embedded_media'] = $media->{$source_field->getName()}->view($display_options);
+  $cacheability->applyTo($variables);
+  set_ratio($media, $variables, $cacheability);
+  return $variables;
+}
+
+/**
+ * Set the video iframe ratio.
+ */
+function set_ratio(Media $media, array &$variables, CacheableMetadata $cacheability): void {
+  // When dealing with iframe videos, also respect its given aspect ratio.
+  if ($media->bundle() === 'video_iframe') {
+    $ratio = $media->get('oe_media_iframe_ratio')->value;
+    $variables['ratio'] = str_replace('_', 'x', $ratio);
+    $cacheability->applyTo($variables);
+  }
 }

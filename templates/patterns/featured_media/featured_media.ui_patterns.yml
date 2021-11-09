@@ -5,6 +5,8 @@ featured_media:
     image:
       label: "Image"
       description: "Image paragraph example."
+    inside_text:
+      label: "Inside Text Container"
   settings:
     ratio:
       type: select
@@ -18,7 +20,7 @@ featured_media:
     alignment:
       type: select
       label: "Alignment"
-      description: "Alignment inside text contaiter"
+      description: "Alignment inside text container"
       options:
         left: "left"
         right: "right"
