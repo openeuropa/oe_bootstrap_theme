@@ -8,37 +8,13 @@ use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Tests the rendering of paragraph types with media fields.
- *
- * @group batch1
  */
 class MediaParagraphsTest extends ParagraphsTestBase {
 
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
-    'media',
-    'oe_media',
-    'oe_media_oembed_mock',
-    'oe_paragraphs_media',
-    'allowed_formats',
-    'oe_paragraphs_media_field_storage',
-    'oe_paragraphs_iframe_media',
-    'oe_paragraphs_banner',
-    'views',
-    'entity_browser',
-    'media_avportal',
-    'media_avportal_mock',
-    'oe_media_avportal',
-    'options',
-    'oe_media_iframe',
-    'file_link',
-  ];
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->container->get('module_handler')->loadInclude('oe_paragraphs_media_field_storage', 'install');
@@ -123,10 +99,6 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     // Unpublish the media and assert it is not rendered anymore.
     $media->set('status', 0);
     $media->save();
-
-    // Since static cache is not cleared due to lack of requests in the test we
-    // need to reset manually.
-    $this->container->get('entity_type.manager')->getAccessControlHandler('media')->resetCache();
 
     // Publish the media.
     $media->set('status', 1);

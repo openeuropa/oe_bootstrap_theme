@@ -15,29 +15,40 @@ abstract class ParagraphsTestBase extends AbstractKernelTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
-    'language',
-    'content_translation',
-    'paragraphs',
+  protected static $modules = [
+    'allowed_formats',
+    'datetime',
+    'entity_reference_revisions',
+    'entity_browser',
     'file',
     'field',
-    'entity_reference_revisions',
-    'datetime',
-    'link',
-    'text',
+    'file_link',
     'filter',
-    'options',
-    'typed_link',
-    'oe_paragraphs',
-    'allowed_formats',
+    'language',
+    'link',
     'locale',
+    'media',
     'node',
+    'media_avportal',
+    'paragraphs',
+    'options',
+    'oe_media',
+    'oe_media_avportal',
+    'oe_media_iframe',
+    'oe_paragraphs',
+    'oe_paragraphs_media',
+    'oe_paragraphs_media_field_storage',
+    'oe_paragraphs_iframe_media',
+    'oe_paragraphs_banner',
+    'text',
+    'typed_link',
+    'views',
   ];
 
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->installEntitySchema('paragraph');

@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\Tests\oe_bootstrap_theme\Kernel\Paragraphs;
+namespace Drupal\Tests\oe_bootstrap_theme\Kernel\PatternAssertions;
 
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\Exception;
