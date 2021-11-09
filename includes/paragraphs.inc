@@ -120,23 +120,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
 }
 
 /**
- * Set the image.
- */
-function set_image(bool $is_image, Media $media, array &$variables, CacheableMetadata $cacheability): array {
-  if (!$is_image) {
-    return $variables;
-  }
-
-  $thumbnail = $media->get('thumbnail')->first();
-  $variables['image'] = ImageValueObject::fromStyledImageItem($thumbnail, 'oe_bootstrap_theme_medium_no_crop');
-  // Overwrite the variant because is an image.
-  $variables['variant'] = 'image';
-  $cacheability->applyTo($variables);
-
-  return $variables;
-}
-
-/**
  * Implements hook_preprocess_paragraph() for paragraph--oe-list-item-block.html.twig.
  */
 function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$variables): void {
@@ -400,7 +383,24 @@ function get_bcl_variant(Paragraph $paragraph): string {
 }
 
 /**
- * Gets the BCL variant name.
+ * Set the image data if media is an image.
+ */
+function set_image(bool $is_image, Media $media, array &$variables, CacheableMetadata $cacheability): array {
+  if (!$is_image) {
+    return $variables;
+  }
+
+  $thumbnail = $media->get('thumbnail')->first();
+  $variables['image'] = ImageValueObject::fromStyledImageItem($thumbnail, 'oe_bootstrap_theme_medium_no_crop');
+  // Overwrite the variant because is an image.
+  $variables['variant'] = 'image';
+  $cacheability->applyTo($variables);
+
+  return $variables;
+}
+
+/**
+ * Set the embedded media.
  */
 function set_embedded_media(array &$variables, Paragraph $paragraph, Media $media, CacheableMetadata $cacheability, $source) {
   $variables['variant'] = 'inside_text';
