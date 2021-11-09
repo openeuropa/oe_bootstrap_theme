@@ -1,0 +1,28 @@
+list_item_default:
+  render:
+    '#type': pattern
+    '#id': list_item
+    '#fields':
+      url: "#"
+      title: "List item title"
+      detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ratio quidem vestra sic cogit. Respondeat totidem verbis. Praeclarae mortes sunt imperatoriae; Sed erat aequius Triarium aliquid de dissensione nostra iudicare. Quae similitudo in genere etiam humano apparet."
+      length: 250
+      meta:
+        -
+          label: "Service department"
+          background: "primary"
+        -
+          label: "PMO"
+          background: "primary"
+      date:
+        start: 1545732000
+        end: 1546250400
+        timezone: "Europe/Brussels"
+      image:
+        path: "https://placeimg.com/1200/900/arch"
+        alt: "Alternative text for image"
+      icon:
+        "external"
+  assert:
+    equals:
+      'li.list-group-item-danger': "Label 1"
