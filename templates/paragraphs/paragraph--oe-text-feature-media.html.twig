@@ -14,9 +14,12 @@
     '#alt':        image.alt,
   } %}
 {% endif %}
+{% if content.field_oe_text_long['#items'] %}
+  {% set inside_text = true %}
+{% endif %}
 
 {{ pattern('featured_media', {
-  'variant': variant,
+  'inside_text': inside_text,
   'embedded_media': embedded_media,
   'image': imagestyle ? imagestyle|render : '',
   'poster_image': poster_image,

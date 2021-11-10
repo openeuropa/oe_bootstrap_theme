@@ -109,14 +109,18 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
   $is_image = $source instanceof MediaAvPortalPhotoSource || $source instanceof Image;
   $is_video = $source instanceof MediaAvPortalVideoSource || $source instanceof OEmbed || $source instanceof Iframe;
 
-  // If it's no image or no video, bail out.
+  // If it's not an image or not a video, bail out.
   if (!$is_image && !$is_video) {
     return;
   }
 
+  // Set inside_text false as default.
+  $variables['inside_text'] = FALSE;
+  $variables['alignment'] = get_bcl_variant($paragraph);
+
   // If it's an image media, render it and assign it to the image variable.
   set_image($is_image, $media, $variables, $cacheability);
-  set_embedded_media($variables, $paragraph, $media, $cacheability, $source);
+  set_embedded_media($is_image, $variables, $media, $cacheability, $source);
 }
 
 /**
@@ -384,6 +388,20 @@ function get_bcl_variant(Paragraph $paragraph): string {
 
 /**
  * Set the image data if media is an image.
+ *
+ * @param bool $is_image
+ *   Flag to determine if is an image or not.
+ * @param Drupal\media\Entity\Media $media
+ *   Media object.
+ * @param array $variables
+ *   Drupal variables.
+ * @param Drupal\Core\Cache\CacheableMetadata $cacheability
+ *   CacheableMetadata object.
+ *
+ * @return array
+ *   Updated variables.
+ *
+ * @throws \Drupal\Core\TypedData\Exception\MissingDataException
  */
 function set_image(bool $is_image, Media $media, array &$variables, CacheableMetadata $cacheability): array {
   if (!$is_image) {
@@ -401,10 +419,29 @@ function set_image(bool $is_image, Media $media, array &$variables, CacheableMet
 
 /**
  * Set the embedded media.
+ *
+ * @param bool $is_image
+ *   Flag to determine if is an image or not.
+ * @param array $variables
+ *   Drupal variables.
+ * @param Drupal\media\Entity\Media $media
+ *   Media object.
+ * @param Drupal\Core\Cache\CacheableMetadata $cacheability
+ *   CacheableMetadata object.
+ * @param Drupal\media\MediaSourceInterface $source
+ *   Media source.
+ *
+ * @return array
+ *   Updated variables.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
  */
-function set_embedded_media(array &$variables, Paragraph $paragraph, Media $media, CacheableMetadata $cacheability, $source) {
-  $variables['variant'] = 'inside_text';
-  $variables['alignment'] = get_bcl_variant($paragraph);
+function set_embedded_media(bool $is_image, array &$variables, Media $media, CacheableMetadata $cacheability, MediaSourceInterface $source): array {
+  if ($is_image) {
+    return $variables;
+  }
+
   // Default video aspect ratio is set to 16x9.
   $variables['ratio'] = '16x9';
 
@@ -423,7 +460,7 @@ function set_embedded_media(array &$variables, Paragraph $paragraph, Media $medi
     if (in_array($oembed_type, ['video', 'html'])) {
       $variables['embedded_media'] = $media->{$source_field->getName()}->view($display_options);
       $cacheability->applyTo($variables);
-      return;
+      return $variables;
     }
   }
 
@@ -436,12 +473,24 @@ function set_embedded_media(array &$variables, Paragraph $paragraph, Media $medi
 
 /**
  * Set the video iframe ratio.
+ *
+ * @param Drupal\media\Entity\Media $media
+ *   Media object.
+ * @param array $variables
+ *   Drupal variables.
+ * @param Drupal\Core\Cache\CacheableMetadata $cacheability
+ *   CacheableMetadata object.
+ *
+ * @return array
+ *   Updated variables.
  */
-function set_ratio(Media $media, array &$variables, CacheableMetadata $cacheability): void {
+function set_ratio(Media $media, array &$variables, CacheableMetadata $cacheability): array {
   // When dealing with iframe videos, also respect its given aspect ratio.
-  if ($media->bundle() === 'video_iframe') {
-    $ratio = $media->get('oe_media_iframe_ratio')->value;
-    $variables['ratio'] = str_replace('_', 'x', $ratio);
-    $cacheability->applyTo($variables);
+  if ($media->bundle() !== 'video_iframe') {
+    return $variables;
   }
+  $ratio = $media->get('oe_media_iframe_ratio')->value;
+  $variables['ratio'] = str_replace('_', 'x', $ratio);
+  $cacheability->applyTo($variables);
+  return $variables;
 }

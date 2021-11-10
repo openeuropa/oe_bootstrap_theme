@@ -1,12 +1,6 @@
 featured_media:
   label: "Featured Media"
   description: "Featured Media"
-  variants:
-    image:
-      label: "Image"
-      description: "Image paragraph example."
-    inside_text:
-      label: "Inside Text Container"
   settings:
     ratio:
       type: select
@@ -17,10 +11,15 @@ featured_media:
         4x3: "4x3"
         16x9: "16x9"
         21x9: "21x9"
+    inside_text:
+      label: "Inside text"
+      description: "Wrapper media inside text container"
+      type: boolean
+      preview: false
     alignment:
       type: select
       label: "Alignment"
-      description: "Alignment inside text container"
+      description: "Alignment when media is wrapper inside text container"
       options:
         left: "left"
         right: "right"
