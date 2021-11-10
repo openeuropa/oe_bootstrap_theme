@@ -9,10 +9,35 @@ list_item_default:
       text:
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
         classes: "mb-2"
-      image:
-        path: "https://picsum.photos/seed/1002/600/400"
-        alt: "alt img"
-        position: "top"
+      meta:
+        -
+          'label': 'Meta1'
+          'background': 'primary'
+        -
+          'label': 'Meta2'
+          'background': 'primary'
+  assert:
+    count:
+      'div.card': 1
+      'div[data-drupal-selector="list-item"]': 1
+      'h5.card-title': 1
+      'a[href="/example"]': 1
+    equals:
+      'h5.card-title a': "Card title 1"
+    contains:
+      'span_1': "Meta1"
+      'span_2': "Meta2"
+list_item_date:
+  render:
+    '#type': pattern
+    '#id': list_item
+    '#fields':
+      title:
+        content:
+          '#markup' : '<a href="/example">Card title 1</a>'
+      text:
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
+        classes: "mb-2"
       content:
         '#markup': '<div>
             <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -29,10 +54,108 @@ list_item_default:
     count:
       'div.card': 1
       'div[data-drupal-selector="list-item"]': 1
-      'img.card-img-top': 1
       'h5.card-title': 1
       'a[href="/example"]': 1
       'span.badge.bg-primary': 2
+    equals:
+      'h5.card-title a': "Card title 1"
+    contains:
+      'span_1': "Meta1"
+      'span_2': "Meta2"
+list_item_highlight:
+  render:
+    '#type': pattern
+    '#id': list_item
+    '#fields':
+      title:
+        content:
+          '#markup' : '<a href="/example">Card title 1</a>'
+      text:
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
+        classes: "mb-2"
+      image:
+        path: "https://picsum.photos/seed/1002/600/400"
+        alt: "alt img"
+        position: "top"
+      meta:
+        -
+          'label': 'Meta1'
+          'background': 'primary'
+        -
+          'label': 'Meta2'
+          'background': 'primary'
+  assert:
+    count:
+      'div.card': 1
+      'div[data-drupal-selector="list-item"]': 1
+      'img.card-img-top': 1
+      'h5.card-title': 1
+      'a[href="/example"]': 1
+    equals:
+      'h5.card-title a': "Card title 1"
+    contains:
+      'span_1': "Meta1"
+      'span_2': "Meta2"
+list_item_thumbnail_primary:
+  render:
+    '#type': pattern
+    '#id': list_item
+    '#fields':
+      title:
+        content:
+          '#markup' : '<a href="/example">Card title 1</a>'
+      image:
+        path: "https://picsum.photos/seed/1002/600/400"
+        alt: "alt img"
+        position: "top"
+      meta:
+        -
+          'label': 'Meta1'
+          'background': 'primary'
+        -
+          'label': 'Meta2'
+          'background': 'primary'
+  assert:
+    count:
+      'div.card': 1
+      'div[data-drupal-selector="list-item"]': 1
+      'img.card-img-top': 1
+      'h5.card-title': 1
+      'a[href="/example"]': 1
+    equals:
+      'h5.card-title a': "Card title 1"
+    contains:
+      'span_1': "Meta1"
+      'span_2': "Meta2"
+list_item_thumbnail_secondary:
+  render:
+    '#type': pattern
+    '#id': list_item
+    '#fields':
+      title:
+        content:
+          '#markup' : '<a href="/example">Card title 1</a>'
+      text:
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
+        classes: "mb-2"
+      image:
+        path: "https://picsum.photos/seed/1002/600/400"
+        alt: "alt img"
+        position: "bottom"
+      meta:
+        -
+          'label': 'Meta1'
+          'background': 'primary'
+        -
+          'label': 'Meta2'
+          'background': 'primary'
+  assert:
+    count:
+      'div.card': 1
+      'div[data-drupal-selector="list-item"]': 1
+      'img.card-img-bottom': 1
+      'h5.card-title': 1
+      'a[href="/example"]': 1
     equals:
       'h5.card-title a': "Card title 1"
     contains:
