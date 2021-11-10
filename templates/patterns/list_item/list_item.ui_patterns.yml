@@ -28,23 +28,19 @@ list_item:
         -
           label: "PMO"
           background: "primary"
-    date:
-      type: "DateValueObject"
-      label: "Date"
-      description: "A date value object."
+    content:
+      type: "text"
+      label: "Content"
+      description: "Content for the list item."
       preview:
-        start: 1545732000
-        end: 1546250400
-        timezone: "Europe/Brussels"
+        "#markup": '<div>
+              <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
+              <span class="d-md-inline d-block text-muted mb-2 mb-md-0">18 November 2019</span>
+              </div>'
     image:
       type: "array"
       label: "Primary image"
       description: "Attributes of the image to render"
       preview:
-        path: "https://placeimg.com/1200/900/arch"
+        path: "https://placeimg.com/1200/600/arch"
         alt: "Alternative text for image"
-    icon:
-      type: "text"
-      label: "Icon"
-      description: "An optional icon to be used with the link."
-      preview: "external"

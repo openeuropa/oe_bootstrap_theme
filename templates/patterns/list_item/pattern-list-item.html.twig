@@ -9,7 +9,7 @@ Parameters:
   - "url" (string) (default: ''): url path for the title Content Item.
   - "detail" (string) (default: ''): Description of Content Item.
   - "image" (array) (default: []): Image for the item.
-  - "image_position" (string) (default: ''): Image before of after the item.
+  - "content" (string) (default: ''): Content for the item.
   - "icon" (string) (default: ''): Icon used for the link item.
 #}
   {% if url %}
@@ -33,13 +33,6 @@ Parameters:
     {% set _text_classes = 'mb-3' %}
   {% endif %}
 
-  {% if date %}
-    {% set _content = '<div><span class="d-lg-inline d-block text-muted mb-2 mb-md-0">'  ~ date.day ~ ' ' ~ date.month_fullname ~ ' ' ~ date.year ~  '</span></div>' %}
-    {% set _content = _content|striptags(['<div>','span'])|raw %}
-  {% else %}
-    {% set _content = "" %}
-  {% endif %}
-
   {% include '@oe-bcl/bcl-card/card.html.twig' with {
     'title': {
       content: _title,
@@ -48,7 +41,7 @@ Parameters:
       content: detail,
       classes: _text_classes,
     },
-    'content': _content,
+    'content': content,
     'image': image,
     'variant': '',
     'badges' : meta
