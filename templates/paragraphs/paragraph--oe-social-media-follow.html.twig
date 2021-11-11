@@ -6,9 +6,10 @@
  * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
  */
 #}
+{{ dump() }}
 {{ pattern('link_block', {
   'direction': direction,
   'background': background,
-  'title': content.field_oe_text,
+  'title': title,
   'links': links,
 }) }}

@@ -1,6 +1,6 @@
 link:
   label: Link
-  description: Link component
+  description: Link pattern
   settings:
     link_style:
       type: select
