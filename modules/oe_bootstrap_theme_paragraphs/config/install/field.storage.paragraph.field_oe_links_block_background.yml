@@ -1,0 +1,29 @@
+uuid: f0bac0e1-5374-4277-9daa-5819c7fa5b7b
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: 3vP6SQsubSEr3wQtHCv1WimjtN4mHRCGOHTZQ92tvg0
+id: paragraph.field_oe_links_block_background
+field_name: field_oe_links_block_background
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: gray
+      label: gray
+    -
+      value: transparent
+      label: transparent
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

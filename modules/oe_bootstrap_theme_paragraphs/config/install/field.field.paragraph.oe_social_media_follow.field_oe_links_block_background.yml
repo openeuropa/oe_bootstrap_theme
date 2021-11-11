@@ -1,0 +1,25 @@
+uuid: 236e16d5-6afc-4faa-9ce4-8da778f6847b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oe_links_block_background
+    - paragraphs.paragraphs_type.oe_social_media_follow
+  module:
+    - options
+_core:
+  default_config_hash: jVj-21R9gs99pFZs0d6Jt-Z2ntmLtsxidpPHe9w4Jqc
+id: paragraph.oe_social_media_follow.field_oe_links_block_background
+field_name: field_oe_links_block_background
+entity_type: paragraph
+bundle: oe_social_media_follow
+label: Background
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: gray
+default_value_callback: ''
+settings: {  }
+field_type: list_string

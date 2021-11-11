@@ -1,0 +1,27 @@
+uuid: 323d6011-6eff-4780-9c84-a27c509c8069
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_oe_links_block_variant
+field_name: field_oe_links_block_variant
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: horizontal
+      label: horizontal
+    -
+      value: vertical
+      label: vertical
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
