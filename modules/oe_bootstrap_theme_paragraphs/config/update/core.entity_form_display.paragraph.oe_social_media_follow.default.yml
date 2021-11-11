@@ -1,0 +1,60 @@
+uuid: 293af701-061d-448e-bbb7-af86abab4c7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oe_social_media_follow.field_oe_links_block_background
+    - field.field.paragraph.oe_social_media_follow.field_oe_social_media_links
+    - field.field.paragraph.oe_social_media_follow.field_oe_social_media_see_more
+    - field.field.paragraph.oe_social_media_follow.field_oe_social_media_variant
+    - field.field.paragraph.oe_social_media_follow.field_oe_title
+    - paragraphs.paragraphs_type.oe_social_media_follow
+  module:
+    - link
+    - typed_link
+_core:
+  default_config_hash: n5HKS2F4dcrReEaltKu5W34cyTuU-LEuXBZ3UPpHUQA
+id: paragraph.oe_social_media_follow.default
+targetEntityType: paragraph
+bundle: oe_social_media_follow
+mode: default
+content:
+  field_oe_links_block_background:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_oe_social_media_links:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: typed_link
+    region: content
+  field_oe_social_media_see_more:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_oe_social_media_variant:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_oe_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

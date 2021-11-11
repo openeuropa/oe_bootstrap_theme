@@ -1,0 +1,23 @@
+uuid: a83a1dd3-f9cf-4c86-a693-92e15f53da0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oe_links_block_variant
+    - paragraphs.paragraphs_type.oe_links_block
+  module:
+    - options
+id: paragraph.oe_links_block.field_oe_links_block_variant
+field_name: field_oe_links_block_variant
+entity_type: paragraph
+bundle: oe_links_block
+label: Variant
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: vertical
+default_value_callback: ''
+settings: {  }
+field_type: list_string

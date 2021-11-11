@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for OpenEuropa Bootstrap Theme Helper module.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\Component\Serialization\Yaml;
+
+/**
+ * Implements hook_install().
+ */
+function oe_bootstrap_theme_paragraphs_install() {
+  $config_files = [
+    'core.entity_form_display.paragraph.oe_links_block.default',
+    'core.entity_form_display.paragraph.oe_social_media_follow.default',
+    'core.entity_view_display.paragraph.oe_links_block.default',
+    'core.entity_view_display.paragraph.oe_social_media_follow.default',
+  ];
+
+  foreach ($config_files as $config_id) {
+    $raw_data = file_get_contents(drupal_get_path('module', 'oe_bootstrap_theme_paragraphs') . '/config/update/' . $config_id . '.yml');
+    \Drupal::configFactory()->getEditable($config_id)
+      ->setData(Yaml::decode($raw_data))
+      ->save();
+  }
+}

@@ -1,0 +1,23 @@
+uuid: 73a22ce1-57e1-42e8-a62f-17b55c93e40b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oe_links_block_background
+    - paragraphs.paragraphs_type.oe_links_block
+  module:
+    - options
+id: paragraph.oe_links_block.field_oe_links_block_background
+field_name: field_oe_links_block_background
+entity_type: paragraph
+bundle: oe_links_block
+label: Background
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: gray
+default_value_callback: ''
+settings: {  }
+field_type: list_string
