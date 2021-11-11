@@ -12,7 +12,7 @@ use Symfony\Component\DomCrawler\Crawler;
 class ListItemParagraphsTest extends ParagraphsTestBase {
 
   /**
-   * Test 'banner' paragraph rendering.
+   * Test 'List Item' paragraph rendering.
    */
   public function testListItem(): void {
     // Create English file.
@@ -46,7 +46,7 @@ class ListItemParagraphsTest extends ParagraphsTestBase {
     ]);
     $paragraph->save();
 
-    // Variant - image / Modifier - hero_center / Full width - No.
+    // Variant - default.
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
