@@ -1,21 +1,120 @@
-link_block:
+link_block_vertical_gray:
   render:
     '#type': pattern
     '#id': link_block
     '#fields':
+      settings:
+        background: "gray"
+        direction: "vertical"
       title: 'Title Link Block'
       links:
         - label: 'Link number one'
           url: 'https://example.com'
         - label: 'Link number two'
           url: 'https://google.com'
+        - label: 'More channels'
+          url: 'https://europa.eu'
   assertions:
     count:
+      'div.bg-light.px-4.py-3': 1
       'h5.fw-bold.pb-3.mb-3.border-bottom': 1
       'ul.ps-0.mb-0': 1
+      'li.list-unstyled': 3
+      'li.d-inline': 0
       'li.list-unstyled.me-4-5': 2
-      'a.pb-3.d-inline-block': 2
+      'a.pb-3.d-inline-block': 3
     equals:
       'h5': "Title Link Block"
       'ul li:nth-child(1) a': "Link number one"
       'ul li:nth-child(2) a': "Link number two"
+      'ul li:nth-child(3) a': "More channels"
+link_block_horizontal_gray:
+  render:
+    '#type': pattern
+    '#id': link_block
+    '#fields':
+      settings:
+        background: "gray"
+        direction: "horizontal"
+      title: 'Title Link Block'
+      links:
+        - label: 'Link number one'
+          url: 'https://example.com'
+        - label: 'Link number two'
+          url: 'https://google.com'
+        - label: 'More channels'
+          url: 'https://europa.eu'
+  assertions:
+    count:
+      'div.bg-light.px-4.py-3': 1
+      'h5.fw-bold.pb-3.mb-3.border-bottom': 1
+      'ul.ps-0.mb-0': 1
+      'li.d-inline': 3
+      'li.list-unstyled': 3
+      'li.list-unstyled.me-4-5': 2
+      'a.pb-3.d-inline-block': 3
+    equals:
+      'h5': "Title Link Block"
+      'ul li:nth-child(1) a': "Link number one"
+      'ul li:nth-child(2) a': "Link number two"
+      'ul li:nth-child(3) a': "More channels"
+link_block_vertical_transparent:
+  render:
+    '#type': pattern
+    '#id': link_block
+    '#fields':
+      settings:
+        background: "transparent"
+        direction: "vertical"
+      title: 'Title Link Block'
+      links:
+        - label: 'Link number one'
+          url: 'https://example.com'
+        - label: 'Link number two'
+          url: 'https://google.com'
+        - label: 'More channels'
+          url: 'https://europa.eu'
+  assertions:
+    count:
+      'div.bg-light.px-4.py-3': 0
+      'h5.fw-bold.pb-3.mb-3.border-bottom': 1
+      'ul.ps-0.mb-0': 1
+      'li.d-inline': 0
+      'li.list-unstyled': 3
+      'li.list-unstyled.me-4-5': 2
+      'a.pb-3.d-inline-block': 3
+    equals:
+      'h5': "Title Link Block"
+      'ul li:nth-child(1) a': "Link number one"
+      'ul li:nth-child(2) a': "Link number two"
+      'ul li:nth-child(3) a': "More channels"
+link_block_horizontal_transparent:
+  render:
+    '#type': pattern
+    '#id': link_block
+    '#fields':
+      settings:
+        background: "transparent"
+        direction: "horizontal"
+      title: 'Title Link Block'
+      links:
+        - label: 'Link number one'
+          url: 'https://example.com'
+        - label: 'Link number two'
+          url: 'https://google.com'
+        - label: 'More channels'
+          url: 'https://europa.eu'
+  assertions:
+    count:
+      'div.bg-light.px-4.py-3': 0
+      'h5.fw-bold.pb-3.mb-3.border-bottom': 1
+      'ul.ps-0.mb-0': 1
+      'li.d-inline': 3
+      'li.list-unstyled': 3
+      'li.list-unstyled.me-4-5': 2
+      'a.pb-3.d-inline-block': 3
+    equals:
+      'h5': "Title Link Block"
+      'ul li:nth-child(1) a': "Link number one"
+      'ul li:nth-child(2) a': "Link number two"
+      'ul li:nth-child(3) a': "More channels"

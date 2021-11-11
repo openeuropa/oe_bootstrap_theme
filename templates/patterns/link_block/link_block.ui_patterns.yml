@@ -1,6 +1,21 @@
 link_block:
     label: "Link block"
     description: "List of links with an optional header."
+    settings:
+      background:
+        label: "Background"
+        type: "select"
+        options:
+          gray: "gray"
+          transparent: "transparent"
+          preview: "gray"
+      direction:
+        label: "Direction"
+        type: "select"
+        options:
+          vertical: "vertical"
+          horizontal: "horizontal"
+          preview: "vertical"
     fields:
       title:
         type: "text"
@@ -18,3 +33,5 @@ link_block:
             url: 'http://link-2.com'
           - label: 'Jobs, Growth and Investment'
             url: 'http://link-3.com'
+          - label: 'More channels...'
+            url: 'http://link-4.com'

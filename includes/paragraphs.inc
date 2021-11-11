@@ -9,6 +9,7 @@ use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Url;
 use Drupal\media\Entity\Media;
 use Drupal\media\MediaInterface;
 use Drupal\media\MediaSourceInterface;
@@ -285,6 +286,56 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): 
     'name' => $media->getName(),
   ]);
   $cacheability->applyTo($variables);
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for oe_social_media_follow paragraph.
+ */
+function oe_bootstrap_theme_preprocess_paragraph__oe_social_media_follow(array &$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  $variables['direction'] = $paragraph->get('field_oe_social_media_variant')->value;
+  // @todo Add oe_social_media_background field to oe_social_media
+  // $paragraph->get('field_oe_social_media_background')->value;
+  $variables['background'] = 'gray';
+  $variables['title'] = $paragraph->get('field_oe_title')->value;
+  $links = $paragraph->get('field_oe_social_media_links')->getValue();
+  $variables['links'] = [];
+  foreach ($links as $key => $link) {
+    $variables['links'][$key]['icon_position'] = 'before';
+    $variables['links'][$key]['icon']['path'] = $variables['bcl_icon_path'];
+    $variables['links'][$key]['icon']['name'] = $link['link_type'];
+    $variables['links'][$key]['label'] = $link['title'];
+    $variables['links'][$key]['url'] = Url::fromUri($link['uri']);
+  }
+  if (!$paragraph->get('field_oe_social_media_see_more')->isEmpty()) {
+    $other_link = $paragraph->get('field_oe_social_media_see_more')
+      ->first()
+      ->getValue();
+    $variables['links'][] = [
+      'label' => $other_link['title'],
+      'url' => Url::fromUri($other_link['uri']),
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function oe_theme_preprocess_paragraph__oe_links_block(array &$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  // @todo Add variant and background field to oe_links_block paragraph.
+  $variables['variant'] = $paragraph->get('field_oe_links_variant')->value;
+  $variables['background'] = $paragraph->get('field_oe_links_background')->value;
+
+  foreach (Element::children($variables['content']['field_oe_links']) as $index) {
+    $variables['links'][] = [
+      'label' => $variables['content']['field_oe_links'][$index]['#title'],
+      'url' => $variables['content']['field_oe_links'][$index]['#url'],
+    ];
+  }
 }
 
 /**

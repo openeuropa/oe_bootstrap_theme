@@ -1,27 +1,14 @@
 {#
 /**
  * @file
- * Link block.
+ * Link block pattern.
  */
 #}
-
-{% set attributes = attributes.addClass([
-  'bg-light',
-  'px-4',
-  'py-3'
-  ]) %}
-
-<div{{ attributes }}>
-  {% if title is not empty %}
-    <h5 class="fw-bold pb-3 mb-3 border-bottom">{{ title }}</h5>
-  {% endif %}
-  {% if links is not empty and links is iterable %}
-    <ul class="ps-0 mb-0">
-      {% for link in links %}
-        <li class="list-unstyled me-4-5">
-          <a class="pb-3 d-inline-block" href="{{ link.url }}">{{ link.label }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-</div>
+{{ dump() }}
+{% include '@oe-bcl/bcl-links-block/links-block.html.twig' with {
+  background: background,
+  variant: direction,
+  title: title,
+  links: links,
+  see_more: see_more_link,
+} %}
