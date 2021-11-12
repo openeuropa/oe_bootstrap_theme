@@ -59,7 +59,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_links_block(array &$variabl
   $paragraph = $variables['paragraph'];
   $variables['direction'] = $paragraph->get('field_oe_links_block_variant')->value;
   $variables['background'] = $paragraph->get('field_oe_links_block_background')->value;
-  $variables['title'] = $paragraph->get('field_oe_text')->value;
+  $variables['title'] = $paragraph->get('field_oe_text')->value ?? '';
 
   foreach (Element::children($variables['content']['field_oe_links']) as $index) {
     $variables['links'][] = [
@@ -325,7 +325,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_social_media_follow(array &
   $paragraph = $variables['paragraph'];
   $variables['direction'] = $paragraph->get('field_oe_social_media_variant')->value;
   $variables['background'] = $paragraph->get('field_oe_links_block_background')->value;
-  $variables['title'] = $paragraph->get('field_oe_title')->value;
+  $variables['title'] = $paragraph->get('field_oe_title')->value ?? '';
   $links = $paragraph->get('field_oe_social_media_links')->getValue();
   $variables['links'] = [];
   foreach ($links as $key => $link) {
