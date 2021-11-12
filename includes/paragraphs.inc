@@ -109,7 +109,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
   $is_image = $source instanceof MediaAvPortalPhotoSource || $source instanceof Image;
   $is_video = $source instanceof MediaAvPortalVideoSource || $source instanceof OEmbed || $source instanceof Iframe;
 
-  // If it's not an image or not a video, bail out.
+  // If it's not an image and not a video, bail out.
   if (!$is_image && !$is_video) {
     return;
   }
