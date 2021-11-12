@@ -1,4 +1,3 @@
-uuid: e5fed35b-9cd2-42a0-a464-85114705ea79
 langcode: en
 status: true
 dependencies:
@@ -10,8 +9,6 @@ dependencies:
     - paragraphs.paragraphs_type.oe_links_block
   module:
     - link
-_core:
-  default_config_hash: _Vgr9imidIeQ6LWaHQ8lxeoXEOIhGe8CT00ebIp2zrI
 id: paragraph.oe_links_block.default
 targetEntityType: paragraph
 bundle: oe_links_block

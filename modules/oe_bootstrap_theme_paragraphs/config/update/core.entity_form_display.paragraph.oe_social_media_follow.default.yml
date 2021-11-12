@@ -1,4 +1,3 @@
-uuid: 293af701-061d-448e-bbb7-af86abab4c7f
 langcode: en
 status: true
 dependencies:
@@ -12,8 +11,6 @@ dependencies:
   module:
     - link
     - typed_link
-_core:
-  default_config_hash: n5HKS2F4dcrReEaltKu5W34cyTuU-LEuXBZ3UPpHUQA
 id: paragraph.oe_social_media_follow.default
 targetEntityType: paragraph
 bundle: oe_social_media_follow

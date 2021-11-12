@@ -1,12 +1,9 @@
-uuid: f0bac0e1-5374-4277-9daa-5819c7fa5b7b
 langcode: en
 status: true
 dependencies:
   module:
     - options
     - paragraphs
-_core:
-  default_config_hash: 3vP6SQsubSEr3wQtHCv1WimjtN4mHRCGOHTZQ92tvg0
 id: paragraph.field_oe_links_block_background
 field_name: field_oe_links_block_background
 entity_type: paragraph
