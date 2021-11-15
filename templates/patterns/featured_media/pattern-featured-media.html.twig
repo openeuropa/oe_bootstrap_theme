@@ -4,6 +4,21 @@
  * Featured media pattern.
  */
 #}
+{% macro featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) %}
+  {% include '@oe-bcl/bcl-featured-media/featured-media.html.twig' with {
+    'embedded_media': embedded_media,
+    'image': image,
+    'poster_image': poster_image,
+    'content': caption,
+    'content_classes': content_classes,
+    'ratio': ratio,
+    'sources': sources,
+    'tracks': tracks,
+  } %}
+{% endmacro %}
+
+{% set caption = not paragraph.field_oe_plain_text_long.isEmpty ? content.field_oe_plain_text_long|render %}
+
 {% if inside_text %}
   {% set text_alignment_class = 'order-md-1' %}
   {% set video_alignment_class = 'order-md-2' %}
@@ -19,32 +34,13 @@
       {{ content.field_oe_link }}
     </div>
     <div class="col-12 col-md-6 {{ video_alignment_class }}">
-      {% include '@oe-bcl/bcl-featured-media/featured-media.html.twig' with {
-        'embedded_media': embedded_media,
-        'image': image,
-        'poster_image': poster_image,
-        'content':  not paragraph.field_oe_plain_text_long.isEmpty ? content.field_oe_plain_text_long,
-        'content_classes': content_classes,
-        'ratio': ratio,
-        'sources': sources,
-        'tracks': tracks,
-      } %}
+      {{ _self.featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) }}
     </div>
   </div>
 {% else %}
   <div class="row">
     <div class="col-12 col-md-4">
-      {% include '@oe-bcl/bcl-featured-media/featured-media.html.twig' with {
-        'embedded_media': embedded_media,
-        'image': image,
-        'poster_image': poster_image,
-        'content': not paragraph.field_oe_plain_text_long.isEmpty ? content.field_oe_plain_text_long,
-        'content_classes': content_classes,
-        'ratio': ratio,
-        'sources': sources,
-        'tracks': tracks,
-      } %}
+      {{ _self.featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) }}
     </div>
   </div>
 {% endif %}
-
