@@ -41,7 +41,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
    * Test 'text with featured media' paragraph rendering.
    */
   public function testFeaturedMedia(): void {
-    $image_file = file_save_data(file_get_contents(drupal_get_path('theme', 'oe_bootstrap_theme') . '/tests/fixtures/example_1.jpeg'), 'public://example_1_en.jpeg');
+    $image_file = file_save_data(file_get_contents(drupal_get_path('theme', 'oe_bootstrap_theme') . '/tests/fixtures/example_1.jpeg'), 'public://example_1.jpeg');
     $image_file->setPermanent();
     $image_file->save();
 

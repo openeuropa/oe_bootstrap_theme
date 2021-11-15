@@ -387,14 +387,14 @@ function get_bcl_variant(Paragraph $paragraph): string {
 }
 
 /**
- * Set the image data if media is an image.
+ * Sets the image data if the media is an image.
  *
  * @param bool $is_image
  *   Flag to determine if is an image or not.
  * @param Drupal\media\Entity\Media $media
  *   Media object.
  * @param array $variables
- *   Drupal variables.
+ *   The render array.
  * @param Drupal\Core\Cache\CacheableMetadata $cacheability
  *   CacheableMetadata object.
  *
@@ -423,7 +423,7 @@ function set_image(bool $is_image, Media $media, array &$variables, CacheableMet
  * @param bool $is_image
  *   Flag to determine if is an image or not.
  * @param array $variables
- *   Drupal variables.
+ *   The render array.
  * @param Drupal\media\Entity\Media $media
  *   Media object.
  * @param Drupal\Core\Cache\CacheableMetadata $cacheability
@@ -467,7 +467,7 @@ function set_embedded_media(bool $is_image, array &$variables, Media $media, Cac
   // If its an AvPortal video or an iframe video, render it.
   $variables['embedded_media'] = $media->{$source_field->getName()}->view($display_options);
   $cacheability->applyTo($variables);
-  set_ratio($media, $variables, $cacheability);
+  set_video_iframe_ratio($media, $variables, $cacheability);
   return $variables;
 }
 
@@ -477,14 +477,14 @@ function set_embedded_media(bool $is_image, array &$variables, Media $media, Cac
  * @param Drupal\media\Entity\Media $media
  *   Media object.
  * @param array $variables
- *   Drupal variables.
+ *   The render array.
  * @param Drupal\Core\Cache\CacheableMetadata $cacheability
  *   CacheableMetadata object.
  *
  * @return array
  *   Updated variables.
  */
-function set_ratio(Media $media, array &$variables, CacheableMetadata $cacheability): array {
+function set_video_iframe_ratio(Media $media, array &$variables, CacheableMetadata $cacheability): array {
   // When dealing with iframe videos, also respect its given aspect ratio.
   if ($media->bundle() !== 'video_iframe') {
     return $variables;
