@@ -8,6 +8,8 @@ card:
       label: Horizontal
     search:
       label: Search
+    user_profile:
+      label: User profile
   settings:
     style:
       type: select
