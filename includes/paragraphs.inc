@@ -116,11 +116,11 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
 
   // Set inside_text false as default.
   $variables['inside_text'] = FALSE;
-  $variables['alignment'] = get_bcl_variant($paragraph);
+  $variables['alignment'] = oe_bootstrap_theme_get_bcl_variant($paragraph);
 
   // If it's an image media, render it and assign it to the image variable.
-  set_image($is_image, $media, $variables, $cacheability);
-  set_embedded_media($is_image, $variables, $media, $cacheability, $source);
+  oe_bootstrap_theme_set_image($is_image, $media, $variables, $cacheability);
+  oe_bootstrap_theme_set_embedded_media($is_image, $variables, $media, $cacheability, $source);
 }
 
 /**
@@ -130,7 +130,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
   $variables['title'] = $paragraph->get('field_oe_title')->first()->value;
-  $variables['columns'] = get_bcl_layout_mapping($paragraph->get('field_oe_list_item_block_layout')->first()->value);
+  $variables['columns'] = oe_bootstrap_theme_get_bcl_layout_mapping($paragraph->get('field_oe_list_item_block_layout')->first()->value);
   $variables['items'] = [];
 
   foreach ($variables['paragraph']->get('field_oe_paragraphs') as $delta => $item) {
@@ -210,26 +210,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
 }
 
 /**
- * Gets the mapped layout.
- *
- * @param string $layout
- *   The paragraph layout.
- *
- * @return string
- *   The BCL layout.
- */
-function get_bcl_layout_mapping(string $layout): string {
-  if ($layout === 'three_columns') {
-    return 'highlight-3-col';
-  }
-  if ($layout === 'two_columns') {
-    return 'highlight-2-col';
-  }
-
-  return 'highlight-1-col';
-}
-
-/**
  * Implements hook_preprocess_paragraph() for oe_banner paragraph.
  */
 function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): void {
@@ -238,7 +218,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): 
   $variables['title'] = $paragraph->get('field_oe_title')->value;
   $variables['description'] = $paragraph->get('field_oe_text')->value;
   $variables['full_width'] = (bool) $paragraph->get('field_oe_banner_full_width')->value;
-  set_banner_link($paragraph, $variables);
+  oe_bootstrap_theme_set_banner_link($paragraph, $variables);
 
   // The alignment field value contains the information regarding the pattern
   // type and centering.
@@ -248,7 +228,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): 
   $variables['pattern'] = 'banner_' . $banner_type;
   // The end of the string determines the position.
   $variables['alignment'] = $banner_alignment;
-  $variables['variant'] = get_bcl_variant($paragraph);
+  $variables['variant'] = oe_bootstrap_theme_get_bcl_variant($paragraph);
 
   if ($variables['variant'] === 'default' || $variables['variant'] === 'primary') {
     return;
@@ -290,7 +270,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): 
     return;
   }
 
-  $uri = get_media_uri($source, $media, $cacheability);
+  $uri = oe_bootstrap_theme_get_media_uri($source, $media, $cacheability);
 
   // The uri might be empty if the source is of type Image and the file entity
   // was deleted.
@@ -308,6 +288,26 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): 
 }
 
 /**
+ * Gets the mapped layout.
+ *
+ * @param string $layout
+ *   The paragraph layout.
+ *
+ * @return string
+ *   The BCL layout.
+ */
+function oe_bootstrap_theme_get_bcl_layout_mapping(string $layout): string {
+  if ($layout === 'three_columns') {
+    return 'highlight-3-col';
+  }
+  if ($layout === 'two_columns') {
+    return 'highlight-2-col';
+  }
+
+  return 'highlight-1-col';
+}
+
+/**
  * Sets link variable for banner paragraph.
  *
  * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
@@ -315,7 +315,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): 
  * @param array $variables
  *   The render array.
  */
-function set_banner_link(Paragraph $paragraph, array &$variables): void {
+function oe_bootstrap_theme_set_banner_link(Paragraph $paragraph, array &$variables): void {
   if ($paragraph->get('field_oe_link')->isEmpty()) {
     return;
   }
@@ -338,7 +338,7 @@ function set_banner_link(Paragraph $paragraph, array &$variables): void {
  * @return string
  *   The uri string.
  */
-function get_media_uri(MediaSourceInterface $source, Media $media, CacheableMetadata $cacheability): string {
+function oe_bootstrap_theme_get_media_uri(MediaSourceInterface $source, Media $media, CacheableMetadata $cacheability): string {
   $field_name = $source->getConfiguration()['source_field'];
 
   if ($source instanceof Image && ($file_entity = $media->get($field_name)->entity)) {
@@ -363,7 +363,7 @@ function get_media_uri(MediaSourceInterface $source, Media $media, CacheableMeta
  * @return string
  *   The computed pattern variant name.
  */
-function get_bcl_variant(Paragraph $paragraph): string {
+function oe_bootstrap_theme_get_bcl_variant(Paragraph $paragraph): string {
   if ($paragraph->get('oe_paragraphs_variant')->isEmpty()) {
     return 'default';
   }
@@ -383,7 +383,6 @@ function get_bcl_variant(Paragraph $paragraph): string {
     default:
       return $variant;
   }
-
 }
 
 /**
@@ -397,15 +396,10 @@ function get_bcl_variant(Paragraph $paragraph): string {
  *   The render array.
  * @param Drupal\Core\Cache\CacheableMetadata $cacheability
  *   CacheableMetadata object.
- *
- * @return array
- *   Updated variables.
- *
- * @throws \Drupal\Core\TypedData\Exception\MissingDataException
  */
-function set_image(bool $is_image, Media $media, array &$variables, CacheableMetadata $cacheability): array {
+function oe_bootstrap_theme_set_image(bool $is_image, Media $media, array &$variables, CacheableMetadata $cacheability): void {
   if (!$is_image) {
-    return $variables;
+    return;
   }
 
   $thumbnail = $media->get('thumbnail')->first();
@@ -413,12 +407,10 @@ function set_image(bool $is_image, Media $media, array &$variables, CacheableMet
   // Overwrite the variant because is an image.
   $variables['variant'] = 'image';
   $cacheability->applyTo($variables);
-
-  return $variables;
 }
 
 /**
- * Set the embedded media.
+ * Sets the embedded media.
  *
  * @param bool $is_image
  *   Flag to determine if is an image or not.
@@ -430,16 +422,10 @@ function set_image(bool $is_image, Media $media, array &$variables, CacheableMet
  *   CacheableMetadata object.
  * @param Drupal\media\MediaSourceInterface $source
  *   Media source.
- *
- * @return array
- *   Updated variables.
- *
- * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
- * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
  */
-function set_embedded_media(bool $is_image, array &$variables, Media $media, CacheableMetadata $cacheability, MediaSourceInterface $source): array {
+function oe_bootstrap_theme_set_embedded_media(bool $is_image, array &$variables, Media $media, CacheableMetadata $cacheability, MediaSourceInterface $source): void {
   if ($is_image) {
-    return $variables;
+    return;
   }
 
   // Default video aspect ratio is set to 16x9.
@@ -460,19 +446,19 @@ function set_embedded_media(bool $is_image, array &$variables, Media $media, Cac
     if (in_array($oembed_type, ['video', 'html'])) {
       $variables['embedded_media'] = $media->{$source_field->getName()}->view($display_options);
       $cacheability->applyTo($variables);
-      return $variables;
+      return;
     }
   }
 
   // If its an AvPortal video or an iframe video, render it.
   $variables['embedded_media'] = $media->{$source_field->getName()}->view($display_options);
   $cacheability->applyTo($variables);
-  set_video_iframe_ratio($media, $variables, $cacheability);
-  return $variables;
+  // When dealing with iframe videos, also respect its given aspect ratio.
+  oe_bootstrap_theme_set_video_iframe_ratio($media, $variables, $cacheability);
 }
 
 /**
- * Set the video iframe ratio.
+ * Sets the video iframe ratio.
  *
  * @param Drupal\media\Entity\Media $media
  *   Media object.
@@ -480,17 +466,12 @@ function set_embedded_media(bool $is_image, array &$variables, Media $media, Cac
  *   The render array.
  * @param Drupal\Core\Cache\CacheableMetadata $cacheability
  *   CacheableMetadata object.
- *
- * @return array
- *   Updated variables.
  */
-function set_video_iframe_ratio(Media $media, array &$variables, CacheableMetadata $cacheability): array {
-  // When dealing with iframe videos, also respect its given aspect ratio.
+function oe_bootstrap_theme_set_video_iframe_ratio(Media $media, array &$variables, CacheableMetadata $cacheability): void {
   if ($media->bundle() !== 'video_iframe') {
-    return $variables;
+    return;
   }
   $ratio = $media->get('oe_media_iframe_ratio')->value;
   $variables['ratio'] = str_replace('_', 'x', $ratio);
   $cacheability->applyTo($variables);
-  return $variables;
 }
