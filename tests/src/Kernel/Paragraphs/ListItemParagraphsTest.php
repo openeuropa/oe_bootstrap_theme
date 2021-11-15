@@ -5,11 +5,26 @@ declare(strict_types = 1);
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel\Paragraphs;
 
 use Symfony\Component\DomCrawler\Crawler;
+use Drupal\Tests\node\Traits\NodeCreationTrait;
+use Drupal\Tests\node\Traits\ContentTypeCreationTrait;
 
 /**
  * Tests the rendering of paragraph List Items.
  */
 class ListItemParagraphsTest extends ParagraphsTestBase {
+
+  use NodeCreationTrait;
+  use ContentTypeCreationTrait;
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp(): void {
+    parent::setUp();
+
+    $this->installEntitySchema('node');
+    $this->installSchema('node', ['node_access']);
+  }
 
   /**
    * Test 'List Item' paragraph rendering.
@@ -101,9 +116,7 @@ class ListItemParagraphsTest extends ParagraphsTestBase {
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.',
       $text_element->text()
     );
-    $this->assertCount(1, $crawler->filter('span.d-md-inline.d-block.text-muted.mb-2.mb-md-0'));
-    $this->assertCount(1, $crawler->filter('time[datetime="2011-11-13T12:00:00Z"]'));
-
+    // @todo Add assertions for date once the BCL Patterns version 0.14.0 is delivered.
     // Variant - highlight / Date - No.
     $paragraph->get('oe_paragraphs_variant')->setValue('highlight');
     $paragraph->get('field_oe_image')->setValue([
@@ -205,6 +218,58 @@ class ListItemParagraphsTest extends ParagraphsTestBase {
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.',
       $text_element->text()
     );
+
+    // Variant - default with internal link.
+    $this->createContentType([
+      'type' => 'article',
+      'name' => 'Article',
+    ]);
+
+    $node = $this->createNode([
+      'created' => 1636977600,
+      'type' => 'article',
+    ]);
+    $nid = $node->id();
+    $paragraph->get('field_oe_link')->setValue([
+      'uri' => 'internal:/node/' . $nid,
+      'title' => $node->getTitle(),
+    ]);
+
+    $paragraph->get('field_oe_image')->setValue([
+      'title' => 'Example Image',
+      'alt' => 'Alt for image',
+      'target_id' => $en_file->id(),
+    ]);
+    $paragraph->get('oe_paragraphs_variant')->setValue('default');
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertCount(1, $crawler->filter('div.card'));
+    $image_element = $crawler->filter('.card-img-top');
+    $this->assertCount(1, $image_element);
+    $this->assertStringContainsString(
+      file_url_transform_relative(file_create_url($en_file->getFileUri())),
+      $image_element->attr('src')
+    );
+    $this->assertCount(1, $crawler->filter('div.card-body'));
+    $this->assertCount(1, $crawler->filter('h5.card-title'));
+    $this->assertStringContainsString('Dot1', trim($crawler->filter('span[class="me-2 badge bg-primary"]')->text()));
+    $this->assertStringContainsString('Dot2', trim($crawler->filter('span[class="badge bg-primary"]')->text()));
+    $this->assertStringContainsString('Card Title 1', trim($crawler->filter('h5.card-title')->text()));
+    $link_element = $crawler->filter('h5.card-title a');
+    $this->assertCount(1, $link_element);
+    $this->assertStringContainsString(
+      '/node/1',
+      $link_element->attr('href')
+    );
+    $text_element = $crawler->filter('p.card-text.mb-3');
+    $this->assertCount(1, $text_element);
+    $this->assertStringContainsString(
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.',
+      $text_element->text()
+    );
+    $this->assertStringContainsString('Article', trim($crawler->filter('span[class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0"]')->text()));
+    $this->assertStringContainsString('15 November 2021', trim($crawler->filter('span[class="d-md-inline d-block text-muted mb-2 mb-md-0"]')->text()));
   }
 
 }
