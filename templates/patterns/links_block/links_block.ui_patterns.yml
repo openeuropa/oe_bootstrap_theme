@@ -1,4 +1,4 @@
-link_block:
+links_block:
     label: "Link block"
     description: "List of links with an optional header."
     settings:
