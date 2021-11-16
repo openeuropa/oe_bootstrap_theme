@@ -409,7 +409,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.shade.text-center.hero.full-width'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.shade.text-center.hero.full-width.text-white'));
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(1, $image_element);
     $this->assertStringContainsString(
@@ -429,7 +429,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.shade.hero.full-width'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.shade.hero.full-width.text-white'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.text-center'));
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(1, $image_element);
@@ -451,7 +451,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.shade.text-center'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.shade.text-center.text-white'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.hero'));
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(1, $image_element);
@@ -472,7 +472,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.shade'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.shade.text-white'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.hero'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.text-center'));
     $image_element = $crawler->filter('.bcl-banner__image');

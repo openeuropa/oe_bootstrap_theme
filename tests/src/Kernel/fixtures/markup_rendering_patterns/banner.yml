@@ -367,6 +367,7 @@ image_shade_page_banner_centered_with_link_full_width:
       'div.hero': 0
       'div.overlay': 0
       'div.shade': 1
+      'div.text-white.bg-light': 1
       'div.bcl-banner__image[style="background-image:url(https://placeimg.com/1000/500/arch)"]': 1
     contains:
       'bcl-banner__content': "EU Budget for the future"
@@ -397,6 +398,7 @@ image_shade_page_banner_aligned_left_without_link:
       'div.hero': 0
       'div.overlay': 0
       'div.shade': 1
+      'div.text-white.bg-light': 1
       'div.bcl-banner__image[style="background-image:url(https://placeimg.com/1000/500/arch)"]': 1
     contains:
       'bcl-banner__content': "EU Budget for the future"
@@ -425,6 +427,7 @@ image_shade__hero_banner_aligned_left_without_link_full_width:
       'div.hero': 1
       'div.overlay': 0
       'div.shade': 1
+      'div.text-white.bg-light': 1
       'div.bcl-banner__image[style="background-image:url(https://placeimg.com/1000/500/arch)"]': 1
     contains:
       'bcl-banner__content': "EU Budget for the future"
@@ -456,6 +459,7 @@ image_shade_hero_banner_centered_with_link:
       'div.hero': 1
       'div.overlay': 0
       'div.shade': 1
+      'div.text-white.bg-light': 1
       'div.bcl-banner__image[style="background-image:url(https://placeimg.com/1000/500/arch)"]': 1
     contains:
       'bcl-banner__content': "EU Budget for the future"
