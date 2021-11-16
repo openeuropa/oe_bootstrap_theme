@@ -1,7 +1,7 @@
-link_block_vertical_gray:
+links_block_vertical_gray:
   render:
     '#type': pattern
-    '#id': link_block
+    '#id': links_block
     '#fields':
       settings:
         background: "gray"
@@ -9,11 +9,11 @@ link_block_vertical_gray:
       title: 'Title Link Block'
       links:
         - label: 'Link number one'
-          url: 'https://example.com'
+          path: 'https://example.com'
         - label: 'Link number two'
-          url: 'https://google.com'
+          path: 'https://google.com'
         - label: 'More channels'
-          url: 'https://europa.eu'
+          path: 'https://europa.eu'
   assertions:
     count:
       'div.bg-light.px-4.py-3': 1
@@ -25,13 +25,13 @@ link_block_vertical_gray:
       'a.pb-3.d-inline-block': 3
     equals:
       'h5': "Title Link Block"
-      'ul li:nth-child(1) a': "Link number one"
-      'ul li:nth-child(2) a': "Link number two"
-      'ul li:nth-child(3) a': "More channels"
-link_block_horizontal_gray:
+      'ul li:nth-child(1) a[href="https://example.com"]': "Link number one"
+      'ul li:nth-child(2) a[href="https://google.com"]': "Link number two"
+      'ul li:nth-child(3) a[href="https://europa.eu"]': "More channels"
+links_block_horizontal_gray:
   render:
     '#type': pattern
-    '#id': link_block
+    '#id': links_block
     '#fields':
       settings:
         background: "gray"
@@ -39,11 +39,11 @@ link_block_horizontal_gray:
       title: 'Title Link Block'
       links:
         - label: 'Link number one'
-          url: 'https://example.com'
+          path: 'https://example.com'
         - label: 'Link number two'
-          url: 'https://google.com'
+          path: 'https://google.com'
         - label: 'More channels'
-          url: 'https://europa.eu'
+          path: 'https://europa.eu'
   assertions:
     count:
       'div.bg-light.px-4.py-3': 1
@@ -55,13 +55,13 @@ link_block_horizontal_gray:
       'a.pb-3.d-inline-block': 3
     equals:
       'h5': "Title Link Block"
-      'ul li:nth-child(1) a': "Link number one"
-      'ul li:nth-child(2) a': "Link number two"
-      'ul li:nth-child(3) a': "More channels"
-link_block_vertical_transparent:
+      'ul li:nth-child(1) a[href="https://example.com"]': "Link number one"
+      'ul li:nth-child(2) a[href="https://google.com"]': "Link number two"
+      'ul li:nth-child(3) a[href="https://europa.eu"]': "More channels"
+links_block_vertical_transparent:
   render:
     '#type': pattern
-    '#id': link_block
+    '#id': links_block
     '#fields':
       settings:
         background: "transparent"
@@ -69,11 +69,11 @@ link_block_vertical_transparent:
       title: 'Title Link Block'
       links:
         - label: 'Link number one'
-          url: 'https://example.com'
+          path: 'https://example.com'
         - label: 'Link number two'
-          url: 'https://google.com'
+          path: 'https://google.com'
         - label: 'More channels'
-          url: 'https://europa.eu'
+          path: 'https://europa.eu'
   assertions:
     count:
       'div.bg-light.px-4.py-3': 0
@@ -85,13 +85,13 @@ link_block_vertical_transparent:
       'a.pb-3.d-inline-block': 3
     equals:
       'h5': "Title Link Block"
-      'ul li:nth-child(1) a': "Link number one"
-      'ul li:nth-child(2) a': "Link number two"
-      'ul li:nth-child(3) a': "More channels"
-link_block_horizontal_transparent:
+      'ul li:nth-child(1) a[href="https://example.com"]': "Link number one"
+      'ul li:nth-child(2) a[href="https://google.com"]': "Link number two"
+      'ul li:nth-child(3) a[href="https://europa.eu"]': "More channels"
+links_block_horizontal_transparent:
   render:
     '#type': pattern
-    '#id': link_block
+    '#id': links_block
     '#fields':
       settings:
         background: "transparent"
@@ -99,11 +99,11 @@ link_block_horizontal_transparent:
       title: 'Title Link Block'
       links:
         - label: 'Link number one'
-          url: 'https://example.com'
+          path: 'https://example.com'
         - label: 'Link number two'
-          url: 'https://google.com'
+          path: 'https://google.com'
         - label: 'More channels'
-          url: 'https://europa.eu'
+          path: 'https://europa.eu'
   assertions:
     count:
       'div.bg-light.px-4.py-3': 0
@@ -115,6 +115,6 @@ link_block_horizontal_transparent:
       'a.pb-3.d-inline-block': 3
     equals:
       'h5': "Title Link Block"
-      'ul li:nth-child(1) a': "Link number one"
-      'ul li:nth-child(2) a': "Link number two"
-      'ul li:nth-child(3) a': "More channels"
+      'ul li:nth-child(1) a[href="https://example.com"]': "Link number one"
+      'ul li:nth-child(2) a[href="https://google.com"]': "Link number two"
+      'ul li:nth-child(3) a[href="https://europa.eu"]': "More channels"

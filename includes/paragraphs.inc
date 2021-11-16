@@ -67,7 +67,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_links_block(array &$variabl
   foreach (Element::children($variables['content']['field_oe_links']) as $index) {
     $variables['links'][] = [
       'label' => $variables['content']['field_oe_links'][$index]['#title'],
-      'url' => $variables['content']['field_oe_links'][$index]['#url'],
+      'path' => $variables['content']['field_oe_links'][$index]['#url']->toString(),
     ];
   }
 }
@@ -309,7 +309,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_social_media_follow(array &
     $variables['links'][$key]['icon']['path'] = $variables['bcl_icon_path'];
     $variables['links'][$key]['icon']['name'] = $link['link_type'];
     $variables['links'][$key]['label'] = $link['title'];
-    $variables['links'][$key]['url'] = Url::fromUri($link['uri']);
+    $variables['links'][$key]['path'] = Url::fromUri($link['uri'])->toString();
   }
   if (!$paragraph->get('field_oe_social_media_see_more')->isEmpty()) {
     $other_link = $paragraph->get('field_oe_social_media_see_more')
@@ -317,7 +317,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_social_media_follow(array &
       ->getValue();
     $variables['links'][] = [
       'label' => $other_link['title'],
-      'url' => Url::fromUri($other_link['uri']),
+      'path' => Url::fromUri($other_link['uri'])->toString(),
     ];
   }
 }
