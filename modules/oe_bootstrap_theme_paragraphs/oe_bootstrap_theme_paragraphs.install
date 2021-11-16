@@ -7,23 +7,35 @@
 
 declare(strict_types = 1);
 
-use Drupal\Component\Serialization\Yaml;
+use Drupal\Core\Config\FileStorage;
 
 /**
  * Implements hook_install().
  */
-function oe_bootstrap_theme_paragraphs_install() {
-  $config_files = [
+function oe_bootstrap_theme_paragraphs_install(): void {
+  $storage = new FileStorage(drupal_get_path('module', 'oe_bootstrap_theme_paragraphs') . '/config/updates/');
+  $config_manager = \Drupal::service('config.manager');
+  $entity_type_manager = \Drupal::entityTypeManager();
+
+  $field_config = [
     'core.entity_form_display.paragraph.oe_links_block.default',
     'core.entity_form_display.paragraph.oe_social_media_follow.default',
     'core.entity_view_display.paragraph.oe_links_block.default',
     'core.entity_view_display.paragraph.oe_social_media_follow.default',
   ];
 
-  foreach ($config_files as $config_id) {
-    $raw_data = file_get_contents(drupal_get_path('module', 'oe_bootstrap_theme_paragraphs') . '/config/update/' . $config_id . '.yml');
-    \Drupal::configFactory()->getEditable($config_id)
-      ->setData(Yaml::decode($raw_data))
-      ->save();
+  foreach ($field_config as $name) {
+    $configuration = $storage->read($name);
+    if (!$configuration) {
+      throw new \LogicException(sprintf('The configuration value named %s was not found in the storage.', $name));
+    }
+
+    $entity_type = $config_manager->getEntityTypeIdByName($name);
+    /** @var \Drupal\Core\Config\Entity\ConfigEntityStorageInterface $entity_storage */
+    $entity_storage = $entity_type_manager->getStorage($entity_type);
+    $id_key = $entity_storage->getEntityType()->getKey('id');
+    $entity = $entity_storage->load($configuration[$id_key]);
+    $entity = $entity_storage->updateFromStorageRecord($entity, $configuration);
+    $entity->save();
   }
 }

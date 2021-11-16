@@ -13,7 +13,7 @@ bundle: oe_links_block
 label: Background
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: gray
