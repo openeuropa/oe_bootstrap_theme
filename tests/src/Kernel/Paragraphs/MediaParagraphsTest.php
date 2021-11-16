@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel\Paragraphs;
 
+use Drupal\Core\Url;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -34,6 +35,237 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     // Call the install hook of the Media module.
     module_load_include('install', 'media');
     media_install();
+  }
+
+  /**
+   * Test 'text with featured media' paragraph rendering.
+   */
+  public function testFeaturedMedia(): void {
+    $image_file = file_save_data(file_get_contents(drupal_get_path('theme', 'oe_bootstrap_theme') . '/tests/fixtures/example_1.jpeg'), 'public://example_1.jpeg');
+    $image_file->setPermanent();
+    $image_file->save();
+
+    $media_storage = $this->container->get('entity_type.manager')->getStorage('media');
+    $media = $media_storage->create([
+      'bundle' => 'image',
+      'name' => 'test image',
+      'oe_media_image' => [
+        'target_id' => $image_file->id(),
+        'alt' => 'Alt en',
+      ],
+    ]);
+    $media->save();
+
+    $paragraph_storage = $this->container->get('entity_type.manager')->getStorage('paragraph');
+    $paragraph = $paragraph_storage->create([
+      'type' => 'oe_text_feature_media',
+      'field_oe_title' => 'Media Title',
+      'field_oe_plain_text_long' => 'Media Caption',
+      'field_oe_media' => [
+        'target_id' => $media->id(),
+      ],
+    ]);
+    $paragraph->save();
+
+    // Testing: Image without wrapper.
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertCount(1, $crawler->filter('div.row'));
+    $this->assertCount(1, $crawler->filter('div.col-12.col-md-4'));
+    $this->assertCount(0, $crawler->filter('h3'));
+    $this->assertCount(0, $crawler->filter('div.col-12.col-md-6.order-md-1'));
+    $this->assertCount(0, $crawler->filter('div.col-12.col-md-6.order-md-2'));
+    $figure = $crawler->filter('figure');
+    $this->assertCount(1, $figure);
+    $this->assertCount(1, $figure->filter('img.img-fluid'));
+    $this->assertCount(0, $figure->filter('iframe'));
+    $this->assertStringContainsString(
+       $image_file->getFilename(),
+      $figure->html()
+    );
+    $this->assertEquals('Media Caption', trim($figure->filter('figcaption.bg-light.p-3')->text()));
+
+    // Testing: Image with wrapper aligned to left.
+    $paragraph->get('field_oe_text_long')->setValue('Media Full Text');
+    $paragraph->get('oe_paragraphs_variant')->setValue('left_featured');
+    $paragraph->save();
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertCount(1, $crawler->filter('div.row'));
+    $this->assertCount(0, $crawler->filter('div.col-12.col-md-4'));
+    $this->assertCount(1, $crawler->filter('h3'));
+    $this->assertCount(1, $crawler->filter('div.col-12.col-md-6.order-md-1'));
+    $this->assertCount(1, $crawler->filter('div.col-12.col-md-6.order-md-2'));
+    $figure = $crawler->filter('figure');
+    $this->assertCount(1, $figure);
+    $this->assertCount(1, $figure->filter('img.img-fluid'));
+    $this->assertCount(0, $figure->filter('iframe'));
+    $this->assertStringContainsString(
+      $image_file->getFilename(),
+      $figure->html()
+    );
+    $full_text = $crawler->filter('div.col-12.col-md-6.order-md-1');
+    $this->assertEquals('Media Full Text', trim($full_text->text()));
+    $this->assertEquals('Media Caption', trim($figure->filter('figcaption.bg-light.p-3')->text()));
+
+    // Testing: Image with wrapper aligned to right.
+    $paragraph->get('field_oe_text_long')->setValue('Media Full Text');
+    $paragraph->get('oe_paragraphs_variant')->setValue('right_featured');
+    $paragraph->save();
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertCount(1, $crawler->filter('div.row'));
+    $this->assertCount(0, $crawler->filter('div.col-12.col-md-4'));
+    $this->assertCount(1, $crawler->filter('h3'));
+    $this->assertCount(1, $crawler->filter('div.col-12.col-md-6.order-md-1'));
+    $this->assertCount(1, $crawler->filter('div.col-12.col-md-6.order-md-2'));
+    $figure = $crawler->filter('figure');
+    $this->assertCount(1, $figure);
+    $this->assertCount(1, $figure->filter('img.img-fluid'));
+    $this->assertCount(0, $figure->filter('iframe'));
+    $this->assertStringContainsString(
+      $image_file->getFilename(),
+      $figure->html()
+    );
+    $full_text = $crawler->filter('div.col-12.col-md-6.order-md-2');
+    $this->assertEquals('Media Full Text', trim($full_text->text()));
+    $this->assertEquals('Media Caption', trim($figure->filter('figcaption.bg-light.p-3')->text()));
+
+    // Create a remote video and add it to the paragraph.
+    $media = $media_storage->create([
+      'bundle' => 'remote_video',
+      'oe_media_oembed_video' => [
+        'value' => 'https://www.youtube.com/watch?v=1-g73ty9v04',
+      ],
+    ]);
+    $media->save();
+    $paragraph->set('field_oe_media', ['target_id' => $media->id()]);
+    $paragraph->save();
+
+    $paragraph_storage = $this->container->get('entity_type.manager')->getStorage('paragraph');
+    $paragraph = $paragraph_storage->create([
+      'type' => 'oe_text_feature_media',
+      'field_oe_title' => 'Media Title',
+      'field_oe_plain_text_long' => 'Media Caption',
+      'field_oe_media' => [
+        'target_id' => $media->id(),
+      ],
+    ]);
+    $paragraph->save();
+
+    // Testing: Iframe without wrapper.
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertCount(1, $crawler->filter('div.row'));
+    $this->assertCount(1, $crawler->filter('div.col-12.col-md-4'));
+    $this->assertCount(0, $crawler->filter('h3'));
+    $this->assertCount(0, $crawler->filter('div.col-12.col-md-6.order-md-1'));
+    $this->assertCount(0, $crawler->filter('div.col-12.col-md-6.order-md-2'));
+    $this->assertCount(1, $crawler->filter('div.ratio.ratio-16x9'));
+    $figure = $crawler->filter('figure');
+    $this->assertCount(1, $figure);
+    $this->assertCount(0, $figure->filter('img.img-fluid'));
+    $this->assertCount(1, $figure->filter('iframe'));
+    // Assert remote video is rendered properly.
+    $video_iframe = $crawler->filter('iframe');
+    $partial_iframe_url = Url::fromRoute('media.oembed_iframe', [], [
+      'query' => [
+        'url' => 'https://www.youtube.com/watch?v=1-g73ty9v04',
+      ],
+    ])->toString();
+    $this->assertStringContainsString($partial_iframe_url, $video_iframe->attr('src'));
+    $this->assertEquals('Media Caption', trim($figure->filter('figcaption.bg-light.p-3')->text()));
+
+    // Testing: Iframe with wrapper aligned to left.
+    $paragraph->get('field_oe_text_long')->setValue('Media Full Text');
+    $paragraph->get('oe_paragraphs_variant')->setValue('left_featured');
+    $paragraph->save();
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertCount(1, $crawler->filter('div.row'));
+    $this->assertCount(0, $crawler->filter('div.col-12.col-md-4'));
+    $this->assertCount(1, $crawler->filter('h3'));
+    $this->assertCount(1, $crawler->filter('div.col-12.col-md-6.order-md-1'));
+    $this->assertCount(1, $crawler->filter('div.col-12.col-md-6.order-md-2'));
+    $this->assertCount(1, $crawler->filter('div.ratio.ratio-16x9'));
+    $figure = $crawler->filter('figure');
+    $this->assertCount(1, $figure);
+    $this->assertCount(0, $figure->filter('img.img-fluid'));
+    $this->assertCount(1, $figure->filter('iframe'));
+    // Assert remote video is rendered properly.
+    $video_iframe = $crawler->filter('iframe');
+    $partial_iframe_url = Url::fromRoute('media.oembed_iframe', [], [
+      'query' => [
+        'url' => 'https://www.youtube.com/watch?v=1-g73ty9v04',
+      ],
+    ])->toString();
+    $this->assertStringContainsString($partial_iframe_url, $video_iframe->attr('src'));
+    $full_text = $crawler->filter('div.col-12.col-md-6.order-md-1');
+    $this->assertEquals('Media Full Text', trim($full_text->text()));
+    $this->assertEquals('Media Caption', trim($figure->filter('figcaption.bg-light.p-3')->text()));
+
+    // Testing: Iframe with wrapper aligned to right.
+    $paragraph->get('field_oe_text_long')->setValue('Media Full Text');
+    $paragraph->get('oe_paragraphs_variant')->setValue('right_featured');
+    $paragraph->save();
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertCount(1, $crawler->filter('div.row'));
+    $this->assertCount(0, $crawler->filter('div.col-12.col-md-4'));
+    $this->assertCount(1, $crawler->filter('h3'));
+    $this->assertCount(1, $crawler->filter('div.col-12.col-md-6.order-md-1'));
+    $this->assertCount(1, $crawler->filter('div.col-12.col-md-6.order-md-2'));
+    $this->assertCount(1, $crawler->filter('div.ratio.ratio-16x9'));
+    $figure = $crawler->filter('figure');
+    $this->assertCount(1, $figure);
+    $this->assertCount(0, $figure->filter('img.img-fluid'));
+    $this->assertCount(1, $figure->filter('iframe'));
+    // Assert remote video is rendered properly.
+    $video_iframe = $crawler->filter('iframe');
+    $partial_iframe_url = Url::fromRoute('media.oembed_iframe', [], [
+      'query' => [
+        'url' => 'https://www.youtube.com/watch?v=1-g73ty9v04',
+      ],
+    ])->toString();
+    $this->assertStringContainsString($partial_iframe_url, $video_iframe->attr('src'));
+    $full_text = $crawler->filter('div.col-12.col-md-6.order-md-2');
+    $this->assertEquals('Media Full Text', trim($full_text->text()));
+    $this->assertEquals('Media Caption', trim($figure->filter('figcaption.bg-light.p-3')->text()));
+
+    // Create an avportal video and add it to the paragraph.
+    $media = $media_storage->create([
+      'bundle' => 'av_portal_video',
+      'oe_media_avportal_video' => 'I-163162',
+    ]);
+    $media->save();
+    $paragraph->set('field_oe_media', ['target_id' => $media->id()]);
+    $paragraph->save();
+
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertCount(1, $crawler->filter('div.row'));
+    $this->assertCount(0, $crawler->filter('div.col-12.col-md-4'));
+    $this->assertCount(1, $crawler->filter('h3'));
+    $this->assertCount(1, $crawler->filter('div.col-12.col-md-6.order-md-1'));
+    $this->assertCount(1, $crawler->filter('div.col-12.col-md-6.order-md-2'));
+    $this->assertCount(1, $crawler->filter('div.ratio.ratio-16x9'));
+    $figure = $crawler->filter('figure');
+    $this->assertCount(1, $figure);
+    $this->assertCount(0, $figure->filter('img.img-fluid'));
+    $this->assertCount(1, $figure->filter('iframe'));
+    // Assert remote video is rendered properly.
+    $video_iframe = $crawler->filter('iframe');
+    $this->assertStringContainsString('ec.europa.eu/avservices/play.cfm?ref=I-163162', $video_iframe->attr('src'));
+    $full_text = $crawler->filter('div.col-12.col-md-6.order-md-2');
+    $this->assertEquals('Media Full Text', trim($full_text->text()));
+    $this->assertEquals('Media Caption', trim($figure->filter('figcaption.bg-light.p-3')->text()));
   }
 
   /**

@@ -1,17 +1,46 @@
 {#
 /**
  * @file
- * Featured media component.
+ * Featured media pattern.
  */
 #}
+{% macro featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) %}
+  {% include '@oe-bcl/bcl-featured-media/featured-media.html.twig' with {
+    'embedded_media': embedded_media,
+    'image': image,
+    'poster_image': poster_image,
+    'content': caption,
+    'content_classes': content_classes,
+    'ratio': ratio,
+    'sources': sources,
+    'tracks': tracks,
+  } %}
+{% endmacro %}
 
-{% include '@oe-bcl/bcl-featured-media/featured-media.html.twig' with {
-  'embedded_media': embedded_media,
-  'image': image,
-  'poster_image': poster_image,
-  'content': content,
-  'content_classes': content_classes,
-  'ratio': ratio,
-  'sources': sources,
-  'tracks': tracks,
-} %}
+{% set caption = not paragraph.field_oe_plain_text_long.isEmpty ? content.field_oe_plain_text_long|render %}
+
+{% if inside_text %}
+  {% set text_alignment_class = 'order-md-1' %}
+  {% set video_alignment_class = 'order-md-2' %}
+  {% if alignment == 'right' %}
+    {% set text_alignment_class = 'order-md-2' %}
+    {% set video_alignment_class = 'order-md-1' %}
+  {% endif %}
+
+  <h3 class="mb-4"> {{ content.field_oe_title }} </h3>
+  <div class="row">
+    <div class="col-12 col-md-6 {{ text_alignment_class }}">
+      {{ content.field_oe_text_long }}
+      {{ content.field_oe_link }}
+    </div>
+    <div class="col-12 col-md-6 {{ video_alignment_class }}">
+      {{ _self.featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) }}
+    </div>
+  </div>
+{% else %}
+  <div class="row">
+    <div class="col-12 col-md-4">
+      {{ _self.featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) }}
+    </div>
+  </div>
+{% endif %}

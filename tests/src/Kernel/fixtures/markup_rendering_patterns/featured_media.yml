@@ -1,21 +1,167 @@
-featured_media_image:
+image_not_wrapper:
   render:
     '#type': pattern
     '#id': featured_media
-    '#variant': image
     '#fields':
+      settings:
+        inside_text: false
       image:
         "#theme": "image"
         "#uri": "https://placeimg.com/1200/600/tech"
         "#alt": "Alternative text for paragraph image"
-      content: "Media description text goes here."
+      content:
+        field_oe_plain_text_long: "Media description text goes here."
       content_classes: "bg-light p-3"
   assertions:
     count:
       'div.row': 1
-      'div[class="col-12 col-md-4"]': 1
+      'div.col-12.col-md-4': 1
       'figure': 1
       'img.img-fluid': 1
-      'figcaption[class="bg-light p-3"]': 1
+      'figcaption.bg-light.p-3': 1
     equals:
+      'figcaption': "Media description text goes here."
+image_inside_text_aligned_left:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      settings:
+        inside_text: true
+        alignment: left
+      image:
+        "#theme": "image"
+        "#uri": "https://placeimg.com/1200/600/tech"
+        "#alt": "Alternative text for paragraph image"
+      content:
+        field_oe_title: "Title"
+        field_oe_text_long: "Lorem Ipsum dolor sit amet."
+        field_oe_plain_text_long: "Media description text goes here."
+      content_classes: "bg-light p-3"
+  assertions:
+    count:
+      'h3.mb-4': 1
+      'div.row': 1
+      'div.col-12.col-md-6': 2
+      'figure': 1
+      'img.img-fluid': 1
+      'figcaption.bg-light.p-3': 1
+    equals:
+      'h3': "Title"
+      'div.col-12.col-md-6.order-md-1': "Lorem Ipsum dolor sit amet."
+      'figcaption': "Media description text goes here."
+image_inside_text_aligned_right:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      settings:
+        inside_text: true
+        alignment: right
+      image:
+        "#theme": "image"
+        "#uri": "https://placeimg.com/1200/600/tech"
+        "#alt": "Alternative text for paragraph image"
+      content:
+        field_oe_title: "Title"
+        field_oe_text_long: "Lorem Ipsum dolor sit amet."
+        field_oe_plain_text_long: "Media description text goes here."
+      content_classes: "bg-light p-3"
+  assertions:
+    count:
+      'h3.mb-4': 1
+      'div.row': 1
+      'div.col-12.col-md-6': 2
+      'figure': 1
+      'img.img-fluid': 1
+      'figcaption.bg-light.p-3': 1
+    equals:
+      'h3': "Title"
+      'div.col-12.col-md-6.order-md-2': "Lorem Ipsum dolor sit amet."
+      'figcaption': "Media description text goes here."
+iframe_not_wrapper:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      settings:
+        inside_text: false
+      embedded_media:
+        '#type': 'html_tag'
+        '#tag': 'iframe'
+        '#attributes':
+          src: 'https://www.youtube.com/watch?v=nWpgO1EPO_Y'
+      content:
+        field_oe_plain_text_long: "Media description text goes here."
+      content_classes: "bg-light p-3"
+  assertions:
+    count:
+      'div.row': 1
+      'div.col-12.col-md-4': 1
+      'figure': 1
+      'iframe': 1
+      'figcaption.bg-light.p-3': 1
+    equals:
+      'figcaption': "Media description text goes here."
+iframe_inside_text_container_left_aligned_with_default_ratio:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      settings:
+        alignment: "left"
+        inside_text: true
+      embedded_media:
+        '#type': 'html_tag'
+        '#tag': 'iframe'
+        '#attributes':
+          src: 'https://www.youtube.com/watch?v=nWpgO1EPO_Y'
+      content:
+          field_oe_title: "Title"
+          field_oe_text_long: "Lorem Ipsum dolor sit amet."
+          field_oe_plain_text_long: "Media description text goes here."
+      content_classes: "bg-light p-3"
+  assertions:
+    count:
+      'h3.mb-4': 1
+      'div.row': 1
+      'figure': 1
+      'figcaption.bg-light.p-3': 1
+      'iframe': 1
+      'div.ratio.ratio-16x9': 1
+    equals:
+      'h3': "Title"
+      'div.col-12.col-md-6.order-md-1': "Lorem Ipsum dolor sit amet."
+      'figcaption': "Media description text goes here."
+iframe_inside_text_container_right_aligned_with_link_ratio_21x9:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#variant': inside_text
+    '#fields':
+      settings:
+        inside_text: true
+        alignment: "right"
+        ratio: "21x9"
+      embedded_media:
+        '#type': 'html_tag'
+        '#tag': 'iframe'
+        '#attributes':
+          src: 'https://www.youtube.com/watch?v=nWpgO1EPO_Y'
+      content:
+        field_oe_title: "Title"
+        field_oe_text_long: "Lorem Ipsum dolor sit amet."
+        field_oe_plain_text_long: "Media description text goes here."
+      content_classes: "bg-light p-3"
+  assertions:
+    count:
+      'h3.mb-4': 1
+      'div.row': 1
+      'figure': 1
+      'figcaption.bg-light.p-3': 1
+      'iframe': 1
+      'div.ratio.ratio-21x9': 1
+    equals:
+      'h3': "Title"
+      'div.col-12.col-md-6.order-md-2': "Lorem Ipsum dolor sit amet."
       'figcaption': "Media description text goes here."
