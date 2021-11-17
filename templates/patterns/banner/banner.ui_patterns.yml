@@ -58,3 +58,7 @@ banner:
       type: "text"
       label: "Image"
       preview:  "https://placeimg.com/1000/500/arch"
+    content_classes:
+      type: "text"
+      label: "Content classes"
+      preview: "my-2"
