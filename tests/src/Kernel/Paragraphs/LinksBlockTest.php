@@ -2,10 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\Tests\oe_theme\Kernel\Paragraphs;
+namespace Drupal\Tests\oe_bootstrap_theme\Kernel\Paragraphs;
 
 use Drupal\paragraphs\Entity\Paragraph;
-use Drupal\Tests\oe_bootstrap_theme\Kernel\Paragraphs\ParagraphsTestBase;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -101,10 +100,7 @@ class LinksBlockTest extends ParagraphsTestBase {
     $crawler = new Crawler($html);
 
     $this->assertBackgroundGray($crawler);
-    $this->assertCount(1, $crawler->filter('h5.fw-bold.pb-3.mb-3.border-bottom'));
-    $this->assertCount(1, $crawler->filter('ul.ps-0.mb-0'));
-    $this->assertCount(3, $crawler->filter('li.list-unstyled'));
-    $this->assertCount(2, $crawler->filter('li.list-unstyled.me-4-5'));
+    $this->assertLinksBlockRendering($crawler);
     $this->assertVerticalLinks($crawler);
 
     // Testing: LinksBlock horizontal gray.
@@ -115,10 +111,7 @@ class LinksBlockTest extends ParagraphsTestBase {
     $crawler = new Crawler($html);
 
     $this->assertBackgroundGray($crawler);
-    $this->assertCount(1, $crawler->filter('h5.fw-bold.pb-3.mb-3.border-bottom'));
-    $this->assertCount(1, $crawler->filter('ul.ps-0.mb-0'));
-    $this->assertCount(3, $crawler->filter('li.list-unstyled'));
-    $this->assertCount(2, $crawler->filter('li.list-unstyled.me-4-5'));
+    $this->assertLinksBlockRendering($crawler);
     $this->assertHorizontalLinks($crawler, FALSE);
 
     // Testing: LinksBlock vertical transparent.
@@ -130,10 +123,7 @@ class LinksBlockTest extends ParagraphsTestBase {
     $crawler = new Crawler($html);
 
     $this->assertBackgroundTransparent($crawler);
-    $this->assertCount(1, $crawler->filter('h5.fw-bold.pb-3.mb-3.border-bottom'));
-    $this->assertCount(1, $crawler->filter('ul.ps-0.mb-0'));
-    $this->assertCount(3, $crawler->filter('li.list-unstyled'));
-    $this->assertCount(2, $crawler->filter('li.list-unstyled.me-4-5'));
+    $this->assertLinksBlockRendering($crawler);
     $this->assertVerticalLinks($crawler);
 
     // Testing: LinksBlock horizontal transparent.
@@ -258,7 +248,7 @@ class LinksBlockTest extends ParagraphsTestBase {
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The DomCrawler where to check the element.
    */
-  private function assertSocialLinks(Crawler $crawler): void {
+  protected function assertSocialLinks(Crawler $crawler): void {
     $links = $crawler->filter('ul');
     $links_html = $links->html();
     $this->assertStringContainsString('Email', $links_html);
@@ -295,7 +285,7 @@ class LinksBlockTest extends ParagraphsTestBase {
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The DomCrawler where to check the element.
    */
-  private function assertBackgroundGray(Crawler $crawler): void {
+  protected function assertBackgroundGray(Crawler $crawler): void {
     $this->assertCount(1, $crawler->filter('div.bg-light.px-4.py-3'));
   }
 
@@ -305,7 +295,7 @@ class LinksBlockTest extends ParagraphsTestBase {
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The DomCrawler where to check the element.
    */
-  private function assertBackgroundTransparent(Crawler $crawler): void {
+  protected function assertBackgroundTransparent(Crawler $crawler): void {
     $this->assertCount(0, $crawler->filter('div.bg-light.px-4.py-3'));
   }
 
@@ -315,7 +305,7 @@ class LinksBlockTest extends ParagraphsTestBase {
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The DomCrawler where to check the element.
    */
-  private function assertSocialMediaLinksBlockRendering(Crawler $crawler): void {
+  protected function assertSocialMediaLinksBlockRendering(Crawler $crawler): void {
     $this->assertCount(1, $crawler->filter('h5.fw-bold.pb-3.mb-3.border-bottom'));
     $this->assertCount(1, $crawler->filter('ul.ps-0.mb-0'));
     $this->assertCount(15, $crawler->filter('li.list-unstyled'));
@@ -330,7 +320,7 @@ class LinksBlockTest extends ParagraphsTestBase {
    * @param bool $social
    *   Flag to determine if is block links with social media or not.
    */
-  private function assertHorizontalLinks(Crawler $crawler, $social = TRUE): void {
+  protected function assertHorizontalLinks(Crawler $crawler, $social = TRUE): void {
     $this->assertCount($social ? 15 : 3, $crawler->filter('li.d-inline'));
   }
 
@@ -340,7 +330,7 @@ class LinksBlockTest extends ParagraphsTestBase {
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The DomCrawler where to check the element.
    */
-  private function assertVerticalLinks(Crawler $crawler): void {
+  protected function assertVerticalLinks(Crawler $crawler): void {
     $this->assertCount(0, $crawler->filter('li.d-inline'));
   }
 
@@ -350,7 +340,7 @@ class LinksBlockTest extends ParagraphsTestBase {
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The DomCrawler where to check the element.
    */
-  private function assertLinksBlockRendering(Crawler $crawler): void {
+  protected function assertLinksBlockRendering(Crawler $crawler): void {
     $this->assertCount(1, $crawler->filter('h5.fw-bold.pb-3.mb-3.border-bottom'));
     $this->assertCount(1, $crawler->filter('ul.ps-0.mb-0'));
     $this->assertCount(3, $crawler->filter('li.list-unstyled'));
