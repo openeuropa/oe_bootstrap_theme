@@ -42,7 +42,3 @@ toasts:
           body: "Heads up, toasts will stack automatically."
           aria_live: "assertive"
           class: test-class
-  libraries:
-    - pattern_toasts:
-        js:
-          toasts.js: {}
