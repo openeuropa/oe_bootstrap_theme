@@ -613,7 +613,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The DomCrawler where to check the element.
    */
-  private function assertBannerRendering(Crawler $crawler): void {
+  protected function assertBannerRendering(Crawler $crawler): void {
     $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
     $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
     $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
