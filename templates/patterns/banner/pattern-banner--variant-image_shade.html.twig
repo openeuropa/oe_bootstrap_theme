@@ -6,9 +6,9 @@
 #}
 {% extends 'pattern-banner.html.twig' %}
 {% block attributes %}
-  {{ parent() }}
-{% endblock %}
-{% block image %}
-  {{ parent() }}
+  {% set attributes = attributes.addClass([
+    'bg-lighter',
+  ])
+  %}
 {% endblock %}
 
