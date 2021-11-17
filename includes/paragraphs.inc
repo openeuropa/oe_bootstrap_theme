@@ -323,25 +323,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_social_media_follow(array &
 }
 
 /**
- * Implements hook_preprocess_paragraph().
- */
-function oe_theme_preprocess_paragraph__oe_links_block(array &$variables): void {
-  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
-  $paragraph = $variables['paragraph'];
-
-  // @todo Add variant and background field to oe_links_block paragraph.
-  $variables['variant'] = $paragraph->get('field_oe_links_variant')->value;
-  $variables['background'] = $paragraph->get('field_oe_links_background')->value;
-
-  foreach (Element::children($variables['content']['field_oe_links']) as $index) {
-    $variables['links'][] = [
-      'label' => $variables['content']['field_oe_links'][$index]['#title'],
-      'url' => $variables['content']['field_oe_links'][$index]['#url'],
-    ];
-  }
-}
-
-/**
  * Gets the mapped layout.
  *
  * @param string $layout
@@ -489,7 +470,7 @@ function oe_bootstrap_theme_set_embedded_media(bool $is_image, array &$variables
   $media_type = \Drupal::entityTypeManager()->getStorage('media_type')->load($media->bundle());
   $cacheability->addCacheableDependency($media_type);
   $source_field = $source->getSourceFieldDefinition($media_type);
-  $display = EntityViewDisplay::collectRenderDisplay($media, 'oe_theme_main_content');
+  $display = EntityViewDisplay::collectRenderDisplay($media, 'default');
   $cacheability->addCacheableDependency($display);
   $display_options = $display->getComponent($source_field->getName());
 
