@@ -8,6 +8,7 @@
 declare(strict_types = 1);
 
 use Drupal\Core\Config\FileStorage;
+use Drupal\paragraphs\Entity\ParagraphsType;
 
 /**
  * Implements hook_install().
@@ -38,4 +39,29 @@ function oe_bootstrap_theme_paragraphs_install(): void {
     $entity = $entity_storage->updateFromStorageRecord($entity, $configuration);
     $entity->save();
   }
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function oe_bootstrap_theme_paragraphs_requirements($phase) {
+  $requirements = [];
+  // List of paragraphs altered by this module.
+  $required_bootstrap_theme_paragraphs = [
+    'oe_social_media_follow',
+    'oe_links_block',
+  ];
+
+  $paragraphs = ParagraphsType::loadMultiple($required_bootstrap_theme_paragraphs);
+  foreach ($required_bootstrap_theme_paragraphs as $required_paragraph) {
+    if (!isset($paragraphs[$required_paragraph])) {
+      $requirements['oe_bootstrap_theme_paragraphs'] = [
+        'title' => 'OpenEuropa Bootstrap Theme Paragraphs',
+        'severity' => REQUIREMENT_ERROR,
+        'description' => t('%name is required by oe_bootstrap_theme_paragraphs module.', ['%name' => $required_paragraph]),
+      ];
+    }
+  }
+
+  return $requirements;
 }
