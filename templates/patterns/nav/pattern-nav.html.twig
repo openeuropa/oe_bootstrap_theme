@@ -42,11 +42,6 @@
           'nav-link',
           item.in_active_trail ? 'active'
           ] %}
-        {% if item.url.options.attributes.class is iterable %}
-          {% set nav_link_classes = nav_link_classes|merge(item.url.options.attributes.class) %}
-        {% elseif item.url.options.attributes.class %}
-          {% set nav_link_classes = nav_link_classes|merge([item.url.options.attributes.class]) %}
-        {% endif %}
         <li class="{{- nav_item_classes|join(' ') -}}">
           {% if item.is_expanded and item.below %}
             {% set nav_link_classes = nav_link_classes|merge(['dropdown-toggle']) %}
@@ -55,8 +50,7 @@
               {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
             {% endif %}
           {% else %}
-            <a class="{{ nav_link_classes|join(' ') }}" href="{{ item.url }}"
-            {% if (item.url.options.attributes.target) %} target="{{ item.url.options.attributes.target }}" {% endif %}>{{ item.title }}</a>
+            {{ link(item.title, item.url, { 'class': nav_link_classes } ) }}
           {% endif %}
         </li>
       {% endfor %}
@@ -68,12 +62,7 @@
             'dropdown-item',
             item.in_active_trail ? 'active'
           ] %}
-          {% if item.url.options.attributes.class is iterable %}
-            {% set nav_link_classes = nav_link_classes|merge(item.url.options.attributes.class) %}
-          {% elseif item.url.options.attributes.class %}
-            {% set nav_link_classes = nav_link_classes|merge([item.url.options.attributes.class]) %}
-          {% endif %}
-          <li><a class="{{ nav_link_classes|join(' ') }}" href="{{ item.url }}">{{ item.title }}</a></li>
+          <li>{{ link(item.title, item.url, { 'class': nav_link_classes } ) }}</li>
         {% endfor %}
       </ul>
     {% endif %}
