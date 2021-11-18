@@ -24,7 +24,8 @@ link_secondary_disabled_with_icon_before:
       '#custom_id': 1
       'a.disabled': 1
       'svg.me-2-5': 1
-link_secondary_disabled_with_icon_without_label_removing_icon_spaces:
+      'a.text-underline-hover': 0
+link_secondary_disabled_with_icon_without_label_removing_icon_spaces_standalone:
   render:
     '#type': pattern
     '#id': link
@@ -35,6 +36,7 @@ link_secondary_disabled_with_icon_without_label_removing_icon_spaces:
         remove_icon_spacers: true
         link_id: 'custom_id'
         link_style: 'secondary'
+        standalone: true
       path: 'https://example.com'
       icon:
         name: 'alarm'
@@ -48,6 +50,7 @@ link_secondary_disabled_with_icon_without_label_removing_icon_spaces:
       '#custom_id': 1
       'a.disabled': 1
       'svg.ms-2-5': 0
+      'a.text-underline-hover': 1
 link_secondary_disabled_with_icon_after_without_removing_icon_spaces:
   render:
     '#type': pattern
@@ -74,6 +77,7 @@ link_secondary_disabled_with_icon_after_without_removing_icon_spaces:
       '#custom_id': 1
       'a.disabled': 1
       'svg.ms-2-5': 1
+      'a.text-underline-hover': 0
 link_dark_enabled_without_icon:
   render:
     '#type': pattern
@@ -93,3 +97,25 @@ link_dark_enabled_without_icon:
       'a.link-dark': 1
       '#custom_id': 1
       'a.disabled': 0
+      'a.text-underline-hover': 0
+link_warning_enabled_without_icon_standalone:
+  render:
+    '#type': pattern
+    '#id': link
+    '#fields':
+      settings:
+        disabled: false
+        link_id: 'custom_id'
+        link_style: 'warning'
+        standalone: true
+      label: 'Link to example'
+      path: 'https://example.com'
+  assert:
+    contains:
+      'a[data-drupal-selector=link]': "Link to example"
+    count:
+      'a[data-drupal-selector=link]': 1
+      'a.link-warning': 1
+      '#custom_id': 1
+      'a.disabled': 0
+      'a.text-underline-hover': 1
