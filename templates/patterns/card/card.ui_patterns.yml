@@ -114,3 +114,10 @@ card:
         - label: "Secondary badge"
           assistive_text: "Assistive text for secondary badge"
           rounded_pill: true
+    date:
+      type: "array"
+      label: "Date that will be shown with Date Block."
+      preview:
+        year: "2021"
+        month: "JAN"
+        day: "27"
