@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Date-block.
+ */
+#}
+{% set attributes = create_attribute() %}
+
+{% include '@oe-bcl/bcl-date-block/date-block.html.twig' with {
+  'variant': variant,
+  'day': day,
+  'month': month,
+  'date_time': date_time,
+  'year': year,
+  'attributes': attributes,
+} %}

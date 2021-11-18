@@ -1,0 +1,24 @@
+date_block:
+  label: "Date Block"
+  description: "Date block allows to present a date block that can be placed in other components."
+  variants:
+    default:
+      label: Default
+  fields:
+    day:
+      type: "number"
+      label: "Day"
+      preview: "JAN"
+    month:
+      type: "number"
+      label: "Month"
+      preview: "27"
+    year:
+      type: "text"
+      label: "Year"
+      preview: "2021"
+    date_time:
+      type: "text"
+      label: "Datetime"
+      description: "The datetime attribute for the block which allows translation of dates into machine-readable format."
+      preview: "2021-05-27"
