@@ -8,11 +8,11 @@ date_block:
     day:
       type: "number"
       label: "Day"
-      preview: "JAN"
+      preview: "27"
     month:
       type: "number"
       label: "Month"
-      preview: "27"
+      preview: "MAY"
     year:
       type: "text"
       label: "Year"
