@@ -5,14 +5,17 @@ date_block:
     day:
       type: "number"
       label: "Day"
+      description: "The number of the day."
       preview: "27"
     month:
       type: "text"
       label: "Month"
+      description: "The month acronym (e.g. JAN, FEB, MAR, etc.)."
       preview: "MAY"
     year:
       type: "number"
       label: "Year"
+      description: "The year number in format AAAA."
       preview: "2021"
     date_time:
       type: "text"
