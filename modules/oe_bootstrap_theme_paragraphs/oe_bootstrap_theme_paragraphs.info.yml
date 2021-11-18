@@ -3,8 +3,7 @@ type: module
 description: OpenEuropa Bootstrap Theme Paragrahs module.
 package: OpenEuropa Bootstrap Theme
 core_version_requirement: ^8.9 || ^9.1
-dependencies:
-  - openeuropa:oe_paragraphs
+
 config_devel:
   install:
     - field.field.paragraph.oe_links_block.field_oe_links_block_background
