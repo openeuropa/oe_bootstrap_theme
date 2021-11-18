@@ -19,9 +19,16 @@ listing:
       description: "Tag that will be used for the title of the card. It will be 'h4' by default."
       preview: "h5"
     alignment:
-      type: "textfield"
+      type: "select"
       label: "Alignment"
       description: "The alignment of the image in the default layout cards."
+      options:
+        default: "[empty]"
+        start: start
+        end: end
+        center: center
+        baseline: baseline
+        stretch: stretch
       preview: "start"
   fields:
     items:
