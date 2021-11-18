@@ -196,7 +196,7 @@ listing_default_2_col:
   assertions:
     count:
       'div.bcl-listing.bcl-listing--default-2-col': 1
-      'div.row.row-cols-1.row-cols-md-2.g-2': 1
+      'div.row.row-cols-1.row-cols-md-2.g-4': 1
       'div.row': 7
       'div.listing-item': 6
       'img.rounded-1': 5
@@ -319,7 +319,7 @@ listing_default_3_col:
   assertions:
     count:
       'div.bcl-listing.bcl-listing--default-3-col': 1
-      'div.row.row-cols-1.row-cols-lg-3.g-2': 1
+      'div.row-cols-md-2.row.row-cols-1.row-cols-xl-3.g-4': 1
       'div.row': 7
       'div.listing-item': 6
       'img.rounded-1': 5
