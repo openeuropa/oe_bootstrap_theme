@@ -12,7 +12,24 @@ listing:
         highlight-1-col: "highlight-1-col"
         highlight-2-col: "highlight-2-col"
         highlight-3-col: "highlight-3-col"
-      preview: "highlight-3-col"
+      preview: "default-3-col"
+    title_tag:
+      type: "textfield"
+      label: "Title tag"
+      description: "Tag that will be used for the title of the card. It will be 'h4' by default."
+      preview: "h5"
+    alignment:
+      type: "select"
+      label: "Alignment"
+      description: "The alignment of the image in the default layout cards."
+      options:
+        default: "[empty]"
+        start: start
+        end: end
+        center: center
+        baseline: baseline
+        stretch: stretch
+      preview: "start"
   fields:
     items:
       type: "array"
@@ -21,7 +38,7 @@ listing:
       preview:
         - title:
             content:
-              '#markup' : '<a href="/example">Card title 1</a>'
+              '#markup' : '<a class="text-underline-hover" href="/example">Card title 1</a>'
             tag: "h5"
           text:
             content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
@@ -37,7 +54,7 @@ listing:
               </div>'
         - title:
             content:
-              '#markup' : '<a href="/example">Card title 2</a>'
+              '#markup' : '<a class="text-underline-hover" href="/example">Card title 2</a>'
             tag: "h5"
           text:
             content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
@@ -53,7 +70,7 @@ listing:
               </div>'
         - title:
             content:
-              '#markup' : '<a href="/example">Card title 3</a>'
+              '#markup' : '<a class="text-underline-hover" href="/example">Card title 3</a>'
             tag: "h5"
           text:
             content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
@@ -69,7 +86,7 @@ listing:
               </div>'
         - title:
             content:
-              '#markup' : '<a href="/example">Card title 4</a>'
+              '#markup' : '<a class="text-underline-hover" href="/example">Card title 4</a>'
             tag: "h5"
           text:
             content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
@@ -85,7 +102,7 @@ listing:
               </div>'
         - title:
             content:
-              '#markup' : '<a href="/example">Card title 5</a>'
+              '#markup' : '<a class="text-underline-hover" href="/example">Card title 5</a>'
             tag: "h5"
           text:
             content: "Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis."
@@ -101,7 +118,7 @@ listing:
               </div>'
         - title:
             content:
-              '#markup' : '<a href="/example">Card title 6</a>'
+              '#markup' : '<a class="text-underline-hover" href="/example">Card title 6</a>'
             tag: "h5"
           text:
             content: "Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id."
