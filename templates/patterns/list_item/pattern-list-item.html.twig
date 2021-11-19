@@ -15,6 +15,7 @@ Parameters:
     {% set _title = pattern('link', {
       label: title,
       path: url,
+      standalone: TRUE,
     }) %}
   {% else %}
     {% set _title = title %}
