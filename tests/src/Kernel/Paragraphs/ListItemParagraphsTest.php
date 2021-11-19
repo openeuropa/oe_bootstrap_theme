@@ -89,6 +89,7 @@ class ListItemParagraphsTest extends ParagraphsTestBase {
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.',
       $text_element->text()
     );
+    $this->assertCount(1, $crawler->filter('a.text-underline-hover'));
 
     // Variant - date / Image - No / Date - Yes.
     $paragraph->get('oe_paragraphs_variant')->setValue('date');
@@ -116,6 +117,8 @@ class ListItemParagraphsTest extends ParagraphsTestBase {
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.',
       $text_element->text()
     );
+    $this->assertCount(1, $crawler->filter('a.text-underline-hover'));
+
     // @todo Add assertions for date once the BCL Patterns version 0.14.0 is delivered.
     // Variant - highlight / Date - No.
     $paragraph->get('oe_paragraphs_variant')->setValue('highlight');
@@ -156,6 +159,7 @@ class ListItemParagraphsTest extends ParagraphsTestBase {
     );
     $this->assertCount(0, $crawler->filter('span.d-md-inline.d-block.text-muted.mb-2.mb-md-0'));
     $this->assertCount(0, $crawler->filter('time[datetime="2011-11-13T12:00:00Z"]'));
+    $this->assertCount(1, $crawler->filter('a.text-underline-hover'));
 
     // Variant - thumbnail_primary / Date - No / Description - No .
     $paragraph->get('oe_paragraphs_variant')->setValue('thumbnail_primary');
@@ -187,6 +191,7 @@ class ListItemParagraphsTest extends ParagraphsTestBase {
       '',
       $text_element->text()
     );
+    $this->assertCount(1, $crawler->filter('a.text-underline-hover'));
 
     // Variant - thumbnail_secondary / Date - No.
     $paragraph->get('oe_paragraphs_variant')->setValue('thumbnail_secondary');
@@ -218,6 +223,7 @@ class ListItemParagraphsTest extends ParagraphsTestBase {
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.',
       $text_element->text()
     );
+    $this->assertCount(1, $crawler->filter('a.text-underline-hover'));
 
     // Variant - default with internal link.
     $this->createContentType([
@@ -270,6 +276,7 @@ class ListItemParagraphsTest extends ParagraphsTestBase {
     );
     $this->assertStringContainsString('Article', trim($crawler->filter('span[class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0"]')->text()));
     $this->assertStringContainsString('15 November 2021', trim($crawler->filter('span[class="d-md-inline d-block text-muted mb-2 mb-md-0"]')->text()));
+    $this->assertCount(1, $crawler->filter('a.text-underline-hover'));
   }
 
 }
