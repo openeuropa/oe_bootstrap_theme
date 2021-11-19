@@ -4,12 +4,9 @@
  * Date block pattern.
  */
 #}
-{% set attributes = create_attribute() %}
-
 {% include '@oe-bcl/bcl-date-block/date-block.html.twig' with {
   'day': day,
   'month': month,
   'date_time': date_time,
   'year': year,
-  'attributes': attributes,
 } %}
