@@ -5,7 +5,7 @@ list_item_default:
     '#fields':
       title:
         content:
-          '#markup' : '<a href="/example">Card title 1</a>'
+          '#markup' : '<a class="text-underline-hover" href="/example">Card title 1</a>'
       text:
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
         classes: "mb-2"
@@ -22,6 +22,7 @@ list_item_default:
       'div[data-drupal-selector="list-item"]': 1
       'h5.card-title': 1
       'a[href="/example"]': 1
+      'a.text-underline-hover': 1
     equals:
       'h5.card-title a': "Card title 1"
     contains:
@@ -34,7 +35,7 @@ list_item_date:
     '#fields':
       title:
         content:
-          '#markup' : '<a href="/example">Card title 1</a>'
+          '#markup' : '<a class="text-underline-hover" href="/example">Card title 1</a>'
       text:
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
         classes: "mb-2"
@@ -57,6 +58,7 @@ list_item_date:
       'h5.card-title': 1
       'a[href="/example"]': 1
       'span.badge.bg-primary': 2
+      'a.text-underline-hover': 1
     equals:
       'h5.card-title a': "Card title 1"
     contains:
@@ -69,7 +71,7 @@ list_item_highlight:
     '#fields':
       title:
         content:
-          '#markup' : '<a href="/example">Card title 1</a>'
+          '#markup' : '<a class="text-underline-hover" href="/example">Card title 1</a>'
       text:
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
         classes: "mb-2"
@@ -91,6 +93,7 @@ list_item_highlight:
       'img.card-img-top': 1
       'h5.card-title': 1
       'a[href="/example"]': 1
+      'a.text-underline-hover': 1
     equals:
       'h5.card-title a': "Card title 1"
     contains:
@@ -103,7 +106,7 @@ list_item_thumbnail_primary:
     '#fields':
       title:
         content:
-          '#markup' : '<a href="/example">Card title 1</a>'
+          '#markup' : '<a class="text-underline-hover" href="/example">Card title 1</a>'
       image:
         path: "https://picsum.photos/seed/1002/600/400"
         alt: "alt img"
@@ -122,6 +125,7 @@ list_item_thumbnail_primary:
       'img.card-img-top': 1
       'h5.card-title': 1
       'a[href="/example"]': 1
+      'a.text-underline-hover': 1
     equals:
       'h5.card-title a': "Card title 1"
     contains:
@@ -134,7 +138,7 @@ list_item_thumbnail_secondary:
     '#fields':
       title:
         content:
-          '#markup' : '<a href="/example">Card title 1</a>'
+          '#markup' : '<a class="text-underline-hover" href="/example">Card title 1</a>'
       text:
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
         classes: "mb-2"
@@ -156,6 +160,7 @@ list_item_thumbnail_secondary:
       'img.card-img-bottom': 1
       'h5.card-title': 1
       'a[href="/example"]': 1
+      'a.text-underline-hover': 1
     equals:
       'h5.card-title a': "Card title 1"
     contains:
