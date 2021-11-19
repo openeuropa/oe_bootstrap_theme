@@ -84,6 +84,8 @@ listing_default_1_col:
       'span.mb-2': 8
       'h5.card-title': 4
       'a.text-underline-hover': 4
+      'a.d-inline-block': 1
+      '.mw-listing-img': 3
     equals:
       'a[href="/example1"]': "Card title 1"
       'a[href="/example2"]': "Card title 2"
@@ -207,6 +209,8 @@ listing_default_2_col:
       'span.mb-2': 12
       'h5.card-title': 6
       'a.text-underline-hover': 6
+      'a.d-inline-block': 1
+      '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': "Card title 1"
       'a[href="/example2"]': "Card title 2"
@@ -327,6 +331,8 @@ listing_default_3_col:
       'h5.card-title': 6
       'h4.fw-bold.mb-4': 1
       'a.text-underline-hover': 6
+      'a.d-inline-block': 1
+      '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': "Card title 1"
       'a[href="/example2"]': "Card title 2"
@@ -792,6 +798,7 @@ listing_default_3_col_tag:
       'h5.card-title': 6
       'h1.fw-bold.mb-4': 1
       'a.text-underline-hover': 6
+      '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': "Card title 1"
       'a[href="/example2"]': "Card title 2"
@@ -914,6 +921,7 @@ listing_default_3_col_alignment_start:
       'h4.fw-bold.mb-4': 1
       'div.align-self-start': 12
       'a.text-underline-hover': 6
+      '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': "Card title 1"
       'a[href="/example2"]': "Card title 2"
@@ -1036,6 +1044,7 @@ listing_default_3_col_alignment_end:
       'h4.fw-bold.mb-4': 1
       'div.align-self-end': 12
       'a.text-underline-hover': 6
+      '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': "Card title 1"
       'a[href="/example2"]': "Card title 2"
@@ -1158,6 +1167,7 @@ listing_default_3_col_alignment_center:
       'h4.fw-bold.mb-4': 1
       'div.align-self-center': 12
       'a.text-underline-hover': 6
+      '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': "Card title 1"
       'a[href="/example2"]': "Card title 2"
@@ -1280,6 +1290,7 @@ listing_default_3_col_alignment_baseline:
       'h4.fw-bold.mb-4': 1
       'div.align-self-baseline': 12
       'a.text-underline-hover': 6
+      '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': "Card title 1"
       'a[href="/example2"]': "Card title 2"
@@ -1402,6 +1413,7 @@ listing_default_3_col_alignment_stretch:
       'h4.fw-bold.mb-4': 1
       'div.align-self-stretch': 12
       'a.text-underline-hover': 6
+      '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': "Card title 1"
       'a[href="/example2"]': "Card title 2"
