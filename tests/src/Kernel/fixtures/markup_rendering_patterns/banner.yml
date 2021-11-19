@@ -1,4 +1,4 @@
-default_page_banner_centered_with_link_full_widht:
+default_page_banner_centered_with_link_full_width:
   render:
     '#type': pattern
     '#id': banner
@@ -29,7 +29,7 @@ default_page_banner_centered_with_link_full_widht:
       'p': "Innovation, economy, environment and geopolitics"
     equals:
       'a': "Subscribe"
-default_page_banner_centered_with_link_full_widht_with_content_classes:
+default_page_banner_centered_with_link_full_width_with_content_classes:
   render:
     '#type': pattern
     '#id': banner
@@ -49,7 +49,7 @@ default_page_banner_centered_with_link_full_widht_with_content_classes:
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
-      'div.bg-lighter.text-dark.bcl-banner': 1
+      'div.bg-lighter.text-dark.bcl-banner.text-center.full-width': 1
       'div.full-width': 1
       'div.text-center': 1
       'div.bcl-banner__content.content-class.my-2': 1
@@ -195,7 +195,7 @@ primary_page_banner_centered_with_link_full_width_with_content_classes:
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
-      'div.bg-primary.text-white.bcl-banner': 1
+      'div.bg-primary.text-white.bcl-banner.text-center': 1
       'div.full-width': 1
       'div.text-center': 1
       'div.bcl-banner__content.content-class.my-2': 1
@@ -344,7 +344,7 @@ image_page_banner_centered_with_link_full_width_with_content_classes:
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
-      'div.bcl-banner.bg-lighter.text-dark': 1
+      'div.bcl-banner.bg-lighter.text-dark.text-center.full-width': 1
       'div.full-width': 1
       'div.text-center': 1
       'a': 1
@@ -501,7 +501,7 @@ image_shade_page_banner_centered_with_link_full_width_with_content_classes:
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
-      'div.bcl-banner.bg-lighter': 1
+      'div.bcl-banner.bg-lighter.text-center.full-width': 1
       'div.full-width': 1
       'div.text-center': 1
       'a': 1
