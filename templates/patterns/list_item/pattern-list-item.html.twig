@@ -10,6 +10,7 @@ Parameters:
   - "detail" (string) (default: ''): Description of Content Item.
   - "image" (array) (default: []): Image for the item.
   - "content" (string) (default: ''): Content for the item.
+  - "date" (array) (default: []): Data necessary to print date.
 #}
   {% if url %}
     {% set _title = pattern('link', {
@@ -44,8 +45,8 @@ Parameters:
     'content': content,
     'image': image,
     'variant': '',
-    'badges' : meta
+    'badges' : meta,
+    'date': date,
   } %}
-
 
 {% endspaceless %}

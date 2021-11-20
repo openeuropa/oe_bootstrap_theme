@@ -44,3 +44,7 @@ list_item:
       preview:
         path: "https://placeimg.com/1200/600/arch"
         alt: "Alternative text for image"
+    date:
+      type: "array"
+      label: "Date"
+      description: "Array containing the date necessary to print date block element."
