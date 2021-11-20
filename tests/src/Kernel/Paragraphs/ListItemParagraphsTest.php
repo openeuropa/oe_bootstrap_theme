@@ -119,7 +119,21 @@ class ListItemParagraphsTest extends ParagraphsTestBase {
     );
     $this->assertCount(1, $crawler->filter('a.text-underline-hover'));
 
-    // @todo Add assertions for date once the BCL Patterns version 0.14.0 is delivered.
+    $this->assertCount(1, $crawler->filter('time.bcl-date-block.d-flex.flex-column.align-items-center.justify-content-center.bg-date.text-light.pt-3.rounded-top.mw-date'));
+    $this->assertCount(1, $crawler->filter('time[datetime="2011-11-13T12:00:00Z"]'));
+    $month_element = $crawler->filter('span[class="pb-3 text-uppercase"]');
+    $this->assertCount(1, $month_element);
+    $this->assertStringContainsString(
+      'Nov',
+      $month_element->text()
+    );
+    $year_element = $crawler->filter('span[class="bg-light w-100 text-center py-2 text-dark rounded-bottom mb-n1"]');
+    $this->assertCount(1, $year_element);
+    $this->assertStringContainsString(
+      '2011',
+      $year_element->text()
+    );
+
     // Variant - highlight / Date - No.
     $paragraph->get('oe_paragraphs_variant')->setValue('highlight');
     $paragraph->get('field_oe_image')->setValue([
