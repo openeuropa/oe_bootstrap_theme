@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.0.0-alpha3](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-alpha3) (2021-11-22)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-alpha2...1.0.0-alpha3)
+
+**Merged pull requests:**
+
+- OEL-739: Text with feature media video variants [\#109](https://github.com/openeuropa/oe_bootstrap_theme/pull/109) ([escuriola](https://github.com/escuriola))
+- OEL-740: Banner paragraph kernel testing. [\#108](https://github.com/openeuropa/oe_bootstrap_theme/pull/108) ([escuriola](https://github.com/escuriola))
+
 ## [1.0.0-alpha2](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-alpha2) (2021-11-08)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-alpha1...1.0.0-alpha2)
 
@@ -32,6 +40,7 @@
 
 **Merged pull requests:**
 
+- OEL-539: Prepare release 1.0.0-alpha2 [\#107](https://github.com/openeuropa/oe_bootstrap_theme/pull/107) ([drishu](https://github.com/drishu))
 - EPIC-Paragraphs [\#106](https://github.com/openeuropa/oe_bootstrap_theme/pull/106) ([drishu](https://github.com/drishu))
 - OEL-719: Adapt cards to BCL 0.11.0 [\#102](https://github.com/openeuropa/oe_bootstrap_theme/pull/102) ([drishu](https://github.com/drishu))
 - OEL-711: Medley branch with all BCL 0.11.0 updates. [\#99](https://github.com/openeuropa/oe_bootstrap_theme/pull/99) ([escuriola](https://github.com/escuriola))
