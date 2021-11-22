@@ -1,4 +1,4 @@
-fact-figures:
+fact_figures:
   label: "Fact and Figures"
   description: "Fact and Figures pattern used for the paragraph of same type."
   settings:
@@ -14,10 +14,15 @@ fact-figures:
       label: "icons visibility"
       description: "Toggle icon visibility"
       preview: true
+    responsive_columns:
+      type: number
+      label: "Responsive Columns"
+      description: "One, two or three columns layout for responsive"
+      preview: 3
     grid_columns:
       type: number
-      label: "Columns number"
-      description: "One, two or three columns layout"
+      label: "Grid Columns"
+      description: "One, two or three columns layout for grid"
       preview: 3
     gutter:
       type: number
@@ -30,6 +35,11 @@ fact-figures:
       description: "Equal height between each item."
       preview: true
   fields:
+    title:
+      type: "text"
+      label: "Title"
+      description: "Title of the block"
+      preview: "Fact and figures block"
     items:
       type: "array"
       label: "List items"

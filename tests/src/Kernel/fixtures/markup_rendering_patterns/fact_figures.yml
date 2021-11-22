@@ -1,0 +1,348 @@
+fact_figures_default_1col:
+  render:
+    '#type': pattern
+    '#id': fact_figures
+    '#fields':
+      settings:
+        variant: 'default'
+        display_icons: true
+        responsive_columns: 1
+        grid_column: 1
+        gutter: 4
+        equal_height: true
+      link:
+        label: 'European Commission'
+        path: 'http://link-1.com'
+        icon:
+          path: "/icons.svg"
+      icons_path: "/assets/icons/bootstrap-icons.svg"
+      link_more:
+        label: 'Read more'
+        path: '/example'
+      title: "Fact and figures block"
+      items:
+        - icon:
+            name: "x-diamond-fill"
+            size: "l"
+          subtitle: "Jira Tickets"
+          title: "1529 JIRA Ticket"
+          description: "Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum liber"
+        - icon:
+            name: "ui-checks"
+          subtitle: "Feature tickets"
+          title: "337 Features"
+          description: "Turpis varius congue venenatis, erat dui feugiat felis."
+        - icon:
+            name: "wallet-fill"
+            size: "l"
+          subtitle: "Test tickets"
+          title: "107 Tests"
+          description: "Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem."
+        - icon:
+            name: "file-code-fill"
+            size: "l"
+          subtitle: "Test variants"
+          title: "5670 Variants"
+          description: "Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum."
+        - icon:
+            name: "puzzle-fill"
+            size: "l"
+          subtitle: "Jira ticket"
+          title: "345 Dev Ticket"
+          description: "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor. "
+        - icon:
+            name: "eye-fill"
+            size: "l"
+          subtitle: "Figma components"
+          title: "43 Components"
+          description: "Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur."
+  assertions:
+    count:
+      'div.bcl-fact-figures.bcl-fact-figures--default': 1
+      'h4.fw-bold': 1
+      'div.row-cols-md-1.row.row-cols-1.g-4.mt-3': 1
+      'svg.bi.icon--l': 6
+      'h3.text-capitalize.fw-bold.mt-2': 6
+      'h5.fw-bold': 6
+    contains:
+      'use__icon_x-diamond-fill': "x-diamond-fill"
+      'use__icon_ui-checks': "ui-checks"
+      'use__icon_wallet-fill': "wallet-fill"
+      'use__icon_file-code-fill': "file-code-fill"
+      'use__icon_puzzle-fill': "puzzle-fill"
+      'use__icon_eye-fill': "eye-fill"
+      'h3__fact_title_1': "1529 JIRA Ticket"
+      'h3__fact_title_2': "337 Features"
+      'h3__fact_title_3': "107 Tests"
+      'h3__fact_title_4': "5670 Variants"
+      'h3__fact_title_5': "345 Dev Ticket"
+      'h3__fact_title_6': "43 Components"
+      'h5__fact_subtitle_1': "Jira Tickets"
+      'h5__fact_subtitle_2': "Feature tickets"
+      'h5__fact_subtitle_3': "Test tickets"
+      'h5__fact_subtitle_4': "Test variants"
+      'h5__fact_subtitle_5': "Jira ticket"
+      'h5__fact_subtitle_6': "Figma components"
+    equals:
+      'a[href="/example"]': "Read more"
+fact_figures_default_2col:
+  render:
+    '#type': pattern
+    '#id': fact_figures
+    '#fields':
+      settings:
+        variant: 'default'
+        display_icons: true
+        responsive_columns: 2
+        grid_columns: 2
+        gutter: 5
+        equal_height: true
+      link:
+        label: 'European Commission'
+        path: 'http://link-1.com'
+        icon:
+          path: "/icons.svg"
+      icons_path: "/assets/icons/bootstrap-icons.svg"
+      link_more:
+        label: 'Read more'
+        path: '/example'
+      title: "Fact and figures block"
+      items:
+        - icon:
+            name: "x-diamond-fill"
+            size: "l"
+          subtitle: "Jira Tickets"
+          title: "1529 JIRA Ticket"
+          description: "Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum liber"
+        - icon:
+            name: "ui-checks"
+          subtitle: "Feature tickets"
+          title: "337 Features"
+          description: "Turpis varius congue venenatis, erat dui feugiat felis."
+        - icon:
+            name: "wallet-fill"
+            size: "l"
+          subtitle: "Test tickets"
+          title: "107 Tests"
+          description: "Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem."
+        - icon:
+            name: "file-code-fill"
+            size: "l"
+          subtitle: "Test variants"
+          title: "5670 Variants"
+          description: "Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum."
+        - icon:
+            name: "puzzle-fill"
+            size: "l"
+          subtitle: "Jira ticket"
+          title: "345 Dev Ticket"
+          description: "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor. "
+        - icon:
+            name: "eye-fill"
+            size: "l"
+          subtitle: "Figma components"
+          title: "43 Components"
+          description: "Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur."
+  assertions:
+    count:
+      'div.bcl-fact-figures.bcl-fact-figures--default': 1
+      'h4.fw-bold': 1
+      'div.row-cols-md-2.row.row-cols-2.g-5.mt-3': 1
+      'svg.bi.icon--l': 6
+      'h3.text-capitalize.fw-bold.mt-2': 6
+      'h5.fw-bold': 6
+    contains:
+      'use__icon_x-diamond-fill': "x-diamond-fill"
+      'use__icon_ui-checks': "ui-checks"
+      'use__icon_wallet-fill': "wallet-fill"
+      'use__icon_file-code-fill': "file-code-fill"
+      'use__icon_puzzle-fill': "puzzle-fill"
+      'use__icon_eye-fill': "eye-fill"
+      'h3__fact_title_1': "1529 JIRA Ticket"
+      'h3__fact_title_2': "337 Features"
+      'h3__fact_title_3': "107 Tests"
+      'h3__fact_title_4': "5670 Variants"
+      'h3__fact_title_5': "345 Dev Ticket"
+      'h3__fact_title_6': "43 Components"
+      'h5__fact_subtitle_1': "Jira Tickets"
+      'h5__fact_subtitle_2': "Feature tickets"
+      'h5__fact_subtitle_3': "Test tickets"
+      'h5__fact_subtitle_4': "Test variants"
+      'h5__fact_subtitle_5': "Jira ticket"
+      'h5__fact_subtitle_6': "Figma components"
+    equals:
+      'a[href="/example"]': "Read more"
+fact_figures_default_3col:
+  render:
+    '#type': pattern
+    '#id': fact_figures
+    '#fields':
+      settings:
+        variant: 'default'
+        display_icons: true
+        responsive_columns: 3
+        grid_columns: 3
+        gutter: 6
+        equal_height: true
+      link:
+        label: 'European Commission'
+        path: 'http://link-1.com'
+        icon:
+          path: "/icons.svg"
+      icons_path: "/assets/icons/bootstrap-icons.svg"
+      link_more:
+        label: 'Read more'
+        path: '/example'
+      title: "Fact and figures block"
+      items:
+        - icon:
+            name: "x-diamond-fill"
+            size: "l"
+          subtitle: "Jira Tickets"
+          title: "1529 JIRA Ticket"
+          description: "Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum liber"
+        - icon:
+            name: "ui-checks"
+          subtitle: "Feature tickets"
+          title: "337 Features"
+          description: "Turpis varius congue venenatis, erat dui feugiat felis."
+        - icon:
+            name: "wallet-fill"
+            size: "l"
+          subtitle: "Test tickets"
+          title: "107 Tests"
+          description: "Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem."
+        - icon:
+            name: "file-code-fill"
+            size: "l"
+          subtitle: "Test variants"
+          title: "5670 Variants"
+          description: "Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum."
+        - icon:
+            name: "puzzle-fill"
+            size: "l"
+          subtitle: "Jira ticket"
+          title: "345 Dev Ticket"
+          description: "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor. "
+        - icon:
+            name: "eye-fill"
+            size: "l"
+          subtitle: "Figma components"
+          title: "43 Components"
+          description: "Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur."
+  assertions:
+    count:
+      'div.bcl-fact-figures.bcl-fact-figures--default': 1
+      'h4.fw-bold': 1
+      'div.row-cols-md-3.row.row-cols-3.g-6.mt-3': 1
+      'svg.bi.icon--l': 6
+      'h3.text-capitalize.fw-bold.mt-2': 6
+      'h5.fw-bold': 6
+    contains:
+      'use__icon_x-diamond-fill': "x-diamond-fill"
+      'use__icon_ui-checks': "ui-checks"
+      'use__icon_wallet-fill': "wallet-fill"
+      'use__icon_file-code-fill': "file-code-fill"
+      'use__icon_puzzle-fill': "puzzle-fill"
+      'use__icon_eye-fill': "eye-fill"
+      'h3__fact_title_1': "1529 JIRA Ticket"
+      'h3__fact_title_2': "337 Features"
+      'h3__fact_title_3': "107 Tests"
+      'h3__fact_title_4': "5670 Variants"
+      'h3__fact_title_5': "345 Dev Ticket"
+      'h3__fact_title_6': "43 Components"
+      'h5__fact_subtitle_1': "Jira Tickets"
+      'h5__fact_subtitle_2': "Feature tickets"
+      'h5__fact_subtitle_3': "Test tickets"
+      'h5__fact_subtitle_4': "Test variants"
+      'h5__fact_subtitle_5': "Jira ticket"
+      'h5__fact_subtitle_6': "Figma components"
+    equals:
+      'a[href="/example"]': "Read more"
+fact_figures_block_3col:
+  render:
+    '#type': pattern
+    '#id': fact_figures
+    '#fields':
+      settings:
+        variant: 'block'
+        display_icons: true
+        responsive_columns: 3
+        grid_columns: 3
+        gutter: 6
+        equal_height: true
+      link:
+        label: 'European Commission'
+        path: 'http://link-1.com'
+        icon:
+          path: "/icons.svg"
+      icons_path: "/assets/icons/bootstrap-icons.svg"
+      link_more:
+        label: 'Read more'
+        path: '/example'
+      title: "Fact and figures block"
+      items:
+        - icon:
+            name: "x-diamond-fill"
+            size: "l"
+          subtitle: "Jira Tickets"
+          title: "1529 JIRA Ticket"
+          description: "Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum liber"
+        - icon:
+            name: "ui-checks"
+          subtitle: "Feature tickets"
+          title: "337 Features"
+          description: "Turpis varius congue venenatis, erat dui feugiat felis."
+        - icon:
+            name: "wallet-fill"
+            size: "l"
+          subtitle: "Test tickets"
+          title: "107 Tests"
+          description: "Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem."
+        - icon:
+            name: "file-code-fill"
+            size: "l"
+          subtitle: "Test variants"
+          title: "5670 Variants"
+          description: "Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum."
+        - icon:
+            name: "puzzle-fill"
+            size: "l"
+          subtitle: "Jira ticket"
+          title: "345 Dev Ticket"
+          description: "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor. "
+        - icon:
+            name: "eye-fill"
+            size: "l"
+          subtitle: "Figma components"
+          title: "43 Components"
+          description: "Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur."
+  assertions:
+    count:
+      'div.bcl-fact-figures.bcl-fact-figures--block': 1
+      'h4.fw-bold': 1
+      'div.row-cols-md-3.row.row-cols-3.g-6.mt-3': 1
+      'svg.bi.icon--l': 6
+      'h3.text-capitalize.fw-bold.mt-2': 6
+      'h5.fw-bold': 6
+    contains:
+      'use__icon_x-diamond-fill': "x-diamond-fill"
+      'use__icon_ui-checks': "ui-checks"
+      'use__icon_wallet-fill': "wallet-fill"
+      'use__icon_file-code-fill': "file-code-fill"
+      'use__icon_puzzle-fill': "puzzle-fill"
+      'use__icon_eye-fill': "eye-fill"
+      'h3__fact_title_1': "1529 JIRA Ticket"
+      'h3__fact_title_2': "337 Features"
+      'h3__fact_title_3': "107 Tests"
+      'h3__fact_title_4': "5670 Variants"
+      'h3__fact_title_5': "345 Dev Ticket"
+      'h3__fact_title_6': "43 Components"
+      'h5__fact_subtitle_1': "Jira Tickets"
+      'h5__fact_subtitle_2': "Feature tickets"
+      'h5__fact_subtitle_3': "Test tickets"
+      'h5__fact_subtitle_4': "Test variants"
+      'h5__fact_subtitle_5': "Jira ticket"
+      'h5__fact_subtitle_6': "Figma components"
+    equals:
+      'a[href="/example"]': "Read more"
