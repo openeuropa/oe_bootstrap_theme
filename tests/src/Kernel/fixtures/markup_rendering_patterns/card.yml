@@ -115,7 +115,7 @@ card_variant_search:
       'span.me-2.badge.bg-primary': 1
       'span.badge.bg-primary': 2
     equals:
-      'a.card-title.fs-5.text-underline-hover.mb-2': "Title card"
+      'a.card-title': "Title card"
       'p.card-text.mb-3': "Text card with longer text which is supported"
     contains:
       'span.me-2.badge.bg-primary': "Category 1"
