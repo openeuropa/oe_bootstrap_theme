@@ -71,10 +71,11 @@ card:
       label: "Image"
       description: "Card image [path, alt, position]"
       preview:
-        path: "https://placeimg.com/1000/500/arch"
+        path: "https://placeimg.com/1000/500/people"
         alt: "Alternative text for card image"
         position: "top"
         rounded: 3
+        '#markup': "https://placeimg.com/1000/500/tech"
     content:
       type: "render"
       label: "Content"
