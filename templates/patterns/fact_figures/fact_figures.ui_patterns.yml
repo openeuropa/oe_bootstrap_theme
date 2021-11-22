@@ -1,0 +1,92 @@
+fact-figures:
+  label: "Fact and Figures"
+  description: "Fact and Figures pattern used for the paragraph of same type."
+  settings:
+    variant:
+      type: select
+      label: Variant
+      description: "Variant of the composition"
+      options:
+        default: default
+        block: block
+    display_icons:
+      type: boolean
+      label: "icons visibility"
+      description: "Toggle icon visibility"
+      preview: true
+    grid_columns:
+      type: number
+      label: "Columns number"
+      description: "One, two or three columns layout"
+      preview: 3
+    gutter:
+      type: number
+      label: "Gutter"
+      description: "Gutters between elements."
+      preview: 4
+    equal_height:
+      type: boolean
+      label: "Equal height"
+      description: "Equal height between each item."
+      preview: true
+  fields:
+    items:
+      type: "array"
+      label: "List items"
+      description: "List of items"
+      preview:
+        - icon:
+            name: "x-diamond-fill"
+            size: "l"
+          subtitle: "Jira Tickets"
+          title: "1529 JIRA Ticket"
+          description: "Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum liber"
+        - icon:
+            name: "ui-checks"
+          subtitle: "Feature tickets"
+          title: "337 Features"
+          description: "Turpis varius congue venenatis, erat dui feugiat felis."
+        - icon:
+            name: "wallet-fill"
+            size: "l"
+          subtitle: "Test tickets"
+          title: "107 Tests"
+          description: "Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem."
+        - icon:
+            name: "file-code-fill"
+            size: "l"
+          subtitle: "Test variants"
+          title: "5670 Variants"
+          description: "Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum."
+        - icon:
+            name: "puzzle-fill"
+            size: "l"
+          subtitle: "Jira ticket"
+          title: "345 Dev Ticket"
+          description: "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor. "
+        - icon:
+            name: "eye-fill"
+            size: "l"
+          subtitle: "Figma components"
+          title: "43 Components"
+          description: "Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur."
+    cols_extra_classes:
+      type: textfield
+      label: "Column extra classes"
+      description: "Extra classes for the columns."
+    responsiveness:
+      type: textfield
+      label: "Responsiveness"
+      description: "Responsiveness for the elements."
+    icons_path:
+      type: textfield
+      label: "Icons path"
+      description: "Path where the icons will be found."
+      preview: "/assets/icons/bootstrap-icons.svg"
+    link_more:
+      type: object
+      label: "Link more"
+      description: "When a link more will be added, this is an object of type link."
+      preview:
+        label: 'Read more'
+        path: '/example'
