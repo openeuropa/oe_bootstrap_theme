@@ -4,7 +4,7 @@ fact_figures_default_1col:
     '#id': fact_figures
     '#fields':
       settings:
-        variant: 'default'
+        style: 'default'
         display_icons: true
         responsive_columns: 1
         grid_column: 1
@@ -91,7 +91,7 @@ fact_figures_default_2col:
     '#id': fact_figures
     '#fields':
       settings:
-        variant: 'default'
+        style: 'default'
         display_icons: true
         responsive_columns: 2
         grid_columns: 2
@@ -178,7 +178,7 @@ fact_figures_default_3col:
     '#id': fact_figures
     '#fields':
       settings:
-        variant: 'default'
+        style: 'default'
         display_icons: true
         responsive_columns: 3
         grid_columns: 3
@@ -265,7 +265,7 @@ fact_figures_block_3col:
     '#id': fact_figures
     '#fields':
       settings:
-        variant: 'block'
+        style: 'block'
         display_icons: true
         responsive_columns: 3
         grid_columns: 3

@@ -2,13 +2,14 @@ fact_figures:
   label: "Fact and Figures"
   description: "Fact and Figures pattern used for the paragraph of same type."
   settings:
-    variant:
+    style:
       type: select
       label: Variant
       description: "Variant of the composition"
       options:
         default: default
         block: block
+      preview: default
     display_icons:
       type: boolean
       label: "icons visibility"
