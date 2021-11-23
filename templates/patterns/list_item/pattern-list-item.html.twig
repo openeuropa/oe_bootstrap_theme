@@ -34,8 +34,10 @@ Parameters:
     {% set _text_classes = 'mb-3' %}
   {% endif %}
 
-  {% if date.attributes is not defined %}
-    {% set date = date|merge({ 'attributes': create_attribute() }) %}
+  {% if date %}
+    {% if date.attributes is not defined %}
+      {% set date = date|merge({ 'attributes': create_attribute() }) %}
+    {% endif %}
   {% endif %}
 
   {% include '@oe-bcl/bcl-card/card.html.twig' with {
