@@ -15,7 +15,7 @@ use Symfony\Component\DomCrawler\Crawler;
 /**
  * Tests the rendering for timeline paragraph type.
  */
-class TimelineParagraphsTest extends ParagraphsTestBase {
+class TimelineParagraphTest extends ParagraphsTestBase {
 
   /**
    * {@inheritdoc}

@@ -76,6 +76,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'spinner',
     'table',
     'tooltip',
+    'timeline',
   ];
 
   /**
