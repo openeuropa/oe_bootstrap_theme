@@ -24,10 +24,10 @@ links_block_vertical_gray:
       'li.list-unstyled.me-4-5': 2
       'a.pb-3.d-inline-block': 3
     equals:
-      'h5': "Title Link Block"
-      'ul li:nth-child(1) a[href="https://example.com"]': "Link number one"
-      'ul li:nth-child(2) a[href="https://google.com"]': "Link number two"
-      'ul li:nth-child(3) a[href="https://europa.eu"]': "More channels"
+      'div.bg-light > h5': "Title Link Block"
+      'div.bg-light > ul > li.list-unstyled.me-4-5:nth-child(1) a[href="https://example.com"]': "Link number one"
+      'div.bg-light > ul > li.list-unstyled.me-4-5:nth-child(2) a[href="https://google.com"]': "Link number two"
+      'div.bg-light > ul > li.list-unstyled:nth-child(3) a[href="https://europa.eu"]': "More channels"
 links_block_horizontal_gray:
   render:
     '#type': pattern
@@ -54,10 +54,10 @@ links_block_horizontal_gray:
       'li.list-unstyled.me-4-5': 2
       'a.pb-3.d-inline-block': 3
     equals:
-      'h5': "Title Link Block"
-      'ul li:nth-child(1) a[href="https://example.com"]': "Link number one"
-      'ul li:nth-child(2) a[href="https://google.com"]': "Link number two"
-      'ul li:nth-child(3) a[href="https://europa.eu"]': "More channels"
+      'div.bg-light > h5': "Title Link Block"
+      'div.bg-light > ul > li.list-unstyled.d-inline.me-4-5:nth-child(1) a[href="https://example.com"]': "Link number one"
+      'div.bg-light > ul > li.list-unstyled.d-inline.me-4-5:nth-child(2) a[href="https://google.com"]': "Link number two"
+      'div.bg-light > ul > li.list-unstyled.d-inline:nth-child(3) a[href="https://europa.eu"]': "More channels"
 links_block_vertical_transparent:
   render:
     '#type': pattern
@@ -84,10 +84,10 @@ links_block_vertical_transparent:
       'li.list-unstyled.me-4-5': 2
       'a.pb-3.d-inline-block': 3
     equals:
-      'h5': "Title Link Block"
-      'ul li:nth-child(1) a[href="https://example.com"]': "Link number one"
-      'ul li:nth-child(2) a[href="https://google.com"]': "Link number two"
-      'ul li:nth-child(3) a[href="https://europa.eu"]': "More channels"
+      'div > h5': "Title Link Block"
+      'div > ul > li.list-unstyled.me-4-5:nth-child(1) a[href="https://example.com"]': "Link number one"
+      'div > ul > li.list-unstyled.me-4-5:nth-child(2) a[href="https://google.com"]': "Link number two"
+      'div > ul > li.list-unstyled:nth-child(3) a[href="https://europa.eu"]': "More channels"
 links_block_horizontal_transparent:
   render:
     '#type': pattern
@@ -114,7 +114,7 @@ links_block_horizontal_transparent:
       'li.list-unstyled.me-4-5': 2
       'a.pb-3.d-inline-block': 3
     equals:
-      'h5': "Title Link Block"
-      'ul li:nth-child(1) a[href="https://example.com"]': "Link number one"
-      'ul li:nth-child(2) a[href="https://google.com"]': "Link number two"
-      'ul li:nth-child(3) a[href="https://europa.eu"]': "More channels"
+      'div > h5': "Title Link Block"
+      'div > ul > li.list-unstyled.d-inline:nth-child(1) a[href="https://example.com"]': "Link number one"
+      'div > ul > li.list-unstyled.d-inline:nth-child(2) a[href="https://google.com"]': "Link number two"
+      'div > ul > li.list-unstyled.d-inline:nth-child(3) a[href="https://europa.eu"]': "More channels"
