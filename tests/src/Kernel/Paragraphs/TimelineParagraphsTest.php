@@ -209,7 +209,6 @@ class TimelineParagraphsTest extends ParagraphsTestBase {
    * Create content type, field format and timeline field.
    */
   protected function create(): void {
-
     // Display options for formatter.
     $displayOptions = [
       'type' => 'timeline_formatter',
