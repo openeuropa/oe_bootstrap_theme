@@ -2,16 +2,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_oe_links_block_variant
+    - field.storage.paragraph.oe_bt_links_block_direction
     - paragraphs.paragraphs_type.oe_links_block
   module:
     - options
-id: paragraph.oe_links_block.field_oe_links_block_variant
-field_name: field_oe_links_block_variant
+id: paragraph.oe_links_block.oe_bt_links_block_direction
+field_name: oe_bt_links_block_direction
 entity_type: paragraph
 bundle: oe_links_block
 label: Variant
-description: ''
+description: 'Allows to select the direction of the links block.'
 required: false
 translatable: false
 default_value:

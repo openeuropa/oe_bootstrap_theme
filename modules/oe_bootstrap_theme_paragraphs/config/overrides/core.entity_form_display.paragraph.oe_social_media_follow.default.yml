@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.oe_social_media_follow.field_oe_links_block_background
+    - field.field.paragraph.oe_social_media_follow.oe_bt_links_block_background
     - field.field.paragraph.oe_social_media_follow.field_oe_social_media_links
     - field.field.paragraph.oe_social_media_follow.field_oe_social_media_see_more
     - field.field.paragraph.oe_social_media_follow.field_oe_social_media_variant
@@ -16,7 +16,7 @@ targetEntityType: paragraph
 bundle: oe_social_media_follow
 mode: default
 content:
-  field_oe_links_block_background:
+  oe_bt_links_block_background:
     type: options_select
     weight: 1
     region: content

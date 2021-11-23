@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.oe_social_media_follow.field_oe_links_block_background
+    - field.field.paragraph.oe_social_media_follow.oe_bt_links_block_background
     - field.field.paragraph.oe_social_media_follow.field_oe_social_media_links
     - field.field.paragraph.oe_social_media_follow.field_oe_social_media_see_more
     - field.field.paragraph.oe_social_media_follow.field_oe_social_media_variant
@@ -49,5 +49,5 @@ content:
     type: string
     region: content
 hidden:
-  field_oe_links_block_background: true
+  oe_bt_links_block_background: true
   field_oe_social_media_variant: true

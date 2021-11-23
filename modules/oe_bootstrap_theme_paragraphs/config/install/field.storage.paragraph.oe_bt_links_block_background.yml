@@ -4,23 +4,23 @@ dependencies:
   module:
     - options
     - paragraphs
-id: paragraph.field_oe_links_block_variant
-field_name: field_oe_links_block_variant
+id: paragraph.oe_bt_links_block_background
+field_name: oe_bt_links_block_background
 entity_type: paragraph
 type: list_string
 settings:
   allowed_values:
     -
-      value: horizontal
-      label: horizontal
+      value: gray
+      label: Gray
     -
-      value: vertical
-      label: vertical
+      value: transparent
+      label: Transparent
   allowed_values_function: ''
 module: options
 locked: false
 cardinality: 1
-translatable: false
+translatable: true
 indexes: {  }
 persist_with_no_fields: false
 custom_storage: false

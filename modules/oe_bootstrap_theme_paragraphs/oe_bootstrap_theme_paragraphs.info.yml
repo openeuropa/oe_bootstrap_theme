@@ -1,13 +1,15 @@
 name: OpenEuropa Bootstrap Theme Paragraphs
 type: module
-description: OpenEuropa Bootstrap Theme Paragrahs module.
+description: Companion module to add support and customisations for oe_paragraphs.
 package: OpenEuropa Bootstrap Theme
 core_version_requirement: ^8.9 || ^9.1
-
+dependencies:
+  - oe_paragraphs:oe_paragraphs
+  - oe_bootstrap_theme:oe_bootstrap_theme_helper
 config_devel:
   install:
-    - field.field.paragraph.oe_links_block.field_oe_links_block_background
-    - field.field.paragraph.oe_links_block.field_oe_links_block_variant
-    - field.field.paragraph.oe_social_media_follow.field_oe_links_block_background
-    - field.storage.paragraph.field_oe_links_block_variant
-    - field.storage.paragraph.field_oe_links_block_background
+    - field.field.paragraph.oe_links_block.oe_bt_links_block_background
+    - field.field.paragraph.oe_links_block.oe_bt_links_block_direction
+    - field.field.paragraph.oe_social_media_follow.oe_bt_links_block_background
+    - field.storage.paragraph.oe_bt_links_block_direction
+    - field.storage.paragraph.oe_bt_links_block_background

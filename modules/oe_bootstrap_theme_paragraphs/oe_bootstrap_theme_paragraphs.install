@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Hook implementations for OpenEuropa Bootstrap Theme Helper module.
+ * Install and update functions for the OE Bootstrap Theme Paragraphs module.
  */
 
 declare(strict_types = 1);
@@ -11,9 +11,15 @@ use Drupal\Core\Config\FileStorage;
 
 /**
  * Implements hook_install().
+ *
+ * Customise fields for bootstrap theme paragraphs.
  */
-function oe_bootstrap_theme_paragraphs_install(): void {
-  $storage = new FileStorage(drupal_get_path('module', 'oe_bootstrap_theme_paragraphs') . '/config/updates/');
+function oe_bootstrap_theme_paragraphs_install($is_syncing): void {
+  // If we are installing from config, we bail out.
+  if ($is_syncing) {
+    return;
+  }
+  $storage = new FileStorage(drupal_get_path('module', 'oe_bootstrap_theme_paragraphs') . '/config/overrides/');
   $config_manager = \Drupal::service('config.manager');
   $entity_type_manager = \Drupal::entityTypeManager();
 
@@ -38,23 +44,4 @@ function oe_bootstrap_theme_paragraphs_install(): void {
     $entity = $entity_storage->updateFromStorageRecord($entity, $configuration);
     $entity->save();
   }
-}
-
-/**
- * Implements hook_requirements().
- */
-function oe_bootstrap_theme_paragraphs_requirements($phase): array {
-  $requirements = [];
-
-  if ($phase !== 'runtime') {
-    return $requirements;
-  }
-  if (\Drupal::moduleHandler()->moduleExists('oe_paragraphs')) {
-    $requirements['oe_bootstrap_theme_paragraphs'] = [
-      'description' => t('OpenEuropa Paragraphs is required by oe_bootstrap_theme_paragraphs module.'),
-      'severity' => REQUIREMENT_ERROR,
-    ];
-  }
-
-  return $requirements;
 }
