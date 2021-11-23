@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Template for a Timeline component.
+ *
+ */
+#}
+{% include '@oe-bcl/bcl-timeline/timeline.html.twig' with {
+  toggle_collapsed: toggle_collapsed,
+  toggle_expanded: toggle_expanded,
+  hide: {
+    from: hide_from,
+    to: hide_to,
+  },
+  items: items,
+  icons_path: bcl_icon_path,
+} %}
+

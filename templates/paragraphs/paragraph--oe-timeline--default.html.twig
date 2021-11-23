@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Theme override to display the 'timeline' #type paragraph.
+ *
+ * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
+ */
+#}
+{{
+  pattern('timeline', {
+    toggle_collapsed: toggle_collapsed,
+    toggle_expanded: toggle_expanded,
+    hide_from: hide_from,
+    hide_to: hide_to,
+    items: content.items,
+    icons_path: icons_path,
+  })
+}}
