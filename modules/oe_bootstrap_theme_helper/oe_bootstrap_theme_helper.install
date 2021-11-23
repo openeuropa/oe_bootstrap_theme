@@ -16,7 +16,7 @@ function oe_bootstrap_theme_helper_requirements($phase): array {
   if (\Drupal::moduleHandler()->moduleExists('oe_paragraphs') && !\Drupal::moduleHandler()->moduleExists('oe_bootstrap_theme_paragraphs')) {
     $requirements['oe_bootstrap_theme_paragraphs'] = [
       'title' => 'OpenEuropa Bootstrap Theme Paragraphs',
-      'description' => t('OpenEuropa Paragraphs is required by oe_bootstrap_theme_paragraphs module.'),
+      'description' => t('OpenEuropa Bootstrap Theme Paragraphs is required if OE Paragraphs is enabled.'),
       'severity' => REQUIREMENT_ERROR,
     ];
   }
