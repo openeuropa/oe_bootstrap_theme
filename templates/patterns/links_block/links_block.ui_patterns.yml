@@ -1,5 +1,5 @@
 links_block:
-    label: "Link block"
+    label: "Links block"
     description: "List of links with an optional header."
     settings:
       background:
