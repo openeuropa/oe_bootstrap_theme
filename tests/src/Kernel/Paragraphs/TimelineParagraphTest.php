@@ -21,7 +21,6 @@ class TimelineParagraphTest extends ParagraphsTestBase {
    * {@inheritdoc}
    */
   protected static $modules = [
-    'oe_content',
     'oe_content_timeline_field',
     'oe_paragraphs_timeline',
   ];
