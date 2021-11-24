@@ -18,9 +18,13 @@ class ParagraphsTest extends BrowserTestBase {
    * {@inheritdoc}
    */
   protected static $modules = [
+    'config',
+    'system',
     'node',
     'field_ui',
     'oe_bootstrap_theme_paragraphs',
+    'oe_bootstrap_theme_helper',
+    'oe_content_timeline_field',
   ];
 
   /**
