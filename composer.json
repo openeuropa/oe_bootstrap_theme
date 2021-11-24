@@ -23,7 +23,7 @@
         "openeuropa/drupal-core-require-dev": "^8.9 || ^9.1",
         "openeuropa/oe_media": "^1.14",
         "openeuropa/oe_paragraphs": "^1.10",
-        "openeuropa/oe_content":"^2.0",
+        "openeuropa/oe_content": "^2.0",
         "openeuropa/task-runner-drupal-project-symlink": "^1.0",
         "phpspec/prophecy-phpunit": "^1 || ^2"
     },
