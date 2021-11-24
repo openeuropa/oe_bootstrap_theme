@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Functional;
 
+use Drupal\Core\Url;
 use Drupal\Tests\BrowserTestBase;
 
 /**
@@ -15,14 +16,8 @@ class ParagraphsTest extends BrowserTestBase {
    * {@inheritdoc}
    */
   protected static $modules = [
-    'config',
-    'system',
     'node',
-    'options',
-    'field',
     'field_ui',
-    'link',
-    'text',
     'oe_bootstrap_theme_paragraphs',
   ];
 
@@ -32,24 +27,47 @@ class ParagraphsTest extends BrowserTestBase {
   protected $defaultTheme = 'stark';
 
   /**
+   * The administration theme name.
+   *
+   * @var string
+   */
+  protected $adminTheme = 'stark';
+
+  /**
+   * A user with administration permissions.
+   *
+   * @var \Drupal\user\UserInterface
+   */
+  protected $adminUser;
+
+  /**
    * {@inheritdoc}
    */
   protected function setUp(): void {
     parent::setUp();
 
-    // Enable and set OpenEuropa Bootstrap Theme as default.
-    \Drupal::service('theme_installer')->install(['oe_bootstrap_theme']);
-    \Drupal::configFactory()
-      ->getEditable('system.theme')
-      ->set('default', 'oe_bootstrap_theme')
-      ->set('admin', 'oe_bootstrap_theme')
-      ->save();
-
     // Rebuild the ui_pattern definitions to collect the ones provided by
     // oe_bootstrap_theme itself.
     \Drupal::service('plugin.manager.ui_patterns')->clearCachedDefinitions();
 
-    $this->loginAdminUser();
+    $this->adminUser = $this->drupalCreateUser([
+      'access content',
+      'access administration pages',
+      'administer site configuration',
+      'administer users',
+      'administer permissions',
+      'administer content types',
+      'administer node fields',
+      'administer node display',
+      'administer nodes',
+      'bypass node access',
+    ]);
+    $this->drupalGet(Url::fromRoute('user.login'));
+    $this->drupalLogin($this->adminUser);
+    $this->drupalCreateContentType([
+      'type' => 'paragraphs_test',
+      'name' => 'Paragraphs Test',
+    ]);
     $this->createContentTypeTestWithParagraphs();
   }
 
@@ -88,10 +106,6 @@ class ParagraphsTest extends BrowserTestBase {
     $this->assertSession()->pageTextContains('EU Links');
     $this->assertSession()->pageTextContains('Example link number 1');
     $this->assertSession()->pageTextContains('Example link number 2');
-    $this->assertSession()->elementExists('css', 'div.bg-light.px-4.py-3');
-    $this->assertSession()->elementExists('css', 'h5.fw-bold.pb-3.mb-3.border-bottom');
-    $this->assertSession()->elementExists('css', 'ul.ps-0.mb-0');
-    $this->assertSession()->elementExists('css', 'li.list-unstyled.me-4-5');
   }
 
   /**
@@ -133,25 +147,12 @@ class ParagraphsTest extends BrowserTestBase {
     $this->assertSession()->pageTextContains('EU Social Media Follow Links');
     $this->assertSession()->pageTextContains('Example Facebook');
     $this->assertSession()->pageTextContains('More channels');
-    $this->assertSession()->elementNotExists('css', 'div.bg-light.px-4.py-3');
-    $this->assertSession()->elementExists('css', 'h5.fw-bold.pb-3.mb-3.border-bottom');
-    $this->assertSession()->elementExists('css', 'ul.ps-0.mb-0');
-    $this->assertSession()->elementExists('css', 'li.list-unstyled.d-inline');
-    $this->assertSession()->elementExists('css', 'svg.me-2-5.bi.icon--s');
   }
 
   /**
    * Create content type with paragraphs field.
    */
   protected function createContentTypeTestWithParagraphs(): void {
-    // Use the UI to add a new content type that contains a paragraphs field.
-    $this->drupalGet('/admin/structure/types/add');
-    $edit = [
-      'name' => 'Paragraphs Tests',
-      'type' => 'paragraphs_test',
-    ];
-
-    $this->submitForm($edit, 'Save and manage fields');
     $edit = [
       'new_storage_type' => 'field_ui:entity_reference_revisions:paragraph',
       'field_name' => 'oe_bt_paragraphs',
@@ -161,15 +162,6 @@ class ParagraphsTest extends BrowserTestBase {
     $this->submitForm($edit, 'Save and continue');
     $this->submitForm([], 'Save field settings');
     $this->submitForm([], 'Save settings');
-  }
-
-  /**
-   * Create user admin and login in.
-   */
-  protected function loginAdminUser(): void {
-    // Add user.
-    $user = $this->drupalCreateUser([], '', TRUE);
-    $this->drupalLogin($user);
   }
 
 }
