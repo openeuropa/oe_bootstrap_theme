@@ -18,6 +18,13 @@ use Symfony\Component\DomCrawler\Crawler;
 class TimelineParagraphTest extends ParagraphsTestBase {
 
   /**
+   * The paragraph storage.
+   *
+   * @var \Drupal\paragraphs\ParagraphInterface
+   */
+  protected $paragraphInterface;
+
+  /**
    * {@inheritdoc}
    */
   protected static $modules = [
@@ -179,26 +186,48 @@ class TimelineParagraphTest extends ParagraphsTestBase {
    * @dataProvider timelineDataProvider
    */
   public function testTimelineRender(array $values, array $button, array $titles, array $content): void {
-    // Paragraph timeline values.
-    $paragraph_storage = $this->container->get('entity_type.manager')->getStorage('paragraph');
-    $paragraph = $paragraph_storage->create([
-      'type' => 'oe_timeline',
-      'field_oe_title' => 'Timeline',
-      'field_oe_timeline' => $values,
-      'hide_from' => 4,
-    ]);
-    $paragraph->save();
-    $html = $this->renderParagraph($paragraph);
+    // Create paragraph to hide some items.
+    $this->createParagraph($values, 3);
+    $html = $this->renderParagraph($this->paragraphInterface);
     $crawler = new Crawler($html);
 
     // Asserting values.
     $this->assertCount(9, $crawler->filter('h5'));
     $this->assertCount(1, $crawler->filter('button'));
+    $this->assertCount(4, $crawler->filter('li.collapse'));
     $this->assertStringContainsString('#chevron-down', trim($crawler->filter('use')->attr('xlink:href')));
     $more_items_button = $crawler->filter('.label-collapsed')->text();
     $this->assertSame($button['show_items'], $more_items_button);
     $hide_items_button = $crawler->filter('.label-expanded')->text();
     $this->assertSame($button['hide_items'], $hide_items_button);
+    $paragraph_titles = $crawler->filter('h5')->extract(['_text']);
+    $this->assertSame($titles, $paragraph_titles);
+    $paragraph_content = $crawler->filter('a')->extract(['_text']);
+    $this->assertSame($content, $paragraph_content);
+
+    // Create paragraph hiding 0 items.
+    $this->createParagraph($values, 0);
+    $html = $this->renderParagraph($this->paragraphInterface);
+    $crawler = new Crawler($html);
+
+    // Asserting values.
+    $this->assertCount(9, $crawler->filter('h5'));
+    $this->assertCount(0, $crawler->filter('button'));
+    $this->assertCount(0, $crawler->filter('li.collapse'));
+    $paragraph_titles = $crawler->filter('h5')->extract(['_text']);
+    $this->assertSame($titles, $paragraph_titles);
+    $paragraph_content = $crawler->filter('a')->extract(['_text']);
+    $this->assertSame($content, $paragraph_content);
+
+    // Create paragraph to show all items.
+    $this->createParagraph($values, 10);
+    $html = $this->renderParagraph($this->paragraphInterface);
+    $crawler = new Crawler($html);
+
+    // Asserting values.
+    $this->assertCount(9, $crawler->filter('h5'));
+    $this->assertCount(0, $crawler->filter('button'));
+    $this->assertCount(0, $crawler->filter('li.collapse'));
     $paragraph_titles = $crawler->filter('h5')->extract(['_text']);
     $this->assertSame($titles, $paragraph_titles);
     $paragraph_content = $crawler->filter('a')->extract(['_text']);
@@ -263,6 +292,27 @@ class TimelineParagraphTest extends ParagraphsTestBase {
       'status' => TRUE,
     ])->setComponent($fieldStorage->getName(), $displayOptions)
       ->save();
+  }
+
+  /**
+   * Create the paragraph depending to hide form and to variables.
+   *
+   * @var array $values
+   *   Values to add to the timeline.
+   *
+   * @var int $from
+   *   Hide items from this value.
+   */
+  protected function createParagraph(array $values, int $from): void {
+    // Paragraph timeline values.
+    $paragraph_storage = $this->container->get('entity_type.manager')->getStorage('paragraph');
+    $this->paragraphInterface = $paragraph_storage->create([
+      'type' => 'oe_timeline',
+      'field_oe_title' => 'Timeline',
+      'field_oe_timeline' => $values,
+      'field_oe_timeline_expand' => $from,
+    ]);
+    $this->paragraphInterface->save();
   }
 
 }
