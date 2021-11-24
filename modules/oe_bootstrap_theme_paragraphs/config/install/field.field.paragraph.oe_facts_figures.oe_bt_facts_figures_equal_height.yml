@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.oe_bt_facts_figures_equal_height
+    - paragraphs.paragraphs_type.oe_facts_figures
+id: paragraph.oe_facts_figures.oe_bt_facts_figures_equal_height
+field_name: oe_bt_facts_figures_equal_height
+entity_type: paragraph
+bundle: oe_facts_figures
+label: 'Equal height'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

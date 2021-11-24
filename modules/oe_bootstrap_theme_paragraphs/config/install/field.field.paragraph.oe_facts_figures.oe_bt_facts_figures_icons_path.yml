@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.oe_bt_facts_figures_icons_path
+    - paragraphs.paragraphs_type.oe_facts_figures
+id: paragraph.oe_facts_figures.oe_bt_facts_figures_icons_path
+field_name: oe_bt_facts_figures_icons_path
+entity_type: paragraph
+bundle: oe_facts_figures
+label: 'Icons path'
+description: 'Add an existing path starting with slash ''/''.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

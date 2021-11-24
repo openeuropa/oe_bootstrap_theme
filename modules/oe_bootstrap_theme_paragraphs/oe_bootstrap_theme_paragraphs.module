@@ -527,3 +527,37 @@ function _oe_bootstrap_theme_featured_media_set_embedded_media(array &$variables
     $variables['ratio'] = str_replace('_', 'x', $ratio);
   }
 }
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$variables): void {
+  $paragraph = $variables['paragraph'];
+  if (!$paragraph->get('field_oe_title')->isEmpty()) {
+    $variables['title'] = $paragraph->get('field_oe_title')->value;
+  }
+  if (!$paragraph->get('field_oe_link')->isEmpty()) {
+    $variables['link_more']['path'] = $paragraph->get('field_oe_link')->first()->getUrl()->toString();
+    $variables['link_more']['label'] = $paragraph->get('field_oe_link')->first()->get('title')->getValue();
+  }
+  $variables['items'] = [];
+
+  /** @var \Drupal\paragraphs\Entity\Paragraph $sub_paragraph */
+  foreach ($paragraph->get('field_oe_paragraphs')->referencedEntities() as $sub_paragraph) {
+    // Get sub-paragraph translation.
+    $sub_paragraph = \Drupal::service('entity.repository')
+      ->getTranslationFromContext($sub_paragraph, $paragraph->language()->getId());
+    $variables['items'][] = [
+      'icon' => [
+        'name' => $sub_paragraph->get('field_oe_icon')->value,
+        'size' => "l",
+      ],
+      'title' => $sub_paragraph->get('field_oe_title')->value,
+      'subtitle' => $sub_paragraph->get('field_oe_subtitle')->value,
+      'description' => $sub_paragraph->get('field_oe_plain_text_long')->value,
+    ];
+  }
+
+  $variables['equal_height'] = TRUE;
+  $variables['icons_path'] = "/assets/icons/bootstrap-icons.svg";
+}
