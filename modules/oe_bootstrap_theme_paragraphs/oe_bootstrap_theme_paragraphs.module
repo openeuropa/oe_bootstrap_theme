@@ -557,7 +557,28 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$varia
       'description' => $sub_paragraph->get('field_oe_plain_text_long')->value,
     ];
   }
+  if (!$paragraph->get('oe_bt_facts_figures_equal_height')->isEmpty()) {
+    $variables['equal_height'] = $paragraph->get('oe_bt_facts_figures_equal_height')->value;
+  }
 
-  $variables['equal_height'] = TRUE;
+  if (!$paragraph->get('oe_bt_facts_figures_variant')->isEmpty()) {
+    $variables['style'] = $paragraph->get('oe_bt_facts_figures_variant')->value;
+  }
+
+  if (!$paragraph->get('oe_bt_facts_figures_disp_icons')->isEmpty()) {
+    $variables['display_icons'] = $paragraph->get('oe_bt_facts_figures_disp_icons')->value;
+  }
+
+  if (!$paragraph->get('oe_bt_facts_figures_resp_cols')->isEmpty()) {
+    $variables['responsive_columns'] = $paragraph->get('oe_bt_facts_figures_resp_cols')->value;
+  }
+
+  if (!$paragraph->get('oe_bt_facts_figures_grid_columns')->isEmpty()) {
+    $variables['grid_columns'] = $paragraph->get('oe_bt_facts_figures_grid_columns')->value;
+  }
+
   $variables['icons_path'] = "/assets/icons/bootstrap-icons.svg";
+  if (!$paragraph->get('oe_bt_facts_figures_icons_path')->isEmpty()) {
+    $variables['icons_path'] = $paragraph->get('oe_bt_facts_figures_icons_path')->value;
+  }
 }
