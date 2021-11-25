@@ -94,4 +94,9 @@ content:
     third_party_settings: {  }
     type: list_default
     region: content
-hidden: {  }
+hidden:
+  oe_bt_facts_figures_disp_icons: true
+  oe_bt_facts_figures_equal_height: true
+  oe_bt_facts_figures_grid_columns: true
+  oe_bt_facts_figures_layout: true
+  oe_bt_facts_figures_resp_cols: true
