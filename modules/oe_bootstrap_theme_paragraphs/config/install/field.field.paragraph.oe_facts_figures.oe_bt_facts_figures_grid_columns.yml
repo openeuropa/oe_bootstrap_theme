@@ -9,7 +9,7 @@ field_name: oe_bt_facts_figures_grid_columns
 entity_type: paragraph
 bundle: oe_facts_figures
 label: 'Grid columns'
-description: ''
+description: 'Sets the number of grid columns. Minimum number is 1 column.'
 required: false
 translatable: false
 default_value:

@@ -9,7 +9,7 @@ dependencies:
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_equal_height
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_grid_columns
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_resp_cols
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_variant
+    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_layout
     - paragraphs.paragraphs_type.oe_facts_figures
   module:
     - entity_reference_revisions
@@ -87,7 +87,7 @@ content:
     third_party_settings: {  }
     type: number_integer
     region: content
-  oe_bt_facts_figures_variant:
+  oe_bt_facts_figures_layout:
     weight: 3
     label: above
     settings: {  }

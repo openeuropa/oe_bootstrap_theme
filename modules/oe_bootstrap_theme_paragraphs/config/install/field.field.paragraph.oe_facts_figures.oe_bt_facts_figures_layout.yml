@@ -2,15 +2,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.oe_bt_facts_figures_variant
+    - field.storage.paragraph.oe_bt_facts_figures_layout
     - paragraphs.paragraphs_type.oe_facts_figures
   module:
     - options
-id: paragraph.oe_facts_figures.oe_bt_facts_figures_variant
-field_name: oe_bt_facts_figures_variant
+id: paragraph.oe_facts_figures.oe_bt_facts_figures_layout
+field_name: oe_bt_facts_figures_layout
 entity_type: paragraph
 bundle: oe_facts_figures
-label: Variant
+label: Layout
 description: ''
 required: false
 translatable: false

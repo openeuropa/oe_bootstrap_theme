@@ -9,7 +9,7 @@ field_name: oe_bt_facts_figures_disp_icons
 entity_type: paragraph
 bundle: oe_facts_figures
 label: 'Display icons'
-description: ''
+description: 'Sets whether the icons are displayed or not.'
 required: false
 translatable: false
 default_value:

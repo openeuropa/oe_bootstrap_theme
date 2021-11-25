@@ -9,7 +9,7 @@ field_name: oe_bt_facts_figures_resp_cols
 entity_type: paragraph
 bundle: oe_facts_figures
 label: 'Responsive columns'
-description: ''
+description: 'Sets the number of responsive columns. Minimum value is 1 column.'
 required: false
 translatable: false
 default_value:

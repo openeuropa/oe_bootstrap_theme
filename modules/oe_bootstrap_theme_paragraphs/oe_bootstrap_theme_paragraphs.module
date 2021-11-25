@@ -561,8 +561,8 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$varia
     $variables['equal_height'] = $paragraph->get('oe_bt_facts_figures_equal_height')->value;
   }
 
-  if (!$paragraph->get('oe_bt_facts_figures_variant')->isEmpty()) {
-    $variables['style'] = $paragraph->get('oe_bt_facts_figures_variant')->value;
+  if (!$paragraph->get('oe_bt_facts_figures_layout')->isEmpty()) {
+    $variables['style'] = $paragraph->get('oe_bt_facts_figures_layout')->value;
   }
 
   if (!$paragraph->get('oe_bt_facts_figures_disp_icons')->isEmpty()) {

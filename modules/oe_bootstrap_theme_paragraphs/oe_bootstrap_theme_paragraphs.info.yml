@@ -17,14 +17,16 @@ config_devel:
     - field.field.paragraph.oe_social_media_follow.oe_bt_links_block_background
     - field.storage.paragraph.oe_bt_links_block_orientation
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_disp_icons
+    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_equal_height
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_grid_columns
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_resp_cols
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_variant
+    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_layout
     - field.storage.paragraph.oe_bt_links_block_direction
     - field.storage.paragraph.oe_bt_links_block_background
     - field.field.paragraph.oe_description_list.oe_bt_orientation
     - field.storage.paragraph.oe_bt_orientation
     - field.storage.paragraph.oe_bt_facts_figures_disp_icons
+    - field.storage.paragraph.oe_bt_facts_figures_equal_height
     - field.storage.paragraph.oe_bt_facts_figures_grid_columns
     - field.storage.paragraph.oe_bt_facts_figures_resp_cols
-    - field.storage.paragraph.oe_bt_facts_figures_variant
+    - field.storage.paragraph.oe_bt_facts_figures_layout

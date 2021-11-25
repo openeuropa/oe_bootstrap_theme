@@ -151,7 +151,7 @@ class ParagraphsTest extends BrowserTestBase {
     $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][field_oe_link][0][uri]');
     $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][field_oe_link][0][title]');
     $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][field_oe_title][0][value]');
-    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][oe_bt_facts_figures_variant]');
+    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][oe_bt_facts_figures_layout]');
     $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][oe_bt_facts_figures_disp_icons][value]');
     $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][oe_bt_facts_figures_equal_height][value]');
     $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][oe_bt_facts_figures_grid_columns][0][value]');
@@ -165,7 +165,7 @@ class ParagraphsTest extends BrowserTestBase {
       'field_oe_bt_paragraphs[0][subform][field_oe_title][0][value]' => 'Fact and figures block',
       'field_oe_bt_paragraphs[0][subform][field_oe_link][0][uri]' => 'https://www.google.com',
       'field_oe_bt_paragraphs[0][subform][field_oe_link][0][title]' => 'Read more',
-      'field_oe_bt_paragraphs[0][subform][oe_bt_facts_figures_variant]' => 'default',
+      'field_oe_bt_paragraphs[0][subform][oe_bt_facts_figures_layout]' => 'default',
       'field_oe_bt_paragraphs[0][subform][oe_bt_facts_figures_disp_icons][value]' => TRUE,
       'field_oe_bt_paragraphs[0][subform][oe_bt_facts_figures_equal_height][value]' => TRUE,
       'field_oe_bt_paragraphs[0][subform][oe_bt_facts_figures_grid_columns][0][value]' => 2,

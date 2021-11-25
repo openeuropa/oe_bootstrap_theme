@@ -9,7 +9,7 @@ field_name: oe_bt_facts_figures_equal_height
 entity_type: paragraph
 bundle: oe_facts_figures
 label: 'Equal height'
-description: ''
+description: 'Sets equal height to the items of the Facts and Figures.'
 required: false
 translatable: false
 default_value:
