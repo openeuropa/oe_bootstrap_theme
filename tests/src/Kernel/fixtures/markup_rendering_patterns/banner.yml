@@ -10,7 +10,8 @@ default_page_banner_centered_with_link_full_width:
         'full_width': true
         'centered': true
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
       'link':
         'label': "Subscribe"
         'path': "https://example.com"
@@ -25,10 +26,10 @@ default_page_banner_centered_with_link_full_width:
       'div.hero': 0
       'div.bcl-banner__image': 0
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
     equals:
-      'a': "Subscribe"
+      '.bcl-banner__content a[href="https://example.com"]': "Subscribe"
 default_page_banner_centered_with_link_full_width_with_content_classes:
   render:
     '#type': pattern
@@ -41,11 +42,12 @@ default_page_banner_centered_with_link_full_width_with_content_classes:
         'full_width': true
         'centered': true
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
+        classes: "content-class my-2"
       'link':
         'label': "Subscribe"
         'path': "https://example.com"
-      'content_classes': "content-class my-2"
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -57,10 +59,10 @@ default_page_banner_centered_with_link_full_width_with_content_classes:
       'div.hero': 0
       'div.bcl-banner__image': 0
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
     equals:
-      'a': "Subscribe"
+      '.bcl-banner__content a[href="https://example.com"]': "Subscribe"
 default_page_banner_aligned_left_without_link:
   render:
     '#type': pattern
@@ -73,7 +75,8 @@ default_page_banner_aligned_left_without_link:
         'full_width': false
         'centered': false
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -85,8 +88,8 @@ default_page_banner_aligned_left_without_link:
       'div.hero': 0
       'div.bcl-banner__image': 0
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
 default_page_hero_banner_aligned_left_without_link_full_width:
   render:
     '#type': pattern
@@ -99,7 +102,8 @@ default_page_hero_banner_aligned_left_without_link_full_width:
         'full_width': true
         'centered': false
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -111,8 +115,8 @@ default_page_hero_banner_aligned_left_without_link_full_width:
       'div.hero': 1
       'div.bcl-banner__image': 0
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
 default_page_hero_banner_centered_with_link:
   render:
     '#type': pattern
@@ -125,7 +129,8 @@ default_page_hero_banner_centered_with_link:
         'full_width': false
         'centered': true
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
       'link':
         'label': "Subscribe"
         'path': "https://example.com"
@@ -140,10 +145,10 @@ default_page_hero_banner_centered_with_link:
       'div.hero': 1
       'div.bcl-banner__image': 0
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
     equals:
-      'a': "Subscribe"
+      '.bcl-banner__content a[href="https://example.com"]': "Subscribe"
 primary_page_banner_centered_with_link_full_width:
   render:
     '#type': pattern
@@ -156,7 +161,8 @@ primary_page_banner_centered_with_link_full_width:
         'full_width': true
         'centered': true
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
       'link':
         'label': "Subscribe"
         'path': "https://example.com"
@@ -171,10 +177,10 @@ primary_page_banner_centered_with_link_full_width:
       'div.hero': 0
       'div.bcl-banner__image': 0
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
     equals:
-      'a': "Subscribe"
+      '.bcl-banner__content a[href="https://example.com"]': "Subscribe"
 primary_page_banner_centered_with_link_full_width_with_content_classes:
   render:
     '#type': pattern
@@ -187,11 +193,12 @@ primary_page_banner_centered_with_link_full_width_with_content_classes:
         'full_width': true
         'centered': true
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
+        classes: "content-class my-2"
       'link':
         'label': "Subscribe"
         'path': "https://example.com"
-      'content_classes': "content-class my-2"
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -203,10 +210,10 @@ primary_page_banner_centered_with_link_full_width_with_content_classes:
       'div.hero': 0
       'div.bcl-banner__image': 0
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
     equals:
-      'a': "Subscribe"
+      '.bcl-banner__content a[href="https://example.com"]': "Subscribe"
 primary_page_banner_aligned_left_without_link:
   render:
     '#type': pattern
@@ -219,7 +226,8 @@ primary_page_banner_aligned_left_without_link:
         'full_width': false
         'centered': false
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -231,8 +239,8 @@ primary_page_banner_aligned_left_without_link:
       'div.hero': 0
       'div.bcl-banner__image': 0
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
 primary_page_hero_banner_aligned_left_without_link_full_width:
   render:
     '#type': pattern
@@ -245,7 +253,8 @@ primary_page_hero_banner_aligned_left_without_link_full_width:
         'full_width': true
         'centered': false
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -257,8 +266,8 @@ primary_page_hero_banner_aligned_left_without_link_full_width:
       'div.hero': 1
       'div.bcl-banner__image': 0
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
 primary_page_hero_banner_centered_with_link:
   render:
     '#type': pattern
@@ -271,7 +280,8 @@ primary_page_hero_banner_centered_with_link:
         'full_width': false
         'centered': true
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
       'link':
         'label': "Subscribe"
         'path': "https://example.com"
@@ -286,10 +296,10 @@ primary_page_hero_banner_centered_with_link:
       'div.hero': 1
       'div.bcl-banner__image': 0
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
     equals:
-      'a': "Subscribe"
+      '.bcl-banner__content a[href="https://example.com"]': "Subscribe"
 image_page_banner_centered_with_link_full_width:
   render:
     '#type': pattern
@@ -302,7 +312,8 @@ image_page_banner_centered_with_link_full_width:
         'full_width': true
         'centered': true
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
       'link':
         'label': "Subscribe"
         'path': "https://example.com"
@@ -319,10 +330,10 @@ image_page_banner_centered_with_link_full_width:
       'div.shade': 0
       'div.bcl-banner__image[style="background-image:url(https://placeimg.com/1000/500/arch)"]': 1
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
     equals:
-      'a': "Subscribe"
+      '.bcl-banner__content a[href="https://example.com"]': "Subscribe"
 image_page_banner_centered_with_link_full_width_with_content_classes:
   render:
     '#type': pattern
@@ -335,12 +346,13 @@ image_page_banner_centered_with_link_full_width_with_content_classes:
         'full_width': true
         'centered': true
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
+        classes: "content-class my-2"
       'link':
         'label': "Subscribe"
         'path': "https://example.com"
       'image': "https://placeimg.com/1000/500/arch"
-      'content_classes': "content-class my-2"
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -354,10 +366,10 @@ image_page_banner_centered_with_link_full_width_with_content_classes:
       'div.bcl-banner__image[style="background-image:url(https://placeimg.com/1000/500/arch)"]': 1
       'div.bcl-banner__content.content-class.my-2': 1
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
     equals:
-      'a': "Subscribe"
+      '.bcl-banner__content a[href="https://example.com"]': "Subscribe"
 image_page_banner_aligned_left_without_link:
   render:
     '#type': pattern
@@ -370,7 +382,8 @@ image_page_banner_aligned_left_without_link:
         'full_width': false
         'centered': false
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
       'image': "https://placeimg.com/1000/500/arch"
   assertions:
     count:
@@ -384,8 +397,8 @@ image_page_banner_aligned_left_without_link:
       'div.shade': 0
       'div.bcl-banner__image[style="background-image:url(https://placeimg.com/1000/500/arch)"]': 1
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
 image_page_hero_banner_aligned_left_without_link_full_width:
   render:
     '#type': pattern
@@ -398,7 +411,8 @@ image_page_hero_banner_aligned_left_without_link_full_width:
         'full_width': true
         'centered': false
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
       'image': "https://placeimg.com/1000/500/arch"
   assertions:
     count:
@@ -412,8 +426,8 @@ image_page_hero_banner_aligned_left_without_link_full_width:
       'div.shade': 0
       'div.bcl-banner__image[style="background-image:url(https://placeimg.com/1000/500/arch)"]': 1
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
 image_page_hero_banner_centered_with_link:
   render:
     '#type': pattern
@@ -426,7 +440,8 @@ image_page_hero_banner_centered_with_link:
         'full_width': false
         'centered': true
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
       'link':
         'label': "Subscribe"
         'path': "https://example.com"
@@ -443,10 +458,10 @@ image_page_hero_banner_centered_with_link:
       'div.shade': 0
       'div.bcl-banner__image[style="background-image:url(https://placeimg.com/1000/500/arch)"]': 1
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
     equals:
-      'a': "Subscribe"
+      '.bcl-banner__content a[href="https://example.com"]': "Subscribe"
 image_shade_page_banner_centered_with_link_full_width:
   render:
     '#type': pattern
@@ -459,7 +474,8 @@ image_shade_page_banner_centered_with_link_full_width:
         'full_width': true
         'centered': true
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
       'link':
         'label': "Subscribe"
         'path': "https://example.com"
@@ -476,10 +492,10 @@ image_shade_page_banner_centered_with_link_full_width:
       'div.shade': 1
       'div.bcl-banner__image[style="background-image:url(https://placeimg.com/1000/500/arch)"]': 1
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
     equals:
-      'a': "Subscribe"
+      '.bcl-banner__content a[href="https://example.com"]': "Subscribe"
 image_shade_page_banner_centered_with_link_full_width_with_content_classes:
   render:
     '#type': pattern
@@ -492,12 +508,13 @@ image_shade_page_banner_centered_with_link_full_width_with_content_classes:
         'full_width': true
         'centered': true
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
+        classes: "content-class my-2"
       'link':
         'label': "Subscribe"
         'path': "https://example.com"
       'image': "https://placeimg.com/1000/500/arch"
-      'content_classes': "content-class my-2"
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -511,10 +528,10 @@ image_shade_page_banner_centered_with_link_full_width_with_content_classes:
       'div.bcl-banner__image[style="background-image:url(https://placeimg.com/1000/500/arch)"]': 1
       'div.bcl-banner__content.content-class.my-2': 1
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
     equals:
-      'a': "Subscribe"
+      '.bcl-banner__content a[href="https://example.com"]': "Subscribe"
 image_shade_page_banner_aligned_left_without_link:
   render:
     '#type': pattern
@@ -527,7 +544,8 @@ image_shade_page_banner_aligned_left_without_link:
         'full_width': false
         'centered': false
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
       'image': "https://placeimg.com/1000/500/arch"
   assertions:
     count:
@@ -541,8 +559,8 @@ image_shade_page_banner_aligned_left_without_link:
       'div.shade': 1
       'div.bcl-banner__image[style="background-image:url(https://placeimg.com/1000/500/arch)"]': 1
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
 image_shade__hero_banner_aligned_left_without_link_full_width:
   render:
     '#type': pattern
@@ -555,7 +573,8 @@ image_shade__hero_banner_aligned_left_without_link_full_width:
         'full_width': true
         'centered': false
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
       'image': "https://placeimg.com/1000/500/arch"
   assertions:
     count:
@@ -569,8 +588,8 @@ image_shade__hero_banner_aligned_left_without_link_full_width:
       'div.shade': 1
       'div.bcl-banner__image[style="background-image:url(https://placeimg.com/1000/500/arch)"]': 1
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
 image_shade_hero_banner_centered_with_link:
   render:
     '#type': pattern
@@ -583,7 +602,8 @@ image_shade_hero_banner_centered_with_link:
         'full_width': false
         'centered': true
       'title': "EU Budget for the future"
-      'description': "Innovation, economy, environment and geopolitics"
+      'description':
+        content: "Innovation, economy, environment and geopolitics"
       'link':
         'label': "Subscribe"
         'path': "https://example.com"
@@ -600,7 +620,7 @@ image_shade_hero_banner_centered_with_link:
       'div.shade': 1
       'div.bcl-banner__image[style="background-image:url(https://placeimg.com/1000/500/arch)"]': 1
     contains:
-      'bcl-banner__content': "EU Budget for the future"
-      'p': "Innovation, economy, environment and geopolitics"
+      '.bcl-banner__content div': "EU Budget for the future"
+      '.bcl-banner__content p': "Innovation, economy, environment and geopolitics"
     equals:
-      'a': "Subscribe"
+      '.bcl-banner__content a[href="https://example.com"]': "Subscribe"

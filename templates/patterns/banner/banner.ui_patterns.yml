@@ -38,10 +38,12 @@ banner:
       description: "Heading of the banner"
       preview: "EU Budget for the future"
     description:
-      type: "text"
+      type: "array"
       label: "Description"
-      description: "Sub-heading of the banner"
-      preview: "Innovation, economy, environment and geopolitics"
+      description: "Sub-heading of the banner [content, classes]"
+      preview:
+        - content: "Innovation, economy, environment and geopolitics"
+          classes: "my-2"
     link:
       type: "array"
       label: "Link"
@@ -60,8 +62,3 @@ banner:
       label: "Image"
       description: "URL to the image"
       preview:  "https://placeimg.com/1000/500/arch"
-    content_classes:
-      type: "text"
-      label: "Content classes"
-      description: "CSS classes to add to the content container"
-      preview: "my-2"
