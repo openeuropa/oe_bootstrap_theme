@@ -75,7 +75,6 @@ card:
         alt: "Alternative text for card image"
         position: "top"
         rounded: 3
-        '#markup': "https://placeimg.com/1000/500/tech"
     content:
       type: "render"
       label: "Content"
@@ -117,4 +116,4 @@ card:
           rounded_pill: true
     date:
       type: "array"
-      label: "Date that will be shown with Date Block."
+      label: 'Date that will be rendered with the "Date Block" pattern.'

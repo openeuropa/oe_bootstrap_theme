@@ -19,6 +19,7 @@
     {% endif %}
   {% endfor %}
 {% endif %}
+{% set _image = image %}
 {% if image is defined and image['#markup'] is not empty %}
   {% set _image = {
     path: image['#markup'],
