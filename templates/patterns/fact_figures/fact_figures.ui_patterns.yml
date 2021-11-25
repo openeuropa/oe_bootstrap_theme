@@ -81,10 +81,6 @@ fact_figures:
           subtitle: "Figma components"
           title: "43 Components"
           description: "Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur."
-    cols_extra_classes:
-      type: textfield
-      label: "Column extra classes"
-      description: "Extra classes for the columns."
     responsiveness:
       type: textfield
       label: "Responsiveness"
