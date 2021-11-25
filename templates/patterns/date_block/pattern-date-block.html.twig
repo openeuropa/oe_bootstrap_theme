@@ -4,9 +4,10 @@
  * Date block pattern.
  */
 #}
+
 {% include '@oe-bcl/bcl-date-block/date-block.html.twig' with {
-  'day': day,
-  'month': month,
-  'date_time': date_time,
-  'year': year,
+  'day': date|date('d'),
+  'month': date|date('M'),
+  'year': date|date('Y'),
+  'date_time': date|date('Y-m-d'),
 } %}
