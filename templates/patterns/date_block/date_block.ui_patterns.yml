@@ -5,5 +5,5 @@ date_block:
     date:
       type: "DateTime"
       label: "Date"
-      description: "The date in format 'YYYY-MM-DD'."
+      description: "A DateTime object."
       preview: '2021-05-26'
