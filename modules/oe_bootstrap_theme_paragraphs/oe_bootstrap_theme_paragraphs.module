@@ -578,3 +578,42 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$varia
   }
 
 }
+
+/**
+ * Implements hook_options_list_alter().
+ */
+function oe_bootstrap_theme_paragraphs_options_list_alter(array &$options, array $context): void {
+  // Check if this is the field we want to change.
+  if ($context['fieldDefinition']->id() == 'paragraph.oe_fact.field_oe_icon') {
+    $options_field_icons = [
+      'arrow-down' => 'Arrow down',
+      'box-arrow-up' => 'External',
+      'arrow-up' => 'Arrow up',
+      'book' => 'Book',
+      'calendar' => 'Calendar',
+      'camera' => 'Camera',
+      'check' => 'Check',
+      'download' => 'Download',
+      'currency-euro' => 'Euro',
+      'facebook' => 'Facebook',
+      'file' => 'File' ,
+      'image' => 'Image',
+      'info' => 'Info',
+      'linkedin' => 'LinkedIn',
+      'files' => 'Multiple files',
+      'file-slides' => 'Presentation',
+      'rss' => 'RSS',
+      'search' => 'Search',
+      'share' => 'Share',
+      'file-spreadsheet' => 'Spreadsheet',
+      'twitter' => 'Twitter',
+      'person-video' => 'Video',
+    ];
+    // Change the label of the empty option.
+    $options = [];
+    foreach ($options_field_icons as $key => $value) {
+      $options[$key] = $value;
+    }
+  }
+
+}
