@@ -8,7 +8,6 @@ dependencies:
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_disp_icons
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_equal_height
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_grid_columns
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_icons_path
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_resp_cols
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_variant
     - paragraphs.paragraphs_type.oe_facts_figures
@@ -74,14 +73,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: number
-    region: content
-  oe_bt_facts_figures_icons_path:
-    weight: 5
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
     region: content
   oe_bt_facts_figures_resp_cols:
     weight: 7

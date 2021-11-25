@@ -18,7 +18,6 @@ config_devel:
     - field.storage.paragraph.oe_bt_links_block_orientation
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_disp_icons
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_grid_columns
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_icons_path
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_resp_cols
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_variant
     - field.storage.paragraph.oe_bt_links_block_direction
@@ -27,6 +26,5 @@ config_devel:
     - field.storage.paragraph.oe_bt_orientation
     - field.storage.paragraph.oe_bt_facts_figures_disp_icons
     - field.storage.paragraph.oe_bt_facts_figures_grid_columns
-    - field.storage.paragraph.oe_bt_facts_figures_icons_path
     - field.storage.paragraph.oe_bt_facts_figures_resp_cols
     - field.storage.paragraph.oe_bt_facts_figures_variant

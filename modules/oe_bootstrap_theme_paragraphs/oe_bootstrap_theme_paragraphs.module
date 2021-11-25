@@ -577,8 +577,4 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$varia
     $variables['grid_columns'] = $paragraph->get('oe_bt_facts_figures_grid_columns')->value;
   }
 
-  $variables['icons_path'] = "/assets/icons/bootstrap-icons.svg";
-  if (!$paragraph->get('oe_bt_facts_figures_icons_path')->isEmpty()) {
-    $variables['icons_path'] = $paragraph->get('oe_bt_facts_figures_icons_path')->value;
-  }
 }
