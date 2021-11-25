@@ -38,12 +38,10 @@ banner:
       description: "Heading of the banner"
       preview: "EU Budget for the future"
     description:
-      type: "array"
+      type: "text"
       label: "Description"
-      description: "Sub-heading of the banner [content, classes]"
-      preview:
-        - content: "Innovation, economy, environment and geopolitics"
-          classes: "my-2"
+      description: "Sub-heading of the banner"
+      preview: "Innovation, economy, environment and geopolitics"
     link:
       type: "array"
       label: "Link"
