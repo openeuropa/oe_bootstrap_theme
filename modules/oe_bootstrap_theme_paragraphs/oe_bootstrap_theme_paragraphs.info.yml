@@ -15,3 +15,5 @@ config_devel:
     - field.field.paragraph.oe_social_media_follow.oe_bt_links_block_background
     - field.storage.paragraph.oe_bt_links_block_orientation
     - field.storage.paragraph.oe_bt_links_block_background
+    - core.entity_form_display.paragraph.oe_list_item_block.date
+    - core.entity_form_display.paragraph.oe_list_item_block.highlight

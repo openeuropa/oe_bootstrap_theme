@@ -175,8 +175,9 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
   $variables['title'] = $paragraph->get('field_oe_title')->first()->value ?? '';
   $variables['columns'] = oe_bootstrap_theme_get_bcl_layout_mapping($paragraph->get('field_oe_list_item_block_layout')->first()->value);
   $variables['items'] = [];
+  $variables['variant'] = $paragraph->get('oe_paragraphs_variant')->first()->getValue()['value'];
 
-  foreach ($variables['paragraph']->get('field_oe_paragraphs') as $delta => $item) {
+  foreach ($paragraph->get('field_oe_paragraphs') as $delta => $item) {
     $image = [];
     if (!$item->entity->get('field_oe_image')->isEmpty()) {
       /** @var \Drupal\file\Plugin\Field\FieldType\FileItem $image_item */
@@ -187,14 +188,11 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
         'alt' => $image_item->get('alt')->getValue(),
         'position' => 'top',
       ];
-      if ($item->entity->get('oe_paragraphs_variant')->first()->value === 'thumbnail_secondary') {
-        $image['position'] = 'bottom';
-      }
     }
 
     // Prepare the date fields if date is available.
     $contentItem = '';
-    if (!$item->entity->get('field_oe_date')->isEmpty()) {
+    if ($variables['variant'] === 'date') {
       $display_options = EntityViewDisplay::load('paragraph.oe_list_item.default')
         ->getComponent('field_oe_date');
       $dateItem = $item->entity->get('field_oe_date')->first();

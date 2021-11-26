@@ -29,6 +29,8 @@ function oe_bootstrap_theme_paragraphs_install($is_syncing): void {
     'core.entity_view_display.paragraph.oe_links_block.default',
     'core.entity_view_display.paragraph.oe_social_media_follow.default',
     'field.field.paragraph.oe_social_media_follow.field_oe_social_media_variant',
+    'core.entity_form_display.paragraph.oe_list_item_block.default',
+    'core.entity_form_display.paragraph.oe_list_item.default',
   ];
 
   foreach ($field_config as $name) {
