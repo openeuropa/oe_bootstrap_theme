@@ -2,31 +2,17 @@ timeline:
   label: "Timeline"
   description: "Timeline is a flexible and powerful component for displaying a series of content ordered in time."
   settings:
+    icons_path:
+      type: textfield
+      label: "Icons path"
+      description: "Icons path"
+      preview: "/assets/icons/bootstrap-icons.svg"
     hide_from:
       type: number
       label: "Hide from"
       description: "Number to hide 'from' items"
       preview: 5
-    hide_to:
-      type: number
-      label: "Hide to"
-      description: "Number to hide 'to' items"
-      preview: -2
   fields:
-    timeline_id:
-      type: integer
-      label: "Id"
-      description: "Timeline id"
-    toggle_collapsed:
-      type: string
-      label: "Toogle collapsed"
-      description: "Toogle collapsed text"
-      preview: "Show %d more items"
-    toggle_expanded:
-      type: string
-      label: "Toogle expanded"
-      description: "Toogle expanded text"
-      preview: "Hide %d items"
     items:
       type: array
       label: "Items"
@@ -68,8 +54,3 @@ timeline:
           label: "14 February 2018"
           content:
             '#markup': <a href="/example">Multiannual Financial Framework</a> and <a href="/example">institutional issues</a> - enhancing efficiency at the helm of the European Union
-    icons_path:
-      type: string
-      label: "Icons path"
-      description: "Icons path"
-      preview: "/assets/icons/bootstrap-icons.svg"

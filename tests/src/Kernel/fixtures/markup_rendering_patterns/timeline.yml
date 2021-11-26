@@ -9,40 +9,31 @@ timeline_items_hide:
       toggle_collapsed: "Show %d more items"
       toggle_expanded: "Hide %d items"
       items:
-        - id: "1"
-          label: "13 September 2017"
+        - label: "13 September 2017"
           title: "Item title"
           content:
             '#markup': <a href="/example">President Juncker's State of the Union speech</a>
-        - id: "2"
-          label: "28-29 September 2017"
+        - label: "28-29 September 2017"
           content:
             '#markup': <a href="/example">Informal Digital Summit, Tallinn</a>
-        - id: "3"
-          label: "14 November 2017"
+        - label: "14 November 2017"
           content: "Strengthening European identity through education and culture: European Commission's contribution to the Leaders' meeting."
-        - id: "4"
-          label: "17 November 2017"
+        - label: "17 November 2017"
           content:
             '#markup': <a href="/example">Social Summit in Gothenburg, Sweden</a>
-        - id: "5"
-          label: "6 December 2017"
+        - label: "6 December 2017"
           content:
             '#markup': <a href="/example">Economic and Monetary Union package of proposals</a>
-        - id: "6"
-          label: "14-15 December 2017"
+        - label: "14-15 December 2017"
           content:
             '#markup': <a href="/example">EU Leaders' meeting on migration, Brussels</a>
-        - id: "7"
-          label: "15 December 2017"
+        - label: "15 December 2017"
           content:
             '#markup': <a href="/example">Euro Summit</a>
-        - id: "8"
-          label: "6 February 2018"
+        - label: "6 February 2018"
           content:
             '#markup': <a href="/example">EU-Western Balkans Strategy</a>
-        - id: "9"
-          label: "14 February 2018"
+        - label: "14 February 2018"
           content:
             '#markup': <a href="/example">Multiannual Financial Framework</a> and <a href="/example">institutional issues</a> - enhancing efficiency at the helm of the European Union
   assertions:

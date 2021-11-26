@@ -5,12 +5,14 @@
  *
  */
 #}
+{% set _toggle_collapsed = toggle_collapsed|default("Show more %d items") %}
+{% set _toggle_expanded = toggle_expanded|default("Hide %d items") %}
 {% include '@oe-bcl/bcl-timeline/timeline.html.twig' with {
-  toggle_collapsed: toggle_collapsed,
-  toggle_expanded: toggle_expanded,
+  toggle_collapsed: _toggle_collapsed,
+  toggle_expanded: _toggle_expanded,
   hide: {
     from: hide_from,
-    to: hide_to,
+    to: -2,
   },
   items: items,
   icons_path: bcl_icon_path,
