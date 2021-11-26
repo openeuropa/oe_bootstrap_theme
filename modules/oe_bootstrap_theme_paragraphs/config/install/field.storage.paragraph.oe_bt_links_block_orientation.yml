@@ -4,8 +4,8 @@ dependencies:
   module:
     - options
     - paragraphs
-id: paragraph.oe_bt_links_block_direction
-field_name: oe_bt_links_block_direction
+id: paragraph.oe_bt_links_block_orientation
+field_name: oe_bt_links_block_orientation
 entity_type: paragraph
 type: list_string
 settings:

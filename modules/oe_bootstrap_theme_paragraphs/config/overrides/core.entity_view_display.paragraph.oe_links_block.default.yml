@@ -4,7 +4,7 @@ dependencies:
   config:
     - field.field.paragraph.oe_links_block.field_oe_links
     - field.field.paragraph.oe_links_block.field_oe_links_block_background
-    - field.field.paragraph.oe_links_block.field_oe_links_block_direction
+    - field.field.paragraph.oe_links_block.field_oe_links_block_orientation
     - field.field.paragraph.oe_links_block.field_oe_text
     - paragraphs.paragraphs_type.oe_links_block
   module:
@@ -36,4 +36,4 @@ content:
     region: content
 hidden:
   field_oe_links_block_background: true
-  field_oe_links_block_direction: true
+  field_oe_links_block_orientation: true

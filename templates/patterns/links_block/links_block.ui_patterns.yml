@@ -9,8 +9,8 @@ links_block:
           gray: "gray"
           transparent: "transparent"
           preview: "gray"
-      direction:
-        label: "Direction"
+      orientation:
+        label: "Orientation"
         type: "select"
         options:
           vertical: "vertical"

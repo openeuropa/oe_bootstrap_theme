@@ -30,7 +30,7 @@ use Drupal\paragraphs\Entity\Paragraph;
 function oe_bootstrap_theme_paragraphs_preprocess_paragraph__oe_links_block(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
-  $variables['direction'] = $paragraph->get('oe_bt_links_block_direction')->value;
+  $variables['orientation'] = $paragraph->get('oe_bt_links_block_orientation')->value;
   $variables['background'] = $paragraph->get('oe_bt_links_block_background')->value;
   $variables['title'] = $paragraph->get('field_oe_text')->value ?? '';
 
@@ -48,7 +48,7 @@ function oe_bootstrap_theme_paragraphs_preprocess_paragraph__oe_links_block(arra
 function oe_bootstrap_theme_preprocess_paragraph__oe_social_media_follow(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
-  $variables['direction'] = $paragraph->get('field_oe_social_media_variant')->value;
+  $variables['orientation'] = $paragraph->get('field_oe_social_media_variant')->value;
   $variables['background'] = $paragraph->get('oe_bt_links_block_background')->value;
   $variables['title'] = $paragraph->get('field_oe_title')->value ?? '';
   $links = $paragraph->get('field_oe_social_media_links')->getValue();

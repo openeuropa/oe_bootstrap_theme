@@ -9,7 +9,7 @@ dependencies:
 config_devel:
   install:
     - field.field.paragraph.oe_links_block.oe_bt_links_block_background
-    - field.field.paragraph.oe_links_block.oe_bt_links_block_direction
+    - field.field.paragraph.oe_links_block.oe_bt_links_block_orientation
     - field.field.paragraph.oe_social_media_follow.oe_bt_links_block_background
-    - field.storage.paragraph.oe_bt_links_block_direction
+    - field.storage.paragraph.oe_bt_links_block_orientation
     - field.storage.paragraph.oe_bt_links_block_background

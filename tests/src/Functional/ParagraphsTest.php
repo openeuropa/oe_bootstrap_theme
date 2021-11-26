@@ -86,7 +86,7 @@ class ParagraphsTest extends BrowserTestBase {
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_links][0][title]');
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_text][0][value]');
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_links_block_background]');
-    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_links_block_direction]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_links_block_orientation]');
 
     $this->submitForm([], 'Add another item');
 
@@ -98,7 +98,7 @@ class ParagraphsTest extends BrowserTestBase {
       'oe_bt_paragraphs[0][subform][field_oe_links][1][uri]' => 'https://www.more-example.com',
       'oe_bt_paragraphs[0][subform][field_oe_links][1][title]' => 'Example link number 2',
       'oe_bt_paragraphs[0][subform][oe_bt_links_block_background]' => 'gray',
-      'oe_bt_paragraphs[0][subform][oe_bt_links_block_direction]' => 'vertical',
+      'oe_bt_paragraphs[0][subform][oe_bt_links_block_orientation]' => 'vertical',
     ];
 
     $this->submitForm($values, 'Save');
