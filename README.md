@@ -34,8 +34,15 @@ composer require openeuropa/oe_bootstrap_theme
 In order to enable the theme in your project perform the following steps:
 
 1. Enable the OpenEuropa Bootstrap Theme Helper module ```./vendor/bin/drush en oe_bootstrap_theme_helper```
-2. Enable the OpenEuropa Bootstrap Theme Paragraphs module ```./vendor/bin/drush en oe_bootstrap_theme_paragraphs```
-3. Enable the OpenEuropa Bootstrap Theme and set it as default ```./vendor/bin/drush config-set system.theme default oe_bootstrap_theme```
+2. Enable the OpenEuropa Bootstrap Theme and set it as default ```./vendor/bin/drush config-set system.theme default oe_bootstrap_theme```
+
+
+### Integration with oe_paragraphs
+
+In order to have full working integration with paragraphs in your project, you must enable oe_boostrap_theme_paragraphs module:
+
+```./vendor/bin/drush en oe_bootstrap_theme_paragraphs```
+
 
 ## Development setup
 
