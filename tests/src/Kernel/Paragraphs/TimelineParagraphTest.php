@@ -1,15 +1,11 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel\Paragraphs;
 
-use Drupal\Core\Entity\Entity\EntityViewDisplay;
-use Drupal\field\Entity\FieldConfig;
-use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\filter\Entity\FilterFormat;
-use Drupal\node\Entity\Node;
-use Drupal\node\Entity\NodeType;
+use Drupal\paragraphs\Entity\Paragraph;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -18,18 +14,12 @@ use Symfony\Component\DomCrawler\Crawler;
 class TimelineParagraphTest extends ParagraphsTestBase {
 
   /**
-   * The paragraph storage.
-   *
-   * @var \Drupal\paragraphs\ParagraphInterface
-   */
-  protected $paragraphInterface;
-
-  /**
    * {@inheritdoc}
    */
-  protected static $modules = [
-    'oe_content_timeline_field',
+  public static $modules = [
     'oe_paragraphs_timeline',
+    'oe_content_timeline_field',
+    'node',
   ];
 
   /**
@@ -38,9 +28,37 @@ class TimelineParagraphTest extends ParagraphsTestBase {
   protected function setUp(): void {
     parent::setUp();
 
-    $this->installEntitySchema('node');
-    $this->installConfig(['field', 'node', 'system', 'oe_paragraphs_timeline']);
-    $this->create();
+    $this->installConfig([
+      'oe_paragraphs_timeline',
+      'oe_content_timeline_field',
+      'node',
+    ]);
+
+    // Remove the auto-paragraph and url-to-link filters from the plain text.
+    /** @var \Drupal\filter\Entity\FilterFormat $format */
+    $format = FilterFormat::load('plain_text');
+    $format->filters();
+    $format->removeFilter('filter_url');
+    $format->removeFilter('filter_autop');
+    $format->save();
+
+    FilterFormat::create([
+      'format' => 'filtered_html',
+      'name' => 'Filtered HTML',
+      'filters' => [
+        'filter_html' => [
+          'status' => 1,
+          'settings' => [
+            'allowed_html' => '<strong>',
+          ],
+        ],
+      ],
+    ])->save();
+
+    FilterFormat::create([
+      'format' => 'full_html',
+      'name' => 'Full HTML',
+    ])->save();
 
     $this->container->get('theme_installer')->install(['oe_bootstrap_theme']);
     $this->config('system.theme')->set('default', 'oe_bootstrap_theme')->save();
@@ -48,271 +66,92 @@ class TimelineParagraphTest extends ParagraphsTestBase {
   }
 
   /**
-   * Data provider for testTimeline() and testTimelineRender().
-   *
-   * @return array
-   *   The test data.
+   * Test 'timeline' paragraph rendering.
    */
-  public function timelineDataProvider(): array {
-    $data = [];
-
-    $data[] = [
-      'values' => [
-        [
-          'label' => '13 September 2017',
-          'title' => 'item title 1',
-          'body' => '<a href="/example">President Juncker\'s State of the Union speech</a>',
-          'format' => 'my_text_format',
-        ],
-        [
-          'label' => '28-29 September 2017',
-          'title' => 'item title 2',
-          'body' => '<a href="/example">Informal Digital Summit, Tallinn</a>',
-          'format' => 'my_text_format',
-        ],
-        [
-          'label' => '14 November 2017',
-          'title' => 'item title 3',
-          'body' => 'Strengthening European identity through education and culture: European Commission\'s contribution to the Leaders\' meeting.',
-          'format' => 'my_text_format',
-        ],
-        [
-          'label' => '17 November 2017',
-          'title' => 'item title 4',
-          'body' => '<a href="/example">Social Summit in Gothenburg, Sweden</a>',
-          'format' => 'my_text_format',
-        ],
-        [
-          'label' => '6 December 2017',
-          'title' => 'item title 5',
-          'body' => '<a href="/example">Economic and Monetary Union package of proposals</a>',
-          'format' => 'my_text_format',
-        ],
-        [
-          'label' => '14-15 December 2017',
-          'title' => 'item title 6',
-          'body' => '<a href="/example">EU Leaders\' meeting on migration, Brussels</a>',
-          'format' => 'my_text_format',
-        ],
-        [
-          'label' => '15 December 2017',
-          'title' => 'item title 7',
-          'body' => '<a href="/example">Euro Summit</a>',
-          'format' => 'my_text_format',
-        ],
-        [
-          'label' => '6 February 2018',
-          'title' => 'item title 8',
-          'body' => '<a href="/example">EU-Western Balkans Strategy</a>',
-          'format' => 'my_text_format',
-        ],
-        [
-          'label' => '14 February 2018',
-          'title' => 'item title 9',
-          'body' => '<a href="/example">Multiannual Financial Framework</a> and <a href="/example">institutional issues</a> - enhancing efficiency at the helm of the European Union',
-          'format' => 'my_text_format',
-        ],
-      ],
-      'button_values' => [
-        'show_items' => 'Show more 4 items',
-        'hide_items' => 'Hide 4 items',
-      ],
-      'title_values' => [
-        '13 September 2017',
-        '28-29 September 2017',
-        '14 November 2017',
-        '17 November 2017',
-        '6 December 2017',
-        '14-15 December 2017',
-        '15 December 2017',
-        '6 February 2018',
-        '14 February 2018',
-      ],
-      'content_values' => [
-        'President Juncker\'s State of the Union speech',
-        'Informal Digital Summit, Tallinn',
-        'Social Summit in Gothenburg, Sweden',
-        'Economic and Monetary Union package of proposals',
-        'EU Leaders\' meeting on migration, Brussels',
-        'Euro Summit',
-        'EU-Western Balkans Strategy',
-        'Multiannual Financial Framework',
-        'institutional issues',
-      ],
-    ];
-    return $data;
-  }
-
-  /**
-   * Test the timeline node field.
-   *
-   * @param array $values
-   *   The expected to test.
-   *
-   * @dataProvider timelineDataProvider
-   */
-  public function testTimeline(array $values): void {
-    // Node field timeline values.
-    $node_values = [
-      'type' => 'test_ct',
-      'title' => 'My node title',
-      'field_timeline' => $values,
-    ];
-
-    // Create node.
-    $node = Node::create($node_values);
-    $node->save();
-    $entity_type_manager = \Drupal::entityTypeManager()->getStorage('node');
-    $entity_type_manager->resetCache();
-    $node->get('field_timeline')->getValue();
-
-    // Assert the base field values.
-    $this->assertEquals('My node title', $node->label());
-    $this->assertEquals($values, $node->get('field_timeline')->getValue());
-  }
-
-  /**
-   * Test the timeline paragraph render.
-   *
-   * @param array $values
-   *   The expected to test.
-   * @param array $button
-   *   The expected values for buttons.
-   * @param array $titles
-   *   The expected titles.
-   * @param array $content
-   *   The expected content.
-   *
-   * @dataProvider timelineDataProvider
-   */
-  public function testTimelineRender(array $values, array $button, array $titles, array $content): void {
-    // Create paragraph to hide some items.
-    $this->createParagraph($values, 3);
-    $html = $this->renderParagraph($this->paragraphInterface);
-    $crawler = new Crawler($html);
-
-    // Asserting values.
-    $this->assertCount(9, $crawler->filter('h5'));
-    $this->assertCount(1, $crawler->filter('button'));
-    $this->assertCount(4, $crawler->filter('li.collapse'));
-    $this->assertStringContainsString('#chevron-down', trim($crawler->filter('use')->attr('xlink:href')));
-    $more_items_button = $crawler->filter('.label-collapsed')->text();
-    $this->assertSame($button['show_items'], $more_items_button);
-    $hide_items_button = $crawler->filter('.label-expanded')->text();
-    $this->assertSame($button['hide_items'], $hide_items_button);
-    $paragraph_titles = $crawler->filter('h5')->extract(['_text']);
-    $this->assertSame($titles, $paragraph_titles);
-    $paragraph_content = $crawler->filter('a')->extract(['_text']);
-    $this->assertSame($content, $paragraph_content);
-
-    // Create paragraph hiding 0 items.
-    $this->createParagraph($values, 0);
-    $html = $this->renderParagraph($this->paragraphInterface);
-    $crawler = new Crawler($html);
-
-    // Asserting values.
-    $this->assertCount(9, $crawler->filter('h5'));
-    $this->assertCount(0, $crawler->filter('button'));
-    $this->assertCount(0, $crawler->filter('li.collapse'));
-    $paragraph_titles = $crawler->filter('h5')->extract(['_text']);
-    $this->assertSame($titles, $paragraph_titles);
-    $paragraph_content = $crawler->filter('a')->extract(['_text']);
-    $this->assertSame($content, $paragraph_content);
-
-    // Create paragraph to show all items.
-    $this->createParagraph($values, 10);
-    $html = $this->renderParagraph($this->paragraphInterface);
-    $crawler = new Crawler($html);
-
-    // Asserting values.
-    $this->assertCount(9, $crawler->filter('h5'));
-    $this->assertCount(0, $crawler->filter('button'));
-    $this->assertCount(0, $crawler->filter('li.collapse'));
-    $paragraph_titles = $crawler->filter('h5')->extract(['_text']);
-    $this->assertSame($titles, $paragraph_titles);
-    $paragraph_content = $crawler->filter('a')->extract(['_text']);
-    $this->assertSame($content, $paragraph_content);
-  }
-
-  /**
-   * Create content type, field format and timeline field.
-   */
-  protected function create(): void {
-    // Display options for formatter.
-    $displayOptions = [
-      'type' => 'timeline_formatter',
-      'label' => 'hidden',
-      'settings' => [
-        'limit' => 2,
-        'show_more' => 'Button label',
-      ],
-    ];
-
-    // Create content type.
-    $type = NodeType::create([
-      'name' => 'Test content type',
-      'type' => 'test_ct',
-    ]);
-    $type->save();
-
-    FilterFormat::create([
-      'format' => 'my_text_format',
-      'name' => 'My text format',
-      'filters' => [
-        'filter_autop' => [
-          'module' => 'filter',
-          'status' => TRUE,
-        ],
-      ],
-    ])->save();
-
-    $fieldStorage = FieldStorageConfig::create([
-      'field_name' => 'field_timeline',
-      'entity_type' => 'node',
-      'type' => 'timeline_field',
-      'cardinality' => -1,
-      'entity_types' => ['node'],
-    ]);
-    $fieldStorage->save();
-
-    $field = FieldConfig::create([
-      'label' => 'Timeline field',
-      'field_name' => 'field_timeline',
-      'entity_type' => 'node',
-      'bundle' => 'test_ct',
-      'settings' => [],
-      'required' => FALSE,
-    ]);
-    $field->save();
-
-    EntityViewDisplay::create([
-      'targetEntityType' => $field->getTargetEntityTypeId(),
-      'bundle' => $field->getTargetBundle(),
-      'mode' => 'default',
-      'status' => TRUE,
-    ])->setComponent($fieldStorage->getName(), $displayOptions)
-      ->save();
-  }
-
-  /**
-   * Create the paragraph depending to hide form and to variables.
-   *
-   * @var array $values
-   *   Values to add to the timeline.
-   *
-   * @var int $from
-   *   Hide items from this value.
-   */
-  protected function createParagraph(array $values, int $from): void {
-    // Paragraph timeline values.
-    $paragraph_storage = $this->container->get('entity_type.manager')->getStorage('paragraph');
-    $this->paragraphInterface = $paragraph_storage->create([
+  public function testTimeline(): void {
+    $paragraph = Paragraph::create([
       'type' => 'oe_timeline',
-      'field_oe_title' => 'Timeline',
-      'field_oe_timeline' => $values,
-      'field_oe_timeline_expand' => $from,
+      'field_oe_timeline_expand' => '3',
+      'field_oe_timeline' => [
+        [
+          'label' => 'Label 1',
+          'title' => 'Title 1',
+          'body' => 'Description 1',
+        ],
+        [
+          'label' => 'Label 2',
+          'title' => 'Title 2',
+          'body' => '<p>Description 2</p>',
+        ],
+        [
+          'label' => 'Label 3',
+          'title' => 'Title 3',
+          'body' => '<p>Description <strong>3</strong></p>',
+          'format' => 'plain_text',
+        ],
+        [
+          'label' => 'Label 4',
+          'title' => 'Title 4',
+          'body' => '<p>Description <strong>4</strong></p>',
+          'format' => 'filtered_html',
+        ],
+        [
+          'label' => 'Label 5',
+          'title' => 'Title 5',
+          'body' => '<p>Description <strong>5</strong></p>',
+          'format' => 'full_html',
+        ],
+        [
+          'label' => 'Label 6',
+          'title' => 'Title 6',
+          'body' => 'Description 6',
+        ],
+      ],
     ]);
-    $this->paragraphInterface->save();
+
+    $paragraph->save();
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    // No heading should be rendered if the paragraph has no heading set.
+    $this->assertCount(0, $crawler->filter('h2.ecl-u-type-heading-2'));
+    $this->assertCount(1, $crawler->filter('ol.bcl-timeline'));
+    $this->assertCount(7, $crawler->filter('ol.bcl-timeline li'));
+    $this->assertCount(1, $crawler->filter('ol.bcl-timeline li .label-collapsed'));
+    $this->assertCount(1, $crawler->filter('ol.bcl-timeline li.bcl-timeline__item--toggle'));
+    $this->assertEquals('Label 1', trim($crawler->filter('ol.bcl-timeline li:nth-child(1) h5')->html()));
+    $this->assertEquals('Title 1', trim($crawler->filter('ol.bcl-timeline li:nth-child(1) h6')->html()));
+    $this->assertEquals('Description 1', trim($crawler->filter('ol.bcl-timeline li:nth-child(1) div')->html()));
+    $this->assertEquals('Label 2', trim($crawler->filter('ol.bcl-timeline li:nth-child(2) h5')->html()));
+    $this->assertEquals('Title 2', trim($crawler->filter('ol.bcl-timeline li:nth-child(2) h6')->html()));
+    // Explicit format "plain_text" specified.
+    $this->assertEquals('&lt;p&gt;Description 2&lt;/p&gt;', trim($crawler->filter('ol.bcl-timeline li:nth-child(2) div')->html()));
+    $this->assertEquals('Label 3', trim($crawler->filter('ol.bcl-timeline li:nth-child(3) h5')->html()));
+    $this->assertEquals('Title 3', trim($crawler->filter('ol.bcl-timeline li:nth-child(3) h6')->html()));
+    $this->assertEquals('&lt;p&gt;Description &lt;strong&gt;3&lt;/strong&gt;&lt;/p&gt;', trim($crawler->filter('ol.bcl-timeline li:nth-child(3) div')->html()));
+    $this->assertEquals('Label 4', trim($crawler->filter('ol.bcl-timeline li:nth-child(4) h5')->html()));
+    $this->assertEquals('Title 4', trim($crawler->filter('ol.bcl-timeline li:nth-child(4) h6')->html()));
+    // Explicit format "filtered_html" specified.
+    $this->assertEquals('Description <strong>4</strong>', trim($crawler->filter('ol.bcl-timeline li:nth-child(4) div')->html()));
+    $this->assertEquals('Label 5', trim($crawler->filter('ol.bcl-timeline li:nth-child(6) h5')->html()));
+    $this->assertEquals('Title 5', trim($crawler->filter('ol.bcl-timeline li:nth-child(6) h6')->html()));
+    // Explicit format "full_html" specified.
+    $this->assertEquals('<p>Description <strong>5</strong></p>', trim($crawler->filter('ol.bcl-timeline li:nth-child(6) div')->html()));
+    $this->assertEquals('Label 6', trim($crawler->filter('ol.bcl-timeline li:nth-child(7) h5')->html()));
+    $this->assertEquals('Title 6', trim($crawler->filter('ol.bcl-timeline li:nth-child(7) h6')->html()));
+    $this->assertEquals('Description 6', trim($crawler->filter('ol.bcl-timeline li:nth-child(7) div')->html()));
+    $this->assertEquals('Show more 1 items', trim($crawler->filter('button .label-collapsed')->text()));
+
+    // Increase limit to print all the items and set timeline heading.
+    $paragraph->set('field_oe_timeline_expand', '7');
+    $paragraph->save();
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    // Assert rendering is updated.
+    $this->assertCount(6, $crawler->filter('ol.bcl-timeline li'));
+    $this->assertCount(0, $crawler->filter('ol.bcl-timeline label-collapsed'));
+    $this->assertCount(0, $crawler->filter('ol.bcl-timeline li.bcl-timeline__item--toggle'));
   }
 
 }
