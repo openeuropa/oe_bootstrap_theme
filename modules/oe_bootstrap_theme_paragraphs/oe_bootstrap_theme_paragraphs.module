@@ -430,6 +430,56 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_description_list(array &$va
 }
 
 /**
+ * Implements hook_preprocess_paragraph().
+ */
+function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$variables): void {
+  $paragraph = $variables['paragraph'];
+  $variables['title'] = $paragraph->get('field_oe_title')->value ?? '';
+
+  if (!$paragraph->get('field_oe_link')->isEmpty()) {
+    $variables['link_more']['path'] = $paragraph->get('field_oe_link')->first()->getUrl()->toString();
+    $variables['link_more']['label'] = $paragraph->get('field_oe_link')->first()->get('title')->getValue();
+  }
+  $variables['items'] = [];
+
+  /** @var \Drupal\paragraphs\Entity\Paragraph $sub_paragraph */
+  foreach ($paragraph->get('field_oe_paragraphs')->referencedEntities() as $sub_paragraph) {
+    // Get sub-paragraph translation.
+    $sub_paragraph = \Drupal::service('entity.repository')
+      ->getTranslationFromContext($sub_paragraph, $paragraph->language()->getId());
+    $variables['items'][] = [
+      'icon' => [
+        'name' => str_replace('_', '-', $sub_paragraph->get('field_oe_icon')->value),
+        'size' => "l",
+      ],
+      'title' => $sub_paragraph->get('field_oe_title')->value ?? '',
+      'subtitle' => $sub_paragraph->get('field_oe_subtitle')->value ?? '',
+      'description' => $sub_paragraph->get('field_oe_plain_text_long')->value ?? '',
+    ];
+  }
+  if (!$paragraph->get('oe_bt_facts_figures_equal_height')->isEmpty()) {
+    $variables['equal_height'] = $paragraph->get('oe_bt_facts_figures_equal_height')->value;
+  }
+
+  if (!$paragraph->get('oe_bt_facts_figures_layout')->isEmpty()) {
+    $variables['style'] = $paragraph->get('oe_bt_facts_figures_layout')->value;
+  }
+
+  if (!$paragraph->get('oe_bt_facts_figures_disp_icons')->isEmpty()) {
+    $variables['display_icons'] = $paragraph->get('oe_bt_facts_figures_disp_icons')->value;
+  }
+
+  if (!$paragraph->get('oe_bt_facts_figures_resp_cols')->isEmpty()) {
+    $variables['responsive_columns'] = $paragraph->get('oe_bt_facts_figures_resp_cols')->value;
+  }
+
+  if (!$paragraph->get('oe_bt_facts_figures_grid_columns')->isEmpty()) {
+    $variables['grid_columns'] = $paragraph->get('oe_bt_facts_figures_grid_columns')->value;
+  }
+
+}
+
+/**
  * Gets the mapped layout.
  *
  * @param string $layout
@@ -526,94 +576,4 @@ function _oe_bootstrap_theme_featured_media_set_embedded_media(array &$variables
     $ratio = $media->get('oe_media_iframe_ratio')->value;
     $variables['ratio'] = str_replace('_', 'x', $ratio);
   }
-}
-
-/**
- * Implements hook_preprocess_paragraph().
- */
-function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$variables): void {
-  $paragraph = $variables['paragraph'];
-  if (!$paragraph->get('field_oe_title')->isEmpty()) {
-    $variables['title'] = $paragraph->get('field_oe_title')->value;
-  }
-  if (!$paragraph->get('field_oe_link')->isEmpty()) {
-    $variables['link_more']['path'] = $paragraph->get('field_oe_link')->first()->getUrl()->toString();
-    $variables['link_more']['label'] = $paragraph->get('field_oe_link')->first()->get('title')->getValue();
-  }
-  $variables['items'] = [];
-
-  /** @var \Drupal\paragraphs\Entity\Paragraph $sub_paragraph */
-  foreach ($paragraph->get('field_oe_paragraphs')->referencedEntities() as $sub_paragraph) {
-    // Get sub-paragraph translation.
-    $sub_paragraph = \Drupal::service('entity.repository')
-      ->getTranslationFromContext($sub_paragraph, $paragraph->language()->getId());
-    $variables['items'][] = [
-      'icon' => [
-        'name' => $sub_paragraph->get('field_oe_icon')->value,
-        'size' => "l",
-      ],
-      'title' => $sub_paragraph->get('field_oe_title')->value,
-      'subtitle' => $sub_paragraph->get('field_oe_subtitle')->value,
-      'description' => $sub_paragraph->get('field_oe_plain_text_long')->value,
-    ];
-  }
-  if (!$paragraph->get('oe_bt_facts_figures_equal_height')->isEmpty()) {
-    $variables['equal_height'] = $paragraph->get('oe_bt_facts_figures_equal_height')->value;
-  }
-
-  if (!$paragraph->get('oe_bt_facts_figures_layout')->isEmpty()) {
-    $variables['style'] = $paragraph->get('oe_bt_facts_figures_layout')->value;
-  }
-
-  if (!$paragraph->get('oe_bt_facts_figures_disp_icons')->isEmpty()) {
-    $variables['display_icons'] = $paragraph->get('oe_bt_facts_figures_disp_icons')->value;
-  }
-
-  if (!$paragraph->get('oe_bt_facts_figures_resp_cols')->isEmpty()) {
-    $variables['responsive_columns'] = $paragraph->get('oe_bt_facts_figures_resp_cols')->value;
-  }
-
-  if (!$paragraph->get('oe_bt_facts_figures_grid_columns')->isEmpty()) {
-    $variables['grid_columns'] = $paragraph->get('oe_bt_facts_figures_grid_columns')->value;
-  }
-
-}
-
-/**
- * Implements hook_options_list_alter().
- */
-function oe_bootstrap_theme_paragraphs_options_list_alter(array &$options, array $context): void {
-  // Check if this is the field we want to change.
-  if ($context['fieldDefinition']->id() == 'paragraph.oe_fact.field_oe_icon') {
-    $options_field_icons = [
-      'arrow-down' => 'Arrow down',
-      'box-arrow-up' => 'External',
-      'arrow-up' => 'Arrow up',
-      'book' => 'Book',
-      'calendar' => 'Calendar',
-      'camera' => 'Camera',
-      'check' => 'Check',
-      'download' => 'Download',
-      'currency-euro' => 'Euro',
-      'facebook' => 'Facebook',
-      'file' => 'File' ,
-      'image' => 'Image',
-      'info' => 'Info',
-      'linkedin' => 'LinkedIn',
-      'files' => 'Multiple files',
-      'file-slides' => 'Presentation',
-      'rss' => 'RSS',
-      'search' => 'Search',
-      'share' => 'Share',
-      'file-spreadsheet' => 'Spreadsheet',
-      'twitter' => 'Twitter',
-      'person-video' => 'Video',
-    ];
-    // Change the label of the empty option.
-    $options = [];
-    foreach ($options_field_icons as $key => $value) {
-      $options[$key] = $value;
-    }
-  }
-
 }
