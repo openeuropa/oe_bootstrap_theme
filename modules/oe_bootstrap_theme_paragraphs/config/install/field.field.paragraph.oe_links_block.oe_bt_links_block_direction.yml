@@ -10,7 +10,7 @@ id: paragraph.oe_links_block.oe_bt_links_block_direction
 field_name: oe_bt_links_block_direction
 entity_type: paragraph
 bundle: oe_links_block
-label: Variant
+label: Direction
 description: 'Allows to select the direction of the links block.'
 required: false
 translatable: false
