@@ -12,7 +12,24 @@ listing:
         highlight-1-col: "highlight-1-col"
         highlight-2-col: "highlight-2-col"
         highlight-3-col: "highlight-3-col"
-      preview: "highlight-3-col"
+      preview: "default-3-col"
+    title_tag:
+      type: "textfield"
+      label: "Title tag"
+      description: "Tag that will be used for the title of the card. It will be 'h4' by default."
+      preview: "h5"
+    alignment:
+      type: "select"
+      label: "Alignment"
+      description: "The alignment of the image in the default layout cards."
+      options:
+        default: "[empty]"
+        start: start
+        end: end
+        center: center
+        baseline: baseline
+        stretch: stretch
+      preview: "start"
   fields:
     items:
       type: "array"

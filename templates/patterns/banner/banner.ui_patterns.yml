@@ -1,6 +1,6 @@
 banner:
-  label: "Banner composition"
-  description: "Hidden sidebar with activation. https://getbootstrap.com/docs/5.0/components/offcanvas/"
+  label: "Banner"
+  description: "Banner or heroes with text and/or background image and/or with call to action. https://getbootstrap.com/docs/5.0/examples/heroes/"
   variants:
     default:
       label: Default text banner
@@ -14,6 +14,7 @@ banner:
     shade:
       type: "boolean"
       label: "Shade"
+      description: "Enable the shadow effect to the image."
       preview: false
     hero:
       type: "boolean"
@@ -57,4 +58,5 @@ banner:
     image:
       type: "text"
       label: "Image"
+      description: "URL to the image"
       preview:  "https://placeimg.com/1000/500/arch"

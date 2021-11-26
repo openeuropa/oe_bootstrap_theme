@@ -1,0 +1,9 @@
+date_block:
+  label: "Date block"
+  description: "Date block allows to present a date block that can be placed in other components."
+  fields:
+    date:
+      type: "DateTime"
+      label: "Date"
+      description: "A DateTime object."
+      preview: '2021-05-26'

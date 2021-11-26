@@ -106,17 +106,16 @@ card_variant_search:
           '#title': 'Category 2'
   assert:
     count:
-      'div.border-0.p-0.mb-4-5.mb-md-4-75.card.text-dark.bg-search': 1
-      'div.row.g-0': 1
-      'div.col-md-3': 1
-      'div.col-md-9': 1
-      'div.card-body.p-0.p-md-3': 1
+      'div.listing-item.border-bottom.border-md-0.border-0.card.text-dark.bg-search': 1
+      'div.col-md-3.col-lg-2.rounded.mw-listing-img': 1
+      'div.col-md-9.col-lg-10': 1
+      'div.card-body.p-0.pb-md-0.pb-3': 1
       'img.d-none.d-md-block.card-img-top': 1
       'img[src="https://placeimg.com/1000/500/arch"]': 1
-      'span.me-2.badge.bg-primary': 2
-      'hr.d-md-none.mb-4-5': 1
+      'span.me-2.badge.bg-primary': 1
+      'span.badge.bg-primary': 2
     equals:
-      'a.card-title.fs-5.text-decoration-none.mb-2': "Title card"
+      'a.card-title': "Title card"
       'p.card-text.mb-3': "Text card with longer text which is supported"
     contains:
       'span.me-2.badge.bg-primary': "Category 1"

@@ -71,7 +71,7 @@ card:
       label: "Image"
       description: "Card image [path, alt, position]"
       preview:
-        path: "https://placeimg.com/1000/500/arch"
+        path: "https://placeimg.com/1000/500/people"
         alt: "Alternative text for card image"
         position: "top"
         rounded: 3
@@ -114,3 +114,6 @@ card:
         - label: "Secondary badge"
           assistive_text: "Assistive text for secondary badge"
           rounded_pill: true
+    date:
+      type: "array"
+      label: 'Date that will be rendered with the "Date Block" pattern.'

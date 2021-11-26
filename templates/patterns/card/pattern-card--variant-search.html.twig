@@ -8,6 +8,9 @@
 {% if badges is not empty %}
   {% set badge_attr = create_attribute({'class': ['me-2']}) %}
   {% for key,item in badges %}
+    {% if not loop.last %}
+      {% set badge_attr = create_attribute() %}
+    {% endif %}
     {% if key|first != '#' %}
       {% set _badges = _badges|merge([{
         label: item['#title'],
@@ -16,6 +19,7 @@
     {% endif %}
   {% endfor %}
 {% endif %}
+{% set _image = image %}
 {% if image is defined and image['#markup'] is not empty %}
   {% set _image = {
     path: image['#markup'],
@@ -32,26 +36,24 @@
 {% include '@oe-bcl/bcl-card/card.html.twig' with {
   horizontal: true,
   horizontal_grid: {
-    left_col_classes: "col-md-3",
-    right_col_classes: "col-md-9",
-    gutter: 0,
+    left_col_classes: "col-md-3 col-lg-2 rounded mw-listing-img",
+    right_col_classes: "col-md-9 col-lg-10",
   },
-  extra_classes_body: "p-0 p-md-3",
+  extra_classes_body: "p-0 pb-md-0 pb-3",
   badges: _badges,
   title: {
     tag: title.tag|default('a'),
-    classes: title.classes|default("fs-5 text-decoration-none mb-2"),
+    classes: title.classes|default(''),
     content: title.content,
   },
   text: text,
   attributes: create_attribute({'class': [
+    "listing-item",
+    "border-bottom",
+    "border-md-0",
     "border-0",
-    "p-0",
-    "mb-4-5",
-    "mb-md-4-75",
   ]}),
   text_color: 'dark',
-  image:_image,
+  image: _image,
   content: content
 } %}
-<hr class="d-md-none mb-4-5">

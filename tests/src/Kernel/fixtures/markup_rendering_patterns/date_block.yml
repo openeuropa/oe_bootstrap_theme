@@ -1,0 +1,17 @@
+date_block_default:
+  render:
+    '#type': pattern
+    '#id': date_block
+    '#fields':
+      date: '2021-05-26'
+  assertions:
+    count:
+      'time.bcl-date-block.d-flex.flex-column.align-items-center.justify-content-center.bg-date.text-light.pt-3.rounded-top.mw-date': 1
+      'time[datetime="2021-05-26"]': 1
+      'span[class="pb-3 text-uppercase"]': 1
+      'span[class="bg-light w-100 text-center py-2 text-dark rounded-bottom mb-n1"]': 1
+    equals:
+      'span.pb-3.text-uppercase': "May"
+      'span[class="bg-light w-100 text-center py-2 text-dark rounded-bottom mb-n1"]': "2021"
+    contains:
+      'span__day': "26"

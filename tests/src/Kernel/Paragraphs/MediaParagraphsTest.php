@@ -310,52 +310,32 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.text-dark.overlay.text-center.hero'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-lighter.text-dark.overlay.text-center.hero'));
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(1, $image_element);
     $this->assertStringContainsString(
       'url(' . file_create_url($en_file->getFileUri()) . ')',
       $image_element->attr('style')
     );
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-primary')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-primary')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(0, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - image / Modifier - hero_left / Full width - No.
     $paragraph->get('field_oe_banner_type')->setValue('hero_left');
     $paragraph->save();
 
-    // Unpublish the media and assert it is not rendered anymore.
-    $media->set('status', 0);
-    $media->save();
-
-    // Publish the media.
-    $media->set('status', 1);
-    $media->save();
-
-    // Since static cache is not cleared due to lack of requests in the test we
-    // need to reset manually.
-    $this->container->get('entity_type.manager')->getAccessControlHandler('media')->resetCache();
-
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(0, $crawler->filter('.bcl-banner.bg-light.text-dark.overlay.text-center.hero'));
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.text-dark.overlay.hero'));
+    $this->assertCount(0, $crawler->filter('.bcl-banner.bg-lighter.text-dark.overlay.text-center.hero'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-lighter.text-dark.overlay.hero'));
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(1, $image_element);
     $this->assertStringContainsString(
       'url(' . file_create_url($en_file->getFileUri()) . ')',
       $image_element->attr('style')
     );
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-primary')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-primary')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(0, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - image / Modifier - page_center / Full width - No.
@@ -364,7 +344,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.text-dark.overlay.text-center'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-lighter.text-dark.overlay.text-center'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.hero'));
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(1, $image_element);
@@ -372,11 +352,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
       'url(' . file_create_url($en_file->getFileUri()) . ')',
       $image_element->attr('style')
     );
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-primary')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-primary')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(0, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - image / Modifier - page_left / Full width - Yes.
@@ -386,7 +362,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.text-dark.overlay.full-width'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-lighter.text-dark.overlay.full-width'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.text-center'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.hero'));
     $image_element = $crawler->filter('.bcl-banner__image');
@@ -395,11 +371,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
       'url(' . file_create_url($en_file->getFileUri()) . ')',
       $image_element->attr('style')
     );
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-primary')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-primary')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(1, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - image-shade / Modifier - hero_center / Full width - Yes.
@@ -409,18 +381,14 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.shade.text-center.hero.full-width'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-lighter.shade.text-center.hero.full-width'));
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(1, $image_element);
     $this->assertStringContainsString(
       'url(' . file_create_url($en_file->getFileUri()) . ')',
       $image_element->attr('style')
     );
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-primary')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-primary')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(1, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - image-shade / Modifier - hero_left / Full width - Yes.
@@ -429,7 +397,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.shade.hero.full-width'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-lighter.shade.hero.full-width'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.text-center'));
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(1, $image_element);
@@ -437,11 +405,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
       'url(' . file_create_url($en_file->getFileUri()) . ')',
       $image_element->attr('style')
     );
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-primary')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-primary')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(1, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - image-shade / Modifier - page_center / Full width - No.
@@ -451,7 +415,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.shade.text-center'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-lighter.shade.text-center'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.hero'));
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(1, $image_element);
@@ -459,11 +423,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
       'url(' . file_create_url($en_file->getFileUri()) . ')',
       $image_element->attr('style')
     );
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-primary')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-primary')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(0, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - image-shade / Modifier - page_left / Full width - No.
@@ -472,7 +432,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.shade'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-lighter.shade'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.hero'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.text-center'));
     $image_element = $crawler->filter('.bcl-banner__image');
@@ -481,11 +441,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
       'url(' . file_create_url($en_file->getFileUri()) . ')',
       $image_element->attr('style')
     );
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-primary')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-primary')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(0, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - default / Modifier - hero_center / Full width - No.
@@ -495,17 +451,13 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.text-dark.text-center.hero'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-lighter.text-dark.text-center.hero'));
 
     // No image should be displayed on 'default' variant.
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(0, $image_element);
 
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-primary')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-primary')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(0, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - default / Modifier - hero_left / Full width - Yes.
@@ -515,18 +467,14 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.text-dark.hero.full-width'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-lighter.text-dark.hero.full-width'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.text-center'));
 
     // No image should be displayed on 'default' variant.
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(0, $image_element);
 
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-primary')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-primary')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(1, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - default / Modifier - page_center / Full width - Yes.
@@ -535,18 +483,14 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.text-dark.text-center.full-width'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-lighter.text-dark.text-center.full-width'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.hero'));
 
     // No image should be displayed on 'default' variant.
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(0, $image_element);
 
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-primary')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-primary')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(1, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - default / Modifier - page_left / Full width - Yes.
@@ -555,7 +499,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-light.text-dark.full-width'));
+    $this->assertCount(1, $crawler->filter('.bcl-banner.bg-lighter.text-dark.full-width'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.hero'));
     $this->assertCount(0, $crawler->filter('.bcl-banner.text-center'));
 
@@ -563,11 +507,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(0, $image_element);
 
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-primary')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-primary')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(1, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - primary / Modifier - hero_center / Full width - Yes.
@@ -583,11 +523,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(0, $image_element);
 
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-light')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-light')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(1, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - primary / Modifier - hero_left / Full width - Yes.
@@ -603,11 +539,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(0, $image_element);
 
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-light')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-light')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(1, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - primary / Modifier - page_center / Full width - Yes.
@@ -623,11 +555,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(0, $image_element);
 
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-light')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-light')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(1, $crawler->filter('.bcl-banner.full-width'));
 
     // Variant - primary / Modifier - page_left / Full width - No.
@@ -645,11 +573,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $image_element = $crawler->filter('.bcl-banner__image');
     $this->assertCount(0, $image_element);
 
-    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
-    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
-    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
-    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn.btn-light')->text()));
-    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn.btn-light')->html()));
+    $this->assertBannerRendering($crawler);
     $this->assertCount(0, $crawler->filter('.bcl-banner.full-width'));
 
     // Create a media using AV Portal image and add it to the paragraph.
@@ -681,6 +605,20 @@ class MediaParagraphsTest extends ParagraphsTestBase {
       'url(' . (file_create_url('avportal://P-038924/00-15.jpg')) . ')',
       $image_element->attr('style')
     );
+  }
+
+  /**
+   * Assert Banner is rendering correctly.
+   *
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertBannerRendering(Crawler $crawler): void {
+    $this->assertEquals('Banner', trim($crawler->filter('.bcl-banner__content div')->text()));
+    $this->assertEquals('Description', trim($crawler->filter('.bcl-banner__content p')->text()));
+    $this->assertCount(1, $crawler->filter('svg.bi.icon--fluid'));
+    $this->assertStringContainsString('Example', trim($crawler->filter('a.btn')->text()));
+    $this->assertStringContainsString('#chevron-right', trim($crawler->filter('a.btn')->html()));
   }
 
 }
