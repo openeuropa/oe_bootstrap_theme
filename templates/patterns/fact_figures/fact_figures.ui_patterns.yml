@@ -4,8 +4,8 @@ fact_figures:
   settings:
     style:
       type: select
-      label: Variant
-      description: "Variant of the composition"
+      label: Style
+      description: "Style of the composition"
       options:
         default: default
         block: block
