@@ -1,0 +1,102 @@
+<?php
+
+declare(strict_types = 1);
+
+namespace Drupal\Tests\oe_bootstrap_theme\Kernel\Paragraphs;
+
+use Symfony\Component\DomCrawler\Crawler;
+use Drupal\paragraphs\Entity\Paragraph;
+
+/**
+ * Tests the "Facts and Figures" paragraphs.
+ */
+class FactsFiguresTest extends ParagraphsTestBase {
+
+  /**
+   * Tests the rendering of the paragraph type.
+   */
+  public function testRendering(): void {
+    // Create Fact paragraphs.
+    $paragraph_fact =
+    [
+      0 => Paragraph::create([
+        'type' => 'oe_fact',
+        'field_oe_icon' => 'box-arrow-up',
+        'field_oe_title' => '1529 JIRA Ticket',
+        'field_oe_subtitle' => 'Jira Tickets',
+        'field_oe_plain_text_long' => 'Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum libero.',
+      ]),
+      1 => Paragraph::create([
+        'type' => 'oe_fact',
+        'field_oe_icon' => 'box-arrow-up',
+        'field_oe_title' => '337 Features',
+        'field_oe_subtitle' => 'Feature tickets',
+        'field_oe_plain_text_long' => 'Turpis varius congue venenatis, erat dui feugiat felis.',
+      ]),
+      2 => Paragraph::create([
+        'type' => 'oe_fact',
+        'field_oe_icon' => 'box-arrow-up',
+        'field_oe_title' => '107 Tests',
+        'field_oe_subtitle' => 'Test tickets',
+        'field_oe_plain_text_long' => 'Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem.',
+      ]),
+      3 => Paragraph::create([
+        'type' => 'oe_fact',
+        'field_oe_icon' => 'box-arrow-up',
+        'field_oe_title' => '5670 Variants',
+        'field_oe_subtitle' => 'Test variants',
+        'field_oe_plain_text_long' => 'Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum.',
+      ]),
+      4 => Paragraph::create([
+        'type' => 'oe_fact',
+        'field_oe_icon' => 'box-arrow-up',
+        'field_oe_title' => '345 Dev Ticket',
+        'field_oe_subtitle' => 'Jira ticket',
+        'field_oe_plain_text_long' => 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor.',
+      ]),
+      5 => Paragraph::create([
+        'type' => 'oe_fact',
+        'field_oe_icon' => 'box-arrow-up',
+        'field_oe_title' => '43 Components',
+        'field_oe_subtitle' => 'Figma components',
+        'field_oe_plain_text_long' => 'Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur.',
+      ]),
+    ];
+    // Create Facts and figures paragraph.
+    $paragraph = Paragraph::create([
+      'type' => 'oe_facts_figures',
+      'field_oe_title' => 'Fact and figures block',
+      'field_oe_link' => [
+        'uri' => 'https://www.readmore.com',
+        'title' => 'Read more',
+      ],
+      'oe_bt_facts_figures_disp_icons' => TRUE,
+      'oe_bt_facts_figures_equal_height' => TRUE,
+      'oe_bt_facts_figures_grid_columns' => 2,
+      'oe_bt_facts_figures_resp_cols' => 2,
+      'oe_bt_facts_figures_layout' => 'default',
+      'field_oe_paragraphs' => $paragraph_fact,
+    ]);
+    $paragraph->save();
+
+    // Testing: Facts and figures - Default layout.
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+    print_r($html);
+
+    $this->assertCount(1, $crawler->filter('div.bcl-fact-figures.bcl-fact-figures--default'));
+    $this->assertCount(4, $crawler->filter('h4.fw-bold'));
+    $this->assertCount(1, $crawler->filter('div.row-cols-md-2.row.row-cols-2.g-4.mt-3'));
+    $this->assertCount(1, $crawler->filter('svg.bi.icon--l'));
+    $this->assertCount(6, $crawler->filter('h3.text-capitalize.fw-bold.mt-2'));
+    $this->assertCount(6, $crawler->filter('h5.fw-bold'));
+
+    $link = $crawler->filter('a[href="https://www.readmore.com"]');
+    $this->assertStringContainsString(
+      'Read more',
+      $link->html()
+    );
+
+  }
+
+}
