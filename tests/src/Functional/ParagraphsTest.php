@@ -5,6 +5,8 @@ declare(strict_types = 1);
 namespace Drupal\Tests\oe_bootstrap_theme\Functional;
 
 use Drupal\Core\Url;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\Tests\BrowserTestBase;
 
 /**
@@ -68,7 +70,7 @@ class ParagraphsTest extends BrowserTestBase {
       'type' => 'paragraphs_test',
       'name' => 'Paragraphs Test',
     ]);
-    $this->createContentTypeTestWithParagraphs();
+    $this->addParagraphsField();
   }
 
   /**
@@ -80,23 +82,23 @@ class ParagraphsTest extends BrowserTestBase {
     $page->pressButton('Add Links block');
 
     // Assert the Links Block fields appears.
-    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][field_oe_links][0][uri]');
-    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][field_oe_links][0][title]');
-    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][field_oe_text][0][value]');
-    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][oe_bt_links_block_background]');
-    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][oe_bt_links_block_direction]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_links][0][uri]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_links][0][title]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_text][0][value]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_links_block_background]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_links_block_direction]');
 
     $this->submitForm([], 'Add another item');
 
     $values = [
       'title[0][value]' => 'Test Links block node title',
-      'field_oe_bt_paragraphs[0][subform][field_oe_text][0][value]' => 'EU Links',
-      'field_oe_bt_paragraphs[0][subform][field_oe_links][0][uri]' => 'https://www.example.com',
-      'field_oe_bt_paragraphs[0][subform][field_oe_links][0][title]' => 'Example link number 1',
-      'field_oe_bt_paragraphs[0][subform][field_oe_links][1][uri]' => 'https://www.more-example.com',
-      'field_oe_bt_paragraphs[0][subform][field_oe_links][1][title]' => 'Example link number 2',
-      'field_oe_bt_paragraphs[0][subform][oe_bt_links_block_background]' => 'gray',
-      'field_oe_bt_paragraphs[0][subform][oe_bt_links_block_direction]' => 'vertical',
+      'oe_bt_paragraphs[0][subform][field_oe_text][0][value]' => 'EU Links',
+      'oe_bt_paragraphs[0][subform][field_oe_links][0][uri]' => 'https://www.example.com',
+      'oe_bt_paragraphs[0][subform][field_oe_links][0][title]' => 'Example link number 1',
+      'oe_bt_paragraphs[0][subform][field_oe_links][1][uri]' => 'https://www.more-example.com',
+      'oe_bt_paragraphs[0][subform][field_oe_links][1][title]' => 'Example link number 2',
+      'oe_bt_paragraphs[0][subform][oe_bt_links_block_background]' => 'gray',
+      'oe_bt_paragraphs[0][subform][oe_bt_links_block_direction]' => 'vertical',
     ];
 
     $this->submitForm($values, 'Save');
@@ -117,27 +119,27 @@ class ParagraphsTest extends BrowserTestBase {
     $page->pressButton('Add Social media follow');
 
     // Assert the Social Media Follow fields appears.
-    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][field_oe_social_media_links][0][uri]');
-    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][field_oe_social_media_links][0][title]');
-    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][field_oe_social_media_links][0][link_type]');
-    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][field_oe_title][0][value]');
-    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][oe_bt_links_block_background]');
-    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][field_oe_social_media_variant]');
-    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][field_oe_social_media_see_more][0][uri]');
-    $this->assertSession()->fieldExists('field_oe_bt_paragraphs[0][subform][field_oe_social_media_see_more][0][title]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_social_media_links][0][uri]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_social_media_links][0][title]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_social_media_links][0][link_type]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_title][0][value]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_links_block_background]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_social_media_variant]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_social_media_see_more][0][uri]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_social_media_see_more][0][title]');
 
     $this->submitForm([], 'Add another item');
 
     $values = [
       'title[0][value]' => 'Test Social Media follow Links node title',
-      'field_oe_bt_paragraphs[0][subform][field_oe_title][0][value]' => 'EU Social Media Follow Links',
-      'field_oe_bt_paragraphs[0][subform][field_oe_social_media_links][0][uri]' => 'https://www.facebook.com',
-      'field_oe_bt_paragraphs[0][subform][field_oe_social_media_links][0][title]' => 'Example Facebook',
-      'field_oe_bt_paragraphs[0][subform][field_oe_social_media_links][0][link_type]' => 'facebook',
-      'field_oe_bt_paragraphs[0][subform][oe_bt_links_block_background]' => 'transparent',
-      'field_oe_bt_paragraphs[0][subform][field_oe_social_media_variant]' => 'horizontal',
-      'field_oe_bt_paragraphs[0][subform][field_oe_social_media_see_more][0][uri]' => 'https://example.com',
-      'field_oe_bt_paragraphs[0][subform][field_oe_social_media_see_more][0][title]' => 'More channels',
+      'oe_bt_paragraphs[0][subform][field_oe_title][0][value]' => 'EU Social Media Follow Links',
+      'oe_bt_paragraphs[0][subform][field_oe_social_media_links][0][uri]' => 'https://www.facebook.com',
+      'oe_bt_paragraphs[0][subform][field_oe_social_media_links][0][title]' => 'Example Facebook',
+      'oe_bt_paragraphs[0][subform][field_oe_social_media_links][0][link_type]' => 'facebook',
+      'oe_bt_paragraphs[0][subform][oe_bt_links_block_background]' => 'transparent',
+      'oe_bt_paragraphs[0][subform][field_oe_social_media_variant]' => 'horizontal',
+      'oe_bt_paragraphs[0][subform][field_oe_social_media_see_more][0][uri]' => 'https://example.com',
+      'oe_bt_paragraphs[0][subform][field_oe_social_media_see_more][0][title]' => 'More channels',
     ];
 
     $this->submitForm($values, 'Save');
@@ -150,18 +152,37 @@ class ParagraphsTest extends BrowserTestBase {
   }
 
   /**
-   * Create content type with paragraphs field.
+   * Adds a field to a paragraph.
    */
-  protected function createContentTypeTestWithParagraphs(): void {
-    $edit = [
-      'new_storage_type' => 'field_ui:entity_reference_revisions:paragraph',
+  protected function addParagraphsField() {
+    // Add a paragraphs field.
+    $field_storage = FieldStorageConfig::create([
       'field_name' => 'oe_bt_paragraphs',
-      'label' => 'Paragraphs',
-    ];
-    $this->drupalGet('/admin/structure/types/manage/paragraphs_test/fields/add-field');
-    $this->submitForm($edit, 'Save and continue');
-    $this->submitForm([], 'Save field settings');
-    $this->submitForm([], 'Save settings');
+      'entity_type' => 'node',
+      'type' => 'entity_reference_revisions',
+      'cardinality' => '-1',
+      'settings' => [
+        'target_type' => 'paragraph',
+      ],
+    ]);
+    $field_storage->save();
+    $field = FieldConfig::create([
+      'field_storage' => $field_storage,
+      'bundle' => 'paragraphs_test',
+      'settings' => [
+        'handler' => 'default:paragraph',
+        'handler_settings' => ['target_bundles' => NULL],
+      ],
+    ]);
+    $field->save();
+
+    $form_display = \Drupal::service('entity_display.repository')->getFormDisplay('node', 'paragraphs_test');
+    $form_display = $form_display->setComponent('oe_bt_paragraphs', ['type' => 'paragraphs']);
+    $form_display->save();
+
+    $view_display = \Drupal::service('entity_display.repository')->getViewDisplay('node', 'paragraphs_test');
+    $view_display->setComponent('oe_bt_paragraphs', ['type' => 'entity_reference_revisions_entity_view']);
+    $view_display->save();
   }
 
 }
