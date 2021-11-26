@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Theme override to display the 'documents' type paragraph.
+ *
+ * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig */
+#}
+  {{ devel_breakpoint() }}
+
+{{ pattern('documents', {
+  title: title,
+  language: language,
+  meta: "(16.2 MB - PDF)",
+  download: {
+    label: "Download",
+    url: "/example.html",
+  },
+  icon: {
+    name: "file-pdf-fill",
+    size: "xl",
+  },
+  content: content,
+  items: translation.items,
+  translation: {
+    translation_id: translation.id,
+    alignment: alignment,
+    label: label,
+    items: items,
+  },
+  label: translation.label,
+  icons_path: icons_path,
+}) }}
