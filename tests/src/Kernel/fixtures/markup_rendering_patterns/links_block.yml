@@ -5,7 +5,7 @@ links_block_vertical_gray:
     '#fields':
       settings:
         background: "gray"
-        direction: "vertical"
+        orientation: "vertical"
       title: 'Title Link Block'
       links:
         - label: 'Link number one'
@@ -35,7 +35,7 @@ links_block_horizontal_gray:
     '#fields':
       settings:
         background: "gray"
-        direction: "horizontal"
+        orientation: "horizontal"
       title: 'Title Link Block'
       links:
         - label: 'Link number one'
@@ -65,7 +65,7 @@ links_block_vertical_transparent:
     '#fields':
       settings:
         background: "transparent"
-        direction: "vertical"
+        orientation: "vertical"
       title: 'Title Link Block'
       links:
         - label: 'Link number one'
@@ -95,7 +95,7 @@ links_block_horizontal_transparent:
     '#fields':
       settings:
         background: "transparent"
-        direction: "horizontal"
+        orientation: "horizontal"
       title: 'Title Link Block'
       links:
         - label: 'Link number one'
