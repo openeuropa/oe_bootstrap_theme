@@ -1,0 +1,100 @@
+description_list_default:
+  render:
+    '#type': pattern
+    '#id': description_list
+    '#fields':
+      settings:
+        style: default
+      items:
+        - term:
+            - label:
+                '#markup': "<p class='d-inline-block mb-0'>Only title label with icon</p>"
+              icon:
+                path: "/assets/icons/bootstrap-icons.svg"
+                name: "geo-alt-fill"
+                size: "xs"
+          definition:
+            content:
+              '#markup': "<p class='mb-2'>Description of first term text goes here.</p>"
+        - term:
+            - label: "First title label"
+            - label:
+                content:
+                  '#markup': "<p class=\"mb-0 d-inline-block\">Second title label</p>"
+              icon:
+                path: "/assets/icons/bootstrap-icons.svg"
+                name: "geo-alt-fill"
+                size: "xs"
+          definition:
+            content:
+              '#markup': "<p class='mb-2'>Description of second term text goes here.</p>"
+        - term:
+            - label: "Only title label"
+          definition:
+            - '#markup': "<p class='mb-2'>First line description of third term text goes here.</p>"
+            - '#markup': "<p class='mb-2'>Second line description of third term text goes here.</p>"
+  assertions:
+    count:
+      'dl': 1
+      'dt': 4
+      'svg.me-2.bi.icon--xs': 2
+      'dd': 4
+    equals:
+      'dl > dt:nth-child(1) > div > p': "Only title label with icon"
+      'dl > dd:nth-child(2) > p': "Description of first term text goes here."
+      'dl > dt:nth-child(3) > div': "First title label"
+      'dl > dt:nth-child(4) > div > p': "Second title label"
+      'dl > dd:nth-child(5) > p': "Description of second term text goes here."
+      'dl > dt:nth-child(6) > div': "Only title label"
+      'dl > dd:nth-child(7) > p': "First line description of third term text goes here."
+      'dl > dd:nth-child(8) > p': "Second line description of third term text goes here."
+description_list_horizontal:
+  render:
+    '#type': pattern
+    '#id': description_list
+    '#fields':
+      settings:
+        style: horizontal
+      items:
+        - term:
+            - label:
+                '#markup': "<p class='d-inline-block mb-0'>Only title label with icon</p>"
+              icon:
+                path: "/assets/icons/bootstrap-icons.svg"
+                name: "geo-alt-fill"
+                size: "xs"
+          definition:
+            content:
+              '#markup': "<p class='mb-2'>Description of first term text goes here.</p>"
+        - term:
+            - label: "First title label"
+            - label:
+                content:
+                  '#markup': "<p class=\"mb-0 d-inline-block\">Second title label</p>"
+              icon:
+                path: "/assets/icons/bootstrap-icons.svg"
+                name: "geo-alt-fill"
+                size: "xs"
+          definition:
+            content:
+              '#markup': "<p class='mb-2'>Description of second term text goes here.</p>"
+        - term:
+            - label: "Only title label"
+          definition:
+            - '#markup': "<p class='mb-2'>First line description of third term text goes here.</p>"
+            - '#markup': "<p class='mb-2'>Second line description of third term text goes here.</p>"
+  assertions:
+    count:
+      'dl.d-md-grid.grid-3-9': 1
+      'dt': 4
+      'svg.me-2.bi.icon--xs': 2
+      'dd': 4
+    equals:
+      'dl > div:nth-child(1) > dt > div > p': "Only title label with icon"
+      'dl > div:nth-child(2) > dd > p': "Description of first term text goes here."
+      'dl > div:nth-child(3) > dt > div': "First title label"
+      'dl > div:nth-child(3) > dt > div > p': "Second title label"
+      'dl > div:nth-child(4) > dd > p': "Description of second term text goes here."
+      'dl > div:nth-child(5) > dt > div': "Only title label"
+      'dl > div:nth-child(6) > dd:nth-child(1) > p': "First line description of third term text goes here."
+      'dl > div:nth-child(6) > dd:nth-child(2) > p': "Second line description of third term text goes here."
