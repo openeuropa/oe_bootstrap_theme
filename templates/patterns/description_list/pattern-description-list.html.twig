@@ -1,0 +1,11 @@
+{#
+/**
+ * @file
+ * Description list pattern.
+ */
+#}
+{% include '@oe-bcl/bcl-description-list/description-list.html.twig' with {
+  'items': items,
+  'variant': style,
+  'attributes': attributes,
+} only %}

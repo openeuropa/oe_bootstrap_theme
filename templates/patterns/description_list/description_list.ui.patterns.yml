@@ -1,0 +1,44 @@
+description_list:
+  label: "Description list"
+  description: "Description list patter is used for the paragraph OpenEuropa Paragraphs Horizontal description list."
+  settings:
+    style:
+      type: "select"
+      label: "List style"
+      options:
+        default: "default"
+        horizontal: "horizontal"
+      preview: "horizontal"
+  fields:
+    items:
+      type: "array"
+      label: "List items"
+      description: "List of items"
+      preview:
+        - term:
+            - label:
+                '#markup' : "<p class='d-inline-block mb-0'>Only title label with icon</p>"
+              icon:
+                path: "/assets/icons/bootstrap-icons.svg"
+                name: "geo-alt-fill"
+                size: "xs"
+          definition:
+            content:
+              '#markup' : "<p class='mb-2'>Description of first term text goes here.</p>"
+        - term:
+            - label: "First title label"
+            - label:
+                content:
+                  '#markup' : "<p class=\"mb-0 d-inline-block\">Second title label</p>"
+              icon:
+                path: "/assets/icons/bootstrap-icons.svg"
+                name: "geo-alt-fill"
+                size: "xs"
+          definition:
+            content:
+              '#markup' : "<p class='mb-2'>Description of second term text goes here.</p>"
+        - term:
+            - label: "Only title label"
+          definition:
+            - '#markup' :  "<p class='mb-2'>First line description of third term text goes here.</p>"
+            - '#markup' :  "<p class='mb-2'>Second line description of third term text goes here.</p>"
