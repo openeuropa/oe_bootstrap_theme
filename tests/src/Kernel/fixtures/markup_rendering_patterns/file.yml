@@ -1,0 +1,78 @@
+file:
+  render:
+    '#type': pattern
+    '#id': file
+    '#fields':
+      file:
+        title: "druplicon.pdf"
+        mime: "text/plain"
+        url: "public://sample/druplicon.pdf"
+        meta: "(16.2 MB - PDF)"
+        languageCode: "French"
+      translation:
+        id: ""
+        label:
+          label: "Other languages (3)"
+          icon_position: "after"
+        items:
+          - language: "български"
+            meta: "(16.3 MB - PDF)"
+            download:
+              label: "Download"
+              path: "/example1.html"
+          - language: "Español"
+            meta: "(18.4 MB - PDF)"
+            download:
+              label: "Download"
+              path: "/example2.html"
+          - language: "Français"
+            meta: "(16.8 MB - PDF)"
+            download:
+              label: "Download"
+              path: "/example3.html"
+          - type: "content"
+            content:
+              '#markup': "<p class='mb-2'>Looking for another language which is not on the list? </p><a href='/example.html' class='d-block text-underline-hover'>Find out why.</a>"
+  assertions:
+    equals:
+      '.fw-normal': "(16.2 MB - PDF)"
+      '.fw-bold': "druplicon.pdf"
+      'a[role="button"]': "Other languages (3)"
+      '.collapse .py-3.border-bottom:nth-child(1) .fw-normal': "(16.3 MB - PDF)"
+      '.collapse .py-3.border-bottom:nth-child(2) .fw-normal': "(18.4 MB - PDF)"
+      '.collapse .py-3.border-bottom:nth-child(3) .fw-normal': "(16.8 MB - PDF)"
+    count:
+      'a[href="public://sample/druplicon.pdf"]': 1
+      'div.row': 3
+      'a.d-block.text-underline-hover.mt-1': 3
+      '.collapse .py-3.border-bottom:nth-child(1) a[href="/example1.html"]': 1
+      '.collapse .py-3.border-bottom:nth-child(2) a[href="/example2.html"]': 1
+      '.collapse .py-3.border-bottom:nth-child(3) a[href="/example3.html"]': 1
+    contains:
+      'a.text-underline-hover': "Download"
+      'small.fw-bold.m-0': "French"
+      'div.row:nth-child(1) small': "български"
+      'div.row:nth-child(2) small': "Español"
+      'div.row:nth-child(3) small': "Français"
+file_without_languages:
+  render:
+    '#type': pattern
+    '#id': file
+    '#fields':
+      file:
+        title: "druplicon2.pdf"
+        mime: "text/plain"
+        url: "http://example.com/druplicon2.pdf"
+        meta: "(20.2 MB - PDF)"
+        languageCode: "Spanish"
+  assertions:
+    equals:
+      '.fw-normal': "(20.2 MB - PDF)"
+      '.fw-bold': "druplicon2.pdf"
+    count:
+      'a[href="http://example.com/druplicon2.pdf"]': 1
+      'div.row': 0
+      'a.d-block.text-underline-hover.mt-1': 0
+    contains:
+      'a.text-underline-hover': "Download"
+      'small.fw-bold.m-0': "Spanish"

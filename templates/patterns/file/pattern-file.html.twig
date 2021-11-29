@@ -4,11 +4,11 @@
  * File download pattern.
  */
 #}
-{%  if file is not empty%}
+{%  if file is not empty %}
   {% set bcl_icon_path = '/assets/icons/bootstrap-icons.svg' %}
   {% include '@oe-bcl/bcl-file/file.html.twig' with {
     'title': file.title,
-    'language': file.language_code,
+    'language': file.languageCode,
     'meta': file.meta,
     'icon': {
       'path': bcl_icon_path,
