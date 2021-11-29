@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Theme override to display the 'Description list' #type paragraph.
+ *
+ * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
+ */
+#}
+
+{% set _title_tag = title_tag|default('h4') %}
+{% set _title = title|default('') %}
+
+{% if _title is not empty %}
+  {% set _title_classes = 'fw-bold mb-4' %}
+  <{{ _title_tag }} class="{{ _title_classes }}">
+  {{ _title }}
+  </{{ _title_tag }}>
+{% endif %}
+
+{{ pattern('description_list', {
+  'items': items,
+  'variant': style,
+}) }}

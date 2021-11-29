@@ -332,7 +332,8 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): 
 /**
  * Implements hook_preprocess_paragraph() for timeline paragraph.
  */
-function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables): void {
+function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables): void
+{
   $paragraph = $variables['paragraph'];
   $variables['heading'] = $paragraph->get('field_oe_title')->value ?? '';
   if (!isset($variables['content']['field_oe_timeline']['#items'])) {
@@ -348,9 +349,11 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables)
 }
 
 /**
+<<<<<<< HEAD
  * Implements hook_preprocess_paragraph() for paragraph--oe-content-row--variant-inpage-navigation.html.twig.
  */
-function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void {
+function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void
+{
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
@@ -386,6 +389,29 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage
   }
 
   $variables['links'] = $links;
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for oe_description-list paragraph.
+ */
+function oe_bootstrap_theme_preprocess_paragraph__oe_description_list(array &$variables): void {
+  /** @var Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  $variables['title'] = $paragraph->get('field_oe_title')->value ?? '';
+  $variables['style'] = $paragraph->get('oe_bt_desc_list_layout')->value ?? 'horizontal';
+
+  foreach ($paragraph->get('field_oe_description_list_items') as $delta => $item) {
+    $term = [
+      'term' => [
+        0 => [
+          'icon' => [],
+          'label' => $item->term,
+        ],
+      ],
+      'definition' => $item->description,
+    ];
+    $variables['items'][] = $term;
+  }
 }
 
 /**
