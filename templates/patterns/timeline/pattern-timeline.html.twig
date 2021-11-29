@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Template for a Timeline pattern.
+ * Timeline pattern.
  *
  */
 #}
@@ -12,7 +12,7 @@
   toggle_expanded: _toggle_expanded,
   hide: {
     from: hide_from,
-    to: -2,
+    to: hide_to|default(-2),
   },
   items: items,
   icons_path: bcl_icon_path,
