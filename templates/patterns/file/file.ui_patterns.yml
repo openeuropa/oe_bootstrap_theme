@@ -1,0 +1,43 @@
+file:
+  label: "File"
+  description: "File component is used to show info about the file that can be downloaded or how are displayed multimedia files (image and video)."
+  fields:
+    file:
+      type: "FileValueObject"
+      label: "File"
+      description: "A file value object."
+      preview:
+        title: "Example document"
+        mime: "application/pdf"
+        url: "http://example.com/document.pdf"
+        meta: "(16.2 MB - PDF)"
+        name: "document.pdf"
+        language_code: "fr"
+    translation:
+      type: object
+      label: "Translation"
+      escape: false
+      preview:
+        id: ""
+        label:
+          label: "Other languages (3)"
+          icon_position: "after"
+        items:
+          - language: "български"
+            meta: "(16.2 MB - PDF)"
+            download:
+              label: "Download"
+              path: "/example.html"
+          - language: "Español"
+            meta: "(16.2 MB - PDF)"
+            download:
+              label: "Download"
+              path: "/example.html"
+          - language: "Français"
+            meta: "(16.2 MB - PDF)"
+            download:
+              label: "Download"
+              path: "/example.html"
+          - type: "content"
+            content:
+              '#markup': "<p class='mb-2'>Looking for another language which is not on the list? </p><a href='/example.html' class='d-block text-underline-hover'>Find out why.</a>"

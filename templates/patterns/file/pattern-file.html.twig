@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * File download pattern.
+ */
+#}
+{%  if file is not empty%}
+  {% set bcl_icon_path = '/assets/icons/bootstrap-icons.svg' %}
+  {% include '@oe-bcl/bcl-file/file.html.twig' with {
+    'title': file.title,
+    'language': file.language_code,
+    'meta': file.meta,
+    'icon': {
+      'path': bcl_icon_path,
+      'name': file.extension,
+      'size': '2xl',
+    },
+    'download': {
+      'label': button_label|default('Download'|t),
+      'path': file.url,
+    },
+    'icon': {
+      'path': bcl_icon_path,
+      'name': 'download',
+      'size': 'fluid',
+    },
+    translation: translation,
+    attributes: attributes,
+  } only %}
+{% endif %}
