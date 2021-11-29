@@ -1,110 +1,110 @@
-form assertion:
-  render:
-    markup:
-      '#markup': Hello World!
-    plain:
-      '#plain_text': Papa Was A Rolling Stone <1972>
-  assert:
-    count:
-      'form.oe-bootstrap-theme-markup-rendering-test-form': 1
-    contains:
-      - Hello World!
-      - Papa Was A Rolling Stone &lt;1972&gt;
-textarea:
-  render:
-    '#type': textarea
-    '#title': Textarea
-    '#value': Text
-  assert:
-    equals:
-      'label.form-label': "Textarea"
-      'textarea.form-control': "Text"
-    count:
-      'textarea.form-textarea': 1
-      'textarea.form-control': 1
-checkbox_assertion:
-  render:
-    '#type': checkbox
-    '#title': Checkbox
-    '#attributes':
-      'foo': bar
-  assert:
-    contains:
-      - 'Checkbox'
-      - 'foo="bar"'
-    count:
-      'label.form-check-label': 1
-      'input.form-checkbox.form-check-input': 1
-select:
-  render:
-    '#type': select
-    '#title': Select
-    '#options':
-      - One
-      - Two
-      - Three
-  assert:
-    equals:
-      'label.form-label': "Select"
-      'option[value=0]': "One"
-      'option[value=1]': "Two"
-      'option[value=2]': "Three"
-    count:
-      'label.form-label': 1
-      'select.form-select': 1
-select_multiple_required:
-  render:
-    '#type': select
-    '#title': Select Multiple
-    '#options':
-      - One
-      - Two
-      - Three
-    '#multiple': true
-    '#attributes':
-      'required': "required"
-  assert:
-    equals:
-      'label.form-label': "Select Multiple"
-      'option[value=0]': "One"
-      'option[value=1]': "Two"
-      'option[value=2]': "Three"
-    count:
-      'label.form-label': 1
-      'select.multi-select': 1
-      'select[required]': 1
-      'select[multiple]': 1
-submit_primary:
-  render:
-    '#type': submit
-    '#value': 'Save'
-    '#attributes':
-      'class':
-        - 'button--primary'
-  assert:
-    count:
-      'input[type=submit].form-submit.btn': 1
-      'input[value=Save]': 1
-      'input.btn-primary': 1
-submit_seconday:
-  render:
-    '#type': submit
-    '#value': 'Save'
-  assert:
-    count:
-      'input[type=submit].form-submit.button.btn': 1
-      'input[value=Save]': 1
-      'input.btn-secondary': 1
-submit_disabled:
-  render:
-    '#type': submit
-    '#value': 'Save'
-    '#attributes':
-      'disabled': 'disabled'
-      'class':
-        - 'button--primary'
-  assert:
-    count:
-      'input[type=submit].form-submit.button.btn': 1
-      'input[value=Save]': 1
-      'input.btn-primary': 1
+#form assertion:
+#  render:
+#    markup:
+#      '#markup': Hello World!
+#    plain:
+#      '#plain_text': Papa Was A Rolling Stone <1972>
+#  assert:
+#    count:
+#      'form.oe-bootstrap-theme-markup-rendering-test-form': 1
+#    contains:
+#      - Hello World!
+#      - Papa Was A Rolling Stone &lt;1972&gt;
+#textarea:
+#  render:
+#    '#type': textarea
+#    '#title': Textarea
+#    '#value': Text
+#  assert:
+#    equals:
+#      'label.form-label': "Textarea"
+#      'textarea.form-control': "Text"
+#    count:
+#      'textarea.form-textarea': 1
+#      'textarea.form-control': 1
+#checkbox_assertion:
+#  render:
+#    '#type': checkbox
+#    '#title': Checkbox
+#    '#attributes':
+#      'foo': bar
+#  assert:
+#    contains:
+#      - 'Checkbox'
+#      - 'foo="bar"'
+#    count:
+#      'label.form-check-label': 1
+#      'input.form-checkbox.form-check-input': 1
+#select:
+#  render:
+#    '#type': select
+#    '#title': Select
+#    '#options':
+#      - One
+#      - Two
+#      - Three
+#  assert:
+#    equals:
+#      'label.form-label': "Select"
+#      'option[value=0]': "One"
+#      'option[value=1]': "Two"
+#      'option[value=2]': "Three"
+#    count:
+#      'label.form-label': 1
+#      'select.form-select': 1
+#select_multiple_required:
+#  render:
+#    '#type': select
+#    '#title': Select Multiple
+#    '#options':
+#      - One
+#      - Two
+#      - Three
+#    '#multiple': true
+#    '#attributes':
+#      'required': "required"
+#  assert:
+#    equals:
+#      'label.form-label': "Select Multiple"
+#      'option[value=0]': "One"
+#      'option[value=1]': "Two"
+#      'option[value=2]': "Three"
+#    count:
+#      'label.form-label': 1
+#      'select.multi-select': 1
+#      'select[required]': 1
+#      'select[multiple]': 1
+#submit_primary:
+#  render:
+#    '#type': submit
+#    '#value': 'Save'
+#    '#attributes':
+#      'class':
+#        - 'button--primary'
+#  assert:
+#    count:
+#      'input[type=submit].form-submit.btn': 1
+#      'input[value=Save]': 1
+#      'input.btn-primary': 1
+#submit_seconday:
+#  render:
+#    '#type': submit
+#    '#value': 'Save'
+#  assert:
+#    count:
+#      'input[type=submit].form-submit.button.btn': 1
+#      'input[value=Save]': 1
+#      'input.btn-secondary': 1
+#submit_disabled:
+#  render:
+#    '#type': submit
+#    '#value': 'Save'
+#    '#attributes':
+#      'disabled': 'disabled'
+#      'class':
+#        - 'button--primary'
+#  assert:
+#    count:
+#      'input[type=submit].form-submit.button.btn': 1
+#      'input[value=Save]': 1
+#      'input.btn-primary': 1
