@@ -1,10 +1,18 @@
 listing:
   label: "Listing"
   description: "Listing used for the List item block."
+  variants:
+    default:
+      label: "Default"
+    highlight:
+      label: "Highlight"
+    date:
+      label: "Date"
   settings:
     columns:
       type: "select"
-      label: "Variant"
+      label: "Layout"
+      description: "Select the number of columns of the list"
       options:
         default-1-col: "default-1-col"
         default-2-col: "default-2-col"
@@ -47,6 +55,10 @@ listing:
             path: "https://picsum.photos/seed/1002/600/400"
             alt: "alt img"
             position: "top"
+          date:
+            day: "26"
+            month: "MAY"
+            year: "2021"
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>

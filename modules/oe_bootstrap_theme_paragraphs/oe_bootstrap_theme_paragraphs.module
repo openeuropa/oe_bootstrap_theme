@@ -8,6 +8,7 @@
 declare(strict_types = 1);
 
 use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
@@ -25,6 +26,7 @@ use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\node\Entity\Node;
+use Drupal\Core\Template\Attribute;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
@@ -172,12 +174,12 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
 function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
-  $variables['title'] = $paragraph->get('field_oe_title')->first()->value ?? '';
-  $variables['columns'] = oe_bootstrap_theme_get_bcl_layout_mapping($paragraph->get('field_oe_list_item_block_layout')->first()->value);
-  $variables['items'] = [];
   $variables['variant'] = $paragraph->get('oe_paragraphs_variant')->first()->getValue()['value'];
+  $variables['title'] = $paragraph->get('field_oe_title')->first()->value ?? '';
+  $variables['columns'] = oe_bootstrap_theme_get_bcl_layout_mapping($variables['variant'], $paragraph->get('field_oe_list_item_block_layout')->first()->value);
+  $variables['items'] = [];
 
-  foreach ($paragraph->get('field_oe_paragraphs') as $delta => $item) {
+  foreach ($paragraph->get('field_oe_paragraphs') as $item) {
     $image = [];
     if (!$item->entity->get('field_oe_image')->isEmpty()) {
       /** @var \Drupal\file\Plugin\Field\FieldType\FileItem $image_item */
@@ -189,21 +191,8 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
         'position' => 'top',
       ];
     }
-
     // Prepare the date fields if date is available.
-    $contentItem = '';
-    if ($variables['variant'] === 'date') {
-      $display_options = EntityViewDisplay::load('paragraph.oe_list_item.default')
-        ->getComponent('field_oe_date');
-      $dateItem = $item->entity->get('field_oe_date')->first();
-      $contentItem = [
-        '#type' => 'inline_template',
-        '#template' => '<div><span class="d-md-inline d-block text-muted mb-2 mb-md-0">{{ date }}</span></div>',
-        '#context' => [
-          'date' => $dateItem->view($display_options),
-        ],
-      ];
-    }
+    $date = get_date_for_list_item_paragraph($item->entity, $variables);
 
     // Prepare the metas if available.
     $metas = [];
@@ -227,9 +216,10 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
         'content' => $item->entity->field_oe_text_long->value,
         'classes' => 'mb-2',
       ],
-      'image' => $image,
+
+      'image' => $variables['variant'] !== 'date' ? $image : '',
       'badges' => $metas,
-      'content' => $contentItem,
+      'date' => $date,
     ];
   }
 
@@ -390,21 +380,25 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage
 /**
  * Gets the mapped layout.
  *
+ * @param string $variant
+ *   The variant of the paragraph.
  * @param string $layout
  *   The paragraph layout.
  *
  * @return string
  *   The BCL layout.
  */
-function oe_bootstrap_theme_get_bcl_layout_mapping(string $layout): string {
-  if ($layout === 'three_columns') {
-    return 'highlight-3-col';
-  }
-  if ($layout === 'two_columns') {
-    return 'highlight-2-col';
-  }
+function oe_bootstrap_theme_get_bcl_layout_mapping(string $variant, string $layout): string {
+  switch ($layout) {
+    case 'two_columns':
+      return $variant === 'highlight' ? "highlight-2-col" : "default-2-col";
 
-  return 'highlight-1-col';
+    case 'three_columns':
+      return $variant === 'highlight' ? "highlight-3-col" : "default-3-col";
+
+    default:
+      return $variant === 'highlight' ? "highlight-1-col" : "default-1-col";
+  }
 }
 
 /**
@@ -583,7 +577,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item(array &$variables
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
-  $variables['variant'] = 'default';
   if (!$paragraph->get('oe_paragraphs_variant')->isEmpty()) {
     $list_item_variant = $paragraph->get('oe_paragraphs_variant')->first()->value;
     $variables['variant'] = $list_item_variant ?? 'default';
@@ -683,23 +676,17 @@ function get_content_for_list_item_paragraph(Paragraph $paragraph): array {
  * @throws \Drupal\Core\TypedData\Exception\MissingDataException
  */
 function get_date_for_list_item_paragraph(Paragraph $paragraph, array $variables): array {
-  $dateItem = [];
-  $date_time = [];
-  if (!$paragraph->get('field_oe_date')->isEmpty() && $variables['variant'] == 'date') {
-    $date = $paragraph->get('field_oe_date')->first();
-    $display_options = EntityViewDisplay::load('paragraph.oe_list_item.default')->getComponent('field_oe_date');
-    $dateTime = $date->view($display_options);
-
-    if (!empty($dateTime['#attributes']['datetime'])) {
-      $date_time = $dateTime['#attributes']['datetime'];
-    }
-
-    $dateItem = [
-      'day' => $date->date->format("j"),
-      'year' => $date->date->format("Y"),
-      'month' => $date->date->format("M"),
-      'date_time' => $date_time,
-    ];
+  if ($variables['variant'] !== 'date' || $paragraph->get('field_oe_date')->isEmpty()) {
+    return [];
   }
-  return $dateItem;
+  /** @var \Drupal\datetime\Plugin\Field\FieldType\DateTimeItem $dateItem */
+  $dateItem = $paragraph->get('field_oe_date')->first();
+  $dateTime = DrupalDateTime::createFromFormat('Y-m-d', $dateItem->getValue()['value']);
+  return [
+    'attributes' => new Attribute(),
+    'year' => $dateTime->format('Y'),
+    'month' => $dateTime->format('M'),
+    'day' => $dateTime->format('d'),
+  ];
+
 }
