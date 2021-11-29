@@ -8,14 +8,14 @@ links_block:
         options:
           gray: "gray"
           transparent: "transparent"
-          preview: "gray"
+        preview: "gray"
       orientation:
         label: "Orientation"
         type: "select"
         options:
           vertical: "vertical"
           horizontal: "horizontal"
-          preview: "vertical"
+        preview: "vertical"
     fields:
       title:
         type: "text"
