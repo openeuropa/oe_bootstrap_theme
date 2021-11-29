@@ -40,6 +40,7 @@ abstract class ParagraphsTestBase extends AbstractKernelTestBase {
     'oe_paragraphs_media_field_storage',
     'oe_paragraphs_iframe_media',
     'oe_paragraphs_banner',
+    'oe_bootstrap_theme_paragraphs',
     'text',
     'typed_link',
     'views',
@@ -61,6 +62,7 @@ abstract class ParagraphsTestBase extends AbstractKernelTestBase {
     ]);
     $this->installConfig([
       'oe_paragraphs',
+      'oe_bootstrap_theme_paragraphs',
       'filter',
       'locale',
       'language',

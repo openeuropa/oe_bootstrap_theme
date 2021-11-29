@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Link block pattern.
+ */
+#}
+{% include '@oe-bcl/bcl-links-block/links-block.html.twig' with {
+  background: background,
+  variant: orientation,
+  title: title,
+  links: links,
+  attributes: attributes,
+} only %}

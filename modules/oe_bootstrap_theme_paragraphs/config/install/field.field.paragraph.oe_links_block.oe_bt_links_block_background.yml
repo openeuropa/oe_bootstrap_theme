@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.oe_bt_links_block_background
+    - paragraphs.paragraphs_type.oe_links_block
+  module:
+    - options
+id: paragraph.oe_links_block.oe_bt_links_block_background
+field_name: oe_bt_links_block_background
+entity_type: paragraph
+bundle: oe_links_block
+label: Background
+description: 'Allows to select the background color of the links block.'
+required: false
+translatable: false
+default_value:
+  -
+    value: gray
+default_value_callback: ''
+settings: {  }
+field_type: list_string

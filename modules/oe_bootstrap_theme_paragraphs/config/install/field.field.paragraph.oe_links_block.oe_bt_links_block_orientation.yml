@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.oe_bt_links_block_orientation
+    - paragraphs.paragraphs_type.oe_links_block
+  module:
+    - options
+id: paragraph.oe_links_block.oe_bt_links_block_orientation
+field_name: oe_bt_links_block_orientation
+entity_type: paragraph
+bundle: oe_links_block
+label: Orientation
+description: 'Allows to select the direction of the links block.'
+required: false
+translatable: false
+default_value:
+  -
+    value: vertical
+default_value_callback: ''
+settings: {  }
+field_type: list_string

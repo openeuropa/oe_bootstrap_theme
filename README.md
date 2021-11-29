@@ -1,6 +1,6 @@
 # OpenEuropa Bootstrap base theme
 
-Drupal 8 theme based on [Bootstrap 5](https://v5.getbootstrap.com/) and [UI Patterns](https://github.com/nuvoleweb/ui_patterns/).
+Drupal 8/9 theme based on [Bootstrap 5](https://v5.getbootstrap.com/) and [UI Patterns](https://github.com/nuvoleweb/ui_patterns/).
 
 ## Paragraphs
 
@@ -13,14 +13,12 @@ The paragraphs below are not yet themed therefore not recommended for usage:
 - Listing item
 - Listing item block
 - Rich text
-- Social media follow
-- Text with Featured media
 
 ## Requirements
 
 This depends on the following software:
 
-* [PHP 7.2 or 7.3](http://php.net/)
+* [PHP 7.3](http://php.net/)
 
 ## Installation
 
@@ -37,6 +35,14 @@ In order to enable the theme in your project perform the following steps:
 
 1. Enable the OpenEuropa Bootstrap Theme Helper module ```./vendor/bin/drush en oe_bootstrap_theme_helper```
 2. Enable the OpenEuropa Bootstrap Theme and set it as default ```./vendor/bin/drush config-set system.theme default oe_bootstrap_theme```
+
+
+### Integration with oe_paragraphs
+
+In order to have full working integration with paragraphs in your project, you must enable oe_boostrap_theme_paragraphs module:
+
+```./vendor/bin/drush en oe_bootstrap_theme_paragraphs```
+
 
 ## Development setup
 

@@ -1,0 +1,53 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oe_social_media_follow.oe_bt_links_block_background
+    - field.field.paragraph.oe_social_media_follow.field_oe_social_media_links
+    - field.field.paragraph.oe_social_media_follow.field_oe_social_media_see_more
+    - field.field.paragraph.oe_social_media_follow.field_oe_social_media_variant
+    - field.field.paragraph.oe_social_media_follow.field_oe_title
+    - paragraphs.paragraphs_type.oe_social_media_follow
+  module:
+    - link
+    - typed_link
+id: paragraph.oe_social_media_follow.default
+targetEntityType: paragraph
+bundle: oe_social_media_follow
+mode: default
+content:
+  field_oe_social_media_links:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: typed_link
+    region: content
+  field_oe_social_media_see_more:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_oe_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  oe_bt_links_block_background: true
+  field_oe_social_media_variant: true
