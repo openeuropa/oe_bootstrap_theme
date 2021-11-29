@@ -11,7 +11,6 @@ use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
-use Drupal\Core\Url;
 use Drupal\media\Entity\Media;
 use Drupal\media\MediaInterface;
 use Drupal\media\MediaSourceInterface;
@@ -24,6 +23,8 @@ use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_media_iframe\Plugin\media\Source\Iframe;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\Component\Utility\Html;
+use Drupal\Component\Utility\UrlHelper;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
@@ -171,7 +172,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
 function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
-  $variables['title'] = $paragraph->get('field_oe_title')->first()->value;
+  $variables['title'] = $paragraph->get('field_oe_title')->first()->value ?? '';
   $variables['columns'] = oe_bootstrap_theme_get_bcl_layout_mapping($paragraph->get('field_oe_list_item_block_layout')->first()->value);
   $variables['items'] = [];
 
@@ -575,4 +576,132 @@ function oe_bootstrap_theme_set_video_iframe_ratio(Media $media, array &$variabl
   $ratio = $media->get('oe_media_iframe_ratio')->value;
   $variables['ratio'] = str_replace('_', 'x', $ratio);
   $cacheability->applyTo($variables);
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for paragraph--oe-list-item.html.twig.
+ */
+function oe_bootstrap_theme_preprocess_paragraph__oe_list_item(array &$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  $variables['variant'] = 'default';
+  if (!$paragraph->get('oe_paragraphs_variant')->isEmpty()) {
+    $list_item_variant = $paragraph->get('oe_paragraphs_variant')->first()->value;
+    $variables['variant'] = $list_item_variant ?? 'default';
+  }
+  $variables['url'] = $paragraph->get('field_oe_link')->first()->getUrl()->toString();
+  $variables['title'] = $paragraph->get('field_oe_title')->first()->value ?? '';
+
+  // Extract the image if present.
+  if (!$paragraph->get('field_oe_image')->isEmpty()) {
+    /** @var \Drupal\file\Plugin\Field\FieldType\FileItem $image_item */
+    $image_item = $paragraph->get('field_oe_image')->first();
+    $file = $image_item->get('entity')->getValue();
+    $variables['image'] = [
+      'path' => file_url_transform_relative(file_create_url($file->getFileUri())),
+      'alt' => $image_item->get('alt')->getValue(),
+      'position' => 'top',
+    ];
+    if ($variables['variant'] === 'thumbnail_secondary') {
+      $variables['image']['position'] = 'bottom';
+    }
+  }
+
+  // Prepare the metas if available.
+  $metas = [];
+  if (!$paragraph->get('field_oe_meta')->isEmpty()) {
+    foreach ($paragraph->get('field_oe_meta') as $item) {
+      $metas[] = [
+        'label' => $item->value,
+        'background' => 'primary',
+      ];
+    }
+  }
+  $variables['meta'] = $metas;
+
+  if (!$paragraph->get('field_oe_text_long')->isEmpty()) {
+    $variables['detail'] = $paragraph->get('field_oe_text_long')->first()->value;
+  }
+
+  $date = get_date_for_list_item_paragraph($paragraph, $variables);
+  if (!empty($date)) {
+    $variables['date'] = $date;
+  }
+  $variables['content'] = get_content_for_list_item_paragraph($paragraph);
+}
+
+/**
+ * Gets the content needed for the list item paragraph.
+ *
+ * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
+ *   The paragraph List item.
+ *
+ * @return array
+ *   Array if the link is internal. Empty in case it's not an internal link.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ * @throws \Drupal\Core\TypedData\Exception\MissingDataException
+ */
+function get_content_for_list_item_paragraph(Paragraph $paragraph): array {
+  $contentItem = [];
+
+  if (!UrlHelper::isExternal($paragraph->get('field_oe_link')->first()->getUrl()->toString())) {
+    $urlOptions = $paragraph->get('field_oe_link')->first()->getUrl()->getRouteParameters();
+    foreach ($urlOptions as $key => $value) {
+      if ($key == 'node') {
+        $node = Node::load($value);
+        $bundle_label = \Drupal::entityTypeManager()->getStorage('node_type')->load($node->bundle())->label();
+        $date = $node->getCreatedTime();
+        $formatted_date = \Drupal::service('date.formatter')->format($date, 'custom', 'j F Y');
+        $contentItem = [
+          '#type' => 'inline_template',
+          '#template' => '<div><span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">{{ bundle_name }}</span><span class="d-md-inline d-block text-muted mb-2 mb-md-0">{{ date }}</span></div>',
+          '#context' => [
+            'date' => $formatted_date,
+            'bundle_name' => $bundle_label,
+          ],
+        ];
+      }
+    }
+  }
+  return $contentItem;
+}
+
+/**
+ * Gets the content needed for the list item paragraph.
+ *
+ * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
+ *   The paragraph List item.
+ * @param array $variables
+ *   The render array.
+ *
+ * @return array
+ *   Array if the date is informed. Empty in case it's not informed.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ * @throws \Drupal\Core\TypedData\Exception\MissingDataException
+ */
+function get_date_for_list_item_paragraph(Paragraph $paragraph, array $variables): array {
+  $dateItem = [];
+  $date_time = [];
+  if (!$paragraph->get('field_oe_date')->isEmpty() && $variables['variant'] == 'date') {
+    $date = $paragraph->get('field_oe_date')->first();
+    $display_options = EntityViewDisplay::load('paragraph.oe_list_item.default')->getComponent('field_oe_date');
+    $dateTime = $date->view($display_options);
+
+    if (!empty($dateTime['#attributes']['datetime'])) {
+      $date_time = $dateTime['#attributes']['datetime'];
+    }
+
+    $dateItem = [
+      'day' => $date->date->format("j"),
+      'year' => $date->date->format("Y"),
+      'month' => $date->date->format("M"),
+      'date_time' => $date_time,
+    ];
+  }
+  return $dateItem;
 }
