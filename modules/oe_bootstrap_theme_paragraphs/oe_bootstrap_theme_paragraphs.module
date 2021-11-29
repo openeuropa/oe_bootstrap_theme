@@ -23,6 +23,8 @@ use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalVideoSource;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_media_iframe\Plugin\media\Source\Iframe;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\oe_bootstrap_theme\DocumentMediaValueExtractor;
+use Drupal\file\Entity\File;
 
 /**
  * Implements hook_preprocess_paragraph().
@@ -328,6 +330,76 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables)
   }
   $variables['hide_from'] = $paragraph->get('field_oe_timeline_expand')->value;
 }
+
+/**
+ * Implements hook_preprocess_paragraph() for oe_document paragraph.
+ */
+function oe_bootstrap_theme_preprocess_paragraph__oe_document(array &$variables): void {
+  $paragraph = $variables['paragraph'];
+
+  $media = $variables['content']['field_oe_media'][0]['#media'];
+  $file_entity = File::load($media->get('oe_media_file')->target_id);
+  if (!isset($file_entity)) {
+    return;
+  }
+
+  // File operations.
+  $file_value = DocumentMediaValueExtractor::getFileValue($media);
+  $variables['file'] = $file_value;
+  $variables['file']->meta = '(' . format_size($file_value->getSize()) .
+    ' - ' . strtoupper($file_value->getExtension()) . ')';
+  $variables['file']->setLanguageCode($file_entity->language()->getName());
+
+  // File language operations.
+  _oe_bootstrap_theme_preprocess_languages($media, $variables);
+}
+
+/**
+ * Process file language operations.
+ *
+ * @param \Drupal\media\Entity\Media $media
+ *   The file entity media.
+ * @param array $variables
+ *   Paragraph variables.
+ */
+function _oe_bootstrap_theme_preprocess_languages(Media $media, array &$variables): void {
+  $num_languages = 0;
+
+  // Generate the file information for all available translations.
+  foreach ($media->getTranslationLanguages() as $langcode => $language) {
+    if ($media->language()->getId() === $langcode) {
+      continue;
+    }
+    $translation = $media->getTranslation($langcode);
+    $translation_file_value = DocumentMediaValueExtractor::getFileValue($translation);
+    if ($translation_file_value) {
+      $language_config_storage = \Drupal::entityTypeManager()->getStorage('configurable_language');
+      $language_config = $language_config_storage->load($translation_file_value->getLanguageCode());
+      $variables['translation']['items'][] = [
+        'language' => $language_config->label(),
+        'meta' => '(' . format_size($translation_file_value->getSize()) .
+          ' - ' . strtoupper($translation_file_value->getExtension()) . ')',
+        'download' => [
+          'label' => t('Download'),
+          'path' => $translation_file_value->getUrl(),
+        ],
+      ];
+    }
+    $num_languages++;
+  }
+  if (isset($translation_file_value)) {
+    $variables['translation']['id'] = 'language-dropdown' . rand(0, 99);
+    $variables['translation']['label'] = [
+      'label' => t('Other languages (@languages)', ['@languages' => $num_languages]),
+      'icon position' => 'after',
+      'icon' => [
+        'name' => 'caret-down-fill',
+        'size' => '2xs',
+      ],
+    ];
+  }
+}
+
 
 /**
  * Gets the mapped layout.

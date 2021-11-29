@@ -1,0 +1,32 @@
+uuid: c6958217-9e54-4281-bb47-50ed867a858a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oe_document.field_oe_media
+    - paragraphs.paragraphs_type.oe_document
+_core:
+  default_config_hash: J5X9OB6NnoPpp7OjgH6okxh4cYBZt82dAtgLLLeJN20
+id: paragraph.oe_document.default
+targetEntityType: paragraph
+bundle: oe_document
+mode: default
+content:
+  field_oe_media:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
