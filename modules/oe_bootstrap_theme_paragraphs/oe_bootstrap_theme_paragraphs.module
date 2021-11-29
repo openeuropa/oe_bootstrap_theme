@@ -335,8 +335,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables)
  * Implements hook_preprocess_paragraph() for oe_document paragraph.
  */
 function oe_bootstrap_theme_preprocess_paragraph__oe_document(array &$variables): void {
-  $paragraph = $variables['paragraph'];
-
   $media = $variables['content']['field_oe_media'][0]['#media'];
   $file_entity = File::load($media->get('oe_media_file')->target_id);
   if (!isset($file_entity)) {

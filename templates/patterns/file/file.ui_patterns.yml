@@ -12,7 +12,7 @@ file:
         url: "http://example.com/document.pdf"
         meta: "(16.2 MB - PDF)"
         name: "document.pdf"
-        languageCode: "French"
+        languageCode: "Français"
     translation:
       type: object
       label: "Translation"
