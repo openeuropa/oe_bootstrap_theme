@@ -2,11 +2,6 @@ timeline:
   label: "Timeline"
   description: "Timeline is a flexible and powerful component for displaying a series of content ordered in time."
   settings:
-    icons_path:
-      type: textfield
-      label: "Icons path"
-      description: "Icons path"
-      preview: "/assets/icons/bootstrap-icons.svg"
     hide_from:
       type: number
       label: "Hide from"
