@@ -376,7 +376,7 @@ function _oe_bootstrap_theme_preprocess_languages(Media $media, array &$variable
       $variables['translation']['items'][] = [
         'language' => $language_config->label(),
         'meta' => '(' . format_size($translation_file_value->getSize()) .
-          ' - ' . strtoupper($translation_file_value->getExtension()) . ')',
+        ' - ' . strtoupper($translation_file_value->getExtension()) . ')',
         'download' => [
           'label' => t('Download'),
           'path' => $translation_file_value->getUrl(),
@@ -397,7 +397,6 @@ function _oe_bootstrap_theme_preprocess_languages(Media $media, array &$variable
     ];
   }
 }
-
 
 /**
  * Gets the mapped layout.

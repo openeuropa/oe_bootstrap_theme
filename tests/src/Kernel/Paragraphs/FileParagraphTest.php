@@ -107,7 +107,7 @@ class FileParagraphTest extends ParagraphsTestBase {
     $data['file'] = [
       'fields' => [
         'file' => [
-          'uid'=> '1',
+          'uid' => '1',
           'filename' => 'druplicon.txt',
           'title' => 'druplicon.txt',
           'filemime' => 'text/plain',
@@ -148,7 +148,6 @@ class FileParagraphTest extends ParagraphsTestBase {
         ],
       ],
     ];
-
 
     return $data;
   }
