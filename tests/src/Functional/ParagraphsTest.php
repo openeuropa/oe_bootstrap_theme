@@ -79,6 +79,47 @@ class ParagraphsTest extends BrowserTestBase {
   }
 
   /**
+   * Test Links Block paragraphs form.
+   */
+  public function testListingParagraph(): void {
+    $this->drupalGet('/node/add/paragraphs_test');
+    $page = $this->getSession()->getPage();
+    $page->pressButton('Add Listing item block');
+
+    // Assert the Listing fields appears.
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][variant]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_title][0][value]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_list_item_block_layout]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_link][0][uri]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_title][0][value]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_text_long][0][value]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_meta][0][value]');
+    $this->assertSession()->fieldExists('files[oe_bt_paragraphs_0_subform_field_oe_paragraphs_0_subform_field_oe_image_0]');
+
+    $this->submitForm([], 'Add another item');
+
+    $values = [
+      'title[0][value]' => 'Listing node title',
+      'oe_bt_paragraphs[0][variant]' => 'default',
+      'oe_bt_paragraphs[0][subform][field_oe_title][0][value]' => 'Listing example',
+      'oe_bt_paragraphs[0][subform][field_oe_list_item_block_layout]' => 'two_columns',
+      'oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_link][0][uri]'  => 'https://www.example.com',
+      'oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_title][0][value]'  => 'Card title',
+      'oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_text_long][0][value]'  => 'Lorem Ipsum dolor sit amet.',
+      'oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_meta][0][value]'  => 'label1',
+    ];
+
+    $this->submitForm($values, 'Save');
+    $this->drupalGet('/node/1');
+
+    // Assert paragraph values are displayed correctly.
+    $this->assertSession()->pageTextContains('Listing example');
+    $this->assertSession()->pageTextContains('Card title');
+    $this->assertSession()->pageTextContains('Lorem Ipsum dolor sit amet.');
+    $this->assertSession()->pageTextContains('label1');
+  }
+
+  /**
    * Test Social media follow paragraphs form.
    */
   public function testSocialMediaFollowParagraph(): void {
@@ -142,7 +183,7 @@ class ParagraphsTest extends BrowserTestBase {
     ])->save();
 
     $form_display = \Drupal::service('entity_display.repository')->getFormDisplay('node', 'paragraphs_test');
-    $form_display = $form_display->setComponent('oe_bt_paragraphs', ['type' => 'paragraphs']);
+    $form_display = $form_display->setComponent('oe_bt_paragraphs', ['type' => 'oe_paragraphs_variants']);
     $form_display->save();
 
     $view_display = \Drupal::service('entity_display.repository')->getViewDisplay('node', 'paragraphs_test');
