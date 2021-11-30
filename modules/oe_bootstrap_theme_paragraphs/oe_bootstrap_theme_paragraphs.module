@@ -25,7 +25,6 @@ use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\node\Entity\Node;
-use Drupal\Core\Template\Attribute;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
@@ -689,7 +688,6 @@ function get_date_for_list_item_paragraph(Paragraph $paragraph, array $variables
   $dateItem = $paragraph->get('field_oe_date')->first();
   $dateTime = DrupalDateTime::createFromFormat('Y-m-d', $dateItem->getValue()['value']);
   return [
-    'attributes' => new Attribute(),
     'year' => $dateTime->format('Y'),
     'month' => $dateTime->format('M'),
     'day' => $dateTime->format('d'),

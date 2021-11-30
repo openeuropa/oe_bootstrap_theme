@@ -41,8 +41,8 @@ listing:
   fields:
     items:
       type: "array"
-      label: "List items"
-      description: "List of items"
+      label: "Items"
+      description: "Collection of items that will be displayed as a list."
       preview:
         - title:
             content:
@@ -55,10 +55,12 @@ listing:
             path: "https://picsum.photos/seed/1002/600/400"
             alt: "alt img"
             position: "top"
+
           date:
             day: "26"
             month: "MAY"
             year: "2021"
+            date_time: "2021-05-26"
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
