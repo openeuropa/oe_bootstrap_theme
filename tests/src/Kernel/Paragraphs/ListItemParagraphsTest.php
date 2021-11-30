@@ -120,7 +120,7 @@ class ListItemParagraphsTest extends ParagraphsTestBase {
     $this->assertCount(1, $crawler->filter('a.text-underline-hover'));
 
     $this->assertCount(1, $crawler->filter('time.bcl-date-block.d-flex.flex-column.align-items-center.justify-content-center.bg-date.text-light.pt-3.rounded-top.mw-date'));
-    $this->assertCount(1, $crawler->filter('time[datetime="2011-11-13T12:00:00Z"]'));
+    $this->assertCount(1, $crawler->filter('time[datetime="2011-11-13"]'));
     $month_element = $crawler->filter('span[class="pb-3 text-uppercase"]');
     $this->assertCount(1, $month_element);
     $this->assertStringContainsString(

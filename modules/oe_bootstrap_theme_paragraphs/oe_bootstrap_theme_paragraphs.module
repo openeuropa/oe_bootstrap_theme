@@ -10,7 +10,6 @@ declare(strict_types = 1);
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
-use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
 use Drupal\media\Entity\Media;
 use Drupal\media\MediaInterface;
@@ -181,7 +180,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
 
   foreach ($paragraph->get('field_oe_paragraphs') as $item) {
     $image = [];
-    if (!$item->entity->get('field_oe_image')->isEmpty()) {
+    if (!$item->entity->get('field_oe_image')->isEmpty() && $variables['variant'] !== 'date') {
       /** @var \Drupal\file\Plugin\Field\FieldType\FileItem $image_item */
       $image_item = $item->entity->get('field_oe_image')->first();
       $file = $image_item->get('entity')->getValue();
@@ -205,21 +204,28 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
       }
     }
 
+    $title = [
+      '#type' => 'pattern',
+      '#id' => 'link',
+      '#fields' => [
+        'standalone' => TRUE,
+        'label' => $item->entity->field_oe_title->value,
+        'path' => $item->entity->get('field_oe_link')->first()->getUrl()->toString(),
+      ],
+    ];
     $variables['items'][] = [
       'title' => [
-        'content' => Link::fromTextAndUrl(
-          $item->entity->field_oe_title->value,
-          $item->entity->get('field_oe_link')->first()->getUrl()
-        ),
+        'content' => $title,
       ],
       'text' => [
         'content' => $item->entity->field_oe_text_long->value,
         'classes' => 'mb-2',
       ],
 
-      'image' => $variables['variant'] !== 'date' ? $image : '',
+      'image' => $image,
       'badges' => $metas,
       'date' => $date,
+      'content' => get_content_for_list_item_paragraph($item->entity),
     ];
   }
 
@@ -687,6 +693,7 @@ function get_date_for_list_item_paragraph(Paragraph $paragraph, array $variables
     'year' => $dateTime->format('Y'),
     'month' => $dateTime->format('M'),
     'day' => $dateTime->format('d'),
+    'date_time' => $dateTime->format('Y-m-d'),
   ];
 
 }
