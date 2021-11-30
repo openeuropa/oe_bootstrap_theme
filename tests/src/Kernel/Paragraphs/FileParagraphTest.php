@@ -93,7 +93,7 @@ class FileParagraphTest extends ParagraphsTestBase {
     $this->assertEquals('druplicon.txt', $crawler->filter('p.fw-bold.m-0')->text());
     $this->assertEquals('English (23.99 KB - TXT)', $crawler->filter('small.fw-bold.m-0')->text());
     $this->assertEquals('http://example.com/sample/druplicon.txt', $crawler->filter('.text-underline-hover')->attr('href'));
-    $this->assertEquals('#download', $crawler->filter('.text-secondary use')->attr('xlink:href'));
+    $this->assertEquals('/assets/icons/bootstrap-icons.svg#file-text-fill', $crawler->filter('.text-secondary use')->attr('xlink:href'));
   }
 
   /**

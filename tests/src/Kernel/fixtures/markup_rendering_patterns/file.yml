@@ -5,9 +5,9 @@ file:
     '#fields':
       file:
         title: "druplicon.pdf"
-        mime: "text/plain"
+        extension: "pdf"
         url: "public://sample/druplicon.pdf"
-        meta: "(16.2 MB - PDF)"
+        size: "23423"
         languageCode: "French"
       translation:
         id: ""
@@ -35,7 +35,7 @@ file:
               '#markup': "<p class='mb-2'>Looking for another language which is not on the list? </p><a href='/example.html' class='d-block text-underline-hover'>Find out why.</a>"
   assertions:
     equals:
-      '.fw-normal': "(16.2 MB - PDF)"
+      '.fw-normal': "(22.87 KB - PDF)"
       '.fw-bold': "druplicon.pdf"
       'a[role="button"]': "Other languages (3)"
       '.collapse .py-3.border-bottom:nth-child(1) .fw-normal': "(16.3 MB - PDF)"
@@ -61,13 +61,13 @@ file_without_languages:
     '#fields':
       file:
         title: "druplicon2.pdf"
-        mime: "text/plain"
+        extension: "pdf"
         url: "http://example.com/druplicon2.pdf"
-        meta: "(20.2 MB - PDF)"
+        size: "23424"
         languageCode: "Spanish"
   assertions:
     equals:
-      '.fw-normal': "(20.2 MB - PDF)"
+      '.fw-normal': "(22.88 KB - PDF)"
       '.fw-bold': "druplicon2.pdf"
     count:
       'a[href="http://example.com/druplicon2.pdf"]': 1
