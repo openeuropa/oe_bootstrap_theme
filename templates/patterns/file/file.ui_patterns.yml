@@ -8,9 +8,9 @@ file:
       description: "A file value object."
       preview:
         title: "Example document"
-        mime: "application/pdf"
+        extension: "pdf"
         url: "http://example.com/document.pdf"
-        meta: "(16.2 MB - PDF)"
+        size: "4444"
         name: "document.pdf"
         languageCode: "Français"
     translation:
