@@ -133,14 +133,14 @@ class TimelineParagraphTest extends ParagraphsTestBase {
     $this->assertEquals('Title 4', trim($crawler->filter('ol.bcl-timeline li:nth-child(4) h6')->html()));
     // Explicit format "filtered_html" specified.
     $this->assertEquals('Description <strong>4</strong>', trim($crawler->filter('ol.bcl-timeline li:nth-child(4) div')->html()));
-    $this->assertEquals('Label 5', trim($crawler->filter('ol.bcl-timeline li:nth-child(6) h5')->html()));
-    $this->assertEquals('Title 5', trim($crawler->filter('ol.bcl-timeline li:nth-child(6) h6')->html()));
+    $this->assertEquals('<p>Description <strong>5</strong></p>', trim($crawler->filter('ol.bcl-timeline li:nth-child(5) div')->html()));
+    $this->assertEquals('Label 5', trim($crawler->filter('ol.bcl-timeline li:nth-child(5) h5')->html()));
+    $this->assertEquals('Title 5', trim($crawler->filter('ol.bcl-timeline li:nth-child(5) h6')->html()));
+    $this->assertEquals('Label 6', trim($crawler->filter('ol.bcl-timeline li:nth-child(6) h5')->html()));
+    $this->assertEquals('Title 6', trim($crawler->filter('ol.bcl-timeline li:nth-child(6) h6')->html()));
     // Explicit format "full_html" specified.
-    $this->assertEquals('<p>Description <strong>5</strong></p>', trim($crawler->filter('ol.bcl-timeline li:nth-child(6) div')->html()));
-    $this->assertEquals('Label 6', trim($crawler->filter('ol.bcl-timeline li:nth-child(7) h5')->html()));
-    $this->assertEquals('Title 6', trim($crawler->filter('ol.bcl-timeline li:nth-child(7) h6')->html()));
-    $this->assertEquals('Description 6', trim($crawler->filter('ol.bcl-timeline li:nth-child(7) div')->html()));
-    $this->assertEquals('Show more 1 items', trim($crawler->filter('button .label-collapsed')->text()));
+    $this->assertEquals('Description 6', trim($crawler->filter('ol.bcl-timeline li:nth-child(6) div')->html()));
+    $this->assertEquals('Show more 3 items', trim($crawler->filter('button .label-collapsed')->text()));
 
     // Increase limit to print all the items and set timeline heading.
     $paragraph->set('field_oe_timeline_expand', '7');

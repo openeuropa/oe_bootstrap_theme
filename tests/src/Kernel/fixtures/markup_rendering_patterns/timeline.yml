@@ -4,8 +4,8 @@ timeline_items_hide:
     '#id': timeline
     '#fields':
       settings:
-        hide_from: 5
-        hide_to: -2
+        hide_from: 7
+        hide_to: 0
       toggle_collapsed: "Show %d more items"
       toggle_expanded: "Hide %d items"
       items:
@@ -52,7 +52,7 @@ timeline_items_show_more:
     '#fields':
       settings:
         hide_from: 5
-        hide_to: -2
+        hide_to: 0
         toggle_collapsed: "Show %d more items"
         toggle_expanded: "Hide %d items"
       items:
@@ -71,9 +71,9 @@ timeline_items_show_more:
   assertions:
       count:
         '.bcl-timeline': 1
-        'li': 6
-        '.label-collapsed': 0
-        '.label-expanded': 0
+        'li': 7
+        '.label-collapsed': 1
+        '.label-expanded': 1
       equals:
         '.bcl-timeline li:nth-child(1) h6': "Item 1"
         '.bcl-timeline li:nth-child(2) h6': "Item 2"
@@ -93,7 +93,7 @@ timeline_show_all:
     '#id': timeline
     '#fields':
       hide_from: 2
-      hide_to: 4
+      hide_to: 0
       button_label: 'Show all timelines'
       items:
         -
@@ -126,13 +126,13 @@ timeline_show_all:
       '.bcl-timeline li:nth-child(1) h5': "13 September 2017"
       '.bcl-timeline li:nth-child(2) h6': "Item 2"
       '.bcl-timeline li:nth-child(2) h5': "28-29 September 2017"
-      '.bcl-timeline li:nth-child(7) h6': "Item 6"
-      '.bcl-timeline li:nth-child(7) h5': "6 February 2018"
+      '.bcl-timeline li:nth-child(6) h6': "Item 6"
+      '.bcl-timeline li:nth-child(6) h5': "6 February 2018"
       '.bcl-timeline li:nth-child(1) div': '<a href="/example">Economic and Monetary Union package of proposals</a>'
       '.bcl-timeline li:nth-child(2) div': 'Lorem Ipsum 2'
       '.bcl-timeline li:nth-child(3) div': 'Lorem Ipsum 3'
       '.bcl-timeline li:nth-child(4) div': 'Lorem Ipsum 4'
-      '.bcl-timeline li:nth-child(7) div': 'Lorem Ipsum 6'
+      '.bcl-timeline li:nth-child(6) div': 'Lorem Ipsum 6'
 Timeline_heading:
   render:
     '#type': pattern
@@ -172,12 +172,12 @@ Timeline_heading:
       '.bcl-timeline li:nth-child(1) h5': "13 September 2017"
       '.bcl-timeline li:nth-child(2) h6': "Item 2"
       '.bcl-timeline li:nth-child(2) h5': "28-29 September 2017"
-      '.bcl-timeline li:nth-child(7) h6': "Item 6"
-      '.bcl-timeline li:nth-child(7) h5': "6 February 2018"
-      '.label-expanded': "Hide 2 items"
-      '.label-collapsed': "Show more 2 items"
+      '.bcl-timeline li:nth-child(6) h6': "Item 6"
+      '.bcl-timeline li:nth-child(6) h5': "6 February 2018"
+      '.label-expanded': "Hide 4 items"
+      '.label-collapsed': "Show more 4 items"
       '.bcl-timeline li:nth-child(1) div': '<a href="/example" class="ecl-link">Economic and Monetary Union package of proposals</a>'
       '.bcl-timeline li:nth-child(2) div': 'Lorem Ipsum 2'
       '.bcl-timeline li:nth-child(3) div': 'Lorem Ipsum 3'
       '.bcl-timeline li:nth-child(4) div': 'Lorem Ipsum 4'
-      '.bcl-timeline li:nth-child(7) div': 'Lorem Ipsum 6'
+      '.bcl-timeline li:nth-child(6) div': 'Lorem Ipsum 6'
