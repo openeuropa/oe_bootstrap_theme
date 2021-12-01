@@ -69,6 +69,10 @@ class TwigExtension extends AbstractExtension {
       ],
       'file-pdf-fill' => [
         'pdf',
+        'application/pdf',
+      ],
+      'file-word-fill' => [
+        'word',
       ],
     ];
 

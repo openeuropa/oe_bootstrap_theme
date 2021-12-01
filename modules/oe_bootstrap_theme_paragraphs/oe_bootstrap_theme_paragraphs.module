@@ -336,20 +336,34 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables)
  */
 function oe_bootstrap_theme_preprocess_paragraph__oe_document(array &$variables): void {
   $media = $variables['content']['field_oe_media'][0]['#media'];
-  $file_entity = File::load($media->get('oe_media_file')->target_id);
-  if (!isset($file_entity)) {
+  if (!isset($media)) {
     return;
   }
 
-  // File operations.
-  $file_value = DocumentMediaValueExtractor::getFileValue($media);
-  $variables['file'] = $file_value;
-  $variables['file']->meta = '(' . format_size($file_value->getSize()) .
-    ' - ' . strtoupper($file_value->getExtension()) . ')';
-  $variables['file']->setLanguageCode($file_entity->language()->getName());
+  $type = $media->get('oe_media_file_type')->value;
+  if ($type == "local") {
+    $file_entity = File::load($media->get('oe_media_file')->target_id);
+    if (!isset($file_entity)) {
+      return;
+    }
 
-  // File language operations.
-  _oe_bootstrap_theme_preprocess_languages($media, $variables);
+    // File operations.
+    $file_value = DocumentMediaValueExtractor::getFileValue($media);
+    $variables['file'] = $file_value;
+    $variables['file']->setLanguageCode($file_entity->language()->getName());
+
+    // File language operations.
+    _oe_bootstrap_theme_preprocess_languages($media, $variables);
+    return;
+  }
+
+  $file = $media->get('oe_media_remote_file')[0]->getValue();
+  $variables['file'] = [
+    'title' => $file['title'],
+    'extension' => $file['format'],
+    'size' => $file['size'],
+    'url' => $file['uri'],
+  ];
 }
 
 /**
