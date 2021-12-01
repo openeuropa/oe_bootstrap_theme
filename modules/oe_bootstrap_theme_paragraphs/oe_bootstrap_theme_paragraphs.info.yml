@@ -5,6 +5,8 @@ package: OpenEuropa Bootstrap Theme
 core_version_requirement: ^8.9 || ^9.1
 dependencies:
   - oe_paragraphs:oe_paragraphs
+  - oe_paragraphs:oe_paragraphs_banner
+  - oe_paragraphs:oe_paragraphs_media
   - oe_bootstrap_theme:oe_bootstrap_theme_helper
 config_devel:
   install:
