@@ -1,10 +1,19 @@
 # Change Log
 
+## [1.0.0-alpha4](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-alpha4) (2021-12-01)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-alpha3...1.0.0-alpha4)
+
+**Merged pull requests:**
+
+- OEL-750: Upgrade BCL to 0.14.0 [\#113](https://github.com/openeuropa/oe_bootstrap_theme/pull/113) ([escuriola](https://github.com/escuriola))
+- OEL-713: Links Block and Social Media paragraph theming. [\#110](https://github.com/openeuropa/oe_bootstrap_theme/pull/110) ([escuriola](https://github.com/escuriola))
+
 ## [1.0.0-alpha3](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-alpha3) (2021-11-22)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-alpha2...1.0.0-alpha3)
 
 **Merged pull requests:**
 
+- OEL-765: Prepare release 1.0.0-alpha3 [\#122](https://github.com/openeuropa/oe_bootstrap_theme/pull/122) ([drishu](https://github.com/drishu))
 - OEL-739: Text with feature media video variants [\#109](https://github.com/openeuropa/oe_bootstrap_theme/pull/109) ([escuriola](https://github.com/escuriola))
 - OEL-740: Banner paragraph kernel testing. [\#108](https://github.com/openeuropa/oe_bootstrap_theme/pull/108) ([escuriola](https://github.com/escuriola))
 
