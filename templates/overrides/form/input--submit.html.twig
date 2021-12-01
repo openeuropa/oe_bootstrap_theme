@@ -18,5 +18,14 @@
 {% if attributes.disabled == 'disabled' %}
   {% set attributes = attributes.addClass(['disabled']) %}
 {% endif %}
-
-<input{{ attributes.addClass(['btn']) }} />{{ children }}
+{% if element['#pattern'] is defined and element['#pattern'] is same as(true) %}
+  {{ pattern('button', {
+    'variant': element['#variant'],
+    'type': element['#fields']['settings']['type'],
+    'icon': element['#fields']['icon'],
+    'label': element['#fields']['label'],
+    'attributes': attributes.addClass(element['#attributes']['class']),
+  }) }}
+{% else %}
+  <input{{ attributes.addClass(['btn']) }} />{{ children }}
+{% endif %}
