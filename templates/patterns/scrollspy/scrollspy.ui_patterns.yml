@@ -1,0 +1,16 @@
+progress:
+  label: "Scrollspy"
+  description: "Navigation or list group components with indication of scroll position. https://getbootstrap.com/docs/5.0/components/scrollspy/"
+  settings:
+    variants:
+      navigation:
+        label: "Navigation"
+        description: "Navigation component with indication of scroll position."
+      list_group:
+        label: "List group"
+        description: "List group component with indication of scroll position."
+  fields:
+    items:
+      type: array
+      label: "Items"
+      description: "Array of objects: Navigation or List group items"
