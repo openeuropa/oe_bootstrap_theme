@@ -601,9 +601,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item(array &$variables
       'alt' => $image_item->get('alt')->getValue(),
       'position' => 'top',
     ];
-    if ($variables['variant'] === 'thumbnail_secondary') {
-      $variables['image']['position'] = 'bottom';
-    }
   }
 
   // Prepare the metas if available.
