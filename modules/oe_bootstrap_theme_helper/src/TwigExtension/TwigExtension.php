@@ -82,7 +82,7 @@ class TwigExtension extends AbstractExtension {
       }
     }
 
-    return 'file';
+    return 'file-earmark';
   }
 
 }
