@@ -1,12 +1,9 @@
-uuid: c6958217-9e54-4281-bb47-50ed867a858a
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.paragraph.oe_document.field_oe_media
     - paragraphs.paragraphs_type.oe_document
-_core:
-  default_config_hash: J5X9OB6NnoPpp7OjgH6okxh4cYBZt82dAtgLLLeJN20
 id: paragraph.oe_document.default
 targetEntityType: paragraph
 bundle: oe_document

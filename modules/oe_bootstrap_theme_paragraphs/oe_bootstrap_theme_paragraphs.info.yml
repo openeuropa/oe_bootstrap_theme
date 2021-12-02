@@ -16,8 +16,8 @@ config_devel:
     - field.field.paragraph.oe_social_media_follow.oe_bt_links_block_background
     - field.storage.paragraph.oe_bt_links_block_orientation
     - field.storage.paragraph.oe_bt_links_block_background
-    - core.entity_form_display.media.document.default.yml
-    - core.entity_form_display.paragraph.oe_document.default.yml
-    - core.entity_view_display.media.document.default.yml
-    - core.entity_view_display.paragraph.oe_document.default.yml
-    - core.entity_view_display.paragraph.oe_links_block.default.yml
+    - core.entity_form_display.media.document.default
+    - core.entity_form_display.paragraph.oe_document.default
+    - core.entity_view_display.media.document.default
+    - core.entity_view_display.paragraph.oe_document.default
+    - core.entity_view_display.paragraph.oe_links_block.default
