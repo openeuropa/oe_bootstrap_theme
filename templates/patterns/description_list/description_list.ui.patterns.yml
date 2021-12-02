@@ -2,9 +2,9 @@ description_list:
   label: "Description list"
   description: "Description list patter is used for the paragraph OpenEuropa Paragraphs Horizontal description list."
   settings:
-    style:
+    orientation:
       type: "select"
-      label: "List style"
+      label: "Orientation"
       options:
         default: "default"
         horizontal: "horizontal"

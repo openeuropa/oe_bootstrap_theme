@@ -4,7 +4,7 @@ description_list_default:
     '#id': description_list
     '#fields':
       settings:
-        style: default
+        orientation: default
       items:
         - term:
             - label:
@@ -54,7 +54,7 @@ description_list_horizontal:
     '#id': description_list
     '#fields':
       settings:
-        style: horizontal
+        orientation: horizontal
       items:
         - term:
             - label:
