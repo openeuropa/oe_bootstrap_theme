@@ -79,8 +79,10 @@ class ListingAssertion extends ParagraphsTestBase {
    *
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The DomCrawler where to check the element.
+   * @param int $nid
+   *   Node identifier.
    */
-  protected function assertListingRendering(Crawler $crawler): void {
+  protected function assertListingRendering(Crawler $crawler, int $nid): void {
     $this->assertCount(1, $crawler->filter('div.bcl-listing'));
     $this->assertCount(6, $crawler->filter('div.row-cols-1.g-4 > div.col'));
     $this->assertStringContainsString('Listing item block title', trim($crawler->filter('h4.fw-bold.mb-4')->text()));
@@ -88,7 +90,7 @@ class ListingAssertion extends ParagraphsTestBase {
     $link_element = $crawler->filter('a.text-underline-hover');
     $this->assertCount(6, $link_element);
     $this->assertStringContainsString(
-      'http://www.example.com/',
+      'node/' . $nid,
       $link_element->attr('href')
     );
     $text_element = $crawler->filter('p.card-text');
@@ -99,6 +101,8 @@ class ListingAssertion extends ParagraphsTestBase {
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est.',
       $text_element->text()
     );
+    $this->assertStringContainsString('Article', trim($crawler->filter('span[class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0"]')->text()));
+    $this->assertStringContainsString('15 November 2021', trim($crawler->filter('span[class="d-md-inline d-block text-muted mb-2 mb-md-0"]')->text()));
   }
 
   /**
@@ -115,6 +119,10 @@ class ListingAssertion extends ParagraphsTestBase {
     $this->assertStringContainsString(
       file_url_transform_relative(file_create_url($file->getFileUri())),
       $image_element->attr('src')
+    );
+    $this->assertStringContainsString(
+      'Alt for image 1',
+      $image_element->attr('alt')
     );
   }
 

@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel\Paragraphs;
 
+use Drupal\node\Entity\Node;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\PatternAssertions\ListingAssertion;
 use Symfony\Component\DomCrawler\Crawler;
@@ -37,13 +38,24 @@ class ListingParagraphsTest extends ListingAssertion {
     $image_file->setPermanent();
     $image_file->save();
 
+    $this->createContentType([
+      'type' => 'article',
+      'name' => 'Article',
+    ]);
+
+    $node = $this->createNode([
+      'created' => 1636977600,
+      'type' => 'article',
+    ]);
+    $nid = (int) $node->id();
+
     $paragraph_storage = $this->container->get('entity_type.manager')->getStorage('paragraph');
     $paragraph = $paragraph_storage->create([
       'type' => 'oe_list_item_block',
       'oe_paragraphs_variant' => 'default',
       'field_oe_list_item_block_layout' => 'one_column',
       'field_oe_title' => 'Listing item block title',
-      'field_oe_paragraphs' => $this->createListItems($image_file),
+      'field_oe_paragraphs' => $this->createListItems($image_file, $node),
     ]);
     $paragraph->save();
 
@@ -51,7 +63,7 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler);
+    $this->assertListingRendering($crawler, $nid);
     $this->assertDefaultListingRendering($crawler, $image_file);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--default-1-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1'));
@@ -65,7 +77,7 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler);
+    $this->assertListingRendering($crawler, $nid);
     $this->assertDefaultListingRendering($crawler, $image_file);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--default-2-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-2'));
@@ -79,7 +91,7 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler);
+    $this->assertListingRendering($crawler, $nid);
     $this->assertDefaultListingRendering($crawler, $image_file);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--default-3-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-2.row-cols-xl-3'));
@@ -94,7 +106,7 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler);
+    $this->assertListingRendering($crawler, $nid);
     $this->assertHighlightListingRendering($crawler, $image_file);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--highlight-1-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1'));
@@ -108,7 +120,7 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler);
+    $this->assertListingRendering($crawler, $nid);
     $this->assertHighlightListingRendering($crawler, $image_file);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--highlight-2-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-2'));
@@ -122,7 +134,7 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler);
+    $this->assertListingRendering($crawler, $nid);
     $this->assertHighlightListingRendering($crawler, $image_file);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--highlight-3-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-3'));
@@ -137,7 +149,7 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler);
+    $this->assertListingRendering($crawler, $nid);
     $this->assertDateListingRendering($crawler);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--default-1-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1'));
@@ -151,7 +163,7 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler);
+    $this->assertListingRendering($crawler, $nid);
     $this->assertDateListingRendering($crawler);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--default-2-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-2'));
@@ -165,7 +177,7 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler);
+    $this->assertListingRendering($crawler, $nid);
     $this->assertDateListingRendering($crawler);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--default-3-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-2.row-cols-xl-3'));
@@ -178,8 +190,10 @@ class ListingParagraphsTest extends ListingAssertion {
    *
    * @param \Drupal\file\Entity\File $image_file
    *   Image file to be added to the list item.
+   * @param \Drupal\node\Entity\Node $node
+   *   A Node entity.
    */
-  protected function createListItems(File $image_file): array {
+  protected function createListItems(File $image_file, Node $node): array {
     $items = [];
     for ($i = 1; $i <= 6; $i++) {
       $paragraph = Paragraph::create([
@@ -188,11 +202,10 @@ class ListingParagraphsTest extends ListingAssertion {
         'field_oe_title' => 'Item title ' . $i,
         'field_oe_text_long' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. ' . $i,
         'field_oe_link' => [
-          'uri' => 'http://www.example.com/' . $i,
+          'uri' => 'entity:node/' . $node->id(),
           'title' => 'Example ' . $i,
         ],
         'field_oe_image' => [
-          'title' => 'Example Image ' . $i,
           'alt' => 'Alt for image ' . $i,
           'target_id' => $image_file->id(),
         ],
