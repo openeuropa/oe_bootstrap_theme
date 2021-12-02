@@ -2,6 +2,7 @@ listing_default_1_col:
   render:
     '#type': pattern
     '#id': listing
+    '#variant': "default"
     '#fields':
       settings:
         columns: 'default-1-col'
@@ -95,6 +96,7 @@ listing_default_2_col:
   render:
     '#type': pattern
     '#id': listing
+    '#variant': "default"
     '#fields':
       settings:
         columns: 'default-2-col'
@@ -222,6 +224,7 @@ listing_default_3_col:
   render:
     '#type': pattern
     '#id': listing
+    '#variant': "default"
     '#fields':
       settings:
         columns: 'default-3-col'
@@ -344,6 +347,7 @@ listing_highlight_1_col:
   render:
     '#type': pattern
     '#id': listing
+    '#variant': "highlight"
     '#fields':
       settings:
         columns: 'highlight-1-col'
@@ -434,6 +438,7 @@ listing_highlight_2_col:
   render:
     '#type': pattern
     '#id': listing
+    '#variant': "highlight"
     '#fields':
       settings:
         columns: 'highlight-2-col'
@@ -558,6 +563,7 @@ listing_highlight_3_col:
   render:
     '#type': pattern
     '#id': listing
+    '#variant': "highlight"
     '#fields':
       settings:
         columns: 'highlight-3-col'
@@ -1425,6 +1431,7 @@ listing_date_1_col:
   render:
     '#type': pattern
     '#id': listing
+    '#variant': "date"
     '#fields':
       settings:
         columns: 'default-1-col'
@@ -1532,6 +1539,7 @@ listing_date_2_col:
   render:
     '#type': pattern
     '#id': listing
+    '#variant': "date"
     '#fields':
       settings:
         columns: 'default-2-col'
@@ -1676,6 +1684,7 @@ listing_date_3_col:
   render:
     '#type': pattern
     '#id': listing
+    '#variant': "date"
     '#fields':
       settings:
         columns: 'default-3-col'

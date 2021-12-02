@@ -25,6 +25,7 @@ use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\node\Entity\Node;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
