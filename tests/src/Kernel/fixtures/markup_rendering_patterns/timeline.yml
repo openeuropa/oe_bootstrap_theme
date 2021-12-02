@@ -6,8 +6,8 @@ timeline_items_hide:
       settings:
         hide_from: 7
         hide_to: 0
-      toggle_collapsed: "Show %d more items"
-      toggle_expanded: "Hide %d items"
+      toggle_collapsed: "Display %d more"
+      toggle_expanded: "Stash %d items"
       items:
         - label: "13 September 2017"
           title: "Item 1"
@@ -53,8 +53,8 @@ timeline_items_show_more:
       settings:
         hide_from: 5
         hide_to: 0
-        toggle_collapsed: "Show %d more items"
-        toggle_expanded: "Hide %d items"
+        toggle_collapsed: "Display %d more"
+        toggle_expanded: "Stash %d items"
       items:
         - title: "Item 1"
           content: "Lorem Ipsum 1"
@@ -174,8 +174,8 @@ Timeline_heading:
       '.bcl-timeline li:nth-child(2) h5': "28-29 September 2017"
       '.bcl-timeline li:nth-child(6) h6': "Item 6"
       '.bcl-timeline li:nth-child(6) h5': "6 February 2018"
-      '.label-expanded': "Hide 4 items"
-      '.label-collapsed': "Show more 4 items"
+      '.label-expanded': "Stash 4 items"
+      '.label-collapsed': "Display 4 more"
       '.bcl-timeline li:nth-child(1) div': '<a href="/example" class="ecl-link">Economic and Monetary Union package of proposals</a>'
       '.bcl-timeline li:nth-child(2) div': 'Lorem Ipsum 2'
       '.bcl-timeline li:nth-child(3) div': 'Lorem Ipsum 3'

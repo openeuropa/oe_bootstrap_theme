@@ -327,7 +327,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables)
     $variables['content']['items'][] = $timeline_item;
   }
   $variables['hide_from'] = $paragraph->get('field_oe_timeline_expand')->value;
-  $variables['bcl_icon_path'] = '/assets/icons/bootstrap-icons.svg';
 }
 
 /**
