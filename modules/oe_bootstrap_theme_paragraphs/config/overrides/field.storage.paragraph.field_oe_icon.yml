@@ -1,0 +1,86 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_oe_icon
+field_name: field_oe_icon
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: arrow-down
+      label: 'Arrow down'
+    -
+      value: box-arrow-up
+      label: External
+    -
+      value: arrow-up
+      label: 'Arrow up'
+    -
+      value: book
+      label: Book
+    -
+      value: calendar
+      label: Calendar
+    -
+      value: camera
+      label: Camera
+    -
+      value: check
+      label: Check
+    -
+      value: download
+      label: Download
+    -
+      value: currency-euro
+      label: Euro
+    -
+      value: facebook
+      label: Facebook
+    -
+      value: file
+      label: File
+    -
+      value: image
+      label: Image
+    -
+      value: info
+      label: Info
+    -
+      value: linkedin
+      label: LinkedIn
+    -
+      value: files
+      label: 'Multiple files'
+    -
+      value: file-slides
+      label: Presentation
+    -
+      value: rss
+      label: RSS
+    -
+      value: search
+      label: Search
+    -
+      value: share
+      label: Share
+    -
+      value: file-spreadsheet
+      label: Spreadsheet
+    -
+      value: twitter
+      label: Twitter
+    -
+      value: person-video
+      label: Video
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
