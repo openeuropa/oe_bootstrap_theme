@@ -13,7 +13,7 @@ description_list:
     items:
       type: "array"
       label: "List items"
-      description: "List of items"
+      description: "List of items that include a term and a definition. Terms contain label and can contain icon object."
       preview:
         - term:
             - label:
