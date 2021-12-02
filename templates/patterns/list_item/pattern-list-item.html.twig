@@ -1,16 +1,16 @@
 {% spaceless %}
 {#
 @file
-Default item list component.
+Default item list pattern.
 
 Parameters:
-  - "meta" (array) (default: []): Meta information for the Content Item.
-  - "title" (string) (default: ''): Title for the list Content Item.
-  - "url" (string) (default: ''): url path for the title Content Item.
-  - "detail" (string) (default: ''): Description of Content Item.
-  - "image" (array) (default: []): Image for the item.
-  - "content" (string) (default: ''): Content for the item.
-  - "date" (array) (default: []): Data necessary to print date.
+  - "meta" (array) (default: []): Meta information for the list item.
+  - "title" (string) (default: ''): Title for the list item.
+  - "url" (string) (default: ''): url path for the title list item.
+  - "detail" (string) (default: ''): Description of list item.
+  - "image" (array) (default: []): Image for the lit item.
+  - "content" (string) (default: ''): Content for the list item.
+  - "date" (array) (default: []): Data necessary to print date block.
 #}
   {% if url %}
     {% set _title = pattern('link', {
