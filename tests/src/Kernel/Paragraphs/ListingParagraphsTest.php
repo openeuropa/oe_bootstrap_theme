@@ -5,14 +5,16 @@ declare(strict_types = 1);
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel\Paragraphs;
 
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\Tests\oe_bootstrap_theme\Kernel\PatternAssertions\ListingAssertion;
 use Symfony\Component\DomCrawler\Crawler;
 use Drupal\Tests\node\Traits\NodeCreationTrait;
 use Drupal\Tests\node\Traits\ContentTypeCreationTrait;
+use Drupal\file\Entity\File;
 
 /**
  * Tests the rendering of paragraph Listing.
  */
-class ListingParagraphsTest extends ParagraphsTestBase {
+class ListingParagraphsTest extends ListingAssertion {
 
   use NodeCreationTrait;
   use ContentTypeCreationTrait;
@@ -28,20 +30,163 @@ class ListingParagraphsTest extends ParagraphsTestBase {
   }
 
   /**
-   * Test 'List Item' paragraph rendering.
+   * Test List Items Block paragraph rendering.
    */
   public function testListing(): void {
     $image_file = file_save_data(file_get_contents(drupal_get_path('theme', 'oe_bootstrap_theme') . '/tests/fixtures/arch.jpeg'), 'public://arch_en.jpeg');
     $image_file->setPermanent();
     $image_file->save();
 
+    $paragraph_storage = $this->container->get('entity_type.manager')->getStorage('paragraph');
+    $paragraph = $paragraph_storage->create([
+      'type' => 'oe_list_item_block',
+      'oe_paragraphs_variant' => 'default',
+      'field_oe_list_item_block_layout' => 'one_column',
+      'field_oe_title' => 'Listing item block title',
+      'field_oe_paragraphs' => $this->createListItems($image_file),
+    ]);
+    $paragraph->save();
+
+    // Testing Default 1 col.
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertListingRendering($crawler);
+    $this->assertDefaultListingRendering($crawler, $image_file);
+    $this->assertCount(1, $crawler->filter('div.bcl-listing--default-1-col'));
+    $this->assertCount(1, $crawler->filter('div.row.row-cols-1'));
+    $this->assertCount(6, $crawler->filter('div.col-md-3.col-lg-2.rounded'));
+    $this->assertCount(6, $crawler->filter('div.col-md-9.col-lg-10'));
+
+    // Testing Default 2 col.
+    $paragraph->get('field_oe_list_item_block_layout')->setValue('two_columns');
+    $paragraph->save();
+
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertListingRendering($crawler);
+    $this->assertDefaultListingRendering($crawler, $image_file);
+    $this->assertCount(1, $crawler->filter('div.bcl-listing--default-2-col'));
+    $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-2'));
+    $this->assertCount(6, $crawler->filter('div.col-xl-3.col-md-5'));
+    $this->assertCount(6, $crawler->filter('div.col-xl-9.col-md-7'));
+
+    // Testing Default 3 col.
+    $paragraph->get('field_oe_list_item_block_layout')->setValue('three_columns');
+    $paragraph->save();
+
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertListingRendering($crawler);
+    $this->assertDefaultListingRendering($crawler, $image_file);
+    $this->assertCount(1, $crawler->filter('div.bcl-listing--default-3-col'));
+    $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-2.row-cols-xl-3'));
+    $this->assertCount(6, $crawler->filter('div.col-lg-4.col-md-6'));
+    $this->assertCount(6, $crawler->filter('div.col-lg-8.col-md-6'));
+
+    // Testing Highlight 1 col.
+    $paragraph->get('oe_paragraphs_variant')->setValue('highlight');
+    $paragraph->get('field_oe_list_item_block_layout')->setValue('one_column');
+    $paragraph->save();
+
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertListingRendering($crawler);
+    $this->assertHighlightListingRendering($crawler, $image_file);
+    $this->assertCount(1, $crawler->filter('div.bcl-listing--highlight-1-col'));
+    $this->assertCount(1, $crawler->filter('div.row.row-cols-1'));
+    $this->assertCount(6, $crawler->filter('div.col.mt-4-5'));
+    $this->assertCount(6, $crawler->filter('div.card-body.pb-4'));
+
+    // Testing Highlight 2 col.
+    $paragraph->get('field_oe_list_item_block_layout')->setValue('two_columns');
+    $paragraph->save();
+
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertListingRendering($crawler);
+    $this->assertHighlightListingRendering($crawler, $image_file);
+    $this->assertCount(1, $crawler->filter('div.bcl-listing--highlight-2-col'));
+    $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-2'));
+    $this->assertCount(6, $crawler->filter('div.listing-item--highlight.h-100.rounded-2'));
+    $this->assertCount(6, $crawler->filter('div.card-body.pt-0'));
+
+    // Testing Highlight 3 col.
+    $paragraph->get('field_oe_list_item_block_layout')->setValue('three_columns');
+    $paragraph->save();
+
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertListingRendering($crawler);
+    $this->assertHighlightListingRendering($crawler, $image_file);
+    $this->assertCount(1, $crawler->filter('div.bcl-listing--highlight-3-col'));
+    $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-3'));
+    $this->assertCount(6, $crawler->filter('div.listing-item--highlight.h-100.rounded-2'));
+    $this->assertCount(6, $crawler->filter('div.card-body.pt-0'));
+
+    // Testing Date 1 col.
+    $paragraph->get('oe_paragraphs_variant')->setValue('date');
+    $paragraph->get('field_oe_list_item_block_layout')->setValue('one_column');
+    $paragraph->save();
+
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertListingRendering($crawler);
+    $this->assertDateListingRendering($crawler);
+    $this->assertCount(1, $crawler->filter('div.bcl-listing--default-1-col'));
+    $this->assertCount(1, $crawler->filter('div.row.row-cols-1'));
+    $this->assertCount(6, $crawler->filter('div.col-md-3.col-lg-2.rounded'));
+    $this->assertCount(6, $crawler->filter('div.col-md-9.col-lg-10'));
+
+    // Testing Date 2 col.
+    $paragraph->get('field_oe_list_item_block_layout')->setValue('two_columns');
+    $paragraph->save();
+
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertListingRendering($crawler);
+    $this->assertDateListingRendering($crawler);
+    $this->assertCount(1, $crawler->filter('div.bcl-listing--default-2-col'));
+    $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-2'));
+    $this->assertCount(6, $crawler->filter('div.col-xl-3.col-md-5'));
+    $this->assertCount(6, $crawler->filter('div.col-xl-9.col-md-7'));
+
+    // Testing Date 3 col.
+    $paragraph->get('field_oe_list_item_block_layout')->setValue('three_columns');
+    $paragraph->save();
+
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertListingRendering($crawler);
+    $this->assertDateListingRendering($crawler);
+    $this->assertCount(1, $crawler->filter('div.bcl-listing--default-3-col'));
+    $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-2.row-cols-xl-3'));
+    $this->assertCount(6, $crawler->filter('div.col-lg-4.col-md-6'));
+    $this->assertCount(6, $crawler->filter('div.col-lg-8.col-md-6'));
+  }
+
+  /**
+   * Assert default variant of Listing is rendering correctly.
+   *
+   * @param \Drupal\file\Entity\File $image_file
+   *   Image file to be added to the list item.
+   */
+  protected function createListItems(File $image_file): array {
     $items = [];
-    for ($i = 0; $i < 6; $i++) {
+    for ($i = 1; $i <= 6; $i++) {
       $paragraph = Paragraph::create([
         'type' => 'oe_list_item',
         'oe_paragraphs_variant' => 'default',
         'field_oe_title' => 'Item title ' . $i,
-        'field_oe_text_long' => 'Item description ' . $i,
+        'field_oe_text_long' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. ' . $i,
         'field_oe_link' => [
           'uri' => 'http://www.example.com/' . $i,
           'title' => 'Example ' . $i,
@@ -51,6 +196,7 @@ class ListingParagraphsTest extends ParagraphsTestBase {
           'alt' => 'Alt for image ' . $i,
           'target_id' => $image_file->id(),
         ],
+        'field_oe_date' => '2011-11-13',
         'field_oe_meta' => [
           0 => [
             'value' => 'Label 1 - ' . $i,
@@ -64,253 +210,7 @@ class ListingParagraphsTest extends ParagraphsTestBase {
       $items[$i] = $paragraph;
     }
 
-    $paragraph_storage = $this->container->get('entity_type.manager')->getStorage('paragraph');
-    $paragraph = $paragraph_storage->create([
-      'type' => 'oe_list_item_block',
-      'oe_paragraphs_variant' => 'default',
-      'field_oe_list_item_block_layout' => 'default',
-      'field_oe_title' => 'Listing item block title',
-      'field_oe_paragraphs' => $items,
-    ]);
-    $paragraph->save();
-
-    // Testing Default 1 col.
-    $html = $this->renderParagraph($paragraph);
-    $crawler = new Crawler($html);
-    ini_set('xdebug.var_display_max_depth', '10');
-    ini_set('xdebug.var_display_max_children', '256');
-    ini_set('xdebug.var_display_max_data', '100024');
-    var_dump($crawler->filter('body')->html());
-
-    $this->assertCount(1, $crawler->filter('div.bcl-listing--default-1-col'));
-    $this->assertCount(1, $crawler->filter('div.bcl-listing'));
-    $this->assertCount(6, $crawler->filter('div.row-cols-1 col'));
-    $this->assertStringContainsString('Listing item block title', trim($crawler->filter('h4.fw-bold.mb-4')->text()));
-    $image_element = $crawler->filter('.card-img-top');
-    $this->assertCount(1, $image_element);
-    $this->assertStringContainsString(
-      file_url_transform_relative(file_create_url($image_file->getFileUri())),
-      $image_element->attr('src')
-    );
-    $this->assertCount(1, $crawler->filter('div.card-body'));
-    $this->assertCount(1, $crawler->filter('h5.card-title'));
-    $this->assertStringContainsString('Dot1', trim($crawler->filter('span[class="me-2 badge bg-primary"]')->text()));
-    $this->assertStringContainsString('Dot2', trim($crawler->filter('span[class="badge bg-primary"]')->text()));
-    $this->assertStringContainsString('Card Title 1', trim($crawler->filter('h5.card-title')->text()));
-    $link_element = $crawler->filter('h5.card-title a');
-    $this->assertCount(1, $link_element);
-    $this->assertStringContainsString(
-      'http://www.example.com/',
-      $link_element->attr('href')
-    );
-    $text_element = $crawler->filter('p.card-text.mb-3');
-    $this->assertCount(1, $text_element);
-    $this->assertStringContainsString(
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.',
-      $text_element->text()
-    );
-    $this->assertCount(1, $crawler->filter('a.text-underline-hover'));
-
-    // Variant - date / Image - No / Date - Yes.
-    $paragraph->get('oe_paragraphs_variant')->setValue('date');
-    $paragraph->get('field_oe_image')->setValue([]);
-    $paragraph->get('field_oe_date')->setValue('2011-11-13');
-    $paragraph->save();
-    $html = $this->renderParagraph($paragraph);
-    $crawler = new Crawler($html);
-
-    $this->assertCount(1, $crawler->filter('div.card'));
-    $this->assertCount(1, $crawler->filter('div.card-body'));
-    $this->assertCount(1, $crawler->filter('h5.card-title'));
-    $this->assertStringContainsString('Dot1', trim($crawler->filter('span[class="me-2 badge bg-primary"]')->text()));
-    $this->assertStringContainsString('Dot2', trim($crawler->filter('span[class="badge bg-primary"]')->text()));
-    $this->assertStringContainsString('Card Title 1', trim($crawler->filter('h5.card-title')->text()));
-    $link_element = $crawler->filter('h5.card-title a');
-    $this->assertCount(1, $link_element);
-    $this->assertStringContainsString(
-      'http://www.example.com/',
-      $link_element->attr('href')
-    );
-    $text_element = $crawler->filter('p.card-text.mb-3');
-    $this->assertCount(1, $text_element);
-    $this->assertStringContainsString(
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.',
-      $text_element->text()
-    );
-    $this->assertCount(1, $crawler->filter('a.text-underline-hover'));
-
-    $this->assertCount(1, $crawler->filter('time.bcl-date-block.d-flex.flex-column.align-items-center.justify-content-center.bg-date.text-light.pt-3.rounded-top.mw-date'));
-    $this->assertCount(1, $crawler->filter('time[datetime="2011-11-13"]'));
-    $month_element = $crawler->filter('span[class="pb-3 text-uppercase"]');
-    $this->assertCount(1, $month_element);
-    $this->assertStringContainsString(
-      'Nov',
-      $month_element->text()
-    );
-    $year_element = $crawler->filter('span[class="bg-light w-100 text-center py-2 text-dark rounded-bottom mb-n1"]');
-    $this->assertCount(1, $year_element);
-    $this->assertStringContainsString(
-      '2011',
-      $year_element->text()
-    );
-
-    // Variant - highlight / Date - No.
-    $paragraph->get('oe_paragraphs_variant')->setValue('highlight');
-    $paragraph->get('field_oe_image')->setValue([
-      'title' => 'Example Image',
-      'alt' => 'Alt for image',
-      'target_id' => $image_file->id(),
-    ]);
-    $paragraph->get('field_oe_date')->setValue('');
-    $paragraph->save();
-    $html = $this->renderParagraph($paragraph);
-
-    $crawler = new Crawler($html);
-
-    $this->assertCount(1, $crawler->filter('div.card'));
-    $image_element = $crawler->filter('.card-img-top');
-    $this->assertCount(1, $image_element);
-    $this->assertStringContainsString(
-      file_url_transform_relative(file_create_url($image_file->getFileUri())),
-      $image_element->attr('src')
-    );
-    $this->assertCount(1, $crawler->filter('div.card-body'));
-    $this->assertCount(1, $crawler->filter('h5.card-title'));
-    $this->assertStringContainsString('Dot1', trim($crawler->filter('span[class="me-2 badge bg-primary"]')->text()));
-    $this->assertStringContainsString('Dot2', trim($crawler->filter('span[class="badge bg-primary"]')->text()));
-    $this->assertStringContainsString('Card Title 1', trim($crawler->filter('h5.card-title')->text()));
-    $link_element = $crawler->filter('h5.card-title a');
-    $this->assertCount(1, $link_element);
-    $this->assertStringContainsString(
-      'http://www.example.com/',
-      $link_element->attr('href')
-    );
-    $text_element = $crawler->filter('p.card-text.mb-2');
-    $this->assertCount(1, $text_element);
-    $this->assertStringContainsString(
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.',
-      $text_element->text()
-    );
-    $this->assertCount(0, $crawler->filter('span.d-md-inline.d-block.text-muted.mb-2.mb-md-0'));
-    $this->assertCount(0, $crawler->filter('time[datetime="2011-11-13T12:00:00Z"]'));
-    $this->assertCount(1, $crawler->filter('a.text-underline-hover'));
-
-    // Variant - thumbnail_primary / Date - No / Description - No .
-    $paragraph->get('oe_paragraphs_variant')->setValue('thumbnail_primary');
-    $paragraph->get('field_oe_text_long')->setValue('');
-    $html = $this->renderParagraph($paragraph);
-    $crawler = new Crawler($html);
-
-    $this->assertCount(1, $crawler->filter('div.card'));
-    $image_element = $crawler->filter('.card-img-top');
-    $this->assertCount(1, $image_element);
-    $this->assertStringContainsString(
-      file_url_transform_relative(file_create_url($image_file->getFileUri())),
-      $image_element->attr('src')
-    );
-    $this->assertCount(1, $crawler->filter('div.card-body'));
-    $this->assertCount(1, $crawler->filter('h5.card-title'));
-    $this->assertStringContainsString('Dot1', trim($crawler->filter('span[class="me-2 badge bg-primary"]')->text()));
-    $this->assertStringContainsString('Dot2', trim($crawler->filter('span[class="badge bg-primary"]')->text()));
-    $this->assertStringContainsString('Card Title 1', trim($crawler->filter('h5.card-title')->text()));
-    $link_element = $crawler->filter('h5.card-title a');
-    $this->assertCount(1, $link_element);
-    $this->assertStringContainsString(
-      'http://www.example.com/',
-      $link_element->attr('href')
-    );
-    $text_element = $crawler->filter('p.card-text.mb-3');
-    $this->assertCount(1, $text_element);
-    $this->assertStringContainsString(
-      '',
-      $text_element->text()
-    );
-    $this->assertCount(1, $crawler->filter('a.text-underline-hover'));
-
-    // Variant - thumbnail_secondary / Date - No.
-    $paragraph->get('oe_paragraphs_variant')->setValue('thumbnail_secondary');
-    $paragraph->get('field_oe_text_long')->setValue('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.');
-    $html = $this->renderParagraph($paragraph);
-    $crawler = new Crawler($html);
-
-    $this->assertCount(1, $crawler->filter('div.card'));
-    $image_element = $crawler->filter('.card-img-bottom');
-    $this->assertCount(1, $image_element);
-    $this->assertStringContainsString(
-      file_url_transform_relative(file_create_url($image_file->getFileUri())),
-      $image_element->attr('src')
-    );
-    $this->assertCount(1, $crawler->filter('div.card-body'));
-    $this->assertCount(1, $crawler->filter('h5.card-title'));
-    $this->assertStringContainsString('Dot1', trim($crawler->filter('span[class="me-2 badge bg-primary"]')->text()));
-    $this->assertStringContainsString('Dot2', trim($crawler->filter('span[class="badge bg-primary"]')->text()));
-    $this->assertStringContainsString('Card Title 1', trim($crawler->filter('h5.card-title')->text()));
-    $link_element = $crawler->filter('h5.card-title a');
-    $this->assertCount(1, $link_element);
-    $this->assertStringContainsString(
-      'http://www.example.com/',
-      $link_element->attr('href')
-    );
-    $text_element = $crawler->filter('p.card-text.mb-3');
-    $this->assertCount(1, $text_element);
-    $this->assertStringContainsString(
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.',
-      $text_element->text()
-    );
-    $this->assertCount(1, $crawler->filter('a.text-underline-hover'));
-
-    // Variant - default with internal link.
-    $this->createContentType([
-      'type' => 'article',
-      'name' => 'Article',
-    ]);
-
-    $node = $this->createNode([
-      'created' => 1636977600,
-      'type' => 'article',
-    ]);
-    $nid = $node->id();
-    $paragraph->get('field_oe_link')->setValue([
-      'uri' => 'internal:/node/' . $nid,
-      'title' => $node->getTitle(),
-    ]);
-
-    $paragraph->get('field_oe_image')->setValue([
-      'title' => 'Example Image',
-      'alt' => 'Alt for image',
-      'target_id' => $image_file->id(),
-    ]);
-    $paragraph->get('oe_paragraphs_variant')->setValue('default');
-    $html = $this->renderParagraph($paragraph);
-    $crawler = new Crawler($html);
-
-    $this->assertCount(1, $crawler->filter('div.card'));
-    $image_element = $crawler->filter('.card-img-top');
-    $this->assertCount(1, $image_element);
-    $this->assertStringContainsString(
-      file_url_transform_relative(file_create_url($image_file->getFileUri())),
-      $image_element->attr('src')
-    );
-    $this->assertCount(1, $crawler->filter('div.card-body'));
-    $this->assertCount(1, $crawler->filter('h5.card-title'));
-    $this->assertStringContainsString('Dot1', trim($crawler->filter('span[class="me-2 badge bg-primary"]')->text()));
-    $this->assertStringContainsString('Dot2', trim($crawler->filter('span[class="badge bg-primary"]')->text()));
-    $this->assertStringContainsString('Card Title 1', trim($crawler->filter('h5.card-title')->text()));
-    $link_element = $crawler->filter('h5.card-title a');
-    $this->assertCount(1, $link_element);
-    $this->assertStringContainsString(
-      '/node/1',
-      $link_element->attr('href')
-    );
-    $text_element = $crawler->filter('p.card-text.mb-3');
-    $this->assertCount(1, $text_element);
-    $this->assertStringContainsString(
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.',
-      $text_element->text()
-    );
-    $this->assertStringContainsString('Article', trim($crawler->filter('span[class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0"]')->text()));
-    $this->assertStringContainsString('15 November 2021', trim($crawler->filter('span[class="d-md-inline d-block text-muted mb-2 mb-md-0"]')->text()));
-    $this->assertCount(1, $crawler->filter('a.text-underline-hover'));
+    return $items;
   }
 
 }

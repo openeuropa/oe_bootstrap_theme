@@ -4,12 +4,13 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel\PatternAssertions;
 
+use Drupal\Tests\oe_bootstrap_theme\Kernel\Paragraphs\ParagraphsTestBase;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Class for asserting links block paragraphs.
  */
-class LinksBlockAssertion {
+class LinksBlockAssertion extends ParagraphsTestBase {
 
   /**
    * Returns a list of link items for Social media follow paragraph.

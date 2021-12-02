@@ -12,7 +12,7 @@
   'title': title,
   'detail': detail,
   'meta': meta,
-  'date': date,
+  'date': variant == 'date' ? date,
   'content': content,
-  'image': image,
+  'image': variant != 'date' ? image,
 }) }}

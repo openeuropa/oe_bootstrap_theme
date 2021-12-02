@@ -53,7 +53,8 @@ Parameters:
     'image': image,
     'variant': '',
     'badges' : meta,
-    'date': date,
-  } %}
+    'date': variant == 'date' ? date,
+    'attributes': attributes,
+  } only %}
 
 {% endspaceless %}

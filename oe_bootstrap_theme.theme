@@ -26,10 +26,11 @@ function oe_bootstrap_theme_preprocess(&$variables) {
  * Implements hook_preprocess_pattern() for pattern listing.
  */
 function oe_bootstrap_theme_preprocess_pattern_listing(array &$variables): void {
-  foreach ($variables['items'] as $key => $item) {
-    if (isset($variables['items'][$key]['date'])) {
-      $variables['items'][$key]['date']['attributes'] = new Attribute();
+  if ($variables['variant'] === 'date') {
+    foreach ($variables['items'] as $key => $item) {
+      if (isset($variables['items'][$key]['date'])) {
+        $variables['items'][$key]['date']['attributes'] = new Attribute();
+      }
     }
   }
-
 }

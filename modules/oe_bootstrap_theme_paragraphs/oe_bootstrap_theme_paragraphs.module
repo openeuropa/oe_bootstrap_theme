@@ -187,6 +187,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
         'path' => file_url_transform_relative(file_create_url($file->getFileUri())),
         'alt' => $image_item->get('alt')->getValue(),
         'position' => 'top',
+        'rounded' => 1,
       ];
     }
     // Prepare the date fields if date is available.
@@ -218,7 +219,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
       ],
       'text' => [
         'content' => $item->entity->field_oe_text_long->value,
-        'classes' => 'mb-2',
+        'classes' => $variables['variant'] === 'highlight' ? 'mb-2' : 'mb-3',
       ],
 
       'image' => $image,
