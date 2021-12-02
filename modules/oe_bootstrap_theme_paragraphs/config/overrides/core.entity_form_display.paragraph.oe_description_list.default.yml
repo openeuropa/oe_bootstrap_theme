@@ -1,4 +1,3 @@
-uuid: cf2cfd51-29b9-41d5-a8d4-fbd0a9306560
 langcode: en
 status: true
 dependencies:
@@ -9,8 +8,6 @@ dependencies:
     - paragraphs.paragraphs_type.oe_description_list
   module:
     - description_list_field
-_core:
-  default_config_hash: WnDD8cNZ8wtba2ZkgXtN09POWbAJ_y9mnL_DAZRJ31Q
 id: paragraph.oe_description_list.default
 targetEntityType: paragraph
 bundle: oe_description_list
