@@ -1,4 +1,3 @@
-uuid: 929f4c52-143d-4956-bd0f-bd7755edf2e9
 langcode: en
 status: true
 dependencies:
@@ -16,8 +15,6 @@ dependencies:
     - image
     - link
     - text
-_core:
-  default_config_hash: rT47cB6Q12Yi8jcQuQblWap3H3eT9hBSBuO4t5WXLio
 id: paragraph.oe_list_item.default
 targetEntityType: paragraph
 bundle: oe_list_item
@@ -70,5 +67,4 @@ hidden:
   created: true
   field_oe_date: true
   status: true
-  translation: true
   uid: true
