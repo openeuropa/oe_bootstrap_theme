@@ -140,7 +140,7 @@ class TimelineParagraphTest extends ParagraphsTestBase {
     $this->assertEquals('Title 6', trim($crawler->filter('ol.bcl-timeline li:nth-child(6) h6')->html()));
     // Explicit format "full_html" specified.
     $this->assertEquals('Description 6', trim($crawler->filter('ol.bcl-timeline li:nth-child(6) div')->html()));
-    $this->assertEquals('Show more 3 items', trim($crawler->filter('button .label-collapsed')->text()));
+    $this->assertEquals('Display 3 more', trim($crawler->filter('button .label-collapsed')->text()));
 
     // Increase limit to print all the items and set timeline heading.
     $paragraph->set('field_oe_timeline_expand', '7');
