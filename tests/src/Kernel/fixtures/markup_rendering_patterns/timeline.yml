@@ -6,8 +6,6 @@ timeline_items_hide:
       settings:
         hide_from: 7
         hide_to: 0
-      toggle_collapsed: "Display %d more"
-      toggle_expanded: "Stash %d items"
       items:
         - label: "13 September 2017"
           title: "Item 1"
@@ -50,11 +48,11 @@ timeline_items_show_more:
     '#type': pattern
     '#id': timeline
     '#fields':
+      toggle_collapsed: "Display %d more"
+      toggle_expanded: "Stash %d items"
       settings:
-        hide_from: 5
+        hide_from: 2
         hide_to: 0
-        toggle_collapsed: "Display %d more"
-        toggle_expanded: "Stash %d items"
       items:
         - title: "Item 1"
           content: "Lorem Ipsum 1"
@@ -75,6 +73,8 @@ timeline_items_show_more:
         '.label-collapsed': 1
         '.label-expanded': 1
       equals:
+        '.label-expanded': "Stash 4 items"
+        '.label-collapsed': "Display 4 more"
         '.bcl-timeline li:nth-child(1) h6': "Item 1"
         '.bcl-timeline li:nth-child(2) h6': "Item 2"
         '.bcl-timeline li:nth-child(3) h6': "Item 3"
@@ -174,8 +174,8 @@ Timeline_heading:
       '.bcl-timeline li:nth-child(2) h5': "28-29 September 2017"
       '.bcl-timeline li:nth-child(6) h6': "Item 6"
       '.bcl-timeline li:nth-child(6) h5': "6 February 2018"
-      '.label-expanded': "Stash 4 items"
-      '.label-collapsed': "Display 4 more"
+      '.label-expanded': "Hide 4 items"
+      '.label-collapsed': "Show more 4 items"
       '.bcl-timeline li:nth-child(1) div': '<a href="/example" class="ecl-link">Economic and Monetary Union package of proposals</a>'
       '.bcl-timeline li:nth-child(2) div': 'Lorem Ipsum 2'
       '.bcl-timeline li:nth-child(3) div': 'Lorem Ipsum 3'

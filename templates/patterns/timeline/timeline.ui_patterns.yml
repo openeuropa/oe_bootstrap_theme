@@ -8,6 +8,12 @@ timeline:
       description: "Number to hide 'from' items"
       preview: 5
   fields:
+    toggle_expanded:
+      type: string
+      label: 'Label expanded'
+    toggle_collapsed:
+      type: string
+      label: 'Label collapsed'
     items:
       type: array
       label: "Items"
