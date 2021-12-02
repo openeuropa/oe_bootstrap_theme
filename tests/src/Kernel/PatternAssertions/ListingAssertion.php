@@ -9,7 +9,7 @@ use Drupal\Tests\oe_bootstrap_theme\Kernel\Paragraphs\ParagraphsTestBase;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
- * Class for asserting links block paragraphs.
+ * Class for asserting Listing paragraphs.
  */
 class ListingAssertion extends ParagraphsTestBase {
 

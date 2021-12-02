@@ -1,4 +1,3 @@
-uuid: 2b13e44a-d767-4e89-a38f-2a2b0175a808
 langcode: en
 status: true
 dependencies:
@@ -7,8 +6,6 @@ dependencies:
     - paragraphs.paragraphs_type.oe_social_media_follow
   module:
     - options
-_core:
-  default_config_hash: LAvk-mJEoeFyCcHI1NmWlqp7DWppbrNxAsprQ7fAXWU
 id: paragraph.oe_social_media_follow.field_oe_social_media_variant
 field_name: field_oe_social_media_variant
 entity_type: paragraph
