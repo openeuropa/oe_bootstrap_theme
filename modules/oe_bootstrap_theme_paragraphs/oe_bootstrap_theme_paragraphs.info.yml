@@ -6,6 +6,8 @@ core_version_requirement: ^8.9 || ^9.1
 dependencies:
   - oe_paragraphs:oe_paragraphs
   - oe_bootstrap_theme:oe_bootstrap_theme_helper
+  - oe_paragraphs:oe_paragraphs_timeline
+  - oe_content:oe_content_timeline_field
 config_devel:
   install:
     - field.field.paragraph.oe_links_block.oe_bt_links_block_background

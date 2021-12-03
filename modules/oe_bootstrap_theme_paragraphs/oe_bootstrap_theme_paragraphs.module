@@ -312,6 +312,24 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): 
 }
 
 /**
+ * Implements hook_preprocess_paragraph() for timeline paragraph.
+ */
+function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables): void {
+  $paragraph = $variables['paragraph'];
+  $variables['heading'] = $paragraph->get('field_oe_title')->value ?? '';
+  if (!isset($variables['content']['field_oe_timeline']['#items'])) {
+    return;
+  }
+  // Adapting body to content as defined in pattern.
+  foreach ($variables['content']['field_oe_timeline']['#items'] as &$timeline_item) {
+    $timeline_item['content'] = $timeline_item['body'];
+    unset($timeline_item['body']);
+    $variables['content']['items'][] = $timeline_item;
+  }
+  $variables['hide_from'] = $paragraph->get('field_oe_timeline_expand')->value;
+}
+
+/**
  * Gets the mapped layout.
  *
  * @param string $layout

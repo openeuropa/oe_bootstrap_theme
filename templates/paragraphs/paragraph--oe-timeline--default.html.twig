@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Theme override to display the 'timeline' #type paragraph.
+ *
+ * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
+ */
+#}
+{{
+  pattern('timeline', {
+    hide_from: hide_from,
+    items: content.items,
+  })
+}}
