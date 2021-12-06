@@ -7,6 +7,10 @@ inpage_navigation:
       label: "Full layout"
       description: "Sets if the element should be placed with full layout (navigation + content). If false, only navigation is shown."
       preview: true
+    scrollspy_id:
+      type: textfield
+      label: Dropdown id
+      preview: 'bcl-inpage-navigation'
   fields:
     title:
       type: "text"

@@ -4,10 +4,12 @@
  * Inpage navigation pattern.
  */
 #}
+{{ attach_library('oe_bootstrap_theme/drupal.scrollspy') }}
+
 {% include '@oe-bcl/bcl-inpage-navigation/inpage-navigation.html.twig' with {
   'title': title,
   'full_layout': full_layout,
   'links': links,
   'content': content,
-  'id': 'bcl-inpage-navigation',
+  'id': scrollspy_id,
 } %}
