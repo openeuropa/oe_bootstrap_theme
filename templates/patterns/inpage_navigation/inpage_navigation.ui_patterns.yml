@@ -9,7 +9,7 @@ inpage_navigation:
       preview: true
     scrollspy_id:
       type: textfield
-      label: Dropdown id
+      label: "Dropdown identifier."
       preview: 'bcl-inpage-navigation'
   fields:
     title:
