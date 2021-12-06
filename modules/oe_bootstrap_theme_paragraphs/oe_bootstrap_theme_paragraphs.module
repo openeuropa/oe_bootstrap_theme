@@ -357,8 +357,10 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage
     elseif ($sub_paragraph->hasField('field_oe_plain_text_long') && !$sub_paragraph->get('field_oe_plain_text_long')->isEmpty()) {
       $links_label = $sub_paragraph->get('field_oe_plain_text_long')->first()->value;
     }
-    else {
-      continue;
+    elseif ($sub_paragraph->bundle() == 'oe_accordion') {
+      $accordion_items = $sub_paragraph->get('field_oe_paragraphs')->referencedEntities();
+      $first_accordion = $accordion_items[0];
+      $links_label = $first_accordion->get('field_oe_text')->first()->value;
     }
 
     $unique_id = Html::getUniqueId('bcl-inpage-item-' . $sub_paragraph->id());
