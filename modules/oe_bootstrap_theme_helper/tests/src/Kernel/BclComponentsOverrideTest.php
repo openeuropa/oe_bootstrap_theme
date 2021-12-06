@@ -45,9 +45,6 @@ class BclComponentsOverrideTest extends KernelTestBase {
       'build',
     ];
     new Settings($settings);
-
-    // Create testing BCL components and patterns.
-    $this->createTestingPatterns();
   }
 
   /**
@@ -85,46 +82,35 @@ class BclComponentsOverrideTest extends KernelTestBase {
    * @see self::testBclComponentsOverriding()
    */
   public function bclComponentsOverridingTestCasesProvider(): array {
-    $cases = Yaml::decode(file_get_contents(__DIR__ . '/../../fixtures/bcl_components_override_test_cases.yml'));
-    array_walk($cases, function (array &$case, string $theme): void {
-      $case = [$theme, $case];
-    });
-    return $cases;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function tearDown(): void {
-    // Symfony file system class knows to remove non-empty directories.
-    $file_system = new Filesystem();
-    // Cleanup testing BCL components and patterns.
-    // @see self::createTestingPatterns()
-    for ($i = 1; $i <= 4; $i++) {
-      $file_system->remove(__DIR__ . "/../../../../../assets/bcl/bcl-component$i");
-      $file_system->remove(__DIR__ . "/../../../../../templates/patterns/component$i");
-    }
-  }
-
-  /**
-   * Creates testing BCL components and patterns.
-   */
-  protected function createTestingPatterns(): void {
-    $file_system = $this->container->get('file_system');
-    $assets_path = __DIR__ . '/../../../../../assets/bcl';
-    $patterns_path = __DIR__ . '/../../../../../templates/patterns';
-    for ($i = 1; $i <= 4; $i++) {
-      // Create testing BCL component.
-      $file_system->mkdir("$assets_path/bcl-component$i");
-      file_put_contents("$assets_path/bcl-component$i/bcl-component$i.html.twig", "Component $i: oe_bootstrap_theme version");
-      // Create testing pattern.
-      $file_system->mkdir("$patterns_path/component$i");
-      file_put_contents(
-        "$patterns_path/component$i/component$i.ui_patterns.yml",
-        Yaml::encode(["component$i" => ['label' => "Component $i"]])
-      );
-      file_put_contents("$patterns_path/component$i/pattern-component$i.html.twig", "{% include '@oe-bcl/component$i' %}");
-    }
+    return [
+      'oe_bootstrap_theme as active theme' => [
+        'oe_bootstrap_theme_test_parent',
+        [
+          'button' => 'Button: oe_bootstrap_theme_test_parent version',
+          'badge' => 'Badge: oe_bootstrap_theme_test_parent version',
+          'link' => 'Link: oe_bootstrap_theme_test_parent version',
+          'icon' => 'Icon: oe_bootstrap_theme_test_parent version',
+        ],
+      ],
+      'oe_bootstrap_theme_test_subtheme1 as active theme' => [
+        'oe_bootstrap_theme_test_subtheme1',
+        [
+          'button' => 'Button: oe_bootstrap_theme_test_parent version',
+          'badge' => 'Badge: oe_bootstrap_theme_test_subtheme1 version',
+          'link' => 'Link: oe_bootstrap_theme_test_subtheme1 version',
+          'icon' => 'Icon: oe_bootstrap_theme_test_parent version',
+        ],
+      ],
+      'oe_bootstrap_theme_test_subtheme2 as active theme' => [
+        'oe_bootstrap_theme_test_subtheme2',
+        [
+          'button' => 'Button: oe_bootstrap_theme_test_subtheme2 version',
+          'badge' => 'Badge: oe_bootstrap_theme_test_subtheme1 version',
+          'link' => 'Link: oe_bootstrap_theme_test_subtheme2 version',
+          'icon' => 'Icon: oe_bootstrap_theme_test_parent version',
+        ],
+      ],
+    ];
   }
 
 }
