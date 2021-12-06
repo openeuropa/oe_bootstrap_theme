@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Theme override to display the 'Content row' #type and 'Inpage navigation' #variant paragraph.
+ *
+ * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
+ */
+#}
+{{ pattern('inpage_navigation', {
+  'title': title,
+  'full_layout': full_layout,
+  'links': links,
+  'content': content,
+  'scrollspy_id': scrollspy_id,
+}) }}
