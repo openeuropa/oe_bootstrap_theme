@@ -4,10 +4,7 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme_helper\Kernel;
 
-use Drupal\Core\Serialization\Yaml;
-use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
-use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * Tests that OE Boostrap Theme BCL components are overridable by sub-themes.
@@ -29,23 +26,6 @@ class BclComponentsOverrideTest extends KernelTestBase {
     'ui_patterns',
     'ui_patterns_library',
   ];
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function setUp(): void {
-    parent::setUp();
-
-    // Replicate 'file_scan_ignore_directories' from settings.php.
-    $settings = Settings::getAll();
-    $settings['file_scan_ignore_directories'] = [
-      'node_modules',
-      'bower_components',
-      'vendor',
-      'build',
-    ];
-    new Settings($settings);
-  }
 
   /**
    * Tests that BCL components are overridable in sub-themes.
@@ -86,28 +66,28 @@ class BclComponentsOverrideTest extends KernelTestBase {
       'oe_bootstrap_theme as active theme' => [
         'oe_bootstrap_theme_test_parent',
         [
-          'button' => 'Button: oe_bootstrap_theme_test_parent version',
-          'badge' => 'Badge: oe_bootstrap_theme_test_parent version',
-          'link' => 'Link: oe_bootstrap_theme_test_parent version',
-          'icon' => 'Icon: oe_bootstrap_theme_test_parent version',
+          'pattern1' => 'Component1: oe_bootstrap_theme_test_parent version',
+          'pattern2' => 'Component2: oe_bootstrap_theme_test_parent version',
+          'pattern3' => 'Component3: oe_bootstrap_theme_test_parent version',
+          'pattern4' => 'Component4: oe_bootstrap_theme_test_parent version',
         ],
       ],
       'oe_bootstrap_theme_test_subtheme1 as active theme' => [
         'oe_bootstrap_theme_test_subtheme1',
         [
-          'button' => 'Button: oe_bootstrap_theme_test_parent version',
-          'badge' => 'Badge: oe_bootstrap_theme_test_subtheme1 version',
-          'link' => 'Link: oe_bootstrap_theme_test_subtheme1 version',
-          'icon' => 'Icon: oe_bootstrap_theme_test_parent version',
+          'pattern1' => 'Component1: oe_bootstrap_theme_test_parent version',
+          'pattern2' => 'Component2: oe_bootstrap_theme_test_subtheme1 version',
+          'pattern3' => 'Component3: oe_bootstrap_theme_test_subtheme1 version',
+          'pattern4' => 'Component4: oe_bootstrap_theme_test_parent version',
         ],
       ],
       'oe_bootstrap_theme_test_subtheme2 as active theme' => [
         'oe_bootstrap_theme_test_subtheme2',
         [
-          'button' => 'Button: oe_bootstrap_theme_test_subtheme2 version',
-          'badge' => 'Badge: oe_bootstrap_theme_test_subtheme1 version',
-          'link' => 'Link: oe_bootstrap_theme_test_subtheme2 version',
-          'icon' => 'Icon: oe_bootstrap_theme_test_parent version',
+          'pattern1' => 'Component1: oe_bootstrap_theme_test_subtheme2 version',
+          'pattern2' => 'Component2: oe_bootstrap_theme_test_subtheme1 version',
+          'pattern3' => 'Component3: oe_bootstrap_theme_test_subtheme2 version',
+          'pattern4' => 'Component4: oe_bootstrap_theme_test_parent version',
         ],
       ],
     ];
