@@ -1,42 +1,13 @@
-{% spaceless %}
-
-  {#
-  Parameters:
-    - "title": (string) (default: '')
-    - "full_layout": (boolean) (default: false)
-    - "links": (array of link objects) (default: [])
-    - "content": (string) (default: '')
-  #}
-
-  {# Internal properties #}
-  {% set _title = title|default('') %}
-  {% set _links = links|default([]) %}
-  {% set _content = content|default('') %}
-  {% set _id = id|default('bcl-inpage-navigation-' ~ random(5)) %}
-  {% set _full_layout = full_layout|default(false) %}
-  {% set attributes = attributes.addClass('position-sticky').setAttribute('id', _id) %}
-
-  {# Print the result #}
-  {% if _full_layout %}
-    <div class="row">
-    <div class="col-md-3 d-none d-md-block">
-  {% endif %}
-  <nav {{ attributes }}>
-    {% if _title is defined and _title is not empty %}
-      <h5>{{ _title }}</h5>
-    {% endif %}
-    {% include '@oe-bcl/bcl-navigation/navigation.html.twig' with {
-      'pills': true,
-      'vertical': true,
-      'items': _links,
-    } only %}
-  </nav>
-  {% if _full_layout %}
-    </div>
-    <div class="col-md-9">
-      {{ _content }}
-    </div>
-    </div>
-  {% endif %}
-
-{% endspaceless %}
+{#
+/**
+ * @file
+ * Inpage navigation pattern.
+ */
+#}
+{% include '@oe-bcl/bcl-inpage-navigation/inpage-navigation.html.twig' with {
+  'title': title,
+  'full_layout': full_layout,
+  'links': links,
+  'content': content,
+  'id': 'bcl-inpage-navigation',
+} %}
