@@ -40,6 +40,11 @@ module.exports = {
       options: { up: true },
     },
     {
+      from: [path.resolve(outputFolder, "resources/js/libraries/extend/inpage_navigation.js")],
+      to: path.resolve(outputFolder, "assets/js"),
+      options: { up: true },
+    },
+    {
       from: [path.resolve(outputFolder, "resources/js/libraries/extend/form_select_multiple.js")],
       to: path.resolve(outputFolder, "assets/js"),
       options: { up: true },
