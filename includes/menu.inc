@@ -12,7 +12,7 @@ use Drupal\Core\Template\Attribute;
  */
 function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
   // No changes for menu toolbar.
-  if ($hook == 'menu__toolbar') {
+  if ($hook === 'menu__toolbar') {
     return;
   }
 
@@ -22,28 +22,28 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
   $items = $variables['items'];
 
   foreach ($items as $key => $item) {
+    $class = $item['in_active_trail'] ? ['active'] : [];
     if (!empty($item['below'])) {
+      $class[] = 'nav-link';
       $variables['items'][$key]['dropdown'] = TRUE;
       $variables['items'][$key]['trigger']['label'] = $item['title'];
       $variables['items'][$key]['trigger']['path'] = $item['url']->toString();
       $variables['items'][$key]['trigger']['standalone'] = TRUE;
-      $variables['items'][$key]['trigger']['attributes'] = new Attribute(['class' => 'nav-link']);
+      $variables['items'][$key]['trigger']['attributes'] = new Attribute(['class' => $class]);
       $variables['items'][$key]['link'] = TRUE;
       $variables['items'][$key]['alignment'] = 'dropdown-menu-sm-start';
       foreach ($item['below'] as $key_subitem => $subitem) {
+        $subclass = $subitem['in_active_trail'] ? ['active'] : [];
         $variables['items'][$key]['items'][$key_subitem]['label'] = $subitem['title'];
         $variables['items'][$key]['items'][$key_subitem]['path'] = $subitem['url']->toString();
+        $variables['items'][$key]['items'][$key_subitem]['attributes'] = new Attribute(['class' => $subclass]);
       }
+      continue;
     }
-    else {
-      $variables['items'][$key]['label'] = $item['title'];
-      $variables['items'][$key]['path'] = $item['url']->toString();
-      // If path is current_path, set active to li.
-      if ($item['url']->toString() == $current_path) {
-        // Add active link.
-        $variables['items'][$key]['attributes']['class'] = 'active';
-      }
-    }
+    $variables['items'][$key]['label'] = $item['title'];
+    $variables['items'][$key]['path'] = $item['url']->toString();
+    // If path is current_path, set active to li.
+    $variables['items'][$key]['attributes']['class'] = $class;
   }
 }
 
