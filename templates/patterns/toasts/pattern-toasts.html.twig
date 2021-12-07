@@ -4,6 +4,7 @@
  * Toasts pattern.
  */
 #}
+{% set wrapper_aria_live = wrapper_aria_live|default('assertive') %}
 {% include '@oe-bcl/bcl-toast/toasts.html.twig' with {
   'with_wrapper': with_wrapper,
   'with_container': with_container,
@@ -11,4 +12,5 @@
   'wrapper_aria_live': wrapper_aria_live,
   'container_classes': container_classes,
   'toasts': toasts,
-} %}
+  'attributes': attributes,
+} only %}

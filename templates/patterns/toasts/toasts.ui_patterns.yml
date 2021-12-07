@@ -11,21 +11,6 @@ toasts:
       label: With container?
       preview: true
   fields:
-    wrapper_classes:
-      type: "text"
-      label: "Wrapper classes"
-      description: "Classes for the toasts wrapper"
-      preview: "position-relative"
-    wrapper_aria_live:
-      type: "text"
-      label: "Aria-live text"
-      description: "Text for aria-live wrapper attribute"
-      preview: "polite"
-    container_classes:
-      type: "text"
-      label: "Container classes"
-      description: "Classes for the toasts container"
-      preview: "top-0 end-0 p-3"
     toasts:
       type: "array"
       label: "Toast items"
