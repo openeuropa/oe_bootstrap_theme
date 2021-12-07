@@ -114,7 +114,7 @@ class TimelineParagraphTest extends ParagraphsTestBase {
     $crawler = new Crawler($html);
 
     // No heading should be rendered if the paragraph has no heading set.
-    $this->assertCount(0, $crawler->filter('h2.ecl-u-type-heading-2'));
+    $this->assertCount(0, $crawler->filter('h4'));
     $this->assertCount(1, $crawler->filter('ol.bcl-timeline'));
     $this->assertCount(7, $crawler->filter('ol.bcl-timeline li'));
     $this->assertCount(1, $crawler->filter('ol.bcl-timeline li .label-collapsed'));
@@ -144,11 +144,14 @@ class TimelineParagraphTest extends ParagraphsTestBase {
 
     // Increase limit to print all the items and set timeline heading.
     $paragraph->set('field_oe_timeline_expand', '7');
+    $paragraph->set('field_oe_title', 'Timeline Heading');
     $paragraph->save();
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
     // Assert rendering is updated.
+    $this->assertCount(1, $crawler->filter('h4.fw-bold.mb-4'));
+    $this->assertEquals('Timeline Heading', trim($crawler->filter('h4.fw-bold.mb-4')->text()));
     $this->assertCount(6, $crawler->filter('ol.bcl-timeline li'));
     $this->assertCount(0, $crawler->filter('ol.bcl-timeline label-collapsed'));
     $this->assertCount(0, $crawler->filter('ol.bcl-timeline li.bcl-timeline__item--toggle'));

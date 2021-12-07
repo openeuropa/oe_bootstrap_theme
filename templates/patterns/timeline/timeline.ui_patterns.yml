@@ -10,10 +10,19 @@ timeline:
   fields:
     toggle_expanded:
       type: string
-      label: 'Label expanded'
+      label: "Label expanded"
+      description: "Label to be shown on the toggle link when the links are expanded to hide items."
+      preview: "Hide"
     toggle_collapsed:
       type: string
-      label: 'Label collapsed'
+      label: "Label collapsed"
+      description: "Label to be shown on the toggle link when the links are hidden to expand more items."
+      preview: "Expand"
+    title:
+      type: string
+      label: "Title"
+      description: "Title of the Timeline"
+      preview: "Highlighted Events"
     items:
       type: array
       label: "Items"
