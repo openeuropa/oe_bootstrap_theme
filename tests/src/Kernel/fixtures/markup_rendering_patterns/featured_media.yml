@@ -11,7 +11,6 @@ image_not_wrapper:
         '#alt': 'Alternative text for paragraph image'
       content:
         field_oe_plain_text_long: 'Media description text goes here.'
-      content_classes: 'bg-light p-3'
   assertions:
     count:
       'div.row': 1
@@ -37,7 +36,6 @@ image_inside_text_aligned_left:
         field_oe_title: 'Title'
         field_oe_text_long: 'Lorem Ipsum dolor sit amet.'
         field_oe_plain_text_long: 'Media description text goes here.'
-      content_classes: 'bg-light p-3'
   assertions:
     count:
       'h3.mb-4': 1
@@ -66,7 +64,6 @@ image_inside_text_aligned_right:
         field_oe_title: 'Title'
         field_oe_text_long: 'Lorem Ipsum dolor sit amet.'
         field_oe_plain_text_long: 'Media description text goes here.'
-      content_classes: 'bg-light p-3'
   assertions:
     count:
       'h3.mb-4': 1
@@ -93,7 +90,6 @@ iframe_not_wrapper:
           src: 'https://www.youtube.com/watch?v=nWpgO1EPO_Y'
       content:
         field_oe_plain_text_long: 'Media description text goes here.'
-      content_classes: 'bg-light p-3'
   assertions:
     count:
       'div.row': 1
@@ -120,7 +116,6 @@ iframe_inside_text_container_left_aligned_with_default_ratio:
           field_oe_title: 'Title'
           field_oe_text_long: 'Lorem Ipsum dolor sit amet.'
           field_oe_plain_text_long: 'Media description text goes here.'
-      content_classes: 'bg-light p-3'
   assertions:
     count:
       'h3.mb-4': 1
@@ -152,7 +147,6 @@ iframe_inside_text_container_right_aligned_with_link_ratio_21x9:
         field_oe_title: 'Title'
         field_oe_text_long: 'Lorem Ipsum dolor sit amet.'
         field_oe_plain_text_long: 'Media description text goes here.'
-      content_classes: 'bg-light p-3'
   assertions:
     count:
       'h3.mb-4': 1

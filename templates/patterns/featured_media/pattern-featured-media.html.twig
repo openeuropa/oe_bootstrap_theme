@@ -4,8 +4,11 @@
  * Featured media pattern.
  */
 #}
-{% macro featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) %}
-  {% include '@oe-bcl/featured-media' with {
+{% set title_tag = title_tag|default('h3') %}
+{% set content_classes = content_classes|default('bg-light p-3') %}
+{% macro featured_media(title_tag, embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) %}
+  {% include '@oe-bcl/bcl-featured-media/featured-media.html.twig' with {
+    'title_tag': title_tag,
     'embedded_media': embedded_media,
     'image': image,
     'poster_image': poster_image,
@@ -14,7 +17,8 @@
     'ratio': ratio,
     'sources': sources,
     'tracks': tracks,
-  } %}
+    'attributes': attributes,
+  } only %}
 {% endmacro %}
 
 {% set caption = not paragraph.field_oe_plain_text_long.isEmpty ? content.field_oe_plain_text_long|render %}
@@ -27,20 +31,20 @@
     {% set video_alignment_class = 'order-md-1' %}
   {% endif %}
 
-  <h3 class="mb-4"> {{ content.field_oe_title }} </h3>
+  <{{ title_tag }} class="mb-4"> {{ content.field_oe_title }} </{{ title_tag }}>
   <div class="row">
     <div class="col-12 col-md-6 {{ text_alignment_class }}">
       {{ content.field_oe_text_long }}
       {{ content.field_oe_link }}
     </div>
     <div class="col-12 col-md-6 {{ video_alignment_class }}">
-      {{ _self.featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) }}
+      {{ _self.featured_media(title_tag, embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) }}
     </div>
   </div>
 {% else %}
   <div class="row">
     <div class="col-12 col-md-4">
-      {{ _self.featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) }}
+      {{ _self.featured_media(title_tag, embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) }}
     </div>
   </div>
 {% endif %}

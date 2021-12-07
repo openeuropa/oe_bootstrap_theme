@@ -45,11 +45,6 @@ featured_media:
       label: "Content"
       description: "Content under featured media."
       preview: "Media description text goes here."
-    content_classes:
-      type: "text"
-      label: "Content classes"
-      description: "Classes for content under featured media."
-      preview: "bg-light p-3"
     sources:
       type: "array"
       label: "Sources"
