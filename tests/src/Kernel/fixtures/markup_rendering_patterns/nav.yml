@@ -2,7 +2,6 @@ navigation_default_full_width_with_pills_horizontal:
   render:
     '#type': pattern
     '#id': nav
-    '#variant': default
     '#fields':
       settings:
         pills: true
@@ -65,7 +64,6 @@ navigation_default_aligned_to_left_without_pills_horizontal_with_navbar:
   render:
     '#type': pattern
     '#id': nav
-    '#variant': default
     '#fields':
       settings:
         pills: false
@@ -129,7 +127,6 @@ navigation_default_full_width_without_pills_with_out_navbar_vertical:
   render:
     '#type': pattern
     '#id': nav
-    '#variant': default
     '#fields':
       settings:
         pills: false
@@ -192,7 +189,6 @@ navigation_default_aligned_to_left_with_pills_vertical:
   render:
     '#type': pattern
     '#id': nav
-    '#variant': default
     '#fields':
       settings:
         pills: true
@@ -256,7 +252,6 @@ navigation_tabs_full_width_with_tabs_content:
   render:
     '#type': pattern
     '#id': nav
-    '#variant': tabs
     '#fields':
       settings:
         pills: false
@@ -325,7 +320,6 @@ navigation_tabs_aligned_to_left_without_tab_contents:
   render:
     '#type': pattern
     '#id': nav
-    '#variant': tabs
     '#fields':
       settings:
         pills: false
@@ -387,7 +381,6 @@ navigation_custom_tabs_full_width_with_content:
   render:
     '#type': pattern
     '#id': nav
-    '#variant': custom_tabs
     '#fields':
       settings:
         pills: false
@@ -456,7 +449,6 @@ navigation_custom_tabs_aligned_to_left:
   render:
     '#type': pattern
     '#id': nav
-    '#variant': custom_tabs
     '#fields':
       settings:
         pills: false

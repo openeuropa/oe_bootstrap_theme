@@ -1,13 +1,6 @@
 nav:
   label: Navigation
   description: https://v5.getbootstrap.com/docs/5.0/components/navs/
-  variants:
-    default:
-      label: "Default navigation"
-    tabs:
-      label: "Navigation with tabs"
-    custom_tabs:
-      label: "Navigation with custom tabs"
   settings:
     pills:
       type: "boolean"
