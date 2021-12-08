@@ -39,7 +39,7 @@ badge_non_dimissible_without_rounded_pill:
       'span.icon--close': 0
       'span.visually-hidden': 1
     contains:
-      'span.badge.bg-secondary': "A simple badge!"
+      'span.badge.bg-danger': "A simple badge!"
     equals:
       'span.visually-hidden': "A simple badge assistive text."
 badge_with_url:
