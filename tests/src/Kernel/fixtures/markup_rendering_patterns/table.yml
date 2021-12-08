@@ -58,9 +58,8 @@ table_responsive_xxl_secondary_alignment_top:
       'tbody tr:nth-child(2) td:nth-child(1)': "Jack Doe"
       'tbody tr:nth-child(2) td:nth-child(2)': "03/05/2017"
       'tbody tr:nth-child(2) td:nth-child(3)': "jack.doe@mail.com"
-    contains:
-      'thead th:nth-child(1)': '<b>Bold header</b>'
-      'tbody tr:nth-child(3) td:nth-child(3)': '<b>Bold cell</b>'
+      'table > thead > tr td:nth-child(4)': '<b>Bold header</b>'
+      'table > tbody > tr:nth-child(3) td:nth-child(3)': '<b>Bold cell</b>'
 table_responsive_sm_dark_striped_hoverable_borderless_alignment_bottom:
   render:
     '#type': pattern
@@ -124,9 +123,8 @@ table_responsive_sm_dark_striped_hoverable_borderless_alignment_bottom:
       'tbody tr:nth-child(2) td:nth-child(1)': "Jack Doe"
       'tbody tr:nth-child(2) td:nth-child(2)': "03/05/2017"
       'tbody tr:nth-child(2) td:nth-child(3)': "jack.doe@mail.com"
-    contains:
-      'thead th:nth-child(1)': '<b>Bold header</b>'
-      'tbody tr:nth-child(3) td:nth-child(3)': '<b>Bold cell</b>'
+      'table > thead > tr td:nth-child(4)': '<b>Bold header</b>'
+      'table > tbody > tr:nth-child(3) td:nth-child(3)': '<b>Bold cell</b>'
 table_small_caption_top_border_warning:
   render:
     '#type': pattern
@@ -188,6 +186,5 @@ table_small_caption_top_border_warning:
       'tbody tr:nth-child(2) td:nth-child(1)': "Jack Doe"
       'tbody tr:nth-child(2) td:nth-child(2)': "03/05/2017"
       'tbody tr:nth-child(2) td:nth-child(3)': "jack.doe@mail.com"
-    contains:
-      'thead th:nth-child(1)': '<b>Bold header</b>'
-      'tbody tr:nth-child(3) td:nth-child(3)': '<b>Bold cell</b>'
+      'table > thead > tr td:nth-child(4)': '<b>Bold header</b>'
+      'table > tbody > tr:nth-child(3) td:nth-child(3)': '<b>Bold cell</b>'
