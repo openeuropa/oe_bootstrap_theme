@@ -465,8 +465,8 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$varia
     $variables['style'] = $paragraph->get('oe_bt_facts_figures_background')->value;
   }
 
-  if (!$paragraph->get('oe_bt_facts_figures_grid_columns')->isEmpty()) {
-    $variables['grid_columns'] = $paragraph->get('oe_bt_facts_figures_grid_columns')->value;
+  if (!$paragraph->get('oe_bt_layout')->isEmpty()) {
+    $variables['grid_columns'] = $paragraph->get('oe_bt_layout')->value;
   }
 
 }

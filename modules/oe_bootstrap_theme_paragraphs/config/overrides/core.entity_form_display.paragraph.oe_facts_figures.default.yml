@@ -6,7 +6,7 @@ dependencies:
     - field.field.paragraph.oe_facts_figures.field_oe_paragraphs
     - field.field.paragraph.oe_facts_figures.field_oe_title
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_background
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_grid_columns
+    - field.field.paragraph.oe_facts_figures.oe_bt_layout
     - paragraphs.paragraphs_type.oe_facts_figures
   module:
     - link
@@ -56,7 +56,7 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
-  oe_bt_facts_figures_grid_columns:
+  oe_bt_layout:
     weight: 6
     settings:
       placeholder: ''

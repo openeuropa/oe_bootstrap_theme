@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.oe_bt_facts_figures_grid_columns
+    - field.storage.paragraph.oe_bt_layout
     - paragraphs.paragraphs_type.oe_facts_figures
-id: paragraph.oe_facts_figures.oe_bt_facts_figures_grid_columns
-field_name: oe_bt_facts_figures_grid_columns
+id: paragraph.oe_facts_figures.oe_bt_layout
+field_name: oe_bt_layout
 entity_type: paragraph
 bundle: oe_facts_figures
-label: 'Grid columns'
-description: 'Sets the number of grid columns. Minimum number is 1 column.'
+label: 'Layout'
+description: 'Sets the number of grid columns. Minimum number is 1 column and maximum is 3.'
 required: false
 translatable: false
 default_value:

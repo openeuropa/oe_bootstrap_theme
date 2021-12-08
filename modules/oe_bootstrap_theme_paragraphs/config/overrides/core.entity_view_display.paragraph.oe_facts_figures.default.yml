@@ -6,7 +6,7 @@ dependencies:
     - field.field.paragraph.oe_facts_figures.field_oe_paragraphs
     - field.field.paragraph.oe_facts_figures.field_oe_title
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_background
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_grid_columns
+    - field.field.paragraph.oe_facts_figures.oe_bt_layout
     - paragraphs.paragraphs_type.oe_facts_figures
   module:
     - entity_reference_revisions
@@ -47,4 +47,4 @@ content:
     region: content
 hidden:
   oe_bt_facts_figures_background: true
-  oe_bt_facts_figures_grid_columns: true
+  oe_bt_layout: true

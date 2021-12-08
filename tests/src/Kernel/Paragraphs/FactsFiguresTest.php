@@ -72,7 +72,7 @@ class FactsFiguresTest extends ParagraphsTestBase {
       ],
       'oe_bt_facts_figures_disp_icons' => TRUE,
       'oe_bt_facts_figures_equal_height' => TRUE,
-      'oe_bt_facts_figures_grid_columns' => 2,
+      'oe_bt_layout' => 2,
       'oe_bt_facts_figures_resp_cols' => 2,
       'oe_bt_facts_figures_layout' => 'default',
       'field_oe_paragraphs' => $paragraph_fact,
