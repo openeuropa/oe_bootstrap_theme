@@ -5,11 +5,8 @@ dependencies:
     - field.field.paragraph.oe_facts_figures.field_oe_link
     - field.field.paragraph.oe_facts_figures.field_oe_paragraphs
     - field.field.paragraph.oe_facts_figures.field_oe_title
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_disp_icons
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_equal_height
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_grid_columns
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_resp_cols
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_background
+    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_grid_columns
     - paragraphs.paragraphs_type.oe_facts_figures
   module:
     - entity_reference_revisions
@@ -49,25 +46,12 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  oe_bt_facts_figures_disp_icons:
-    weight: 4
+  oe_bt_facts_figures_background:
+    weight: 3
     label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
+    settings: {  }
     third_party_settings: {  }
-    type: boolean
-    region: content
-  oe_bt_facts_figures_equal_height:
-    weight: 8
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
+    type: list_default
     region: content
   oe_bt_facts_figures_grid_columns:
     weight: 5
@@ -78,25 +62,6 @@ content:
     third_party_settings: {  }
     type: number_integer
     region: content
-  oe_bt_facts_figures_resp_cols:
-    weight: 6
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    type: number_integer
-    region: content
-  oe_bt_facts_figures_background:
-    weight: 3
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
 hidden:
-  oe_bt_facts_figures_disp_icons: true
-  oe_bt_facts_figures_equal_height: true
-  oe_bt_facts_figures_grid_columns: true
   oe_bt_facts_figures_background: true
-  oe_bt_facts_figures_resp_cols: true
+  oe_bt_facts_figures_grid_columns: true

@@ -5,11 +5,8 @@ dependencies:
     - field.field.paragraph.oe_facts_figures.field_oe_link
     - field.field.paragraph.oe_facts_figures.field_oe_paragraphs
     - field.field.paragraph.oe_facts_figures.field_oe_title
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_disp_icons
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_equal_height
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_grid_columns
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_resp_cols
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_background
+    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_grid_columns
     - paragraphs.paragraphs_type.oe_facts_figures
   module:
     - link
@@ -53,19 +50,11 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  oe_bt_facts_figures_disp_icons:
-    weight: 4
-    settings:
-      display_label: true
+  oe_bt_facts_figures_background:
+    weight: 0
+    settings: {  }
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
-  oe_bt_facts_figures_equal_height:
-    weight: 3
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
+    type: options_select
     region: content
   oe_bt_facts_figures_grid_columns:
     weight: 6
@@ -73,19 +62,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: number
-    region: content
-  oe_bt_facts_figures_resp_cols:
-    weight: 7
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
-    type: number
-    region: content
-  oe_bt_facts_figures_background:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
     region: content
 hidden:
   created: true
