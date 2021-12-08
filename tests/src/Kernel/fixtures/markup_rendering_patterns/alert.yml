@@ -1,7 +1,7 @@
 alert_dimissible_animated:
   render:
-    '#type': pattern
-    '#id': alert
+    '#type': "pattern"
+    '#id': "alert"
     '#fields':
       settings:
         dismissible: true
@@ -19,7 +19,7 @@ alert_dimissible_animated:
     equals:
       'h4.alert-heading': "Well done!"
     contains:
-      'div.alert span': "A simple alert. check it out!"
+      'div.alert-content': "A simple alert. check it out!"
       'svg': "#alarm"
 alert_dimissible_non_animated:
   render:
@@ -43,7 +43,7 @@ alert_dimissible_non_animated:
     equals:
       'h4.alert-heading': "Well done!"
     contains:
-      'div.alert span': "A simple alert. check it out!"
+      'div.alert-content': "A simple alert. check it out!"
       'svg': "#alarm"
 alert_not_dimissible:
   render:
@@ -67,5 +67,5 @@ alert_not_dimissible:
     equals:
       'h4.alert-heading': "Well done!"
     contains:
-      'div.alert span': "A simple alert. check it out!"
+      'div.alert-content': "A simple alert. check it out!"
       'svg': "#search"
