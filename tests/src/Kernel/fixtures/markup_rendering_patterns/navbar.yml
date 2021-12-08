@@ -67,7 +67,7 @@ navbar_large_light_background_color_light:
       'label': "Search"
       'a.navbar-brand': "OpenEuropa Site"
     contains:
-      'a': "https://europa.eu/"
+      'nav div.container': "https://europa.eu/"
 navbar_medium_dark_background_color_dark_with_disable_collapse:
   render:
     '#type': pattern
@@ -137,4 +137,4 @@ navbar_medium_dark_background_color_dark_with_disable_collapse:
       'label': "Search"
       'a.navbar-brand': "OpenEuropa Site"
     contains:
-      'a': "https://europa.eu/"
+      'nav div.container': "https://europa.eu/"
