@@ -14,4 +14,4 @@ date_block_default:
       'span.pb-3.text-uppercase': "May"
       'span[class="bg-light w-100 text-center py-2 text-dark rounded-bottom mb-n1"]': "2021"
     contains:
-      'span__day': "26"
+      'time span:nth-child(1)': "26"
