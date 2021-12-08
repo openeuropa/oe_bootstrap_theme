@@ -11,14 +11,13 @@ dependencies:
   module:
     - entity_reference_revisions
     - link
-    - options
 id: paragraph.oe_facts_figures.default
 targetEntityType: paragraph
 bundle: oe_facts_figures
 mode: default
 content:
   field_oe_link:
-    weight: 1
+    weight: 2
     label: above
     settings:
       trim_length: 80
@@ -30,7 +29,7 @@ content:
     type: link
     region: content
   field_oe_paragraphs:
-    weight: 2
+    weight: 1
     label: above
     settings:
       view_mode: default
@@ -45,22 +44,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: content
-  oe_bt_facts_figures_background:
-    weight: 3
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
-  oe_bt_facts_figures_grid_columns:
-    weight: 5
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    type: number_integer
     region: content
 hidden:
   oe_bt_facts_figures_background: true
