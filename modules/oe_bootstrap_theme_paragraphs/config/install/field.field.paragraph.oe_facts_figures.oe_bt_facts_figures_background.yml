@@ -2,15 +2,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.oe_bt_facts_figures_layout
+    - field.storage.paragraph.oe_bt_facts_figures_background
     - paragraphs.paragraphs_type.oe_facts_figures
   module:
     - options
-id: paragraph.oe_facts_figures.oe_bt_facts_figures_layout
-field_name: oe_bt_facts_figures_layout
+id: paragraph.oe_facts_figures.oe_bt_facts_figures_background
+field_name: oe_bt_facts_figures_background
 entity_type: paragraph
 bundle: oe_facts_figures
-label: Layout
+label: Background
 description: ''
 required: false
 translatable: false

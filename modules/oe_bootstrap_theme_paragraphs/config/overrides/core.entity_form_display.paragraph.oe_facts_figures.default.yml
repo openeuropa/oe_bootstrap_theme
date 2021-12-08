@@ -9,7 +9,7 @@ dependencies:
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_equal_height
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_grid_columns
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_resp_cols
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_layout
+    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_background
     - paragraphs.paragraphs_type.oe_facts_figures
   module:
     - link
@@ -81,7 +81,7 @@ content:
     third_party_settings: {  }
     type: number
     region: content
-  oe_bt_facts_figures_layout:
+  oe_bt_facts_figures_background:
     weight: 0
     settings: {  }
     third_party_settings: {  }

@@ -9,7 +9,7 @@ dependencies:
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_equal_height
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_grid_columns
     - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_resp_cols
-    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_layout
+    - field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_background
     - paragraphs.paragraphs_type.oe_facts_figures
   module:
     - entity_reference_revisions
@@ -87,7 +87,7 @@ content:
     third_party_settings: {  }
     type: number_integer
     region: content
-  oe_bt_facts_figures_layout:
+  oe_bt_facts_figures_background:
     weight: 3
     label: above
     settings: {  }
@@ -98,5 +98,5 @@ hidden:
   oe_bt_facts_figures_disp_icons: true
   oe_bt_facts_figures_equal_height: true
   oe_bt_facts_figures_grid_columns: true
-  oe_bt_facts_figures_layout: true
+  oe_bt_facts_figures_background: true
   oe_bt_facts_figures_resp_cols: true
