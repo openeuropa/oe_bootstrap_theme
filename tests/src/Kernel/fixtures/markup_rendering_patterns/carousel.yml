@@ -52,11 +52,11 @@ carousel_with_fade_with_controls_with_indicator_without_disable_touch_without_au
       'img[alt="alt image 2"]': 1
       'div[data-bs-touch="false"]': 0
       'div[data-bs-ride="carousel"]': 0
-    contains:
-      'div.carousel-caption_1': "first slide label"
-      'div.carousel-caption_2': "second slide label"
-      'span.visually-hidden_1': "Previous"
-      'span.visually-hidden_2': "Next"
+    equals:
+      'div.carousel-item:nth-child(1) div.carousel-caption': "first slide label"
+      'div.carousel-item:nth-child(2) div.carousel-caption': "second slide label"
+      'button.carousel-control-prev > span.visually-hidden': "Previous"
+      'button.carousel-control-next > span.visually-hidden': "Next"
 carousel_without_fade_without_controls_without_indicators_with_disable_touch_with_autoinit:
   render:
     '#type': pattern
@@ -105,6 +105,6 @@ carousel_without_fade_without_controls_without_indicators_with_disable_touch_wit
       'img[alt="alt image 2"]': 1
       'div[data-bs-touch="false"]': 1
       'div[data-bs-ride="carousel"]': 1
-    contains:
-      'div.carousel-caption_1': "first slide label"
-      'div.carousel-caption_2': "second slide label"
+    equals:
+      'div.carousel-item:nth-child(1) div.carousel-caption': "first slide label"
+      'div.carousel-item:nth-child(2) div.carousel-caption': "second slide label"
