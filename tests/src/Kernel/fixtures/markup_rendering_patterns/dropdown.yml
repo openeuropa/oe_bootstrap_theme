@@ -41,9 +41,8 @@ dropdown_button_dark_drostart:
     equals:
       'a.dropdown-item': "A link"
       'button.dropdown-item.active': "An active button"
-    contains:
-      'button.dropdown-item_1': "A disabled button"
-      'button.dropdown-item_2': "A button"
+      'button.dropdown-item[disabled]': "A disabled button"
+      'ul.dropdown-menu li:nth-child(2) button.dropdown-item': "A button"
 dropdown_link_non_dark_with_remove_wrapper:
   render:
     '#type': pattern
@@ -85,6 +84,5 @@ dropdown_link_non_dark_with_remove_wrapper:
     equals:
       'a.dropdown-item': "A link"
       'button.dropdown-item.active': "An active button"
-    contains:
-      'dropdown-item_1': "A disabled button"
-      'dropdown-item_2': "A button"
+      'button.dropdown-item[disabled]': "A disabled button"
+      'ul.dropdown-menu li:nth-child(2) button.dropdown-item': "A button"
