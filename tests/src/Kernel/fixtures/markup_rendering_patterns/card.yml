@@ -22,7 +22,13 @@ card_warning_horizontal_with_border_variant_info_and_text_white_with_rounded_ima
         alt: "Alternative text for card image"
         position: "top"
         rounded: 3
-      content: "<button class='btn btn-primary'>Custom action</button>"
+      content:
+        '#type': "pattern"
+        '#id': "button"
+        '#fields':
+          'settings':
+            style: "primary"
+          'label': "Custom action"
       card_header: "Header of card"
       card_footer: "Footer of card"
       horizontal_grid:
@@ -69,7 +75,13 @@ card_default_secondary_vertical_with_border_variant_success_and_text_dark:
         path: "https://placeimg.com/1000/500/arch"
         alt: "Alternative text for card image"
         position: "bottom"
-      content: "<button class='btn btn-primary'>Custom action</button>"
+      content:
+        '#type': "pattern"
+        '#id': "button"
+        '#fields':
+          'settings':
+            style: "primary"
+          'label': "Custom action"
       card_header: "Header of card"
       card_footer: "Footer of card"
   assert:
