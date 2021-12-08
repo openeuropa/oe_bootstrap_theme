@@ -1,7 +1,7 @@
 accordion:
   render:
-    '#type': pattern
-    '#id': accordion
+    '#type': "pattern"
+    '#id': "accordion"
     '#fields':
       settings:
         open_item_id: 1
@@ -27,7 +27,8 @@ accordion:
       'div.accordion-item:nth-child(1) button.accordion-button': "Accordion Item #1"
       'div.accordion-item:nth-child(2) button.accordion-button': "Accordion Item #2"
       'div.accordion-item:nth-child(3) button.accordion-button': "Accordion Item #3"
+
     contains:
-      - "Bullfights. Bull hockey"
-      - "Advice on living, working or travelling in the EU"
-      - "Lorem ipsum dolor sit amet"
+      'div.accordion-item:nth-child(1) div.accordion-body': "Bullfights. Bull hockey"
+      'div.accordion-item:nth-child(2) div.accordion-body': "Advice on living, working or travelling in the EU"
+      'div.accordion-item:nth-child(3) div.accordion-body': "Lorem ipsum dolor sit amet"
