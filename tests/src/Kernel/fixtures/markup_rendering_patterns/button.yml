@@ -24,7 +24,7 @@ button_dark_with_icon_after_and_assistive_text:
     equals:
       'span.visually-hidden': "Click here"
     contains:
-      'button.btn-secondary': "Button label"
+      'button.btn-dark': "Button label"
       'svg': "#arrow-right"
 button_with_default_spinner_and_clean_class:
   render:
@@ -101,7 +101,7 @@ button_primary_small_with_outline_and_disabled:
     equals:
       'span.visually-hidden': "Click here"
     contains:
-      'button.btn-secondary': "Button label"
+      'button.btn-outline-primary': "Button label"
 button_warning_large_with_text_nowrap:
   render:
     '#type': pattern
@@ -131,7 +131,7 @@ button_warning_large_with_text_nowrap:
     equals:
       'span.visually-hidden': "Click here"
     contains:
-      'button.btn-secondary': "Button label"
+      'button.btn-warning': "Button label"
 button_dark_with_icon_before_and_type_reset:
   render:
     '#type': pattern
@@ -159,5 +159,5 @@ button_dark_with_icon_before_and_type_reset:
     equals:
       'span.visually-hidden': "Click here"
     contains:
-      'button.btn-secondary': "Button label"
+      'button.btn-dark': "Button label"
       'svg': "#arrow-right"
