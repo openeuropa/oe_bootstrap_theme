@@ -80,4 +80,4 @@ offcanvas_with_trigger_with_icon:
       'div.offcanvas-body': "This is the offcanvas body content."
     contains:
       'button[data-bs-toggle="offcanvas"]': "Toggle offcanvas"
-      'icon': 'bootstrap-icons.svg#filter'
+      'svg': 'bootstrap-icons.svg#filter'
