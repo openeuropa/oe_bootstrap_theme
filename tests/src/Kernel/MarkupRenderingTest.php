@@ -184,8 +184,8 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     $assertions += array_fill_keys(['count', 'equals', 'contains'], []);
 
     // Assert presence of given strings.
-    foreach ($assertions['contains'] as $string) {
-      $this->assertStringContainsString($string, $html);
+    foreach ($assertions['contains'] as $selector => $string) {
+      $this->assertStringContainsString($string, $crawler->filter($selector)->html());
     }
 
     // Assert occurrences of given elements.
