@@ -5,24 +5,49 @@
  * Theme and preprocess functions for menus.
  */
 
+use Drupal\Core\Template\Attribute;
+
 /**
  * Implements hook_preprocess_menu().
  */
 function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
-  // No changes for menu toolbar.
-  if ($hook == 'menu__toolbar') {
+  if ($hook === 'menu__toolbar') {
     return;
   }
 
-  // Get the current path.
-  $current_path = \Drupal::request()->getRequestUri();
-
   $items = $variables['items'];
   foreach ($items as $key => $item) {
-    // If path is current_path, set active to li.
-    if ($item['url']->toString() == $current_path) {
-      // Add active link.
-      $variables['items'][$key]['attributes']['class'] = 'active';
+    $class = $item['in_active_trail'] ? ['active'] : [];
+    $menu_item = [
+      'label' => $item['title'],
+      'path' => $item['url']->toString(),
+      'attributes' => new Attribute(['class' => $class]),
+    ];
+    $variables['items'][$key] = $menu_item;
+
+    if (empty($item['below'])) {
+      continue;
+    }
+
+    $class[] = 'nav-link';
+    $menu_item['attributes'] = new Attribute(['class' => $class]);
+    $item_with_submenu = [
+      'standalone' => TRUE,
+      'dropdown' => TRUE,
+      'link' => TRUE,
+      'alignment' => 'dropdown-menu-sm-start',
+      'trigger' => $menu_item,
+    ];
+    $variables['items'][$key] = $item_with_submenu;
+
+    foreach ($item['below'] as $key_sub_item => $sub_item) {
+      $subclass = $sub_item['in_active_trail'] ? ['active'] : [];
+      $sub_item_menu = [
+        'label' => $sub_item['title'],
+        'path' => $sub_item['url']->toString(),
+        'attributes' => new Attribute(['class' => $subclass]),
+      ];
+      $variables['items'][$key]['items'][$key_sub_item] = $sub_item_menu;
     }
   }
 }
