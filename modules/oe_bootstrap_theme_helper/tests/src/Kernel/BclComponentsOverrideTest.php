@@ -60,11 +60,13 @@ class BclComponentsOverrideTest extends KernelTestBase {
     // Install the theme. Subsequently, this installs also the base themes.
     $this->container->get('theme_installer')->install([$theme]);
     $this->config('system.theme')->set('default', $theme)->save();
+
     $twig_environment = $this->container->get('twig');
+    $theme_list_service = $this->container->get('extension.list.theme');
 
     foreach ($templates as $template_name => $path_parts) {
       // Generate the path to the expected theme and template.
-      $expected_path = drupal_get_path('theme', $path_parts[0]) . $path_parts[1];
+      $expected_path = $theme_list_service->getPath($path_parts[0]) . $path_parts[1];
       // Twig resolves symlinks, so in order to match the path we need to do the
       // same. We do so only if the file exists, otherwise realpath() will
       // return false and the test failure will be less clear.
