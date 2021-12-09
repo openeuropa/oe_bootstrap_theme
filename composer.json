@@ -11,6 +11,7 @@
         "drupal/ui_patterns": "^1.0",
         "drupal/ui_patterns_settings": "^1.0",
         "openeuropa/ecl-twig-loader": "^3.1",
+        "openeuropa/oe_multilingual": "^1.8",
         "ralouphie/mimey": "^2.1"
     },
     "require-dev": {
