@@ -5,9 +5,8 @@
  */
 #}
 {%  if file is not empty %}
-  {% set bcl_icon_path = '/assets/icons/bootstrap-icons.svg' %}
   {% include '@oe-bcl/bcl-file/file.html.twig' with {
-    icon_path: bcl_icon_path,
+    'icon_path': bcl_icon_path,
     'title': file.title,
     'language': file.languageCode|default('Unknown'),
     'meta': '(' ~ file.size|format_size ~ ' - ' ~ file.extension|upper ~ ')',
@@ -23,7 +22,7 @@
         'size': 'fluid',
       },
     },
-    translation: translation,
-    attributes: attributes,
+    'translation': translation,
+    'attributes': attributes,
   } only %}
 {% endif %}

@@ -14,14 +14,11 @@ file:
         name: "document.pdf"
         languageCode: "Français"
     translation:
-      type: object
+      type: array
       label: "Translation"
       escape: false
       preview:
-        id: ""
-        label:
-          label: "Other languages (3)"
-          icon_position: "after"
+        label: "Other languages (3)"
         items:
           - language: "български"
             meta: "(16.2 MB - PDF)"
