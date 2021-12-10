@@ -76,9 +76,9 @@ class TwigExtension extends AbstractExtension {
       ],
     ];
 
-    foreach ($extension_mapping as $file_type => $extensions) {
+    foreach ($extension_mapping as $icon => $extensions) {
       if (in_array($extension, $extensions)) {
-        return $file_type;
+        return $icon;
       }
     }
 
