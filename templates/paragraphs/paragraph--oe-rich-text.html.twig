@@ -1,0 +1,10 @@
+{#
+/**
+ * @file
+ * Theme override to display the 'rich text' type paragraph.
+ *
+ * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
+ */
+#}
+<h4 class="fw-bold mb-4">{{ content.field_oe_title }}</h4>
+{{ content|without('field_oe_title') }}
