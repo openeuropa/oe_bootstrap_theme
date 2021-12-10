@@ -9,6 +9,10 @@ use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
 
 /**
  * Extracts a FileValueObject from a document media.
+ *
+ * Extracted from oe_theme.
+ *
+ * @internal
  */
 class DocumentMediaValueExtractor {
 
