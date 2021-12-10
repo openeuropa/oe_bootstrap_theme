@@ -18,7 +18,11 @@
     },
   }) %}
 {% endif %}
+{% set _file = file|merge({
+  original_file_language_name: original_file_language_name,
+}) %}
 {{ pattern('file', {
-  file: file,
+  file: _file,
   translations: _translations,
+  original_file_language_name: original_file_language_name,
 }) }}
