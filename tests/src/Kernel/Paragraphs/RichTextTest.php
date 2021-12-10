@@ -47,7 +47,7 @@ class RichTextTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $title = $crawler->filter('h2');
+    $title = $crawler->filter('h4');
     $this->assertCount(1, $title);
     $this->assertStringContainsString(
       'Rich text example',
