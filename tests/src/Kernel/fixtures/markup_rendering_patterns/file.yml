@@ -9,7 +9,7 @@ file:
         url: "public://sample/druplicon.pdf"
         size: "23423"
         languageCode: "French"
-      translation:
+      translations:
         id: ""
         label:
           label: "Other languages (3)"

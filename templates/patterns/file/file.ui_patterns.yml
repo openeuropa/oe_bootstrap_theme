@@ -13,7 +13,7 @@ file:
         size: "4444"
         name: "document.pdf"
         languageCode: "Français"
-    translation:
+    translations:
       type: array
       label: "Translation"
       escape: false

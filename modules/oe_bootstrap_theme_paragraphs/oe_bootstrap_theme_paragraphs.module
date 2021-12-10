@@ -387,7 +387,7 @@ function _oe_bootstrap_theme_preprocess_languages(Media $media, array &$variable
     if ($translation_file_value) {
       $language_config_storage = \Drupal::entityTypeManager()->getStorage('configurable_language');
       $language_config = $language_config_storage->load($translation_file_value->getLanguageCode());
-      $variables['translation']['items'][] = [
+      $variables['translations']['items'][] = [
         'language' => $language_config->label(),
         'meta' => '(' . format_size($translation_file_value->getSize()) .
         ' - ' . strtoupper($translation_file_value->getExtension()) . ')',
@@ -399,17 +399,7 @@ function _oe_bootstrap_theme_preprocess_languages(Media $media, array &$variable
     }
     $num_languages++;
   }
-  if (isset($translation_file_value)) {
-    $variables['translation']['id'] = 'language-dropdown' . rand(0, 99);
-    $variables['translation']['label'] = [
-      'label' => t('Other languages (@languages)', ['@languages' => $num_languages]),
-      'icon position' => 'after',
-      'icon' => [
-        'name' => 'caret-down-fill',
-        'size' => '2xs',
-      ],
-    ];
-  }
+  $variables['num_translations'] = $num_languages;
 }
 
 /**
