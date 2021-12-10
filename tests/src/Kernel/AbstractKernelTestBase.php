@@ -25,7 +25,6 @@ abstract class AbstractKernelTestBase extends KernelTestBase {
     'oe_bootstrap_theme_helper',
     'responsive_image',
     'system',
-    'components',
     'ui_patterns',
     'ui_patterns_settings',
     'ui_patterns_library',
