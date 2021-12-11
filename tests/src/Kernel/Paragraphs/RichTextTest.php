@@ -18,7 +18,7 @@ class RichTextTest extends ParagraphsTestBase {
    */
   protected function setUp(): void {
     parent::setUp();
-    // Create a text format and associate CKEditor.
+
     $this->filterFormat = FilterFormat::create([
       'format' => 'filtered_html',
       'name' => 'Filtered HTML',
@@ -31,7 +31,6 @@ class RichTextTest extends ParagraphsTestBase {
    * Tests the rendering of the paragraph type.
    */
   public function testRendering(): void {
-    // Create Rich text paragraph.
     $text_original = '<p id="paragraph-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare et elit a dictum. Maecenas lacinia eros quis eros iaculis, sit amet bibendum massa facilisis. Integer arcu nisl, fringilla nec quam vel, tincidunt maximus ex. Suspendisse ac arcu efficitur, feugiat tellus vel, viverra sapien. Etiam vitae condimentum lorem. Nulla congue ligula lacinia efficitur tempus. Duis vitae auctor enim. Nulla iaculis, diam et sagittis scelerisque, est mauris luctus sem, a imperdiet lacus diam eu dui. Morbi accumsan, augue eu gravida elementum, libero mi blandit odio, eu fringilla nunc ipsum non tellus. Suspendisse dapibus elit at lobortis pretium. Quisque vestibulum ut purus sit amet molestie. Sed eget volutpat justo, vel varius augue. Vestibulum vel risus facilisis, feugiat sem aliquam, lobortis ante.</p><p id="paragraph-2"><strong>Bold</strong></p><p id="paragraph-3"><em>Italic</em></p><p id="paragraph-4"><a href="https://www.example-1.com">Link</a></p><p id="paragraph-5">List:</p><ul><li>option a</li><li">option b</li></ul><p id="paragraph-6">Numbered list:</p><ol><li>first option</li><li>second option</li></ol><p id="paragraph-7">Block quote:</p><blockquote><p>I am a block quote</p></blockquote>';
     $paragraph = Paragraph::create([
       'type' => 'oe_rich_text',
@@ -43,7 +42,6 @@ class RichTextTest extends ParagraphsTestBase {
     ]);
     $paragraph->save();
 
-    // Testing: Rich text.
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
