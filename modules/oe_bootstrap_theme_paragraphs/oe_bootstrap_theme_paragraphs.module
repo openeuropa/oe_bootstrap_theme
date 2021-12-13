@@ -332,8 +332,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): 
 /**
  * Implements hook_preprocess_paragraph() for timeline paragraph.
  */
-function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables): void
-{
+function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables): void {
   $paragraph = $variables['paragraph'];
   $variables['heading'] = $paragraph->get('field_oe_title')->value ?? '';
   if (!isset($variables['content']['field_oe_timeline']['#items'])) {
@@ -398,19 +397,18 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_description_list(array &$va
   /** @var Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
   $variables['title'] = $paragraph->get('field_oe_title')->value ?? '';
-  $variables['orientation'] = $paragraph->get('oe_bt_desc_list_layout')->value ?? 'horizontal';
+  $variables['orientation'] = $paragraph->get('oe_bt_desc_list_layout')->value;
 
   foreach ($paragraph->get('field_oe_description_list_items') as $delta => $item) {
-    $term = [
+    $variables['items'][] = [
       'term' => [
-        0 => [
-          'icon' => [],
+        [
           'label' => $item->term,
         ],
       ],
       'definition' => $item->description,
     ];
-    $variables['items'][] = $term;
+    $variables['title_tag'] = 'h4';
   }
 }
 
