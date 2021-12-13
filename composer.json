@@ -11,7 +11,6 @@
         "drupal/ui_patterns": "^1.0",
         "drupal/ui_patterns_settings": "^1.0",
         "openeuropa/ecl-twig-loader": "^3.1",
-        "openeuropa/oe_multilingual": "^1.8",
         "ralouphie/mimey": "^2.1"
     },
     "require-dev": {
@@ -24,6 +23,7 @@
         "openeuropa/code-review": "~1.6",
         "openeuropa/drupal-core-require-dev": "^8.9 || ^9.1",
         "openeuropa/oe_media": "^1.14",
+        "openeuropa/oe_multilingual": "^1.8",
         "openeuropa/oe_paragraphs": "dev-master",
         "openeuropa/oe_content": "^2.6.0",
         "openeuropa/task-runner": "dev-master as 1.0.0-beta7",
