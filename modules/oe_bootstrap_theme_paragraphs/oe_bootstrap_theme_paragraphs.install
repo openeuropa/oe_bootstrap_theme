@@ -34,8 +34,10 @@ function oe_bootstrap_theme_paragraphs_install($is_syncing): void {
 /**
  * Upgrade the Description list paragraph.
  */
-function oe_bootstrap_theme_update_8002(): void {
+function oe_bootstrap_theme_paragraphs_update_8002(): void {
   $field_config = [
+    'field.field.paragraph.oe_description_list.oe_bt_desc_list_layout',
+    'field.storage.paragraph.oe_bt_desc_list_layout',
     'core.entity_form_display.paragraph.oe_description_list.default',
     'core.entity_view_display.paragraph.oe_description_list.default',
   ];
