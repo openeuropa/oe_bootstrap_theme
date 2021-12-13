@@ -8,7 +8,7 @@ file:
         extension: "pdf"
         url: "public://sample/druplicon.pdf"
         size: "23423"
-        languageCode: "French"
+        language_code: "fr"
       translations:
         id: ""
         label:
@@ -50,11 +50,11 @@ file:
       '.collapse .py-3.border-bottom:nth-child(3) a[href="/example3.html"]': 1
     contains:
       'a.text-underline-hover': "Download"
-      'small.fw-bold.m-0': "French"
+      'small.fw-bold.m-0': "Français"
       'div.row:nth-child(1) small': "български"
       'div.row:nth-child(2) small': "Español"
       'div.row:nth-child(3) small': "Français"
-file_without_languages:
+file_without_translations:
   render:
     '#type': pattern
     '#id': file
@@ -64,7 +64,7 @@ file_without_languages:
         extension: "pdf"
         url: "http://example.com/druplicon2.pdf"
         size: "23424"
-        languageCode: "Spanish"
+        language_code: "es"
   assertions:
     equals:
       '.fw-normal': "(22.88 KB - PDF)"
@@ -75,4 +75,4 @@ file_without_languages:
       'a.d-block.text-underline-hover.mt-1': 0
     contains:
       'a.text-underline-hover': "Download"
-      'small.fw-bold.m-0': "Spanish"
+      'small.fw-bold.m-0': "español"

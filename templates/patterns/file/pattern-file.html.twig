@@ -8,7 +8,7 @@
   {% include '@oe-bcl/bcl-file/file.html.twig' with {
     'icon_path': bcl_icon_path,
     'title': file.title,
-    'language': file.original_file_language_name|default('Unknown'|t),
+    'language': file.language_code|to_native_language,
     'meta': '(' ~ file.size|format_size ~ ' - ' ~ file.extension|upper ~ ')',
     'icon': {
       'name': file.extension|to_file_icon,

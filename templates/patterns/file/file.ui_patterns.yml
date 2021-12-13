@@ -12,7 +12,7 @@ file:
         url: "http://example.com/document.pdf"
         size: "4444"
         name: "document.pdf"
-        languageCode: "Français"
+        language_code: "fr"
     translations:
       type: array
       label: "Translation"

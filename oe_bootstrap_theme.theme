@@ -42,7 +42,6 @@ function oe_bootstrap_theme_preprocess_media__document__default(&$variables) {
     if (!isset($file_entity)) {
       return;
     }
-    $variables['original_file_language_name'] = $file_entity->language()->getName();
     $file_value->setLanguageCode($file_entity->language()->getId());
   }
 
