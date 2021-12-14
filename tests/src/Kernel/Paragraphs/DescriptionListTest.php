@@ -20,7 +20,7 @@ class DescriptionListTest extends ParagraphsTestBase {
     $paragraph = Paragraph::create([
       'type' => 'oe_description_list',
       'field_oe_title' => 'Description list paragraph',
-      'oe_bt_desc_list_layout' => 'horizontal',
+      'oe_bt_orientation' => 'horizontal',
       'field_oe_description_list_items' => [
         0 => [
           'term' => 'Aliquam ultricies',
@@ -71,7 +71,7 @@ class DescriptionListTest extends ParagraphsTestBase {
     );
 
     // Testing: Description list paragraph with vertival variant.
-    $paragraph->get('oe_bt_desc_list_layout')->setValue('vertical');
+    $paragraph->get('oe_bt_orientation')->setValue('vertical');
     $paragraph->save();
 
     $html = $this->renderParagraph($paragraph);

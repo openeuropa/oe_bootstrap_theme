@@ -128,14 +128,14 @@ class ParagraphsTest extends BrowserTestBase {
 
     // Assert the Description fields appears.
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_title][0][value]');
-    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_desc_list_layout]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_orientation]');
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_description_list_items][0][term]');
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_description_list_items][0][description][value]');
 
     $values = [
       'title[0][value]' => 'Test Description list node title',
       'oe_bt_paragraphs[0][subform][field_oe_title][0][value]' => 'Description list paragraph',
-      'oe_bt_paragraphs[0][subform][oe_bt_desc_list_layout]' => 'horizontal',
+      'oe_bt_paragraphs[0][subform][oe_bt_orientation]' => 'horizontal',
       'oe_bt_paragraphs[0][subform][field_oe_description_list_items][0][term]' => 'Aliquam ultricies',
       'oe_bt_paragraphs[0][subform][field_oe_description_list_items][0][description][value]' => 'Donec et leo ac velit posuere tempor mattis ac mi. Vivamus nec dictum lectus. Aliquam ultricies placerat eros, vitae ornare sem.',
     ];
