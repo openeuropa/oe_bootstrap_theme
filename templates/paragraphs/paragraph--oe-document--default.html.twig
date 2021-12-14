@@ -7,15 +7,7 @@
 #}
 {% if translations is not empty %}
   {% set _translations = translations|merge({
-    id: 'language-dropdown',
-    label: {
-      label: 'Other languages (@num_translations)'|t({'@num_translations': num_translations}),
-      icon_position: 'after',
-      icon: {
-        name: 'caret-down-fill',
-        size: '2xs',
-      },
-    },
+    label:  'Other languages (@num_translations)'|t({'@num_translations': num_translations}),
   }) %}
 {% endif %}
 {{ pattern('file', {

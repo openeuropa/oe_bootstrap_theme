@@ -2,6 +2,11 @@ file:
   label: "File"
   description: "File component is used to show info about the file that can be downloaded or how are displayed multimedia files (image and video)."
   fields:
+    button_label:
+      type: text
+      label: "Download link"
+      description: "Text to the download file link."
+      preview: "Download"
     file:
       type: "FileValueObject"
       label: "File"
@@ -20,21 +25,15 @@ file:
       preview:
         label: "Other languages (3)"
         items:
-          - language: "български"
+          - language_code: "bg"
             meta: "(16.2 MB - PDF)"
-            download:
-              label: "Download"
-              path: "/example.html"
-          - language: "Español"
+            url: "/example.html"
+          - language_code: "es"
             meta: "(16.2 MB - PDF)"
-            download:
-              label: "Download"
-              path: "/example.html"
-          - language: "Français"
+            url: "/example.html"
+          - language_code: "fr"
             meta: "(16.2 MB - PDF)"
-            download:
-              label: "Download"
-              path: "/example.html"
+            url: "/example.html"
           - type: "content"
             content:
               '#markup': "<p class='mb-2'>Looking for another language which is not on the list? </p><a href='/example.html' class='d-block text-underline-hover'>Find out why.</a>"

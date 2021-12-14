@@ -10,26 +10,18 @@ file:
         size: "23423"
         language_code: "fr"
       translations:
-        id: ""
-        label:
-          label: "Other languages (3)"
-          icon_position: "after"
+        label: "Other languages (3)"
+        download_link_label: "Download"
         items:
-          - language: "български"
+          - language_code: "bg"
             meta: "(16.3 MB - PDF)"
-            download:
-              label: "Download"
-              path: "/example1.html"
-          - language: "Español"
+            url: "/example1.html"
+          - language_code: "es"
             meta: "(18.4 MB - PDF)"
-            download:
-              label: "Download"
-              path: "/example2.html"
-          - language: "Français"
+            url: "/example2.html"
+          - language_code: "fr"
             meta: "(16.8 MB - PDF)"
-            download:
-              label: "Download"
-              path: "/example3.html"
+            url: "/example3.html"
           - type: "content"
             content:
               '#markup': "<p class='mb-2'>Looking for another language which is not on the list? </p><a href='/example.html' class='d-block text-underline-hover'>Find out why.</a>"
@@ -37,7 +29,6 @@ file:
     equals:
       '.fw-normal': "(22.87 KB - PDF)"
       '.fw-bold': "druplicon.pdf"
-      'a[role="button"]': "Other languages (3)"
       '.collapse .py-3.border-bottom:nth-child(1) .fw-normal': "(16.3 MB - PDF)"
       '.collapse .py-3.border-bottom:nth-child(2) .fw-normal': "(18.4 MB - PDF)"
       '.collapse .py-3.border-bottom:nth-child(3) .fw-normal': "(16.8 MB - PDF)"
@@ -51,9 +42,10 @@ file:
     contains:
       'a.text-underline-hover': "Download"
       'small.fw-bold.m-0': "Français"
-      'div.row:nth-child(1) small': "български"
+      'div.row:nth-child(1) small': "Български"
       'div.row:nth-child(2) small': "Español"
       'div.row:nth-child(3) small': "Français"
+      'a[role="button"]': "Other languages (3)"
 file_without_translations:
   render:
     '#type': pattern
@@ -75,4 +67,4 @@ file_without_translations:
       'a.d-block.text-underline-hover.mt-1': 0
     contains:
       'a.text-underline-hover': "Download"
-      'small.fw-bold.m-0': "español"
+      'small.fw-bold.m-0': "Español"
