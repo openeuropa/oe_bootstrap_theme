@@ -124,9 +124,9 @@ class FileParagraphTest extends ParagraphsTestBase {
     $this->assertEquals('druplicon.txt', $crawler->filter('p.fw-bold.m-0')->text());
     $this->assertEquals('Other languages (3)', $crawler->filter('div.text-end a.text-underline-hover')->text());
     $this->assertEquals('English (12 bytes - TXT)', $crawler->filter('small.fw-bold.m-0')->text());
-    $this->assertEquals('Spanish (12 bytes - TXT)', $crawler->filter('.py-3.border-bottom:nth-child(1) small')->text());
-    $this->assertEquals('French (12 bytes - TXT)', $crawler->filter('.py-3.border-bottom:nth-child(2) small')->text());
-    $this->assertEquals('Italian (12 bytes - TXT)', $crawler->filter('.pt-3 small')->text());
+    $this->assertEquals('Español (12 bytes - TXT)', $crawler->filter('.py-3.border-bottom:nth-child(1) small')->text());
+    $this->assertEquals('Français (12 bytes - TXT)', $crawler->filter('.py-3.border-bottom:nth-child(2) small')->text());
+    $this->assertEquals('Italiano (12 bytes - TXT)', $crawler->filter('.pt-3 small')->text());
 
     foreach ($other_languages as $lang) {
       $media->removeTranslation($lang);

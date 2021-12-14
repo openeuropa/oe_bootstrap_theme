@@ -8,13 +8,13 @@
   {% set items = [] %}
   {%  for _item in translations.items  %}
     {% if _item.type != 'content' %}
-      {% set lang = _item.language ? _item.language : _item.language_code|to_native_language|capitalize %}
       {% set _item = _item|merge({
+        language: _item.language_code|to_native_language|capitalize,
+        meta: '(' ~ _item.size|format_size ~ ' - ' ~ _item.extension|upper ~ ')',
         download: {
           label: button_label|default('Download'|t),
           path: _item.url,
         },
-        language: lang,
       }) %}
     {% endif %}
     {% set items = items|merge([_item]) %}

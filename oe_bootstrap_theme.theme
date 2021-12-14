@@ -58,18 +58,7 @@ function oe_bootstrap_theme_preprocess_media__document__default(&$variables) {
     $translation = $media->getTranslation($langcode);
     $translation_file_value = DocumentMediaValueExtractor::getFileValue($translation);
     if ($translation_file_value) {
-      $variables['translations'][] = $translation_file_value;
-      $language_config_storage = \Drupal::entityTypeManager()->getStorage('configurable_language');
-      $language_config = $language_config_storage->load($translation_file_value->getLanguageCode());
-      $variables['translations']['items'][] = [
-        'language' => $language_config->label(),
-        'meta' => '(' . format_size($translation_file_value->getSize()) .
-        ' - ' . strtoupper($translation_file_value->getExtension()) . ')',
-        'download' => [
-          'label' => t('Download'),
-          'path' => $translation_file_value->getUrl(),
-        ],
-      ];
+      $variables['translations']['items'][] = $translation_file_value;
       $num_languages++;
     }
 

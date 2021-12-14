@@ -1,4 +1,4 @@
-file:
+file_with_translations:
   render:
     '#type': pattern
     '#id': file
@@ -14,14 +14,20 @@ file:
         download_link_label: "Download"
         items:
           - language_code: "bg"
-            meta: "(16.3 MB - PDF)"
+            size: "60982"
+            mime: "application/pdf"
             url: "/example1.html"
+            extension: "pdf"
           - language_code: "es"
-            meta: "(18.4 MB - PDF)"
+            mime: "application/pdf"
+            size: "70982"
             url: "/example2.html"
+            extension: "pdf"
           - language_code: "fr"
-            meta: "(16.8 MB - PDF)"
+            mime: "application/pdf"
+            size: "80982"
             url: "/example3.html"
+            extension: "pdf"
           - type: "content"
             content:
               '#markup': "<p class='mb-2'>Looking for another language which is not on the list? </p><a href='/example.html' class='d-block text-underline-hover'>Find out why.</a>"
@@ -29,9 +35,9 @@ file:
     equals:
       '.fw-normal': "(22.87 KB - PDF)"
       '.fw-bold': "druplicon.pdf"
-      '.collapse .py-3.border-bottom:nth-child(1) .fw-normal': "(16.3 MB - PDF)"
-      '.collapse .py-3.border-bottom:nth-child(2) .fw-normal': "(18.4 MB - PDF)"
-      '.collapse .py-3.border-bottom:nth-child(3) .fw-normal': "(16.8 MB - PDF)"
+      '.collapse .py-3.border-bottom:nth-child(1) .fw-normal': "(59.55 KB - PDF)"
+      '.collapse .py-3.border-bottom:nth-child(2) .fw-normal': "(69.32 KB - PDF)"
+      '.collapse .py-3.border-bottom:nth-child(3) .fw-normal': "(79.08 KB - PDF)"
     count:
       'a[href="public://sample/druplicon.pdf"]': 1
       'div.row': 3
