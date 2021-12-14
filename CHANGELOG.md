@@ -1,10 +1,25 @@
 # Change Log
 
+## [1.0.0-alpha5](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-alpha5) (2021-12-14)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-alpha4...1.0.0-alpha5)
+
+**Closed issues:**
+
+- Refactor Nav & Tabs pattern with BCL component [\#25](https://github.com/openeuropa/oe_bootstrap_theme/issues/25)
+
+**Merged pull requests:**
+
+- OEL-492: Rich text paragraph theming [\#138](https://github.com/openeuropa/oe_bootstrap_theme/pull/138) ([abel-santos-corral](https://github.com/abel-santos-corral))
+- OEL-758: Create paragraph 'Timeline' component [\#124](https://github.com/openeuropa/oe_bootstrap_theme/pull/124) ([Maxfire](https://github.com/Maxfire))
+- OEL-522: Drop Components module, use ECL Twig loader [\#100](https://github.com/openeuropa/oe_bootstrap_theme/pull/100) ([claudiu-cristea](https://github.com/claudiu-cristea))
+- FRONT-2481: Refactor Nav & Tab pattern [\#74](https://github.com/openeuropa/oe_bootstrap_theme/pull/74) ([abel-santos-corral](https://github.com/abel-santos-corral))
+
 ## [1.0.0-alpha4](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-alpha4) (2021-12-01)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-alpha3...1.0.0-alpha4)
 
 **Merged pull requests:**
 
+- OEL-000: Prepare release 1.0.0-alpha4. [\#129](https://github.com/openeuropa/oe_bootstrap_theme/pull/129) ([drishu](https://github.com/drishu))
 - OEL-750: Upgrade BCL to 0.14.0 [\#113](https://github.com/openeuropa/oe_bootstrap_theme/pull/113) ([escuriola](https://github.com/escuriola))
 - OEL-713: Links Block and Social Media paragraph theming. [\#110](https://github.com/openeuropa/oe_bootstrap_theme/pull/110) ([escuriola](https://github.com/escuriola))
 
