@@ -154,6 +154,13 @@ To run the phpunit tests:
 docker-compose exec web ./vendor/bin/phpunit
 ```
 
+### Twig helpers
+#### bcl_timeago filter
+Filters a timestamp in "time ago" format, result can be something like "8 hours ago".
+```
+node.getCreatedTime|bcl_timeago
+```
+
 ## sub-theme
 
 All the necessary files for sub-theme creation can be found in the `kits` folder,

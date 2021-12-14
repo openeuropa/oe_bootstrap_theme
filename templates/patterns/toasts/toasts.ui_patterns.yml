@@ -11,19 +11,33 @@ toasts:
       label: With container?
       preview: true
   fields:
-    toasts:
-      type: "array"
-      label: "Toast items"
-      description: "Array of toast items"
-      preview:
-        - role: "alert"
-          header:
-            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">just now</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
-          body: "See? Just like this."
-          aria_live: "assertive"
-        - role: "alert"
-          header:
-            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">2 seconds ago</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
-          body: "Heads up, toasts will stack automatically."
-          aria_live: "assertive"
-          class: test-class
+    role:
+      type: string
+      label: "Role"
+      description: "Toast role"
+      preview: "alert"
+    title:
+      type: html
+      label: "Title"
+      description: "Toast title."
+      preview: "Bootstrap"
+    autohide:
+      type: boolean
+      label: "Autohide"
+      description: "If it will be hidden automatically"
+      preview: false
+    with_close:
+      type: boolean
+      label: "With close"
+      description: "Close button."
+      preview: true
+    body:
+      type: string
+      label: "Body"
+      description: "Toast body."
+      preview: "See? Just like this."
+    time:
+      label: "Time"
+      type: "DateTime"
+      description: "A DateTime object."
+      preview: "1639404765"

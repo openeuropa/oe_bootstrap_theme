@@ -6,27 +6,21 @@ toast_with_all:
       settings:
         with_wrapper: true
         with_container: true
-      toasts:
-        - role: "alert"
-          header:
-            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">just now</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
-          body: "See? Just like this."
-          aria_live: "polite"
-        - role: "alert"
-          header:
-            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">2 seconds ago</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
-          body: "Heads up, toasts will stack automatically."
-          aria_live: "polite"
-          class: test-class
+      role: "alert"
+      title: Bootstrap
+      time: "1639484394"
+      body: "See? Just like this."
+      aria_live: "polite"
   assertions:
     count:
       'div[data-drupal-selector="toasts"]': 1
       'div[aria-live="assertive"]': 1
       'div.toast-container': 1
-      'div.toast-body': 2
+      'div.toast-body': 1
+      'small.text-muted': 1
     equals:
       'div.toast:nth-child(1) > div.toast-body': "See? Just like this."
-      'div.toast:nth-child(2) > div.toast-body': "Heads up, toasts will stack automatically."
+      'small.text-muted': "N/A"
 toast_with_wrapper:
   render:
     '#type': pattern
@@ -35,27 +29,21 @@ toast_with_wrapper:
       settings:
         with_wrapper: true
         with_container: false
-      toasts:
-        - role: "alert"
-          header:
-            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">just now</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
-          body: "See? Just like this."
-          aria_live: "polite"
-        - role: "alert"
-          header:
-            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">2 seconds ago</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
-          body: "Heads up, toasts will stack automatically."
-          aria_live: "polite"
-          class: test-class
+      role: "alert"
+      title: Bootstrap
+      time: "1639477301"
+      body: "See? Just like this."
+      aria_live: "polite"
   assertions:
     count:
       'div[data-drupal-selector="toasts"]': 1
       'div[aria-live="assertive"]': 1
       'div.toast-container': 0
-      'div.toast-body': 2
+      'div.toast-body': 1
+      'small.text-muted': 1
     equals:
       'div.toast:nth-child(1) > div.toast-body': "See? Just like this."
-      'div.toast:nth-child(2) > div.toast-body': "Heads up, toasts will stack automatically."
+      'small.text-muted': "1 hour ago"
 toast_with_container:
   render:
     '#type': pattern
@@ -64,26 +52,20 @@ toast_with_container:
       settings:
         with_wrapper: false
         with_container: true
-      toasts:
-        - role: "alert"
-          header:
-            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">just now</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
-          body: "See? Just like this."
-          aria_live: "assertive"
-        - role: "alert"
-          header:
-            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">2 seconds ago</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
-          body: "Heads up, toasts will stack automatically."
-          aria_live: "assertive"
-          class: test-class
+      role: "alert"
+      title: Bootstrap
+      time: "1639397569"
+      body: "See? Just like this."
+      aria_live: "polite"
   assertions:
     count:
       'div.toast-container': 1
-      'div.toast-body': 2
+      'div.toast-body': 1
+      'small.text-muted': 1
     equals:
       'div.toast:nth-child(1) > div.toast-body': "See? Just like this."
-      'div.toast:nth-child(2) > div.toast-body': "Heads up, toasts will stack automatically."
-toast_with_nothing:
+      'small.text-muted': "1 day ago"
+toast_with_body:
   render:
     '#type': pattern
     '#id': toasts
@@ -91,43 +73,36 @@ toast_with_nothing:
       settings:
         with_wrapper: false
         with_container: false
-      toasts:
-        - role: "alert"
-          header:
-            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">just now</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
-          body: "See? Just like this."
-          aria_live: "assertive"
-        - role: "alert"
-          header:
-            '#markup': '<strong class="me-auto">Bootstrap</strong><small class="text-muted">2 seconds ago</small><button class="btn-close"data-bs-dismiss="toast" type="button"></button>'
-          body: "Heads up, toasts will stack automatically."
-          aria_live: "assertive"
-          class: test-class
+      role: "alert"
+      time: "1607947969"
+      body: "Hello, world! This is a toast message."
+      aria_live: "polite"
   assertions:
     count:
-      'div.toast': 2
+      'div.toast': 1
       'div[aria-live="Text for aria-live wrapper attribute"]': 0
-      'div.toast-container.top-0.end-0.p-3': 0
-      'div.toast-body': 2
+      'div.me-auto': 0
+      'div.toast-body': 1
+      'small.text-muted': 1
     equals:
-      'div.toast:nth-child(1) > div.toast-body': "See? Just like this."
-      'div.toast:nth-child(2) > div.toast-body': "Heads up, toasts will stack automatically."
+      'div.toast:nth-child(1) > div.toast-body': "Hello, world! This is a toast message."
+      'small.text-muted': "1 year ago"
 toast_single:
   render:
     '#type': pattern
     '#id': toasts
     '#fields':
-      toasts:
-        - role: "alert"
-          body: 'Hello, world! This is a toast message.'
-          aria_live: "assertive"
+      role: "alert"
+      time: "1639484302"
+      body: "Hello, world! This is a toast message."
+      aria_live: "polite"
   assertions:
     count:
       'div.toast[aria-atomic="true"]': 1
-      'div.toast[aria-live="assertive"]': 1
       'div.toast[role="alert"]': 1
       'div.toast-header': 1
       'div.toast-body': 1
       'button.btn-close[data-bs-dismiss="toast"]': 1
     equals:
       'div.toast > div.toast-body': "Hello, world! This is a toast message."
+      'small.text-muted': "1 minute ago"

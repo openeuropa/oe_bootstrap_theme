@@ -5,12 +5,28 @@
  */
 #}
 {% set wrapper_aria_live = wrapper_aria_live|default('assertive') %}
-{% include '@oe-bcl/bcl-toast/toasts.html.twig' with {
+{% set toasts_attributes = toasts_attributes.addClass(['show'])  %}
+{% set header %}
+  <strong class="me-auto">
+    {{ title }}
+  </strong>
+  <small class="text-muted">
+    {{ time|bcl_timeago }}
+  </small>
+{% endset %}
+{% include '@oe-bcl/bcl-toast/bcl-toasts.html.twig' with {
   'with_wrapper': with_wrapper,
   'with_container': with_container,
   'wrapper_classes': wrapper_classes,
   'wrapper_aria_live': wrapper_aria_live,
   'container_classes': container_classes,
-  'toasts': toasts,
+  'toasts': [{
+    'body': body,
+    'role': role,
+    'with_close': with_close,
+    'header': header,
+    'autohide': autohide,
+    'attributes': toasts_attributes,
+  }],
   'attributes': attributes,
 } only %}
