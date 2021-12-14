@@ -53,7 +53,6 @@ class TwigExtension extends AbstractExtension {
     return [
       new TwigFilter('format_size', 'format_size'),
       new TwigFilter('to_file_icon', [$this, 'toFileIcon']),
-      new TwigFilter('to_language', [$this, 'toLanguageName']),
       new TwigFilter('to_native_language', [
         $this,
         'toNativeLanguageName',
@@ -98,7 +97,7 @@ class TwigExtension extends AbstractExtension {
       ],
       'video' => [
         'mp4',
-        'mov',
+        'mp4',
         'mpeg',
         'avi',
         'm4v',
