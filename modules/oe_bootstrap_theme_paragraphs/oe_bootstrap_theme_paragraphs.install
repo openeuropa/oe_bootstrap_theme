@@ -19,27 +19,33 @@ function oe_bootstrap_theme_paragraphs_install($is_syncing): void {
   if ($is_syncing) {
     return;
   }
+  $folder = '/config/overrides/';
 
-  $field_config = [
+  $config['displays'] = [
     'core.entity_form_display.paragraph.oe_links_block.default',
     'core.entity_form_display.paragraph.oe_social_media_follow.default',
     'core.entity_view_display.paragraph.oe_links_block.default',
     'core.entity_view_display.paragraph.oe_social_media_follow.default',
-    'field.field.paragraph.oe_social_media_follow.field_oe_social_media_variant',
+    'core.entity_form_display.paragraph.oe_description_list.default',
+    'core.entity_view_display.paragraph.oe_description_list.default',
   ];
 
-  ConfigUtil::importConfigFromFile($field_config);
+  ConfigUtil::importConfigFromFile($config, $folder);
 }
 
 /**
  * Upgrade the Description list paragraph.
  */
 function oe_bootstrap_theme_paragraphs_update_8002(): void {
-  $field_config = [
-    'field.field.paragraph.oe_description_list.oe_bt_desc_list_layout',
-    'field.storage.paragraph.oe_bt_desc_list_layout',
+  $folder = '/config/updates/8002/';
+
+  $config['displays'] = [
     'core.entity_form_display.paragraph.oe_description_list.default',
     'core.entity_view_display.paragraph.oe_description_list.default',
   ];
-  ConfigUtil::importConfigFromFile($field_config);
+  $config['fields'] = [
+    'field.field.paragraph.oe_description_list.oe_bt_desc_list_layout',
+    'field.storage.paragraph.oe_bt_desc_list_layout',
+  ];
+  ConfigUtil::importConfigFromFile($config, $folder);
 }

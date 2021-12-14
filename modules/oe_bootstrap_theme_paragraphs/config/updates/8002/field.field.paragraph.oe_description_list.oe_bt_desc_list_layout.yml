@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.oe_bt_desc_list_layout
+    - paragraphs.paragraphs_type.oe_description_list
+  module:
+    - options
+id: paragraph.oe_description_list.oe_bt_desc_list_layout
+field_name: oe_bt_desc_list_layout
+entity_type: paragraph
+bundle: oe_description_list
+label: Layout
+description: 'Sets the layout (vertical|horizontal) for the paragraph Description list.'
+required: true
+translatable: false
+default_value:
+  -
+    value: horizontal
+default_value_callback: ''
+settings: {  }
+field_type: list_string
