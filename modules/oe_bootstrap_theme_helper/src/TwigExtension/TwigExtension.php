@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
-use Drupal\Core\Render\Markup;
 use Drupal\Core\StringTranslation\PluralTranslatableMarkup;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;

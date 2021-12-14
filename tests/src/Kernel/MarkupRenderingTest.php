@@ -107,7 +107,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * @dataProvider markupRenderingProvider
    */
   public function testMarkupRendering(array $render_array, array $expectations): void {
-   // Set a fixed time system for testing purposes.
+    // Set a fixed time system for testing purposes.
     $static_time = DrupalDateTime::createFromTimestamp('1639484394');
     $this->freezeTime($static_time);
 

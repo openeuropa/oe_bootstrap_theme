@@ -76,6 +76,7 @@ class TwigExtensionTest extends KernelTestBase {
           ],
         ],
       ],
+      // Singular.
       '1 second ago' => [
         'variables' => [
           'time' => '1639484393',
@@ -116,6 +117,26 @@ class TwigExtensionTest extends KernelTestBase {
           ],
         ],
       ],
+      '1 week ago' => [
+        'variables' => [
+          'time' => '1638879554',
+        ],
+        'assertions' => [
+          'equals' => [
+            '<body><p>1 week ago</p></body>',
+          ],
+        ],
+      ],
+      '1 month ago' => [
+        'variables' => [
+          'time' => '1636892354',
+        ],
+        'assertions' => [
+          'equals' => [
+            '<body><p>1 month ago</p></body>',
+          ],
+        ],
+      ],
       '1 year ago' => [
         'variables' => [
           'time' => '1607947969',
@@ -123,6 +144,78 @@ class TwigExtensionTest extends KernelTestBase {
         'assertions' => [
           'equals' => [
             '<body><p>1 year ago</p></body>',
+          ],
+        ],
+      ],
+
+      // Plural.
+      '2 seconds ago' => [
+        'variables' => [
+          'time' => '1639484392',
+        ],
+        'assertions' => [
+          'equals' => [
+            '<body><p>2 seconds ago</p></body>',
+          ],
+        ],
+      ],
+      '2 minutes ago' => [
+        'variables' => [
+          'time' => '1639484242',
+        ],
+        'assertions' => [
+          'equals' => [
+            '<body><p>2 minutes ago</p></body>',
+          ],
+        ],
+      ],
+      '2 hours ago' => [
+        'variables' => [
+          'time' => '1639477042',
+        ],
+        'assertions' => [
+          'equals' => [
+            '<body><p>2 hours ago</p></body>',
+          ],
+        ],
+      ],
+      '2 days ago' => [
+        'variables' => [
+          'time' => '1639304242',
+        ],
+        'assertions' => [
+          'equals' => [
+            '<body><p>2 days ago</p></body>',
+          ],
+        ],
+      ],
+      '2 weeks ago' => [
+        'variables' => [
+          'time' => '1638181042',
+        ],
+        'assertions' => [
+          'equals' => [
+            '<body><p>2 weeks ago</p></body>',
+          ],
+        ],
+      ],
+      '2 months ago' => [
+        'variables' => [
+          'time' => '1634206642',
+        ],
+        'assertions' => [
+          'equals' => [
+            '<body><p>2 months ago</p></body>',
+          ],
+        ],
+      ],
+      '2 years ago' => [
+        'variables' => [
+          'time' => '1575973042',
+        ],
+        'assertions' => [
+          'equals' => [
+            '<body><p>2 years ago</p></body>',
           ],
         ],
       ],
