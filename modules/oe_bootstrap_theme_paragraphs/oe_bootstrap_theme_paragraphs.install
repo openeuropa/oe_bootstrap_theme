@@ -39,13 +39,15 @@ function oe_bootstrap_theme_paragraphs_install($is_syncing): void {
 function oe_bootstrap_theme_paragraphs_update_8002(): void {
   $folder = '/config/updates/8002/';
 
+  $config['fields'] = [
+    'field.storage.paragraph.oe_bt_desc_list_layout',
+    'field.field.paragraph.oe_description_list.oe_bt_desc_list_layout',
+  ];
+
   $config['displays'] = [
     'core.entity_form_display.paragraph.oe_description_list.default',
     'core.entity_view_display.paragraph.oe_description_list.default',
   ];
-  $config['fields'] = [
-    'field.field.paragraph.oe_description_list.oe_bt_desc_list_layout',
-    'field.storage.paragraph.oe_bt_desc_list_layout',
-  ];
+
   ConfigUtil::importConfigFromFile($config, $folder);
 }
