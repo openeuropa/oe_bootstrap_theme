@@ -4,10 +4,10 @@ table_responsive_xxl_secondary_alignment_top:
     '#id': table
     '#fields':
       settings:
-        style: "secondary"
+        style: 'secondary'
         table_responsive: 'xxl'
-        alignment: "top"
-      caption: "Title of the table"
+        alignment: 'top'
+      caption: 'Title of the table'
       'table_head':
         cells:
           - content: 'Name'
@@ -48,16 +48,16 @@ table_responsive_xxl_secondary_alignment_top:
       'caption.caption-top': 0
       'table.align-top': 1
     equals:
-      'caption': "Title of the table"
-      'thead td:nth-child(1)': "Name"
-      'thead td:nth-child(2)': "Registration date"
-      'thead td:nth-child(3)': "Email"
-      'tbody td:nth-child(1)': "John Doe"
-      'tbody td:nth-child(2)': "01/01/2016"
-      'tbody td:nth-child(3)': "john.doe@mail.com"
-      'tbody tr:nth-child(2) td:nth-child(1)': "Jack Doe"
-      'tbody tr:nth-child(2) td:nth-child(2)': "03/05/2017"
-      'tbody tr:nth-child(2) td:nth-child(3)': "jack.doe@mail.com"
+      'table > caption': 'Title of the table'
+      'table > thead > tr > td:nth-child(1)': 'Name'
+      'table > thead > tr > td:nth-child(2)': 'Registration date'
+      'table > thead > tr > td:nth-child(3)': 'Email'
+      'table > tbody > tr > td:nth-child(1)': 'John Doe'
+      'table > tbody > tr > td:nth-child(2)': '01/01/2016'
+      'table > tbody > tr > td:nth-child(3)': 'john.doe@mail.com'
+      'table > tbody > tr:nth-child(2) > td:nth-child(1)': 'Jack Doe'
+      'table > tbody > tr:nth-child(2) > td:nth-child(2)': '03/05/2017'
+      'table > tbody > tr:nth-child(2) > td:nth-child(3)': 'jack.doe@mail.com'
       'table > thead > tr td:nth-child(4)': '<b>Bold header</b>'
       'table > tbody > tr:nth-child(3) td:nth-child(3)': '<b>Bold cell</b>'
 table_responsive_sm_dark_striped_hoverable_borderless_alignment_bottom:
@@ -66,13 +66,13 @@ table_responsive_sm_dark_striped_hoverable_borderless_alignment_bottom:
     '#id': table
     '#fields':
       settings:
-        style: "dark"
+        style: 'dark'
         table_responsive: 'sm'
         striped: true
         borderless: true
         hoverable: true
-        alignment: "bottom"
-      caption: "Title of the table"
+        alignment: 'bottom'
+      caption: 'Title of the table'
       'table_head':
         cells:
           - content: 'Name'
@@ -113,16 +113,16 @@ table_responsive_sm_dark_striped_hoverable_borderless_alignment_bottom:
       'caption.caption-top': 0
       'table.align-bottom': 1
     equals:
-      'caption': "Title of the table"
-      'thead td:nth-child(1)': "Name"
-      'thead td:nth-child(2)': "Registration date"
-      'thead td:nth-child(3)': "Email"
-      'tbody td:nth-child(1)': "John Doe"
-      'tbody td:nth-child(2)': "01/01/2016"
-      'tbody td:nth-child(3)': "john.doe@mail.com"
-      'tbody tr:nth-child(2) td:nth-child(1)': "Jack Doe"
-      'tbody tr:nth-child(2) td:nth-child(2)': "03/05/2017"
-      'tbody tr:nth-child(2) td:nth-child(3)': "jack.doe@mail.com"
+      'table > caption': 'Title of the table'
+      'table > thead > tr > td:nth-child(1)': 'Name'
+      'table > thead > tr > td:nth-child(2)': 'Registration date'
+      'table > thead > tr >  td:nth-child(3)': 'Email'
+      'table > tbody > tr >  td:nth-child(1)': 'John Doe'
+      'table > tbody > tr >  td:nth-child(2)': '01/01/2016'
+      'table > tbody > tr >  td:nth-child(3)': 'john.doe@mail.com'
+      'table > tbody > tr:nth-child(2) td:nth-child(1)': 'Jack Doe'
+      'table > tbody > tr:nth-child(2) td:nth-child(2)': '03/05/2017'
+      'table > tbody > tr:nth-child(2) td:nth-child(3)': 'jack.doe@mail.com'
       'table > thead > tr td:nth-child(4)': '<b>Bold header</b>'
       'table > tbody > tr:nth-child(3) td:nth-child(3)': '<b>Bold cell</b>'
 table_small_caption_top_border_warning:
@@ -131,11 +131,11 @@ table_small_caption_top_border_warning:
     '#id': table
     '#fields':
       settings:
-        style: "light"
+        style: 'light'
         small: true
         border: warning
         caption_top: true
-      caption: "Title of the table"
+      caption: 'Title of the table'
       'table_head':
         cells:
           - content: 'Name'
@@ -176,15 +176,15 @@ table_small_caption_top_border_warning:
       'table.table-bordered.border-warning': 1
       'caption.caption-top': 1
     equals:
-      'caption': "Title of the table"
-      'thead td:nth-child(1)': "Name"
-      'thead td:nth-child(2)': "Registration date"
-      'thead td:nth-child(3)': "Email"
-      'tbody td:nth-child(1)': "John Doe"
-      'tbody td:nth-child(2)': "01/01/2016"
-      'tbody td:nth-child(3)': "john.doe@mail.com"
-      'tbody tr:nth-child(2) td:nth-child(1)': "Jack Doe"
-      'tbody tr:nth-child(2) td:nth-child(2)': "03/05/2017"
-      'tbody tr:nth-child(2) td:nth-child(3)': "jack.doe@mail.com"
+      'table > caption': 'Title of the table'
+      'table > thead > tr > td:nth-child(1)': 'Name'
+      'table > thead > tr > td:nth-child(2)': 'Registration date'
+      'table > thead > tr >  td:nth-child(3)': 'Email'
+      'table > tbody > tr >  td:nth-child(1)': 'John Doe'
+      'table > tbody > tr >  td:nth-child(2)': '01/01/2016'
+      'table > tbody > tr >  td:nth-child(3)': 'john.doe@mail.com'
+      'table > tbody > tr:nth-child(2) td:nth-child(1)': 'Jack Doe'
+      'table > tbody > tr:nth-child(2) td:nth-child(2)': '03/05/2017'
+      'table > tbody > tr:nth-child(2) td:nth-child(3)': 'jack.doe@mail.com'
       'table > thead > tr td:nth-child(4)': '<b>Bold header</b>'
       'table > tbody > tr:nth-child(3) td:nth-child(3)': '<b>Bold cell</b>'

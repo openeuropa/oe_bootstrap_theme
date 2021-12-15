@@ -4,7 +4,7 @@ modal_secondary_small:
     '#id': modal
     '#fields':
       settings:
-        btn_style: "secondary"
+        btn_style: 'secondary'
         size: 'sm'
         modal_id: 'custom_modal'
       btn_label: 'Open Modal'
@@ -13,10 +13,10 @@ modal_secondary_small:
       footer: 'Footer text'
   assert:
     contains:
-      'button[data-bs-toggle=modal]': "Open Modal"
-      '.modal-header': "Header text"
-      '.modal-content': "Lorem Ipsum dolor sit amet"
-      '.modal-footer': "Footer text"
+      'button[data-bs-toggle=modal]': 'Open Modal'
+      '.modal-header': 'Header text'
+      '.modal-content': 'Lorem Ipsum dolor sit amet'
+      '.modal-footer': 'Footer text'
     count:
       'button[data-bs-toggle=modal]': 1
       'button[data-bs-target="#modal_custom_modal"]': 1
@@ -29,7 +29,7 @@ modal_dark_fullscreen:
     '#id': modal
     '#fields':
       settings:
-        btn_style: "dark"
+        btn_style: 'dark'
         size: 'fullscreen'
         modal_id: 'custom_modal'
       btn_label: 'Open Modal'
@@ -38,10 +38,10 @@ modal_dark_fullscreen:
       footer: 'Footer text'
   assert:
     contains:
-      'button[data-bs-toggle=modal]': "Open Modal"
-      '.modal-header': "Header text"
-      '.modal-content': "Lorem Ipsum dolor sit amet"
-      '.modal-footer': "Footer text"
+      'button[data-bs-toggle=modal]': 'Open Modal'
+      '.modal-header': 'Header text'
+      '.modal-content': 'Lorem Ipsum dolor sit amet'
+      '.modal-footer': 'Footer text'
     count:
       'button[data-bs-toggle=modal]': 1
       'button[data-bs-target="#modal_custom_modal"]': 1

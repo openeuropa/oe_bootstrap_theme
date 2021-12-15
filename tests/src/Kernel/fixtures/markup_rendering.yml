@@ -1,32 +1,32 @@
 form assertion:
   render:
     markup:
-      '#markup': "Hello World!"
+      '#markup': 'Hello World!'
     plain:
-      '#plain_text': "Papa Was A Rolling Stone <1972>"
+      '#plain_text': 'Papa Was A Rolling Stone <1972>'
   assert:
     count:
       'form.oe-bootstrap-theme-markup-rendering-test-form': 1
     contains:
-      'form.oe-bootstrap-theme-markup-rendering-test-form': "Hello World!Papa Was A Rolling Stone &lt;1972&gt;"
+      'form.oe-bootstrap-theme-markup-rendering-test-form': 'Hello World!Papa Was A Rolling Stone &lt;1972&gt;'
 textarea:
   render:
-    '#type': "textarea"
-    '#title': "Textarea example"
-    '#value': "Lorem ipsum dolor sit amet."
+    '#type': textarea
+    '#title': 'Textarea example'
+    '#value': 'Lorem ipsum dolor sit amet.'
   assert:
     equals:
-      'label.form-label': "Textarea example"
-      'textarea.form-control': "Lorem ipsum dolor sit amet."
+      'label.form-label': 'Textarea example'
+      'textarea.form-control': 'Lorem ipsum dolor sit amet.'
     count:
       'textarea.form-textarea': 1
       'textarea.form-control': 1
 checkbox_assertion:
   render:
-    '#type': "checkbox"
-    '#title': "Checkbox example"
+    '#type': checkbox
+    '#title': 'Checkbox example'
     '#attributes':
-      'foo': "bar"
+      'foo': 'bar'
   assert:
     count:
       'label.form-check-label': 1
@@ -34,41 +34,41 @@ checkbox_assertion:
       'input[foo=bar]' : 1
       'input[type=checkbox]': 1
     equals:
-      'label.form-check-label': "Checkbox example"
+      'label.form-check-label': 'Checkbox example'
 select:
   render:
-    '#type': "select"
-    '#title': "Select example"
+    '#type': select
+    '#title': 'Select example'
     '#options':
-      - "One"
-      - "Two"
-      - "Three"
+      - 'One'
+      - 'Two'
+      - 'Three'
   assert:
     equals:
-      'label.form-label': "Select example"
-      'option[value=0]': "One"
-      'option[value=1]': "Two"
-      'option[value=2]': "Three"
+      'label.form-label': 'Select example'
+      'option[value=0]': 'One'
+      'option[value=1]': 'Two'
+      'option[value=2]': 'Three'
     count:
       'label.form-label': 1
       'select.form-select': 1
 select_multiple_required:
   render:
-    '#type': "select"
-    '#title': "Select Multiple example"
+    '#type': select
+    '#title': 'Select Multiple example'
     '#options':
-      - "One"
-      - "Two"
-      - "Three"
+      - 'One'
+      - 'Two'
+      - 'Three'
     '#multiple': true
     '#attributes':
-      'required': "required"
+      'required': 'required'
   assert:
     equals:
-      'label.form-label': "Select Multiple example"
-      'option[value=0]': "One"
-      'option[value=1]': "Two"
-      'option[value=2]': "Three"
+      'label.form-label': 'Select Multiple example'
+      'option[value=0]': 'One'
+      'option[value=1]': 'Two'
+      'option[value=2]': 'Three'
     count:
       'label.form-label': 1
       'select.multi-select': 1
@@ -76,7 +76,7 @@ select_multiple_required:
       'select[multiple]': 1
 submit_primary:
   render:
-    '#type': "submit"
+    '#type': submit
     '#value': 'Save'
     '#attributes':
       'class':
@@ -88,7 +88,7 @@ submit_primary:
       'input.btn-primary': 1
 submit_seconday:
   render:
-    '#type': "submit"
+    '#type': submit
     '#value': 'Save'
   assert:
     count:
@@ -97,7 +97,7 @@ submit_seconday:
       'input.btn-secondary': 1
 submit_disabled:
   render:
-    '#type': "submit"
+    '#type': submit
     '#value': 'Save'
     '#attributes':
       'disabled': 'disabled'

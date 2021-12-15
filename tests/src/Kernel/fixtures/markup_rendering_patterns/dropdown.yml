@@ -5,24 +5,24 @@ dropdown_button_dark_drostart:
     '#fields':
       settings:
         link: false
-        alignment: "dropdown-menu-md-end"
+        alignment: 'dropdown-menu-md-end'
         dark: true
         remove_wrapper: false
-        dropdown_id: "dd-test"
-        direction: "dropstart"
+        dropdown_id: 'dd-test'
+        direction: 'dropstart'
       trigger:
-        label: "Dropdown toggle"
-        path: "#"
+        label: 'Dropdown toggle'
+        path: '#'
       dropdown_items:
-        - label: "A link"
-          path: "#"
-        - label: "A button"
+        - label: 'A link'
+          path: '#'
+        - label: 'A button'
           button: true
         - divider: true
-        - label: "A disabled button"
+        - label: 'A disabled button'
           button: true
           disabled: true
-        - label: "An active button"
+        - label: 'An active button'
           button: true
           active: true
   assertions:
@@ -39,10 +39,10 @@ dropdown_button_dark_drostart:
       'button.dropdown-item.active': 1
       'button.dropdown-item[aria-disabled="true"]': 1
     equals:
-      'a.dropdown-item': "A link"
-      'button.dropdown-item.active': "An active button"
-      'button.dropdown-item[disabled]': "A disabled button"
-      'ul.dropdown-menu li:nth-child(2) button.dropdown-item': "A button"
+      'a.dropdown-item': 'A link'
+      'button.dropdown-item.active': 'An active button'
+      'button.dropdown-item[disabled]': 'A disabled button'
+      'ul.dropdown-menu li:nth-child(2) button.dropdown-item': 'A button'
 dropdown_link_non_dark_with_remove_wrapper:
   render:
     '#type': pattern
@@ -50,23 +50,23 @@ dropdown_link_non_dark_with_remove_wrapper:
     '#fields':
       settings:
         link: true
-        alignment: "dropdown-menu-lg-start"
+        alignment: 'dropdown-menu-lg-start'
         dark: false
         remove_wrapper: true
-        dropdown_id: "dd-test"
+        dropdown_id: 'dd-test'
       trigger:
-        label: "Dropdown toggle"
-        path: "#"
+        label: 'Dropdown toggle'
+        path: '#'
       dropdown_items:
-        - label: "A link"
-          path: "#"
-        - label: "A button"
+        - label: 'A link'
+          path: '#'
+        - label: 'A button'
           button: true
         - divider: true
-        - label: "A disabled button"
+        - label: 'A disabled button'
           button: true
           disabled: true
-        - label: "An active button"
+        - label: 'An active button'
           button: true
           active: true
   assertions:
@@ -82,7 +82,7 @@ dropdown_link_non_dark_with_remove_wrapper:
       'button.dropdown-item.active': 1
       'button.dropdown-item[aria-disabled="true"]': 1
     equals:
-      'a.dropdown-item': "A link"
-      'button.dropdown-item.active': "An active button"
-      'button.dropdown-item[disabled]': "A disabled button"
-      'ul.dropdown-menu li:nth-child(2) button.dropdown-item': "A button"
+      'a.dropdown-item': 'A link'
+      'button.dropdown-item.active': 'An active button'
+      'button.dropdown-item[disabled]': 'A disabled button'
+      'ul.dropdown-menu li:nth-child(2) button.dropdown-item': 'A button'

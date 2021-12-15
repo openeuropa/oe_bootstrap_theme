@@ -2,56 +2,56 @@ card_warning_horizontal_with_border_variant_info_and_text_white_with_rounded_ima
   render:
     '#type': pattern
     '#id': card
-    '#variant': "horizontal"
+    '#variant': 'horizontal'
     '#fields':
       settings:
         style: warning
         border_variant: info
         text_color: white
       title:
-        content: "Title card"
-        tag: "h5"
+        content: 'Title card'
+        tag: 'h5'
       subtitle:
-        content: "Subtitle card"
-        classes: "mb-2"
+        content: 'Subtitle card'
+        classes: 'mb-2'
       text:
-        content: "Text card with longer text which is supported"
-        classes: "mb-2"
+        content: 'Text card with longer text which is supported'
+        classes: 'mb-2'
       image:
-        path: "https://placeimg.com/1000/500/arch"
-        alt: "Alternative text for card image"
-        position: "top"
+        path: 'https://placeimg.com/1000/500/arch'
+        alt: 'Alternative text for card image'
+        position: 'top'
         rounded: 3
       content:
-        '#type': "pattern"
-        '#id': "button"
+        '#type': 'pattern'
+        '#id': 'button'
         '#fields':
           'settings':
-            style: "primary"
-          'label': "Custom action"
-      card_header: "Header of card"
-      card_footer: "Footer of card"
+            style: 'primary'
+          'label': 'Custom action'
+      card_header: 'Header of card'
+      card_footer: 'Footer of card'
       horizontal_grid:
-        left_col_classes: "col-4"
-        right_col_classes: "col-8"
-        gutter: "1"
+        left_col_classes: 'col-4'
+        right_col_classes: 'col-8'
+        gutter: '1'
   assert:
     count:
-      'div.text-white': 1
-      'div.bg-warning': 1
-      'div.border-info': 1
+      'div.card.text-white': 1
+      'div.card.bg-warning': 1
+      'div.card.border-info': 1
       'div[data-drupal-selector="card"]': 1
       'img[alt="Alternative text for card image"]': 1
       'div.row.g-1 div.col-4': 1
       'div.row.g-1 div.col-8': 1
       'img.card-img-top.rounded-3': 1
     equals:
-      'div.card-header': "Header of card"
-      'h5.card-title': "Title card"
-      'h6.card-subtitle': "Subtitle card"
-      'p.card-text': "Text card with longer text which is supported"
+      'div.card-header': 'Header of card'
+      'h5.card-title': 'Title card'
+      'h6.card-subtitle': 'Subtitle card'
+      'p.card-text': 'Text card with longer text which is supported'
     contains:
-      'button.btn-primary': "Custom action"
+      'button.btn-primary': 'Custom action'
 card_default_secondary_vertical_with_border_variant_success_and_text_dark:
   render:
     '#type': pattern
@@ -63,43 +63,43 @@ card_default_secondary_vertical_with_border_variant_success_and_text_dark:
         text_color: dark
         horizontal: false
       title:
-        content: "Title card"
-        tag: "h5"
+        content: 'Title card'
+        tag: 'h5'
       subtitle:
-        content: "Subtitle card"
-        classes: "mb-2"
+        content: 'Subtitle card'
+        classes: 'mb-2'
       text:
-        content: "Text card with longer text which is supported"
-        classes: "mb-2"
+        content: 'Text card with longer text which is supported'
+        classes: 'mb-2'
       image:
-        path: "https://placeimg.com/1000/500/arch"
-        alt: "Alternative text for card image"
-        position: "bottom"
+        path: 'https://placeimg.com/1000/500/arch'
+        alt: 'Alternative text for card image'
+        position: 'bottom'
       content:
-        '#type': "pattern"
-        '#id': "button"
+        '#type': 'pattern'
+        '#id': 'button'
         '#fields':
           'settings':
-            style: "primary"
-          'label': "Custom action"
-      card_header: "Header of card"
-      card_footer: "Footer of card"
+            style: 'primary'
+          label: 'Custom action'
+      card_header: 'Header of card'
+      card_footer: 'Footer of card'
   assert:
     count:
-      'div.text-dark': 1
-      'div.bg-secondary': 1
-      'div.border-success': 1
-      'div[data-drupal-selector="card"]': 1
+      'div.card.text-dark': 1
+      'div.card.bg-secondary': 1
+      'div.card.border-success': 1
+      'div.card[data-drupal-selector="card"]': 1
       'img[alt="Alternative text for card image"]': 1
       'div.row': 0
       'img.card-img-bottom': 1
     equals:
-      'div.card-header': "Header of card"
-      'h5.card-title': "Title card"
-      'h6.card-subtitle': "Subtitle card"
-      'p.card-text': "Text card with longer text which is supported"
+      'div.card-header': 'Header of card'
+      'h5.card-title': 'Title card'
+      'h6.card-subtitle': 'Subtitle card'
+      'p.card-text': 'Text card with longer text which is supported'
     contains:
-      'button.btn-primary': "Custom action"
+      'button.btn-primary': 'Custom action'
 card_variant_search:
   render:
     '#type': pattern
@@ -107,14 +107,14 @@ card_variant_search:
     '#variant': search
     '#fields':
       title:
-        content: "Title card"
-      text: "Text card with longer text which is supported"
+        content: 'Title card'
+      text: 'Text card with longer text which is supported'
       image:
-        '#markup': "https://placeimg.com/1000/500/arch"
+        '#markup': 'https://placeimg.com/1000/500/arch'
       badges:
-        - first: "first key"
+        - first: 'first key'
           '#title': 'Category 1'
-        - first: "first key"
+        - first: 'first key'
           '#title': 'Category 2'
   assert:
     count:
@@ -127,7 +127,7 @@ card_variant_search:
       'span.me-2.badge.bg-primary': 1
       'span.badge.bg-primary': 2
     equals:
-      'a.card-title': "Title card"
-      'p.card-text.mb-3': "Text card with longer text which is supported"
+      'a.card-title': 'Title card'
+      'p.card-text.mb-3': 'Text card with longer text which is supported'
     contains:
-      'span.me-2.badge.bg-primary': "Category 1"
+      'span.me-2.badge.bg-primary': 'Category 1'

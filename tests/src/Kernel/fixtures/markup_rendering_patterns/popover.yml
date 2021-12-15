@@ -7,9 +7,9 @@ popover_primary_small_top:
         style: primary
         size: sm
         placement: top
-      label: "Toggle element"
-      title: "Lorem ipsum dolor sit amet"
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      label: 'Toggle element'
+      title: 'Lorem ipsum dolor sit amet'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
   assertions:
     count:
       'button[data-bs-toggle="popover"]': 1
@@ -18,7 +18,7 @@ popover_primary_small_top:
       'button[data-bs-placement="top"]': 1
       'button.btn-sm': 1
     equals:
-      'button.btn-primary': "Toggle element"
+      'button.btn-primary': 'Toggle element'
 popover_dark_large_right:
   render:
     '#type': pattern
@@ -28,9 +28,9 @@ popover_dark_large_right:
         style: dark
         size: lg
         placement: right
-      label: "Toggle element"
-      title: "Lorem ipsum dolor sit amet"
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      label: 'Toggle element'
+      title: 'Lorem ipsum dolor sit amet'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
   assertions:
     count:
       'button[data-bs-toggle="popover"]': 1
@@ -39,4 +39,4 @@ popover_dark_large_right:
       'button[data-bs-placement="right"]': 1
       'button.btn-lg': 1
     equals:
-      'button.btn-dark': "Toggle element"
+      'button.btn-dark': 'Toggle element'

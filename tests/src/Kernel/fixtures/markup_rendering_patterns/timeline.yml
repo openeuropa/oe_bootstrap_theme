@@ -7,19 +7,19 @@ timeline_items_hide:
         hide_from: 7
         hide_to: 0
       items:
-        - label: "13 September 2017"
-          title: "Item 1"
+        - label: '13 September 2017'
+          title: 'Item 1'
           content:
             '#markup': '<a href="/example" class="ecl-link">Economic and Monetary Union package of proposals</a>'
-        - label: "28-29 September 2017"
-          title: "Item 2"
-          content: "Lorem Ipsum 2"
-        - content: "Lorem Ipsum 3"
-        - content: "Lorem Ipsum 4"
-        - content: "Lorem Ipsum 5"
-        - label: "6 February 2018"
-          title: "Item 6"
-          content: "Lorem Ipsum 6"
+        - label: '28-29 September 2017'
+          title: 'Item 2'
+          content: 'Lorem Ipsum 2'
+        - content: 'Lorem Ipsum 3'
+        - content: 'Lorem Ipsum 4'
+        - content: 'Lorem Ipsum 5'
+        - label: '6 February 2018'
+          title: 'Item 6'
+          content: 'Lorem Ipsum 6'
   assertions:
     count:
       'ol.bcl-timeline': 1
@@ -28,11 +28,11 @@ timeline_items_hide:
       'button': 0
       '.collapse': 0
     equals:
-      '.bcl-timeline li:nth-child(1) h5': "13 September 2017"
-      '.bcl-timeline li:nth-child(1) h6': "Item 1"
+      '.bcl-timeline li:nth-child(1) h5': '13 September 2017'
+      '.bcl-timeline li:nth-child(1) h6': 'Item 1'
       '.bcl-timeline li:nth-child(1) div': '<a href="/example" class="ecl-link">Economic and Monetary Union package of proposals</a>'
-      '.bcl-timeline li:nth-child(2) h5': "28-29 September 2017"
-      '.bcl-timeline li:nth-child(2) h6': "Item 2"
+      '.bcl-timeline li:nth-child(2) h5': '28-29 September 2017'
+      '.bcl-timeline li:nth-child(2) h6': 'Item 2'
       '.bcl-timeline li:nth-child(2) div': 'Lorem Ipsum 2'
       '.bcl-timeline li:nth-child(3) h5': ''
       '.bcl-timeline li:nth-child(3) div': 'Lorem Ipsum 3'
@@ -48,24 +48,24 @@ timeline_items_show_more:
     '#type': pattern
     '#id': timeline
     '#fields':
-      toggle_collapsed: "Display %d more"
-      toggle_expanded: "Stash %d items"
+      toggle_collapsed: 'Display %d more'
+      toggle_expanded: 'Stash %d items'
       settings:
         hide_from: 2
         hide_to: 0
       items:
-        - title: "Item 1"
-          content: "Lorem Ipsum 1"
-        - title: "Item 2"
-          content: "Lorem Ipsum 2"
-        - title: "Item 3"
-          content: "Lorem Ipsum 3"
-        - title: "Item 4"
-          content: "Lorem Ipsum 4"
-        - title: "Item 5"
-          content: "Lorem Ipsum 5"
-        - title: "Item 6"
-          content: "Lorem Ipsum 6"
+        - title: 'Item 1'
+          content: 'Lorem Ipsum 1'
+        - title: 'Item 2'
+          content: 'Lorem Ipsum 2'
+        - title: 'Item 3'
+          content: 'Lorem Ipsum 3'
+        - title: 'Item 4'
+          content: 'Lorem Ipsum 4'
+        - title: 'Item 5'
+          content: 'Lorem Ipsum 5'
+        - title: 'Item 6'
+          content: 'Lorem Ipsum 6'
   assertions:
       count:
         '.bcl-timeline': 1
@@ -73,14 +73,14 @@ timeline_items_show_more:
         '.label-collapsed': 1
         '.label-expanded': 1
       equals:
-        '.label-expanded': "Stash 4 items"
-        '.label-collapsed': "Display 4 more"
-        '.bcl-timeline li:nth-child(1) h6': "Item 1"
-        '.bcl-timeline li:nth-child(2) h6': "Item 2"
-        '.bcl-timeline li:nth-child(3) h6': "Item 3"
-        '.bcl-timeline li:nth-child(4) h6': "Item 4"
-        '.bcl-timeline li:nth-child(5) h6': "Item 5"
-        '.bcl-timeline li:nth-child(6) h6': "Item 6"
+        '.label-expanded': 'Stash 4 items'
+        '.label-collapsed': 'Display 4 more'
+        '.bcl-timeline li:nth-child(1) h6': 'Item 1'
+        '.bcl-timeline li:nth-child(2) h6': 'Item 2'
+        '.bcl-timeline li:nth-child(3) h6': 'Item 3'
+        '.bcl-timeline li:nth-child(4) h6': 'Item 4'
+        '.bcl-timeline li:nth-child(5) h6': 'Item 5'
+        '.bcl-timeline li:nth-child(6) h6': 'Item 6'
         '.bcl-timeline li:nth-child(1) div': 'Lorem Ipsum 1'
         '.bcl-timeline li:nth-child(2) div': 'Lorem Ipsum 2'
         '.bcl-timeline li:nth-child(3) div': 'Lorem Ipsum 3'
@@ -97,24 +97,24 @@ timeline_show_all:
       button_label: 'Show all timelines'
       items:
         -
-          label: "13 September 2017"
-          title: "Item 1"
+          label: '13 September 2017'
+          title: 'Item 1'
           content:
             '#markup': '<a href="/example">Economic and Monetary Union package of proposals</a>'
         -
-          label: "28-29 September 2017"
-          title: "Item 2"
-          content: "Lorem Ipsum 2"
+          label: '28-29 September 2017'
+          title: 'Item 2'
+          content: 'Lorem Ipsum 2'
         -
-          content: "Lorem Ipsum 3"
+          content: 'Lorem Ipsum 3'
         -
-          content: "Lorem Ipsum 4"
+          content: 'Lorem Ipsum 4'
         -
-          content: "Lorem Ipsum 5"
+          content: 'Lorem Ipsum 5'
         -
-          label: "6 February 2018"
-          title: "Item 6"
-          content: "Lorem Ipsum 6"
+          label: '6 February 2018'
+          title: 'Item 6'
+          content: 'Lorem Ipsum 6'
   assertions:
     count:
       '.bcl-timeline': 1
@@ -122,12 +122,12 @@ timeline_show_all:
       '.label-collapsed': 1
       '.label-expanded': 1
     equals:
-      '.bcl-timeline li:nth-child(1) h6': "Item 1"
-      '.bcl-timeline li:nth-child(1) h5': "13 September 2017"
-      '.bcl-timeline li:nth-child(2) h6': "Item 2"
-      '.bcl-timeline li:nth-child(2) h5': "28-29 September 2017"
-      '.bcl-timeline li:nth-child(6) h6': "Item 6"
-      '.bcl-timeline li:nth-child(6) h5': "6 February 2018"
+      '.bcl-timeline li:nth-child(1) h6': 'Item 1'
+      '.bcl-timeline li:nth-child(1) h5': '13 September 2017'
+      '.bcl-timeline li:nth-child(2) h6': 'Item 2'
+      '.bcl-timeline li:nth-child(2) h5': '28-29 September 2017'
+      '.bcl-timeline li:nth-child(6) h6': 'Item 6'
+      '.bcl-timeline li:nth-child(6) h5': '6 February 2018'
       '.bcl-timeline li:nth-child(1) div': '<a href="/example">Economic and Monetary Union package of proposals</a>'
       '.bcl-timeline li:nth-child(2) div': 'Lorem Ipsum 2'
       '.bcl-timeline li:nth-child(3) div': 'Lorem Ipsum 3'
@@ -138,29 +138,29 @@ Timeline_heading:
     '#type': pattern
     '#id': timeline
     '#fields':
-      title: "Timeline heading"
+      title: 'Timeline heading'
       hide_from: 2
       hide_to: -2
       items:
         -
-          label: "13 September 2017"
-          title: "Item 1"
+          label: '13 September 2017'
+          title: 'Item 1'
           content:
             '#markup': '<a href="/example" class="ecl-link">Economic and Monetary Union package of proposals</a>'
         -
-          label: "28-29 September 2017"
-          title: "Item 2"
-          content: "Lorem Ipsum 2"
+          label: '28-29 September 2017'
+          title: 'Item 2'
+          content: 'Lorem Ipsum 2'
         -
-          content: "Lorem Ipsum 3"
+          content: 'Lorem Ipsum 3'
         -
-          content: "Lorem Ipsum 4"
+          content: 'Lorem Ipsum 4'
         -
-          content: "Lorem Ipsum 5"
+          content: 'Lorem Ipsum 5'
         -
-          label: "6 February 2018"
-          title: "Item 6"
-          content: "Lorem Ipsum 6"
+          label: '6 February 2018'
+          title: 'Item 6'
+          content: 'Lorem Ipsum 6'
   assertions:
     count:
       'ol.bcl-timeline': 1
@@ -168,14 +168,14 @@ Timeline_heading:
       '.label-expanded': 1
       '.label-collapsed': 1
     equals:
-      '.bcl-timeline li:nth-child(1) h6': "Item 1"
-      '.bcl-timeline li:nth-child(1) h5': "13 September 2017"
-      '.bcl-timeline li:nth-child(2) h6': "Item 2"
-      '.bcl-timeline li:nth-child(2) h5': "28-29 September 2017"
-      '.bcl-timeline li:nth-child(6) h6': "Item 6"
-      '.bcl-timeline li:nth-child(6) h5': "6 February 2018"
-      '.label-expanded': "Hide 4 items"
-      '.label-collapsed': "Show more 4 items"
+      '.bcl-timeline li:nth-child(1) h6': 'Item 1'
+      '.bcl-timeline li:nth-child(1) h5': '13 September 2017'
+      '.bcl-timeline li:nth-child(2) h6': 'Item 2'
+      '.bcl-timeline li:nth-child(2) h5': '28-29 September 2017'
+      '.bcl-timeline li:nth-child(6) h6': 'Item 6'
+      '.bcl-timeline li:nth-child(6) h5': '6 February 2018'
+      '.label-expanded': 'Hide 4 items'
+      '.label-collapsed': 'Show more 4 items'
       '.bcl-timeline li:nth-child(1) div': '<a href="/example" class="ecl-link">Economic and Monetary Union package of proposals</a>'
       '.bcl-timeline li:nth-child(2) div': 'Lorem Ipsum 2'
       '.bcl-timeline li:nth-child(3) div': 'Lorem Ipsum 3'

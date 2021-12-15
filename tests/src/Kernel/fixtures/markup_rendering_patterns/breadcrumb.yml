@@ -5,18 +5,18 @@ breadcrumb:
     '#fields':
       attributes:
         class:
-          - "mt-3"
-      icons_path: "/file/to/svg/icons.svg"
+          - 'mt-3'
+      icons_path: '/file/to/svg/icons.svg'
       items:
-        - path: "/index"
-          label: "Home"
-        - path: "/example"
-          label: "About the European Commission"
-        - path: "https://example.com"
-          label: "Link title"
+        - path: '/index'
+          label: 'Home'
+        - path: '/example'
+          label: 'About the European Commission'
+        - path: 'https://example.com'
+          label: 'Link title'
   assertions:
     count:
-      "nav.mt-3[aria-label=\"breadcrumb\"]": 1
+      'nav.mt-3[aria-label="breadcrumb"]': 1
       'ol.breadcrumb': 1
       'li.breadcrumb-item': 3
       'li.breadcrumb-item:nth-child(1) a[href="/index"]': 1
@@ -25,9 +25,8 @@ breadcrumb:
       'li.breadcrumb-item:nth-child(2) a svg.d-md-none.bi.icon--s': 1
       'svg.d-md-none.ms-0.me-2.me-2-5.bi.icon--s': 1
     equals:
-      'li.breadcrumb-item:nth-child(1) a': "Home"
-      'li.breadcrumb-item:nth-child(2) a': "<svg class=\"d-md-none ms-0 me-2 me-2-5 bi icon--s\"><use xlink:href=\"/file/to/svg/icons.svg#arrow-left\"></use></svg>About the European Commission"
-      'li.breadcrumb-item:nth-child(3) a': "Link title"
+      'li.breadcrumb-item:nth-child(1) a': 'Home'
+      'li.breadcrumb-item:nth-child(2) a': '<svg class="d-md-none ms-0 me-2 me-2-5 bi icon--s"><use xlink:href="/file/to/svg/icons.svg#arrow-left"></use></svg>About the European Commission'
+      'li.breadcrumb-item:nth-child(3) a': 'Link title'
     contains:
-      'li.breadcrumb-item:nth-child(2) a': "About the European Commission"
-      'svg': "/file/to/svg/icons.svg#arrow-left"
+      'svg': '/file/to/svg/icons.svg#arrow-left'

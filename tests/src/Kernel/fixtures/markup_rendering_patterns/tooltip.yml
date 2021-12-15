@@ -4,12 +4,12 @@ tooltip_link:
     '#id': tooltip
     '#fields':
       settings:
-        style: "secondary"
+        style: 'secondary'
         outline: false
         link: true
         placement: right
       label: "I am a link"
-      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
   assertions:
     count:
       'a.link-secondary[data-bs-toggle="tooltip"]': 1
@@ -28,7 +28,7 @@ tooltip_button:
         link: false
         placement: left
       label: "I am a button"
-      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
   assertions:
     count:
       'button.btn-link[data-bs-toggle="tooltip"]': 1

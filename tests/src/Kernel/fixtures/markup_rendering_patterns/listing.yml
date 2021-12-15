@@ -9,19 +9,19 @@ listing_default_1_col:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
+          path: '/icons.svg'
+      title: 'Listing item block title'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-3"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1002/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1002/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -31,13 +31,13 @@ listing_default_1_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-3"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1003/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1003/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -47,10 +47,10 @@ listing_default_1_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-3"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-3'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -59,13 +59,13 @@ listing_default_1_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-3"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1005/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1005/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -87,10 +87,10 @@ listing_default_1_col:
       'a.d-inline-block': 1
       '.mw-listing-img': 3
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
 listing_default_2_col:
   render:
     '#type': pattern
@@ -102,19 +102,19 @@ listing_default_2_col:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
+          path: '/icons.svg'
+      title: 'Listing item block title'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-3"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1002/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1002/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -124,10 +124,10 @@ listing_default_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-3"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-3'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -136,13 +136,13 @@ listing_default_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-3"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1004/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1004/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -152,13 +152,13 @@ listing_default_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-3"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1005/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1005/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -168,13 +168,13 @@ listing_default_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis."
-            classes: "mb-3"
+            content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1006/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1006/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -184,13 +184,13 @@ listing_default_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id."
-            classes: "mb-3"
+            content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1007/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1007/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -212,12 +212,12 @@ listing_default_2_col:
       'a.d-inline-block': 1
       '.mw-listing-img': 5
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
-      'a[href="/example5"]': "Card title 5"
-      'a[href="/example6"]': "Card title 6"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
+      'a[href="/example5"]': 'Card title 5'
+      'a[href="/example6"]': 'Card title 6'
 listing_default_3_col:
   render:
     '#type': pattern
@@ -229,18 +229,18 @@ listing_default_3_col:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
+          path: '/icons.svg'
+      title: 'Listing item block title'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-3"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1002/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1002/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -251,8 +251,8 @@ listing_default_3_col:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-3"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-3'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -262,11 +262,11 @@ listing_default_3_col:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-3"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1004/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1004/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -277,11 +277,11 @@ listing_default_3_col:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-3"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1005/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1005/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -292,11 +292,11 @@ listing_default_3_col:
             content:
               '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
           text:
-            content: "Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis."
-            classes: "mb-3"
+            content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1006/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1006/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -307,11 +307,11 @@ listing_default_3_col:
             content:
               '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
           text:
-            content: "Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id."
-            classes: "mb-3"
+            content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1007/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1007/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -334,12 +334,12 @@ listing_default_3_col:
       'a.d-inline-block': 1
       '.mw-listing-img': 5
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
-      'a[href="/example5"]': "Card title 5"
-      'a[href="/example6"]': "Card title 6"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
+      'a[href="/example5"]': 'Card title 5'
+      'a[href="/example6"]': 'Card title 6'
 listing_highlight_1_col:
   render:
     '#type': pattern
@@ -351,20 +351,20 @@ listing_highlight_1_col:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
+          path: '/icons.svg'
+      title: 'Listing item block title'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-2"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1002/600/400"
-            alt: "alt img"
-            position: "top"
+            path: 'https://picsum.photos/seed/1002/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -373,14 +373,14 @@ listing_highlight_1_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-2"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1003/600/400"
-            alt: "alt img"
-            position: "top"
+            path: 'https://picsum.photos/seed/1003/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -389,10 +389,10 @@ listing_highlight_1_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-2"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-2'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -401,14 +401,14 @@ listing_highlight_1_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-2"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1005/600/400"
-            alt: "alt img"
-            position: "bottom"
+            path: 'https://picsum.photos/seed/1005/600/400'
+            alt: 'alt img'
+            position: 'bottom'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -426,10 +426,10 @@ listing_highlight_1_col:
       'span.mb-2': 8
       'a.text-underline-hover': 4
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
 listing_highlight_2_col:
   render:
     '#type': pattern
@@ -441,20 +441,20 @@ listing_highlight_2_col:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
+          path: '/icons.svg'
+      title: 'Listing item block title'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-2"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1002/600/400"
-            alt: "alt img"
-            position: "top"
+            path: 'https://picsum.photos/seed/1002/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -463,10 +463,10 @@ listing_highlight_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-2"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-2'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -475,14 +475,14 @@ listing_highlight_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-2"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1004/600/400"
-            alt: "alt img"
-            position: "top"
+            path: 'https://picsum.photos/seed/1004/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -491,14 +491,14 @@ listing_highlight_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-2"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1005/600/400"
-            alt: "alt img"
-            position: "top"
+            path: 'https://picsum.photos/seed/1005/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -507,14 +507,14 @@ listing_highlight_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis."
-            classes: "mb-2"
+            content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1006/600/400"
-            alt: "alt img"
-            position: "top"
+            path: 'https://picsum.photos/seed/1006/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -523,14 +523,14 @@ listing_highlight_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id."
-            classes: "mb-2"
+            content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1007/600/400"
-            alt: "alt img"
-            position: "bottom"
+            path: 'https://picsum.photos/seed/1007/600/400'
+            alt: 'alt img'
+            position: 'bottom'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -548,12 +548,12 @@ listing_highlight_2_col:
       'span.mb-2': 12
       'a.text-underline-hover': 6
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
-      'a[href="/example5"]': "Card title 5"
-      'a[href="/example6"]': "Card title 6"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
+      'a[href="/example5"]': 'Card title 5'
+      'a[href="/example6"]': 'Card title 6'
 listing_highlight_3_col:
   render:
     '#type': pattern
@@ -565,20 +565,20 @@ listing_highlight_3_col:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
+          path: '/icons.svg'
+      title: 'Listing item block title'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-2"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1002/600/400"
-            alt: "alt img"
-            position: "top"
+            path: 'https://picsum.photos/seed/1002/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -587,10 +587,10 @@ listing_highlight_3_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-2"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-2'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -599,14 +599,14 @@ listing_highlight_3_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-2"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1004/600/400"
-            alt: "alt img"
-            position: "top"
+            path: 'https://picsum.photos/seed/1004/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -615,14 +615,14 @@ listing_highlight_3_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-2"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1005/600/400"
-            alt: "alt img"
-            position: "top"
+            path: 'https://picsum.photos/seed/1005/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -631,14 +631,14 @@ listing_highlight_3_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis."
-            classes: "mb-2"
+            content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1006/600/400"
-            alt: "alt img"
-            position: "top"
+            path: 'https://picsum.photos/seed/1006/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -647,14 +647,14 @@ listing_highlight_3_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id."
-            classes: "mb-2"
+            content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1007/600/400"
-            alt: "alt img"
-            position: "bottom"
+            path: 'https://picsum.photos/seed/1007/600/400'
+            alt: 'alt img'
+            position: 'bottom'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -672,12 +672,12 @@ listing_highlight_3_col:
       'span.mb-2': 12
       'a.text-underline-hover': 6
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
-      'a[href="/example5"]': "Card title 5"
-      'a[href="/example6"]': "Card title 6"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
+      'a[href="/example5"]': 'Card title 5'
+      'a[href="/example6"]': 'Card title 6'
 listing_default_3_col_tag:
   render:
     '#type': pattern
@@ -689,20 +689,20 @@ listing_default_3_col_tag:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
-      title_tag: "h1"
+          path: '/icons.svg'
+      title: 'Listing item block title'
+      title_tag: 'h1'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-3"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1002/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1002/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -712,10 +712,10 @@ listing_default_3_col_tag:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-3"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-3'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -724,13 +724,13 @@ listing_default_3_col_tag:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-3"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1004/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1004/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -740,13 +740,13 @@ listing_default_3_col_tag:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-3"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1005/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1005/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -756,13 +756,13 @@ listing_default_3_col_tag:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis."
-            classes: "mb-3"
+            content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1006/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1006/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -772,13 +772,13 @@ listing_default_3_col_tag:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id."
-            classes: "mb-3"
+            content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1007/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1007/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -800,12 +800,12 @@ listing_default_3_col_tag:
       'a.text-underline-hover': 6
       '.mw-listing-img': 5
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
-      'a[href="/example5"]': "Card title 5"
-      'a[href="/example6"]': "Card title 6"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
+      'a[href="/example5"]': 'Card title 5'
+      'a[href="/example6"]': 'Card title 6'
 listing_default_3_col_alignment_start:
   render:
     '#type': pattern
@@ -818,18 +818,18 @@ listing_default_3_col_alignment_start:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
+          path: '/icons.svg'
+      title: 'Listing item block title'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-3"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1002/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1002/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -840,8 +840,8 @@ listing_default_3_col_alignment_start:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-3"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-3'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -851,11 +851,11 @@ listing_default_3_col_alignment_start:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-3"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1004/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1004/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -866,11 +866,11 @@ listing_default_3_col_alignment_start:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-3"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1005/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1005/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -881,11 +881,11 @@ listing_default_3_col_alignment_start:
             content:
               '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
           text:
-            content: "Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis."
-            classes: "mb-3"
+            content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1006/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1006/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -896,11 +896,11 @@ listing_default_3_col_alignment_start:
             content:
               '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
           text:
-            content: "Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id."
-            classes: "mb-3"
+            content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1007/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1007/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -923,12 +923,12 @@ listing_default_3_col_alignment_start:
       'a.text-underline-hover': 6
       '.mw-listing-img': 5
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
-      'a[href="/example5"]': "Card title 5"
-      'a[href="/example6"]': "Card title 6"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
+      'a[href="/example5"]': 'Card title 5'
+      'a[href="/example6"]': 'Card title 6'
 listing_default_3_col_alignment_end:
   render:
     '#type': pattern
@@ -941,18 +941,18 @@ listing_default_3_col_alignment_end:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
+          path: '/icons.svg'
+      title: 'Listing item block title'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-3"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1002/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1002/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -963,8 +963,8 @@ listing_default_3_col_alignment_end:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-3"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-3'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -974,11 +974,11 @@ listing_default_3_col_alignment_end:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-3"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1004/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1004/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -989,11 +989,11 @@ listing_default_3_col_alignment_end:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-3"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1005/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1005/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1004,11 +1004,11 @@ listing_default_3_col_alignment_end:
             content:
               '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
           text:
-            content: "Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis."
-            classes: "mb-3"
+            content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1006/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1006/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1019,11 +1019,11 @@ listing_default_3_col_alignment_end:
             content:
               '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
           text:
-            content: "Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id."
-            classes: "mb-3"
+            content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1007/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1007/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1046,12 +1046,12 @@ listing_default_3_col_alignment_end:
       'a.text-underline-hover': 6
       '.mw-listing-img': 5
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
-      'a[href="/example5"]': "Card title 5"
-      'a[href="/example6"]': "Card title 6"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
+      'a[href="/example5"]': 'Card title 5'
+      'a[href="/example6"]': 'Card title 6'
 listing_default_3_col_alignment_center:
   render:
     '#type': pattern
@@ -1064,18 +1064,18 @@ listing_default_3_col_alignment_center:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
+          path: '/icons.svg'
+      title: 'Listing item block title'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-3"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1002/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1002/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1086,8 +1086,8 @@ listing_default_3_col_alignment_center:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-3"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-3'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1097,11 +1097,11 @@ listing_default_3_col_alignment_center:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-3"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1004/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1004/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1112,11 +1112,11 @@ listing_default_3_col_alignment_center:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-3"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1005/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1005/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1127,11 +1127,11 @@ listing_default_3_col_alignment_center:
             content:
               '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
           text:
-            content: "Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis."
-            classes: "mb-3"
+            content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1006/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1006/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1142,11 +1142,11 @@ listing_default_3_col_alignment_center:
             content:
               '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
           text:
-            content: "Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id."
-            classes: "mb-3"
+            content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1007/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1007/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1169,12 +1169,12 @@ listing_default_3_col_alignment_center:
       'a.text-underline-hover': 6
       '.mw-listing-img': 5
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
-      'a[href="/example5"]': "Card title 5"
-      'a[href="/example6"]': "Card title 6"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
+      'a[href="/example5"]': 'Card title 5'
+      'a[href="/example6"]': 'Card title 6'
 listing_default_3_col_alignment_baseline:
   render:
     '#type': pattern
@@ -1187,18 +1187,18 @@ listing_default_3_col_alignment_baseline:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
+          path: '/icons.svg'
+      title: 'Listing item block title'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-3"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1002/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1002/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1209,8 +1209,8 @@ listing_default_3_col_alignment_baseline:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-3"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-3'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1220,11 +1220,11 @@ listing_default_3_col_alignment_baseline:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-3"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1004/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1004/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1235,11 +1235,11 @@ listing_default_3_col_alignment_baseline:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-3"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1005/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1005/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1250,11 +1250,11 @@ listing_default_3_col_alignment_baseline:
             content:
               '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
           text:
-            content: "Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis."
-            classes: "mb-3"
+            content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1006/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1006/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1265,11 +1265,11 @@ listing_default_3_col_alignment_baseline:
             content:
               '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
           text:
-            content: "Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id."
-            classes: "mb-3"
+            content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1007/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1007/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1292,12 +1292,12 @@ listing_default_3_col_alignment_baseline:
       'a.text-underline-hover': 6
       '.mw-listing-img': 5
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
-      'a[href="/example5"]': "Card title 5"
-      'a[href="/example6"]': "Card title 6"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
+      'a[href="/example5"]': 'Card title 5'
+      'a[href="/example6"]': 'Card title 6'
 listing_default_3_col_alignment_stretch:
   render:
     '#type': pattern
@@ -1310,18 +1310,18 @@ listing_default_3_col_alignment_stretch:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
+          path: '/icons.svg'
+      title: 'Listing item block title'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-3"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1002/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1002/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1332,8 +1332,8 @@ listing_default_3_col_alignment_stretch:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-3"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-3'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1343,11 +1343,11 @@ listing_default_3_col_alignment_stretch:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-3"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1004/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1004/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1358,11 +1358,11 @@ listing_default_3_col_alignment_stretch:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-3"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1005/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1005/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1373,11 +1373,11 @@ listing_default_3_col_alignment_stretch:
             content:
               '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
           text:
-            content: "Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis."
-            classes: "mb-3"
+            content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1006/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1006/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1388,11 +1388,11 @@ listing_default_3_col_alignment_stretch:
             content:
               '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
           text:
-            content: "Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id."
-            classes: "mb-3"
+            content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+            classes: 'mb-3'
           image:
-            path: "https://picsum.photos/seed/1007/600/400"
-            alt: "alt img"
+            path: 'https://picsum.photos/seed/1007/600/400'
+            alt: 'alt img'
             rounded: 1
           content:
             '#markup': '<div>
@@ -1415,9 +1415,9 @@ listing_default_3_col_alignment_stretch:
       'a.text-underline-hover': 6
       '.mw-listing-img': 5
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
-      'a[href="/example5"]': "Card title 5"
-      'a[href="/example6"]': "Card title 6"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
+      'a[href="/example5"]': 'Card title 5'
+      'a[href="/example6"]': 'Card title 6'
