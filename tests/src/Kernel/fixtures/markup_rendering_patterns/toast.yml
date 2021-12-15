@@ -6,11 +6,11 @@ toast_with_all:
       settings:
         with_wrapper: true
         with_container: true
-      role: "alert"
+      role: 'alert'
       title: Bootstrap
-      time: "1639484394"
-      body: "See? Just like this."
-      aria_live: "polite"
+      time: '1639484394'
+      body: 'See? Just like this.'
+      aria_live: 'polite'
   assertions:
     count:
       'div[data-drupal-selector="toasts"]': 1
@@ -19,8 +19,8 @@ toast_with_all:
       'div.toast-body': 1
       'small.text-muted': 1
     equals:
-      'div.toast:nth-child(1) > div.toast-body': "See? Just like this."
-      'small.text-muted': "N/A"
+      'div.toast:nth-child(1) > div.toast-body': 'See? Just like this.'
+      'small.text-muted': 'N/A'
 toast_with_wrapper:
   render:
     '#type': pattern
@@ -29,11 +29,11 @@ toast_with_wrapper:
       settings:
         with_wrapper: true
         with_container: false
-      role: "alert"
+      role: 'alert'
       title: Bootstrap
-      time: "1639477301"
-      body: "See? Just like this."
-      aria_live: "polite"
+      time: '1639477301'
+      body: 'See? Just like this.'
+      aria_live: 'polite'
   assertions:
     count:
       'div[data-drupal-selector="toasts"]': 1
@@ -42,8 +42,8 @@ toast_with_wrapper:
       'div.toast-body': 1
       'small.text-muted': 1
     equals:
-      'div.toast:nth-child(1) > div.toast-body': "See? Just like this."
-      'small.text-muted': "1 hour ago"
+      'div.toast:nth-child(1) > div.toast-body': 'See? Just like this.'
+      'small.text-muted': '1 hour ago'
 toast_with_container:
   render:
     '#type': pattern
@@ -52,19 +52,19 @@ toast_with_container:
       settings:
         with_wrapper: false
         with_container: true
-      role: "alert"
+      role: 'alert'
       title: Bootstrap
-      time: "1639397569"
-      body: "See? Just like this."
-      aria_live: "polite"
+      time: '1639397569'
+      body: 'See? Just like this.'
+      aria_live: 'polite'
   assertions:
     count:
       'div.toast-container': 1
       'div.toast-body': 1
       'small.text-muted': 1
     equals:
-      'div.toast:nth-child(1) > div.toast-body': "See? Just like this."
-      'small.text-muted': "1 day ago"
+      'div.toast:nth-child(1) > div.toast-body': 'See? Just like this.'
+      'small.text-muted': '1 day ago'
 toast_with_body:
   render:
     '#type': pattern
@@ -73,10 +73,10 @@ toast_with_body:
       settings:
         with_wrapper: false
         with_container: false
-      role: "alert"
-      time: "1607947969"
-      body: "Hello, world! This is a toast message."
-      aria_live: "polite"
+      role: 'alert'
+      time: '1607947969'
+      body: 'Hello, world! This is a toast message.'
+      aria_live: 'polite'
   assertions:
     count:
       'div.toast': 1
@@ -85,17 +85,17 @@ toast_with_body:
       'div.toast-body': 1
       'small.text-muted': 1
     equals:
-      'div.toast:nth-child(1) > div.toast-body': "Hello, world! This is a toast message."
-      'small.text-muted': "1 year ago"
+      'div.toast:nth-child(1) > div.toast-body': 'Hello, world! This is a toast message.'
+      'small.text-muted': '1 year ago'
 toast_single:
   render:
     '#type': pattern
     '#id': toasts
     '#fields':
-      role: "alert"
-      time: "1639484302"
-      body: "Hello, world! This is a toast message."
-      aria_live: "polite"
+      role: 'alert'
+      time: '1639484302'
+      body: 'Hello, world! This is a toast message.'
+      aria_live: 'polite'
   assertions:
     count:
       'div.toast[aria-atomic="true"]': 1
@@ -104,5 +104,5 @@ toast_single:
       'div.toast-body': 1
       'button.btn-close[data-bs-dismiss="toast"]': 1
     equals:
-      'div.toast > div.toast-body': "Hello, world! This is a toast message."
-      'small.text-muted': "1 minute ago"
+      'div.toast > div.toast-body': 'Hello, world! This is a toast message.'
+      'small.text-muted': '1 minute ago'
