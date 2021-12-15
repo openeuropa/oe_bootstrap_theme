@@ -4,8 +4,10 @@
  * Description list pattern.
  */
 #}
+{% set _items = items|bcl_merge_icon('xs', bcl_icon_path) %}
+
 {% include '@oe-bcl/bcl-description-list/description-list.html.twig' with {
-  'items': items,
+  'items': _items,
   'variant': orientation,
   'attributes': attributes,
 } only %}

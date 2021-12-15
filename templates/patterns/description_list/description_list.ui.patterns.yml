@@ -19,9 +19,7 @@ description_list:
             - label:
                 '#markup' : "<p class='d-inline-block mb-0'>Only title label with icon</p>"
               icon:
-                path: "/assets/icons/bootstrap-icons.svg"
                 name: "geo-alt-fill"
-                size: "xs"
           definition:
             content:
               '#markup' : "<p class='mb-2'>Description of first term text goes here.</p>"
@@ -31,9 +29,7 @@ description_list:
                 content:
                   '#markup' : "<p class=\"mb-0 d-inline-block\">Second title label</p>"
               icon:
-                path: "/assets/icons/bootstrap-icons.svg"
                 name: "geo-alt-fill"
-                size: "xs"
           definition:
             content:
               '#markup' : "<p class='mb-2'>Description of second term text goes here.</p>"
