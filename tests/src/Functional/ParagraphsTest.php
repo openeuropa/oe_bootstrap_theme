@@ -151,11 +151,8 @@ class ParagraphsTest extends BrowserTestBase {
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_link][0][uri]');
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_link][0][title]');
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_title][0][value]');
-    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_facts_figures_layout]');
-    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_facts_figures_disp_icons][value]');
-    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_facts_figures_equal_height][value]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_facts_figures_background]');
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_layout][0][value]');
-    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_facts_figures_resp_cols][0][value]');
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_title][0][value]');
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_subtitle][0][value]');
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_plain_text_long][0][value]');
@@ -165,11 +162,8 @@ class ParagraphsTest extends BrowserTestBase {
       'oe_bt_paragraphs[0][subform][field_oe_title][0][value]' => 'Fact and figures block',
       'oe_bt_paragraphs[0][subform][field_oe_link][0][uri]' => 'https://www.google.com',
       'oe_bt_paragraphs[0][subform][field_oe_link][0][title]' => 'Read more',
-      'oe_bt_paragraphs[0][subform][oe_bt_facts_figures_layout]' => 'default',
-      'oe_bt_paragraphs[0][subform][oe_bt_facts_figures_disp_icons][value]' => TRUE,
-      'oe_bt_paragraphs[0][subform][oe_bt_facts_figures_equal_height][value]' => TRUE,
+      'oe_bt_paragraphs[0][subform][oe_bt_facts_figures_background]' => 'default',
       'oe_bt_paragraphs[0][subform][oe_bt_layout][0][value]' => 2,
-      'oe_bt_paragraphs[0][subform][oe_bt_facts_figures_resp_cols][0][value]' => 2,
       'oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_title][0][value]' => "1529 JIRA Ticket",
       'oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_subtitle][0][value]' => "Jira Tickets",
       'oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_plain_text_long][0][value]' => "Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum libero.",
