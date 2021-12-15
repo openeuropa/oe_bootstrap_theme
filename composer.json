@@ -22,7 +22,7 @@
         "openeuropa/code-review": "~1.6",
         "openeuropa/drupal-core-require-dev": "^8.9 || ^9.1",
         "openeuropa/oe_media": "^1.14",
-        "openeuropa/oe_paragraphs": "^1.10",
+        "openeuropa/oe_paragraphs": "dev-OEL-775",
         "openeuropa/oe_content": "^2.7.0",
         "openeuropa/task-runner": "dev-master as 1.0.0-beta7",
         "drupal/description_list_field": "^1.0@alpha",
