@@ -187,6 +187,44 @@ class ParagraphsTest extends BrowserTestBase {
   }
 
   /**
+   * Test icon options event subscriber.
+   */
+  public function testIconOptionsEventsubscriber(): void {
+    $this->drupalGet('/node/add/paragraphs_test');
+    $page = $this->getSession()->getPage();
+    $page->pressButton('Add Fact');
+
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_icon]');
+    $allowed_values = [
+      '_none',
+      'arrow-down',
+      'box-arrow-up',
+      'arrow-up',
+      'book',
+      'camera',
+      'check',
+      'download',
+      'currency-euro',
+      'facebook',
+      'file',
+      'image',
+      'info',
+      'linkedin',
+      'files',
+      'rss',
+      'search',
+      'share',
+      'twitter',
+      'person-video',
+    ];
+    foreach ($allowed_values as $allowed_value) {
+      $this->assertSession()->elementsCount('css', 'option[value="' . $allowed_value . '"]', 1);
+    }
+    $this->assertSession()->elementsCount('css', 'select#edit-oe-bt-paragraphs-0-subform-field-oe-icon option', 20);
+
+  }
+
+  /**
    * Create content type with paragraphs field.
    */
   public function testDescriptionListParagraph(): void {
