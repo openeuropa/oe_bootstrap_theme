@@ -23,7 +23,7 @@ class TwigExtensionTest extends UnitTestCase {
   /**
    * The Twig environment containing the extension being tested.
    *
-   * @var \Twig_Environment
+   * @var \Twig\Environment
    */
   protected $twig;
 
@@ -40,9 +40,10 @@ class TwigExtensionTest extends UnitTestCase {
   protected function setUp(): void {
     parent::setUp();
 
-    $this->extension = new TwigExtension();
     $loader = new StringLoader();
     $this->twig = new Environment($loader);
+
+    $this->extension = new TwigExtension();
     $this->twig->addExtension($this->extension);
   }
 
@@ -57,11 +58,11 @@ class TwigExtensionTest extends UnitTestCase {
    * @covers ::toEclIcon
    * @dataProvider bclMergeIconProvider
    */
-  public function testBclMergeIcon(array $variables, array $expected_array) {
+  public function testBclMergeIcon(array $variables, array $expected_array): void {
     $items = $variables['items'];
     $size = $variables['size'];
     $path = $variables['path'];
-    $result = $this->twig->render("{{ bcl_merge_icon('$size', '$path') }}", $items);
+    $result = $this->twig->render("{{ $items|bcl_merge_icon('$size', '$path') }}");
     $this->assertEquals($expected_array, $result);
   }
 
