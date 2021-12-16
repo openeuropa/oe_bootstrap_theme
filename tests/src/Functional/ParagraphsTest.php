@@ -124,7 +124,7 @@ class ParagraphsTest extends BrowserTestBase {
   public function testDescriptionListParagraph(): void {
     $this->drupalGet('/node/add/paragraphs_test');
     $page = $this->getSession()->getPage();
-    $page->pressButton('Add Horizontal description list');
+    $page->pressButton('Add Description list');
 
     // Assert the Description fields appears.
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_title][0][value]');
