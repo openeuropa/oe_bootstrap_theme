@@ -147,7 +147,7 @@ class ParagraphsTest extends BrowserTestBase {
     $this->drupalGet('/node/add/paragraphs_test');
     $page = $this->getSession()->getPage();
     $page->pressButton('Add Facts and figures');
-    // Assert theFacts and figures fields appears.
+    // Assert the Facts and figures fields are present.
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_link][0][uri]');
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_link][0][title]');
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_title][0][value]');

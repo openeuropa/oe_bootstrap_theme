@@ -444,22 +444,19 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$varia
 
   /** @var \Drupal\paragraphs\Entity\Paragraph $sub_paragraph */
   foreach ($paragraph->get('field_oe_paragraphs')->referencedEntities() as $sub_paragraph) {
-    // Get sub-paragraph translation.
+    // Get the paragraph translation.
     $sub_paragraph = \Drupal::service('entity.repository')
       ->getTranslationFromContext($sub_paragraph, $paragraph->language()->getId());
     $variables['items'][] = [
       'icon' => [
         'name' => str_replace('_', '-', $sub_paragraph->get('field_oe_icon')->value),
-        'size' => "l",
+        'size' => 'l',
       ],
       'title' => $sub_paragraph->get('field_oe_title')->value ?? '',
       'subtitle' => $sub_paragraph->get('field_oe_subtitle')->value ?? '',
       'description' => $sub_paragraph->get('field_oe_plain_text_long')->value ?? '',
     ];
   }
-
-  $variables['equal_height'] = TRUE;
-  $variables['display_icons'] = TRUE;
 
   if (!$paragraph->get('oe_bt_facts_figures_background')->isEmpty()) {
     $variables['style'] = $paragraph->get('oe_bt_facts_figures_background')->value;
