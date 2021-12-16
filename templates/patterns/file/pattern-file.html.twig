@@ -4,8 +4,9 @@
  * File download pattern.
  */
 #}
+{% set _items = [] %}
+{% set _label = {} %}
 {% if translations.items is not empty and translations.items is iterable %}
-  {% set _items = [] %}
   {% set num_languages = 0 %}
   {%  for _file in translations.items  %}
     {% if _file.type != 'content' %}
@@ -16,6 +17,7 @@
         icon: {
           name: _file.extension|to_file_icon,
           size: '2xl',
+          path: bcl_icon_path,
         },
         download: {
           label: button_label|default('Download'|t),
@@ -23,38 +25,44 @@
           icon: {
             name: 'download',
             size: 'fluid',
+            path: bcl_icon_path,
           },
         },
       }) %}
-      {% set num_languages = num_languages +1  %}
-      {% set _items = _items|merge([_file]) %}
+      {% set num_languages = num_languages +1 %}
     {% endif %}
+    {% set _items = _items|merge([_file]) %}
   {% endfor %}
   {% set _label = {
+    path: bcl_icon_path,
     label: 'Other languages (@num_translations)'|t({'@num_translations': num_languages}),
     icon_position: 'after',
     icon: {
-      path: bcl_icon_path,
       name: 'caret-down-fill',
       size: '2xs',
+      path: bcl_icon_path,
     },
   } %}
 {% endif %}
 {%  if file is not empty %}
   {% include '@oe-bcl/bcl-file/file.html.twig' with {
+    icon_path: bcl_icon_path,
     title: file.title,
     language: file.language_code|to_native_language|capitalize,
     meta: '(' ~ file.size|format_size ~ ' - ' ~ file.extension|upper ~ ')',
     icon: {
       name: file.extension|to_file_icon,
       size: '2xl',
+      path: bcl_icon_path,
     },
     download: {
+      path: bcl_icon_path,
       label: button_label|default('Download'|t),
       path: file.url,
       icon: {
         name: 'download',
         size: 'fluid',
+        path: bcl_icon_path,
       },
     },
     translation: {
