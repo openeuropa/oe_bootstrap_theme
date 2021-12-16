@@ -7,7 +7,6 @@ namespace Drupal\Tests\oe_bootstrap_theme_helper\Unit;
 use Drupal\Tests\UnitTestCase;
 use Twig\Environment;
 use Drupal\Core\Template\Loader\StringLoader;
-use Drupal\Core\Render\Renderer;
 use Drupal\oe_bootstrap_theme_helper\TwigExtension\TwigExtension;
 
 /**
@@ -29,13 +28,6 @@ class TwigExtensionTest extends UnitTestCase {
   protected $twig;
 
   /**
-   * The mocked renderer.
-   *
-   * @var \Prophecy\Prophecy\ProphecyInterface|\Drupal\Core\Render\RendererInterface
-   */
-  protected $renderer;
-
-  /**
    * The Twig extension being tested.
    *
    * @var \Drupal\oe_bootstrap_theme_helper\TwigExtension\TwigExtension
@@ -48,7 +40,6 @@ class TwigExtensionTest extends UnitTestCase {
   protected function setUp(): void {
     parent::setUp();
 
-    $this->renderer = $this->prophesize(Renderer::class);
     $this->extension = new TwigExtension();
     $loader = new StringLoader();
     $this->twig = new Environment($loader);
