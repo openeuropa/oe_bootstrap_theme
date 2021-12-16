@@ -10,7 +10,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * Provides options for the icon field.
  */
-class IconOptionsAlterSubscriber implements EventSubscriberInterface {
+class IconOptionsSubscriber implements EventSubscriberInterface {
 
   /**
    * {@inheritdoc}
