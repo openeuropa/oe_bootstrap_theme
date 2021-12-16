@@ -5,8 +5,6 @@ declare(strict_types = 1);
 namespace Drupal\Tests\oe_bootstrap_theme_helper\Unit;
 
 use Drupal\Tests\UnitTestCase;
-use Twig\Environment;
-use Drupal\Core\Template\Loader\StringLoader;
 use Drupal\oe_bootstrap_theme_helper\TwigExtension\TwigExtension;
 
 /**
@@ -19,33 +17,6 @@ use Drupal\oe_bootstrap_theme_helper\TwigExtension\TwigExtension;
  * @group batch1
  */
 class TwigExtensionTest extends UnitTestCase {
-
-  /**
-   * The Twig environment containing the extension being tested.
-   *
-   * @var \Twig\Environment
-   */
-  protected $twig;
-
-  /**
-   * The Twig extension being tested.
-   *
-   * @var \Drupal\oe_bootstrap_theme_helper\TwigExtension\TwigExtension
-   */
-  protected $extension;
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function setUp(): void {
-    parent::setUp();
-
-    $loader = new StringLoader();
-    $this->twig = new Environment($loader);
-
-    $this->extension = new TwigExtension();
-    $this->twig->addExtension($this->extension);
-  }
 
   /**
    * Tests converting an icon name to the ECL supported icons.
@@ -62,8 +33,11 @@ class TwigExtensionTest extends UnitTestCase {
     $items = $variables['items'];
     $size = $variables['size'];
     $path = $variables['path'];
-    $result = $this->twig->render("{{ $items|bcl_merge_icon('$size', '$path') }}");
-    $this->assertEquals($expected_array, $result);
+
+    $filter = new TwigExtension();
+
+    $result = $filter->bclMergeIcon($items, $size, $path);
+    $this->assertSame($expected_array, $result);
   }
 
   /**
@@ -91,6 +65,134 @@ class TwigExtensionTest extends UnitTestCase {
             'name' => 'icon1',
             'size' => 'xs',
             'path' => '/example1',
+          ],
+        ],
+      ],
+      [
+        [
+          'items' => [
+            [
+              'term' => [
+                0 => [
+                  'label' => 'label1',
+                  'icon' => [
+                    'name' => 'name1',
+                  ],
+                ],
+              ],
+              'definition' => 'definition1',
+            ],
+            [
+              'term' => [
+                0 => [
+                  'label' => 'label2',
+                ],
+                1 => [
+                  'label' => 'label3',
+                  'icon' => [
+                    'name' => 'name3',
+                  ],
+                ],
+              ],
+              'definition' => 'definition2',
+            ],
+          ],
+          'size' => 'xs',
+          'path' => '/example1',
+        ],
+        [
+          [
+            'term' => [
+              0 => [
+                'label' => 'label1',
+                'icon' => [
+                  'name' => 'name1',
+                  'size' => 'xs',
+                  'path' => '/example1',
+                ],
+              ],
+            ],
+            'definition' => 'definition1',
+          ],
+          [
+            'term' => [
+              0 => [
+                'label' => 'label2',
+              ],
+              1 => [
+                'label' => 'label3',
+                'icon' => [
+                  'name' => 'name3',
+                  'size' => 'xs',
+                  'path' => '/example1',
+                ],
+              ],
+            ],
+            'definition' => 'definition2',
+          ],
+        ],
+      ],
+      [
+        [
+          'items' => [
+            'icon' => [
+              'name' => 'icon1',
+            ],
+          ],
+          'size' => NULL,
+          'path' => NULL,
+        ],
+        [
+          'icon' => [
+            'name' => 'icon1',
+          ],
+        ],
+      ],
+      [
+        [
+          'items' => [
+            [
+              'term' => [
+                0 => [
+                  'label' => 'label1',
+                ],
+              ],
+              'definition' => 'definition1',
+            ],
+            [
+              'term' => [
+                0 => [
+                  'label' => 'label2',
+                ],
+                1 => [
+                  'label' => 'label3',
+                ],
+              ],
+              'definition' => 'definition2',
+            ],
+          ],
+          'size' => 'xs',
+          'path' => '/example1',
+        ],
+        [
+          [
+            'term' => [
+              0 => [
+                'label' => 'label1',
+              ],
+            ],
+            'definition' => 'definition1',
+          ],
+          [
+            'term' => [
+              0 => [
+                'label' => 'label2',
+              ],
+              1 => [
+                'label' => 'label3',
+              ],
+            ],
+            'definition' => 'definition2',
           ],
         ],
       ],
