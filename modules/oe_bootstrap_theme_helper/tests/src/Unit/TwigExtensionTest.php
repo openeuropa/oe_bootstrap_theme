@@ -70,7 +70,7 @@ class TwigExtensionTest extends UnitTestCase {
     $items = $variables['items'];
     $size = $variables['size'];
     $path = $variables['path'];
-    $result = $this->twig->render("{{ $items|bcl_merge_icon('$size', '$path') }}");
+    $result = $this->twig->render("{{ bcl_merge_icon('$size', '$path') }}", $items);
     $this->assertEquals($expected_array, $result);
   }
 
