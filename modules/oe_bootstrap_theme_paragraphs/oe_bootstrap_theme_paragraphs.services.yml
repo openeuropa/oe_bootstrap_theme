@@ -1,5 +1,5 @@
 services:
   oe_bootstrap_theme_paragraphs.icon_options_subscriber:
-    class: 'Drupal\oe_bootstrap_theme_paragraphs\EventSubscriber\IconOptionsAlterSubscriber'
+    class: 'Drupal\oe_bootstrap_theme_paragraphs\EventSubscriber\IconOptionsSubscriber'
     tags:
       - { name: 'event_subscriber' }
