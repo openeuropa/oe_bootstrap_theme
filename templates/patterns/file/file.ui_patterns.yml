@@ -26,13 +26,19 @@ file:
         label: "Other languages (3)"
         items:
           - language_code: "bg"
-            meta: "(16.2 MB - PDF)"
+            extension: "pdf"
+            mime: "application/pdf"
+            size: '6413215'
             url: "/example.html"
           - language_code: "es"
-            meta: "(16.2 MB - PDF)"
+            extension: "pdf"
+            mime: "application/pdf"
+            size: '6413215'
             url: "/example.html"
           - language_code: "fr"
-            meta: "(16.2 MB - PDF)"
+            extension: "pdf"
+            mime: "application/pdf"
+            size: '6413215'
             url: "/example.html"
           - type: "content"
             content:
