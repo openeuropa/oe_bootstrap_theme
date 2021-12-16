@@ -17,7 +17,7 @@ class IconOptionsAlterSubscriber implements EventSubscriberInterface {
    */
   public static function getSubscribedEvents(): array {
     return [
-      IconOptionsEvent::class => ['getIconOptions', 300],
+      IconOptionsEvent::class => ['getIconOptions', -1],
     ];
   }
 
