@@ -4,40 +4,40 @@ file_with_translations:
     '#id': file
     '#fields':
       file:
-        title: "druplicon.pdf"
-        extension: "pdf"
-        url: "public://sample/druplicon.pdf"
-        size: "23423"
-        language_code: "fr"
+        title: 'druplicon.pdf'
+        extension: 'pdf'
+        url: 'public://sample/druplicon.pdf'
+        size: '23423'
+        language_code: 'fr'
       translations:
-        label: "Other languages (3)"
-        download_link_label: "Download"
+        label: 'Other languages (3)'
+        download_link_label: 'Download'
         items:
-          - language_code: "bg"
-            size: "60982"
-            mime: "application/pdf"
-            url: "/example1.html"
-            extension: "pdf"
-          - language_code: "es"
-            mime: "application/pdf"
-            size: "70982"
-            url: "/example2.html"
-            extension: "pdf"
-          - language_code: "fr"
-            mime: "application/pdf"
-            size: "80982"
-            url: "/example3.html"
-            extension: "pdf"
-          - type: "content"
+          - language_code: 'bg'
+            size: '60982'
+            mime: 'application/pdf'
+            url: '/example1.html'
+            extension: 'pdf'
+          - language_code: 'es'
+            mime: 'application/pdf'
+            size: '70982'
+            url: '/example2.html'
+            extension: 'pdf'
+          - language_code: 'fr'
+            mime: 'application/pdf'
+            size: '80982'
+            url: '/example3.html'
+            extension: 'pdf'
+          - type: 'content'
             content:
-              '#markup': "<p class='mb-2'>Looking for another language which is not on the list? </p><a href='/example.html' class='d-block text-underline-hover'>Find out why.</a>"
+              '#markup': '<p class="mb-2">Looking for another language which is not on the list? </p><a href="/example.html" class="d-block text-underline-hover">Find out why.</a>'
   assertions:
     equals:
-      '.fw-normal': "(22.87 KB - PDF)"
-      '.fw-bold': "druplicon.pdf"
-      '.collapse .py-3.border-bottom:nth-child(1) .fw-normal': "(59.55 KB - PDF)"
-      '.collapse .py-3.border-bottom:nth-child(2) .fw-normal': "(69.32 KB - PDF)"
-      '.collapse .py-3.border-bottom:nth-child(3) .fw-normal': "(79.08 KB - PDF)"
+      '.fw-normal': '(22.87 KB - PDF)'
+      '.fw-bold': 'druplicon.pdf'
+      '.collapse .py-3.border-bottom:nth-child(1) .fw-normal': '(59.55 KB - PDF)'
+      '.collapse .py-3.border-bottom:nth-child(2) .fw-normal': '(69.32 KB - PDF)'
+      '.collapse .py-3.border-bottom:nth-child(3) .fw-normal': '(79.08 KB - PDF)'
     count:
       'a[href="public://sample/druplicon.pdf"]': 1
       'div.row': 3
@@ -46,31 +46,31 @@ file_with_translations:
       '.collapse .py-3.border-bottom:nth-child(2) a[href="/example2.html"]': 1
       '.collapse .py-3.border-bottom:nth-child(3) a[href="/example3.html"]': 1
     contains:
-      'a.text-underline-hover': "Download"
-      'small.fw-bold.m-0': "Français"
-      'div.row:nth-child(1) small': "Български"
-      'div.row:nth-child(2) small': "Español"
-      'div.row:nth-child(3) small': "Français"
-      'a[role="button"]': "Other languages (3)"
+      'a.text-underline-hover': 'Download'
+      'small.fw-bold.m-0': 'Français'
+      'div.row:nth-child(1) small': 'Български'
+      'div.row:nth-child(2) small': 'Español'
+      'div.row:nth-child(3) small': 'Français'
+      'a[role="button"]': 'Other languages (3)'
 file_without_translations:
   render:
     '#type': pattern
     '#id': file
     '#fields':
       file:
-        title: "druplicon2.pdf"
-        extension: "pdf"
-        url: "http://example.com/druplicon2.pdf"
-        size: "23424"
-        language_code: "es"
+        title: 'druplicon2.pdf'
+        extension: 'pdf'
+        url: 'http://example.com/druplicon2.pdf'
+        size: '23424'
+        language_code: 'es'
   assertions:
     equals:
-      '.fw-normal': "(22.88 KB - PDF)"
-      '.fw-bold': "druplicon2.pdf"
+      '.fw-normal': '(22.88 KB - PDF)'
+      '.fw-bold': 'druplicon2.pdf'
     count:
       'a[href="http://example.com/druplicon2.pdf"]': 1
       'div.row': 0
       'a.d-block.text-underline-hover.mt-1': 0
     contains:
-      'a.text-underline-hover': "Download"
-      'small.fw-bold.m-0': "Español"
+      'a.text-underline-hover': 'Download'
+      'small.fw-bold.m-0': 'Español'

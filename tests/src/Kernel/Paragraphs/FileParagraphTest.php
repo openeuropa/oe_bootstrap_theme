@@ -89,15 +89,15 @@ class FileParagraphTest extends ParagraphsTestBase {
     $other_languages = ['fr', 'it', 'es'];
 
     foreach ($other_languages as $lang) {
-      $image_file[$lang] = file_save_data(file_get_contents(drupal_get_path('theme', 'oe_bootstrap_theme') . '/tests/fixtures/hello.txt'), "public://example_$lang.txt");
-      $image_file[$lang]->setPermanent();
-      $image_file[$lang]->save();
+      $doc_file[$lang] = file_save_data(file_get_contents(drupal_get_path('theme', 'oe_bootstrap_theme') . '/tests/fixtures/hello.txt'), "public://example_$lang.txt");
+      $doc_file[$lang]->setPermanent();
+      $doc_file[$lang]->save();
 
       $media->addTranslation($lang, [
         'name' => 'test document ' . $lang,
         'oe_media_file_type' => 'local',
         'oe_media_file' => [
-          'target_id' => (int) $image_file[$lang]->id(),
+          'target_id' => (int) $doc_file[$lang]->id(),
         ],
       ]);
       $media->save();

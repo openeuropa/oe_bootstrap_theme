@@ -5,12 +5,7 @@
  *
  * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig */
 #}
-{% if translations is not empty %}
-  {% set _translations = translations|merge({
-    label:  'Other languages (@num_translations)'|t({'@num_translations': num_translations}),
-  }) %}
-{% endif %}
 {{ pattern('file', {
   file: file,
-  translations: _translations,
+  translations: translations,
 }) }}

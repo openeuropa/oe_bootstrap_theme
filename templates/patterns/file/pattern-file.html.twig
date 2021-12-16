@@ -4,24 +4,34 @@
  * File download pattern.
  */
 #}
-{% if translations is not empty and translations is iterable %}
-  {% set items = [] %}
-  {%  for _item in translations.items  %}
-    {% if _item.type != 'content' %}
-      {% set _item = _item|merge({
-        language: _item.language_code|to_native_language|capitalize,
-        meta: '(' ~ _item.size|format_size ~ ' - ' ~ _item.extension|upper ~ ')',
+{% if translations.items is not empty and translations.items is iterable %}
+  {% set _items = [] %}
+  {% set num_languages = 0 %}
+  {%  for _file in translations.items  %}
+    {% if _file.type != 'content' %}
+      {% set _file = _file|merge({
+        title: _file.title,
+        language: _file.language_code|to_native_language|capitalize,
+        meta: '(' ~ _file.size|format_size ~ ' - ' ~ _file.extension|upper ~ ')',
+        icon: {
+          name: _file.extension|to_file_icon,
+          size: '2xl',
+        },
         download: {
           label: button_label|default('Download'|t),
-          path: _item.url,
+          path: _file.url,
+          icon: {
+            name: 'download',
+            size: 'fluid',
+          },
         },
       }) %}
+      {% set num_languages = num_languages +1  %}
+      {% set _items = _items|merge([_file]) %}
     {% endif %}
-    {% set items = items|merge([_item]) %}
   {% endfor %}
-  {% set translations = translations|merge({items}) %}
-  {% set label = {
-    label: translations.label,
+  {% set _label = {
+    label: 'Other languages (@num_translations)'|t({'@num_translations': num_languages}),
     icon_position: 'after',
     icon: {
       path: bcl_icon_path,
@@ -29,11 +39,9 @@
       size: '2xs',
     },
   } %}
-  {% set translations = translations|merge({label}) %}
 {% endif %}
 {%  if file is not empty %}
   {% include '@oe-bcl/bcl-file/file.html.twig' with {
-    icon_path: bcl_icon_path,
     title: file.title,
     language: file.language_code|to_native_language|capitalize,
     meta: '(' ~ file.size|format_size ~ ' - ' ~ file.extension|upper ~ ')',
@@ -49,7 +57,10 @@
         size: 'fluid',
       },
     },
-    translation: translations,
+    translation: {
+      label: _label,
+      items: _items,
+    },
     attributes: attributes,
   } only %}
 {% endif %}

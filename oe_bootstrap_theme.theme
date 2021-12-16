@@ -45,7 +45,6 @@ function oe_bootstrap_theme_preprocess_media__document__default(&$variables) {
     $file_value->setLanguageCode($file_entity->language()->getId());
   }
 
-  $num_languages = 0;
   $variables['file'] = $file_value;
 
   // Generate the file information for all available translations.
@@ -59,9 +58,7 @@ function oe_bootstrap_theme_preprocess_media__document__default(&$variables) {
     $translation_file_value = DocumentMediaValueExtractor::getFileValue($translation);
     if ($translation_file_value) {
       $variables['translations']['items'][] = $translation_file_value;
-      $num_languages++;
     }
 
   }
-  $variables['num_translations'] = $num_languages;
 }
