@@ -434,7 +434,9 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_description_list(array &$va
  */
 function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$variables): void {
   $paragraph = $variables['paragraph'];
-  $variables['title'] = $paragraph->get('field_oe_title')->value ?? '';
+  if (!$paragraph->get('field_oe_link')->isEmpty()) {
+    $variables['title'] = $paragraph->get('field_oe_title')->value;
+  }
 
   if (!$paragraph->get('field_oe_link')->isEmpty()) {
     $variables['link_more']['path'] = $paragraph->get('field_oe_link')->first()->getUrl()->toString();
