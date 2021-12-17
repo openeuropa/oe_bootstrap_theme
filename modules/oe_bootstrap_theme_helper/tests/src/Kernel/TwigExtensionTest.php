@@ -6,7 +6,7 @@ namespace Drupal\Tests\oe_bootstrap_theme_helper\Kernel;
 
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Render\RenderContext;
-use Drupal\KernelTests\KernelTestBase;
+use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\Traits\RenderTrait;
 
 /**
@@ -14,7 +14,7 @@ use Drupal\Tests\oe_bootstrap_theme\Kernel\Traits\RenderTrait;
  *
  * @group batch2
  */
-class TwigExtensionTest extends KernelTestBase {
+class TwigExtensionTest extends AbstractKernelTestBase {
 
   use RenderTrait;
 
@@ -23,7 +23,6 @@ class TwigExtensionTest extends KernelTestBase {
    */
   protected static $modules = [
     'node',
-    'oe_bootstrap_theme_helper',
     'datetime_testing',
   ];
 

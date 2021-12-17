@@ -5,10 +5,12 @@ toasts:
     with_wrapper:
       type: boolean
       label: With wrapper?
+      description: "If the toast is contained in a wrapper."
       preview: true
     with_container:
       type: boolean
       label: With container?
+      description: "If the toast is in a container."
       preview: true
   fields:
     role:

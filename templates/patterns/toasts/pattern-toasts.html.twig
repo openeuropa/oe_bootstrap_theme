@@ -5,7 +5,6 @@
  */
 #}
 {% set wrapper_aria_live = wrapper_aria_live|default('assertive') %}
-{% set toasts_attributes = toasts_attributes.addClass(['show'])  %}
 {% set header %}
   <strong class="me-auto">
     {{ title }}
@@ -26,7 +25,7 @@
     'with_close': with_close,
     'header': header,
     'autohide': autohide,
-    'attributes': toasts_attributes,
+    'attributes': create_attribute().addClass(['show']),
   }],
   'attributes': attributes,
 } only %}
