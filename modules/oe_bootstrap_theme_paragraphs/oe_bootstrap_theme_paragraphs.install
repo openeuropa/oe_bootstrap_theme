@@ -19,7 +19,6 @@ function oe_bootstrap_theme_paragraphs_install($is_syncing): void {
   if ($is_syncing) {
     return;
   }
-  $folder = '/config/overrides/';
 
   $config['displays'] = [
     'core.entity_form_display.paragraph.oe_links_block.default',
@@ -30,24 +29,5 @@ function oe_bootstrap_theme_paragraphs_install($is_syncing): void {
     'core.entity_view_display.paragraph.oe_description_list.default',
   ];
 
-  ConfigUtil::importConfigFromFile($config, $folder);
-}
-
-/**
- * Upgrade the Description list paragraph.
- */
-function oe_bootstrap_theme_paragraphs_update_8002(): void {
-  $folder = '/config/updates/8002/';
-
-  $config['fields'] = [
-    'field.storage.paragraph.oe_bt_orientation',
-    'field.field.paragraph.oe_description_list.oe_bt_orientation',
-  ];
-
-  $config['displays'] = [
-    'core.entity_form_display.paragraph.oe_description_list.default',
-    'core.entity_view_display.paragraph.oe_description_list.default',
-  ];
-
-  ConfigUtil::importConfigFromFile($config, $folder);
+  ConfigUtil::importConfigFromFile('oe_bootstrap_theme_paragraphs', '/config/overrides/', $config);
 }
