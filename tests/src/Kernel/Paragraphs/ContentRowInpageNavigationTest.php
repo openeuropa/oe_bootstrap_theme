@@ -75,7 +75,7 @@ class ContentRowInpageNavigationTest extends ParagraphsTestBase {
 
     for ($i = 1; $i <= 6; $i++) {
       $this->assertCount(1, $crawler->filter('div#bcl-inpage-item-' . $i));
-      $title = $crawler->filter('div#bcl-inpage-item-' . $i . ' div.paragraph--type--oe-rich-text h2');
+      $title = $crawler->filter('div#bcl-inpage-item-' . $i . ' h4');
       $this->assertStringContainsString(
         'Title rich text example ' . $i,
         $title->html()
