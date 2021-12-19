@@ -7,7 +7,7 @@
  */
 #}
 {{ pattern('inpage_navigation', {
-  'title': title,
+  'title': title|default(''),
   'full_layout': full_layout,
   'links': links,
   'content': content,

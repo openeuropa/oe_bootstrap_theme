@@ -336,7 +336,9 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables)
 function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void {
   $paragraph = $variables['paragraph'];
 
-  $variables['title'] = $paragraph->get('field_oe_title')->value ?? '';
+  if (!$paragraph->entity->get('field_oe_title')->isEmpty()) {
+    $variables['title'] = $paragraph->get('field_oe_title')->value;
+  }
 
   $variables['full_layout'] = TRUE;
   $variables['scrollspy_id'] = 'bcl-inpage-navigation';
