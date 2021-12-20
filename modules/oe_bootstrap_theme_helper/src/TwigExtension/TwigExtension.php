@@ -90,7 +90,7 @@ class TwigExtension extends AbstractExtension {
         'ppsx',
         'odp',
       ],
-      'spreadsheet' => [
+      'file-excel-fill' => [
         'xls',
         'xlsx',
         'ods',
@@ -112,6 +112,7 @@ class TwigExtension extends AbstractExtension {
       ],
       'file-word-fill' => [
         'word',
+        'odt'
       ],
     ];
 
