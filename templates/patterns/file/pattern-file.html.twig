@@ -43,32 +43,35 @@
       path: bcl_icon_path,
     },
   } %}
+  {% set _translation = {
+    label: _label,
+    items: _items,
+  } %}
 {% endif %}
 {%  if file is not empty %}
-  {% include '@oe-bcl/bcl-file/file.html.twig' with {
-    icon_path: bcl_icon_path,
-    title: file.title,
-    language: file.language_code|to_native_language|capitalize,
-    meta: '(' ~ file.size|format_size ~ ' - ' ~ file.extension|upper ~ ')',
-    icon: {
-      name: file.extension|to_file_icon,
-      size: '2xl',
-      path: bcl_icon_path,
-    },
-    download: {
-      path: bcl_icon_path,
-      label: button_label|default('Download'|t),
-      path: file.url,
+  <div class="mt-4">
+    {% include '@oe-bcl/bcl-file/file.html.twig' with {
+      icon_path: bcl_icon_path,
+      title: file.title,
+      language: file.language_code|to_native_language|capitalize,
+      meta: '(' ~ file.size|format_size ~ ' - ' ~ file.extension|upper ~ ')',
       icon: {
-        name: 'download',
-        size: 'fluid',
+        name: file.extension|to_file_icon,
+        size: '2xl',
         path: bcl_icon_path,
       },
-    },
-    translation: {
-      label: _label,
-      items: _items,
-    },
-    attributes: attributes,
-  } only %}
+      download: {
+        path: bcl_icon_path,
+        label: button_label|default('Download'|t),
+        path: file.url,
+        icon: {
+          name: 'download',
+          size: 'fluid',
+          path: bcl_icon_path,
+        },
+      },
+      translation: _translation,
+      attributes: attributes,
+    } only %}
+  </div>
 {% endif %}

@@ -36,15 +36,6 @@ function oe_bootstrap_theme_preprocess_media__document__default(&$variables) {
     return;
   }
 
-  $type = $media->get('oe_media_file_type')->value;
-  if ($type === "local") {
-    $file_entity = File::load($media->get('oe_media_file')->target_id);
-    if (!isset($file_entity)) {
-      return;
-    }
-    $file_value->setLanguageCode($file_entity->language()->getId());
-  }
-
   $variables['file'] = $file_value;
 
   // Generate the file information for all available translations.
