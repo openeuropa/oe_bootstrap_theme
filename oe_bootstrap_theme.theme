@@ -7,7 +7,6 @@
 
 // Include all files from the includes directory.
 use Drupal\oe_bootstrap_theme\DocumentMediaValueExtractor;
-use Drupal\file\Entity\File;
 
 $includes_path = __DIR__ . '/includes/*.inc';
 foreach (glob($includes_path) as $filename) {
