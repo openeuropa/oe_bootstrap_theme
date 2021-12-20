@@ -112,7 +112,7 @@ class TwigExtension extends AbstractExtension {
       ],
       'file-word-fill' => [
         'word',
-        'odt'
+        'odt',
       ],
     ];
 
