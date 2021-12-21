@@ -119,3 +119,46 @@ function oe_bootstrap_theme_add_dropbutton_classes(array &$links): void {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_menu_local_tasks().
+ */
+function oe_bootstrap_theme_preprocess_menu_local_tasks(array &$variables): void {
+  // Sort local tasks by weight.
+  uasort($variables['primary'], [
+    '\Drupal\Component\Utility\SortArray',
+    'sortByWeightProperty',
+  ]);
+  uasort($variables['secondary'], [
+    '\Drupal\Component\Utility\SortArray',
+    'sortByWeightProperty',
+  ]);
+
+  foreach ($variables['primary'] as $link) {
+    /** @var Drupal\Core\Url $url */
+    $url = $link['#link']['url'];
+    if ($url->access($variables['user'])) {
+      $variables['primary_links'][] = [
+        'link_style' => 'primary',
+        'path' => $url->toString(),
+        'label' => $link['#link']['title'],
+        'standalone' => TRUE,
+        'attributes' => $link['#active'] ? new Attribute(['class' => 'active']) : [],
+      ];
+    }
+  }
+
+  foreach ($variables['secondary'] as $link) {
+    /** @var Drupal\Core\Url $url */
+    $url = $link['#link']['url'];
+    if ($url->access($variables['user'])) {
+      $variables['primary_links'][] = [
+        'link_style' => 'secondary',
+        'path' => $url->toString(),
+        'label' => $link['#link']['title'],
+        'standalone' => TRUE,
+        'attributes' => $link['#active'] ? new Attribute(['class' => 'active']) : [],
+      ];
+    }
+  }
+}
