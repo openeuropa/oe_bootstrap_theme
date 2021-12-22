@@ -48,6 +48,12 @@ class ParagraphsTest extends BrowserTestBase {
   protected function setUp(): void {
     parent::setUp();
 
+    \Drupal::service('theme_installer')->install(['oe_bootstrap_theme']);
+    \Drupal::configFactory()
+      ->getEditable('system.theme')
+      ->set('default', 'oe_bootstrap_theme')
+      ->save();
+
     // Rebuild the ui_pattern definitions to collect the ones provided by
     // oe_bootstrap_theme itself.
     \Drupal::service('plugin.manager.ui_patterns')->clearCachedDefinitions();
@@ -149,6 +155,49 @@ class ParagraphsTest extends BrowserTestBase {
     $this->assertSession()->pageTextContains('EU Social Media Follow Links');
     $this->assertSession()->pageTextContains('Example Facebook');
     $this->assertSession()->pageTextContains('More channels');
+  }
+
+  /**
+   * Test paragraphs are wrapped with a spacing.
+   */
+  public function testSpacingBetweenParagraphs(): void {
+    $this->drupalGet('/node/add/paragraphs_test');
+    $page = $this->getSession()->getPage();
+
+    $page->pressButton('Add Links block');
+
+    $values = [
+      'title[0][value]' => 'Test Links block node title',
+      'oe_bt_paragraphs[0][subform][field_oe_text][0][value]' => 'EU Links',
+      'oe_bt_paragraphs[0][subform][field_oe_links][0][uri]' => 'https://www.example.com',
+      'oe_bt_paragraphs[0][subform][field_oe_links][0][title]' => 'Example link number 1',
+      'oe_bt_paragraphs[0][subform][oe_bt_links_block_background]' => 'gray',
+      'oe_bt_paragraphs[0][subform][oe_bt_links_block_orientation]' => 'vertical',
+    ];
+
+    $this->submitForm($values, 'Save');
+    $this->drupalGet('/node/1');
+
+    $this->assertSession()->elementsCount('css', 'div.my-4', 1);
+
+    $this->drupalGet('/node/1/edit');
+    $page->pressButton('Add Social media follow');
+
+    $values = [
+      'oe_bt_paragraphs[1][subform][field_oe_title][0][value]' => 'EU Social Media Follow Links',
+      'oe_bt_paragraphs[1][subform][field_oe_social_media_links][0][uri]' => 'https://www.facebook.com',
+      'oe_bt_paragraphs[1][subform][field_oe_social_media_links][0][title]' => 'Example Facebook',
+      'oe_bt_paragraphs[1][subform][field_oe_social_media_links][0][link_type]' => 'facebook',
+      'oe_bt_paragraphs[1][subform][oe_bt_links_block_background]' => 'transparent',
+      'oe_bt_paragraphs[1][subform][field_oe_social_media_variant]' => 'horizontal',
+      'oe_bt_paragraphs[1][subform][field_oe_social_media_see_more][0][uri]' => 'https://example.com',
+      'oe_bt_paragraphs[1][subform][field_oe_social_media_see_more][0][title]' => 'More channels',
+    ];
+
+    $this->submitForm($values, 'Save');
+    $this->drupalGet('/node/1');
+
+    $this->assertSession()->elementsCount('css', 'div.my-4', 2);
   }
 
   /**
