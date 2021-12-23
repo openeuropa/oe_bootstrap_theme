@@ -38,7 +38,7 @@ grid-row_with_container_and_no_gutter:
       'div[class="4 (3 columns per row) 2"]': 1
       'img[src="https://placeimg.com/1000/500/arch"]': 1
       'img[alt="Alternative text for card image"]': 1
-      'img[class="card-img-top"]': 1
+      'img.card-img-top': 1
       'span.badge.bg-primary': 1
     equals:
       'h5.card-title': 'Title card'
@@ -86,7 +86,7 @@ grid-row_without_container_and_without_no_gutter:
       'div[class="auto 2"]': 1
       'img[src="https://placeimg.com/1000/500/arch"]': 1
       'img[alt="Alternative text for card image"]': 1
-      'img[class="card-img-top"]': 1
+      'img.card-img-top': 1
       'span.badge.bg-primary': 1
     equals:
       'h5.card-title': 'Title card'

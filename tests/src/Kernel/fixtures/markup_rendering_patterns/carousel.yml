@@ -46,10 +46,10 @@ carousel_with_fade_with_controls_with_indicator_without_disable_touch_without_au
       'div.carousel-item.active': 1
       'button.carousel-control-prev[data-bs-slide="prev"]': 1
       'button.carousel-control-next[data-bs-slide="next"]': 1
-      'div.carousel-item img[src="https://images.site.example1"]': 1
-      'div.carousel-item img[src="https://images.site.example2"]': 1
-      'div.carousel-item img[alt="alt image 1"]': 1
-      'div.carousel-item img[alt="alt image 2"]': 1
+      'div.carousel-item:nth-child(1) img[src="https://images.site.example1"]': 1
+      'div.carousel-item:nth-child(1) img[alt="alt image 1"]': 1
+      'div.carousel-item:nth-child(2) img[src="https://images.site.example2"]': 1
+      'div.carousel-item:nth-child(2) img[alt="alt image 2"]': 1
       'div[data-bs-touch="false"]': 0
       'div[data-bs-ride="carousel"]': 0
     equals:
@@ -99,10 +99,10 @@ carousel_without_fade_without_controls_without_indicators_with_disable_touch_wit
       'div.carousel-item.active': 1
       'button.carousel-control-prev[data-bs-slide="prev"]': 0
       'button.carousel-control-next[data-bs-slide="next"]': 0
-      'div.carousel-item img[src="https://images.site.example1"]': 1
-      'div.carousel-item img[src="https://images.site.example2"]': 1
-      'div.carousel-item img[alt="alt image 1"]': 1
-      'div.carousel-item img[alt="alt image 2"]': 1
+      'div.carousel-item:nth-child(1) img[src="https://images.site.example1"]': 1
+      'div.carousel-item:nth-child(1) img[alt="alt image 1"]': 1
+      'div.carousel-item:nth-child(2) img[src="https://images.site.example2"]': 1
+      'div.carousel-item:nth-child(2) img[alt="alt image 2"]': 1
       'div[data-bs-touch="false"]': 1
       'div[data-bs-ride="carousel"]': 1
     equals:

@@ -57,7 +57,7 @@ navbar_large_light_background_color_light:
       'nav.bg-light': 1
       'nav.navbar-expand-lg': 1
       'nav.navbar-light': 1
-      'form[class="d-flex"]': 1
+      'form.d-flex': 1
     equals:
       'div.navbar-nav a:nth-child(1)': "I'm a link"
       'div.navbar-nav a:nth-child(2)': "I'm a link 2"
@@ -125,7 +125,7 @@ navbar_medium_dark_background_color_dark_with_disable_collapse:
       'nav.bg-dark': 1
       'nav.navbar-expand-md': 1
       'nav.navbar-dark': 1
-      'form[class="d-flex"]': 1
+      'form.d-flex': 1
     equals:
       'div.navbar-nav a:nth-child(1)': "I'm a link"
       'div.navbar-nav a:nth-child(2)': "I'm a link 2"
