@@ -152,7 +152,7 @@ function oe_bootstrap_theme_preprocess_menu_local_tasks(array &$variables): void
     /** @var Drupal\Core\Url $url */
     $url = $link['#link']['url'];
     if ($url->access($variables['user'])) {
-      $variables['primary_links'][] = [
+      $variables['secondary_links'][] = [
         'link_style' => 'secondary',
         'path' => $url->toString(),
         'label' => $link['#link']['title'],
