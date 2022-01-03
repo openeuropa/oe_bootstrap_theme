@@ -78,31 +78,44 @@ function oe_bootstrap_theme_preprocess_links__dropbutton(&$variables) {
 
   /** @var \Drupal\Core\Url $url */
   $variables['split'] = FALSE;
+  $button = $link['text'];
   if (isset($link['link']) && ($url = $link['link']['#url'])) {
     $button = $link['link'];
 
-    if ($variables['split'] = $url->getRouteName() !== '<nolink>') {
+    if ($url->getRouteName() !== '<nolink>') {
+      $variables['split'] = TRUE;
       $button['#options']['attributes']['class'][] = 'btn';
       $button['#options']['attributes']['class'][] = 'btn-sm';
       $button['#options']['attributes']['class'][] = 'btn-outline-primary';
     }
 
-    $variables['button'] = $button;
-
     // Remove first link from links.
     array_shift($links);
   }
 
-  // Add required classes.
-  foreach ($links as $key => $link) {
-    $links[$key]['link']['#options']['attributes']['class'][] = 'dropdown-item';
+  $variables['button'] = $button;
+  dropbutton_add_required_classes($links);
+}
 
+/**
+ * Add required classes to dropbutton links.
+ *
+ * @param array $links
+ *   Array with links items.
+ */
+function dropbutton_add_required_classes(array &$links): void {
+  foreach ($links as $key => $link) {
+    if (isset($links[$key]['link']) && is_array($links[$key]['link'])) {
+      $links[$key]['link']['#options']['attributes']['class'][] = 'dropdown-item';
+    }
     if (isset($links[$key]['text_attributes'])) {
       $links[$key]['text_attributes']->addClass('dropdown-item');
     }
-
     if (isset($links[$key]['attributes'])) {
       $links[$key]['attributes']->addClass('dropdown-item');
+    }
+    if (isset($links[$key]['text']) && is_array($links[$key]['text'])) {
+      $links[$key]['text']['#attributes']['class'][] = 'dropdown-item';
     }
   }
 }
