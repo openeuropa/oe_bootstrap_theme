@@ -16,7 +16,6 @@ class ContentRowInpageNavigationTest extends ParagraphsTestBase {
    * Tests the basic rendering of the paragraph type.
    */
   public function testBasicRendering(): void {
-    // Create sub-paragraphs for OE Content row paragraph.
     $sub_paragraphs =
       [
         0 => Paragraph::create([
@@ -35,7 +34,7 @@ class ContentRowInpageNavigationTest extends ParagraphsTestBase {
           'field_oe_text_long' => 'Aliquam tristique vulputate lorem nec imperdiet. Phasellus ac urna dui. Pellentesque turpis orci, bibendum id mauris eu, commodo interdum mi. Nulla quis blandit enim, eu lacinia ligula. Fusce lorem odio, fermentum ullamcorper felis accumsan, gravida porttitor velit. Vivamus a pretium lacus. Ut commodo tortor arcu, non tristique enim congue sit amet. Aliquam lobortis sapien est, at gravida enim eleifend sit amet. Aenean ac massa rhoncus, luctus purus at, vulputate ipsum. Donec at tortor a elit porta suscipit a ut lectus. Nunc et diam non eros laoreet laoreet. Phasellus eu metus porta, laoreet tortor nec, placerat tellus. Curabitur suscipit elementum ligula eget tincidunt. Quisque at pharetra purus.',
         ]),
       ];
-    // Create content row paragraph with inpage navigation variant.
+
     $paragraph = Paragraph::create([
       'type' => 'oe_content_row',
       'field_oe_title' => 'Page content',
@@ -44,7 +43,6 @@ class ContentRowInpageNavigationTest extends ParagraphsTestBase {
     ]);
     $paragraph->save();
 
-    // Testing: Inpage navigation - All paragraph types.
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
@@ -58,21 +56,47 @@ class ContentRowInpageNavigationTest extends ParagraphsTestBase {
     $this->assertCount(1, $crawler->filter('div.col-md-9'));
     $this->assertCount(3, $crawler->filter('p'));
 
-    for ($i = 1; $i <= 3; $i++) {
-      $this->assertCount(1, $crawler->filter('div#bcl-inpage-item-' . $i));
-      $title = $crawler->filter('div#bcl-inpage-item-' . $i . ' h4');
-      $this->assertStringContainsString(
-        'Title rich text example ' . $i,
-        $title->html()
-      );
+    $this->assertCount(1, $crawler->filter('div#bcl-inpage-item-1'));
+    $title = $crawler->filter('div#bcl-inpage-item-1 h4');
+    $this->assertStringContainsString(
+      'Title rich text example 1',
+      $title->html()
+    );
 
-      $link = $crawler->filter('a[href="#bcl-inpage-item-' . $i . '"]');
-      $this->assertCount(1, $link);
-      $this->assertStringContainsString(
-        'Title rich text example ' . $i,
-        $link->html()
-      );
-    }
+    $link = $crawler->filter('a[href="#bcl-inpage-item-1"]');
+    $this->assertCount(1, $link);
+    $this->assertStringContainsString(
+      'Title rich text example 1',
+      $link->html()
+    );
+
+    $this->assertCount(1, $crawler->filter('div#bcl-inpage-item-2'));
+    $title = $crawler->filter('div#bcl-inpage-item-2 h4');
+    $this->assertStringContainsString(
+      'Title rich text example 2',
+      $title->html()
+    );
+
+    $link = $crawler->filter('a[href="#bcl-inpage-item-2"]');
+    $this->assertCount(1, $link);
+    $this->assertStringContainsString(
+      'Title rich text example 2',
+      $link->html()
+    );
+
+    $this->assertCount(1, $crawler->filter('div#bcl-inpage-item-3'));
+    $title = $crawler->filter('div#bcl-inpage-item-3 h4');
+    $this->assertStringContainsString(
+      'Title rich text example 3',
+      $title->html()
+    );
+
+    $link = $crawler->filter('a[href="#bcl-inpage-item-3"]');
+    $this->assertCount(1, $link);
+    $this->assertStringContainsString(
+      'Title rich text example 3',
+      $link->html()
+    );
   }
 
 }
