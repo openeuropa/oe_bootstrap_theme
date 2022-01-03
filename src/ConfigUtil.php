@@ -59,7 +59,6 @@ class ConfigUtil {
         $entity->save();
       }
     }
-
   }
 
 }
