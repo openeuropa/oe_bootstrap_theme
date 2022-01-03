@@ -340,7 +340,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage
     $variables['title'] = $paragraph->get('field_oe_title')->value;
   }
 
-  $variables['full_layout'] = TRUE;
   $variables['scrollspy_id'] = 'bcl-inpage-navigation';
 
   $links = [];
