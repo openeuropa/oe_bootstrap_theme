@@ -50,7 +50,9 @@ function oe_bootstrap_theme_paragraphs_preprocess_paragraph__oe_links_block(arra
   $paragraph = $variables['paragraph'];
   $variables['orientation'] = $paragraph->get('oe_bt_links_block_orientation')->value;
   $variables['background'] = $paragraph->get('oe_bt_links_block_background')->value;
-  $variables['title'] = $paragraph->get('field_oe_text')->value ?? '';
+  if (!$paragraph->get('field_oe_text')->isEmpty()) {
+    $variables['title'] = $paragraph->get('field_oe_text')->value;
+  }
 
   foreach (Element::children($variables['content']['field_oe_links']) as $index) {
     $variables['links'][] = [
@@ -68,7 +70,9 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_social_media_follow(array &
   $paragraph = $variables['paragraph'];
   $variables['orientation'] = $paragraph->get('field_oe_social_media_variant')->value;
   $variables['background'] = $paragraph->get('oe_bt_links_block_background')->value;
-  $variables['title'] = $paragraph->get('field_oe_title')->value ?? '';
+  if (!$paragraph->get('field_oe_title')->isEmpty()) {
+    $variables['title'] = $paragraph->get('field_oe_title')->value;
+  }
   $links = $paragraph->get('field_oe_social_media_links')->getValue();
   $variables['links'] = [];
   foreach ($links as $key => $link) {
@@ -356,7 +360,10 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): 
  */
 function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables): void {
   $paragraph = $variables['paragraph'];
-  $variables['heading'] = $paragraph->get('field_oe_title')->value ?? '';
+  if (!$paragraph->get('field_oe_title')->isEmpty()) {
+    $variables['heading'] = $paragraph->get('field_oe_title')->value;
+  }
+
   if (!isset($variables['content']['field_oe_timeline']['#items'])) {
     return;
   }
@@ -449,14 +456,18 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$varia
     // Get the paragraph translation.
     $sub_paragraph = \Drupal::service('entity.repository')
       ->getTranslationFromContext($sub_paragraph, $paragraph->language()->getId());
+    $description = '';
+    if (!$sub_paragraph->get('field_oe_title')->isEmpty()) {
+      $description = $sub_paragraph->get('field_oe_plain_text_long')->value;
+    }
     $variables['items'][] = [
       'icon' => [
         'name' => str_replace('_', '-', $sub_paragraph->get('field_oe_icon')->value),
         'size' => 'l',
       ],
-      'title' => $sub_paragraph->get('field_oe_title')->value ?? '',
-      'subtitle' => $sub_paragraph->get('field_oe_subtitle')->value ?? '',
-      'description' => $sub_paragraph->get('field_oe_plain_text_long')->value ?? '',
+      'title' => $sub_paragraph->get('field_oe_title')->value,
+      'subtitle' => $sub_paragraph->get('field_oe_subtitle')->value,
+      'description' => $description,
     ];
   }
 
