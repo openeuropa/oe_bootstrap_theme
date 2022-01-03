@@ -21,7 +21,7 @@ class ConfigUtil {
    *   Contains the name of configuration files that must be installed.
    */
   public static function importConfigFromFile(string $module, string $path, array $config_names): void {
-    $storage = new FileStorage(drupal_get_path('module', $module) . $path);
+    $storage = new FileStorage(\Drupal::service('extension.list.module')->getPath($module) . $path);
     $config_manager = \Drupal::service('config.manager');
     $entity_type_manager = \Drupal::entityTypeManager();
 
