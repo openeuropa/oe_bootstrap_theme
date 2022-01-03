@@ -364,7 +364,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage
     }
 
     $unique_id = Html::getUniqueId('bcl-inpage-item-' . $sub_paragraph->id());
-    // Get sub-paragraph translation.
+    // Get paragraph translation.
     $sub_paragraph = \Drupal::service('entity.repository')
       ->getTranslationFromContext($sub_paragraph, $paragraph->language()->getId());
     $entity_type = 'paragraph';
