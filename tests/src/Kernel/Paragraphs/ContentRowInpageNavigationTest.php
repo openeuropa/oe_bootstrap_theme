@@ -34,21 +34,6 @@ class ContentRowInpageNavigationTest extends ParagraphsTestBase {
           'field_oe_title' => 'Title rich text example 3',
           'field_oe_text_long' => 'Aliquam tristique vulputate lorem nec imperdiet. Phasellus ac urna dui. Pellentesque turpis orci, bibendum id mauris eu, commodo interdum mi. Nulla quis blandit enim, eu lacinia ligula. Fusce lorem odio, fermentum ullamcorper felis accumsan, gravida porttitor velit. Vivamus a pretium lacus. Ut commodo tortor arcu, non tristique enim congue sit amet. Aliquam lobortis sapien est, at gravida enim eleifend sit amet. Aenean ac massa rhoncus, luctus purus at, vulputate ipsum. Donec at tortor a elit porta suscipit a ut lectus. Nunc et diam non eros laoreet laoreet. Phasellus eu metus porta, laoreet tortor nec, placerat tellus. Curabitur suscipit elementum ligula eget tincidunt. Quisque at pharetra purus.',
         ]),
-        3 => Paragraph::create([
-          'type' => 'oe_rich_text',
-          'field_oe_title' => 'Title rich text example 4',
-          'field_oe_text_long' => 'Aenean at leo cursus, luctus ante a, porttitor felis. Fusce laoreet vestibulum magna, vitae tempus nulla dignissim nec. Mauris tempus, lacus eu accumsan vehicula, sem elit iaculis sapien, sit amet facilisis mi nisl nec quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut tincidunt pellentesque nunc eu bibendum. Etiam nisl dolor, hendrerit vel nisi vitae, malesuada sagittis erat. Curabitur iaculis posuere sapien, sit amet faucibus nunc auctor et. Phasellus bibendum mollis dui, ut pellentesque erat posuere sed. Mauris ut diam vel dui dignissim aliquet quis tincidunt nulla. Donec in lacus ac sem convallis pellentesque sit amet a ipsum. Vestibulum viverra mi eget magna bibendum, ut vulputate ante tristique. Praesent gravida, augue ac ullamcorper lacinia, leo orci dapibus lorem, et placerat lacus tellus ac quam.',
-        ]),
-        4 => Paragraph::create([
-          'type' => 'oe_rich_text',
-          'field_oe_title' => 'Title rich text example 5',
-          'field_oe_text_long' => 'Curabitur efficitur ultrices consectetur. Nulla bibendum gravida quam a aliquet. Duis non accumsan enim. Phasellus tincidunt venenatis magna, at commodo nisi. Vivamus nec nibh vestibulum, pellentesque dolor vel, vehicula sem. Mauris lacus nulla, interdum eu justo id, sagittis tempor nulla. Phasellus faucibus, libero congue blandit sagittis, sem augue commodo enim, a tristique massa lorem vel justo. Nunc pretium consectetur felis sed consequat. Vivamus ac rutrum magna, sed laoreet turpis. Sed nisi lacus, volutpat eget mi id, maximus congue quam. Cras dictum a odio nec convallis. Mauris tincidunt felis ut eros auctor, ut varius augue rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque posuere ornare augue. Integer ornare sagittis risus et viverra. Sed eu nulla porta, efficitur ante id, tempus nunc.',
-        ]),
-        5 => Paragraph::create([
-          'type' => 'oe_rich_text',
-          'field_oe_title' => 'Title rich text example 6',
-          'field_oe_text_long' => 'Curabitur molestie tempor sem, nec posuere nisl interdum blandit. Duis vestibulum, sapien sed sodales tempor, ipsum libero consectetur dolor, eget sagittis odio lectus eu felis. Fusce suscipit augue eget lorem consectetur, a efficitur nisi ornare. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus consequat erat quis libero maximus semper. Pellentesque eget erat venenatis tellus pulvinar lacinia. Donec luctus justo dolor, quis tempor ante aliquet vel. Curabitur non luctus nibh. Maecenas commodo dolor ac bibendum fermentum. Duis id suscipit justo. Vivamus lobortis eu tellus in tincidunt. Integer tempus augue ac dui tincidunt, sed blandit lectus imperdiet. Aenean sodales elit sit amet urna lacinia, non commodo dolor porta. Donec ultrices quam eget convallis interdum. Vestibulum egestas malesuada dui sed rhoncus. Sed finibus egestas metus vitae volutpat.',
-        ]),
       ];
     // Create content row paragraph with inpage navigation variant.
     $paragraph = Paragraph::create([
@@ -68,12 +53,12 @@ class ContentRowInpageNavigationTest extends ParagraphsTestBase {
     $this->assertCount(1, $crawler->filter('nav.position-sticky'));
     $this->assertCount(1, $crawler->filter('h5'));
     $this->assertCount(1, $crawler->filter('ul.nav.nav-pills.flex-column'));
-    $this->assertCount(6, $crawler->filter('li.nav-item'));
-    $this->assertCount(6, $crawler->filter('a.nav-link'));
+    $this->assertCount(3, $crawler->filter('li.nav-item'));
+    $this->assertCount(3, $crawler->filter('a.nav-link'));
     $this->assertCount(1, $crawler->filter('div.col-md-9'));
-    $this->assertCount(6, $crawler->filter('p'));
+    $this->assertCount(3, $crawler->filter('p'));
 
-    for ($i = 1; $i <= 6; $i++) {
+    for ($i = 1; $i <= 3; $i++) {
       $this->assertCount(1, $crawler->filter('div#bcl-inpage-item-' . $i));
       $title = $crawler->filter('div#bcl-inpage-item-' . $i . ' h4');
       $this->assertStringContainsString(
