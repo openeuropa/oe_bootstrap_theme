@@ -5,7 +5,7 @@ nav:
     pills:
       type: "boolean"
       label: "Display as pills"
-      description: "When enabled, the menu items are displayed as pisll"
+      description: "When enabled, the menu items are displayed as pills"
       preview: true
     tabs:
       type: "boolean"
