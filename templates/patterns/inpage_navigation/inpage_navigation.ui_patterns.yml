@@ -2,11 +2,6 @@ inpage_navigation:
   label: "Inpage navigation"
   description: "Inpage navigation adds a navigation element and content element so when scrolling the active element is indicated in the nav part."
   settings:
-    full_layout:
-      type: boolean
-      label: "Full layout"
-      description: "Sets if the element should be placed with full layout (navigation + content). If false, only navigation is shown."
-      preview: true
     scrollspy_id:
       type: textfield
       label: "Dropdown identifier."
