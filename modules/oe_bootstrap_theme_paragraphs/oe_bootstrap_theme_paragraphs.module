@@ -27,8 +27,6 @@ use Drupal\Component\Utility\Html;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
- *
- * Adds markup-free template suggestion to all paragraph fields.
  */
 function oe_bootstrap_theme_paragraphs_theme_suggestions_field_alter(array &$suggestions, array $variables): void {
   $element = $variables['element'];
