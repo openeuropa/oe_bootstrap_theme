@@ -219,7 +219,7 @@ class ParagraphsTest extends BrowserTestBase {
   }
 
   /**
-   * Create content type with paragraphs field.
+   * Adds a field to a paragraph.
    */
   public function testDescriptionListParagraph(): void {
     $this->drupalGet('/node/add/paragraphs_test');
