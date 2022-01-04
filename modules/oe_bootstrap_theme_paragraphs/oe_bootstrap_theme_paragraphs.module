@@ -340,9 +340,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage
     $variables['title'] = $paragraph->get('field_oe_title')->value;
   }
 
-  // @todo https://citnet.tech.ec.europa.eu/CITnet/jira/browse/OEL-848 will fix this to use class.
-  $variables['scrollspy_id'] = 'bcl-inpage-navigation';
-
   $links = [];
   $content = [];
 

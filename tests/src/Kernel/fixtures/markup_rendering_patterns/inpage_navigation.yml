@@ -3,8 +3,6 @@ inpage_navigation_default:
     '#type': pattern
     '#id': inpage_navigation
     '#fields':
-      settings:
-        scrollspy_id: "bcl-inpage-navigation"
       title: "Page content"
       links:
         - label: 'Heading 1'
