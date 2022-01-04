@@ -334,56 +334,45 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables)
  * Implements hook_preprocess_paragraph() for paragraph--oe-content-row--variant-inpage-navigation.html.twig.
  */
 function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
+  if ($paragraph->get('field_oe_paragraphs')->isEmpty()) {
+    return;
+  }
+
+  $variables['title'] = t('Page contents');
   if (!$paragraph->get('field_oe_title')->isEmpty()) {
     $variables['title'] = $paragraph->get('field_oe_title')->value;
   }
 
-  $links = [];
-  $content = [];
+  if (isset($variables['content']['field_oe_title'])) {
+    unset($variables['content']['field_oe_title']);
+  }
 
+  $field_render = &$variables['content']['field_oe_paragraphs'];
+  $links = [];
   foreach ($paragraph->get('field_oe_paragraphs')->referencedEntities() as $delta => $sub_paragraph) {
     /** @var \Drupal\paragraphs\Entity\Paragraph $sub_paragraph */
-    if ($sub_paragraph->hasField('field_oe_title') && !$sub_paragraph->get('field_oe_title')->isEmpty()) {
-      $links_label = $sub_paragraph->get('field_oe_title')->first()->value;
-    }
-    elseif ($sub_paragraph->hasField('field_oe_text') && !$sub_paragraph->get('field_oe_text')->isEmpty()) {
-      $links_label = $sub_paragraph->get('field_oe_text')->first()->value;
-    }
-    elseif ($sub_paragraph->hasField('field_oe_plain_text_long') && !$sub_paragraph->get('field_oe_plain_text_long')->isEmpty()) {
-      $links_label = $sub_paragraph->get('field_oe_plain_text_long')->first()->value;
-    }
-    elseif ($sub_paragraph->bundle() == 'oe_accordion') {
-      $accordion_items = $sub_paragraph->get('field_oe_paragraphs')->referencedEntities();
-      $first_accordion = $accordion_items[0];
-      $links_label = $first_accordion->get('field_oe_text')->first()->value;
+    if (!$sub_paragraph->hasField('field_oe_title') || $sub_paragraph->get('field_oe_title')->isEmpty()) {
+      continue;
     }
 
-    $unique_id = Html::getUniqueId('bcl-inpage-item-' . $sub_paragraph->id());
-    // Get paragraph translation.
-    $sub_paragraph = \Drupal::service('entity.repository')
-      ->getTranslationFromContext($sub_paragraph, $paragraph->language()->getId());
-    $entity_type = 'paragraph';
-
-    $view_builder = \Drupal::entityTypeManager()->getViewBuilder($entity_type);
-    $storage = \Drupal::entityTypeManager()->getStorage($entity_type);
-    $paragraph = $storage->load($sub_paragraph->id());
-    $current_paragraph = $view_builder->view($paragraph, 'default');
-    // Wrap the paragraph in a div with a specific id set as anchor.
-    $current_paragraph['#theme_wrappers']['container'] = [
+    $unique_id = Html::getUniqueId('bcl-inpage-navigation-' . $sub_paragraph->id());
+    $field_render[$delta]['#theme_wrappers']['container'] = [
       '#attributes' => ['id' => $unique_id],
     ];
-    $content[] = $current_paragraph;
+
+    $sub_paragraph = \Drupal::service('entity.repository')
+      ->getTranslationFromContext($sub_paragraph, $paragraph->language()->getId());
 
     $links[] = [
       'path' => '#' . $unique_id,
-      'label' => $links_label,
+      'label' => $sub_paragraph->get('field_oe_title')->first()->value,
     ];
   }
 
   $variables['links'] = $links;
-  $variables['content'] = $content;
 }
 
 /**
