@@ -11,11 +11,8 @@ use Drupal\field\Entity\FieldConfig;
 
 /**
  * Change label of fields of Text feature media paragraph.
- *
- * @param array $sandbox
- *   Stores information for batch updates.
  */
-function oe_bootstrap_theme_paragraphs_post_update_10001(array &$sandbox) {
+function oe_bootstrap_theme_paragraphs_post_update_10001(array &$sandbox): void {
   $elements = [
     [
       'config_name' => 'field.field.paragraph.oe_text_feature_media.field_oe_title ',
