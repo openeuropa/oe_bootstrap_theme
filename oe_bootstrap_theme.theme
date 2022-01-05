@@ -19,3 +19,23 @@ foreach (glob($includes_path) as $filename) {
 function oe_bootstrap_theme_preprocess(&$variables) {
   $variables['bcl_icon_path'] = base_path() . drupal_get_path('theme', 'oe_bootstrap_theme') . '/assets/icons/bootstrap-icons.svg';
 }
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function oe_bootstrap_theme_theme_suggestions_field_alter(array &$suggestions, array $variables): void {
+  $element = $variables['element'];
+
+  // Add suggestions for all 'Entity reference revisions' for each target type.
+  if ($element['#field_type'] === 'entity_reference_revisions') {
+    /** @var \Drupal\field\Entity\FieldConfig $field_definition */
+    $field_definition = $element['#items']->getFieldDefinition();
+    // Add suggestions based on the referenced entity type.
+    $suggestions[] = 'field__entity_reference_revisions__' . $field_definition->getSetting('target_type');
+    $suggestions[] = 'field__entity_reference_revisions__' . $field_definition->getSetting('target_type') . '__' . $field_definition->getName();
+
+    // Add suggestions based on the parent entity and bundle types.
+    $suggestions[] = 'field__entity_reference_revisions__' . $element['#entity_type'] . '__' . $element['#bundle'];
+    $suggestions[] = 'field__entity_reference_revisions__' . $element['#entity_type'] . '__' . $element['#bundle'] . '__' . $field_definition->getName();
+  }
+}
