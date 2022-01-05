@@ -18,7 +18,7 @@ drupal.progress:
   js:
     assets/js/progress.js: {}
 
-drupal.inpage_navigation:
+inpage_navigation:
   js:
     assets/js/inpage_navigation.js: {}
 
