@@ -26,9 +26,9 @@ card_warning_horizontal_with_border_variant_info_and_text_white_with_rounded_ima
         '#type': 'pattern'
         '#id': 'button'
         '#fields':
-          'settings':
+          settings:
             style: 'primary'
-          'label': 'Custom action'
+          label: 'Custom action'
       card_header: 'Header of card'
       card_footer: 'Footer of card'
       horizontal_grid:
@@ -79,7 +79,7 @@ card_default_secondary_vertical_with_border_variant_success_and_text_dark:
         '#type': 'pattern'
         '#id': 'button'
         '#fields':
-          'settings':
+          settings:
             style: 'primary'
           label: 'Custom action'
       card_header: 'Header of card'

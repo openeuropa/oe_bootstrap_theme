@@ -5,15 +5,15 @@ default_page_banner_centered_with_link_full_width:
     '#variant': default
     '#fields':
       settings:
-        'hero': false
-        'shade': false
-        'full_width': true
-        'centered': true
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
-      'link':
-        'label': 'Subscribe'
-        'path': 'https://example.com'
+        hero: false
+        shade: false
+        full_width: true
+        centered: true
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      link:
+        label: 'Subscribe'
+        path: 'https://example.com'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -36,12 +36,12 @@ default_page_banner_aligned_left_without_link:
     '#variant': default
     '#fields':
       settings:
-        'hero': false
-        'shade': false
-        'full_width': false
-        'centered': false
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
+        hero: false
+        shade: false
+        full_width: false
+        centered: false
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -62,12 +62,12 @@ default_page_hero_banner_aligned_left_without_link_full_width:
     '#variant': default
     '#fields':
       settings:
-        'hero': true
-        'shade': false
-        'full_width': true
-        'centered': false
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
+        hero: true
+        shade: false
+        full_width: true
+        centered: false
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -88,15 +88,15 @@ default_page_hero_banner_centered_with_link:
     '#variant': default
     '#fields':
       settings:
-        'hero': true
-        'shade': false
-        'full_width': false
-        'centered': true
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
-      'link':
-        'label': 'Subscribe'
-        'path': 'https://example.com'
+        hero: true
+        shade: false
+        full_width: false
+        centered: true
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      link:
+        label: 'Subscribe'
+        path: 'https://example.com'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -119,15 +119,15 @@ primary_page_banner_centered_with_link_full_width:
     '#variant': primary
     '#fields':
       settings:
-        'hero': false
-        'shade': false
-        'full_width': true
-        'centered': true
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
-      'link':
-        'label': 'Subscribe'
-        'path': 'https://example.com'
+        hero: false
+        shade: false
+        full_width: true
+        centered: true
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      link:
+        label: 'Subscribe'
+        path: 'https://example.com'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -150,12 +150,12 @@ primary_page_banner_aligned_left_without_link:
     '#variant': primary
     '#fields':
       settings:
-        'hero': false
-        'shade': false
-        'full_width': false
-        'centered': false
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
+        hero: false
+        shade: false
+        full_width: false
+        centered: false
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -176,12 +176,12 @@ primary_page_hero_banner_aligned_left_without_link_full_width:
     '#variant': primary
     '#fields':
       settings:
-        'hero': true
-        'shade': false
-        'full_width': true
-        'centered': false
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
+        hero: true
+        shade: false
+        full_width: true
+        centered: false
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -202,15 +202,15 @@ primary_page_hero_banner_centered_with_link:
     '#variant': primary
     '#fields':
       settings:
-        'hero': true
-        'shade': false
-        'full_width': false
-        'centered': true
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
-      'link':
-        'label': 'Subscribe'
-        'path': 'https://example.com'
+       hero: true
+       shade: false
+       full_width: false
+       centered: true
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      link:
+        label: 'Subscribe'
+        path: 'https://example.com'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -233,16 +233,16 @@ image_page_banner_centered_with_link_full_width:
     '#variant': image
     '#fields':
       settings:
-        'hero': false
-        'shade': false
-        'full_width': true
-        'centered': true
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
-      'link':
-        'label': 'Subscribe'
-        'path': 'https://example.com'
-      'image': 'https://placeimg.com/1000/500/arch'
+        hero: false
+        shade: false
+        full_width: true
+        centered: true
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      link:
+        label: 'Subscribe'
+        path: 'https://example.com'
+      image: 'https://placeimg.com/1000/500/arch'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -266,13 +266,13 @@ image_page_banner_aligned_left_without_link:
     '#variant': image
     '#fields':
       settings:
-        'hero': false
-        'shade': false
-        'full_width': false
-        'centered': false
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
-      'image': 'https://placeimg.com/1000/500/arch'
+        hero: false
+        shade: false
+        full_width: false
+        centered: false
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      image: 'https://placeimg.com/1000/500/arch'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -294,13 +294,13 @@ image_page_hero_banner_aligned_left_without_link_full_width:
     '#variant': image
     '#fields':
       settings:
-        'hero': true
-        'shade': false
-        'full_width': true
-        'centered': false
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
-      'image': 'https://placeimg.com/1000/500/arch'
+        hero: true
+        shade: false
+        full_width: true
+        centered: false
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      image: 'https://placeimg.com/1000/500/arch'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -322,16 +322,16 @@ image_page_hero_banner_centered_with_link:
     '#variant': image
     '#fields':
       settings:
-        'hero': true
-        'shade': false
-        'full_width': false
-        'centered': true
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
-      'link':
-        'label': 'Subscribe'
-        'path': 'https://example.com'
-      'image': 'https://placeimg.com/1000/500/arch'
+        hero: true
+        shade: false
+        full_width: false
+        centered: true
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      link:
+        label: 'Subscribe'
+        path: 'https://example.com'
+      image: 'https://placeimg.com/1000/500/arch'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -355,16 +355,16 @@ image_shade_page_banner_centered_with_link_full_width:
     '#variant': image_shade
     '#fields':
       settings:
-        'hero': false
-        'shade': true
-        'full_width': true
-        'centered': true
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
-      'link':
-        'label': 'Subscribe'
-        'path': 'https://example.com'
-      'image': 'https://placeimg.com/1000/500/arch'
+        hero: false
+        shade: true
+        full_width: true
+        centered: true
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      link:
+        label: 'Subscribe'
+        path: 'https://example.com'
+      image: 'https://placeimg.com/1000/500/arch'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -388,13 +388,13 @@ image_shade_page_banner_aligned_left_without_link:
     '#variant': image_shade
     '#fields':
       settings:
-        'hero': false
-        'shade': true
-        'full_width': false
-        'centered': false
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
-      'image': 'https://placeimg.com/1000/500/arch'
+        hero: false
+        shade: true
+        full_width: false
+        centered: false
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      image: 'https://placeimg.com/1000/500/arch'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -416,13 +416,13 @@ image_shade__hero_banner_aligned_left_without_link_full_width:
     '#variant': image_shade
     '#fields':
       settings:
-        'hero': true
-        'shade': true
-        'full_width': true
-        'centered': false
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
-      'image': 'https://placeimg.com/1000/500/arch'
+        hero: true
+        shade: true
+        full_width: true
+        centered: false
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      image: 'https://placeimg.com/1000/500/arch'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
@@ -444,16 +444,16 @@ image_shade_hero_banner_centered_with_link:
     '#variant': image_shade
     '#fields':
       settings:
-        'hero': true
-        'shade': true
-        'full_width': false
-        'centered': true
-      'title': 'EU Budget for the future'
-      'description': 'Innovation, economy, environment and geopolitics'
-      'link':
-        'label': 'Subscribe'
-        'path': 'https://example.com'
-      'image': 'https://placeimg.com/1000/500/arch'
+        hero: true
+        shade: true
+        full_width: false
+        centered: true
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      link:
+        label: 'Subscribe'
+        path: 'https://example.com'
+      image: 'https://placeimg.com/1000/500/arch'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1

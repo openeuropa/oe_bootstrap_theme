@@ -3,12 +3,12 @@ grid-row_with_container_and_no_gutter:
     '#type': pattern
     '#id': grid_row
     '#fields':
-      'settings':
+      settings:
         with_container: true
         no_gutters: true
         col: '4 (3 columns per row)'
         spacing_margin_bottom: '2'
-      'content':
+      content:
         - '#type': pattern
           '#id': card
           '#variant': warning
@@ -51,12 +51,12 @@ grid-row_without_container_and_without_no_gutter:
     '#type': pattern
     '#id': grid_row
     '#fields':
-      'settings':
+      settings:
         with_container: false
         no_gutters: false
         col: 'auto'
         spacing_margin_bottom: '2'
-      'content':
+      content:
         - '#type': pattern
           '#id': card
           '#variant': warning
