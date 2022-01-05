@@ -1,47 +1,44 @@
 alert:
-  label: Alert
-  description: Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. https://v5.getbootstrap.com/docs/5.0/components/alerts/
+  label: 'Alert'
+  description: 'Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. https://v5.getbootstrap.com/docs/5.0/components/alerts/'
   settings:
     style:
       type: select
-      label: Alert style
+      label: 'Alert style'
       options:
-        primary: primary
-        secondary: secondary
-        success: success
-        danger: danger
-        warning: warning
-        info: info
-        light: light
-        dark: dark
-        link: link
-      preview: primary
+        primary: 'primary'
+        secondary: 'secondary'
+        success: 'success'
+        danger: 'danger'
+        warning: 'warning'
+        info: 'info'
+        light: 'light'
+        dark: 'dark'
+        link: 'link'
+      preview: 'primary'
     dismissible:
       type: boolean
-      label: Dismissible?
-      description: It’s possible to dismiss any alert inline
-      preview: True
+      label: 'Dismissible'
+      description: 'Add close button to dismiss the alert inline. Enabled by default.'
+      preview: true
     animated_dismiss:
       type: boolean
-      label: Animated dismiss?
-      description: Add fade animation to the dismissible alert
-      preview: True
+      label: 'Animated dismiss'
+      description: 'Add fade animation to the dismissible alert. Enabled by default.'
+      preview: true
   fields:
     heading:
       type: text
-      label: Heading
-      description: The alert heading. Optional.
-      preview: Well done!
+      label: 'Heading'
+      description: 'The alert heading. Optional.'
+      preview: 'Well done!'
     message:
       type: render
-      label: Message
-      description: The alert message.
-      preview: " A simple alert—check it out! "
-    icons_path:
-      type: text
-      label: Path to icons
-      preview: "/assets/icons/bootstrap-icons.svg"
+      label: 'Message'
+      description: 'The alert message.'
+      preview: 'A simple alert—check it out!'
     icon_name:
       type: text
-      label: icon to add to the alert
-      preview: "alarm"
+      label: 'Icon name'
+      description: 'Add an icon to the alert. Optional'
+      preview: 'alarm'
