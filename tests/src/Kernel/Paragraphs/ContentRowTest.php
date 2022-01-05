@@ -15,7 +15,7 @@ class ContentRowTest extends ParagraphsTestBase {
   /**
    * Tests the rendering of the paragraph type.
    */
-  public function testRendering(): void {
+  public function testWithInpageNavigationRendering(): void {
     $paragraph_fact = [
       Paragraph::create([
         'type' => 'oe_fact',
