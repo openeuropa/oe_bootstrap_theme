@@ -346,10 +346,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage
     $variables['title'] = $paragraph->get('field_oe_title')->value;
   }
 
-  if (isset($variables['content']['field_oe_title'])) {
-    unset($variables['content']['field_oe_title']);
-  }
-
   $field_render = &$variables['content']['field_oe_paragraphs'];
   $links = [];
   foreach ($paragraph->get('field_oe_paragraphs')->referencedEntities() as $delta => $sub_paragraph) {
