@@ -147,92 +147,49 @@ class ContentRowInpageNavigationTest extends ParagraphsTestBase {
     $this->assertCount(3, $crawler->filter('h5'));
     $this->assertCount(1, $crawler->filter('h4'));
     $this->assertCount(1, $crawler->filter('ul.nav.nav-pills.flex-column'));
-    $this->assertCount(6, $crawler->filter('li.nav-item'));
-    $this->assertCount(6, $crawler->filter('a.nav-link'));
+    $this->assertCount(3, $crawler->filter('li.nav-item'));
+    $this->assertCount(3, $crawler->filter('a.nav-link'));
     $this->assertCount(1, $crawler->filter('div.col-md-9'));
     $this->assertCount(5, $crawler->filter('p'));
-
-    $this->assertCount(1, $crawler->filter('div#bcl-inpage-item-1'));
-    $title = $crawler->filter('div#bcl-inpage-item-1 h4');
+    $this->assertCount(1, $crawler->filter('div#bcl-inpage-1'));
+    $title = $crawler->filter('div#bcl-inpage-1 h4');
     $this->assertStringContainsString(
       'Title rich text example 1',
       $title->html()
     );
 
-    $link = $crawler->filter('a[href="#bcl-inpage-item-1"]');
+    $link = $crawler->filter('a[href="#bcl-inpage-1"]');
     $this->assertCount(1, $link);
     $this->assertStringContainsString(
       'Title rich text example 1',
       $link->html()
     );
 
-    $this->assertCount(1, $crawler->filter('div#bcl-inpage-item-2'));
-    $title = $crawler->filter('div#bcl-inpage-item-2 h5');
-    $this->assertStringContainsString(
-      'Links block example',
-      $title->html()
-    );
-
-    $link = $crawler->filter('a[href="#bcl-inpage-item-2"]');
-    $this->assertCount(1, $link);
-    $this->assertStringContainsString(
-      'Links block example',
-      $link->html()
-    );
-
-    $this->assertCount(1, $crawler->filter('div#bcl-inpage-item-6'));
-    $title = $crawler->filter('div#bcl-inpage-item-6 div');
+    $this->assertCount(1, $crawler->filter('div#bcl-inpage-6'));
+    $title = $crawler->filter('div#bcl-inpage-6 div');
     $this->assertStringContainsString(
       'List item block example',
       $title->html()
     );
 
-    $link = $crawler->filter('a[href="#bcl-inpage-item-6"]');
+    $link = $crawler->filter('a[href="#bcl-inpage-6"]');
     $this->assertCount(1, $link);
     $this->assertStringContainsString(
       'List item block example',
       $link->html()
     );
 
-    $this->assertCount(1, $crawler->filter('div#bcl-inpage-item-7'));
-    $title = $crawler->filter('div#bcl-inpage-item-7 figcaption');
-    $this->assertStringContainsString(
-      'Quote 1',
-      $title->html()
-    );
-
-    $link = $crawler->filter('a[href="#bcl-inpage-item-7"]');
-    $this->assertCount(1, $link);
-    $this->assertStringContainsString(
-      'Quote 1',
-      $link->html()
-    );
-
-    $this->assertCount(1, $crawler->filter('div#bcl-inpage-item-8'));
-    $title = $crawler->filter('div#bcl-inpage-item-8 h5');
+    $this->assertCount(1, $crawler->filter('div#bcl-inpage-8'));
+    $title = $crawler->filter('div#bcl-inpage-8 h5');
     $this->assertStringContainsString(
       'Social media block',
       $title->html()
     );
 
-    $link = $crawler->filter('a[href="#bcl-inpage-item-8"]');
+    $link = $crawler->filter('a[href="#bcl-inpage-8"]');
     $this->assertCount(1, $link);
     $this->assertStringContainsString(
       'Social media block',
-      $link->html()
-    );
-
-    $this->assertCount(1, $crawler->filter('div#bcl-inpage-item-12'));
-    $title = $crawler->filter('div#bcl-inpage-item-12 button.accordion-button');
-    $this->assertStringContainsString(
-      'Accordion item 1',
-      $title->html()
-    );
-
-    $link = $crawler->filter('a[href="#bcl-inpage-item-12"]');
-    $this->assertCount(1, $link);
-    $this->assertStringContainsString(
-      'Accordion item 1',
       $link->html()
     );
   }
