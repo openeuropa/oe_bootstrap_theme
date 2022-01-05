@@ -5,8 +5,8 @@ accordion:
     flush:
       type: boolean
       label: 'Flush'
-      description: 'Enable to remove the default background-color, some borders, and some rounded corners printing the accordion edge-to-edge with their parent container.'
-      preview: true
+      description: 'Enable to remove the default background-color, some borders, and some rounded corners printing the accordion edge-to-edge with their parent container. False by default.'
+      preview: false
     open_item_id:
       type: number
       label: 'Accordion item opened by default'
