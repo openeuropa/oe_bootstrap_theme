@@ -94,16 +94,16 @@ function oe_bootstrap_theme_preprocess_links__dropbutton(&$variables) {
   }
 
   $variables['button'] = $button;
-  dropbutton_add_required_classes($links);
+  oe_bootstrap_theme_add_dropbutton_classes($links);
 }
 
 /**
- * Add required classes to dropbutton links.
+ * Adds required classes to dropbutton links.
  *
  * @param array $links
  *   Array with links items.
  */
-function dropbutton_add_required_classes(array &$links): void {
+function oe_bootstrap_theme_add_dropbutton_classes(array &$links): void {
   foreach ($links as $key => $link) {
     if (isset($links[$key]['link']) && is_array($links[$key]['link'])) {
       $links[$key]['link']['#options']['attributes']['class'][] = 'dropdown-item';
