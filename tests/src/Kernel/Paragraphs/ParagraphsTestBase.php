@@ -44,6 +44,7 @@ abstract class ParagraphsTestBase extends AbstractKernelTestBase {
     'text',
     'typed_link',
     'views',
+    'user',
   ];
 
   /**
