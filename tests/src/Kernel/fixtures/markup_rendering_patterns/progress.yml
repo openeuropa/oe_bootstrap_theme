@@ -4,13 +4,13 @@ progress_primary_stripped_animated:
     '#id': progress
     '#fields':
       settings:
-        style: "primary"
+        style: 'primary'
         striped: true
         animated: true
       progress: 60
-      label: "Progress label"
-      bar_label: "Bar label"
-      message: "Progress bar description"
+      label: 'Progress label'
+      bar_label: 'Bar label'
+      message: 'Progress bar description'
       min: 10
       max: 90
   assertions:
@@ -28,22 +28,22 @@ progress_primary_stripped_animated:
       'div.progress-bar-animated': 1
       'div.progress-bar-striped': 1
     contains:
-      'label.progress-bar-label': "Progress label"
-      'div.progress': "Bar label"
-      'small.progress-bar-message': "Progress bar description"
+      'label.progress-bar-label': 'Progress label'
+      'div.progress': 'Bar label'
+      'small.progress-bar-message': 'Progress bar description'
 progress_secondary_non_stripped_non_animated:
   render:
     '#type': pattern
     '#id': progress
     '#fields':
       settings:
-        style: "secondary"
+        style: 'secondary'
         strippd: false
         animated: false
       progress: 60
-      label: "Progress label"
-      bar_label: "Bar label"
-      message: "Progress bar description"
+      label: 'Progress label'
+      bar_label: 'Bar label'
+      message: 'Progress bar description'
       min: 10
       max: 90
   assertions:
@@ -61,6 +61,6 @@ progress_secondary_non_stripped_non_animated:
       'div.progress-bar-animated': 0
       'div.progress-bar-striped': 0
     contains:
-      'label.progress-bar-label': "Progress label"
-      'div.progress': "Bar label"
-      'small.progress-bar-message': "Progress bar description"
+      'label.progress-bar-label': 'Progress label'
+      'div.progress': 'Bar label'
+      'small.progress-bar-message': 'Progress bar description'

@@ -13,24 +13,24 @@ navigation_default_full_width_with_pills_horizontal:
         navbar: true
       items:
         - label: "I'm a link"
-          path: "#first"
+          path: '#first'
         - label: "I'm a button"
           button: true
         - label: "I'm a disabled button"
           button: true
           disabled: true
-        - label: "I'm a active button"
+        - label: "I'm an active button"
           button: true
           active: true
-        - id: "dropdown-1"
+        - id: 'dropdown-1'
           link: true
           dropdown: true
           trigger:
-            label: "Dropdown Toggle"
-            path: "#"
+            label: 'Dropdown Toggle'
+            path: '#'
           items:
             - label: "I'm a dropdown link"
-              path: "/example.html"
+              path: '/example.html'
             - label: "I'm a dropdown button"
               button: true
             - divider: true
@@ -55,11 +55,11 @@ navigation_default_full_width_with_pills_horizontal:
       'button.nav-link.active': 1
       'nav.justify-content-left': 0
       'nav.flex-column': 0
-    contains:
-      'normal_link': "I&#039;m a link"
-      'normal_button': "I&#039;m a button"
-      'disabled_button': "I&#039;m a disabled button"
-      'active_button': "I&#039;m a active button"
+    equals:
+      'nav.navbar-nav .nav-link:nth-child(1)': "I'm a link"
+      'nav.navbar-nav .nav-link:nth-child(2)': "I'm a button"
+      'nav.navbar-nav .nav-link:nth-child(3)': "I'm a disabled button"
+      'nav.navbar-nav .nav-link:nth-child(4)': "I'm an active button"
 navigation_default_aligned_to_left_without_pills_horizontal_with_navbar:
   render:
     '#type': pattern
@@ -76,24 +76,24 @@ navigation_default_aligned_to_left_without_pills_horizontal_with_navbar:
         navbar: true
       items:
         - label: "I'm a link"
-          path: "#first"
+          path: '#first'
         - label: "I'm a button"
           button: true
         - label: "I'm a disabled button"
           button: true
           disabled: true
-        - label: "I'm a active button"
+        - label: "I'm an active button"
           button: true
           active: true
-        - id: "dropdown-1"
+        - id: 'dropdown-1'
           link: true
           dropdown: true
           trigger:
-            label: "Dropdown Toggle"
-            path: "#"
+            label: 'Dropdown Toggle'
+            path: '#'
           items:
             - label: "I'm a dropdown link"
-              path: "/example.html"
+              path: '/example.html'
             - label: "I'm a dropdown button"
               button: true
             - divider: true
@@ -118,11 +118,11 @@ navigation_default_aligned_to_left_without_pills_horizontal_with_navbar:
       'button.nav-link.active': 1
       'nav.justify-content-left': 1
       'nav.flex-column': 0
-    contains:
-      'normal_link': "I&#039;m a link"
-      'normal_button': "I&#039;m a button"
-      'disabled_button': "I&#039;m a disabled button"
-      'active_button': "I&#039;m a active button"
+    equals:
+      'nav.navbar-nav .nav-link:nth-child(1)': "I'm a link"
+      'nav.navbar-nav .nav-link:nth-child(2)': "I'm a button"
+      'nav.navbar-nav .nav-link:nth-child(3)': "I'm a disabled button"
+      'nav.navbar-nav .nav-link:nth-child(4)': "I'm an active button"
 navigation_default_full_width_without_pills_with_out_navbar_vertical:
   render:
     '#type': pattern
@@ -138,24 +138,24 @@ navigation_default_full_width_without_pills_with_out_navbar_vertical:
         navbar: false
       items:
         - label: "I'm a link"
-          path: "#first"
+          path: '#first'
         - label: "I'm a button"
           button: true
         - label: "I'm a disabled button"
           button: true
           disabled: true
-        - label: "I'm a active button"
+        - label: "I'm an active button"
           button: true
           active: true
-        - id: "dropdown-1"
+        - id: 'dropdown-1'
           link: true
           dropdown: true
           trigger:
-            label: "Dropdown Toggle"
-            path: "#"
+            label: 'Dropdown Toggle'
+            path: '#'
           items:
             - label: "I'm a dropdown link"
-              path: "/example.html"
+              path: '/example.html'
             - label: "I'm a dropdown button"
               button: true
             - divider: true
@@ -180,11 +180,11 @@ navigation_default_full_width_without_pills_with_out_navbar_vertical:
       'button.nav-link.active': 1
       'nav.justify-content-left': 0
       'nav.flex-column': 1
-    contains:
-      'normal_link': "I&#039;m a link"
-      'normal_button': "I&#039;m a button"
-      'disabled_button': "I&#039;m a disabled button"
-      'active_button': "I&#039;m a active button"
+    equals:
+      'nav.nav-fill .nav-link:nth-child(1)': "I'm a link"
+      'nav.nav-fill .nav-link:nth-child(2)': "I'm a button"
+      'nav.nav-fill .nav-link:nth-child(3)': "I'm a disabled button"
+      'nav.nav-fill .nav-link:nth-child(4)': "I'm an active button"
 navigation_default_aligned_to_left_with_pills_vertical:
   render:
     '#type': pattern
@@ -201,24 +201,24 @@ navigation_default_aligned_to_left_with_pills_vertical:
         navbar: false
       items:
         - label: "I'm a link"
-          path: "#first"
+          path: '#first'
         - label: "I'm a button"
           button: true
         - label: "I'm a disabled button"
           button: true
           disabled: true
-        - label: "I'm a active button"
+        - label: "I'm an active button"
           button: true
           active: true
-        - id: "dropdown-1"
+        - id: 'dropdown-1'
           link: true
           dropdown: true
           trigger:
-            label: "Dropdown Toggle"
-            path: "#"
+            label: 'Dropdown Toggle'
+            path: '#'
           items:
             - label: "I'm a dropdown link"
-              path: "/example.html"
+              path: '/example.html'
             - label: "I'm a dropdown button"
               button: true
             - divider: true
@@ -243,11 +243,11 @@ navigation_default_aligned_to_left_with_pills_vertical:
       'button.nav-link.active': 1
       'nav.justify-content-left': 1
       'nav.flex-column': 1
-    contains:
-      'normal_link': "I&#039;m a link"
-      'normal_button': "I&#039;m a button"
-      'disabled_button': "I&#039;m a disabled button"
-      'active_button': "I&#039;m a active button"
+    equals:
+      'nav.nav-pills .nav-link:nth-child(1)': "I'm a link"
+      'nav.nav-pills .nav-link:nth-child(2)': "I'm a button"
+      'nav.nav-pills .nav-link:nth-child(3)': "I'm a disabled button"
+      'nav.nav-pills .nav-link:nth-child(4)': "I'm an active button"
 navigation_tabs_full_width_with_tabs_content:
   render:
     '#type': pattern
@@ -262,28 +262,28 @@ navigation_tabs_full_width_with_tabs_content:
         navbar: false
       items:
         - label: "I'm a link"
-          path: "#first"
-          content: "First tab content"
+          path: '#first'
+          content: 'First tab content'
         - label: "I'm a button"
           button: true
-          content: "Second tab content"
+          content: 'Second tab content'
         - label: "I'm a disabled button"
           button: true
           disabled: true
-          content: "Third tab content"
-        - label: "I'm a active button"
+          content: 'Third tab content'
+        - label: "I'm an active button"
           button: true
           active: true
-          content: "Fourth tab content"
-        - id: "dropdown-1"
+          content: 'Fourth tab content'
+        - id: 'dropdown-1'
           link: true
           dropdown: true
           trigger:
-            label: "Dropdown Toggle"
-            path: "#"
+            label: 'Dropdown Toggle'
+            path: '#'
           items:
             - label: "I'm a dropdown link"
-              path: "/example.html"
+              path: '/example.html'
             - label: "I'm a dropdown button"
               button: true
             - divider: true
@@ -307,15 +307,15 @@ navigation_tabs_full_width_with_tabs_content:
       'a#dropdown-1[data-bs-toggle="dropdown"]': 1
       'button.nav-link[disabled]': 1
       'ul.justify-content-left': 0
-    contains:
-      'normal_link': "I&#039;m a link"
-      'normal_button': "I&#039;m a button"
-      'disabled_button': "I&#039;m a disabled button"
-      'active_button': "I&#039;m a active button"
-      'div_pane_1': "First tab content"
-      'div_pane_2': "Second tab content"
-      'div_pane_3': "Third tab content"
-      'div_pane_4': "Fourth tab content"
+    equals:
+      'ul.nav-tabs > li:nth-child(1) > .nav-link': "I'm a link"
+      'ul.nav-tabs > li:nth-child(2) > .nav-link': "I'm a button"
+      'ul.nav-tabs > li:nth-child(3) > .nav-link': "I'm a disabled button"
+      'ul.nav-tabs > li:nth-child(4) > .nav-link': "I'm an active button"
+      'div.tab-content div.tab-pane:nth-child(1)': 'First tab content'
+      'div.tab-content div.tab-pane:nth-child(2)': 'Second tab content'
+      'div.tab-content div.tab-pane:nth-child(3)': 'Third tab content'
+      'div.tab-content div.tab-pane:nth-child(4)': 'Fourth tab content'
 navigation_tabs_aligned_to_left_without_tab_contents:
   render:
     '#type': pattern
@@ -331,24 +331,24 @@ navigation_tabs_aligned_to_left_without_tab_contents:
         navbar: false
       items:
         - label: "I'm a link"
-          path: "#first"
+          path: '#first'
         - label: "I'm a button"
           button: true
         - label: "I'm a disabled button"
           button: true
           disabled: true
-        - label: "I'm a active button"
+        - label: "I'm an active button"
           button: true
           active: true
-        - id: "dropdown-1"
+        - id: 'dropdown-1'
           link: true
           dropdown: true
           trigger:
-            label: "Dropdown Toggle"
-            path: "#"
+            label: 'Dropdown Toggle'
+            path: '#'
           items:
             - label: "I'm a dropdown link"
-              path: "/example.html"
+              path: '/example.html'
             - label: "I'm a dropdown button"
               button: true
             - divider: true
@@ -372,11 +372,11 @@ navigation_tabs_aligned_to_left_without_tab_contents:
       'a#dropdown-1[data-bs-toggle="dropdown"]': 1
       'button.nav-link[disabled]': 1
       'ul.justify-content-left': 1
-    contains:
-      'normal_link': "I&#039;m a link"
-      'normal_button': "I&#039;m a button"
-      'disabled_button': "I&#039;m a disabled button"
-      'active_button': "I&#039;m a active button"
+    equals:
+      'ul.nav-tabs > li:nth-child(1) > .nav-link': "I'm a link"
+      'ul.nav-tabs > li:nth-child(2) > .nav-link': "I'm a button"
+      'ul.nav-tabs > li:nth-child(3) > .nav-link': "I'm a disabled button"
+      'ul.nav-tabs > li:nth-child(4) > .nav-link': "I'm an active button"
 navigation_custom_tabs_full_width_with_content:
   render:
     '#type': pattern
@@ -391,28 +391,28 @@ navigation_custom_tabs_full_width_with_content:
         navbar: false
       items:
         - label: "I'm a link"
-          path: "#first"
-          content: "First tab content"
+          path: '#first'
+          content: 'First tab content'
         - label: "I'm a button"
           button: true
-          content: "Second tab content"
+          content: 'Second tab content'
         - label: "I'm a disabled button"
           button: true
           disabled: true
-          content: "Third tab content"
-        - label: "I'm a active button"
+          content: 'Third tab content'
+        - label: "I'm an active button"
           button: true
           active: true
-          content: "Fourth tab content"
-        - id: "dropdown-1"
+          content: 'Fourth tab content'
+        - id: 'dropdown-1'
           link: true
           dropdown: true
           trigger:
-            label: "Dropdown Toggle"
-            path: "#"
+            label: 'Dropdown Toggle'
+            path: '#'
           items:
             - label: "I'm a dropdown link"
-              path: "/example.html"
+              path: '/example.html'
             - label: "I'm a dropdown button"
               button: true
             - divider: true
@@ -436,15 +436,15 @@ navigation_custom_tabs_full_width_with_content:
       'a#dropdown-1[data-bs-toggle="dropdown"]': 1
       'button.nav-link[disabled]': 1
       'nav.justify-content-left': 0
-    contains:
-      'normal_link': "I&#039;m a link"
-      'normal_button': "I&#039;m a button"
-      'disabled_button': "I&#039;m a disabled button"
-      'active_button': "I&#039;m a active button"
-      'div_pane_1': "First tab content"
-      'div_pane_2': "Second tab content"
-      'div_pane_3': "Third tab content"
-      'div_pane_4': "Fourth tab content"
+    equals:
+      'nav.nav-tabs .nav-link:nth-child(1)': "I'm a link"
+      'nav.nav-tabs .nav-link:nth-child(2)': "I'm a button"
+      'nav.nav-tabs .nav-link:nth-child(3)': "I'm a disabled button"
+      'nav.nav-tabs .nav-link:nth-child(4)': "I'm an active button"
+      'div.tab-content div.tab-pane:nth-child(1)': 'First tab content'
+      'div.tab-content div.tab-pane:nth-child(2)': 'Second tab content'
+      'div.tab-content div.tab-pane:nth-child(3)': 'Third tab content'
+      'div.tab-content div.tab-pane:nth-child(4)': 'Fourth tab content'
 navigation_custom_tabs_aligned_to_left:
   render:
     '#type': pattern
@@ -460,24 +460,24 @@ navigation_custom_tabs_aligned_to_left:
         navbar: false
       items:
         - label: "I'm a link"
-          path: "#first"
+          path: '#first'
         - label: "I'm a button"
           button: true
         - label: "I'm a disabled button"
           button: true
           disabled: true
-        - label: "I'm a active button"
+        - label: "I'm an active button"
           button: true
           active: true
-        - id: "dropdown-1"
+        - id: 'dropdown-1'
           link: true
           dropdown: true
           trigger:
-            label: "Dropdown Toggle"
-            path: "#"
+            label: 'Dropdown Toggle'
+            path: '#'
           items:
             - label: "I'm a dropdown link"
-              path: "/example.html"
+              path: '/example.html'
             - label: "I'm a dropdown button"
               button: true
             - divider: true
@@ -501,8 +501,8 @@ navigation_custom_tabs_aligned_to_left:
       'a#dropdown-1[data-bs-toggle="dropdown"]': 1
       'button.nav-link[disabled]': 1
       'nav.justify-content-left': 1
-    contains:
-      'normal_link': "I&#039;m a link"
-      'normal_button': "I&#039;m a button"
-      'disabled_button': "I&#039;m a disabled button"
-      'active_button': "I&#039;m a active button"
+    equals:
+      'nav.nav-tabs > .nav-link:nth-child(1)': "I'm a link"
+      'nav.nav-tabs > .nav-link:nth-child(2)': "I'm a button"
+      'nav.nav-tabs > .nav-link:nth-child(3)': "I'm a disabled button"
+      'nav.nav-tabs > .nav-link:nth-child(4)': "I'm an active button"

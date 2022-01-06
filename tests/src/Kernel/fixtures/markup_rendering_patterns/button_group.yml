@@ -6,16 +6,16 @@ button_group_medium_with_toolbar:
       settings:
         toolbar: true
         vertical: false
-        size: "md"
-      toolbar_aria_label: "Toolbar basic example"
-      aria_label: "Basic example"
+        size: 'md'
+      toolbar_aria_label: 'Toolbar basic example'
+      aria_label: 'Basic example'
       items:
         -
-          - label: "Primary"
-            variant: "primary"
-          - label: "Secondary"
-            variant: "secondary"
-          - label: "Outline disabled"
+          - label: 'Primary'
+            variant: 'primary'
+          - label: 'Secondary'
+            variant: 'secondary'
+          - label: 'Outline disabled'
             disabled: true
             outline: true
   assertions:
@@ -29,9 +29,9 @@ button_group_medium_with_toolbar:
       'button.btn-secondary': 1
       'button.btn-outline-primary': 1
     equals:
-      'button.btn.btn-primary.btn-md': "Primary"
-      'button.btn.btn-secondary.btn-md': "Secondary"
-      'button.btn.btn-outline-primary.btn-md': "Outline disabled"
+      'button.btn.btn-primary.btn-md': 'Primary'
+      'button.btn.btn-secondary.btn-md': 'Secondary'
+      'button.btn.btn-outline-primary.btn-md': 'Outline disabled'
 button_group_large_vertical:
   render:
     '#type': pattern
@@ -40,15 +40,15 @@ button_group_large_vertical:
       settings:
         toolbar: false
         vertical: true
-        size: "lg"
-      aria_label: "Basic example"
+        size: 'lg'
+      aria_label: 'Basic example'
       items:
         -
-          - label: "Primary"
-            variant: "primary"
-          - label: "Secondary"
-            variant: "secondary"
-          - label: "Outline disabled"
+          - label: 'Primary'
+            variant: 'primary'
+          - label: 'Secondary'
+            variant: 'secondary'
+          - label: 'Outline disabled'
             disabled: true
             outline: true
   assertions:
@@ -62,6 +62,6 @@ button_group_large_vertical:
       'button.btn-secondary': 1
       'button.btn-outline-primary': 1
     equals:
-      'button.btn.btn-primary.btn-md': "Primary"
-      'button.btn.btn-secondary.btn-md': "Secondary"
-      'button.btn.btn-outline-primary.btn-md': "Outline disabled"
+      'button.btn.btn-primary.btn-md': 'Primary'
+      'button.btn.btn-secondary.btn-md': 'Secondary'
+      'button.btn.btn-outline-primary.btn-md': 'Outline disabled'

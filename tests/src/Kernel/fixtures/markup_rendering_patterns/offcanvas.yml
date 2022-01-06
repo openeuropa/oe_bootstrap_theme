@@ -10,10 +10,10 @@ offcanvas_top_with_backdrop_and_trigger:
         with_trigger: true
       title:
         label: Offcanvas title
-        id: "1"
-        heading: "2"
+        id: '1'
+        heading: '2'
       offcanvas_id: offcanvasExample
-      body: "This is the offcanvas body content."
+      body: 'This is the offcanvas body content.'
   assertions:
     count:
       'button[data-bs-toggle="offcanvas"]': 1
@@ -21,9 +21,9 @@ offcanvas_top_with_backdrop_and_trigger:
       'div[id="offcanvasExample"]': 1
       'div.offcanvas.offcanvas-top': 1
     equals:
-      'h2.offcanvas-title': "Offcanvas title"
-      'div.offcanvas-body': "This is the offcanvas body content."
-      'button[data-bs-toggle="offcanvas"]': "Toggle offcanvas"
+      'h2.offcanvas-title': 'Offcanvas title'
+      'div.offcanvas-body': 'This is the offcanvas body content.'
+      'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas'
 offcanvas_start_with_body_scroll:
   render:
     '#type': pattern
@@ -36,10 +36,10 @@ offcanvas_start_with_body_scroll:
         with_trigger: false
       title:
         label: Offcanvas title
-        id: "1"
-        heading: "2"
+        id: '1'
+        heading: '2'
       offcanvas_id: offcanvasExample
-      body: "This is the offcanvas body content."
+      body: 'This is the offcanvas body content.'
   assertions:
     count:
       'div[data-drupal-selector="offcanvas"]': 1
@@ -47,8 +47,8 @@ offcanvas_start_with_body_scroll:
       'div.offcanvas.offcanvas-start': 1
       'button[data-bs-toggle="offcanvas"]': 0
     equals:
-      'h2.offcanvas-title': "Offcanvas title"
-      'div.offcanvas-body': "This is the offcanvas body content."
+      'h2.offcanvas-title': 'Offcanvas title'
+      'div.offcanvas-body': 'This is the offcanvas body content.'
 offcanvas_with_trigger_with_icon:
   render:
     '#type': pattern
@@ -62,12 +62,12 @@ offcanvas_with_trigger_with_icon:
         icon_position: before
       title:
         label: Offcanvas title
-        id: "1"
-        heading: "2"
+        id: '1'
+        heading: '2'
       offcanvas_id: offcanvasExample
-      body: "This is the offcanvas body content."
+      body: 'This is the offcanvas body content.'
       icon:
-        name: "filter"
+        name: 'filter'
   assertions:
     count:
       'button[data-bs-toggle="offcanvas"]': 1
@@ -76,8 +76,8 @@ offcanvas_with_trigger_with_icon:
       'div.offcanvas.offcanvas-top': 1
       'svg.bi': 1
     equals:
-      'h2.offcanvas-title': "Offcanvas title"
-      'div.offcanvas-body': "This is the offcanvas body content."
+      'h2.offcanvas-title': 'Offcanvas title'
+      'div.offcanvas-body': 'This is the offcanvas body content.'
     contains:
-      'button[data-bs-toggle="offcanvas"]': "Toggle offcanvas"
-      'icon': 'bootstrap-icons.svg#filter'
+      'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas'
+      'svg': 'bootstrap-icons.svg#filter'

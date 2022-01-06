@@ -9,38 +9,38 @@ navbar_large_light_background_color_light:
         expand: lg
         color_set: light
       brand:
-        label: "OpenEuropa Site"
-        link: "https://europa.eu/"
+        label: 'OpenEuropa Site'
+        link: 'https://europa.eu/'
       navbar_left:
         - '#type': pattern
           '#id': link
           '#fields':
             label: "I'm a link"
-            path: "#first"
+            path: '#first'
             attributes:
-              class: "nav-link"
+              class: 'nav-link'
         - '#type': pattern
           '#id': link
           '#fields':
             label: "I'm a link 2"
-            path: "#second"
+            path: '#second'
             attributes:
-              class: "nav-link"
+              class: 'nav-link'
         - '#type': pattern
           '#id': link
           '#fields':
             label: "I'm a link 3"
-            path: "#third"
+            path: '#third'
             attributes:
-              class: "nav-link"
+              class: 'nav-link'
         - '#type': pattern
           '#id': dropdown
           '#variant': default
           '#fields':
-            label: "Dropdown Toggle"
+            label: 'Dropdown Toggle'
             dropdown_items:
               - label: "I'm a link"
-                path: "#navbar-dropdown-link"
+                path: '#navbar-dropdown-link'
               - label: "I'm a button"
                 button: true
       navbar_right:
@@ -49,7 +49,7 @@ navbar_large_light_background_color_light:
           '#children':
             '<label for="inlineFormInputGroupSearch" class="form-label visually-hidden">Search</label><input class="form-control" type="text" id="inlineFormInputGroupSearch" required="true" placeholder="Search"/><div class="ms-2"><button class="btn btn-primary btn-md" type="Search">Search</button></div>'
           '#attributes':
-            class: "d-flex"
+            class: 'd-flex'
   assertions:
     count:
       'button.navbar-toggler': 1
@@ -57,17 +57,15 @@ navbar_large_light_background_color_light:
       'nav.bg-light': 1
       'nav.navbar-expand-lg': 1
       'nav.navbar-light': 1
-      'form[class="d-flex"]': 1
+      'form.d-flex': 1
     equals:
       'div.navbar-nav a:nth-child(1)': "I'm a link"
       'div.navbar-nav a:nth-child(2)': "I'm a link 2"
       'div.navbar-nav a:nth-child(3)': "I'm a link 3"
       'ul.dropdown-menu li .dropdown-item': "I'm a link"
       'button.dropdown-item': "I'm a button"
-      'label': "Search"
-      'a.navbar-brand': "OpenEuropa Site"
-    contains:
-      'a': "https://europa.eu/"
+      'label': 'Search'
+      'a.navbar-brand[href="https://europa.eu/"]': 'OpenEuropa Site'
 navbar_medium_dark_background_color_dark_with_disable_collapse:
   render:
     '#type': pattern
@@ -79,38 +77,38 @@ navbar_medium_dark_background_color_dark_with_disable_collapse:
         expand: md
         color_set: dark
       brand:
-        label: "OpenEuropa Site"
-        link: "https://europa.eu/"
+        label: 'OpenEuropa Site'
+        link: 'https://europa.eu/'
       navbar_left:
         - '#type': pattern
           '#id': link
           '#fields':
             label: "I'm a link"
-            path: "#first"
+            path: '#first'
             attributes:
-              class: "nav-link"
+              class: 'nav-link'
         - '#type': pattern
           '#id': link
           '#fields':
             label: "I'm a link 2"
-            path: "#second"
+            path: '#second'
             attributes:
-              class: "nav-link"
+              class: 'nav-link'
         - '#type': pattern
           '#id': link
           '#fields':
             label: "I'm a link 3"
-            path: "#third"
+            path: '#third'
             attributes:
-              class: "nav-link"
+              class: 'nav-link'
         - '#type': pattern
           '#id': dropdown
           '#variant': default
           '#fields':
-            label: "Dropdown Toggle"
+            label: 'Dropdown Toggle'
             dropdown_items:
               - label: "I'm a link"
-                path: "#navbar-dropdown-link"
+                path: '#navbar-dropdown-link'
               - label: "I'm a button"
                 button: true
       navbar_right:
@@ -119,7 +117,7 @@ navbar_medium_dark_background_color_dark_with_disable_collapse:
           '#children':
             '<label for="inlineFormInputGroupSearch" class="form-label visually-hidden">Search</label><input class="form-control" type="text" id="inlineFormInputGroupSearch" required="true" placeholder="Search"/><div class="ms-2"><button class="btn btn-primary btn-md" type="Search">Search</button></div>'
           '#attributes':
-            class: "d-flex"
+            class: 'd-flex'
   assertions:
     count:
       'button.navbar-toggler': 0
@@ -127,14 +125,12 @@ navbar_medium_dark_background_color_dark_with_disable_collapse:
       'nav.bg-dark': 1
       'nav.navbar-expand-md': 1
       'nav.navbar-dark': 1
-      'form[class="d-flex"]': 1
+      'form.d-flex': 1
     equals:
       'div.navbar-nav a:nth-child(1)': "I'm a link"
       'div.navbar-nav a:nth-child(2)': "I'm a link 2"
       'div.navbar-nav a:nth-child(3)': "I'm a link 3"
       'ul.dropdown-menu li .dropdown-item': "I'm a link"
       'button.dropdown-item': "I'm a button"
-      'label': "Search"
-      'a.navbar-brand': "OpenEuropa Site"
-    contains:
-      'a': "https://europa.eu/"
+      'label': 'Search'
+      'a.navbar-brand[href="https://europa.eu/"]': 'OpenEuropa Site'

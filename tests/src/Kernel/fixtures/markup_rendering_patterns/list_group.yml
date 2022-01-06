@@ -11,19 +11,19 @@ list_group_unordered_without_flush_vertical:
           html: 'Label 1'
         - variant: 'primary'
           html: 'Label 2'
-        - html: "Label 3"
+        - html: 'Label 3'
           variant: 'secondary'
-          extra_classes: "d-flex justify-content-between align-items-center"
+          extra_classes: 'd-flex justify-content-between align-items-center'
           badge:
-            label: "10"
+            label: '10'
             rounded_pill: TRUE
   assert:
     equals:
-      'li.list-group-item-danger': "Label 1"
-      'li.list-group-item-primary': "Label 2"
-      'li.list-group-item-secondary span.badge': "10"
+      'li.list-group-item-danger': 'Label 1'
+      'li.list-group-item-primary': 'Label 2'
+      'li.list-group-item-secondary span.badge': '10'
     contains:
-      - "Label 3"
+      - 'Label 3'
     count:
       'ul[data-drupal-selector="list-group"]': 1
       'ul.list-group': 1
@@ -39,25 +39,25 @@ list_group_ordered_with_flush_horizontal:
       settings:
         type: 'ordered'
         flush: true
-        horizontal: "horizontal-lg"
+        horizontal: 'horizontal-lg'
       items:
         - variant: 'danger'
           html: 'Label 1'
         - variant: 'primary'
           html: 'Label 2'
-        - html: "Label 3"
+        - html: 'Label 3'
           variant: 'secondary'
-          extra_classes: "d-flex justify-content-between align-items-center"
+          extra_classes: 'd-flex justify-content-between align-items-center'
           badge:
-            label: "10"
+            label: '10'
             rounded_pill: TRUE
   assert:
     equals:
-      'li.list-group-item-danger': "Label 1"
-      'li.list-group-item-primary': "Label 2"
-      'li.list-group-item-secondary span.badge': "10"
+      'li.list-group-item-danger': 'Label 1'
+      'li.list-group-item-primary': 'Label 2'
+      'li.list-group-item-secondary span.badge': '10'
     contains:
-      - "Label 3"
+      - 'Label 3'
     count:
       'ol[data-drupal-selector="list-group"]': 1
       'ol.list-group': 1
@@ -78,12 +78,12 @@ list_group_actionable_without_flush_vertical:
       items:
          - label: 'Label 1'
          - label: 'Label 2'
-         - label: "Label 3"
+         - label: 'Label 3'
   assert:
-    contains:
-      'a.list-group-item-danger': "Label 1"
-      'a.list-group-item-primary': "Label 2"
-      'a.list-group-item-secondary': "Label 3"
+    equals:
+      'div.list-group a.list-group-item:nth-child(1)': 'Label 1'
+      'div.list-group a.list-group-item:nth-child(2)': 'Label 2'
+      'div.list-group a.list-group-item:nth-child(3)': 'Label 3'
     count:
       'div[data-drupal-selector="list-group"]': 1
       'div.list-group': 1

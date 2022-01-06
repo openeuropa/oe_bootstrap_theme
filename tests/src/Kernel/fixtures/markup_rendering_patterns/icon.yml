@@ -12,7 +12,7 @@ icon_award_2xl_rotate_90:
       'svg.icon--2xl': 1
       'svg.icon--rotate-90': 1
     contains:
-      'svg': "#award"
+      'svg': '#award'
 icon_eye_fluid_flip_horizontal:
   render:
     '#type': pattern
@@ -27,4 +27,4 @@ icon_eye_fluid_flip_horizontal:
       'svg.icon--fluid': 1
       'svg.icon--flip-horizontal': 1
     contains:
-      'svg': "#eye"
+      'svg': '#eye'

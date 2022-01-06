@@ -18,19 +18,19 @@ carousel_with_fade_with_controls_with_indicator_without_disable_touch_without_au
           caption_classes: "class-1 class-2"
           interval: 0
           image:
-            "#theme": "image"
-            "#uri": "https://images.site.example1"
-            "#alt": "alt image 1"
-            "#attributes":
+            '#theme': 'image'
+            '#uri': 'https://images.site.example1'
+            '#alt': 'alt image 1'
+            '#attributes':
               class: d-block w-100
         - caption: second slide label
-          caption_classes: "class-1 class-2"
+          caption_classes: 'class-1 class-2'
           interval: 0
           image:
-            "#theme": "image"
-            "#uri": "https://images.site.example2"
-            "#alt": "alt image 2"
-            "#attributes":
+            '#theme': 'image'
+            '#uri': 'https://images.site.example2'
+            '#alt': 'alt image 2'
+            '#attributes':
               class: d-block w-100
   assertions:
     count:
@@ -46,17 +46,17 @@ carousel_with_fade_with_controls_with_indicator_without_disable_touch_without_au
       'div.carousel-item.active': 1
       'button.carousel-control-prev[data-bs-slide="prev"]': 1
       'button.carousel-control-next[data-bs-slide="next"]': 1
-      'img[src="https://images.site.example1"]': 1
-      'img[src="https://images.site.example2"]': 1
-      'img[alt="alt image 1"]': 1
-      'img[alt="alt image 2"]': 1
+      'div.carousel-item:nth-child(1) img[src="https://images.site.example1"]': 1
+      'div.carousel-item:nth-child(1) img[alt="alt image 1"]': 1
+      'div.carousel-item:nth-child(2) img[src="https://images.site.example2"]': 1
+      'div.carousel-item:nth-child(2) img[alt="alt image 2"]': 1
       'div[data-bs-touch="false"]': 0
       'div[data-bs-ride="carousel"]': 0
-    contains:
-      'div.carousel-caption_1': "first slide label"
-      'div.carousel-caption_2': "second slide label"
-      'span.visually-hidden_1': "Previous"
-      'span.visually-hidden_2': "Next"
+    equals:
+      'div.carousel-item:nth-child(1) div.carousel-caption': 'first slide label'
+      'div.carousel-item:nth-child(2) div.carousel-caption': 'second slide label'
+      'button.carousel-control-prev > span.visually-hidden': 'Previous'
+      'button.carousel-control-next > span.visually-hidden': 'Next'
 carousel_without_fade_without_controls_without_indicators_with_disable_touch_with_autoinit:
   render:
     '#type': pattern
@@ -72,22 +72,22 @@ carousel_without_fade_without_controls_without_indicators_with_disable_touch_wit
       active_item: 1
       slides:
         - caption: first slide label
-          caption_classes: "class-1 class-2"
+          caption_classes: 'class-1 class-2'
           interval: 0
           image:
-            "#theme": "image"
-            "#uri": "https://images.site.example1"
-            "#alt": "alt image 1"
-            "#attributes":
+            '#theme': 'image'
+            '#uri': 'https://images.site.example1'
+            '#alt': 'alt image 1'
+            '#attributes':
               class: d-block w-100
         - caption: second slide label
-          caption_classes: "class-1 class-2"
+          caption_classes: 'class-1 class-2'
           interval: 0
           image:
-            "#theme": "image"
-            "#uri": "https://images.site.example2"
-            "#alt": "alt image 2"
-            "#attributes":
+            '#theme': 'image'
+            '#uri': 'https://images.site.example2'
+            '#alt': 'alt image 2'
+            '#attributes':
               class: d-block w-100
   assertions:
     count:
@@ -99,12 +99,12 @@ carousel_without_fade_without_controls_without_indicators_with_disable_touch_wit
       'div.carousel-item.active': 1
       'button.carousel-control-prev[data-bs-slide="prev"]': 0
       'button.carousel-control-next[data-bs-slide="next"]': 0
-      'img[src="https://images.site.example1"]': 1
-      'img[src="https://images.site.example2"]': 1
-      'img[alt="alt image 1"]': 1
-      'img[alt="alt image 2"]': 1
+      'div.carousel-item:nth-child(1) img[src="https://images.site.example1"]': 1
+      'div.carousel-item:nth-child(1) img[alt="alt image 1"]': 1
+      'div.carousel-item:nth-child(2) img[src="https://images.site.example2"]': 1
+      'div.carousel-item:nth-child(2) img[alt="alt image 2"]': 1
       'div[data-bs-touch="false"]': 1
       'div[data-bs-ride="carousel"]': 1
-    contains:
-      'div.carousel-caption_1': "first slide label"
-      'div.carousel-caption_2': "second slide label"
+    equals:
+      'div.carousel-item:nth-child(1) div.carousel-caption': 'first slide label'
+      'div.carousel-item:nth-child(2) div.carousel-caption': 'second slide label'
