@@ -5,7 +5,7 @@
  * Install and update functions for the OE Bootstrap Theme Paragraphs module.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use Drupal\oe_bootstrap_theme\ConfigImporter;
 
@@ -29,7 +29,6 @@ function oe_bootstrap_theme_paragraphs_install($is_syncing): void {
     'core.entity_view_display.paragraph.oe_description_list.default',
     'core.entity_form_display.paragraph.oe_accordion_item.default',
     'core.entity_view_display.paragraph.oe_accordion_item.default',
-    'field.field.paragraph.oe_social_media_follow.field_oe_social_media_variant',
   ];
 
   ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/overrides/', $configs);
