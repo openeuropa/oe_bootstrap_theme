@@ -60,21 +60,11 @@ class DropbuttonTest extends AbstractKernelTestBase {
 
     $items = $crawler->filter('li > a.dropdown-item');
     $this->assertCount(5, $items);
-
-    $active = $crawler->filter('li:nth-child(1) a')->text();
-    $this->assertEquals('Link 1', trim($active));
-
-    $active = $crawler->filter('li:nth-child(2) a')->text();
-    $this->assertEquals('Link 2', trim($active));
-
-    $active = $crawler->filter('li:nth-child(3) a')->text();
-    $this->assertEquals('Link 3', trim($active));
-
-    $active = $crawler->filter('li:nth-child(4) a')->text();
-    $this->assertEquals('Link 4', trim($active));
-
-    $active = $crawler->filter('li:nth-child(5) a')->text();
-    $this->assertEquals('Link 5', trim($active));
+    $this->assertEquals('Link 1', trim($items->eq(0)->text()));
+    $this->assertEquals('Link 2', trim($items->eq(1)->text()));
+    $this->assertEquals('Link 3', trim($items->eq(2)->text()));
+    $this->assertEquals('Link 4', trim($items->eq(3)->text()));
+    $this->assertEquals('Link 5', trim($items->eq(4)->text()));
   }
 
 }
