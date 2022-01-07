@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Inpage navigation pattern.
+ */
+#}
+{{ attach_library('oe_bootstrap_theme/inpage_navigation') }}
+
+{% include '@oe-bcl/bcl-inpage-navigation/inpage-navigation.html.twig' with {
+  'title': title,
+  'links': links,
+  'content': content,
+} only  %}
