@@ -124,6 +124,7 @@ function oe_bootstrap_theme_add_dropbutton_classes(array &$links): void {
  * Implements hook_preprocess_menu_local_tasks().
  */
 function oe_bootstrap_theme_preprocess_menu_local_tasks(array &$variables): void {
+
   // Sort local tasks by weight.
   uasort($variables['primary'], [
     '\Drupal\Component\Utility\SortArray',
@@ -135,30 +136,34 @@ function oe_bootstrap_theme_preprocess_menu_local_tasks(array &$variables): void
   ]);
 
   foreach ($variables['primary'] as $link) {
-    /** @var Drupal\Core\Url $url */
-    $url = $link['#link']['url'];
-    if ($url->access($variables['user'])) {
-      $variables['primary_links'][] = [
-        'link_style' => 'primary',
-        'path' => $url->toString(),
-        'label' => $link['#link']['title'],
-        'standalone' => TRUE,
-        'attributes' => $link['#active'] ? new Attribute(['class' => 'active']) : [],
-      ];
-    }
+    oe_bootstrap_theme_prepare_menu_local_task_links($link, $variables, 'primary');
   }
 
   foreach ($variables['secondary'] as $link) {
-    /** @var Drupal\Core\Url $url */
-    $url = $link['#link']['url'];
-    if ($url->access($variables['user'])) {
-      $variables['secondary_links'][] = [
-        'link_style' => 'secondary',
-        'path' => $url->toString(),
-        'label' => $link['#link']['title'],
-        'standalone' => TRUE,
-        'attributes' => $link['#active'] ? new Attribute(['class' => 'active']) : [],
-      ];
-    }
+    oe_bootstrap_theme_prepare_menu_local_task_links($link, $variables, 'secondary');
+  }
+}
+
+/**
+ * Prepare menu local tasks render links.
+ *
+ * @param array $link
+ *   Array with the links items to be prepared.
+ * @param array $variables
+ *   The render array.
+ * @param string $type
+ *   Discriminate between primary or secondary.
+ */
+function oe_bootstrap_theme_prepare_menu_local_task_links(array $link, array &$variables, string $type): void {
+  /** @var Drupal\Core\Url $url */
+  $url = $link['#link']['url'];
+  if ($url->access($variables['user'])) {
+    $variables[$type . '_links'][] = [
+      'link_style' => $type,
+      'path' => $url->toString(),
+      'label' => $link['#link']['title'],
+      'standalone' => TRUE,
+      'attributes' => $link['#active'] ? new Attribute(['class' => 'active']) : [],
+    ];
   }
 }

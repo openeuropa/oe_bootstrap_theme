@@ -47,25 +47,59 @@ class MenuLocalTasksTest extends AbstractKernelTestBase {
           '#weight' => 0,
         ],
       ],
+      '#secondary' => [
+        'link4.link' => [
+          '#theme' => 'menu_local_task',
+          '#link' => [
+            'title' => 'Sixth link - Active',
+            'url' => Url::fromUri('http://www.active.com'),
+          ],
+          '#active' => TRUE,
+          '#weight' => 10,
+        ],
+        'link5.link' => [
+          '#theme' => 'menu_local_task',
+          '#link' => [
+            'title' => 'Fourth link - Inactive',
+            'url' => Url::fromUri('http://www.inactive.com'),
+          ],
+          '#active' => FALSE,
+          '#weight' => -10,
+        ],
+        'link6.link' => [
+          '#theme' => 'menu_local_task',
+          '#link' => [
+            'title' => 'Fifth link',
+            'url' => Url::fromUri('http://www.middlelink.com'),
+          ],
+          '#active' => FALSE,
+          '#weight' => 0,
+        ],
+      ],
     ];
 
     $html = $this->renderRoot($render);
     $crawler = new Crawler($html);
 
-    $actual = $crawler->filter('nav.nav-tabs');
-    $this->assertCount(1, $actual);
+    $nav = $crawler->filter('nav.nav-tabs');
+    $this->assertCount(2, $nav);
 
     $links = $crawler->filter('a.nav-link.text-underline-hover');
-    $this->assertCount(3, $links);
+    $this->assertCount(6, $links);
 
     $active = $crawler->filter('a.active');
-    $this->assertCount(1, $active);
-    $this->assertEquals('Third link - Active', trim($active->text()));
+    $this->assertCount(2, $active);
 
-    // Assert regular link are ordered by weight.
+    $this->assertEquals('Third link - Active', trim($active->eq(0)->text()));
+    $this->assertEquals('Sixth link - Active', trim($active->eq(1)->text()));
+
+    // Assert regular links are ordered by weight.
     $this->assertEquals('First link - Inactive', trim($links->eq(0)->text()));
     $this->assertEquals('Second link', trim($links->eq(1)->text()));
     $this->assertEquals('Third link - Active', trim($links->eq(2)->text()));
+    $this->assertEquals('Fourth link - Inactive', trim($links->eq(3)->text()));
+    $this->assertEquals('Fifth link', trim($links->eq(4)->text()));
+    $this->assertEquals('Sixth link - Active', trim($links->eq(5)->text()));
   }
 
 }
