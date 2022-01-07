@@ -3,7 +3,7 @@ inpage_navigation_default:
     '#type': pattern
     '#id': inpage_navigation
     '#fields':
-      title: "Page content"
+      title: 'Page content'
       links:
         - label: 'Heading 1'
           path: '#item-1'
