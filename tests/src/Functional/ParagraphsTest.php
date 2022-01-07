@@ -120,9 +120,9 @@ class ParagraphsTest extends BrowserTestBase {
     $page = $this->getSession()->getPage();
     $page->pressButton('Add Accordion');
 
-    // Assert the Icon field doesn't appear.
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_text][0][value]');
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_text_long][0][value]');
+    // Assert the Icon field is not shown.
     $this->assertSession()->fieldNotExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_icon][0][value]');
 
     $values = [
