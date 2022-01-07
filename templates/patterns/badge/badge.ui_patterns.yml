@@ -39,8 +39,8 @@ badge:
       preview: 'New'
     url:
       type: text
-      label: URL
-      description: 'The badge URL. Optional.'
+      label: 'Badge URL'
+      description: 'Converts the badge in a link. Optional.'
       preview: 'https://europa.eu'
     title:
       type: text
