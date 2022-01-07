@@ -140,9 +140,9 @@ class ContentRowTest extends ParagraphsTestBase {
 
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
-
-    $this->assertCount(1, $crawler->filter('div.row'));
-    $this->assertCount(5, $crawler->filter('p'));
+    // Check strict class row to ensure getting only the expected element.
+    $this->assertCount(1, $crawler->filter('div[class="row"]'));
+    $this->assertCount(8, $crawler->filter('p'));
     // Assert the left column navigation.
     $left = $crawler->filter('div.col-md-3.d-none.d-md-block');
     $nav = $left->filter('nav.position-sticky');
@@ -163,7 +163,7 @@ class ContentRowTest extends ParagraphsTestBase {
     $this->assertSame('Title rich text test 1', trim($rich_text_title->text()));
     $links_block_title = $content->filter('h2.fw-bold.pb-3.mb-3.border-bottom');
     $this->assertSame('Links block test', $links_block_title->text());
-    $facts_figures = $content->filter('.paragraph--type--oe-facts-figures');
+    $facts_figures = $content->filter('div.bcl-fact-figures--default h4.fw-bold');
     $this->assertStringContainsString('Facts and Figures test', $facts_figures->text());
     $blockquote_blockquote = $content->filter('blockquote.blockquote');
     $this->assertStringContainsString('Maecenas id urna eleifend', $blockquote_blockquote->text());
