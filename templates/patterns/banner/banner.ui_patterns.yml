@@ -1,62 +1,62 @@
 banner:
-  label: "Banner"
-  description: "Banner or heroes with text and/or background image and/or with call to action. https://getbootstrap.com/docs/5.0/examples/heroes/"
+  label: 'Banner'
+  description: 'Banner or heroes with text and/or background image and/or with call to action. https://getbootstrap.com/docs/5.0/examples/heroes/'
   variants:
     default:
-      label: Default text banner
+      label: 'Default text banner'
     primary:
-      label: Primary text banner
+      label: 'Primary text banner'
     image:
-      label: Image banner
+      label: 'Image banner'
     image_shade:
-      label: Image shade banner
+      label: 'Image shade banner'
   settings:
     shade:
-      type: "boolean"
-      label: "Shade"
-      description: "Enable the shadow effect to the image."
+      type: boolean
+      label: 'Shade'
+      description: 'Enable the shadow effect to the image. False by default.'
       preview: false
     hero:
-      type: "boolean"
-      label: "Hero"
-      description: "Display banner as hero banner"
+      type: boolean
+      label: 'Hero'
+      description: 'Display as hero banner. False by default.'
       preview: false
     full_width:
-      type: "boolean"
-      label: "Full width"
-      description: "Possibility of having a full-width banner within a bootstrap container"
+      type: boolean
+      label: 'Full width'
+      description: 'Possibility of having a full-width banner within a bootstrap container. False by default.'
       preview: false
     centered:
-      type: "boolean"
-      label: "Centered"
-      description: "Whether the content of the banner is centered or not"
+      type: boolean
+      label: 'Centered'
+      description: 'Whether the content of the banner is centered or not. False by default.'
       preview: true
   fields:
     title:
-      type: "text"
-      label: "Title"
-      description: "Heading of the banner"
-      preview: "EU Budget for the future"
+      type: text
+      label: 'Title'
+      description: 'Title of the banner.'
+      preview: 'EU Budget for the future'
     description:
-      type: "text"
-      label: "Description"
-      description: "Sub-heading of the banner"
-      preview: "Innovation, economy, environment and geopolitics"
+      type: text
+      label: 'Description'
+      description: 'Sub-heading of the banner.'
+      preview: 'Innovation, economy, environment and geopolitics'
     link:
-      type: "array"
-      label: "Link"
-      description: "Call to action link"
+      type: array
+      label: 'Link'
+      description: 'Call to Action button. Optional.'
       preview:
-        label: "Subscribe"
-        path: "https://example.com"
-        variant: "primary"
-        icon_position: "after"
+        label: 'Subscribe'
+        path: 'https://example.com'
+        variant: 'primary'
+        icon_position: 'after'
         icon:
-          name: "chevron-right"
+          name: 'chevron-right'
           size: s
-          path: "/assets/icons/bootstrap-icons.svg"
+          path: '/assets/icons/bootstrap-icons.svg'
     image:
-      type: "text"
-      label: "Image"
-      description: "URL to the image"
-      preview:  "https://placeimg.com/1000/500/arch"
+      type: 'text'
+      label: 'Image'
+      description: 'URL of the image. Optional.'
+      preview:  'https://placeimg.com/1000/500/arch'
