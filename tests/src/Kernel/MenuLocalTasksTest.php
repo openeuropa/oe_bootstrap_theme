@@ -63,14 +63,9 @@ class MenuLocalTasksTest extends AbstractKernelTestBase {
     $this->assertEquals('Third link - Active', trim($active->text()));
 
     // Assert regular link are ordered by weight.
-    $actual = $crawler->filter('a:nth-child(1)')->text();
-    $this->assertEquals('First link - Inactive', trim($actual));
-
-    $actual = $crawler->filter('a:nth-child(2)')->text();
-    $this->assertEquals('Second link', trim($actual));
-
-    $actual = $crawler->filter('a:nth-child(3)')->text();
-    $this->assertEquals('Third link - Active', trim($actual));
+    $this->assertEquals('First link - Inactive', trim($links->eq(0)->text()));
+    $this->assertEquals('Second link', trim($links->eq(1)->text()));
+    $this->assertEquals('Third link - Active', trim($links->eq(2)->text()));
   }
 
 }
