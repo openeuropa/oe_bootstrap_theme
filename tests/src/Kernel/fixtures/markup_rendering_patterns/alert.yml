@@ -9,7 +9,6 @@ alert_dimissible_animated:
         style: 'danger'
       heading: 'Well done!'
       message: 'A simple alert. check it out!'
-      icons_path: '/assets/icons/bootstrap-icons.svg'
       icon_name: 'alarm'
   assertions:
     count:
@@ -32,7 +31,6 @@ alert_dimissible_non_animated:
         style: 'info'
       heading: 'Well done!'
       message: 'A simple alert. check it out!'
-      icons_path: '/assets/icons/bootstrap-icons.svg'
       icon_name: 'alarm'
   assertions:
     count:
@@ -56,7 +54,6 @@ alert_not_dimissible:
         style: 'secondary'
       heading: 'Well done!'
       message: 'A simple alert. check it out!'
-      icons_path: '/assets/icons/bootstrap-icons.svg'
       icon_name: 'search'
   assertions:
     count:
