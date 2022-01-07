@@ -3,12 +3,12 @@ inpage_navigation:
   description: 'Inpage navigation adds a navigation element and content element so when scrolling the active element is indicated in the nav part.'
   fields:
     title:
-      type: 'text'
+      type: text
       label: 'Title'
       description: 'Heading of the inpage navigation element.'
       preview: 'Page content'
     links:
-      type: 'array'
+      type: array
       label: 'Links'
       description: 'Array of links used in the navigation part.'
       preview:
@@ -21,7 +21,7 @@ inpage_navigation:
         - label: 'Heading 4'
           path  : '#item-4'
     content:
-      type: 'render'
+      type: render
       label: 'Content'
       description: 'Content part of the inpage navigation.'
       preview: '<h2 id="item-1">Heading 1</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut imperdiet neque, finibus pretium metus. Mauris sed consequat purus, eget facilisis arcu. Vestibulum accumsan turpis sed dui placerat, in varius turpis consequat. Pellentesque porta id lorem sit amet efficitur. Sed id ipsum quis metus venenatis facilisis sit amet at mi.</p><h2 id="item-2">Heading 2 with a long title going on several lines</h2><p>Ut placerat tellus dui, ut tempor orci pulvinar eget. Maecenas hendrerit risus vel tempus tincidunt. Suspendisse vitae ante nibh. Ut faucibus porttitor dui, sit amet pharetra nulla aliquam non. Donec massa mauris, convallis quis nunc nec, ultrices dapibus urna. In vel elementum ipsum, luctus volutpat odio. Maecenas aliquet justo in purus placerat dictum.</p><h2 id="item-3">Heading 3</h2><p>Curabitur vehicula accumsan placerat. Aliquam eget tincidunt ex, sed elementum justo. Sed faucibus ultrices finibus. Vivamus pellentesque nisl ac interdum ultrices. Quisque ornare sit amet est sed pretium. Aliquam eu leo vitae nisi egestas volutpat ut non lectus. Sed condimentum tempus semper.</p><h2 id="item-4">Heading 4</h2><p>Nullam dignissim quam tellus, eget pretium tortor vulputate quis. In vehicula enim vitae lorem fermentum convallis. Phasellus bibendum, turpis sit amet faucibus interdum, dui lorem iaculis enim, ac eleifend odio tellus eget dolor. Maecenas nunc ante, tincidunt nec risus ut, eleifend tempor nisi.</p>'
