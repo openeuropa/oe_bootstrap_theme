@@ -1,71 +1,70 @@
 dropdown:
-  label: "Dropdown"
-  description: "Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. https://v5.getbootstrap.com/docs/5.0/components/dropdowns/"
+  label: 'Dropdown'
+  description: 'Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. For more information visit: https://v5.getbootstrap.com/docs/5.0/components/dropdowns/'
   settings:
     link:
       type: boolean
-      label: link
-      description: Show as a link
+      label: 'link'
+      description: 'When enabled, shows dropdown as a link. False by default.'
       preview: false
     direction:
       type: select
-      label: Direction
+      label: 'Direction'
+      description: 'Sets the direction of the dropdown (if not informed, dropdown by default):'
       options:
-        dropdown: "dropdown"
-        dropup: "dropup"
-        dropend: "dropend"
-        dropstart: "dropstart"
+        dropup: 'dropup'
+        dropend: 'dropend'
+        dropstart: 'dropstart'
     alignment:
       type: select
-      label: Alignment
+      label: 'Alignment'
+      description: 'Sets the alignment of the dropdown menu (if not set, then will be automatically positioned 100% from the top and along the left side of its parent):'
       options:
-        dropdown-menu-end: "dropdown-menu-end"
-        dropdown-menu-sm-end: "dropdown-menu-sm-end"
-        dropdown-menu-md-end: "dropdown-menu-md-end"
-        dropdown-menu-lg-end: "dropdown-menu-lg-end"
-        dropdown-menu-xl-end: "dropdown-menu-xl-end"
-        dropdown-menu-xxl-end: "dropdown-menu-xxl-end"
-        dropdown-menu-start: "dropdown-menu-start"
-        dropdown-menu-sm-start: "dropdown-menu-sm-start"
-        dropdown-menu-md-start: "dropdown-menu-md-start"
-        dropdown-menu-lg-start: "dropdown-menu-lg-start"
-        dropdown-menu-xl-start: "dropdown-menu-xl-start"
-        dropdown-menu-xxl-start: "dropdown-menu-xxl-start"
+        dropdown-menu-end: 'dropdown-menu-end'
+        dropdown-menu-sm-end: 'dropdown-menu-sm-end'
+        dropdown-menu-md-end: 'dropdown-menu-md-end'
+        dropdown-menu-lg-end: 'dropdown-menu-lg-end'
+        dropdown-menu-xl-end: 'dropdown-menu-xl-end'
+        dropdown-menu-xxl-end: 'dropdown-menu-xxl-end'
+        dropdown-menu-start: 'dropdown-menu-start'
+        dropdown-menu-sm-start: 'dropdown-menu-sm-start'
+        dropdown-menu-md-start: 'dropdown-menu-md-start'
+        dropdown-menu-lg-start: 'dropdown-menu-lg-start'
+        dropdown-menu-xl-start: 'dropdown-menu-xl-start'
+        dropdown-menu-xxl-start: 'dropdown-menu-xxl-start'
     dark:
       type: boolean
-      label: Dark mode
-      description: Set dark mode
-      preview: false
+      label: 'Dark mode'
+      description: 'When enabled, sets dark mode. False by default.'
     remove_wrapper:
       type: boolean
-      label: Remove wrapper
-      description: Remove wrapper for this component
-      preview: false
+      label: 'Remove wrapper'
+      description: 'When enabled, removes wrapper for this component. False by default.'
     dropdown_id:
       type: textfield
-      label: Dropdown id
-      preview: ''
+      label: 'Dropdown identifier'
+      description: 'The dropdown unique identifier. If not set, will be added by default by BCL Pattern.'
   fields:
     trigger:
       type: object
-      label: "Dropdown toggle"
-      description: "Object of Button or Link component"
+      label: 'Dropdown toggle'
+      description: 'Object of Button or Link component.'
       preview:
-        label: "Dropdown toggle"
-        path: "#"
+        label: 'Dropdown toggle'
+        path: '#'
     dropdown_items:
       type: array
-      label: "dropdown items"
-      description: "Array of dropdown items"
+      label: 'Dropdown items'
+      description: 'An array of dropdown items.'
       preview:
-        - label: "I'm a link"
-          path: "#"
-        - label: "I'm a button"
+        - label: 'I am a link'
+          path: '#'
+        - label: 'I am a button'
           button: true
         - divider: true
-        - label: "I'm a disabled button"
+        - label: 'I am a disabled button'
           button: true
           disabled: true
-        - label: "I'm a active button"
+        - label: 'I am a active button'
           button: true
           active: true
