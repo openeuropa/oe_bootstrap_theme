@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Theme override to display primary and secondary local tasks.
+ *
+ * @see ./core/themes/stable/templates/navigation/menu-local-tasks.html.twig
+ */
+#}
+{% macro menu_local_tasks(links) %}
+  {{ pattern('nav', {
+    'nav': true,
+    'pills': false,
+    'navbar': false,
+    'tabs': true,
+    'items': links,
+  }) }}
+{% endmacro %}
+
+{% if primary %}
+  <h2 class="visually-hidden">{{ 'Primary tabs'|t }}</h2>
+  {{ _self.menu_local_tasks(primary_links) }}
+{% endif %}
+{% if secondary %}
+  <h2 class="visually-hidden">{{ 'Secondary tabs'|t }}</h2>
+  {{ _self.menu_local_tasks(secondary_links) }}
+{% endif %}
