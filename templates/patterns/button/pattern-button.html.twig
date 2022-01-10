@@ -13,8 +13,8 @@
   {% set attributes_spinner =  create_attribute().addClass('me-1') %}
   {% if not spinner %}
     {% set spinner = {
-      'type': "border",
-      'variant': "info",
+      'type': 'border',
+      'variant': 'info',
       'small': true,
       'attributes': attributes_spinner,
     } %}
@@ -22,7 +22,7 @@
 {% endif %}
 {% include '@oe-bcl/button' with {
   'label': label,
-  'variant': variant,
+  'variant': style,
   'size': size,
   'type': type,
   'outline': outline,
@@ -34,5 +34,6 @@
   'icon_position': icon_position,
   'clean_class': clean_class,
   'spinner': spinner,
-  'show_spinner': show_spinner
-} %}
+  'show_spinner': show_spinner,
+  'attributes': attributes,
+} only %}
