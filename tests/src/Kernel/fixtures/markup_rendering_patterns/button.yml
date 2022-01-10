@@ -1,20 +1,22 @@
 button_dark_with_icon_after_and_assistive_text:
   render:
     '#type': pattern
-    '#id': button
-    '#variant': dark
+    '#id': 'button'
     '#fields':
       settings:
+        style: 'dark'
         icon_position: 'after'
-      type: button
+        button_id: 'special_button'
+      type: 'button'
       label: 'Button label'
       assistive_text: 'Click here'
       icon:
-        name: arrow-right
-        size: s
-        transformation: rotate-0
+        name: 'arrow-right'
+        size: 's'
+        transformation: 'rotate-0'
   assertions:
     count:
+      'button#special_button': 1
       'button[data-drupal-selector="button"]': 1
       'button.btn': 1
       'svg.icon--fluid.ms-2-5': 1
@@ -29,12 +31,12 @@ button_dark_with_icon_after_and_assistive_text:
 button_with_default_spinner_and_clean_class:
   render:
     '#type': pattern
-    '#id': button
+    '#id': 'button'
     '#fields':
       settings:
         clean_class: true
         show_spinner: true
-      type: button
+      type: 'button'
       label: 'Button label'
       assistive_text: 'Click here'
   assertions:
@@ -51,19 +53,19 @@ button_with_default_spinner_and_clean_class:
 button_secondary_with_custom_spinner:
   render:
     '#type': pattern
-    '#id': button
-    '#variant': secondary
+    '#id': 'button'
     '#fields':
       settings:
+        style: 'secondary'
         clean_class: false
         show_spinner: true
-      type: button
+      type: 'button'
       label: 'Button label'
       assistive_text: 'Click here'
       spinner:
-        type: grow
-        variant: success
-        size: large
+        type: 'grow'
+        variant: 'success'
+        size: 'large'
   assertions:
     count:
       'button[data-drupal-selector="button"]': 1
@@ -78,8 +80,7 @@ button_secondary_with_custom_spinner:
 button_primary_small_with_outline_and_disabled:
   render:
     '#type': pattern
-    '#id': button
-    '#variant': primary
+    '#id': 'button'
     '#fields':
       settings:
         clean_class: false
@@ -87,7 +88,7 @@ button_primary_small_with_outline_and_disabled:
         outline: true
         disabled: true
         size: 'sm'
-      type: button
+      type: 'button'
       label: 'Button label'
       assistive_text: 'Click here'
   assertions:
@@ -105,17 +106,17 @@ button_primary_small_with_outline_and_disabled:
 button_warning_large_with_text_nowrap:
   render:
     '#type': pattern
-    '#id': button
-    '#variant': warning
+    '#id': 'button'
     '#fields':
       settings:
+        style: 'warning'
         clean_class: false
         show_spinner: false
         outline: false
         disabled: false
         text_nowrap: true
         size: 'lg'
-      type: button
+      type: 'button'
       label: 'Button label'
       assistive_text: 'Click here'
   assertions:
@@ -135,18 +136,18 @@ button_warning_large_with_text_nowrap:
 button_dark_with_icon_before_and_type_reset:
   render:
     '#type': pattern
-    '#id': button
-    '#variant': dark
+    '#id': 'button'
     '#fields':
       settings:
-        icon_position: before
-      type: reset
+        style: 'dark'
+        icon_position: 'before'
+      type: 'reset'
       label: 'Button label'
       assistive_text: 'Click here'
       icon:
-        name: arrow-right
-        size: s
-        transformation: rotate-0
+        name: 'arrow-right'
+        size: 's'
+        transformation: 'rotate-0'
   assertions:
     count:
       'button[data-drupal-selector="button"]': 1
