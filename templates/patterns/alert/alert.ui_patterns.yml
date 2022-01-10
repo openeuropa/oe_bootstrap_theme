@@ -40,5 +40,5 @@ alert:
     icon_name:
       type: text
       label: 'Icon name'
-      description: 'Add an icon to the alert. Optional'
+      description: 'Add an icon to the alert. Optional.'
       preview: 'alarm'

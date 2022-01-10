@@ -4,8 +4,8 @@ blockquote:
   settings:
     alignment:
       type: select
-      label: 'Text alignment (default: left)'
-      description: 'Align the quote in the page.'
+      label: 'Text alignment'
+      description: 'Align the quote in the page. Left by default.'
       options:
         left: 'left'
         center: 'center'
