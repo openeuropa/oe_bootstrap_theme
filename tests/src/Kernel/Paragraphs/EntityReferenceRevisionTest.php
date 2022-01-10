@@ -98,8 +98,16 @@ class EntityReferenceRevisionTest extends ParagraphsTestBase {
 
     $wrappers = $crawler->filter('div.my-4');
     $this->assertCount(2, $wrappers);
+    // Assertions for field bare twig.
+    $rich_text = $wrappers->eq(1);
+    $this->assertCount(1, $rich_text);
+    $title_rich_text = $rich_text->filter('div.oe-rich-text__field-oe-title');
+    $this->assertCount(0, $title_rich_text);
+    $text_rich_text = $rich_text->filter('div.oe-rich-text__field-oe-text-long');
+    $this->assertCount(0, $text_rich_text);
+    // Assertions for field entity reference revisions twig.
     $this->assertStringContainsString('European Commission', $wrappers->eq(0)->text());
-    $this->assertStringContainsString('Rich text example', $wrappers->eq(1)->text());
+    $this->assertStringContainsString('Rich text example', $rich_text->text());
   }
 
 }
