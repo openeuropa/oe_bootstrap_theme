@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Carousel.
+ * Carousel pattern.
  */
 #}
 {% include '@oe-bcl/carousel' with {
@@ -17,4 +17,5 @@
   'next_label': 'Next'|t,
   'with_indicators': with_indicators,
   'disable_touch': disable_touch,
-} %}
+  'attributes': attributes,
+} only %}
