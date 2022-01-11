@@ -1,45 +1,39 @@
 button_group:
-  label: "Button Group"
-  description: "Group a series of buttons together on a single line with the button group, and super-power them with JavaScript. https://v5.getbootstrap.com/docs/5.0/components/button-group/"
+  label: 'Button Group'
+  description: 'Group a series of buttons together on a single line with the button group, and super-power them with JavaScript. https://v5.getbootstrap.com/docs/5.0/components/button-group/'
   settings:
     toolbar:
-      type: "boolean"
-      label: "Toolbar"
-      description: "Used in the case of a combination of sets of button-groups into more complex components called toolbars."
-      preview: true
+      type: boolean
+      label: 'Toolbar'
+      description: 'Enables support for multiple button groups in a toolbar style. False by default.'
+      preview: false
     vertical:
-      type: "boolean"
-      label: "Vertical"
-      description: "Make a set of buttons appear vertically stacked rather than horizontally."
+      type: boolean
+      label: 'Vertical'
+      description: 'Make a set of buttons appear vertically stacked rather than horizontally. False by default.'
       preview: false
     size:
-      type: "select"
-      label: "Button group size"
+      type: select
+      label: 'Size'
+      description: 'Size of the button group'
       options:
-        sm: "small"
-        md: "medium"
-        lg: "large"
-      preview: "md"
+        sm: 'small'
+        md: 'medium (default)'
+        lg: 'large'
+      preview: 'md'
   fields:
-    toolbar_aria_label:
-      type: "text"
-      label: "Role"
-      description: "The upper group label. Visually hidden. Used with assistive technologies."
-      preview: "Toolbar basic example"
-    aria_label:
-      type: "text"
-      label: "Role"
-      description: "The group label. Visually hidden. Used with assistive technologies."
-      preview: "Basic example"
     items:
-      type: "array"
-      label: "Buttons"
-      description: "An array of 'button' patterns. Or an array of arrays of 'button' patterns, if 'toolbar' variant."
+      type: array
+      label: 'Buttons'
+      description: 'An array of "button" patterns. Or an array of arrays of "button" patterns, if "toolbar" enabled.'
       preview:
         -
-          - label: "Primary"
-          - label: "Secondary"
-            variant: "secondary"
-          - label: "Outline disabled"
+          - label: 'Primary'
+            path: '#primary'
+          - label: 'Secondary'
+            path: '#secondary'
+            style: 'secondary'
+          - label: 'Outline disabled'
+            path: '#outline'
             disabled: true
             outline: true

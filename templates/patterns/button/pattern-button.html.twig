@@ -9,17 +9,6 @@
     path: bcl_icon_path
   })  %}
 {% endif %}
-{%  if show_spinner %}
-  {% set attributes_spinner =  create_attribute().addClass('me-1') %}
-  {% if not spinner %}
-    {% set spinner = {
-      'type': 'border',
-      'variant': 'info',
-      'small': true,
-      'attributes': attributes_spinner,
-    } %}
-  {% endif %}
-{% endif %}
 {% include '@oe-bcl/button' with {
   'label': label,
   'variant': style,
