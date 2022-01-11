@@ -1,41 +1,40 @@
 icon:
-  label: "Icon"
-  description: "Icons available here: https://icons.getbootstrap.com/"
+  label: 'Icon'
+  description: 'A component to show an icon. For more information visit: https://icons.getbootstrap.com/.'
   settings:
     name:
-      type: "select"
-      label: "Name of icon"
+      type: select
+      label: 'Name of icon'
+      description: 'A list of icon names (Empty by default). It can be a set or a subset of icon names that are present in the svg file:'
       options:
-        award: "award"
-        box-arrow-up: "box-arrow-up"
-        check: "check"
-        enevlope: "enevlope"
-        eye: "eye"
-        hand-index: "info"
-      preview: "eye"
+        award: 'award'
+        box-arrow-up: 'box-arrow-up'
+        check: 'check'
+        envelope: 'envelope'
+        eye: 'eye'
+        hand-index: 'info'
+      preview: 'eye'
     size:
-      type: "select"
-      label: "Size of icon"
+      type: select
+      label: 'Size of icon'
+      description: 'A list of icon sizes ("s" by default):'
       options:
-        2xs: "2xs"
-        xs: "xs"
-        s: "s"
-        m: "m"
-        l: "l"
-        xl: "xl"
-        2xl: "2xl"
-        fluid: "fluid"
-      preview: "xl"
+        2xs: '2xs'
+        xs: 'xs'
+        s: 's'
+        m: 'm'
+        l: 'l'
+        xl: 'xl'
+        2xl: '2xl'
+        fluid: 'fluid'
+      preview: 'xl'
     transformation:
-      type: "select"
-      label: "Transformation of icon"
+      type: select
+      label: 'Transformation of icon'
+      description: 'A list of possible icon transformations (Empty by default):'
       options:
-        rotate-90: "rotate-90"
-        rotate-180: "rotate-180"
-        rotate-270: "rotate-270"
-        flip-horizontal: "flip-horizontal"
-        flip-vertical: "flip-vertical"
-  fields:
-    path:
-      type: "text"
-      label: "Path to the svg sprite file"
+        rotate-90: 'rotate-90'
+        rotate-180: 'rotate-180'
+        rotate-270: 'rotate-270'
+        flip-horizontal: 'flip-horizontal'
+        flip-vertical: 'flip-vertical'
