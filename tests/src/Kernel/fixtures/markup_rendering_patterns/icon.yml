@@ -1,30 +1,62 @@
-icon_award_2xl_rotate_90:
+icon_default:
   render:
     '#type': pattern
-    '#id': icon
-    '#fields':
-      settings:
-        name: 'award'
-        size: '2xl'
-        transformation: 'rotate-90'
+    '#id': 'icon'
   assertions:
     count:
-      'svg.icon--2xl': 1
-      'svg.icon--rotate-90': 1
-    contains:
-      'svg': '#award'
-icon_eye_fluid_flip_horizontal:
+      'svg.icon--s': 1
+    equals:
+      'svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#"></use>'
+icon_only_name:
   render:
     '#type': pattern
-    '#id': icon
+    '#id': 'icon'
+    '#fields':
+      settings:
+        name: 'envelope'
+  assertions:
+    count:
+      'svg.icon--s': 1
+    contains:
+      'svg': '#envelope'
+icon_name_with_size:
+  render:
+    '#type': pattern
+    '#id': 'icon'
+    '#fields':
+      settings:
+        name: 'eye'
+        size: '2xs'
+  assertions:
+    count:
+      'svg.icon--2xs': 1
+    contains:
+      'svg': '#eye'
+icon_name_with_size_fluid:
+  render:
+    '#type': pattern
+    '#id': 'icon'
     '#fields':
       settings:
         name: 'eye'
         size: 'fluid'
-        transformation: 'flip-horizontal'
   assertions:
     count:
       'svg.icon--fluid': 1
-      'svg.icon--flip-horizontal': 1
+    contains:
+      'svg': '#eye'
+icon_name_with_size_with_transformation:
+  render:
+    '#type': pattern
+    '#id': 'icon'
+    '#fields':
+      settings:
+        name: 'eye'
+        size: '2xs'
+        transformation: 'rotate-90'
+  assertions:
+    count:
+      'svg.icon--2xs': 1
+      'svg.icon--rotate-90': 1
     contains:
       'svg': '#eye'
