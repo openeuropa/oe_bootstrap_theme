@@ -1,9 +1,21 @@
-<div{{ attributes.addClass('jumbotron bg-light p-5') }}>
+{#
+/**
+ * @file
+ * Jumbotron pattern.
+ */
+#}
+{% set classes = [
+  'jumbotron',
+  'bg-light',
+  'p-5',
+] %}
+
+<div{{ attributes.addClass(classes) }}>
   {% if 'fluid' in variant %}
-  <div class="container">
-    {% endif %}
-    {{ content }}
-    {% if 'fluid' in variant %}
-  </div>
+    <div class="container">
+  {% endif %}
+  {{ content }}
+  {% if 'fluid' in variant %}
+    </div>
   {% endif %}
 </div>
