@@ -42,14 +42,6 @@ button:
       type: boolean
       label: 'Disabled'
       description: 'If true, the button will not be enabled when clicking. False by default.'
-    text_nowrap:
-      type: boolean
-      label: 'Prevent label from wrapping'
-      description: 'If true, the button text should not wrap. False by default.'
-    clean_class:
-      type: boolean
-      label: 'Clean style'
-      description: 'If true, bootstrap button classes will not be added to the button. False by default.'
     icon_position:
       type: select
       label: 'Icon position'
@@ -57,25 +49,12 @@ button:
       options:
         before: 'before'
         after: 'after (default)'
-    show_spinner:
-      type: boolean
-      label: 'Show spinner'
-      description: 'If true, a spinner will be displayed within the button. False by default.'
-    button_id:
-      type: textfield
-      label: 'Button id'
-      description: 'Set an ID for the button. Optional.'
   fields:
     label:
       type: text
       label: 'Button label'
       description: 'The button label.'
       preview: 'Submit'
-    assistive_text:
-      type: text
-      label: 'Additional text visually hidden'
-      description: 'Text inside the button to be visible on assistive technologies.'
-      preview: 'Submit button'
     icon:
       type: array
       label: 'Icon'
@@ -84,7 +63,3 @@ button:
         name: 'arrow-right'
         size: 's'
         transformation: 'rotate-0'
-    spinner:
-      type: array
-      label: 'Spinner'
-      description: 'The spinner object. Only visible if show_spinner is enabled. Optional.'
