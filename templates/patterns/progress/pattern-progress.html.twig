@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Progress.
+ * Progress pattern.
  */
 #}
 {% include '@oe-bcl/progress' with {
@@ -14,4 +14,5 @@
   'label': label,
   'variant': style,
   'bar_label': bar_label,
-} %}
+  'attributes': attributes,
+} only %}
