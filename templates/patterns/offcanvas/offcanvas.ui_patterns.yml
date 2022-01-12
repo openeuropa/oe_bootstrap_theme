@@ -1,66 +1,60 @@
 offcanvas:
-  label: "Offcanvas"
-  description: "Hidden sidebar with activation. https://getbootstrap.com/docs/5.0/components/offcanvas/"
+  label: 'Offcanvas'
+  description: 'Hidden sidebar with activation. For more information visit: https://getbootstrap.com/docs/5.0/components/offcanvas/'
   settings:
     placement:
-      type: "select"
-      label: "Placement of offcanvas"
+      type: select
+      label: 'Offcanvas'
+      description: 'Select the placement of the offcanvas:'
       options:
-        start: "start"
-        end: "end"
-        top: "top"
-        bottom: "bottom"
-      preview: "start"
+        start: 'start'
+        end: 'end'
+        top: 'top'
+        bottom: 'bottom'
+      preview: 'start'
     with_body_scroll:
-      type: "boolean"
-      label: "Enable body scroll when offcanvas is activated"
+      type: boolean
+      label: 'Scroll'
+      description: 'If true, enable body scrolling when offcanvas is displayed. False by default.'
       preview: false
     with_backdrop:
-      type: "boolean"
-      label: "Disable backdrop behind offcanvas"
+      type: boolean
+      label: 'Backdrop'
+      description: 'If true, enable backdrop behind offcanvas. False by default.'
       preview: true
     with_trigger:
-      type: "boolean"
-      label: "Enable a button trigger for offcanvas"
+      type: boolean
+      label: 'Trigger'
+      description: 'If true, enable a button trigger for offcanvas'
       preview: true
     icon_position:
-      type: "select"
-      label: "Icon position"
+      type: select
+      label: 'Icon position'
       options:
-        start: "before"
-        end: "after"
-      preview: "before"
+        before: 'before'
+        after: 'after'
+      preview: 'before'
   fields:
     title:
       type: render
-      label: "Title of offcanvas"
+      label: 'Title'
+      description: 'Offcanvas title.'
       preview:
-        label: Offcanvas title
-        id: "1"
-        heading: "2"
-    offcanvas_id:
-      type: "text"
-      label: "Offcanvas id"
-      preview: offcanvasExample
+        label: 'An offcanvas title'
+        id: 'offCanvasBottomLabel'
+        heading: '5'
     body:
-      type: "render"
-      label: "Offcanvas body content"
-      preview: "This is the offcanvas body content."
-    extra_classes_body:
-      type: "text"
-      label: "Extra classes for offcanvas body"
-    extra_classes_header:
-      type: "text"
-      label: "Extra classes for offcanvas header"
-    extra_classes_close:
-      type: "text"
-      label: "Extra classes for offcanvas close button"
+      type: text
+      label: 'Body'
+      description: 'Offcanvas body content.'
+      preview: 'An interesting content for this offcanvas'
     toggle_button_label:
-      type: "text"
-      label: "The title for the toggle button"
+      type: text
+      label: 'Button label'
+      description: 'The title for the toggle button.'
     icon:
-      type: "array"
-      label: "icon"
-      description: "The button Icon. Optional."
+      type: array
+      label: 'icon'
+      description: 'The button Icon. Optional.'
       preview:
-        name: "filter"
+        name: 'filter'
