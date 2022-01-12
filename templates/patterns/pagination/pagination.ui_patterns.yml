@@ -1,44 +1,47 @@
 pagination:
-  label: "Pagination"
-  description: "Pagination. https://getbootstrap.com/docs/5.0/components/pagination/"
-  fields:
+  label: 'Pagination'
+  description: 'Showing pagination to indicate a series of related content exists across multiple pages. For more information visit: https://getbootstrap.com/docs/5.0/components/pagination/'
+  settings:
     size:
-      type: "text"
-      label: "Size"
-      preview: "sm"
+      type: select
+      label: 'Size'
+      description: 'Size of the pagination:'
+      options:
+        sm: 'Small'
+        lg: 'Large'
+      preview: 'sm'
     alignment:
-      type: "text"
-      label: "Alignement"
-      preview: "center"
-    aria_label:
-      type: "text"
-      label: "Aria label"
-      preview: ""
+      type: select
+      label: 'Alignment'
+      description: 'Align the pagination to:'
+      options:
+        center: 'center'
+        end: 'end'
+      preview: 'center'
     enable_icon:
       type: boolean
-      label: "Enable icon"
+      label: 'Enable icon'
+      description: 'Use icon instead of link labels to previous and next items.'
       preview: false
+  fields:
     prev:
-      type: "render"
-      label: "Previous link"
+      type: array
+      label: 'Previous link'
       preview:
-        path: "#"
-        label: "Previous"
+        path: '#'
+        label: 'Previous'
     next:
-      type: "render"
-      label: "Next link"
+      type: array
+      label: 'Next link'
       preview:
-        path: "#"
-        label: "Next"
+        path: '#'
+        label: 'Next'
     items:
-      type: "array"
-      label: "Pagination items"
+      type: array
+      label: 'Pagination items'
       preview:
-        - path: "#"
-          label: "1"
+        - path: '#'
+          label: '1'
           active: true
-        - path: "#"
-          label: "2"
-    extra_classes:
-      type: "text"
-      label: "Extra classes"
+        - path: '#'
+          label: '2'
