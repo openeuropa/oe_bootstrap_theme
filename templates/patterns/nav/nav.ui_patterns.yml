@@ -5,17 +5,17 @@ nav:
     pills:
       type: boolean
       label: 'Display as pills'
-      description: 'When enabled, the menu items are displayed as pills'
+      description: 'When enabled, the menu items are displayed as pills.'
       preview: true
     tabs:
       type: boolean
       label: 'Display as tabs'
-      description: 'When enabled, the menu items are displayed as tabs'
+      description: 'When enabled, the menu items are displayed as tabs.'
       preview: true
     vertical:
       type: boolean
       label: 'Vertical'
-      description: 'When enabled, the menu is displayed vertically instead of horizontally'
+      description: 'When enabled, the menu is displayed vertically instead of horizontally.'
       preview: false
     full_width:
       type: boolean
@@ -25,25 +25,25 @@ nav:
     alignment:
       type: select
       label: 'Alignment'
-      description: 'Select the alignment of the menu'
+      description: 'Select the alignment of the menu:'
       options:
-        start: start
-        center: center
-        end: end
+        start: 'start'
+        center: 'center'
+        end: 'end'
     tabs_content:
       type: boolean
       label: 'Tabs content'
-      description: 'Display tabs content container'
+      description: 'If true, shows the tabs content container.'
       preview: true
     nav:
       type: boolean
       label: 'Nav'
-      description: 'When enabled, use nav-style for show items instead unordered lists'
+      description: 'If true, use nav style for show items instead unordered lists'
       preview: true
     navbar:
       type: boolean
       label: 'Navbar'
-      description: 'Add a navbar appearance'
+      description: 'When enabled, adds a navbar appearance.'
   fields:
     items:
       type: array
