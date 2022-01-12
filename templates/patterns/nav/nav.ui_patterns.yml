@@ -1,6 +1,6 @@
 nav:
   label: Navigation
-  description: 'https://v5.getbootstrap.com/docs/5.0/components/navs/'
+  description: 'Navs and tabs navigation components. For more information visit: https://v5.getbootstrap.com/docs/5.0/components/navs/'
   settings:
     pills:
       type: boolean
@@ -38,7 +38,7 @@ nav:
     nav:
       type: boolean
       label: 'Nav'
-      description: 'If true, use nav style for show items instead unordered lists'
+      description: 'If true, use nav style for show items instead unordered lists.'
       preview: true
     navbar:
       type: boolean
