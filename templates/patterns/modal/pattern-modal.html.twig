@@ -1,11 +1,10 @@
 {#
 /**
  * @file
- * Modal component.
+ * Modal pattern.
  */
 #}
-
-{% set _modal_id = modal_id ? 'modal_' ~ modal_id : 'modal' %}
+{% set _modal_id = 'modal-' ~ random(1000) %}
 
 {% if button is not empty %}
 {% block trigger %}
@@ -28,4 +27,4 @@
   'header': header,
   'body': body,
   'footer': footer
-} %}
+} only %}
