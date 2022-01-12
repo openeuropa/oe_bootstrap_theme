@@ -2,12 +2,12 @@ accordion:
   label: 'Accordion'
   description: 'List of items that can be clicked to hide or reveal additional content.'
   settings:
-    flush:
+    bare_layout:
       type: boolean
-      label: 'Flush'
+      label: 'Bare layout'
       description: 'Enable to remove the default background-color, some borders, and some rounded corners printing the accordion edge-to-edge with their parent container. False by default.'
       preview: false
-    open_item_id:
+    open_item:
       type: number
       label: 'Accordion item opened by default'
       description: 'Index value of the item to open (starting from 1), all closed by default (0).'

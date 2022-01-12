@@ -4,8 +4,8 @@ accordion_with_flush:
     '#id': accordion
     '#fields':
       settings:
-        open_item_id: 1
-        flush: true
+        open_item: 1
+        bare_layout: true
       items:
         - title: 'Accordion Item #1'
           content: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
@@ -36,8 +36,8 @@ accordion_without_flush:
     '#id': accordion
     '#fields':
       settings:
-        open_item_id: 1
-        flush: false
+        open_item: 1
+        bare_layout: false
       items:
         - title: 'Accordion Item #1'
           content: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
