@@ -1,50 +1,50 @@
 list_item:
-  label: "List item"
-  description: "List item pattern shown as a card."
+  label: 'List item'
+  description: 'List item pattern is meant to show a list item as a card.'
   fields:
     url:
-      type: "Url"
-      label: "URL"
-      description: "List item link URL (A Drupal Url object)"
-      preview: "#"
+      type: Url
+      label: 'URL'
+      description: 'List item link URL (A Drupal Url object).'
+      preview: '#'
     title:
-      type: "text"
-      label: "Title"
-      description: "List item title"
-      preview: "Citizens' Dialogue in Kraków with Commissioner Elżbieta Bieńkowska"
+      type: text
+      label: 'Title'
+      description: 'The title of the list item'
+      preview: 'Citizens Dialogue in Kraków with Commissioner Elżbieta Bieńkowska'
     detail:
-      type: "text"
-      label: "Detail"
-      description: "Description text accompanying the link item."
-      preview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ratio quidem vestra sic cogit. Respondeat totidem verbis. Praeclarae mortes sunt imperatoriae; Sed erat aequius Triarium aliquid de dissensione nostra iudicare. Quae similitudo in genere etiam humano apparet."
+      type: text
+      label: 'Detail'
+      description: 'Description text accompanying the link item.'
+      preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ratio quidem vestra sic cogit. Respondeat totidem verbis. Praeclarae mortes sunt imperatoriae; Sed erat aequius Triarium aliquid de dissensione nostra iudicare. Quae similitudo in genere etiam humano apparet.'
     meta:
-      type: "array"
-      label: "Metadata"
-      description: "Meta information items list"
+      type: array
+      label: 'Metadata'
+      description: 'Meta information items list.'
       preview:
         -
-          label: "Service department"
-          background: "primary"
+          label: 'Service department'
+          background: 'primary'
         -
-          label: "PMO"
-          background: "primary"
+          label: 'PMO'
+          background: 'primary'
     content:
-      type: "text"
-      label: "Content"
-      description: "Content for the list item."
+      type: 'text'
+      label: 'Content'
+      description: 'Content for the list item.'
       preview:
         "#markup": '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">18 November 2019</span>
               </div>'
     image:
-      type: "array"
-      label: "Primary image"
-      description: "Attributes of the image to render"
+      type: array
+      label: 'Primary image'
+      description: 'The image to be rendered.'
       preview:
-        path: "https://placeimg.com/1200/600/arch"
-        alt: "Alternative text for image"
+        path: 'https://placeimg.com/1200/600/arch'
+        alt: 'Alternative text for image'
     date:
-      type: "array"
-      label: "Date"
-      description: "Array containing the date necessary to print date block element."
+      type: array
+      label: 'Date'
+      description: 'Array containing the date necessary to print date block element.'
