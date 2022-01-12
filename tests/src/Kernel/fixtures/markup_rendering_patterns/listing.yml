@@ -1,8 +1,8 @@
 listing_default_1_col:
   render:
     '#type': pattern
-    '#id': listing
-    '#variant': "default"
+    '#id': 'listing'
+    '#variant': 'default'
     '#fields':
       settings:
         columns: 'default-1-col'
@@ -95,8 +95,8 @@ listing_default_1_col:
 listing_default_2_col:
   render:
     '#type': pattern
-    '#id': listing
-    '#variant': "default"
+    '#id': 'listing'
+    '#variant': 'default'
     '#fields':
       settings:
         columns: 'default-2-col'
@@ -223,8 +223,8 @@ listing_default_2_col:
 listing_default_3_col:
   render:
     '#type': pattern
-    '#id': listing
-    '#variant': "default"
+    '#id': 'listing'
+    '#variant': 'default'
     '#fields':
       settings:
         columns: 'default-3-col'
@@ -346,8 +346,8 @@ listing_default_3_col:
 listing_highlight_1_col:
   render:
     '#type': pattern
-    '#id': listing
-    '#variant': "highlight"
+    '#id': 'listing'
+    '#variant': 'highlight'
     '#fields':
       settings:
         columns: 'highlight-1-col'
@@ -438,7 +438,7 @@ listing_highlight_2_col:
   render:
     '#type': pattern
     '#id': listing
-    '#variant': "highlight"
+    '#variant': 'highlight'
     '#fields':
       settings:
         columns: 'highlight-2-col'
@@ -562,8 +562,8 @@ listing_highlight_2_col:
 listing_highlight_3_col:
   render:
     '#type': pattern
-    '#id': listing
-    '#variant': "highlight"
+    '#id': 'listing'
+    '#variant': 'highlight'
     '#fields':
       settings:
         columns: 'highlight-3-col'
@@ -1430,8 +1430,8 @@ listing_default_3_col_alignment_stretch:
 listing_date_1_col:
   render:
     '#type': pattern
-    '#id': listing
-    '#variant': "date"
+    '#id': 'listing'
+    '#variant': 'date'
     '#fields':
       settings:
         columns: 'default-1-col'
@@ -1439,21 +1439,21 @@ listing_date_1_col:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
+          path: '/icons.svg'
+      title: 'Listing item block title'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-3"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-3'
           date:
-            day: "25"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-25"
+            day: '25'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-25'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1462,15 +1462,15 @@ listing_date_1_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-3"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-3'
           date:
-            day: "26"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-26"
+            day: '26'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-26'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1479,15 +1479,15 @@ listing_date_1_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-3"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-3'
           date:
-            day: "27"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-27"
+            day: '27'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-27'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1496,15 +1496,15 @@ listing_date_1_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-3"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-3'
           date:
-            day: "28"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-28"
+            day: '28'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-28'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1528,18 +1528,18 @@ listing_date_1_col:
       'a.text-underline-hover': 4
       'a.d-inline-block': 1
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
-      'time[datetime="2021-05-26"] span:nth-child(1)': "26"
-      'time[datetime="2021-05-26"] span.pb-3.text-uppercase:nth-child(2)': "MAY"
-      'time[datetime="2021-05-26"] span.bg-light.w-100.text-center.py-2.text-dark.rounded-bottom.mb-n1:nth-child(3)': "2021"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
+      'time[datetime="2021-05-26"] span:nth-child(1)': '26'
+      'time[datetime="2021-05-26"] span.pb-3.text-uppercase:nth-child(2)': 'MAY'
+      'time[datetime="2021-05-26"] span.bg-light.w-100.text-center.py-2.text-dark.rounded-bottom.mb-n1:nth-child(3)': '2021'
 listing_date_2_col:
   render:
     '#type': pattern
-    '#id': listing
-    '#variant': "date"
+    '#id': 'listing'
+    '#variant': 'date'
     '#fields':
       settings:
         columns: 'default-2-col'
@@ -1547,21 +1547,21 @@ listing_date_2_col:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
+          path: '/icons.svg'
+      title: 'Listing item block title'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-3"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-3'
           date:
-            day: "25"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-25"
+            day: '25'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-25'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1570,15 +1570,15 @@ listing_date_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-3"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-3'
           date:
-            day: "26"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-26"
+            day: '26'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-26'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1587,15 +1587,15 @@ listing_date_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-3"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-3'
           date:
-            day: "27"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-27"
+            day: '27'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-27'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1604,15 +1604,15 @@ listing_date_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-3"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-3'
           date:
-            day: "28"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-28"
+            day: '28'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-28'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1621,15 +1621,15 @@ listing_date_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis."
-            classes: "mb-3"
+            content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+            classes: 'mb-3'
           date:
-            day: "29"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-29"
+            day: '29'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-29'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1638,15 +1638,15 @@ listing_date_2_col:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id."
-            classes: "mb-3"
+            content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+            classes: 'mb-3'
           date:
-            day: "30"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-30"
+            day: '30'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-30'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1671,20 +1671,20 @@ listing_date_2_col:
       'a.text-underline-hover': 6
       'a.d-inline-block': 1
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
-      'a[href="/example5"]': "Card title 5"
-      'a[href="/example6"]': "Card title 6"
-      'time[datetime="2021-05-26"] span:nth-child(1)': "26"
-      'time[datetime="2021-05-26"] span.pb-3.text-uppercase:nth-child(2)': "MAY"
-      'time[datetime="2021-05-26"] span.bg-light.w-100.text-center.py-2.text-dark.rounded-bottom.mb-n1:nth-child(3)': "2021"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
+      'a[href="/example5"]': 'Card title 5'
+      'a[href="/example6"]': 'Card title 6'
+      'time[datetime="2021-05-26"] span:nth-child(1)': '26'
+      'time[datetime="2021-05-26"] span.pb-3.text-uppercase:nth-child(2)': 'MAY'
+      'time[datetime="2021-05-26"] span.bg-light.w-100.text-center.py-2.text-dark.rounded-bottom.mb-n1:nth-child(3)': '2021'
 listing_date_3_col:
   render:
     '#type': pattern
-    '#id': listing
-    '#variant': "date"
+    '#id': 'listing'
+    '#variant': 'date'
     '#fields':
       settings:
         columns: 'default-3-col'
@@ -1692,20 +1692,20 @@ listing_date_3_col:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
-      title: "Listing item block title"
+          path: '/icons.svg'
+      title: 'Listing item block title'
       items:
         - title:
             content:
               '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-3"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-3'
           date:
-            day: "25"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-25"
+            day: '25'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-25'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1715,13 +1715,13 @@ listing_date_3_col:
             content:
               '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-3"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-3'
           date:
-            day: "26"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-26"
+            day: '26'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-26'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1731,13 +1731,13 @@ listing_date_3_col:
             content:
               '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-3"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-3'
           date:
-            day: "27"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-27"
+            day: '27'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-27'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1747,13 +1747,13 @@ listing_date_3_col:
             content:
               '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-3"
+            content: 'Proinvitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-3'
           date:
-            day: "28"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-28"
+            day: '28'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-28'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1763,13 +1763,13 @@ listing_date_3_col:
             content:
               '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
           text:
-            content: "Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis."
-            classes: "mb-3"
+            content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+            classes: 'mb-3'
           date:
-            day: "29"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-29"
+            day: '29'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-29'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1779,13 +1779,13 @@ listing_date_3_col:
             content:
               '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
           text:
-            content: "Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id."
-            classes: "mb-3"
+            content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+            classes: 'mb-3'
           date:
-            day: "30"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-30"
+            day: '30'
+            month: 'MAY'
+            year: '2021'
+            date_time: '2021-05-30'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -1811,12 +1811,12 @@ listing_date_3_col:
       'a.text-underline-hover': 6
       'a.d-inline-block': 1
     equals:
-      'a[href="/example1"]': "Card title 1"
-      'a[href="/example2"]': "Card title 2"
-      'a[href="/example3"]': "Card title 3"
-      'a[href="/example4"]': "Card title 4"
-      'a[href="/example5"]': "Card title 5"
-      'a[href="/example6"]': "Card title 6"
-      'time[datetime="2021-05-26"] span:nth-child(1)': "26"
-      'time[datetime="2021-05-26"] span.pb-3.text-uppercase:nth-child(2)': "MAY"
-      'time[datetime="2021-05-26"] span.bg-light.w-100.text-center.py-2.text-dark.rounded-bottom.mb-n1:nth-child(3)': "2021"
+      'a[href="/example1"]': 'Card title 1'
+      'a[href="/example2"]': 'Card title 2'
+      'a[href="/example3"]': 'Card title 3'
+      'a[href="/example4"]': 'Card title 4'
+      'a[href="/example5"]': 'Card title 5'
+      'a[href="/example6"]': 'Card title 6'
+      'time[datetime="2021-05-26"] span:nth-child(1)': '26'
+      'time[datetime="2021-05-26"] span:nth-child(2)': 'MAY'
+      'time[datetime="2021-05-26"] span:nth-child(3)': '2021'
