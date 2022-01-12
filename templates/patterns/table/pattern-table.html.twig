@@ -1,22 +1,29 @@
 {#
 /**
  * @file
- * Template for a Table component.
- *
+ * Table pattern.
  */
 #}
+{% set _rows = [] %}
+{% for _row in rows %}
+  {% set _row = _row|merge({
+    variant: _row.style
+  }) %}
+  {% set _rows = _rows|merge([_row]) %}
+{% endfor %}
 {% include '@oe-bcl/table' with {
-  caption: caption,
-  rows: rows,
-  table_head: table_head,
-  table_footer: table_footer,
-  striped: striped,
-  hoverable: hoverable,
-  table_responsive: table_responsive,
-  variant: style,
-  small: small,
-  alignment: alignment,
-  caption_top: caption_top,
-  border: border,
-  borderless: borderless,
-} %}
+  'caption': caption,
+  'rows': _rows,
+  'table_head': table_head,
+  'table_footer': table_footer,
+  'striped': striped,
+  'hoverable': hoverable,
+  'table_responsive': table_responsive,
+  'variant': style,
+  'small': small,
+  'alignment': alignment,
+  'caption_top': caption_top,
+  'border': border,
+  'borderless': borderless,
+  'attributes': attributes,
+} only %}
