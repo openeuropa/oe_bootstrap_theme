@@ -7,7 +7,7 @@ listing:
       label: 'Layout'
       description: 'Selects the number of columns of the list:'
       options:
-        default-1-col: 'default-1-col'
+        default-1-col: 'default-1-col (default)'
         default-2-col: 'default-2-col'
         default-3-col: 'default-3-col'
         highlight-1-col: 'highlight-1-col'
@@ -22,9 +22,9 @@ listing:
     alignment:
       type: select
       label: 'Alignment'
-      description: 'The alignment of the image in the default layout cards (Empty by default):'
+      description: 'The alignment of the image in the default layout cards:'
       options:
-        default: '[empty]'
+        default: '[empty] (default)'
         start: 'start'
         end: 'end'
         center: 'center'
