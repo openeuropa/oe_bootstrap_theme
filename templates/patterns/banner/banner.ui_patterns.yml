@@ -4,12 +4,16 @@ banner:
   variants:
     default:
       label: 'Default text banner'
+      description: 'Gray text banner. No images.'
     primary:
       label: 'Primary text banner'
+      description: 'Text banner with a primary style.'
     image:
       label: 'Image banner'
+      description: 'Banner with text and an image.'
     image_shade:
       label: 'Image shade banner'
+      description: 'Banner with text and a shade image.'
   settings:
     shade:
       type: boolean

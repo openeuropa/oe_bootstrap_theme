@@ -5,8 +5,9 @@ alert:
     style:
       type: select
       label: 'Alert style'
+      description: 'Set an alert style:'
       options:
-        primary: 'primary'
+        primary: 'primary (default)'
         secondary: 'secondary'
         success: 'success'
         danger: 'danger'

@@ -5,9 +5,9 @@ badge:
     background:
       type: select
       label: 'Badge background'
-      description: 'Background color of the badge. Primary by default.'
+      description: 'Set the background color of the badge:'
       options:
-        primary: 'primary'
+        primary: 'primary (default)'
         secondary: 'secondary'
         success: 'success'
         danger: 'danger'
@@ -31,11 +31,6 @@ badge:
       type: text
       label: 'Label'
       description: 'The badge label.'
-      preview: 'New'
-    assistive_text:
-      type: text
-      label: 'Assistive text'
-      description: 'Hidden text for accessibility.'
       preview: 'New'
     url:
       type: text
