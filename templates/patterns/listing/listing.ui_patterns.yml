@@ -1,66 +1,53 @@
 listing:
-  label: "Listing"
-  description: "Listing used for the List item block."
-  variants:
-    default:
-      label: "Default"
-    highlight:
-      label: "Highlight"
-    date:
-      label: "Date"
+  label: 'Listing'
+  description: 'Listing pattern is used for rendering a List item block.'
   settings:
     columns:
-      type: "select"
-      label: "Layout"
-      description: "Select the number of columns of the list"
+      type: select
+      label: 'Layout'
+      description: 'Selects the number of columns of the list:'
       options:
-        default-1-col: "default-1-col"
-        default-2-col: "default-2-col"
-        default-3-col: "default-3-col"
-        highlight-1-col: "highlight-1-col"
-        highlight-2-col: "highlight-2-col"
-        highlight-3-col: "highlight-3-col"
-      preview: "default-3-col"
+        default-1-col: 'default-1-col'
+        default-2-col: 'default-2-col'
+        default-3-col: 'default-3-col'
+        highlight-1-col: 'highlight-1-col'
+        highlight-2-col: 'highlight-2-col'
+        highlight-3-col: 'highlight-3-col'
+      preview: 'default-3-col'
     title_tag:
-      type: "textfield"
-      label: "Title tag"
-      description: "Tag that will be used for the title of the card. It will be 'h4' by default."
-      preview: "h5"
+      type: textfield
+      label: 'Title tag'
+      description: 'Tag that will be used for the title of the card. It will be "h4" by default.'
+      preview: 'h5'
     alignment:
-      type: "select"
-      label: "Alignment"
-      description: "The alignment of the image in the default layout cards."
+      type: select
+      label: 'Alignment'
+      description: 'The alignment of the image in the default layout cards (Empty by default):'
       options:
-        default: "[empty]"
-        start: start
-        end: end
-        center: center
-        baseline: baseline
-        stretch: stretch
-      preview: "start"
+        default: '[empty]'
+        start: 'start'
+        end: 'end'
+        center: 'center'
+        baseline: 'baseline'
+        stretch: 'stretch'
+      preview: 'start'
   fields:
     items:
-      type: "array"
-      label: "Items"
-      description: "Collection of items that will be displayed as a list."
+      type: array
+      label: 'Items'
+      description: 'Collection of items that will be displayed as a list. Each item can hold an image and/or a date. When the date is reported, then a date block is used to present it. Otherwise an image is shown in the card.'
       preview:
         - title:
             content:
               '#markup' : '<a href="/example">Card title 1</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum."
-            classes: "mb-2"
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1002/600/400"
-            alt: "alt img"
-            position: "top"
-
-          date:
-            day: "26"
-            month: "MAY"
-            year: "2021"
-            date_time: "2021-05-26"
+            path: 'https://picsum.photos/seed/1002/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -69,14 +56,14 @@ listing:
         - title:
             content:
               '#markup' : '<a href="/example">Card title 2</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero."
-            classes: "mb-2"
+            content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1003/600/400"
-            alt: "alt img"
-            position: "top"
+            path: 'https://picsum.photos/seed/1003/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -85,14 +72,14 @@ listing:
         - title:
             content:
               '#markup' : '<a href="/example">Card title 3</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis."
-            classes: "mb-2"
+            content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1004/600/400"
-            alt: "alt img"
-            position: "top"
+            path: 'https://picsum.photos/seed/1004/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -101,14 +88,14 @@ listing:
         - title:
             content:
               '#markup' : '<a href="/example">Card title 4</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel."
-            classes: "mb-2"
+            content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1005/600/400"
-            alt: "alt img"
-            position: "top"
+            path: 'https://picsum.photos/seed/1005/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -117,14 +104,14 @@ listing:
         - title:
             content:
               '#markup' : '<a href="/example">Card title 5</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis."
-            classes: "mb-2"
+            content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1006/600/400"
-            alt: "alt img"
-            position: "top"
+            path: 'https://picsum.photos/seed/1006/600/400'
+            alt: 'alt img'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -133,30 +120,30 @@ listing:
         - title:
             content:
               '#markup' : '<a href="/example">Card title 6</a>'
-            tag: "h5"
+            tag: 'h5'
           text:
-            content: "Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id."
-            classes: "mb-2"
+            content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+            classes: 'mb-2'
           image:
-            path: "https://picsum.photos/seed/1007/600/400"
-            alt: "alt img"
-            position: "bottom"
+            path: 'https://picsum.photos/seed/1007/600/400'
+            alt: 'alt img'
+            position: 'bottom'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">18 November 2019</span>
               </div>'
     link:
-      type: "array"
-      label: "Link"
-      description: "Link object"
+      type: array
+      label: 'Link'
+      description: 'Link object.'
       preview:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
+          path: '/icons.svg'
     title:
-      type: "text"
-      label: "Title"
-      description: "List item block title"
-      preview: "Listing item block title"
+      type: 'text'
+      label: 'Title'
+      description: 'List item block title.'
+      preview: 'Listing item block title'
