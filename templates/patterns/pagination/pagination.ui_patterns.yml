@@ -27,18 +27,21 @@ pagination:
     prev:
       type: array
       label: 'Previous link'
+      description: 'Pagination previous link with path and label or icon.'
       preview:
         path: '#'
         label: 'Previous'
     next:
       type: array
       label: 'Next link'
+      description: 'Pagination next link with path and label or icon.'
       preview:
         path: '#'
         label: 'Next'
     items:
       type: array
       label: 'Pagination items'
+      description: 'List of items with path, label, disabled and active to build the pagination.'
       preview:
         - path: '#'
           label: '1'
