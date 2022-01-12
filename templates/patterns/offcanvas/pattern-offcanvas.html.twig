@@ -4,14 +4,10 @@
  * Offcanvas pattern.
  */
 #}
-{% set offcanvas_id = 'offcanvas_' ~ random(1000) %}
-{% if attributes.id is not empty %}
-  {% set offcanvas_id = attributes.id %}
-{% endif %}
 {% include '@oe-bcl/offcanvas' with {
   'title': title,
   'placement': placement,
-  'id': offcanvas_id|default(random_id),
+  'id': offcanvas_id,
   'body': body,
   'with_body_scroll': with_body_scroll,
   'with_backdrop': with_backdrop,
