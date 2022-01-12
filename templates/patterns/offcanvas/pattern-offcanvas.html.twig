@@ -1,9 +1,10 @@
 {#
 /**
  * @file
- * offcanvas.
+ * Offcanvas pattern.
  */
 #}
+{% set offcanvas_id = 'offcanvas_' ~ random(1000) %}
 {% include '@oe-bcl/offcanvas' with {
   'title': title,
   'placement': placement,
@@ -15,7 +16,8 @@
   'extra_classes_header': extra_classes_header,
   'extra_classes_close': extra_classes_close,
   'toggle_button_label': toggle_button_label,
-} %}
+  'attributes': attributes,
+} only %}
 {% if with_trigger %}
   {{ pattern('button', {
     label: toggle_button_label ?: 'Toggle offcanvas',
