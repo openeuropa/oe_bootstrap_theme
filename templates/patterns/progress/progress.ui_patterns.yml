@@ -1,49 +1,58 @@
 progress:
-  label: "Progress"
-  description: "Indicate the progress as a bar. https://getbootstrap.com/docs/5.0/components/progress/"
+  label: 'Progress'
+  description: 'Indicate the progress as a bar. For more information visit: https://getbootstrap.com/docs/5.0/components/progress/'
   settings:
     style:
-      type: "select"
-      label: "Bar style"
+      type: select
+      label: 'Bar style'
+      description: 'Set the bar style:'
       options:
-        primary: "primary"
-        secondary: "secondary"
-        success: "success"
-        danger: "danger"
-        warning: "warning"
-        info: "info"
-        light: "light"
-        dark: "dark"
-      preview: "primary"
+        primary: 'primary'
+        secondary: 'secondary'
+        success: 'success'
+        danger: 'danger'
+        warning: 'warning'
+        info: 'info'
+        light: 'light'
+        dark: 'dark'
+      preview: 'primary'
     striped:
-      type: "boolean"
-      label: "Striped style of state"
+      type: boolean
+      label: 'Striped'
+      description: 'Stripped style for the progress bar. False by default.'
       preview: true
     animated:
-      type: "boolean"
-      label: "Animation on striped style of state"
+      type: boolean
+      label: 'Animated'
+      description: 'Animation on striped bar.'
       preview: true
+    min:
+      type: number
+      label: 'Minimum'
+      description: 'Minimum state of progress bar. 0 by default. '
+      preview: 0
+    max:
+      type: number
+      label: 'Maximum'
+      description: 'Maximum state of progress bar. 100 by default.'
+      preview: 100
   fields:
     label:
-      type: "text"
-      label: "Label in the bar"
-      preview: "This is the label of progress bar"
+      type: text
+      label: 'Label'
+      description: 'Text before the progress bar.'
+      preview: 'This is the label of the progress bar'
     progress:
-      type: "text"
-      label: "Percentage of progress in the bar"
-      preview: "50"
+      type: number
+      label: 'Progress'
+      description: 'Progress of the bar.'
+      preview: 50
     bar_label:
-      type: "text"
-      label: "Text indicating the percentage of progress in the bar"
-      preview: "50%"
+      type: text
+      label: 'Bar label'
+      description: 'Text inside the progress bar'
+      preview: '50%'
     message:
-      type: "text"
-      label: "Optional description text below the progress bar"
-    min:
-      type: "text"
-      label: "Minimum state of prorgress bar"
-      preview: "0"
-    max:
-      type: "text"
-      label: "Maximum state of prorgress bar"
-      preview: "100"
+      type: text
+      label: 'Message'
+      description: 'Optional description text below the progress bar'
