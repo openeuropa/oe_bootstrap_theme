@@ -1,61 +1,56 @@
 link:
-  label: Link
-  description: Link pattern
+  label: 'Link'
+  description: 'A simple link.'
   settings:
     link_style:
       type: select
-      label: Link style
+      label: 'Link style'
+      description: 'The style used to print the link (Empty by default):'
       options:
-        primary: primary
-        secondary: secondary
-        success: success
-        danger: danger
-        warning: warning
-        info: info
-        light: light
-        dark: dark
-        link: link
-      preview: primary
+        primary: 'primary'
+        secondary: 'secondary'
+        success: 'success'
+        danger: 'danger'
+        warning: 'warning'
+        info: 'info'
+        light: 'light'
+        dark: 'dark'
+        link: 'link'
+      preview: 'primary'
     disabled:
       type: boolean
-      label: Disabled
-      description: Disable the link.
+      label: 'Disabled'
+      description: 'When enabled, sets the link as disabled. False by default.'
     standalone:
       type: boolean
-      label: Standalone
-      description: Add extra class to underline the link item when hover.
-      preview: true
+      label: 'Standalone'
+      description: 'When enabled, adds extra class to underline the link item when hover. False by default.'
+      preview: 'true'
     icon_position:
       type: select
-      label: Icon position
+      label: 'Icon position'
+      description: 'The position of the icon in relation to the text of the link:'
       options:
-        before: before
-        after: after
+        before: 'before'
+        after: 'after (default)'
     remove_icon_spacers:
       type: boolean
-      label: Remove icon spacers
-      description: When set to true, prevents margins to be added to the icon.
-    link_id:
-      type: textfield
-      label: Link id
-      description: A specific ID to use for the link.
-      preview: ''
+      label: 'Remove icon spacers'
+      description: 'When enabled, prevents margins to be added to the icon. False by default.'
   fields:
     label:
       type: text
-      label: Label
-      description: The button label
-      preview: Submit
+      label: 'Label'
+      description: 'The button label'
+      preview: 'Submit'
     path:
       type: text
-      label: URL
-      description: The button URL. Optional.
-      preview: http://example.com
+      label: 'URL'
+      description: 'The button URL (optional).'
+      preview: 'http://example.com'
     icon:
       type: array
-      label: icon
-      description: The button Icon. Optional.
+      label: 'icon'
+      description: 'The button Icon (optional).'
       preview:
-        name: arrow-right
-        size: s
-        transformation: rotate-0
+        name: 'arrow-right'
