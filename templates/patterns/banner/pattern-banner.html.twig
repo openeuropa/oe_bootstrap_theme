@@ -14,6 +14,11 @@
 {% if centered  %}
   {% set attributes = attributes.addClass(['text-center'])%}
 {% endif %}
+{% if link %}
+  {% set link = link|merge(
+    {'variant': link.link_style}
+  ) %}
+{% endif %}
 {% include '@oe-bcl/banner' with {
   shade: variant == 'image_shade' ? true : shade,
   hero: hero,

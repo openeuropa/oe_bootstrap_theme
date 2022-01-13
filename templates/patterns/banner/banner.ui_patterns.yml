@@ -49,11 +49,11 @@ banner:
     link:
       type: array
       label: 'Link'
-      description: 'Call to Action button. Optional.'
+      description: 'Link to print a CTA button. Optional.'
       preview:
         label: 'Subscribe'
         path: 'https://example.com'
-        variant: 'primary'
+        link_style: 'warning'
         icon_position: 'after'
         icon:
           name: 'chevron-right'
