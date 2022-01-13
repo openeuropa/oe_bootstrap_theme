@@ -12,13 +12,12 @@ offcanvas_top_with_backdrop_and_trigger:
         label: Offcanvas title
         id: '1'
         heading: '2'
-      offcanvas_id: offcanvasExample
       body: 'This is the offcanvas body content.'
   assertions:
     count:
       'button[data-bs-toggle="offcanvas"]': 1
       'div[data-drupal-selector="offcanvas"]': 1
-      'div[id="offcanvasExample"]': 1
+      'div#bcl-offcanvas': 1
       'div.offcanvas.offcanvas-top': 1
     equals:
       'h2.offcanvas-title': 'Offcanvas title'
@@ -38,12 +37,11 @@ offcanvas_start_with_body_scroll:
         label: Offcanvas title
         id: '1'
         heading: '2'
-      offcanvas_id: offcanvasExample
       body: 'This is the offcanvas body content.'
   assertions:
     count:
       'div[data-drupal-selector="offcanvas"]': 1
-      'div[id="offcanvasExample"]': 1
+      'div#bcl-offcanvas': 1
       'div.offcanvas.offcanvas-start': 1
       'button[data-bs-toggle="offcanvas"]': 0
     equals:
@@ -64,14 +62,13 @@ offcanvas_with_trigger_with_icon:
         label: Offcanvas title
         id: '1'
         heading: '2'
-      offcanvas_id: offcanvasExample
       body: 'This is the offcanvas body content.'
       icon: 'filter'
   assertions:
     count:
       'button[data-bs-toggle="offcanvas"]': 1
       'div[data-drupal-selector="offcanvas"]': 1
-      'div[id="offcanvasExample"]': 1
+      'div#bcl-offcanvas': 1
       'div.offcanvas.offcanvas-top': 1
       'svg.bi': 1
     equals:
