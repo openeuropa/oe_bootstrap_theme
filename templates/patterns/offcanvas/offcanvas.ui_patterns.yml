@@ -36,13 +36,10 @@ offcanvas:
       preview: 'before'
   fields:
     title:
-      type: render
+      type: text
       label: 'Title'
       description: 'Offcanvas title.'
-      preview:
-        label: 'An offcanvas title'
-        id: 'offCanvasBottomLabel'
-        heading: '5'
+      preview: 'An offcanvas title'
     body:
       type: text
       label: 'Body'

@@ -8,10 +8,7 @@ offcanvas_top_with_backdrop_and_trigger:
         with_body_scroll: false
         with_backdrop: true
         with_trigger: true
-      title:
-        label: Offcanvas title
-        id: '1'
-        heading: '2'
+      title: 'Offcanvas title'
       body: 'This is the offcanvas body content.'
   assertions:
     count:
@@ -20,7 +17,7 @@ offcanvas_top_with_backdrop_and_trigger:
       'div#bcl-offcanvas': 1
       'div.offcanvas.offcanvas-top': 1
     equals:
-      'h2.offcanvas-title': 'Offcanvas title'
+      'h5.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
       'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas'
 offcanvas_start_with_body_scroll:
@@ -33,10 +30,7 @@ offcanvas_start_with_body_scroll:
         with_body_scroll: true
         with_backdrop: false
         with_trigger: false
-      title:
-        label: Offcanvas title
-        id: '1'
-        heading: '2'
+      title: 'Offcanvas title'
       body: 'This is the offcanvas body content.'
   assertions:
     count:
@@ -45,7 +39,7 @@ offcanvas_start_with_body_scroll:
       'div.offcanvas.offcanvas-start': 1
       'button[data-bs-toggle="offcanvas"]': 0
     equals:
-      'h2.offcanvas-title': 'Offcanvas title'
+      'h5.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
 offcanvas_with_trigger_with_icon:
   render:
@@ -58,10 +52,7 @@ offcanvas_with_trigger_with_icon:
         with_backdrop: true
         with_trigger: true
         icon_position: before
-      title:
-        label: Offcanvas title
-        id: '1'
-        heading: '2'
+      title: 'Offcanvas title'
       body: 'This is the offcanvas body content.'
       icon: 'filter'
   assertions:
@@ -72,7 +63,7 @@ offcanvas_with_trigger_with_icon:
       'div.offcanvas.offcanvas-top': 1
       'svg.bi': 1
     equals:
-      'h2.offcanvas-title': 'Offcanvas title'
+      'h5.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
     contains:
       'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas'
