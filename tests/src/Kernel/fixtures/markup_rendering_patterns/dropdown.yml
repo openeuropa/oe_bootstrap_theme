@@ -188,8 +188,8 @@ dropdown_link_non_dark_with_remove_wrapper:
         dark: false
         remove_wrapper: true
       trigger:
-        label: 'Dropdown toggle'
-        path: '#'
+        - label: 'Dropdown toggle'
+          path: '#'
       dropdown_items:
         - label: 'A link'
           path: '#'

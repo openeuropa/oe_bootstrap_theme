@@ -42,9 +42,9 @@ dropdown:
       description: 'When enabled, removes wrapper for this component. False by default.'
   fields:
     trigger:
-      type: object
+      type: array
       label: 'Dropdown toggle'
-      description: 'Object of Button or Link component.'
+      description: 'Array of Button or Link pattern.'
       preview:
         label: 'Dropdown toggle'
         path: '#'
