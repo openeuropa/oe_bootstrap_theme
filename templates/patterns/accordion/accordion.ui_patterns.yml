@@ -1,6 +1,6 @@
 accordion:
   label: 'Accordion'
-  description: 'List of items that can be clicked to hide or reveal additional content.'
+  description: 'List of items that can be clicked to hide or reveal additional content. For more information: https://getbootstrap.com/docs/5.0/components/accordion/'
   settings:
     bare_layout:
       type: boolean

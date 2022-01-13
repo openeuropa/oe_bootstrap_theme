@@ -1,6 +1,6 @@
 blockquote:
   label: 'Blockquote'
-  description: 'For quoting blocks of content from another source within your document. https://v5.getbootstrap.com/docs/5.0/content/typography/#blockquotes'
+  description: 'For quoting blocks of content from another source within your document. For more information: https://v5.getbootstrap.com/docs/5.0/content/typography/#blockquotes'
   settings:
     alignment:
       type: select

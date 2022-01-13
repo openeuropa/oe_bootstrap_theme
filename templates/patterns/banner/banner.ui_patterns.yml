@@ -1,6 +1,6 @@
 banner:
   label: 'Banner'
-  description: 'Banner or heroes with text and/or background image and/or with call to action. https://getbootstrap.com/docs/5.0/examples/heroes/'
+  description: 'Banner or heroes with text and/or background image and/or with call to action. For more information: https://getbootstrap.com/docs/5.0/examples/heroes/'
   variants:
     default:
       label: 'Default text banner'
