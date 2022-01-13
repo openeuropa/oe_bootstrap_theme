@@ -4,7 +4,7 @@ banner:
   variants:
     default:
       label: 'Default text banner'
-      description: 'Gray text banner. No images.'
+      description: 'Gray text banner.'
     primary:
       label: 'Primary text banner'
       description: 'Text banner with a primary style.'
