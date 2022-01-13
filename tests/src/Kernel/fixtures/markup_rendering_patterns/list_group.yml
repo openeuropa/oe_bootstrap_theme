@@ -7,12 +7,12 @@ list_group_unordered_without_flush_vertical:
         type: 'unordered'
         flush: false
       items:
-        - variant: 'danger'
+        - link_style: 'danger'
           html: 'Label 1'
-        - variant: 'primary'
+        - link_style: 'primary'
           html: 'Label 2'
-        - html: 'Label 3'
-          variant: 'secondary'
+        - link_style: 'secondary'
+          html: 'Label 3'
           extra_classes: 'd-flex justify-content-between align-items-center'
           badge:
             label: '10'
@@ -41,12 +41,12 @@ list_group_ordered_with_flush_horizontal:
         flush: true
         horizontal: 'horizontal-lg'
       items:
-        - variant: 'danger'
+        - link_style: 'danger'
           html: 'Label 1'
-        - variant: 'primary'
+        - link_style: 'primary'
           html: 'Label 2'
-        - html: 'Label 3'
-          variant: 'secondary'
+        - link_style: 'secondary'
+          html: 'Label 3'
           extra_classes: 'd-flex justify-content-between align-items-center'
           badge:
             label: '10'

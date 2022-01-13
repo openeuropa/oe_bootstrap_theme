@@ -1,12 +1,24 @@
 {#
 /**
  * @file
- * List group component.
+ * List group pattern.
  */
 #}
+{% set _items = [] %}
+
+{% for item in items %}
+  {% if item.html %}
+    {% set item = item|merge({
+      'variant': item.link_style
+    }) %}
+  {% endif %}
+  {% set _items = _items|merge([item]) %}
+{% endfor %}
+
 {% include '@oe-bcl/list-group' with {
   'flush': flush,
   'horizontal': horizontal,
   'type': type,
-  'items': items,
-} %}
+  'items': _items,
+  'attributes': attributes,
+} only %}
