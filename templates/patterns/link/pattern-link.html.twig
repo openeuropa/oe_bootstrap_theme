@@ -4,8 +4,6 @@
  * Link pattern.
  */
 #}
-{% set _link_id = 'link-' ~ random(1000) %}
-
 {% if icon %}
   {% set _icon = icon|merge({
       path: bcl_icon_path
@@ -18,7 +16,7 @@
   'path': path,
   'variant': link_style,
   'disabled': disabled,
-  'id': _link_id,
+  'id': link_id,
   'icon': _icon,
   'icon_position': icon_position,
   'remove_icon_spacers': remove_icon_spacers,
