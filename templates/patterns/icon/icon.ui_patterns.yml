@@ -17,11 +17,11 @@ icon:
     size:
       type: select
       label: 'Size of icon'
-      description: 'A list of icon sizes ("s" by default):'
+      description: 'A list of icon sizes:'
       options:
         2xs: '2xs'
         xs: 'xs'
-        s: 's'
+        s: 's (default)'
         m: 'm'
         l: 'l'
         xl: 'xl'
