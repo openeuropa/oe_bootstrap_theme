@@ -4,8 +4,14 @@
  * Offcanvas pattern.
  */
 #}
+{% if title is not empty %}
+  {% set _title = {
+    'label': title,
+    'heading': 5
+  } %}
+{% endif %}
 {% include '@oe-bcl/offcanvas' with {
-  'title': title,
+  'title': _title,
   'placement': placement,
   'id': offcanvas_id,
   'body': body,
