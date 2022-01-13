@@ -19,7 +19,7 @@ link_secondary_disabled_with_icon_before:
       'a[data-drupal-selector=link]': 1
       'svg.icon--s': 1
       'a.link-secondary': 1
-      'a[id^="link-"]': 1
+      'a#bcl-link': 1
       'a.disabled': 1
       'svg.me-2-5': 1
       'a.text-underline-hover': 0
@@ -44,7 +44,7 @@ link_secondary_disabled_with_icon_after:
       'a[data-drupal-selector=link]': 1
       'svg.icon--s': 1
       'a.link-secondary': 1
-      'a[id^="link-"]': 1
+      'a#bcl-link': 1
       'a.disabled': 1
       'svg.ms-2-5': 1
       'a.text-underline-hover': 0
@@ -69,7 +69,7 @@ link_secondary_disabled_with_icon_without_label_removing_icon_spaces_standalone:
       'a[data-drupal-selector=link]': 1
       'svg.icon--s': 1
       'a.link-secondary': 1
-      'a[id^="link-"]': 1
+      'a#bcl-link': 1
       'a.disabled': 1
       'svg.ms-2-5': 0
       'a.text-underline-hover': 1
@@ -94,7 +94,7 @@ link_secondary_disabled_with_icon_after_without_removing_icon_spaces:
       'a[data-drupal-selector=link]': 1
       'svg.icon--s': 1
       'a.link-secondary': 1
-      'a[id^="link-"]': 1
+      'a#bcl-link': 1
       'a.disabled': 1
       'svg.ms-2-5': 1
       'a.text-underline-hover': 0
@@ -114,7 +114,7 @@ link_dark_enabled_without_icon:
     count:
       'a[data-drupal-selector=link]': 1
       'a.link-dark': 1
-      'a[id^="link-"]': 1
+      'a#bcl-link': 1
       'a.disabled': 0
       'a.text-underline-hover': 0
 link_warning_enabled_without_icon_standalone:
@@ -133,6 +133,6 @@ link_warning_enabled_without_icon_standalone:
     count:
       'a[data-drupal-selector=link]': 1
       'a.link-warning': 1
-      'a[id^="link-"]': 1
+      'a#bcl-link': 1
       'a.disabled': 0
       'a.text-underline-hover': 1
