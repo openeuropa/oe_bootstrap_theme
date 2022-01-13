@@ -131,6 +131,13 @@ function oe_bootstrap_theme_preprocess_pattern_carousel(array &$variables) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_link(array &$variables): void {
+  $variables['link_id'] = Html::getUniqueId('bcl-link');
+}
+
+/**
  * Implements hook_preprocess_HOOK() for description list pattern.
  */
 function oe_bootstrap_theme_preprocess_pattern_description_list(&$variables) {
