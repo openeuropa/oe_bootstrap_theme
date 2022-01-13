@@ -40,10 +40,6 @@ dropdown:
       type: boolean
       label: 'Remove wrapper'
       description: 'When enabled, removes wrapper for this component. False by default.'
-    dropdown_id:
-      type: textfield
-      label: 'Dropdown identifier'
-      description: 'The dropdown unique identifier. If not set, will be added by default by BCL Pattern.'
   fields:
     trigger:
       type: object

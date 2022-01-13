@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Url;
+use Drupal\Component\Utility\Html;
 
 /**
  * Implements hook_preprocess_HOOK() for badge_preview patterns.
@@ -53,6 +54,8 @@ function oe_bootstrap_theme_preprocess_pattern_dropdown(array &$variables) {
       $item['#attributes']['class'][] = 'dropdown-item';
     }
   }
+
+  $variables['dropdown_id'] = Html::getUniqueId('bcl-dropdown');
 }
 
 /**
