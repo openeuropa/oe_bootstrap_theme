@@ -10,8 +10,9 @@ dropdown:
     direction:
       type: select
       label: 'Direction'
-      description: 'Sets the direction of the dropdown (if not informed, dropdown by default):'
+      description: 'Sets the direction of the dropdown:'
       options:
+        dropdown: 'dropdown (default)'
         dropup: 'dropup'
         dropend: 'dropend'
         dropstart: 'dropstart'
@@ -61,6 +62,6 @@ dropdown:
         - label: 'I am a disabled button'
           button: true
           disabled: true
-        - label: 'I am a active button'
+        - label: 'I am an active button'
           button: true
           active: true
