@@ -5,6 +5,9 @@
  * Theme and preprocess functions for patterns.
  */
 
+declare(strict_types = 1);
+
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Url;
 
 /**
@@ -192,4 +195,11 @@ function oe_bootstrap_theme_preprocess_pattern_description_list(&$variables) {
       }
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_accordion(array &$variables): void {
+  $variables['accordion_id'] = Html::getUniqueId('bcl-accordion');
 }
