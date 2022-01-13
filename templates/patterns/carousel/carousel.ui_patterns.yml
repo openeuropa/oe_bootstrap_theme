@@ -1,6 +1,6 @@
 carousel:
   label: 'Carousel'
-  description: 'A slideshow component for cycling through elements, like a carousel. https://v5.getbootstrap.com/docs/5.0/components/carousel/'
+  description: 'A slideshow component for cycling through elements, like a carousel. For more information: https://v5.getbootstrap.com/docs/5.0/components/carousel/'
   settings:
     fade:
       type: boolean
