@@ -41,10 +41,9 @@ carousel:
     slides:
       type: array
       label: 'Slides'
-      description: 'Each slide is a image with src and alt, caption, caption classes and interval of slide movement.'
+      description: 'Each slide is an image, a caption and interval of slide movement.'
       preview:
         - caption: 'First slide label'
-          caption_classes: 'class-1 class-2'
           interval: 0
           image:
             - theme: 'image'
@@ -53,7 +52,6 @@ carousel:
               attributes:
                 class: 'd-block w-100'
         - caption: 'Second slide label'
-          caption_classes: 'class-1 class-2'
           interval: 0
           image:
             - theme: 'image'
