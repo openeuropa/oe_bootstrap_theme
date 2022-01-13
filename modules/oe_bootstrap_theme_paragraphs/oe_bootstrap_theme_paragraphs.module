@@ -348,11 +348,9 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables)
 }
 
 /**
-<<<<<<< HEAD
  * Implements hook_preprocess_paragraph() for paragraph--oe-content-row--variant-inpage-navigation.html.twig.
  */
-function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void
-{
+function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
