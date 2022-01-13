@@ -1,31 +1,31 @@
 links_block:
-    label: "Links block"
-    description: "List of links with an optional header."
+    label: 'Links block'
+    description: 'List of links with an optional title.'
     settings:
       background:
-        label: "Background"
-        type: "select"
+        label: 'Background'
+        type: select
+        description: 'Determines the background of the block:'
         options:
-          gray: "gray"
-          transparent: "transparent"
-        preview: "gray"
+          gray: 'gray (default)'
+          transparent: 'transparent'
       orientation:
-        label: "Orientation"
-        type: "select"
+        label: 'Orientation'
+        type: 'select'
+        description: 'Determines if the list of links is shown vertically or horizontally:'
         options:
-          vertical: "vertical"
-          horizontal: "horizontal"
-        preview: "vertical"
+          vertical: 'vertical (default)'
+          horizontal: 'horizontal'
     fields:
       title:
-        type: "text"
-        label: "Title"
-        description: "Link block title"
-        preview: "More information"
+        type: text
+        label: 'Title'
+        description: 'Link block title (optional).'
+        preview: 'More information'
       links:
-        type: "array"
-        label: "Links"
-        description: "Array of links"
+        type: array
+        label: 'Links'
+        description: 'Array of links.'
         preview:
           - label: 'European Commission'
             url: 'http://link-1.com'
