@@ -7,13 +7,15 @@
  */
 #}
 {% set _content_classes = "bg-light p-3" %}
+
 {% if image %}
   {% set imagestyle = {
-    '#theme':      'image',
-    '#uri':        image.src,
-    '#alt':        image.alt,
+    '#theme': 'image',
+    '#uri': image.src,
+    '#alt': image.alt,
   } %}
 {% endif %}
+
 {% if content.field_oe_text_long['#items'] %}
   {% set inside_text = true %}
 {% endif %}
