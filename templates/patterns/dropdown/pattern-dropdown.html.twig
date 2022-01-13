@@ -4,6 +4,13 @@
  * Dropdown pattern.
  */
 #}
+{% if link == true and trigger is iterable %}
+  {% if trigger.link_style %}
+    {% set trigger = trigger|merge({
+      'variant': trigger.link_style
+    }) %}
+  {% endif %}
+{% endif %}
 
 {% include '@oe-bcl/dropdown' with {
   'trigger': trigger,
