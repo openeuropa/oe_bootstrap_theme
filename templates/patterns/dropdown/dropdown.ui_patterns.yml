@@ -6,7 +6,6 @@ dropdown:
       type: boolean
       label: 'link'
       description: 'When enabled, shows dropdown as a link. False by default.'
-      preview: false
     direction:
       type: select
       label: 'Direction'
