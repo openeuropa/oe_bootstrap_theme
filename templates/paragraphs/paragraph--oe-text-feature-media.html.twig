@@ -8,7 +8,7 @@
 #}
 
 {% if image %}
-  {% set imagestyle = {
+  {% set _image = {
     '#theme': 'image',
     '#uri': image.src,
     '#alt': image.alt,
@@ -22,7 +22,7 @@
 {{ pattern('featured_media', {
   'inside_text': inside_text,
   'embedded_media': embedded_media,
-  'image': imagestyle ? imagestyle|render : '',
+  'image': _image ? _image|render : '',
   'poster_image': poster_image,
   'content': content,
   'ratio': ratio,
