@@ -1,119 +1,100 @@
 card:
-  label: "Card"
-  description: "A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. https://v5.getbootstrap.com/docs/5.0/components/card"
+  label: 'Card'
+  description: 'A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. https://v5.getbootstrap.com/docs/5.0/components/card'
   variants:
     default:
-      label: Default
-    horizontal:
-      label: Horizontal
+      label: 'Default'
+      description: 'Standard bootstrap card.'
     search:
-      label: Search
+      label: 'Search'
+      description: 'Card with special behaviour for print search results items.'
   settings:
     style:
       type: select
-      label: Card style
+      label: 'Card style'
+      description: 'Sets the card style:'
       options:
-        primary: primary
-        secondary: secondary
-        success: success
-        danger: danger
-        warning: warning
-        info: info
-        light: light
-        dark: dark
-    border_variant:
+        primary: 'primary'
+        secondary: 'secondary'
+        success: 'success'
+        danger: 'danger'
+        warning: 'warning'
+        info: 'info'
+        light: 'light'
+        dark: 'dark'
+    border_color:
       type: select
-      label: Card border style
+      label: 'Card border color'
+      description: 'Sets the card border color:'
       options:
-        primary: primary
-        secondary: secondary
-        success: success
-        danger: danger
-        warning: warning
-        info: info
-        light: light
-        dark: dark
+        primary: 'primary'
+        secondary: 'secondary'
+        success: 'success'
+        danger: 'danger'
+        warning: 'warning'
+        info: 'info'
+        light: 'light'
+        dark: 'dark'
     text_color:
       type: select
-      label: Card text color
+      label: 'Card text color'
+      description: 'Sets the card text color:'
       options:
-        dark: dark
-        white: white
+        dark: 'dark'
+        white: 'white'
     horizontal:
       type: boolean
-      label: "Horizontal"
-      description: "Horizontal card"
+      label: 'Horizontal'
+      description: 'If true, the card will be printed horizontally instead vertically. False by default.'
       preview: false
   fields:
     title:
-      type: "array"
-      label: "Title"
-      description: "Card title [content, tag, classes]"
-      preview:
-        content: "Title card"
-        tag: "h5"
+      type: text
+      label: 'Title'
+      description: 'Card title.'
+      preview: 'Title card'
     subtitle:
-      type: "array"
-      label: "Subtitle"
-      description: "Card subtitle [content, tag, classes]"
-      preview:
-        content: "Subtitle card"
-        classes: "mb-2"
+      type: text
+      label: 'Subtitle'
+      description: 'Card subtitle.'
+      preview: 'Subtitle card'
     text:
-      type: "array"
-      label: "Text"
-      description: "Card text [content, tag, classes]"
-      preview:
-        content: "Text card with longer text which is supported"
-        classes: "mb-2"
+      type: text
+      label: 'Text'
+      description: 'Card text.'
+      preview: 'Text card with longer text which is supported'
     image:
-      type: "array"
-      label: "Image"
-      description: "Card image [path, alt, position]"
+      type: array
+      label: 'Image'
+      description: 'Card image with path, alt and position.'
       preview:
-        path: "https://placeimg.com/1000/500/people"
-        alt: "Alternative text for card image"
-        position: "top"
-        rounded: 3
+        path: 'https://placeimg.com/1000/500/people'
+        alt: 'Alternative text for card image'
+        position: 'top'
     content:
-      type: "render"
-      label: "Content"
-      description: "Card content"
-      preview: "<button class='btn btn-primary'>Custom action</button>"
+      type: 'render'
+      label: 'Content'
+      description: 'Card content'
+      preview: '<button class="btn btn-primary">Custom action</button>'
     card_header:
-      type: "render"
-      label: "Card header"
-      description: "Card header content"
-      preview: "Header of card"
+      type: text
+      label: 'Card header'
+      description: 'Card header content'
+      preview: 'Header of card'
     card_footer:
-      type: "render"
-      label: "Card footer"
-      description: "Card footer content"
-      preview: "Footer of card"
-    horizontal_grid:
-      type: "array"
-      label: "Horizontal grid"
-      description: "Horizontal grid layout [left_col, right_col, gutter]"
-    extra_classes_body:
-      type: "text"
-      label: "Extra classes for card body"
-      preview: "body-class"
-    extra_classes_header:
-      type: "text"
-      label: "Extra classes for card header"
-      preview: "header-class"
-    extra_classes_footer:
-      type: "text"
-      label: "Extra classes for card footer"
-      preview: "footer-class"
+      type: text
+      label: 'Card footer'
+      description: 'Card footer content'
+      preview: 'Footer of card'
     badges:
-      type: "array"
-      label: "Badges for the card"
+      type: array
+      label: 'Badges'
+      description: 'Badges for the card.'
       preview:
-        - label: "Primary badge"
-        - label: "Secondary badge"
-          assistive_text: "Assistive text for secondary badge"
+        - label: 'Primary badge'
+        - label: 'Secondary badge'
           rounded_pill: true
     date:
-      type: "array"
-      label: 'Date that will be rendered with the "Date Block" pattern.'
+      type: array
+      label: 'Date'
+      description: 'Date that will be rendered with the "Date Block" pattern.'
