@@ -2,6 +2,18 @@ featured_media:
   label: 'Featured Media'
   description: 'Pattern used for the presentation of Featured media paragraph. Media types can be iframe, video, image or featured item (media + text).'
   settings:
+    alignment:
+      type: select
+      label: 'Alignment'
+      description: 'Alignment when media is wrapped inside text container:'
+      options:
+        left: 'left'
+        right: 'right'
+    inside_text:
+      label: 'Inside text'
+      description: 'The wrapper media inside the text container'
+      type: boolean
+      preview: false
     ratio:
       type: select
       label: 'Ratio'
@@ -11,19 +23,12 @@ featured_media:
         4x3: '4x3'
         16x9: '16x9'
         21x9: '21x9'
-    inside_text:
-      label: 'Inside text'
-      description: 'The wrapper media inside the text container'
-      type: boolean
-      preview: false
-    alignment:
-      type: select
-      label: 'Alignment'
-      description: 'Alignment when media is wrapped inside text container:'
-      options:
-        left: 'left'
-        right: 'right'
   fields:
+    caption:
+      type: text
+      label: 'Caption'
+      description: 'Description of the featured media.'
+      preview: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.'
     embedded_media:
       type: text
       label: 'Embedded media'
@@ -36,19 +41,37 @@ featured_media:
         - theme: 'image'
           uri: 'https://placeimg.com/1200/600/tech'
           alt: 'Alternative text for paragraph image'
+    link:
+      type: array
+      label: 'Link'
+      description: 'Call to action link with icon.'
+      preview:
+        label: 'View all'
+        path: '#'
     poster_image:
       type: text
       label: 'Poster image'
       description: 'The poster image used for the video variant.'
-    content:
-      type: text
-      label: 'Content'
-      description: 'Content under featured media.'
-      preview: 'The media description text goes here.'
     sources:
       type: array
       label: 'Sources'
       description: 'The sources for embedded media.'
+    title:
+      type: text
+      label: "Heading"
+      description: "The heading, displayed on the top."
+      preview: "Lorem ipsum"
+    text:
+      type: text
+      label: 'Full text'
+      description: 'The full rich text.'
+      preview:
+        '#markup': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non enim iam stirpis bonum quaeret, sed animalis. Ego vero volo in virtute vim esse quam maximam; <b>A mene tu?</b> Quid, quod res alia tota est? Duo Reges: constructio interrete.</p>'
+    text_title:
+      type: text
+      label: 'Title'
+      description: 'The title, displayed above text and media.'
+      preview: 'Lorem ipsum'
     tracks:
       type: array
       label: 'Tracks'
