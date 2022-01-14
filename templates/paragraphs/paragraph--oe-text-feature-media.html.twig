@@ -6,7 +6,6 @@
  * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
  */
 #}
-{% set _content_classes = "bg-light p-3" %}
 
 {% if image %}
   {% set imagestyle = {
@@ -26,7 +25,6 @@
   'image': imagestyle ? imagestyle|render : '',
   'poster_image': poster_image,
   'content': content,
-  'content_classes': _content_classes,
   'ratio': ratio,
   'sources': sources,
   'tracks': tracks,

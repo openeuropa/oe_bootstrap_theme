@@ -1,11 +1,11 @@
 featured_media:
   label: 'Featured Media'
-  description: 'Featured Media'
+  description: 'Pattern used for the presentation of Featured media paragraph. Media types can be iframe, video, image or featured item (media + text).'
   settings:
     ratio:
       type: select
       label: 'Ratio'
-      description: 'Ratio for iframe:'
+      description: 'The ratio for iframe:'
       options:
         1x1: '1x1'
         4x3: '4x3'
@@ -13,13 +13,13 @@ featured_media:
         21x9: '21x9'
     inside_text:
       label: 'Inside text'
-      description: 'Wrapper media inside text container'
+      description: 'The wrapper media inside the text container'
       type: boolean
       preview: false
     alignment:
       type: select
       label: 'Alignment'
-      description: 'Alignment when media is wrapper inside text container:'
+      description: 'Alignment when media is wrapped inside text container:'
       options:
         left: 'left'
         right: 'right'
@@ -27,34 +27,29 @@ featured_media:
     embedded_media:
       type: text
       label: 'Embedded media'
-      description: 'Embedded media.'
+      description: 'The embedded media.'
     image:
       type: ImageValueObject
       label: 'Image'
-      description: 'Image for the image variant.'
+      description: 'The image for the image variant.'
       preview:
         - theme: 'image'
           uri: 'https://placeimg.com/1200/600/tech'
           alt: 'Alternative text for paragraph image'
     poster_image:
       type: text
-      label: 'poster image'
-      description: 'Poster image used for the video variant.'
+      label: 'Poster image'
+      description: 'The poster image used for the video variant.'
     content:
       type: text
       label: 'Content'
       description: 'Content under featured media.'
-      preview: 'Media description text goes here.'
-    content_classes:
-      type: text
-      label: 'Content classes'
-      description: 'Classes for content under featured media.'
-      preview: 'bg-light p-3'
+      preview: 'The media description text goes here.'
     sources:
       type: array
       label: 'Sources'
-      description: 'Sources for embedded media.'
+      description: 'The sources for embedded media.'
     tracks:
       type: array
       label: 'Tracks'
-      description: 'Embed Text Track element.'
+      description: 'The embed Text track element.'

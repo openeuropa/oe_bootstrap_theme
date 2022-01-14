@@ -4,13 +4,13 @@
  * Featured media pattern.
  */
 #}
-{% macro featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) %}
+{% macro featured_media(embedded_media, image, poster_image, caption, ratio, sources, tracks) %}
   {% include '@oe-bcl/featured-media' with {
     'embedded_media': embedded_media,
     'image': image,
     'poster_image': poster_image,
     'content': caption,
-    'content_classes': content_classes,
+    'content_classes': 'bg-light p-3',
     'ratio': ratio,
     'sources': sources,
     'tracks': tracks,
@@ -34,13 +34,13 @@
       {{ content.field_oe_link }}
     </div>
     <div class="col-12 col-md-6 {{ video_alignment_class }}">
-      {{ _self.featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) }}
+      {{ _self.featured_media(embedded_media, image, poster_image, caption, ratio, sources, tracks) }}
     </div>
   </div>
 {% else %}
   <div class="row">
     <div class="col-12 col-md-4">
-      {{ _self.featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) }}
+      {{ _self.featured_media(embedded_media, image, poster_image, caption, ratio, sources, tracks) }}
     </div>
   </div>
 {% endif %}
