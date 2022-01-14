@@ -1,22 +1,16 @@
-card_warning_horizontal_with_border_variant_info_and_text_white_with_rounded_image:
+card_warning_horizontal_with_border_color_info_and_text_white_with_rounded_image:
   render:
     '#type': pattern
     '#id': card
-    '#variant': 'horizontal'
     '#fields':
       settings:
-        style: warning
-        border_variant: info
-        text_color: white
-      title:
-        content: 'Title card'
-        tag: 'h5'
-      subtitle:
-        content: 'Subtitle card'
-        classes: 'mb-2'
-      text:
-        content: 'Text card with longer text which is supported'
-        classes: 'mb-2'
+        style: 'warning'
+        border_color: 'info'
+        text_color: 'white'
+        horizontal: true
+      title: 'Title card'
+      subtitle: 'Subtitle card'
+      text: 'Text card with longer text which is supported'
       image:
         path: 'https://placeimg.com/1000/500/arch'
         alt: 'Alternative text for card image'
@@ -31,10 +25,6 @@ card_warning_horizontal_with_border_variant_info_and_text_white_with_rounded_ima
           label: 'Custom action'
       card_header: 'Header of card'
       card_footer: 'Footer of card'
-      horizontal_grid:
-        left_col_classes: 'col-4'
-        right_col_classes: 'col-8'
-        gutter: '1'
   assert:
     count:
       'div.card.text-white': 1
@@ -42,8 +32,8 @@ card_warning_horizontal_with_border_variant_info_and_text_white_with_rounded_ima
       'div.card.border-info': 1
       'div[data-drupal-selector="card"]': 1
       'img[alt="Alternative text for card image"]': 1
-      'div.row.g-1 div.col-4': 1
-      'div.row.g-1 div.col-8': 1
+      'div.row.g-0 div.col-4': 1
+      'div.row.g-0 div.col-8': 1
       'img.card-img-top.rounded-3': 1
     equals:
       'div.card-header': 'Header of card'
@@ -52,25 +42,19 @@ card_warning_horizontal_with_border_variant_info_and_text_white_with_rounded_ima
       'p.card-text': 'Text card with longer text which is supported'
     contains:
       'button.btn-primary': 'Custom action'
-card_default_secondary_vertical_with_border_variant_success_and_text_dark:
+card_default_secondary_vertical_with_border_color_success_and_text_dark:
   render:
     '#type': pattern
     '#id': card
     '#fields':
       settings:
         style: secondary
-        border_variant: success
+        border_color: success
         text_color: dark
         horizontal: false
-      title:
-        content: 'Title card'
-        tag: 'h5'
-      subtitle:
-        content: 'Subtitle card'
-        classes: 'mb-2'
-      text:
-        content: 'Text card with longer text which is supported'
-        classes: 'mb-2'
+      title: 'Title card'
+      subtitle: 'Subtitle card'
+      text: 'Text card with longer text which is supported'
       image:
         path: 'https://placeimg.com/1000/500/arch'
         alt: 'Alternative text for card image'
@@ -106,8 +90,7 @@ card_variant_search:
     '#id': card
     '#variant': search
     '#fields':
-      title:
-        content: 'Title card'
+      title: 'Title card'
       text: 'Text card with longer text which is supported'
       image:
         '#markup': 'https://placeimg.com/1000/500/arch'
@@ -118,7 +101,7 @@ card_variant_search:
           '#title': 'Category 2'
   assert:
     count:
-      'div.listing-item.border-bottom.border-md-0.border-0.card.text-dark.bg-search': 1
+      'div.listing-item.border-bottom.border-md-0.border-0.card.text-dark': 1
       'div.col-md-3.col-lg-2.rounded.mw-listing-img': 1
       'div.col-md-9.col-lg-10': 1
       'div.card-body.p-0.pb-md-0.pb-3': 1
