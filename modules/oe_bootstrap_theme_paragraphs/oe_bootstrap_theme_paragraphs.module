@@ -397,7 +397,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_description_list(array &$va
   $variables['title'] = $paragraph->get('field_oe_title')->value ?? '';
   $variables['orientation'] = $paragraph->get('oe_bt_orientation')->value;
 
-  foreach ($paragraph->get('field_oe_description_list_items') as $delta => $item) {
+  foreach ($paragraph->get('field_oe_description_list_items') as $item) {
     $variables['items'][] = [
       'term' => [
         [
@@ -406,7 +406,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_description_list(array &$va
       ],
       'definition' => $item->description,
     ];
-    $variables['title_tag'] = 'h4';
   }
 }
 
