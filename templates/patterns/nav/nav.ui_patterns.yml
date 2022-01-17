@@ -16,7 +16,6 @@ nav:
       type: boolean
       label: 'Vertical'
       description: 'When enabled, the menu is displayed vertically instead of horizontally.'
-      preview: false
     full_width:
       type: boolean
       label: 'Full width'
@@ -38,7 +37,7 @@ nav:
     nav:
       type: boolean
       label: 'Nav'
-      description: 'If true, use nav style for show items instead unordered lists.'
+      description: 'When enabled, use navigation style for show items instead unordered lists.'
       preview: true
     navbar:
       type: boolean

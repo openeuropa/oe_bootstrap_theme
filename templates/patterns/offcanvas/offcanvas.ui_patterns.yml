@@ -16,7 +16,6 @@ offcanvas:
       type: boolean
       label: 'Scroll'
       description: 'If true, enable body scrolling when offcanvas is displayed. False by default.'
-      preview: false
     with_backdrop:
       type: boolean
       label: 'Backdrop'
@@ -30,6 +29,7 @@ offcanvas:
     icon_position:
       type: select
       label: 'Icon position'
+      description: 'Sets the position of the icon regarding the text:'
       options:
         before: 'before'
         after: 'after'
