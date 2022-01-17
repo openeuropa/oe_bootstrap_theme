@@ -45,7 +45,7 @@ listing:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1002/600/400'
+            path: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
             position: 'top'
           content:
@@ -61,7 +61,7 @@ listing:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1003/600/400'
+            path: 'https://placeimg.com/600/400/arch'
             alt: 'alt img'
             position: 'top'
           content:
@@ -77,7 +77,7 @@ listing:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1004/600/400'
+            path: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
             position: 'top'
           content:
@@ -93,7 +93,7 @@ listing:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1005/600/400'
+            path: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
             position: 'top'
           content:
@@ -109,7 +109,7 @@ listing:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1006/600/400'
+            path: 'https://placeimg.com/600/400/tech'
             alt: 'alt img'
             position: 'top'
           content:
@@ -125,7 +125,7 @@ listing:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1007/600/400'
+            path: 'https://placeimg.com/600/400/tech/sepia'
             alt: 'alt img'
             position: 'bottom'
           content:

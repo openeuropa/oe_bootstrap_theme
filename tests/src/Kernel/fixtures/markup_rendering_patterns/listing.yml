@@ -21,7 +21,7 @@ listing_default_1_col:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1002/600/400'
+            path: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
             rounded: 1
           content:
@@ -37,7 +37,7 @@ listing_default_1_col:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1003/600/400'
+            path: 'https://placeimg.com/600/400/arch'
             alt: 'alt img'
             rounded: 1
           content:
@@ -65,7 +65,7 @@ listing_default_1_col:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1005/600/400'
+            path: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
             rounded: 1
           content:
@@ -115,7 +115,7 @@ listing_default_2_col:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1002/600/400'
+            path: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
             rounded: 1
           content:
@@ -143,7 +143,7 @@ listing_default_2_col:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1004/600/400'
+            path: 'https://placeimg.com/600/400/nature/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -159,7 +159,7 @@ listing_default_2_col:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1005/600/400'
+            path: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
             rounded: 1
           content:
@@ -175,7 +175,7 @@ listing_default_2_col:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1006/600/400'
+            path: 'https://placeimg.com/600/400/people/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -191,7 +191,7 @@ listing_default_2_col:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1007/600/400'
+            path: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
             rounded: 1
           content:
@@ -242,7 +242,7 @@ listing_default_3_col:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1002/600/400'
+            path: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
             rounded: 1
           content:
@@ -268,7 +268,7 @@ listing_default_3_col:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1004/600/400'
+            path: 'https://placeimg.com/600/400/nature/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -283,7 +283,7 @@ listing_default_3_col:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1005/600/400'
+            path: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
             rounded: 1
           content:
@@ -298,7 +298,7 @@ listing_default_3_col:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1006/600/400'
+            path: 'https://placeimg.com/600/400/people/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -313,7 +313,7 @@ listing_default_3_col:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1007/600/400'
+            path: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
             rounded: 1
           content:
@@ -366,7 +366,7 @@ listing_highlight_1_col:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1002/600/400'
+            path: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
             position: 'top'
           content:
@@ -382,7 +382,7 @@ listing_highlight_1_col:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1003/600/400'
+            path: 'https://placeimg.com/600/400/arch'
             alt: 'alt img'
             position: 'top'
           content:
@@ -410,7 +410,7 @@ listing_highlight_1_col:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1005/600/400'
+            path: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
             position: 'bottom'
           content:
@@ -457,7 +457,7 @@ listing_highlight_2_col:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1002/600/400'
+            path: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
             position: 'top'
           content:
@@ -485,7 +485,7 @@ listing_highlight_2_col:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1004/600/400'
+            path: 'https://placeimg.com/600/400/nature/sepia'
             alt: 'alt img'
             position: 'top'
           content:
@@ -501,7 +501,7 @@ listing_highlight_2_col:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1005/600/400'
+            path: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
             position: 'top'
           content:
@@ -517,7 +517,7 @@ listing_highlight_2_col:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1006/600/400'
+            path: 'https://placeimg.com/600/400/people/sepia'
             alt: 'alt img'
             position: 'top'
           content:
@@ -533,7 +533,7 @@ listing_highlight_2_col:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1007/600/400'
+            path: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
             position: 'bottom'
           content:
@@ -582,7 +582,7 @@ listing_highlight_3_col:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1002/600/400'
+            path: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
             position: 'top'
           content:
@@ -610,7 +610,7 @@ listing_highlight_3_col:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1004/600/400'
+            path: 'https://placeimg.com/600/400/nature/sepia'
             alt: 'alt img'
             position: 'top'
           content:
@@ -626,7 +626,7 @@ listing_highlight_3_col:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1005/600/400'
+            path: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
             position: 'top'
           content:
@@ -642,7 +642,7 @@ listing_highlight_3_col:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1006/600/400'
+            path: 'https://placeimg.com/600/400/people/sepia'
             alt: 'alt img'
             position: 'top'
           content:
@@ -658,7 +658,7 @@ listing_highlight_3_col:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-2'
           image:
-            path: 'https://picsum.photos/seed/1007/600/400'
+            path: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
             position: 'bottom'
           content:
@@ -707,7 +707,7 @@ listing_default_3_col_tag:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1002/600/400'
+            path: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
             rounded: 1
           content:
@@ -735,7 +735,7 @@ listing_default_3_col_tag:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1004/600/400'
+            path: 'https://placeimg.com/600/400/nature/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -751,7 +751,7 @@ listing_default_3_col_tag:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1005/600/400'
+            path: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
             rounded: 1
           content:
@@ -767,7 +767,7 @@ listing_default_3_col_tag:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1006/600/400'
+            path: 'https://placeimg.com/600/400/people/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -783,7 +783,7 @@ listing_default_3_col_tag:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1007/600/400'
+            path: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
             rounded: 1
           content:
@@ -834,7 +834,7 @@ listing_default_3_col_alignment_start:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1002/600/400'
+            path: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
             rounded: 1
           content:
@@ -860,7 +860,7 @@ listing_default_3_col_alignment_start:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1004/600/400'
+            path: 'https://placeimg.com/600/400/nature/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -875,7 +875,7 @@ listing_default_3_col_alignment_start:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1005/600/400'
+            path: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
             rounded: 1
           content:
@@ -890,7 +890,7 @@ listing_default_3_col_alignment_start:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1006/600/400'
+            path: 'https://placeimg.com/600/400/people/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -905,7 +905,7 @@ listing_default_3_col_alignment_start:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1007/600/400'
+            path: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
             rounded: 1
           content:
@@ -957,7 +957,7 @@ listing_default_3_col_alignment_end:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1002/600/400'
+            path: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
             rounded: 1
           content:
@@ -983,7 +983,7 @@ listing_default_3_col_alignment_end:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1004/600/400'
+            path: 'https://placeimg.com/600/400/nature/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -998,7 +998,7 @@ listing_default_3_col_alignment_end:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1005/600/400'
+            path: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1013,7 +1013,7 @@ listing_default_3_col_alignment_end:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1006/600/400'
+            path: 'https://placeimg.com/600/400/people/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1028,7 +1028,7 @@ listing_default_3_col_alignment_end:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1007/600/400'
+            path: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1080,7 +1080,7 @@ listing_default_3_col_alignment_center:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1002/600/400'
+            path: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1106,7 +1106,7 @@ listing_default_3_col_alignment_center:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1004/600/400'
+            path: 'https://placeimg.com/600/400/nature/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1121,7 +1121,7 @@ listing_default_3_col_alignment_center:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1005/600/400'
+            path: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1136,7 +1136,7 @@ listing_default_3_col_alignment_center:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1006/600/400'
+            path: 'https://placeimg.com/600/400/people/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1151,7 +1151,7 @@ listing_default_3_col_alignment_center:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1007/600/400'
+            path: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1203,7 +1203,7 @@ listing_default_3_col_alignment_baseline:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1002/600/400'
+            path: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1229,7 +1229,7 @@ listing_default_3_col_alignment_baseline:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1004/600/400'
+            path: 'https://placeimg.com/600/400/nature/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1244,7 +1244,7 @@ listing_default_3_col_alignment_baseline:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1005/600/400'
+            path: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1259,7 +1259,7 @@ listing_default_3_col_alignment_baseline:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1006/600/400'
+            path: 'https://placeimg.com/600/400/people/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1274,7 +1274,7 @@ listing_default_3_col_alignment_baseline:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1007/600/400'
+            path: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1326,7 +1326,7 @@ listing_default_3_col_alignment_stretch:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1002/600/400'
+            path: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1352,7 +1352,7 @@ listing_default_3_col_alignment_stretch:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1004/600/400'
+            path: 'https://placeimg.com/600/400/nature/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1367,7 +1367,7 @@ listing_default_3_col_alignment_stretch:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1005/600/400'
+            path: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1382,7 +1382,7 @@ listing_default_3_col_alignment_stretch:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1006/600/400'
+            path: 'https://placeimg.com/600/400/people/sepia'
             alt: 'alt img'
             rounded: 1
           content:
@@ -1397,7 +1397,7 @@ listing_default_3_col_alignment_stretch:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-3'
           image:
-            path: 'https://picsum.photos/seed/1007/600/400'
+            path: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
             rounded: 1
           content:
