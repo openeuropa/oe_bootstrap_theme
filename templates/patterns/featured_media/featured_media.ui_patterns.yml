@@ -9,11 +9,6 @@ featured_media:
       options:
         left: 'left'
         right: 'right'
-    inside_text:
-      label: 'Inside text'
-      description: 'The wrapper media inside the text container'
-      type: boolean
-      preview: false
     ratio:
       type: select
       label: 'Ratio'
@@ -47,7 +42,7 @@ featured_media:
       description: 'Call to action link with icon.'
       preview:
         label: 'View all'
-        path: '#'
+        path: '#example'
     poster_image:
       type: text
       label: 'Poster image'
