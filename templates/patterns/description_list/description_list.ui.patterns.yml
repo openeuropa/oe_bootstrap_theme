@@ -1,40 +1,38 @@
 description_list:
-  label: "Description list"
-  description: "Description list patter is used for the paragraph OpenEuropa Paragraphs Horizontal description list."
+  label: 'Description list'
+  description: 'Description lists are used to display and organise content that belongs to a category with a descriptions. Common use cases include glossary type lists or a list of speakers with their biographies..'
   settings:
     orientation:
-      type: "select"
-      label: "Orientation"
+      type: select
+      label: Orientation
       options:
-        default: "default"
-        horizontal: "horizontal"
-      preview: "horizontal"
+        default: Default
+        horizontal: Horizontal
+      preview: Horizontal
   fields:
     items:
-      type: "array"
-      label: "List items"
-      description: "List of items that include a term and a definition. Terms contain label and can contain icon object."
+      type: 'array'
+      label: 'List items'
+      description: 'Each item is composed by one or more terms and one or more definitions. Each term entry can have an icon.'
       preview:
         - term:
-            - label:
-                '#markup' : "<p class='d-inline-block mb-0'>Only title label with icon</p>"
-              icon:
-                name: "geo-alt-fill"
-          definition:
-            content:
-              '#markup' : "<p class='mb-2'>Description of first term text goes here.</p>"
+          - label: 'Single label with icon'
+            icon: 'geo-alt-fill'
+          definition: 'Description of first term text.'
         - term:
-            - label: "First title label"
-            - label:
-                content:
-                  '#markup' : "<p class=\"mb-0 d-inline-block\">Second title label</p>"
-              icon:
-                name: "geo-alt-fill"
-          definition:
-            content:
-              '#markup' : "<p class='mb-2'>Description of second term text goes here.</p>"
+          - label: 'First label without icon'
+          - label: 'Second label'
+            icon: 'calendar-event'
+          definition: 'Description of second term text goes here.'
         - term:
-            - label: "Only title label"
+          - label:
+            - '#markup': 'A label with <em>some</em> markup.'
           definition:
-            - '#markup' :  "<p class='mb-2'>First line description of third term text goes here.</p>"
-            - '#markup' :  "<p class='mb-2'>Second line description of third term text goes here.</p>"
+            - 'First description of third term text goes here.'
+            - 'Second description of third term text goes here.'
+        - term:
+            - label: 'Custom icon size'
+              icon:
+                name: 'bicycle'
+                size: 'xl'
+          definition: 'This is a bigger icon.'
