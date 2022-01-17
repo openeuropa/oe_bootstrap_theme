@@ -1,8 +1,8 @@
 card_group:
   render:
     '#type': pattern
-    '#id': card_layout
-    '#variant': group
+    '#id': 'card_layout'
+    '#variant': 'group'
     '#fields':
       settings:
         equal_height: true
@@ -41,8 +41,8 @@ card_group:
 card_grid_responsive_xxl_3_responsive_columns:
   render:
     '#type': pattern
-    '#id': card_layout
-    '#variant': grid
+    '#id': 'card_layout'
+    '#variant': 'grid'
     '#fields':
       settings:
         responsiveness: 'xxl'
@@ -86,8 +86,8 @@ card_grid_responsive_xxl_3_responsive_columns:
 card_grid_responsive_columns_2_md_equal_height:
   render:
     '#type': pattern
-    '#id': card_layout
-    '#variant': grid
+    '#id': 'card_layout'
+    '#variant': 'grid'
     '#fields':
       settings:
         grid_columns: 2
@@ -164,8 +164,8 @@ card_grid_responsive_columns_2_md_equal_height:
 card_masonry_responsive_xxl_3_responsive_columns:
   render:
     '#type': pattern
-    '#id': card_layout
-    '#variant': masonry
+    '#id': 'card_layout'
+    '#variant': 'masonry'
     '#fields':
       settings:
         responsiveness: 'xxl'
@@ -210,8 +210,8 @@ card_masonry_responsive_xxl_3_responsive_columns:
 card_masonry_responsive_columns_2_md_equal_height:
   render:
     '#type': pattern
-    '#id': card_layout
-    '#variant': masonry
+    '#id': 'card_layout'
+    '#variant': 'masonry'
     '#fields':
       settings:
         grid_columns: 2
