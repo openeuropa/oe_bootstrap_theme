@@ -1,109 +1,103 @@
 navbar:
-  label: Navbar
-  description: Powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin. https://v5.getbootstrap.com/docs/5.0/components/navbar/
+  label: 'Navbar'
+  description: 'Powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin. For more information: https://v5.getbootstrap.com/docs/5.0/components/navbar/'
   settings:
-    collapse_id:
-      type: textfield
-      label: Collapse identifier
-      preview: "navbar"
-    disable_collapse:
-      type: boolean
-      label: Disable Collapse
-      preview: false
     background:
       type: select
-      label: Background of navbar
+      label: 'Background of navbar'
+      description: 'Set the background color of the navbar:'
       options:
-        primary: primary
-        secondary: secondary
-        success: success
-        danger: danger
-        warning: warning
-        info: info
-        light: light
-        dark: dark
-      preview: light
+        primary: 'primary'
+        secondary: 'secondary'
+        success: 'success'
+        danger: 'danger'
+        warning: 'warning'
+        info: 'info'
+        light: 'light'
+        dark: 'dark'
+      preview: 'light'
+    disable_collapse:
+      type: boolean
+      label: 'Disable Collapse'
+      description: 'If true, navbar items will not be collapsed. False by default.'
     expand:
       type: select
-      label: Placement
+      label: 'Expand'
+      description: 'Expand breakpoint of menu:'
       options:
-        sm: small
-        md: medium
-        lg: large
-      preview: lg
+        sm: 'Small'
+        md: 'Medium'
+        lg: 'Large (default)'
     color_set:
       type: select
-      label: Available set of color
+      label: 'Color set'
+      description: 'Available set of color:'
       options:
-        light: light
-        dark: dark
-      preview: light
+        light: 'light (default)'
+        dark: 'dark'
   fields:
-    brand:
-      type: object
-      label: Branding object
-      preview:
-        label: "OpenEuropa Site"
-        link: "https://europa.eu/"
     navbar_branding:
       type: render
-      label: Navigation bar branding
+      label: 'Branding'
+      description: 'Navbar branding text and/or logo.'
       preview:
         - type: html_tag
           tag: a
-          value: "Navbar"
+          value: 'Navbar'
           attributes:
             href: '#navbar'
             rel: home
-            class: "navbar-brand"
-    navbar_right:
-      type: render
-      label: Navigation bar right
-      preview:
-        - type: html_tag
-          tag: form
-          attributes:
-            class: "d-flex"
-          children:
-            '<label for="inlineFormInputGroupSearch" class="form-label visually-hidden">Search</label><input class="form-control" type="text" id="inlineFormInputGroupSearch" required="true" placeholder="Search"/><div class="ms-2"><button class="btn btn-primary btn-md" type="Search">Search</button></div>'
+            class: 'navbar-brand'
     navbar_left:
-      type: render
-      label: Navigation bar left
+      type: array
+      label: 'Menu items'
+      description: 'Navbar navigation items. Will be placed at the left of the navigation bar.'
       preview:
         - type: pattern
           id: link
-          label: "I'm a link"
-          path: "#first"
+          label: 'I am a link'
+          path: '#first'
           attributes:
-            class: "nav-link"
+            class: 'nav-link'
         - type: pattern
           id: link
-          label: "I'm a link 2"
-          path: "#second"
+          label: 'I am a link 2'
+          path: '#second'
           attributes:
-            class: "nav-link"
+            class: 'nav-link'
         - type: pattern
           id: link
-          label: "I'm a link 3"
-          path: "#third"
+          label: 'I am a link 3'
+          path: '#third'
           attributes:
-            class: "nav-link"
+            class: 'nav-link'
         - type: pattern
           id: dropdown
           variant: default
           fields:
             trigger:
-              label: "Dropdown Toggle"
-              path: "#"
+              label: 'Dropdown Toggle'
+              path: '#'
             dropdown_items:
-              - path: "#navbar"
-                label: "I'm a link"
-              - path: "#navbar"
-                label: "I'm an active button"
+              - path: '#navbar'
+                label: 'I am a link'
+              - path: '#navbar'
+                label: 'I am an active button'
                 button: true
                 active: true
               - divider: true
-              - path: "#navbar"
+              - path: '#navbar'
                 button: true
                 disabled: true
-                label: "I'm a disabled button"
+                label: 'I am a disabled button'
+    navbar_right:
+      type: render
+      label: 'Search form'
+      description: 'Navbar search form. Will be placed at the right of the navigation bar.'
+      preview:
+        - type: html_tag
+          tag: form
+          attributes:
+            class: 'd-flex'
+          children:
+            '<label for="inlineFormInputGroupSearch" class="form-label visually-hidden">Search</label><input class="form-control" type="text" id="inlineFormInputGroupSearch" required="true" placeholder="Search"/><div class="ms-2"><button class="btn btn-primary btn-md" type="Search">Search</button></div>'
