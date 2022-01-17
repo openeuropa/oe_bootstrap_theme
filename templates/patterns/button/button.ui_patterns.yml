@@ -16,12 +16,10 @@ button:
         light: 'light'
         dark: 'dark'
         link: 'link'
-      preview: 'primary'
     outline:
       type: boolean
       label: 'Button outline'
-      description: 'Lighter button style removing background color.'
-      preview: false
+      description: 'Lighter button style removing background color. False by default.'
     size:
       type: select
       label: 'Button size'
@@ -61,5 +59,4 @@ button:
       description: 'Add an icon to the button. Optional.'
       preview:
         name: 'arrow-right'
-        size: 's'
         transformation: 'rotate-0'
