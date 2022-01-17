@@ -154,14 +154,6 @@ To run the phpunit tests:
 docker-compose exec web ./vendor/bin/phpunit
 ```
 
-### Twig helpers
-#### bcl_merge_icon filter
-Gets an array containing items and searches for icon elements, once found uses parameters of the filter (size and path) and adds them to each element icon.
-```
-items|bcl_merge_icon('xs', bcl_icon_path)
-```
-
-
 ## sub-theme
 
 All the necessary files for sub-theme creation can be found in the `kits` folder,
