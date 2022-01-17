@@ -15,17 +15,12 @@
   } %}
 {% endif %}
 
-{% if content.field_oe_text_long['#items'] %}
-  {% set inside_text = true %}
-{% endif %}
-
 {% if not paragraph.field_oe_link.isEmpty %}
   {# Add cache info from the Link field to the page. #}
   {% set bubble_cache = content.field_oe_link|render %}
 {% endif %}
 
 {{ pattern('featured_media', {
-  'inside_text': inside_text,
   'embedded_media': embedded_media,
   'image': _image ? _image|render : '',
   'poster_image': poster_image,

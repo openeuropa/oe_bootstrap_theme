@@ -163,6 +163,16 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
   // If it's an image media, render it and assign it to the image variable.
   oe_bootstrap_theme_set_image($is_image, $media, $variables, $cacheability);
   oe_bootstrap_theme_set_embedded_media($is_image, $variables, $media, $cacheability, $source);
+
+  if (!$paragraph->get('field_oe_link')->first()->isEmpty()) {
+    /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $link_item */
+    $link_item = $paragraph->get('field_oe_link')->first();
+    $variables['link'] = [
+      'path' => $link_item->getUrl()->toString(),
+      'label' => $link_item->get('title')->getValue(),
+    ];
+  }
+
 }
 
 /**
