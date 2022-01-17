@@ -46,7 +46,6 @@ card:
       type: boolean
       label: 'Horizontal'
       description: 'If true, the card will be printed horizontally instead vertically. False by default.'
-      preview: false
   fields:
     title:
       type: text
@@ -74,17 +73,17 @@ card:
     content:
       type: render
       label: 'Content'
-      description: 'Card content'
+      description: 'Card content.'
       preview: '<button class="btn btn-primary">Custom action</button>'
     card_header:
       type: text
       label: 'Card header'
-      description: 'Card header content'
+      description: 'Card header content.'
       preview: 'Header of card'
     card_footer:
       type: text
       label: 'Card footer'
-      description: 'Card footer content'
+      description: 'Card footer content.'
       preview: 'Footer of card'
     badges:
       type: array
