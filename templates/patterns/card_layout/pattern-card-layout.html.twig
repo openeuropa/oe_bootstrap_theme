@@ -19,6 +19,7 @@
   }) %}
   {% set _items = _items|merge([_item]) %}
 {% endfor %}
+
 {% include '@oe-bcl/card-layout' with {
   'type': variant,
   'items': _items,

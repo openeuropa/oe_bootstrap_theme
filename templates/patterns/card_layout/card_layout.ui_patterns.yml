@@ -7,20 +7,20 @@ card_layout:
       description: 'Use card groups to render cards as a single, attached element with equal width and height columns.'
     grid:
       label: 'Grid'
-      description: 'Use the Bootstrap grid system and its classes to control how many grid columns (wrapped around your cards) you show per row.'
+      description: 'Use the Bootstrap grid system and its classes to control how many grid columns (wrapped around your cards) are shown per row.'
     masonry:
       label: 'Masonry'
       description: 'It works by placing elements in optimal position based on available vertical space.'
   settings:
     grid_columns:
       type: select
-      label: 'Grid columns:'
+      label: 'Grid columns'
       description: 'Number of grid columns:'
       options:
-        1: 1
-        2: 2
-        3: 3
-      preview: 3
+        1: '1 (default)'
+        2: '2'
+        3: '3'
+      preview: '3'
     responsiveness:
       type: select
       label: 'Responsiveness'
@@ -37,31 +37,30 @@ card_layout:
       label: 'Responsive columns'
       description: 'Number of responsive columns:'
       options:
-        2: 2
-        3: 3
-      preview: 3
+        2: '2'
+        3: '3'
+      preview: '3'
     gutter:
       type: select
       label: 'Gutter'
       description: 'Select the gutter between cards:'
       options:
-        0: 0
-        1: 1
-        2: 2
-        3: 3
-        4: 4
-        5: 5
-      preview: 3
+        0: '0'
+        1: '1'
+        2: '2'
+        3: '3'
+        4: '4'
+        5: '5'
+      preview: '3'
     equal_height:
       type: boolean
       label: 'Equal height'
       description: 'If true, all cards will have the same height. False by default.'
-      preview: false
   fields:
     items:
       type: array
       label: 'Card items'
-      description: 'An array of card patterns items.'
+      description: 'An array of card pattern items.'
       preview:
         - title: 'Title card 1'
           subtitle: 'Subtitle card 1'
