@@ -10,7 +10,6 @@ button_dark_with_icon_after:
       label: 'Button label'
       icon:
         name: 'arrow-right'
-        size: 's'
         transformation: 'rotate-0'
   assertions:
     count:
@@ -102,7 +101,6 @@ button_dark_with_icon_before_and_type_reset:
       label: 'Button label'
       icon:
         name: 'arrow-right'
-        size: 's'
         transformation: 'rotate-0'
   assertions:
     count:
