@@ -26,7 +26,6 @@ carousel:
       type: boolean
       label: 'initialize the carousel'
       description: 'True by default. If set to false, the carousel will need to be instantiated via javascript.'
-      preview: true
     disable_touch:
       type: boolean
       label: 'Disable touch'
@@ -47,7 +46,7 @@ carousel:
           interval: 0
           image:
             - theme: 'image'
-              uri: 'https://images.unsplash.com/photo-1533282960533-51328aa49826?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1140&h=385&q=80'
+              uri: 'https://placeimg.com/1000/500/arch'
               alt: 'alt image 1'
               attributes:
                 class: 'd-block w-100'
@@ -55,7 +54,7 @@ carousel:
           interval: 0
           image:
             - theme: 'image'
-              uri: 'https://images.unsplash.com/photo-1550331976-0b9cc48c4d78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1140&h=385&q=80'
+              uri: 'https://placeimg.com/1000/500/people'
               alt: 'alt image 2'
               attributes:
                 class: 'd-block w-100'
