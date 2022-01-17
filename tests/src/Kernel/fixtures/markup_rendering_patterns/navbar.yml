@@ -8,9 +8,15 @@ navbar_large_light_background_color_light:
         background: light
         expand: lg
         color_set: light
-      brand:
-        label: 'OpenEuropa Site'
-        link: 'https://europa.eu/'
+      navbar_branding:
+        - '#type': pattern
+          '#id': link
+          '#fields':
+            label: 'OpenEuropa Site'
+            path: 'https://europa.eu/'
+            attributes:
+              rel: 'home'
+              class: 'navbar-brand'
       navbar_left:
         - '#type': pattern
           '#id': link
@@ -76,9 +82,15 @@ navbar_medium_dark_background_color_dark_with_disable_collapse:
         background: dark
         expand: md
         color_set: dark
-      brand:
-        label: 'OpenEuropa Site'
-        link: 'https://europa.eu/'
+      navbar_branding:
+        - '#type': pattern
+          '#id': link
+          '#fields':
+            label: 'OpenEuropa Site'
+            path: 'https://europa.eu/'
+            attributes:
+              rel: 'home'
+              class: 'navbar-brand'
       navbar_left:
         - '#type': pattern
           '#id': link
