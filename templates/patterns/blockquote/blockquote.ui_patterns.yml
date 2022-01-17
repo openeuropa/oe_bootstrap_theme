@@ -10,7 +10,6 @@ blockquote:
         left: 'left'
         center: 'center'
         end: 'end'
-      preview: 'left'
   fields:
     quote:
       type: text

@@ -16,17 +16,14 @@ alert:
         light: 'light'
         dark: 'dark'
         link: 'link'
-      preview: 'primary'
     dismissible:
       type: boolean
       label: 'Dismissible'
       description: 'Add close button to dismiss the alert inline. Enabled by default.'
-      preview: true
     animated_dismiss:
       type: boolean
       label: 'Animated dismiss'
       description: 'Add fade animation to the dismissible alert. Enabled by default.'
-      preview: true
   fields:
     heading:
       type: text

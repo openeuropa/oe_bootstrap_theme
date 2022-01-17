@@ -19,17 +19,14 @@ banner:
       type: boolean
       label: 'Shade'
       description: 'Enable the shadow effect to the image. False by default.'
-      preview: false
     hero:
       type: boolean
       label: 'Hero'
       description: 'Display as hero banner. False by default.'
-      preview: false
     full_width:
       type: boolean
       label: 'Full width'
       description: 'Possibility of having a full-width banner within a bootstrap container. False by default.'
-      preview: false
     centered:
       type: boolean
       label: 'Centered'
@@ -57,8 +54,6 @@ banner:
         icon_position: 'after'
         icon:
           name: 'chevron-right'
-          size: s
-          path: '/assets/icons/bootstrap-icons.svg'
     image:
       type: 'text'
       label: 'Image'
