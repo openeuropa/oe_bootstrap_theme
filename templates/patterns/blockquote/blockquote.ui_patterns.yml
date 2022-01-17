@@ -5,9 +5,9 @@ blockquote:
     alignment:
       type: select
       label: 'Text alignment'
-      description: 'Align the quote in the page. Left by default.'
+      description: 'Align the quote in the page.'
       options:
-        left: 'left'
+        left: 'left (default)'
         center: 'center'
         end: 'end'
   fields:
