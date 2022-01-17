@@ -1,15 +1,15 @@
 table:
   label: 'Table'
-  description: 'For more information: https://v5.getbootstrap.com/docs/5.0/content/typography/#table'
+  description: 'For more information visit: https://v5.getbootstrap.com/docs/5.0/content/typography/#table'
   settings:
     striped:
       type: boolean
       label: 'Striped'
-      description: 'Add zebra-striping to any table row within the <tbody>.'
+      description: 'When enabled, adds zebra-striping to any table row within the <tbody>. False by default.'
     hoverable:
       type: boolean
       label: 'Hoverable'
-      description: 'Enable a hover state on table rows within a <tbody>.'
+      description: 'When enabled, allows a hover state on table rows within a <tbody>. False by default.'
     table_responsive:
       type: select
       label: 'Table Responsive'
@@ -37,7 +37,7 @@ table:
     small:
       type: boolean
       label: 'Small'
-      description: 'If true, makes table more compact by cutting all cell padding in half. False by default.'
+      description: 'When enabled, makes table more compact by cutting all cell padding in half. False by default.'
     alignment:
       type: select
       label: 'Alignment'
@@ -86,7 +86,7 @@ table:
     table_footer:
       type: array
       label: 'Footer'
-      description: 'An array with the tfoot with items with content and col-span.'
+      description: 'An array with the table footer (tfoot) with items with content and col-span.'
       preview:
         cells:
           - content: 'ID'
@@ -96,7 +96,7 @@ table:
     rows:
       type: array
       label: 'Rows'
-      description: 'An array with the tbody with active, alignment, style and cells array with content and col-span.'
+      description: 'An array with the table body (tbody) with active, alignment, style and cells array with content and col-span.'
       preview:
         - cells:
           - content: '1'

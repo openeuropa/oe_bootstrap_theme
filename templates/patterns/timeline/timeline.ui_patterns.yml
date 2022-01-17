@@ -11,11 +11,11 @@ timeline:
     toggle_expanded:
       type: string
       label: 'Label expanded'
-      description: 'When all items are displaying, label of the button to hide them.'
+      description: 'When all items are displayed, the label of the button to hide them.'
     toggle_collapsed:
       type: string
       label: 'Label collapsed'
-      description: 'When there are hidden items, label of the button to expand them.'
+      description: 'When there are hidden items, the label of the button to expand them.'
     items:
       type: array
       label: 'Items'
