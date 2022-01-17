@@ -21,8 +21,7 @@ pagination:
     enable_icon:
       type: boolean
       label: 'Enable icon'
-      description: 'Use icon instead of link labels to previous and next items.'
-      preview: false
+      description: 'Use icon instead of link labels to previous and next items. False by default.'
   fields:
     prev:
       type: array
