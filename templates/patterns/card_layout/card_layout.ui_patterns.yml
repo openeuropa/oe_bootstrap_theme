@@ -1,17 +1,21 @@
 card_layout:
-  label: "Card layout"
-  description: "In addition to styling the content within cards, Bootstrap includes a few options for laying out series of cards. https://v5.getbootstrap.com/docs/5.0/components/card/#grid-cards"
+  label: 'Card layout'
+  description: 'In addition to styling the content within cards, Bootstrap includes a few options for laying out series of cards. For more information: https://getbootstrap.com/docs/5.0/components/card/#card-layout'
   variants:
     group:
-      label: "Group"
+      label: 'Group'
+      description: 'Use card groups to render cards as a single, attached element with equal width and height columns.'
     grid:
-      label: "Grid"
+      label: 'Grid'
+      description: 'Use the Bootstrap grid system and its classes to control how many grid columns (wrapped around your cards) you show per row.'
     masonry:
-      label: "Masonry"
+      label: 'Masonry'
+      description: 'It works by placing elements in optimal position based on available vertical space.'
   settings:
     grid_columns:
       type: select
-      label: Card layout columns number
+      label: 'Grid columns:'
+      description: 'Number of grid columns:'
       options:
         1: 1
         2: 2
@@ -19,24 +23,27 @@ card_layout:
       preview: 3
     responsiveness:
       type: select
-      label: Card layout type
+      label: 'Responsiveness'
+      description: 'Pick a maximum breakpoint with which to have a responsive layout up to by using:'
       options:
-        sm: sm
-        md: md
-        lg: lg
-        xl: xl
-        xxl: xxl
-      preview: md
+        sm: 'sm'
+        md: 'md'
+        lg: 'lg'
+        xl: 'xl'
+        xxl: 'xxl'
+      preview: 'md'
     responsive_columns:
       type: select
-      label: Card layout type
+      label: 'Responsive columns'
+      description: 'Number of responsive columns:'
       options:
         2: 2
         3: 3
       preview: 3
     gutter:
       type: select
-      label: Card layout type
+      label: 'Gutter'
+      description: 'Select the gutter between cards:'
       options:
         0: 0
         1: 1
@@ -47,86 +54,62 @@ card_layout:
       preview: 3
     equal_height:
       type: boolean
-      label: "Equal height"
-      description: "Cards with equal height?"
+      label: 'Equal height'
+      description: 'If true, all cards will have the same height. False by default.'
       preview: false
   fields:
     items:
-      type: "array"
-      label: "Card items"
-      description: "An array of card items"
+      type: array
+      label: 'Card items'
+      description: 'An array of card patterns items.'
       preview:
-        - title:
-            content: "Title card 1"
-            tag: "h5"
-          subtitle:
-            content: "Subtitle card 1"
-            classes: "mb-2"
-          text:
-            content: "Text card with longer text which is supported 1"
-            classes: "mb-2"
+        - title: 'Title card 1'
+          subtitle: 'Subtitle card 1'
+          text: 'Text card with longer text which is supported 1'
           image:
-            path: "https://placeimg.com/1000/500/arch"
-            alt: "Alternative text for card image"
-            position: "top"
+            path: 'https://placeimg.com/1000/500/arch'
+            alt: 'Alternative text for card image'
+            position: 'top'
           content:
             - type: html_tag
-              tag: button
-              value: Custom action
+              tag: 'button'
+              value: 'Custom action'
               attributes:
                 class:
-                  - "btn"
-                  - "btn-primary"
-          card_header: "Header of card 1"
-          card_footer: "Footer of card 1"
-        - title:
-            content: "Title card 2"
-            tag: "h5"
-          subtitle:
-            content: "Subtitle card 2"
-            classes: "mb-2"
-          text:
-            content: "Text card with longer text which is supported 2"
-            classes: "mb-2"
+                  - 'btn'
+                  - 'btn-primary'
+          card_header: 'Header of card 1'
+          card_footer: 'Footer of card 1'
+        - title: 'Title card 2'
+          subtitle: 'Subtitle card 2'
+          text: 'Text card with longer text which is supported 2'
           image:
-            path: "https://placeimg.com/1000/500/nature"
-            alt: "Alternative text for card image"
-            position: "bottom"
-          content: "Custom test"
-          card_header: "Header of card 2"
-          card_footer: "Footer of card 2"
-        - title:
-            content: "Title card 3"
-            tag: "h5"
-          subtitle:
-            content: "Subtitle card 3"
-            classes: "mb-2"
-          text:
-            content: "Text card with longer text which is supported 3"
-            classes: "mb-2"
+            path: 'https://placeimg.com/1000/500/nature'
+            alt: 'Alternative text for card image'
+            position: 'bottom'
+          content: 'Custom test'
+          card_header: 'Header of card 2'
+          card_footer: 'Footer of card 2'
+        - title: 'Title card 3'
+          subtitle: 'Subtitle card 3'
+          text: 'Text card with longer text which is supported 3'
           image:
-            path: "https://placeimg.com/1000/500/tech"
-            alt: "Alternative text for card image"
-            position: "bottom"
-          content: "Some representative placeholder content for the first card."
-          card_header: "Header of card 3"
-          card_footer: "Footer of card 3"
-        - title:
-            content: "Title card 4"
-            tag: "h5"
-          subtitle:
-            content: "Subtitle card 4"
-            classes: "mb-2"
-          text:
-            content: "Text card with longer text which is supported 1"
-            classes: "mb-2"
+            path: 'https://placeimg.com/1000/500/tech'
+            alt: 'Alternative text for card image'
+            position: 'bottom'
+          content: 'Some representative placeholder content for the first card.'
+          card_header: 'Header of card 3'
+          card_footer: 'Footer of card 3'
+        - title: 'Title card 4'
+          subtitle: 'Subtitle card 4'
+          text: 'Text card with longer text which is supported 1'
           content:
             - type: html_tag
-              tag: button
-              value: Custom action
+              tag: 'button'
+              value: 'Custom action'
               attributes:
                 class:
-                  - "btn"
-                  - "btn-primary"
-          card_header: "Header of card 4"
-          card_footer: "Footer of card 4"
+                  - 'btn'
+                  - 'btn-primary'
+          card_header: 'Header of card 4'
+          card_footer: 'Footer of card 4'
