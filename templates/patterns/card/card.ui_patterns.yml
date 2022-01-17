@@ -1,6 +1,6 @@
 card:
   label: 'Card'
-  description: 'A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. https://v5.getbootstrap.com/docs/5.0/components/card'
+  description: 'A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. For more information: https://v5.getbootstrap.com/docs/5.0/components/card'
   variants:
     default:
       label: 'Default'
@@ -72,7 +72,7 @@ card:
         alt: 'Alternative text for card image'
         position: 'top'
     content:
-      type: 'render'
+      type: render
       label: 'Content'
       description: 'Card content'
       preview: '<button class="btn btn-primary">Custom action</button>'
