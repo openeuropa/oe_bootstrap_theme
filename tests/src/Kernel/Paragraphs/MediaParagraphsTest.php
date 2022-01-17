@@ -81,7 +81,7 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $this->assertCount(1, $figure->filter('img.img-fluid'));
     $this->assertCount(0, $figure->filter('iframe'));
     $this->assertStringContainsString(
-       $image_file->getFilename(),
+      $image_file->getFilename(),
       $figure->html()
     );
     $this->assertEquals('Media Caption', trim($figure->filter('figcaption.bg-light.p-3')->text()));
@@ -266,6 +266,26 @@ class MediaParagraphsTest extends ParagraphsTestBase {
     $full_text = $crawler->filter('div.col-12.col-md-6.order-md-2');
     $this->assertEquals('Media Full Text', trim($full_text->text()));
     $this->assertEquals('Media Caption', trim($figure->filter('figcaption.bg-light.p-3')->text()));
+
+    // Testing: Link and media title.
+    $paragraph->get('field_oe_text_long')->setValue('Media Full Text');
+    $paragraph->get('oe_paragraphs_variant')->setValue('right_featured');
+    $paragraph->get('field_oe_feature_media_title')->setValue('Text title');
+    $paragraph->get('field_oe_link')->setValue([
+      'uri' => 'https://example1',
+      'title' => 'Example 1',
+    ]);
+    $paragraph->save();
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertCount(1, $crawler->filter('div.row'));
+    $this->assertCount(0, $crawler->filter('div.col-12.col-md-4'));
+    $media_title_text = $crawler->filter('h5.text-secondary');
+    $this->assertEquals('Text title', trim($media_title_text->text()));
+    $link = $crawler->filter('a[href="https://example1"]');
+    $this->assertCount(1, $link);
+    $this->assertEquals('Example 1', trim($link->text()));
   }
 
   /**
