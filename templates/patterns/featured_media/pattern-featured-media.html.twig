@@ -17,7 +17,7 @@
   } %}
 {% endmacro %}
 
-{% if inside_text %}
+{% if text_title or text or link %}
   {% set text_alignment_class = 'order-md-1' %}
   {% set video_alignment_class = 'order-md-2' %}
   {% if alignment == 'right' %}
@@ -32,7 +32,14 @@
         <h5 class="text-secondary">{{ text_title }}</h5>
       {% endif %}
       {{ text }}
-      {{ link }}
+      {% if link %}
+        {{ pattern('link', {
+          label: link.label,
+          path: link.path,
+          variant: 'link',
+          icon: link.icon
+        }) }}
+      {% endif %}
     </div>
     <div class="col-12 col-md-6 {{ video_alignment_class }}">
       {{ _self.featured_media(embedded_media, image, poster_image, caption, ratio, sources, tracks) }}
