@@ -7,26 +7,18 @@
 
 declare(strict_types = 1);
 
-use Drupal\oe_bootstrap_theme\ConfigUtil;
+use Drupal\oe_bootstrap_theme\ConfigImporter;
 
 /**
- * Upgrade the Description list paragraph.
- *
- * @param array $sandbox
- *   Stores information for batch updates.
+ * Add extra fields to description list paragraph.
  */
-function oe_bootstrap_theme_paragraphs_post_update_10001(array &$sandbox): void {
-
-  $config['fields'] = [
+function oe_bootstrap_theme_paragraphs_post_update_00001(array &$sandbox): void {
+  $configs = [
     'field.storage.paragraph.oe_bt_orientation',
     'field.field.paragraph.oe_description_list.oe_bt_orientation',
-  ];
-
-  $config['displays'] = [
     'core.entity_form_display.paragraph.oe_description_list.default',
     'core.entity_view_display.paragraph.oe_description_list.default',
   ];
 
-  ConfigUtil::importConfigFromFile('oe_bootstrap_theme_paragraphs', '/config/post_updates/10001/', $config);
-
+  ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00001/', $configs);
 }

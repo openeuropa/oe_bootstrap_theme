@@ -7,7 +7,7 @@
 
 declare(strict_types = 1);
 
-use Drupal\oe_bootstrap_theme\ConfigUtil;
+use Drupal\oe_bootstrap_theme\ConfigImporter;
 
 /**
  * Implements hook_install().
@@ -20,7 +20,7 @@ function oe_bootstrap_theme_paragraphs_install($is_syncing): void {
     return;
   }
 
-  $config['displays'] = [
+  $configs = [
     'core.entity_form_display.paragraph.oe_links_block.default',
     'core.entity_form_display.paragraph.oe_social_media_follow.default',
     'core.entity_view_display.paragraph.oe_links_block.default',
@@ -29,5 +29,5 @@ function oe_bootstrap_theme_paragraphs_install($is_syncing): void {
     'core.entity_view_display.paragraph.oe_description_list.default',
   ];
 
-  ConfigUtil::importConfigFromFile('oe_bootstrap_theme_paragraphs', '/config/overrides/', $config);
+  ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/overrides/', $configs);
 }
