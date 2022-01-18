@@ -9,7 +9,7 @@ use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\Tests\BrowserTestBase;
 
 /**
- * Tests paragraphs fields.
+ * Tests paragraphs forms.
  */
 class ParagraphsTest extends BrowserTestBase {
 
@@ -18,7 +18,6 @@ class ParagraphsTest extends BrowserTestBase {
    */
   protected static $modules = [
     'node',
-    'field_ui',
     'oe_bootstrap_theme_paragraphs',
   ];
 
@@ -33,12 +32,7 @@ class ParagraphsTest extends BrowserTestBase {
   protected function setUp(): void {
     parent::setUp();
 
-    $this->drupalCreateContentType([
-      'type' => 'paragraphs_test',
-      'name' => 'Paragraphs Test',
-    ]);
-    $this->addParagraphsField();
-
+    $this->createTestContentType();
     $this->drupalLogin($this->drupalCreateUser([], '', TRUE));
   }
 
@@ -123,14 +117,16 @@ class ParagraphsTest extends BrowserTestBase {
    */
   public function testDescriptionListParagraph(): void {
     $this->drupalGet('/node/add/paragraphs_test');
-    $page = $this->getSession()->getPage();
-    $page->pressButton('Add Description list');
+    $this->getSession()->getPage()->pressButton('Add Description list');
 
-    // Assert the Description fields appears.
-    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_title][0][value]');
-    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][oe_bt_orientation]');
-    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_description_list_items][0][term]');
-    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_description_list_items][0][description][value]');
+    $assert_session = $this->assertSession();
+    $assert_session->fieldExists('oe_bt_paragraphs[0][subform][field_oe_title][0][value]');
+    $this->assertEquals([
+      'horizontal' => 'Horizontal',
+      'vertical' => 'Vertical',
+    ], $this->getOptions('oe_bt_paragraphs[0][subform][oe_bt_orientation]'));
+    $assert_session->fieldExists('oe_bt_paragraphs[0][subform][field_oe_description_list_items][0][term]');
+    $assert_session->fieldExists('oe_bt_paragraphs[0][subform][field_oe_description_list_items][0][description][value]');
 
     $values = [
       'title[0][value]' => 'Test Description list node title',
@@ -144,15 +140,21 @@ class ParagraphsTest extends BrowserTestBase {
     $this->drupalGet('/node/1');
 
     // Assert paragraph values are displayed correctly.
-    $this->assertSession()->pageTextContains('Description list paragraph');
-    $this->assertSession()->pageTextContains('Aliquam ultricies');
-    $this->assertSession()->pageTextContains('Donec et leo ac velit posuere tempor mattis ac mi. Vivamus nec dictum lectus. Aliquam ultricies placerat eros, vitae ornare sem.');
+    $assert_session->pageTextContains('Description list paragraph');
+    $assert_session->pageTextContains('Aliquam ultricies');
+    $assert_session->pageTextContains('Donec et leo ac velit posuere tempor mattis ac mi. Vivamus nec dictum lectus. Aliquam ultricies placerat eros, vitae ornare sem.');
   }
 
   /**
-   * Adds a field to a paragraph.
+   * Creates a node type with a paragraphs field.
    */
-  protected function addParagraphsField(): void {
+  protected function createTestContentType() {
+    $this->drupalCreateContentType([
+      'type' => 'paragraphs_test',
+      'name' => 'Paragraphs Test',
+    ]);
+
+    // Add a paragraphs field.
     $field_storage = FieldStorageConfig::create([
       'field_name' => 'oe_bt_paragraphs',
       'entity_type' => 'node',
@@ -173,7 +175,7 @@ class ParagraphsTest extends BrowserTestBase {
     ])->save();
 
     $form_display = \Drupal::service('entity_display.repository')->getFormDisplay('node', 'paragraphs_test');
-    $form_display = $form_display->setComponent('oe_bt_paragraphs', ['type' => 'paragraphs']);
+    $form_display = $form_display->setComponent('oe_bt_paragraphs', ['type' => 'oe_paragraphs_variants']);
     $form_display->save();
 
     $view_display = \Drupal::service('entity_display.repository')->getViewDisplay('node', 'paragraphs_test');
