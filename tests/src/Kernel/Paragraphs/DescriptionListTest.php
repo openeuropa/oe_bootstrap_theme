@@ -44,33 +44,25 @@ class DescriptionListTest extends ParagraphsTestBase {
     $this->assertCount(2, $crawler->filter('dt div.align-middle.d-inline-block'));
 
     $title = $crawler->filter('h4.fw-bold.mb-4');
-    $this->assertStringContainsString(
-      'Description list paragraph',
-      $title->html()
-    );
+    $this->assertEquals('Description list paragraph', $title->text());
 
-    $term_1 = $crawler->filter('dl > div:nth-child(1) > dt > div');
-    $this->assertStringContainsString(
-      'Aliquam ultricies',
-      $term_1->html()
-    );
-    $description_1 = $crawler->filter('dl > dd:nth-child(2)');
-    $this->assertStringContainsString(
+    $term_1 = $crawler->filter('dl > div:nth-child(1) > dt');
+    $this->assertEquals('Aliquam ultricies', $term_1->text());
+    $description_1 = $crawler->filter('dl > div:nth-child(1) + dd');
+    $this->assertEquals(
       'Donec et leo ac velit posuere tempor mattis ac mi. Vivamus nec dictum lectus. Aliquam ultricies placerat eros, vitae ornare sem.',
-      $description_1->html()
-    );
-    $term_2 = $crawler->filter('dl > div:nth-child(3) > dt > div');
-    $this->assertStringContainsString(
-      'Etiam lacinia',
-      $term_2->html()
-    );
-    $description_2 = $crawler->filter('dl > dd:nth-child(4)');
-    $this->assertStringContainsString(
-      'Quisque tempor sollicitudin lacinia. Morbi imperdiet nulla et nunc aliquet, vel lobortis nunc cursus. Mauris vitae hendrerit felis.',
-      $description_2->html()
+      $description_1->text()
     );
 
-    // Testing: Description list paragraph with vertival variant.
+    $term_2 = $crawler->filter('dl > div:nth-child(3) > dt');
+    $this->assertEquals('Etiam lacinia', $term_2->text());
+    $description_2 = $crawler->filter('dl > div:nth-child(3) + dd');
+    $this->assertEquals(
+      'Quisque tempor sollicitudin lacinia. Morbi imperdiet nulla et nunc aliquet, vel lobortis nunc cursus. Mauris vitae hendrerit felis.',
+      $description_2->text()
+    );
+
+    // Testing: Description list paragraph with vertical variant.
     $paragraph->get('oe_bt_orientation')->setValue('vertical');
     $paragraph->save();
 
@@ -78,30 +70,22 @@ class DescriptionListTest extends ParagraphsTestBase {
     $crawler = new Crawler($html);
 
     $title = $crawler->filter('h4.fw-bold.mb-4');
-    $this->assertStringContainsString(
-      'Description list paragraph',
-      $title->html()
+    $this->assertEquals('Description list paragraph', $title->text());
+
+    $term_1 = $crawler->filter('dl > dt:nth-child(1)');
+    $this->assertEquals('Aliquam ultricies', $term_1->text());
+    $description_1 = $crawler->filter('dl > dt:nth-child(1) + dd');
+    $this->assertEquals(
+      'Donec et leo ac velit posuere tempor mattis ac mi. Vivamus nec dictum lectus. Aliquam ultricies placerat eros, vitae ornare sem.',
+      $description_1->text()
     );
 
-    $term_1 = $crawler->filter('dl > dt:nth-child(1) > div');
-    $this->assertStringContainsString(
-      'Aliquam ultricies',
-      $term_1->html()
-    );
-    $description_1 = $crawler->filter('dl > dd:nth-child(2)');
-    $this->assertStringContainsString(
-      'Donec et leo ac velit posuere tempor mattis ac mi. Vivamus nec dictum lectus. Aliquam ultricies placerat eros, vitae ornare sem.',
-      $description_1->html()
-    );
-    $term_2 = $crawler->filter('dl > dt:nth-child(3) > div');
-    $this->assertStringContainsString(
-      'Etiam lacinia',
-      $term_2->html()
-    );
-    $description_2 = $crawler->filter('dl > dd:nth-child(4)');
-    $this->assertStringContainsString(
+    $term_2 = $crawler->filter('dl > dt:nth-child(3)');
+    $this->assertEquals('Etiam lacinia', $term_2->text());
+    $description_2 = $crawler->filter('dl > dt:nth-child(3) + dd');
+    $this->assertEquals(
       'Quisque tempor sollicitudin lacinia. Morbi imperdiet nulla et nunc aliquet, vel lobortis nunc cursus. Mauris vitae hendrerit felis.',
-      $description_2->html()
+      $description_2->text()
     );
   }
 
