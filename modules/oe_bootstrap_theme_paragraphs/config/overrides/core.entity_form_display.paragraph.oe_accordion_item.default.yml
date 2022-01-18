@@ -29,11 +29,6 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  translation:
-    weight: 10
-    settings: {  }
-    third_party_settings: {  }
-    region: content
 hidden:
   created: true
   field_oe_icon: true
