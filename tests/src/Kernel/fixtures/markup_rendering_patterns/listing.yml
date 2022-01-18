@@ -329,7 +329,7 @@ listing_default_3_col:
       'span.me-4': 6
       'span.mb-2': 12
       'h5.card-title': 6
-      'h4.fw-bold.mb-4': 1
+      'h2.fw-bold.mb-4': 1
       'a.text-underline-hover': 6
       'a.d-inline-block': 1
       '.mw-listing-img': 5
@@ -918,8 +918,8 @@ listing_default_3_col_alignment_start:
       'span.me-4': 6
       'span.mb-2': 12
       'h5.card-title': 6
-      'h4.fw-bold.mb-4': 1
-      'div.align-self-start': 12
+      'h2.fw-bold.mb-4': 1
+      'div.align-self-start': 11
       'a.text-underline-hover': 6
       '.mw-listing-img': 5
     equals:
@@ -1041,8 +1041,8 @@ listing_default_3_col_alignment_end:
       'span.me-4': 6
       'span.mb-2': 12
       'h5.card-title': 6
-      'h4.fw-bold.mb-4': 1
-      'div.align-self-end': 12
+      'h2.fw-bold.mb-4': 1
+      'div.align-self-end': 11
       'a.text-underline-hover': 6
       '.mw-listing-img': 5
     equals:
@@ -1164,8 +1164,8 @@ listing_default_3_col_alignment_center:
       'span.me-4': 6
       'span.mb-2': 12
       'h5.card-title': 6
-      'h4.fw-bold.mb-4': 1
-      'div.align-self-center': 12
+      'h2.fw-bold.mb-4': 1
+      'div.align-self-center': 11
       'a.text-underline-hover': 6
       '.mw-listing-img': 5
     equals:
@@ -1287,8 +1287,8 @@ listing_default_3_col_alignment_baseline:
       'span.me-4': 6
       'span.mb-2': 12
       'h5.card-title': 6
-      'h4.fw-bold.mb-4': 1
-      'div.align-self-baseline': 12
+      'h2.fw-bold.mb-4': 1
+      'div.align-self-baseline': 11
       'a.text-underline-hover': 6
       '.mw-listing-img': 5
     equals:
@@ -1410,8 +1410,8 @@ listing_default_3_col_alignment_stretch:
       'span.me-4': 6
       'span.mb-2': 12
       'h5.card-title': 6
-      'h4.fw-bold.mb-4': 1
-      'div.align-self-stretch': 12
+      'h2.fw-bold.mb-4': 1
+      'div.align-self-stretch': 11
       'a.text-underline-hover': 6
       '.mw-listing-img': 5
     equals:
