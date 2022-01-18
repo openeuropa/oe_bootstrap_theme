@@ -26,13 +26,13 @@ function oe_bootstrap_theme_paragraphs_post_update_00001(array &$sandbox): void 
 }
 
 /**
- * Hide field icon at Accordion item paragraph.
+ * Hides the field icon at Accordion item paragraph.
  */
 function oe_bootstrap_theme_paragraphs_post_update_00002(array &$sandbox): void {
-
-  $config['displays'] = [
+  $configs = [
     'core.entity_form_display.paragraph.oe_accordion_item.default',
     'core.entity_view_display.paragraph.oe_accordion_item.default',
   ];
 
-  ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00002/', $configs, TRUE);}
+  ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00002/', $configs, TRUE);
+}
