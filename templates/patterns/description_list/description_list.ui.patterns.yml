@@ -18,7 +18,7 @@ description_list:
         - term:
           - label: 'Single label with icon'
             icon: 'geo-alt-fill'
-          definition: 'Description of first term text.'
+          definition: 'Description of first term text goes here.'
         - term:
           - label: 'First label without icon'
           - label: 'Second label'
@@ -36,3 +36,5 @@ description_list:
                 name: 'bicycle'
                 size: 'xl'
           definition: 'This is a bigger icon.'
+        - term: 'A single term without icon.'
+          definition: 'Yet another definition text.'

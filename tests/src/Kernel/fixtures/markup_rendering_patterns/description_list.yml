@@ -7,47 +7,57 @@ description_list_default:
         orientation: default
       items:
         - term:
-            - label:
-                '#markup': "<p class='d-inline-block mb-0'>Only title label with icon</p>"
-              icon:
-                path: "/assets/icons/bootstrap-icons.svg"
-                name: "geo-alt-fill"
-                size: "xs"
-          definition:
-            content:
-              '#markup': "<p class='mb-2'>Description of first term text goes here.</p>"
+            - label: 'Single label with icon'
+              icon: 'geo-alt-fill'
+          definition: 'Description of first term text goes here.'
         - term:
-            - label: "First title label"
-            - label:
-                content:
-                  '#markup': "<p class=\"mb-0 d-inline-block\">Second title label</p>"
-              icon:
-                path: "/assets/icons/bootstrap-icons.svg"
-                name: "geo-alt-fill"
-                size: "xs"
-          definition:
-            content:
-              '#markup': "<p class='mb-2'>Description of second term text goes here.</p>"
+            - label: 'First label without icon'
+            - label: 'Second label with icon'
+              icon: 'calendar-event'
+          definition: 'Description of second term text goes here.'
         - term:
-            - label: "Only title label"
+            - label:
+              - '#markup': 'A label with <em>some</em> markup.'
           definition:
-            - '#markup': "<p class='mb-2'>First line description of third term text goes here.</p>"
-            - '#markup': "<p class='mb-2'>Second line description of third term text goes here.</p>"
+            - '#markup': '<p class="mb-2">First line description of third term text goes here.</p>'
+            - '#markup': 'Second line description of third term text goes here.'
+        # This entry covers the scenario of passing an array as icon.
+        - term:
+          - label: 'Custom icon size'
+            icon:
+              name: 'bicycle'
+              size: 'xl'
+          definition: 'This is a bigger icon.'
+        # This entry covers the scenario when a simple string is passed as term, skipping the "label" key.
+        - term: 'A single term without icon.'
+          definition: 'Yet another definition text.'
   assertions:
     count:
       'dl': 1
-      'dt': 4
+      'dl.d-md-grid': 0
+      'dt': 6
+      'dd': 6
+      'svg': 3
       'svg.me-2.bi.icon--xs': 2
-      'dd': 4
+      'svg.me-2.bi.icon--xl': 1
+      'dl > dt:nth-of-type(5) > svg.me-2.bi.icon--xl': 1
+    contains:
+      'dl > dt:nth-of-type(1) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#geo-alt-fill'
+      'dl > dt:nth-of-type(3) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#calendar-event'
+      'dl > dt:nth-of-type(5) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#bicycle'
     equals:
-      'dl > dt:nth-child(1) > div > p': "Only title label with icon"
-      'dl > dd:nth-child(2) > p': "Description of first term text goes here."
-      'dl > dt:nth-child(3) > div': "First title label"
-      'dl > dt:nth-child(4) > div > p': "Second title label"
-      'dl > dd:nth-child(5) > p': "Description of second term text goes here."
-      'dl > dt:nth-child(6) > div': "Only title label"
-      'dl > dd:nth-child(7) > p': "First line description of third term text goes here."
-      'dl > dd:nth-child(8) > p': "Second line description of third term text goes here."
+      'dl > dt:nth-child(1) > div': 'Single label with icon'
+      'dl > dd:nth-child(2)': 'Description of first term text goes here.'
+      'dl > dt:nth-child(3) > div': 'First label without icon'
+      'dl > dt:nth-child(4) > div': 'Second label with icon'
+      'dl > dd:nth-child(5)': 'Description of second term text goes here.'
+      'dl > dt:nth-child(6) > div': 'A label with <em>some</em> markup.'
+      'dl > dd:nth-child(7)': '<p class="mb-2">First line description of third term text goes here.</p>'
+      'dl > dd:nth-child(8)': 'Second line description of third term text goes here.'
+      'dl > dt:nth-child(9) > div': 'Custom icon size'
+      'dl > dd:nth-child(10)': 'This is a bigger icon.'
+      'dl > dt:nth-child(11) > div': 'A single term without icon.'
+      'dl > dd:nth-child(12)': 'Yet another definition text.'
 description_list_horizontal:
   render:
     '#type': pattern
@@ -57,44 +67,34 @@ description_list_horizontal:
         orientation: horizontal
       items:
         - term:
-            - label:
-                '#markup': "<p class='d-inline-block mb-0'>Only title label with icon</p>"
-              icon:
-                path: "/assets/icons/bootstrap-icons.svg"
-                name: "geo-alt-fill"
-                size: "xs"
-          definition:
-            content:
-              '#markup': "<p class='mb-2'>Description of first term text goes here.</p>"
+          - label: 'Single label with icon'
+            icon: 'geo-alt-fill'
+          definition: 'Description of first term text goes here.'
         - term:
-            - label: "First title label"
-            - label:
-                content:
-                  '#markup': "<p class=\"mb-0 d-inline-block\">Second title label</p>"
-              icon:
-                path: "/assets/icons/bootstrap-icons.svg"
-                name: "geo-alt-fill"
-                size: "xs"
+          - label: 'First label without icon'
+          - label: 'Second label with icon'
+            icon: 'calendar-event'
+          definition: 'Description of second term text goes here.'
+        - term: 'A single term without icon.'
           definition:
-            content:
-              '#markup': "<p class='mb-2'>Description of second term text goes here.</p>"
-        - term:
-            - label: "Only title label"
-          definition:
-            - '#markup': "<p class='mb-2'>First line description of third term text goes here.</p>"
-            - '#markup': "<p class='mb-2'>Second line description of third term text goes here.</p>"
+            - 'First definition for third term.'
+            - 'Second definition for third term.'
   assertions:
     count:
+      'dl': 1
       'dl.d-md-grid.grid-3-9': 1
       'dt': 4
-      'svg.me-2.bi.icon--xs': 2
       'dd': 4
+      'svg.me-2.bi.icon--xs': 2
+    contains:
+      'dl > div:nth-child(1) > dt > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#geo-alt-fill'
+      'dl > div:nth-child(3) > dt:nth-child(2) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#calendar-event'
     equals:
-      'dl > div:nth-child(1) > dt > div > p': "Only title label with icon"
-      'dl > div:nth-child(2) > dd > p': "Description of first term text goes here."
-      'dl > div:nth-child(3) > dt > div': "First title label"
-      'dl > div:nth-child(3) > dt > div > p': "Second title label"
-      'dl > div:nth-child(4) > dd > p': "Description of second term text goes here."
-      'dl > div:nth-child(5) > dt > div': "Only title label"
-      'dl > div:nth-child(6) > dd:nth-child(1) > p': "First line description of third term text goes here."
-      'dl > div:nth-child(6) > dd:nth-child(2) > p': "Second line description of third term text goes here."
+      'dl > div:nth-child(1) > dt > div': 'Single label with icon'
+      'dl > dd:nth-child(2)': 'Description of first term text goes here.'
+      'dl > div:nth-child(3) > dt:nth-child(1) > div': 'First label without icon'
+      'dl > div:nth-child(3) > dt:nth-child(2) > div': 'Second label with icon'
+      'dl > dd:nth-child(4)': 'Description of second term text goes here.'
+      'dl > div:nth-child(5) > dt > div': 'A single term without icon.'
+      'dl > div:nth-child(6) > dd:nth-child(1)': 'First definition for third term.'
+      'dl > div:nth-child(6) > dd:nth-child(2)': 'Second definition for third term.'
