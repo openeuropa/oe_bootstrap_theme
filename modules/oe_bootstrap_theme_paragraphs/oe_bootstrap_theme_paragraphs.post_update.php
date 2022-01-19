@@ -13,6 +13,8 @@ use Drupal\oe_bootstrap_theme\ConfigImporter;
  * Add extra fields to description list paragraph.
  */
 function oe_bootstrap_theme_paragraphs_post_update_00001(array &$sandbox): void {
+  \Drupal::service('module_installer')->install(['oe_paragraphs_description_list']);
+
   $configs = [
     'field.storage.paragraph.oe_bt_orientation',
     'field.field.paragraph.oe_description_list.oe_bt_orientation',
@@ -20,5 +22,5 @@ function oe_bootstrap_theme_paragraphs_post_update_00001(array &$sandbox): void 
     'core.entity_view_display.paragraph.oe_description_list.default',
   ];
 
-  ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00001/', $configs);
+  ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00001/', $configs, TRUE);
 }

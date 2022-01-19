@@ -10,8 +10,8 @@ id: paragraph.oe_description_list.oe_bt_orientation
 field_name: oe_bt_orientation
 entity_type: paragraph
 bundle: oe_description_list
-label: Layout
-description: 'Sets the layout (vertical|horizontal) for the paragraph Description list.'
+label: Orientation
+description: 'Sets the orientation (vertical|horizontal) for the paragraph.'
 required: true
 translatable: false
 default_value:
