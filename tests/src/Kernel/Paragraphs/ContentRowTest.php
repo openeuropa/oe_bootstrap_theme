@@ -176,9 +176,9 @@ class ContentRowTest extends ParagraphsTestBase {
     $this->assertStringContainsString('Accordion item 2', $accordion_items->eq(1)->text());
     $this->assertStringContainsString('Accordion item 3', $accordion_items->eq(2)->text());
     // Check that the wrappers where added to the correct paragraphs.
-    $this->assertSame('bcl-inpage-1', $rich_text_title->parents()->eq(0)->attr('id'));
-    $this->assertSame('bcl-inpage-6', $facts_figures->parents()->eq(0)->attr('id'));
-    $this->assertSame('bcl-inpage-8', $social_media_title->parents()->eq(1)->attr('id'));
+    $this->assertSame('bcl-inpage-item-1', $rich_text_title->parents()->eq(0)->attr('id'));
+    $this->assertSame('bcl-inpage-item-6', $facts_figures->parents()->eq(0)->attr('id'));
+    $this->assertSame('bcl-inpage-item-8', $social_media_title->parents()->eq(1)->attr('id'));
   }
 
 }
