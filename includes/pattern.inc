@@ -168,7 +168,12 @@ function oe_bootstrap_theme_preprocess_pattern_description_list(&$variables) {
   // Multiple terms can be passed for each item. Process all the entries to
   // add path and size to icons, if not yet specified.
   foreach ($variables['items'] as &$item) {
+    // Allow to pass a single term, without forcing users to pass an array with
+    // the "label" key in it. This covers for a bug in the BCL pattern.
     if (!is_array($item['term'])) {
+      $item['term'] = [
+        ['label' => $item['term']],
+      ];
       continue;
     }
 

@@ -399,11 +399,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_description_list(array &$va
 
   foreach ($paragraph->get('field_oe_description_list_items') as $item) {
     $variables['items'][] = [
-      'term' => [
-        [
-          'label' => $item->term,
-        ],
-      ],
+      'term' => $item->term,
       'definition' => $item->description,
     ];
   }
