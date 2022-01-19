@@ -14,9 +14,9 @@
 {% if centered  %}
   {% set attributes = attributes.addClass(['text-center'])%}
 {% endif %}
-{% if link %}
-  {% set link = link|merge(
-    {'variant': link.link_style}
+{% if call_to_action %}
+  {% set call_to_action = call_to_action|merge(
+    {'variant': call_to_action.link_style}
   ) %}
 {% endif %}
 {% include '@oe-bcl/banner' with {
@@ -26,7 +26,7 @@
   centered: centered,
   title: title,
   description: description,
-  link: link,
+  link: call_to_action,
   image: variant == 'image' or variant == 'image_shade' ? image : '' ,
   content_classes: content_classes,
   attributes: attributes,

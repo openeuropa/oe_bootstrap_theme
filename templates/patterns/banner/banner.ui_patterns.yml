@@ -43,9 +43,9 @@ banner:
       label: 'Description'
       description: 'Sub-heading of the banner.'
       preview: 'Innovation, economy, environment and geopolitics'
-    link:
+    call_to_action:
       type: array
-      label: 'Link'
+      label: 'Call to action'
       description: 'Link to print a CTA button. Optional.'
       preview:
         label: 'Subscribe'
