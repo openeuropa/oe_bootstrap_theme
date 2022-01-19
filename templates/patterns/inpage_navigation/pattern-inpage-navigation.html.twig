@@ -6,9 +6,10 @@
 #}
 {{ attach_library('oe_bootstrap_theme/inpage_navigation') }}
 
-{% include '@oe-bcl/bcl-inpage-navigation/inpage-navigation.html.twig' with {
+{% include '@oe-bcl/inpage-navigation' with {
   'title': title,
   'links': links,
   'content': content,
   'full_layout': full_layout,
+  'id': id_inpage,
 } only  %}

@@ -2,6 +2,10 @@ inpage_navigation:
   label: 'Inpage navigation'
   description: 'Inpage navigation adds a navigation element and content element so when scrolling the active element is indicated in the nav part.'
   settings:
+    id_inpage:
+      type: textfield
+      label: 'Navigation id'
+      description: 'Id of the navigation element (optional).'
     full_layout:
       type: boolean
       label: 'Full layout'

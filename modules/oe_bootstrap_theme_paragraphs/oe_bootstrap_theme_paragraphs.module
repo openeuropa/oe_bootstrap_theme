@@ -378,6 +378,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage
   }
 
   $variables['title'] = t('Page contents');
+  $variables['id_inpage'] = Html::getUniqueId('bcl-inpage-navigation-' . $paragraph->id());
   if (!$paragraph->get('field_oe_title')->isEmpty()) {
     $variables['title'] = $paragraph->get('field_oe_title')->value;
   }
@@ -390,7 +391,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage
       continue;
     }
 
-    $unique_id = Html::getUniqueId('bcl-inpage-' . $sub_paragraph->id());
+    $unique_id = Html::getUniqueId('bcl-inpage-item-' . $sub_paragraph->id());
     $field_render[$delta]['#theme_wrappers']['container'] = [
       '#attributes' => ['id' => $unique_id],
     ];
