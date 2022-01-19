@@ -1,21 +1,26 @@
 alert:
   label: 'Alert'
   description: 'Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. https://v5.getbootstrap.com/docs/5.0/components/alerts/'
+  variants:
+    primary:
+      label: 'Primary (default)'
+    secondary:
+      label: 'Secondary'
+    success:
+      label: 'Success'
+    danger:
+      label: 'Danger'
+    warning:
+      label: 'Warning'
+    info:
+      label: 'Info'
+    light:
+      label: 'Light'
+    dark:
+      label: 'Dark'
+    link:
+      label: 'Link'
   settings:
-    style:
-      type: select
-      label: 'Alert style'
-      description: 'Set an alert style:'
-      options:
-        primary: 'primary (default)'
-        secondary: 'secondary'
-        success: 'success'
-        danger: 'danger'
-        warning: 'warning'
-        info: 'info'
-        light: 'light'
-        dark: 'dark'
-        link: 'link'
     dismissible:
       type: boolean
       label: 'Dismissible'
@@ -35,7 +40,7 @@ alert:
       label: 'Message'
       description: 'The alert message.'
       preview: 'A simple alert—check it out!'
-    icon_name:
+    icon:
       type: text
       label: 'Icon name'
       description: 'Add an icon to the alert. Optional.'
