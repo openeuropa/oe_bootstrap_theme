@@ -1,4 +1,4 @@
-accordion_with_flush:
+accordion_with_bare_layout:
   render:
     '#type': pattern
     '#id': accordion
