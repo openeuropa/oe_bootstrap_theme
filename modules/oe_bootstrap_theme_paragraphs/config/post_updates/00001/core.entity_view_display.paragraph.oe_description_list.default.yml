@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oe_description_list.oe_bt_orientation
+    - field.field.paragraph.oe_description_list.field_oe_description_list_items
+    - field.field.paragraph.oe_description_list.field_oe_title
+    - paragraphs.paragraphs_type.oe_description_list
+  module:
+    - description_list_field
+id: paragraph.oe_description_list.default
+targetEntityType: paragraph
+bundle: oe_description_list
+mode: default
+content:
+  field_oe_description_list_items:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: description_list_formatter
+    region: content
+  field_oe_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  oe_bt_orientation: true

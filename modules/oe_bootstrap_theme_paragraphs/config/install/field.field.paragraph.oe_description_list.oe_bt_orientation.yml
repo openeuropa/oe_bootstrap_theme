@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.oe_bt_orientation
+    - paragraphs.paragraphs_type.oe_description_list
+  module:
+    - options
+id: paragraph.oe_description_list.oe_bt_orientation
+field_name: oe_bt_orientation
+entity_type: paragraph
+bundle: oe_description_list
+label: Orientation
+description: 'Sets the orientation (vertical|horizontal) for the paragraph.'
+required: true
+translatable: false
+default_value:
+  -
+    value: horizontal
+default_value_callback: ''
+settings: {  }
+field_type: list_string

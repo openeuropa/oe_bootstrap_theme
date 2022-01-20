@@ -389,6 +389,23 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage
 }
 
 /**
+ * Implements hook_preprocess_paragraph() for oe_description-list paragraph.
+ */
+function oe_bootstrap_theme_preprocess_paragraph__oe_description_list(array &$variables): void {
+  /** @var Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  $variables['title'] = $paragraph->get('field_oe_title')->value ?? '';
+  $variables['orientation'] = $paragraph->get('oe_bt_orientation')->value;
+
+  foreach ($paragraph->get('field_oe_description_list_items') as $item) {
+    $variables['items'][] = [
+      'term' => $item->term,
+      'definition' => $item->description,
+    ];
+  }
+}
+
+/**
  * Gets the mapped layout.
  *
  * @param string $layout

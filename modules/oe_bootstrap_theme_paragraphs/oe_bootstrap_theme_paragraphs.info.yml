@@ -8,6 +8,8 @@ dependencies:
   - oe_bootstrap_theme:oe_bootstrap_theme_helper
   - oe_paragraphs:oe_paragraphs_timeline
   - oe_content:oe_content_timeline_field
+  - drupal:description_list_field
+  - oe_paragraphs:oe_paragraphs_description_list
 config_devel:
   install:
     - field.field.paragraph.oe_links_block.oe_bt_links_block_background
@@ -15,3 +17,5 @@ config_devel:
     - field.field.paragraph.oe_social_media_follow.oe_bt_links_block_background
     - field.storage.paragraph.oe_bt_links_block_orientation
     - field.storage.paragraph.oe_bt_links_block_background
+    - field.field.paragraph.oe_description_list.oe_bt_orientation
+    - field.storage.paragraph.oe_bt_orientation

@@ -1,0 +1,40 @@
+description_list:
+  label: 'Description list'
+  description: 'Description lists are used to display and organise content that belongs to a category with a descriptions. Common use cases include glossary type lists or a list of speakers with their biographies..'
+  settings:
+    orientation:
+      type: select
+      label: Orientation
+      options:
+        default: Default
+        horizontal: Horizontal
+      preview: Horizontal
+  fields:
+    items:
+      type: 'array'
+      label: 'List items'
+      description: 'Each item is composed by one or more terms and one or more definitions. Each term entry can have an icon.'
+      preview:
+        - term:
+          - label: 'Single label with icon'
+            icon: 'geo-alt-fill'
+          definition: 'Description of first term text goes here.'
+        - term:
+          - label: 'First label without icon'
+          - label: 'Second label'
+            icon: 'calendar-event'
+          definition: 'Description of second term text goes here.'
+        - term:
+          - label:
+            - '#markup': 'A label with <em>some</em> markup.'
+          definition:
+            - 'First description of third term text goes here.'
+            - 'Second description of third term text goes here.'
+        - term:
+            - label: 'Custom icon size'
+              icon:
+                name: 'bicycle'
+                size: 'xl'
+          definition: 'This is a bigger icon.'
+        - term: 'A single term without icon.'
+          definition: 'Yet another definition text.'

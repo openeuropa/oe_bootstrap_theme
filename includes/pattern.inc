@@ -160,3 +160,36 @@ function _oe_bootstrap_theme_extract_carousel_image(&$item) {
   }
   return FALSE;
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for description list pattern.
+ */
+function oe_bootstrap_theme_preprocess_pattern_description_list(&$variables) {
+  // Multiple terms can be passed for each item. Process all the entries to
+  // add path and size to icons, if not yet specified.
+  foreach ($variables['items'] as &$item) {
+    // Allow to pass a single term, without forcing users to pass an array with
+    // the "label" key in it. This covers for a bug in the BCL pattern.
+    if (!is_array($item['term'])) {
+      $item['term'] = [
+        ['label' => $item['term']],
+      ];
+      continue;
+    }
+
+    foreach ($item['term'] as &$term) {
+      if (is_array($term) && !empty($term['icon'])) {
+        // If the icon is not an array, the icon name has been passed.
+        if (!is_array($term['icon'])) {
+          $term['icon'] = [
+            'name' => $term['icon'],
+          ];
+        }
+        $term['icon'] += [
+          'size' => 'xs',
+          'path' => $variables['bcl_icon_path'],
+        ];
+      }
+    }
+  }
+}
