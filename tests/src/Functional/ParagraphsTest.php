@@ -113,6 +113,33 @@ class ParagraphsTest extends BrowserTestBase {
   }
 
   /**
+   * Test Accordion paragraphs form.
+   */
+  public function testAccordionParagraph(): void {
+    $this->drupalGet('/node/add/paragraphs_test');
+    $page = $this->getSession()->getPage();
+    $page->pressButton('Add Accordion');
+
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_text][0][value]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_text_long][0][value]');
+    // Assert the Icon field is not shown.
+    $this->assertSession()->fieldNotExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_icon][0][value]');
+
+    $values = [
+      'title[0][value]' => 'Test Accordion',
+      'oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_text][0][value]' => 'Title item 1',
+      'oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_text_long][0][value]' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    ];
+
+    $this->submitForm($values, 'Save');
+    $this->drupalGet('/node/1');
+
+    // Assert paragraph values are displayed correctly.
+    $this->assertSession()->pageTextContains('Title item 1');
+    $this->assertSession()->pageTextContains('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+  }
+
+  /**
    * Test Description list paragraphs form.
    */
   public function testDescriptionListParagraph(): void {
