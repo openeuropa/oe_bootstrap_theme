@@ -7,34 +7,34 @@ carousel:
       label: 'Fade'
       description: 'Animate slides with a fade transition instead of a slide. False by default.'
       preview: true
-    with_controls:
+    show_controls:
       type: boolean
-      label: 'With controls'
+      label: 'Show controls'
       description: 'Enable the controls (prev and next buttons). False by default.'
       preview: true
-    with_indicators:
+    show_indicators:
       type: boolean
-      label: 'With indicators'
+      label: 'Show indicators'
       description: 'With indicators (default: false).'
       preview: true
     autoplay:
       type: boolean
       label: 'Disable autoplay'
-      description: 'True by default. If set to false the carousel will not slide automatically.'
+      description: 'Default to true. If set to false the carousel will not slide automatically.'
       preview: true
     autoinit:
       type: boolean
       label: 'initialize the carousel'
-      description: 'True by default. If set to false, the carousel will need to be instantiated via javascript.'
+      description: 'Default to true. If set to false, the carousel will need to be instantiated via javascript.'
     disable_touch:
       type: boolean
       label: 'Disable touch'
       description: 'Allow the carousel to swipe on touch. False by default.'
       preview: false
-    dark:
+    dark_mode:
       type: boolean
-      label: 'Dark'
-      description: 'Enable the dark mode.'
+      label: 'Dark mode'
+      description: 'Enable the dark mode. Default to false.'
       preview: false
   fields:
     slides:
@@ -48,13 +48,9 @@ carousel:
             - theme: 'image'
               uri: 'https://placeimg.com/1000/500/arch'
               alt: 'alt image 1'
-              attributes:
-                class: 'd-block w-100'
         - caption: 'Second slide label'
           interval: 0
           image:
             - theme: 'image'
               uri: 'https://placeimg.com/1000/500/people'
               alt: 'alt image 2'
-              attributes:
-                class: 'd-block w-100'
