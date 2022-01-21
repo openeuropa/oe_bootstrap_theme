@@ -127,6 +127,7 @@ function _oe_bootstrap_theme_add_card_link_class(&$item) {
  * Implements hook_preprocess_HOOK() for carousel patterns.
  */
 function oe_bootstrap_theme_preprocess_pattern_carousel(array &$variables) {
+  $variables['carousel_id'] = Html::getUniqueId('bcl-carousel');
   // Move first image of each slide in a specific array key.
   if (array_key_exists('slides', $variables) && is_array($variables['slides'])) {
     foreach ($variables['slides'] as &$slide) {
