@@ -6,12 +6,11 @@
 #}
 {% set _slides = [] %}
 {% for slide in slides %}
-  {% set _image = slide.image|merge({
-    '#attributes': create_attribute().addClass([
-      'd-block',
-      'w-100',
-    ])
-  }) %}
+  {% set _image %}
+    {% block image %}
+      <img{{ create_attribute(slide.image).addClass(['d-block', 'w-100']) }} />
+    {% endblock %}
+  {% endset %}
   {% set _item = slide|merge({
     'image': _image
   }) %}

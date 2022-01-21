@@ -45,12 +45,10 @@ carousel:
         - caption: 'First slide label'
           interval: 0
           image:
-            - theme: 'image'
-              uri: 'https://placeimg.com/1000/500/arch'
-              alt: 'alt image 1'
+            src: 'https://placeimg.com/1000/500/arch'
+            alt: 'alt image 1'
         - caption: 'Second slide label'
           interval: 0
           image:
-            - theme: 'image'
-              uri: 'https://placeimg.com/1000/500/people'
-              alt: 'alt image 2'
+            src: 'https://placeimg.com/1000/500/people'
+            alt: 'alt image 1'

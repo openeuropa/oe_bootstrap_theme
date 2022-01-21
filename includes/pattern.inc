@@ -128,41 +128,6 @@ function _oe_bootstrap_theme_add_card_link_class(&$item) {
  */
 function oe_bootstrap_theme_preprocess_pattern_carousel(array &$variables) {
   $variables['carousel_id'] = Html::getUniqueId('bcl-carousel');
-  // Move first image of each slide in a specific array key.
-  if (array_key_exists('slides', $variables) && is_array($variables['slides'])) {
-    foreach ($variables['slides'] as &$slide) {
-      $slide['image'] = _oe_bootstrap_theme_extract_carousel_image($slide);
-    }
-  }
-
-  // Nicer preview with fixed width and local backgrounds.
-  // @code
-  // if ($variables['context']->getType() == 'preview') {
-  //   $variables['attributes']['style'] = "width: 800px";
-  // }
-  // @endcode
-}
-
-/**
- * Extract image from carousel slide.
- */
-function _oe_bootstrap_theme_extract_carousel_image(&$item) {
-  if (is_array($item) && array_key_exists('#theme', $item)) {
-    if ($item['#theme'] === 'image' || $item['#theme'] === 'image_formatter') {
-      $image = $item;
-      $item = [];
-      return $image;
-    }
-  }
-  if (isset($item) && is_array($item)) {
-    foreach ($item as &$next) {
-      $dig = _oe_bootstrap_theme_extract_carousel_image($next);
-      if ($dig) {
-        return $dig;
-      }
-    }
-  }
-  return FALSE;
 }
 
 /**
