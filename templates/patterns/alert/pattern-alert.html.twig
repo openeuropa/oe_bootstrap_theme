@@ -7,9 +7,10 @@
 {% include '@oe-bcl/alert' with {
   'heading': heading,
   'message': message,
-  'variant': style,
+  'variant': variant,
   'dismissible': dismissible,
   'animated_dismiss': animated_dismiss,
-  'icons_path': icons_path,
-  'icon_name': icon_name,
-} %}
+  'icons_path': bcl_icon_path,
+  'icon_name': icon,
+  'attributes': attributes,
+} only %}

@@ -1,17 +1,19 @@
 {#
 /**
  * @file
- * Badge component.
+ * Badge pattern.
  */
 #}
 
 {% include '@oe-bcl/badge' with {
   'label': label,
+  'title': title,
   'assistive_text': assistive_text,
   'url': url,
   'rounded_pill': rounded_pill,
   'background': background,
-  'icons_path': icons_path,
+  'icons_path': bcl_icon_path,
   'dismissible': dismissible,
-  'animated_dismiss': animated_dismiss
-} %}
+  'animated_dismiss': animated_dismiss,
+  'attributes': attributes,
+} only %}

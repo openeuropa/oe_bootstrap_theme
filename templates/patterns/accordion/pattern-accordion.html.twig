@@ -1,11 +1,13 @@
 {#
 /**
  * @file
- * Accordion component.
+ * Accordion pattern.
  */
 #}
 {% include '@oe-bcl/accordion' with {
-  'flush': flush,
+  'id': accordion_id,
+  'flush': bare_layout,
   'items': items,
-  'open_item_id': open_item_id
-} %}
+  'open_item_id': open_item,
+  'attributes': attributes,
+} only %}

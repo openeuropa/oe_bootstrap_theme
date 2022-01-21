@@ -2,15 +2,14 @@ alert_dimissible_animated:
   render:
     '#type': pattern
     '#id': alert
+    '#variant': 'danger'
     '#fields':
       settings:
         dismissible: true
         animated_dismiss: true
-        style: 'danger'
       heading: 'Well done!'
       message: 'A simple alert. check it out!'
-      icons_path: '/assets/icons/bootstrap-icons.svg'
-      icon_name: 'alarm'
+      icon: 'alarm'
   assertions:
     count:
       'div.alert.alert-danger.alert-dismissible.fade[role="alert"]': 1
@@ -25,15 +24,14 @@ alert_dimissible_non_animated:
   render:
     '#type': pattern
     '#id': alert
+    '#variant': 'info'
     '#fields':
       settings:
         dismissible: true
         animated_dismiss: false
-        style: 'info'
       heading: 'Well done!'
       message: 'A simple alert. check it out!'
-      icons_path: '/assets/icons/bootstrap-icons.svg'
-      icon_name: 'alarm'
+      icon: 'alarm'
   assertions:
     count:
       'div.alert.alert-info.alert-dismissible[role="alert"]': 1
@@ -49,15 +47,14 @@ alert_not_dimissible:
   render:
     '#type': pattern
     '#id': alert
+    '#variant': 'secondary'
     '#fields':
       settings:
         dismissible: false
         animated_dismiss: false
-        style: 'secondary'
       heading: 'Well done!'
       message: 'A simple alert. check it out!'
-      icons_path: '/assets/icons/bootstrap-icons.svg'
-      icon_name: 'search'
+      icon: 'search'
   assertions:
     count:
       'div.alert-dismissible': 0

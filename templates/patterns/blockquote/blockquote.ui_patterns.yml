@@ -1,34 +1,28 @@
 blockquote:
-  label: "Blockquote"
-  description: "For quoting blocks of content from another source within your document. https://v5.getbootstrap.com/docs/5.0/content/typography/#blockquotes"
+  label: 'Blockquote'
+  description: 'For quoting blocks of content from another source within your document. For more information: https://v5.getbootstrap.com/docs/5.0/content/typography/#blockquotes'
   settings:
     alignment:
       type: select
-      label: "Text alignment (default: left)"
+      label: 'Text alignment'
+      description: 'Align the quote in the page.'
       options:
-        left: left
-        center: center
-        end: end
-      preview: left
+        left: 'left (default)'
+        center: 'center'
+        end: 'end'
   fields:
     quote:
-      type: "render"
-      label: "Content"
-      description: "The quote"
-      preview:
-        - type: html_tag
-          tag: p
-          value: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit."
+      type: text
+      label: 'Quote'
+      description: 'The quote text.'
+      preview: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.'
     attribution:
-      type: "render"
-      label: "Attribution"
-      description: "The name of the quoted person or entity."
-      preview:
-        - type: html_tag
-          tag: span
-          value: "Cicero in "
+      type: text
+      label: 'Attribution'
+      description: 'The name of the quoted person or entity.'
+      preview: 'Cicero in '
     cite:
-      type: "render"
-      label: "Citation"
-      description: "The creative work in which the referenced quote was published. Optional."
-      preview: "de Finibus Bonorum et Malorum"
+      type: text
+      label: 'Citation'
+      description: 'The creative work in which the referenced quote was published. Optional.'
+      preview: 'de Finibus Bonorum et Malorum'

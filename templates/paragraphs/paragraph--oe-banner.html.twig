@@ -8,7 +8,7 @@
 #}
 {% set attributes = create_attribute() %}
 {% if url %}
-  {% set _link = {
+  {% set _call_to_action = {
     'label': label,
     'path': url,
     'attributes': create_attribute({
@@ -30,7 +30,7 @@
   'variant': variant,
   'title': content.field_oe_title,
   'description':  content.field_oe_text,
-  'link': _link,
+  'call_to_action': _call_to_action,
   'image': image.src,
   'hero': _hero,
   'shade': _shade,
