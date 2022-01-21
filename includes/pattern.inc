@@ -182,6 +182,7 @@ function oe_bootstrap_theme_preprocess_pattern_listing(array &$variables): void 
       ];
 
       if (!empty($item['image'])) {
+        $item['image']['position'] = 'top';
         $item['image']['rounded'] = 1;
       }
 

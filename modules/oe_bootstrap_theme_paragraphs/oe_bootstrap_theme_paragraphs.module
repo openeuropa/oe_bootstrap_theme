@@ -185,8 +185,6 @@ function oe_bootstrap_theme_paragraphs_preprocess_paragraph__oe_list_item_block(
       $image = [
         'path' => file_url_transform_relative(file_create_url($file->getFileUri())),
         'alt' => $image_item->get('alt')->getValue(),
-        'position' => 'top',
-        'rounded' => 1,
       ];
     }
     // Prepare the date fields if date is available.
