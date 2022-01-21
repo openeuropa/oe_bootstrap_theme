@@ -1,21 +1,26 @@
 button:
   label: 'Button'
   description: 'For actions in forms, dialogs, and more with support for multiple sizes, states, and more. For more information: https://v5.getbootstrap.com/docs/5.0/components/buttons/'
+  variants:
+    primary:
+      label: 'Primary (default)'
+    secondary:
+      label: 'Secondary'
+    success:
+      label: 'Success'
+    danger:
+      label: 'Danger'
+    warning:
+      label: 'Warning'
+    info:
+      label: 'Info'
+    light:
+      label: 'Light'
+    dark:
+      label: 'Dark'
+    link:
+      label: 'Link'
   settings:
-    style:
-      type: select
-      label: 'Button style'
-      description: 'Sets the background color and text color of the button:'
-      options:
-        primary: 'primary (default)'
-        secondary: 'secondary'
-        success: 'success'
-        danger: 'danger'
-        warning: 'warning'
-        info: 'info'
-        light: 'light'
-        dark: 'dark'
-        link: 'link'
     outline:
       type: boolean
       label: 'Button outline'
@@ -54,9 +59,7 @@ button:
       description: 'The button label.'
       preview: 'Submit'
     icon:
-      type: array
-      label: 'Icon'
+      type: text
+      label: 'Icon name'
       description: 'Add an icon to the button. Optional.'
-      preview:
-        name: 'arrow-right'
-        transformation: 'rotate-0'
+      preview: 'arrow-right'

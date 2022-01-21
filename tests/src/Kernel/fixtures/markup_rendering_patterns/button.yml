@@ -2,15 +2,13 @@ button_dark_with_icon_after:
   render:
     '#type': pattern
     '#id': 'button'
+    '#variant': 'dark'
     '#fields':
       settings:
-        style: 'dark'
         icon_position: 'after'
       type: 'button'
       label: 'Button label'
-      icon:
-        name: 'arrow-right'
-        transformation: 'rotate-0'
+      icon: 'arrow-right'
   assertions:
     count:
       'button[data-drupal-selector="button"]': 1
@@ -39,9 +37,9 @@ button_secondary:
   render:
     '#type': pattern
     '#id': 'button'
+    '#variant': 'secondary'
     '#fields':
       settings:
-        style: 'secondary'
       type: 'button'
       label: 'Button label'
   assertions:
@@ -73,9 +71,9 @@ button_warning_large:
   render:
     '#type': pattern
     '#id': 'button'
+    '#variant': 'warning'
     '#fields':
       settings:
-        style: 'warning'
         outline: false
         disabled: false
         size: 'lg'
@@ -93,15 +91,13 @@ button_dark_with_icon_before_and_type_reset:
   render:
     '#type': pattern
     '#id': 'button'
+    '#variant': 'dark'
     '#fields':
       settings:
-        style: 'dark'
         icon_position: 'before'
       type: 'reset'
       label: 'Button label'
-      icon:
-        name: 'arrow-right'
-        transformation: 'rotate-0'
+      icon: 'arrow-right'
   assertions:
     count:
       'button[data-drupal-selector="button"]': 1
