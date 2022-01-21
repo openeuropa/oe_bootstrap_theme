@@ -15,23 +15,6 @@ dropdown:
         dropup: 'dropup'
         dropend: 'dropend'
         dropstart: 'dropstart'
-    alignment:
-      type: select
-      label: 'Alignment'
-      description: 'Sets the alignment of the dropdown menu (if not set, then will be automatically positioned 100% from the top and along the left side of its parent):'
-      options:
-        dropdown-menu-end: 'dropdown-menu-end'
-        dropdown-menu-sm-end: 'dropdown-menu-sm-end'
-        dropdown-menu-md-end: 'dropdown-menu-md-end'
-        dropdown-menu-lg-end: 'dropdown-menu-lg-end'
-        dropdown-menu-xl-end: 'dropdown-menu-xl-end'
-        dropdown-menu-xxl-end: 'dropdown-menu-xxl-end'
-        dropdown-menu-start: 'dropdown-menu-start'
-        dropdown-menu-sm-start: 'dropdown-menu-sm-start'
-        dropdown-menu-md-start: 'dropdown-menu-md-start'
-        dropdown-menu-lg-start: 'dropdown-menu-lg-start'
-        dropdown-menu-xl-start: 'dropdown-menu-xl-start'
-        dropdown-menu-xxl-start: 'dropdown-menu-xxl-start'
     dark:
       type: boolean
       label: 'Dark mode'
