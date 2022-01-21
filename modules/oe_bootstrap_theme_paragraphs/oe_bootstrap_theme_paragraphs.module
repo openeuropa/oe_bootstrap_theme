@@ -23,7 +23,6 @@ use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_media_iframe\Plugin\media\Source\Iframe;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\Component\Utility\Html;
-use Drupal\Component\Utility\UrlHelper;
 use Drupal\node\Entity\Node;
 use Drupal\Core\Url;
 
@@ -65,7 +64,7 @@ function oe_bootstrap_theme_paragraphs_preprocess_paragraph__oe_links_block(arra
 /**
  * Implements hook_preprocess_paragraph() for oe_social_media_follow paragraph.
  */
-function oe_bootstrap_theme_preprocess_paragraph__oe_social_media_follow(array &$variables): void {
+function oe_bootstrap_theme_paragraphs_preprocess_paragraph__oe_social_media_follow(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
   $variables['orientation'] = $paragraph->get('field_oe_social_media_variant')->value;
@@ -75,7 +74,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_social_media_follow(array &
   $variables['links'] = [];
   foreach ($links as $key => $link) {
     $variables['links'][$key]['icon_position'] = 'before';
-    $variables['links'][$key]['icon']['path'] = $variables['bcl_icon_path'];
     $variables['links'][$key]['icon']['name'] = $link['link_type'];
     $variables['links'][$key]['label'] = $link['title'];
     $variables['links'][$key]['path'] = Url::fromUri($link['uri'])->toString();
@@ -94,7 +92,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_social_media_follow(array &
 /**
  * Implements hook_preprocess_paragraph__oe_accordion().
  */
-function oe_bootstrap_theme_preprocess_paragraph__oe_accordion(array &$variables): void {
+function oe_bootstrap_theme_paragraphs_preprocess_paragraph__oe_accordion(array &$variables): void {
   // Massage data to be compliant with OE Bootstrap Theme accordion component
   // data structure.
   $builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
@@ -113,7 +111,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_accordion(array &$variables
 /**
  * Implements hook_preprocess_paragraph() for paragraph--oe-text-feature-media.html.twig.
  */
-function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$variables): void {
+function oe_bootstrap_theme_paragraphs_preprocess_paragraph__oe_text_feature_media(array &$variables): void {
   $variables['image'] = [];
 
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
@@ -170,12 +168,12 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
 /**
  * Implements hook_preprocess_paragraph() for paragraph--oe-list-item-block.html.twig.
  */
-function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$variables): void {
+function oe_bootstrap_theme_paragraphs_preprocess_paragraph__oe_list_item_block(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
   $variables['variant'] = $paragraph->get('oe_paragraphs_variant')->first()->getValue()['value'];
   $variables['title'] = $paragraph->get('field_oe_title')->first()->value ?? '';
-  $variables['columns'] = oe_bootstrap_theme_get_bcl_layout_mapping($variables['variant'], $paragraph->get('field_oe_list_item_block_layout')->first()->value);
+  $variables['columns'] = oe_bootstrap_theme_paragraphs_get_mapped_layout($paragraph->get('field_oe_list_item_block_layout')->first()->value, $variables['variant']);
   $variables['items'] = [];
 
   foreach ($paragraph->get('field_oe_paragraphs') as $item) {
@@ -192,37 +190,32 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
       ];
     }
     // Prepare the date fields if date is available.
-    $date = get_date_for_list_item_paragraph($item->entity, $variables);
+    $date = oe_bootstrap_theme_paragraphs_get_listing_date($item->entity, $variables);
 
     // Prepare the metas if available.
     $metas = [];
     if (!$item->entity->get('field_oe_meta')->isEmpty()) {
       foreach ($item->entity->get('field_oe_meta') as $item_meta) {
-        $metas[] = [
-          'label' => $item_meta->value,
-          'background' => 'primary',
-        ];
+        $metas[] = $item_meta->value;
       }
     }
 
-    $title = [
-      '#type' => 'pattern',
-      '#id' => 'link',
-      '#fields' => [
-        'standalone' => TRUE,
-        'label' => $item->entity->field_oe_title->value,
-        'path' => $item->entity->get('field_oe_link')->first()->getUrl()->toString(),
-      ],
-    ];
+    $url = $item->entity->get('field_oe_link')->first()->getUrl()->toString();
+    $title = $item->entity->field_oe_title->value;
+    if (!empty($url)) {
+      $title = [
+        '#type' => 'pattern',
+        '#id' => 'link',
+        '#fields' => [
+          'standalone' => TRUE,
+          'label' => $item->entity->field_oe_title->value,
+          'path' => $item->entity->get('field_oe_link')->first()->getUrl()->toString(),
+        ],
+      ];
+    }
     $variables['items'][] = [
-      'title' => [
-        'content' => $title,
-      ],
-      'text' => [
-        'content' => $item->entity->field_oe_text_long->value,
-        'classes' => $variables['variant'] === 'highlight' ? 'mb-2' : 'mb-3',
-      ],
-
+      'title' => $title,
+      'text' => $item->entity->field_oe_text_long->value,
       'image' => $image,
       'badges' => $metas,
       'date' => $date,
@@ -241,7 +234,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
     'path' => $link_item->getUrl()->toString(),
     'label' => $link_item->get('title')->getValue(),
     'icon' => [
-      'path' => $variables['bcl_icon_path'],
       'name' => 'chevron-right',
     ],
   ];
@@ -250,7 +242,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
 /**
  * Implements hook_preprocess_paragraph() for oe_banner paragraph.
  */
-function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): void {
+function oe_bootstrap_theme_paragraphs_preprocess_paragraph__oe_banner(array &$variables): void {
   /** @var Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
   $variables['title'] = $paragraph->get('field_oe_title')->value;
@@ -328,7 +320,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_banner(array &$variables): 
 /**
  * Implements hook_preprocess_paragraph() for timeline paragraph.
  */
-function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables): void {
+function oe_bootstrap_theme_paragraphs_preprocess_paragraph__oe_timeline(array &$variables): void {
   $paragraph = $variables['paragraph'];
   $variables['heading'] = $paragraph->get('field_oe_title')->value ?? '';
   if (!isset($variables['content']['field_oe_timeline']['#items'])) {
@@ -346,7 +338,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_timeline(array &$variables)
 /**
  * Implements hook_preprocess_paragraph() for paragraph--oe-content-row--variant-inpage-navigation.html.twig.
  */
-function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void {
+function oe_bootstrap_theme_paragraphs_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
@@ -387,24 +379,24 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage
 /**
  * Gets the mapped layout.
  *
- * @param string $variant
- *   The variant of the paragraph.
  * @param string $layout
  *   The paragraph layout.
+ * @param string $variant
+ *   The variant of the paragraph.
  *
  * @return string
  *   The BCL layout.
  */
-function oe_bootstrap_theme_get_bcl_layout_mapping(string $variant, string $layout): string {
+function oe_bootstrap_theme_paragraphs_get_mapped_layout(string $layout, string $variant = 'default'): string {
   switch ($layout) {
     case 'two_columns':
-      return $variant === 'highlight' ? "highlight-2-col" : "default-2-col";
+      return "$variant-2-col";
 
     case 'three_columns':
-      return $variant === 'highlight' ? "highlight-3-col" : "default-3-col";
+      return "$variant-3-col";
 
     default:
-      return $variant === 'highlight' ? "highlight-1-col" : "default-1-col";
+      return "$variant-1-col";
   }
 }
 
@@ -580,7 +572,7 @@ function oe_bootstrap_theme_set_video_iframe_ratio(Media $media, array &$variabl
 /**
  * Implements hook_preprocess_paragraph() for paragraph--oe-list-item.html.twig.
  */
-function oe_bootstrap_theme_preprocess_paragraph__oe_list_item(array &$variables): void {
+function oe_bootstrap_theme_paragraphs_preprocess_paragraph__oe_list_item(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
@@ -619,7 +611,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item(array &$variables
     $variables['detail'] = $paragraph->get('field_oe_text_long')->first()->value;
   }
 
-  $date = get_date_for_list_item_paragraph($paragraph, $variables);
+  $date = oe_bootstrap_theme_paragraphs_get_listing_date($paragraph, $variables);
   if (!empty($date)) {
     $variables['date'] = $date;
   }
@@ -634,34 +626,24 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item(array &$variables
  *
  * @return array
  *   Array if the link is internal. Empty in case it's not an internal link.
- *
- * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
- * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
- * @throws \Drupal\Core\TypedData\Exception\MissingDataException
  */
 function get_content_for_list_item_paragraph(Paragraph $paragraph): array {
-  $contentItem = [];
-
-  if (!UrlHelper::isExternal($paragraph->get('field_oe_link')->first()->getUrl()->toString())) {
-    $urlOptions = $paragraph->get('field_oe_link')->first()->getUrl()->getRouteParameters();
-    foreach ($urlOptions as $key => $value) {
-      if ($key == 'node') {
-        $node = Node::load($value);
-        $bundle_label = \Drupal::entityTypeManager()->getStorage('node_type')->load($node->bundle())->label();
-        $date = $node->getCreatedTime();
-        $formatted_date = \Drupal::service('date.formatter')->format($date, 'custom', 'j F Y');
-        $contentItem = [
-          '#type' => 'inline_template',
-          '#template' => '<div><span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">{{ bundle_name }}</span><span class="d-md-inline d-block text-muted mb-2 mb-md-0">{{ date }}</span></div>',
-          '#context' => [
-            'date' => $formatted_date,
-            'bundle_name' => $bundle_label,
-          ],
-        ];
-      }
-    }
+  if ($paragraph->get('field_oe_link')->first()->getUrl()->isExternal()) {
+    return [];
   }
-  return $contentItem;
+  $urlOptions = $paragraph->get('field_oe_link')->first()->getUrl()->getRouteParameters();
+  if (empty($urlOptions) || !isset($urlOptions['node'])) {
+    return [];
+  }
+  $node = Node::load($urlOptions['node']);
+  $bundle_label = \Drupal::entityTypeManager()->getStorage('node_type')->load($node->bundle())->label();
+  $date = $node->getCreatedTime();
+  $formatted_date = \Drupal::service('date.formatter')->format($date, 'custom', 'j F Y');
+
+  return [
+    'date' => $formatted_date,
+    'bundle_name' => $bundle_label,
+  ];
 }
 
 /**
@@ -674,12 +656,8 @@ function get_content_for_list_item_paragraph(Paragraph $paragraph): array {
  *
  * @return array
  *   Array if the date is informed. Empty in case it's not informed.
- *
- * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
- * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
- * @throws \Drupal\Core\TypedData\Exception\MissingDataException
  */
-function get_date_for_list_item_paragraph(Paragraph $paragraph, array $variables): array {
+function oe_bootstrap_theme_paragraphs_get_listing_date(Paragraph $paragraph, array $variables): array {
   if ($variables['variant'] !== 'date' || $paragraph->get('field_oe_date')->isEmpty()) {
     return [];
   }

@@ -5,13 +5,12 @@ declare(strict_types = 1);
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel\PatternAssertions;
 
 use Drupal\file\Entity\File;
-use Drupal\Tests\oe_bootstrap_theme\Kernel\Paragraphs\ParagraphsTestBase;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Class for asserting Listing paragraphs.
  */
-class ListingAssertion extends ParagraphsTestBase {
+class ListingAssertion extends BasePatternAssert {
 
   /**
    * Assert default variant of Listing is rendering correctly.
@@ -28,7 +27,7 @@ class ListingAssertion extends ParagraphsTestBase {
     $text_element = $crawler->filter('p.card-text.mb-3');
     $this->assertCount(6, $text_element);
     $this->assertCount(0, $crawler->filter('time'));
-    $this->assertImage($crawler, $file);
+    $this->assertImageRendering($crawler, $file);
   }
 
   /**
@@ -44,7 +43,7 @@ class ListingAssertion extends ParagraphsTestBase {
     $text_element = $crawler->filter('p.card-text.mb-2');
     $this->assertCount(6, $text_element);
     $this->assertCount(0, $crawler->filter('time'));
-    $this->assertImage($crawler, $file);
+    $this->assertImageRendering($crawler, $file);
   }
 
   /**
@@ -113,7 +112,7 @@ class ListingAssertion extends ParagraphsTestBase {
    * @param \Drupal\file\Entity\File $file
    *   Image file added to the card.
    */
-  protected function assertImage(Crawler $crawler, File $file): void {
+  protected function assertImageRendering(Crawler $crawler, File $file): void {
     $image_element = $crawler->filter('img.card-img-top.rounded-1.mb-3');
     $this->assertCount(6, $image_element);
     $this->assertStringContainsString(
@@ -124,6 +123,21 @@ class ListingAssertion extends ParagraphsTestBase {
       'Alt for image 1',
       $image_element->attr('alt')
     );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function getAssertions(string $variant): array {
+    // @todo Pending.
+    return [];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function assertBaseElements(string $html, string $variant): void {
+    // @todo Pending.
   }
 
 }

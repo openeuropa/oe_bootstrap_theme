@@ -160,3 +160,52 @@ function _oe_bootstrap_theme_extract_carousel_image(&$item) {
   }
   return FALSE;
 }
+
+/**
+ * Implements hook_preprocess_pattern() for pattern listing.
+ */
+function oe_bootstrap_theme_preprocess_pattern_listing(array &$variables): void {
+  if (isset($variables['items'])) {
+    // @todo Align this with card after refactoring.
+    foreach ($variables['items'] as $key => $value) {
+      if (isset($variables['items'][$key]['date'])) {
+        $variables['items'][$key]['date']['attributes'] = new Attribute();
+      }
+      $item = &$variables['items'][$key];
+
+      $item['title'] = [
+        'content' => $item['title'],
+      ];
+      $item['text'] = [
+        'content' => $item['text'],
+        'classes' => $variables['variant'] === 'highlight' ? 'mb-2' : 'mb-3',
+      ];
+
+      if (!empty($item['image'])) {
+        $item['image']['rounded'] = 1;
+      }
+
+      if (isset($item['badges'])) {
+        $metas = [];
+        foreach ($item['badges'] as $item_meta) {
+          $metas[] = [
+            'label' => $item_meta,
+            'background' => 'primary',
+          ];
+        }
+        $item['badges'] = $metas;
+      }
+
+      if (isset($item['content']['date'])) {
+        $item['content'] = [
+          '#type' => 'inline_template',
+          '#template' => '<div><span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">{{ bundle_name }}</span><span class="d-md-inline d-block text-muted mb-2 mb-md-0">{{ date }}</span></div>',
+          '#context' => [
+            'date' => $item['content']['date'],
+            'bundle_name' => $item['content']['bundle_name'],
+          ],
+        ];
+      }
+    }
+  }
+}

@@ -4,13 +4,12 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel\PatternAssertions;
 
-use Drupal\Tests\oe_bootstrap_theme\Kernel\Paragraphs\ParagraphsTestBase;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Class for asserting links block paragraphs.
  */
-class LinksBlockAssertion extends ParagraphsTestBase {
+class LinksBlockAssertion extends BasePatternAssert {
 
   /**
    * Returns a list of link items for Social media follow paragraph.
@@ -219,6 +218,21 @@ class LinksBlockAssertion extends ParagraphsTestBase {
     $this->assertCount(1, $crawler->filter('ul.ps-0.mb-0'));
     $this->assertCount(3, $crawler->filter('li.list-unstyled'));
     $this->assertCount(2, $crawler->filter('li.list-unstyled.me-4-5'));
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function getAssertions(string $variant): array {
+    // @todo Pending.
+    return [];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function assertBaseElements(string $html, string $variant): void {
+    // @todo Pending.
   }
 
 }

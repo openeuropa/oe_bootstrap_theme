@@ -32,6 +32,11 @@ listing:
         stretch: 'stretch'
       preview: 'start'
   fields:
+    title:
+      type: 'text'
+      label: 'Title'
+      description: 'List item block title.'
+      preview: 'Listing item block title'
     items:
       type: array
       label: 'Items'
@@ -127,7 +132,7 @@ listing:
           image:
             path: 'https://placeimg.com/600/400/tech/sepia'
             alt: 'alt img'
-            position: 'bottom'
+            position: 'top'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -139,11 +144,6 @@ listing:
       description: 'Link object.'
       preview:
         label: 'European Commission'
-        path: 'http://link-1.com'
+        path: 'https://link-1.com'
         icon:
           path: '/icons.svg'
-    title:
-      type: 'text'
-      label: 'Title'
-      description: 'List item block title.'
-      preview: 'Listing item block title'

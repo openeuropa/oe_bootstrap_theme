@@ -5,8 +5,6 @@
  * The oe_bootstrap_theme hooks.
  */
 
-use Drupal\Core\Template\Attribute;
-
 // Include all files from the includes directory.
 $includes_path = __DIR__ . '/includes/*.inc';
 foreach (glob($includes_path) as $filename) {
@@ -20,17 +18,4 @@ foreach (glob($includes_path) as $filename) {
  */
 function oe_bootstrap_theme_preprocess(&$variables) {
   $variables['bcl_icon_path'] = base_path() . drupal_get_path('theme', 'oe_bootstrap_theme') . '/assets/icons/bootstrap-icons.svg';
-}
-
-/**
- * Implements hook_preprocess_pattern() for pattern listing.
- */
-function oe_bootstrap_theme_preprocess_pattern_listing(array &$variables): void {
-  if ($variables['variant'] === 'date') {
-    foreach ($variables['items'] as $key => $item) {
-      if (isset($variables['items'][$key]['date'])) {
-        $variables['items'][$key]['date']['attributes'] = new Attribute();
-      }
-    }
-  }
 }
