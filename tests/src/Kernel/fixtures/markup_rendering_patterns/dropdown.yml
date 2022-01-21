@@ -5,7 +5,6 @@ dropdown_button_dark_default:
     '#fields':
       settings:
         link: false
-        alignment: 'dropdown-menu-md-end'
         dark: true
         remove_wrapper: false
       trigger:
@@ -28,7 +27,6 @@ dropdown_button_dark_default:
       'div.dropdown': 1
       'button.dropdown-toggle[data-bs-toggle="dropdown"]': 1
       'button#bcl-dropdown': 1
-      'ul.dropdown-menu.dropdown-menu-md-end': 1
       'ul.dropdown-menu-dark': 1
       'ul[aria-labelledby="bcl-dropdown"]': 1
       'li': 5
@@ -49,7 +47,6 @@ dropdown_button_dark_dropup:
     '#fields':
       settings:
         link: false
-        alignment: 'dropdown-menu-md-end'
         dark: true
         remove_wrapper: false
         direction: 'dropup'
@@ -73,7 +70,6 @@ dropdown_button_dark_dropup:
       'div.dropdown.dropup': 1
       'button.dropdown-toggle[data-bs-toggle="dropdown"]': 1
       'button#bcl-dropdown': 1
-      'ul.dropdown-menu.dropdown-menu-md-end': 1
       'ul.dropdown-menu-dark': 1
       'ul[aria-labelledby="bcl-dropdown"]': 1
       'li': 5
@@ -94,7 +90,6 @@ dropdown_button_dark_dropend:
     '#fields':
       settings:
         link: false
-        alignment: 'dropdown-menu-md-end'
         dark: true
         remove_wrapper: false
         direction: 'dropend'
@@ -118,7 +113,6 @@ dropdown_button_dark_dropend:
       'div.dropdown.dropend': 1
       'button.dropdown-toggle[data-bs-toggle="dropdown"]': 1
       'button#bcl-dropdown': 1
-      'ul.dropdown-menu.dropdown-menu-md-end': 1
       'ul.dropdown-menu-dark': 1
       'ul[aria-labelledby="bcl-dropdown"]': 1
       'li': 5
@@ -139,7 +133,6 @@ dropdown_button_dark_dropstart:
     '#fields':
       settings:
         link: false
-        alignment: 'dropdown-menu-md-end'
         dark: true
         remove_wrapper: false
         direction: 'dropstart'
@@ -163,7 +156,6 @@ dropdown_button_dark_dropstart:
       'div.dropdown.dropstart': 1
       'button.dropdown-toggle[data-bs-toggle="dropdown"]': 1
       'button#bcl-dropdown': 1
-      'ul.dropdown-menu.dropdown-menu-md-end': 1
       'ul.dropdown-menu-dark': 1
       'ul[aria-labelledby="bcl-dropdown"]': 1
       'li': 5
@@ -184,7 +176,6 @@ dropdown_link_non_dark_with_remove_wrapper:
     '#fields':
       settings:
         link: true
-        alignment: 'dropdown-menu-lg-start'
         dark: false
         remove_wrapper: true
       trigger:
@@ -207,7 +198,6 @@ dropdown_link_non_dark_with_remove_wrapper:
       'div.dropdown': 0
       'a#bcl-dropdown': 1
       'a.dropdown-toggle[data-bs-toggle="dropdown"]': 1
-      'ul.dropdown-menu.dropdown-menu-lg-start': 1
       'ul.dropdown-menu-dark': 0
       'ul[aria-labelledby="bcl-dropdown"]': 1
       'li': 5
