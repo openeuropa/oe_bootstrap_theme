@@ -66,8 +66,7 @@ offcanvas_with_trigger_with_icon:
         heading: '2'
       offcanvas_id: offcanvasExample
       body: 'This is the offcanvas body content.'
-      icon:
-        name: 'filter'
+      icon: 'filter'
   assertions:
     count:
       'button[data-bs-toggle="offcanvas"]': 1
