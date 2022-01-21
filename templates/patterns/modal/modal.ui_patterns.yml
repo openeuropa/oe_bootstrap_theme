@@ -2,20 +2,6 @@ modal:
   label: "Modal"
   description: "Use Bootstrap’s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content. https://v5.getbootstrap.com/docs/5.0/components/modal/"
   settings:
-    btn_style:
-      type: select
-      label: Button style
-      options:
-        primary: primary
-        secondary: secondary
-        success: success
-        danger: danger
-        warning: warning
-        info: info
-        light: light
-        dark: dark
-        link: link
-      preview: primary
     size:
       type: select
       label: Modal size
@@ -30,11 +16,13 @@ modal:
       label: "Modal id"
       preview: ''
   fields:
-    btn_label:
-      type: text
-      label: "Button label"
-      description: "The button text to trigger the modal. If is not present, then button will not be printed, only the modal container."
-      preview: "Open the modal"
+    button:
+      type: array
+      label: 'button'
+      description: 'The button to trigger the modal. If is not present, then button will not be printed, only the modal container.'
+      preview:
+        variant: 'secondary'
+        label: 'Open the modal'
     header:
       type: text
       label: "Header"

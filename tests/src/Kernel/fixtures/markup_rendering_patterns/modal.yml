@@ -4,10 +4,11 @@ modal_secondary_small:
     '#id': modal
     '#fields':
       settings:
-        btn_style: 'secondary'
         size: 'sm'
         modal_id: 'custom_modal'
-      btn_label: 'Open Modal'
+      button:
+        variant: 'secondary'
+        label: 'Open Modal'
       header: 'Header text'
       body: 'Lorem Ipsum dolor sit amet'
       footer: 'Footer text'
@@ -29,10 +30,11 @@ modal_dark_fullscreen:
     '#id': modal
     '#fields':
       settings:
-        btn_style: 'dark'
         size: 'fullscreen'
         modal_id: 'custom_modal'
-      btn_label: 'Open Modal'
+      button:
+        variant: 'dark'
+        label: 'Open Modal'
       header: 'Header text'
       body: 'Lorem Ipsum dolor sit amet'
       footer: 'Footer text'

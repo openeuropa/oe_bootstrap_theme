@@ -7,11 +7,11 @@
 
 {% set _modal_id = modal_id ? 'modal_' ~ modal_id : 'modal' %}
 
-{% if btn_label is not empty %}
+{% if button is not empty %}
 {% block trigger %}
   {{ pattern('button', {
-    label: btn_label,
-    style: btn_style,
+    label: button.label,
+    variant: button.variant,
     outline: btn_outline,
     size: btn_size,
     attributes: create_attribute({
