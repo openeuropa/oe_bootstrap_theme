@@ -2,36 +2,17 @@ dropdown:
   label: 'Dropdown'
   description: 'Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. For more information visit: https://v5.getbootstrap.com/docs/5.0/components/dropdowns/'
   settings:
-    link:
-      type: boolean
-      label: 'link'
-      description: 'When enabled, shows dropdown as a link. False by default.'
-    direction:
-      type: select
-      label: 'Direction'
-      description: 'Sets the direction of the dropdown:'
-      options:
-        dropdown: 'dropdown (default)'
-        dropup: 'dropup'
-        dropend: 'dropend'
-        dropstart: 'dropstart'
-    dark:
+    dark_mode:
       type: boolean
       label: 'Dark mode'
-      description: 'When enabled, sets dark mode. False by default.'
-    remove_wrapper:
-      type: boolean
-      label: 'Remove wrapper'
-      description: 'When enabled, removes wrapper for this component. False by default.'
+      description: 'When enabled, sets dark mode. Defaults to FALSE.'
   fields:
-    trigger:
-      type: array
-      label: 'Dropdown toggle'
-      description: 'Array of Button or Link pattern.'
-      preview:
-        label: 'Dropdown toggle'
-        path: '#'
-    dropdown_items:
+    button_label:
+      type: string
+      label: 'Dropdown button label'
+      description: 'The label to show in the toggle button.'
+      preview: 'Dropdown toggle'
+    items:
       type: array
       label: 'Dropdown items'
       description: 'An array of dropdown items.'

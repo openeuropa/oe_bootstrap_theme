@@ -9,7 +9,6 @@ declare(strict_types = 1);
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Url;
-use Drupal\Component\Utility\Html;
 
 /**
  * Implements hook_preprocess_HOOK() for badge_preview patterns.
@@ -56,31 +55,6 @@ function oe_bootstrap_theme_preprocess_pattern_dropdown(array &$variables) {
   }
 
   $variables['dropdown_id'] = Html::getUniqueId('bcl-dropdown');
-}
-
-/**
- * Implements hook_preprocess_HOOK() for dropdown pattern preview.
- */
-function oe_bootstrap_theme_preprocess_pattern_dropdown__preview(array &$variables) {
-  _oe_bootstrap_theme_preprocess_pattern_dropdown_preview($variables);
-}
-
-/**
- * Implements hook_preprocess_HOOK() for dropdown pattern custom preview.
- */
-function oe_bootstrap_theme_preprocess_pattern_dropdown__variant_custom__preview(array &$variables) {
-  _oe_bootstrap_theme_preprocess_pattern_dropdown_preview($variables);
-}
-
-/**
- * Convert URL string to object.
- */
-function _oe_bootstrap_theme_preprocess_pattern_dropdown_preview(&$variables) {
-  foreach ($variables['dropdown_items'] as &$item) {
-    if (isset($item['#url'])) {
-      $item['#url'] = Url::fromUri($item['#url']);
-    }
-  }
 }
 
 /**
