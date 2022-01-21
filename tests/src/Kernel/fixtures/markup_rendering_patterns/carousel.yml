@@ -13,19 +13,15 @@ carousel_with_fade_show_controls_with_indicator_without_disable_touch_without_au
       active_item: 2
       slides:
         - caption: 'first slide label'
-          caption_classes: "class-1 class-2"
           interval: 0
           image:
-            '#theme': 'image'
-            '#uri': 'https://images.site.example1'
-            '#alt': 'alt image 1'
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
         - caption: 'second slide label'
-          caption_classes: 'class-1 class-2'
           interval: 0
           image:
-            '#theme': 'image'
-            '#uri': 'https://images.site.example2'
-            '#alt': 'alt image 2'
+            src: 'https://images.site.example2'
+            alt: 'alt image 2'
   assertions:
     count:
       'div.carousel.slide.carousel-fade[data-drupal-selector="carousel"]': 1
@@ -69,19 +65,15 @@ carousel_without_fade_without_controls_without_indicators_with_disable_touch_wit
       active_item: 1
       slides:
         - caption: 'first slide label'
-          caption_classes: 'class-1 class-2'
           interval: 0
           image:
-            '#theme': 'image'
-            '#uri': 'https://images.site.example1'
-            '#alt': 'alt image 1'
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
         - caption: 'second slide label'
-          caption_classes: 'class-1 class-2'
           interval: 0
           image:
-            '#theme': 'image'
-            '#uri': 'https://images.site.example2'
-            '#alt': 'alt image 2'
+            src: 'https://images.site.example2'
+            alt: 'alt image 2'
   assertions:
     count:
       'div.carousel.slide.carousel[data-drupal-selector="carousel"]': 1
