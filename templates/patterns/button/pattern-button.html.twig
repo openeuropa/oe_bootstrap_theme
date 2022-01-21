@@ -5,24 +5,19 @@
  */
 #}
 {%  if icon %}
-  {% set _icon = icon|merge({
-    path: bcl_icon_path
-  })  %}
+  {% set _icon = {
+    path: bcl_icon_path,
+    name: icon,
+  } %}
 {% endif %}
 {% include '@oe-bcl/button' with {
   'label': label,
-  'variant': style,
+  'variant': variant,
   'size': size,
   'type': type,
   'outline': outline,
   'disabled': disabled|default(attributes.disabled),
-  'text_nowrap': text_nowrap,
-  'assistive_text': assistive_text,
-  'id': button_id,
   'icon': _icon,
   'icon_position': icon_position,
-  'clean_class': clean_class,
-  'spinner': spinner,
-  'show_spinner': show_spinner,
   'attributes': attributes,
 } only %}
