@@ -4,20 +4,12 @@
  * Dropdown pattern.
  */
 #}
-{% if link == true and trigger is iterable %}
-  {% if trigger.link_style %}
-    {% set trigger = trigger|merge({
-      'variant': trigger.link_style
-    }) %}
-  {% endif %}
-{% endif %}
-
 {% include '@oe-bcl/dropdown' with {
-  'trigger': trigger,
-  'link': link,
-  'direction': direction,
-  'dark': dark,
-  'remove_wrapper': remove_wrapper,
+  'trigger': {
+    label: button_label
+  },
+  'link': false,
+  'dark': dark_mode,
   'id': dropdown_id,
-  'items': dropdown_items
+  'items': items
 } only %}
