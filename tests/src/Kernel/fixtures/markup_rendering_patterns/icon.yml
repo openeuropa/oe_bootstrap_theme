@@ -42,18 +42,3 @@ icon_name_with_size_fluid:
       'svg.icon--fluid': 1
     contains:
       'svg': '#eye'
-icon_name_with_size_with_transformation:
-  render:
-    '#type': pattern
-    '#id': 'icon'
-    '#fields':
-      settings:
-        transformation: 'rotate-90'
-      name: 'eye'
-      size: '2xs'
-  assertions:
-    count:
-      'svg.icon--2xs': 1
-      'svg.icon--rotate-90': 1
-    contains:
-      'svg': '#eye'
