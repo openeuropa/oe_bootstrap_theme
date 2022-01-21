@@ -12,8 +12,7 @@ icon_only_name:
     '#type': pattern
     '#id': 'icon'
     '#fields':
-      settings:
-        name: 'envelope'
+      name: 'envelope'
   assertions:
     count:
       'svg.icon--s': 1
@@ -24,9 +23,8 @@ icon_name_with_size:
     '#type': pattern
     '#id': 'icon'
     '#fields':
-      settings:
-        name: 'eye'
-        size: '2xs'
+      name: 'eye'
+      size: '2xs'
   assertions:
     count:
       'svg.icon--2xs': 1
@@ -37,9 +35,8 @@ icon_name_with_size_fluid:
     '#type': pattern
     '#id': 'icon'
     '#fields':
-      settings:
-        name: 'eye'
-        size: 'fluid'
+      name: 'eye'
+      size: 'fluid'
   assertions:
     count:
       'svg.icon--fluid': 1
@@ -51,9 +48,9 @@ icon_name_with_size_with_transformation:
     '#id': 'icon'
     '#fields':
       settings:
-        name: 'eye'
-        size: '2xs'
         transformation: 'rotate-90'
+      name: 'eye'
+      size: '2xs'
   assertions:
     count:
       'svg.icon--2xs': 1

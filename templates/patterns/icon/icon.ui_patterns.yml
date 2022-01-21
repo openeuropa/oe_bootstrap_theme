@@ -2,6 +2,17 @@ icon:
   label: 'Icon'
   description: 'A component to show an icon. For more information visit: https://icons.getbootstrap.com/.'
   settings:
+    transformation:
+      type: select
+      label: 'Transformation of icon'
+      description: 'A list of possible icon transformations (Empty by default):'
+      options:
+        rotate-90: 'rotate-90'
+        rotate-180: 'rotate-180'
+        rotate-270: 'rotate-270'
+        flip-horizontal: 'flip-horizontal'
+        flip-vertical: 'flip-vertical'
+  fields:
     name:
       type: select
       label: 'Name of icon'
@@ -28,13 +39,3 @@ icon:
         2xl: '2xl'
         fluid: 'fluid'
       preview: 'xl'
-    transformation:
-      type: select
-      label: 'Transformation of icon'
-      description: 'A list of possible icon transformations (Empty by default):'
-      options:
-        rotate-90: 'rotate-90'
-        rotate-180: 'rotate-180'
-        rotate-270: 'rotate-270'
-        flip-horizontal: 'flip-horizontal'
-        flip-vertical: 'flip-vertical'
