@@ -18,7 +18,7 @@ pagination:
         center: 'center'
         end: 'end'
       preview: 'center'
-    enable_icon:
+    enable_icons:
       type: boolean
       label: 'Enable icon'
       description: 'Use icon instead of link labels to previous and next items. False by default.'
