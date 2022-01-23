@@ -45,9 +45,9 @@ progress:
       label: 'Progress'
       description: 'Progress of the bar.'
       preview: 50
-    bar_label:
+    text:
       type: text
-      label: 'Bar label'
+      label: 'Text'
       description: 'Text inside the progress bar.'
       preview: '50%'
     message:
