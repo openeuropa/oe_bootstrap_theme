@@ -8,11 +8,11 @@ timeline:
       description: 'Indicate the number of items to display in the timeline, hide the others and add a toggle button to show them.'
       preview: 5
   fields:
-    toggle_expanded:
+    expand_button_label:
       type: string
       label: 'Label expanded'
       description: 'When all items are displayed, the label of the button to hide them.'
-    toggle_collapsed:
+    collapse_button_label:
       type: string
       label: 'Label collapsed'
       description: 'When there are hidden items, the label of the button to expand them.'
