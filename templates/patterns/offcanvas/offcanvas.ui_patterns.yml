@@ -15,25 +15,12 @@ offcanvas:
     with_body_scroll:
       type: boolean
       label: 'Scroll'
-      description: 'If true, enable body scrolling when offcanvas is displayed. False by default.'
+      description: 'If true, enable body scrolling when offcanvas is displayed. Defaults to false.'
     with_backdrop:
       type: boolean
       label: 'Backdrop'
-      description: 'If true, enable backdrop behind offcanvas. False by default.'
+      description: 'If true, enable backdrop behind offcanvas. Defaults to false.'
       preview: true
-    with_trigger:
-      type: boolean
-      label: 'Trigger'
-      description: 'If true, enable a button trigger for offcanvas'
-      preview: true
-    icon_position:
-      type: select
-      label: 'Icon position'
-      description: 'Sets the position of the icon regarding the text:'
-      options:
-        before: 'before'
-        after: 'after'
-      preview: 'before'
   fields:
     title:
       type: text
@@ -45,12 +32,10 @@ offcanvas:
       label: 'Body'
       description: 'Offcanvas body content.'
       preview: 'An interesting content for this offcanvas'
-    toggle_button_label:
-      type: text
-      label: 'Button label'
-      description: 'The title for the toggle button.'
-    icon:
-      type: text
-      label: 'icon'
-      description: 'The button icon name. Optional.'
-      preview: 'filter'
+    toggle:
+      type: array
+      label: 'Toggle button'
+      description: 'An optional button pattern definition that will allow to show/hide the offcanvas.'
+      preview:
+        label: 'Toggle'
+        icon: 'filter'
