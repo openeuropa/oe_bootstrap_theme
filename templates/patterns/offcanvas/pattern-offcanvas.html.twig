@@ -17,16 +17,11 @@
   'toggle_button_label': toggle_button_label,
 } %}
 {% if with_trigger %}
-  {%  if icon %}
-    {% set _icon = icon|merge({
-      path: bcl_icon_path
-    })  %}
-  {% endif %}
   {{ pattern('button', {
     label: toggle_button_label ?: 'Toggle offcanvas',
     variant: 'light',
     size: 'md',
-    icon: _icon,
+    icon: icon,
     icon_position: icon_position,
     attributes: {
       'data-bs-toggle': 'offcanvas',

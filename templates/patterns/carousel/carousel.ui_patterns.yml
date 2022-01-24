@@ -1,77 +1,54 @@
 carousel:
-  label: "Carousel"
-  description: "A slideshow component for cycling through elements, like a carousel. https://v5.getbootstrap.com/docs/5.0/components/carousel/"
+  label: 'Carousel'
+  description: 'A slideshow component for cycling through elements, like a carousel. For more information: https://v5.getbootstrap.com/docs/5.0/components/carousel/'
   settings:
     fade:
       type: boolean
-      label: "Fade"
-      description: "Animate slides with a fade transition instead of a slide."
+      label: 'Fade'
+      description: 'Animate slides with a fade transition instead of a slide. False by default.'
       preview: true
-    with_controls:
+    show_controls:
       type: boolean
-      label: "With controls"
-      description: "With controls (default: false)."
+      label: 'Show controls'
+      description: 'Enable the controls (prev and next buttons). False by default.'
       preview: true
-    prev_label:
-      type: select
-      label: "Previous label"
-      description: "The previous label value."
-      options:
-        1: "Previous"
-        2: "Previous slide"
-      preview: 1
-    next_label:
-      type: select
-      label: "Next label"
-      description: "The next label value."
-      options:
-        1: "Next"
-        2: "Next slide"
-      preview: 1
-    with_indicators:
+    show_indicators:
       type: boolean
-      label: "With indicators"
-      description: "With indicators (default: false)."
+      label: 'Show indicators'
+      description: 'With indicators (default: false).'
       preview: true
     autoplay:
       type: boolean
-      label: "Disable autoplay"
-      description: "Disable auto slide movement."
+      label: 'Disable autoplay'
+      description: 'Defaults to true. If set to false the carousel will not slide automatically.'
       preview: true
     autoinit:
       type: boolean
-      label: "Disable autoinit"
-      description: "Disable carousel autoinit on page load."
-      preview: false
+      label: 'initialize the carousel'
+      description: 'Defaults to true. If set to false, the carousel will need to be instantiated via javascript.'
     disable_touch:
       type: boolean
-      label: "Disable touch"
-      description: "Disable carousel swipe on touch."
+      label: 'Disable touch'
+      description: 'Allow the carousel to swipe on touch. Defaults to false.'
+      preview: false
+    dark_mode:
+      type: boolean
+      label: 'Dark mode'
+      description: 'Enable the dark mode. Defaults to false.'
       preview: false
   fields:
-    active_item:
-      type: "text"
-      label: "Index of the active item"
     slides:
       type: array
-      label: "Slides"
-      description: "Each slide is a image with src and alt, caption, caption classes and interval of slide movement."
+      label: 'Slides'
+      description: 'Each slide is an image, a caption and interval of slide movement.'
       preview:
-        - caption: first slide label
-          caption_classes: "class-1 class-2"
+        - caption: 'First slide label'
           interval: 0
           image:
-            - theme: "image"
-              uri: "https://images.unsplash.com/photo-1533282960533-51328aa49826?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1140&h=385&q=80"
-              alt: "alt image 1"
-              attributes:
-                class: d-block w-100
-        - caption: second slide label
-          caption_classes: "class-1 class-2"
+            src: 'https://placeimg.com/1000/500/arch'
+            alt: 'alt image 1'
+        - caption: 'Second slide label'
           interval: 0
           image:
-            - theme: "image"
-              uri: "https://images.unsplash.com/photo-1550331976-0b9cc48c4d78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1140&h=385&q=80"
-              alt: "alt image 2"
-              attributes:
-                class: d-block w-100
+            src: 'https://placeimg.com/1000/500/people'
+            alt: 'alt image 1'

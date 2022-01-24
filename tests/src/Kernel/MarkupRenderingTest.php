@@ -50,11 +50,9 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'blockquote',
     'breadcrumb',
     'button',
-    'button_group',
     'card',
     'card_layout',
     'carousel',
-    'collapse',
     'date_block',
     'description_list',
     'dropdown',
@@ -73,11 +71,8 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'navbar',
     'offcanvas',
     'pagination',
-    'popover',
     'progress',
-    'spinner',
     'table',
-    'tooltip',
     'timeline',
   ];
 
