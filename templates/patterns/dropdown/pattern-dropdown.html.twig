@@ -4,14 +4,12 @@
  * Dropdown pattern.
  */
 #}
-
 {% include '@oe-bcl/dropdown' with {
-  'trigger': trigger,
-  'link': link,
-  'direction': direction,
-  'alignment': alignment,
-  'dark': dark,
-  'remove_wrapper': remove_wrapper,
+  'trigger': {
+    label: button_label
+  },
+  'link': false,
+  'dark': dark_mode,
   'id': dropdown_id,
-  'items': dropdown_items
-} %}
+  'items': items
+} only %}
