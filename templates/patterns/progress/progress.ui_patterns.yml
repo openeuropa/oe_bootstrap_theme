@@ -26,14 +26,6 @@ progress:
       label: 'Animated'
       description: 'Animation on striped bar. False by default.'
       preview: true
-    min:
-      type: number
-      label: 'Minimum'
-      description: 'Minimum state of progress bar. 0 by default.'
-    max:
-      type: number
-      label: 'Maximum'
-      description: 'Maximum state of progress bar. 100 by default.'
   fields:
     label:
       type: text
@@ -41,10 +33,13 @@ progress:
       description: 'Text before the progress bar.'
       preview: 'This is the label of the progress bar'
     progress:
-      type: number
+      type: array
       label: 'Progress'
-      description: 'Progress of the bar.'
-      preview: 50
+      description: 'Current progress of the bar and its minimum and maximum value if different from the default 0 or 100.'
+      preview:
+        current: 50
+        min: 0
+        max: 100
     text:
       type: text
       label: 'Text'
