@@ -12,11 +12,11 @@ offcanvas:
         top: 'top'
         bottom: 'bottom'
       preview: 'start'
-    with_body_scroll:
+    body_scroll:
       type: boolean
       label: 'Scroll'
       description: 'If true, enable body scrolling when offcanvas is displayed. Defaults to false.'
-    with_backdrop:
+    backdrop:
       type: boolean
       label: 'Backdrop'
       description: 'If true, enable backdrop behind offcanvas. Defaults to false.'
