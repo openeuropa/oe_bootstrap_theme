@@ -14,17 +14,6 @@ list_group:
       type: boolean
       label: 'Flush'
       description: 'When enabled, adds flush to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards). False by default.'
-    horizontal:
-      type: select
-      label: 'Horizontal'
-      description: 'Use this field to change the layout of the list group items from vertical to horizontal across all breakpoints. Currently horizontal list groups cannot be combined with flush list groups (only with Bootstrap 4.3+). The list of possible values is:'
-      options:
-        horizontal: 'Add list-group-horizontal class to the list'
-        horizontal-sm: 'Add list-group-horizontal-sm class to the list'
-        horizontal-md: 'Add list-group-horizontal-md class to the list'
-        horizontal-lg: 'Add list-group-horizontal-lg class to the list'
-        horizontal-xl: 'Add list-group-horizontal-xl class to the list'
-        horizontal-xxl: 'Add list-group-horizontal-xxl class to the list'
   fields:
     items:
       type: array
