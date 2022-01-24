@@ -7,9 +7,10 @@ offcanvas_top_with_backdrop_and_trigger:
         placement: top
         with_body_scroll: false
         with_backdrop: true
-        with_trigger: true
       title: 'Offcanvas title'
       body: 'This is the offcanvas body content.'
+      toggle:
+        label: 'Toggle offcanvas'
   assertions:
     count:
       'button[data-bs-toggle="offcanvas"]': 1
@@ -29,7 +30,6 @@ offcanvas_start_with_body_scroll:
         placement: start
         with_body_scroll: true
         with_backdrop: false
-        with_trigger: false
       title: 'Offcanvas title'
       body: 'This is the offcanvas body content.'
   assertions:
@@ -50,11 +50,11 @@ offcanvas_with_trigger_with_icon:
         placement: top
         with_body_scroll: false
         with_backdrop: true
-        with_trigger: true
-        icon_position: before
       title: 'Offcanvas title'
       body: 'This is the offcanvas body content.'
-      icon: 'filter'
+      toggle:
+        label: 'Toggle offcanvas'
+        icon: 'filter'
   assertions:
     count:
       'button[data-bs-toggle="offcanvas"]': 1
