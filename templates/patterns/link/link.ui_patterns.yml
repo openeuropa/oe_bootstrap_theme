@@ -1,22 +1,26 @@
 link:
   label: 'Link'
   description: 'A simple link.'
+  variants:
+    primary:
+      label: 'Primary (default)'
+    secondary:
+      label: 'Secondary'
+    success:
+      label: 'Success'
+    danger:
+      label: 'Danger'
+    warning:
+      label: 'Warning'
+    info:
+      label: 'Info'
+    light:
+      label: 'Light'
+    dark:
+      label: 'Dark'
+    link:
+      label: 'Link'
   settings:
-    link_style:
-      type: select
-      label: 'Link style'
-      description: 'The style used to print the link (Empty by default):'
-      options:
-        primary: 'primary'
-        secondary: 'secondary'
-        success: 'success'
-        danger: 'danger'
-        warning: 'warning'
-        info: 'info'
-        light: 'light'
-        dark: 'dark'
-        link: 'link'
-      preview: 'primary'
     disabled:
       type: boolean
       label: 'Disabled'
