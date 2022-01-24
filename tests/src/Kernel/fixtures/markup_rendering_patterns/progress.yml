@@ -9,7 +9,7 @@ progress_primary_stripped_animated:
         animated: true
       progress: 60
       label: 'Progress label'
-      bar_label: 'Bar label'
+      text: 'Bar label'
       message: 'Progress bar description'
       min: 10
       max: 90
@@ -42,7 +42,7 @@ progress_secondary_non_stripped_non_animated:
         animated: false
       progress: 60
       label: 'Progress label'
-      bar_label: 'Bar label'
+      text: 'Bar label'
       message: 'Progress bar description'
       min: 10
       max: 90
