@@ -5,8 +5,8 @@ offcanvas_top_with_backdrop_and_trigger:
     '#fields':
       settings:
         placement: top
-        with_body_scroll: false
-        with_backdrop: true
+        body_scroll: false
+        backdrop: true
       title: 'Offcanvas title'
       body: 'This is the offcanvas body content.'
       toggle:
@@ -28,8 +28,8 @@ offcanvas_start_with_body_scroll:
     '#fields':
       settings:
         placement: start
-        with_body_scroll: true
-        with_backdrop: false
+        body_scroll: true
+        backdrop: false
       title: 'Offcanvas title'
       body: 'This is the offcanvas body content.'
   assertions:
@@ -48,8 +48,8 @@ offcanvas_with_trigger_with_icon:
     '#fields':
       settings:
         placement: top
-        with_body_scroll: false
-        with_backdrop: true
+        body_scroll: false
+        backdrop: true
       title: 'Offcanvas title'
       body: 'This is the offcanvas body content.'
       toggle:
