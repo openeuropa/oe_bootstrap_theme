@@ -6,7 +6,7 @@ modal_secondary_small:
       settings:
         size: 'sm'
         modal_id: 'custom_modal'
-      button:
+      toggle:
         variant: 'secondary'
         label: 'Open Modal'
       header: 'Header text'
@@ -20,8 +20,8 @@ modal_secondary_small:
       '.modal-footer': 'Footer text'
     count:
       'button[data-bs-toggle=modal]': 1
-      'button[data-bs-target^="#modal-"]': 1
-      'div[id^="modal-"]': 1
+      'button[data-bs-target="#bcl-modal"]': 1
+      'div#bcl-modal': 1
       '.modal-sm': 1
       '.btn-secondary': 1
 modal_dark_fullscreen:
@@ -32,7 +32,7 @@ modal_dark_fullscreen:
       settings:
         size: 'fullscreen'
         modal_id: 'custom_modal'
-      button:
+      toggle:
         variant: 'dark'
         label: 'Open Modal'
       header: 'Header text'
@@ -46,7 +46,7 @@ modal_dark_fullscreen:
       '.modal-footer': 'Footer text'
     count:
       'button[data-bs-toggle=modal]': 1
-      'button[data-bs-target^="#modal-"]': 1
-      'div[id^="modal-"]': 1
+      'button[data-bs-target="#bcl-modal"]': 1
+      'div#bcl-modal': 1
       '.modal-fullscreen': 1
       '.btn-dark': 1
