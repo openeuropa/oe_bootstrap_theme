@@ -20,11 +20,11 @@ list_group:
       label: 'List group items'
       description: 'Array of objects: List item object or Button and Link component object if type is actionable.'
       preview:
-        - link_style: 'danger'
+        - variant: 'danger'
           html: 'Label 1'
-        - link_style: 'secondary'
+        - variant: 'secondary'
           html: 'Label 2'
-        - link_style: 'primary'
+        - variant: 'primary'
           html: 'Label 3'
         - label: 'Example form input'
           required: FALSE
@@ -33,9 +33,8 @@ list_group:
           size: 'sm'
           input: TRUE
           input_type: 'checkbox'
-        - link_style: 'warning'
+        - variant: 'warning'
           html: 'Label 5'
-          extra_classes: 'd-flex justify-content-between align-items-center'
           badge:
             label: '10'
             rounded_pill: TRUE
