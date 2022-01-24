@@ -7,11 +7,8 @@
  */
 #}
 {% macro menu_local_tasks(links) %}
-  {{ pattern('nav', {
-    'nav': true,
-    'pills': false,
-    'navbar': false,
-    'tabs': true,
+  {{ pattern('navigation', {
+    'variant': 'tabs',
     'items': links,
   }) }}
 {% endmacro %}

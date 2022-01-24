@@ -1,4 +1,4 @@
-nav:
+navigation:
   label: Navigation
   description: 'Renders a series of links in a navigation element.'
   variants:
@@ -13,7 +13,7 @@ nav:
       description: 'Shows the items styled as pills.'
   fields:
     orientation:
-      type: text
+      type: string
       label: 'Orientation'
       description: 'Can be set to horizontal or vertical. Defaults to horizontal.'
     items:
