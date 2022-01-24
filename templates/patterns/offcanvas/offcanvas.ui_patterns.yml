@@ -50,8 +50,7 @@ offcanvas:
       label: 'Button label'
       description: 'The title for the toggle button.'
     icon:
-      type: array
+      type: text
       label: 'icon'
-      description: 'The button Icon. Optional.'
-      preview:
-        name: 'filter'
+      description: 'The button icon name. Optional.'
+      preview: 'filter'
