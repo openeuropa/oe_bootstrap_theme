@@ -1,4 +1,4 @@
-link_secondary_disabled_with_icon_before:
+link_pattern_secondary_disabled_with_icon_before:
   render:
     '#type': pattern
     '#id': 'link'
@@ -23,7 +23,7 @@ link_secondary_disabled_with_icon_before:
       'a.disabled': 1
       'svg.me-2-5': 1
       'a.text-underline-hover': 0
-link_secondary_disabled_with_icon_after:
+link_pattern_secondary_disabled_with_icon_after:
   render:
     '#type': pattern
     '#id': 'link'
@@ -48,7 +48,7 @@ link_secondary_disabled_with_icon_after:
       'a.disabled': 1
       'svg.ms-2-5': 1
       'a.text-underline-hover': 0
-link_secondary_disabled_with_icon_without_label_removing_icon_spaces_standalone:
+link_pattern_secondary_disabled_with_icon_without_label_removing_icon_spaces_standalone:
   render:
     '#type': pattern
     '#id': 'link'
@@ -73,7 +73,7 @@ link_secondary_disabled_with_icon_without_label_removing_icon_spaces_standalone:
       'a.disabled': 1
       'svg.ms-2-5': 0
       'a.text-underline-hover': 1
-link_secondary_disabled_with_icon_after_without_removing_icon_spaces:
+link_pattern_secondary_disabled_with_icon_after_without_removing_icon_spaces:
   render:
     '#type': pattern
     '#id': 'link'
@@ -98,7 +98,7 @@ link_secondary_disabled_with_icon_after_without_removing_icon_spaces:
       'a.disabled': 1
       'svg.ms-2-5': 1
       'a.text-underline-hover': 0
-link_dark_enabled_without_icon:
+link_pattern_dark_enabled_without_icon:
   render:
     '#type': pattern
     '#id': 'link'
@@ -117,7 +117,7 @@ link_dark_enabled_without_icon:
       'a#bcl-link': 1
       'a.disabled': 0
       'a.text-underline-hover': 0
-link_warning_enabled_without_icon_standalone:
+link_pattern_warning_enabled_without_icon_standalone:
   render:
     '#type': pattern
     '#id': 'link'
