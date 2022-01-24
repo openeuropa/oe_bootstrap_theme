@@ -8,7 +8,6 @@
 declare(strict_types = 1);
 
 use Drupal\Component\Utility\Html;
-use Drupal\Core\Url;
 
 /**
  * Implements hook_preprocess_HOOK() for badge_preview patterns.
