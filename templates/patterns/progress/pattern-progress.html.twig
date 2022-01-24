@@ -5,9 +5,9 @@
  */
 #}
 {% include '@oe-bcl/progress' with {
-  'progress': progress,
-  'min': min,
-  'max': max,
+  'progress': progress.current,
+  'min': progress.min,
+  'max': progress.max,
   'message': message,
   'striped': striped,
   'animated': animated,
