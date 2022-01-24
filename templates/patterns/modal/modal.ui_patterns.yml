@@ -13,13 +13,6 @@ modal:
         fullscreen: 'fullscreen'
       preview: 'lg'
   fields:
-    button:
-      type: array
-      label: 'button'
-      description: 'The button to trigger the modal. If is not present, then button will not be printed, only the modal container.'
-      preview:
-        variant: 'secondary'
-        label: 'Open the modal'
     header:
       type: text
       label: 'Header'
@@ -61,3 +54,9 @@ modal:
           attributes:
             class: 'btn btn-primary'
           value: 'Save changes'
+    toggle:
+      type: array
+      label: 'Toggle button'
+      description: 'An optional button pattern definition that will allow to show/hide the modal.'
+      preview:
+        label: 'Show modal'

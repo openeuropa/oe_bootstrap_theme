@@ -169,3 +169,10 @@ function oe_bootstrap_theme_preprocess_pattern_description_list(&$variables) {
 function oe_bootstrap_theme_preprocess_pattern_accordion(array &$variables): void {
   $variables['accordion_id'] = Html::getUniqueId('bcl-accordion');
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_modal(array &$variables): void {
+  $variables['modal_id'] = Html::getUniqueId('bcl_modal');
+}
