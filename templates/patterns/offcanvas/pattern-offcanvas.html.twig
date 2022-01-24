@@ -13,7 +13,7 @@
 {% include '@oe-bcl/offcanvas' with {
   'title': _title,
   'placement': placement,
-  'id': offcanvas_id,
+  'id': attributes.id,
   'body': body,
   'with_body_scroll': with_body_scroll,
   'with_backdrop': with_backdrop,
@@ -28,7 +28,9 @@
     label: toggle_button_label ?: 'Toggle offcanvas',
     variant: 'light',
     size: 'md',
-    icon: icon,
+    icon: {
+      name: icon,
+    },
     icon_position: icon_position,
     attributes: {
       'data-bs-toggle': 'offcanvas',
