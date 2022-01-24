@@ -1,49 +1,21 @@
 nav:
   label: Navigation
-  description: 'Navs and tabs navigation components. For more information visit: https://v5.getbootstrap.com/docs/5.0/components/navs/'
-  settings:
-    pills:
-      type: boolean
-      label: 'Display as pills'
-      description: 'When enabled, the menu items are displayed as pills.'
-      preview: true
+  description: 'Renders a series of links in a navigation element.'
+  variants:
+    default:
+      label: 'Default'
+      description: 'Default navigation style.'
     tabs:
-      type: boolean
-      label: 'Display as tabs'
-      description: 'When enabled, the menu items are displayed as tabs.'
-      preview: true
-    vertical:
-      type: boolean
-      label: 'Vertical'
-      description: 'When enabled, the menu is displayed vertically instead of horizontally.'
-    full_width:
-      type: boolean
-      label: 'Full width'
-      description: 'When enabled, the menu is displayed occupying the entire width of its container'
-      preview: true
-    alignment:
-      type: select
-      label: 'Alignment'
-      description: 'Select the alignment of the menu:'
-      options:
-        start: 'start'
-        center: 'center'
-        end: 'end'
-    tabs_content:
-      type: boolean
-      label: 'Tabs content'
-      description: 'If true, shows the tabs content container.'
-      preview: true
-    nav:
-      type: boolean
-      label: 'Nav'
-      description: 'When enabled, use navigation style for show items instead unordered lists.'
-      preview: true
-    navbar:
-      type: boolean
-      label: 'Navbar'
-      description: 'When enabled, adds a navbar appearance.'
+      label: 'Tabs'
+      description: 'Shows the items styled as tabs.'
+    pills:
+      label: 'Pills'
+      description: 'Shows the items styled as pills.'
   fields:
+    orientation:
+      type: text
+      label: 'Orientation'
+      description: 'Can be set to horizontal or vertical. Defaults to horizontal.'
     items:
       type: array
       label: 'Navigation items'
@@ -51,23 +23,14 @@ nav:
       preview:
         - label: "I'm a link 1"
           path: '#first'
-          content: 'This is a demo content for the First Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
         - label: "I'm a link 2"
-          content: 'This is a demo content for the Second Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-          id: 'second-tab'
           path: '#second'
-          target: 'second'
         - label: "I'm a link 3"
-          content: 'This is a demo content for the Third Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
           id: 'third-tab'
           path: '#third'
-          target: 'third'
         - label: "I'm a link active"
           active: true
-          content: 'This is a demo content for the Fourth Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-          id: 'fourth-tab'
-          target: 'fourth'
+          target: '#fourth'
         - label: "I'm a link disabled"
           disabled: true
-          id: 'fifth-tab'
-          target: 'fifth'
+          path: '#'
