@@ -38,7 +38,7 @@ navbar_large_light_background_color_light:
           '#variant': default
           '#fields':
             label: 'Dropdown Toggle'
-            dropdown_items:
+            items:
               - label: "I'm a link"
                 path: '#navbar-dropdown-link'
               - label: "I'm a button"
@@ -106,7 +106,7 @@ navbar_medium_dark_background_color_dark_with_disable_collapse:
           '#variant': default
           '#fields':
             label: 'Dropdown Toggle'
-            dropdown_items:
+            items:
               - label: "I'm a link"
                 path: '#navbar-dropdown-link'
               - label: "I'm a button"
