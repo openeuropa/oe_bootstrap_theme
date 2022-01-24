@@ -39,7 +39,7 @@ pagination_with_icon:
       settings:
         size: 'lg'
         alignment: 'end'
-        enable_icon: true
+        enable_icons: true
       prev:
         path: '#prev'
         icon:
