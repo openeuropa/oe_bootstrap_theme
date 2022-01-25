@@ -7,3 +7,4 @@ date_block:
       label: 'Date'
       description: 'A DateTime object.'
       preview: '2021-05-26'
+      escape: false

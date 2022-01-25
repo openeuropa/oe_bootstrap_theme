@@ -30,6 +30,14 @@
     gutter: 0
   } %}
 {% endif %}
+{% if date is not empty %}
+  {% set _date = {
+    'day': date|date('d'),
+    'month': date|date('M'),
+    'year': date|date('Y'),
+    'date_time': date|date('Y-m-d')
+  } %}
+{% endif %}
 {% include '@oe-bcl/card' with {
   'horizontal': orientation == 'horizontal',
   'horizontal_grid': horizontal_grid,
@@ -41,7 +49,7 @@
   'card_header': header,
   'card_footer': footer,
   'badges': badges,
-  'date': date,
+  'date': _date,
   'attributes': attributes,
 } only %}
 {% endspaceless %}
