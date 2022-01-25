@@ -178,6 +178,14 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     $crawler = new Crawler($html);
     $assertions += array_fill_keys(['count', 'equals', 'contains'], []);
 
+    // Catch any unexpected assertion keys. Compare with an empty array to show
+    // only the unexpected keys in the exception message.
+    $this->assertEquals([], array_diff(array_keys($assertions), [
+      'count',
+      'equals',
+      'contains',
+    ]));
+
     // Assert presence of given strings.
     foreach ($assertions['contains'] as $selector => $string) {
       $element = $crawler->filter($selector);
