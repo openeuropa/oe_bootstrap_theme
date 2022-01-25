@@ -9,12 +9,15 @@
   {% set _item = _item|merge({
     'text': {
       'content': _item.text,
+      'classes': 'mb-2',
+      'tag': 'div'
     },
     'title': {
       'content': _item.title,
     },
     'subtitle': {
       'content': _item.subtitle,
+      'classes': 'mb-2',
     }
   }) %}
   {% set _items = _items|merge([_item]) %}

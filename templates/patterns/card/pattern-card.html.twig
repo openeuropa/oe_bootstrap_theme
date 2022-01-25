@@ -4,6 +4,7 @@
  * Card pattern.
  */
 #}
+{% spaceless %}
 {% if title is not empty %}
   {% set title = {
     'content': title,
@@ -19,9 +20,10 @@
   {% set text = {
     'content': text,
     'classes': 'mb-2',
+    'tag': 'div'
   } %}
 {% endif %}
-{% if horizontal %}
+{% if orientation == 'horizontal' %}
   {% set horizontal_grid = {
     left_col_classes: 'col-4',
     right_col_classes: 'col-8',
@@ -29,22 +31,17 @@
   } %}
 {% endif %}
 {% include '@oe-bcl/card' with {
-  'horizontal': horizontal,
+  'horizontal': orientation == 'horizontal',
   'horizontal_grid': horizontal_grid,
   'title': title,
   'subtitle': subtitle,
   'text': text,
   'content': content,
   'image': image,
-  'variant': style,
-  'border_variant': border_color,
-  'text_color': text_color,
-  'card_header': card_header,
-  'card_footer': card_footer,
-  'extra_classes_body': extra_classes_body,
-  'extra_classes_header': extra_classes_header,
-  'extra_classes_footer': extra_classes_footer,
+  'card_header': header,
+  'card_footer': footer,
   'badges': badges,
   'date': date,
   'attributes': attributes,
 } only %}
+{% endspaceless %}
