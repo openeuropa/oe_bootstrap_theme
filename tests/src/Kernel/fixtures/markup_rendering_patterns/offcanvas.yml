@@ -1,4 +1,4 @@
-offcanvas_top_with_backdrop_and_trigger:
+offcanvas_top_with_backdrop_and_toggle:
   render:
     '#type': pattern
     '#id': offcanvas
@@ -17,6 +17,7 @@ offcanvas_top_with_backdrop_and_trigger:
       'div[data-drupal-selector="offcanvas"]': 1
       'div#bcl-offcanvas': 1
       'div.offcanvas.offcanvas-top': 1
+      'button[data-bs-target="#bcl-offcanvas"]': 1
     equals:
       'h5.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
@@ -38,10 +39,11 @@ offcanvas_start_with_body_scroll:
       'div#bcl-offcanvas': 1
       'div.offcanvas.offcanvas-start': 1
       'button[data-bs-toggle="offcanvas"]': 0
+      'button[data-bs-target="#bcl-offcanvas"]': 0
     equals:
       'h5.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
-offcanvas_with_trigger_with_icon:
+offcanvas_with_toggle_with_icon:
   render:
     '#type': pattern
     '#id': offcanvas
@@ -61,10 +63,35 @@ offcanvas_with_trigger_with_icon:
       'div[data-drupal-selector="offcanvas"]': 1
       'div#bcl-offcanvas': 1
       'div.offcanvas.offcanvas-top': 1
+      'button[data-bs-target="#bcl-offcanvas"]': 1
       'svg.bi': 1
     equals:
       'h5.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
-    contains:
-      'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas'
-      'svg': 'bootstrap-icons.svg#filter'
+      'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas<svg class="ms-2-5 bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#filter"></use></svg>'
+offcanvas_with_id_from_attributes:
+  render:
+    '#type': pattern
+    '#id': offcanvas
+    '#fields':
+      settings:
+        placement: bottom
+        body_scroll: false
+        backdrop: true
+      title: 'Offcanvas title'
+      body: 'This is the offcanvas body content.'
+      toggle:
+        label: 'Toggle offcanvas'
+        icon: 'filter'
+      attributes:
+        id: 'custom-id'
+  assertions:
+    count:
+      'div#custom-id': 1
+      'div.offcanvas.offcanvas-bottom': 1
+      'svg.bi': 1
+      'button[data-bs-target="#custom-id"]': 1
+    equals:
+      'h5.offcanvas-title': 'Offcanvas title'
+      'div.offcanvas-body': 'This is the offcanvas body content.'
+      'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas<svg class="ms-2-5 bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#filter"></use></svg>'
