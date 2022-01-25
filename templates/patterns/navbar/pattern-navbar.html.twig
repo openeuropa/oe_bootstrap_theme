@@ -3,14 +3,6 @@
 {# Parameters:
   - collapse_id (string) (default: '')
   - background (string) (default: '')
-  - brand (object) (default: {})
-    format: {
-      src: '',
-      alt: '',
-      class: '',
-      label: '', (optional: only for string label)
-      link: '',
-    }
   - expand (string) (default: 'lg')
     options: ['sm', 'md', 'lg']
   - color_set (string) (default: 'light')
@@ -20,7 +12,6 @@
 {% set _collapse_id = collapse_id|default('') %}
 {% set _background = background|default('') %}
 {% set _expand = expand|default('lg') %}
-{% set _brand = brand|default({}) %}
 {% set _color_set = color_set|default('light') %}
 {% set _disable_collapse = disable_collapse|default(false) %}
 {% set _classes = ['navbar', 'navbar-expand-' ~ _expand] %}
