@@ -84,7 +84,7 @@ link_pattern_disabled_with_icon_after_without_removing_icon_spaces:
       icon:
         name: 'alarm'
   assert:
-    ccontains:
+    contains:
       'a > svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#alarm'
       'a': 'Link to example'
     count:
