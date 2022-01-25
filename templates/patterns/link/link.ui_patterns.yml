@@ -34,7 +34,7 @@ link:
       description: 'The button URL (optional).'
       preview: 'http://example.com'
     icon:
-      type: text
-      label: 'Name of the icon'
-      description: 'The name of the icon (optional).'
+      type: mixed
+      label: 'Icon'
+      description: 'An icon name or an icon array definition (optional).'
       preview: 'alarm'
