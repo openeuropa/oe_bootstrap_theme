@@ -58,10 +58,12 @@ link_pattern_disabled_with_icon_without_label_removing_icon_spaces_standalone:
         remove_icon_spacers: true
         standalone: true
       path: 'https://example.com'
-      icon: 'alarm'
+      icon:
+        name: 'alarm'
+        path: '/custom/icon/path/icons.svg'
   assert:
     contains:
-      'svg': '#alarm'
+      'a > svg': '/custom/icon/path/icons.svg#alarm'
     count:
       'a': 1
       'a[href="https://example.com"]': 1
@@ -79,7 +81,8 @@ link_pattern_disabled_with_icon_after_without_removing_icon_spaces:
         icon_position: 'after'
       label: 'Link to example'
       path: 'https://example.com'
-      icon: 'alarm'
+      icon:
+        name: 'alarm'
   assert:
     ccontains:
       'a > svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#alarm'
