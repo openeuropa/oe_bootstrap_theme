@@ -130,3 +130,26 @@ link_pattern_enabled_without_icon_standalone:
       'svg': 0
       'a.disabled': 0
       'a.text-underline-hover': 1
+link_pattern_attributes:
+  render:
+    '#type': pattern
+    '#id': 'link'
+    '#fields':
+      settings:
+        standalone: true
+      label: 'Link to example'
+      path: 'https://example.com'
+      attributes:
+        class:
+          - 'first'
+          - 'second'
+        id: 'link-id'
+        data-attribute: 'some-value'
+  assert:
+    equals:
+      'a.first.second.text-underline-hover': 'Link to example'
+    count:
+      'a': 1
+      'a[href="https://example.com"]': 1
+      'svg': 0
+      'a#link-id.first.second.text-underline-hover': 1
