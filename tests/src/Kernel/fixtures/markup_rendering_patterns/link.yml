@@ -9,8 +9,7 @@ link_pattern_secondary_disabled_with_icon_before:
         icon_position: 'before'
       label: 'Link to example'
       path: 'https://example.com'
-      icon:
-        name: 'alarm'
+      icon: 'alarm'
   assert:
     contains:
       'svg': '#alarm'
@@ -33,8 +32,7 @@ link_pattern_secondary_disabled_with_icon_after:
         icon_position: 'after'
       label: 'Link to example'
       path: 'https://example.com'
-      icon:
-        name: 'alarm'
+      icon: 'alarm'
   assert:
     contains:
       'svg': '#alarm'
@@ -58,8 +56,7 @@ link_pattern_secondary_disabled_with_icon_without_label_removing_icon_spaces_sta
         remove_icon_spacers: true
         standalone: true
       path: 'https://example.com'
-      icon:
-        name: 'alarm'
+      icon: 'alarm'
   assert:
     contains:
       'svg': '#alarm'
@@ -81,8 +78,7 @@ link_pattern_secondary_disabled_with_icon_after_without_removing_icon_spaces:
         icon_position: 'after'
       label: 'Link to example'
       path: 'https://example.com'
-      icon:
-        name: 'alarm'
+      icon: 'alarm'
   assert:
     contains:
       'svg': '#alarm'

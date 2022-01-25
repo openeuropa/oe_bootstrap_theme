@@ -53,8 +53,7 @@ link:
       description: 'The button URL (optional).'
       preview: 'http://example.com'
     icon:
-      type: array
-      label: 'icon'
-      description: 'The button Icon (optional).'
-      preview:
-        name: 'arrow-right'
+      type: text
+      label: 'Name of the icon'
+      description: 'The name of the icon (optional).'
+      preview: 'alarm'
