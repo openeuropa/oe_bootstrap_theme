@@ -150,5 +150,5 @@ function oe_bootstrap_theme_preprocess_pattern_accordion(array &$variables): voi
  * Implements hook_preprocess_HOOK().
  */
 function oe_bootstrap_theme_preprocess_pattern_modal(array &$variables): void {
-  $variables['modal_id'] = Html::getUniqueId('bcl_modal');
+  $variables['modal_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl-modal');
 }

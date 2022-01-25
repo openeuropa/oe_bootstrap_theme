@@ -13,31 +13,21 @@ modal:
         fullscreen: 'fullscreen'
       preview: 'lg'
   fields:
-    header:
+    title:
       type: text
-      label: 'Header'
-      description: 'The modal’s header.'
-      preview:
-        - type: html_tag
-          tag: h5
-          attributes:
-            class: 'modal-title'
-            id: 'exampleModalLabel'
-          value: 'Modal title'
-        - type: html_tag
-          tag: 'button'
-          attributes:
-            class: 'btn-close'
-            data-bs-dismiss: 'modal'
-            aria-label: 'Close'
+      label: 'Title'
+      description: 'Title of the modal.'
+      preview: 'Modal title'
+    show_close_button:
+      type: boolean
+      label: 'Show close button'
+      description: 'Sets the visibility of the close button at the header. Defaults to false.'
+      preview: true
     body:
-      type: render
+      type: text
       label: 'Body'
       description: 'The modal’s body content.'
-      preview:
-        - type: html_tag
-          tag: 'p'
-          value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      preview: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<p>'
     footer:
       type: render
       label: 'Footer'
