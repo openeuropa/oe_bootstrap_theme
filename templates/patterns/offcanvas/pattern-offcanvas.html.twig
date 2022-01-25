@@ -4,7 +4,6 @@
  * Offcanvas pattern.
  */
 #}
-{% set _id = attributes.id|default(offcanvas_id) %}
 {% if title is not empty %}
   {% set _title = {
     'label': title,
@@ -15,7 +14,7 @@
 {% include '@oe-bcl/offcanvas' with {
   'title': _title,
   'placement': placement,
-  'id': _id,
+  'id': offcanvas_id,
   'body': body,
   'with_body_scroll': body_scroll,
   'with_backdrop': backdrop,
@@ -26,8 +25,8 @@
   {% set _toggle_attributes = toggle.attributes|default({}) %}
   {% set _toggle_attributes = _toggle_attributes|merge({
     'data-bs-toggle': 'offcanvas',
-    'data-bs-target': '#' ~  _id,
-    'aria-controls': _id
+    'data-bs-target': '#' ~  offcanvas_id,
+    'aria-controls': offcanvas_id
   }, true) %}
   {% set _toggle = toggle|merge({
     attributes: _toggle_attributes
