@@ -1,48 +1,50 @@
 timeline:
-  label: "Timeline"
-  description: "Timeline is a flexible and powerful component for displaying a series of content ordered in time."
+  label: 'Timeline'
+  description: 'Timeline is a flexible and powerful component for displaying a series of content ordered in time.'
   settings:
     hide_from:
       type: number
-      label: "Hide from"
-      description: "Number to hide 'from' items"
+      label: 'Hide from'
+      description: 'Indicate the number of items to display in the timeline, hide the others and add a toggle button to show them.'
       preview: 5
   fields:
-    toggle_expanded:
+    expand_button_label:
       type: string
       label: 'Label expanded'
-    toggle_collapsed:
+      description: 'When all items are displayed, the label of the button to hide them.'
+    collapse_button_label:
       type: string
       label: 'Label collapsed'
+      description: 'When there are hidden items, the label of the button to expand them.'
     items:
       type: array
-      label: "Items"
-      description: "List of timeline items"
+      label: 'Items'
+      description: 'List of timeline items, with id, label, title and content.'
       preview:
-        - label: "13 September 2017"
-          title: "Item title"
+        - label: '13 September 2017'
+          title: 'Item title'
           content:
-            '#markup': <a href="/example">President Juncker's State of the Union speech</a>
-        - label: "28-29 September 2017"
+            '#markup': '<a href="/example">President Junckers State of the Union speech</a>'
+        - label: '28-29 September 2017'
           content:
-            '#markup': <a href="/example">Informal Digital Summit, Tallinn</a>
-        - label: "14 November 2017"
-          content: "Strengthening European identity through education and culture: European Commission's contribution to the Leaders' meeting."
-        - label: "17 November 2017"
+            '#markup': '<a href="/example">Informal Digital Summit, Tallinn</a>'
+        - label: '14 November 2017'
+          content: 'Strengthening European identity through education and culture: European Commissions contribution to the Leaders meeting.'
+        - label: '17 November 2017'
           content:
-            '#markup': <a href="/example">Social Summit in Gothenburg, Sweden</a>
-        - label: "6 December 2017"
+            '#markup': '<a href="/example">Social Summit in Gothenburg, Sweden</a>'
+        - label: '6 December 2017'
           content:
-            '#markup': <a href="/example">Economic and Monetary Union package of proposals</a>
-        - label: "14-15 December 2017"
+            '#markup': '<a href="/example">Economic and Monetary Union package of proposals</a>'
+        - label: '14-15 December 2017'
           content:
-            '#markup': <a href="/example">EU Leaders' meeting on migration, Brussels</a>
-        - label: "15 December 2017"
+            '#markup': '<a href="/example">EU Leaders meeting on migration, Brussels</a>'
+        - label: '15 December 2017'
           content:
-            '#markup': <a href="/example">Euro Summit</a>
-        - label: "6 February 2018"
+            '#markup': '<a href="/example">Euro Summit</a>'
+        - label: '6 February 2018'
           content:
-            '#markup': <a href="/example">EU-Western Balkans Strategy</a>
-        - label: "14 February 2018"
+            '#markup': '<a href="/example">EU-Western Balkans Strategy</a>'
+        - label: '14 February 2018'
           content:
-            '#markup': <a href="/example">Multiannual Financial Framework</a> and <a href="/example">institutional issues</a> - enhancing efficiency at the helm of the European Union
+            '#markup': '<a href="/example">Multiannual Financial Framework</a> and <a href="/example">institutional issues</a> - enhancing efficiency at the helm of the European Union'

@@ -8,11 +8,11 @@ progress_primary_stripped_animated:
         striped: true
         animated: true
       progress: 60
-      label: 'Progress label'
-      bar_label: 'Bar label'
-      message: 'Progress bar description'
       min: 10
       max: 90
+      label: 'Progress label'
+      text: 'Bar label'
+      message: 'Progress bar description'
   assertions:
     count:
       'div[data-drupal-selector="progress"]': 1
@@ -41,11 +41,11 @@ progress_secondary_non_stripped_non_animated:
         strippd: false
         animated: false
       progress: 60
-      label: 'Progress label'
-      bar_label: 'Bar label'
-      message: 'Progress bar description'
       min: 10
       max: 90
+      label: 'Progress label'
+      text: 'Bar label'
+      message: 'Progress bar description'
   assertions:
     count:
       'div[data-drupal-selector="progress"]': 1

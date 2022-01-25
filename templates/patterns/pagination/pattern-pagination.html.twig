@@ -1,17 +1,16 @@
 {#
-{#
 /**
  * @file
- * Pagination.
+ * Pagination pattern.
  */
 #}
 {% include '@oe-bcl/pagination' with {
-  size: size,
-  alignment: alignment,
-  aria_label: aria_label,
-  enable_icon: enable_icon,
-  prev: prev,
-  next: next,
-  items: items,
-  extra_classes: extra_classes
-} %}
+  'size': size,
+  'alignment': alignment,
+  'aria_label': aria_label,
+  'enable_icon': enable_icons,
+  'prev': prev,
+  'next': next,
+  'items': items,
+  'attributes': attributes,
+} only %}

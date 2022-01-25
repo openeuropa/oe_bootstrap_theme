@@ -1,0 +1,36 @@
+navigation:
+  label: Navigation
+  description: 'Renders a series of links in a navigation element.'
+  variants:
+    default:
+      label: 'Default'
+      description: 'Default navigation style.'
+    tabs:
+      label: 'Tabs'
+      description: 'Shows the items styled as tabs.'
+    pills:
+      label: 'Pills'
+      description: 'Shows the items styled as pills.'
+  fields:
+    orientation:
+      type: string
+      label: 'Orientation'
+      description: 'Can be set to horizontal or vertical. Defaults to horizontal.'
+    items:
+      type: array
+      label: 'Navigation items'
+      description: 'Array of navigation items'
+      preview:
+        - label: "I'm a link 1"
+          path: '#first'
+        - label: "I'm a link 2"
+          path: '#second'
+        - label: "I'm a link 3"
+          id: 'third-tab'
+          path: '#third'
+        - label: "I'm a link active"
+          active: true
+          target: '#fourth'
+        - label: "I'm a link disabled"
+          disabled: true
+          path: '#'

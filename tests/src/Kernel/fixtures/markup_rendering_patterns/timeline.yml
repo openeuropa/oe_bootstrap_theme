@@ -48,8 +48,8 @@ timeline_items_show_more:
     '#type': pattern
     '#id': timeline
     '#fields':
-      toggle_collapsed: 'Display %d more'
-      toggle_expanded: 'Stash %d items'
+      collapse_button_label: 'Display %d more'
+      expand_button_label: 'Stash %d items'
       settings:
         hide_from: 2
         hide_to: 0

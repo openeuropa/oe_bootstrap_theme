@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Navigation pattern.
+ */
+#}
+{% include '@oe-bcl/navigation' with {
+  'items': items,
+  'pills': variant == 'pills',
+  'vertical': orientation == 'vertical',
+  'tabs': variant == 'tabs',
+  'nav': true,
+  'tabs_content': false,
+  'navbar': false,
+  'attributes': attributes,
+} only %}

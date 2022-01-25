@@ -1,37 +1,35 @@
 {#
 /**
  * @file
- * offcanvas.
+ * Offcanvas pattern.
  */
 #}
+{% if title is not empty %}
+  {% set _title = {
+    'label': title,
+    'heading': 5
+  } %}
+{% endif %}
+
 {% include '@oe-bcl/offcanvas' with {
-  'title': title,
+  'title': _title,
   'placement': placement,
   'id': offcanvas_id,
   'body': body,
-  'with_body_scroll': with_body_scroll,
-  'with_backdrop': with_backdrop,
-  'extra_classes_body': extra_classes_body,
-  'extra_classes_header': extra_classes_header,
-  'extra_classes_close': extra_classes_close,
-  'toggle_button_label': toggle_button_label,
-} %}
-{% if with_trigger %}
-  {{ pattern('button', {
-    label: toggle_button_label ?: 'Toggle offcanvas',
-    variant: 'light',
-    size: 'md',
-    icon: icon,
-    icon_position: icon_position,
-    attributes: {
-      'data-bs-toggle': 'offcanvas',
-      'data-bs-target': '#' ~  offcanvas_id,
-      'aria-controls': offcanvas_id,
-      'class': [
-        'd-lg-none',
-        'w-100',
-        'mb-4',
-      ],
-    }
-  }) }}
+  'with_body_scroll': body_scroll,
+  'with_backdrop': backdrop,
+  'attributes': attributes,
+} only %}
+
+{% if toggle is not empty %}
+  {% set _toggle_attributes = toggle.attributes|default({}) %}
+  {% set _toggle_attributes = _toggle_attributes|merge({
+    'data-bs-toggle': 'offcanvas',
+    'data-bs-target': '#' ~  offcanvas_id,
+    'aria-controls': offcanvas_id
+  }, true) %}
+  {% set _toggle = toggle|merge({
+    attributes: _toggle_attributes
+  }) %}
+  {{ pattern('button', _toggle) }}
 {% endif %}

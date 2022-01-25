@@ -3,8 +3,9 @@ pagination:
     '#type': pattern
     '#id': pagination
     '#fields':
-      size: 'sm'
-      alignment: 'center'
+      settings:
+        size: 'sm'
+        alignment: 'center'
       prev:
         path: '#prev'
         label: 'Previous'
@@ -30,3 +31,39 @@ pagination:
       'li.page-item:nth-child(2) a': '1'
       'li.page-item:nth-child(3) a': '2'
       'li.page-item:nth-child(4) a': 'Next'
+pagination_with_icon:
+  render:
+    '#type': pattern
+    '#id': pagination
+    '#fields':
+      settings:
+        size: 'lg'
+        alignment: 'end'
+        enable_icons: true
+      prev:
+        path: '#prev'
+        icon:
+          name: 'arrow-left'
+      next:
+        path: '#next'
+        icon:
+          name: 'arrow-right'
+      items:
+        - path: '#1'
+          label: '1'
+          active: true
+        - path: '#2'
+          label: '2'
+  assertions:
+    count:
+      'nav[data-drupal-selector="pagination"]': 1
+      'ul.pagination-lg.justify-content-end': 1
+      'a.page-link[href="#prev"]': 1
+      'li.page-item:nth-child(2) a[href="#1"]': 1
+      'li.page-item:nth-child(3) a[href="#2"]': 1
+      'li.page-item:nth-child(4) a[href="#next"]': 1
+    equals:
+      'li.page-item:nth-child(1) a': '<svg class="bi icon--s"><use xlink:href="#arrow-left"></use></svg>'
+      'li.page-item:nth-child(2) a': '1'
+      'li.page-item:nth-child(3) a': '2'
+      'li.page-item:nth-child(4) a': '<svg class="bi icon--s"><use xlink:href="#arrow-right"></use></svg>'

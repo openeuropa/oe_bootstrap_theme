@@ -1,0 +1,259 @@
+navigation_with_pills_horizontal:
+  render:
+    '#type': pattern
+    '#id': 'navigation'
+    '#variant': 'pills'
+    '#fields':
+      orientation: 'horizontal'
+      items:
+        - label: 'I am a link'
+          path: '#first'
+        - label: 'I am a button'
+          button: true
+        - label: 'I am a disabled button'
+          button: true
+          disabled: true
+        - label: 'I am an active button'
+          button: true
+          active: true
+        - id: 'dropdown-1'
+          link: true
+          dropdown: true
+          trigger:
+            label: 'Dropdown Toggle'
+            path: '#'
+          items:
+            - label: 'I am a dropdown link'
+              path: '/example.html'
+            - label: 'I am a dropdown button'
+              button: true
+            - divider: true
+            - label: 'I am a dropdown disabled button'
+              button: true
+              disabled: true
+            - label: 'I am a dropdown active button'
+              button: true
+              active: true
+  assertions:
+    count:
+      'nav[data-drupal-selector="navigation"]': 1
+      'nav.nav-pills': 1
+      '.nav-tabs': 0
+      '.nav-link': 4
+      '.nav-link.active': 1
+      'a#dropdown-1[data-bs-toggle="dropdown"]': 1
+      'button.nav-link[disabled]': 1
+      'button.nav-link.active': 1
+      'nav.justify-content-left': 0
+      'nav.flex-column': 0
+    equals:
+      '.nav-link:nth-child(1)': 'I am a link'
+      '.nav-link:nth-child(2)': 'I am a button'
+      '.nav-link:nth-child(3)': 'I am a disabled button'
+      '.nav-link:nth-child(4)': 'I am an active button'
+navigation_default:
+  render:
+    '#type': pattern
+    '#id': 'navigation'
+    '#variant': 'default'
+    '#fields':
+      orientation: 'horizontal'
+      items:
+        - label: 'I am a link'
+          path: '#first'
+        - label: 'I am a button'
+          button: true
+        - label: 'I am a disabled button'
+          button: true
+          disabled: true
+        - label: 'I am an active button'
+          button: true
+          active: true
+        - id: 'dropdown-1'
+          link: true
+          dropdown: true
+          trigger:
+            label: 'Dropdown Toggle'
+            path: '#'
+          items:
+            - label: 'I am a dropdown link'
+              path: '/example.html'
+            - label: 'I am a dropdown button'
+              button: true
+            - divider: true
+            - label: 'I am a dropdown disabled button'
+              button: true
+              disabled: true
+            - label: 'I am a dropdown active button'
+              button: true
+              active: true
+  assertions:
+    count:
+      'nav[data-drupal-selector="navigation"]': 1
+      'nav.nav-pills': 0
+      '.nav-tabs': 0
+      '.nav-link': 4
+      '.nav-link.active': 1
+      'a#dropdown-1[data-bs-toggle="dropdown"]': 1
+      'button.nav-link[disabled]': 1
+      'button.nav-link.active': 1
+      'nav.flex-column': 0
+    equals:
+      '.nav-link:nth-child(1)': 'I am a link'
+      '.nav-link:nth-child(2)': 'I am a button'
+      '.nav-link:nth-child(3)': 'I am a disabled button'
+      '.nav-link:nth-child(4)': 'I am an active button'
+navigation_default_vertical:
+  render:
+    '#type': pattern
+    '#id': 'navigation'
+    '#variant': 'default'
+    '#fields':
+      orientation: 'vertical'
+      items:
+        - label: 'I am a link'
+          path: '#first'
+        - label: 'I am a button'
+          button: true
+        - label: 'I am a disabled button'
+          button: true
+          disabled: true
+        - label: 'I am an active button'
+          button: true
+          active: true
+        - id: 'dropdown-1'
+          link: true
+          dropdown: true
+          trigger:
+            label: 'Dropdown Toggle'
+            path: '#'
+          items:
+            - label: 'I am a dropdown link'
+              path: '/example.html'
+            - label: 'I am a dropdown button'
+              button: true
+            - divider: true
+            - label: 'I am a dropdown disabled button'
+              button: true
+              disabled: true
+            - label: 'I am a dropdown active button'
+              button: true
+              active: true
+  assertions:
+    count:
+      'nav[data-drupal-selector="navigation"]': 1
+      'nav.nav-pills': 0
+      '.nav-tabs': 0
+      '.nav-link': 4
+      '.nav-link.active': 1
+      'a#dropdown-1[data-bs-toggle="dropdown"]': 1
+      'button.nav-link[disabled]': 1
+      'button.nav-link.active': 1
+      'nav.justify-content-left': 0
+      'nav.flex-column': 1
+    equals:
+      '.nav-link:nth-child(1)': 'I am a link'
+      '.nav-link:nth-child(2)': 'I am a button'
+      '.nav-link:nth-child(3)': 'I am a disabled button'
+      '.nav-link:nth-child(4)': 'I am an active button'
+navigation_pills_vertical:
+  render:
+    '#type': pattern
+    '#id': 'navigation'
+    '#variant': 'pills'
+    '#fields':
+      orientation: 'vertical'
+      items:
+        - label: 'I am a link'
+          path: '#first'
+        - label: 'I am a button'
+          button: true
+        - label: 'I am a disabled button'
+          button: true
+          disabled: true
+        - label: 'I am an active button'
+          button: true
+          active: true
+        - id: 'dropdown-1'
+          link: true
+          dropdown: true
+          trigger:
+            label: 'Dropdown Toggle'
+            path: '#'
+          items:
+            - label: 'I am a dropdown link'
+              path: '/example.html'
+            - label: 'I am a dropdown button'
+              button: true
+            - divider: true
+            - label: 'I am a dropdown disabled button'
+              button: true
+              disabled: true
+            - label: 'I am a dropdown active button'
+              button: true
+              active: true
+  assertions:
+    count:
+      'nav[data-drupal-selector="navigation"]': 1
+      'nav.nav-pills': 1
+      '.nav-tabs': 0
+      '.nav-link': 4
+      '.nav-link.active': 1
+      'a#dropdown-1[data-bs-toggle="dropdown"]': 1
+      'button.nav-link[disabled]': 1
+      'button.nav-link.active': 1
+      'nav.flex-column': 1
+    equals:
+      'nav.nav-pills .nav-link:nth-child(1)': 'I am a link'
+      'nav.nav-pills .nav-link:nth-child(2)': 'I am a button'
+      'nav.nav-pills .nav-link:nth-child(3)': 'I am a disabled button'
+      'nav.nav-pills .nav-link:nth-child(4)': 'I am an active button'
+navigation_tabs:
+  render:
+    '#type': pattern
+    '#id': 'navigation'
+    '#variant': 'tabs'
+    '#fields':
+      items:
+        - label: 'I am a link'
+          path: '#first'
+        - label: 'I am a button'
+          button: true
+        - label: 'I am a disabled button'
+          button: true
+          disabled: true
+        - label: 'I am an active button'
+          button: true
+          active: true
+        - id: 'dropdown-1'
+          link: true
+          dropdown: true
+          trigger:
+            label: 'Dropdown Toggle'
+            path: '#'
+          items:
+            - label: 'I am a dropdown link'
+              path: '/example.html'
+            - label: 'I am a dropdown button'
+              button: true
+            - divider: true
+            - label: 'I am a dropdown disabled button'
+              button: true
+              disabled: true
+            - label: 'I am a dropdown active button'
+              button: true
+              active: true
+  assertions:
+    count:
+      'nav': 1
+      'nav[data-drupal-selector="navigation"]': 1
+      '.nav-tabs': 1
+      '.nav-link': 4
+      '.nav-link.active': 1
+      'a#dropdown-1[data-bs-toggle="dropdown"]': 1
+      'button.nav-link[disabled]': 1
+    equals:
+      '.nav-link:nth-child(1)': 'I am a link'
+      '.nav-link:nth-child(2)': 'I am a button'
+      '.nav-link:nth-child(3)': 'I am a disabled button'
+      '.nav-link:nth-child(4)': 'I am an active button'
