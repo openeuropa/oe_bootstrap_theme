@@ -24,16 +24,16 @@ card_group:
       'div.card-group': 1
       'div.card': 4
       'h5.card-title': 4
-      'p.card-text': 4
+      'div.card-text': 4
     equals:
       'div.card:nth-child(1) h5.card-title': 'Card title 1'
       'div.card:nth-child(2) h5.card-title': 'Card title 2'
       'div.card:nth-child(3) h5.card-title': 'Card title 3'
       'div.card:nth-child(4) h5.card-title': 'Card title 4'
-      'div.card:nth-child(1) p.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
-      'div.card:nth-child(2) p.card-text': 'This card has supporting text below as a natural lead-in to additional content.'
-      'div.card:nth-child(3) p.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
-      'div.card:nth-child(4) p.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'div.card:nth-child(1) div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'div.card:nth-child(2) div.card-text': 'This card has supporting text below as a natural lead-in to additional content.'
+      'div.card:nth-child(3) div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'div.card:nth-child(4) div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
       'div.card:nth-child(1) div.card-footer': 'Footer of card 1'
       'div.card:nth-child(2) div.card-footer': 'Footer of card 2'
       'div.card:nth-child(3) div.card-footer': 'Footer of card 3'
@@ -66,7 +66,7 @@ card_grid_responsive_xxl_3_responsive_columns:
     count:
       'div.card': 4
       'h5.card-title': 4
-      'p.card-text': 4
+      'div.card-text': 4
       'div.card.h-100': 0
       'div.g-0': 1
       'div.row-cols-xxl-3': 1
@@ -75,10 +75,10 @@ card_grid_responsive_xxl_3_responsive_columns:
       'div.col:nth-child(2) div.card h5.card-title': 'Card title 2'
       'div.col:nth-child(3) div.card h5.card-title': 'Card title 3'
       'div.col:nth-child(4) div.card h5.card-title': 'Card title 4'
-      'div.col:nth-child(1) div.card p.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
-      'div.col:nth-child(2) div.card p.card-text': 'This card has supporting text below as a natural lead-in to additional content.'
-      'div.col:nth-child(3) div.card p.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
-      'div.col:nth-child(4) div.card p.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'div.col:nth-child(1) div.card div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'div.col:nth-child(2) div.card div.card-text': 'This card has supporting text below as a natural lead-in to additional content.'
+      'div.col:nth-child(3) div.card div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'div.col:nth-child(4) div.card div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
       'div.col:nth-child(1) div.card div.card-footer': 'Footer of card 1'
       'div.col:nth-child(2) div.card div.card-footer': 'Footer of card 2'
       'div.col:nth-child(3) div.card div.card-footer': 'Footer of card 3'
@@ -143,23 +143,23 @@ card_grid_responsive_columns_2_md_equal_height:
       'div.card-body': 3
       'h5.card-title': 3
       'h6.card-subtitle': 3
-      'p.card-text': 3
+      'div.card-text': 3
       'div.card-footer': 3
     equals:
       'div.col:nth-child(1) div.card-header': 'Header of card 1'
       'div.col:nth-child(1) h5.card-title': 'Title card 1'
       'div.col:nth-child(1) h6.card-subtitle': 'Subtitle card 1'
-      'div.col:nth-child(1) p.card-text': 'Text card with longer text which is supported 1'
+      'div.col:nth-child(1) div.card-text': 'Text card with longer text which is supported 1'
       'div.col:nth-child(1) div.card-footer': 'Footer of card 1'
       'div.col:nth-child(2) div.card-header': 'Header of card 2'
       'div.col:nth-child(2) h5.card-title': 'Title card 2'
       'div.col:nth-child(2) h6.card-subtitle': 'Subtitle card 2'
-      'div.col:nth-child(2) p.card-text': 'Text card with longer text which is supported 2'
+      'div.col:nth-child(2) div.card-text': 'Text card with longer text which is supported 2'
       'div.col:nth-child(2) div.card-footer': 'Footer of card 2'
       'div.col:nth-child(3) div.card-header': 'Header of card 3'
       'div.col:nth-child(3) h5.card-title': 'Title card 3'
       'div.col:nth-child(3) h6.card-subtitle': 'Subtitle card 3'
-      'div.col:nth-child(3) p.card-text': 'Text card with longer text which is supported 3'
+      'div.col:nth-child(3) div.card-text': 'Text card with longer text which is supported 3'
       'div.col:nth-child(3) div.card-footer': 'Footer of card 3'
 card_masonry_responsive_xxl_3_responsive_columns:
   render:
@@ -189,7 +189,7 @@ card_masonry_responsive_xxl_3_responsive_columns:
     count:
       'div.card': 4
       'h5.card-title': 4
-      'p.card-text': 4
+      'div.card-text': 4
       'div.card.h-100': 0
       'div.g-0': 1
       'div.row-cols-xxl-3': 1
@@ -197,15 +197,15 @@ card_masonry_responsive_xxl_3_responsive_columns:
     equals:
       'div.col:nth-child(1) div.card h5.card-title': 'Card title 1'
       'div.col:nth-child(1) div.card div.card-footer': 'Footer of card 1'
-      'div.col:nth-child(1) div.card p.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'div.col:nth-child(1) div.card div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
       'div.col:nth-child(2) div.card h5.card-title': 'Card title 2'
-      'div.col:nth-child(2) div.card p.card-text': 'This card has supporting text below as a natural lead-in to additional content.'
+      'div.col:nth-child(2) div.card div.card-text': 'This card has supporting text below as a natural lead-in to additional content.'
       'div.col:nth-child(2) div.card div.card-footer': 'Footer of card 2'
       'div.col:nth-child(3) div.card h5.card-title': 'Card title 3'
-      'div.col:nth-child(3) div.card p.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'div.col:nth-child(3) div.card div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
       'div.col:nth-child(3) div.card div.card-footer': 'Footer of card 3'
       'div.col:nth-child(4) div.card h5.card-title': 'Card title 4'
-      'div.col:nth-child(4) div.card p.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'div.col:nth-child(4) div.card div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
       'div.col:nth-child(4) div.card div.card-footer': 'Footer of card 4'
 card_masonry_responsive_columns_2_md_equal_height:
   render:
@@ -267,22 +267,22 @@ card_masonry_responsive_columns_2_md_equal_height:
       'div.card-body': 3
       'h5.card-title': 3
       'h6.card-subtitle': 3
-      'p.card-text': 3
+      'div.card-text': 3
       'div.card-footer': 3
       "div[data-masonry='{\"percentPosition\": true }']": 1
     equals:
       'div.col:nth-child(1) div.card-header': 'Header of card 1'
       'div.col:nth-child(1) h5.card-title': 'Title card 1'
       'div.col:nth-child(1) h6.card-subtitle': 'Subtitle card 1'
-      'div.col:nth-child(1) p.card-text': 'Text card with longer text which is supported 1'
+      'div.col:nth-child(1) div.card-text': 'Text card with longer text which is supported 1'
       'div.col:nth-child(1) div.card-footer': 'Footer of card 1'
       'div.col:nth-child(2) div.card-header': 'Header of card 2'
       'div.col:nth-child(2) h5.card-title': 'Title card 2'
       'div.col:nth-child(2) h6.card-subtitle': 'Subtitle card 2'
-      'div.col:nth-child(2) p.card-text': 'Text card with longer text which is supported 2'
+      'div.col:nth-child(2) div.card-text': 'Text card with longer text which is supported 2'
       'div.col:nth-child(2) div.card-footer': 'Footer of card 2'
       'div.col:nth-child(3) div.card-header': 'Header of card 3'
       'div.col:nth-child(3) h5.card-title': 'Title card 3'
       'div.col:nth-child(3) h6.card-subtitle': 'Subtitle card 3'
-      'div.col:nth-child(3) p.card-text': 'Text card with longer text which is supported 3'
+      'div.col:nth-child(3) div.card-text': 'Text card with longer text which is supported 3'
       'div.col:nth-child(3) div.card-footer': 'Footer of card 3'
