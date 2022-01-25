@@ -1,25 +1,6 @@
 link:
   label: 'Link'
   description: 'A simple link.'
-  variants:
-    primary:
-      label: 'Primary (default)'
-    secondary:
-      label: 'Secondary'
-    success:
-      label: 'Success'
-    danger:
-      label: 'Danger'
-    warning:
-      label: 'Warning'
-    info:
-      label: 'Info'
-    light:
-      label: 'Light'
-    dark:
-      label: 'Dark'
-    link:
-      label: 'Link'
   settings:
     disabled:
       type: boolean
