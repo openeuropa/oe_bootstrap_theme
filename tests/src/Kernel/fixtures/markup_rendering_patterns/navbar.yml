@@ -43,7 +43,7 @@ navbar_large_light_background_color_light:
           '#id': dropdown
           '#variant': default
           '#fields':
-            label: 'Dropdown Toggle'
+            button_label: 'Dropdown Toggle'
             items:
               - label: "I'm a link"
                 path: '#navbar-dropdown-link'
@@ -59,6 +59,8 @@ navbar_large_light_background_color_light:
   assertions:
     count:
       'button.navbar-toggler': 1
+      'button[data-bs-target^="#bcl-navbar"]': 1
+      'div[id^="bcl-navbar"]': 1
       'nav[data-drupal-selector="navbar"]': 1
       'nav.bg-light': 1
       'nav.navbar-expand-lg': 1
@@ -117,7 +119,7 @@ navbar_medium_dark_background_color_dark_with_disable_collapse:
           '#id': dropdown
           '#variant': default
           '#fields':
-            label: 'Dropdown Toggle'
+            button_label: 'Dropdown Toggle'
             items:
               - label: "I'm a link"
                 path: '#navbar-dropdown-link'

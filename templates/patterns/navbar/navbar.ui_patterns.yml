@@ -75,10 +75,8 @@ navbar:
           id: dropdown
           variant: default
           fields:
-            trigger:
-              label: 'Dropdown Toggle'
-              path: '#'
-            dropdown_items:
+            button_label: 'Dropdown Toggle'
+            items:
               - path: '#navbar'
                 label: 'I am a link'
               - path: '#navbar'

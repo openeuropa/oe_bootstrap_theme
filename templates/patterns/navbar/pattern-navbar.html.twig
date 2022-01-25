@@ -9,15 +9,18 @@
     options ['light', 'dark']
   - disable_collapse (boolean) (default: false)
 #}
-{% set _collapse_id = collapse_id|default('') %}
+
+{% set _collapse_id = navbar_collapse_id %}
 {% set _background = background|default('') %}
 {% set _expand = expand|default('lg') %}
 {% set _color_set = color_set|default('light') %}
 {% set _disable_collapse = disable_collapse|default(false) %}
 {% set _classes = ['navbar', 'navbar-expand-' ~ _expand] %}
+
 {% if _background is not empty %}
   {% set _classes = _classes|merge(['bg-' ~ _background]) %}
 {% endif %}
+
 {% if _color_set is not empty %}
   {% set _classes = _classes|merge(['navbar-' ~ _color_set]) %}
 {% endif %}
@@ -27,10 +30,6 @@
 {% endif %}
 
 {% set attributes = attributes.addClass(_classes) %}
-
-{% if _collapse_id is empty %}
-  {% set _collapse_id = 'navbar-' ~ random(1000) %}
-{% endif %}
 
 <nav
   {{ attributes }}
