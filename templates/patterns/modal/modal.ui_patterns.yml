@@ -1,66 +1,52 @@
 modal:
-  label: "Modal"
-  description: "Use Bootstrap’s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content. https://v5.getbootstrap.com/docs/5.0/components/modal/"
+  label: 'Modal'
+  description: 'Use Bootstrap’s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content. For more information vitis https://v5.getbootstrap.com/docs/5.0/components/modal/'
   settings:
     size:
       type: select
-      label: Modal size
+      label: 'Modal size'
+      description: 'The size that the modal will have:'
       options:
-        sm: "sm"
-        lg: "lg"
-        xl: "xl"
-        fullscreen: "fullscreen"
-      preview: lg
-    modal_id:
-      type: textfield
-      label: "Modal id"
-      preview: ''
+        sm: 'sm'
+        lg: 'lg'
+        xl: 'xl'
+        fullscreen: 'fullscreen'
+      preview: 'lg'
   fields:
-    button:
-      type: array
-      label: 'button'
-      description: 'The button to trigger the modal. If is not present, then button will not be printed, only the modal container.'
-      preview:
-        variant: 'secondary'
-        label: 'Open the modal'
-    header:
+    title:
       type: text
-      label: "Header"
-      description: "Modal header"
-      preview:
-        - type: html_tag
-          tag: h5
-          attributes:
-            class: "modal-title"
-            id: "exampleModalLabel"
-          value: "Modal title"
-        - type: html_tag
-          tag: button
-          attributes:
-            class: "btn-close"
-            data-bs-dismiss: "modal"
-            aria-label: "Close"
+      label: 'Title'
+      description: 'Title of the modal.'
+      preview: 'Modal title'
+    show_close_button:
+      type: boolean
+      label: 'Show close button'
+      description: 'Sets the visibility of the close button at the header. Defaults to false.'
+      preview: true
     body:
-      type: render
-      label: "Body"
-      description: "Modal body content"
-      preview:
-        - type: html_tag
-          tag: p
-          value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      type: text
+      label: 'Body'
+      description: 'The modal’s body content.'
+      preview: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<p>'
     footer:
       type: render
-      label: "Footer"
-      description: "Modal footer"
+      label: 'Footer'
+      description: 'The modal’s footer.'
       preview:
         - type: html_tag
-          tag: button
+          tag: 'button'
           attributes:
-            class: "btn btn-secondary"
-            data-bs-dismiss: "modal"
-          value: "Close"
+            class: 'btn btn-secondary'
+            data-bs-dismiss: 'modal'
+          value: 'Close'
         - type: html_tag
-          tag: button
+          tag: 'button'
           attributes:
-            class: "btn btn-primary"
-          value: "Save changes"
+            class: 'btn btn-primary'
+          value: 'Save changes'
+    toggle:
+      type: array
+      label: 'Toggle button'
+      description: 'An optional button pattern definition that will allow to show/hide the modal.'
+      preview:
+        label: 'Show modal'

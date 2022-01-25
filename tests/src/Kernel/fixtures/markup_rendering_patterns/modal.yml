@@ -5,11 +5,11 @@ modal_secondary_small:
     '#fields':
       settings:
         size: 'sm'
-        modal_id: 'custom_modal'
-      button:
+      toggle:
         variant: 'secondary'
         label: 'Open Modal'
-      header: 'Header text'
+      title: 'Header text'
+      show_close_button: true
       body: 'Lorem Ipsum dolor sit amet'
       footer: 'Footer text'
   assert:
@@ -20,8 +20,8 @@ modal_secondary_small:
       '.modal-footer': 'Footer text'
     count:
       'button[data-bs-toggle=modal]': 1
-      'button[data-bs-target="#modal_custom_modal"]': 1
-      'div#modal_custom_modal': 1
+      'button[data-bs-target="#bcl-modal"]': 1
+      'div#bcl-modal': 1
       '.modal-sm': 1
       '.btn-secondary': 1
 modal_dark_fullscreen:
@@ -31,11 +31,11 @@ modal_dark_fullscreen:
     '#fields':
       settings:
         size: 'fullscreen'
-        modal_id: 'custom_modal'
-      button:
+      toggle:
         variant: 'dark'
         label: 'Open Modal'
-      header: 'Header text'
+      title: 'Header text'
+      show_close_button: true
       body: 'Lorem Ipsum dolor sit amet'
       footer: 'Footer text'
   assert:
@@ -46,7 +46,35 @@ modal_dark_fullscreen:
       '.modal-footer': 'Footer text'
     count:
       'button[data-bs-toggle=modal]': 1
-      'button[data-bs-target="#modal_custom_modal"]': 1
-      'div#modal_custom_modal': 1
+      'button[data-bs-target="#bcl-modal"]': 1
+      'div#bcl-modal': 1
       '.modal-fullscreen': 1
       '.btn-dark': 1
+modal_with_id:
+  render:
+    '#type': pattern
+    '#id': modal
+    '#fields':
+      settings:
+        size: 'sm'
+      toggle:
+        variant: 'secondary'
+        label: 'Open Modal'
+      title: 'Header text'
+      show_close_button: true
+      body: 'Lorem Ipsum dolor sit amet'
+      footer: 'Footer text'
+      attributes:
+        id: 'custom-modal'
+  assert:
+    contains:
+      'button[data-bs-toggle=modal]': 'Open Modal'
+      '.modal-header': 'Header text'
+      '.modal-content': 'Lorem Ipsum dolor sit amet'
+      '.modal-footer': 'Footer text'
+    count:
+      'button[data-bs-toggle=modal]': 1
+      'button[data-bs-target="#custom-modal"]': 1
+      'div#custom-modal': 1
+      '.modal-sm': 1
+      '.btn-secondary': 1

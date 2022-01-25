@@ -1,31 +1,44 @@
 {#
 /**
  * @file
- * Modal component.
+ * Modal pattern.
  */
 #}
+{% set _id = attributes.id|default(modal_id) %}
 
-{% set _modal_id = modal_id ? 'modal_' ~ modal_id : 'modal' %}
-
-{% if button is not empty %}
-{% block trigger %}
-  {{ pattern('button', {
-    label: button.label,
-    variant: button.variant,
-    outline: btn_outline,
-    size: btn_size,
-    attributes: create_attribute({
-      'data-bs-toggle': 'modal',
-      'data-bs-target': '#' ~ _modal_id
-    })
-  }) }}
-{% endblock %}
-{% endif %}
+{% set _header %}
+  {% spaceless %}
+  {% if title is not empty  %}
+    <h5>{{ title }}</h5>
+  {% endif %}
+  {% if show_close_button is not empty %}
+    {{ pattern('button', {
+      attributes: {
+        'class': 'btn-close',
+        'data-bs-dismiss': 'modal',
+        'aria-label': 'Close'
+      }}) }}
+  {% endif %}
+  {% endspaceless %}
+{% endset %}
 
 {% include '@oe-bcl/modal' with {
   'size': size,
-  'id': _modal_id,
-  'header': header,
+  'id': _id,
+  'header': _header,
   'body': body,
   'footer': footer
-} %}
+} only %}
+
+{% if toggle is not empty %}
+  {% set _toggle_attributes = toggle.attributes|default({}) %}
+  {% set _toggle_attributes = _toggle_attributes|merge({
+    'data-bs-toggle': 'modal',
+    'data-bs-target': '#' ~  _id,
+    'aria-controls': _id
+  }, true) %}
+  {% set _toggle = toggle|merge({
+    attributes: _toggle_attributes
+  }) %}
+  {{ pattern('button', _toggle) }}
+{% endif %}
