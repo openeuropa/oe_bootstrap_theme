@@ -181,23 +181,21 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
 
     // Assert presence of given strings.
     foreach ($assertions['contains'] as $selector => $string) {
-      $this->assertStringContainsString($string, $crawler->filter($selector)->html());
+      $element = $crawler->filter($selector);
+      $this->assertNotEmpty($element, sprintf('No elements found with selector "%s" in:%s%s', $selector, PHP_EOL, $html));
+      $this->assertStringContainsString($string, $element->html(), sprintf('Failed assertion for selector "%s".', $selector));
     }
 
     // Assert occurrences of given elements.
-    foreach ($assertions['count'] as $name => $expected) {
-      $this->assertCount($expected, $crawler->filter($name), "Error counting {$name}");
+    foreach ($assertions['count'] as $selector => $expected) {
+      $this->assertCount($expected, $crawler->filter($selector), sprintf('Wrong count for selector "%s" in:%s%s', $selector, PHP_EOL, $html));
     }
 
     // Assert that a given element content equals a given string.
-    foreach ($assertions['equals'] as $name => $expected) {
-      try {
-        $actual = trim($crawler->filter($name)->html());
-      }
-      catch (\InvalidArgumentException $exception) {
-        $this->fail(sprintf('Element "%s" not found (exception: "%s") in: ' . PHP_EOL . ' %s', $name, $exception->getMessage(), $html));
-      }
-      $this->assertSame($expected, $actual);
+    foreach ($assertions['equals'] as $selector => $expected) {
+      $element = $crawler->filter($selector);
+      $this->assertNotEmpty($element, sprintf('No elements found with selector "%s" in:%s%s.', $selector, PHP_EOL, $html));
+      $this->assertSame($expected, trim($element->html()), sprintf('Failed assertion for selector "%s".', $selector));
     }
   }
 
