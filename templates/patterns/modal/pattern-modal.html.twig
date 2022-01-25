@@ -6,10 +6,26 @@
 #}
 {% set _id = attributes.id|default(modal_id) %}
 
+{% set _header %}
+  {% spaceless %}
+  {% if title is not empty  %}
+    <h5>{{ title }}</h5>
+  {% endif %}
+  {% if show_close_button is not empty %}
+    {{ pattern('button', {
+      attributes: {
+        'class': 'btn-close',
+        'data-bs-dismiss': 'modal',
+        'aria-label': 'Close'
+      }}) }}
+  {% endif %}
+  {% endspaceless %}
+{% endset %}
+
 {% include '@oe-bcl/modal' with {
   'size': size,
   'id': _id,
-  'header': header,
+  'header': _header,
   'body': body,
   'footer': footer
 } only %}
