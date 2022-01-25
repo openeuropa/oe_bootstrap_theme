@@ -35,17 +35,17 @@ progress:
     progress:
       type: number
       label: 'Progress'
-      description: 'Current progress of the bar and its minimum and maximum value if different from the default 0 or 100.'
+      description: 'The progress value for the bar.'
       preview: 50
     min:
       type: text
       label: 'Minimum'
-      description: 'Minimum state of progress bar'
+      description: 'Minimum value shown in the progress bar.'
       preview: 0
     max:
       type: 'text'
       label: 'Maximum'
-      description: 'Maximum state of progress bar'
+      description: 'Maximum value shown in the progress bar.'
       preview: 100
     text:
       type: text
