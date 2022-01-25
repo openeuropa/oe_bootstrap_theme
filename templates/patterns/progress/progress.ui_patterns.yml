@@ -33,13 +33,20 @@ progress:
       description: 'Text before the progress bar.'
       preview: 'This is the label of the progress bar'
     progress:
-      type: array
+      type: number
       label: 'Progress'
       description: 'Current progress of the bar and its minimum and maximum value if different from the default 0 or 100.'
-      preview:
-        current: 50
-        min: 0
-        max: 100
+      preview: 50
+    min:
+      type: text
+      label: 'Minimum'
+      description: 'Minimum state of progress bar'
+      preview: 0
+    max:
+      type: 'text'
+      label: 'Maximum'
+      description: 'Maximum state of progress bar'
+      preview: 100
     text:
       type: text
       label: 'Text'
