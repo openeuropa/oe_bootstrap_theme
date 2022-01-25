@@ -1,21 +1,15 @@
-card_warning_horizontal_with_border_color_info_and_text_white_with_rounded_image:
+card_horizontal_with_image:
   render:
     '#type': pattern
-    '#id': card
+    '#id': 'card'
     '#fields':
-      settings:
-        style: 'warning'
-        border_color: 'info'
-        text_color: 'white'
-        horizontal: true
+      orientation: 'horizontal'
       title: 'Title card'
       subtitle: 'Subtitle card'
       text: 'Text card with longer text which is supported'
       image:
         path: 'https://placeimg.com/1000/500/arch'
         alt: 'Alternative text for card image'
-        position: 'top'
-        rounded: 3
       content:
         '#type': 'pattern'
         '#id': 'button'
@@ -23,42 +17,34 @@ card_warning_horizontal_with_border_color_info_and_text_white_with_rounded_image
           settings:
             style: 'primary'
           label: 'Custom action'
-      card_header: 'Header of card'
-      card_footer: 'Footer of card'
+      header: 'Header of card'
+      footer: 'Footer of card'
   assert:
     count:
-      'div.card.text-white': 1
-      'div.card.bg-warning': 1
-      'div.card.border-info': 1
       'div[data-drupal-selector="card"]': 1
       'img[alt="Alternative text for card image"]': 1
       'div.row.g-0 div.col-4': 1
       'div.row.g-0 div.col-8': 1
-      'img.card-img-top.rounded-3': 1
+      'img.card-img-top': 1
     equals:
       'div.card-header': 'Header of card'
       'h5.card-title': 'Title card'
       'h6.card-subtitle': 'Subtitle card'
-      'p.card-text': 'Text card with longer text which is supported'
+      'div.card-text': 'Text card with longer text which is supported'
     contains:
       'button.btn-primary': 'Custom action'
-card_default_secondary_vertical_with_border_color_success_and_text_dark:
+card_vertical:
   render:
     '#type': pattern
-    '#id': card
+    '#id': 'card'
     '#fields':
-      settings:
-        style: secondary
-        border_color: success
-        text_color: dark
-        horizontal: false
+      orientation: 'vertical'
       title: 'Title card'
       subtitle: 'Subtitle card'
       text: 'Text card with longer text which is supported'
       image:
         path: 'https://placeimg.com/1000/500/arch'
         alt: 'Alternative text for card image'
-        position: 'bottom'
       content:
         '#type': 'pattern'
         '#id': 'button'
@@ -66,29 +52,27 @@ card_default_secondary_vertical_with_border_color_success_and_text_dark:
           settings:
             style: 'primary'
           label: 'Custom action'
-      card_header: 'Header of card'
-      card_footer: 'Footer of card'
+      header: 'Header of card'
+      footer: 'Footer of card'
   assert:
     count:
-      'div.card.text-dark': 1
-      'div.card.bg-secondary': 1
-      'div.card.border-success': 1
+      'div.card': 1
       'div.card[data-drupal-selector="card"]': 1
       'img[alt="Alternative text for card image"]': 1
       'div.row': 0
-      'img.card-img-bottom': 1
+      'img.card-img-top': 1
     equals:
       'div.card-header': 'Header of card'
       'h5.card-title': 'Title card'
       'h6.card-subtitle': 'Subtitle card'
-      'p.card-text': 'Text card with longer text which is supported'
+      'div.card-text': 'Text card with longer text which is supported'
     contains:
       'button.btn-primary': 'Custom action'
 card_variant_search:
   render:
     '#type': pattern
-    '#id': card
-    '#variant': search
+    '#id': 'card'
+    '#variant': 'search'
     '#fields':
       title: 'Title card'
       text: 'Text card with longer text which is supported'

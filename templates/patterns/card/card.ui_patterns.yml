@@ -8,45 +8,11 @@ card:
     search:
       label: 'Search'
       description: 'Card with special behaviour for print search results items.'
-  settings:
-    style:
-      type: select
-      label: 'Card style'
-      description: 'Sets the card style:'
-      options:
-        primary: 'primary'
-        secondary: 'secondary'
-        success: 'success'
-        danger: 'danger'
-        warning: 'warning'
-        info: 'info'
-        light: 'light'
-        dark: 'dark'
-    border_color:
-      type: select
-      label: 'Card border color'
-      description: 'Sets the card border color:'
-      options:
-        primary: 'primary'
-        secondary: 'secondary'
-        success: 'success'
-        danger: 'danger'
-        warning: 'warning'
-        info: 'info'
-        light: 'light'
-        dark: 'dark'
-    text_color:
-      type: select
-      label: 'Card text color'
-      description: 'Sets the card text color:'
-      options:
-        dark: 'dark'
-        white: 'white'
-    horizontal:
-      type: boolean
-      label: 'Horizontal'
-      description: 'If true, the card will be printed horizontally instead vertically. False by default.'
   fields:
+    orientation:
+      type: string
+      label:  'Orientation'
+      description: 'Can be set to horizontal or vertical. Defaults to vertical.'
     title:
       type: text
       label: 'Title'
@@ -69,18 +35,17 @@ card:
       preview:
         path: 'https://placeimg.com/1000/500/people'
         alt: 'Alternative text for card image'
-        position: 'top'
     content:
       type: render
       label: 'Content'
       description: 'Card content.'
       preview: '<button class="btn btn-primary">Custom action</button>'
-    card_header:
+    header:
       type: text
       label: 'Card header'
       description: 'Card header content.'
       preview: 'Header of card'
-    card_footer:
+    footer:
       type: text
       label: 'Card footer'
       description: 'Card footer content.'
@@ -88,12 +53,12 @@ card:
     badges:
       type: array
       label: 'Badges'
-      description: 'Badges for the card.'
+      description: 'List of badges for the card.'
       preview:
         - label: 'Primary badge'
         - label: 'Secondary badge'
           rounded_pill: true
     date:
-      type: array
+      type: DateTime
       label: 'Date'
       description: 'Date that will be rendered with the "Date Block" pattern.'
