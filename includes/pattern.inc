@@ -120,3 +120,10 @@ function oe_bootstrap_theme_preprocess_pattern_link(array &$variables): void {
     'path' => $variables['bcl_icon_path'],
   ];
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_navbar(array &$variables): void {
+  $variables['navbar_collapse_id'] = Html::getUniqueId('bcl-navbar');
+}
