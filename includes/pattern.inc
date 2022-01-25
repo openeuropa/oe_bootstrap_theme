@@ -176,3 +176,16 @@ function oe_bootstrap_theme_preprocess_pattern_accordion(array &$variables): voi
 function oe_bootstrap_theme_preprocess_pattern_modal(array &$variables): void {
   $variables['modal_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl-modal');
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_link(array &$variables): void {
+  if (isset($variables['icon']) && !is_array($variables['icon'])) {
+    $variables['icon'] = [
+      'name' => $variables['icon'],
+      'path' => $variables['bcl_icon_path'],
+    ];
+  }
+
+}
