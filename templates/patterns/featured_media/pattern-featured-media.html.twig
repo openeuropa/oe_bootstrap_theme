@@ -4,17 +4,15 @@
  * Featured media pattern.
  */
 #}
-{% macro featured_media(embedded_media, image, poster_image, caption, ratio, sources, tracks) %}
+{% macro featured_media(embedded_media, image, caption, ratio) %}
   {% include '@oe-bcl/featured-media' with {
     'embedded_media': embedded_media,
     'image': image,
-    'poster_image': poster_image,
     'content': caption,
     'content_classes': 'bg-light p-3',
     'ratio': ratio,
-    'sources': sources,
-    'tracks': tracks,
-  } %}
+    'attributes': attributes,
+  } only %}
 {% endmacro %}
 
 {% if text_title or text or link %}
@@ -42,13 +40,13 @@
       {% endif %}
     </div>
     <div class="col-12 col-md-6 {{ video_alignment_class }}">
-      {{ _self.featured_media(embedded_media, image, poster_image, caption, ratio, sources, tracks) }}
+      {{ _self.featured_media(embedded_media, image, caption, ratio) }}
     </div>
   </div>
 {% else %}
   <div class="row">
     <div class="col-12 col-md-4">
-      {{ _self.featured_media(embedded_media, image, poster_image, caption, ratio, sources, tracks) }}
+      {{ _self.featured_media(embedded_media, image, caption, ratio) }}
     </div>
   </div>
 {% endif %}
