@@ -58,9 +58,3 @@ card:
         - label: 'Primary badge'
         - label: 'Secondary badge'
           rounded_pill: true
-    date:
-      type: DateTime
-      label: 'Date'
-      description: 'Date that will be rendered with the "Date Block" pattern.'
-      preview: '2020-12-20'
-      escape: false
