@@ -7,14 +7,6 @@
  */
 #}
 
-{% if image %}
-  {% set _image = {
-    '#theme': 'image',
-    '#uri': image.src,
-    '#alt': image.alt,
-  } %}
-{% endif %}
-
 {% if not paragraph.field_oe_link.isEmpty %}
   {# Add cache info from the Link field to the page. #}
   {% set bubble_cache = content.field_oe_link|render %}
@@ -22,7 +14,7 @@
 
 {{ pattern('featured_media', {
   'embedded_media': embedded_media,
-  'image': _image ? _image|render : '',
+  'image': image,
   'ratio': ratio,
   'alignment': alignment,
   'title': not paragraph.field_oe_title.isEmpty ? content.field_oe_title,

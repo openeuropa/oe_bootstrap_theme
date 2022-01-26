@@ -8,6 +8,7 @@
 declare(strict_types = 1);
 
 use Drupal\Component\Utility\Html;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 
 /**
  * Implements hook_preprocess_HOOK() for badge_preview patterns.
@@ -25,6 +26,15 @@ function oe_bootstrap_theme_preprocess_page(&$variables) {
   // @todo It would be better to have a setting, like bootstrap_barrio do with
   //   bootstrap_barrio_fluid_container ('container-fluid' : 'container')
   $variables['container'] = 'container';
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for featured_media pattern preview.
+ */
+function oe_bootstrap_theme_preprocess_pattern_featured_media__preview(array &$variables) {
+  if (isset($variables['image']) && is_array($variables['image'])) {
+    $variables['image'] = ImageValueObject::fromArray($variables['image']);
+  }
 }
 
 /**
