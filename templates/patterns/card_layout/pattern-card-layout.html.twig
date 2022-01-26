@@ -6,30 +6,42 @@
 #}
 {% set _items = [] %}
 {% for _item in items %}
-  {% set _item = _item|merge({
-    'text': {
-      'content': _item.text,
-      'classes': 'mb-2',
-      'tag': 'div'
-    },
-    'title': {
-      'content': _item.title,
-    },
-    'subtitle': {
-      'content': _item.subtitle,
-      'classes': 'mb-2',
-    }
+
+  {% if _item.text is not empty %}
+    {% set _item = _item|merge({
+      'text': {
+        'content': _item.text,
+        'classes': 'mb-2',
+        'tag': 'div'
+      },
+    }) %}
+  {% endif %}
+  {% if _item.title is not empty %}
+    {% set _item = _item|merge({
+      'title': {
+        'content': _item.title,
+      },
+    }) %}
+  {% endif %}
+  {% if _item.subtitle is not empty %}
+    {% set _item = _item|merge({
+      'subtitle': {
+        'content': _item.subtitle,
+        'classes': 'mb-2',
+      }
+    }) %}
+  {% endif %}
   }) %}
   {% set _items = _items|merge([_item]) %}
 {% endfor %}
 
-{% include '@oe-bcl/card-layout' with {
-  'type': variant,
-  'items': _items,
-  'grid_columns': grid_columns,
-  'responsive_columns': responsive_columns,
-  'responsiveness': responsiveness,
-  'gutter': gutter,
-  'equal_height': type == 'group' ? true : equal_height,
-  'attributes': attributes,
-} only %}
+  {% include '@oe-bcl/card-layout' with {
+    'type': variant,
+    'items': _items,
+    'grid_columns': grid_columns,
+    'responsive_columns': responsive_columns,
+    'responsiveness': responsiveness,
+    'gutter': gutter,
+    'equal_height': type == 'group' ? true : equal_height,
+    'attributes': attributes,
+  } only %}
