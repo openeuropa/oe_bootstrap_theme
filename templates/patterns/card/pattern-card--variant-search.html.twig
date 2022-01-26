@@ -23,37 +23,36 @@
 {% if image is defined and image['#markup'] is not empty %}
   {% set _image = {
     path: image['#markup'],
-    position: "top",
-    classes: "d-none d-md-block",
+    position: 'top',
+    classes: 'd-none d-md-block',
   } %}
 {% endif %}
 {% if text is defined and text.classes is not defined %}
   {% set text = {
     content: text|render|striptags,
-    classes: "mb-3",
+    classes: 'mb-3',
   } %}
 {% endif %}
 {% include '@oe-bcl/card' with {
   horizontal: true,
   horizontal_grid: {
-    left_col_classes: "col-md-3 col-lg-2 rounded mw-listing-img",
-    right_col_classes: "col-md-9 col-lg-10",
+    left_col_classes: 'col-md-3 col-lg-2 rounded mw-listing-img',
+    right_col_classes: 'col-md-9 col-lg-10',
   },
-  extra_classes_body: "p-0 pb-md-0 pb-3",
+  extra_classes_body: 'p-0 pb-md-0 pb-3',
   badges: _badges,
   title: {
-    tag: title.tag|default('a'),
-    classes: title.classes|default(''),
-    content: title.content,
+    tag: 'a',
+    content: title,
   },
   text: text,
   attributes: create_attribute({'class': [
-    "listing-item",
-    "border-bottom",
-    "border-md-0",
-    "border-0",
+    'listing-item',
+    'border-bottom',
+    'border-md-0',
+    'border-0',
   ]}),
   text_color: 'dark',
   image: _image,
   content: content
-} %}
+} only %}

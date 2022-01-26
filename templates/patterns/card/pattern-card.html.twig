@@ -4,20 +4,52 @@
  * Card pattern.
  */
 #}
+{% spaceless %}
+{% if title is not empty %}
+  {% set title = {
+    'content': title,
+  } %}
+{% endif %}
+{% if subtitle is not empty %}
+  {% set subtitle = {
+    'content': subtitle,
+    'classes': 'mb-2',
+  } %}
+{% endif %}
+{% if text is not empty %}
+  {% set text = {
+    'content': text,
+    'classes': 'mb-2',
+    'tag': 'div'
+  } %}
+{% endif %}
+{% if orientation == 'horizontal' %}
+  {% set horizontal_grid = {
+    left_col_classes: 'col-4',
+    right_col_classes: 'col-8',
+    gutter: 0
+  } %}
+{% endif %}
+{% if date is not empty %}
+  {% set _date = {
+    'day': date|date('d'),
+    'month': date|date('M'),
+    'year': date|date('Y'),
+    'date_time': date|date('Y-m-d')
+  } %}
+{% endif %}
 {% include '@oe-bcl/card' with {
+  'horizontal': orientation == 'horizontal',
+  'horizontal_grid': horizontal_grid,
   'title': title,
   'subtitle': subtitle,
   'text': text,
   'content': content,
   'image': image,
-  'variant': style,
-  'border_variant': border_variant,
-  'text_color': text_color,
-  'card_header': card_header,
-  'card_footer': card_footer,
-  'extra_classes_body': extra_classes_body,
-  'extra_classes_header': extra_classes_header,
-  'extra_classes_footer': extra_classes_footer,
+  'card_header': header,
+  'card_footer': footer,
   'badges': badges,
-  'date': date,
-} %}
+  'date': _date,
+  'attributes': attributes,
+} only %}
+{% endspaceless %}
