@@ -156,8 +156,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
     return;
   }
 
-  // Set inside_text false as default.
-  $variables['inside_text'] = FALSE;
   $variables['alignment'] = oe_bootstrap_theme_get_bcl_variant($paragraph);
 
   // If it's an image media, render it and assign it to the image variable.

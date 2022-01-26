@@ -23,10 +23,7 @@
 {{ pattern('featured_media', {
   'embedded_media': embedded_media,
   'image': _image ? _image|render : '',
-  'poster_image': poster_image,
   'ratio': ratio,
-  'sources': sources,
-  'tracks': tracks,
   'alignment': alignment,
   'title': not paragraph.field_oe_title.isEmpty ? content.field_oe_title,
   'text_title': not paragraph.field_oe_feature_media_title.isEmpty ? content.field_oe_feature_media_title,

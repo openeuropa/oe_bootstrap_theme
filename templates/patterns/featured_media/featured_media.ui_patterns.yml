@@ -43,14 +43,6 @@ featured_media:
       preview:
         label: 'View all'
         path: '#example'
-    poster_image:
-      type: text
-      label: 'Poster image'
-      description: 'The poster image used for the video variant.'
-    sources:
-      type: array
-      label: 'Sources'
-      description: 'The sources for embedded media.'
     title:
       type: text
       label: "Heading"
@@ -67,7 +59,3 @@ featured_media:
       label: 'Title'
       description: 'The title, displayed above text and media.'
       preview: 'Lorem ipsum'
-    tracks:
-      type: array
-      label: 'Tracks'
-      description: 'The embed Text track element.'
