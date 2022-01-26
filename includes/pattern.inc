@@ -28,22 +28,6 @@ function oe_bootstrap_theme_preprocess_page(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for card patterns.
- */
-function oe_bootstrap_theme_preprocess_pattern_card(array &$variables) {
-  if (array_key_exists('image', $variables) && is_array($variables['image'])) {
-    foreach ($variables['image'] as &$item) {
-      _oe_bootstrap_theme_add_card_image_class($item, $variables['variant']);
-    }
-  }
-  if (array_key_exists('links', $variables) && is_array($variables['links'])) {
-    foreach ($variables['links'] as &$item) {
-      _oe_bootstrap_theme_add_card_link_class($item);
-    }
-  }
-}
-
-/**
  * Implements hook_preprocess_HOOK() for dropdown pattern.
  */
 function oe_bootstrap_theme_preprocess_pattern_dropdown(array &$variables) {
@@ -54,49 +38,6 @@ function oe_bootstrap_theme_preprocess_pattern_dropdown(array &$variables) {
   }
 
   $variables['dropdown_id'] = Html::getUniqueId('bcl-dropdown');
-}
-
-/**
- * Add expected class in card's image.
- */
-function _oe_bootstrap_theme_add_card_image_class(&$item, $variant) {
-  $class = 'card-img-top';
-  if ($variant === 'overlay') {
-    $class = 'card-img';
-  }
-  if (is_array($item) && array_key_exists('#theme', $item)) {
-    if ($item['#theme'] === 'image') {
-      $item['#attributes']['class'][] = $class;
-    }
-    if ($item['#theme'] === 'image_formatter') {
-      $item['#item_attributes']['class'][] = $class;
-    }
-  }
-  if (is_array($item)) {
-    foreach ($item as &$next) {
-      _oe_bootstrap_theme_add_card_image_class($next, $variant);
-    }
-  }
-}
-
-/**
- * Add expected class in card's link.
- */
-function _oe_bootstrap_theme_add_card_link_class(&$item) {
-  $class = 'card-link';
-  if (is_array($item) && array_key_exists('#type', $item)) {
-    if ($item['#type'] === 'link') {
-      $item['#attributes']['class'][] = $class;
-    }
-    if ($item['#type'] === 'html_tag' && $item['#tag'] === 'a') {
-      $item['#attributes']['class'][] = $class;
-    }
-  }
-  if (is_array($item)) {
-    foreach ($item as &$next) {
-      _oe_bootstrap_theme_add_card_link_class($next);
-    }
-  }
 }
 
 /**
