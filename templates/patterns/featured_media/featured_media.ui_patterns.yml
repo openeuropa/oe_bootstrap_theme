@@ -33,9 +33,9 @@ featured_media:
       label: 'Image'
       description: 'The image for the image variant.'
       preview:
-        - theme: 'image'
-          uri: 'https://placeimg.com/1200/600/tech'
-          alt: 'Alternative text for paragraph image'
+        'src': 'https://placeimg.com/1200/600/tech'
+        'alt': 'Alternative text for paragraph image'
+        'name': 'Example'
     link:
       type: array
       label: 'Link'
