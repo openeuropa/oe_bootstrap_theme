@@ -4,6 +4,13 @@
  * Featured media pattern.
  */
 #}
+{% if image %}
+  {% set _image = {
+    '#theme': 'image',
+    '#uri': image.src,
+    '#alt': image.alt,
+  } %}
+{% endif %}
 {% macro featured_media(embedded_media, image, caption, ratio) %}
   {% include '@oe-bcl/featured-media' with {
     'embedded_media': embedded_media,
@@ -40,13 +47,13 @@
       {% endif %}
     </div>
     <div class="col-12 col-md-6 {{ video_alignment_class }}">
-      {{ _self.featured_media(embedded_media, image, caption, ratio) }}
+      {{ _self.featured_media(embedded_media, _image, caption, ratio) }}
     </div>
   </div>
 {% else %}
   <div class="row">
     <div class="col-12 col-md-4">
-      {{ _self.featured_media(embedded_media, image, caption, ratio) }}
+      {{ _self.featured_media(embedded_media, _image, caption, ratio) }}
     </div>
   </div>
 {% endif %}
