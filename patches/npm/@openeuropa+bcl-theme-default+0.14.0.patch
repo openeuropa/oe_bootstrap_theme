@@ -1,16 +1,3 @@
-diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-accordion/accordion.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-accordion/accordion.html.twig
-index b663324..cfcfe20 100644
---- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-accordion/accordion.html.twig
-+++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-accordion/accordion.html.twig
-@@ -24,7 +24,7 @@
-   {% set _classes = _classes|merge(['accordion-flush']) %}
- {% endif %}
- {% set attributes = attributes.addClass(_classes).setAttribute('id', 'accordion-' ~ _id) %}
--
-+potatolopo
- {% if _items is not empty %}
- <div
-   {{ attributes }}
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-navbar/navbar.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-navbar/navbar.html.twig
 index 86db244..cef04c7 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-navbar/navbar.html.twig
