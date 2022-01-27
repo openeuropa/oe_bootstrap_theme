@@ -125,5 +125,5 @@ function oe_bootstrap_theme_preprocess_pattern_link(array &$variables): void {
  * Implements hook_preprocess_HOOK().
  */
 function oe_bootstrap_theme_preprocess_pattern_navbar(array &$variables): void {
-  $variables['navbar_collapse_id'] = Html::getUniqueId('bcl-navbar');
+  $variables['collapse_id'] = Html::getUniqueId('bcl-navbar');
 }
