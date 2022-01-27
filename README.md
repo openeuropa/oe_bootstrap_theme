@@ -169,18 +169,13 @@ To patch a component:
 2. Run:
 
 ```bash
-npx patch-package @openeuropa/bcl-theme-default
-```
-
-Or, when using Docker Compose:
-
-```bash
 docker-compose exec -u node node git config --global user.email "name@example.com"
 docker-compose exec -u node node git config --global user.name "Name"
 docker-compose exec -u node node npx patch-package @openeuropa/bcl-theme-default
 ```
 
-Patches will be generated in `./patches` and applied when running `npm install`.
+Patches will be generated in `./patches/npm` and applied when running `npm install`.\
+**Note:** generate patches **only** inside the docker container to use the same version of npm/npx.
 
 ## Contributing
 
