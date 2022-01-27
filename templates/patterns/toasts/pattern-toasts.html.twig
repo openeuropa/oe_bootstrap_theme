@@ -4,7 +4,6 @@
  * Toasts pattern.
  */
 #}
-{% set wrapper_aria_live = wrapper_aria_live|default('assertive') %}
 {% set header %}
   <strong class="me-auto">
     {{ title }}
@@ -14,15 +13,11 @@
   </small>
 {% endset %}
 {% include '@oe-bcl/bcl-toast/bcl-toasts.html.twig' with {
-  'with_wrapper': with_wrapper,
-  'with_container': with_container,
-  'wrapper_classes': wrapper_classes,
-  'wrapper_aria_live': wrapper_aria_live,
-  'container_classes': container_classes,
+  'with_wrapper': wrapper,
   'toasts': [{
     'body': body,
     'role': role,
-    'with_close': with_close,
+    'with_close': close_button,
     'header': header,
     'autohide': autohide,
     'attributes': create_attribute().addClass(['show']),

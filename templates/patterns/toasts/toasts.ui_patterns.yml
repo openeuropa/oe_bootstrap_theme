@@ -1,45 +1,39 @@
 toasts:
-  label: "Toasts"
-  description: "Push notifications to your visitors with a toast, a lightweight and easily customizable alert message. https://v5.getbootstrap.com/docs/5.0/components/toasts/"
-  settings:
-    with_wrapper:
-      type: boolean
-      label: With wrapper?
-      description: "If the toast is contained in a wrapper."
-      preview: true
-    with_container:
-      type: boolean
-      label: With container?
-      description: "If the toast is in a container."
-      preview: true
+  label: 'Toasts'
+  description: 'Push notifications to your visitors with a toast, a lightweight and easily customizable alert message. For more information visit: https://v5.getbootstrap.com/docs/5.0/components/toasts/'
   fields:
-    role:
-      type: string
-      label: "Role"
-      description: "Toast role"
-      preview: "alert"
-    title:
-      type: html
-      label: "Title"
-      description: "Toast title."
-      preview: "Bootstrap"
+    wrapper:
+      type: boolean
+      label: 'Wrapper'
+      description: 'WHen enabled, wrapper the toast in a container. Defaults to false.'
+      preview: true
     autohide:
       type: boolean
-      label: "Autohide"
-      description: "If it will be hidden automatically"
+      label: 'Auto-hide'
+      description: 'If it will be hidden automatically. Defaults to false.'
       preview: false
-    with_close:
-      type: boolean
-      label: "With close"
-      description: "Close button."
-      preview: true
-    body:
+    role:
       type: string
-      label: "Body"
-      description: "Toast body."
-      preview: "See? Just like this."
+      label: 'Role'
+      description: 'Adapt the toast role depending on the content. Use alert for error or important message, status for other messages.'
+      preview: 'alert'
+    close_button:
+      type: boolean
+      label: 'Close button'
+      description: 'Add close button to the toast. Defaults to true.'
+      preview: true
+    title:
+      type: text
+      label: 'Title'
+      description: 'Toast title.'
+      preview: 'Bootstrap'
+    body:
+      type: text
+      label: 'Body'
+      description: 'Toast body.'
+      preview: 'See? Just like this.'
     time:
-      label: "Time"
-      type: "DateTime"
-      description: "A DateTime object."
-      preview: "1639404765"
+      type: DateTime
+      label: 'Time'
+      description: 'A DateTime object to be displayed as time ago in the toast.'
+      preview: '1639404765'
