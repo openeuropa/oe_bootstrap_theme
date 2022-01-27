@@ -7,6 +7,10 @@
 
 {% extends '@oe-bcl/navbar' %}
 
+{% set color_set = color_scheme|default('light') %}
+{% set background = color_set %}
+{% set expand = expanded_breakpoint|default('lg') %}
+
 {% block branding %}
   {% if branding is not empty %}
     {{ branding }}

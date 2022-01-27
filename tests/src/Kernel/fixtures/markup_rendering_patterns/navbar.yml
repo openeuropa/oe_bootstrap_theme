@@ -1,14 +1,10 @@
-navbar_large_light_background_color_light:
+navbar_pattern_large_light_scheme_default_breakpoint:
   render:
     '#type': pattern
     '#id': navbar
     '#fields':
-      settings:
-        disable_collapse: false
-        background: light
-        expand: lg
-        color_set: light
-      navbar_branding:
+      color_scheme: light
+      branding:
         - '#type': pattern
           '#id': link
           '#fields':
@@ -17,7 +13,7 @@ navbar_large_light_background_color_light:
             attributes:
               rel: 'home'
               class: 'navbar-brand'
-      navbar_left:
+      navigation:
         - '#type': pattern
           '#id': link
           '#fields':
@@ -45,11 +41,11 @@ navbar_large_light_background_color_light:
           '#fields':
             button_label: 'Dropdown Toggle'
             items:
-              - label: "I'm a link"
+              - label: "I'm a link in a dropdown"
                 path: '#navbar-dropdown-link'
               - label: "I'm a button"
                 button: true
-      navbar_right:
+      right:
         - '#type': html_tag
           '#tag': form
           '#children':
@@ -58,33 +54,39 @@ navbar_large_light_background_color_light:
             class: 'd-flex'
   assertions:
     count:
-      'button.navbar-toggler': 1
-      'button[data-bs-target^="#bcl-navbar"]': 1
-      'div[id^="bcl-navbar"]': 1
-      'nav[data-drupal-selector="navbar"]': 1
+      'nav': 1
+      'nav.navbar': 1
       'nav.bg-light': 1
-      'nav.navbar-expand-lg': 1
       'nav.navbar-light': 1
-      'form.d-flex': 1
+      'nav.bg-dark': 0
+      'nav.navbar-dark': 0
+      'nav.navbar-expand-sm': 0
+      'nav.navbar-expand-md': 0
+      'nav.navbar-expand-lg': 1
+      'button.navbar-toggler': 1
+      'button[data-bs-target="#bcl-navbar"]': 1
+      'div#bcl-navbar.navbar-collapse': 1
+      'div#bcl-navbar.navbar-collapse > div.me-auto.navbar-nav': 1
+      'a': 5
+      'div#bcl-navbar.navbar-collapse > div.me-auto.navbar-nav > a': 3
+      'div.navbar-collapse > div.d-flex > form.d-flex': 1
     equals:
       'div.navbar-nav a:nth-child(1)': "I'm a link"
       'div.navbar-nav a:nth-child(2)': "I'm a link 2"
       'div.navbar-nav a:nth-child(3)': "I'm a link 3"
-      'ul.dropdown-menu li .dropdown-item': "I'm a link"
-      'button.dropdown-item': "I'm a button"
+      'div.navbar-nav ul.dropdown-menu li .dropdown-item': "I'm a link in a dropdown"
+      'div.navbar-nav button.dropdown-item': "I'm a button"
       'label': 'Search'
-      'a.navbar-brand[href="https://europa.eu/"]': 'OpenEuropa Site'
-navbar_medium_dark_background_color_dark_with_disable_collapse:
+      'nav > div.container > a.navbar-brand[href="https://europa.eu/"]': 'OpenEuropa Site'
+      'div.navbar-collapse > div.d-flex label': 'Search'
+navbar_pattern_medium_dark_scheme_md_breakpoint:
   render:
     '#type': pattern
     '#id': navbar
     '#fields':
-      settings:
-        disable_collapse: true
-        background: dark
-        expand: md
-        color_set: dark
-      navbar_branding:
+      expanded_breakpoint: md
+      color_scheme: dark
+      branding:
         - '#type': pattern
           '#id': link
           '#fields':
@@ -93,7 +95,7 @@ navbar_medium_dark_background_color_dark_with_disable_collapse:
             attributes:
               rel: 'home'
               class: 'navbar-brand'
-      navbar_left:
+      navigation:
         - '#type': pattern
           '#id': link
           '#fields':
@@ -121,11 +123,11 @@ navbar_medium_dark_background_color_dark_with_disable_collapse:
           '#fields':
             button_label: 'Dropdown Toggle'
             items:
-              - label: "I'm a link"
+              - label: "I'm a link in a dropdown"
                 path: '#navbar-dropdown-link'
               - label: "I'm a button"
                 button: true
-      navbar_right:
+      right:
         - '#type': html_tag
           '#tag': form
           '#children':
@@ -134,17 +136,60 @@ navbar_medium_dark_background_color_dark_with_disable_collapse:
             class: 'd-flex'
   assertions:
     count:
-      'button.navbar-toggler': 0
-      'nav[data-drupal-selector="navbar"]': 1
+      'nav': 1
+      'nav.navbar': 1
+      'nav.bg-light': 0
+      'nav.navbar-light': 0
       'nav.bg-dark': 1
-      'nav.navbar-expand-md': 1
       'nav.navbar-dark': 1
-      'form.d-flex': 1
+      'nav.navbar-expand-sm': 0
+      'nav.navbar-expand-md': 1
+      'nav.navbar-expand-lg': 0
+      'button.navbar-toggler': 1
+      'button[data-bs-target="#bcl-navbar"]': 1
+      'div#bcl-navbar.navbar-collapse': 1
+      'div#bcl-navbar.navbar-collapse > div.me-auto.navbar-nav': 1
+      'a': 5
+      'div#bcl-navbar.navbar-collapse > div.me-auto.navbar-nav > a': 3
+      'div.navbar-collapse > div.d-flex > form.d-flex': 1
     equals:
       'div.navbar-nav a:nth-child(1)': "I'm a link"
       'div.navbar-nav a:nth-child(2)': "I'm a link 2"
       'div.navbar-nav a:nth-child(3)': "I'm a link 3"
-      'ul.dropdown-menu li .dropdown-item': "I'm a link"
-      'button.dropdown-item': "I'm a button"
-      'label': 'Search'
+      'div.navbar-nav ul.dropdown-menu li .dropdown-item': "I'm a link in a dropdown"
+      'div.navbar-nav button.dropdown-item': "I'm a button"
       'a.navbar-brand[href="https://europa.eu/"]': 'OpenEuropa Site'
+      'div.navbar-collapse > div.d-flex label': 'Search'
+navbar_pattern_medium_default_scheme_only_navigation:
+  render:
+    '#type': pattern
+    '#id': navbar
+    '#fields':
+      navigation:
+        - '#type': pattern
+          '#id': link
+          '#fields':
+            label: "I'm a link"
+            path: '#first'
+            attributes:
+              class: 'nav-link'
+  assertions:
+    count:
+      'nav': 1
+      'nav.navbar': 1
+      'nav.bg-light': 1
+      'nav.navbar-light': 1
+      'nav.bg-dark': 0
+      'nav.navbar-dark': 0
+      'nav.navbar-expand-sm': 0
+      'nav.navbar-expand-md': 0
+      'nav.navbar-expand-lg': 1
+      'button.navbar-toggler': 1
+      'button[data-bs-target="#bcl-navbar"]': 1
+      'div#bcl-navbar.navbar-collapse': 1
+      'div#bcl-navbar.navbar-collapse > div.me-auto.navbar-nav': 1
+      'a': 1
+      'div#bcl-navbar.navbar-collapse > div.me-auto.navbar-nav > a': 1
+      'div.navbar-collapse > div.d-flex': 0
+    equals:
+      'div.navbar-nav a': "I'm a link"

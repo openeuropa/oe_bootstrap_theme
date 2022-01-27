@@ -1,41 +1,15 @@
 navbar:
   label: 'Navbar'
-  description: 'Powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin. For more information: https://v5.getbootstrap.com/docs/5.0/components/navbar/'
-  settings:
-    background:
-      type: select
-      label: 'Background of navbar'
-      description: 'Set the background color of the navbar:'
-      options:
-        primary: 'primary'
-        secondary: 'secondary'
-        success: 'success'
-        danger: 'danger'
-        warning: 'warning'
-        info: 'info'
-        light: 'light'
-        dark: 'dark'
-      preview: 'light'
-    disable_collapse:
-      type: boolean
-      label: 'Disable Collapse'
-      description: 'If true, navbar items will not be collapsed. False by default.'
-    expand:
-      type: select
-      label: 'Expand'
-      description: 'Expand breakpoint of menu:'
-      options:
-        sm: 'Small'
-        md: 'Medium'
-        lg: 'Large (default)'
-    color_set:
-      type: select
-      label: 'Color set'
-      description: 'Available set of color:'
-      options:
-        light: 'light (default)'
-        dark: 'dark'
+  description: 'Powerful, responsive navigation bar. Includes support for branding, navigation, and more, including support for our collapse plugin. For more information: https://v5.getbootstrap.com/docs/5.0/components/navbar/'
   fields:
+    expanded_breakpoint:
+      type: string
+      label: 'Expanded breakpoint'
+      description: 'The breakpoint at which the menu will be shown as expanded. For earlier breakpoints, it will be shown after clicking a toggle button. Must be a valid breakpoint class (sm, md, lg). Defaults to lg.'
+    color_scheme:
+      type: string
+      label: 'Color scheme'
+      description: 'The color scheme to use. Can be either light (dark text on light background) or dark (light text on dark background).'
     branding:
       type: render
       label: 'Branding region'
