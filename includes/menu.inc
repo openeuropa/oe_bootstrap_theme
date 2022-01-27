@@ -8,6 +8,7 @@
 declare(strict_types = 1);
 
 use Drupal\Core\Template\Attribute;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_preprocess_menu().
@@ -17,41 +18,35 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
     return;
   }
 
-  $items = $variables['items'];
-  foreach ($items as $key => $item) {
-    $class = $item['in_active_trail'] ? ['active'] : [];
+  $variables['pattern_items'] = [];
+  foreach ($variables['items'] as $key => $item) {
     $menu_item = [
       'label' => $item['title'],
-      'path' => $item['url']->toString(),
-      'attributes' => new Attribute(['class' => $class]),
+      'path' => $item['url'] instanceof Url ? $item['url']->toString() : '',
+      'attributes' => new Attribute(['class' => $item['in_active_trail'] ? ['active'] : []]),
     ];
-    $variables['items'][$key] = $menu_item;
-
     if (empty($item['below'])) {
+      $variables['pattern_items'][$key] = $menu_item;
       continue;
     }
 
-    $class[] = 'nav-link';
-    $menu_item['attributes'] = new Attribute(['class' => $class]);
-    $item_with_submenu = [
+    $submenu = $menu_item;
+    $submenu['attributes'] = new Attribute(['class' => 'nav-link']);
+    $menu_item += [
       'standalone' => TRUE,
       'dropdown' => TRUE,
       'link' => TRUE,
-      'alignment' => 'dropdown-menu-sm-start',
-      'trigger' => $menu_item,
+      'alignment' => 'dropdown-menu_item-sm-start',
+      'trigger' => $submenu,
     ];
-    $variables['items'][$key] = $item_with_submenu;
-
     foreach ($item['below'] as $key_sub_item => $sub_item) {
-      $subclass = $sub_item['in_active_trail'] ? ['active'] : [];
-      $sub_item_menu = [
-        'label' => $sub_item['title'],
-        'path' => $sub_item['url']->toString(),
-        'attributes' => new Attribute(['class' => $subclass]),
-      ];
-      $variables['items'][$key]['items'][$key_sub_item] = $sub_item_menu;
+      $menu_item['items'][$key_sub_item]['label'] = $sub_item['title'];
+      $menu_item['items'][$key_sub_item]['path'] = $sub_item['url'] instanceof Url ? $sub_item['url']->toString() : '';
+      $menu_item['items'][$key_sub_item]['attributes'] = new Attribute(['class' => $sub_item['in_active_trail'] ? ['active'] : []]);
     }
+    $variables['pattern_items'][$key] = $menu_item;
   }
+
 }
 
 /**
