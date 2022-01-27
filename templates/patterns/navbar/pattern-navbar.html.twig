@@ -7,20 +7,22 @@
 
 {% extends '@oe-bcl/navbar' %}
 
-{% block navbar_branding %}
-  {% if navbar_branding is not empty %}
-    {{ navbar_branding }}
+{% block branding %}
+  {% if branding is not empty %}
+    {{ branding }}
   {% endif %}
 {% endblock %}
 
-{% block navbar_left %}
-  <div class="me-auto  navbar-nav">
-    {{ navbar_left }}
+{% block navigation %}
+  <div class="me-auto navbar-nav">
+    {{ navigation }}
   </div>
 {% endblock %}
 
-{% block navbar_right %}
-  <div>
-    {{ navbar_right }}
-  </div>
+{% block right %}
+  {% if right is not empty %}
+    <div class="d-flex">
+      {{ right }}
+    </div>
+  {% endif %}
 {% endblock %}
