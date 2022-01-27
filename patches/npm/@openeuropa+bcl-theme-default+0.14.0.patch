@@ -1,48 +1,7 @@
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-navbar/navbar.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-navbar/navbar.html.twig
-index 86db244..cef04c7 100644
+index 86db244..6b83d7b 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-navbar/navbar.html.twig
 +++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-navbar/navbar.html.twig
-@@ -1,23 +1,23 @@
- {% spaceless %}
- 
- {# Parameters:
--  - collapse_id (string) (default: '')
--  - background (string) (default: '')
--  - brand (object) (default: {})
--    format: {
--      src: '',
--      alt: '',
--      class: '',
--      label: '', (optional: only for string label)
--      link: '',
--    }
--  - navigation (object Navigation) (default: {})
--  - form (object Form) (default: {})
--  - expand (string) (default: 'lg')
--    options: ['sm', 'md', 'lg']
--  - color_set (string) (default: 'light')
--    options ['light', 'dark']
--  - disable_collapse (boolean) (default: false)
-+- collapse_id (string) (default: '')
-+- background (string) (default: '')
-+- brand (object) (default: {})
-+  format: {
-+    src: '',
-+    alt: '',
-+    class: '',
-+    label: '', (optional: only for string label)
-+    link: '',
-+  }
-+- navigation (object Navigation) (default: {})
-+- form (object Form) (default: {})
-+- expand (string) (default: 'lg')
-+  options: ['sm', 'md', 'lg']
-+- color_set (string) (default: 'light')
-+  options ['light', 'dark']
-+- disable_collapse (boolean) (default: false)
- #}
- {% set _collapse_id = collapse_id|default('') %}
- {% set _background = background|default('') %}
 @@ -45,25 +45,27 @@
    {{ attributes }}
  >
@@ -66,7 +25,7 @@ index 86db244..cef04c7 100644
 -      {%- endif -%}
 -      </a>
 -    {% endif %}
-+    {% block navbar_branding %}
++    {% block branding %}
 +      {% if _brand is not empty %}
 +        <a class='navbar-brand' href='{{ _brand.link }}'>
 +          {%- if _brand.label is defined -%}
@@ -102,12 +61,12 @@ index 86db244..cef04c7 100644
 -        {% include '@oe-bcl/bcl-form/form.html.twig' with _form only %}
 -      {% endif %}
 -    {% if not _disable_collapse %}
-+      {% block navbar_left %}
++      {% block navigation %}
 +        {% if _navigation is not empty %}
 +          {% include '@oe-bcl/bcl-navigation/navigation.html.twig' with _navigation only %}
 +        {% endif %}
 +      {%  endblock %}
-+      {% block navbar_right %}
++      {% block right %}
 +        {% if _form is not empty %}
 +          {% include '@oe-bcl/bcl-form/form.html.twig' with _form only %}
 +        {% endif %}

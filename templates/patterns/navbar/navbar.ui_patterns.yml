@@ -36,10 +36,10 @@ navbar:
         light: 'light (default)'
         dark: 'dark'
   fields:
-    navbar_branding:
+    branding:
       type: render
-      label: 'Branding'
-      description: 'Navbar branding text and/or logo.'
+      label: 'Branding region'
+      description: 'Navbar branding region. E.g. for text and/or logo.'
       preview:
         - type: html_tag
           tag: a
@@ -48,10 +48,10 @@ navbar:
             href: '#navbar'
             rel: home
             class: 'navbar-brand'
-    navbar_left:
-      type: array
-      label: 'Menu items'
-      description: 'Navbar navigation items. Will be placed at the left of the navigation bar.'
+    navigation:
+      type: render
+      label: 'Navigation region'
+      description: 'Navbar navigation region. Usually contains navigation items.'
       preview:
         - type: pattern
           id: link
@@ -88,10 +88,10 @@ navbar:
                 button: true
                 disabled: true
                 label: 'I am a disabled button'
-    navbar_right:
+    right:
       type: render
-      label: 'Search form'
-      description: 'Navbar search form. Will be placed at the right of the navigation bar.'
+      label: 'Right region'
+      description: 'Navbar right region. Sticks at the right of the navbar. Usually contains a search form.'
       preview:
         - type: html_tag
           tag: form
