@@ -154,12 +154,28 @@ To run the phpunit tests:
 docker-compose exec web ./vendor/bin/phpunit
 ```
 
-## sub-theme
+## Sub-theme
 
 All the necessary files for sub-theme creation can be found in the `kits` folder,
 read the related [documentation](kits/README.md)
 
-*Important:* The [components](https://www.drupal.org/project/component) module needs to be enabled to allow the use of the BCL library with the `@oe_bcl` namespace.
+## Patching BCL components
+
+BCL components can be patched by using the [`patch-package`](https://www.npmjs.com/package/patch-package) NPM project.
+
+To patch a component:
+
+1. Modify its source files directly in `./node_modules/@openeuropa/bcl-theme-default`
+2. Run:
+
+```bash
+docker-compose exec -u node node git config --global user.email "name@example.com"
+docker-compose exec -u node node git config --global user.name "Name"
+docker-compose exec -u node node npx patch-package @openeuropa/bcl-theme-default
+```
+
+Patches will be generated in `./patches/npm` and applied when running `npm install`.\
+**Note:** generate patches **only** inside the docker container to use the same version of npm/npx.
 
 ## Contributing
 

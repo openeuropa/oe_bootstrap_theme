@@ -10,7 +10,8 @@
     "build:rename": "cross-env bcl-builder rename",
     "watch:styles": "chokidar \"./resources/sass/**/*.scss\" -i \"/node_modules/\" -c \"npm run build:styles\"",
     "watch": "npm-run-all --parallel watch:* -ln",
-    "postinstall": "npm-run-all build:*",
+    "postinstall": "patch-package --patch-dir=patches/npm",
+    "prepare": "npm-run-all build:*",
     "production": "npm-run-all build:*"
   },
   "devDependencies": {
@@ -21,7 +22,8 @@
     "copyfiles": "2.4.1",
     "cross-env": "7.0.3",
     "glob": "7.1.7",
-    "npm-run-all": "4.1.5"
+    "npm-run-all": "4.1.5",
+    "patch-package": "^6.4.7"
   },
   "dependencies": {
     "slim-select": "^1.27.0"
