@@ -4,6 +4,16 @@
  * Card pattern search variant.
  */
 #}
+{% spaceless %}
+{% if title is not empty %}
+  {% set title_attributes = title.attributes ?: create_attribute() %}
+  {% set title_attributes = title_attributes.addClass('text-underline-hover h5') %}
+  {% set title = {
+    'tag': 'a',
+    'content': title,
+    'attributes': title_attributes,
+  } %}
+{% endif %}
 {% set _badges = [] %}
 {% if badges is not empty %}
   {% set badge_attr = create_attribute({'class': ['me-2']}) %}
@@ -27,32 +37,36 @@
     classes: 'd-none d-md-block',
   } %}
 {% endif %}
-{% if text is defined and text.classes is not defined %}
+{% if text is not empty %}
   {% set text = {
-    content: text|render|striptags,
-    classes: 'mb-3',
+    'content': text,
+    'classes': 'mb-3',
+    'tag': 'div'
   } %}
 {% endif %}
+{% set horizontal_grid = {
+  left_col_classes: 'col-md-3 col-lg-2 rounded mw-listing-img',
+  right_col_classes: 'col-md-9 col-lg-10'
+} %}
+{% if attributes is empty %}
+  {% set attributes = create_attribute() %}
+{% endif %}
+{% set attributes = attributes.addClass([
+  'listing-item',
+  'border-bottom',
+  'border-md-0',
+  'border-0',
+]) %}
 {% include '@oe-bcl/card' with {
-  horizontal: true,
-  horizontal_grid: {
-    left_col_classes: 'col-md-3 col-lg-2 rounded mw-listing-img',
-    right_col_classes: 'col-md-9 col-lg-10',
-  },
-  extra_classes_body: 'p-0 pb-md-0 pb-3',
-  badges: _badges,
-  title: {
-    tag: 'a',
-    content: title,
-  },
-  text: text,
-  attributes: create_attribute({'class': [
-    'listing-item',
-    'border-bottom',
-    'border-md-0',
-    'border-0',
-  ]}),
-  text_color: 'dark',
-  image: _image,
-  content: content
+  'horizontal': true,
+  'horizontal_grid': horizontal_grid,
+  'extra_classes_body': 'p-0 pb-md-0 pb-3',
+  'badges': _badges,
+  'title': title,
+  'text': text,
+  'text_color': 'dark',
+  'image': _image,
+  'content': content,
+  'attributes': attributes,
 } only %}
+{% endspaceless %}
