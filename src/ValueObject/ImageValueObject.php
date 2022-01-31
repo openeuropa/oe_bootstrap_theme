@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Drupal\oe_bootstrap_theme\ValueObject;
 
+use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\image\Plugin\Field\FieldType\ImageItem;
 
 /**
@@ -168,6 +169,24 @@ class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterf
     $image_object->addCacheableDependency($style);
 
     return $image_object;
+  }
+
+  /**
+   * Transforms the value object into an image render array.
+   *
+   * @return array
+   *   An image render array.
+   */
+  public function toRenderArray(): array {
+    $build = [
+      '#theme' => 'image',
+      '#uri' => $this->getSource(),
+      '#title' => $this->getName(),
+      '#alt' => $this->getAlt(),
+    ];
+    CacheableMetadata::createFromObject($build)->applyTo($build);
+
+    return $build;
   }
 
 }
