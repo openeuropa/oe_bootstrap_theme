@@ -160,13 +160,11 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
   }
 
   $variant = $paragraph->get('oe_paragraphs_variant')->value ?? 'default';
-  $variables['alignment'] = str_replace(['_featured', '_simple'], '', $variant);
+  $variables['text_position'] = str_replace(['_featured', '_simple'], '', $variant);
 
   if ($is_image) {
     $thumbnail = $media->get('thumbnail')->first();
     $variables['image'] = ImageValueObject::fromStyledImageItem($thumbnail, 'oe_bootstrap_theme_medium_no_crop');
-    // Overwrite the variant because is an image.
-    $variables['variant'] = 'image';
   }
   elseif ($is_video) {
     _oe_bootstrap_theme_featured_media_set_embedded_media($variables, $media, $cacheability, $source);
