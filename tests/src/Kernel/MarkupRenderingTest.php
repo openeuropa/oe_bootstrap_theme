@@ -55,6 +55,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'card_layout',
     'carousel',
     'collapse',
+    'content_banner',
     'date_block',
     'dropdown',
     'featured_media',

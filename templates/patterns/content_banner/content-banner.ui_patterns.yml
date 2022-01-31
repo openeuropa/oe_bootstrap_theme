@@ -1,0 +1,40 @@
+content_banner:
+    label: 'Content banner'
+    description: 'Shows the content summary along with the title, image and badges.'
+    fields:
+      background:
+        type: string
+        label: 'Background'
+        description: 'Set a gray or white background at the content banner. Defaults to white.'
+        preview: 'white'
+      image:
+        type: ImageValueObject
+        label: 'Image'
+        description: 'Image of the content.'
+        preview:
+          src: 'https://placeimg.com/1200/600/tech'
+          alt: 'Alternative text for content banner image'
+      title:
+        type: text
+        label: 'Title'
+        description: 'Title of the content.'
+        preview: 'This is the title of this page'
+      content:
+        type: text
+        label: 'Content'
+        description: 'Text with the summary of the content.'
+        preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+      creation_date:
+        type: DateTime
+        label: 'Creation date'
+        description: 'Creation date of the content.'
+        preview: ''
+      badges:
+        type: array
+        label: 'Badges'
+        description: 'List of badges.'
+        preview:
+          - label: 'Primary badge'
+            rounded_pill: true
+          - label: 'Secondary badge'
+            rounded_pill: true
