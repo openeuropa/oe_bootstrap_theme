@@ -98,3 +98,30 @@ card_variant_search:
       'p.card-text.mb-3': 'Text card with longer text which is supported'
     contains:
       'span.me-2.badge.bg-primary': 'Category 1'
+card_variant_user_teaser:
+  render:
+    '#type': pattern
+    '#id': 'card'
+    '#variant': 'user_teaser'
+    '#fields':
+      title:
+        url: 'user/3'
+        value: 'Lisbet Henri'
+      image:
+        '#markup': 'https://placeimg.com/1000/500/arch'
+      content:
+        '#markup': '<span class="text-muted">External Lead developer</span>'
+  assert:
+    count:
+      'div.border-0.mb-4.card': 1
+      'h5.card-title a[href="user/3"]': 1
+      'div.col-md-3.col-lg-2.rounded.mw-listing-img': 1
+      'div.col-md-9.col-lg-10.align-self-center': 1
+      'div.card-body': 1
+      'img.card-img-top.d-md-block': 1
+      'h5.card-title a.text-underline-hover': 1
+      'img[src="https://placeimg.com/1000/500/arch"]': 1
+      'span.text-muted': 1
+    equals:
+      'h5.card-title a': 'Lisbet Henri'
+      'span.text-muted': 'External Lead developer'

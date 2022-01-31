@@ -1,0 +1,54 @@
+{#
+/**
+ * @file
+ * Card pattern user teaser variant.
+ */
+#}
+{% if title is not empty %}
+  {% set _title = {
+    '#type': 'html_tag',
+    '#tag': 'a',
+    '#attributes': {
+      class: 'text-underline-hover',
+      href: title.url|default('#'),
+    },
+    '#value': title.value|default('Title card'),
+  } %}
+{% endif %}
+{% set _image = image %}
+{% if image is defined and image['#markup'] is not empty %}
+  {% set _image = {
+    path: image['#markup'],
+    position: 'top',
+    classes: 'd-md-block',
+  } %}
+{% endif %}
+{% set _content = content %}
+{% if content is defined and content.value is not empty %}
+  {% set _content = {
+    '#type': 'html_tag',
+    '#tag': 'span',
+    '#attributes': {
+      class: 'text-muted',
+    },
+    '#value': content.value,
+  } %}
+{% endif %}
+{% include '@oe-bcl/card' with {
+  horizontal: true,
+  horizontal_grid: {
+    left_col_classes: 'col-md-3 col-lg-2 rounded mw-listing-img',
+    right_col_classes: 'col-md-9 col-lg-10 align-self-center',
+  },
+  title: {
+    tag: 'h5',
+    content: _title,
+  },
+  image: _image,
+  content: _content,
+  text: text,
+  attributes: create_attribute({'class': [
+    'border-0',
+    'mb-4',
+  ]}),
+} only %}

@@ -8,6 +8,9 @@ card:
     search:
       label: 'Search'
       description: 'Card with special behaviour for print search results items.'
+    user_teaser:
+      label: 'User teaser'
+      description: 'Card with special behaviour for print a user teaser.'
   fields:
     orientation:
       type: string
