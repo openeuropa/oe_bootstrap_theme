@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 use Drupal\Component\Utility\Html;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 
 /**
  * Implements hook_preprocess_HOOK() for badge_preview patterns.
@@ -26,15 +27,6 @@ function oe_bootstrap_theme_preprocess_page(&$variables) {
   // @todo It would be better to have a setting, like bootstrap_barrio do with
   //   bootstrap_barrio_fluid_container ('container-fluid' : 'container')
   $variables['container'] = 'container';
-}
-
-/**
- * Implements hook_preprocess_HOOK() for featured_media pattern preview.
- */
-function oe_bootstrap_theme_preprocess_pattern_featured_media__preview(array &$variables) {
-  if (isset($variables['image']) && is_array($variables['image'])) {
-    $variables['image'] = ImageValueObject::fromArray($variables['image']);
-  }
 }
 
 /**
@@ -136,4 +128,38 @@ function oe_bootstrap_theme_preprocess_pattern_link(array &$variables): void {
  */
 function oe_bootstrap_theme_preprocess_pattern_navbar(array &$variables): void {
   $variables['collapse_id'] = Html::getUniqueId('bcl-navbar');
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for featured media pattern.
+ */
+function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
+  if (!isset($variables['image'])) {
+    return;
+  }
+
+  // This conversion is needed only to run markup rendering tests, as they
+  // are reading from a yaml file where we cannot specify objects.
+  // Do not ever rely on this for your patterns.
+  // @todo Remove this! Code duplication below is intentional, these lines are
+  //   to be removed, do not refactor unless to delete them.
+  if (is_array($variables['image'])) {
+    $variables['image'] = ImageValueObject::fromArray($variables['image']);
+  }
+
+  if ($variables['image'] instanceof ImageValueObjectInterface) {
+    // Transform an object implementing ImageValueObjectInterface to our own
+    // implementation, so that we can use the specific method.
+    $variables['image'] = ImageValueObject::fromArray($variables['image']->getArray())
+      ->toRenderArray();
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for featured_media pattern preview.
+ */
+function oe_bootstrap_theme_preprocess_pattern_featured_media__preview(array &$variables) {
+  if (isset($variables['image']) && is_array($variables['image'])) {
+    $variables['image'] = ImageValueObject::fromArray($variables['image'])->toRenderArray();
+  }
 }
