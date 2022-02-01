@@ -14,7 +14,6 @@
     },
     "require-dev": {
         "composer/installers": "^1.11",
-        "drupal/allowed_formats": "1.3",
         "drupal/config_devel": "~1.8",
         "drupal/core-composer-scaffold": "^8.9 || ^9.1",
         "drupal/description_list_field": "^1.0@alpha",
@@ -70,10 +69,7 @@
             "drupal/ui_patterns": {
                 "Fix unable to detect a pattern from default theme having same id as the pattern in the base theme @see https://github.com/nuvoleweb/ui_patterns/issues/304": "https://patch-diff.githubusercontent.com/raw/nuvoleweb/ui_patterns/pull/318.diff"
             }
-        },
-        "_readme": [
-            "Add and lock drupal/allowed_formats to 1.3 until a new release of openeuropa/oe_paragraphs is done, fixing the invalid schema errors. To be removed after."
-        ]
+        }
     },
     "config": {
         "sort-packages": true
