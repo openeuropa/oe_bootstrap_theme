@@ -154,12 +154,3 @@ function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
       ->toRenderArray();
   }
 }
-
-/**
- * Implements hook_preprocess_HOOK() for featured_media pattern preview.
- */
-function oe_bootstrap_theme_preprocess_pattern_featured_media__preview(array &$variables) {
-  if (isset($variables['image']) && is_array($variables['image'])) {
-    $variables['image'] = ImageValueObject::fromArray($variables['image'])->toRenderArray();
-  }
-}
