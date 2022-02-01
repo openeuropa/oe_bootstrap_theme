@@ -4,9 +4,9 @@ featured_media_image_not_wrapper:
     '#id': featured_media
     '#fields':
       image:
-        'src': 'https://placeimg.com/1200/600/tech'
-        'alt': 'Alternative text for paragraph image'
-        'name': 'Example'
+        src: 'https://placeimg.com/1200/600/tech'
+        alt: 'Alternative text for paragraph image'
+        name: 'Example'
       caption: 'Media description text goes here.'
   assertions:
     count:
@@ -34,9 +34,9 @@ featured_media_image_with_text_aligned_left:
     '#id': featured_media
     '#fields':
       image:
-        'src': 'https://placeimg.com/1200/600/tech'
-        'alt': 'Alternative text for paragraph image'
-        'name': 'Example'
+        src: 'https://placeimg.com/1200/600/tech'
+        alt: 'Alternative text for paragraph image'
+        name: 'Example'
       title: 'Title'
       text: 'Lorem Ipsum dolor sit amet.'
       caption: 'Media description text goes here.'
@@ -72,9 +72,9 @@ featured_media_image_with_text_aligned_right:
     '#id': featured_media
     '#fields':
       image:
-        'src': 'https://placeimg.com/1200/600/tech'
-        'alt': 'Alternative text for paragraph image'
-        'name': 'Example'
+        src: 'https://placeimg.com/1200/600/tech'
+        alt: 'Alternative text for paragraph image'
+        name: 'Example'
       title: 'Title'
       text: 'Lorem Ipsum dolor sit amet.'
       caption: 'Media description text goes here.'
