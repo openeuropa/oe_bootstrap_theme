@@ -5,7 +5,10 @@
  * Theme and preprocess functions for patterns.
  */
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Url;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 
 /**
  * Implements hook_preprocess_HOOK() for badge_preview patterns.
@@ -159,4 +162,44 @@ function _oe_bootstrap_theme_extract_carousel_image(&$item) {
     }
   }
   return FALSE;
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for content banner.
+ */
+function oe_bootstrap_theme_preprocess_pattern_content_banner(array &$variables) {
+  oe_bootstrap_theme_get_image($variables);
+}
+
+/**
+ * Get imageValueObject from variables.
+ *
+ * @param array $variables
+ *   The render array.
+ */
+function oe_bootstrap_theme_get_image(array &$variables): void {
+  if (isset($variables['date'])) {
+    $date = DrupalDateTime::createFromFormat('Y-m-d', $variables['date']);
+    $variables['date'] = $date->format('j M Y');
+  }
+
+  if (!isset($variables['image'])) {
+    return;
+  }
+
+  // This conversion is needed only to run markup rendering tests, as they
+  // are reading from a yaml file where we cannot specify objects.
+  // Do not ever rely on this for your patterns.
+  // @todo Remove this! Code duplication below is intentional, these lines are
+  //   to be removed, do not refactor unless to delete them.
+  if (is_array($variables['image']) && !empty($variables['image'])) {
+    $variables['image'] = ImageValueObject::fromArray($variables['image']);
+  }
+
+  if ($variables['image'] instanceof ImageValueObjectInterface) {
+    // Transform an object implementing ImageValueObjectInterface to our own
+    // implementation, so that we can use the specific method.
+    $variables['image'] = ImageValueObject::fromArray($variables['image']->getArray())
+      ->toRenderArray();
+  }
 }
