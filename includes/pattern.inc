@@ -143,7 +143,7 @@ function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
   // Do not ever rely on this for your patterns.
   // @todo Remove this! Code duplication below is intentional, these lines are
   //   to be removed, do not refactor unless to delete them.
-  if (is_array($variables['image'])) {
+  if (is_array($variables['image']) && !empty($variables['image'])) {
     $variables['image'] = ImageValueObject::fromArray($variables['image']);
   }
 
