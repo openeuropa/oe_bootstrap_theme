@@ -6,13 +6,14 @@ content_banner:
         type: string
         label: 'Background'
         description: 'Set a gray or white background at the content banner. Defaults to white.'
-        preview: 'white'
+        escape: false
+        preview: 'gray'
       image:
         type: ImageValueObject
         label: 'Image'
         description: 'Image of the content.'
         preview:
-          src: 'https://placeimg.com/1200/600/tech'
+          src: 'https://placeimg.com/255/255/tech'
           alt: 'Alternative text for content banner image'
       title:
         type: text
@@ -23,12 +24,12 @@ content_banner:
         type: text
         label: 'Content'
         description: 'Text with the summary of the content.'
-        preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
-      creation_date:
+        preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec. Sed facilisis dictum vestibulum. Fusce commodo hendrerit diam, pretium tempus leo varius sit amet. Etiam interdum, orci at sagittis luctus, lorem libero tempus mauris, a fermentum libero orci semper lacus. Duis tristique fringilla magna, eu egestas dolor molestie non.'
+      date:
         type: DateTime
-        label: 'Creation date'
-        description: 'Creation date of the content.'
-        preview: ''
+        label: 'Date'
+        description: 'Date of the content.'
+        preview: '2021-05-26'
       badges:
         type: array
         label: 'Badges'

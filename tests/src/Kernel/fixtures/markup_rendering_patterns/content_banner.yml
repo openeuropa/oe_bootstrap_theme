@@ -1,9 +1,10 @@
-content_banner_white_background_with_image_with_badges:
+content_banner_white_background_with_image_with_badges_with_date:
   render:
     '#type': pattern
     '#id': 'content_banner'
     '#fields':
       background: 'white'
+      date: '2020-05-26'
       image:
         src: 'https://placeimg.com/1200/600/tech'
         alt: 'Alternative text for content banner image'
@@ -16,19 +17,19 @@ content_banner_white_background_with_image_with_badges:
           rounded_pill: true
   assertions:
     count:
-      'div.bcl-content-banner.pt-lg-4-75.pt-3': 1
+      'div.bcl-content-banner': 1
       'div.bcl-content-banner.bg-white': 1
-      'div.bcl-content-banner > div.container > div.row > div.card.bg-transparent.border-0': 1
       'div.card > div.row > div.col-md-4.col-lg-3 > img[src="https://placeimg.com/1200/600/tech"]': 1
-      'div.card > div.row > div.col-md-8.col-lg-9.col-xxl-8 > div.card-body.pt-md-0.px-0.px-md-3.pb-0': 1
       'div.card-body > h2': 1
+      'div.card-body > div > span.text-muted': 1
       'div.card-body > p': 1
-      'div.card-body > div.mt-2-5 > span.badge': 2
+      'div.card-body > div > span.badge': 2
     equals:
       'div.card-body > h2': 'This is the title of this page'
       'div.card-body > p': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
       'div.card-body > div.mt-2-5 > span.badge:nth-child(1)': 'Primary badge'
       'div.card-body > div.mt-2-5 > span.badge:nth-child(2)': 'Secondary badge'
+      'span.text-muted.me-3': '26 May 2020'
 content_banner_white_background_without_image_with_badges:
   render:
     '#type': pattern
@@ -44,11 +45,9 @@ content_banner_white_background_without_image_with_badges:
           rounded_pill: true
   assertions:
     count:
-      'div.bcl-content-banner.pt-lg-4-75.pt-3': 1
+      'div.bcl-content-banner': 1
       'div.bcl-content-banner.bg-white': 1
-      'div.bcl-content-banner > div.container > div.row > div.card.bg-transparent.border-0': 1
       'div.card > div.row > div.col-md-4.col-lg-3 > img[src="https://placeimg.com/1200/600/tech"]': 0
-      'div.card > div.row > div.col-md-8.col-lg-9.col-xxl-8 > div.card-body.pt-md-0.px-0.px-md-3.pb-0': 1
       'div.card-body > h2': 1
       'div.card-body > p': 1
       'div.card-body > div.mt-2-5 > span.badge': 2
@@ -70,23 +69,22 @@ content_banner_gray_background_with_image_without_badges:
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
   assertions:
     count:
-      'div.bcl-content-banner.pt-lg-4-75.pb-md-4-75.pb-4.pt-4': 1
+      'div.bcl-content-banner': 1
       'div.bcl-content-banner.bg-lighter': 1
-      'div.bcl-content-banner > div.container > div.row > div.card.bg-transparent.border-0': 1
       'div.card > div.row > div.col-md-4.col-lg-3 > img[src="https://placeimg.com/1200/600/tech"]': 1
-      'div.card > div.row > div.col-md-8.col-lg-9.col-xxl-8 > div.card-body.pt-md-0.px-0.px-md-3.pb-0': 1
       'div.card-body > h2': 1
       'div.card-body > p': 1
       'div.card-body > div.mt-2-5 > span.badge': 0
     equals:
       'div.card-body > h2': 'This is the title of this page'
       'div.card-body > p': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
-content_banner_gray_background_without_image_with_badges:
+content_banner_gray_background_without_image_with_badges_with_date:
   render:
     '#type': pattern
     '#id': 'content_banner'
     '#fields':
       background: 'gray'
+      date: '2020-05-26'
       title: 'This is the title of this page'
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
       badges:
@@ -96,12 +94,11 @@ content_banner_gray_background_without_image_with_badges:
           rounded_pill: true
   assertions:
     count:
-      'div.bcl-content-banner.pt-lg-4-75.pb-md-4-75.pb-4.pt-4': 1
+      'div.bcl-content-banner': 1
       'div.bcl-content-banner.bg-lighter': 1
-      'div.bcl-content-banner > div.container > div.row > div.card.bg-transparent.border-0': 1
       'div.card > div.row > div.col-md-4.col-lg-3 > img[src="https://placeimg.com/1200/600/tech"]': 0
-      'div.card > div.row > div.col-md-8.col-lg-9.col-xxl-8 > div.card-body.pt-md-0.px-0.px-md-3.pb-0': 1
       'div.card-body > h2': 1
+      'div.card-body > div > span.text-muted': 1
       'div.card-body > p': 1
       'div.card-body > div.mt-2-5 > span.badge': 2
     equals:
@@ -109,3 +106,4 @@ content_banner_gray_background_without_image_with_badges:
       'div.card-body > p': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
       'div.card-body > div.mt-2-5 > span.badge:nth-child(1)': 'Primary badge'
       'div.card-body > div.mt-2-5 > span.badge:nth-child(2)': 'Secondary badge'
+      'span.text-muted.me-3': '26 May 2020'
