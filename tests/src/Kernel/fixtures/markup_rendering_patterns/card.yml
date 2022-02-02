@@ -10,6 +10,9 @@ card_horizontal_with_image:
       image:
         path: 'https://placeimg.com/1000/500/arch'
         alt: 'Alternative text for card image'
+      meta:
+        - 'DIGIT'
+        - 'Developer'
       content:
         '#type': 'pattern'
         '#id': 'button'
@@ -31,6 +34,8 @@ card_horizontal_with_image:
       'h5.card-title': 'Title card'
       'h6.card-subtitle': 'Subtitle card'
       'div.card-text': 'Text card with longer text which is supported'
+      '.card-body > div > span.text-muted:nth-child(1)': 'DIGIT'
+      '.card-body > div > span.text-muted:nth-child(2)': 'Developer'
     contains:
       'button.btn-primary': 'Custom action'
 card_vertical:

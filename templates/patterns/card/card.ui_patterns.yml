@@ -44,6 +44,15 @@ card:
       preview:
         path: 'https://placeimg.com/1000/500/people'
         alt: 'Alternative text for card image'
+    meta:
+      # Full type: `list<text|render|markup>`.
+      # Markup should be avoided if possible.
+      type: array
+      label: 'Meta items'
+      description: 'Date or other meta information.'
+      preview:
+        - 'Organisation'
+        - 'Position'
     content:
       # Full type: `string|render|markup`.
       # This is meant to be the most flexible parameter.
