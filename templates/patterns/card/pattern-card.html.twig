@@ -5,6 +5,17 @@
  */
 #}
 {% spaceless %}
+{% set content %}
+  {% if meta is not empty %}
+    {# Use negative margin to compensate for me-3 on each item. #}
+    <div class="my-3 me-n3">
+      {% for _meta_item in meta %}
+        <span class="text-muted me-3">{{ _meta_item }}</span>
+      {% endfor %}
+    </div>
+  {% endif %}
+  <div>{{ content }}</div>
+{% endset %}
 {% include '@oe-bcl/card' with {
   'horizontal': orientation == 'horizontal',
   'horizontal_grid': (orientation == 'horizontal') ? {
