@@ -12,7 +12,6 @@
     right_col_classes: 'col-md-9 col-lg-10',
   },
   'extra_classes_body': 'p-0 pb-md-0 pb-3',
-  'badges': badges,
   'title': (title is not empty) ? {
     'content': title,
   } : {},
@@ -22,11 +21,12 @@
     'tag': 'div',
   } : {},
   'text_color': 'dark',
+  'content': content,
   'image': (image is not empty) ? image|merge({
     position: 'top',
     classes: 'd-none d-md-block',
   }) : {},
-  'content': content,
+  'badges': badges,
   'attributes': (attributes ?? create_attribute()).addClass([
     'listing-item',
     'border-bottom',
