@@ -7,14 +7,12 @@
 {% spaceless %}
   {% set _badges = [] %}
   {% if badges is not empty %}
-    {% for key,item in badges %}
-      {% if key|first != '#' %}
-        {% set _badges = _badges|merge([{
-          label: item['#title'],
-          outline: true,
-          rounded_pill: true,
-        }]) %}
-      {% endif %}
+    {% for item in badges %}
+      {% set _badges = _badges|merge([{
+        label: item.label,
+        outline: true,
+        rounded_pill: true,
+      }]) %}
     {% endfor %}
   {% endif %}
   {% set _image = image %}
