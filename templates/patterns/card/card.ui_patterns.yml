@@ -10,25 +10,34 @@ card:
       description: 'Card with special behaviour for print search results items.'
   fields:
     orientation:
+      # Full type: `'horizontal'|'vertical'`.
       type: string
       label:  'Orientation'
       description: 'Can be set to horizontal or vertical. Defaults to vertical.'
     title:
+      # Full type: `string|render|markup`.
+      # Markup should be avoided, except for links.
       type: text
       label: 'Title'
-      description: 'Card title.'
+      description: 'Card title. Supports markup, e.g. for links.'
       preview: 'Title card'
     subtitle:
+      # Full type: `string|render|markup`.
+      # Markup should be avoided if possible.
       type: text
       label: 'Subtitle'
       description: 'Card subtitle.'
       preview: 'Subtitle card'
     text:
+      # Full type: `string|render|markup`.
+      # Markup can be used e.g. for <p> tags.
       type: text
       label: 'Text'
       description: 'Card text.'
       preview: 'Text card with longer text which is supported'
     image:
+      # Full type: `array{path: string, alt: string, ..}`.
+      # Look for '_image' in 'bcl-card.html.twig'.
       type: array
       label: 'Image'
       description: 'Card image with path, alt and position.'
@@ -36,21 +45,30 @@ card:
         path: 'https://placeimg.com/1000/500/people'
         alt: 'Alternative text for card image'
     content:
+      # Full type: `string|render|markup`.
+      # This is meant to be the most flexible parameter.
+      # Markup can be used for buttons or other elements.
       type: render
       label: 'Content'
       description: 'Card content.'
       preview: '<button class="btn btn-primary">Custom action</button>'
     header:
+      # Full type: `string|render|markup`.
+      # Markup should be avoided if possible.
       type: text
       label: 'Card header'
       description: 'Card header content.'
       preview: 'Header of card'
     footer:
+      # Full type: `string|render|markup`.
+      # Markup should be avoided if possible.
       type: text
       label: 'Card footer'
       description: 'Card footer content.'
       preview: 'Footer of card'
     badges:
+      # Full type: `list<array{label: string|render|markup, ..}>`.
+      # See 'bcl-badge.html.twig'.
       type: array
       label: 'Badges'
       description: 'List of badges for the card.'

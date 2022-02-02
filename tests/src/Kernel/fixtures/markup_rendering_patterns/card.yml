@@ -68,21 +68,31 @@ card_vertical:
       'div.card-text': 'Text card with longer text which is supported'
     contains:
       'button.btn-primary': 'Custom action'
+card_with_link_title:
+  render:
+    '#type': pattern
+    '#id': 'card'
+    '#variant': 'search'
+    '#fields':
+      title:
+        '#markup': '<a href="#">Card link</a>'
+  assert:
+    equals:
+      'h5.card-title a': 'Card link'
 card_variant_search:
   render:
     '#type': pattern
     '#id': 'card'
     '#variant': 'search'
     '#fields':
-      title: 'Title card'
+      title:
+        '#markup': '<a href="#">Card link</a>'
       text: 'Text card with longer text which is supported'
       image:
-        '#markup': 'https://placeimg.com/1000/500/arch'
+        path: 'https://placeimg.com/1000/500/arch'
       badges:
-        - first: 'first key'
-          '#title': 'Category 1'
-        - first: 'first key'
-          '#title': 'Category 2'
+        - label: 'Category 1'
+        - label: 'Category 2'
   assert:
     count:
       'div.listing-item.border-bottom.border-md-0.border-0.card.text-dark': 1
@@ -94,7 +104,7 @@ card_variant_search:
       'span.me-2.badge.bg-primary': 1
       'span.badge.bg-primary': 2
     equals:
-      'a.card-title': 'Title card'
-      'p.card-text.mb-3': 'Text card with longer text which is supported'
+      'h5.card-title a': 'Card link'
+      'div.card-text.mb-3': 'Text card with longer text which is supported'
     contains:
       'span.me-2.badge.bg-primary': 'Category 1'
