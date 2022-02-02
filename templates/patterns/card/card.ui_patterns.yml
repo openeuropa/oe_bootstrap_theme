@@ -16,7 +16,7 @@ card:
     title:
       type: text
       label: 'Title'
-      description: 'Card title.'
+      description: 'Card title. Supports markup, e.g. for links.'
       preview: 'Title card'
     subtitle:
       type: text
