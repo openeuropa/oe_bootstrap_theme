@@ -21,6 +21,13 @@ card:
       label: 'Title'
       description: 'Card title. Supports markup, e.g. for links.'
       preview: 'Title card'
+    url:
+      type: string
+      label: 'Url (optional)'
+      description: |
+        If present, the title is displayed as a link.
+        Only use this if the title is not already a link.
+      preview: 'https://www.example.com/'
     subtitle:
       # Full type: `string|render|markup`.
       # Markup should be avoided if possible.

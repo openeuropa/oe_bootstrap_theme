@@ -26,6 +26,11 @@
   {% endif %}
   <div>{{ content }}</div>
 {% endset %}
+{% if url is not empty %}
+  {% set title %}
+    <a href="{{ url }}" class="text-underline-hover">{{ title }}</a>
+  {% endset %}
+{% endif %}
 {% set _badges = [] %}
 {% if badges is not empty %}
   {% for item in badges %}
