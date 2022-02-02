@@ -5,48 +5,33 @@
  */
 #}
 {% spaceless %}
-{% if title is not empty %}
-  {% set title = {
-    'content': title,
-  } %}
-{% endif %}
-{% set _image = image %}
-{% if image is not empty %}
-  {% set _image = image|merge({
-    position: 'top',
-    classes: 'd-none d-md-block',
-  }) %}
-{% endif %}
-{% if text is not empty %}
-  {% set text = {
-    'content': text,
-    'classes': 'mb-3',
-    'tag': 'div'
-  } %}
-{% endif %}
-{% set horizontal_grid = {
-  left_col_classes: 'col-md-3 col-lg-2 rounded mw-listing-img',
-  right_col_classes: 'col-md-9 col-lg-10'
-} %}
-{% if attributes is empty %}
-  {% set attributes = create_attribute() %}
-{% endif %}
-{% set attributes = attributes.addClass([
-  'listing-item',
-  'border-bottom',
-  'border-md-0',
-  'border-0',
-]) %}
 {% include '@oe-bcl/card' with {
   'horizontal': true,
-  'horizontal_grid': horizontal_grid,
+  'horizontal_grid': {
+    left_col_classes: 'col-md-3 col-lg-2 rounded mw-listing-img',
+    right_col_classes: 'col-md-9 col-lg-10',
+  },
   'extra_classes_body': 'p-0 pb-md-0 pb-3',
   'badges': badges,
-  'title': title,
-  'text': text,
+  'title': (title is not empty) ? {
+    'content': title,
+  } : {},
+  'text': (text is not empty) ? {
+    'content': text,
+    'classes': 'mb-3',
+    'tag': 'div',
+  } : {},
   'text_color': 'dark',
-  'image': _image,
+  'image': (image is not empty) ? image|merge({
+    position: 'top',
+    classes: 'd-none d-md-block',
+  }) : {},
   'content': content,
-  'attributes': attributes,
+  'attributes': (attributes ?? create_attribute()).addClass([
+    'listing-item',
+    'border-bottom',
+    'border-md-0',
+    'border-0',
+  ]),
 } only %}
 {% endspaceless %}
