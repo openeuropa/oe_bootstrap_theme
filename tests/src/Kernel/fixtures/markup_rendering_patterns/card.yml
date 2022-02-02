@@ -79,7 +79,8 @@ card_variant_search:
     '#id': 'card'
     '#variant': 'search'
     '#fields':
-      title: 'Title card'
+      title: 'Card link'
+      url: '#'
       text: 'Text card with longer text which is supported'
       image:
         path: 'https://placeimg.com/1000/500/arch'
@@ -96,7 +97,7 @@ card_variant_search:
       'img[src="https://placeimg.com/1000/500/arch"]': 1
       'span.badge.rounded-pill.badge-outline-primary': 2
     equals:
-      'h5.card-title': 'Title card'
+      'h5.card-title': '<a href="#" class="text-underline-hover">Card link</a>'
       'div.card-text.mb-2-5': 'Text card with longer text which is supported'
       'div > span.badge.badge-outline-primary:nth-child(1)': 'Category 1'
       'div > span.badge.badge-outline-primary:nth-child(2)': 'Category 2'
