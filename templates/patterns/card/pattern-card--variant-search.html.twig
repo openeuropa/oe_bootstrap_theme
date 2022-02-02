@@ -15,13 +15,6 @@
       }]) %}
     {% endfor %}
   {% endif %}
-  {% set _image = image %}
-  {% if image is not empty %}
-    {% set _image = image|merge({
-      position: 'top',
-      classes: 'd-none d-md-block',
-    }) %}
-  {% endif %}
   {% if text is defined and text.classes is not defined %}
     {% set text = {
       content: text|render|striptags,
@@ -48,7 +41,10 @@
       'mb-3',
     ]}),
     text_color: 'dark',
-    image: _image,
+    image: (image is not empty) ? image|merge({
+      position: 'top',
+      classes: 'd-none d-md-block',
+    }) : {},
     content: content
   } only %}
 {% endspaceless %}

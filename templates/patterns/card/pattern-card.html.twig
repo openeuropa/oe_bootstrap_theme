@@ -5,51 +5,36 @@
  */
 #}
 {% spaceless %}
-{% if title is not empty %}
-  {% set title = {
-    'content': title,
-  } %}
-{% endif %}
-{% if subtitle is not empty %}
-  {% set subtitle = {
-    'content': subtitle,
-    'classes': 'mb-2',
-  } %}
-{% endif %}
-{% if text is not empty %}
-  {% set text = {
-    'content': text,
-    'classes': 'mb-2',
-    'tag': 'div'
-  } %}
-{% endif %}
-{% if orientation == 'horizontal' %}
-  {% set horizontal_grid = {
-    left_col_classes: 'col-4',
-    right_col_classes: 'col-8',
-    gutter: 0
-  } %}
-{% endif %}
-{% if date is not empty %}
-  {% set _date = {
-    'day': date|date('d'),
-    'month': date|date('M'),
-    'year': date|date('Y'),
-    'date_time': date|date('Y-m-d')
-  } %}
-{% endif %}
 {% include '@oe-bcl/card' with {
   'horizontal': orientation == 'horizontal',
-  'horizontal_grid': horizontal_grid,
-  'title': title,
-  'subtitle': subtitle,
-  'text': text,
+  'horizontal_grid': (orientation == 'horizontal') ? {
+    left_col_classes: 'col-4',
+    right_col_classes: 'col-8',
+    gutter: 0,
+  } : {},
+  'title': (title is not empty) ? {
+    'content': title,
+  } : {},
+  'subtitle': (subtitle is not empty) ? {
+    'content': subtitle,
+    'classes': 'mb-2',
+  } : {},
+  'text': (text is not empty) ? {
+    'content': text,
+    'classes': 'mb-2',
+    'tag': 'div',
+  } : {},
   'content': content,
   'image': image,
   'card_header': header,
   'card_footer': footer,
   'badges': badges,
-  'date': _date,
+  'date': (date is not empty) ? {
+    'day': date|date('d'),
+    'month': date|date('M'),
+    'year': date|date('Y'),
+    'date_time': date|date('Y-m-d'),
+  } : {},
   'attributes': attributes,
 } only %}
 {% endspaceless %}
