@@ -5,15 +5,11 @@
  */
 #}
 {% block offcanvas %}
-{% if title is not empty %}
-  {% set _title = {
+{% include '@oe-bcl/offcanvas' with {
+  'title': {
     'label': title,
     'heading': 5
-  } %}
-{% endif %}
-
-{% include '@oe-bcl/offcanvas' with {
-  'title': _title,
+  },
   'placement': placement,
   'id': offcanvas_id,
   'body': body,
