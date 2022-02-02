@@ -5,13 +5,13 @@
  */
 #}
 {% spaceless %}
-{% if title is not empty %}
-  {% set title_attributes = title.attributes ?: create_attribute() %}
-  {% set title_attributes = title_attributes.addClass('text-underline-hover h5') %}
+{% if link is not empty %}
   {% set title = {
-    'tag': 'a',
+    'content': link,
+  } %}
+{% elseif title is not empty %}
+  {% set title = {
     'content': title,
-    'attributes': title_attributes,
   } %}
 {% endif %}
 {% set _badges = [] %}
@@ -22,8 +22,9 @@
       {% set badge_attr = create_attribute() %}
     {% endif %}
     {% if key|first != '#' %}
+      {% set _badge_label = item['#title']|default(item.label) %}
       {% set _badges = _badges|merge([{
-        label: item['#title'],
+        label: _badge_label,
         attributes: badge_attr
       }]) %}
     {% endif %}
