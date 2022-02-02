@@ -10,14 +10,6 @@
     'content': title,
   } %}
 {% endif %}
-{% set _badges = [] %}
-{% if badges is not empty %}
-  {% for item in badges %}
-    {% set _badges = _badges|merge([{
-      label: item.label,
-    }]) %}
-  {% endfor %}
-{% endif %}
 {% set _image = image %}
 {% if image is not empty %}
   {% set _image = image|merge({
@@ -49,7 +41,7 @@
   'horizontal': true,
   'horizontal_grid': horizontal_grid,
   'extra_classes_body': 'p-0 pb-md-0 pb-3',
-  'badges': _badges,
+  'badges': badges,
   'title': title,
   'text': text,
   'text_color': 'dark',
