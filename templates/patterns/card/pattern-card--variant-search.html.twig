@@ -2,6 +2,16 @@
 /**
  * @file
  * Card pattern search variant.
+ *
+ * Differences to main variant:
+ *   - Always use horizontal layout, with specific classes.
+ *   - Add extra classes on card body (right column), to prevent padding.
+ *     This should probably be handled by BCL if horizontal is used.
+ *   - Use text color dark.
+ *   - Set different margin-bottom for text element.
+ *   - Set special parameters on the image.
+ *   - Add special wrapper attributes.
+ *   - Ignore 'subtitle', 'date', 'card_header', 'card_footer'.
  */
 #}
 {% spaceless %}
