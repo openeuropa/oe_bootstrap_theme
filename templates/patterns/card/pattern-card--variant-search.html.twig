@@ -12,16 +12,11 @@
 {% endif %}
 {% set _badges = [] %}
 {% if badges is not empty %}
-  {% set badge_attr = create_attribute({'class': ['me-2']}) %}
   {% for key,item in badges %}
-    {% if not loop.last %}
-      {% set badge_attr = create_attribute() %}
-    {% endif %}
     {% if key|first != '#' %}
       {% set _badge_label = item['#title']|default(item.label) %}
       {% set _badges = _badges|merge([{
         label: _badge_label,
-        attributes: badge_attr
       }]) %}
     {% endif %}
   {% endfor %}
