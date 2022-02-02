@@ -18,12 +18,6 @@ card:
       label: 'Title'
       description: 'Card title.'
       preview: 'Title card'
-    link:
-      type: "array"
-      label: "Link"
-      description: "Link object"
-      preview:
-        '#markup': '<a href="#">European Commission</a>'
     subtitle:
       type: text
       label: 'Subtitle'

@@ -5,11 +5,7 @@
  */
 #}
 {% spaceless %}
-{% if link is not empty %}
-  {% set title = {
-    'content': link,
-  } %}
-{% elseif title is not empty %}
+{% if title is not empty %}
   {% set title = {
     'content': title,
   } %}

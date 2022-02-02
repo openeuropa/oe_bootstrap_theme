@@ -74,9 +74,8 @@ card_with_link_title:
     '#id': 'card'
     '#variant': 'search'
     '#fields':
-      link:
+      title:
         '#markup': '<a href="#">Card link</a>'
-      title: 'Title card'
   assert:
     equals:
       'h5.card-title a': 'Card link'
@@ -86,7 +85,7 @@ card_variant_search:
     '#id': 'card'
     '#variant': 'search'
     '#fields':
-      link:
+      title:
         '#markup': '<a href="#">Card link</a>'
       text: 'Text card with longer text which is supported'
       image:
