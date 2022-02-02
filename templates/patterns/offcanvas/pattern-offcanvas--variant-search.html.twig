@@ -4,6 +4,8 @@
  * Offcanvas pattern search variant.
  */
 #}
+{% extends 'pattern-offcanvas.html.twig' %}
+{% block offcanvas %}
 {% include '@oe-bcl/offcanvas' with {
   'title': {
     'label': title,
@@ -20,14 +22,7 @@
   'extra_classes_header': "p-lg-0",
   'attributes': attributes.addClass('bcl-offcanvas'),
 } only %}
-
-{% set _toggle_attributes = toggle.attributes|default({}) %}
-{% set _toggle_attributes = _toggle_attributes|merge({
-  'data-bs-toggle': 'offcanvas',
-  'data-bs-target': '#' ~  offcanvas_id,
-  'aria-controls': offcanvas_id,
-}, true) %}
-{% set _toggle = toggle|merge({
-  attributes: _toggle_attributes
-}) %}
-{{ pattern('button', _toggle) }}
+{% endblock %}
+{% block toggle_button %}
+  {{ parent() }}
+{% endblock %}
