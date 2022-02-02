@@ -6,22 +6,22 @@
 #}
 {% extends 'pattern-offcanvas.html.twig' %}
 {% block offcanvas %}
-{% include '@oe-bcl/offcanvas' with {
-  'title': {
-    'label': title,
-    'heading': 4,
-    'extra_classes': "mb-lg-4",
-  },
-  'placement': placement,
-  'id': offcanvas_id,
-  'body': body,
-  'with_body_scroll': body_scroll,
-  'with_backdrop': backdrop,
-  'extra_classes_body': 'bcl-offcanvas p-lg-0',
-  'extra_classes_close': "d-lg-none",
-  'extra_classes_header': "p-lg-0",
-  'attributes': attributes.addClass('bcl-offcanvas'),
-} only %}
+  {% include '@oe-bcl/offcanvas' with {
+    'title': {
+      'label': title,
+      'heading': 4,
+      'extra_classes': "mb-lg-4",
+    },
+    'placement': placement,
+    'id': offcanvas_id,
+    'body': body,
+    'with_body_scroll': body_scroll,
+    'with_backdrop': backdrop,
+    'extra_classes_body': 'bcl-offcanvas p-lg-0',
+    'extra_classes_close': "d-lg-none",
+    'extra_classes_header': "p-lg-0",
+    'attributes': attributes.addClass('bcl-offcanvas'),
+  } only %}
 {% endblock %}
 {% block toggle_button %}
   {{ parent() }}
