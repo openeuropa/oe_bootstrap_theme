@@ -89,7 +89,7 @@ card_variant_search:
         '#markup': '<a href="#">Card link</a>'
       text: 'Text card with longer text which is supported'
       image:
-        '#markup': 'https://placeimg.com/1000/500/arch'
+        path: 'https://placeimg.com/1000/500/arch'
       badges:
         - first: 'first key'
           '#title': 'Category 1'
