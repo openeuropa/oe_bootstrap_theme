@@ -91,10 +91,8 @@ card_variant_search:
       image:
         path: 'https://placeimg.com/1000/500/arch'
       badges:
-        - first: 'first key'
-          '#title': 'Category 1'
-        - first: 'first key'
-          '#title': 'Category 2'
+        - label: 'Category 1'
+        - label: 'Category 2'
   assert:
     count:
       'div.listing-item.border-bottom.border-md-0.border-0.card.text-dark': 1

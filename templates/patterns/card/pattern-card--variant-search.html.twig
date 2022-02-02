@@ -12,13 +12,10 @@
 {% endif %}
 {% set _badges = [] %}
 {% if badges is not empty %}
-  {% for key,item in badges %}
-    {% if key|first != '#' %}
-      {% set _badge_label = item['#title']|default(item.label) %}
-      {% set _badges = _badges|merge([{
-        label: _badge_label,
-      }]) %}
-    {% endif %}
+  {% for item in badges %}
+    {% set _badges = _badges|merge([{
+      label: item.label,
+    }]) %}
   {% endfor %}
 {% endif %}
 {% set _image = image %}
