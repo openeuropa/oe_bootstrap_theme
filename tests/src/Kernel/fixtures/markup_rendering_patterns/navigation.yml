@@ -89,8 +89,8 @@ navigation_default:
               active: true
   assertions:
     count:
-      'nav[data-drupal-selector="navigation"]': 1
-      'nav.nav-pills': 0
+      'ul[data-drupal-selector="navigation"]': 1
+      '.nav-pills': 0
       '.nav-tabs': 0
       '.nav-link': 4
       '.nav-link.active': 1
@@ -99,10 +99,10 @@ navigation_default:
       'button.nav-link.active': 1
       'nav.flex-column': 0
     equals:
-      '.nav-link:nth-child(1)': 'I am a link'
-      '.nav-link:nth-child(2)': 'I am a button'
-      '.nav-link:nth-child(3)': 'I am a disabled button'
-      '.nav-link:nth-child(4)': 'I am an active button'
+      'li.nav-item:nth-child(1) > a': 'I am a link'
+      'li.nav-item:nth-child(2) > button': 'I am a button'
+      'li.nav-item:nth-child(3) > button': 'I am a disabled button'
+      'li.nav-item:nth-child(4) > button': 'I am an active button'
 navigation_default_vertical:
   render:
     '#type': pattern
@@ -141,8 +141,8 @@ navigation_default_vertical:
               active: true
   assertions:
     count:
-      'nav[data-drupal-selector="navigation"]': 1
-      'nav.nav-pills': 0
+      'ul[data-drupal-selector="navigation"]': 1
+      '.nav-pills': 0
       '.nav-tabs': 0
       '.nav-link': 4
       '.nav-link.active': 1
@@ -150,12 +150,12 @@ navigation_default_vertical:
       'button.nav-link[disabled]': 1
       'button.nav-link.active': 1
       'nav.justify-content-left': 0
-      'nav.flex-column': 1
+      'ul.flex-column': 1
     equals:
-      '.nav-link:nth-child(1)': 'I am a link'
-      '.nav-link:nth-child(2)': 'I am a button'
-      '.nav-link:nth-child(3)': 'I am a disabled button'
-      '.nav-link:nth-child(4)': 'I am an active button'
+      'li.nav-item:nth-child(1) > a': 'I am a link'
+      'li.nav-item:nth-child(2) > button': 'I am a button'
+      'li.nav-item:nth-child(3) > button': 'I am a disabled button'
+      'li.nav-item:nth-child(4) > button': 'I am an active button'
 navigation_pills_vertical:
   render:
     '#type': pattern
