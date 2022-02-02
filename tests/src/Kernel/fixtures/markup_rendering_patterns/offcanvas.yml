@@ -95,3 +95,31 @@ offcanvas_with_id_from_attributes:
       'h5.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
       'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas<svg class="ms-2-5 bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#filter"></use></svg>'
+offcanvas_search_variant:
+  render:
+    '#type': pattern
+    '#id': 'offcanvas'
+    '#variant': 'search'
+    '#fields':
+      settings:
+        placement: top
+        body_scroll: false
+        backdrop: true
+      title: 'Offcanvas title'
+      body: 'This is the offcanvas body content.'
+      toggle:
+        label: 'Toggle offcanvas'
+        icon: 'filter'
+  assertions:
+    count:
+      'h4': 1
+      'button[data-bs-toggle="offcanvas"]': 1
+      'div[data-drupal-selector="offcanvas"]': 1
+      'div#bcl-offcanvas': 1
+      'div.offcanvas.offcanvas-top': 1
+      'button[data-bs-target="#bcl-offcanvas"]': 1
+      'svg.bi': 1
+    equals:
+      'h4.offcanvas-title': 'Offcanvas title'
+      'div.offcanvas-body': 'This is the offcanvas body content.'
+      'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas<svg class="ms-2-5 bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#filter"></use></svg>'
