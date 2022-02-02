@@ -23,12 +23,11 @@
     {% endfor %}
   {% endif %}
   {% set _image = image %}
-  {% if image is defined and image['#markup'] is not empty %}
-    {% set _image = {
-      path: image['#markup'],
+  {% if image is not empty %}
+    {% set _image = image|merge({
       position: 'top',
       classes: 'd-none d-md-block',
-    } %}
+    }) %}
   {% endif %}
   {% if text is defined and text.classes is not defined %}
     {% set text = {
