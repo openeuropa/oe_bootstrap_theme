@@ -1,6 +1,11 @@
 offcanvas:
   label: 'Offcanvas'
   description: 'Hidden sidebar with activation. For more information visit: https://getbootstrap.com/docs/5.0/components/offcanvas/'
+  variants:
+    default:
+      label: 'Default'
+    search:
+      label: 'Search'
   settings:
     placement:
       type: select
