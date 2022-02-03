@@ -9,7 +9,12 @@ navbar:
     color_scheme:
       type: string
       label: 'Color scheme'
-      description: 'The color scheme to use. Can be either light (dark text on light background) or dark (light text on dark background).'
+      description: 'The color scheme to use. Can be either light or dark.'
+    background:
+      type: boolean
+      label: 'Background'
+      description: 'Adds a background color that depends on the color scheme. Enabled by default.'
+      preview: true
     branding:
       type: render
       label: 'Branding region'
