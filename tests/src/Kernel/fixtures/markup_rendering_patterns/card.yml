@@ -81,7 +81,7 @@ card_variant_search:
       badges:
         - first: 'first key'
           '#title': 'Category 1'
-        - first: 'first key'
+        - second: 'second key'
           '#title': 'Category 2'
   assert:
     count:
@@ -91,10 +91,9 @@ card_variant_search:
       'div.card-body.p-0.pb-md-0.pb-3': 1
       'img.d-none.d-md-block.card-img-top': 1
       'img[src="https://placeimg.com/1000/500/arch"]': 1
-      'span.me-2.badge.bg-primary': 1
-      'span.badge.bg-primary': 2
+      'span.badge.rounded-pill.badge-outline-primary': 2
     equals:
       'h5.card-title': 'Title card'
       'p.card-text.mb-2-5': 'Text card with longer text which is supported'
-    contains:
-      'span.me-2.badge.bg-primary': 'Category 1'
+      'div > span.badge.badge-outline-primary:nth-child(1)': 'Category 1'
+      'div > span.badge.badge-outline-primary:nth-child(2)': 'Category 2'
