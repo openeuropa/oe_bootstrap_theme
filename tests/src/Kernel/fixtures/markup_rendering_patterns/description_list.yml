@@ -19,8 +19,10 @@ description_list_default:
             - label:
               - '#markup': 'A label with <em>some</em> markup.'
           definition:
-            - '#markup': '<p class="mb-2">First line description of third term text goes here.</p>'
-            - '#markup': 'Second line description of third term text goes here.'
+            - label:
+                - '#markup': '<p class="mb-2">First line description of third term text goes here.</p>'
+            - label:
+                - '#markup': 'Second line description of third term text goes here.'
         # This entry covers the scenario of passing an array as icon.
         - term:
           - label: 'Custom icon size'
@@ -46,17 +48,17 @@ description_list_default:
       'dl > dt:nth-of-type(3) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#calendar-event'
       'dl > dt:nth-of-type(5) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#bicycle'
     equals:
-      'dl > dt:nth-child(1) > div': 'Single label with icon'
+      'dl > dt:nth-child(1) > p': 'Single label with icon'
       'dl > dd:nth-child(2)': 'Description of first term text goes here.'
-      'dl > dt:nth-child(3) > div': 'First label without icon'
-      'dl > dt:nth-child(4) > div': 'Second label with icon'
+      'dl > dt:nth-child(3)': 'First label without icon'
+      'dl > dt:nth-child(4) > p': 'Second label with icon'
       'dl > dd:nth-child(5)': 'Description of second term text goes here.'
-      'dl > dt:nth-child(6) > div': 'A label with <em>some</em> markup.'
+      'dl > dt:nth-child(6)': 'A label with <em>some</em> markup.'
       'dl > dd:nth-child(7)': '<p class="mb-2">First line description of third term text goes here.</p>'
       'dl > dd:nth-child(8)': 'Second line description of third term text goes here.'
-      'dl > dt:nth-child(9) > div': 'Custom icon size'
+      'dl > dt:nth-child(9) > p': 'Custom icon size'
       'dl > dd:nth-child(10)': 'This is a bigger icon.'
-      'dl > dt:nth-child(11) > div': 'A single term without icon.'
+      'dl > dt:nth-child(11)': 'A single term without icon.'
       'dl > dd:nth-child(12)': 'Yet another definition text.'
 description_list_horizontal:
   render:
@@ -77,8 +79,8 @@ description_list_horizontal:
           definition: 'Description of second term text goes here.'
         - term: 'A single term without icon.'
           definition:
-            - 'First definition for third term.'
-            - 'Second definition for third term.'
+            - label: 'First definition for third term.'
+            - label: 'Second definition for third term.'
   assertions:
     count:
       'dl': 1
@@ -90,11 +92,11 @@ description_list_horizontal:
       'dl > div:nth-child(1) > dt > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#geo-alt-fill'
       'dl > div:nth-child(3) > dt:nth-child(2) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#calendar-event'
     equals:
-      'dl > div:nth-child(1) > dt > div': 'Single label with icon'
+      'dl > div:nth-child(1) > dt > p': 'Single label with icon'
       'dl > dd:nth-child(2)': 'Description of first term text goes here.'
-      'dl > div:nth-child(3) > dt:nth-child(1) > div': 'First label without icon'
-      'dl > div:nth-child(3) > dt:nth-child(2) > div': 'Second label with icon'
+      'dl > div:nth-child(3) > dt:nth-child(1)': 'First label without icon'
+      'dl > div:nth-child(3) > dt:nth-child(2) > p': 'Second label with icon'
       'dl > dd:nth-child(4)': 'Description of second term text goes here.'
-      'dl > div:nth-child(5) > dt > div': 'A single term without icon.'
+      'dl > div:nth-child(5) > dt': 'A single term without icon.'
       'dl > div:nth-child(6) > dd:nth-child(1)': 'First definition for third term.'
       'dl > div:nth-child(6) > dd:nth-child(2)': 'Second definition for third term.'
