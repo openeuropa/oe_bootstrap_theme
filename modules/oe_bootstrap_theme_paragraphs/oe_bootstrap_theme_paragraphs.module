@@ -377,8 +377,9 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_content_row__variant_inpage
     return;
   }
 
+  $variables['attributes']['id'] = Html::getUniqueId('bcl-inpage-navigation-pid-' . $paragraph->id());
+
   $variables['title'] = t('Page contents');
-  $variables['id_inpage'] = Html::getUniqueId('bcl-inpage-navigation-' . $paragraph->id());
   if (!$paragraph->get('field_oe_title')->isEmpty()) {
     $variables['title'] = $paragraph->get('field_oe_title')->value;
   }
