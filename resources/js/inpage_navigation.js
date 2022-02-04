@@ -13,6 +13,8 @@
    *
    * @prop {Drupal~behaviorAttach} attach
    *   Initialises a scrollSpy instance for each navigation.
+   * @prop {Drupal~behaviorDetach} detach
+   *   Destroys the scrollSpy instances to prevent subscribing multiple times.
    */
   Drupal.behaviors.inpage_navigation = {
     attach: function () {
@@ -20,6 +22,11 @@
         instances.push(new bootstrap.ScrollSpy(document.body, {
           target: nav
         }));
+      });
+    },
+    detach: function () {
+      instances.forEach(function (instance) {
+        instance.dispose();
       });
     }
   };
