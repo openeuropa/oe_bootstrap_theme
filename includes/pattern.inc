@@ -154,3 +154,10 @@ function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
       ->toRenderArray();
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for inpage navigation pattern.
+ */
+function oe_bootstrap_theme_preprocess_pattern_inpage_navigation(&$variables): void {
+  $variables['inpage_navigation_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl-inpage-navigation');
+}
