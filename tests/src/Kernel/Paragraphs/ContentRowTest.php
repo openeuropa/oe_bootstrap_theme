@@ -161,7 +161,7 @@ class ContentRowTest extends ParagraphsTestBase {
     $this->assertCount(1, $content);
     $rich_text_title = $content->filter('h4.fw-bold.mb-4');
     $this->assertSame('Title rich text test 1', trim($rich_text_title->text()));
-    $links_block_title = $content->filter('h5.fw-bold.pb-3.mb-3.border-bottom');
+    $links_block_title = $content->filter('h2.fw-bold.pb-3.mb-3.border-bottom');
     $this->assertSame('Links block test', $links_block_title->text());
     $facts_figures = $content->filter('.paragraph--type--oe-facts-figures');
     $this->assertStringContainsString('Facts and Figures test', $facts_figures->text());
@@ -169,16 +169,16 @@ class ContentRowTest extends ParagraphsTestBase {
     $this->assertStringContainsString('Maecenas id urna eleifend', $blockquote_blockquote->text());
     $blockquote_footer = $content->filter('figcaption.blockquote-footer');
     $this->assertSame('Quote 1', trim($blockquote_footer->text()));
-    $social_media_title = $content->filter('h5.fw-bold.pb-3.mb-3.border-bottom')->eq(1);
+    $social_media_title = $content->filter('h2.fw-bold.pb-3.mb-3.border-bottom')->eq(1);
     $this->assertStringContainsString('Social media block', $social_media_title->text());
     $accordion_items = $content->filter('.accordion-item');
     $this->assertStringContainsString('Accordion item 1', $accordion_items->eq(0)->text());
     $this->assertStringContainsString('Accordion item 2', $accordion_items->eq(1)->text());
     $this->assertStringContainsString('Accordion item 3', $accordion_items->eq(2)->text());
     // Check that the wrappers where added to the correct paragraphs.
-    $this->assertSame('bcl-inpage-1', $rich_text_title->parents()->eq(0)->attr('id'));
-    $this->assertSame('bcl-inpage-6', $facts_figures->parents()->eq(0)->attr('id'));
-    $this->assertSame('bcl-inpage-8', $social_media_title->parents()->eq(1)->attr('id'));
+    $this->assertSame('bcl-inpage-item-1', $rich_text_title->parents()->eq(0)->attr('id'));
+    $this->assertSame('bcl-inpage-item-6', $facts_figures->parents()->eq(0)->attr('id'));
+    $this->assertSame('bcl-inpage-item-8', $social_media_title->parents()->eq(1)->attr('id'));
   }
 
 }

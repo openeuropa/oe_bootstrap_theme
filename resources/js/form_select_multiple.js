@@ -1,6 +1,6 @@
 /**
  * @file
- * Apply slim Select library to all form select multiple
+ * Apply slim Select library to all form select multiple.
  */
 
 (function (Drupal) {
