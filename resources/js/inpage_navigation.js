@@ -2,7 +2,7 @@
   Drupal.behaviors.inpage_navigation = {
     attach: function attach(context, settings) {
       new bs.ScrollSpy(document.body, {
-        target: '#bcl-inpage-navigation'
+        target: '.bcl-inpage-navigation'
       });
     }
   };
