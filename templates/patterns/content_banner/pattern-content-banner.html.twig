@@ -5,12 +5,16 @@
  */
 #}
 {% set _content %}
-  {% if date is not empty %}
+  {% if meta is not empty %}
     <div class="mb-4 mt-4">
-      <span class="text-muted me-3">{{ date }}</span>
+  {% endif %}
+  {% for _meta in meta %}
+    <span class="text-muted me-3">{{ _meta }}</span>
+  {% endfor %}
+  {% if meta is not empty %}
     </div>
   {% endif %}
-  <p>{{ content }}</p>
+  <div>{{ content }}</div>
 {% endset %}
 
 {% set _badges = [] %}
