@@ -28,7 +28,7 @@ content_banner:
       meta:
         type: array
         label: 'Meta'
-        description: 'Miscelaneous information as date, author, etc.'
+        description: 'Miscellaneous information as date, author, etc.'
         preview:
           - '26 May 2020'
           - '1 comment'
