@@ -21,11 +21,12 @@ content_banner_white_background_with_image_with_badges_with_meta:
     count:
       'div.bcl-content-banner': 1
       'div.bcl-content-banner.bg-white': 1
+      'img': 1
       'div.card > div.row > div.col-md-4.col-lg-3 > img[src="https://placeimg.com/1200/600/tech"]': 1
       'div.card-body > h2': 1
       'div.card-body > div': 3
       'div.card-body > div > span.text-muted': 2
-      'div.card-body > div > span.badge': 2
+      'div.card-body > div > span.badge.rounded-pill': 2
     equals:
       'div.card-body > h2': 'This is the title of this page'
       'div.card-body > div:nth-child(3)': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
@@ -50,10 +51,10 @@ content_banner_white_background_without_image_with_badges:
     count:
       'div.bcl-content-banner': 1
       'div.bcl-content-banner.bg-white': 1
-      'div.card > div.row > div.col-md-4.col-lg-3 > img[src="https://placeimg.com/1200/600/tech"]': 0
       'div.card-body > h2': 1
+      'img': 0
       'div.card-body > div': 2
-      'div.card-body > div > span.badge': 2
+      'div.card-body > div > span.badge.rounded-pill': 2
     equals:
       'div.card-body > h2': 'This is the title of this page'
       'div.card-body > div:nth-child(2)': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
@@ -74,6 +75,7 @@ content_banner_gray_background_with_image_without_badges:
     count:
       'div.bcl-content-banner': 1
       'div.bcl-content-banner.bg-lighter': 1
+      'img': 1
       'div.card > div.row > div.col-md-4.col-lg-3 > img[src="https://placeimg.com/1200/600/tech"]': 1
       'div.card-body > h2': 1
       'div.card-body > div': 1
@@ -101,11 +103,11 @@ content_banner_gray_background_without_image_with_badges_with_meta:
     count:
       'div.bcl-content-banner': 1
       'div.bcl-content-banner.bg-lighter': 1
-      'div.card > div.row > div.col-md-4.col-lg-3 > img[src="https://placeimg.com/1200/600/tech"]': 0
       'div.card-body > h2': 1
+      'img': 0
       'div.card-body > div': 3
       'div.card-body > div > span.text-muted': 2
-      'div.card-body > div > span.badge': 2
+      'div.card-body > div > span.badge.rounded-pill': 2
     equals:
       'div.card-body > h2': 'This is the title of this page'
       'div.card-body > div:nth-child(3)': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
