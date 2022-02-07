@@ -5,6 +5,7 @@
  */
 #}
 {% spaceless %}
+{# Render the 'meta' items into the content variable. #}
 {% set _content %}
   {% if meta is not empty %}
     <div class="mb-4 mt-4">
@@ -16,6 +17,7 @@
   <div>{{ content }}</div>
 {% endset %}
 
+{# Enable 'outline' in every badge. #}
 {% set _badges = [] %}
 {% for _badge in badges %}
   {% set _badge = _badge|merge({
