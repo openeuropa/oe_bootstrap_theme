@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Content banner pattern.
+ */
+#}
+{% spaceless %}
+{# Render the 'meta' items into the content variable. #}
+{% set _content %}
+  {% if meta is not empty %}
+    <div class="my-4">
+      {% for _meta_item in meta %}
+        <span class="text-muted me-3">{{ _meta_item }}</span>
+      {% endfor %}
+    </div>
+  {% endif %}
+  <div>{{ content }}</div>
+{% endset %}
+
+{# Enable 'outline' in every badge. #}
+{% set _badges = [] %}
+{% for _badge in badges %}
+  {% set _badge = _badge|merge({
+    'outline': true,
+  }) %}
+  {% set _badges = _badges|merge([_badge]) %}
+{% endfor %}
+
+{% include '@oe-bcl/bcl-content-banner/bcl-content-banner.html.twig' with {
+  'background': background,
+  'title': {
+    'content': title,
+  },
+  'content': _content,
+  'image': image ? {
+    'path': image.src,
+    'alt': image.alt,
+  } : {},
+  'badges': _badges,
+  'attributes': attributes,
+} only %}
+{% endspaceless %}
