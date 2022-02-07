@@ -8,7 +8,7 @@
 {# Render the 'meta' items into the content variable. #}
 {% set _content %}
   {% if meta is not empty %}
-    <div class="mb-4 mt-4">
+    <div class="my-4">
       {% for _meta_item in meta %}
         <span class="text-muted me-3">{{ _meta_item }}</span>
       {% endfor %}
