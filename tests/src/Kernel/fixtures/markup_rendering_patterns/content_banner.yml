@@ -1,0 +1,117 @@
+content_banner_white_background_with_image_with_badges_with_meta:
+  render:
+    '#type': pattern
+    '#id': 'content_banner'
+    '#fields':
+      background: 'white'
+      meta:
+        - '26 May 2020'
+        - '1 comment'
+      image:
+        src: 'https://placeimg.com/1200/600/tech'
+        alt: 'Alternative text for content banner image'
+      title: 'This is the title of this page'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+      badges:
+        - label: 'Primary badge'
+          rounded_pill: true
+        - label: 'Secondary badge'
+          rounded_pill: true
+  assertions:
+    count:
+      'div.bcl-content-banner': 1
+      'div.bcl-content-banner.bg-white': 1
+      'img': 1
+      'div.card > div.row > div.col-md-4.col-lg-3 > img[src="https://placeimg.com/1200/600/tech"]': 1
+      'div.card-body > h2': 1
+      'div.card-body > div': 3
+      'div.card-body > div > span.text-muted': 2
+      'div.card-body > div > span.badge.rounded-pill': 2
+    equals:
+      'div.card-body > h2': 'This is the title of this page'
+      'div.card-body > div:nth-child(3)': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+      'div.card-body > div > span.badge:nth-child(1)': 'Primary badge'
+      'div.card-body > div > span.badge:nth-child(2)': 'Secondary badge'
+      'span.text-muted.me-3:nth-child(1)': '26 May 2020'
+      'span.text-muted.me-3:nth-child(2)': '1 comment'
+content_banner_white_background_without_image_with_badges:
+  render:
+    '#type': pattern
+    '#id': 'content_banner'
+    '#fields':
+      background: 'white'
+      title: 'This is the title of this page'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+      badges:
+        - label: 'Primary badge'
+          rounded_pill: true
+        - label: 'Secondary badge'
+          rounded_pill: true
+  assertions:
+    count:
+      'div.bcl-content-banner': 1
+      'div.bcl-content-banner.bg-white': 1
+      'div.card-body > h2': 1
+      'img': 0
+      'div.card-body > div': 2
+      'div.card-body > div > span.badge.rounded-pill': 2
+    equals:
+      'div.card-body > h2': 'This is the title of this page'
+      'div.card-body > div:nth-child(2)': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+      'div.card-body > div > span.badge:nth-child(1)': 'Primary badge'
+      'div.card-body > div > span.badge:nth-child(2)': 'Secondary badge'
+content_banner_gray_background_with_image_without_badges:
+  render:
+    '#type': pattern
+    '#id': 'content_banner'
+    '#fields':
+      background: 'gray'
+      image:
+        src: 'https://placeimg.com/1200/600/tech'
+        alt: 'Alternative text for content banner image'
+      title: 'This is the title of this page'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+  assertions:
+    count:
+      'div.bcl-content-banner': 1
+      'div.bcl-content-banner.bg-lighter': 1
+      'img': 1
+      'div.card > div.row > div.col-md-4.col-lg-3 > img[src="https://placeimg.com/1200/600/tech"]': 1
+      'div.card-body > h2': 1
+      'div.card-body > div': 1
+      'div.card-body > div > span.badge': 0
+    equals:
+      'div.card-body > h2': 'This is the title of this page'
+      'div.card-body > div:nth-child(2)': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+content_banner_gray_background_without_image_with_badges_with_meta:
+  render:
+    '#type': pattern
+    '#id': 'content_banner'
+    '#fields':
+      background: 'gray'
+      meta:
+        - '26 May 2020'
+        - '1 comment'
+      title: 'This is the title of this page'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+      badges:
+        - label: 'Primary badge'
+          rounded_pill: true
+        - label: 'Secondary badge'
+          rounded_pill: true
+  assertions:
+    count:
+      'div.bcl-content-banner': 1
+      'div.bcl-content-banner.bg-lighter': 1
+      'div.card-body > h2': 1
+      'img': 0
+      'div.card-body > div': 3
+      'div.card-body > div > span.text-muted': 2
+      'div.card-body > div > span.badge.rounded-pill': 2
+    equals:
+      'div.card-body > h2': 'This is the title of this page'
+      'div.card-body > div:nth-child(3)': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+      'div.card-body > div > span.badge:nth-child(1)': 'Primary badge'
+      'div.card-body > div > span.badge:nth-child(2)': 'Secondary badge'
+      'span.text-muted.me-3:nth-child(1)': '26 May 2020'
+      'span.text-muted.me-3:nth-child(2)': '1 comment'

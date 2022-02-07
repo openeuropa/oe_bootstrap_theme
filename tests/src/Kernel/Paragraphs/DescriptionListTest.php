@@ -41,7 +41,7 @@ class DescriptionListTest extends ParagraphsTestBase {
     $this->assertCount(1, $crawler->filter('h4'));
     $this->assertCount(1, $crawler->filter('dl.d-md-grid.grid-3-9'));
     $this->assertCount(2, $crawler->filter('dd'));
-    $this->assertCount(2, $crawler->filter('dt div.align-middle.d-inline-block'));
+    $this->assertCount(2, $crawler->filter('dt'));
 
     $title = $crawler->filter('h4.fw-bold.mb-4');
     $this->assertEquals('Description list paragraph', $title->text());
