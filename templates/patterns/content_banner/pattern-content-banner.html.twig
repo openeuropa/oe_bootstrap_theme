@@ -7,11 +7,9 @@
 {% set _content %}
   {% if meta is not empty %}
     <div class="mb-4 mt-4">
-  {% endif %}
-  {% for _meta in meta %}
-    <span class="text-muted me-3">{{ _meta }}</span>
-  {% endfor %}
-  {% if meta is not empty %}
+      {% for _meta in meta %}
+        <span class="text-muted me-3">{{ _meta }}</span>
+      {% endfor %}
     </div>
   {% endif %}
   <div>{{ content }}</div>
