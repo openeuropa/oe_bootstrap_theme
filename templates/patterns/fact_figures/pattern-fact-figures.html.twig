@@ -4,16 +4,24 @@
  * Fact Figures pattern.
  */
 #}
+{% set _items = [] %}
+{% for item in items %}
+  {% if item.icon is not iterable %}
+    {% set item = item|merge({
+        'icon': {
+          'name': item.icon,
+        }
+      }) %}
+  {% endif %}
+  {% set _items = _items|merge([item]) %}
+{% endfor %}
+
 {% include '@oe-bcl/bcl-fact-figures/fact-figures.html.twig' with {
-  'variant': style,
   'title': title,
-  'items': items,
-  'display_icons': true,
-  'responsive_columns': responsive_columns,
-  'grid_columns': grid_columns,
+  'items': _items,
+  'responsive_columns': columns,
   'equal_height': true,
-  'responsiveness': responsiveness,
-  'icons_path': icons_path,
-  'link_more': link_more,
+  'icons_path': bcl_icon_path,
+  'link_more': link,
   'attributes': attributes,
 } only %}
