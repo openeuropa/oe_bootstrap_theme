@@ -92,6 +92,6 @@ card_variant_search:
       'span.badge.rounded-pill.badge-outline-primary': 2
     equals:
       'h5.card-title': 'Title card'
-      'p.card-text.mb-2-5': 'Text card with longer text which is supported'
+      'div.card-text.mb-2-5': 'Text card with longer text which is supported'
       'div > span.badge.badge-outline-primary:nth-child(1)': 'Category 1'
       'div > span.badge.badge-outline-primary:nth-child(2)': 'Category 2'
