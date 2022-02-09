@@ -20,9 +20,7 @@ function oe_bootstrap_theme_paragraphs_post_update_00001(array &$sandbox): void 
     'field.field.paragraph.oe_description_list.oe_bt_orientation',
     'core.entity_form_display.paragraph.oe_description_list.default',
     'core.entity_view_display.paragraph.oe_description_list.default',
-    'field.storage.paragraph.oe_bt_facts_figures_background',
     'field.storage.paragraph.oe_bt_layout',
-    'field.field.paragraph.oe_facts_figures.oe_bt_facts_figures_background',
     'field.field.paragraph.oe_facts_figures.oe_bt_layout',
   ];
 

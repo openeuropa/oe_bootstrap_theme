@@ -461,18 +461,11 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$varia
       $description = $sub_paragraph->get('field_oe_plain_text_long')->value;
     }
     $variables['items'][] = [
-      'icon' => [
-        'name' => str_replace('_', '-', $sub_paragraph->get('field_oe_icon')->value),
-        'size' => 'l',
-      ],
+      'icon' => str_replace('_', '-', $sub_paragraph->get('field_oe_icon')->value),
       'title' => $sub_paragraph->get('field_oe_title')->value,
       'subtitle' => $sub_paragraph->get('field_oe_subtitle')->value,
       'description' => $description,
     ];
-  }
-
-  if (!$paragraph->get('oe_bt_facts_figures_background')->isEmpty()) {
-    $variables['style'] = $paragraph->get('oe_bt_facts_figures_background')->value;
   }
 
   if (!$paragraph->get('oe_bt_layout')->isEmpty()) {
