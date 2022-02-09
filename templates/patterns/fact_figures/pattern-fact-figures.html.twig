@@ -4,21 +4,9 @@
  * Fact Figures pattern.
  */
 #}
-{% set _items = [] %}
-{% for item in items %}
-  {% if item.icon is not iterable %}
-    {% set item = item|merge({
-        'icon': {
-          'name': item.icon,
-        }
-      }) %}
-  {% endif %}
-  {% set _items = _items|merge([item]) %}
-{% endfor %}
-
 {% include '@oe-bcl/bcl-fact-figures/fact-figures.html.twig' with {
   'title': title,
-  'items': _items,
+  'items': items,
   'responsive_columns': columns,
   'equal_height': true,
   'icons_path': bcl_icon_path,

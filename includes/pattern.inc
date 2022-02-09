@@ -161,3 +161,17 @@ function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
 function oe_bootstrap_theme_preprocess_pattern_inpage_navigation(&$variables): void {
   $variables['inpage_navigation_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl-inpage-navigation');
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_fact_figures(array &$variables): void {
+  foreach ($variables['items'] as &$item) {
+    // If the icon is not an array, the icon name has been passed.
+    if (!is_array($item['icon'])) {
+      $item['icon'] = [
+        'name' => $item['icon'],
+      ];
+    }
+  }
+}
