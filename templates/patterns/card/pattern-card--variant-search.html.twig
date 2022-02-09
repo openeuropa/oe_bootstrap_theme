@@ -15,12 +15,6 @@
       }]) %}
     {% endfor %}
   {% endif %}
-  {% if text is defined and text.classes is not defined %}
-    {% set text = {
-      content: text|render|striptags,
-      classes: 'mb-2-5',
-    } %}
-  {% endif %}
   {% include '@oe-bcl/card' with {
     horizontal: true,
     horizontal_grid: {
@@ -32,7 +26,11 @@
     title: {
       content: title,
     },
-    text: text,
+    text: (text is not empty) ? {
+      content: text,
+      classes: 'mb-2-5',
+      tag: 'div',
+    } : {},
     attributes: create_attribute({'class': [
       'listing-item',
       'border-bottom',
