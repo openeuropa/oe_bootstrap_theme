@@ -20,8 +20,6 @@ function oe_bootstrap_theme_paragraphs_post_update_00001(array &$sandbox): void 
     'field.field.paragraph.oe_description_list.oe_bt_orientation',
     'core.entity_form_display.paragraph.oe_description_list.default',
     'core.entity_view_display.paragraph.oe_description_list.default',
-    'field.storage.paragraph.oe_bt_layout',
-    'field.field.paragraph.oe_facts_figures.oe_bt_layout',
   ];
 
   ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00001/', $configs, TRUE);
@@ -34,9 +32,19 @@ function oe_bootstrap_theme_paragraphs_post_update_00002(array &$sandbox): void 
   $configs = [
     'core.entity_form_display.paragraph.oe_accordion_item.default',
     'core.entity_view_display.paragraph.oe_accordion_item.default',
+  ];
+
+  ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00002/', $configs, TRUE);
+}
+
+/**
+ * Display new layout field at facts&figures paragraph.
+ */
+function oe_bootstrap_theme_paragraphs_post_update_00003(array &$sandbox): void {
+  $configs = [
     'core.entity_form_display.paragraph.oe_facts_figures.default',
     'core.entity_view_display.paragraph.oe_facts_figures.default',
   ];
 
-  ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00002/', $configs, TRUE);
+  ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00003/', $configs, TRUE);
 }
