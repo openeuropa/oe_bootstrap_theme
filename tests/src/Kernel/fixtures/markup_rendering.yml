@@ -108,3 +108,42 @@ submit_disabled:
       'input[type=submit].form-submit.button.btn': 1
       'input[value=Save]': 1
       'input.btn-primary': 1
+status_messages_error:
+  render:
+    '#theme': 'status_messages'
+    '#message_list':
+      '#display': 'full'
+      'error':
+        - 'Message test'
+  assert:
+    count:
+      'div.alert-danger': 1
+      'svg.icon--s': 1
+    equals:
+      'svg': '<use xlink:href="/themes/contrib/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#dash-circle-fill"></use>'
+status_messages_success:
+  render:
+    '#theme': 'status_messages'
+    '#message_list':
+      '#display': 'full'
+      'status':
+        - 'Message test'
+  assert:
+    count:
+      'div.alert-success': 1
+      'svg.icon--s': 1
+    equals:
+      'svg': '<use xlink:href="/themes/contrib/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#check-circle-fill"></use>'
+status_messages_warning:
+  render:
+    '#theme': 'status_messages'
+    '#message_list':
+      '#display': 'full'
+      'warning':
+        - 'Message test'
+  assert:
+    count:
+      'div.alert-warning': 1
+      'svg.icon--s': 1
+    equals:
+      'svg': '<use xlink:href="/themes/contrib/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#exclamation-triangle-fill"></use>'
