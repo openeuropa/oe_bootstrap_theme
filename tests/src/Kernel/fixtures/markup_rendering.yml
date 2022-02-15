@@ -120,7 +120,7 @@ status_messages_error:
       'div.alert-danger': 1
       'svg.icon--s': 1
     equals:
-      'svg': '<use xlink:href="/themes/contrib/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#dash-circle-fill"></use>'
+      'svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#dash-circle-fill"></use>'
 status_messages_success:
   render:
     '#theme': 'status_messages'
@@ -133,7 +133,7 @@ status_messages_success:
       'div.alert-success': 1
       'svg.icon--s': 1
     equals:
-      'svg': '<use xlink:href="/themes/contrib/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#check-circle-fill"></use>'
+      'svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#check-circle-fill"></use>'
 status_messages_warning:
   render:
     '#theme': 'status_messages'
@@ -146,4 +146,4 @@ status_messages_warning:
       'div.alert-warning': 1
       'svg.icon--s': 1
     equals:
-      'svg': '<use xlink:href="/themes/contrib/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#exclamation-triangle-fill"></use>'
+      'svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#exclamation-triangle-fill"></use>'
