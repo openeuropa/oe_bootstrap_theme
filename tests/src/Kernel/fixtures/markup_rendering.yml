@@ -112,38 +112,90 @@ status_messages_error:
   render:
     '#theme': 'status_messages'
     '#message_list':
-      '#display': 'full'
       'error':
-        - 'Message test'
+        - 'Error message.'
   assert:
     count:
+      'div[data-drupal-messages=""]': 1
+      'div.alert': 1
       'div.alert-danger': 1
-      'svg.icon--s': 1
+      'div.alert-success': 0
+      'div.alert-warning': 0
+      'div[data-drupal-messages=""] > div.alert': 1
+      'button.btn-close': 1
     equals:
-      'svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#dash-circle-fill"></use>'
+      '.alert-content': 'Error message.'
+    contains:
+      'svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#dash-circle-fill'
 status_messages_success:
   render:
     '#theme': 'status_messages'
     '#message_list':
-      '#display': 'full'
       'status':
-        - 'Message test'
+        - 'Success message.'
   assert:
     count:
+      'div[data-drupal-messages=""]': 1
+      'div.alert': 1
+      'div.alert-danger': 0
       'div.alert-success': 1
-      'svg.icon--s': 1
+      'div.alert-warning': 0
+      'div[data-drupal-messages=""] > div.alert': 1
+      'button.btn-close': 1
     equals:
-      'svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#check-circle-fill"></use>'
+      '.alert-content': 'Success message.'
+    contains:
+      'svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#check-circle-fill'
 status_messages_warning:
   render:
     '#theme': 'status_messages'
     '#message_list':
-      '#display': 'full'
       'warning':
-        - 'Message test'
+        - 'Warning message.'
   assert:
     count:
+      'div[data-drupal-messages=""]': 1
+      'div.alert': 1
+      'div.alert-danger': 0
+      'div.alert-success': 0
       'div.alert-warning': 1
-      'svg.icon--s': 1
+      'div[data-drupal-messages=""] > div.alert': 1
+      'button.btn-close': 1
     equals:
-      'svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#exclamation-triangle-fill"></use>'
+      '.alert-content': 'Warning message.'
+    contains:
+      'svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#exclamation-triangle-fill'
+status_messages_multiple:
+  render:
+    '#theme': 'status_messages'
+    '#message_list':
+      'status':
+        - 'Success message 1.'
+        - 'Success message 2.'
+      'warning':
+        - 'Warning message 1.'
+      'error':
+        - 'Error message 1.'
+        - 'Error message 2.'
+        - 'Error message 3.'
+  assert:
+    count:
+      'div[data-drupal-messages=""]': 1
+      'div.alert': 6
+      'div.alert-danger': 3
+      'div.alert-success': 2
+      'div.alert-warning': 1
+      'div[data-drupal-messages=""] > div.alert': 6
+      'div[data-drupal-messages=""] > div.alert-success:nth-child(1)': 1
+      'div[data-drupal-messages=""] > div.alert-success:nth-child(2)': 1
+      'div[data-drupal-messages=""] > div.alert-warning:nth-child(3)': 1
+      'div[data-drupal-messages=""] > div.alert-danger:nth-child(4)': 1
+      'div[data-drupal-messages=""] > div.alert-danger:nth-child(5)': 1
+      'div[data-drupal-messages=""] > div.alert-danger:nth-child(6)': 1
+    equals:
+      'div[data-drupal-messages=""] > div:nth-child(1) .alert-content': 'Success message 1.'
+      'div[data-drupal-messages=""] > div:nth-child(2) .alert-content': 'Success message 2.'
+      'div[data-drupal-messages=""] > div:nth-child(3) .alert-content': 'Warning message 1.'
+      'div[data-drupal-messages=""] > div:nth-child(4) .alert-content': 'Error message 1.'
+      'div[data-drupal-messages=""] > div:nth-child(5) .alert-content': 'Error message 2.'
+      'div[data-drupal-messages=""] > div:nth-child(6) .alert-content': 'Error message 3.'
