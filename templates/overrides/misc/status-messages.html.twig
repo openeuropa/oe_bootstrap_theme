@@ -21,18 +21,16 @@
  * @ingroup themeable
  */
 #}
-
+{% set _mapping = {
+  'status': 'success',
+  'warning': 'warning',
+  'error': 'danger'
+} %}
 <div data-drupal-messages>
   {% for type, messages in message_list %}
-
-    {% set style = '' %}
-    {% set style = (type == 'status') ? 'info' : style %}
-    {% set style = (type == 'warning') ? 'warning' : style %}
-    {% set style = (type == 'error') ? 'danger' : style %}
-
     {% for message in messages %}
       {{ pattern('alert', {
-        'style': style,
+        'variant': _mapping[type] ?? '',
         'message': message,
         'dismissible': true
       }) }}
