@@ -72,19 +72,18 @@ function oe_bootstrap_theme_preprocess_pattern_description_list(&$variables) {
       continue;
     }
 
-    foreach ($item['term'] as &$term) {
-      if (is_array($term) && !empty($term['icon'])) {
+    foreach ($item['term'] as $key => &$term) {
+      $value = $term;
+      if ($key === 'icon' && !is_array($term)) {
         // If the icon is not an array, the icon name has been passed.
-        if (!is_array($term['icon'])) {
-          $term['icon'] = [
-            'name' => $term['icon'],
+        $value = [
+            'name' => $value,
+            'size' => 'xs',
+            'path' => $variables['bcl_icon_path'],
           ];
-        }
-        $term['icon'] += [
-          'size' => 'xs',
-          'path' => $variables['bcl_icon_path'],
-        ];
       }
+      $updated_term[$key] = $value;
+      $term = $updated_term;
     }
   }
 }
