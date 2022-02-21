@@ -78,31 +78,92 @@ function oe_bootstrap_theme_preprocess_links__dropbutton(&$variables) {
 
   /** @var \Drupal\Core\Url $url */
   $variables['split'] = FALSE;
+  $button = $link['text'];
   if (isset($link['link']) && ($url = $link['link']['#url'])) {
     $button = $link['link'];
 
-    if ($variables['split'] = $url->getRouteName() !== '<nolink>') {
+    if ($url->getRouteName() !== '<nolink>') {
+      $variables['split'] = TRUE;
       $button['#options']['attributes']['class'][] = 'btn';
       $button['#options']['attributes']['class'][] = 'btn-sm';
       $button['#options']['attributes']['class'][] = 'btn-outline-primary';
     }
 
-    $variables['button'] = $button;
-
     // Remove first link from links.
     array_shift($links);
   }
 
-  // Add required classes.
-  foreach ($links as $key => $link) {
-    $links[$key]['link']['#options']['attributes']['class'][] = 'dropdown-item';
+  $variables['button'] = $button;
+  oe_bootstrap_theme_add_dropbutton_classes($links);
+}
 
+/**
+ * Adds required classes to dropbutton links.
+ *
+ * @param array $links
+ *   Array with links items.
+ */
+function oe_bootstrap_theme_add_dropbutton_classes(array &$links): void {
+  foreach ($links as $key => $link) {
+    if (isset($links[$key]['link']) && is_array($links[$key]['link'])) {
+      $links[$key]['link']['#options']['attributes']['class'][] = 'dropdown-item';
+    }
     if (isset($links[$key]['text_attributes'])) {
       $links[$key]['text_attributes']->addClass('dropdown-item');
     }
-
     if (isset($links[$key]['attributes'])) {
       $links[$key]['attributes']->addClass('dropdown-item');
     }
+    if (isset($links[$key]['text']) && is_array($links[$key]['text'])) {
+      $links[$key]['text']['#attributes']['class'][] = 'dropdown-item';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_menu_local_tasks().
+ */
+function oe_bootstrap_theme_preprocess_menu_local_tasks(array &$variables): void {
+
+  // Sort local tasks by weight.
+  uasort($variables['primary'], [
+    '\Drupal\Component\Utility\SortArray',
+    'sortByWeightProperty',
+  ]);
+  uasort($variables['secondary'], [
+    '\Drupal\Component\Utility\SortArray',
+    'sortByWeightProperty',
+  ]);
+
+  foreach ($variables['primary'] as $link) {
+    oe_bootstrap_theme_prepare_menu_local_task_links($link, $variables, 'primary');
+  }
+
+  foreach ($variables['secondary'] as $link) {
+    oe_bootstrap_theme_prepare_menu_local_task_links($link, $variables, 'secondary');
+  }
+}
+
+/**
+ * Prepare menu local tasks render links.
+ *
+ * @param array $link
+ *   Array with the links items to be prepared.
+ * @param array $variables
+ *   The render array.
+ * @param string $type
+ *   Discriminate between primary or secondary.
+ */
+function oe_bootstrap_theme_prepare_menu_local_task_links(array $link, array &$variables, string $type): void {
+  /** @var Drupal\Core\Url $url */
+  $url = $link['#link']['url'];
+  if ($url->access($variables['user'])) {
+    $variables[$type . '_links'][] = [
+      'link_style' => $type,
+      'path' => $url->toString(),
+      'label' => $link['#link']['title'],
+      'standalone' => TRUE,
+      'attributes' => $link['#active'] ? new Attribute(['class' => 'active']) : [],
+    ];
   }
 }

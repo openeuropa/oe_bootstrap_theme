@@ -1,18 +1,14 @@
-button_dark_with_icon_after_and_assistive_text:
+button_dark_with_icon_after:
   render:
     '#type': pattern
-    '#id': button
-    '#variant': dark
+    '#id': 'button'
+    '#variant': 'dark'
     '#fields':
       settings:
-        icon_position: "after"
-      type: button
-      label: "Button label"
-      assistive_text: "Click here"
-      icon:
-        name: arrow-right
-        size: s
-        transformation: rotate-0
+        icon_position: 'after'
+      type: 'button'
+      label: 'Button label'
+      icon: 'arrow-right'
   assertions:
     count:
       'button[data-drupal-selector="button"]': 1
@@ -20,133 +16,88 @@ button_dark_with_icon_after_and_assistive_text:
       'svg.icon--fluid.ms-2-5': 1
       'button.btn-dark': 1
       'button svg': 1
-      'span.visually-hidden': 1
-    equals:
-      'span.visually-hidden': "Click here"
     contains:
-      'button.btn-secondary': "Button label"
-      'svg': "#arrow-right"
-button_with_default_spinner_and_clean_class:
+      'button.btn-dark': 'Button label'
+      'svg': '#arrow-right'
+button_without_icon:
   render:
     '#type': pattern
-    '#id': button
+    '#id': 'button'
     '#fields':
       settings:
-        clean_class: true
-        show_spinner: true
-      type: button
-      label: "Button label"
-      assistive_text: "Click here"
+      type: 'button'
+      label: 'Button label'
   assertions:
     count:
       'button[data-drupal-selector="button"]': 1
-      'span.visually-hidden': 1
-      'div.spinner-border.text-info': 1
-      'btn': 0
-      'btn-primary': 0
+      'button.btn.btn-primary': 1
     equals:
-      'span.visually-hidden': "Click here"
-    contains:
-      'button': "Button label"
-button_secondary_with_custom_spinner:
+      'button': 'Button label'
+button_secondary:
   render:
     '#type': pattern
-    '#id': button
-    '#variant': secondary
+    '#id': 'button'
+    '#variant': 'secondary'
     '#fields':
       settings:
-        clean_class: false
-        show_spinner: true
-      type: button
-      label: "Button label"
-      assistive_text: "Click here"
-      spinner:
-        type: grow
-        variant: success
-        size: large
+      type: 'button'
+      label: 'Button label'
   assertions:
     count:
       'button[data-drupal-selector="button"]': 1
-      'span.visually-hidden': 1
-      'div.spinner-grow.spinner-grow-large.text-success': 1
-      'button.btn': 1
-      'button.btn-secondary': 1
+      'button.btn.btn-secondary': 1
     equals:
-      'span.visually-hidden': "Click here"
-    contains:
-      'button.btn-secondary': "Button label"
+      'button.btn-secondary': 'Button label'
 button_primary_small_with_outline_and_disabled:
   render:
     '#type': pattern
-    '#id': button
-    '#variant': primary
+    '#id': 'button'
     '#fields':
       settings:
-        clean_class: false
-        show_spinner: false
         outline: true
         disabled: true
-        size: "sm"
-      type: button
-      label: "Button label"
-      assistive_text: "Click here"
+        size: 'sm'
+      type: 'button'
+      label: 'Button label'
   assertions:
     count:
       'button[data-drupal-selector="button"]': 1
       'button[disabled]': 1
-      'span.visually-hidden': 1
-      'button.btn-outline-primary': 1
-      'button.btn': 1
+      'button.btn.btn-outline-primary': 1
       'button.btn-sm': 1
     equals:
-      'span.visually-hidden': "Click here"
-    contains:
-      'button.btn-secondary': "Button label"
-button_warning_large_with_text_nowrap:
+      'button.btn-outline-primary': 'Button label'
+button_warning_large:
   render:
     '#type': pattern
-    '#id': button
-    '#variant': warning
+    '#id': 'button'
+    '#variant': 'warning'
     '#fields':
       settings:
-        clean_class: false
-        show_spinner: false
         outline: false
         disabled: false
-        text_nowrap: true
-        size: "lg"
-      type: button
-      label: "Button label"
-      assistive_text: "Click here"
+        size: 'lg'
+      type: 'button'
+      label: 'Button label'
   assertions:
     count:
       'button[data-drupal-selector="button"]': 1
+      'button.btn.btn-warning': 1
       'button[disabled]': 0
-      'span.visually-hidden': 1
-      'button.btn-outline-warning': 0
-      'button.btn': 1
-      'button.btn-warning': 1
       'button.btn-lg': 1
-      'button.text-nowrap': 1
     equals:
-      'span.visually-hidden': "Click here"
-    contains:
-      'button.btn-secondary': "Button label"
+      'button.btn-warning': 'Button label'
 button_dark_with_icon_before_and_type_reset:
   render:
     '#type': pattern
-    '#id': button
-    '#variant': dark
+    '#id': 'button'
+    '#variant': 'dark'
     '#fields':
       settings:
-        icon_position: before
-      type: reset
-      label: "Button label"
-      assistive_text: "Click here"
-      icon:
-        name: arrow-right
-        size: s
-        transformation: rotate-0
+        icon_position: 'before'
+      type: 'reset'
+      label: 'Button label'
+      icon: 'arrow-right'
   assertions:
     count:
       'button[data-drupal-selector="button"]': 1
@@ -154,10 +105,7 @@ button_dark_with_icon_before_and_type_reset:
       'svg.icon--fluid.me-2-5': 1
       'button.btn-dark': 1
       'button svg': 1
-      'span.visually-hidden': 1
       'button[type=reset]': 1
-    equals:
-      'span.visually-hidden': "Click here"
     contains:
-      'button.btn-secondary': "Button label"
-      'svg': "#arrow-right"
+      'button.btn-dark': 'Button label'
+      'svg': '#arrow-right'

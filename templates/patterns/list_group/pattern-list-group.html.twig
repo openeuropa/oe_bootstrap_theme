@@ -1,12 +1,13 @@
 {#
 /**
  * @file
- * List group component.
+ * List group pattern.
  */
 #}
+
 {% include '@oe-bcl/list-group' with {
   'flush': flush,
-  'horizontal': horizontal,
   'type': type,
   'items': items,
-} %}
+  'attributes': attributes,
+} only %}

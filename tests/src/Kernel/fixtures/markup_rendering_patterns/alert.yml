@@ -2,38 +2,36 @@ alert_dimissible_animated:
   render:
     '#type': pattern
     '#id': alert
+    '#variant': 'danger'
     '#fields':
       settings:
         dismissible: true
         animated_dismiss: true
-        style: 'danger'
-      heading: "Well done!"
-      message: "A simple alert. check it out!"
-      icons_path: "/assets/icons/bootstrap-icons.svg"
-      icon_name: "alarm"
+      heading: 'Well done!'
+      message: 'A simple alert. check it out!'
+      icon: 'alarm'
   assertions:
     count:
       'div.alert.alert-danger.alert-dismissible.fade[role="alert"]': 1
       'h4.alert-heading': 1
       'button.btn-close': 1
     equals:
-      'h4.alert-heading': "Well done!"
+      'h4.alert-heading': 'Well done!'
     contains:
-      'div.alert span': "A simple alert. check it out!"
-      'svg': "#alarm"
+      'div.alert-content': 'A simple alert. check it out!'
+      'svg': '#alarm'
 alert_dimissible_non_animated:
   render:
     '#type': pattern
     '#id': alert
+    '#variant': 'info'
     '#fields':
       settings:
         dismissible: true
         animated_dismiss: false
-        style: 'info'
-      heading: "Well done!"
-      message: "A simple alert. check it out!"
-      icons_path: "/assets/icons/bootstrap-icons.svg"
-      icon_name: "alarm"
+      heading: 'Well done!'
+      message: 'A simple alert. check it out!'
+      icon: 'alarm'
   assertions:
     count:
       'div.alert.alert-info.alert-dismissible[role="alert"]': 1
@@ -41,23 +39,22 @@ alert_dimissible_non_animated:
       'h4.alert-heading': 1
       'button.btn-close': 1
     equals:
-      'h4.alert-heading': "Well done!"
+      'h4.alert-heading': 'Well done!'
+      'div.alert-content': '<h4 class="alert-heading">Well done!</h4>A simple alert. check it out!'
     contains:
-      'div.alert span': "A simple alert. check it out!"
       'svg': "#alarm"
 alert_not_dimissible:
   render:
     '#type': pattern
     '#id': alert
+    '#variant': 'secondary'
     '#fields':
       settings:
         dismissible: false
         animated_dismiss: false
-        style: 'secondary'
-      heading: "Well done!"
-      message: "A simple alert. check it out!"
-      icons_path: "/assets/icons/bootstrap-icons.svg"
-      icon_name: "search"
+      heading: 'Well done!'
+      message: 'A simple alert. check it out!'
+      icon: 'search'
   assertions:
     count:
       'div.alert-dismissible': 0
@@ -65,7 +62,7 @@ alert_not_dimissible:
       'div.alert-secondary': 1
       'h4.alert-heading': 1
     equals:
-      'h4.alert-heading': "Well done!"
+      'h4.alert-heading': 'Well done!'
+      'div.alert-content': '<h4 class="alert-heading">Well done!</h4>A simple alert. check it out!'
     contains:
-      'div.alert span': "A simple alert. check it out!"
-      'svg': "#search"
+      'svg': '#search'

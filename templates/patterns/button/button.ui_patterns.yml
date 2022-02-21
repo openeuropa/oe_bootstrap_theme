@@ -1,89 +1,65 @@
 button:
-  label: Button
-  description: For actions in forms, dialogs, and more with support for multiple sizes, states, and more. https://v5.getbootstrap.com/docs/5.0/components/buttons/
+  label: 'Button'
+  description: 'For actions in forms, dialogs, and more with support for multiple sizes, states, and more. For more information: https://v5.getbootstrap.com/docs/5.0/components/buttons/'
   variants:
     primary:
-      label: Default
+      label: 'Primary (default)'
     secondary:
-      label: Secondary
-      description: Demo secondary button.
+      label: 'Secondary'
+    success:
+      label: 'Success'
+    danger:
+      label: 'Danger'
     warning:
-      label: Warning
-      description: Demo warning button.
+      label: 'Warning'
+    info:
+      label: 'Info'
+    light:
+      label: 'Light'
+    dark:
+      label: 'Dark'
+    link:
+      label: 'Link'
   settings:
-    variant:
-      type: select
-      label: Button style
-      options:
-        primary: primary
-        secondary: secondary
-        success: success
-        danger: danger
-        warning: warning
-        info: info
-        light: light
-        dark: dark
-        link: link
-      preview: primary
     outline:
       type: boolean
-      label: Button outline
-      preview: false
+      label: 'Button outline'
+      description: 'Lighter button style removing background color. False by default.'
     size:
       type: select
-      label: Button size
+      label: 'Button size'
+      description: 'Size of the button:'
       options:
-        sm: small
-        lg: large
+        sm: 'small'
+        md: 'medium (default)'
+        lg: 'large'
     type:
       type: select
-      label: Button type
+      label: 'Button type'
+      description: 'Sets the button behavior type:'
       options:
-        button: button
-        submit: submit
-        reset: reset
+        button: 'button (default)'
+        submit: 'submit'
+        reset: 'reset'
     disabled:
       type: boolean
-      label: Disabled
-    text_nowrap:
-      type: boolean
-      label: Text nowrap
-    clean_class:
-      type: boolean
-      label: Clean class
+      label: 'Disabled'
+      description: 'If true, the button will not be enabled when clicking. False by default.'
     icon_position:
       type: select
-      label: Icon position
+      label: 'Icon position'
+      description: 'If button has an icon, it can be placed before or after text:'
       options:
-        before: before
-        after: after
-    show_spinner:
-      type: boolean
-      label: Show spinner
-    button_id:
-      type: textfield
-      label: Button id
-      preview: ''
+        before: 'before'
+        after: 'after (default)'
   fields:
     label:
       type: text
-      label: Label
-      description: The button label
-      preview: Submit
-    assistive_text:
-      type: text
-      label: Assistive text
-      description: Additional text hidden with the .visually-hidden class.
-      preview: ''
+      label: 'Button label'
+      description: 'The button label.'
+      preview: 'Submit'
     icon:
-      type: array
-      label: icon
-      description: The button Icon. Optional.
-      preview:
-        name: arrow-right
-        size: s
-        transformation: rotate-0
-    spinner:
-      type: array
-      label: spinner
-      description: The spinner object. Optional.
+      type: text
+      label: 'Icon name'
+      description: 'Add an icon to the button. Optional.'
+      preview: 'arrow-right'

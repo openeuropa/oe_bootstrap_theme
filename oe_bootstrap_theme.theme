@@ -5,6 +5,8 @@
  * The oe_bootstrap_theme hooks.
  */
 
+declare(strict_types = 1);
+
 // Include all files from the includes directory.
 use Drupal\oe_bootstrap_theme\DocumentMediaValueExtractor;
 

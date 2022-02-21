@@ -7,7 +7,7 @@
 
 declare(strict_types = 1);
 
-use Drupal\Core\Config\FileStorage;
+use Drupal\oe_bootstrap_theme\ConfigImporter;
 
 /**
  * Implements hook_install().
@@ -19,30 +19,17 @@ function oe_bootstrap_theme_paragraphs_install($is_syncing): void {
   if ($is_syncing) {
     return;
   }
-  $storage = new FileStorage(drupal_get_path('module', 'oe_bootstrap_theme_paragraphs') . '/config/overrides/');
-  $config_manager = \Drupal::service('config.manager');
-  $entity_type_manager = \Drupal::entityTypeManager();
 
-  $field_config = [
+  $configs = [
     'core.entity_form_display.paragraph.oe_links_block.default',
     'core.entity_form_display.paragraph.oe_social_media_follow.default',
     'core.entity_view_display.paragraph.oe_links_block.default',
     'core.entity_view_display.paragraph.oe_social_media_follow.default',
-    'field.field.paragraph.oe_social_media_follow.field_oe_social_media_variant',
+    'core.entity_form_display.paragraph.oe_description_list.default',
+    'core.entity_view_display.paragraph.oe_description_list.default',
+    'core.entity_form_display.paragraph.oe_accordion_item.default',
+    'core.entity_view_display.paragraph.oe_accordion_item.default',
   ];
 
-  foreach ($field_config as $name) {
-    $configuration = $storage->read($name);
-    if (!$configuration) {
-      throw new \LogicException(sprintf('The configuration value named %s was not found in the storage.', $name));
-    }
-
-    $entity_type = $config_manager->getEntityTypeIdByName($name);
-    /** @var \Drupal\Core\Config\Entity\ConfigEntityStorageInterface $entity_storage */
-    $entity_storage = $entity_type_manager->getStorage($entity_type);
-    $id_key = $entity_storage->getEntityType()->getKey('id');
-    $entity = $entity_storage->load($configuration[$id_key]);
-    $entity = $entity_storage->updateFromStorageRecord($entity, $configuration);
-    $entity->save();
-  }
+  ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/overrides/', $configs);
 }

@@ -1,74 +1,74 @@
 form assertion:
   render:
     markup:
-      '#markup': Hello World!
+      '#markup': 'Hello World!'
     plain:
-      '#plain_text': Papa Was A Rolling Stone <1972>
+      '#plain_text': 'Papa Was A Rolling Stone <1972>'
   assert:
     count:
       'form.oe-bootstrap-theme-markup-rendering-test-form': 1
     contains:
-      - Hello World!
-      - Papa Was A Rolling Stone &lt;1972&gt;
+      'form.oe-bootstrap-theme-markup-rendering-test-form': 'Hello World!Papa Was A Rolling Stone &lt;1972&gt;'
 textarea:
   render:
     '#type': textarea
-    '#title': Textarea
-    '#value': Text
+    '#title': 'Textarea example'
+    '#value': 'Lorem ipsum dolor sit amet.'
   assert:
     equals:
-      'label.form-label': "Textarea"
-      'textarea.form-control': "Text"
+      'label.form-label': 'Textarea example'
+      'textarea.form-control': 'Lorem ipsum dolor sit amet.'
     count:
       'textarea.form-textarea': 1
       'textarea.form-control': 1
 checkbox_assertion:
   render:
     '#type': checkbox
-    '#title': Checkbox
+    '#title': 'Checkbox example'
     '#attributes':
-      'foo': bar
+      'foo': 'bar'
   assert:
-    contains:
-      - 'Checkbox'
-      - 'foo="bar"'
     count:
       'label.form-check-label': 1
       'input.form-checkbox.form-check-input': 1
+      'input[foo=bar]' : 1
+      'input[type=checkbox]': 1
+    equals:
+      'label.form-check-label': 'Checkbox example'
 select:
   render:
     '#type': select
-    '#title': Select
+    '#title': 'Select example'
     '#options':
-      - One
-      - Two
-      - Three
+      - 'One'
+      - 'Two'
+      - 'Three'
   assert:
     equals:
-      'label.form-label': "Select"
-      'option[value=0]': "One"
-      'option[value=1]': "Two"
-      'option[value=2]': "Three"
+      'label.form-label': 'Select example'
+      'option[value=0]': 'One'
+      'option[value=1]': 'Two'
+      'option[value=2]': 'Three'
     count:
       'label.form-label': 1
       'select.form-select': 1
 select_multiple_required:
   render:
     '#type': select
-    '#title': Select Multiple
+    '#title': 'Select Multiple example'
     '#options':
-      - One
-      - Two
-      - Three
+      - 'One'
+      - 'Two'
+      - 'Three'
     '#multiple': true
     '#attributes':
-      'required': "required"
+      'required': 'required'
   assert:
     equals:
-      'label.form-label': "Select Multiple"
-      'option[value=0]': "One"
-      'option[value=1]': "Two"
-      'option[value=2]': "Three"
+      'label.form-label': 'Select Multiple example'
+      'option[value=0]': 'One'
+      'option[value=1]': 'Two'
+      'option[value=2]': 'Three'
     count:
       'label.form-label': 1
       'select.multi-select': 1
@@ -108,3 +108,94 @@ submit_disabled:
       'input[type=submit].form-submit.button.btn': 1
       'input[value=Save]': 1
       'input.btn-primary': 1
+status_messages_error:
+  render:
+    '#theme': 'status_messages'
+    '#message_list':
+      'error':
+        - 'Error message.'
+  assert:
+    count:
+      'div[data-drupal-messages=""]': 1
+      'div.alert': 1
+      'div.alert-danger': 1
+      'div.alert-success': 0
+      'div.alert-warning': 0
+      'div[data-drupal-messages=""] > div.alert': 1
+      'button.btn-close': 1
+    equals:
+      '.alert-content': 'Error message.'
+    contains:
+      'svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#dash-circle-fill'
+status_messages_success:
+  render:
+    '#theme': 'status_messages'
+    '#message_list':
+      'status':
+        - 'Success message.'
+  assert:
+    count:
+      'div[data-drupal-messages=""]': 1
+      'div.alert': 1
+      'div.alert-danger': 0
+      'div.alert-success': 1
+      'div.alert-warning': 0
+      'div[data-drupal-messages=""] > div.alert': 1
+      'button.btn-close': 1
+    equals:
+      '.alert-content': 'Success message.'
+    contains:
+      'svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#check-circle-fill'
+status_messages_warning:
+  render:
+    '#theme': 'status_messages'
+    '#message_list':
+      'warning':
+        - 'Warning message.'
+  assert:
+    count:
+      'div[data-drupal-messages=""]': 1
+      'div.alert': 1
+      'div.alert-danger': 0
+      'div.alert-success': 0
+      'div.alert-warning': 1
+      'div[data-drupal-messages=""] > div.alert': 1
+      'button.btn-close': 1
+    equals:
+      '.alert-content': 'Warning message.'
+    contains:
+      'svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#exclamation-triangle-fill'
+status_messages_multiple:
+  render:
+    '#theme': 'status_messages'
+    '#message_list':
+      'status':
+        - 'Success message 1.'
+        - 'Success message 2.'
+      'warning':
+        - 'Warning message 1.'
+      'error':
+        - 'Error message 1.'
+        - 'Error message 2.'
+        - 'Error message 3.'
+  assert:
+    count:
+      'div[data-drupal-messages=""]': 1
+      'div.alert': 6
+      'div.alert-danger': 3
+      'div.alert-success': 2
+      'div.alert-warning': 1
+      'div[data-drupal-messages=""] > div.alert': 6
+      'div[data-drupal-messages=""] > div.alert-success:nth-child(1)': 1
+      'div[data-drupal-messages=""] > div.alert-success:nth-child(2)': 1
+      'div[data-drupal-messages=""] > div.alert-warning:nth-child(3)': 1
+      'div[data-drupal-messages=""] > div.alert-danger:nth-child(4)': 1
+      'div[data-drupal-messages=""] > div.alert-danger:nth-child(5)': 1
+      'div[data-drupal-messages=""] > div.alert-danger:nth-child(6)': 1
+    equals:
+      'div[data-drupal-messages=""] > div:nth-child(1) .alert-content': 'Success message 1.'
+      'div[data-drupal-messages=""] > div:nth-child(2) .alert-content': 'Success message 2.'
+      'div[data-drupal-messages=""] > div:nth-child(3) .alert-content': 'Warning message 1.'
+      'div[data-drupal-messages=""] > div:nth-child(4) .alert-content': 'Error message 1.'
+      'div[data-drupal-messages=""] > div:nth-child(5) .alert-content': 'Error message 2.'
+      'div[data-drupal-messages=""] > div:nth-child(6) .alert-content': 'Error message 3.'

@@ -1,44 +1,49 @@
 pagination:
-  label: "Pagination"
-  description: "Pagination. https://getbootstrap.com/docs/5.0/components/pagination/"
-  fields:
+  label: 'Pagination'
+  description: 'Showing pagination to indicate a series of related content exists across multiple pages. For more information visit: https://getbootstrap.com/docs/5.0/components/pagination/'
+  settings:
     size:
-      type: "text"
-      label: "Size"
-      preview: "sm"
+      type: select
+      label: 'Size'
+      description: 'Size of the pagination:'
+      options:
+        sm: 'Small'
+        lg: 'Large'
+      preview: 'sm'
     alignment:
-      type: "text"
-      label: "Alignement"
-      preview: "center"
-    aria_label:
-      type: "text"
-      label: "Aria label"
-      preview: ""
-    enable_icon:
+      type: select
+      label: 'Alignment'
+      description: 'Align the pagination to:'
+      options:
+        center: 'center'
+        end: 'end'
+      preview: 'center'
+    enable_icons:
       type: boolean
-      label: "Enable icon"
-      preview: false
+      label: 'Enable icon'
+      description: 'Use icon instead of link labels to previous and next items. False by default.'
+  fields:
     prev:
-      type: "render"
-      label: "Previous link"
+      type: array
+      label: 'Previous link'
+      description: 'Pagination previous link with path and label or icon.'
       preview:
-        path: "#"
-        label: "Previous"
+        path: '#'
+        label: 'Previous'
     next:
-      type: "render"
-      label: "Next link"
+      type: array
+      label: 'Next link'
+      description: 'Pagination next link with path and label or icon.'
       preview:
-        path: "#"
-        label: "Next"
+        path: '#'
+        label: 'Next'
     items:
-      type: "array"
-      label: "Pagination items"
+      type: array
+      label: 'Pagination items'
+      description: 'List of items with path, label, disabled and active to build the pagination.'
       preview:
-        - path: "#"
-          label: "1"
+        - path: '#'
+          label: '1'
           active: true
-        - path: "#"
-          label: "2"
-    extra_classes:
-      type: "text"
-      label: "Extra classes"
+        - path: '#'
+          label: '2'

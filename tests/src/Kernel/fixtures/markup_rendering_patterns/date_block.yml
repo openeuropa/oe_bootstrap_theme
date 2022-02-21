@@ -6,12 +6,10 @@ date_block_default:
       date: '2021-05-26'
   assertions:
     count:
-      'time.bcl-date-block.d-flex.flex-column.align-items-center.justify-content-center.bg-date.text-light.pt-3.rounded-top.mw-date': 1
+      'time.bcl-date-block.d-flex.flex-column.align-items-center.justify-content-center.bg-date.text-light.pt-2.rounded-top.mw-date': 1
       'time[datetime="2021-05-26"]': 1
-      'span[class="pb-3 text-uppercase"]': 1
-      'span[class="bg-light w-100 text-center py-2 text-dark rounded-bottom mb-n1"]': 1
+      'span.py-4.bg-white.border.border-bottom-0.w-100.fs-5.fw-medium.text-dark.text-center.text-uppercase': 1
+      'span.bg-lighter.border.w-100.text-center.fs-5.text-dark.rounded-bottom.mb-n1': 1
     equals:
-      'span.pb-3.text-uppercase': "May"
-      'span[class="bg-light w-100 text-center py-2 text-dark rounded-bottom mb-n1"]': "2021"
-    contains:
-      'span__day': "26"
+      'span.py-4.bg-white.border.border-bottom-0.w-100.fs-5.fw-medium.text-dark.text-center.text-uppercase': '26 May'
+      'span.bg-lighter.border.w-100.text-center.fs-5.text-dark.rounded-bottom.mb-n1': '2021'

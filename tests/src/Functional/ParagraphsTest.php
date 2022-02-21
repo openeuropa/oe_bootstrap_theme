@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Functional;
 
-use Drupal\Core\Url;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\Tests\BrowserTestBase;
@@ -19,7 +18,6 @@ class ParagraphsTest extends BrowserTestBase {
    */
   protected static $modules = [
     'node',
-    'field_ui',
     'oe_bootstrap_theme_paragraphs',
   ];
 
@@ -29,48 +27,13 @@ class ParagraphsTest extends BrowserTestBase {
   protected $defaultTheme = 'stark';
 
   /**
-   * The administration theme name.
-   *
-   * @var string
-   */
-  protected $adminTheme = 'stark';
-
-  /**
-   * A user with administration permissions.
-   *
-   * @var \Drupal\user\UserInterface
-   */
-  protected $adminUser;
-
-  /**
    * {@inheritdoc}
    */
   protected function setUp(): void {
     parent::setUp();
 
-    // Rebuild the ui_pattern definitions to collect the ones provided by
-    // oe_bootstrap_theme itself.
-    \Drupal::service('plugin.manager.ui_patterns')->clearCachedDefinitions();
-
-    $this->adminUser = $this->drupalCreateUser([
-      'access content',
-      'access administration pages',
-      'administer site configuration',
-      'administer users',
-      'administer permissions',
-      'administer content types',
-      'administer node fields',
-      'administer node display',
-      'administer nodes',
-      'bypass node access',
-    ]);
-    $this->drupalGet(Url::fromRoute('user.login'));
-    $this->drupalLogin($this->adminUser);
-    $this->drupalCreateContentType([
-      'type' => 'paragraphs_test',
-      'name' => 'Paragraphs Test',
-    ]);
-    $this->addParagraphsField();
+    $this->createTestContentType();
+    $this->drupalLogin($this->drupalCreateUser([], '', TRUE));
   }
 
   /**
@@ -78,8 +41,7 @@ class ParagraphsTest extends BrowserTestBase {
    */
   public function testLinksBlockParagraph(): void {
     $this->drupalGet('/node/add/paragraphs_test');
-    $page = $this->getSession()->getPage();
-    $page->pressButton('Add Links block');
+    $this->getSession()->getPage()->pressButton('Add Links block');
 
     // Assert the Links Block fields appears.
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_links][0][uri]');
@@ -104,7 +66,7 @@ class ParagraphsTest extends BrowserTestBase {
     $this->submitForm($values, 'Save');
     $this->drupalGet('/node/1');
 
-    // Assert paragraph values are displayed correctly.
+    // Assert paragraph values are printed.
     $this->assertSession()->pageTextContains('EU Links');
     $this->assertSession()->pageTextContains('Example link number 1');
     $this->assertSession()->pageTextContains('Example link number 2');
@@ -115,8 +77,7 @@ class ParagraphsTest extends BrowserTestBase {
    */
   public function testSocialMediaFollowParagraph(): void {
     $this->drupalGet('/node/add/paragraphs_test');
-    $page = $this->getSession()->getPage();
-    $page->pressButton('Add Social media follow');
+    $this->getSession()->getPage()->pressButton('Add Social media follow');
 
     // Assert the Social Media Follow fields appears.
     $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_social_media_links][0][uri]');
@@ -145,16 +106,81 @@ class ParagraphsTest extends BrowserTestBase {
     $this->submitForm($values, 'Save');
     $this->drupalGet('/node/1');
 
-    // Assert paragraph values are displayed correctly.
+    // Assert paragraph values are printed.
     $this->assertSession()->pageTextContains('EU Social Media Follow Links');
     $this->assertSession()->pageTextContains('Example Facebook');
     $this->assertSession()->pageTextContains('More channels');
   }
 
   /**
-   * Adds a field to a paragraph.
+   * Test Accordion paragraphs form.
    */
-  protected function addParagraphsField() {
+  public function testAccordionParagraph(): void {
+    $this->drupalGet('/node/add/paragraphs_test');
+    $page = $this->getSession()->getPage();
+    $page->pressButton('Add Accordion');
+
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_text][0][value]');
+    $this->assertSession()->fieldExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_text_long][0][value]');
+    // Assert the Icon field is not shown.
+    $this->assertSession()->fieldNotExists('oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_icon][0][value]');
+
+    $values = [
+      'title[0][value]' => 'Test Accordion',
+      'oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_text][0][value]' => 'Title item 1',
+      'oe_bt_paragraphs[0][subform][field_oe_paragraphs][0][subform][field_oe_text_long][0][value]' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    ];
+
+    $this->submitForm($values, 'Save');
+    $this->drupalGet('/node/1');
+
+    // Assert paragraph values are displayed correctly.
+    $this->assertSession()->pageTextContains('Title item 1');
+    $this->assertSession()->pageTextContains('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+  }
+
+  /**
+   * Test Description list paragraphs form.
+   */
+  public function testDescriptionListParagraph(): void {
+    $this->drupalGet('/node/add/paragraphs_test');
+    $this->getSession()->getPage()->pressButton('Add Description list');
+
+    $assert_session = $this->assertSession();
+    $assert_session->fieldExists('oe_bt_paragraphs[0][subform][field_oe_title][0][value]');
+    $this->assertEquals([
+      'horizontal' => 'Horizontal',
+      'vertical' => 'Vertical',
+    ], $this->getOptions('oe_bt_paragraphs[0][subform][oe_bt_orientation]'));
+    $assert_session->fieldExists('oe_bt_paragraphs[0][subform][field_oe_description_list_items][0][term]');
+    $assert_session->fieldExists('oe_bt_paragraphs[0][subform][field_oe_description_list_items][0][description][value]');
+
+    $values = [
+      'title[0][value]' => 'Test Description list node title',
+      'oe_bt_paragraphs[0][subform][field_oe_title][0][value]' => 'Description list paragraph',
+      'oe_bt_paragraphs[0][subform][oe_bt_orientation]' => 'horizontal',
+      'oe_bt_paragraphs[0][subform][field_oe_description_list_items][0][term]' => 'Aliquam ultricies',
+      'oe_bt_paragraphs[0][subform][field_oe_description_list_items][0][description][value]' => 'Donec et leo ac velit posuere tempor mattis ac mi. Vivamus nec dictum lectus. Aliquam ultricies placerat eros, vitae ornare sem.',
+    ];
+
+    $this->submitForm($values, 'Save');
+    $this->drupalGet('/node/1');
+
+    // Assert paragraph values are displayed correctly.
+    $assert_session->pageTextContains('Description list paragraph');
+    $assert_session->pageTextContains('Aliquam ultricies');
+    $assert_session->pageTextContains('Donec et leo ac velit posuere tempor mattis ac mi. Vivamus nec dictum lectus. Aliquam ultricies placerat eros, vitae ornare sem.');
+  }
+
+  /**
+   * Creates a node type with a paragraphs field.
+   */
+  protected function createTestContentType() {
+    $this->drupalCreateContentType([
+      'type' => 'paragraphs_test',
+      'name' => 'Paragraphs Test',
+    ]);
+
     // Add a paragraphs field.
     $field_storage = FieldStorageConfig::create([
       'field_name' => 'oe_bt_paragraphs',
@@ -166,18 +192,17 @@ class ParagraphsTest extends BrowserTestBase {
       ],
     ]);
     $field_storage->save();
-    $field = FieldConfig::create([
+    FieldConfig::create([
       'field_storage' => $field_storage,
       'bundle' => 'paragraphs_test',
       'settings' => [
         'handler' => 'default:paragraph',
         'handler_settings' => ['target_bundles' => NULL],
       ],
-    ]);
-    $field->save();
+    ])->save();
 
     $form_display = \Drupal::service('entity_display.repository')->getFormDisplay('node', 'paragraphs_test');
-    $form_display = $form_display->setComponent('oe_bt_paragraphs', ['type' => 'paragraphs']);
+    $form_display = $form_display->setComponent('oe_bt_paragraphs', ['type' => 'oe_paragraphs_variants']);
     $form_display->save();
 
     $view_display = \Drupal::service('entity_display.repository')->getViewDisplay('node', 'paragraphs_test');

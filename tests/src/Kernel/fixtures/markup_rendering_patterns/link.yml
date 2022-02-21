@@ -1,121 +1,155 @@
-link_secondary_disabled_with_icon_before:
+link_pattern_with_icon_before:
   render:
     '#type': pattern
-    '#id': link
+    '#id': 'link'
+    '#fields':
+      settings:
+        icon_position: 'before'
+      label: 'Link to example'
+      path: 'https://example.com'
+      icon: 'alarm'
+  assert:
+    contains:
+      'a > svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#alarm'
+      'a': 'Link to example'
+    count:
+      'a': 1
+      'a[href="https://example.com"]': 1
+      'svg.icon--s': 1
+      'a.disabled': 0
+      # This class indicates icon positioned before.
+      'svg.me-2-5': 1
+      # This class indicates icon positioned after.
+      'svg.ms-2-5': 0
+      'a.text-underline-hover': 0
+link_pattern_disabled_with_icon_after:
+  render:
+    '#type': pattern
+    '#id': 'link'
     '#fields':
       settings:
         disabled: true
-        icon_position: 'before'
-        remove_icon_spacers: false
-        link_id: 'custom_id'
-        link_style: 'secondary'
+        icon_position: 'after'
       label: 'Link to example'
       path: 'https://example.com'
-      icon:
-        name: 'alarm'
+      icon: 'alarm'
   assert:
     contains:
-      'svg': "#alarm"
-      'a[data-drupal-selector=link]': "Link to example"
+      'a > svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#alarm'
+      'a': 'Link to example'
     count:
-      'a[data-drupal-selector=link]': 1
+      'a': 1
+      'a[href="https://example.com"]': 1
+      # Check that only one class is added.
+      'a[class="disabled"]': 1
       'svg.icon--s': 1
-      'a.link-secondary': 1
-      '#custom_id': 1
       'a.disabled': 1
-      'svg.me-2-5': 1
+      'svg.me-2-5': 0
+      'svg.ms-2-5': 1
       'a.text-underline-hover': 0
-link_secondary_disabled_with_icon_without_label_removing_icon_spaces_standalone:
+link_pattern_disabled_with_icon_without_label_removing_icon_spaces_standalone:
   render:
     '#type': pattern
-    '#id': link
+    '#id': 'link'
     '#fields':
       settings:
         disabled: true
         icon_position: 'after'
         remove_icon_spacers: true
-        link_id: 'custom_id'
-        link_style: 'secondary'
         standalone: true
       path: 'https://example.com'
       icon:
         name: 'alarm'
+        path: '/custom/icon/path/icons.svg'
   assert:
     contains:
-      'svg': "#alarm"
+      'a > svg': '/custom/icon/path/icons.svg#alarm'
     count:
-      'a[data-drupal-selector=link]': 1
+      'a': 1
+      'a[href="https://example.com"]': 1
       'svg.icon--s': 1
-      'a.link-secondary': 1
-      '#custom_id': 1
       'a.disabled': 1
       'svg.ms-2-5': 0
       'a.text-underline-hover': 1
-link_secondary_disabled_with_icon_after_without_removing_icon_spaces:
+link_pattern_disabled_with_icon_after_without_removing_icon_spaces:
   render:
     '#type': pattern
-    '#id': link
+    '#id': 'link'
     '#fields':
       settings:
         disabled: true
         icon_position: 'after'
-        remove_icon_spacers: false
-        link_id: 'custom_id'
-        link_style: 'secondary'
       label: 'Link to example'
       path: 'https://example.com'
       icon:
         name: 'alarm'
   assert:
     contains:
-      'svg': "#alarm"
-      'a[data-drupal-selector=link]': "Link to example"
+      'a > svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#alarm'
+      'a': 'Link to example'
     count:
-      'a[data-drupal-selector=link]': 1
+      'a': 1
+      'a[href="https://example.com"]': 1
       'svg.icon--s': 1
-      'a.link-secondary': 1
-      '#custom_id': 1
       'a.disabled': 1
       'svg.ms-2-5': 1
       'a.text-underline-hover': 0
-link_dark_enabled_without_icon:
+link_pattern_enabled_without_icon:
   render:
     '#type': pattern
-    '#id': link
+    '#id': 'link'
     '#fields':
       settings:
         disabled: false
-        link_id: 'custom_id'
-        link_style: 'dark'
       label: 'Link to example'
       path: 'https://example.com'
   assert:
-    contains:
-      'a[data-drupal-selector=link]': "Link to example"
+    equals:
+      'a': 'Link to example'
     count:
-      'a[data-drupal-selector=link]': 1
-      'a.link-dark': 1
-      '#custom_id': 1
+      'a': 1
+      'a[href="https://example.com"]': 1
+      'svg': 0
       'a.disabled': 0
       'a.text-underline-hover': 0
-link_warning_enabled_without_icon_standalone:
+link_pattern_enabled_without_icon_standalone:
   render:
     '#type': pattern
-    '#id': link
+    '#id': 'link'
     '#fields':
       settings:
-        disabled: false
-        link_id: 'custom_id'
-        link_style: 'warning'
         standalone: true
       label: 'Link to example'
       path: 'https://example.com'
   assert:
-    contains:
-      'a[data-drupal-selector=link]': "Link to example"
+    equals:
+      'a': 'Link to example'
     count:
-      'a[data-drupal-selector=link]': 1
-      'a.link-warning': 1
-      '#custom_id': 1
+      'a': 1
+      'a[href="https://example.com"]': 1
+      'svg': 0
       'a.disabled': 0
       'a.text-underline-hover': 1
+link_pattern_attributes:
+  render:
+    '#type': pattern
+    '#id': 'link'
+    '#fields':
+      settings:
+        standalone: true
+      label: 'Link to example'
+      path: 'https://example.com'
+      attributes:
+        class:
+          - 'first'
+          - 'second'
+        id: 'link-id'
+        data-attribute: 'some-value'
+  assert:
+    equals:
+      'a.first.second.text-underline-hover': 'Link to example'
+    count:
+      'a': 1
+      'a[href="https://example.com"]': 1
+      'svg': 0
+      'a#link-id.first.second.text-underline-hover': 1

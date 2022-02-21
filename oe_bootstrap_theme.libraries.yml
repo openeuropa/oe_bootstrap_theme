@@ -16,9 +16,13 @@ style:
 
 drupal.progress:
   js:
-    assets/js/progress.js: {}
+    resources/js/libraries/extend/progress.js: {}
+
+inpage_navigation:
+  js:
+    resources/js/inpage_navigation.js: {}
 
 slimselect:
   js:
     assets/js/slimselect.min.js: {}
-    assets/js/form_select_multiple.js: {}
+    resources/js/form_select_multiple.js: {}

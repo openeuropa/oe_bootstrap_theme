@@ -50,33 +50,27 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'blockquote',
     'breadcrumb',
     'button',
-    'button_group',
     'card',
     'card_layout',
     'carousel',
-    'collapse',
+    'content_banner',
     'date_block',
+    'description_list',
     'dropdown',
     'file',
     'featured_media',
-    'grid_row',
     'icon',
-    'jumbotron',
+    'inpage_navigation',
     'link',
     'links_block',
-    'list',
     'list_group',
     'listing',
     'modal',
-    'nav',
+    'navigation',
     'navbar',
     'offcanvas',
     'pagination',
-    'popover',
     'progress',
-    'spinner',
-    'table',
-    'tooltip',
     'timeline',
   ];
 
@@ -184,25 +178,31 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     $crawler = new Crawler($html);
     $assertions += array_fill_keys(['count', 'equals', 'contains'], []);
 
+    // Catch any unexpected assertion keys. Compare with an empty array to show
+    // only the unexpected keys in the exception message.
+    $this->assertEquals([], array_diff(array_keys($assertions), [
+      'count',
+      'equals',
+      'contains',
+    ]));
+
     // Assert presence of given strings.
-    foreach ($assertions['contains'] as $string) {
-      $this->assertStringContainsString($string, $html);
+    foreach ($assertions['contains'] as $selector => $string) {
+      $element = $crawler->filter($selector);
+      $this->assertNotEmpty($element, sprintf('No elements found with selector "%s" in:%s%s', $selector, PHP_EOL, $html));
+      $this->assertStringContainsString($string, $element->html(), sprintf('Failed assertion for selector "%s".', $selector));
     }
 
     // Assert occurrences of given elements.
-    foreach ($assertions['count'] as $name => $expected) {
-      $this->assertCount($expected, $crawler->filter($name), "Error counting {$name}");
+    foreach ($assertions['count'] as $selector => $expected) {
+      $this->assertCount($expected, $crawler->filter($selector), sprintf('Wrong count for selector "%s" in:%s%s', $selector, PHP_EOL, $html));
     }
 
     // Assert that a given element content equals a given string.
-    foreach ($assertions['equals'] as $name => $expected) {
-      try {
-        $actual = trim($crawler->filter($name)->html());
-      }
-      catch (\InvalidArgumentException $exception) {
-        $this->fail(sprintf('Element "%s" not found (exception: "%s") in: ' . PHP_EOL . ' %s', $name, $exception->getMessage(), $html));
-      }
-      $this->assertSame($expected, $actual);
+    foreach ($assertions['equals'] as $selector => $expected) {
+      $element = $crawler->filter($selector);
+      $this->assertNotEmpty($element, sprintf('No elements found with selector "%s" in:%s%s.', $selector, PHP_EOL, $html));
+      $this->assertSame($expected, trim($element->html()), sprintf('Failed assertion for selector "%s".', $selector));
     }
   }
 

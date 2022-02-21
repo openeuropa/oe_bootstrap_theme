@@ -4,21 +4,13 @@
  * Link pattern.
  */
 #}
-{% if icon %}
-  {% set _icon = icon|merge({
-      path: bcl_icon_path
-    })
-  %}
-{% endif %}
 {% include '@oe-bcl/link' with {
   'label': label,
   'path': path,
-  'variant': link_style,
   'disabled': disabled,
-  'id': link_id,
-  'icon': _icon,
+  'icon': icon,
   'icon_position': icon_position,
   'remove_icon_spacers': remove_icon_spacers,
   'standalone': standalone,
   'attributes': attributes,
-} %}
+} only %}

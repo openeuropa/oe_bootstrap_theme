@@ -1,71 +1,30 @@
 dropdown:
-  label: "Dropdown"
-  description: "Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. https://v5.getbootstrap.com/docs/5.0/components/dropdowns/"
+  label: 'Dropdown'
+  description: 'Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. For more information visit: https://v5.getbootstrap.com/docs/5.0/components/dropdowns/'
   settings:
-    link:
+    dark_mode:
       type: boolean
-      label: link
-      description: Show as a link
-      preview: false
-    direction:
-      type: select
-      label: Direction
-      options:
-        dropdown: "dropdown"
-        dropup: "dropup"
-        dropend: "dropend"
-        dropstart: "dropstart"
-    alignment:
-      type: select
-      label: Alignment
-      options:
-        dropdown-menu-end: "dropdown-menu-end"
-        dropdown-menu-sm-end: "dropdown-menu-sm-end"
-        dropdown-menu-md-end: "dropdown-menu-md-end"
-        dropdown-menu-lg-end: "dropdown-menu-lg-end"
-        dropdown-menu-xl-end: "dropdown-menu-xl-end"
-        dropdown-menu-xxl-end: "dropdown-menu-xxl-end"
-        dropdown-menu-start: "dropdown-menu-start"
-        dropdown-menu-sm-start: "dropdown-menu-sm-start"
-        dropdown-menu-md-start: "dropdown-menu-md-start"
-        dropdown-menu-lg-start: "dropdown-menu-lg-start"
-        dropdown-menu-xl-start: "dropdown-menu-xl-start"
-        dropdown-menu-xxl-start: "dropdown-menu-xxl-start"
-    dark:
-      type: boolean
-      label: Dark mode
-      description: Set dark mode
-      preview: false
-    remove_wrapper:
-      type: boolean
-      label: Remove wrapper
-      description: Remove wrapper for this component
-      preview: false
-    dropdown_id:
-      type: textfield
-      label: Dropdown id
-      preview: ''
+      label: 'Dark mode'
+      description: 'When enabled, sets dark mode. Defaults to FALSE.'
   fields:
-    trigger:
-      type: object
-      label: "Dropdown toggle"
-      description: "Object of Button or Link component"
-      preview:
-        label: "Dropdown toggle"
-        path: "#"
-    dropdown_items:
+    button_label:
+      type: string
+      label: 'Dropdown button label'
+      description: 'The label to show in the toggle button.'
+      preview: 'Dropdown toggle'
+    items:
       type: array
-      label: "dropdown items"
-      description: "Array of dropdown items"
+      label: 'Dropdown items'
+      description: 'An array of dropdown items.'
       preview:
-        - label: "I'm a link"
-          path: "#"
-        - label: "I'm a button"
+        - label: 'I am a link'
+          path: '#'
+        - label: 'I am a button'
           button: true
         - divider: true
-        - label: "I'm a disabled button"
+        - label: 'I am a disabled button'
           button: true
           disabled: true
-        - label: "I'm a active button"
+        - label: 'I am an active button'
           button: true
           active: true

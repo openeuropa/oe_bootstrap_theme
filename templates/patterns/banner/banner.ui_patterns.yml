@@ -1,62 +1,61 @@
 banner:
-  label: "Banner"
-  description: "Banner or heroes with text and/or background image and/or with call to action. https://getbootstrap.com/docs/5.0/examples/heroes/"
+  label: 'Banner'
+  description: 'Banner or heroes with text and/or background image and/or with call to action. For more information: https://getbootstrap.com/docs/5.0/examples/heroes/'
   variants:
     default:
-      label: Default text banner
+      label: 'Default text banner'
+      description: 'Gray text banner.'
     primary:
-      label: Primary text banner
+      label: 'Primary text banner'
+      description: 'Text banner with a primary style.'
     image:
-      label: Image banner
+      label: 'Image banner'
+      description: 'Banner with text and an image.'
     image_shade:
-      label: Image shade banner
+      label: 'Image shade banner'
+      description: 'Banner with text and a shade image.'
   settings:
     shade:
-      type: "boolean"
-      label: "Shade"
-      description: "Enable the shadow effect to the image."
-      preview: false
+      type: boolean
+      label: 'Shade'
+      description: 'Enable the shadow effect to the image. False by default.'
     hero:
-      type: "boolean"
-      label: "Hero"
-      description: "Display banner as hero banner"
-      preview: false
+      type: boolean
+      label: 'Hero'
+      description: 'Display as hero banner. False by default.'
     full_width:
-      type: "boolean"
-      label: "Full width"
-      description: "Possibility of having a full-width banner within a bootstrap container"
-      preview: false
+      type: boolean
+      label: 'Full width'
+      description: 'Possibility of having a full-width banner within a bootstrap container. False by default.'
     centered:
-      type: "boolean"
-      label: "Centered"
-      description: "Whether the content of the banner is centered or not"
+      type: boolean
+      label: 'Centered'
+      description: 'Whether the content of the banner is centered or not. False by default.'
       preview: true
   fields:
     title:
-      type: "text"
-      label: "Title"
-      description: "Heading of the banner"
-      preview: "EU Budget for the future"
+      type: text
+      label: 'Title'
+      description: 'Title of the banner.'
+      preview: 'EU Budget for the future'
     description:
-      type: "text"
-      label: "Description"
-      description: "Sub-heading of the banner"
-      preview: "Innovation, economy, environment and geopolitics"
-    link:
-      type: "array"
-      label: "Link"
-      description: "Call to action link"
+      type: text
+      label: 'Description'
+      description: 'Sub-heading of the banner.'
+      preview: 'Innovation, economy, environment and geopolitics'
+    call_to_action:
+      type: array
+      label: 'Call to action'
+      description: 'Link to print a CTA button. Optional.'
       preview:
-        label: "Subscribe"
-        path: "https://example.com"
-        variant: "primary"
-        icon_position: "after"
+        label: 'Subscribe'
+        path: 'https://example.com'
+        link_style: 'warning'
+        icon_position: 'after'
         icon:
-          name: "chevron-right"
-          size: s
-          path: "/assets/icons/bootstrap-icons.svg"
+          name: 'chevron-right'
     image:
-      type: "text"
-      label: "Image"
-      description: "URL to the image"
-      preview:  "https://placeimg.com/1000/500/arch"
+      type: 'text'
+      label: 'Image'
+      description: 'URL of the image. Optional.'
+      preview:  'https://placeimg.com/1000/500/arch'

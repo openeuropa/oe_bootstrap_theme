@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Theme override to display the 'Description list' #type paragraph.
+ *
+ * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
+ */
+#}
+
+{% if title is not empty %}
+  <h4 class="fw-bold mb-4">{{ title }}</h4>
+{% endif %}
+
+{{ pattern('description_list', {
+  'items': items,
+  'orientation': orientation,
+}) }}

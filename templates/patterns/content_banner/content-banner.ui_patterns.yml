@@ -1,0 +1,43 @@
+content_banner:
+  label: 'Content banner'
+  description: 'Shows the content summary along with the title, image and badges.'
+  fields:
+    background:
+      type: string
+      label: 'Background'
+      description: 'Set a gray or white background at the content banner. Defaults to white.'
+      escape: false
+      preview: 'gray'
+    image:
+      type: ImageValueObject
+      label: 'Image'
+      description: 'Image of the content.'
+      preview:
+        src: 'https://placeimg.com/255/255/tech'
+        alt: 'Alternative text for content banner image'
+    title:
+      type: text
+      label: 'Title'
+      description: 'Title of the content.'
+      preview: 'This is the title of this page'
+    content:
+      type: text
+      label: 'Content'
+      description: 'Text with the summary of the content.'
+      preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec. Sed facilisis dictum vestibulum. Fusce commodo hendrerit diam, pretium tempus leo varius sit amet. Etiam interdum, orci at sagittis luctus, lorem libero tempus mauris, a fermentum libero orci semper lacus. Duis tristique fringilla magna, eu egestas dolor molestie non.'
+    meta:
+      type: array
+      label: 'Meta'
+      description: 'Miscellaneous information as date, author, etc.'
+      preview:
+        - '26 May 2020'
+        - '1 comment'
+    badges:
+      type: array
+      label: 'Badges'
+      description: 'List of badges.'
+      preview:
+        - label: 'Primary badge'
+          rounded_pill: true
+        - label: 'Secondary badge'
+          rounded_pill: true

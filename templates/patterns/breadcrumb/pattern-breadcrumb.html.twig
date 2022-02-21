@@ -1,10 +1,11 @@
 {#
 /**
  * @file
- * Breadcrumb.
+ * Breadcrumb pattern.
  */
 #}
 {% include '@oe-bcl/breadcrumb' with {
   'links': items,
-  'icons_path': icons_path
-} %}
+  'icons_path': bcl_icon_path,
+  'attributes': attributes,
+} only %}

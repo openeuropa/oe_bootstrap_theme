@@ -4,43 +4,51 @@
  * Featured media pattern.
  */
 #}
-{% macro featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) %}
+{% macro featured_media(embedded_media, image, caption, ratio) %}
   {% include '@oe-bcl/featured-media' with {
     'embedded_media': embedded_media,
     'image': image,
-    'poster_image': poster_image,
     'content': caption,
-    'content_classes': content_classes,
+    'content_classes': 'bg-light p-3',
     'ratio': ratio,
-    'sources': sources,
-    'tracks': tracks,
-  } %}
+    'attributes': attributes,
+  } only %}
 {% endmacro %}
 
-{% set caption = not paragraph.field_oe_plain_text_long.isEmpty ? content.field_oe_plain_text_long|render %}
+<div class="bcl-featured-media">
+  {% if subtitle or text or link %}
+    {% set text_alignment_class = 'order-md-1' %}
+    {% set video_alignment_class = 'order-md-2' %}
+    {% if text_position == 'right' %}
+      {% set text_alignment_class = 'order-md-2' %}
+      {% set video_alignment_class = 'order-md-1' %}
+    {% endif %}
 
-{% if inside_text %}
-  {% set text_alignment_class = 'order-md-1' %}
-  {% set video_alignment_class = 'order-md-2' %}
-  {% if alignment == 'right' %}
-    {% set text_alignment_class = 'order-md-2' %}
-    {% set video_alignment_class = 'order-md-1' %}
+    <h3 class="mb-4">{{ title }}</h3>
+    <div class="row">
+      <div class="col-12 col-md-6 {{ text_alignment_class }}">
+        {% if subtitle %}
+          <h5 class="text-secondary">{{ subtitle }}</h5>
+        {% endif %}
+        {{ text }}
+        {% if link %}
+          {{ pattern('link', {
+            label: link.label,
+            path: link.path,
+            variant: 'link',
+            icon: link.icon
+          }) }}
+        {% endif %}
+      </div>
+      <div class="col-12 col-md-6 {{ video_alignment_class }}">
+        {{ _self.featured_media(embedded_media, image, caption, ratio) }}
+      </div>
+    </div>
+  {% else %}
+    <div class="row">
+      <div class="col-12 col-md-4">
+        {{ _self.featured_media(embedded_media, image, caption, ratio) }}
+      </div>
+    </div>
   {% endif %}
-
-  <h3 class="mb-4"> {{ content.field_oe_title }} </h3>
-  <div class="row">
-    <div class="col-12 col-md-6 {{ text_alignment_class }}">
-      {{ content.field_oe_text_long }}
-      {{ content.field_oe_link }}
-    </div>
-    <div class="col-12 col-md-6 {{ video_alignment_class }}">
-      {{ _self.featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) }}
-    </div>
-  </div>
-{% else %}
-  <div class="row">
-    <div class="col-12 col-md-4">
-      {{ _self.featured_media(embedded_media, image, poster_image, caption, content_classes, ratio, sources, tracks) }}
-    </div>
-  </div>
-{% endif %}
+</div>

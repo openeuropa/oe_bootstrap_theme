@@ -1,53 +1,40 @@
 list_group:
-  label: List Group
-  description: "List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within. https://v5.getbootstrap.com/docs/5.0/components/list-group/"
+  label: 'List Group'
+  description: 'List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within. For more information visit https://v5.getbootstrap.com/docs/5.0/components/list-group/'
   settings:
     type:
       type: select
-      label: Type
-      description: The most basic list group is an unordered list with list items and the proper classes. Build upon it with the options that follow, or with your own CSS as needed. ['unordered', 'ordered', 'actionable']
+      label: 'Type'
+      description: 'The list of possible list types is:'
       options:
-        unordered: unordered
-        ordered: ordered
-        actionable: actionable
-      preview: unordered
+        unordered: 'unordered (default)'
+        ordered: 'ordered'
+        actionable: 'actionable'
     flush:
       type: boolean
-      label: Flush
-      description: Add flush to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards).
-    horizontal:
-      type: select
-      label: Horizontal
-      description: "Add Horizontal to change the layout of list group items from vertical to horizontal across all breakpoints. Currently horizontal list groups cannot be combined with flush list groups. Only with Bootstrap 4.3+"
-      options:
-        horizontal: Add list-group-horizontal class to the list
-        horizontal-sm: Add list-group-horizontal-sm class to the list
-        horizontal-md: Add list-group-horizontal-md class to the list
-        horizontal-lg: Add list-group-horizontal-lg class to the list
-        horizontal-xl: Add list-group-horizontal-xl class to the list
-        horizontal-xxl: Add list-group-horizontal-xxl class to the list
+      label: 'Flush'
+      description: 'When enabled, adds flush to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards). False by default.'
   fields:
     items:
       type: array
-      label: List group items
-      description: "Array of objects: list item object or Button and Link component object if type is actionable"
+      label: 'List group items'
+      description: 'Array of objects: List item object or Button and Link component object if type is actionable.'
       preview:
-        - variant: "danger"
-          html: "Label 1"
-        - variant: "secondary"
-          html: "Label 2"
-        - variant: "primary"
-          html: "Label 3"
-        - label: "Example form input"
+        - variant: 'danger'
+          html: 'Label 1'
+        - variant: 'secondary'
+          html: 'Label 2'
+        - variant: 'primary'
+          html: 'Label 3'
+        - label: 'Example form input'
           required: FALSE
           readonly: FALSE
-          id: "example-form-input-1"
-          size: "sm"
+          id: 'example-form-input-1'
+          size: 'sm'
           input: TRUE
-          input_type: "checkbox"
-        - variant: "warning"
-          html: "Label 5"
-          extra_classes: "d-flex justify-content-between align-items-center"
+          input_type: 'checkbox'
+        - variant: 'warning'
+          html: 'Label 5'
           badge:
-            label: "10"
+            label: '10'
             rounded_pill: TRUE

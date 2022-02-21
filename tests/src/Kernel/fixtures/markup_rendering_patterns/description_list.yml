@@ -1,0 +1,102 @@
+description_list_default:
+  render:
+    '#type': pattern
+    '#id': description_list
+    '#fields':
+      settings:
+        orientation: default
+      items:
+        - term:
+            - label: 'Single label with icon'
+              icon: 'geo-alt-fill'
+          definition: 'Description of first term text goes here.'
+        - term:
+            - label: 'First label without icon'
+            - label: 'Second label with icon'
+              icon: 'calendar-event'
+          definition: 'Description of second term text goes here.'
+        - term:
+            - label:
+              - '#markup': 'A label with <em>some</em> markup.'
+          definition:
+            - label:
+                - '#markup': '<p class="mb-2">First line description of third term text goes here.</p>'
+            - label:
+                - '#markup': 'Second line description of third term text goes here.'
+        # This entry covers the scenario of passing an array as icon.
+        - term:
+          - label: 'Custom icon size'
+            icon:
+              name: 'bicycle'
+              size: 'xl'
+          definition: 'This is a bigger icon.'
+        # This entry covers the scenario when a simple string is passed as term, skipping the "label" key.
+        - term: 'A single term without icon.'
+          definition: 'Yet another definition text.'
+  assertions:
+    count:
+      'dl': 1
+      'dl.d-md-grid': 0
+      'dt': 6
+      'dd': 6
+      'svg': 3
+      'svg.me-2.bi.icon--xs': 2
+      'svg.me-2.bi.icon--xl': 1
+      'dl > dt:nth-of-type(5) > svg.me-2.bi.icon--xl': 1
+    contains:
+      'dl > dt:nth-of-type(1) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#geo-alt-fill'
+      'dl > dt:nth-of-type(3) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#calendar-event'
+      'dl > dt:nth-of-type(5) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#bicycle'
+    equals:
+      'dl > dt:nth-child(1) > p': 'Single label with icon'
+      'dl > dd:nth-child(2)': 'Description of first term text goes here.'
+      'dl > dt:nth-child(3)': 'First label without icon'
+      'dl > dt:nth-child(4) > p': 'Second label with icon'
+      'dl > dd:nth-child(5)': 'Description of second term text goes here.'
+      'dl > dt:nth-child(6)': 'A label with <em>some</em> markup.'
+      'dl > dd:nth-child(7)': '<p class="mb-2">First line description of third term text goes here.</p>'
+      'dl > dd:nth-child(8)': 'Second line description of third term text goes here.'
+      'dl > dt:nth-child(9) > p': 'Custom icon size'
+      'dl > dd:nth-child(10)': 'This is a bigger icon.'
+      'dl > dt:nth-child(11)': 'A single term without icon.'
+      'dl > dd:nth-child(12)': 'Yet another definition text.'
+description_list_horizontal:
+  render:
+    '#type': pattern
+    '#id': description_list
+    '#fields':
+      settings:
+        orientation: horizontal
+      items:
+        - term:
+          - label: 'Single label with icon'
+            icon: 'geo-alt-fill'
+          definition: 'Description of first term text goes here.'
+        - term:
+          - label: 'First label without icon'
+          - label: 'Second label with icon'
+            icon: 'calendar-event'
+          definition: 'Description of second term text goes here.'
+        - term: 'A single term without icon.'
+          definition:
+            - label: 'First definition for third term.'
+            - label: 'Second definition for third term.'
+  assertions:
+    count:
+      'dl': 1
+      'dl.d-md-grid.grid-3-9': 1
+      'dt': 4
+      'dd': 4
+      'svg.me-2.bi.icon--xs': 2
+    contains:
+      'dl > div:nth-child(1) > dt > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#geo-alt-fill'
+      'dl > div:nth-child(3) > dt:nth-child(2) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#calendar-event'
+    equals:
+      'dl > div:nth-child(1) > dt > p': 'Single label with icon'
+      'dl > dd:nth-child(2)': 'Description of first term text goes here.'
+      'dl > div:nth-child(3) > dt:nth-child(1)': 'First label without icon'
+      'dl > div:nth-child(3) > dt:nth-child(2) > p': 'Second label with icon'
+      'dl > dd:nth-child(4)': 'Description of second term text goes here.'
+      'dl > div:nth-child(5) > dt': 'A single term without icon.'
+      'dl > div:nth-child(6) > dd:nth-child(1)': 'First definition for third term.'
+      'dl > div:nth-child(6) > dd:nth-child(2)': 'Second definition for third term.'

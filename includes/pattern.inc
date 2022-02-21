@@ -5,7 +5,11 @@
  * Theme and preprocess functions for patterns.
  */
 
-use Drupal\Core\Url;
+declare(strict_types = 1);
+
+use Drupal\Component\Utility\Html;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 
 /**
  * Implements hook_preprocess_HOOK() for badge_preview patterns.
@@ -26,22 +30,6 @@ function oe_bootstrap_theme_preprocess_page(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for card patterns.
- */
-function oe_bootstrap_theme_preprocess_pattern_card(array &$variables) {
-  if (array_key_exists('image', $variables) && is_array($variables['image'])) {
-    foreach ($variables['image'] as &$item) {
-      _oe_bootstrap_theme_add_card_image_class($item, $variables['variant']);
-    }
-  }
-  if (array_key_exists('links', $variables) && is_array($variables['links'])) {
-    foreach ($variables['links'] as &$item) {
-      _oe_bootstrap_theme_add_card_link_class($item);
-    }
-  }
-}
-
-/**
  * Implements hook_preprocess_HOOK() for dropdown pattern.
  */
 function oe_bootstrap_theme_preprocess_pattern_dropdown(array &$variables) {
@@ -50,113 +38,126 @@ function oe_bootstrap_theme_preprocess_pattern_dropdown(array &$variables) {
       $item['#attributes']['class'][] = 'dropdown-item';
     }
   }
-}
 
-/**
- * Implements hook_preprocess_HOOK() for dropdown pattern preview.
- */
-function oe_bootstrap_theme_preprocess_pattern_dropdown__preview(array &$variables) {
-  _oe_bootstrap_theme_preprocess_pattern_dropdown_preview($variables);
-}
-
-/**
- * Implements hook_preprocess_HOOK() for dropdown pattern custom preview.
- */
-function oe_bootstrap_theme_preprocess_pattern_dropdown__variant_custom__preview(array &$variables) {
-  _oe_bootstrap_theme_preprocess_pattern_dropdown_preview($variables);
-}
-
-/**
- * Convert URL string to object.
- */
-function _oe_bootstrap_theme_preprocess_pattern_dropdown_preview(&$variables) {
-  foreach ($variables['dropdown_items'] as &$item) {
-    if (isset($item['#url'])) {
-      $item['#url'] = Url::fromUri($item['#url']);
-    }
-  }
-}
-
-/**
- * Add expected class in card's image.
- */
-function _oe_bootstrap_theme_add_card_image_class(&$item, $variant) {
-  $class = 'card-img-top';
-  if ($variant === 'overlay') {
-    $class = 'card-img';
-  }
-  if (is_array($item) && array_key_exists('#theme', $item)) {
-    if ($item['#theme'] === 'image') {
-      $item['#attributes']['class'][] = $class;
-    }
-    if ($item['#theme'] === 'image_formatter') {
-      $item['#item_attributes']['class'][] = $class;
-    }
-  }
-  if (is_array($item)) {
-    foreach ($item as &$next) {
-      _oe_bootstrap_theme_add_card_image_class($next, $variant);
-    }
-  }
-}
-
-/**
- * Add expected class in card's link.
- */
-function _oe_bootstrap_theme_add_card_link_class(&$item) {
-  $class = 'card-link';
-  if (is_array($item) && array_key_exists('#type', $item)) {
-    if ($item['#type'] === 'link') {
-      $item['#attributes']['class'][] = $class;
-    }
-    if ($item['#type'] === 'html_tag' && $item['#tag'] === 'a') {
-      $item['#attributes']['class'][] = $class;
-    }
-  }
-  if (is_array($item)) {
-    foreach ($item as &$next) {
-      _oe_bootstrap_theme_add_card_link_class($next);
-    }
-  }
+  $variables['dropdown_id'] = Html::getUniqueId('bcl-dropdown');
 }
 
 /**
  * Implements hook_preprocess_HOOK() for carousel patterns.
  */
 function oe_bootstrap_theme_preprocess_pattern_carousel(array &$variables) {
-  // Move first image of each slide in a specific array key.
-  if (array_key_exists('slides', $variables) && is_array($variables['slides'])) {
-    foreach ($variables['slides'] as &$slide) {
-      $slide['image'] = _oe_bootstrap_theme_extract_carousel_image($slide);
-    }
-  }
-
-  // Nicer preview with fixed width and local backgrounds.
-  // @code
-  // if ($variables['context']->getType() == 'preview') {
-  //   $variables['attributes']['style'] = "width: 800px";
-  // }
-  // @endcode
+  $variables['carousel_id'] = Html::getUniqueId('bcl-carousel');
 }
 
 /**
- * Extract image from carousel slide.
+ * Implements hook_preprocess_HOOK().
  */
-function _oe_bootstrap_theme_extract_carousel_image(&$item) {
-  if (is_array($item) && array_key_exists('#theme', $item)) {
-    if ($item['#theme'] === 'image' || $item['#theme'] === 'image_formatter') {
-      $image = $item;
-      $item = [];
-      return $image;
+function oe_bootstrap_theme_preprocess_pattern_offcanvas(array &$variables): void {
+  $variables['offcanvas_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl_offcanvas');
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for description list pattern.
+ */
+function oe_bootstrap_theme_preprocess_pattern_description_list(&$variables) {
+  // Multiple terms can be passed for each item. Process all the entries to
+  // add path and size to icons, if not yet specified.
+  foreach ($variables['items'] as &$item) {
+    // Allow to pass a single term, without forcing users to pass an array with
+    // the "label" key in it. This covers for a bug in the BCL pattern.
+    if (!is_array($item['term'])) {
+      $item['term'] = [
+        ['label' => $item['term']],
+      ];
+      continue;
     }
-  }
-  if (isset($item) && is_array($item)) {
-    foreach ($item as &$next) {
-      $dig = _oe_bootstrap_theme_extract_carousel_image($next);
-      if ($dig) {
-        return $dig;
+
+    foreach ($item['term'] as &$term) {
+      if (is_array($term) && !empty($term['icon'])) {
+        // If the icon is not an array, the icon name has been passed.
+        if (!is_array($term['icon'])) {
+          $term['icon'] = [
+            'name' => $term['icon'],
+          ];
+        }
+        $term['icon'] += [
+          'size' => 'xs',
+          'path' => $variables['bcl_icon_path'],
+        ];
       }
     }
   }
-  return FALSE;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_accordion(array &$variables): void {
+  $variables['accordion_id'] = Html::getUniqueId('bcl-accordion');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_modal(array &$variables): void {
+  $variables['modal_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl-modal');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_link(array &$variables): void {
+  if (!isset($variables['icon'])) {
+    return;
+  }
+
+  // Convert to array when only the icon name has been passed.
+  if (!is_array($variables['icon'])) {
+    $variables['icon'] = [
+      'name' => $variables['icon'],
+    ];
+  }
+
+  $variables['icon'] += [
+    'path' => $variables['bcl_icon_path'],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_navbar(array &$variables): void {
+  $variables['collapse_id'] = Html::getUniqueId('bcl-navbar');
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for featured media pattern.
+ */
+function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
+  if (!isset($variables['image'])) {
+    return;
+  }
+
+  // This conversion is needed only to run markup rendering tests, as they
+  // are reading from a yaml file where we cannot specify objects.
+  // Do not ever rely on this for your patterns.
+  // @todo Remove this! Code duplication below is intentional, these lines are
+  //   to be removed, do not refactor unless to delete them.
+  if (is_array($variables['image']) && !empty($variables['image'])) {
+    $variables['image'] = ImageValueObject::fromArray($variables['image']);
+  }
+
+  if ($variables['image'] instanceof ImageValueObjectInterface) {
+    // Transform an object implementing ImageValueObjectInterface to our own
+    // implementation, so that we can use the specific method.
+    $variables['image'] = ImageValueObject::fromArray($variables['image']->getArray())
+      ->toRenderArray();
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for inpage navigation pattern.
+ */
+function oe_bootstrap_theme_preprocess_pattern_inpage_navigation(&$variables): void {
+  $variables['inpage_navigation_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl-inpage-navigation');
 }

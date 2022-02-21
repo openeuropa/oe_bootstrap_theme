@@ -7,19 +7,15 @@ badge_dimissible_with_rounded_pill:
         dismissible: true
         rounded_pill: true
         background: 'secondary'
-      label: "A simple badge!"
-      assistive_text: "A simple badge assistive text."
+      label: 'A simple badge!'
   assertions:
     count:
       'span[data-drupal-selector=badge]': 1
       'span.rounded-pill': 1
       'span.badge.bg-secondary': 1
       'span.icon--close': 1
-      'span.visually-hidden': 1
-    contains:
-      'span.badge.bg-secondary': "A simple badge!"
     equals:
-      'span.visually-hidden': "A simple badge assistive text."
+      'span.badge.bg-secondary': 'A simple badge!<span class="icon--close" aria-hidden="true"><svg class="bi icon--s"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#x"></use></svg></span>'
 badge_non_dimissible_without_rounded_pill:
   render:
     '#type': pattern
@@ -29,19 +25,15 @@ badge_non_dimissible_without_rounded_pill:
         dismissible: false
         rounded_pill: false
         background: 'danger'
-      label: "A simple badge!"
-      assistive_text: "A simple badge assistive text."
+      label: 'A simple badge!'
   assertions:
     count:
       'span[data-drupal-selector=badge]': 1
       'span.rounded-pill': 0
       'span.badge.bg-danger': 1
       'span.icon--close': 0
-      'span.visually-hidden': 1
-    contains:
-      'span.badge.bg-secondary': "A simple badge!"
     equals:
-      'span.visually-hidden': "A simple badge assistive text."
+      'span.badge.bg-danger': 'A simple badge!'
 badge_with_url:
   render:
     '#type': pattern
@@ -51,17 +43,13 @@ badge_with_url:
         dismissible: true
         rounded_pill: true
         background: 'secondary'
-      label: "A simple badge!"
-      assistive_text: "A simple badge assistive text."
-      url: "https://example.com"
+      label: 'A simple badge!'
+      url: 'https://example.com'
   assertions:
     count:
       'a span[data-drupal-selector=badge]': 1
       'a span.rounded-pill': 1
       'a span.badge.bg-secondary': 1
       'a span.icon--close': 1
-      'a span.visually-hidden': 1
-    contains:
-      'span.badge.bg-secondary': "A simple badge!"
     equals:
-      'span.visually-hidden': "A simple badge assistive text."
+      'span.badge.bg-secondary': 'A simple badge!<span class="icon--close" aria-hidden="true"><svg class="bi icon--s"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#x"></use></svg></span>'

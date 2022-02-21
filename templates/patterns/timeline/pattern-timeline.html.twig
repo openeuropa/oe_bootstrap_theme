@@ -5,16 +5,14 @@
  *
  */
 #}
-{% set _toggle_collapsed = toggle_collapsed|default('Show more %d items'|t) %}
-{% set _toggle_expanded = toggle_expanded|default('Hide %d items'|t) %}
 {% include '@oe-bcl/timeline' with {
-  toggle_collapsed: _toggle_collapsed,
-  toggle_expanded: _toggle_expanded,
-  hide: {
-    from: hide_from,
-    to: hide_to|default(0),
+  'toggle_collapsed': collapse_button_label|default('Show more %d items'|t) ,
+  'toggle_expanded': expand_button_label|default('Hide %d items'|t),
+  'hide': {
+    'from': hide_from,
+    'to': hide_to|default(0),
   },
-  items: items,
-  icons_path: bcl_icon_path,
-  attributes: attributes,
+  'items': items,
+  'icons_path': bcl_icon_path,
+  'attributes': attributes,
 } only %}

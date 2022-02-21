@@ -1,12 +1,11 @@
 {#
 /**
  * @file
- * icon.
+ * Icon pattern.
  */
 #}
 {% include '@oe-bcl/icon' with {
   'name': name,
   'path': bcl_icon_path,
-  'size': size,
-  'transformation': transformation,
-} %}
+  'size': size
+} only %}

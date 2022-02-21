@@ -1,37 +1,28 @@
-dropdown_button_dark_drostart:
+dropdown_button_default:
   render:
     '#type': pattern
     '#id': dropdown
     '#fields':
-      settings:
-        link: false
-        alignment: "dropdown-menu-md-end"
-        dark: true
-        remove_wrapper: false
-        dropdown_id: "dd-test"
-        direction: "dropstart"
-      trigger:
-        label: "Dropdown toggle"
-        path: "#"
-      dropdown_items:
-        - label: "A link"
-          path: "#"
-        - label: "A button"
+      button_label: 'Dropdown toggle'
+      items:
+        - label: 'A link'
+          path: '#'
+        - label: 'A button'
           button: true
         - divider: true
-        - label: "A disabled button"
+        - label: 'A disabled button'
           button: true
           disabled: true
-        - label: "An active button"
+        - label: 'An active button'
           button: true
           active: true
   assertions:
     count:
       'div.dropdown': 1
-      'div.dropstart': 1
       'button.dropdown-toggle[data-bs-toggle="dropdown"]': 1
-      'ul.dropdown-menu.dropdown-menu-md-end': 1
-      'ul.dropdown-menu-dark': 1
+      'button#bcl-dropdown': 1
+      'ul.dropdown-menu-dark': 0
+      'ul[aria-labelledby="bcl-dropdown"]': 1
       'li': 5
       'hr.dropdown-divider': 1
       'a.dropdown-item': 1
@@ -39,43 +30,36 @@ dropdown_button_dark_drostart:
       'button.dropdown-item.active': 1
       'button.dropdown-item[aria-disabled="true"]': 1
     equals:
-      'a.dropdown-item': "A link"
-      'button.dropdown-item.active': "An active button"
-    contains:
-      'button.dropdown-item_1': "A disabled button"
-      'button.dropdown-item_2': "A button"
-dropdown_link_non_dark_with_remove_wrapper:
+      'a.dropdown-item': 'A link'
+      'button.dropdown-item.active': 'An active button'
+      'button.dropdown-item[disabled]': 'A disabled button'
+      'ul.dropdown-menu li:nth-child(2) button.dropdown-item': 'A button'
+dropdown_button_dark_mode:
   render:
     '#type': pattern
     '#id': dropdown
     '#fields':
-      settings:
-        link: true
-        alignment: "dropdown-menu-lg-start"
-        dark: false
-        remove_wrapper: true
-        dropdown_id: "dd-test"
-      trigger:
-        label: "Dropdown toggle"
-        path: "#"
-      dropdown_items:
-        - label: "A link"
-          path: "#"
-        - label: "A button"
+      dark_mode: true
+      button_label: 'Dropdown toggle'
+      items:
+        - label: 'A link'
+          path: '#'
+        - label: 'A button'
           button: true
         - divider: true
-        - label: "A disabled button"
+        - label: 'A disabled button'
           button: true
           disabled: true
-        - label: "An active button"
+        - label: 'An active button'
           button: true
           active: true
   assertions:
     count:
-      'div.dropdown': 0
-      'a.dropdown-toggle[data-bs-toggle="dropdown"]': 1
-      'ul.dropdown-menu.dropdown-menu-lg-start': 1
-      'ul.dropdown-menu-dark': 0
+      'div.dropdown': 1
+      'button.dropdown-toggle[data-bs-toggle="dropdown"]': 1
+      'button#bcl-dropdown': 1
+      'ul.dropdown-menu-dark': 1
+      'ul[aria-labelledby="bcl-dropdown"]': 1
       'li': 5
       'hr.dropdown-divider': 1
       'a.dropdown-item': 1
@@ -83,8 +67,7 @@ dropdown_link_non_dark_with_remove_wrapper:
       'button.dropdown-item.active': 1
       'button.dropdown-item[aria-disabled="true"]': 1
     equals:
-      'a.dropdown-item': "A link"
-      'button.dropdown-item.active': "An active button"
-    contains:
-      'dropdown-item_1': "A disabled button"
-      'dropdown-item_2': "A button"
+      'a.dropdown-item': 'A link'
+      'button.dropdown-item.active': 'An active button'
+      'button.dropdown-item[disabled]': 'A disabled button'
+      'ul.dropdown-menu li:nth-child(2) button.dropdown-item': 'A button'
