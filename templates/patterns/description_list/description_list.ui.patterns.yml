@@ -1,17 +1,14 @@
 description_list:
   label: 'Description list'
   description: 'Description lists are used to display and organise content that belongs to a category with a descriptions. Common use cases include glossary type lists or a list of speakers with their biographies..'
-  settings:
-    orientation:
-      type: select
-      label: Orientation
-      options:
-        default: Default
-        horizontal: Horizontal
-      preview: Horizontal
   fields:
+    orientation:
+      type: string
+      label: 'Orientation'
+      description: 'Set the orientation of the list, can be horizontal or vertical. Defaults to vertical.'
+      preview: 'horizontal'
     items:
-      type: 'array'
+      type: array
       label: 'List items'
       description: 'Each item is composed by one or more terms and one or more definitions. Each term entry can have an icon.'
       preview:
