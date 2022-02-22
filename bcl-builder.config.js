@@ -44,6 +44,21 @@ module.exports = {
       to: path.resolve(outputFolder, "assets/bcl"),
       options: { up: 4 },
     },
+    {
+      from: ["node_modules/@openeuropa/bcl-theme-default/logos/ec/*.svg"],
+      to: path.resolve(outputFolder, "assets/logos/ec"),
+      options: { up: true },
+    },
+    {
+      from: ["node_modules/@openeuropa/bcl-theme-default/logos/eu/standard-version/**"],
+      to: path.resolve(outputFolder, "assets/logos/eu"),
+      options: { up: true },
+    },
+    {
+      from: ["node_modules/@openeuropa/bcl-theme-default/logos/eu/condensed-version/**"],
+      to: path.resolve(outputFolder, "assets/logos/eu/mobile"),
+      options: { up: true },
+    },
   ],
   "rename": [
     {

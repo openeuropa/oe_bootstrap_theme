@@ -11,6 +11,9 @@
 {% if background ?? true %}
   {% set background = color_set %}
 {% endif %}
+{% if not expanded_breakpoint %}
+  {% set disable_collapse = true %}
+{% endif %}
 {% set expand = expanded_breakpoint|default('lg') %}
 
 {% block branding %}

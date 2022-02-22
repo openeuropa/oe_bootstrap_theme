@@ -3,6 +3,7 @@ navbar_pattern_large_light_scheme_default_breakpoint:
     '#type': pattern
     '#id': navbar
     '#fields':
+      expanded_breakpoint: 'lg'
       color_scheme: light
       branding:
         - '#type': pattern
@@ -90,6 +91,7 @@ navbar_pattern_medium_dark_scheme_md_breakpoint:
         - '#type': pattern
           '#id': link
           '#fields':
+            expanded_breakpoint: 'lg'
             label: 'OpenEuropa Site'
             path: 'https://europa.eu/'
             attributes:
@@ -165,6 +167,7 @@ navbar_pattern_medium_default_scheme_only_navigation:
     '#type': pattern
     '#id': navbar
     '#fields':
+      expanded_breakpoint: 'lg'
       navigation:
         - '#type': pattern
           '#id': link

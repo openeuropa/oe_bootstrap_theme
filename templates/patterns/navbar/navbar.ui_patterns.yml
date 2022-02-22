@@ -5,7 +5,8 @@ navbar:
     expanded_breakpoint:
       type: string
       label: 'Expanded breakpoint'
-      description: 'The breakpoint at which the menu will be shown as expanded. For earlier breakpoints, it will be shown after clicking a toggle button. Must be a valid breakpoint class (sm, md, lg). Defaults to lg.'
+      description: 'The breakpoint at which the menu will be shown as expanded. For earlier breakpoints, it will be shown after clicking a toggle button. Must be a valid breakpoint class (sm, md, lg). Defaults to lg. If not present, then will not collapse.'
+      preview: 'lg'
     color_scheme:
       type: string
       label: 'Color scheme'
