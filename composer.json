@@ -26,7 +26,7 @@
         "openeuropa/code-review": "~1.6",
         "openeuropa/oe_content": "^2.7.0",
         "openeuropa/oe_media": "^1.14",
-        "openeuropa/oe_paragraphs": "dev-OEL-775",
+        "openeuropa/oe_paragraphs": "^1.11",
         "openeuropa/task-runner-drupal-project-symlink": "^1.0",
         "phpspec/prophecy-phpunit": "^1 || ^2"
     },
@@ -67,6 +67,9 @@
         "patches": {
             "drupal/ui_patterns": {
                 "Fix unable to detect a pattern from default theme having same id as the pattern in the base theme @see https://github.com/nuvoleweb/ui_patterns/issues/304": "https://patch-diff.githubusercontent.com/raw/nuvoleweb/ui_patterns/pull/318.diff"
+            },
+            "openeuropa/oe_paragraphs": {
+                "Latest master": "https://github.com/openeuropa/oe_paragraphs/compare/1.11.0..master.diff"
             }
         }
     },
