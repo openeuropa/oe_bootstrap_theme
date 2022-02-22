@@ -27,7 +27,7 @@
         "openeuropa/oe_content": "^2.7.0",
         "openeuropa/oe_media": "^1.14",
         "openeuropa/oe_paragraphs": "^1.11",
-        "openeuropa/task-runner-drupal-project-symlink": "^1.0",
+        "openeuropa/task-runner-drupal-project-symlink": "^1.0-beta5",
         "phpspec/prophecy-phpunit": "^1 || ^2"
     },
     "scripts": {
