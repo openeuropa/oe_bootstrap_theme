@@ -5,6 +5,8 @@
  * Theme and preprocess functions for users.
  */
 
+declare(strict_types = 1);
+
 /**
  * Implements template_preprocess_user().
  */

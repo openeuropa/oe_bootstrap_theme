@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Drupal\oe_bootstrap_theme;
 
 use Symfony\Component\Console\Input\InputOption;
