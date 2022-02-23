@@ -88,14 +88,20 @@ pipeline:
   before-release:
     image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
     commands:
-      - ./vendor/bin/run release:create-archive --tag=${DRONE_TAG}
+      - apt-get update
+      - apt-get install zip
+      - ./vendor/bin/run release:create-archive --tag=${DRONE_TAG} --zip
     when:
       event: tag
+      matrix:
+        COMPOSER_BOUNDARY: highest
 
   github-release:
     image: registry.fpfis.eu/drone-plugins/github-release
     secrets: [ github_token ]
-    files: oe_bootstrap_theme-${DRONE_TAG}.tar.gz
+    files:
+      - oe_bootstrap_theme-${DRONE_TAG}.tar.gz
+      - oe_bootstrap_theme-${DRONE_TAG}.zip
     when:
       event: tag
       matrix:
