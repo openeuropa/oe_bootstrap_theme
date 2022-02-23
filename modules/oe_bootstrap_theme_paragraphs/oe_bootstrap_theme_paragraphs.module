@@ -158,7 +158,10 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
   }
 
   $variant = $paragraph->get('oe_paragraphs_variant')->value ?? 'default';
-  $variables['text_position'] = str_replace(['_featured', '_simple'], '', $variant);
+  $variables['text_position'] = str_replace([
+    '_featured',
+    '_simple',
+  ], '', $variant);
 
   if ($is_image) {
     $thumbnail = $media->get('thumbnail')->first();
