@@ -8,6 +8,8 @@
 declare(strict_types = 1);
 
 // Include all files from the includes directory.
+use Drupal\oe_bootstrap_theme\DocumentMediaValueExtractor;
+
 $includes_path = __DIR__ . '/includes/*.inc';
 foreach (glob($includes_path) as $filename) {
   // The inspection disallowing basename() is not relevant for known paths.
@@ -20,4 +22,35 @@ foreach (glob($includes_path) as $filename) {
  */
 function oe_bootstrap_theme_preprocess(&$variables) {
   $variables['bcl_icon_path'] = base_path() . drupal_get_path('theme', 'oe_bootstrap_theme') . '/assets/icons/bootstrap-icons.svg';
+}
+
+/**
+ * Implements hook_preprocess_media__document__default().
+ *
+ * Prepares the default view mode for the document media type.
+ */
+function oe_bootstrap_theme_preprocess_media__document__default(&$variables) {
+  /** @var \Drupal\media\Entity\Media $media */
+  $media = $variables['media'];
+  $file_value = DocumentMediaValueExtractor::getFileValue($media);
+  if (!$file_value) {
+    return;
+  }
+
+  $variables['file'] = $file_value;
+
+  // Generate the file information for all available translations.
+  foreach ($media->getTranslationLanguages() as $langcode => $language) {
+    // We don't want to include the information of the current language again.
+    if ($media->language()->getId() === $langcode) {
+      continue;
+    }
+
+    $translation = $media->getTranslation($langcode);
+    $translation_file_value = DocumentMediaValueExtractor::getFileValue($translation);
+    if ($translation_file_value) {
+      $variables['translations']['items'][] = $translation_file_value;
+    }
+
+  }
 }

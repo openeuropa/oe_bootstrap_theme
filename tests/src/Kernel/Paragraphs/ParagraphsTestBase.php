@@ -17,6 +17,7 @@ abstract class ParagraphsTestBase extends AbstractKernelTestBase {
    */
   protected static $modules = [
     'allowed_formats',
+    'content_translation',
     'datetime',
     'description_list_field',
     'entity_browser',
@@ -35,9 +36,11 @@ abstract class ParagraphsTestBase extends AbstractKernelTestBase {
     'oe_media',
     'oe_media_avportal',
     'oe_media_iframe',
+    'oe_multilingual',
     'oe_paragraphs',
     'oe_paragraphs_banner',
     'oe_paragraphs_description_list',
+    'oe_paragraphs_document',
     'oe_paragraphs_iframe_media',
     'oe_paragraphs_media',
     'oe_paragraphs_media_field_storage',

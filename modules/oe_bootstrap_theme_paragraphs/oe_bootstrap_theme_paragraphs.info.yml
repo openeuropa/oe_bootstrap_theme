@@ -10,6 +10,7 @@ dependencies:
   - oe_content:oe_content_timeline_field
   - drupal:description_list_field
   - oe_paragraphs:oe_paragraphs_description_list
+  - openeuropa:oe_paragraphs_document
 config_devel:
   install:
     - field.field.paragraph.oe_links_block.oe_bt_links_block_background
@@ -19,3 +20,8 @@ config_devel:
     - field.storage.paragraph.oe_bt_links_block_background
     - field.field.paragraph.oe_description_list.oe_bt_orientation
     - field.storage.paragraph.oe_bt_orientation
+    - core.entity_form_display.media.document.default
+    - core.entity_form_display.paragraph.oe_document.default
+    - core.entity_view_display.media.document.default
+    - core.entity_view_display.paragraph.oe_document.default
+    - core.entity_view_display.paragraph.oe_links_block.default
