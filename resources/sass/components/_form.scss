@@ -1,0 +1,19 @@
+// form
+// https://getbootstrap.com/docs/5.0/forms/overview/
+// -----------------------------------------------------------------------------
+
+// Custom css for forms.
+/**
+ * Required field
+ */
+.form-required:after {
+  content: '';
+  vertical-align: super;
+  display: inline-block;
+  background-image: url(../images/required.svg);
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
+  width: 6px;
+  height: 6px;
+  margin: 0 0.3em;
+}
