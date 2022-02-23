@@ -25,7 +25,7 @@
         "drush/drush": "^10.3",
         "easyrdf/easyrdf": "1.0.0 as 0.9.2",
         "egulias/email-validator": "^2.1.22 || ^3.0",
-        "openeuropa/code-review": "~1.6",
+        "openeuropa/code-review": "^1.7",
         "openeuropa/oe_content": "^2.7.0",
         "openeuropa/oe_media": "^1.14",
         "openeuropa/oe_paragraphs": "^1.11",

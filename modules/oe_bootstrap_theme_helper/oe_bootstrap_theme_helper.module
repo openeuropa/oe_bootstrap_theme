@@ -37,7 +37,9 @@ function oe_bootstrap_theme_helper_field_widget_settings_summary_alter(array &$s
     || ($context['widget']->getPluginId() == 'options_buttons' && $context['field_definition']->getFieldStorageDefinition()->isMultiple())
   ) {
     $summary[] = \Drupal::translation()
-      ->formatPlural($context['widget']->getPluginId() === 'boolean_checkbox', 'Switch: @is_switch', 'Switches: @is_switch', ['@is_switch' => ($context['widget']->getThirdPartySetting('oe_bootstrap_theme_helper', 'switch') ? t('Yes') : t('No'))]);
+      ->formatPlural($context['widget']->getPluginId() === 'boolean_checkbox', 'Switch: @is_switch', 'Switches: @is_switch', [
+        '@is_switch' => ($context['widget']->getThirdPartySetting('oe_bootstrap_theme_helper', 'switch') ? t('Yes') : t('No')),
+      ]);
   }
 }
 
