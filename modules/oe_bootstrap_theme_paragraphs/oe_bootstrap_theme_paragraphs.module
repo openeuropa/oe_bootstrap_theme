@@ -193,7 +193,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
   $paragraph = $variables['paragraph'];
   $variables['variant'] = $paragraph->get('oe_paragraphs_variant')->first()->getValue()['value'];
   $variables['title'] = $paragraph->get('field_oe_title')->first()->value;
-  $variables['columns'] = oe_bootstrap_theme_paragraphs_get_bcl_layout_mapping($paragraph->get('field_oe_list_item_block_layout')->first()->value, $variables['variant']);
+  $variables['columns'] = oe_bootstrap_theme_paragraphs_get_bcl_layout_mapping($paragraph->get('field_oe_list_item_block_layout')->first()->value);
   $variables['items'] = [];
 
   foreach ($variables['paragraph']->get('field_oe_paragraphs') as $delta => $item) {
@@ -407,13 +407,11 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_description_list(array &$va
  *
  * @param string $layout
  *   The paragraph layout.
- * @param string $variant
- *   The variant of the paragraph.
  *
  * @return string
  *   The BCL layout.
  */
-function oe_bootstrap_theme_paragraphs_get_bcl_layout_mapping(string $layout, string $variant = 'default'): string {
+function oe_bootstrap_theme_paragraphs_get_bcl_layout_mapping(string $layout): string {
   switch ($layout) {
     case 'two_columns':
       return '2';
