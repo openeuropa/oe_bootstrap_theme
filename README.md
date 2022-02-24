@@ -10,7 +10,6 @@ The paragraphs below are not yet themed therefore not recommended for usage:
 - Document
 - Fact
 - Listing item
-- Listing item block
 - Rich text
 
 ## Requirements
