@@ -6,17 +6,18 @@
 #}
 {% set _variant = variant|default('default') %}
 {% set _columns = columns|default('1') %}
-{% set _items = [] %}
-
-{% include '@oe-bcl/listing' with {
-  'variant': _variant ~ '-' ~ _columns ~ '-col',
-  'items': items|bcl_card_list,
-  'link': {
+{% if link %}
+  {% set _link = {
     'path': link.path,
     'label': link.label,
     'icon': {
       'path': bcl_icon_path,
-    },
-  },
+    }
+  } %}
+{% endif %}
+{% include '@oe-bcl/listing' with {
+  'variant': _variant ~ '-' ~ _columns ~ '-col',
+  'items': items|bcl_card_list,
+  'link': _link,
   'title': title,
 } only %}
