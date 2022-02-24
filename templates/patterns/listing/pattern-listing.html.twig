@@ -5,10 +5,14 @@
  */
 #}
 {% include '@oe-bcl/listing' with {
-  'variant': columns,
-  'items': items,
-  'link': link,
+  'variant': variant|default('default') ~ '-' ~ columns|default('1') ~ '-col',
+  'items': items|bcl_card_list,
+  'link': link ? {
+    'path': link.path,
+    'label': link.label,
+    'icon': bcl_icon_path ? {
+      'path': bcl_icon_path,
+    } : null,
+  } : null,
   'title': title,
-  'title_tag': title_tag,
-  'alignment': alignment,
-} %}
+} only %}
