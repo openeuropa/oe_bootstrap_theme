@@ -4,3 +4,8 @@ services:
     arguments: ['@app.root', '@theme.manager', '@theme.initialization']
     tags:
       - { name: twig.loader, priority: -100 }
+  oe_bootstrap_theme_helper.twig_extension:
+    class: Drupal\oe_bootstrap_theme_helper\TwigExtension\TwigExtension
+    arguments: ['@plugin.manager.block']
+    tags:
+      - { name: twig.extension }
