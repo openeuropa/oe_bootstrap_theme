@@ -11,7 +11,6 @@ The paragraphs below are not yet themed therefore not recommended for usage:
 - Fact
 - Facts and figures
 - Listing item
-- Listing item block
 - Rich text
 
 ## Requirements
