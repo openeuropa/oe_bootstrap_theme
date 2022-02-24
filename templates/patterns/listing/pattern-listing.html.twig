@@ -4,11 +4,19 @@
  * Listing pattern.
  */
 #}
+{% set _variant = variant|default('default') %}
+{% set _columns = columns|default('1') %}
+{% set _items = [] %}
+
 {% include '@oe-bcl/listing' with {
-  'variant': columns,
-  'items': items,
-  'link': link,
+  'variant': _variant ~ '-' ~ _columns ~ '-col',
+  'items': items|bcl_card_list,
+  'link': {
+    'path': link.path,
+    'label': link.label,
+    'icon': {
+      'path': bcl_icon_path,
+    },
+  },
   'title': title,
-  'title_tag': title_tag,
-  'alignment': alignment,
-} %}
+} only %}
