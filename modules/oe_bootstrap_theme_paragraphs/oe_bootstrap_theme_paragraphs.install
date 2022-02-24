@@ -29,6 +29,9 @@ function oe_bootstrap_theme_paragraphs_install($is_syncing): void {
     'core.entity_view_display.paragraph.oe_description_list.default',
     'core.entity_form_display.paragraph.oe_accordion_item.default',
     'core.entity_view_display.paragraph.oe_accordion_item.default',
+    'core.entity_form_display.paragraph.oe_list_item_block.default',
+    'core.entity_form_display.paragraph.oe_list_item_block.highlight',
+    'core.entity_form_display.paragraph.oe_list_item.default',
   ];
 
   ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/overrides/', $configs);

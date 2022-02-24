@@ -36,3 +36,16 @@ function oe_bootstrap_theme_paragraphs_post_update_00002(array &$sandbox): void 
 
   ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00002/', $configs, TRUE);
 }
+
+/**
+ * Listing variants.
+ */
+function oe_bootstrap_theme_paragraphs_post_update_00003(array &$sandbox): void {
+  $configs = [
+    'core.entity_form_display.paragraph.oe_list_item_block.default',
+    'core.entity_form_display.paragraph.oe_list_item_block.highlight',
+    'core.entity_form_display.paragraph.oe_list_item.default',
+  ];
+
+  ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00003/', $configs, TRUE);
+}
