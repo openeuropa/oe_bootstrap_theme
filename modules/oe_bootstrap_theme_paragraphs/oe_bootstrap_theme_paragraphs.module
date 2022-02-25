@@ -441,7 +441,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_description_list(array &$va
  */
 function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$variables): void {
   $paragraph = $variables['paragraph'];
-  if (!$paragraph->get('field_oe_link')->isEmpty()) {
+  if (!$paragraph->get('field_oe_title')->isEmpty()) {
     $variables['title'] = $paragraph->get('field_oe_title')->value;
   }
 
@@ -457,11 +457,11 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$varia
     $sub_paragraph = \Drupal::service('entity.repository')
       ->getTranslationFromContext($sub_paragraph, $paragraph->language()->getId());
     $description = '';
-    if (!$sub_paragraph->get('field_oe_title')->isEmpty()) {
+    if (!$sub_paragraph->get('field_oe_plain_text_long')->isEmpty()) {
       $description = $sub_paragraph->get('field_oe_plain_text_long')->value;
     }
     $variables['items'][] = [
-      'icon' => str_replace('_', '-', $sub_paragraph->get('field_oe_icon')->value),
+      'icon' => $sub_paragraph->get('field_oe_icon')->value,
       'title' => $sub_paragraph->get('field_oe_title')->value,
       'subtitle' => $sub_paragraph->get('field_oe_subtitle')->value,
       'description' => $description,
@@ -469,7 +469,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$varia
   }
 
   if (!$paragraph->get('oe_bt_layout')->isEmpty()) {
-    $variables['grid_columns'] = $paragraph->get('oe_bt_layout')->value;
+    $variables['columns'] = $paragraph->get('oe_bt_layout')->value;
   }
 
 }
