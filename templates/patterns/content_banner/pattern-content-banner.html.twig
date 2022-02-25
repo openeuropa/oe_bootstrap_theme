@@ -7,14 +7,16 @@
 {% spaceless %}
 {# Render the 'meta' items into the content variable. #}
 {% set _content %}
+  {% set content_attributes = create_attribute().addClass('mt-4') %}
   {% if meta is not empty %}
+    {% set content_attributes = create_attribute() %}
     <div class="my-4">
       {% for _meta_item in meta %}
         <span class="text-muted me-3">{{ _meta_item }}</span>
       {% endfor %}
     </div>
   {% endif %}
-  <div>{{ content }}</div>
+  <div{{ content_attributes }}>{{ content }}</div>
 {% endset %}
 
 {# Enable 'outline' in every badge. #}
