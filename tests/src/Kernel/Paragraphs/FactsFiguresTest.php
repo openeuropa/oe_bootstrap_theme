@@ -70,7 +70,7 @@ class FactsFiguresTest extends ParagraphsTestBase {
         'uri' => 'https://www.readmore.com',
         'title' => 'Read more',
       ],
-      'oe_bt_layout' => 2,
+      'oe_bt_layout' => 3,
       'field_oe_paragraphs' => $paragraph_fact,
     ]);
     $paragraph->save();
@@ -78,6 +78,11 @@ class FactsFiguresTest extends ParagraphsTestBase {
     // Testing: Facts and figures - Default layout.
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
+
+    ini_set('xdebug.var_display_max_depth', '10');
+    ini_set('xdebug.var_display_max_children', '256');
+    ini_set('xdebug.var_display_max_data', '100024');
+    var_dump($crawler->filter('body')->html());
 
     $this->assertCount(1, $crawler->filter('div.bcl-fact-figures.bcl-fact-figures--default'));
     $this->assertCount(1, $crawler->filter('h2.fw-bold'));
@@ -188,6 +193,24 @@ class FactsFiguresTest extends ParagraphsTestBase {
       'Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur.',
       $description_fact->html()
     );
+
+    // Testing: 2 columns.
+    $paragraph->get('oe_bt_layout')->setValue('2');
+    $paragraph->save();
+
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertCount(1, $crawler->filter('div.row-cols-md-2.row'));
+
+    // Testing: 1 columns.
+    $paragraph->get('oe_bt_layout')->setValue('1');
+    $paragraph->save();
+
+    $html = $this->renderParagraph($paragraph);
+    $crawler = new Crawler($html);
+
+    $this->assertCount(1, $crawler->filter('div.row-cols-md-1.row'));
   }
 
 }
