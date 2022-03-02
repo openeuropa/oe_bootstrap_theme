@@ -10,7 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.oe_list_item_block
   module:
     - link
-    - oe_paragraphs
+    - paragraphs
 id: paragraph.oe_list_item_block.highlight
 targetEntityType: paragraph
 bundle: oe_list_item_block
@@ -31,7 +31,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_oe_paragraphs:
-    type: oe_paragraphs_variants
+    type: paragraphs
     weight: 2
     region: content
     settings:
