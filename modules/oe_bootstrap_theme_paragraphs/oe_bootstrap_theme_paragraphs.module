@@ -7,6 +7,7 @@
 
 declare(strict_types = 1);
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\Core\Link;
@@ -23,7 +24,6 @@ use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalVideoSource;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_media_iframe\Plugin\media\Source\Iframe;
 use Drupal\paragraphs\Entity\Paragraph;
-use Drupal\Component\Utility\Html;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
