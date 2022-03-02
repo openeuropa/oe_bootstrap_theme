@@ -1,0 +1,67 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oe_list_item_block.field_oe_link
+    - field.field.paragraph.oe_list_item_block.field_oe_list_item_block_layout
+    - field.field.paragraph.oe_list_item_block.field_oe_paragraphs
+    - field.field.paragraph.oe_list_item_block.field_oe_title
+    - paragraphs.paragraphs_type.oe_list_item_block
+  module:
+    - link
+    - oe_paragraphs
+id: paragraph.oe_list_item_block.default
+targetEntityType: paragraph
+bundle: oe_list_item_block
+mode: default
+content:
+  field_oe_link:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_oe_list_item_block_layout:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_oe_paragraphs:
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: oe_list_item
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: '0'
+    third_party_settings: {  }
+    type: oe_paragraphs_variants
+    region: content
+  field_oe_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  translation:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true
