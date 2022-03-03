@@ -7,6 +7,7 @@ namespace Drupal\Tests\oe_bootstrap_theme\Kernel\Paragraphs;
 use Drupal\node\Entity\Node;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\PatternAssertions\ListingAssertion;
+use Drupal\Tests\TestFileCreationTrait;
 use Symfony\Component\DomCrawler\Crawler;
 use Drupal\Tests\node\Traits\NodeCreationTrait;
 use Drupal\Tests\node\Traits\ContentTypeCreationTrait;
@@ -15,10 +16,11 @@ use Drupal\file\Entity\File;
 /**
  * Tests the rendering of paragraph Listing.
  */
-class ListingParagraphsTest extends ListingAssertion {
+class ListingParagraphsTest extends ParagraphsTestBase {
 
   use NodeCreationTrait;
   use ContentTypeCreationTrait;
+  use TestFileCreationTrait;
 
   /**
    * {@inheritdoc}
@@ -63,8 +65,10 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler, $nid);
-    $this->assertDefaultListingRendering($crawler, $image_file);
+    $assert = new ListingAssertion();
+
+    $assert->assertListingRendering($crawler, $nid);
+    $assert->assertDefaultListingRendering($crawler, $image_file);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--default-1-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1'));
     $this->assertCount(6, $crawler->filter('div.col-md-3.col-lg-2.rounded'));
@@ -77,8 +81,8 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler, $nid);
-    $this->assertDefaultListingRendering($crawler, $image_file);
+    $assert->assertListingRendering($crawler, $nid);
+    $assert->assertDefaultListingRendering($crawler, $image_file);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--default-2-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-2'));
     $this->assertCount(6, $crawler->filter('div.col-xl-3.col-md-5'));
@@ -91,8 +95,8 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler, $nid);
-    $this->assertDefaultListingRendering($crawler, $image_file);
+    $assert->assertListingRendering($crawler, $nid);
+    $assert->assertDefaultListingRendering($crawler, $image_file);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--default-3-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-2.row-cols-xl-3'));
     $this->assertCount(6, $crawler->filter('div.col-lg-4.col-md-6'));
@@ -106,8 +110,8 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler, $nid);
-    $this->assertHighlightListingRendering($crawler, $image_file);
+    $assert->assertListingRendering($crawler, $nid);
+    $assert->assertHighlightListingRendering($crawler, $image_file);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--highlight-1-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1'));
     $this->assertCount(6, $crawler->filter('div.col.mt-4-5'));
@@ -120,8 +124,8 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler, $nid);
-    $this->assertHighlightListingRendering($crawler, $image_file);
+    $assert->assertListingRendering($crawler, $nid);
+    $assert->assertHighlightListingRendering($crawler, $image_file);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--highlight-2-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-2'));
     $this->assertCount(6, $crawler->filter('div.listing-item--highlight.h-100.rounded-2'));
@@ -134,8 +138,8 @@ class ListingParagraphsTest extends ListingAssertion {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    $this->assertListingRendering($crawler, $nid);
-    $this->assertHighlightListingRendering($crawler, $image_file);
+    $assert->assertListingRendering($crawler, $nid);
+    $assert->assertHighlightListingRendering($crawler, $image_file);
     $this->assertCount(1, $crawler->filter('div.bcl-listing--highlight-3-col'));
     $this->assertCount(1, $crawler->filter('div.row.row-cols-1.row-cols-md-3'));
     $this->assertCount(6, $crawler->filter('div.listing-item--highlight.h-100.rounded-2'));
