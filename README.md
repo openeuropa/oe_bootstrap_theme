@@ -9,8 +9,11 @@ The paragraphs below are not yet themed therefore not recommended for usage:
 - Contextual navigation
 - Document
 - Fact
-- Listing item
 - Rich text
+
+Some paragraphs are considered "internal", and only meant to be used inside other paragraphs:
+
+- Listing item: To be used as item paragraph within 'Listing item block'.
 
 ## Requirements
 
