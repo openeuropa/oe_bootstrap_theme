@@ -36,7 +36,11 @@ class ListingParagraphsTest extends ParagraphsTestBase {
    * Test List Items Block paragraph rendering.
    */
   public function testListing(): void {
-    $image_file = file_save_data(file_get_contents(drupal_get_path('theme', 'oe_bootstrap_theme') . '/tests/fixtures/arch.jpeg'), 'public://arch_en.jpeg');
+
+    // Create a sample media entity to be embedded.
+    $image_file = File::create([
+      'uri' => $this->getTestFiles('image')[0]->uri,
+    ]);
     $image_file->setPermanent();
     $image_file->save();
 
