@@ -1,7 +1,5 @@
 // form
-// -----------------------------------------------------------------------------
 
-// Custom css for forms.
 /**
  * Required field
  */
@@ -9,7 +7,7 @@
   content: '';
   vertical-align: super;
   display: inline-block;
-  background-image: url(images/required.svg);
+  background-image: url('../../images/required.svg');
   background-repeat: no-repeat;
   background-size: 6px 6px;
   width: 6px;
