@@ -201,9 +201,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
   $layout_name = $paragraph->get('field_oe_list_item_block_layout')->value;
   $variables['columns'] = ['two_columns' => '2', 'three_columns' => '3'][$layout_name] ?? '1';
 
-  /** @var \Drupal\Core\File\FileUrlGeneratorInterface $file_url_generator */
-  $file_url_generator = \Drupal::service('file_url_generator');
-
   $variables['items'] = [];
   foreach ($variables['paragraph']->get('field_oe_paragraphs') as $card_paragraph_item) {
     /** @var \Drupal\paragraphs\ParagraphInterface $card_paragraph */
@@ -214,9 +211,7 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
     /** @var \Drupal\file\FileInterface|null $card_image_file */
     $card_image_file = $card_image_items->entity;
     $card_image = $card_image_file ? [
-      'path' => $file_url_generator->transformRelative(
-        $file_url_generator->generateAbsoluteString(
-          $card_image_file->getFileUri())),
+      'path' => file_url_transform_relative(file_create_url($card_image_file->getFileUri())),
       'alt' => $card_image_items->alt,
     ] : [];
 
