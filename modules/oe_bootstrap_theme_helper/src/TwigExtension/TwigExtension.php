@@ -54,7 +54,7 @@ class TwigExtension extends AbstractExtension {
       // Some fields need to be rewritten.
       if (!empty($item['url'])) {
         /** @var \Drupal\Core\Url $url */
-        $url = $bcl_card['url'];
+        $url = $item['url'];
         $url->setOptions(['attributes' => ['class' => 'text-underline-hover']]);
       }
       if (isset($item['title'])) {
