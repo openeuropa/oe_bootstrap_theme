@@ -10,7 +10,6 @@ declare(strict_types = 1);
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
-use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Url;
 use Drupal\media\Entity\Media;
@@ -230,11 +229,9 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
     $card_title = $card_paragraph->get('field_oe_title')->value;
     /** @var \Drupal\link\LinkItemInterface|null $card_link_item */
     $card_link_item = $card_paragraph->get('field_oe_link')->first();
-    if ($card_link_item) {
-      $card_title = Link::fromTextAndUrl($card_title, $card_link_item->getUrl());
-    }
     $variables['items'][] = [
       'title' => $card_title,
+      'url' => $card_link_item ? $card_link_item->getUrl() : '',
       'text' => $card_paragraph->get('field_oe_text_long')->value,
       'image' => $card_image,
       'badges' => $card_badges,
