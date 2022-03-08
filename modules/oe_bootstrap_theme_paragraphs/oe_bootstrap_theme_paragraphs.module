@@ -440,14 +440,16 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_description_list(array &$va
  * Implements hook_preprocess_paragraph().
  */
 function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$variables): void {
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
   $paragraph = $variables['paragraph'];
   if (!$paragraph->get('field_oe_title')->isEmpty()) {
     $variables['title'] = $paragraph->get('field_oe_title')->value;
   }
 
   if (!$paragraph->get('field_oe_link')->isEmpty()) {
-    $variables['link_more']['path'] = $paragraph->get('field_oe_link')->first()->getUrl()->toString();
-    $variables['link_more']['label'] = $paragraph->get('field_oe_link')->first()->get('title')->getValue();
+    $link_item = $paragraph->get('field_oe_link')->first();
+    $variables['link_more']['path'] = $link_item->getUrl()->toString();
+    $variables['link_more']['label'] = $link_item->get('title')->getValue();
   }
   $variables['items'] = [];
 
@@ -471,7 +473,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$varia
   if (!$paragraph->get('oe_bt_layout')->isEmpty()) {
     $variables['columns'] = $paragraph->get('oe_bt_layout')->value;
   }
-
 }
 
 /**
