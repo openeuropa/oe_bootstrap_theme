@@ -79,11 +79,6 @@ class FactsFiguresTest extends ParagraphsTestBase {
     $html = $this->renderParagraph($paragraph);
     $crawler = new Crawler($html);
 
-    ini_set('xdebug.var_display_max_depth', '10');
-    ini_set('xdebug.var_display_max_children', '256');
-    ini_set('xdebug.var_display_max_data', '100024');
-    var_dump($crawler->filter('body')->html());
-
     $this->assertCount(1, $crawler->filter('div.bcl-fact-figures.bcl-fact-figures--default'));
     $this->assertCount(1, $crawler->filter('h2.fw-bold'));
     $this->assertCount(1, $crawler->filter('div.row-cols-md-3.row'));
