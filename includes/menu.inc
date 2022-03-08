@@ -42,9 +42,13 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
       'trigger' => $submenu,
     ];
     foreach ($item['below'] as $key_sub_item => $sub_item) {
-      $menu_item['items'][$key_sub_item]['label'] = $sub_item['title'];
-      $menu_item['items'][$key_sub_item]['path'] = $sub_item['url'] instanceof Url ? $sub_item['url']->toString() : '';
-      $menu_item['items'][$key_sub_item]['attributes'] = new Attribute(['class' => $sub_item['in_active_trail'] ? ['active'] : []]);
+      $menu_item['items'][$key_sub_item] = [
+        'label' => $sub_item['title'],
+        'path' => $sub_item['url'] instanceof Url ? $sub_item['url']->toString() : '',
+        'attributes' => new Attribute([
+          'class' => $sub_item['in_active_trail'] ? ['active'] : [],
+        ]),
+      ];
     }
     $variables['pattern_items'][$key] = $menu_item;
   }
