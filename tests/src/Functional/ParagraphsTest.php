@@ -216,7 +216,7 @@ class ParagraphsTest extends BrowserTestBase {
   }
 
   /**
-   * Adds a field to a paragraph.
+   * Test Description list paragraphs form.
    */
   public function testDescriptionListParagraph(): void {
     $this->drupalGet('/node/add/paragraphs_test');
