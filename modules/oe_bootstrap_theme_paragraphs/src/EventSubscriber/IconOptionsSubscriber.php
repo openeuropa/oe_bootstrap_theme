@@ -9,6 +9,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Provides options for the icon field.
+ *
+ * @see \Drupal\oe_paragraphs\EventSubscriber\OptionsSubscriber
+ * @see _oe_paragraphs_allowed_values_icons()
  */
 class IconOptionsSubscriber implements EventSubscriberInterface {
 
@@ -24,7 +27,7 @@ class IconOptionsSubscriber implements EventSubscriberInterface {
   /**
    * Gets the icon options.
    *
-   * @param \Drupal\custom_events\Event\IconOptionsEvent $event
+   * @param \Drupal\oe_paragraphs\Event\IconOptionsEvent $event
    *   Allowed format event object.
    */
   public function getIconOptions(IconOptionsEvent $event): void {
@@ -47,7 +50,7 @@ class IconOptionsSubscriber implements EventSubscriberInterface {
       'search' => 'Search',
       'share' => 'Share',
       'twitter' => 'Twitter',
-      'person-video' => 'Video',
+      'camera-video' => 'Video',
     ]);
   }
 

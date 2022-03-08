@@ -206,7 +206,7 @@ class ParagraphsTest extends BrowserTestBase {
       'search',
       'share',
       'twitter',
-      'person-video',
+      'camera-video',
     ];
     foreach ($allowed_values as $allowed_value) {
       $this->assertSession()->elementsCount('css', 'option[value="' . $allowed_value . '"]', 1);
