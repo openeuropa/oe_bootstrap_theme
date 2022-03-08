@@ -23,7 +23,9 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
     $menu_item = [
       'label' => $item['title'],
       'path' => $item['url'] instanceof Url ? $item['url']->toString() : '',
-      'attributes' => new Attribute(['class' => $item['in_active_trail'] ? ['active'] : []]),
+      'attributes' => new Attribute([
+        'class' => $item['in_active_trail'] ? ['active'] : [],
+      ]),
     ];
     if (empty($item['below'])) {
       $variables['pattern_items'][$key] = $menu_item;
