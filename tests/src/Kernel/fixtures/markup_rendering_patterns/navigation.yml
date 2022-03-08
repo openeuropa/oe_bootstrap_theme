@@ -38,6 +38,7 @@ navigation_with_pills_horizontal:
     count:
       'nav[data-drupal-selector="navigation"]': 1
       'nav.nav-pills': 1
+      '.navbar-nav' : 0
       '.nav-tabs': 0
       '.nav-link': 4
       '.nav-link.active': 1
@@ -90,6 +91,7 @@ navigation_default:
   assertions:
     count:
       'ul[data-drupal-selector="navigation"]': 1
+      'ul.navbar-nav' : 1
       '.nav-pills': 0
       '.nav-tabs': 0
       '.nav-link': 4
@@ -143,6 +145,7 @@ navigation_default_vertical:
     count:
       'ul[data-drupal-selector="navigation"]': 1
       '.nav-pills': 0
+      'ul.navbar-nav' : 1
       '.nav-tabs': 0
       '.nav-link': 4
       '.nav-link.active': 1
@@ -196,6 +199,7 @@ navigation_pills_vertical:
     count:
       'nav[data-drupal-selector="navigation"]': 1
       'nav.nav-pills': 1
+      '.navbar-nav' : 0
       '.nav-tabs': 0
       '.nav-link': 4
       '.nav-link.active': 1
@@ -246,6 +250,7 @@ navigation_tabs:
   assertions:
     count:
       'nav': 1
+      '.navbar-nav' : 0
       'nav[data-drupal-selector="navigation"]': 1
       '.nav-tabs': 1
       '.nav-link': 4
