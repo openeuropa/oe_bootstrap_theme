@@ -20,7 +20,7 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
 
   $variables['pattern_items'] = [];
   foreach ($variables['items'] as $key => $item) {
-    $menu_item = [
+    $pattern_item = [
       'label' => $item['title'],
       'path' => $item['url'] instanceof Url ? $item['url']->toString() : '',
       'attributes' => new Attribute([
@@ -28,13 +28,13 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
       ]),
     ];
     if (empty($item['below'])) {
-      $variables['pattern_items'][$key] = $menu_item;
+      $variables['pattern_items'][$key] = $pattern_item;
       continue;
     }
 
-    $submenu = $menu_item;
+    $submenu = $pattern_item;
     $submenu['attributes'] = new Attribute(['class' => 'nav-link']);
-    $menu_item += [
+    $pattern_item += [
       'standalone' => TRUE,
       'dropdown' => TRUE,
       'link' => TRUE,
@@ -42,7 +42,7 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
       'trigger' => $submenu,
     ];
     foreach ($item['below'] as $key_sub_item => $sub_item) {
-      $menu_item['items'][$key_sub_item] = [
+      $pattern_item['items'][$key_sub_item] = [
         'label' => $sub_item['title'],
         'path' => $sub_item['url'] instanceof Url ? $sub_item['url']->toString() : '',
         'attributes' => new Attribute([
@@ -50,7 +50,7 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
         ]),
       ];
     }
-    $variables['pattern_items'][$key] = $menu_item;
+    $variables['pattern_items'][$key] = $pattern_item;
   }
 
 }
