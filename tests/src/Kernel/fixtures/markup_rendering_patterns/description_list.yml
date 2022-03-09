@@ -44,9 +44,9 @@ description_list_default:
       'svg.me-2.bi.icon--xl': 1
       'dl > dt:nth-of-type(5) > svg.me-2.bi.icon--xl': 1
     contains:
-      'dl > dt:nth-of-type(1) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#geo-alt-fill'
-      'dl > dt:nth-of-type(3) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#calendar-event'
-      'dl > dt:nth-of-type(5) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#bicycle'
+      'dl > dt:nth-of-type(1) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#geo-alt-fill'
+      'dl > dt:nth-of-type(3) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#calendar-event'
+      'dl > dt:nth-of-type(5) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#bicycle'
     equals:
       'dl > dt:nth-child(1) > p': 'Single label with icon'
       'dl > dd:nth-child(2)': 'Description of first term text goes here.'
@@ -86,11 +86,11 @@ description_list_horizontal:
       'dl': 1
       'dl.d-md-grid.grid-3-9': 1
       'dt': 4
-      'dd': 4
+      'dd': 3
       'svg.me-2.bi.icon--xs': 2
     contains:
-      'dl > div:nth-child(1) > dt > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#geo-alt-fill'
-      'dl > div:nth-child(3) > dt:nth-child(2) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#calendar-event'
+      'dl > div:nth-child(1) > dt > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#geo-alt-fill'
+      'dl > div:nth-child(3) > dt:nth-child(2) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#calendar-event'
     equals:
       'dl > div:nth-child(1) > dt > p': 'Single label with icon'
       'dl > dd:nth-child(2)': 'Description of first term text goes here.'
@@ -98,5 +98,5 @@ description_list_horizontal:
       'dl > div:nth-child(3) > dt:nth-child(2) > p': 'Second label with icon'
       'dl > dd:nth-child(4)': 'Description of second term text goes here.'
       'dl > div:nth-child(5) > dt': 'A single term without icon.'
-      'dl > div:nth-child(6) > dd:nth-child(1)': 'First definition for third term.'
-      'dl > div:nth-child(6) > dd:nth-child(2)': 'Second definition for third term.'
+      'dl > dd:nth-child(6) > div:nth-child(1)': 'First definition for third term.'
+      'dl > dd:nth-child(6) > div:nth-child(2)': 'Second definition for third term.'
