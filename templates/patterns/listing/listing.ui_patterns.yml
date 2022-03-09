@@ -140,7 +140,7 @@ listing:
         label: 'European Commission'
         path: 'http://link-1.com'
         icon:
-          path: "/icons.svg"
+          name: 'key'
     title:
       type: "text"
       label: "Title"
