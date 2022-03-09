@@ -6,7 +6,7 @@ icon_default:
     count:
       'svg.icon--s': 1
     equals:
-      'svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#"></use>'
+      'svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#"></use>'
 icon_only_name:
   render:
     '#type': pattern
