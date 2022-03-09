@@ -8,12 +8,10 @@ listing_default_1_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+            '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
           image:
             path: 'https://placeimg.com/600/400/people'
@@ -24,7 +22,7 @@ listing_default_1_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+            '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
           image:
             path: 'https://placeimg.com/600/400/arch'
@@ -35,7 +33,7 @@ listing_default_1_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">21 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+            '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
           content:
             '#markup': '<div>
@@ -43,7 +41,7 @@ listing_default_1_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">22 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+            '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
           image:
             path: 'https://placeimg.com/600/400/nature'
@@ -63,7 +61,7 @@ listing_default_1_col:
       'span.me-4': 4
       'span.mb-2': 8
       'h5.card-title': 4
-      'a.text-underline-hover': 4
+      'a.standalone': 4
       'a.d-inline-block': 1
       '.mw-listing-img': 3
     equals:
@@ -81,12 +79,10 @@ listing_default_2_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+            '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
           image:
             path: 'https://placeimg.com/600/400/people'
@@ -97,7 +93,7 @@ listing_default_2_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+            '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
           content:
             '#markup': '<div>
@@ -105,7 +101,7 @@ listing_default_2_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">21 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+            '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
           image:
             path: 'https://placeimg.com/600/400/nature/sepia'
@@ -116,7 +112,7 @@ listing_default_2_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">22 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+            '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
 
           image:
@@ -128,7 +124,7 @@ listing_default_2_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">1 November 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
+            '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
           image:
             path: 'https://placeimg.com/600/400/people/sepia'
@@ -139,7 +135,7 @@ listing_default_2_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 November 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
+            '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
           image:
             path: 'https://placeimg.com/600/400/animals'
@@ -159,7 +155,7 @@ listing_default_2_col:
       'span.me-4': 6
       'span.mb-2': 12
       'h5.card-title': 6
-      'a.text-underline-hover': 6
+      'a.standalone': 6
       'a.d-inline-block': 1
       '.mw-listing-img': 5
     equals:
@@ -179,12 +175,10 @@ listing_default_3_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+            '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
           image:
             path: 'https://placeimg.com/600/400/people'
@@ -195,7 +189,7 @@ listing_default_3_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+            '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
           content:
             '#markup': '<div>
@@ -203,7 +197,7 @@ listing_default_3_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">21 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+            '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:  'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
           image:
             path: 'https://placeimg.com/600/400/nature/sepia'
@@ -214,7 +208,7 @@ listing_default_3_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">22 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+            '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:  'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
           image:
             path: 'https://placeimg.com/600/400/nature'
@@ -225,7 +219,7 @@ listing_default_3_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">1 November 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
+            '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:  'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
           image:
             path: 'https://placeimg.com/600/400/people/sepia'
@@ -236,7 +230,7 @@ listing_default_3_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 November 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
+            '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:  'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
           image:
             path: 'https://placeimg.com/600/400/animals'
@@ -256,7 +250,7 @@ listing_default_3_col:
       'span.me-4': 6
       'span.mb-2': 12
       'h5.card-title': 6
-      'a.text-underline-hover': 6
+      'a.standalone': 6
       'a.d-inline-block': 1
       '.mw-listing-img': 5
     equals:
@@ -276,12 +270,10 @@ listing_highlight_1_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+            '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
           image:
             path: 'https://placeimg.com/600/400/people'
@@ -293,7 +285,7 @@ listing_highlight_1_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+            '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text:  'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
           image:
             path: 'https://placeimg.com/600/400/arch'
@@ -304,7 +296,7 @@ listing_highlight_1_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">21 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+            '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:  'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
           content:
             '#markup': '<div>
@@ -312,7 +304,7 @@ listing_highlight_1_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">22 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+            '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:  'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
           image:
             path: 'https://placeimg.com/600/400/nature'
@@ -333,7 +325,7 @@ listing_highlight_1_col:
       'div.card-text': 4
       'span.me-4': 4
       'span.mb-2': 8
-      'a.text-underline-hover': 4
+      'a.standalone': 4
     equals:
       'a[href="/example1"]': 'Card title 1'
       'a[href="/example2"]': 'Card title 2'
@@ -349,12 +341,10 @@ listing_highlight_2_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+            '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
           image:
             path: 'https://placeimg.com/600/400/people'
@@ -365,7 +355,7 @@ listing_highlight_2_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+            '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text:  'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
           content:
             '#markup': '<div>
@@ -373,7 +363,7 @@ listing_highlight_2_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">21 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+            '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:  'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
           image:
             path: 'https://placeimg.com/600/400/nature/sepia'
@@ -384,7 +374,7 @@ listing_highlight_2_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">22 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+            '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:  'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
           image:
             path: 'https://placeimg.com/600/400/nature'
@@ -395,7 +385,7 @@ listing_highlight_2_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">1 November 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
+            '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:  'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
           image:
             path: 'https://placeimg.com/600/400/people/sepia'
@@ -406,7 +396,7 @@ listing_highlight_2_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 November 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
+            '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:  'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
           image:
             path: 'https://placeimg.com/600/400/animals'
@@ -427,7 +417,7 @@ listing_highlight_2_col:
       'div.card-text.mb-2': 6
       'span.me-4': 6
       'span.mb-2': 12
-      'a.text-underline-hover': 6
+      'a.standalone': 6
     equals:
       'a[href="/example1"]': 'Card title 1'
       'a[href="/example2"]': 'Card title 2'
@@ -445,12 +435,10 @@ listing_highlight_3_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+            '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
           image:
             path: 'https://placeimg.com/600/400/people'
@@ -461,7 +449,7 @@ listing_highlight_3_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+            '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text:  'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
           content:
             '#markup': '<div>
@@ -469,7 +457,7 @@ listing_highlight_3_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">21 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+            '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:  'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
           image:
             path: 'https://placeimg.com/600/400/nature/sepia'
@@ -480,7 +468,7 @@ listing_highlight_3_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">22 October 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+            '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:  'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
           image:
             path: 'https://placeimg.com/600/400/nature'
@@ -491,7 +479,7 @@ listing_highlight_3_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">1 November 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
+            '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:  'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
           image:
             path: 'https://placeimg.com/600/400/people/sepia'
@@ -502,7 +490,7 @@ listing_highlight_3_col:
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 November 2019</span>
               </div>'
         - title:
-            '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
+            '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:  'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
           image:
             path: 'https://placeimg.com/600/400/animals'
@@ -523,7 +511,7 @@ listing_highlight_3_col:
       'div.card-text': 6
       'span.me-4': 6
       'span.mb-2': 12
-      'a.text-underline-hover': 6
+      'a.standalone': 6
     equals:
       'a[href="/example1"]': 'Card title 1'
       'a[href="/example2"]': 'Card title 2'
