@@ -35,7 +35,7 @@ module.exports = {
       options: { up: true },
     },
     {
-      from: ["node_modules/@openeuropa/bcl-theme-default/icons/bootstrap-icons.svg"],
+      from: ["node_modules/@openeuropa/bcl-theme-default/icons/bcl-default-icons.svg"],
       to: path.resolve(outputFolder, "assets/icons"),
       options: { up: true },
     },
