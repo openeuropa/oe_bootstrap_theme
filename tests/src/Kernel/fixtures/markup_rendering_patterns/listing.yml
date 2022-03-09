@@ -8,13 +8,11 @@ listing_default_1_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+              '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
             tag: 'h5'
           text:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
@@ -30,7 +28,7 @@ listing_default_1_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+              '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
             tag: 'h5'
           text:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
@@ -46,7 +44,7 @@ listing_default_1_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+              '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
             tag: 'h5'
           text:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
@@ -58,7 +56,7 @@ listing_default_1_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+              '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
             tag: 'h5'
           text:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
@@ -83,7 +81,7 @@ listing_default_1_col:
       'span.me-4': 4
       'span.mb-2': 8
       'h5.card-title': 4
-      'a.text-underline-hover': 4
+      'a.standalone': 4
       'a.d-inline-block': 1
       '.mw-listing-img': 3
     equals:
@@ -101,13 +99,11 @@ listing_default_2_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+              '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
             tag: 'h5'
           text:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
@@ -123,7 +119,7 @@ listing_default_2_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+              '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
             tag: 'h5'
           text:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
@@ -135,7 +131,7 @@ listing_default_2_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+              '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
             tag: 'h5'
           text:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
@@ -151,7 +147,7 @@ listing_default_2_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+              '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
             tag: 'h5'
           text:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
@@ -167,7 +163,7 @@ listing_default_2_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
+              '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
             tag: 'h5'
           text:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
@@ -183,7 +179,7 @@ listing_default_2_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
+              '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
             tag: 'h5'
           text:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
@@ -208,7 +204,7 @@ listing_default_2_col:
       'span.me-4': 6
       'span.mb-2': 12
       'h5.card-title': 6
-      'a.text-underline-hover': 6
+      'a.standalone': 6
       'a.d-inline-block': 1
       '.mw-listing-img': 5
     equals:
@@ -228,13 +224,11 @@ listing_default_3_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+              '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
@@ -249,7 +243,7 @@ listing_default_3_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+              '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
             classes: 'mb-3'
@@ -260,7 +254,7 @@ listing_default_3_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+              '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-3'
@@ -275,7 +269,7 @@ listing_default_3_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+              '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
@@ -290,7 +284,7 @@ listing_default_3_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
+              '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-3'
@@ -305,7 +299,7 @@ listing_default_3_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
+              '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-3'
@@ -330,7 +324,7 @@ listing_default_3_col:
       'span.mb-2': 12
       'h5.card-title': 6
       'h2.fw-bold.mb-4': 1
-      'a.text-underline-hover': 6
+      'a.standalone': 6
       'a.d-inline-block': 1
       '.mw-listing-img': 5
     equals:
@@ -350,13 +344,11 @@ listing_highlight_1_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+              '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
             tag: 'h5'
           text:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
@@ -372,7 +364,7 @@ listing_highlight_1_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+              '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
             tag: 'h5'
           text:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
@@ -388,7 +380,7 @@ listing_highlight_1_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+              '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
             tag: 'h5'
           text:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
@@ -400,7 +392,7 @@ listing_highlight_1_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+              '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
             tag: 'h5'
           text:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
@@ -424,7 +416,7 @@ listing_highlight_1_col:
       'p.card-text.mb-2': 4
       'span.me-4': 4
       'span.mb-2': 8
-      'a.text-underline-hover': 4
+      'a.standalone': 4
     equals:
       'a[href="/example1"]': 'Card title 1'
       'a[href="/example2"]': 'Card title 2'
@@ -440,13 +432,11 @@ listing_highlight_2_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+              '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
             tag: 'h5'
           text:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
@@ -462,7 +452,7 @@ listing_highlight_2_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+              '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
             tag: 'h5'
           text:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
@@ -474,7 +464,7 @@ listing_highlight_2_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+              '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
             tag: 'h5'
           text:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
@@ -490,7 +480,7 @@ listing_highlight_2_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+              '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
             tag: 'h5'
           text:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
@@ -506,7 +496,7 @@ listing_highlight_2_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
+              '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
             tag: 'h5'
           text:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
@@ -522,7 +512,7 @@ listing_highlight_2_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
+              '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
             tag: 'h5'
           text:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
@@ -546,7 +536,7 @@ listing_highlight_2_col:
       'p.card-text.mb-2': 6
       'span.me-4': 6
       'span.mb-2': 12
-      'a.text-underline-hover': 6
+      'a.standalone': 6
     equals:
       'a[href="/example1"]': 'Card title 1'
       'a[href="/example2"]': 'Card title 2'
@@ -564,13 +554,11 @@ listing_highlight_3_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+              '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
             tag: 'h5'
           text:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
@@ -586,7 +574,7 @@ listing_highlight_3_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+              '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
             tag: 'h5'
           text:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
@@ -598,7 +586,7 @@ listing_highlight_3_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+              '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
             tag: 'h5'
           text:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
@@ -614,7 +602,7 @@ listing_highlight_3_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+              '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
             tag: 'h5'
           text:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
@@ -630,7 +618,7 @@ listing_highlight_3_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
+              '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
             tag: 'h5'
           text:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
@@ -646,7 +634,7 @@ listing_highlight_3_col:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
+              '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
             tag: 'h5'
           text:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
@@ -670,7 +658,7 @@ listing_highlight_3_col:
       'p.card-text.mb-2': 6
       'span.me-4': 6
       'span.mb-2': 12
-      'a.text-underline-hover': 6
+      'a.standalone': 6
     equals:
       'a[href="/example1"]': 'Card title 1'
       'a[href="/example2"]': 'Card title 2'
@@ -688,14 +676,12 @@ listing_default_3_col_tag:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       title_tag: 'h1'
       items:
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+              '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
             tag: 'h5'
           text:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
@@ -711,7 +697,7 @@ listing_default_3_col_tag:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+              '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
             tag: 'h5'
           text:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
@@ -723,7 +709,7 @@ listing_default_3_col_tag:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+              '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
             tag: 'h5'
           text:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
@@ -739,7 +725,7 @@ listing_default_3_col_tag:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+              '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
             tag: 'h5'
           text:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
@@ -755,7 +741,7 @@ listing_default_3_col_tag:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
+              '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
             tag: 'h5'
           text:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
@@ -771,7 +757,7 @@ listing_default_3_col_tag:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
+              '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
             tag: 'h5'
           text:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
@@ -797,7 +783,7 @@ listing_default_3_col_tag:
       'span.mb-2': 12
       'h5.card-title': 6
       'h1.fw-bold.mb-4': 1
-      'a.text-underline-hover': 6
+      'a.standalone': 6
       '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': 'Card title 1'
@@ -817,13 +803,11 @@ listing_default_3_col_alignment_start:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+              '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
@@ -838,7 +822,7 @@ listing_default_3_col_alignment_start:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+              '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
             classes: 'mb-3'
@@ -849,7 +833,7 @@ listing_default_3_col_alignment_start:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+              '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-3'
@@ -864,7 +848,7 @@ listing_default_3_col_alignment_start:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+              '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
@@ -879,7 +863,7 @@ listing_default_3_col_alignment_start:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
+              '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-3'
@@ -894,7 +878,7 @@ listing_default_3_col_alignment_start:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
+              '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-3'
@@ -920,7 +904,7 @@ listing_default_3_col_alignment_start:
       'h5.card-title': 6
       'h2.fw-bold.mb-4': 1
       'div.align-self-start': 10
-      'a.text-underline-hover': 6
+      'a.standalone': 6
       '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': 'Card title 1'
@@ -940,13 +924,11 @@ listing_default_3_col_alignment_end:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+              '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
@@ -961,7 +943,7 @@ listing_default_3_col_alignment_end:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+              '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
             classes: 'mb-3'
@@ -972,7 +954,7 @@ listing_default_3_col_alignment_end:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+              '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-3'
@@ -987,7 +969,7 @@ listing_default_3_col_alignment_end:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+              '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
@@ -1002,7 +984,7 @@ listing_default_3_col_alignment_end:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
+              '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-3'
@@ -1017,7 +999,7 @@ listing_default_3_col_alignment_end:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
+              '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-3'
@@ -1043,7 +1025,7 @@ listing_default_3_col_alignment_end:
       'h5.card-title': 6
       'h2.fw-bold.mb-4': 1
       'div.align-self-end': 10
-      'a.text-underline-hover': 6
+      'a.standalone': 6
       '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': 'Card title 1'
@@ -1063,13 +1045,11 @@ listing_default_3_col_alignment_center:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+              '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
@@ -1084,7 +1064,7 @@ listing_default_3_col_alignment_center:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+              '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
             classes: 'mb-3'
@@ -1095,7 +1075,7 @@ listing_default_3_col_alignment_center:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+              '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-3'
@@ -1110,7 +1090,7 @@ listing_default_3_col_alignment_center:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+              '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
@@ -1125,7 +1105,7 @@ listing_default_3_col_alignment_center:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
+              '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-3'
@@ -1140,7 +1120,7 @@ listing_default_3_col_alignment_center:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
+              '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-3'
@@ -1166,7 +1146,7 @@ listing_default_3_col_alignment_center:
       'h5.card-title': 6
       'h2.fw-bold.mb-4': 1
       'div.align-self-center': 10
-      'a.text-underline-hover': 6
+      'a.standalone': 6
       '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': 'Card title 1'
@@ -1186,13 +1166,11 @@ listing_default_3_col_alignment_baseline:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+              '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
@@ -1207,7 +1185,7 @@ listing_default_3_col_alignment_baseline:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+              '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
             classes: 'mb-3'
@@ -1218,7 +1196,7 @@ listing_default_3_col_alignment_baseline:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+              '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-3'
@@ -1233,7 +1211,7 @@ listing_default_3_col_alignment_baseline:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+              '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
@@ -1248,7 +1226,7 @@ listing_default_3_col_alignment_baseline:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
+              '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-3'
@@ -1263,7 +1241,7 @@ listing_default_3_col_alignment_baseline:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
+              '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-3'
@@ -1289,7 +1267,7 @@ listing_default_3_col_alignment_baseline:
       'h5.card-title': 6
       'h2.fw-bold.mb-4': 1
       'div.align-self-baseline': 10
-      'a.text-underline-hover': 6
+      'a.standalone': 6
       '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': 'Card title 1'
@@ -1309,13 +1287,11 @@ listing_default_3_col_alignment_stretch:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
-        icon:
-          path: '/icons.svg'
       title: 'Listing item block title'
       items:
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example1">Card title 1</a>'
+              '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
             classes: 'mb-3'
@@ -1330,7 +1306,7 @@ listing_default_3_col_alignment_stretch:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example2">Card title 2</a>'
+              '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text:
             content: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
             classes: 'mb-3'
@@ -1341,7 +1317,7 @@ listing_default_3_col_alignment_stretch:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example3">Card title 3</a>'
+              '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:
             content: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
             classes: 'mb-3'
@@ -1356,7 +1332,7 @@ listing_default_3_col_alignment_stretch:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example4">Card title 4</a>'
+              '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:
             content: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
             classes: 'mb-3'
@@ -1371,7 +1347,7 @@ listing_default_3_col_alignment_stretch:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example5">Card title 5</a>'
+              '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:
             content: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
             classes: 'mb-3'
@@ -1386,7 +1362,7 @@ listing_default_3_col_alignment_stretch:
               </div>'
         - title:
             content:
-              '#markup': '<a class="text-underline-hover" href="/example6">Card title 6</a>'
+              '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:
             content: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
             classes: 'mb-3'
@@ -1412,7 +1388,7 @@ listing_default_3_col_alignment_stretch:
       'h5.card-title': 6
       'h2.fw-bold.mb-4': 1
       'div.align-self-stretch': 10
-      'a.text-underline-hover': 6
+      'a.standalone': 6
       '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': 'Card title 1'
