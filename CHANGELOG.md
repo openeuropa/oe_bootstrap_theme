@@ -1,10 +1,40 @@
 # Change Log
 
-## [1.0.0-alpha6](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-alpha6) (2022-01-13)
+## [1.0.0-beta1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta1) (2022-03-09)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-alpha6...1.0.0-beta1)
+
+**Closed issues:**
+
+- Error in slimselect library inclusion [\#166](https://github.com/openeuropa/oe_bootstrap_theme/issues/166)
+- Component or Components [\#164](https://github.com/openeuropa/oe_bootstrap_theme/issues/164)
+
+**Merged pull requests:**
+
+- OEL-1239: Fix paragraphs patch error. [\#193](https://github.com/openeuropa/oe_bootstrap_theme/pull/193) ([GilNovacomm](https://github.com/GilNovacomm))
+- OEL-1190: Add margin when no meta to separate title and content. [\#192](https://github.com/openeuropa/oe_bootstrap_theme/pull/192) ([escuriola](https://github.com/escuriola))
+- OEL-1157: Restore tar.gz archive creation on release. [\#190](https://github.com/openeuropa/oe_bootstrap_theme/pull/190) ([brummbar](https://github.com/brummbar))
+- OEL-1157: Update grumphp.yml configuration. [\#189](https://github.com/openeuropa/oe_bootstrap_theme/pull/189) ([brummbar](https://github.com/brummbar))
+- OEL-1157: Use composer 2. [\#188](https://github.com/openeuropa/oe_bootstrap_theme/pull/188) ([brummbar](https://github.com/brummbar))
+- OEL-1175: Image and styles added to solve required fields on forms. [\#187](https://github.com/openeuropa/oe_bootstrap_theme/pull/187) ([Maxfire](https://github.com/Maxfire))
+- OEL-1204: Update to Drupal ^9.2 and php 7.4. [\#185](https://github.com/openeuropa/oe_bootstrap_theme/pull/185) ([brummbar](https://github.com/brummbar))
+- OEL-0000: Use composer v1 until support for 2 is complete in OpenEuropa. [\#182](https://github.com/openeuropa/oe_bootstrap_theme/pull/182) ([brummbar](https://github.com/brummbar))
+- OEL-1160: Header refactor. Add logos from BCL and disable collapse in navbar [\#181](https://github.com/openeuropa/oe_bootstrap_theme/pull/181) ([escuriola](https://github.com/escuriola))
+- OEL-1178: Updates on status messages. [\#180](https://github.com/openeuropa/oe_bootstrap_theme/pull/180) ([Maxfire](https://github.com/Maxfire))
+- OEL-1130: Remove table theming [\#177](https://github.com/openeuropa/oe_bootstrap_theme/pull/177) ([drishu](https://github.com/drishu))
+- EPIC 1047: Upgrade BCL to 0.19.0 [\#176](https://github.com/openeuropa/oe_bootstrap_theme/pull/176) ([escuriola](https://github.com/escuriola))
+- Epic OEL-779: review patterns [\#170](https://github.com/openeuropa/oe_bootstrap_theme/pull/170) ([brummbar](https://github.com/brummbar))
+- OEL-1047: \[BE\] BCL 0.19.0 Analysis [\#160](https://github.com/openeuropa/oe_bootstrap_theme/pull/160) ([abel-santos-corral](https://github.com/abel-santos-corral))
+- OEL-779: Review patterns: Accordion, Alert, Badge, Banner, Blockquote and Breadcrumbs [\#150](https://github.com/openeuropa/oe_bootstrap_theme/pull/150) ([escuriola](https://github.com/escuriola))
+- OEL-965: Hide accordion icon field [\#149](https://github.com/openeuropa/oe_bootstrap_theme/pull/149) ([abel-santos-corral](https://github.com/abel-santos-corral))
+- OEL-786: Prepare spacing between paragraphs. [\#144](https://github.com/openeuropa/oe_bootstrap_theme/pull/144) ([escuriola](https://github.com/escuriola))
+- OEL-775: Paragraph Description List theming [\#126](https://github.com/openeuropa/oe_bootstrap_theme/pull/126) ([abel-santos-corral](https://github.com/abel-santos-corral))
+
+## [1.0.0-alpha6](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-alpha6) (2022-01-14)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-alpha5...1.0.0-alpha6)
 
 **Merged pull requests:**
 
+- Prepare release 1.0.0-alpha6 [\#155](https://github.com/openeuropa/oe_bootstrap_theme/pull/155) ([drishu](https://github.com/drishu))
 - OEL-961: Fix dropbutton links. [\#147](https://github.com/openeuropa/oe_bootstrap_theme/pull/147) ([escuriola](https://github.com/escuriola))
 - OEL-788: Update local task theming [\#146](https://github.com/openeuropa/oe_bootstrap_theme/pull/146) ([drishu](https://github.com/drishu))
 - OEL-780: Fix assert contains selectors [\#139](https://github.com/openeuropa/oe_bootstrap_theme/pull/139) ([escuriola](https://github.com/escuriola))
