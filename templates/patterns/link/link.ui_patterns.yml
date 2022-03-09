@@ -37,4 +37,4 @@ link:
       type: mixed
       label: 'Icon'
       description: 'An icon name or an icon array definition (optional).'
-      preview: 'alarm'
+      preview: 'key'
