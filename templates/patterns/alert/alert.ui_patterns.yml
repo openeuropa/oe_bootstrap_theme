@@ -44,4 +44,4 @@ alert:
       type: text
       label: 'Icon name'
       description: 'Add an icon to the alert. Optional.'
-      preview: 'alarm'
+      preview: 'lock'
