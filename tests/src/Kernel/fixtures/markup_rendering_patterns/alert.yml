@@ -9,7 +9,7 @@ alert_dimissible_animated:
         animated_dismiss: true
       heading: 'Well done!'
       message: 'A simple alert. check it out!'
-      icon: 'alarm'
+      icon: 'lock'
   assertions:
     count:
       'div.alert.alert-danger.alert-dismissible.fade[role="alert"]': 1
@@ -19,7 +19,7 @@ alert_dimissible_animated:
       'h4.alert-heading': 'Well done!'
     contains:
       'div.alert-content': 'A simple alert. check it out!'
-      'svg': '#alarm'
+      'svg': '#lock'
 alert_dimissible_non_animated:
   render:
     '#type': pattern
@@ -31,7 +31,7 @@ alert_dimissible_non_animated:
         animated_dismiss: false
       heading: 'Well done!'
       message: 'A simple alert. check it out!'
-      icon: 'alarm'
+      icon: 'lock'
   assertions:
     count:
       'div.alert.alert-info.alert-dismissible[role="alert"]': 1
@@ -42,7 +42,7 @@ alert_dimissible_non_animated:
       'h4.alert-heading': 'Well done!'
       'div.alert-content': '<h4 class="alert-heading">Well done!</h4>A simple alert. check it out!'
     contains:
-      'svg': "#alarm"
+      'svg': "#lock"
 alert_not_dimissible:
   render:
     '#type': pattern
