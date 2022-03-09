@@ -8,6 +8,8 @@ listing_default_1_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
+        icon:
+          name: 'lock'
       title: 'Listing item block title'
       items:
         - title:
@@ -79,6 +81,8 @@ listing_default_2_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
+        icon:
+          name: 'lock'
       title: 'Listing item block title'
       items:
         - title:
@@ -175,6 +179,8 @@ listing_default_3_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
+        icon:
+          name: 'lock'
       title: 'Listing item block title'
       items:
         - title:
@@ -270,6 +276,8 @@ listing_highlight_1_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
+        icon:
+          name: 'lock'
       title: 'Listing item block title'
       items:
         - title:
@@ -341,6 +349,8 @@ listing_highlight_2_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
+        icon:
+          name: 'lock'
       title: 'Listing item block title'
       items:
         - title:
@@ -435,6 +445,8 @@ listing_highlight_3_col:
       link:
         label: 'European Commission'
         path: 'http://link-1.com'
+        icon:
+          name: 'lock'
       title: 'Listing item block title'
       items:
         - title:
