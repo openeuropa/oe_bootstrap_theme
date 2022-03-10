@@ -1,9 +1,24 @@
 {#
 /**
  * @file
- * Template for a pager.
+ * Override for core 'pager' template, using the 'navigation' pattern.
  */
 #}
-{% include '@oe_bootstrap_theme/overrides/pagination/pagination.html.twig' with {
-  items: items
-} %}
+{% if items %}
+  {% set previous =  items.previous ? {'label':  items.previous.text, 'path': items.previous.href } : {} %}
+  {% set next = items.next ? {'label':  items.next.text, 'path': items.next.href } : {} %}
+  {% set pages = {} %}
+  {% for key, item in items.pages %}
+    {% set values = { 'label': key, 'path': item.href } %}
+    {% if current == key %}
+      {% set values = values|merge({ 'active': true }) %}
+    {% endif %}
+    {% set pages = pages|merge([values]) %}
+  {% endfor %}
+  {{ pattern('pagination', {
+    items: pages,
+    alignment: 'center',
+    prev: previous,
+    next: next,
+  }) }}
+{% endif %}
