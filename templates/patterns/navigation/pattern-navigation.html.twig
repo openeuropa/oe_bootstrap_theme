@@ -9,8 +9,8 @@
   'pills': variant == 'pills',
   'vertical': orientation == 'vertical',
   'tabs': variant == 'tabs',
-  'nav': variant != 'default',
+  'nav': (variant == 'pills' or variant == 'tabs'),
   'tabs_content': false,
-  'navbar': variant == 'default',
+  'navbar': variant == 'navbar',
   'attributes': attributes,
 } only %}
