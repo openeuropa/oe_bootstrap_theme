@@ -52,13 +52,14 @@ class TwigExtension extends AbstractExtension {
       // Copy most of the fields.
       $bcl_card = $item;
       // Some fields need to be rewritten.
-      if (!empty($item['url'])) {
-        /** @var \Drupal\Core\Url $url */
-        $url = $item['url'];
-        $url->setOptions(['attributes' => ['class' => 'text-underline-hover']]);
-      }
       if (isset($item['title'])) {
-        $title = isset($url) ? Link::fromTextAndUrl($item['title'], $url) : $item['title'];
+        $title = $item['title'];
+        if (!empty($item['url'])) {
+          /** @var \Drupal\Core\Url $url */
+          $url = $item['url'];
+          $url->setOptions(['attributes' => ['class' => 'text-underline-hover']]);
+          $title = Link::fromTextAndUrl($title, $url);
+        }
         $bcl_card['title'] = [
           'content' => $title,
         ];
