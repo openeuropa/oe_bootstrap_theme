@@ -470,8 +470,8 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$varia
     ];
   }
 
-  if (!$paragraph->get('oe_bt_layout')->isEmpty()) {
-    $variables['columns'] = $paragraph->get('oe_bt_layout')->value;
+  if (!$paragraph->get('oe_bt_n_columns')->isEmpty()) {
+    $variables['columns'] = $paragraph->get('oe_bt_n_columns')->value;
   }
 }
 

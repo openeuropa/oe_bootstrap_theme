@@ -42,8 +42,8 @@ function oe_bootstrap_theme_paragraphs_post_update_00002(array &$sandbox): void 
  */
 function oe_bootstrap_theme_paragraphs_post_update_00003(array &$sandbox): void {
   $configs = [
-    'field.storage.paragraph.oe_bt_layout',
-    'field.field.paragraph.oe_facts_figures.oe_bt_layout',
+    'field.storage.paragraph.oe_bt_n_columns',
+    'field.field.paragraph.oe_facts_figures.oe_bt_n_columns',
     'core.entity_form_display.paragraph.oe_facts_figures.default',
     'core.entity_view_display.paragraph.oe_facts_figures.default',
   ];

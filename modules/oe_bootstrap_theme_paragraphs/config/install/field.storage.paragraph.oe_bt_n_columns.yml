@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - paragraphs
-id: paragraph.oe_bt_layout
-field_name: oe_bt_layout
+id: paragraph.oe_bt_n_columns
+field_name: oe_bt_n_columns
 entity_type: paragraph
 type: integer
 settings:

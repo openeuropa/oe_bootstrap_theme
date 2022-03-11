@@ -70,7 +70,7 @@ class FactsFiguresTest extends ParagraphsTestBase {
         'uri' => 'https://www.readmore.com',
         'title' => 'Read more',
       ],
-      'oe_bt_layout' => 3,
+      'oe_bt_n_columns' => 3,
       'field_oe_paragraphs' => $paragraph_fact,
     ]);
     $paragraph->save();
@@ -190,7 +190,7 @@ class FactsFiguresTest extends ParagraphsTestBase {
     );
 
     // Testing: 2 columns.
-    $paragraph->get('oe_bt_layout')->setValue('2');
+    $paragraph->get('oe_bt_n_columns')->setValue('2');
     $paragraph->save();
 
     $html = $this->renderParagraph($paragraph);
@@ -199,7 +199,7 @@ class FactsFiguresTest extends ParagraphsTestBase {
     $this->assertCount(1, $crawler->filter('div.row-cols-md-2.row'));
 
     // Testing: 1 columns.
-    $paragraph->get('oe_bt_layout')->setValue('1');
+    $paragraph->get('oe_bt_n_columns')->setValue('1');
     $paragraph->save();
 
     $html = $this->renderParagraph($paragraph);
