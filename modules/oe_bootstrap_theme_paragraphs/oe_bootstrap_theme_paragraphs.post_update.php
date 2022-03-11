@@ -36,3 +36,13 @@ function oe_bootstrap_theme_paragraphs_post_update_00002(array &$sandbox): void 
 
   ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00002/', $configs, TRUE);
 }
+
+/**
+ * Uninstall OE Bootstrap Theme Paragraphs module.
+ */
+function oe_bootstrap_theme_paragraphs_post_update_00003(array &$sandbox): void {
+  $moduleHandler = \Drupal::service('module_handler');
+  if ($moduleHandler->moduleExists('oe_bootstrap_theme_paragraphs')) {
+    \Drupal::service('module_installer')->uninstall(['oe_bootstrap_theme_paragraphs']);
+  }
+}
