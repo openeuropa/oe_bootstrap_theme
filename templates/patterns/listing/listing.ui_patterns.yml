@@ -38,7 +38,11 @@ listing:
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
               <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 October 2019</span>
               </div>'
-        - title: 'Card title 2'
+        - title:
+            # To make the title a link, either specify it as #markup, or provide
+            # a Drupal\Core\Url object in a 'url' key. The latter does not work
+            # in the preview, because objects cannot be defined in yml.
+            '#markup': '<a href="#" class="standalone">Card title 2 with link markup</a>'
           text: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
           image:
             path: 'https://picsum.photos/seed/1003/600/400'
