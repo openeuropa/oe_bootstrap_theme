@@ -40,6 +40,11 @@ class TwigExtension extends AbstractExtension {
   /**
    * Twig filter callback for 'bcl_card_list'.
    *
+   * This is meant to be called in pattern templates, to convert items from
+   * pattern space to BCL component space.
+   * Most of the conversion mimicks the logic from pattern-card.html.twig, but
+   * there are a few differences.
+   *
    * @param array $items
    *   Lists of items, as sent to e.g. 'card_layout' pattern.
    *
@@ -54,6 +59,11 @@ class TwigExtension extends AbstractExtension {
       // Some fields need to be rewritten.
       if (isset($item['title'])) {
         $title = $item['title'];
+        // Allow to specify the item url in a separate key, as a Url object.
+        // Unfortunately this cannot be covered in yml-based tests and previews.
+        // Alternatively, the 'title' key can already contain a rendered link,
+        // but then the calling template must add the 'text-underline-hover'
+        // class.
         if (!empty($item['url'])) {
           /** @var \Drupal\Core\Url $url */
           $url = $item['url'];
