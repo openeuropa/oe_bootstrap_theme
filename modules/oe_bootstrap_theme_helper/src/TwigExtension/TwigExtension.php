@@ -77,6 +77,7 @@ class TwigExtension extends AbstractExtension {
       if (isset($item['subtitle'])) {
         $bcl_card['subtitle'] = [
           'content' => $item['subtitle'],
+          'classes' => 'mb-2',
         ];
       }
       if (isset($item['text'])) {
