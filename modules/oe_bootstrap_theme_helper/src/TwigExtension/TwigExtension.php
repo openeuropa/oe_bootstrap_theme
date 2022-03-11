@@ -65,8 +65,9 @@ class TwigExtension extends AbstractExtension {
         // but then the calling template must add the 'text-underline-hover'
         // class.
         if (!empty($item['url'])) {
+          // Use clone, to not pollute the original object with attributes.
           /** @var \Drupal\Core\Url $url */
-          $url = $item['url'];
+          $url = clone $item['url'];
           $url->setOptions(['attributes' => ['class' => 'text-underline-hover']]);
           $title = Link::fromTextAndUrl($title, $url);
         }
