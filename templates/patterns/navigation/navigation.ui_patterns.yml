@@ -11,6 +11,9 @@ navigation:
     pills:
       label: 'Pills'
       description: 'Shows the items styled as pills.'
+    navbar:
+      label: 'Navbar'
+      description: 'When the navigation is part of a navbar element.'
   fields:
     orientation:
       type: string
