@@ -8,7 +8,6 @@
 declare(strict_types = 1);
 
 use Drupal\Core\Template\Attribute;
-use Drupal\Core\Url;
 
 /**
  * Implements hook_preprocess_menu().
@@ -22,7 +21,7 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
   foreach ($variables['items'] as $key => $item) {
     $pattern_item = [
       'label' => $item['title'],
-      'path' => $item['url'] instanceof Url ? $item['url']->toString() : '',
+      'path' => $item['url']->toString(),
       'attributes' => new Attribute([
         'class' => $item['in_active_trail'] ? ['active'] : [],
       ]),
@@ -44,7 +43,7 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
     foreach ($item['below'] as $key_sub_item => $sub_item) {
       $pattern_item['items'][$key_sub_item] = [
         'label' => $sub_item['title'],
-        'path' => $sub_item['url'] instanceof Url ? $sub_item['url']->toString() : '',
+        'path' => $sub_item['url']->toString(),
         'attributes' => new Attribute([
           'class' => $sub_item['in_active_trail'] ? ['active'] : [],
         ]),
