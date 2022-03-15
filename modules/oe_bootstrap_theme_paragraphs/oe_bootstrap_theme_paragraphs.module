@@ -195,6 +195,15 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$var
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
 
+  // @todo Use ->isEmpty() as in other preprocess functions.
+  //   In the OpenEuropa team it was decided that ->isEmpty() calls should be
+  //   the preferred way to deal with empty field values.
+  //   This function instead relies on ->value or ->first() returning NULL for
+  //   empty fields, which the team is not fully confident about, and which does
+  //   not follow the team convention.
+  //   It was agreed to keep it like this for now in this function, but refactor
+  //   it in the future.
+  //   See also https://www.drupal.org/project/drupal/issues/3268137.
   $variables['variant'] = $paragraph->get('oe_paragraphs_variant')->value;
   $variables['title'] = $paragraph->get('field_oe_title')->value;
 
