@@ -4,37 +4,9 @@
  * Card layout pattern.
  */
 #}
-{% set _items = [] %}
-{% for _item in items %}
-  {% if _item.text is not empty %}
-    {% set _item = _item|merge({
-      'text': {
-        'content': _item.text,
-        'classes': 'mb-2',
-        'tag': 'div'
-      },
-    }) %}
-  {% endif %}
-  {% if _item.title is not empty %}
-    {% set _item = _item|merge({
-      'title': {
-        'content': _item.title,
-      },
-    }) %}
-  {% endif %}
-  {% if _item.subtitle is not empty %}
-    {% set _item = _item|merge({
-      'subtitle': {
-        'content': _item.subtitle,
-        'classes': 'mb-2',
-      }
-    }) %}
-  {% endif %}
-  {% set _items = _items|merge([_item]) %}
-{% endfor %}
 {% include '@oe-bcl/card-layout' with {
   'type': variant,
-  'items': _items,
+  'items': items|bcl_card_list,
   'grid_columns': grid_columns,
   'responsive_columns': responsive_columns,
   'responsiveness': responsiveness,

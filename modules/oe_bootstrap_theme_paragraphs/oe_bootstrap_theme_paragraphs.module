@@ -7,9 +7,9 @@
 
 declare(strict_types = 1);
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
-use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Url;
 use Drupal\media\Entity\Media;
@@ -23,7 +23,6 @@ use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalVideoSource;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_media_iframe\Plugin\media\Source\Iframe;
 use Drupal\paragraphs\Entity\Paragraph;
-use Drupal\Component\Utility\Html;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
@@ -195,84 +194,65 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_text_feature_media(array &$
 function oe_bootstrap_theme_preprocess_paragraph__oe_list_item_block(array &$variables): void {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
-  $variables['title'] = $paragraph->get('field_oe_title')->first()->value;
-  $variables['columns'] = oe_bootstrap_theme_get_bcl_layout_mapping($paragraph->get('field_oe_list_item_block_layout')->first()->value);
+
+  // @todo Use ->isEmpty() as in other preprocess functions.
+  //   In the OpenEuropa team it was decided that ->isEmpty() calls should be
+  //   the preferred way to deal with empty field values.
+  //   This function instead relies on ->value or ->first() returning NULL for
+  //   empty fields, which the team is not fully confident about, and which does
+  //   not follow the team convention.
+  //   It was agreed to keep it like this for now in this function, but refactor
+  //   it in the future.
+  //   See also https://www.drupal.org/project/drupal/issues/3268137.
+  $variables['variant'] = $paragraph->get('oe_paragraphs_variant')->value;
+  $variables['title'] = $paragraph->get('field_oe_title')->value;
+
+  $layout_name = $paragraph->get('field_oe_list_item_block_layout')->value;
+  $variables['columns'] = ['two_columns' => '2', 'three_columns' => '3'][$layout_name] ?? '1';
+
   $variables['items'] = [];
+  foreach ($variables['paragraph']->get('field_oe_paragraphs') as $card_paragraph_item) {
+    /** @var \Drupal\paragraphs\ParagraphInterface $card_paragraph */
+    $card_paragraph = $card_paragraph_item->entity;
 
-  foreach ($variables['paragraph']->get('field_oe_paragraphs') as $delta => $item) {
-    $image = [];
-    if (!$item->entity->get('field_oe_image')->isEmpty()) {
-      /** @var \Drupal\file\Plugin\Field\FieldType\FileItem $image_item */
-      $image_item = $item->entity->get('field_oe_image')->first();
-      $file = $image_item->get('entity')->getValue();
-      $image = [
-        'path' => file_url_transform_relative(file_create_url($file->getFileUri())),
-        'alt' => $image_item->get('alt')->getValue(),
-        'position' => 'top',
-      ];
-      if ($item->entity->get('oe_paragraphs_variant')->first()->value === 'thumbnail_secondary') {
-        $image['position'] = 'bottom';
-      }
-    }
-
-    // Prepare the date fields if date is available.
-    $contentItem = '';
-    if (!$item->entity->get('field_oe_date')->isEmpty()) {
-      $display_options = EntityViewDisplay::load('paragraph.oe_list_item.default')
-        ->getComponent('field_oe_date');
-      $dateItem = $item->entity->get('field_oe_date')->first();
-      $contentItem = [
-        '#type' => 'inline_template',
-        '#template' => '<div><span class="d-md-inline d-block text-muted mb-2 mb-md-0">{{ date }}</span></div>',
-        '#context' => [
-          'date' => $dateItem->view($display_options),
-        ],
-      ];
-    }
+    /** @var \Drupal\file\Plugin\Field\FieldType\FileFieldItemList $card_image_items */
+    $card_image_items = $card_paragraph->get('field_oe_image');
+    /** @var \Drupal\file\FileInterface|null $card_image_file */
+    $card_image_file = $card_image_items->entity;
+    $card_image = $card_image_file ? [
+      'path' => file_url_transform_relative(file_create_url($card_image_file->getFileUri())),
+      'alt' => $card_image_items->alt,
+    ] : [];
 
     // Prepare the metas if available.
-    $metas = [];
-    if (!$item->entity->get('field_oe_meta')->isEmpty()) {
-      foreach ($item->entity->get('field_oe_meta') as $item_meta) {
-        $metas[] = [
-          'label' => $item_meta->value,
-          'background' => 'primary',
-        ];
-      }
+    $card_badges = [];
+    foreach ($card_paragraph->get('field_oe_meta') as $meta_item) {
+      $card_badges[] = $meta_item->value;
     }
 
+    $card_title = $card_paragraph->get('field_oe_title')->value;
+    /** @var \Drupal\link\LinkItemInterface|null $card_link_item */
+    $card_link_item = $card_paragraph->get('field_oe_link')->first();
     $variables['items'][] = [
-      'title' => [
-        'content' => Link::fromTextAndUrl(
-          $item->entity->field_oe_title->value,
-          $item->entity->get('field_oe_link')->first()->getUrl()
-        ),
-      ],
-      'text' => [
-        'content' => $item->entity->field_oe_text_long->value,
-        'classes' => 'mb-2',
-      ],
-      'image' => $image,
-      'badges' => $metas,
-      'content' => $contentItem,
+      'title' => $card_title,
+      'url' => $card_link_item ? $card_link_item->getUrl() : '',
+      'text' => $card_paragraph->get('field_oe_text_long')->value,
+      'image' => $card_image,
+      'badges' => $card_badges,
     ];
   }
 
   // Prepare the button variables if a link has been specified.
-  if ($paragraph->get('field_oe_link')->isEmpty()) {
-    return;
-  }
-
   /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $link_item */
   $link_item = $paragraph->get('field_oe_link')->first();
-  $variables['link'] = [
+  $variables['link'] = $link_item ? [
     'path' => $link_item->getUrl()->toString(),
-    'label' => $link_item->get('title')->getValue(),
+    'label' => $link_item->title,
     'icon' => [
       'path' => $variables['bcl_icon_path'],
       'name' => 'chevron-right',
     ],
-  ];
+  ] : NULL;
 }
 
 /**
@@ -473,26 +453,6 @@ function oe_bootstrap_theme_preprocess_paragraph__oe_facts_figures(array &$varia
   if (!$paragraph->get('oe_bt_n_columns')->isEmpty()) {
     $variables['columns'] = $paragraph->get('oe_bt_n_columns')->value;
   }
-}
-
-/**
- * Gets the mapped layout.
- *
- * @param string $layout
- *   The paragraph layout.
- *
- * @return string
- *   The BCL layout.
- */
-function oe_bootstrap_theme_get_bcl_layout_mapping(string $layout): string {
-  if ($layout === 'three_columns') {
-    return 'highlight-3-col';
-  }
-  if ($layout === 'two_columns') {
-    return 'highlight-2-col';
-  }
-
-  return 'highlight-1-col';
 }
 
 /**

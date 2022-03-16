@@ -50,3 +50,16 @@ function oe_bootstrap_theme_paragraphs_post_update_00003(array &$sandbox): void 
 
   ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00003/', $configs, TRUE);
 }
+
+/**
+ * Form modes for variants of list paragraphs.
+ */
+function oe_bootstrap_theme_paragraphs_post_update_00004(array &$sandbox): void {
+  $configs = [
+    'core.entity_form_display.paragraph.oe_list_item_block.default',
+    'core.entity_form_display.paragraph.oe_list_item_block.highlight',
+    'core.entity_form_display.paragraph.oe_list_item.default',
+  ];
+
+  ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00003/', $configs, TRUE);
+}
