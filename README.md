@@ -9,7 +9,6 @@ The paragraphs below are not yet themed therefore not recommended for usage:
 - Contextual navigation
 - Document
 - Fact
-- Facts and figures
 - Listing item
 - Listing item block
 - Rich text

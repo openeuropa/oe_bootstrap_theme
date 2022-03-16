@@ -36,3 +36,17 @@ function oe_bootstrap_theme_paragraphs_post_update_00002(array &$sandbox): void 
 
   ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00002/', $configs, TRUE);
 }
+
+/**
+ * Display new layout field at facts&figures paragraph.
+ */
+function oe_bootstrap_theme_paragraphs_post_update_00003(array &$sandbox): void {
+  $configs = [
+    'field.storage.paragraph.oe_bt_n_columns',
+    'field.field.paragraph.oe_facts_figures.oe_bt_n_columns',
+    'core.entity_form_display.paragraph.oe_facts_figures.default',
+    'core.entity_view_display.paragraph.oe_facts_figures.default',
+  ];
+
+  ConfigImporter::importMultiple('oe_bootstrap_theme_paragraphs', '/config/post_updates/00003/', $configs, TRUE);
+}

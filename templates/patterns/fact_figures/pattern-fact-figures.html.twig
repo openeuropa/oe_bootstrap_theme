@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Fact Figures pattern.
+ */
+#}
+{% include '@oe-bcl/bcl-fact-figures/fact-figures.html.twig' with {
+  'title': title,
+  'items': items,
+  'responsive_columns': columns,
+  'equal_height': true,
+  'icons_path': bcl_icon_path,
+  'link_more': link,
+  'attributes': attributes,
+} only %}

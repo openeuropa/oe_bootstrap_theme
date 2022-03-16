@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Theme override to display the 'Facts and Figures' #type paragraph.
+ *
+ * @see ./modules/contrib/paragraphs/templates/paragraph.html.twig
+ */
+#}
+{{ pattern('fact_figures', {
+  'title': title|default(''),
+  'items': items,
+  'columns': columns,
+  'link': link_more,
+}) }}
