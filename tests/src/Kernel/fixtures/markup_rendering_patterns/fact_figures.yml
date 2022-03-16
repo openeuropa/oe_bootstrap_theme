@@ -1,0 +1,191 @@
+fact_figures_default_1col:
+  render:
+    '#type': pattern
+    '#id': fact_figures
+    '#fields':
+      style: 'default'
+      columns: 1
+      link:
+        label: 'Read more'
+        path: '/example'
+      title: 'Fact and figures block'
+      items:
+        - icon: 'x-diamond-fill'
+          subtitle: 'Jira Tickets'
+          title: '1529 JIRA Ticket'
+          description: 'Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum liber'
+        - icon: 'ui-checks'
+          subtitle: 'Feature tickets'
+          title: '337 Features'
+          description: 'Turpis varius congue venenatis, erat dui feugiat felis.'
+        - icon: 'wallet-fill'
+          subtitle: 'Test tickets'
+          title: '107 Tests'
+          description: 'Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem.'
+        - icon: 'file-code-fill'
+          subtitle: 'Test variants'
+          title: '5670 Variants'
+          description: 'Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum.'
+        - icon: 'puzzle-fill'
+          subtitle: 'Jira ticket'
+          title: '345 Dev Ticket'
+          description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor.'
+        - icon: 'eye-fill'
+          subtitle: 'Figma components'
+          title: '43 Components'
+          description: 'Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur.'
+  assertions:
+    count:
+      'div.bcl-fact-figures.bcl-fact-figures--default': 1
+      'h2.fw-bold': 1
+      'div.row.row-cols-md-1': 1
+      'svg.bi.icon--l': 6
+      'h4.text-capitalize.fw-bold.mt-2': 6
+      'h5.fw-bold': 6
+    equals:
+      'div > div.col:nth-child(1) > h4': '1529 JIRA Ticket'
+      'div > div.col:nth-child(2) > h4': '337 Features'
+      'div > div.col:nth-child(3) > h4': '107 Tests'
+      'div > div.col:nth-child(4) > h4': '5670 Variants'
+      'div > div.col:nth-child(5) > h4': '345 Dev Ticket'
+      'div > div.col:nth-child(6) > h4': '43 Components'
+      'div > div.col:nth-child(1) > h5': 'Jira Tickets'
+      'div > div.col:nth-child(2) > h5': 'Feature tickets'
+      'div > div.col:nth-child(3) > h5': 'Test tickets'
+      'div > div.col:nth-child(4) > h5': 'Test variants'
+      'div > div.col:nth-child(5) > h5': 'Jira ticket'
+      'div > div.col:nth-child(6) > h5': 'Figma components'
+      'div > div.col.h-100:nth-child(1) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#x-diamond-fill"></use>'
+      'div > div.col.h-100:nth-child(2) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#ui-checks"></use>'
+      'div > div.col.h-100:nth-child(3) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#wallet-fill"></use>'
+      'div > div.col.h-100:nth-child(4) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#file-code-fill"></use>'
+      'div > div.col.h-100:nth-child(5) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#puzzle-fill"></use>'
+      'div > div.col.h-100:nth-child(6) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#eye-fill"></use>'
+      'a[href="/example"]': 'Read more'
+fact_figures_default_2col:
+  render:
+    '#type': pattern
+    '#id': fact_figures
+    '#fields':
+      style: 'default'
+      columns: 2
+      link:
+        label: 'Read more'
+        path: '/example'
+      title: 'Fact and figures block'
+      items:
+        - icon: 'x-diamond-fill'
+          subtitle: 'Jira Tickets'
+          title: '1529 JIRA Ticket'
+          description: 'Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum liber'
+        - icon: 'ui-checks'
+          subtitle: 'Feature tickets'
+          title: '337 Features'
+          description: 'Turpis varius congue venenatis, erat dui feugiat felis.'
+        - icon: 'wallet-fill'
+          subtitle: 'Test tickets'
+          title: '107 Tests'
+          description: 'Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem.'
+        - icon: 'file-code-fill'
+          subtitle: 'Test variants'
+          title: '5670 Variants'
+          description: 'Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum.'
+        - icon: 'puzzle-fill'
+          subtitle: 'Jira ticket'
+          title: '345 Dev Ticket'
+          description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor. '
+        - icon: 'eye-fill'
+          subtitle: 'Figma components'
+          title: '43 Components'
+          description: 'Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur.'
+  assertions:
+    count:
+      'div.bcl-fact-figures.bcl-fact-figures--default': 1
+      'h2.fw-bold': 1
+      'div.row.row-cols-md-2': 1
+      'svg.bi.icon--l': 6
+      'h4.text-capitalize.fw-bold.mt-2': 6
+      'h5.fw-bold': 6
+    equals:
+      'div > div.col:nth-child(1) > h4': '1529 JIRA Ticket'
+      'div > div.col:nth-child(2) > h4': '337 Features'
+      'div > div.col:nth-child(3) > h4': '107 Tests'
+      'div > div.col:nth-child(4) > h4': '5670 Variants'
+      'div > div.col:nth-child(5) > h4': '345 Dev Ticket'
+      'div > div.col:nth-child(6) > h4': '43 Components'
+      'div > div.col:nth-child(1) > h5': 'Jira Tickets'
+      'div > div.col:nth-child(2) > h5': 'Feature tickets'
+      'div > div.col:nth-child(3) > h5': 'Test tickets'
+      'div > div.col:nth-child(4) > h5': 'Test variants'
+      'div > div.col:nth-child(5) > h5': 'Jira ticket'
+      'div > div.col:nth-child(6) > h5': 'Figma components'
+      'div > div.col.h-100:nth-child(1) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#x-diamond-fill"></use>'
+      'div > div.col.h-100:nth-child(2) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#ui-checks"></use>'
+      'div > div.col.h-100:nth-child(3) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#wallet-fill"></use>'
+      'div > div.col.h-100:nth-child(4) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#file-code-fill"></use>'
+      'div > div.col.h-100:nth-child(5) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#puzzle-fill"></use>'
+      'div > div.col.h-100:nth-child(6) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#eye-fill"></use>'
+      'a[href="/example"]': 'Read more'
+fact_figures_default_3col:
+  render:
+    '#type': pattern
+    '#id': fact_figures
+    '#fields':
+      columns: 3
+      link:
+        label: 'Read more'
+        path: '/example'
+      title: 'Fact and figures block'
+      items:
+        - icon: 'x-diamond-fill'
+          subtitle: 'Jira Tickets'
+          title: '1529 JIRA Ticket'
+          description: 'Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum liber'
+        - icon: 'ui-checks'
+          subtitle: 'Feature tickets'
+          title: '337 Features'
+          description: 'Turpis varius congue venenatis, erat dui feugiat felis.'
+        - icon: 'wallet-fill'
+          subtitle: 'Test tickets'
+          title: '107 Tests'
+          description: 'Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem.'
+        - icon: 'file-code-fill'
+          subtitle: 'Test variants'
+          title: '5670 Variants'
+          description: 'Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum.'
+        - icon: 'puzzle-fill'
+          subtitle: 'Jira ticket'
+          title: '345 Dev Ticket'
+          description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor. '
+        - icon: 'eye-fill'
+          subtitle: 'Figma components'
+          title: '43 Components'
+          description: 'Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur.'
+  assertions:
+    count:
+      'div.bcl-fact-figures.bcl-fact-figures--default': 1
+      'h2.fw-bold': 1
+      'div.row.row-cols-md-3': 1
+      'svg.bi.icon--l': 6
+      'h4.text-capitalize.fw-bold.mt-2': 6
+      'h5.fw-bold': 6
+    contains:
+      'div > div.col:nth-child(1) > h4': '1529 JIRA Ticket'
+      'div > div.col:nth-child(2) > h4': '337 Features'
+      'div > div.col:nth-child(3) > h4': '107 Tests'
+      'div > div.col:nth-child(4) > h4': '5670 Variants'
+      'div > div.col:nth-child(5) > h4': '345 Dev Ticket'
+      'div > div.col:nth-child(6) > h4': '43 Components'
+      'div > div.col:nth-child(1) > h5': 'Jira Tickets'
+      'div > div.col:nth-child(2) > h5': 'Feature tickets'
+      'div > div.col:nth-child(3) > h5': 'Test tickets'
+      'div > div.col:nth-child(4) > h5': 'Test variants'
+      'div > div.col:nth-child(5) > h5': 'Jira ticket'
+      'div > div.col:nth-child(6) > h5': 'Figma components'
+      'div > div.col.h-100:nth-child(1) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#x-diamond-fill"></use>'
+      'div > div.col.h-100:nth-child(2) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#ui-checks"></use>'
+      'div > div.col.h-100:nth-child(3) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#wallet-fill"></use>'
+      'div > div.col.h-100:nth-child(4) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#file-code-fill"></use>'
+      'div > div.col.h-100:nth-child(5) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#puzzle-fill"></use>'
+      'div > div.col.h-100:nth-child(6) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#eye-fill"></use>'
+      'a[href="/example"]': 'Read more'
