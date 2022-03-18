@@ -20,10 +20,9 @@
 {% if badges is not empty %}
   {% for item in badges %}
     {% set _badges = _badges|merge([{
-      label: item.label,
       outline: true,
       rounded_pill: true,
-    }]) %}
+    }|merge(item)]) %}
   {% endfor %}
 {% endif %}
 {% include '@oe-bcl/card' with {
