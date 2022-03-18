@@ -46,10 +46,9 @@
 <div class="page">
 
   {{ pattern('navbar', {
-    navbar_branding: page.navbar_branding ? page.navbar_branding : false,
-    navbar_left: page.navbar_left ? page.navbar_left : false,
-    navbar_right: page.navbar_right ? page.navbar_right : false,
-    color_set: 'light'
+    branding: page.navbar_branding ? page.navbar_branding : false,
+    navigation: page.navbar_left ? page.navbar_left : false,
+    right: page.navbar_right ? page.navbar_right : false,
   }) }}
 
   <main class="pt-5 pb-5">
