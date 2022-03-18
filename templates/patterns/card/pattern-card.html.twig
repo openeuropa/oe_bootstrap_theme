@@ -16,11 +16,6 @@
   {% endif %}
   <div>{{ content }}</div>
 {% endset %}
-{% if url is not empty %}
-  {% set title %}
-    <a href="{{ url }}" class="text-underline-hover">{{ title }}</a>
-  {% endset %}
-{% endif %}
 {% include '@oe-bcl/card' with {
   'horizontal': orientation == 'horizontal',
   'horizontal_grid': (orientation == 'horizontal') ? {
