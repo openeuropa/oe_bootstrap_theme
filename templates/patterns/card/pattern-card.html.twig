@@ -40,12 +40,6 @@
   'card_header': header,
   'card_footer': footer,
   'badges': badges,
-  'date': (date is not empty) ? {
-    'day': date|date('d'),
-    'month': date|date('M'),
-    'year': date|date('Y'),
-    'date_time': date|date('Y-m-d'),
-  } : {},
   'attributes': attributes,
 } only %}
 {% endspaceless %}
