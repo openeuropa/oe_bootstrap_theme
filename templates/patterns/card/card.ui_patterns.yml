@@ -64,6 +64,8 @@ card:
       label: 'Badges'
       description: 'List of badges for the card.'
       preview:
-        - label: 'Primary badge'
-        - label: 'Secondary badge'
-          rounded_pill: true
+        - label: 'A badge'
+        - label: 'A non-rounded badge'
+          rounded_pill: false
+        - label: 'A solid badge'
+          outline: false

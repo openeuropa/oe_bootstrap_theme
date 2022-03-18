@@ -16,6 +16,15 @@
   {% endif %}
   <div>{{ content }}</div>
 {% endset %}
+{% set _badges = [] %}
+{% if badges is not empty %}
+  {% for item in badges %}
+    {% set _badges = _badges|merge([{
+      outline: true,
+      rounded_pill: true,
+    }|merge(item)]) %}
+  {% endfor %}
+{% endif %}
 {% include '@oe-bcl/card' with {
   'horizontal': orientation == 'horizontal',
   'horizontal_grid': (orientation == 'horizontal') ? {
@@ -39,7 +48,7 @@
   'image': image,
   'card_header': header,
   'card_footer': footer,
-  'badges': badges,
+  'badges': _badges,
   'attributes': attributes,
 } only %}
 {% endspaceless %}
