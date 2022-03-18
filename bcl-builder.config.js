@@ -45,7 +45,7 @@ module.exports = {
       options: { up: 4 },
     },
     {
-      from: ["node_modules/@openeuropa/bcl-theme-default/logos/ec/*.svg"],
+      from: ["node_modules/@openeuropa/bcl-theme-default/logos/ec/positive/*.svg"],
       to: path.resolve(outputFolder, "assets/logos/ec"),
       options: { up: true },
     },
