@@ -164,3 +164,21 @@ Please read [the full documentation](https://github.com/openeuropa/openeuropa) f
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the available versions, see the [tags on this repository](https://github.com/openeuropa/oe_bootstrap_theme/tags).
+
+## Upgrade from older versions
+
+### Upgrade from 1.0.0-alpha7 and earlier
+
+Target release: You can upgrade directly to the version that contains this README.md.
+
+#### Paragraphs migration
+
+Paragraphs-related theming and functionality has been moved from the [OpenEuropa Bootstrap base theme](https://github.com/openeuropa/oe_whitelabel) to [OpenEuropa Whitelabel](https://github.com/openeuropa/oe_whitelabel).
+
+The `oe_bootstrap_theme_paragraphs` module has been reduced to a skeleton. It will be disabled as part of an update hook in `oe_bootstrap_theme_helper`. It will be fully removed in future versions.
+
+Configuration and data for these paragraph types that is already in your database will be preserved in this uninstall operation.
+
+If you are using `openeuropa/oe_whitelabel`, and you want paragraphs functionality, you should upgrade it to `1.0.0-alpha6` or higher, and refer to the upgrade instructions found there.
+
+If you are _not_ using `openeuropa/oe_whitelabel`, but still want theming for paragraphs from `oe_paragraphs`, you need to replicate this functionality in custom code.
