@@ -13,9 +13,11 @@ use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\Tests\token\Kernel\KernelTestBase;
 
 /**
- * Test image value object with image field type.
+ * Test image value object with image field type. Extracted from oe_theme.
+ *
+ * @see https://github.com/openeuropa/oe_theme/blob/3.x/tests/src/Kernel/ValueObject/ImageTest.php
  */
-class ImageTest extends KernelTestBase {
+class ImageValueObjectTest extends KernelTestBase {
   private const ALT_TITLE = 'This is an alternative title';
   private const TITLE = 'This is a Title';
 
