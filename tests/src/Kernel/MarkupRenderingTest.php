@@ -11,6 +11,7 @@ use Drupal\Core\Render\Element;
 use Drupal\Core\Serialization\Yaml;
 use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
+use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -59,6 +60,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'dropdown',
     'fact_figures',
     'featured_media',
+    'file',
     'icon',
     'inpage_navigation',
     'link',
@@ -140,6 +142,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
           $suffix++;
         } while (isset($test_cases[$candidate_key]));
         $key = $candidate_key;
+        $test_case['render'] = PatternTestDataMassager::massageData($pattern, $test_case['render']);
         $test_cases[$key] = $test_case;
       }
     }
