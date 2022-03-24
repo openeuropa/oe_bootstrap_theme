@@ -1,0 +1,39 @@
+file:
+  label: File
+  description: 'File component is used to show info about files that can be downloaded, together with their translations.'
+  fields:
+    link_label:
+      type: text
+      label: 'Download link label'
+      description: 'The label to use for the download links. Defaults to "Download".'
+    file:
+      type: FileValueObject
+      label: 'File'
+      description: 'A FileValueObject instance.'
+      preview:
+        title: 'Example document'
+        mime: 'application/pdf'
+        url: 'https://example.com/document.pdf'
+        size: '4444'
+        name: 'document.pdf'
+        language_code: 'en'
+    translations:
+      type: array
+      label: 'Translations'
+      description: 'A list of FileValueObject instances pointing to translations of the file. Optional.'
+      preview:
+        - language_code: 'bg'
+          name: 'translation_bg.docx'
+          mime: 'application/msword'
+          size: '40391'
+          url: '/translation_bg.docx'
+        - language_code: 'es'
+          name: 'translation_es.pdf'
+          mime: 'application/pdf'
+          size: '425'
+          url: '/translation_es.html'
+        - language_code: 'fr'
+          name: 'translation_fr.pdf'
+          mime: 'application/pdf'
+          size: '121'
+          url: 'https://example.com/translation_fr.html'

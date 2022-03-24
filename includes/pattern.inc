@@ -8,6 +8,7 @@
 declare(strict_types = 1);
 
 use Drupal\Component\Utility\Html;
+use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 
@@ -173,5 +174,16 @@ function oe_bootstrap_theme_preprocess_pattern_fact_figures(array &$variables): 
         'name' => $item['icon'],
       ];
     }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for file pattern preview.
+ */
+function oe_bootstrap_theme_preprocess_pattern_file__preview(array &$variables): void {
+  $variables['file'] = FileValueObject::fromArray($variables['file']);
+
+  foreach ($variables['translations'] as $index => $translation) {
+    $variables['translations'][$index] = FileValueObject::fromArray($translation);
   }
 }
