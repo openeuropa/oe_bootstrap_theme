@@ -16,6 +16,8 @@ use Drupal\Tests\token\Kernel\KernelTestBase;
  * Test image value object with image field type.
  */
 class ImageTest extends KernelTestBase {
+  private const ALT_TITLE = 'This is an alternative title';
+  private const TITLE = 'This is a Title';
 
   /**
    * {@inheritdoc}
@@ -26,6 +28,13 @@ class ImageTest extends KernelTestBase {
     'entity_test',
     'field',
   ];
+
+  /**
+   * Entity object.
+   *
+   * @var \Drupal\Core\Entity\EntityInterface
+   */
+  private $entity;
 
   /**
    * {@inheritdoc}
@@ -54,27 +63,17 @@ class ImageTest extends KernelTestBase {
 
     // Copy file in public files to use it for styling.
     \Drupal::service('file_system')->copy(__DIR__ . '/../../../fixtures/example_1.jpeg', 'public://example_1.jpg');
-  }
 
-  /**
-   * Test the image value object has the correct style applied.
-   */
-  public function testFromStyledImageItem() {
     // Create image file.
     $image = File::create([
       'uri' => 'public://example_1.jpg',
     ]);
     $image->save();
 
-    // Create a test style.
-    /** @var \Drupal\image\ImageStyleInterface $style */
-    $style = ImageStyle::create(['name' => 'main_style']);
-    $style->save();
-
     // Create an image item.
-    $alt = $this->randomString();
-    $title = $this->randomString();
-    $entity = EntityTest::create([
+    $alt = self::ALT_TITLE;
+    $title = self::TITLE;
+    $this->entity = EntityTest::create([
       'name' => $this->randomString(),
       'field_image' => [
         'target_id' => $image->id(),
@@ -82,11 +81,21 @@ class ImageTest extends KernelTestBase {
         'title' => $title,
       ],
     ]);
-    $entity->save();
+    $this->entity->save();
+  }
 
-    $object = ImageValueObject::fromStyledImageItem($entity->get('field_image')->first(), $style->getName());
-    $this->assertEquals($title, $object->getName());
-    $this->assertEquals($alt, $object->getAlt());
+  /**
+   * Test the image value object has the correct style applied.
+   */
+  public function testFromStyledImageItem() {
+    // Create a test style.
+    /** @var \Drupal\image\ImageStyleInterface $style */
+    $style = ImageStyle::create(['name' => 'main_style']);
+    $style->save();
+
+    $object = ImageValueObject::fromStyledImageItem($this->entity->get('field_image')->first(), $style->getName());
+    $this->assertEquals(self::TITLE, $object->getName());
+    $this->assertEquals(self::ALT_TITLE, $object->getAlt());
     $this->assertStringContainsString('/styles/main_style/public/example_1.jpg', $object->getSource());
 
     // Test that all the cache tags have present and bubbled up.
@@ -97,7 +106,22 @@ class ImageTest extends KernelTestBase {
 
     $invalid_image_style = $this->randomMachineName();
     $this->expectExceptionObject(new \InvalidArgumentException(sprintf('Could not load image style with name "%s".', $invalid_image_style)));
-    ImageValueObject::fromStyledImageItem($entity->get('field_image')->first(), $invalid_image_style);
+    ImageValueObject::fromStyledImageItem($this->entity->get('field_image')->first(), $invalid_image_style);
+  }
+
+  /**
+   * Test the image value object from imageItem.
+   */
+  public function testFromImageItem() {
+    $object = ImageValueObject::fromImageItem($this->entity->get('field_image')->first());
+    $this->assertEquals(self::TITLE, $object->getName());
+    $this->assertEquals(self::ALT_TITLE, $object->getAlt());
+    $this->assertStringContainsString('/files/example_1.jpg', $object->getSource());
+
+    // Test that all the cache tags have present and bubbled up.
+    $this->assertEqualsCanonicalizing([
+      'file:1',
+    ], $object->getCacheTags());
   }
 
 }
