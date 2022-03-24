@@ -67,16 +67,15 @@ navbar_pattern_large_light_scheme_default_breakpoint:
       'button.navbar-toggler': 1
       'button[data-bs-target="#bcl-navbar"]': 1
       'div#bcl-navbar.navbar-collapse': 1
-      'div#bcl-navbar.navbar-collapse > div.me-auto.navbar-nav': 1
       'a': 5
-      'div#bcl-navbar.navbar-collapse > div.me-auto.navbar-nav > a': 3
+      'div#bcl-navbar.navbar-collapse > a': 3
       'div.navbar-collapse > div.d-flex > form.d-flex': 1
     equals:
-      'div.navbar-nav a:nth-child(1)': "I'm a link"
-      'div.navbar-nav a:nth-child(2)': "I'm a link 2"
-      'div.navbar-nav a:nth-child(3)': "I'm a link 3"
-      'div.navbar-nav ul.dropdown-menu li .dropdown-item': "I'm a link in a dropdown"
-      'div.navbar-nav button.dropdown-item': "I'm a button"
+      'div#bcl-navbar a:nth-child(1)': "I'm a link"
+      'div#bcl-navbar a:nth-child(2)': "I'm a link 2"
+      'div#bcl-navbar a:nth-child(3)': "I'm a link 3"
+      'div#bcl-navbar ul.dropdown-menu li .dropdown-item': "I'm a link in a dropdown"
+      'div#bcl-navbar button.dropdown-item': "I'm a button"
       'label': 'Search'
       'nav > div.container > a.navbar-brand[href="https://europa.eu/"]': 'OpenEuropa Site'
       'div.navbar-collapse > div.d-flex label': 'Search'
@@ -150,16 +149,15 @@ navbar_pattern_medium_dark_scheme_md_breakpoint:
       'button.navbar-toggler': 1
       'button[data-bs-target="#bcl-navbar"]': 1
       'div#bcl-navbar.navbar-collapse': 1
-      'div#bcl-navbar.navbar-collapse > div.me-auto.navbar-nav': 1
       'a': 5
-      'div#bcl-navbar.navbar-collapse > div.me-auto.navbar-nav > a': 3
+      'div#bcl-navbar.navbar-collapse > a': 3
       'div.navbar-collapse > div.d-flex > form.d-flex': 1
     equals:
-      'div.navbar-nav a:nth-child(1)': "I'm a link"
-      'div.navbar-nav a:nth-child(2)': "I'm a link 2"
-      'div.navbar-nav a:nth-child(3)': "I'm a link 3"
-      'div.navbar-nav ul.dropdown-menu li .dropdown-item': "I'm a link in a dropdown"
-      'div.navbar-nav button.dropdown-item': "I'm a button"
+      'div#bcl-navbar a:nth-child(1)': "I'm a link"
+      'div#bcl-navbar a:nth-child(2)': "I'm a link 2"
+      'div#bcl-navbar a:nth-child(3)': "I'm a link 3"
+      'div#bcl-navbar ul.dropdown-menu li .dropdown-item': "I'm a link in a dropdown"
+      'div#bcl-navbar button.dropdown-item': "I'm a button"
       'a.navbar-brand[href="https://europa.eu/"]': 'OpenEuropa Site'
       'div.navbar-collapse > div.d-flex label': 'Search'
 navbar_pattern_medium_default_scheme_only_navigation:
@@ -190,9 +188,7 @@ navbar_pattern_medium_default_scheme_only_navigation:
       'button.navbar-toggler': 1
       'button[data-bs-target="#bcl-navbar"]': 1
       'div#bcl-navbar.navbar-collapse': 1
-      'div#bcl-navbar.navbar-collapse > div.me-auto.navbar-nav': 1
-      'a': 1
-      'div#bcl-navbar.navbar-collapse > div.me-auto.navbar-nav > a': 1
+      'div#bcl-navbar.navbar-collapse > a': 1
       'div.navbar-collapse > div.d-flex': 0
     equals:
-      'div.navbar-nav a': "I'm a link"
+      'div#bcl-navbar a': "I'm a link"

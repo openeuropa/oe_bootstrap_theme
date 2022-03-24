@@ -3,7 +3,9 @@
  * Template for the main menu.
  */
 #}
+{% set attributes = attributes.addClass('me-auto') %}
 {{ pattern('navigation', {
   'variant': 'navbar',
-  'items': pattern_items
+  'items': pattern_items,
+  'attributes': attributes,
 }) }}
