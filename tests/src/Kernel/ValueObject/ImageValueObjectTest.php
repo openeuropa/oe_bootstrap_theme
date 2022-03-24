@@ -10,25 +10,23 @@ use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
-use Drupal\Tests\token\Kernel\KernelTestBase;
+use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 
 /**
  * Test image value object with image field type. Extracted from oe_theme.
  *
  * @see https://github.com/openeuropa/oe_theme/blob/3.x/tests/src/Kernel/ValueObject/ImageTest.php
  */
-class ImageValueObjectTest extends KernelTestBase {
-  private const ALT_TITLE = 'This is an alternative title';
-  private const TITLE = 'This is a Title';
+class ImageValueObjectTest extends AbstractKernelTestBase {
 
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
-    'image',
-    'file',
+  protected static $modules = [
     'entity_test',
     'field',
+    'file',
+    'image',
   ];
 
   /**
@@ -36,7 +34,7 @@ class ImageValueObjectTest extends KernelTestBase {
    *
    * @var \Drupal\Core\Entity\EntityInterface
    */
-  private $entity;
+  protected $entity;
 
   /**
    * {@inheritdoc}
@@ -46,9 +44,7 @@ class ImageValueObjectTest extends KernelTestBase {
 
     $this->installEntitySchema('file');
     $this->installEntitySchema('entity_test');
-
     $this->installSchema('file', ['file_usage']);
-
     $this->installConfig(['field', 'system']);
 
     // Create a field with settings to validate.
@@ -73,21 +69,19 @@ class ImageValueObjectTest extends KernelTestBase {
     $image->save();
 
     // Create an image item.
-    $alt = self::ALT_TITLE;
-    $title = self::TITLE;
     $this->entity = EntityTest::create([
       'name' => $this->randomString(),
       'field_image' => [
         'target_id' => $image->id(),
-        'alt' => $alt,
-        'title' => $title,
+        'alt' => 'This is an alternative title',
+        'title' => 'This is a title',
       ],
     ]);
     $this->entity->save();
   }
 
   /**
-   * Test the image value object has the correct style applied.
+   * Tests the ::fromStyledImageItem method.
    */
   public function testFromStyledImageItem() {
     // Create a test style.
@@ -96,8 +90,8 @@ class ImageValueObjectTest extends KernelTestBase {
     $style->save();
 
     $object = ImageValueObject::fromStyledImageItem($this->entity->get('field_image')->first(), $style->getName());
-    $this->assertEquals(self::TITLE, $object->getName());
-    $this->assertEquals(self::ALT_TITLE, $object->getAlt());
+    $this->assertEquals('This is a title', $object->getName());
+    $this->assertEquals('This is an alternative title', $object->getAlt());
     $this->assertStringContainsString('/styles/main_style/public/example_1.jpg', $object->getSource());
 
     // Test that all the cache tags have present and bubbled up.
@@ -112,12 +106,12 @@ class ImageValueObjectTest extends KernelTestBase {
   }
 
   /**
-   * Test the image value object from imageItem.
+   * Tests the ::fromImageItem method.
    */
   public function testFromImageItem() {
     $object = ImageValueObject::fromImageItem($this->entity->get('field_image')->first());
-    $this->assertEquals(self::TITLE, $object->getName());
-    $this->assertEquals(self::ALT_TITLE, $object->getAlt());
+    $this->assertEquals('This is a title', $object->getName());
+    $this->assertEquals('This is an alternative title', $object->getAlt());
     $this->assertStringContainsString('/files/example_1.jpg', $object->getSource());
 
     // Test that all the cache tags have present and bubbled up.
