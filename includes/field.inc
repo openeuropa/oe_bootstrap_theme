@@ -29,6 +29,14 @@ function oe_bootstrap_theme_preprocess_field(&$variables) {
 function oe_bootstrap_theme_theme_suggestions_field_alter(array &$suggestions, array $variables): void {
   $element = $variables['element'];
 
+  // Do not output field labels and wrapping markup for paragraph fields.
+  if (isset($element['#entity_type']) && $element['#entity_type'] === 'paragraph') {
+    // Prepend the new suggestion to the list. This will put it right after the
+    // default field template. By doing this we allow overriding single fields,
+    // while keeping all the rest markup-free.
+    array_unshift($suggestions, 'field__bare');
+  }
+
   // Add suggestions for all 'Entity reference revisions' for each target type.
   if ($element['#field_type'] === 'entity_reference_revisions') {
     /** @var \Drupal\field\Entity\FieldConfig $field_definition */
