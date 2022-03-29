@@ -28,26 +28,26 @@ file_with_translations:
           url: 'https://example.com/translation_fr.html'
   assertions:
     count:
-      'h2': 1
+      'h2': 0
       'svg.icon--2xl': 1
       'svg.icon--file': 1
-      '.mt-4 > h2 + div > div:first-child a': 1
-      '.mt-4 > h2 + div > div:last-child .collapse': 1
+      '.mt-4 > div.border.rounded > div:first-child a': 1
+      '.mt-4 > div.border.rounded > div:last-child .collapse': 1
       '.collapse': 1
       '.collapse > div': 3
     equals:
-      '.mt-4 > h2': 'Icon PDF specs'
-      '.mt-4 > h2 + div > div:first-child small.fw-bold': 'English<span class="fw-normal"> (22.87 KB - PDF)</span>'
+      '.mt-4 > div.border.rounded > div:first-child p.fw-bold.m-0': 'Icon PDF specs'
+      '.mt-4 > div.border.rounded > div:first-child p.fw-bold.m-0 + small.fw-bold': 'English<span class="fw-normal"> (22.87 KB - PDF)</span>'
       '.collapse > div:nth-child(1) p.fw-bold': 'translation_bg.docx'
       '.collapse > div:nth-child(2) p.fw-bold': 'translation_es.pdf'
       '.collapse > div:nth-child(3) p.fw-bold': 'translation_fr.pdf'
     contains:
-      '.mt-4 > h2 + div > div:first-child svg.icon--file.icon--2xl': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#file-pdf-fill"></use>'
+      '.mt-4 > div.border.rounded > div:first-child svg.icon--file.icon--2xl': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#file-pdf-fill"></use>'
       # The <a> contains also the svg, so we are forced to a partial assetion.
-      '.mt-4 > h2 + div > div:first-child a[href="https://example.com/document.pdf"]': 'Download<svg'
-      '.mt-4 > h2 + div > div:first-child a svg.icon--fluid': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#download"></use>'
-      '.mt-4 > h2 + div > div:last-child .text-md-center a': 'Other languages (3)'
-      '.mt-4 > h2 + div > div:last-child .text-md-center a svg.icon--2xs': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#caret-down-fill"></use>'
+      '.mt-4 > div.border.rounded > div:first-child a[href="https://example.com/document.pdf"]': 'Download<svg'
+      '.mt-4 > div.border.rounded > div:first-child a svg.icon--fluid': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#download"></use>'
+      '.mt-4 > div.border.rounded > div:last-child .text-md-center a': 'Other languages (3)'
+      '.mt-4 > div.border.rounded > div:last-child .text-md-center a svg.icon--2xs': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#caret-down-fill"></use>'
       '.collapse > div:nth-child(1) small.fw-bold': 'Български<span class="fw-normal"> (39.44 KB - DOC)</span>'
       '.collapse > div:nth-child(1) a[href="/translation_bg.docx"]': 'Download<svg'
       '.collapse > div:nth-child(1) a svg.icon--fluid': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#download"></use>'
@@ -72,17 +72,17 @@ file_without_translations:
       link_label: 'Scarica'
   assertions:
     count:
-      'h2': 1
+      'h2': 0
       'svg.icon--2xl': 1
       'svg.icon--file': 1
-      '.mt-4 > h2 + div > div': 1
-      '.mt-4 > h2 + div > div a': 1
+      '.mt-4 > div.border.rounded > div': 1
+      '.mt-4 > div.border.rounded > div a': 1
       '.collapse': 0
     equals:
-      '.mt-4 > h2': 'Foglio di calcolo'
-      '.mt-4 > h2 + div > div:first-child small.fw-bold': 'italiano<span class="fw-normal"> (38.45 MB - XLS)</span>'
+      '.mt-4 > div.border.rounded > div:first-child p.fw-bold.m-0': 'Foglio di calcolo'
+      '.mt-4 > div.border.rounded > div:first-child p.fw-bold.m-0 + small.fw-bold': 'italiano<span class="fw-normal"> (38.45 MB - XLS)</span>'
     contains:
-      '.mt-4 > h2 + div > div:first-child svg.icon--file.icon--2xl': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#file-excel-fill"></use>'
-      # The <a> contains also the svg, so we are forced to a partial assetion.
-      '.mt-4 > h2 + div > div:first-child a[href="https://example.com/document.pdf"]': 'Scarica<svg'
-      '.mt-4 > h2 + div > div:first-child a svg.icon--fluid': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#download"></use>'
+      '.mt-4 > div.border.rounded > div:first-child svg.icon--file.icon--2xl': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#file-excel-fill"></use>'
+      # The <a> contains also the svg, so we are forced to a partial assertion.
+      '.mt-4 > div.border.rounded > div:first-child a[href="https://example.com/document.pdf"]': 'Scarica<svg'
+      '.mt-4 > div.border.rounded > div:first-child a svg.icon--fluid': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#download"></use>'
