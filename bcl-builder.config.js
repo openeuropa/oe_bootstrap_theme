@@ -35,7 +35,7 @@ module.exports = {
       options: { up: true },
     },
     {
-      from: ["node_modules/@openeuropa/bcl-theme-default/icons/bootstrap-icons.svg"],
+      from: ["node_modules/@openeuropa/bcl-theme-default/icons/bcl-default-icons.svg"],
       to: path.resolve(outputFolder, "assets/icons"),
       options: { up: true },
     },
@@ -45,7 +45,7 @@ module.exports = {
       options: { up: 4 },
     },
     {
-      from: ["node_modules/@openeuropa/bcl-theme-default/logos/ec/*.svg"],
+      from: ["node_modules/@openeuropa/bcl-theme-default/logos/ec/positive/*.svg"],
       to: path.resolve(outputFolder, "assets/logos/ec"),
       options: { up: true },
     },
