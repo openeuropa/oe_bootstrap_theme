@@ -17,41 +17,41 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
     return;
   }
 
-  $items = $variables['items'];
-  foreach ($items as $key => $item) {
-    $class = $item['in_active_trail'] ? ['active'] : [];
-    $menu_item = [
+  $variables['pattern_items'] = [];
+  foreach ($variables['items'] as $key => $item) {
+    $pattern_item = [
       'label' => $item['title'],
       'path' => $item['url']->toString(),
-      'attributes' => new Attribute(['class' => $class]),
+      'attributes' => new Attribute([
+        'class' => $item['in_active_trail'] ? ['active'] : [],
+      ]),
     ];
-    $variables['items'][$key] = $menu_item;
-
     if (empty($item['below'])) {
+      $variables['pattern_items'][$key] = $pattern_item;
       continue;
     }
 
-    $class[] = 'nav-link';
-    $menu_item['attributes'] = new Attribute(['class' => $class]);
-    $item_with_submenu = [
+    $submenu = $pattern_item;
+    $submenu['attributes'] = new Attribute(['class' => 'nav-link']);
+    $pattern_item += [
       'standalone' => TRUE,
       'dropdown' => TRUE,
       'link' => TRUE,
-      'alignment' => 'dropdown-menu-sm-start',
-      'trigger' => $menu_item,
+      'alignment' => 'dropdown-menu_item-sm-start',
+      'trigger' => $submenu,
     ];
-    $variables['items'][$key] = $item_with_submenu;
-
     foreach ($item['below'] as $key_sub_item => $sub_item) {
-      $subclass = $sub_item['in_active_trail'] ? ['active'] : [];
-      $sub_item_menu = [
+      $pattern_item['items'][$key_sub_item] = [
         'label' => $sub_item['title'],
         'path' => $sub_item['url']->toString(),
-        'attributes' => new Attribute(['class' => $subclass]),
+        'attributes' => new Attribute([
+          'class' => $sub_item['in_active_trail'] ? ['active'] : [],
+        ]),
       ];
-      $variables['items'][$key]['items'][$key_sub_item] = $sub_item_menu;
     }
+    $variables['pattern_items'][$key] = $pattern_item;
   }
+
 }
 
 /**
