@@ -126,7 +126,7 @@ status_messages_error:
     equals:
       '.alert-content': 'Error message.'
     contains:
-      'svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#dash-circle-fill'
+      'svg': '/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#dash-circle-fill'
 status_messages_success:
   render:
     '#theme': 'status_messages'
@@ -145,7 +145,7 @@ status_messages_success:
     equals:
       '.alert-content': 'Success message.'
     contains:
-      'svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#check-circle-fill'
+      'svg': '/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#check-circle-fill'
 status_messages_warning:
   render:
     '#theme': 'status_messages'
@@ -164,7 +164,7 @@ status_messages_warning:
     equals:
       '.alert-content': 'Warning message.'
     contains:
-      'svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#exclamation-triangle-fill'
+      'svg': '/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#exclamation-triangle-fill'
 status_messages_multiple:
   render:
     '#theme': 'status_messages'

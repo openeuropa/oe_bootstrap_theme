@@ -84,7 +84,7 @@ class MenuLocalTasksTest extends AbstractKernelTestBase {
     $nav = $crawler->filter('nav.nav-tabs');
     $this->assertCount(2, $nav);
 
-    $links = $crawler->filter('a.nav-link.text-underline-hover');
+    $links = $crawler->filter('a.nav-link.standalone');
     $this->assertCount(6, $links);
 
     $active = $crawler->filter('a.active');

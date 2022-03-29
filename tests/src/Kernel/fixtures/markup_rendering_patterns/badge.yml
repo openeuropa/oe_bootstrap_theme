@@ -15,7 +15,7 @@ badge_dimissible_with_rounded_pill:
       'span.badge.bg-secondary': 1
       'span.icon--close': 1
     equals:
-      'span.badge.bg-secondary': 'A simple badge!<span class="icon--close" aria-hidden="true"><svg class="bi icon--s"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#x"></use></svg></span>'
+      'span.badge.bg-secondary': 'A simple badge!<span class="icon--close" aria-hidden="true"><svg class="bi icon--s"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#x-lg"></use></svg></span>'
 badge_non_dimissible_without_rounded_pill:
   render:
     '#type': pattern
@@ -52,4 +52,4 @@ badge_with_url:
       'a span.badge.bg-secondary': 1
       'a span.icon--close': 1
     equals:
-      'span.badge.bg-secondary': 'A simple badge!<span class="icon--close" aria-hidden="true"><svg class="bi icon--s"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#x"></use></svg></span>'
+      'span.badge.bg-secondary': 'A simple badge!<span class="icon--close" aria-hidden="true"><svg class="bi icon--s"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#x-lg"></use></svg></span>'
