@@ -7,10 +7,10 @@ link_pattern_with_icon_before:
         icon_position: 'before'
       label: 'Link to example'
       path: 'https://example.com'
-      icon: 'alarm'
+      icon: 'lock'
   assert:
     contains:
-      'a > svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#alarm'
+      'a > svg': '/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#lock'
       'a': 'Link to example'
     count:
       'a': 1
@@ -21,7 +21,7 @@ link_pattern_with_icon_before:
       'svg.me-2-5': 1
       # This class indicates icon positioned after.
       'svg.ms-2-5': 0
-      'a.text-underline-hover': 0
+      'a.standalone': 0
 link_pattern_disabled_with_icon_after:
   render:
     '#type': pattern
@@ -32,10 +32,10 @@ link_pattern_disabled_with_icon_after:
         icon_position: 'after'
       label: 'Link to example'
       path: 'https://example.com'
-      icon: 'alarm'
+      icon: 'lock'
   assert:
     contains:
-      'a > svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#alarm'
+      'a > svg': '/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#lock'
       'a': 'Link to example'
     count:
       'a': 1
@@ -46,7 +46,7 @@ link_pattern_disabled_with_icon_after:
       'a.disabled': 1
       'svg.me-2-5': 0
       'svg.ms-2-5': 1
-      'a.text-underline-hover': 0
+      'a.standalone': 0
 link_pattern_disabled_with_icon_without_label_removing_icon_spaces_standalone:
   render:
     '#type': pattern
@@ -59,18 +59,17 @@ link_pattern_disabled_with_icon_without_label_removing_icon_spaces_standalone:
         standalone: true
       path: 'https://example.com'
       icon:
-        name: 'alarm'
-        path: '/custom/icon/path/icons.svg'
+        name: 'lock'
   assert:
     contains:
-      'a > svg': '/custom/icon/path/icons.svg#alarm'
+      'a > svg': 'bcl-default-icons.svg#lock'
     count:
       'a': 1
       'a[href="https://example.com"]': 1
       'svg.icon--s': 1
       'a.disabled': 1
       'svg.ms-2-5': 0
-      'a.text-underline-hover': 1
+      'a.standalone': 1
 link_pattern_disabled_with_icon_after_without_removing_icon_spaces:
   render:
     '#type': pattern
@@ -82,10 +81,10 @@ link_pattern_disabled_with_icon_after_without_removing_icon_spaces:
       label: 'Link to example'
       path: 'https://example.com'
       icon:
-        name: 'alarm'
+        name: 'lock'
   assert:
     contains:
-      'a > svg': '/oe_bootstrap_theme/assets/icons/bootstrap-icons.svg#alarm'
+      'a > svg': 'bcl-default-icons.svg#lock'
       'a': 'Link to example'
     count:
       'a': 1
@@ -93,7 +92,7 @@ link_pattern_disabled_with_icon_after_without_removing_icon_spaces:
       'svg.icon--s': 1
       'a.disabled': 1
       'svg.ms-2-5': 1
-      'a.text-underline-hover': 0
+      'a.standalone': 0
 link_pattern_enabled_without_icon:
   render:
     '#type': pattern
@@ -111,7 +110,7 @@ link_pattern_enabled_without_icon:
       'a[href="https://example.com"]': 1
       'svg': 0
       'a.disabled': 0
-      'a.text-underline-hover': 0
+      'a.standalone': 0
 link_pattern_enabled_without_icon_standalone:
   render:
     '#type': pattern
@@ -129,7 +128,7 @@ link_pattern_enabled_without_icon_standalone:
       'a[href="https://example.com"]': 1
       'svg': 0
       'a.disabled': 0
-      'a.text-underline-hover': 1
+      'a.standalone': 1
 link_pattern_attributes:
   render:
     '#type': pattern
@@ -147,9 +146,9 @@ link_pattern_attributes:
         data-attribute: 'some-value'
   assert:
     equals:
-      'a.first.second.text-underline-hover': 'Link to example'
+      'a.first.second.standalone': 'Link to example'
     count:
       'a': 1
       'a[href="https://example.com"]': 1
       'svg': 0
-      'a#link-id.first.second.text-underline-hover': 1
+      'a#link-id.first.second.standalone': 1

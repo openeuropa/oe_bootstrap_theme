@@ -22,7 +22,7 @@ description_list:
         - term:
           - label: 'First label without icon'
           - label: 'Second label'
-            icon: 'calendar-event'
+            icon: 'upload'
           definition: 'Description of second term text goes here.'
         - term:
           - label:
@@ -33,7 +33,7 @@ description_list:
         - term:
             - label: 'Custom icon size'
               icon:
-                name: 'bicycle'
+                name: 'calendar-x'
                 size: 'xl'
           definition: 'This is a bigger icon.'
         - term: 'A single term without icon.'
