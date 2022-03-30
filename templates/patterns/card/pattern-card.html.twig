@@ -4,7 +4,7 @@
  * Card pattern.
  */
 #}
-{% spaceless %}
+{% apply spaceless %}
 {% set content %}
   {% if meta is not empty %}
     {# Use negative margin to compensate for me-3 on each item. #}
@@ -51,4 +51,4 @@
   'badges': _badges,
   'attributes': attributes,
 } only %}
-{% endspaceless %}
+{% endapply %}
