@@ -20,39 +20,39 @@
 {% if badges is not empty %}
   {% for item in badges %}
     {% set _badges = _badges|merge([{
-      outline: true,
-      rounded_pill: true,
+      'outline': true,
+      'rounded_pill': true,
     }|merge(item)]) %}
   {% endfor %}
 {% endif %}
 {% include '@oe-bcl/card' with {
-  horizontal: true,
-  horizontal_grid: {
-    left_col_classes: 'col-md-3 col-lg-2 rounded mw-listing-img',
-    right_col_classes: 'col-md-9 col-lg-10',
+  'horizontal': true,
+  'horizontal_grid': {
+    'left_col_classes': 'col-md-3 col-lg-2 rounded mw-listing-img',
+    'right_col_classes': 'col-md-9 col-lg-10',
   },
-  extra_classes_body: 'p-0 pb-md-0 pb-3',
-  badges: _badges,
-  title: {
-    content: title,
+  'extra_classes_body': 'p-0 pb-md-0 pb-3',
+  'badges': _badges,
+  'title': {
+    'content': title,
   },
-  text: (text is not empty) ? {
-    content: text,
-    classes: 'mb-2-5',
-    tag: 'div',
+  'text': (text is not empty) ? {
+    'content': text,
+    'classes': 'mb-2-5',
+    'tag': 'div',
   } : {},
-  attributes: create_attribute({'class': [
+  'attributes': create_attribute({'class': [
     'listing-item',
     'border-bottom',
     'border-md-0',
     'border-0',
     'mb-3',
   ]}),
-  text_color: 'dark',
-  image: (image is not empty) ? image|merge({
-    position: 'top',
-    classes: 'd-none d-md-block',
+  'text_color': 'dark',
+  'image': (image is not empty) ? image|merge({
+    'position': 'top',
+    'classes': 'd-none d-md-block',
   }) : {},
-  content: content,
+  'content': content,
 } only %}
 {% endapply %}
