@@ -29,6 +29,7 @@ card_horizontal_with_image:
       'div.row.g-0 div.col-4': 1
       'div.row.g-0 div.col-8': 1
       'img.card-img-top': 1
+      '.card-body > div > span.text-muted': 2
     equals:
       'div.card-header': 'Header of card'
       'h5.card-title': 'Title card'
