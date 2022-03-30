@@ -4,7 +4,7 @@
  * Card pattern search variant.
  */
 #}
-{% spaceless %}
+{% apply spaceless %}
 {% set content %}
   {% if meta is not empty %}
     {# Use negative margin to compensate for me-3 on each item. #}
@@ -55,4 +55,4 @@
   }) : {},
   content: content,
 } only %}
-{% endspaceless %}
+{% endapply %}
