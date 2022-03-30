@@ -10,7 +10,7 @@ declare(strict_types = 1);
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Implements hook_form_FORM_ID_alter()
+ * Implements hook_form_FORM_ID_alter().
  */
 function oe_bootstrap_theme_form_system_theme_settings_alter(array &$form, FormStateInterface $form_state, ?string $form_id = NULL): void {
   // Work-around for a core bug affecting admin themes. See issue #943212.
