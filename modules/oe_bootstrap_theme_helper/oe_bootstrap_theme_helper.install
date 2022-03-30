@@ -23,3 +23,12 @@ function oe_bootstrap_theme_helper_requirements($phase): array {
 
   return $requirements;
 }
+
+/**
+ * Create Slim Select theme settings.
+ */
+function oe_bootstrap_theme_helper_update_9000(): void {
+  \Drupal::configFactory()->getEditable('oe_bootstrap_theme.settings')
+    ->set('slimselect.enabled', TRUE)
+    ->save();
+}

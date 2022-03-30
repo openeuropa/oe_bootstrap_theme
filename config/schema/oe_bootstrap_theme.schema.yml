@@ -1,3 +1,11 @@
 oe_bootstrap_theme.settings:
   type: theme_settings
   label: 'OpenEuropa Bootstrap Theme settings'
+  mapping:
+    slimselect:
+      type: mapping
+      label: 'Slim Select'
+      mapping:
+        enabled:
+          type: boolean
+          label: 'Whether to enable Slim Select on all select elements'
