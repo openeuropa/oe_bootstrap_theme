@@ -10,7 +10,9 @@
  * @see template_preprocess_select()
  */
 #}
-{{ attach_library('oe_bootstrap_theme/slimselect') }}
+{% if slimselect.enabled %}
+  {{ attach_library('oe_bootstrap_theme/slimselect') }}
+{% endif %}
 
 {% if element['#multiple'] %}
   {% set classes = [

@@ -7,6 +7,7 @@
 
 declare(strict_types = 1);
 
+use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -66,4 +67,13 @@ function oe_bootstrap_theme_preprocess_form_element(&$variables) {
  */
 function oe_bootstrap_theme_form_node_form_alter(&$form, FormStateInterface $form_state) {
   $form['#theme'] = ['node_edit_form'];
+}
+
+/**
+ * Implements hook_preprocess_select().
+ */
+function oe_bootstrap_theme_preprocess_select(array &$variables): void {
+  $settings = \Drupal::config('oe_bootstrap_theme.settings');
+  CacheableMetadata::createFromObject($settings)->applyTo($variables['element']);
+  $variables['slimselect'] = $settings->get('slimselect');
 }
