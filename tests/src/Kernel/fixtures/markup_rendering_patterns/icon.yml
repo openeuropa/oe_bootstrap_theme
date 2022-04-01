@@ -3,10 +3,11 @@ icon_default:
     '#type': pattern
     '#id': 'icon'
   assertions:
-    count:
-      'svg.icon--s': 1
-    equals:
-      'svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#"></use>'
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\IconPatternAssert
+      expected:
+        name: ''
+        size: 's'
 icon_only_name:
   render:
     '#type': pattern
@@ -14,10 +15,11 @@ icon_only_name:
     '#fields':
       name: 'envelope'
   assertions:
-    count:
-      'svg.icon--s': 1
-    contains:
-      'svg': '#envelope'
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\IconPatternAssert
+      expected:
+        name: 'envelope'
+        size: 's'
 icon_name_with_size:
   render:
     '#type': pattern
@@ -26,10 +28,11 @@ icon_name_with_size:
       name: 'eye'
       size: '2xs'
   assertions:
-    count:
-      'svg.icon--2xs': 1
-    contains:
-      'svg': '#eye'
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\IconPatternAssert
+      expected:
+        name: 'eye'
+        size: '2xs'
 icon_name_with_size_fluid:
   render:
     '#type': pattern
@@ -38,7 +41,8 @@ icon_name_with_size_fluid:
       name: 'eye'
       size: 'fluid'
   assertions:
-    count:
-      'svg.icon--fluid': 1
-    contains:
-      'svg': '#eye'
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\IconPatternAssert
+      expected:
+        name: 'eye'
+        size: 'fluid'
