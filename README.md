@@ -167,7 +167,7 @@ We use [SemVer](http://semver.org/) for versioning. For the available versions, 
 
 ## Upgrade from older versions
 
-### Upgrade from 1.0.0-alpha7 and earlier
+### Upgrade to 1.0.0-alpha8
 
 #### Paragraphs migration
 
