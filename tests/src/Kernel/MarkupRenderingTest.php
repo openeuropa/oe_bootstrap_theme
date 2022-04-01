@@ -160,6 +160,8 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    *   - count: assert how many times the given HTML elements occur.
    *   - equals: assert content of given HTML elements.
    *   - contains: assert content contained in given HTML elements.
+   *   - pattern: it will use a pattern assertion class to run the assertions.
+   *   For the pattern key syntax, see ::assertPatternMarkup().
    *   Assertions array has to be provided in the following format:
    *
    *   @code
@@ -179,7 +181,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    */
   protected function assertMarkupRendering(array $assertions, string $html): void {
     $crawler = new Crawler($html);
-    $assertions += array_fill_keys(['count', 'equals', 'contains'], []);
+    $assertions += array_fill_keys(['count', 'equals', 'contains', 'pattern'], []);
 
     // Catch any unexpected assertion keys. Compare with an empty array to show
     // only the unexpected keys in the exception message.
@@ -187,7 +189,16 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
       'count',
       'equals',
       'contains',
+      'pattern',
     ]));
+
+    if (!empty($assertions['pattern'])) {
+      // Pattern assertion key should be the only one present.
+      $this->assertEquals(['pattern'], array_keys(array_filter($assertions)));
+
+      $this->assertPatternMarkup($assertions['pattern'], $html);
+      return;
+    }
 
     // Assert presence of given strings.
     foreach ($assertions['contains'] as $selector => $string) {
@@ -207,6 +218,30 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
       $this->assertNotEmpty($element, sprintf('No elements found with selector "%s" in:%s%s.', $selector, PHP_EOL, $html));
       $this->assertSame($expected, trim($element->html()), sprintf('Failed assertion for selector "%s".', $selector));
     }
+  }
+
+  /**
+   * Executes the pattern assertion class specified in the test data.
+   *
+   * @param array $assertions
+   *   An associative array with the following keys:
+   *   - class: A pattern assertion QCN.
+   *   - expected: the expectation array to pass to the assertion class.
+   * @param string $html
+   *   The HTML markup.
+   */
+  protected function assertPatternMarkup(array $assertions, string $html): void {
+    $this->assertEquals([], array_diff(array_keys($assertions), [
+      'class',
+      'expected',
+    ]));
+
+    $crawler = new Crawler($html);
+    $pattern_html = $crawler->filter('body > form')->html();
+
+    /** @var \Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PatternAssertInterface $pattern_assert */
+    $pattern_assert = new $assertions['class']();
+    $pattern_assert->assertPattern($assertions['expected'], $pattern_html);
   }
 
   /**
