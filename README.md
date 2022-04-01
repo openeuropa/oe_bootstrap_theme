@@ -173,8 +173,4 @@ We use [SemVer](http://semver.org/) for versioning. For the available versions, 
 
 Paragraphs-related theming and functionality has been moved from the [OpenEuropa Bootstrap base theme](https://github.com/openeuropa/oe_bootstrap_theme) to [OpenEuropa Whitelabel](https://github.com/openeuropa/oe_whitelabel).
 
-The `oe_bootstrap_theme_paragraphs` has been reduced to an empty module. It will be disabled as part of an update hook in `oe_bootstrap_theme_helper`. It will be fully removed in future versions.
-
-Configuration and data for these paragraph types that is already in your database will be preserved in this uninstall operation.
-
 If you are using `openeuropa/oe_whitelabel`, and you want paragraphs functionality, you should upgrade it to `1.0.0-alpha6` or higher, and refer to the upgrade instructions found there.
