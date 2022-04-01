@@ -17,7 +17,7 @@
 
     {% set _items = _items|merge([{
       title: _item.title,
-      language: _item.language_code|to_native_language|capitalize,
+      language: _item.language_code|to_native_language,
       meta: _translation_meta,
       download: {
         label: link_label|default('Download'|t),
