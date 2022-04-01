@@ -38,15 +38,15 @@ file_with_translations:
           icon: 'file-pdf-fill'
         translations:
           - title: 'translation_bg.docx'
-            language: 'Български'
+            language: 'български'
             url: '/translation_bg.docx'
             meta: '(39.44 KB - DOC)'
           - title: 'translation_es.pdf'
-            language: 'Español'
+            language: 'español'
             url: '/translation_es.html'
             meta: '(425 bytes - PDF)'
           - title: 'translation_fr.pdf'
-            language: 'Français'
+            language: 'français'
             url: 'https://example.com/translation_fr.html'
             meta: '(121 bytes - PDF)'
 file_without_translations:
