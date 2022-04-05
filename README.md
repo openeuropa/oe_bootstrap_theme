@@ -2,19 +2,6 @@
 
 Drupal 8/9 theme based on [Bootstrap 5](https://v5.getbootstrap.com/) and [UI Patterns](https://github.com/nuvoleweb/ui_patterns/).
 
-## Paragraphs
-
-The paragraphs below are not yet themed therefore not recommended for usage:
-
-- Contextual navigation
-- Document
-- Fact
-- Rich text
-
-Some paragraphs are considered "internal", and only meant to be used inside other paragraphs:
-
-- Listing item: To be used as item paragraph within 'Listing item block'.
-
 ## Requirements
 
 This depends on the following software:
@@ -36,14 +23,6 @@ In order to enable the theme in your project perform the following steps:
 
 1. Enable the OpenEuropa Bootstrap Theme Helper module ```./vendor/bin/drush en oe_bootstrap_theme_helper```
 2. Enable the OpenEuropa Bootstrap Theme and set it as default ```./vendor/bin/drush config-set system.theme default oe_bootstrap_theme```
-
-
-### Integration with oe_paragraphs
-
-In order to have full working integration with paragraphs in your project, you must enable oe_boostrap_theme_paragraphs module:
-
-```./vendor/bin/drush en oe_bootstrap_theme_paragraphs```
-
 
 ## Development setup
 
@@ -185,3 +164,13 @@ Please read [the full documentation](https://github.com/openeuropa/openeuropa) f
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the available versions, see the [tags on this repository](https://github.com/openeuropa/oe_bootstrap_theme/tags).
+
+## Upgrade from older versions
+
+### Upgrade to 1.0.0-alpha8
+
+#### Paragraphs migration
+
+Paragraphs-related theming and functionality has been moved from the [OpenEuropa Bootstrap base theme](https://github.com/openeuropa/oe_bootstrap_theme) to [OpenEuropa Whitelabel](https://github.com/openeuropa/oe_whitelabel).
+
+If you are using `openeuropa/oe_whitelabel`, and you want paragraphs functionality, you should upgrade it to `1.0.0-alpha6` or higher, and refer to the upgrade instructions found there.
