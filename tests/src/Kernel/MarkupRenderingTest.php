@@ -225,7 +225,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    *
    * @param array $assertions
    *   An associative array with the following keys:
-   *   - class: A pattern assertion QCN.
+   *   - class: A pattern assertion qualified class name.
    *   - expected: the expectation array to pass to the assertion class.
    * @param string $html
    *   The HTML markup.
