@@ -14,7 +14,9 @@
       {% endfor %}
     </div>
   {% endif %}
-  <div>{{ content }}</div>
+  {% if content is not empty %}
+    <div>{{ content }}</div>
+  {% endif %}
 {% endset %}
 {% set _badges = [] %}
 {% if badges is not empty %}
