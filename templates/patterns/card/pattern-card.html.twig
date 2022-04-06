@@ -14,7 +14,12 @@
       {% endfor %}
     </div>
   {% endif %}
-  <div>{{ content }}</div>
+  {% set _rendered_content %}
+    {{ content }}
+  {% endset %}
+  {% if _rendered_content|trim is not empty %}
+    <div>{{ _rendered_content }}</div>
+  {% endif %}
 {% endset %}
 {% set _badges = [] %}
 {% if badges is not empty %}
