@@ -10,6 +10,9 @@ card_horizontal_with_image:
       image:
         path: 'https://placeimg.com/1000/500/arch'
         alt: 'Alternative text for card image'
+      meta:
+        - 'DIGIT'
+        - 'Developer'
       content:
         '#type': 'pattern'
         '#id': 'button'
@@ -26,11 +29,14 @@ card_horizontal_with_image:
       'div.row.g-0 div.col-4': 1
       'div.row.g-0 div.col-8': 1
       'img.card-img-top': 1
+      '.card-body > div > span.text-muted': 2
     equals:
       'div.card-header': 'Header of card'
       'h5.card-title': 'Title card'
       'h6.card-subtitle': 'Subtitle card'
       'div.card-text': 'Text card with longer text which is supported'
+      '.card-body > div > span.text-muted:nth-child(1)': 'DIGIT'
+      '.card-body > div > span.text-muted:nth-child(2)': 'Developer'
     contains:
       'button.btn-primary': 'Custom action'
 card_vertical:
@@ -77,12 +83,10 @@ card_variant_search:
       title: 'Title card'
       text: 'Text card with longer text which is supported'
       image:
-        '#markup': 'https://placeimg.com/1000/500/arch'
+        path: 'https://placeimg.com/1000/500/arch'
       badges:
-        - first: 'first key'
-          '#title': 'Category 1'
-        - second: 'second key'
-          '#title': 'Category 2'
+        - label: 'Category 1'
+        - label: 'Category 2'
   assert:
     count:
       'div.listing-item.border-bottom.border-md-0.border-0.card.text-dark': 1
@@ -94,6 +98,6 @@ card_variant_search:
       'span.badge.rounded-pill.badge-outline-primary': 2
     equals:
       'h5.card-title': 'Title card'
-      'p.card-text.mb-2-5': 'Text card with longer text which is supported'
+      'div.card-text.mb-2-5': 'Text card with longer text which is supported'
       'div > span.badge.badge-outline-primary:nth-child(1)': 'Category 1'
       'div > span.badge.badge-outline-primary:nth-child(2)': 'Category 2'

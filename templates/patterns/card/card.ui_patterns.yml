@@ -16,7 +16,7 @@ card:
     title:
       type: text
       label: 'Title'
-      description: 'Card title.'
+      description: 'Card title. Supports markup, e.g. for links.'
       preview: 'Title card'
     subtitle:
       type: text
@@ -35,6 +35,13 @@ card:
       preview:
         path: 'https://placeimg.com/1000/500/people'
         alt: 'Alternative text for card image'
+    meta:
+      type: array
+      label: 'Meta items'
+      description: 'Date or other meta information.'
+      preview:
+        - 'Organisation'
+        - 'Position'
     content:
       type: render
       label: 'Content'
@@ -55,6 +62,8 @@ card:
       label: 'Badges'
       description: 'List of badges for the card.'
       preview:
-        - label: 'Primary badge'
-        - label: 'Secondary badge'
-          rounded_pill: true
+        - label: 'A badge'
+        - label: 'A non-rounded badge'
+          rounded_pill: false
+        - label: 'A solid badge'
+          outline: false

@@ -4,52 +4,56 @@
  * Card pattern.
  */
 #}
-{% spaceless %}
-{% if title is not empty %}
-  {% set title = {
-    'content': title,
-  } %}
-{% endif %}
-{% if subtitle is not empty %}
-  {% set subtitle = {
-    'content': subtitle,
-    'classes': 'mb-2',
-  } %}
-{% endif %}
-{% if text is not empty %}
-  {% set text = {
-    'content': text,
-    'classes': 'mb-2',
-    'tag': 'div'
-  } %}
-{% endif %}
-{% if orientation == 'horizontal' %}
-  {% set horizontal_grid = {
-    left_col_classes: 'col-4',
-    right_col_classes: 'col-8',
-    gutter: 0
-  } %}
-{% endif %}
-{% if date is not empty %}
-  {% set _date = {
-    'day': date|date('d'),
-    'month': date|date('M'),
-    'year': date|date('Y'),
-    'date_time': date|date('Y-m-d')
-  } %}
+{% apply spaceless %}
+{% set content %}
+  {% if meta is not empty %}
+    {# Use negative margin to compensate for me-3 on each item. #}
+    <div class="my-3 me-n3">
+      {% for _meta_item in meta %}
+        <span class="text-muted me-3">{{ _meta_item }}</span>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% set _rendered_content %}
+    {{ content }}
+  {% endset %}
+  {% if _rendered_content|trim is not empty %}
+    <div>{{ _rendered_content }}</div>
+  {% endif %}
+{% endset %}
+{% set _badges = [] %}
+{% if badges is not empty %}
+  {% for item in badges %}
+    {% set _badges = _badges|merge([{
+      outline: true,
+      rounded_pill: true,
+    }|merge(item)]) %}
+  {% endfor %}
 {% endif %}
 {% include '@oe-bcl/card' with {
   'horizontal': orientation == 'horizontal',
-  'horizontal_grid': horizontal_grid,
-  'title': title,
-  'subtitle': subtitle,
-  'text': text,
+  'horizontal_grid': (orientation == 'horizontal') ? {
+    left_col_classes: 'col-4',
+    right_col_classes: 'col-8',
+    gutter: 0,
+  } : {},
+  'title': (title is not empty) ? {
+    'content': title,
+  } : {},
+  'subtitle': (subtitle is not empty) ? {
+    'content': subtitle,
+    'classes': 'mb-2',
+  } : {},
+  'text': (text is not empty) ? {
+    'content': text,
+    'classes': 'mb-2',
+    'tag': 'div',
+  } : {},
   'content': content,
   'image': image,
   'card_header': header,
   'card_footer': footer,
-  'badges': badges,
-  'date': _date,
+  'badges': _badges,
   'attributes': attributes,
 } only %}
-{% endspaceless %}
+{% endapply %}
