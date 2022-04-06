@@ -1,0 +1,74 @@
+{#
+/**
+ * @file
+ * File download pattern.
+ */
+#}
+{% apply spaceless %}
+{% set _translations = [] %}
+
+{% if translations is not empty and translations is iterable %}
+  {% set _items = [] %}
+  {% for _item in translations %}
+    {% set _translation_meta = '(' ~ _item.extension|upper  ~ ')' %}
+    {% if _item.size %}
+      {% set _translation_meta = '(' ~ _item.size|format_size ~ ' - ' ~ _item.extension|upper  ~ ')' %}
+    {% endif %}
+
+    {% set _items = _items|merge([{
+      title: _item.title,
+      language: _item.language_code|to_native_language,
+      meta: _translation_meta,
+      download: {
+        label: link_label|default('Download'|t),
+        path: _item.url,
+      },
+    }]) %}
+  {% endfor %}
+  {% set _translations = {
+    label: {
+      path: bcl_icon_path,
+      label: 'Other languages (@count)'|t({'@count': _items|length}),
+      icon_position: 'after',
+      icon: {
+        name: 'caret-down-fill',
+        size: '2xs',
+        path: bcl_icon_path,
+      }
+    },
+    items: _items,
+  } %}
+{% endif %}
+
+{% set _meta = '(' ~ file.extension|upper  ~ ')' %}
+{% if file.size %}
+  {% set _meta = '(' ~ file.size|format_size ~ ' - ' ~ file.extension|upper  ~ ')' %}
+{% endif %}
+{% endapply %}
+
+{%  if file is not empty %}
+  <div class="mt-4">
+    {% include '@oe-bcl/file' with {
+      icon_path: bcl_icon_path,
+      item_title: file.title,
+      language: file.language_code|to_native_language,
+      meta: _meta,
+      icon: {
+        path: bcl_icon_path,
+        name: file.extension|to_file_icon,
+        size: '2xl',
+      },
+      download: {
+        label: link_label|default('Download'|t),
+        path: file.url,
+        icon: {
+          path: bcl_icon_path,
+          name: 'download',
+          size: 'fluid',
+        },
+      },
+      translation: _translations,
+      attributes: attributes,
+    } only %}
+  </div>
+{% endif %}

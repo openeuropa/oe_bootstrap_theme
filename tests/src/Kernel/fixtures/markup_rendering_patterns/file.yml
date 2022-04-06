@@ -1,0 +1,75 @@
+file_with_translations:
+  render:
+    '#type': pattern
+    '#id': file
+    '#fields':
+      file:
+        title: 'Icon PDF specs'
+        name: 'druplicon.pdf'
+        url: 'https://example.com/document.pdf'
+        mime: 'application/pdf'
+        size: '23423'
+        language_code: 'en'
+      translations:
+        - language_code: 'bg'
+          name: 'translation_bg.docx'
+          mime: 'application/msword'
+          size: '40391'
+          url: '/translation_bg.docx'
+        - language_code: 'es'
+          name: 'translation_es.pdf'
+          mime: 'application/pdf'
+          size: '425'
+          url: '/translation_es.html'
+        - language_code: 'fr'
+          name: 'translation_fr.pdf'
+          mime: 'application/pdf'
+          size: '121'
+          url: 'https://example.com/translation_fr.html'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\FilePatternAssert
+      expected:
+        file:
+          title: 'Icon PDF specs'
+          language: 'English'
+          url: 'https://example.com/document.pdf'
+          meta: '(22.87 KB - PDF)'
+          icon: 'file-pdf-fill'
+        translations:
+          - title: 'translation_bg.docx'
+            language: 'български'
+            url: '/translation_bg.docx'
+            meta: '(39.44 KB - DOC)'
+          - title: 'translation_es.pdf'
+            language: 'español'
+            url: '/translation_es.html'
+            meta: '(425 bytes - PDF)'
+          - title: 'translation_fr.pdf'
+            language: 'français'
+            url: 'https://example.com/translation_fr.html'
+            meta: '(121 bytes - PDF)'
+file_without_translations:
+  render:
+    '#type': pattern
+    '#id': file
+    '#fields':
+      file:
+        title: 'Foglio di calcolo'
+        name: 'calculations.xls'
+        url: 'https://example.com/document.pdf'
+        mime: 'application/msexcel'
+        size: '40319401'
+        language_code: 'it'
+      link_label: 'Scarica'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\FilePatternAssert
+      expected:
+        file:
+          title: 'Foglio di calcolo'
+          language: 'italiano'
+          url: 'https://example.com/document.pdf'
+          meta: '(38.45 MB - XLS)'
+          icon: 'file-excel-fill'
+        translations: ~

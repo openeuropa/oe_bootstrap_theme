@@ -151,7 +151,7 @@ To patch a component:
 ```bash
 docker-compose exec -u node node git config --global user.email "name@example.com"
 docker-compose exec -u node node git config --global user.name "Name"
-docker-compose exec -u node node npx patch-package @openeuropa/bcl-theme-default
+docker-compose exec -u node node npx patch-package @openeuropa/bcl-theme-default --patch-dir=patches/npm
 ```
 
 Patches will be generated in `./patches/npm` and applied when running `npm install`.\
