@@ -5,7 +5,7 @@
  */
 #}
 {% apply spaceless %}
-{% set content %}
+{% set _content %}
   {% if meta is not empty %}
     {# Use negative margin to compensate for me-3 on each item. #}
     <div class="my-3 me-n3">
@@ -53,6 +53,6 @@
     'position': 'top',
     'classes': 'd-none d-md-block',
   }) : {},
-  'content': content,
+  'content': _content,
 } only %}
 {% endapply %}
