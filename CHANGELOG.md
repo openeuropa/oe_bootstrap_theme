@@ -1,5 +1,25 @@
 # Change Log
 
+## [1.0.0-alpha8](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-alpha8) (2022-04-07)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-alpha7...1.0.0-alpha8)
+
+**Merged pull requests:**
+
+- OEL-0000: Prepare release packages only once. [\#227](https://github.com/openeuropa/oe_bootstrap_theme/pull/227) ([brummbar](https://github.com/brummbar))
+- EPIC: OEL-1255: Migrate paragraphs [\#223](https://github.com/openeuropa/oe_bootstrap_theme/pull/223) ([donquixote](https://github.com/donquixote))
+- OEL-494: File pattern. [\#216](https://github.com/openeuropa/oe_bootstrap_theme/pull/216) ([brummbar](https://github.com/brummbar))
+- OEL-1166: ImageValueObject fix cache handling. [\#213](https://github.com/openeuropa/oe_bootstrap_theme/pull/213) ([escuriola](https://github.com/escuriola))
+- OEL-1052: Enable media\_avportal\_mock on ParagraphsTestBase. [\#211](https://github.com/openeuropa/oe_bootstrap_theme/pull/211) ([GilNovacomm](https://github.com/GilNovacomm))
+- OEL-1322: PHP 8.0 Upgrade. [\#209](https://github.com/openeuropa/oe_bootstrap_theme/pull/209) ([escuriola](https://github.com/escuriola))
+- OEL-1318: Fix parameters when calling navbar pattern [\#206](https://github.com/openeuropa/oe_bootstrap_theme/pull/206) ([donquixote](https://github.com/donquixote))
+- OEL-1310: Deal with duplicate pager template [\#200](https://github.com/openeuropa/oe_bootstrap_theme/pull/200) ([donquixote](https://github.com/donquixote))
+- OEL-1307: Update to BCL 0.20.0 [\#199](https://github.com/openeuropa/oe_bootstrap_theme/pull/199) ([escuriola](https://github.com/escuriola))
+- OEL-1160: Set navbar to default variant menu navigation. [\#196](https://github.com/openeuropa/oe_bootstrap_theme/pull/196) ([escuriola](https://github.com/escuriola))
+- OEL-755: Listing refactor & paragraph [\#191](https://github.com/openeuropa/oe_bootstrap_theme/pull/191) ([escuriola](https://github.com/escuriola))
+- OEL-1159: Align search variant with default card pattern [\#178](https://github.com/openeuropa/oe_bootstrap_theme/pull/178) ([donquixote](https://github.com/donquixote))
+- OEL-1057: Fix issue with menu preprocess overriding core keys. [\#167](https://github.com/openeuropa/oe_bootstrap_theme/pull/167) ([escuriola](https://github.com/escuriola))
+- OEL-759: Theme the Facts & Figures paragraph type [\#123](https://github.com/openeuropa/oe_bootstrap_theme/pull/123) ([abel-santos-corral](https://github.com/abel-santos-corral))
+
 ## [1.0.0-alpha7](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-alpha7) (2022-03-09)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-alpha6...1.0.0-alpha7)
 
@@ -10,6 +30,7 @@
 
 **Merged pull requests:**
 
+- Prepare release 1.0.0-alpha7 [\#198](https://github.com/openeuropa/oe_bootstrap_theme/pull/198) ([abel-santos-corral](https://github.com/abel-santos-corral))
 - OEL-1239: Fix paragraphs patch error. [\#193](https://github.com/openeuropa/oe_bootstrap_theme/pull/193) ([GilNovacomm](https://github.com/GilNovacomm))
 - OEL-1190: Add margin when no meta to separate title and content. [\#192](https://github.com/openeuropa/oe_bootstrap_theme/pull/192) ([escuriola](https://github.com/escuriola))
 - OEL-1157: Restore tar.gz archive creation on release. [\#190](https://github.com/openeuropa/oe_bootstrap_theme/pull/190) ([brummbar](https://github.com/brummbar))
