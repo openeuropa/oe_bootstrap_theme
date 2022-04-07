@@ -66,9 +66,8 @@ card_layout:
           subtitle: 'Subtitle card 1'
           text: 'Text card with longer text which is supported 1'
           image:
-            path: 'https://placeimg.com/1000/500/arch'
+            src: 'https://placeimg.com/1000/500/arch'
             alt: 'Alternative text for card image'
-            position: 'top'
           content:
             - type: html_tag
               tag: 'button'
@@ -83,9 +82,8 @@ card_layout:
           subtitle: 'Subtitle card 2'
           text: 'Text card with longer text which is supported 2'
           image:
-            path: 'https://placeimg.com/1000/500/nature'
+            src: 'https://placeimg.com/1000/500/nature'
             alt: 'Alternative text for card image'
-            position: 'bottom'
           content: 'Custom test'
           card_header: 'Header of card 2'
           card_footer: 'Footer of card 2'
@@ -93,9 +91,8 @@ card_layout:
           subtitle: 'Subtitle card 3'
           text: 'Text card with longer text which is supported 3'
           image:
-            path: 'https://placeimg.com/1000/500/tech'
+            src: 'https://placeimg.com/1000/500/tech'
             alt: 'Alternative text for card image'
-            position: 'bottom'
           content: 'Some representative placeholder content for the first card.'
           card_header: 'Header of card 3'
           card_footer: 'Footer of card 3'

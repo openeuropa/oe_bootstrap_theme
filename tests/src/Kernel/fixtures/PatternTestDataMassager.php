@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures;
 
 use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 
 /**
  * Transforms test data coming from YAML files.
@@ -53,6 +54,61 @@ final class PatternTestDataMassager {
     if (!empty($data['#fields']['translations'])) {
       foreach ($data['#fields']['translations'] as $index => $translation) {
         $data['#fields']['translations'][$index] = FileValueObject::fromArray($translation);
+      }
+    }
+
+    return $data;
+  }
+
+  /**
+   * Massages data for the "card" pattern.
+   *
+   * @param array $data
+   *   The data structure.
+   *
+   * @return array
+   *   The massaged data structure.
+   */
+  private static function massageCardPattern(array $data): array {
+    if (isset($data['#fields']['image'])) {
+      $data['#fields']['image'] = ImageValueObject::fromArray($data['#fields']['image']);
+    }
+
+    return $data;
+  }
+
+  /**
+   * Massages data for the "card_layout" pattern.
+   *
+   * @param array $data
+   *   The data structure.
+   *
+   * @return array
+   *   The massaged data structure.
+   */
+  private static function massageCardLayoutPattern(array $data): array {
+    foreach ($data['#fields']['items'] as &$item) {
+      if (isset($item['image'])) {
+        $item['image'] = ImageValueObject::fromArray($item['image']);
+      }
+    }
+
+    return $data;
+  }
+
+  /**
+   * Massages data for the "listing" pattern.
+   *
+   * @param array $data
+   *   The data structure.
+   *
+   * @return array
+   *   The massaged data structure.
+   */
+  private static function massageListingPattern(array $data): array {
+    foreach ($data['#fields']['items'] as &$item) {
+      if (isset($item['image'])) {
+        $item['image'] = ImageValueObject::fromArray($item['image']);
       }
     }
 

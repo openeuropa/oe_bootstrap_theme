@@ -29,11 +29,11 @@ card:
       description: 'Card text.'
       preview: 'Text card with longer text which is supported'
     image:
-      type: array
+      type: ImageValueObject
       label: 'Image'
-      description: 'Card image with path, alt and position.'
+      description: 'Image for the card. Optional.'
       preview:
-        path: 'https://placeimg.com/1000/500/people'
+        src: 'https://placeimg.com/1000/500/people'
         alt: 'Alternative text for card image'
     meta:
       type: array

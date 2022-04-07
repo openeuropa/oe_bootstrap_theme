@@ -50,7 +50,10 @@
     'tag': 'div',
   } : {},
   'content': content,
-  'image': image,
+  'image': image ? {
+    'path': image.src,
+    'alt': image.alt,
+  },
   'card_header': header,
   'card_footer': footer,
   'badges': _badges,
