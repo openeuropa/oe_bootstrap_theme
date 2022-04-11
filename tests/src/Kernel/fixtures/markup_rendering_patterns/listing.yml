@@ -16,7 +16,7 @@ listing_default_1_col:
             '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
           image:
-            path: 'https://placeimg.com/600/400/people'
+            src: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -27,7 +27,7 @@ listing_default_1_col:
             '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
           image:
-            path: 'https://placeimg.com/600/400/arch'
+            src: 'https://placeimg.com/600/400/arch'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -46,7 +46,7 @@ listing_default_1_col:
             '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
           image:
-            path: 'https://placeimg.com/600/400/nature'
+            src: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -89,7 +89,7 @@ listing_default_2_col:
             '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
           image:
-            path: 'https://placeimg.com/600/400/people'
+            src: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -108,7 +108,7 @@ listing_default_2_col:
             '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
           image:
-            path: 'https://placeimg.com/600/400/nature/sepia'
+            src: 'https://placeimg.com/600/400/nature/sepia'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -120,7 +120,7 @@ listing_default_2_col:
           text: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
 
           image:
-            path: 'https://placeimg.com/600/400/nature'
+            src: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -131,7 +131,7 @@ listing_default_2_col:
             '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
           image:
-            path: 'https://placeimg.com/600/400/people/sepia'
+            src: 'https://placeimg.com/600/400/people/sepia'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -142,7 +142,7 @@ listing_default_2_col:
             '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
           image:
-            path: 'https://placeimg.com/600/400/animals'
+            src: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -187,7 +187,7 @@ listing_default_3_col:
             '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
           image:
-            path: 'https://placeimg.com/600/400/people'
+            src: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -206,7 +206,7 @@ listing_default_3_col:
             '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:  'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
           image:
-            path: 'https://placeimg.com/600/400/nature/sepia'
+            src: 'https://placeimg.com/600/400/nature/sepia'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -217,7 +217,7 @@ listing_default_3_col:
             '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:  'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
           image:
-            path: 'https://placeimg.com/600/400/nature'
+            src: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -228,7 +228,7 @@ listing_default_3_col:
             '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:  'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
           image:
-            path: 'https://placeimg.com/600/400/people/sepia'
+            src: 'https://placeimg.com/600/400/people/sepia'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -239,7 +239,7 @@ listing_default_3_col:
             '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:  'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
           image:
-            path: 'https://placeimg.com/600/400/animals'
+            src: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -284,7 +284,7 @@ listing_highlight_1_col:
             '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
           image:
-            path: 'https://placeimg.com/600/400/people'
+            src: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
 
           content:
@@ -296,7 +296,7 @@ listing_highlight_1_col:
             '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text:  'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
           image:
-            path: 'https://placeimg.com/600/400/arch'
+            src: 'https://placeimg.com/600/400/arch'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -315,9 +315,8 @@ listing_highlight_1_col:
             '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:  'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
           image:
-            path: 'https://placeimg.com/600/400/nature'
+            src: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
-            position: 'bottom'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -328,8 +327,7 @@ listing_highlight_1_col:
       'div.bcl-listing.bcl-listing--highlight-1-col': 1
       'div.row.row-cols-1.g-4': 1
       'div.listing-item--highlight': 4
-      'img.card-img-top': 2
-      'img.card-img-bottom': 1
+      'img.card-img-top': 3
       'div.card-text': 4
       'span.me-4': 4
       'span.mb-2': 8
@@ -357,7 +355,7 @@ listing_highlight_2_col:
             '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
           image:
-            path: 'https://placeimg.com/600/400/people'
+            src: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -376,7 +374,7 @@ listing_highlight_2_col:
             '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:  'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
           image:
-            path: 'https://placeimg.com/600/400/nature/sepia'
+            src: 'https://placeimg.com/600/400/nature/sepia'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -387,7 +385,7 @@ listing_highlight_2_col:
             '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:  'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
           image:
-            path: 'https://placeimg.com/600/400/nature'
+            src: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -398,7 +396,7 @@ listing_highlight_2_col:
             '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:  'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
           image:
-            path: 'https://placeimg.com/600/400/people/sepia'
+            src: 'https://placeimg.com/600/400/people/sepia'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -409,9 +407,8 @@ listing_highlight_2_col:
             '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:  'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
           image:
-            path: 'https://placeimg.com/600/400/animals'
+            src: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
-            position: 'bottom'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -422,8 +419,7 @@ listing_highlight_2_col:
       'div.bcl-listing.bcl-listing--highlight-2-col': 1
       'div.row.row.row-cols-1.row-cols-md-2.g-4': 1
       'div.listing-item--highlight': 6
-      'img.card-img-top': 4
-      'img.card-img-bottom': 1
+      'img.card-img-top': 5
       'div.card-text.mb-2': 6
       'span.me-4': 6
       'span.mb-2': 12
@@ -453,7 +449,7 @@ listing_highlight_3_col:
             '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
           image:
-            path: 'https://placeimg.com/600/400/people'
+            src: 'https://placeimg.com/600/400/people'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -472,7 +468,7 @@ listing_highlight_3_col:
             '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:  'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
           image:
-            path: 'https://placeimg.com/600/400/nature/sepia'
+            src: 'https://placeimg.com/600/400/nature/sepia'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -483,7 +479,7 @@ listing_highlight_3_col:
             '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:  'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
           image:
-            path: 'https://placeimg.com/600/400/nature'
+            src: 'https://placeimg.com/600/400/nature'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -494,7 +490,7 @@ listing_highlight_3_col:
             '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:  'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
           image:
-            path: 'https://placeimg.com/600/400/people/sepia'
+            src: 'https://placeimg.com/600/400/people/sepia'
             alt: 'alt img'
           content:
             '#markup': '<div>
@@ -505,9 +501,8 @@ listing_highlight_3_col:
             '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:  'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
           image:
-            path: 'https://placeimg.com/600/400/animals'
+            src: 'https://placeimg.com/600/400/animals'
             alt: 'alt img'
-            position: 'bottom'
           content:
             '#markup': '<div>
               <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span>
@@ -518,8 +513,7 @@ listing_highlight_3_col:
       'div.bcl-listing.bcl-listing--highlight-3-col': 1
       'div.row.row-cols-1.row-cols-md-3.g-4': 1
       'div.listing-item--highlight': 6
-      'img.card-img-top': 4
-      'img.card-img-bottom': 1
+      'img.card-img-top': 5
       'div.card-text': 6
       'span.me-4': 6
       'span.mb-2': 12

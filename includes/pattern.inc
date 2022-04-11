@@ -187,3 +187,34 @@ function oe_bootstrap_theme_preprocess_pattern_file__preview(array &$variables):
     $variables['translations'][$index] = FileValueObject::fromArray($translation);
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for card pattern preview.
+ */
+function oe_bootstrap_theme_preprocess_pattern_card__preview(array &$variables): void {
+  if (isset($variables['image'])) {
+    $variables['image'] = ImageValueObject::fromArray($variables['image']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for card_layout pattern preview.
+ */
+function oe_bootstrap_theme_preprocess_pattern_card_layout__preview(array &$variables): void {
+  foreach ($variables['items'] as &$item) {
+    if (isset($item['image'])) {
+      $item['image'] = ImageValueObject::fromArray($item['image']);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for listing pattern preview.
+ */
+function oe_bootstrap_theme_preprocess_pattern_listing__preview(array &$variables): void {
+  foreach ($variables['items'] as &$item) {
+    if (isset($item['image'])) {
+      $item['image'] = ImageValueObject::fromArray($item['image']);
+    }
+  }
+}

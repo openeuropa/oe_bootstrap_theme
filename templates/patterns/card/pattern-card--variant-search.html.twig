@@ -57,6 +57,8 @@
   'image': (image is not empty) ? image|merge({
     'position': 'top',
     'classes': 'd-none d-md-block',
+    'path': image.src,
+    'alt': image.alt,
   }) : {},
   'content': _content,
 } only %}

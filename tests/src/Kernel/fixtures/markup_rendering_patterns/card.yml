@@ -8,7 +8,7 @@ card_horizontal_with_image:
       subtitle: 'Subtitle card'
       text: 'Text card with longer text which is supported'
       image:
-        path: 'https://placeimg.com/1000/500/arch'
+        src: 'https://placeimg.com/1000/500/arch'
         alt: 'Alternative text for card image'
       meta:
         - 'DIGIT'
@@ -49,7 +49,7 @@ card_vertical:
       subtitle: 'Subtitle card'
       text: 'Text card with longer text which is supported'
       image:
-        path: 'https://placeimg.com/1000/500/arch'
+        src: 'https://placeimg.com/1000/500/arch'
         alt: 'Alternative text for card image'
       content:
         '#type': 'pattern'
@@ -83,7 +83,7 @@ card_variant_search:
       title: 'Title card'
       text: 'Text card with longer text which is supported'
       image:
-        path: 'https://placeimg.com/1000/500/arch'
+        src: 'https://placeimg.com/1000/500/arch'
       badges:
         - label: 'Category 1'
         - label: 'Category 2'

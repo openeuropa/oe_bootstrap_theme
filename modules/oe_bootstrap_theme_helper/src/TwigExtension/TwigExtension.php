@@ -120,6 +120,13 @@ class TwigExtension extends AbstractExtension {
           'background' => 'primary',
         ];
       }
+      if (isset($item['image'])) {
+        $bcl_card['image'] = [
+          'path' => $item['image']->getSource(),
+          'alt' => $item['image']->getAlt(),
+        ];
+      }
+
       $bcl_cards[] = $bcl_card;
     }
 
