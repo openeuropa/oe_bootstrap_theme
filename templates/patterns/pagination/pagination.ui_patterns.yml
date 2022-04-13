@@ -22,7 +22,18 @@ pagination:
       type: boolean
       label: 'Enable prev/next icon'
       description: 'Use icon instead of link labels to previous and next items. False by default.'
+    enable_first_last_icon:
+      type: boolean
+      label: 'Enable first/last icon'
+      description: 'Use icon instead of link labels for first and last links. True by default.'
   fields:
+    first:
+      type: array
+      label: 'First link'
+      description: 'Pagination first link with path and label or icon.'
+      preview:
+        path: '#'
+        label: 'First'
     prev:
       type: array
       label: 'Previous link'
@@ -37,6 +48,13 @@ pagination:
       preview:
         path: '#'
         label: 'Next'
+    last:
+      type: array
+      label: 'Last link'
+      description: 'Pagination last link with path and label or icon.'
+      preview:
+        path: '#'
+        label: 'Last'
     items:
       type: array
       label: 'Pagination items'
