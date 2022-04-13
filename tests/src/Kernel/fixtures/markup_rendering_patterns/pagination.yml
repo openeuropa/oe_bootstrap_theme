@@ -39,7 +39,7 @@ pagination_with_icon:
       settings:
         size: 'lg'
         alignment: 'end'
-        enable_icons: true
+        enable_prev_next_icon: true
       prev:
         path: '#prev'
         # Use a custom icon for 'prev'.
