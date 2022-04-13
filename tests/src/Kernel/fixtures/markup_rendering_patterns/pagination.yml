@@ -42,12 +42,12 @@ pagination_with_icon:
         enable_icons: true
       prev:
         path: '#prev'
+        # Use a custom icon for 'prev'.
         icon:
           name: 'arrow-left'
       next:
         path: '#next'
-        icon:
-          name: 'arrow-right'
+        # Use the built-in icon for 'next'.
       items:
         - path: '#1'
           label: '1'
@@ -66,4 +66,4 @@ pagination_with_icon:
       'li.page-item:nth-child(1) a': '<svg class="bi icon--s"><use xlink:href="#arrow-left"></use></svg>'
       'li.page-item:nth-child(2) a': '1'
       'li.page-item:nth-child(3) a': '2'
-      'li.page-item:nth-child(4) a': '<svg class="bi icon--s"><use xlink:href="#arrow-right"></use></svg>'
+      'li.page-item:nth-child(4) a': '<svg class="bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-right"></use></svg>'
