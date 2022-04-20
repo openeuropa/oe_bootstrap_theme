@@ -88,6 +88,7 @@ pipeline:
   before-release:
     image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
     commands:
+      - git config --global --add safe.directory /test/oe_bootstrap_theme
       - apt-get update
       - apt-get install zip
       - ./vendor/bin/run release:create-archive --tag=${DRONE_TAG}
