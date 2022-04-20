@@ -1,12 +1,12 @@
 # OpenEuropa Bootstrap base theme
 
-Drupal 8/9 theme based on [Bootstrap 5](https://v5.getbootstrap.com/) and [UI Patterns](https://github.com/nuvoleweb/ui_patterns/).
+Drupal 9 theme based on [Bootstrap 5](https://v5.getbootstrap.com/) and [UI Patterns](https://github.com/nuvoleweb/ui_patterns/).
 
 ## Requirements
 
 This depends on the following software:
 
-* [PHP 7.3](http://php.net/)
+* [PHP 7.4](http://php.net/) or  [PHP 8.0](http://php.net/)
 
 ## Installation
 

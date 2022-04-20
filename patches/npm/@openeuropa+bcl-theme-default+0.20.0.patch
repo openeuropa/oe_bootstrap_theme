@@ -1,3 +1,18 @@
+diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-description-list/description-list.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-description-list/description-list.html.twig
+index 54e0844..02e2815 100644
+--- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-description-list/description-list.html.twig
++++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-description-list/description-list.html.twig
+@@ -130,7 +130,9 @@
+         {% endif %}
+       {% else %}
+         <dd>
+-          {%- block definition _item.definition -%}
++          {% autoescape false %}
++            {%- block definition _item.definition|striptags('<p><img><blockquote><ul><ol><li><em><strong><a>') -%}
++          {% endautoescape %}
+         </dd>
+       {% endif %}
+     {% endif %}
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-file/file.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-file/file.html.twig
 index 66ea86a..465cd4f 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-file/file.html.twig
