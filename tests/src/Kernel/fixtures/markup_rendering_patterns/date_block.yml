@@ -6,6 +6,8 @@ date_block_default:
       date: '2021-05-26'
   assertions:
     count:
+      # Exclude unexpected additional <time> elements.
+      'time': 1
       'time.bcl-date-block[datetime="2021-05-26"]': 1
     equals:
       'time > span > span:nth-child(1) > span': '26 May'
