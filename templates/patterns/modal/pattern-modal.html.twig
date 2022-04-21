@@ -8,17 +8,18 @@
 
 {% set _header %}
   {% spaceless %}
-  {% if title is not empty  %}
-    <h5>{{ title }}</h5>
-  {% endif %}
-  {% if show_close_button is not empty %}
-    {{ pattern('button', {
-      attributes: {
-        'class': 'btn-close',
-        'data-bs-dismiss': 'modal',
-        'aria-label': 'Close'
-      }}) }}
-  {% endif %}
+    {% if title is not empty  %}
+      <h5>{{ title }}</h5>
+    {% endif %}
+    {% if show_close_button is not empty %}
+      {% include '@oe-bcl/button' with {
+        clean_class: TRUE,
+        attributes:  create_attribute()
+          .addClass(['btn-close'])
+          .setAttribute('data-bs-dismiss', 'modal')
+          .setAttribute('aria-label', 'Close'),
+      } only %}
+    {% endif %}
   {% endspaceless %}
 {% endset %}
 
