@@ -6,12 +6,19 @@ pagination:
       settings:
         size: 'sm'
         alignment: 'center'
+        enable_first_last_icon: false
+      first:
+        path: '#first'
+        label: 'First'
       prev:
         path: '#prev'
         label: 'Previous'
       next:
         path: '#next'
         label: 'Next'
+      last:
+        path: '#last'
+        label: 'Last'
       items:
         - path: '#1'
           label: '1'
@@ -22,16 +29,18 @@ pagination:
     count:
       nav: 1
       ul: 1
-      li: 4
-      a: 4
+      li: 6
+      a: 6
       svg: 0
       '.active': 1
-      'nav[data-drupal-selector="pagination"] > ul.pagination-sm.justify-content-center > li.page-item > a.page-link': 4
+      'nav[data-drupal-selector="pagination"] > ul.pagination-sm.justify-content-center > li.page-item > a.page-link': 6
     equals:
-      'li:nth-child(1) a[href="#prev"]': 'Previous'
-      'li:nth-child(2).active a[href="#1"]': '1'
-      'li:nth-child(3) a[href="#2"]': '2'
-      'li:nth-child(4) a[href="#next"]': 'Next'
+      'li:nth-child(1) a[href="#first"]': 'First'
+      'li:nth-child(2) a[href="#prev"]': 'Previous'
+      'li:nth-child(3).active a[href="#1"]': '1'
+      'li:nth-child(4) a[href="#2"]': '2'
+      'li:nth-child(5) a[href="#next"]': 'Next'
+      'li:nth-child(6) a[href="#last"]': 'Last'
 pagination_with_icon:
   render:
     '#type': pattern
@@ -41,6 +50,10 @@ pagination_with_icon:
         size: 'lg'
         alignment: 'end'
         enable_prev_next_icon: true
+      first:
+        path: '#first'
+        # Verify that a label has no effect if icons are enabled.
+        label: 'First'
       prev:
         path: '#prev'
         # Use a custom icon for 'prev'.
@@ -48,7 +61,8 @@ pagination_with_icon:
           name: 'arrow-left'
       next:
         path: '#next'
-        # Use the built-in icon for 'next'.
+      last:
+        path: '#last'
       items:
         - path: '#1'
           label: '1'
@@ -59,14 +73,16 @@ pagination_with_icon:
     count:
       nav: 1
       ul: 1
-      li: 4
-      a: 4
-      svg: 2
-      use: 2
+      li: 6
+      a: 6
+      svg: 4
+      use: 4
       '.active': 1
-      'nav[data-drupal-selector="pagination"] > ul.pagination-lg.justify-content-end > li.page-item > a.page-link': 4
+      'nav[data-drupal-selector="pagination"] > ul.pagination-lg.justify-content-end > li.page-item > a.page-link': 6
     equals:
-      'li:nth-child(1) a[href="#prev"]': '<svg class="bi icon--s"><use xlink:href="#arrow-left"></use></svg>'
-      'li:nth-child(2).active a[href="#1"]': '1'
-      'li:nth-child(3) a[href="#2"]': '2'
-      'li:nth-child(4) a[href="#next"]': '<svg class="bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-right"></use></svg>'
+      'li:nth-child(1) a[href="#first"]': '<svg class="bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-double-left"></use></svg>'
+      'li:nth-child(2) a[href="#prev"]': '<svg class="bi icon--s"><use xlink:href="#arrow-left"></use></svg>'
+      'li:nth-child(3).active a[href="#1"]': '1'
+      'li:nth-child(4) a[href="#2"]': '2'
+      'li:nth-child(5) a[href="#next"]': '<svg class="bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-right"></use></svg>'
+      'li:nth-child(6) a[href="#last"]': '<svg class="bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-double-right"></use></svg>'
