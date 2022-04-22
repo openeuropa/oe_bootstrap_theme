@@ -6,16 +6,16 @@
 #}
 {% if items %}
   {{ pattern('pagination', {
-    alignment: 'center',
-    prev: items.previous ? {
+    'alignment': 'center',
+    'prev': items.previous ? {
       'label': items.previous.text,
       'path': items.previous.href,
     },
-    items: [{
+    'items': [{
       'label': items.current,
       'disabled': true,
     }],
-    next: items.next ? {
+    'next': items.next ? {
       'label': items.next.text,
       'path': items.next.href,
     },
