@@ -5,14 +5,19 @@
  */
 #}
 {% if items %}
-  {% set previous =  items.previous ? {'label':  items.previous.text, 'path': items.previous.href } : {} %}
-  {% set next = items.next ? {'label':  items.next.text, 'path': items.next.href } : {} %}
-  {% set pages = {} %}
-  {% set pages = pages|merge([{ 'label': items.current, 'disabled': true }]) %}
   {{ pattern('pagination', {
-    items: pages,
+    items: [{
+      'label': items.current,
+      'disabled': true,
+    }],
     alignment: 'center',
-    prev: previous,
-    next: next,
+    prev: items.previous ? {
+      'label': items.previous.text,
+      'path': items.previous.href,
+    },
+    next: items.next ? {
+      'label': items.next.text,
+      'path': items.next.href,
+    },
   }) }}
 {% endif %}
