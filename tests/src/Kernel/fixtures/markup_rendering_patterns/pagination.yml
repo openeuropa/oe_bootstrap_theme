@@ -20,17 +20,18 @@ pagination:
           label: '2'
   assertions:
     count:
-      'nav[data-drupal-selector="pagination"]': 1
-      'ul.pagination-sm.justify-content-center': 1
-      'a.page-link[href="#prev"]': 1
-      'li.page-item:nth-child(2) a[href="#1"]': 1
-      'li.page-item:nth-child(3) a[href="#2"]': 1
-      'li.page-item:nth-child(4) a[href="#next"]': 1
+      nav: 1
+      ul: 1
+      li: 4
+      a: 4
+      svg: 0
+      '.active': 1
+      'nav[data-drupal-selector="pagination"] > ul.pagination-sm.justify-content-center > li.page-item > a.page-link': 4
     equals:
-      'li.page-item:nth-child(1) a': 'Previous'
-      'li.page-item:nth-child(2) a': '1'
-      'li.page-item:nth-child(3) a': '2'
-      'li.page-item:nth-child(4) a': 'Next'
+      'li:nth-child(1) a[href="#prev"]': 'Previous'
+      'li:nth-child(2).active a[href="#1"]': '1'
+      'li:nth-child(3) a[href="#2"]': '2'
+      'li:nth-child(4) a[href="#next"]': 'Next'
 pagination_with_icon:
   render:
     '#type': pattern
@@ -56,14 +57,16 @@ pagination_with_icon:
           label: '2'
   assertions:
     count:
-      'nav[data-drupal-selector="pagination"]': 1
-      'ul.pagination-lg.justify-content-end': 1
-      'a.page-link[href="#prev"]': 1
-      'li.page-item:nth-child(2) a[href="#1"]': 1
-      'li.page-item:nth-child(3) a[href="#2"]': 1
-      'li.page-item:nth-child(4) a[href="#next"]': 1
+      nav: 1
+      ul: 1
+      li: 4
+      a: 4
+      svg: 2
+      use: 2
+      '.active': 1
+      'nav[data-drupal-selector="pagination"] > ul.pagination-lg.justify-content-end > li.page-item > a.page-link': 4
     equals:
-      'li.page-item:nth-child(1) a': '<svg class="bi icon--s"><use xlink:href="#arrow-left"></use></svg>'
-      'li.page-item:nth-child(2) a': '1'
-      'li.page-item:nth-child(3) a': '2'
-      'li.page-item:nth-child(4) a': '<svg class="bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-right"></use></svg>'
+      'li:nth-child(1) a[href="#prev"]': '<svg class="bi icon--s"><use xlink:href="#arrow-left"></use></svg>'
+      'li:nth-child(2).active a[href="#1"]': '1'
+      'li:nth-child(3) a[href="#2"]': '2'
+      'li:nth-child(4) a[href="#next"]': '<svg class="bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-right"></use></svg>'
