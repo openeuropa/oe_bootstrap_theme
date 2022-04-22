@@ -6,15 +6,15 @@
 #}
 {% if items %}
   {{ pattern('pagination', {
-    items: [{
-      'label': items.current,
-      'disabled': true,
-    }],
     alignment: 'center',
     prev: items.previous ? {
       'label': items.previous.text,
       'path': items.previous.href,
     },
+    items: [{
+      'label': items.current,
+      'disabled': true,
+    }],
     next: items.next ? {
       'label': items.next.text,
       'path': items.next.href,
