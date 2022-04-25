@@ -5,8 +5,8 @@
  */
 #}
 {% if items %}
-  {% set previous =  items.previous ? {'label':  items.previous.text, 'path': items.previous.href } : {} %}
-  {% set next = items.next ? {'label':  items.next.text, 'path': items.next.href } : {} %}
+  {% set previous =  items.previous ? {'label':  items.previous.text|default('<<'), 'path': items.previous.href } : {} %}
+  {% set next = items.next ? {'label':  items.next.text|default('>>'), 'path': items.next.href } : {} %}
   {% set pages = {} %}
   {% for key, item in items.pages %}
     {% set values = { 'label': key, 'path': item.href } %}
