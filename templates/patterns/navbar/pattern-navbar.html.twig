@@ -17,17 +17,13 @@
 {% set expand = expanded_breakpoint|default('lg') %}
 
 {% block branding %}
-  {% if branding is not empty %}
-    {{ branding }}
-  {% endif %}
+  {{ branding }}
 {% endblock %}
 
 {% block navigation %}
-    {{ navigation }}
+  {{ navigation }}
 {% endblock %}
 
 {% block right %}
-  {% if right is not empty %}
-    {{ right }}
-  {% endif %}
+  {{ right }}
 {% endblock %}
