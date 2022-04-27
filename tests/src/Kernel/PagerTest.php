@@ -54,11 +54,13 @@ class PagerTest extends AbstractKernelTestBase {
     $pagination_assert->assertPattern([
       'alignment' => 'center',
       'links' => [
+        ['url' => '?page=0', 'icon' => 'chevron-double-left'],
         ['url' => '?page=1', 'label' => 'The previous'],
         ['url' => '?page=1', 'label' => '2'],
         ['url' => '?page=2', 'label' => '3', 'active' => TRUE],
         ['url' => '?page=3', 'label' => '4'],
         ['url' => '?page=3', 'label' => 'The next'],
+        ['url' => '?page=7', 'icon' => 'chevron-double-right'],
       ],
     ], $html);
   }
@@ -94,11 +96,13 @@ class PagerTest extends AbstractKernelTestBase {
     $pagination_assert->assertPattern([
       'alignment' => 'center',
       'links' => [
+        ['url' => $get_url(0), 'icon' => 'chevron-double-left'],
         ['url' => $get_url(1), 'label' => ''],
         ['url' => $get_url(1), 'label' => '2'],
         ['url' => $get_url(2), 'label' => '3', 'active' => TRUE],
         ['url' => $get_url(3), 'label' => '4'],
         ['url' => $get_url(3), 'label' => ''],
+        ['url' => $get_url(7), 'icon' => 'chevron-double-right'],
       ],
     ], $html);
   }
@@ -143,15 +147,19 @@ class PagerTest extends AbstractKernelTestBase {
         ['url' => '?page=1', 'label' => '2'],
         ['url' => '?page=2', 'label' => '3'],
         ['url' => '?page=1', 'label' => ''],
+        ['url' => '?page=7', 'icon' => 'chevron-double-right'],
       ],
       1 => [
+        ['url' => '?page=0', 'icon' => 'chevron-double-left'],
         ['url' => '?page=0', 'label' => ''],
         ['url' => '?page=0', 'label' => '1'],
         ['url' => '?page=1', 'label' => '2', 'active' => TRUE],
         ['url' => '?page=2', 'label' => '3'],
         ['url' => '?page=2', 'label' => ''],
+        ['url' => '?page=7', 'icon' => 'chevron-double-right'],
       ],
       7 => [
+        ['url' => '?page=0', 'icon' => 'chevron-double-left'],
         ['url' => '?page=6', 'label' => ''],
         ['url' => '?page=5', 'label' => '6'],
         ['url' => '?page=6', 'label' => '7'],
