@@ -17,10 +17,10 @@
     {% set pages = pages|merge([values]) %}
   {% endfor %}
   {{ pattern('pagination', {
-    items: pages,
-    alignment: 'center',
-    prev: previous,
-    next: next,
+    'items': pages,
+    'alignment': 'center',
+    'prev': previous,
+    'next': next,
   }) }}
 {% endif %}
 {% endblock %}
