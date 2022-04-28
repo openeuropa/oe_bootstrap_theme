@@ -9,11 +9,11 @@
   {{ pattern('pagination', {
     'alignment': 'center',
     'first': items.first ? {
-      'label': items.first.text|default('« First'|t),
+      'label': items.first.text|default('First'|t),
       'path': items.first.href,
     },
     'prev': items.previous ? {
-      'label': items.previous.text|default('‹ Previous'|t),
+      'label': items.previous.text|default('Previous'|t),
       'path': items.previous.href,
     },
     'items': items.pages|map((item, key) => {
@@ -22,11 +22,11 @@
       'active': key == current,
     }),
     'next': items.next ? {
-      'label': items.next.text|default('Next ›'|t),
+      'label': items.next.text|default('Next'|t),
       'path': items.next.href,
     },
     'last': items.last ? {
-      'label': items.last.text|default('Last »'|t),
+      'label': items.last.text|default('Last'|t),
       'path': items.last.href,
     },
   }) }}
