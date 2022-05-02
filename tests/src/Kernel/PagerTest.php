@@ -54,6 +54,7 @@ class PagerTest extends AbstractKernelTestBase {
     $pagination_assert->assertPattern([
       'alignment' => 'center',
       'links' => [
+        // The bcl-pagination component always shows icons for first/last.
         ['url' => '?page=0', 'icon' => 'chevron-double-left'],
         ['url' => '?page=1', 'label' => 'The previous'],
         ['url' => '?page=1', 'label' => '2'],
@@ -108,7 +109,7 @@ class PagerTest extends AbstractKernelTestBase {
   }
 
   /**
-   * Tests a common pager on different pages.
+   * Tests the pager.html.twig theme override.
    *
    * @param array $expected_args
    *   Arguments for a pattern assertion.
@@ -180,7 +181,7 @@ class PagerTest extends AbstractKernelTestBase {
   }
 
   /**
-   * Tests a common pager on different pages.
+   * Tests the views-mini-pager.html.twig theme override.
    *
    * @param array $expected_args
    *   Arguments for a pattern assertion.

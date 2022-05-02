@@ -39,10 +39,15 @@ class PaginationPatternAssert extends BasePatternAssert {
   }
 
   /**
-   * Asserts the icon path.
+   * Asserts the pager links.
    *
-   * @param array $expected
-   *   Expected array of links.
+   * @param array[] $expected
+   *   Expected pager links.
+   *   Each link is an array, with the following keys:
+   *     - 'url': The link destination.
+   *     - 'label': The label, if exists.
+   *     - 'icon': The name of the icon.
+   *     - 'active': Whether the item has an 'active' class.
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The crawler.
    */
@@ -87,7 +92,7 @@ class PaginationPatternAssert extends BasePatternAssert {
    * Asserts the alignment.
    *
    * @param string $expected
-   *   The expected icon size.
+   *   The expected alignment. One of 'start', 'end' or 'center'.
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The crawler.
    */
@@ -99,7 +104,7 @@ class PaginationPatternAssert extends BasePatternAssert {
    * Asserts the icon size.
    *
    * @param string $expected
-   *   The expected icon size.
+   *   The expected icon size. Either 'sm' or 'lg'.
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The crawler.
    */
