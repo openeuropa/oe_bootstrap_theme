@@ -88,7 +88,7 @@ Alternatively, you can build a development site using [Docker](https://www.docke
 Docker provides the necessary services and tools such as a web server and a database server to get the site running,
 regardless of your local host configuration.
 
-#### Requirements:
+#### Requirements
 
 - [Docker](https://www.docker.com/get-docker)
 - [Docker Compose](https://docs.docker.com/compose/)
