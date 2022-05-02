@@ -64,10 +64,10 @@ The package provides a [task-runner](https://github.com/openeuropa/task-runner) 
 ```bash
 # Install the task runner:
 composer require openeuropa/task-runner
-# Get a list of commands:
-./vendor/bin/run
 # Learn more about the create-subtheme command:
 ./vendor/bin/run help oe_bootstrap_theme:create-subtheme
+# Generate a sub-theme
+./vendor/bin/run oe_bootstrap_theme:create-subtheme [...]
 ```
 
 After using the command, first commit the generated sub-theme in git, then review _all of it_, and determine which parts you can remove or you have to alter.
