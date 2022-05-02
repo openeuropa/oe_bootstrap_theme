@@ -93,15 +93,13 @@ regardless of your local host configuration.
 - [Docker](https://www.docker.com/get-docker)
 - [Docker Compose](https://docs.docker.com/compose/)
 
-#### Configuration
+#### Override docker settings
 
-By default, Docker Compose reads two files, a `docker-compose.yml` and an optional `docker-compose.override.yml` file.
-By convention, the `docker-compose.yml` contains your base configuration and it's provided by default.
-The override file, as its name implies, can contain configuration overrides for existing services or entirely new
-services.
-If a service is defined in both files, Docker Compose merges the configurations.
+The package provides default settings for Docker Compose in `docker-compose.yml`. Most of the time these are sufficient.
 
-Find more information on Docker Compose extension mechanism on [the official Docker Compose documentation](https://docs.docker.com/compose/extends/).
+An optional `docker-compose.override.yml` file can be created to selectively override specific values, or to define entirely new services.
+
+For services that are defined in both files, Docker Compose applies merge rules that are documented in [the official Docker Compose documentation](https://docs.docker.com/compose/extends/).
 
 #### Start the container
 
