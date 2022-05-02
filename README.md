@@ -48,19 +48,14 @@ If installation was successful, the instance of `oe_bootstrap_theme` should cont
 Enable the required helper module:
 
 ```bash
-# Always required.
 ./vendor/bin/drush en oe_bootstrap_theme_helper
 ```
 
-Enable the theme itself:
+Enable the theme itself and set it as default:
 
 ```bash
 ./vendor/bin/drush config-set system.theme default oe_bootstrap_theme
 ```
-
-Do _not_ enable `oe_bootstrap_theme_paragraphs`. It only exists for historic reasons, and will be removed soon.
-
-You probably do _not_ want set the theme as a default theme, but rather use or create a sub-theme.
 
 ### Generate a sub-theme
 
