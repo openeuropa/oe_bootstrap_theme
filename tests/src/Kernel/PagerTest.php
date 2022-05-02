@@ -37,7 +37,7 @@ class PagerTest extends AbstractKernelTestBase {
     $pager_manager = $this->container->get('pager.manager');
     $pager_manager->createPager(75, 10);
 
-    $html = $this->renderByValue([
+    $element = [
       '#type' => 'pager',
       '#quantity' => 3,
       '#tags' => [
@@ -47,7 +47,8 @@ class PagerTest extends AbstractKernelTestBase {
         3 => 'The next',
         4 => 'The last',
       ],
-    ]);
+    ];
+    $html = $this->renderRoot($element);
 
     $pagination_assert = new PaginationPatternAssert();
 
@@ -81,12 +82,13 @@ class PagerTest extends AbstractKernelTestBase {
     $pager_manager->createPager(75, 10, 2);
     $pager_manager->createPager(75, 10, 3);
 
-    $html = $this->renderByValue([
+    $element = [
       '#type' => 'pager',
       '#quantity' => 3,
       '#element' => 2,
       '#route_name' => 'user.admin_index',
-    ]);
+    ];
+    $html = $this->renderRoot($element);
 
     $pagination_assert = new PaginationPatternAssert();
 
@@ -125,10 +127,11 @@ class PagerTest extends AbstractKernelTestBase {
     $pager_manager = $this->container->get('pager.manager');
     $pager_manager->createPager(75, 10);
 
-    $html = $this->renderByValue([
+    $element = [
       '#type' => 'pager',
       '#quantity' => 3,
-    ]);
+    ];
+    $html = $this->renderRoot($element);
 
     $pagination_assert = new PaginationPatternAssert();
 
@@ -201,13 +204,14 @@ class PagerTest extends AbstractKernelTestBase {
     $pager_manager = $this->container->get('pager.manager');
     $pager_manager->createPager(75, 10);
 
-    $html = $this->renderByValue([
+    $element = [
       '#theme' => 'views_mini_pager',
       '#tags' => [
         1 => 'The previous',
         3 => 'The next',
       ],
-    ]);
+    ];
+    $html = $this->renderRoot($element);
 
     $pagination_assert = new PaginationPatternAssert();
 
@@ -247,19 +251,6 @@ class PagerTest extends AbstractKernelTestBase {
       ];
     }
     return $argss;
-  }
-
-  /**
-   * Renders a render element, but does not expect a by-reference parameter.
-   *
-   * @param array $element
-   *   Element to render.
-   *
-   * @return string
-   *   The rendered HTML.
-   */
-  protected function renderByValue(array $element): string {
-    return $this->renderRoot($element);
   }
 
 }
