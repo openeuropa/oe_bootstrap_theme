@@ -120,15 +120,15 @@ docker-compose exec web ./vendor/bin/run drupal:site-install
 
 Using default configuration, the development site files should be available in the `build` directory and the development site should be available at: [http://127.0.0.1:8080/build](http://127.0.0.1:8080/build).
 
-#### Running the tests
+#### Run the tests
 
-To run the grumphp checks:
+Run the grumphp checks:
 
 ```bash
 docker-compose exec web ./vendor/bin/grumphp run
 ```
 
-To run the phpunit tests:
+Run the phpunit tests:
 
 ```bash
 docker-compose exec web ./vendor/bin/phpunit
@@ -139,7 +139,7 @@ docker-compose exec web ./vendor/bin/phpunit
 All the necessary files for sub-theme creation can be found in the `kits` folder,
 read the related [documentation](kits/README.md)
 
-## Patching BCL components
+## Patch BCL components
 
 BCL components can be patched by using the [`patch-package`](https://www.npmjs.com/package/patch-package) NPM project.
 
@@ -157,7 +157,7 @@ docker-compose exec -u node node npx patch-package @openeuropa/bcl-theme-default
 Patches will be generated in `./patches/npm` and applied when running `npm install`.\
 **Note:** generate patches **only** inside the docker container to use the same version of npm/npx.
 
-## Contributing
+## Contribute
 
 Please read [the full documentation](https://github.com/openeuropa/openeuropa) for details on our code of conduct, and the process for submitting pull requests to us.
 
