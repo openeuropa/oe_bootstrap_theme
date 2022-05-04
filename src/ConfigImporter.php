@@ -24,7 +24,9 @@ class ConfigImporter {
    * The configuration entity types are determined automatically from the config
    * name.
    *
-   * @param string $module
+   * @param string $type
+   *   Extension type. One of 'theme', 'module' or 'profile'.
+   * @param string $extension
    *   The module where the folder is located.
    * @param string $path
    *   The relative path to the folder, inside the module.
@@ -34,8 +36,8 @@ class ConfigImporter {
    *   If the configuration entity should be created if not found. Defaults to
    *   TRUE.
    */
-  public static function importMultiple(string $module, string $path, array $config_names, bool $create_if_missing = TRUE): void {
-    $storage = self::getStorage($module, $path);
+  public static function importMultiple(string $type, string $extension, string $path, array $config_names, bool $create_if_missing = TRUE): void {
+    $storage = self::getStorage($type, $extension, $path);
     foreach ($config_names as $config_name) {
       self::doImportConfig($storage, $config_name, $create_if_missing);
     }
@@ -44,7 +46,9 @@ class ConfigImporter {
   /**
    * Imports a single configuration from a folder.
    *
-   * @param string $module
+   * @param string $type
+   *   Extension type. One of 'theme', 'module' or 'profile'.
+   * @param string $extension
    *   The module where the folder is located.
    * @param string $path
    *   The relative path to the folder, inside the module.
@@ -54,8 +58,8 @@ class ConfigImporter {
    *   If the configuration entity should be created if not found. Defaults to
    *   TRUE.
    */
-  public static function importSingle(string $module, string $path, string $config_name, bool $create_if_missing = TRUE): void {
-    $storage = self::getStorage($module, $path);
+  public static function importSingle(string $type, string $extension, string $path, string $config_name, bool $create_if_missing = TRUE): void {
+    $storage = self::getStorage($type, $extension, $path);
     self::doImportConfig($storage, $config_name, $create_if_missing);
   }
 
@@ -111,7 +115,9 @@ class ConfigImporter {
   /**
    * Returns a config file storage pointing to a folder.
    *
-   * @param string $module
+   * @param string $type
+   *   Extension type. One of 'theme', 'module' or 'profile'.
+   * @param string $extension
    *   The module where the folder is located.
    * @param string $path
    *   The relative path to the folder, inside the module.
@@ -119,8 +125,8 @@ class ConfigImporter {
    * @return \Drupal\Core\Config\StorageInterface
    *   The config file storage.
    */
-  protected static function getStorage(string $module, string $path): StorageInterface {
-    return new FileStorage(\Drupal::service('extension.list.module')->getPath($module) . $path);
+  protected static function getStorage(string $type, string $extension, string $path): StorageInterface {
+    return new FileStorage(\Drupal::service('extension.list.' . $type)->getPath($extension) . $path);
   }
 
 }
