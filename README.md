@@ -1,75 +1,84 @@
 # OpenEuropa Bootstrap base theme
 
-Drupal 8/9 theme based on [Bootstrap 5](https://v5.getbootstrap.com/) and [UI Patterns](https://github.com/nuvoleweb/ui_patterns/).
+Drupal 8/9 theme based on [Bootstrap 5](https://v5.getbootstrap.com/), [UI Patterns](https://github.com/nuvoleweb/ui_patterns/) and the [OpenEuropa Bootstrap Component Library](https://github.com/openeuropa/bootstrap-component-library).
 
-## Requirements
+## Usage as a dependency
 
-This depends on the following software:
+### Requirements
 
-* [PHP 7.3](http://php.net/)
+The package is meant for Drupal projects that [manage their Drupal dependencies via Composer](https://www.drupal.org/docs/develop/using-composer/using-composer-to-manage-drupal-site-dependencies#managing-contributed).
 
-## Installation
+The usage of [Docker](https://www.docker.com/get-docker) in the dependent project is suggested, but not required.
 
-The recommended way of installing the OpenEuropa Bootstrap Theme is via [Composer](https://www.drupal.org/docs/develop/using-composer/using-composer-to-manage-drupal-site-dependencies#managing-contributed).
+Check the [composer.json](composer.json) for required PHP version and other dependencies.
 
-```bash
-composer config repositories.oe_bootstrap_theme vcs https://github.com/openeuropa/oe_bootstrap_theme
-composer require openeuropa/oe_bootstrap_theme
+### Add the composer package
+
+Add this manually in composer.json, or combine with existing entries:
+
+```
+    "extra": {
+        "artifacts": {
+            "openeuropa/oe_bootstrap_theme": {
+                "dist": {
+                    "url": "https://github.com/{name}/releases/download/{pretty-version}/{project-name}-{pretty-version}.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    }
 ```
 
-### Enable the theme
+Require with composer:
 
-In order to enable the theme in your project perform the following steps:
+```bash
+composer require openeuropa/oe_bootstrap_theme:^1.0@alpha
+```
 
-1. Enable the OpenEuropa Bootstrap Theme Helper module ```./vendor/bin/drush en oe_bootstrap_theme_helper```
-2. Enable the OpenEuropa Bootstrap Theme and set it as default ```./vendor/bin/drush config-set system.theme default oe_bootstrap_theme```
+### Review the installation
+
+Review the installed version with `composer info | grep oe_`.
+
+Review the installation directory with `composer info openeuropa/oe_bootstrap_theme | grep path`. Depending on your setup, this could be `build/themes/contrib/oe_bootstrap_theme`.
+
+If installation was successful, the instance of `oe_bootstrap_theme` should contain a number of subdirectories within `/assets/`, including `/assets/bcl/`.
+
+### Enable and configure
+
+Enable the required helper module:
+
+```bash
+./vendor/bin/drush en oe_bootstrap_theme_helper
+```
+
+Enable the theme itself and set it as default:
+
+```bash
+./vendor/bin/drush config-set system.theme default oe_bootstrap_theme
+```
+
+### Generate a sub-theme
+
+The package provides a [task-runner](https://github.com/openeuropa/task-runner) command to generate a sub-theme.
+
+```bash
+# Install the task runner:
+composer require openeuropa/task-runner
+# Learn more about the create-subtheme command:
+./vendor/bin/run help oe_bootstrap_theme:create-subtheme
+# Generate a sub-theme
+./vendor/bin/run oe_bootstrap_theme:create-subtheme [...]
+```
+
+After using the command, first commit the generated sub-theme in git, then review _all of it_, and determine which parts you can remove or you have to alter.
+
+An older, manual way to create a sub-theme is described in [kits/README.md](kits/README.md).
 
 ## Development setup
 
-You can build the development site by running the following steps:
+### Using LAMP stack or similar
 
-To install required Node.js dependencies run:
-
-```bash
-npm install
-```
-
-To build the final artifacts run:
-
-```bash
-npm run build
-```
-
-This will compile all SASS and JavaScript files into self-contained assets that are exposed as [Drupal libraries][11].
-
-In order to download all required PHP code run:
-
-```bash
-composer install
-```
-
-A post command hook (`drupal:site-setup`) is triggered automatically after `composer install`.
-It will make sure that the necessary symlinks are properly setup in the development site.
-
-* Install test site by running:
-
-```bash
-./vendor/bin/run drupal:site-install
-```
-
-Your test site will be available at `./build`.
-
-**Please note:** project files and directories are symlinked within the test site by using the
-[OpenEuropa Task Runner's Drupal project symlink](https://github.com/openeuropa/task-runner-drupal-project-symlink) command.
-
-If you add a new file or directory in the root of the project, you need to re-run `drupal:site-setup` in order to make
-sure they are be correctly symlinked.
-
-If you don't want to re-run a full site setup for that, you can simply run:
-
-```
-$ ./vendor/bin/run drupal:symlink-project
-```
+This is not officially supported. You are on your own.
 
 ### Using Docker Compose
 
@@ -79,22 +88,26 @@ Alternatively, you can build a development site using [Docker](https://www.docke
 Docker provides the necessary services and tools such as a web server and a database server to get the site running,
 regardless of your local host configuration.
 
-#### Requirements:
+#### Requirements
 
 - [Docker](https://www.docker.com/get-docker)
 - [Docker Compose](https://docs.docker.com/compose/)
 
-#### Configuration
+#### Override docker settings
 
-By default, Docker Compose reads two files, a `docker-compose.yml` and an optional `docker-compose.override.yml` file.
-By convention, the `docker-compose.yml` contains your base configuration and it's provided by default.
-The override file, as its name implies, can contain configuration overrides for existing services or entirely new
-services.
-If a service is defined in both files, Docker Compose merges the configurations.
+The package provides default settings for Docker Compose in `docker-compose.yml`. Most of the time these are sufficient.
 
-Find more information on Docker Compose extension mechanism on [the official Docker Compose documentation](https://docs.docker.com/compose/extends/).
+An optional `docker-compose.override.yml` file can be created to selectively override specific values, or to define entirely new services.
 
-#### Usage
+For services that are defined in both files, Docker Compose applies merge rules that are documented in [the official Docker Compose documentation](https://docs.docker.com/compose/extends/).
+
+#### Start the container
+
+If you have other (daemonized) containers running, you might want to stop them first:
+
+```bash
+docker stop $(docker ps -q)
+```
 
 To start, run:
 
@@ -109,7 +122,19 @@ However, if you'd like to daemonize it, you have to add the flag `-d`:
 docker-compose up -d
 ```
 
-Then:
+#### Optionally purge existing installation
+
+If you already had the package installed, and want a clean start:
+
+```bash
+docker-compose exec web rm composer.lock
+docker-compose exec web rm -rf vendor/
+docker-compose exec web rm -rf build/
+```
+
+#### Install and build
+
+Install dependencies, build artifacts, and install Drupal.
 
 ```bash
 docker-compose exec -u node node npm install
@@ -118,28 +143,25 @@ docker-compose exec web composer install
 docker-compose exec web ./vendor/bin/run drupal:site-install
 ```
 
-Using default configuration, the development site files should be available in the `build` directory and the development site should be available at: [http://127.0.0.1:8080/build](http://127.0.0.1:8080/build).
+#### Visit the development site
 
-#### Running the tests
+Using default configuration, the development site files should be available in the `build` directory and the development site should be available at: [http://127.0.0.1:8080/build](http://127.0.0.1:8080/build) or [http://web:8080/build](http://web:8080/build).
 
-To run the grumphp checks:
+#### Run the tests
+
+Run the grumphp checks:
 
 ```bash
 docker-compose exec web ./vendor/bin/grumphp run
 ```
 
-To run the phpunit tests:
+Run the phpunit tests:
 
 ```bash
 docker-compose exec web ./vendor/bin/phpunit
 ```
 
-## Sub-theme
-
-All the necessary files for sub-theme creation can be found in the `kits` folder,
-read the related [documentation](kits/README.md)
-
-## Patching BCL components
+## Patch BCL components
 
 BCL components can be patched by using the [`patch-package`](https://www.npmjs.com/package/patch-package) NPM project.
 
@@ -157,7 +179,7 @@ docker-compose exec -u node node npx patch-package @openeuropa/bcl-theme-default
 Patches will be generated in `./patches/npm` and applied when running `npm install`.\
 **Note:** generate patches **only** inside the docker container to use the same version of npm/npx.
 
-## Contributing
+## Contribute
 
 Please read [the full documentation](https://github.com/openeuropa/openeuropa) for details on our code of conduct, and the process for submitting pull requests to us.
 
