@@ -6,9 +6,11 @@
 (function (Drupal) {
   Drupal.behaviors.myBehavior = {
     attach: function (context, settings) {
-      new SlimSelect({
-        select: '.multi-select',
-      });
+      if (document.getElementsByClassName('multi-select').length > 0) {
+        new SlimSelect({
+          select: '.multi-select',
+        });
+      }
     }
   }
 } (Drupal));
