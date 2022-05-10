@@ -85,8 +85,11 @@ class PaginationPatternAssert extends BasePatternAssert {
 
     $expected_count = count($expected);
     $this->assertCounts([
+      // Fail on unexpected additional <li> or <a> anywhere in the html.
       'li' => $expected_count,
       'a' => $expected_count,
+      // Fail if classes are missing or the structure is wrong.
+      // The :first-child makes sure that each <li> has exactly one <a>.
       'nav > ul > li.page-item > a.page-link:first-child' => $expected_count,
     ], $crawler);
   }
