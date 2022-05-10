@@ -145,7 +145,7 @@ class PagerTest extends AbstractKernelTestBase {
    *   Argument lists.
    */
   public function pagerDataProvider(): array {
-    $linkss = [
+    $scenarios = [
       0 => [
         ['url' => '?page=0', 'label' => '1', 'active' => TRUE],
         ['url' => '?page=1', 'label' => '2'],
@@ -170,9 +170,9 @@ class PagerTest extends AbstractKernelTestBase {
         ['url' => '?page=7', 'label' => '8', 'active' => TRUE],
       ],
     ];
-    $argss = [];
-    foreach ($linkss as $page => $links) {
-      $argss[$page] = [
+    $datasets = [];
+    foreach ($scenarios as $page => $links) {
+      $datasets[$page] = [
         [
           'alignment' => 'center',
           'links' => $links,
@@ -180,7 +180,7 @@ class PagerTest extends AbstractKernelTestBase {
         $page,
       ];
     }
-    return $argss;
+    return $datasets;
   }
 
   /**
@@ -225,7 +225,7 @@ class PagerTest extends AbstractKernelTestBase {
    *   Argument lists.
    */
   public function viewsMiniPagerDataProvider(): array {
-    $linkss = [
+    $scenarios = [
       0 => [
         ['url' => '', 'label' => '1'],
         ['url' => '/?page=1', 'label' => 'The next'],
@@ -240,9 +240,9 @@ class PagerTest extends AbstractKernelTestBase {
         ['url' => '', 'label' => '8'],
       ],
     ];
-    $argss = [];
-    foreach ($linkss as $page => $links) {
-      $argss[$page] = [
+    $datasets = [];
+    foreach ($scenarios as $page => $links) {
+      $datasets[$page] = [
         [
           'alignment' => 'center',
           'links' => $links,
@@ -250,7 +250,7 @@ class PagerTest extends AbstractKernelTestBase {
         $page,
       ];
     }
-    return $argss;
+    return $datasets;
   }
 
 }
