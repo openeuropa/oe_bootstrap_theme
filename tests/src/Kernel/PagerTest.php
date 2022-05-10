@@ -111,6 +111,45 @@ class PagerTest extends AbstractKernelTestBase {
   }
 
   /**
+   * Tests a pager where the '#quantity' is not specified.
+   *
+   * This causes more links to be visible.
+   */
+  public function testDefaultQuantityPager(): void {
+    \Drupal::request()->query->set('page', '3');
+
+    /** @var \Drupal\Core\Pager\PagerManagerInterface $pager_manager */
+    $pager_manager = $this->container->get('pager.manager');
+    $pager_manager->createPager(175, 10);
+
+    $element = [
+      '#type' => 'pager',
+    ];
+    $html = $this->renderRoot($element);
+
+    $pagination_assert = new PaginationPatternAssert();
+
+    $pagination_assert->assertPattern([
+      'alignment' => 'center',
+      'links' => [
+        ['url' => '?page=0', 'icon' => 'chevron-double-left'],
+        ['url' => '?page=2', 'label' => 'Previous'],
+        ['url' => '?page=0', 'label' => '1'],
+        ['url' => '?page=1', 'label' => '2'],
+        ['url' => '?page=2', 'label' => '3'],
+        ['url' => '?page=3', 'label' => '4', 'active' => TRUE],
+        ['url' => '?page=4', 'label' => '5'],
+        ['url' => '?page=5', 'label' => '6'],
+        ['url' => '?page=6', 'label' => '7'],
+        ['url' => '?page=7', 'label' => '8'],
+        ['url' => '?page=8', 'label' => '9'],
+        ['url' => '?page=4', 'label' => 'Next'],
+        ['url' => '?page=17', 'icon' => 'chevron-double-right'],
+      ],
+    ], $html);
+  }
+
+  /**
    * Tests the pager.html.twig theme override.
    *
    * @param array $expected_args
