@@ -52,7 +52,7 @@ class PaginationPatternAssert extends BasePatternAssert {
    *   The crawler.
    */
   protected function assertLinks(array $expected, Crawler $crawler): void {
-    $expected_bcl_icon_url = '/' . \Drupal::service('extension.list.theme')->getPath('oe_bootstrap_theme') . '/assets/icons/bcl-default-icons.svg';
+    $icon_pattern_assert = new IconPatternAssert();
 
     $actual_items_selection = $crawler->filter('nav > ul > li');
 
@@ -63,12 +63,9 @@ class PaginationPatternAssert extends BasePatternAssert {
       $this->assertCount(1, $link);
       $this->assertSame($expected_item['url'], $link->attr('href'));
       if (isset($expected_item['icon'])) {
-        $use = $li->filter('a > svg > use');
-        $this->assertCount(1, $use);
-        $this->assertSame(
-          $expected_bcl_icon_url . '#' . $expected_item['icon'],
-          $use->attr('xlink:href'),
-        );
+        $icon_pattern_assert->assertPattern([
+          'name' => $expected_item['icon'],
+        ], $link->html());
       }
       if (isset($expected_item['label'])) {
         $this->assertSame($expected_item['label'], $link->html());
