@@ -54,34 +54,30 @@ class PaginationPatternAssert extends BasePatternAssert {
   protected function assertLinks(array $expected, Crawler $crawler): void {
     $expected_bcl_icon_url = '/' . \Drupal::service('extension.list.theme')->getPath('oe_bootstrap_theme') . '/assets/icons/bcl-default-icons.svg';
 
-    $actual_links_data = [];
-    foreach ($crawler->filter('nav > ul > li') as $actual_li_element) {
-      $li = new Crawler($actual_li_element);
-      $link = $li->filter('a');
-      self::assertCount(1, $link);
-      $actual_link_data = [];
-      $actual_link_data['url'] = $link->attr('href');
-      $use = $li->filter('a > svg > use');
-      if ($use->count()) {
-        // This is an icon.
-        $icon_url = $use->attr('xlink:href');
-        // Split the icon url into the svg url and a hash part.
-        $icon_url_parts = explode('#', $icon_url, 2);
-        // The svg file is expected to be the same for all icons.
-        $this->assertSame($expected_bcl_icon_url, $icon_url_parts[0]);
-        // The hash part is expected to be the icon name.
-        $actual_link_data['icon'] = $icon_url_parts[1] ?? NULL;
-      }
-      else {
-        $actual_link_data['label'] = $link->html();
-      }
-      if ($li->filter('li.active')->count()) {
-        $actual_link_data['active'] = TRUE;
-      }
-      $actual_links_data[] = $actual_link_data;
-    }
+    $actual_items_selection = $crawler->filter('nav > ul > li');
 
-    $this->assertSame($expected, $actual_links_data);
+    foreach ($expected as $i => $expected_item) {
+      $li = $actual_items_selection->eq($i);
+      $this->assertCount(1, $li);
+      $link = $li->filter('a');
+      $this->assertCount(1, $link);
+      $this->assertSame($expected_item['url'], $link->attr('href'));
+      if (isset($expected_item['icon'])) {
+        $use = $li->filter('a > svg > use');
+        $this->assertCount(1, $use);
+        $this->assertSame(
+          $expected_bcl_icon_url . '#' . $expected_item['icon'],
+          $use->attr('xlink:href'),
+        );
+      }
+      if (isset($expected_item['label'])) {
+        $this->assertSame($expected_item['label'], $link->html());
+      }
+      $this->assertSame(
+        !empty($expected_item['active']) ? 1 : 0,
+        $li->filter('.active')->count(),
+      );
+    }
 
     $expected_count = count($expected);
     $this->assertCounts([
