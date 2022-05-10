@@ -58,6 +58,7 @@ class PaginationPatternAssert extends BasePatternAssert {
     foreach ($crawler->filter('nav > ul > li') as $actual_li_element) {
       $li = new Crawler($actual_li_element);
       $link = $li->filter('a');
+      self::assertCount(1, $link);
       $actual_link_data = [];
       $actual_link_data['url'] = $link->attr('href');
       $use = $li->filter('a > svg > use');
