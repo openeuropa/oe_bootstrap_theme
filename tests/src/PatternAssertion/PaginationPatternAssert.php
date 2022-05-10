@@ -52,6 +52,16 @@ class PaginationPatternAssert extends BasePatternAssert {
    *   The crawler.
    */
   protected function assertLinks(array $expected, Crawler $crawler): void {
+    $expected_count = count($expected);
+    $this->assertCounts([
+      // Fail on unexpected additional <li> or <a> anywhere in the html.
+      'li' => $expected_count,
+      'a' => $expected_count,
+      // Fail if classes are missing or the structure is wrong.
+      // The :first-child makes sure that each <li> has exactly one <a>.
+      'nav > ul > li.page-item > a.page-link:first-child' => $expected_count,
+    ], $crawler);
+
     $icon_pattern_assert = new IconPatternAssert();
 
     $actual_items_selection = $crawler->filter('nav > ul > li');
@@ -75,16 +85,6 @@ class PaginationPatternAssert extends BasePatternAssert {
         $li->filter('.active')->count(),
       );
     }
-
-    $expected_count = count($expected);
-    $this->assertCounts([
-      // Fail on unexpected additional <li> or <a> anywhere in the html.
-      'li' => $expected_count,
-      'a' => $expected_count,
-      // Fail if classes are missing or the structure is wrong.
-      // The :first-child makes sure that each <li> has exactly one <a>.
-      'nav > ul > li.page-item > a.page-link:first-child' => $expected_count,
-    ], $crawler);
   }
 
   /**
