@@ -64,7 +64,11 @@ class PaginationPatternAssert extends BasePatternAssert {
         if ($use->count()) {
           // This is an icon.
           $icon_url = $use->attr('xlink:href');
-          [$actual_bcl_icon_url, $actual_link_data['icon']] = explode('#', $icon_url, 2) + [NULL];
+          // Split the icon url into the svg url and a hash part.
+          // The base url is the same for all icons, the hash is the icon name.
+          // Add `+ [NULL, NULL]` to avoid undefined array key warning if the
+          // hash is missing.
+          [$actual_bcl_icon_url, $actual_link_data['icon']] = explode('#', $icon_url, 2) + [NULL, NULL];
           $this->assertSame($expected_bcl_icon_url, $actual_bcl_icon_url);
         }
         else {
