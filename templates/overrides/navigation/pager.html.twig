@@ -4,6 +4,7 @@
  * Override for core 'pager' template, using the 'navigation' pattern.
  */
 #}
+{% block pager %}
 {% if items %}
   {% set previous =  items.previous ? {'label':  items.previous.text, 'path': items.previous.href } : {} %}
   {% set next = items.next ? {'label':  items.next.text, 'path': items.next.href } : {} %}
@@ -22,3 +23,4 @@
     next: next,
   }) }}
 {% endif %}
+{% endblock %}
