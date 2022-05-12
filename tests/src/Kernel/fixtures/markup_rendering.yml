@@ -71,7 +71,7 @@ select_multiple_required:
       'option[value=2]': 'Three'
     count:
       'label.form-label': 1
-      'select.multi-select': 1
+      'select.form-select': 1
       'select[required]': 1
       'select[multiple]': 1
 submit_primary:
