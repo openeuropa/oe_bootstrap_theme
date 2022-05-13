@@ -10,20 +10,10 @@
  * @see template_preprocess_select()
  */
 #}
-{{ attach_library('oe_bootstrap_theme/slimselect') }}
-
-{% if element['#multiple'] %}
-  {% set classes = [
-    'multi-select',
-  ] %}
-  {% set attributes = attributes.removeClass('form-select') %}
-{% else %}
-  {% set classes = [
-    'form-select',
-    attributes.hasClass('error') ? 'is-invalid',
-  ] %}
-{% endif %}
-
+{% set classes = [
+  'form-select',
+  attributes.hasClass('error') ? 'is-invalid',
+] %}
 {% spaceless %}
   <select{{ attributes.addClass(classes) }}>
     {% for option in options %}

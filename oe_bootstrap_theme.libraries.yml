@@ -21,8 +21,3 @@ drupal.progress:
 inpage_navigation:
   js:
     resources/js/inpage_navigation.js: {}
-
-slimselect:
-  js:
-    assets/js/slimselect.min.js: {}
-    resources/js/form_select_multiple.js: {}
