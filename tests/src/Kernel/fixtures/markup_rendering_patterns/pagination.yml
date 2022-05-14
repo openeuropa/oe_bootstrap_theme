@@ -6,7 +6,7 @@ pagination:
       settings:
         size: 'sm'
         alignment: 'center'
-        enable_first_last_icon: false
+        enable_first_last_icons: false
       first:
         path: '#first'
         label: 'First'
@@ -53,7 +53,7 @@ pagination_with_icon:
       settings:
         size: 'lg'
         alignment: 'end'
-        enable_prev_next_icon: true
+        enable_prev_next_icons: true
       first:
         path: '#first'
         # Verify that a label has no effect if icons are enabled.

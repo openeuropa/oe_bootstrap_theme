@@ -18,14 +18,14 @@ pagination:
         center: 'center'
         end: 'end'
       preview: 'center'
-    enable_prev_next_icon:
+    enable_prev_next_icons:
       type: boolean
-      label: 'Enable prev/next icon'
-      description: 'Use icon instead of link labels to previous and next items. False by default.'
-    enable_first_last_icon:
+      label: 'Enable previous/next icons'
+      description: 'Show icons instead of texts in links to previous and next page. False by default.'
+    enable_first_last_icons:
       type: boolean
-      label: 'Enable first/last icon'
-      description: 'Use icon instead of link labels for first and last links. True by default.'
+      label: 'Enable first/last icons'
+      description: 'Show icons instead of texts in links to first and last page. True by default.'
   fields:
     first:
       type: array
