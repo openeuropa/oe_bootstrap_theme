@@ -198,4 +198,22 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
     self::assertStringContainsString($expected_image['src'], $element->attr('src'));
   }
 
+  /**
+   * Asserts counts for given selectors.
+   *
+   * @param int[] $expected_counts
+   *   Expected counts by selector.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertCounts(array $expected_counts, Crawler $crawler): void {
+    foreach ($expected_counts as $selector => $expected_count) {
+      $this->assertCount(
+        $expected_count,
+        $crawler->filter($selector),
+        sprintf('Wrong count for selector "%s".', $selector),
+      );
+    }
+  }
+
 }

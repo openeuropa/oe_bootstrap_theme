@@ -218,3 +218,20 @@ function oe_bootstrap_theme_preprocess_pattern_listing__preview(array &$variable
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for the pagination pattern.
+ *
+ * Adds default values for custom icons.
+ */
+function oe_bootstrap_theme_preprocess_pattern_pagination(array &$variables): void {
+  foreach (['first', 'prev', 'next', 'last'] as $key) {
+    if (empty($variables[$key]['icon']['name'])) {
+      continue;
+    }
+    $variables[$key]['icon'] += [
+      'path' => $variables['bcl_icon_path'],
+      'size' => 'fluid',
+    ];
+  }
+}
