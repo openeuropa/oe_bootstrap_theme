@@ -7,24 +7,50 @@
 
 declare(strict_types = 1);
 
+use Drupal\Core\Link;
 use Drupal\Core\Template\Attribute;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_preprocess_menu().
  */
-function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
+function oe_bootstrap_theme_preprocess_menu(array &$variables, string $hook): void {
   if ($hook === 'menu__toolbar') {
     return;
   }
 
+  // Merge additional attributes into the URL object.
+  $prepare_url = function (array $item): Url {
+    // Don't modify the original URL object.
+    $url = clone $item['url'];
+
+    // Merge passed attributes into the URL object.
+    $passed_attributes = [];
+    if (!empty($item['attributes'])) {
+      $passed_attributes = $item['attributes'] instanceof Attribute ? $item['attributes']->toArray() : $item['attributes'];
+    }
+    $attributes = [
+      'class' => $item['in_active_trail'] ? ['active'] : [],
+    ] + $passed_attributes;
+
+    // This is a parent item.
+    if (!empty($item['below'])) {
+      $attributes['class'][] = 'nav-link';
+    }
+
+    $url->mergeOptions(['attributes' => $attributes]);
+
+    return $url;
+  };
+
   $variables['pattern_items'] = [];
   foreach ($variables['items'] as $key => $item) {
+    $url = $prepare_url($item);
     $pattern_item = [
       'label' => $item['title'],
-      'path' => $item['url']->toString(),
-      'attributes' => new Attribute([
-        'class' => $item['in_active_trail'] ? ['active'] : [],
-      ]),
+      'url' => $item['url'],
+      'attributes' => new Attribute($url->getOption('attributes')),
+      'link' => (new Link($item['title'], $item['url']))->toRenderable(),
     ];
     if (empty($item['below'])) {
       $variables['pattern_items'][$key] = $pattern_item;
@@ -32,7 +58,6 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
     }
 
     $submenu = $pattern_item;
-    $submenu['attributes'] = new Attribute(['class' => 'nav-link']);
     $pattern_item += [
       'standalone' => TRUE,
       'dropdown' => TRUE,
@@ -41,17 +66,16 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
       'trigger' => $submenu,
     ];
     foreach ($item['below'] as $key_sub_item => $sub_item) {
+      $url = $prepare_url($sub_item);
       $pattern_item['items'][$key_sub_item] = [
         'label' => $sub_item['title'],
-        'path' => $sub_item['url']->toString(),
-        'attributes' => new Attribute([
-          'class' => $sub_item['in_active_trail'] ? ['active'] : [],
-        ]),
+        'url' => $sub_item['url'],
+        'attributes' => new Attribute($url->getOption('attributes')),
+        'link' => (new Link($item['title'], $item['url']))->toRenderable(),
       ];
     }
     $variables['pattern_items'][$key] = $pattern_item;
   }
-
 }
 
 /**
