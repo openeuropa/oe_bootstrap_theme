@@ -33,11 +33,6 @@ function oe_bootstrap_theme_preprocess_menu(array &$variables, string $hook): vo
       'class' => $item['in_active_trail'] ? ['active'] : [],
     ] + $passed_attributes;
 
-    // This is a parent item.
-    if (!empty($item['below'])) {
-      $attributes['class'][] = 'nav-link';
-    }
-
     $url->mergeOptions(['attributes' => $attributes]);
 
     return $url;
@@ -51,6 +46,7 @@ function oe_bootstrap_theme_preprocess_menu(array &$variables, string $hook): vo
       'url' => $item['url'],
       'attributes' => new Attribute($url->getOption('attributes')),
       'link' => (new Link($item['title'], $item['url']))->toRenderable(),
+      'path' => $item['url']->toString(),
     ];
     if (empty($item['below'])) {
       $variables['pattern_items'][$key] = $pattern_item;
@@ -58,6 +54,7 @@ function oe_bootstrap_theme_preprocess_menu(array &$variables, string $hook): vo
     }
 
     $submenu = $pattern_item;
+    $submenu['attributes'] = new Attribute(['class' => 'nav-link']);
     $pattern_item += [
       'standalone' => TRUE,
       'dropdown' => TRUE,
@@ -71,7 +68,8 @@ function oe_bootstrap_theme_preprocess_menu(array &$variables, string $hook): vo
         'label' => $sub_item['title'],
         'url' => $sub_item['url'],
         'attributes' => new Attribute($url->getOption('attributes')),
-        'link' => (new Link($item['title'], $item['url']))->toRenderable(),
+        'link' => (new Link($sub_item['title'], $sub_item['url']))->toRenderable(),
+        'path' => $sub_item['url']->toString(),
       ];
     }
     $variables['pattern_items'][$key] = $pattern_item;
