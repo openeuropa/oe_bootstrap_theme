@@ -37,24 +37,22 @@ fact_figures_default_1col:
   assertions:
     count:
       'div.bcl-fact-figures.bcl-fact-figures--default': 1
-      'h2.fw-bold': 1
+      'h2.bcl-heading': 1
       'div.row.row-cols-md-1': 1
       'svg.bi.icon--l': 6
-      'h4.text-capitalize.fw-bold.mt-2': 6
-      'h5.fw-bold': 6
     equals:
-      'div > div.col:nth-child(1) > h4': '1529 JIRA Ticket'
-      'div > div.col:nth-child(2) > h4': '337 Features'
-      'div > div.col:nth-child(3) > h4': '107 Tests'
-      'div > div.col:nth-child(4) > h4': '5670 Variants'
-      'div > div.col:nth-child(5) > h4': '345 Dev Ticket'
-      'div > div.col:nth-child(6) > h4': '43 Components'
-      'div > div.col:nth-child(1) > h5': 'Jira Tickets'
-      'div > div.col:nth-child(2) > h5': 'Feature tickets'
-      'div > div.col:nth-child(3) > h5': 'Test tickets'
-      'div > div.col:nth-child(4) > h5': 'Test variants'
-      'div > div.col:nth-child(5) > h5': 'Jira ticket'
-      'div > div.col:nth-child(6) > h5': 'Figma components'
+      'div > div.col:nth-child(1) > div.fs-3': '1529 JIRA Ticket'
+      'div > div.col:nth-child(2) > div.fs-3': '337 Features'
+      'div > div.col:nth-child(3) > div.fs-3': '107 Tests'
+      'div > div.col:nth-child(4) > div.fs-3': '5670 Variants'
+      'div > div.col:nth-child(5) > div.fs-3': '345 Dev Ticket'
+      'div > div.col:nth-child(6) > div.fs-3': '43 Components'
+      'div > div.col:nth-child(1) > div.fs-5': 'Jira Tickets'
+      'div > div.col:nth-child(2) > div.fs-5': 'Feature tickets'
+      'div > div.col:nth-child(3) > div.fs-5': 'Test tickets'
+      'div > div.col:nth-child(4) > div.fs-5': 'Test variants'
+      'div > div.col:nth-child(5) > div.fs-5': 'Jira ticket'
+      'div > div.col:nth-child(6) > div.fs-5': 'Figma components'
       'div > div.col.h-100:nth-child(1) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#x-diamond-fill"></use>'
       'div > div.col.h-100:nth-child(2) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#ui-checks"></use>'
       'div > div.col.h-100:nth-child(3) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#wallet-fill"></use>'
@@ -101,24 +99,22 @@ fact_figures_default_2col:
   assertions:
     count:
       'div.bcl-fact-figures.bcl-fact-figures--default': 1
-      'h2.fw-bold': 1
+      'h2.bcl-heading': 1
       'div.row.row-cols-md-2': 1
       'svg.bi.icon--l': 6
-      'h4.text-capitalize.fw-bold.mt-2': 6
-      'h5.fw-bold': 6
     equals:
-      'div > div.col:nth-child(1) > h4': '1529 JIRA Ticket'
-      'div > div.col:nth-child(2) > h4': '337 Features'
-      'div > div.col:nth-child(3) > h4': '107 Tests'
-      'div > div.col:nth-child(4) > h4': '5670 Variants'
-      'div > div.col:nth-child(5) > h4': '345 Dev Ticket'
-      'div > div.col:nth-child(6) > h4': '43 Components'
-      'div > div.col:nth-child(1) > h5': 'Jira Tickets'
-      'div > div.col:nth-child(2) > h5': 'Feature tickets'
-      'div > div.col:nth-child(3) > h5': 'Test tickets'
-      'div > div.col:nth-child(4) > h5': 'Test variants'
-      'div > div.col:nth-child(5) > h5': 'Jira ticket'
-      'div > div.col:nth-child(6) > h5': 'Figma components'
+      'div > div.col:nth-child(1) > div.fs-3': '1529 JIRA Ticket'
+      'div > div.col:nth-child(2) > div.fs-3': '337 Features'
+      'div > div.col:nth-child(3) > div.fs-3': '107 Tests'
+      'div > div.col:nth-child(4) > div.fs-3': '5670 Variants'
+      'div > div.col:nth-child(5) > div.fs-3': '345 Dev Ticket'
+      'div > div.col:nth-child(6) > div.fs-3': '43 Components'
+      'div > div.col:nth-child(1) > div.fs-5': 'Jira Tickets'
+      'div > div.col:nth-child(2) > div.fs-5': 'Feature tickets'
+      'div > div.col:nth-child(3) > div.fs-5': 'Test tickets'
+      'div > div.col:nth-child(4) > div.fs-5': 'Test variants'
+      'div > div.col:nth-child(5) > div.fs-5': 'Jira ticket'
+      'div > div.col:nth-child(6) > div.fs-5': 'Figma components'
       'div > div.col.h-100:nth-child(1) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#x-diamond-fill"></use>'
       'div > div.col.h-100:nth-child(2) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#ui-checks"></use>'
       'div > div.col.h-100:nth-child(3) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#wallet-fill"></use>'
@@ -164,24 +160,22 @@ fact_figures_default_3col:
   assertions:
     count:
       'div.bcl-fact-figures.bcl-fact-figures--default': 1
-      'h2.fw-bold': 1
+      'h2.bcl-heading': 1
       'div.row.row-cols-md-3': 1
       'svg.bi.icon--l': 6
-      'h4.text-capitalize.fw-bold.mt-2': 6
-      'h5.fw-bold': 6
     contains:
-      'div > div.col:nth-child(1) > h4': '1529 JIRA Ticket'
-      'div > div.col:nth-child(2) > h4': '337 Features'
-      'div > div.col:nth-child(3) > h4': '107 Tests'
-      'div > div.col:nth-child(4) > h4': '5670 Variants'
-      'div > div.col:nth-child(5) > h4': '345 Dev Ticket'
-      'div > div.col:nth-child(6) > h4': '43 Components'
-      'div > div.col:nth-child(1) > h5': 'Jira Tickets'
-      'div > div.col:nth-child(2) > h5': 'Feature tickets'
-      'div > div.col:nth-child(3) > h5': 'Test tickets'
-      'div > div.col:nth-child(4) > h5': 'Test variants'
-      'div > div.col:nth-child(5) > h5': 'Jira ticket'
-      'div > div.col:nth-child(6) > h5': 'Figma components'
+      'div > div.col:nth-child(1) > div.fs-3': '1529 JIRA Ticket'
+      'div > div.col:nth-child(2) > div.fs-3': '337 Features'
+      'div > div.col:nth-child(3) > div.fs-3': '107 Tests'
+      'div > div.col:nth-child(4) > div.fs-3': '5670 Variants'
+      'div > div.col:nth-child(5) > div.fs-3': '345 Dev Ticket'
+      'div > div.col:nth-child(6) > div.fs-3': '43 Components'
+      'div > div.col:nth-child(1) > div.fs-5': 'Jira Tickets'
+      'div > div.col:nth-child(2) > div.fs-5': 'Feature tickets'
+      'div > div.col:nth-child(3) > div.fs-5': 'Test tickets'
+      'div > div.col:nth-child(4) > div.fs-5': 'Test variants'
+      'div > div.col:nth-child(5) > div.fs-5': 'Jira ticket'
+      'div > div.col:nth-child(6) > div.fs-5': 'Figma components'
       'div > div.col.h-100:nth-child(1) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#x-diamond-fill"></use>'
       'div > div.col.h-100:nth-child(2) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#ui-checks"></use>'
       'div > div.col.h-100:nth-child(3) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#wallet-fill"></use>'
