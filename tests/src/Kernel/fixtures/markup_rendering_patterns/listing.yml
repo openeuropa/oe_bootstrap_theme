@@ -58,7 +58,7 @@ listing_default_1_col:
       'div.bcl-listing.bcl-listing--default-1-col': 1
       'div.row.row-cols-1.g-4': 1
       'div.row': 4
-      'div.listing-item': 4
+      'article.listing-item': 4
       'div.card-text': 4
       'span.me-4': 4
       'span.mb-2': 8
@@ -154,7 +154,7 @@ listing_default_2_col:
       'div.bcl-listing.bcl-listing--default-2-col': 1
       'div.row.row-cols-1.row-cols-md-2.g-4': 1
       'div.row': 6
-      'div.listing-item': 6
+      'article.listing-item': 6
       'div.card-text': 6
       'span.me-4': 6
       'span.mb-2': 12
@@ -251,7 +251,7 @@ listing_default_3_col:
       'div.bcl-listing.bcl-listing--default-3-col': 1
       'div.row-cols-md-2.row.row-cols-1.row-cols-xl-3.g-4': 1
       'div.row': 6
-      'div.listing-item': 6
+      'article.listing-item': 6
       'div.card-text': 6
       'span.me-4': 6
       'span.mb-2': 12
@@ -326,7 +326,7 @@ listing_highlight_1_col:
     count:
       'div.bcl-listing.bcl-listing--highlight-1-col': 1
       'div.row.row-cols-1.g-4': 1
-      'div.listing-item--highlight': 4
+      'article.listing-item--highlight': 4
       'img.card-img-top': 3
       'div.card-text': 4
       'span.me-4': 4
@@ -418,7 +418,7 @@ listing_highlight_2_col:
     count:
       'div.bcl-listing.bcl-listing--highlight-2-col': 1
       'div.row.row.row-cols-1.row-cols-md-2.g-4': 1
-      'div.listing-item--highlight': 6
+      'article.listing-item--highlight': 6
       'img.card-img-top': 5
       'div.card-text.mb-2': 6
       'span.me-4': 6
@@ -512,7 +512,7 @@ listing_highlight_3_col:
     count:
       'div.bcl-listing.bcl-listing--highlight-3-col': 1
       'div.row.row-cols-1.row-cols-md-3.g-4': 1
-      'div.listing-item--highlight': 6
+      'article.listing-item--highlight': 6
       'img.card-img-top': 5
       'div.card-text': 6
       'span.me-4': 6
