@@ -24,7 +24,7 @@ inpage_navigation_default:
       'div.col-md-3': 1
       'div.col-md-3 nav.position-sticky': 1
       'div.col-md-3 nav[id^="bcl-inpage-navigation"]': 1
-      'div.col-md-3  h5': 1
+      'div.col-md-3  h3': 1
       'div.col-md-3 ul.nav.nav-pills.flex-column': 1
       'div.col-md-3 li.nav-item': 4
       'div.col-md-3 a.nav-link': 4
@@ -38,7 +38,7 @@ inpage_navigation_default:
       'div.col-md-3 a[href="#item-2"]': 'Heading 2 with a long title going on several lines'
       'div.col-md-3 a[href="#item-3"]': 'Heading 3'
       'div.col-md-3 a[href="#item-4"]': 'Heading 4'
-      'div.col-md-3 h5': 'Page content'
+      'div.col-md-3 h3': 'Page content'
       # Assert the paragraphs where added into the right side column.
       'div.col-md-9 h2#item-1': 'Heading 1'
       'div.col-md-9 h2#item-2': 'Heading 2 with a long title going on several lines'
@@ -65,7 +65,8 @@ inpage_navigation_non_full:
     count:
       'nav.position-sticky': 1
       'nav[id^="bcl-inpage-navigation"]': 1
-      'h5': 1
+      'h3.bcl-heading': 1
+      'h2': 4
       'ul.nav.nav-pills.flex-column': 1
       'li.nav-item': 4
       'a.nav-link': 4
@@ -74,6 +75,7 @@ inpage_navigation_non_full:
       'a[href="#item-2"]': 'Heading 2 with a long title going on several lines'
       'a[href="#item-3"]': 'Heading 3'
       'a[href="#item-4"]': 'Heading 4'
+      'h3': 'Page content'
       'h5': 'Page content'
 inpage_navigation_with_no_links:
   render:
