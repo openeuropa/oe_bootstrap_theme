@@ -24,7 +24,7 @@ card_horizontal_with_image:
       footer: 'Footer of card'
   assert:
     count:
-      'div[data-drupal-selector="card"]': 1
+      'article[data-drupal-selector="card"]': 1
       'img[alt="Alternative text for card image"]': 1
       'div.row.g-0 div.col-4': 1
       'div.row.g-0 div.col-8': 1
@@ -62,8 +62,8 @@ card_vertical:
       footer: 'Footer of card'
   assert:
     count:
-      'div.card': 1
-      'div.card[data-drupal-selector="card"]': 1
+      'article.card': 1
+      'article.card[data-drupal-selector="card"]': 1
       'img[alt="Alternative text for card image"]': 1
       'div.row': 0
       'img.card-img-top': 1
@@ -89,7 +89,7 @@ card_variant_search:
         - label: 'Category 2'
   assert:
     count:
-      'div.listing-item.border-bottom.border-md-0.border-0.card.text-dark': 1
+      'article.listing-item.border-bottom.border-md-0.border-0.card.text-dark': 1
       'div.col-md-3.col-lg-2.rounded.mw-listing-img': 1
       'div.col-md-9.col-lg-10': 1
       'div.card-body.p-0.pb-md-0.pb-3': 1
