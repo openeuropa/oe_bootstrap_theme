@@ -7,11 +7,8 @@
 {% extends 'pattern-offcanvas.html.twig' %}
 {% block offcanvas %}
   {% include '@oe-bcl/offcanvas' with {
-    'title': {
-      'label': title,
-      'heading': 4,
-      'extra_classes': "mb-lg-4",
-    },
+    'title': title,
+    'title_attributes': create_attribute().addClass('mb-lg-4'),
     'placement': placement,
     'id': offcanvas_id,
     'body': body,
