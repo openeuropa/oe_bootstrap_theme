@@ -196,3 +196,12 @@ We use [SemVer](http://semver.org/) for versioning. For the available versions, 
 Paragraphs-related theming and functionality has been moved from the [OpenEuropa Bootstrap base theme](https://github.com/openeuropa/oe_bootstrap_theme) to [OpenEuropa Whitelabel](https://github.com/openeuropa/oe_whitelabel).
 
 If you are using `openeuropa/oe_whitelabel`, and you want paragraphs functionality, you should upgrade it to `1.0.0-alpha6` or higher, and refer to the upgrade instructions found there.
+
+Some paragraph's required components has been added to [OpenEuropa Whitelabel](https://github.com/openeuropa/oe_whitelabel)
+in the last release and has been removed from [OpenEuropa Bootstrap base theme](https://github.com/openeuropa/oe_bootstrap_theme):
+
+  * drupal/description_list_field
+  * openeuropa/oe_content
+  * openeuropa/oe_media
+  * openeuropa/oe_paragraphs
+
