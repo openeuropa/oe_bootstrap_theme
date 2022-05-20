@@ -1,10 +1,35 @@
 # Change Log
 
+## [1.0.0-beta1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta1) (2022-05-20)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-alpha8...1.0.0-beta1)
+
+**Closed issues:**
+
+- Preprocess of menus is breaking menus with contrib templates [\#156](https://github.com/openeuropa/oe_bootstrap_theme/issues/156)
+- The \_core:default\_config\_hash is removed from existing config when installing OE Bootstrap Theme Paragraphs [\#140](https://github.com/openeuropa/oe_bootstrap_theme/issues/140)
+- bcl lib templates take precedence over override [\#61](https://github.com/openeuropa/oe_bootstrap_theme/issues/61)
+- update composer to the last 1.x version [\#51](https://github.com/openeuropa/oe_bootstrap_theme/issues/51)
+- Don't mix NPM whith Composer [\#37](https://github.com/openeuropa/oe_bootstrap_theme/issues/37)
+
+**Merged pull requests:**
+
+- OEL-1383: Fix slimSelect, only activate when a multiple select exists. [\#239](https://github.com/openeuropa/oe_bootstrap_theme/pull/239) ([escuriola](https://github.com/escuriola))
+- OEL-1536: Add additional parameter for extension type in ConfigImporter. [\#238](https://github.com/openeuropa/oe_bootstrap_theme/pull/238) ([donquixote](https://github.com/donquixote))
+- OEL-1357: Restructure README [\#237](https://github.com/openeuropa/oe_bootstrap_theme/pull/237) ([donquixote](https://github.com/donquixote))
+- OEL-1374: Add block in pager template to allow to extend. [\#236](https://github.com/openeuropa/oe_bootstrap_theme/pull/236) ([escuriola](https://github.com/escuriola))
+- OEL-1463: Pager first and last, PaginationPatternAssert [\#234](https://github.com/openeuropa/oe_bootstrap_theme/pull/234) ([donquixote](https://github.com/donquixote))
+- OEL-1416: Fix 'unsafe directory' error in drone. [\#233](https://github.com/openeuropa/oe_bootstrap_theme/pull/233) ([donquixote](https://github.com/donquixote))
+- OEL-1360: Clean button for modals close button. [\#232](https://github.com/openeuropa/oe_bootstrap_theme/pull/232) ([escuriola](https://github.com/escuriola))
+- OEL-1416: Up BCL 0.20.0 -\> 0.22.0 [\#230](https://github.com/openeuropa/oe_bootstrap_theme/pull/230) ([donquixote](https://github.com/donquixote))
+- OEL-1425: Change image arrays to ImageValueObject in patterns. [\#229](https://github.com/openeuropa/oe_bootstrap_theme/pull/229) ([escuriola](https://github.com/escuriola))
+- OEL-1317: Main menu & navbar improvements. [\#215](https://github.com/openeuropa/oe_bootstrap_theme/pull/215) ([escuriola](https://github.com/escuriola))
+
 ## [1.0.0-alpha8](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-alpha8) (2022-04-07)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-alpha7...1.0.0-alpha8)
 
 **Merged pull requests:**
 
+- Prepare release 1.0.0-alpha8 [\#228](https://github.com/openeuropa/oe_bootstrap_theme/pull/228) ([abel-santos-corral](https://github.com/abel-santos-corral))
 - OEL-0000: Prepare release packages only once. [\#227](https://github.com/openeuropa/oe_bootstrap_theme/pull/227) ([brummbar](https://github.com/brummbar))
 - EPIC: OEL-1255: Migrate paragraphs [\#223](https://github.com/openeuropa/oe_bootstrap_theme/pull/223) ([donquixote](https://github.com/donquixote))
 - OEL-494: File pattern. [\#216](https://github.com/openeuropa/oe_bootstrap_theme/pull/216) ([brummbar](https://github.com/brummbar))
