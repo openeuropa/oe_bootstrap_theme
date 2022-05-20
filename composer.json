@@ -28,9 +28,9 @@
         "egulias/email-validator": "^2.1.22 || ^3.0",
         "nikic/php-parser": "^4.13",
         "openeuropa/code-review": "^2.0",
-        "openeuropa/oe_content": "^2.7.0",
-        "openeuropa/oe_media": "^1.14",
-        "openeuropa/oe_paragraphs": "^1.12",
+        "openeuropa/oe_content": "^2.8.0",
+        "openeuropa/oe_media": "^1.16",
+        "openeuropa/oe_paragraphs": "^1.13",
         "openeuropa/task-runner-drupal-project-symlink": "^1.0-beta5",
         "phpspec/prophecy-phpunit": "^1 || ^2",
         "symfony/dom-crawler": "^4.4.12"
