@@ -22,55 +22,52 @@ function oe_bootstrap_theme_preprocess_menu(array &$variables, string $hook): vo
   // Merge additional attributes into the URL object.
   $prepare_url = function (array $item): Url {
     // Don't modify the original URL object.
+    /** @var \Drupal\Core\Url $url */
     $url = clone $item['url'];
 
     // Merge passed attributes into the URL object.
-    $passed_attributes = [];
+    $attributes = [];
     if (!empty($item['attributes'])) {
-      $passed_attributes = $item['attributes'] instanceof Attribute ? $item['attributes']->toArray() : $item['attributes'];
+      $attributes = $item['attributes'] instanceof Attribute ? $item['attributes']->toArray() : $item['attributes'];
     }
-    $attributes = [
-      'class' => $item['in_active_trail'] ? ['active'] : [],
-    ] + $passed_attributes;
-
+    $class = $attributes['class'] ?? [];
+    $class[] = 'nav-link';
+    if ($item['in_active_trail']) {
+      $class[] = 'active';
+    }
+    $attributes['class'] = $class;
     $url->mergeOptions(['attributes' => $attributes]);
 
     return $url;
   };
 
+  // Returns a pattern item.
+  $get_pattern_item = function (array $item) use ($prepare_url): array {
+    $url = $prepare_url($item);
+    return [
+      'label' => $item['title'],
+      'url' => $url,
+      'attributes' => new Attribute($url->getOption('attributes')),
+      'link' => (new Link($item['title'], $url))->toRenderable(),
+      'path' => $url->toString(),
+    ];
+  };
+
   $variables['pattern_items'] = [];
   foreach ($variables['items'] as $key => $item) {
-    $url = $prepare_url($item);
-    $pattern_item = [
-      'label' => $item['title'],
-      'url' => $item['url'],
-      'attributes' => new Attribute($url->getOption('attributes')),
-      'link' => (new Link($item['title'], $item['url']))->toRenderable(),
-      'path' => $item['url']->toString(),
-    ];
-    if (empty($item['below'])) {
-      $variables['pattern_items'][$key] = $pattern_item;
-      continue;
-    }
-
-    $submenu = $pattern_item;
-    $submenu['attributes'] = new Attribute(['class' => 'nav-link']);
-    $pattern_item += [
-      'standalone' => TRUE,
-      'dropdown' => TRUE,
-      'link' => TRUE,
-      'alignment' => 'dropdown-menu_item-sm-start',
-      'trigger' => $submenu,
-    ];
-    foreach ($item['below'] as $key_sub_item => $sub_item) {
-      $url = $prepare_url($sub_item);
-      $pattern_item['items'][$key_sub_item] = [
-        'label' => $sub_item['title'],
-        'url' => $sub_item['url'],
-        'attributes' => new Attribute($url->getOption('attributes')),
-        'link' => (new Link($sub_item['title'], $sub_item['url']))->toRenderable(),
-        'path' => $sub_item['url']->toString(),
+    $pattern_item = $get_pattern_item($item);
+    if (!empty($item['below'])) {
+      $submenu = $pattern_item;
+      $pattern_item += [
+        'standalone' => TRUE,
+        'dropdown' => TRUE,
+        'link' => TRUE,
+        'alignment' => 'dropdown-menu_item-sm-start',
+        'trigger' => $submenu,
       ];
+      foreach ($item['below'] as $key_sub_item => $sub_item) {
+        $pattern_item['items'][$key_sub_item] = $get_pattern_item[$sub_item];
+      }
     }
     $variables['pattern_items'][$key] = $pattern_item;
   }
