@@ -197,11 +197,13 @@ Paragraphs-related theming and functionality has been moved from the [OpenEuropa
 
 If you are using `openeuropa/oe_whitelabel`, and you want paragraphs functionality, you should upgrade it to `1.0.0-alpha6` or higher, and refer to the upgrade instructions found there.
 
-Some paragraph's required components has been added to [OpenEuropa Whitelabel](https://github.com/openeuropa/oe_whitelabel)
-in the last release and has been removed from [OpenEuropa Bootstrap base theme](https://github.com/openeuropa/oe_bootstrap_theme):
+### Upgrade to 1.0.0-beta2
+
+The following paragraph's required components has been removed from [OpenEuropa Bootstrap base theme](https://github.com/openeuropa/oe_bootstrap_theme)
 
   * drupal/description_list_field
   * openeuropa/oe_content
   * openeuropa/oe_media
   * openeuropa/oe_paragraphs
 
+If any of them are required, then you must install them like any other component outside oe_bootstrap_theme.
