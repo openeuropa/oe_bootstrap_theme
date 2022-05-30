@@ -189,6 +189,17 @@ We use [SemVer](http://semver.org/) for versioning. For the available versions, 
 
 ## Upgrade from older versions
 
+### Upgrade to 1.0.0-beta2
+
+The following paragraphs required components have been removed from [OpenEuropa Bootstrap base theme](https://github.com/openeuropa/oe_bootstrap_theme)
+
+* drupal/description_list_field
+* openeuropa/oe_content
+* openeuropa/oe_media
+* openeuropa/oe_paragraphs
+
+Be sure to require the component if you need any of them.
+
 ### Upgrade to 1.0.0-alpha8
 
 #### Paragraphs migration
@@ -196,14 +207,3 @@ We use [SemVer](http://semver.org/) for versioning. For the available versions, 
 Paragraphs-related theming and functionality has been moved from the [OpenEuropa Bootstrap base theme](https://github.com/openeuropa/oe_bootstrap_theme) to [OpenEuropa Whitelabel](https://github.com/openeuropa/oe_whitelabel).
 
 If you are using `openeuropa/oe_whitelabel`, and you want paragraphs functionality, you should upgrade it to `1.0.0-alpha6` or higher, and refer to the upgrade instructions found there.
-
-### Upgrade to 1.0.0-beta2
-
-The following paragraph's required components has been removed from [OpenEuropa Bootstrap base theme](https://github.com/openeuropa/oe_bootstrap_theme)
-
-  * drupal/description_list_field
-  * openeuropa/oe_content
-  * openeuropa/oe_media
-  * openeuropa/oe_paragraphs
-
-If any of them are required, then you must install them like any other component outside oe_bootstrap_theme.
