@@ -31,7 +31,7 @@ progress_primary_stripped_animated:
       'label.progress-bar-label': 'Progress label'
       'div.progress': 'Bar label'
       'small.progress-bar-message': 'Progress bar description'
-progress_secondary_non_stripped_non_animated:
+progress_light_non_stripped_non_animated:
   render:
     '#type': pattern
     '#id': progress
