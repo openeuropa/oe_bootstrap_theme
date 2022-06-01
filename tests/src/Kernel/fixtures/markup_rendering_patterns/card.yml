@@ -32,7 +32,7 @@ card_horizontal_with_image:
       '.card-body > div > span.text-muted': 2
     equals:
       'div.card-header': 'Header of card'
-      'h5.card-title': 'Title card'
+      'h1.card-title': 'Title card'
       'h6.card-subtitle': 'Subtitle card'
       'div.card-text': 'Text card with longer text which is supported'
       '.card-body > div > span.text-muted:nth-child(1)': 'DIGIT'
@@ -69,7 +69,7 @@ card_vertical:
       'img.card-img-top': 1
     equals:
       'div.card-header': 'Header of card'
-      'h5.card-title': 'Title card'
+      'h1.card-title': 'Title card'
       'h6.card-subtitle': 'Subtitle card'
       'div.card-text': 'Text card with longer text which is supported'
     contains:
@@ -97,7 +97,7 @@ card_variant_search:
       'img[src="https://placeimg.com/1000/500/arch"]': 1
       'span.badge.rounded-pill.badge-outline-primary': 2
     equals:
-      'h5.card-title': 'Title card'
+      'h1.card-title': 'Title card'
       'div.card-text.mb-2-5': 'Text card with longer text which is supported'
       'div > span.badge.badge-outline-primary:nth-child(1)': 'Category 1'
       'div > span.badge.badge-outline-primary:nth-child(2)': 'Category 2'
