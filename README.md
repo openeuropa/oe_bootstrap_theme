@@ -191,7 +191,7 @@ We use [SemVer](http://semver.org/) for versioning. For the available versions, 
 
 ### Upgrade to 1.0.0-beta2
 
-The following paragraphs required components have been removed from [OpenEuropa Bootstrap base theme](https://github.com/openeuropa/oe_bootstrap_theme)
+Dependencies to the following packages have been removed in composer.json:
 
 * drupal/description_list_field
 * openeuropa/oe_content
