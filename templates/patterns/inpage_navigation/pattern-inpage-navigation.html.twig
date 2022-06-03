@@ -4,7 +4,7 @@
  * Inpage navigation pattern.
  */
 #}
-{% if links is not null %}
+{% if links is not empty %}
   {{ attach_library('oe_bootstrap_theme/inpage_navigation') }}
 {% endif %}
 {% include '@oe-bcl/inpage-navigation' with {
