@@ -189,6 +189,17 @@ We use [SemVer](http://semver.org/) for versioning. For the available versions, 
 
 ## Upgrade from older versions
 
+### Upgrade to 1.0.0-beta2
+
+Dependencies to the following packages have been removed in composer.json:
+
+* drupal/description_list_field
+* openeuropa/oe_content
+* openeuropa/oe_media
+* openeuropa/oe_paragraphs
+
+Be sure to require the component if you need any of them.
+
 ### Upgrade to 1.0.0-alpha8
 
 #### Paragraphs migration
