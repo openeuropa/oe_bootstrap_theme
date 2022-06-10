@@ -76,7 +76,6 @@ inpage_navigation_non_full:
       'a[href="#item-3"]': 'Heading 3'
       'a[href="#item-4"]': 'Heading 4'
       'h3': 'Page content'
-      'h5': 'Page content'
 inpage_navigation_with_no_links:
   render:
     '#type': pattern
@@ -89,10 +88,10 @@ inpage_navigation_with_no_links:
     count:
       'nav.position-sticky': 1
       'nav[id^="bcl-inpage-navigation"]': 1
-      'h5': 1
+      'h3': 1
       'ul.nav.nav-pills.flex-column': 1
       'li.nav-item': 0
       'a.nav-link': 0
     equals:
       'div.content_example': 'The content is rendering but there are no links'
-      'h5': 'Page content'
+      'h3': 'Page content'
