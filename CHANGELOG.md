@@ -1,10 +1,19 @@
 # Change Log
 
+## [1.0.0-beta2](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta2) (2022-06-22)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta1...1.0.0-beta2)
+
+**Merged pull requests:**
+
+- OEL-1540: Do not load inpage\_navigation pattern if there are no links to display [\#245](https://github.com/openeuropa/oe_bootstrap_theme/pull/245) ([escuriola](https://github.com/escuriola))
+- OEL-1418: Remove obsolete paragraphs requirements from oe\_bootstrap\_theme [\#243](https://github.com/openeuropa/oe_bootstrap_theme/pull/243) ([escuriola](https://github.com/escuriola))
+
 ## [1.0.0-beta1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta1) (2022-05-20)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-alpha8...1.0.0-beta1)
 
 **Closed issues:**
 
+- OEL-1380: Paragraph field bare template suggestion should not depend on oe\_bootstrap\_theme\_paragraphs [\#221](https://github.com/openeuropa/oe_bootstrap_theme/issues/221)
 - Preprocess of menus is breaking menus with contrib templates [\#156](https://github.com/openeuropa/oe_bootstrap_theme/issues/156)
 - The \_core:default\_config\_hash is removed from existing config when installing OE Bootstrap Theme Paragraphs [\#140](https://github.com/openeuropa/oe_bootstrap_theme/issues/140)
 - bcl lib templates take precedence over override [\#61](https://github.com/openeuropa/oe_bootstrap_theme/issues/61)
@@ -13,6 +22,7 @@
 
 **Merged pull requests:**
 
+- Prepare release 1.0.0-beta1 [\#244](https://github.com/openeuropa/oe_bootstrap_theme/pull/244) ([drishu](https://github.com/drishu))
 - OEL-1383: Fix slimSelect, only activate when a multiple select exists. [\#239](https://github.com/openeuropa/oe_bootstrap_theme/pull/239) ([escuriola](https://github.com/escuriola))
 - OEL-1536: Add additional parameter for extension type in ConfigImporter. [\#238](https://github.com/openeuropa/oe_bootstrap_theme/pull/238) ([donquixote](https://github.com/donquixote))
 - OEL-1357: Restructure README [\#237](https://github.com/openeuropa/oe_bootstrap_theme/pull/237) ([donquixote](https://github.com/donquixote))
