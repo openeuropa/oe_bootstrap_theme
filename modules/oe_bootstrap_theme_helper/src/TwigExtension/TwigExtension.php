@@ -96,9 +96,7 @@ class TwigExtension extends AbstractExtension {
           $url->setOptions(['attributes' => ['class' => 'text-underline-hover']]);
           $title = Link::fromTextAndUrl($title, $url);
         }
-        $bcl_card['title'] = [
-          'content' => $title,
-        ];
+        $bcl_card['title'] = $title;
       }
       if (isset($item['subtitle'])) {
         $bcl_card['subtitle'] = [

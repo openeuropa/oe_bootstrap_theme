@@ -47,9 +47,9 @@ badge_with_url:
       url: 'https://example.com'
   assertions:
     count:
-      'a span[data-drupal-selector=badge]': 1
-      'a span.rounded-pill': 1
-      'a span.badge.bg-secondary': 1
-      'a span.icon--close': 1
+      'a[data-drupal-selector=badge]': 1
+      'a.rounded-pill': 1
+      'a.badge.bg-secondary': 1
+      'a > span.icon--close': 1
     equals:
-      'span.badge.bg-secondary': 'A simple badge!<span class="icon--close" aria-hidden="true"><svg class="bi icon--s"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#x-lg"></use></svg></span>'
+      'a.badge.bg-secondary': 'A simple badge!<span class="icon--close" aria-hidden="true"><svg class="bi icon--s"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#x-lg"></use></svg></span>'

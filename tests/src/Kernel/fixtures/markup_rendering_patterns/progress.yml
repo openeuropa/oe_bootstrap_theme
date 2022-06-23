@@ -31,13 +31,13 @@ progress_primary_stripped_animated:
       'label.progress-bar-label': 'Progress label'
       'div.progress': 'Bar label'
       'small.progress-bar-message': 'Progress bar description'
-progress_secondary_non_stripped_non_animated:
+progress_light_non_stripped_non_animated:
   render:
     '#type': pattern
     '#id': progress
     '#fields':
       settings:
-        style: 'secondary'
+        style: 'light'
         strippd: false
         animated: false
       progress: 60
@@ -57,7 +57,7 @@ progress_secondary_non_stripped_non_animated:
       'div[aria-valuemin="10"]': 1
       'div[aria-valuemax="90"]': 1
       'small.progress-bar-message': 1
-      'div.bg-secondary': 1
+      'div.bg-light.text-dark': 1
       'div.progress-bar-animated': 0
       'div.progress-bar-striped': 0
     contains:
