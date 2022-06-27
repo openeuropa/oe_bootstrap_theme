@@ -1,5 +1,0 @@
-name: OpenEuropa Bootstrap Theme Paragraphs
-type: module
-description: Companion module to add support and customisations for oe_paragraphs.
-package: OpenEuropa Bootstrap Theme
-core_version_requirement: ^9.2
