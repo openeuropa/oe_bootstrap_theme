@@ -7,51 +7,70 @@
 
 declare(strict_types = 1);
 
+use Drupal\Core\Link;
 use Drupal\Core\Template\Attribute;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_preprocess_menu().
  */
-function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
+function oe_bootstrap_theme_preprocess_menu(array &$variables, string $hook): void {
   if ($hook === 'menu__toolbar') {
     return;
   }
 
+  // Merge additional attributes into the URL object.
+  $prepare_url = function (array $item): Url {
+    // Don't modify the original URL object.
+    /** @var \Drupal\Core\Url $url */
+    $url = clone $item['url'];
+
+    // Merge passed attributes into the URL object.
+    $attributes = [];
+    if (!empty($item['attributes'])) {
+      $attributes = $item['attributes'] instanceof Attribute ? $item['attributes']->toArray() : $item['attributes'];
+    }
+    $class = $attributes['class'] ?? [];
+    $class[] = 'nav-link';
+    if ($item['in_active_trail']) {
+      $class[] = 'active';
+    }
+    $attributes['class'] = $class;
+    $url->mergeOptions(['attributes' => $attributes]);
+
+    return $url;
+  };
+
+  // Returns a pattern item.
+  $get_pattern_item = function (array $item) use ($prepare_url): array {
+    $url = $prepare_url($item);
+    return [
+      'label' => $item['title'],
+      'url' => $url,
+      'attributes' => new Attribute($url->getOption('attributes')),
+      'link' => (new Link($item['title'], $url))->toRenderable(),
+      'path' => $url->toString(),
+    ];
+  };
+
   $variables['pattern_items'] = [];
   foreach ($variables['items'] as $key => $item) {
-    $pattern_item = [
-      'label' => $item['title'],
-      'path' => $item['url']->toString(),
-      'attributes' => new Attribute([
-        'class' => $item['in_active_trail'] ? ['active'] : [],
-      ]),
-    ];
-    if (empty($item['below'])) {
-      $variables['pattern_items'][$key] = $pattern_item;
-      continue;
-    }
-
-    $submenu = $pattern_item;
-    $submenu['attributes'] = new Attribute(['class' => 'nav-link']);
-    $pattern_item += [
-      'standalone' => TRUE,
-      'dropdown' => TRUE,
-      'link' => TRUE,
-      'alignment' => 'dropdown-menu_item-sm-start',
-      'trigger' => $submenu,
-    ];
-    foreach ($item['below'] as $key_sub_item => $sub_item) {
-      $pattern_item['items'][$key_sub_item] = [
-        'label' => $sub_item['title'],
-        'path' => $sub_item['url']->toString(),
-        'attributes' => new Attribute([
-          'class' => $sub_item['in_active_trail'] ? ['active'] : [],
-        ]),
+    $pattern_item = $get_pattern_item($item);
+    if (!empty($item['below'])) {
+      $submenu = $pattern_item;
+      $pattern_item += [
+        'standalone' => TRUE,
+        'dropdown' => TRUE,
+        'link' => TRUE,
+        'alignment' => 'dropdown-menu_item-sm-start',
+        'trigger' => $submenu,
       ];
+      foreach ($item['below'] as $key_sub_item => $sub_item) {
+        $pattern_item['items'][$key_sub_item] = $get_pattern_item[$sub_item];
+      }
     }
     $variables['pattern_items'][$key] = $pattern_item;
   }
-
 }
 
 /**
