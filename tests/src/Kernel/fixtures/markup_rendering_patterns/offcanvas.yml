@@ -19,7 +19,7 @@ offcanvas_top_with_backdrop_and_toggle:
       'div.offcanvas.offcanvas-top': 1
       'button[data-bs-target="#bcl-offcanvas"]': 1
     equals:
-      'h3.offcanvas-title': 'Offcanvas title'
+      'h2.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
       'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas'
 offcanvas_start_with_body_scroll:
@@ -41,7 +41,7 @@ offcanvas_start_with_body_scroll:
       'button[data-bs-toggle="offcanvas"]': 0
       'button[data-bs-target="#bcl-offcanvas"]': 0
     equals:
-      'h3.offcanvas-title': 'Offcanvas title'
+      'h2.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
 offcanvas_with_toggle_with_icon:
   render:
@@ -66,7 +66,7 @@ offcanvas_with_toggle_with_icon:
       'button[data-bs-target="#bcl-offcanvas"]': 1
       'svg.bi': 1
     equals:
-      'h3.offcanvas-title': 'Offcanvas title'
+      'h2.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
       'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas<svg class="ms-2-5 bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#filter"></use></svg>'
 offcanvas_with_id_from_attributes:
@@ -92,7 +92,7 @@ offcanvas_with_id_from_attributes:
       'svg.bi': 1
       'button[data-bs-target="#custom-id"]': 1
     equals:
-      'h3.offcanvas-title': 'Offcanvas title'
+      'h2.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
       'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas<svg class="ms-2-5 bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#filter"></use></svg>'
 offcanvas_search_variant:
@@ -112,7 +112,7 @@ offcanvas_search_variant:
         icon: 'filter'
   assertions:
     count:
-      'h3': 1
+      'h2': 1
       'button[data-bs-toggle="offcanvas"]': 1
       'div[data-drupal-selector="offcanvas"]': 1
       'div#bcl-offcanvas': 1
@@ -120,6 +120,6 @@ offcanvas_search_variant:
       'button[data-bs-target="#bcl-offcanvas"]': 1
       'svg.bi': 1
     equals:
-      'h3.offcanvas-title': 'Offcanvas title'
+      'h2.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
       'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas<svg class="ms-2-5 bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#filter"></use></svg>'
