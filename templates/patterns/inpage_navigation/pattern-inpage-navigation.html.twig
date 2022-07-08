@@ -7,11 +7,15 @@
 {% if links is not empty %}
   {{ attach_library('oe_bootstrap_theme/inpage_navigation') }}
 {% endif %}
-{% include '@oe-bcl/inpage-navigation' with {
-  'title': title,
-  'links': links,
-  'content': content,
-  'full_layout': true,
-  'id': inpage_navigation_id,
-} only  %}
-
+<div class="row">
+  <div class="bcl-sidebar col-md-3 d-none d-lg-block">
+    {% include '@oe-bcl/inpage-navigation' with {
+      'title': title,
+      'links': links,
+      'id': inpage_navigation_id,
+    } only %}
+  </div>
+  <div class="col-md-9">
+    {{ content }}
+  </div>
+</div>
