@@ -1,10 +1,19 @@
 # Change Log
 
+## [1.0.0-beta3](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta3) (2022-07-08)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta2...1.0.0-beta3)
+
+**Merged pull requests:**
+
+- OEL-1256: Remove oe\_bootstrap\_theme\_paragraph module. [\#248](https://github.com/openeuropa/oe_bootstrap_theme/pull/248) ([escuriola](https://github.com/escuriola))
+- OEL-1618: Update BCL to 0.23.0 [\#242](https://github.com/openeuropa/oe_bootstrap_theme/pull/242) ([escuriola](https://github.com/escuriola))
+
 ## [1.0.0-beta2](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta2) (2022-06-22)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta1...1.0.0-beta2)
 
 **Merged pull requests:**
 
+- Prepare release 1.0.0-beta2. [\#247](https://github.com/openeuropa/oe_bootstrap_theme/pull/247) ([drishu](https://github.com/drishu))
 - OEL-1540: Do not load inpage\_navigation pattern if there are no links to display [\#245](https://github.com/openeuropa/oe_bootstrap_theme/pull/245) ([escuriola](https://github.com/escuriola))
 - OEL-1418: Remove obsolete paragraphs requirements from oe\_bootstrap\_theme [\#243](https://github.com/openeuropa/oe_bootstrap_theme/pull/243) ([escuriola](https://github.com/escuriola))
 
