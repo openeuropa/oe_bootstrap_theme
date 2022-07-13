@@ -63,7 +63,7 @@ inpage_navigation_non_full:
     count:
       'nav.position-sticky': 1
       'nav[id^="bcl-inpage-navigation"]': 1
-      'h2.bcl-heading': 1
+      '.bcl-heading': 1
       'h2': 5
       'ul.nav.nav-pills.flex-column': 1
       'li.nav-item': 4
