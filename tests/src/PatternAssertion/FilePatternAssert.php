@@ -145,20 +145,20 @@ class FilePatternAssert extends BasePatternAssert {
   /**
    * Asserts elements that are common for file and translation sections.
    *
-   * @param string $data_container_selector
-   *   Crawler object with the item data.
+   * @param string $data_container
+   *   Value of the item data container selector.
    * @param array $expected
    *   The expected values.
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The crawler.
    */
-  protected function assertItemData(string $data_container_selector, array $expected, Crawler $crawler): void {
-    $data_container_selector = $crawler->filter($data_container_selector);
+  protected function assertItemData(string $data_container, array $expected, Crawler $crawler): void {
+    $data_container = $crawler->filter($data_container);
     // The language is the first text node.
     /** @var \DOMNode $language_node */
-    $language_node = $data_container_selector->getNode(0)->childNodes[0];
+    $language_node = $data_container->getNode(0)->childNodes[0];
     self::assertEquals($expected['language'], $language_node->textContent);
-    $this->assertElementText($expected['meta'], 'span', $data_container_selector);
+    $this->assertElementText($expected['meta'], 'span', $data_container);
 
     (new IconPatternAssert())->assertPattern([
       'name' => 'download',
