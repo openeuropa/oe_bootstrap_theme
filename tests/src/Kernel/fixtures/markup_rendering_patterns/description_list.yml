@@ -1,10 +1,9 @@
 description_list_default:
   render:
     '#type': pattern
-    '#id': description_list
+    '#id': 'description_list'
     '#fields':
-      settings:
-        orientation: default
+      orientation: 'default'
       items:
         - term:
             - label: 'Single label with icon'
@@ -63,10 +62,9 @@ description_list_default:
 description_list_horizontal:
   render:
     '#type': pattern
-    '#id': description_list
+    '#id': 'description_list'
     '#fields':
-      settings:
-        orientation: horizontal
+      orientation: 'horizontal'
       items:
         - term:
           - label: 'Single label with icon'
