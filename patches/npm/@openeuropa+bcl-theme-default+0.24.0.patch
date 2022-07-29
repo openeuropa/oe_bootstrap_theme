@@ -1,0 +1,13 @@
+diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-pagination/pagination.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-pagination/pagination.html.twig
+index d33f381..ed77687 100644
+--- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-pagination/pagination.html.twig
++++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-pagination/pagination.html.twig
+@@ -57,7 +57,7 @@
+ {% set _alignment = alignment|default('') %}
+ {% set _aria_label = aria_label|default('') %}
+ {% set _enable_prev_next_icon = enable_prev_next_icon|default(false) %}
+-{% set _enable_first_last_icon = enable_first_last_icon|default(true) %}
++{% set _enable_first_last_icon = enable_first_last_icon ?? true %}
+ {% set _items = items|default([]) %}
+ {% set _first = first|default({}) %}
+ {% set _next = next|default({}) %}
