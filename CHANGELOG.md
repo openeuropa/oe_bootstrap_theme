@@ -1,10 +1,23 @@
 # Change Log
 
+## [1.0.0-beta4](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta4) (2022-08-01)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta3...1.0.0-beta4)
+
+**Fixed bugs:**
+
+- Missing comma in field--comment.html.twig template [\#251](https://github.com/openeuropa/oe_bootstrap_theme/issues/251)
+
+**Merged pull requests:**
+
+- OEL-1906: Use release 0.23.1 of BCL. [\#259](https://github.com/openeuropa/oe_bootstrap_theme/pull/259) ([brummbar](https://github.com/brummbar))
+- ISSUE-251: Add missing comma. [\#256](https://github.com/openeuropa/oe_bootstrap_theme/pull/256) ([msnassar](https://github.com/msnassar))
+
 ## [1.0.0-beta3](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta3) (2022-07-08)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta2...1.0.0-beta3)
 
 **Merged pull requests:**
 
+- Prepare changelog for release 1.0.0-beta3. [\#254](https://github.com/openeuropa/oe_bootstrap_theme/pull/254) ([brummbar](https://github.com/brummbar))
 - OEL-1256: Remove oe\_bootstrap\_theme\_paragraph module. [\#248](https://github.com/openeuropa/oe_bootstrap_theme/pull/248) ([escuriola](https://github.com/escuriola))
 - OEL-1618: Update BCL to 0.23.0 [\#242](https://github.com/openeuropa/oe_bootstrap_theme/pull/242) ([escuriola](https://github.com/escuriola))
 
