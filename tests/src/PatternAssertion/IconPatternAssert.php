@@ -43,8 +43,8 @@ class IconPatternAssert extends BasePatternAssert {
    */
   protected function assertIconPath(string $expected, Crawler $crawler): void {
     $expected_icon_markup = sprintf(
-      '<use xlink:href="/%s/assets/icons/bcl-default-icons.svg#%s"></use>',
-      \Drupal::service('extension.list.theme')->getPath('oe_bootstrap_theme'),
+      '<use xlink:href="%s/assets/icons/bcl-default-icons.svg#%s"></use>',
+      base_path() . \Drupal::service('extension.list.theme')->getPath('oe_bootstrap_theme'),
       $expected
     );
     self::assertEquals($expected_icon_markup, $crawler->filter('svg')->html());
