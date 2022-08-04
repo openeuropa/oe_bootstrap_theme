@@ -7,6 +7,7 @@ namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
@@ -89,9 +90,8 @@ class TwigExtension extends AbstractExtension {
         // Alternatively, the 'title' key can already contain a rendered link,
         // but then the calling template must add the 'text-underline-hover'
         // class.
-        if (!empty($item['url']) && !empty($item['url']->toString())) {
+        if (!empty($item['url']) && $item['url'] instanceof Url) {
           // Use clone, to not pollute the original object with attributes.
-          /** @var \Drupal\Core\Url $url */
           $url = clone $item['url'];
           $url->setOptions(['attributes' => ['class' => 'standalone']]);
           $title = Link::fromTextAndUrl($title, $url);
