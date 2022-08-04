@@ -41,12 +41,12 @@ fact_figures_default_1col:
       'div.row.row-cols-md-1': 1
       'svg.bi.icon--l': 6
     equals:
-      'div > div.col:nth-child(1) > div.fs-3': '1529 JIRA Ticket'
-      'div > div.col:nth-child(2) > div.fs-3': '337 Features'
-      'div > div.col:nth-child(3) > div.fs-3': '107 Tests'
-      'div > div.col:nth-child(4) > div.fs-3': '5670 Variants'
-      'div > div.col:nth-child(5) > div.fs-3': '345 Dev Ticket'
-      'div > div.col:nth-child(6) > div.fs-3': '43 Components'
+      'div > div.col:nth-child(1) > div.fs-4': '1529 JIRA Ticket'
+      'div > div.col:nth-child(2) > div.fs-4': '337 Features'
+      'div > div.col:nth-child(3) > div.fs-4': '107 Tests'
+      'div > div.col:nth-child(4) > div.fs-4': '5670 Variants'
+      'div > div.col:nth-child(5) > div.fs-4': '345 Dev Ticket'
+      'div > div.col:nth-child(6) > div.fs-4': '43 Components'
       'div > div.col:nth-child(1) > div.fs-5': 'Jira Tickets'
       'div > div.col:nth-child(2) > div.fs-5': 'Feature tickets'
       'div > div.col:nth-child(3) > div.fs-5': 'Test tickets'
@@ -103,12 +103,12 @@ fact_figures_default_2col:
       'div.row.row-cols-md-2': 1
       'svg.bi.icon--l': 6
     equals:
-      'div > div.col:nth-child(1) > div.fs-3': '1529 JIRA Ticket'
-      'div > div.col:nth-child(2) > div.fs-3': '337 Features'
-      'div > div.col:nth-child(3) > div.fs-3': '107 Tests'
-      'div > div.col:nth-child(4) > div.fs-3': '5670 Variants'
-      'div > div.col:nth-child(5) > div.fs-3': '345 Dev Ticket'
-      'div > div.col:nth-child(6) > div.fs-3': '43 Components'
+      'div > div.col:nth-child(1) > div.fs-4': '1529 JIRA Ticket'
+      'div > div.col:nth-child(2) > div.fs-4': '337 Features'
+      'div > div.col:nth-child(3) > div.fs-4': '107 Tests'
+      'div > div.col:nth-child(4) > div.fs-4': '5670 Variants'
+      'div > div.col:nth-child(5) > div.fs-4': '345 Dev Ticket'
+      'div > div.col:nth-child(6) > div.fs-4': '43 Components'
       'div > div.col:nth-child(1) > div.fs-5': 'Jira Tickets'
       'div > div.col:nth-child(2) > div.fs-5': 'Feature tickets'
       'div > div.col:nth-child(3) > div.fs-5': 'Test tickets'
@@ -164,12 +164,12 @@ fact_figures_default_3col:
       'div.row.row-cols-md-3': 1
       'svg.bi.icon--l': 6
     contains:
-      'div > div.col:nth-child(1) > div.fs-3': '1529 JIRA Ticket'
-      'div > div.col:nth-child(2) > div.fs-3': '337 Features'
-      'div > div.col:nth-child(3) > div.fs-3': '107 Tests'
-      'div > div.col:nth-child(4) > div.fs-3': '5670 Variants'
-      'div > div.col:nth-child(5) > div.fs-3': '345 Dev Ticket'
-      'div > div.col:nth-child(6) > div.fs-3': '43 Components'
+      'div > div.col:nth-child(1) > div.fs-4': '1529 JIRA Ticket'
+      'div > div.col:nth-child(2) > div.fs-4': '337 Features'
+      'div > div.col:nth-child(3) > div.fs-4': '107 Tests'
+      'div > div.col:nth-child(4) > div.fs-4': '5670 Variants'
+      'div > div.col:nth-child(5) > div.fs-4': '345 Dev Ticket'
+      'div > div.col:nth-child(6) > div.fs-4': '43 Components'
       'div > div.col:nth-child(1) > div.fs-5': 'Jira Tickets'
       'div > div.col:nth-child(2) > div.fs-5': 'Feature tickets'
       'div > div.col:nth-child(3) > div.fs-5': 'Test tickets'

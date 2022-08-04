@@ -23,7 +23,7 @@ class FilePatternAssert extends BasePatternAssert {
         [$this, 'assertTranslations'],
       ],
       'link_label' => [
-        [$this, 'assertLinksLabel'],
+        [$this, 'assertDownloadLinksLabel'],
       ],
     ];
   }
@@ -60,7 +60,10 @@ class FilePatternAssert extends BasePatternAssert {
       'name' => $expected['icon'],
       'size' => '2xl',
     ], $crawler->filter('svg.icon--file')->outerHtml());
-    $this->assertItem($expected, $file);
+
+    $this->assertDownloadLink($expected, $crawler);
+    $this->assertElementText($expected['title'], 'p.fw-medium.m-0.fs-5', $crawler);
+    $this->assertItemData($expected, $crawler->filter('p.fw-medium.m-0 + small.fw-medium'));
   }
 
   /**
@@ -95,7 +98,7 @@ class FilePatternAssert extends BasePatternAssert {
     $translation_nodes = $wrapper->filter('.collapse > div');
     self::assertSameSize($expected, $translation_nodes);
     foreach ($expected as $index => $translation) {
-      $this->assertItem($translation, $translation_nodes->eq($index));
+      $this->assertTranslationItem($translation, $translation_nodes->eq($index));
     }
   }
 
@@ -107,7 +110,7 @@ class FilePatternAssert extends BasePatternAssert {
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The crawler.
    */
-  protected function assertLinksLabel(string $expected, Crawler $crawler): void {
+  protected function assertDownloadLinksLabel(string $expected, Crawler $crawler): void {
     $this->assertElementText($expected, 'body > div.mt-4 > div.border.rounded > div:first-child a', $crawler);
     foreach ($crawler->filter('.collapse > div a') as $node) {
       self::assertEquals($expected, $node->textContent);
@@ -115,28 +118,51 @@ class FilePatternAssert extends BasePatternAssert {
   }
 
   /**
-   * Asserts elements that are common for file and translation sections.
+   * Asserts elements from the translation sections.
    *
    * @param array $expected
    *   The expected values.
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The crawler.
    */
-  protected function assertItem(array $expected, Crawler $crawler): void {
-    $this->assertElementExists(sprintf('a[href="%s"]', $expected['url']), $crawler);
+  protected function assertTranslationItem(array $expected, Crawler $crawler): void {
+    $this->assertDownloadLink($expected, $crawler);
     $this->assertElementText($expected['title'], 'p.fw-bold.m-0', $crawler);
+    $this->assertItemData($expected, $crawler->filter('p.fw-bold.m-0 + small.fw-bold'));
+  }
 
-    $data_container = $crawler->filter('p.fw-bold.m-0 + small.fw-bold');
+  /**
+   * Asserts a single item data section.
+   *
+   * @param array $expected
+   *   The expected values.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The crawler.
+   */
+  protected function assertItemData(array $expected, Crawler $crawler): void {
     // The language is the first text node.
     /** @var \DOMNode $language_node */
-    $language_node = $data_container->getNode(0)->childNodes[0];
+    $language_node = $crawler->getNode(0)->childNodes[0];
     self::assertEquals($expected['language'], $language_node->textContent);
-    $this->assertElementText($expected['meta'], 'span', $data_container);
+    $this->assertElementText($expected['meta'], 'span', $crawler);
+  }
+
+  /**
+   * Asserts the file download link.
+   *
+   * @param array $expected
+   *   The expected values.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The crawler.
+   */
+  protected function assertDownloadLink(array $expected, Crawler $crawler): void {
+    $link_selector = sprintf('a[href="%s"]', $expected['url']);
+    $this->assertElementExists($link_selector, $crawler);
 
     (new IconPatternAssert())->assertPattern([
       'name' => 'download',
       'size' => 'fluid',
-    ], $crawler->filter('a svg')->outerHtml());
+    ], $crawler->filter($link_selector . ' svg')->outerHtml());
   }
 
 }
