@@ -156,12 +156,13 @@ class FilePatternAssert extends BasePatternAssert {
    *   The crawler.
    */
   protected function assertDownloadLink(array $expected, Crawler $crawler): void {
-    $this->assertElementExists(sprintf('a[href="%s"]', $expected['url']), $crawler);
+    $link_selector = sprintf('a[href="%s"]', $expected['url']);
+    $this->assertElementExists($link_selector, $crawler);
 
     (new IconPatternAssert())->assertPattern([
       'name' => 'download',
       'size' => 'fluid',
-    ], $crawler->filter('a svg')->outerHtml());
+    ], $crawler->filter($link_selector . ' svg')->outerHtml());
   }
 
 }
