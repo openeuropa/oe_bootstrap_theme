@@ -23,7 +23,7 @@ class FilePatternAssert extends BasePatternAssert {
         [$this, 'assertTranslations'],
       ],
       'link_label' => [
-        [$this, 'assertLinksLabel'],
+        [$this, 'assertDownloadLinksLabel'],
       ],
     ];
   }
@@ -110,7 +110,7 @@ class FilePatternAssert extends BasePatternAssert {
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The crawler.
    */
-  protected function assertLinksLabel(string $expected, Crawler $crawler): void {
+  protected function assertDownloadLinksLabel(string $expected, Crawler $crawler): void {
     $this->assertElementText($expected, 'body > div.mt-4 > div.border.rounded > div:first-child a', $crawler);
     foreach ($crawler->filter('.collapse > div a') as $node) {
       self::assertEquals($expected, $node->textContent);

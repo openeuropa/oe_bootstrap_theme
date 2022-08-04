@@ -49,6 +49,7 @@ file_with_translations:
             language: 'français'
             url: 'https://example.com/translation_fr.html'
             meta: '(121 bytes - PDF)'
+        link_label: 'Download'
 file_without_translations:
   render:
     '#type': pattern
@@ -73,3 +74,4 @@ file_without_translations:
           meta: '(38.45 MB - XLS)'
           icon: 'file-excel-fill'
         translations: ~
+        link_label: 'Scarica'
