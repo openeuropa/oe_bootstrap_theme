@@ -1,6 +1,6 @@
 listing:
   label: 'Listing'
-  description: 'Listing used for the List item block.'
+  description: 'Listing of cards.'
   variants:
     default:
       label: 'Default'
