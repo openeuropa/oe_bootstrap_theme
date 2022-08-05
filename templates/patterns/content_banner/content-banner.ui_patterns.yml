@@ -41,3 +41,12 @@ content_banner:
           rounded_pill: true
         - label: 'Secondary badge'
           rounded_pill: true
+    links:
+      type: array
+      label: 'Links'
+      description: 'List of links.'
+      preview:
+        - label: 'Link 1'
+          path: "/example-1.html"
+        - label: 'Link 2'
+          path: "/example-2.html"
