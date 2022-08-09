@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.0.0-beta5](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta5) (2022-08-09)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta4...1.0.0-beta5)
+
+**Merged pull requests:**
+
+- OEL-1875: Fix path generation when used from browser tests. [\#262](https://github.com/openeuropa/oe_bootstrap_theme/pull/262) ([brummbar](https://github.com/brummbar))
+- OEL-1650: Add links to content\_banner pattern. [\#261](https://github.com/openeuropa/oe_bootstrap_theme/pull/261) ([drishu](https://github.com/drishu))
+- OEL-1823: BCL 0.24.0 [\#253](https://github.com/openeuropa/oe_bootstrap_theme/pull/253) ([escuriola](https://github.com/escuriola))
+- OEL-1326: Update card listing. [\#250](https://github.com/openeuropa/oe_bootstrap_theme/pull/250) ([escuriola](https://github.com/escuriola))
+
 ## [1.0.0-beta4](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta4) (2022-08-01)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta3...1.0.0-beta4)
 
@@ -9,6 +19,7 @@
 
 **Merged pull requests:**
 
+- Prepare changelog for release 1.0.0-beta4. [\#260](https://github.com/openeuropa/oe_bootstrap_theme/pull/260) ([brummbar](https://github.com/brummbar))
 - OEL-1906: Use release 0.23.1 of BCL. [\#259](https://github.com/openeuropa/oe_bootstrap_theme/pull/259) ([brummbar](https://github.com/brummbar))
 - ISSUE-251: Add missing comma. [\#256](https://github.com/openeuropa/oe_bootstrap_theme/pull/256) ([msnassar](https://github.com/msnassar))
 
