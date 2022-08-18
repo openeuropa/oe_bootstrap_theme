@@ -4,8 +4,8 @@
  * Carousel pattern.
  */
 #}
-{% set _slides = [] %}
-{% for slide in slides %}
+{% set _items = [] %}
+{% for slide in items %}
   {% set _image %}
     {% block image %}
       <img{{ create_attribute(slide.image).addClass(['d-block', 'w-100']) }} />
@@ -14,20 +14,12 @@
   {% set _item = slide|merge({
     'image': _image
   }) %}
-  {% set _slides = _slides|merge([_item]) %}
+  {% set _items = _items|merge([_item]) %}
 {% endfor %}
 {% include '@oe-bcl/carousel' with {
   'id': carousel_id,
-  'autoplay': autoplay,
-  'autoinit': autoinit,
-  'dark': dark_mode,
-  'active_item': active_item,
-  'items': _slides,
-  'fade': fade,
-  'with_controls': show_controls,
+  'items': _items,
   'prev_label': 'Previous'|t,
   'next_label': 'Next'|t,
-  'with_indicators': show_indicators,
-  'disable_touch': disable_touch,
   'attributes': attributes,
 } only %}
