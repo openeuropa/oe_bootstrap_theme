@@ -1,97 +1,31 @@
-carousel_with_fade_show_controls_with_indicator_without_disable_touch_without_autoinit:
+carousel:
   render:
     '#type': pattern
     '#id': carousel
     '#fields':
-      settings:
-        fade: true
-        show_controls: true
-        show_indicators: true
-        autoplay: true
-        autoinit: false
-        disable_touch: false
-      active_item: 2
-      slides:
-        - caption: 'first slide label'
-          interval: 0
-          image:
-            src: 'https://images.site.example1'
+      items:
+        - image:
+            src: 'https://placeimg.com/1000/500/arch'
             alt: 'alt image 1'
-        - caption: 'second slide label'
-          interval: 0
-          image:
-            src: 'https://images.site.example2'
+          title: 'First slide title'
+          caption: 'First slide caption'
+        - image:
+            src: 'https://placeimg.com/1000/500/people'
             alt: 'alt image 2'
+          title: 'Second slide title'
+          caption: 'Second slide caption'
   assertions:
-    count:
-      'div.carousel.slide.carousel-fade[data-drupal-selector="carousel"]': 1
-      'div.carousel-dark': 0
-      'div.carousel-indicators button[type="button"]': 2
-      'div.carousel-indicators button[aria-label="Slide 1"]': 1
-      'div.carousel-indicators button[aria-label="Slide 2"]': 1
-      'div.carousel-indicators button[data-bs-slide-to="0"]': 1
-      'div.carousel-indicators button[data-bs-slide-to="1"]': 1
-      'div.carousel-indicators button.active': 1
-      'div.carousel-inner': 1
-      'div.carousel-item': 2
-      'div.carousel-item.active': 1
-      'button.carousel-control-prev[data-bs-slide="prev"]': 1
-      'button.carousel-control-next[data-bs-slide="next"]': 1
-      'img.d-block.w-100': 2
-      'div.carousel-item:nth-child(1) img[src="https://images.site.example1"]': 1
-      'div.carousel-item:nth-child(1) img[alt="alt image 1"]': 1
-      'div.carousel-item:nth-child(2) img[src="https://images.site.example2"]': 1
-      'div.carousel-item:nth-child(2) img[alt="alt image 2"]': 1
-      'div[data-bs-touch="false"]': 0
-      'div[data-bs-ride="carousel"]': 0
-    equals:
-      'div.carousel-item:nth-child(1) div.carousel-caption': 'first slide label'
-      'div.carousel-item:nth-child(2) div.carousel-caption': 'second slide label'
-      'button.carousel-control-prev > span.visually-hidden': 'Previous'
-      'button.carousel-control-next > span.visually-hidden': 'Next'
-carousel_without_fade_without_controls_without_indicators_with_disable_touch_with_autoinit_dark:
-  render:
-    '#type': pattern
-    '#id': carousel
-    '#fields':
-      settings:
-        fade: false
-        show_controls: false
-        show_indicators: false
-        autoplay: true
-        autoinit: true
-        disable_touch: true
-        dark_mode: true
-      active_item: 1
-      slides:
-        - caption: 'first slide label'
-          interval: 0
-          image:
-            src: 'https://images.site.example1'
-            alt: 'alt image 1'
-        - caption: 'second slide label'
-          interval: 0
-          image:
-            src: 'https://images.site.example2'
-            alt: 'alt image 2'
-  assertions:
-    count:
-      'div.carousel.slide.carousel[data-drupal-selector="carousel"]': 1
-      'div.carousel-dark': 1
-      'div.fade': 0
-      'div.carousel-indicators': 0
-      'div.carousel-inner': 1
-      'div.carousel-item': 2
-      'div.carousel-item.active': 1
-      'button.carousel-control-prev[data-bs-slide="prev"]': 0
-      'button.carousel-control-next[data-bs-slide="next"]': 0
-      'img.d-block.w-100': 2
-      'div.carousel-item:nth-child(1) img[src="https://images.site.example1"]': 1
-      'div.carousel-item:nth-child(1) img[alt="alt image 1"]': 1
-      'div.carousel-item:nth-child(2) img[src="https://images.site.example2"]': 1
-      'div.carousel-item:nth-child(2) img[alt="alt image 2"]': 1
-      'div[data-bs-touch="false"]': 1
-      'div[data-bs-ride="carousel"]': 1
-    equals:
-      'div.carousel-item:nth-child(1) div.carousel-caption': 'first slide label'
-      'div.carousel-item:nth-child(2) div.carousel-caption': 'second slide label'
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        items:
+          - image:
+              src: 'https://placeimg.com/1000/500/arch'
+              alt: 'alt image 1'
+            title: 'First slide title'
+            caption: 'First slide caption'
+          - image:
+              src: 'https://placeimg.com/1000/500/people'
+              alt: 'alt image 2'
+            title: 'Second slide title'
+            caption: 'Second slide caption'
