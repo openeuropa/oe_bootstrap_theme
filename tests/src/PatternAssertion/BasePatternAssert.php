@@ -126,6 +126,30 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
   }
 
   /**
+   * Asserts text is contained in a particular element.
+   *
+   * @param string|null $expected
+   *   The expected value.
+   * @param string $selector
+   *   The CSS selector to find the element.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertElementTextContains(?string $expected, string $selector, Crawler $crawler): void {
+    if (is_null($expected)) {
+      $this->assertElementNotExists($selector, $crawler);
+      return;
+    }
+    $this->assertElementExists($selector, $crawler);
+    $element = $crawler->filter($selector);
+    $actual = trim($element->text());
+    self::assertStringContainsString($expected, $actual, \sprintf(
+      'Expected text "%s" is not present in "%s" found in the selector "%s".',
+      $expected, $actual, $selector
+    ));
+  }
+
+  /**
    * Asserts the rendered html of a particular element.
    *
    * @param string|null $expected
