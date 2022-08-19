@@ -19,6 +19,8 @@
 {% endfor %}
 {% include '@oe-bcl/carousel' with {
   'id': carousel_id,
+  'with_controls': true,
+  'with_indicators': true,
   'items': _items,
   'prev_label': 'Previous'|t,
   'next_label': 'Next'|t,
