@@ -97,7 +97,7 @@ final class PatternTestDataMassager {
   }
 
   /**
-   * Massages data for the "card_layout" pattern.
+   * Massages data for the "carousel" pattern.
    *
    * @param array $data
    *   The data structure.
