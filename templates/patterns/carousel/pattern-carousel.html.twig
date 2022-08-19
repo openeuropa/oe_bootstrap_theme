@@ -12,7 +12,8 @@
     {% endblock %}
   {% endset %}
   {% set _item = slide|merge({
-    'image': _image
+    'image': _image,
+    'caption_title': slide.title
   }) %}
   {% set _items = _items|merge([_item]) %}
 {% endfor %}
