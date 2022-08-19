@@ -25,7 +25,15 @@ class CarouselPatternAssert extends BasePatternAssert {
   /**
    * {@inheritdoc}
    */
-  protected function assertBaseElements(string $html, string $variant): void {}
+  protected function assertBaseElements(string $html, string $variant): void {
+    $crawler = new Crawler($html);
+    $this->assertElementExists('.carousel .carousel-indicators', $crawler);
+    $this->assertElementExists('.carousel .carousel-inner', $crawler);
+    self::assertCount(4, $crawler->filter('.carousel button'));
+    $this->assertElementText('Previous', '.carousel-control-prev', $crawler);
+    $this->assertElementText('Next', '.carousel-control-next', $crawler);
+    self::assertCount(2, $crawler->filter('.carousel-indicators button'));
+  }
 
   /**
    * Asserts the carousel pattern items.
