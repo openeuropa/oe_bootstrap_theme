@@ -49,6 +49,7 @@ class TwigExtension extends AbstractExtension {
    */
   public function getFilters(): array {
     return [
+      new TwigFilter('bcl_carousel_items', [$this, 'bclCarouselItems']),
       new TwigFilter('bcl_card_list', [$this, 'bclCardList']),
       new TwigFilter('format_size', 'format_size'),
       new TwigFilter('to_file_icon', [$this, 'toFileIcon']),
@@ -61,6 +62,41 @@ class TwigExtension extends AbstractExtension {
         'toInternalLanguageId',
       ]),
     ];
+  }
+
+  /**
+   * Twig filter callback for 'bcl_carousel_items'.
+   *
+   * This is meant to be called in pattern templates, to convert items from
+   * pattern space to BCL component space.
+   *
+   * @param array $items
+   *   Lists of items, as sent to the 'carousel' pattern.
+   *
+   * @return array
+   *   Processed items, where each item is suitable for bcl-carousel.html.twig.
+   */
+  public function bclCarouselItems(array $items): array {
+    $processed_items = [];
+    foreach ($items as $item) {
+      $processed_item = $item;
+
+      // Map the pattern field to bcl parameter.
+      $processed_item['caption_title'] = $item['title'];
+
+      // Convert an ImageValueObject to a render array.
+      $processed_item['image'] = $item['image']->toRenderArray();
+
+      // Attach additional classes.
+      $processed_item['image']['#attributes']['class'] = [
+        'd-block',
+        'w-100',
+      ];
+
+      $processed_items[] = $processed_item;
+    }
+
+    return $processed_items;
   }
 
   /**

@@ -5,7 +5,7 @@ carousel:
     items:
       type: array
       label: 'Slides'
-      description: 'Each slide is an image, a title and a caption.'
+      description: 'Each slide is an image (ImageValueObject), a title and a caption.'
       preview:
         - image:
             src: 'https://placeimg.com/1000/500/arch'
