@@ -220,17 +220,6 @@ function oe_bootstrap_theme_preprocess_pattern_listing__preview(array &$variable
 }
 
 /**
- * Implements hook_preprocess_HOOK() for carousel pattern preview.
- */
-function oe_bootstrap_theme_preprocess_pattern_carousel__preview(array &$variables): void {
-  foreach ($variables['items'] as &$item) {
-    if (isset($item['image'])) {
-      $item['image'] = ImageValueObject::fromArray($item['image']);
-    }
-  }
-}
-
-/**
  * Implements hook_preprocess_HOOK() for the pagination pattern.
  *
  * Adds default values for custom icons.

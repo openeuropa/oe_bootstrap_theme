@@ -97,25 +97,6 @@ final class PatternTestDataMassager {
   }
 
   /**
-   * Massages data for the "carousel" pattern.
-   *
-   * @param array $data
-   *   The data structure.
-   *
-   * @return array
-   *   The massaged data structure.
-   */
-  private static function massageCarouselPattern(array $data): array {
-    foreach ($data['#fields']['items'] as &$item) {
-      if (isset($item['image'])) {
-        $item['image'] = ImageValueObject::fromArray($item['image']);
-      }
-    }
-
-    return $data;
-  }
-
-  /**
    * Massages data for the "listing" pattern.
    *
    * @param array $data
