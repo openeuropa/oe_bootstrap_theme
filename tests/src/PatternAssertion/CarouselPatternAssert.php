@@ -45,7 +45,7 @@ class CarouselPatternAssert extends BasePatternAssert {
    */
   protected function assertItems(array $expected, Crawler $crawler): void {
     $items = $crawler->filter('.carousel .carousel-inner .carousel-item');
-    self::assertCount(count($expected), $items);
+    self::assertSameSize($expected, $items);
 
     foreach ($expected as $index => $expected_item) {
       $item = $items->eq($index);
