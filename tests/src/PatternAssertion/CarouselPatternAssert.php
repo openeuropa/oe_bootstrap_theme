@@ -19,6 +19,9 @@ class CarouselPatternAssert extends BasePatternAssert {
       'items' => [
         [$this, 'assertItems'],
       ],
+      'settings' => [
+        [$this, 'assertSettings'],
+      ],
     ];
   }
 
@@ -27,12 +30,62 @@ class CarouselPatternAssert extends BasePatternAssert {
    */
   protected function assertBaseElements(string $html, string $variant): void {
     $crawler = new Crawler($html);
-    $this->assertElementExists('.carousel .carousel-indicators', $crawler);
+
     $this->assertElementExists('.carousel .carousel-inner', $crawler);
-    self::assertCount(4, $crawler->filter('.carousel button'));
-    $this->assertElementText('Previous', '.carousel-control-prev', $crawler);
-    $this->assertElementText('Next', '.carousel-control-next', $crawler);
-    self::assertCount(2, $crawler->filter('.carousel-indicators button'));
+  }
+
+  /**
+   * Asserts the carousel pattern settings.
+   *
+   * @param array[] $expected
+   *   The expected settings.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The crawler.
+   */
+  protected function assertSettings(array $expected, Crawler $crawler): void {
+    if (!empty($expected['fade'])) {
+      $this->assertElementExists('.carousel-fade', $crawler);
+    }
+    else {
+      $this->assertElementNotExists('.carousel-fade', $crawler);
+    }
+
+    if (!empty($expected['show_controls'])) {
+      $this->assertElementText('Previous', '.carousel-control-prev', $crawler);
+      $this->assertElementText('Next', '.carousel-control-next', $crawler);
+    }
+    else {
+      $this->assertElementNotExists('.carousel-control-prev', $crawler);
+      $this->assertElementNotExists('.carousel-control-next', $crawler);
+    }
+
+    if (!empty($expected['show_indicators'])) {
+      $this->assertElementExists('.carousel .carousel-indicators button', $crawler);
+    }
+    else {
+      $this->assertElementNotExists('.carousel .carousel-indicators', $crawler);
+    }
+
+    if (!empty($expected['autoplay'])) {
+      $this->assertElementAttribute(NULL, '.carousel', 'data-bs-interval', $crawler);
+    }
+    else {
+      $this->assertElementAttribute('false', '.carousel', 'data-bs-interval', $crawler);
+    }
+
+    if (!empty($expected['autoinit'])) {
+      $this->assertElementAttribute('carousel', '.carousel', 'data-bs-ride', $crawler);
+    }
+    else {
+      $this->assertElementAttribute(NULL, '.carousel', 'data-bs-ride', $crawler);
+    }
+
+    if (!empty($expected['disable_touch'])) {
+      $this->assertElementAttribute('false', '.carousel', 'data-bs-touch', $crawler);
+    }
+    else {
+      $this->assertElementAttribute(NULL, '.carousel', 'data-bs-touch', $crawler);
+    }
   }
 
   /**
