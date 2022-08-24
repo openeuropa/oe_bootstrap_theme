@@ -92,12 +92,14 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
    *   The DomCrawler where to check the element.
    */
   protected function assertElementAttribute($expected, string $selector, string $attribute, Crawler $crawler): void {
-    if (is_null($expected)) {
-      $this->assertElementNotExists($selector, $crawler);
-      return;
-    }
     $this->assertElementExists($selector, $crawler);
     $element = $crawler->filter($selector);
+
+    if (is_null($expected)) {
+      self::assertNull($element->attr($attribute));
+      return;
+    }
+
     self::assertEquals($expected, $element->attr($attribute));
   }
 
