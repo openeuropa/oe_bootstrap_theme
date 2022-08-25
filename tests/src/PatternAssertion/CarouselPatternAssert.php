@@ -115,6 +115,17 @@ class CarouselPatternAssert extends BasePatternAssert {
       if (isset($expected_item['caption'])) {
         $this->assertElementTextContains($expected_item['caption'], '.carousel-caption', $item);
       }
+
+      if (isset($expected_item['caption_classes'])) {
+        $this->assertElementExists('.' . $expected_item['caption_classes'], $item);
+      }
+
+      if (isset($expected_item['interval'])) {
+        $this->assertElementAttribute($expected_item['interval'], '.carousel-item', 'data-bs-interval', $item);
+      }
+      else {
+        $this->assertElementAttribute(0, '.carousel-item', 'data-bs-interval', $item);
+      }
     }
   }
 
