@@ -42,13 +42,21 @@ carousel:
       label: 'Slides'
       description: 'Each slide is an image, a caption and interval of slide movement.'
       preview:
-        - caption: 'First slide label'
+        - caption: 'First slide caption'
+          caption_title: 'First slide title'
           interval: 0
           image:
             src: 'https://placeimg.com/1000/500/arch'
             alt: 'alt image 1'
-        - caption: 'Second slide label'
+          link:
+            label: First link
+            path: https://link.one
+        - caption: 'Second slide caption'
+          caption_title: 'Second slide title'
           interval: 0
           image:
             src: 'https://placeimg.com/1000/500/people'
             alt: 'alt image 1'
+          link:
+            label: Second link
+            path: https://link.two
