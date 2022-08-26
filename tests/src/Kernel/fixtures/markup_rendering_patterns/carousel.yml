@@ -178,6 +178,9 @@ carousel_all_item_values:
           caption: 'First slide caption'
           caption_classes: 'caption_classes-1'
           interval: 1
+          link:
+            label: First link
+            path: https://link.one
         - image:
             src: 'https://images.site.example2'
             alt: 'alt image 2'
@@ -185,6 +188,9 @@ carousel_all_item_values:
           caption: 'Second slide caption'
           caption_classes: 'caption_classes-2'
           interval: 2
+          link:
+            label: Second link
+            path: https://link.two
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
@@ -204,6 +210,9 @@ carousel_all_item_values:
             caption: 'First slide caption'
             caption_classes: 'caption_classes-1'
             interval: 1
+            link:
+              label: First link
+              path: https://link.one
           - image:
               src: 'https://images.site.example2'
               alt: 'alt image 2'
@@ -211,3 +220,6 @@ carousel_all_item_values:
             caption: 'Second slide caption'
             caption_classes: 'caption_classes-2'
             interval: 2
+            link:
+              label: Second link
+              path: https://link.two

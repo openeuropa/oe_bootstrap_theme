@@ -126,6 +126,15 @@ class CarouselPatternAssert extends BasePatternAssert {
       else {
         $this->assertElementAttribute(0, '.carousel-item', 'data-bs-interval', $item);
       }
+
+      if (isset($expected_item['link'])) {
+        $this->assertElementText($expected_item['link']['label'], '.carousel-caption a', $item);
+        $this->assertElementAttribute($expected_item['link']['path'], '.carousel-caption a', 'href', $item);
+        $this->assertElementExists('.carousel-caption a svg', $item);
+      }
+      else {
+        $this->assertElementNotExists('.carousel-caption a', $item);
+      }
     }
   }
 
