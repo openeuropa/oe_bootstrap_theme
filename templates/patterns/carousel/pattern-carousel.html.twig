@@ -12,8 +12,19 @@
     {% endblock %}
   {% endset %}
   {% set _item = slide|merge({
-    'image': _image
+    'image': _image,
   }) %}
+  {% if slide.link %}
+    {% set _item = _item|merge({
+      'link': slide.link|merge({
+        'icon_position': 'before',
+        'icon': {
+          'name': 'link',
+          'path': bcl_icon_path,
+        },
+      }),
+    }) %}
+  {% endif %}
   {% set _slides = _slides|merge([_item]) %}
 {% endfor %}
 {% include '@oe-bcl/carousel' with {
