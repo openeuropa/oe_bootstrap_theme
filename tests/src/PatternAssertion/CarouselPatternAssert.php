@@ -105,11 +105,18 @@ class CarouselPatternAssert extends BasePatternAssert {
 
       $this->assertImage($expected_item['image'], 'img', $item);
 
-      if (!isset($expected_item['caption_title'])) {
-        $this->assertElementNotExists('.carousel-caption h5', $item);
+      if (
+        isset($expected_item['caption_title']) &&
+        // Presence of title depends on below conditions.
+        (
+          isset($expected_item['caption']) ||
+          isset($expected_item['link'])
+        )
+      ) {
+        $this->assertElementText($expected_item['caption_title'], '.carousel-caption h5', $item);
       }
       else {
-        $this->assertElementText($expected_item['caption_title'], '.carousel-caption h5', $item);
+        $this->assertElementNotExists('.carousel-caption h5', $item);
       }
 
       if (isset($expected_item['caption'])) {
