@@ -34,7 +34,7 @@ carousel_with_all_settings:
               alt: 'alt image 1'
             caption_title: 'First slide title'
             caption: 'First slide caption'
-carousel_with_no_settings:
+carousel_with_all_settings_false:
   render:
     '#type': pattern
     '#id': carousel
