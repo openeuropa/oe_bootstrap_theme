@@ -237,6 +237,13 @@ carousel_title_present_but_not_displayed:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
       expected:
+        settings:
+          fade: false
+          show_controls: true
+          show_indicators: false
+          autoplay: true
+          autoinit: true
+          disable_touch: false
         items:
           - image:
               src: 'https://images.site.example1'
