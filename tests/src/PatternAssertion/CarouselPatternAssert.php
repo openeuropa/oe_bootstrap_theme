@@ -50,14 +50,10 @@ class CarouselPatternAssert extends BasePatternAssert {
       $this->assertElementNotExists('.carousel-fade', $crawler);
     }
 
-    if (!empty($expected['show_controls'])) {
-      $this->assertElementText('Previous', '.carousel-control-prev', $crawler);
-      $this->assertElementText('Next', '.carousel-control-next', $crawler);
-    }
-    else {
-      $this->assertElementNotExists('.carousel-control-prev', $crawler);
-      $this->assertElementNotExists('.carousel-control-next', $crawler);
-    }
+    $expected_previous = $expected['show_controls'] ? 'Previous' : NULL;
+    $expected_next = $expected['show_controls'] ? 'Next' : NULL;
+    $this->assertElementText($expected_previous, '.carousel-control-prev', $crawler);
+    $this->assertElementText($expected_next, '.carousel-control-next', $crawler);
 
     if (!empty($expected['show_indicators'])) {
       $this->assertElementExists('.carousel .carousel-indicators button', $crawler);
@@ -66,26 +62,14 @@ class CarouselPatternAssert extends BasePatternAssert {
       $this->assertElementNotExists('.carousel .carousel-indicators', $crawler);
     }
 
-    if (!empty($expected['autoplay'])) {
-      $this->assertElementAttribute(NULL, '.carousel', 'data-bs-interval', $crawler);
-    }
-    else {
-      $this->assertElementAttribute('false', '.carousel', 'data-bs-interval', $crawler);
-    }
+    $expected_autoplay = !empty($expected['autoplay']) ? NULL : 'false';
+    $this->assertElementAttribute($expected_autoplay, '.carousel', 'data-bs-interval', $crawler);
 
-    if (!empty($expected['autoinit'])) {
-      $this->assertElementAttribute('carousel', '.carousel', 'data-bs-ride', $crawler);
-    }
-    else {
-      $this->assertElementAttribute(NULL, '.carousel', 'data-bs-ride', $crawler);
-    }
+    $expected_autoinit = !empty($expected['autoinit']) ? 'carousel' : NULL;
+    $this->assertElementAttribute($expected_autoinit, '.carousel', 'data-bs-ride', $crawler);
 
-    if (!empty($expected['disable_touch'])) {
-      $this->assertElementAttribute('false', '.carousel', 'data-bs-touch', $crawler);
-    }
-    else {
-      $this->assertElementAttribute(NULL, '.carousel', 'data-bs-touch', $crawler);
-    }
+    $expected_disable_touch = !empty($expected['disable_touch']) ? 'false' : NULL;
+    $this->assertElementAttribute($expected_disable_touch, '.carousel', 'data-bs-touch', $crawler);
   }
 
   /**
@@ -105,34 +89,24 @@ class CarouselPatternAssert extends BasePatternAssert {
 
       $this->assertImage($expected_item['image'], 'img', $item);
 
-      if (
+      $expected_title = (
         isset($expected_item['caption_title']) &&
         // Presence of title depends on below conditions.
         (
           isset($expected_item['caption']) ||
           isset($expected_item['link'])
         )
-      ) {
-        $this->assertElementText($expected_item['caption_title'], '.carousel-caption h5', $item);
-      }
-      else {
-        $this->assertElementNotExists('.carousel-caption h5', $item);
-      }
+      ) ? $expected_item['caption_title'] : NULL;
 
-      if (isset($expected_item['caption'])) {
-        $this->assertElementTextContains($expected_item['caption'], '.carousel-caption', $item);
-      }
+      $this->assertElementText($expected_title, '.carousel-caption h5', $item);
+
+      $this->assertElementTextContains($expected_item['caption'] ?? NULL, '.carousel-caption', $item);
 
       if (isset($expected_item['caption_classes'])) {
         $this->assertElementExists('.' . $expected_item['caption_classes'], $item);
       }
 
-      if (isset($expected_item['interval'])) {
-        $this->assertElementAttribute($expected_item['interval'], '.carousel-item', 'data-bs-interval', $item);
-      }
-      else {
-        $this->assertElementAttribute(0, '.carousel-item', 'data-bs-interval', $item);
-      }
+      $this->assertElementAttribute($expected_item['interval'] ?? 0, '.carousel-item', 'data-bs-interval', $item);
 
       if (isset($expected_item['link'])) {
         $this->assertElementText($expected_item['link']['label'], '.carousel-caption a', $item);
