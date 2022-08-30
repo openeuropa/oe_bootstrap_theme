@@ -58,7 +58,7 @@ abstract class AbstractKernelTestBase extends KernelTestBase {
     // enhancers.
     // @see CurrentUserContext::getRuntimeContexts().
     // @see EntityConverter::convert().
-    module_load_include('install', 'user');
+    $this->container->get('module_handler')->loadInclude('user', 'install');
     user_install();
   }
 
