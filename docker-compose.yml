@@ -28,7 +28,7 @@ services:
     user: "node"
     working_dir: /home/node/app
     environment:
-      - NODE_ENV=${NODE_ENV}
+      - NODE_ENV=${NODE_ENV-''}
       - SHELL=bash
     volumes:
       - ./:/home/node/app
