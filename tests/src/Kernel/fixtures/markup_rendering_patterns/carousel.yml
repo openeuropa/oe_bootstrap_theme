@@ -223,7 +223,7 @@ carousel_all_item_values:
             link:
               label: Second link
               path: https://link.two
-carousel_title_present_but_not_displayed:
+carousel_title_present_no_caption_no_link:
   render:
     '#type': pattern
     '#id': carousel
@@ -232,7 +232,7 @@ carousel_title_present_but_not_displayed:
         - image:
             src: 'https://images.site.example1'
             alt: 'alt image 1'
-          caption_title: 'First slide title'
+          caption_title: 'Slide title'
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
@@ -248,4 +248,4 @@ carousel_title_present_but_not_displayed:
           - image:
               src: 'https://images.site.example1'
               alt: 'alt image 1'
-            caption_title: 'First slide title'
+            caption_title: 'Slide title'
