@@ -1,4 +1,4 @@
-carousel_with_fade_show_controls_with_indicator_without_disable_touch_without_autoinit:
+carousel_with_all_settings:
   render:
     '#type': pattern
     '#id': carousel
@@ -8,48 +8,33 @@ carousel_with_fade_show_controls_with_indicator_without_disable_touch_without_au
         show_controls: true
         show_indicators: true
         autoplay: true
-        autoinit: false
-        disable_touch: false
-      active_item: 2
+        autoinit: true
+        disable_touch: true
       slides:
-        - caption: 'first slide label'
+        - caption: 'First slide caption'
+          caption_title: 'First slide title'
           interval: 0
           image:
             src: 'https://images.site.example1'
             alt: 'alt image 1'
-        - caption: 'second slide label'
-          interval: 0
-          image:
-            src: 'https://images.site.example2'
-            alt: 'alt image 2'
   assertions:
-    count:
-      'div.carousel.slide.carousel-fade[data-drupal-selector="carousel"]': 1
-      'div.carousel-dark': 0
-      'div.carousel-indicators button[type="button"]': 2
-      'div.carousel-indicators button[aria-label="Slide 1"]': 1
-      'div.carousel-indicators button[aria-label="Slide 2"]': 1
-      'div.carousel-indicators button[data-bs-slide-to="0"]': 1
-      'div.carousel-indicators button[data-bs-slide-to="1"]': 1
-      'div.carousel-indicators button.active': 1
-      'div.carousel-inner': 1
-      'div.carousel-item': 2
-      'div.carousel-item.active': 1
-      'button.carousel-control-prev[data-bs-slide="prev"]': 1
-      'button.carousel-control-next[data-bs-slide="next"]': 1
-      'img.d-block.w-100': 2
-      'div.carousel-item:nth-child(1) img[src="https://images.site.example1"]': 1
-      'div.carousel-item:nth-child(1) img[alt="alt image 1"]': 1
-      'div.carousel-item:nth-child(2) img[src="https://images.site.example2"]': 1
-      'div.carousel-item:nth-child(2) img[alt="alt image 2"]': 1
-      'div[data-bs-touch="false"]': 0
-      'div[data-bs-ride="carousel"]': 0
-    equals:
-      'div.carousel-item:nth-child(1) div.carousel-caption': 'first slide label'
-      'div.carousel-item:nth-child(2) div.carousel-caption': 'second slide label'
-      'button.carousel-control-prev > span.visually-hidden': 'Previous'
-      'button.carousel-control-next > span.visually-hidden': 'Next'
-carousel_without_fade_without_controls_without_indicators_with_disable_touch_with_autoinit_dark:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        settings:
+          fade: true
+          show_controls: true
+          show_indicators: true
+          autoplay: true
+          autoinit: true
+          disable_touch: true
+        items:
+          - image:
+              src: 'https://images.site.example1'
+              alt: 'alt image 1'
+            caption_title: 'First slide title'
+            caption: 'First slide caption'
+carousel_with_all_settings_false:
   render:
     '#type': pattern
     '#id': carousel
@@ -58,40 +43,209 @@ carousel_without_fade_without_controls_without_indicators_with_disable_touch_wit
         fade: false
         show_controls: false
         show_indicators: false
-        autoplay: true
-        autoinit: true
-        disable_touch: true
-        dark_mode: true
-      active_item: 1
+        autoplay: false
+        autoinit: false
+        disable_touch: false
       slides:
-        - caption: 'first slide label'
+        - caption: 'First slide caption'
+          caption_title: 'First slide title'
           interval: 0
           image:
             src: 'https://images.site.example1'
             alt: 'alt image 1'
-        - caption: 'second slide label'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        settings:
+          fade: false
+          show_controls: false
+          show_indicators: false
+          autoplay: false
+          autoinit: false
+          disable_touch: false
+        items:
+          - image:
+              src: 'https://images.site.example1'
+              alt: 'alt image 1'
+            caption_title: 'First slide title'
+            caption: 'First slide caption'
+carousel_with_settings_combination:
+  render:
+    '#type': pattern
+    '#id': carousel
+    '#fields':
+      settings:
+        fade: false
+        show_controls: true
+        show_indicators: false
+        autoplay: true
+        autoinit: false
+        disable_touch: true
+      slides:
+        - caption: 'First slide caption'
+          caption_title: 'First slide title'
           interval: 0
           image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        settings:
+          fade: false
+          show_controls: true
+          show_indicators: false
+          autoplay: true
+          autoinit: false
+          disable_touch: true
+        items:
+          - image:
+              src: 'https://images.site.example1'
+              alt: 'alt image 1'
+            caption_title: 'First slide title'
+            caption: 'First slide caption'
+carousel_without_settings_assert_defaults:
+  render:
+    '#type': pattern
+    '#id': carousel
+    '#fields':
+      slides:
+        - caption: 'First slide caption'
+          caption_title: 'First slide title'
+          interval: 0
+          image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        settings:
+          fade: false
+          show_controls: true
+          show_indicators: false
+          autoplay: true
+          autoinit: true
+          disable_touch: false
+        items:
+          - image:
+              src: 'https://images.site.example1'
+              alt: 'alt image 1'
+            caption_title: 'First slide title'
+            caption: 'First slide caption'
+carousel_just_images:
+  render:
+    '#type': pattern
+    '#id': carousel
+    '#fields':
+      slides:
+        - image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+        - image:
             src: 'https://images.site.example2'
             alt: 'alt image 2'
   assertions:
-    count:
-      'div.carousel.slide.carousel[data-drupal-selector="carousel"]': 1
-      'div.carousel-dark': 1
-      'div.fade': 0
-      'div.carousel-indicators': 0
-      'div.carousel-inner': 1
-      'div.carousel-item': 2
-      'div.carousel-item.active': 1
-      'button.carousel-control-prev[data-bs-slide="prev"]': 0
-      'button.carousel-control-next[data-bs-slide="next"]': 0
-      'img.d-block.w-100': 2
-      'div.carousel-item:nth-child(1) img[src="https://images.site.example1"]': 1
-      'div.carousel-item:nth-child(1) img[alt="alt image 1"]': 1
-      'div.carousel-item:nth-child(2) img[src="https://images.site.example2"]': 1
-      'div.carousel-item:nth-child(2) img[alt="alt image 2"]': 1
-      'div[data-bs-touch="false"]': 1
-      'div[data-bs-ride="carousel"]': 1
-    equals:
-      'div.carousel-item:nth-child(1) div.carousel-caption': 'first slide label'
-      'div.carousel-item:nth-child(2) div.carousel-caption': 'second slide label'
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        settings:
+          fade: false
+          show_controls: true
+          show_indicators: false
+          autoplay: true
+          autoinit: true
+          disable_touch: false
+        items:
+          - image:
+              src: 'https://images.site.example1'
+              alt: 'alt image 1'
+          - image:
+              src: 'https://images.site.example2'
+              alt: 'alt image 2'
+carousel_all_item_values:
+  render:
+    '#type': pattern
+    '#id': carousel
+    '#fields':
+      slides:
+        - image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+          caption_title: 'First slide title'
+          caption: 'First slide caption'
+          caption_classes: 'caption_classes-1'
+          interval: 1
+          link:
+            label: First link
+            path: https://link.one
+        - image:
+            src: 'https://images.site.example2'
+            alt: 'alt image 2'
+          caption_title: 'Second slide title'
+          caption: 'Second slide caption'
+          caption_classes: 'caption_classes-2'
+          interval: 2
+          link:
+            label: Second link
+            path: https://link.two
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        settings:
+          fade: false
+          show_controls: true
+          show_indicators: false
+          autoplay: true
+          autoinit: true
+          disable_touch: false
+        items:
+          - image:
+              src: 'https://images.site.example1'
+              alt: 'alt image 1'
+            caption_title: 'First slide title'
+            caption: 'First slide caption'
+            caption_classes: 'caption_classes-1'
+            interval: 1
+            link:
+              label: First link
+              path: https://link.one
+          - image:
+              src: 'https://images.site.example2'
+              alt: 'alt image 2'
+            caption_title: 'Second slide title'
+            caption: 'Second slide caption'
+            caption_classes: 'caption_classes-2'
+            interval: 2
+            link:
+              label: Second link
+              path: https://link.two
+carousel_title_present_no_caption_no_link:
+  render:
+    '#type': pattern
+    '#id': carousel
+    '#fields':
+      slides:
+        - image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+          caption_title: 'Slide title'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        settings:
+          fade: false
+          show_controls: true
+          show_indicators: false
+          autoplay: true
+          autoinit: true
+          disable_touch: false
+        items:
+          - image:
+              src: 'https://images.site.example1'
+              alt: 'alt image 1'
+            caption_title: 'Slide title'
