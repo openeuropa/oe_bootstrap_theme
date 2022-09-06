@@ -38,9 +38,9 @@ index 0fa62f6..9b4d21d 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-gallery/gallery.html.twig
 +++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-gallery/gallery.html.twig
 @@ -53,76 +53,78 @@ Parameters:
- 
+
  {% set attributes = attributes.addClass('bcl-gallery') %}
- 
+
 -{# Print the result #}
 +{% macro gallery_item(item, slide_number, context) %}
 +  <li>
@@ -72,10 +72,10 @@ index 0fa62f6..9b4d21d 100644
 +    </a>
 +  </li>
 +{% endmacro %}
- 
+
 -{% if _items is not empty %}
 +{# Print the result #}
- 
+
 +{% if _items is not empty and _items is iterable %}
    <div {{ attributes }}>
 -    {% if _items is iterable %}
@@ -108,7 +108,7 @@ index 0fa62f6..9b4d21d 100644
 +          </div>
 +        {%- endif -%}
        </div>
- 
+
 -      {% for _item in _items %}
 -        {% if loop.first %}
 -          <div class="bcl-gallery__thumbnails">
@@ -163,7 +163,7 @@ index 0fa62f6..9b4d21d 100644
 +                  {{ _self.gallery_item(_item, _key, _context) }}
 +                {% endfor %}
                </ul>
--            {% endif %}  
+-            {% endif %}
 -          {% if loop.last %}
 -            </div>
 -          {% endif %}
@@ -181,12 +181,12 @@ index 0fa62f6..9b4d21d 100644
 -      {% endfor %}
 -    {% endif %}
 +      </div>
- 
+
      <div class="modal" id="{{ _modal_id }}" tabindex="-1" aria-labelledby="{{ _modal_id }}" aria-hidden="true" data-bs-backdrop="false">
        <div class="modal-dialog modal-dialog-centered modal-fullscreen">
 @@ -181,21 +182,23 @@ Parameters:
            </div>
- 
+
            <div class="modal-body d-flex align-items-center justify-content-center">
 -            {% for _item in _items %}
 -              {% set _carousel_items = _carousel_items|merge([_item|merge({
@@ -230,7 +230,7 @@ index 0ccc7ec..70b5143 100644
 @@ -1,4 +1,4 @@
 -{% spaceless %}
 +{% apply spaceless %}
- 
+
  {# Parameters:
    - label (string) (default: '')
 @@ -72,18 +72,20 @@
@@ -238,7 +238,7 @@ index 0ccc7ec..70b5143 100644
    {% set attributes = attributes.addClass(_classes) %}
  {% endif %}
 -{% set attributes = attributes.setAttribute('href', _path) %}
- 
+
 -<a
 -  {{ attributes }}
 ->
@@ -265,7 +265,7 @@ index 0ccc7ec..70b5143 100644
 +{{ bcl_link(_label, _path, attributes) }}
 +
 +{% endapply %}
- 
+
 -{% endspaceless %}
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-pagination/pagination.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-pagination/pagination.html.twig
 index d33f381..ed77687 100644
