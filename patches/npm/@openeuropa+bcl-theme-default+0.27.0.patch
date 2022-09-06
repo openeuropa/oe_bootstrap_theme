@@ -1,8 +1,8 @@
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig
-index 6e08be9..ddc41ad 100644
+index b5d3138..ffaacb3 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig
 +++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig
-@@ -111,7 +111,7 @@
+@@ -121,7 +121,7 @@
      {% if _item.image is defined and _item.image is not empty %}
        {{ _item.image }}
      {% endif %}
@@ -11,16 +11,3 @@ index 6e08be9..ddc41ad 100644
        {% set _caption_classes = 'carousel-caption' %}
        {% if _item.caption is not empty and _item.link is empty %}
          {% set _caption_classes = _caption_classes ~ ' d-none d-md-block' %}
-diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-pagination/pagination.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-pagination/pagination.html.twig
-index d33f381..ed77687 100644
---- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-pagination/pagination.html.twig
-+++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-pagination/pagination.html.twig
-@@ -57,7 +57,7 @@
- {% set _alignment = alignment|default('') %}
- {% set _aria_label = aria_label|default('') %}
- {% set _enable_prev_next_icon = enable_prev_next_icon|default(false) %}
--{% set _enable_first_last_icon = enable_first_last_icon|default(true) %}
-+{% set _enable_first_last_icon = enable_first_last_icon ?? true %}
- {% set _items = items|default([]) %}
- {% set _first = first|default({}) %}
- {% set _next = next|default({}) %}
