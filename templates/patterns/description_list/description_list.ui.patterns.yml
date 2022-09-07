@@ -8,7 +8,7 @@ description_list:
       options:
         default: Default
         horizontal: Horizontal
-      preview: Horizontal
+      preview: horizontal
   fields:
     items:
       type: 'array'
