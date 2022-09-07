@@ -24,7 +24,7 @@ progress_primary_stripped_animated:
       'div[aria-valuemin="10"]': 1
       'div[aria-valuemax="90"]': 1
       'small.progress-bar-message': 1
-      'div.bg-primary': 1
+      'div.text-bg-primary': 1
       'div.progress-bar-animated': 1
       'div.progress-bar-striped': 1
     contains:
@@ -57,7 +57,7 @@ progress_light_non_stripped_non_animated:
       'div[aria-valuemin="10"]': 1
       'div[aria-valuemax="90"]': 1
       'small.progress-bar-message': 1
-      'div.bg-light.text-dark': 1
+      'div.text-bg-light': 1
       'div.progress-bar-animated': 0
       'div.progress-bar-striped': 0
     contains:
