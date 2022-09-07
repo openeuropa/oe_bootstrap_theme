@@ -27,7 +27,7 @@ content_banner_white_background_with_image_with_badges_with_meta_with_links:
       'div.bcl-content-banner': 1
       'div.bcl-content-banner.bg-white': 1
       'img': 1
-      'article.card > div.row > div.bcl-card-start-col > img[src="https://placeimg.com/1200/600/tech"]': 1
+      'article.card > div.row > div.bcl-card-start-col.bcl-size-large > img[src="https://placeimg.com/1200/600/tech"]': 1
       'div.card-body > h1': 1
       'div.card-body > div': 4
       'div.card-body > div.mt-4': 0
@@ -80,6 +80,7 @@ content_banner_gray_background_with_image_without_badges_without_meta_without_li
       image:
         src: 'https://placeimg.com/1200/600/tech'
         alt: 'Alternative text for content banner image'
+      image_size: 'sm'
       title: 'This is the title of this page'
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
   assertions:
@@ -87,7 +88,7 @@ content_banner_gray_background_with_image_without_badges_without_meta_without_li
       'div.bcl-content-banner': 1
       'div.bcl-content-banner.bg-lighter': 1
       'img': 1
-      'article.card > div.row > div.bcl-card-start-col > img[src="https://placeimg.com/1200/600/tech"]': 1
+      'article.card > div.row > div.bcl-card-start-col.bcl-size-small > img[src="https://placeimg.com/1200/600/tech"]': 1
       'div.card-body > h1': 1
       'div.card-body > div.mt-4': 1
       'div.card-body > div > span.badge': 0

@@ -15,6 +15,10 @@ content_banner:
       preview:
         src: 'https://placeimg.com/255/255/tech'
         alt: 'Alternative text for content banner image'
+    image_size:
+      type: text
+      label: 'Image size'
+      description: 'The size of the images. Allowed values: sm, md, lg, xl. Defaults to lg.'
     title:
       type: text
       label: 'Title'
