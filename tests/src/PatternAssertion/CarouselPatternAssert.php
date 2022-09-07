@@ -62,11 +62,14 @@ class CarouselPatternAssert extends BasePatternAssert {
       $this->assertElementNotExists('.carousel .carousel-indicators', $crawler);
     }
 
-    $expected_autoplay = !empty($expected['autoplay']) ? NULL : 'false';
-    $this->assertElementAttribute($expected_autoplay, '.carousel', 'data-bs-interval', $crawler);
+    self::assertArrayNotHasKey('autoinit', $expected, 'The autoinit setting is deprecated and it has been replaced with autoplay.');
 
-    $expected_autoinit = !empty($expected['autoinit']) ? 'carousel' : NULL;
-    $this->assertElementAttribute($expected_autoinit, '.carousel', 'data-bs-ride', $crawler);
+    // This attribute maps to the deprecated usage of the autoplay attribute.
+    // It should be never present.
+    $this->assertElementAttribute(NULL, '.carousel', 'data-bs-interval', $crawler);
+
+    $expected_autoplay = !empty($expected['autoplay']) ? 'carousel' : NULL;
+    $this->assertElementAttribute($expected_autoplay, '.carousel', 'data-bs-ride', $crawler);
 
     $expected_disable_touch = !empty($expected['disable_touch']) ? 'false' : NULL;
     $this->assertElementAttribute($expected_disable_touch, '.carousel', 'data-bs-touch', $crawler);
@@ -96,7 +99,7 @@ class CarouselPatternAssert extends BasePatternAssert {
         }
 
         if (isset($expected_item['caption_classes'])) {
-          $this->assertElementExists('.' . $expected_item['caption_classes'], $item);
+          $this->assertElementExists('.carousel-caption > .' . $expected_item['caption_classes'], $item);
         }
 
         $this->assertElementAttribute($expected_item['interval'] ?? 0, '.carousel-item', 'data-bs-interval', $item);

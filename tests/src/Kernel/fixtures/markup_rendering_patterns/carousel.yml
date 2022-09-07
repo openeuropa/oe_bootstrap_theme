@@ -8,7 +8,8 @@ carousel_with_all_settings:
         show_controls: true
         show_indicators: true
         autoplay: true
-        autoinit: true
+        # Deprecated autoinit value will be ignored since autplay is set.
+        autoinit: false
         disable_touch: true
       slides:
         - caption: 'First slide caption'
@@ -26,7 +27,6 @@ carousel_with_all_settings:
           show_controls: true
           show_indicators: true
           autoplay: true
-          autoinit: true
           disable_touch: true
         items:
           - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
@@ -42,7 +42,6 @@ carousel_with_all_settings_false:
         show_controls: false
         show_indicators: false
         autoplay: false
-        autoinit: false
         disable_touch: false
       slides:
         - caption: 'First slide caption'
@@ -60,7 +59,6 @@ carousel_with_all_settings_false:
           show_controls: false
           show_indicators: false
           autoplay: false
-          autoinit: false
           disable_touch: false
         items:
           - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
@@ -76,7 +74,6 @@ carousel_with_settings_combination:
         show_controls: true
         show_indicators: false
         autoplay: true
-        autoinit: false
         disable_touch: true
       slides:
         - caption: 'First slide caption'
@@ -94,7 +91,6 @@ carousel_with_settings_combination:
           show_controls: true
           show_indicators: false
           autoplay: true
-          autoinit: false
           disable_touch: true
         items:
           - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
@@ -121,7 +117,6 @@ carousel_without_settings_assert_defaults:
           show_controls: true
           show_indicators: false
           autoplay: true
-          autoinit: true
           disable_touch: false
         items:
           - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
@@ -148,7 +143,6 @@ carousel_just_images:
           show_controls: true
           show_indicators: false
           autoplay: true
-          autoinit: true
           disable_touch: false
         items:
           - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
@@ -188,7 +182,6 @@ carousel_all_item_values:
           show_controls: true
           show_indicators: false
           autoplay: true
-          autoinit: true
           disable_touch: false
         items:
           - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
@@ -226,8 +219,22 @@ carousel_title_present_no_caption_no_link:
           show_controls: true
           show_indicators: false
           autoplay: true
-          autoinit: true
           disable_touch: false
         items:
           - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
             caption_title: 'Slide title'
+carousel_with_deprecated_autoinit_ignored:
+  render:
+    '#type': pattern
+    '#id': carousel
+    '#fields':
+      settings:
+        autoplay: false
+        autoinit: true
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        settings:
+          show_controls: true
+          autoplay: false
