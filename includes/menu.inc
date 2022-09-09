@@ -110,7 +110,6 @@ function oe_bootstrap_theme_add_dropbutton_classes(array &$links): void {
  * Implements hook_preprocess_menu_local_tasks().
  */
 function oe_bootstrap_theme_preprocess_menu_local_tasks(array &$variables): void {
-
   // Sort local tasks by weight.
   uasort($variables['primary'], [
     '\Drupal\Component\Utility\SortArray',
@@ -121,12 +120,14 @@ function oe_bootstrap_theme_preprocess_menu_local_tasks(array &$variables): void
     'sortByWeightProperty',
   ]);
 
-  foreach ($variables['primary'] as $link) {
-    oe_bootstrap_theme_prepare_menu_local_task_links($link, $variables, 'primary');
+  foreach ($variables['primary'] as &$link) {
+    // @todo Handle access.
+    $link = _oe_bootstrap_theme_menu_link($link['#link']);
   }
 
-  foreach ($variables['secondary'] as $link) {
-    oe_bootstrap_theme_prepare_menu_local_task_links($link, $variables, 'secondary');
+  foreach ($variables['secondary'] as &$link) {
+    // @todo Handle access.
+    $link = _oe_bootstrap_theme_menu_link($link['#link']);
   }
 }
 
