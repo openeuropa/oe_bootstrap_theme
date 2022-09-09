@@ -7,10 +7,13 @@ namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
+use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * Collection of extra Twig extensions as filters and functions.
@@ -59,6 +62,18 @@ class TwigExtension extends AbstractExtension {
       new TwigFilter('to_internal_language_id', [
         $this,
         'toInternalLanguageId',
+      ]),
+    ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getFunctions(): array {
+    return [
+      new TwigFunction('bcl_link', [$this, 'bclLink'], [
+        'needs_context' => TRUE,
+        'needs_environment' => TRUE,
       ]),
     ];
   }
@@ -233,6 +248,33 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $language_code;
+  }
+
+  /**
+   * Alter a link with BCL logic.
+   *
+   * @param \Twig\Environment $env
+   *   The env.
+   * @param array $context
+   *   The context.
+   * @param mixed $attributes
+   *   Link attributes.
+   *
+   * @return array
+   *   The link render array.
+   */
+  public function bclLink(Environment $env, array $context, $attributes): array {
+    $text = $context['title'] ?? $context['label'];
+    $url = $context['url'] ?? $context['path'];
+
+    if (is_string($url)) {
+      // @todo Check is this still occurs after all preprocess fixes are done.
+      return [];
+    }
+
+    $build = $env->getExtension(CoreTwigExtension::class)->getLink($text, $url, $attributes);
+
+    return $build;
   }
 
 }
