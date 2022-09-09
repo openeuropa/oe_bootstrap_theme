@@ -7,10 +7,14 @@ namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
+use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * Collection of extra Twig extensions as filters and functions.
@@ -59,6 +63,18 @@ class TwigExtension extends AbstractExtension {
       new TwigFilter('to_internal_language_id', [
         $this,
         'toInternalLanguageId',
+      ]),
+    ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getFunctions(): array {
+    return [
+      new TwigFunction('bcl_link', [$this, 'bclLink'], [
+        'needs_context' => TRUE,
+        'needs_environment' => TRUE,
       ]),
     ];
   }
@@ -233,6 +249,59 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $language_code;
+  }
+
+  /**
+   * Alter a link with BCL logic.
+   *
+   * @param \Twig\Environment $env
+   *   The env.
+   * @param mixed $context
+   *   The context.
+   *
+   * @return array
+   *   The link render array.
+   */
+  public function bclLink(Environment $env, $context): array {
+    // We typecast because this parameter could be an array or an object.
+    $context = (array) $context;
+    // Set defaults.
+    $variant = $context['variannt'] ?? '';
+    $id = $context['id'] ?? '';
+    $disabled = $context['disabled'] ?? FALSE;
+    $standalone = $context['standalone'] ?? FALSE;
+    $icon = $context['icon'] ?? [];
+    $icon_position = $context['icon_position'] ?? 'after';
+    $remove_icon_spacers = $context['remove_icon_spacers'] ?? FALSE;
+    $attributes = $context['attributes'] ?? new Attribute();
+
+    if ($disabled) {
+      $attributes->addClass('disabled')
+        ->setAttribute('aria-disabled', 'true')
+        ->setAttribute('tabindex', '-1');
+    }
+
+    if (!empty($variant)) {
+      $attributes->addClass('link-' . $variant);
+    }
+
+    if (!empty($id)) {
+      $attributes->setAttribute('id', $id);
+    }
+
+    if ($standalone) {
+      $attributes->addClass('standalone');
+    }
+
+    $text = $context['title'] ?? $context['label'];
+    $url = $context['url'] ?? $context['path'];
+
+    if (is_string($url)) {
+      // @todo Check is this still occurs after all preprocess fixes are done.
+      return [];
+    }
+
+    return $env->getExtension(CoreTwigExtension::class)->getLink($text, $url, $attributes);
   }
 
 }
