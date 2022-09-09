@@ -17,41 +17,25 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
     return;
   }
 
-  $variables['pattern_items'] = [];
-  foreach ($variables['items'] as $key => $item) {
-    $pattern_item = [
-      'label' => $item['title'],
-      'path' => $item['url']->toString(),
-      'attributes' => new Attribute([
-        'class' => $item['in_active_trail'] ? ['active'] : [],
-      ]),
-    ];
+  foreach ($variables['items'] as &$item) {
+    $item = _oe_bootstrap_theme_menu_link($item);
+
     if (empty($item['below'])) {
-      $variables['pattern_items'][$key] = $pattern_item;
       continue;
     }
 
-    $submenu = $pattern_item;
-    $submenu['attributes'] = new Attribute(['class' => 'nav-link']);
-    $pattern_item += [
+    foreach ($item['below'] as &$sub_item) {
+      $sub_item = _oe_bootstrap_theme_menu_link($sub_item);
+    }
+
+    $item = [
       'standalone' => TRUE,
       'dropdown' => TRUE,
       'link' => TRUE,
-      'alignment' => 'dropdown-menu_item-sm-start',
-      'trigger' => $submenu,
+      'trigger' => $item,
+      'items' => $item['below'],
     ];
-    foreach ($item['below'] as $key_sub_item => $sub_item) {
-      $pattern_item['items'][$key_sub_item] = [
-        'label' => $sub_item['title'],
-        'path' => $sub_item['url']->toString(),
-        'attributes' => new Attribute([
-          'class' => $sub_item['in_active_trail'] ? ['active'] : [],
-        ]),
-      ];
-    }
-    $variables['pattern_items'][$key] = $pattern_item;
   }
-
 }
 
 /**
@@ -147,25 +131,23 @@ function oe_bootstrap_theme_preprocess_menu_local_tasks(array &$variables): void
 }
 
 /**
- * Prepare menu local tasks render links.
+ * Adapts a menu link to BCL requirements.
  *
- * @param array $link
- *   Array with the links items to be prepared.
- * @param array $variables
- *   The render array.
- * @param string $type
- *   Discriminate between primary or secondary.
+ * @param array $menu_link
+ *   The menu link to alter.
+ *
+ * @return array
+ *   The altered menu link.
  */
-function oe_bootstrap_theme_prepare_menu_local_task_links(array $link, array &$variables, string $type): void {
-  /** @var Drupal\Core\Url $url */
-  $url = $link['#link']['url'];
-  if ($url->access($variables['user'])) {
-    $variables[$type . '_links'][] = [
-      'link_style' => $type,
-      'path' => $url->toString(),
-      'label' => $link['#link']['title'],
-      'standalone' => TRUE,
-      'attributes' => $link['#active'] ? new Attribute(['class' => 'active']) : [],
-    ];
+function _oe_bootstrap_theme_menu_link(array $menu_link, array $bcl_attributes = []): array {
+  $attributes = $menu_link['attributes'] ?? new Attribute();
+  $attributes->addClass('nav-link');
+
+  if (!empty($menu_link['in_active_trail'])) {
+    $attributes->addClass('active');
   }
+
+  $menu_link['attributes'] = $attributes;
+
+  return $menu_link + $bcl_attributes;
 }
