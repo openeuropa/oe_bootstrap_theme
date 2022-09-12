@@ -293,15 +293,18 @@ class TwigExtension extends AbstractExtension {
       $attributes->addClass('standalone');
     }
 
-    $text = $context['title'] ?? $context['label'];
-    $url = $context['url'] ?? $context['path'];
-
-    if (is_string($url)) {
-      // @todo Check is this still occurs after all preprocess fixes are done.
-      return [];
+    if (is_string($context['url'])) {
+      return [
+        '#type' => 'inline_template',
+        '#template' => '<a href="{{ item.url }}" {{ attributes }}>{{ item.text }}</a>',
+        '#context' => [
+          'item' => $context,
+          'attributes' => $attributes,
+        ],
+      ];
     }
 
-    return $env->getExtension(CoreTwigExtension::class)->getLink($text, $url, $attributes);
+    return $env->getExtension(CoreTwigExtension::class)->getLink($context['title'], $context['url'], $attributes);
   }
 
 }
