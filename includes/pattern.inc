@@ -235,3 +235,28 @@ function oe_bootstrap_theme_preprocess_pattern_pagination(array &$variables): vo
     ];
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for pagination pattern preview.
+ */
+function oe_bootstrap_theme_preprocess_pattern_pagination__preview(array &$variables): void {
+  if ($variables['variant'] !== 'glossary') {
+    return;
+  }
+
+  // Remove entries which don't make sense for a glossary.
+  foreach (['first', 'prev', 'next', 'last'] as $key) {
+    unset($variables[$key]);
+  }
+
+  // Create one entry per letter A-Z and number 0-9.
+  $variables['items'] = array_map(function (string $char) {
+    return [
+      'path' => '#',
+      'label' => $char,
+    ];
+  }, array_merge(range('A', 'Z'), range(0, 9)));
+
+  // Mark the letter F as active.
+  $variables['items'][5]['active'] = TRUE;
+}
