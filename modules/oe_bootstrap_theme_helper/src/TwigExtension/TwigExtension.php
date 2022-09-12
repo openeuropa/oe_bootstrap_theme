@@ -4,9 +4,11 @@ declare(strict_types = 1);
 
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
+use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
@@ -273,10 +275,11 @@ class TwigExtension extends AbstractExtension {
     $id = $context['id'] ?? '';
     $disabled = $context['disabled'] ?? FALSE;
     $standalone = $context['standalone'] ?? FALSE;
-    $icon = $context['icon'] ?? [];
-    $icon_position = $context['icon_position'] ?? 'after';
-    $remove_icon_spacers = $context['remove_icon_spacers'] ?? FALSE;
     $attributes = $context['attributes'] ?? new Attribute();
+
+    if (isset($context['icon'])) {
+      $context['title'] = $this->addBclIcon($context);
+    }
 
     if ($disabled) {
       $attributes->addClass('disabled')
@@ -306,12 +309,63 @@ class TwigExtension extends AbstractExtension {
       ];
     }
 
+    // When url is a string and internal path Url::fromUri would fail.
     if (is_string($context['url']) && !UrlHelper::isExternal($context['url'])) {
       $context['url'] = str_replace(base_path(), '/', $context['url']);
       $context['url'] = Url::fromUserInput($context['url']);
     }
 
     return $env->getExtension(CoreTwigExtension::class)->getLink($context['title'], $context['url'], $attributes);
+  }
+
+  /**
+   * Add a BCL icon to the link title.
+   *
+   * @param array $context
+   *   The link data.
+   *
+   * @return \Drupal\Component\Render\MarkupInterface
+   *   The link title markup.
+   */
+  protected function addBclIcon(array $context): MarkupInterface {
+    $icon = (array) $context['icon'];
+
+    if (empty($icon)) {
+      return Markup::create($context['title']);
+    }
+
+    $icon_position = $context['icon_position'] ?? 'after';
+    $remove_icon_spacers = $context['remove_icon_spacers'] ?? FALSE;
+
+    $icon_build = [
+      '#type' => 'pattern',
+      '#id' => 'icon',
+      '#fields' => $icon,
+    ];
+
+    if (!empty($context['title']) && !$remove_icon_spacers) {
+      $icon_attributes = $icon['attributes'] ?? new Attribute();
+
+      if ($icon_position === 'before') {
+        $icon_attributes->addClass('me-2-5');
+      }
+      else {
+        $icon_attributes->addClass('ms-2-5');
+      }
+
+      $icon_build['#fields']['attributes'] = $icon_attributes;
+    }
+
+    $icon_markup = $this->renderer->render($icon_build);
+
+    if ($icon_position === 'before') {
+      $context['title'] = $icon_markup . $context['title'];
+    }
+    else {
+      $context['title'] = $context['title'] . $icon_markup;
+    }
+
+    return Markup::create($context['title']);
   }
 
 }
