@@ -33,7 +33,7 @@ navigation:
           path: '#third'
         - label: "I'm a link active"
           active: true
-          target: '#fourth'
+          path: '#fourth'
         - label: "I'm a link disabled"
           disabled: true
           path: '#'
