@@ -4,9 +4,16 @@
  * Override for breadcrumb trail.
  */
 #}
+{% set _breadcrumb_links = {} %}
+{% for key, value in breadcrumb %}
+  {% set value = value|merge({
+    'title': value.text
+  })%}
+  {% set _breadcrumb_links = _breadcrumb_links|merge([value]) %}
+{% endfor %}
 {% if breadcrumb %}
   {{ pattern('breadcrumb', {
-    'items': breadcrumb,
+    'items': _breadcrumb_links,
     'attributes': {
       'class': [
         'mt-3'
