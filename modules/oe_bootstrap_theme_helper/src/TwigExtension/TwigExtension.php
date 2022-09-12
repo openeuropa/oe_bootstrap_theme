@@ -270,6 +270,16 @@ class TwigExtension extends AbstractExtension {
     $context = (array) $context;
     $context['url'] = $context['url'] ?? $context['path'];
     $context['title'] = $context['title'] ?? $context['label'];
+
+    if (empty($context['url'])) {
+      return [
+        '#type' => 'inline_template',
+        '#template' => '<span>{{ item.title }}</span>',
+        '#context' => [
+          'item' => $context,
+        ],
+      ];
+    }
     // Set defaults.
     $variant = $context['variannt'] ?? '';
     $id = $context['id'] ?? '';
@@ -297,16 +307,6 @@ class TwigExtension extends AbstractExtension {
 
     if ($standalone) {
       $attributes->addClass('standalone');
-    }
-
-    if (empty($context['url'])) {
-      return [
-        '#type' => 'inline_template',
-        '#template' => '<span>{{ item.title }}</span>',
-        '#context' => [
-          'item' => $context,
-        ],
-      ];
     }
 
     // When url is a string and internal path Url::fromUri would fail.
