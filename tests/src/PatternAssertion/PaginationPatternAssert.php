@@ -39,6 +39,15 @@ class PaginationPatternAssert extends BasePatternAssert {
   }
 
   /**
+   * {@inheritdoc}
+   */
+  protected function getPatternVariant(string $html): string {
+    $crawler = new Crawler($html);
+
+    return $crawler->filter('ul.pagination--glossary')->count() ? 'glossary' : 'default';
+  }
+
+  /**
    * Asserts the pager links.
    *
    * @param array[] $expected

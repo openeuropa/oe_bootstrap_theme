@@ -29,6 +29,7 @@ pagination:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PaginationPatternAssert
       expected:
+        variant: 'default'
         alignment: 'center'
         size: 'sm'
         links:
@@ -77,6 +78,7 @@ pagination_with_icon:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PaginationPatternAssert
       expected:
+        variant: 'default'
         alignment: 'end'
         size: 'lg'
         links:
@@ -93,3 +95,46 @@ pagination_with_icon:
             icon: 'chevron-right'
           - url: '#last'
             icon: 'chevron-double-right'
+pagination_glossary:
+  render:
+    '#type': pattern
+    '#id': pagination
+    '#fields':
+      variant: 'glossary'
+      items:
+        - path: '#1'
+          label: 'A'
+          active: true
+        - path: 'https://www.example.com/b-letter'
+          label: 'B'
+        - path: '#2'
+          label: 'C'
+        - path: '#3'
+          label: 'D'
+        - path: '#4'
+          label: 'E'
+        - path: '#5'
+          label: 'F'
+        - path: '#6'
+          label: '0-9'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PaginationPatternAssert
+      expected:
+        variant: 'glossary'
+        links:
+          - url: '#1'
+            label: 'A'
+            active: true
+          - url: 'https://www.example.com/b-letter'
+            label: 'B'
+          - url: '#2'
+            label: 'C'
+          - url: '#3'
+            label: 'D'
+          - url: '#4'
+            label: 'E'
+          - url: '#5'
+            label: 'F'
+          - url: '#6'
+            label: '0-9'
