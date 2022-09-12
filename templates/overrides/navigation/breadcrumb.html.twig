@@ -5,13 +5,15 @@
  */
 #}
 {% set _breadcrumb_links = {} %}
-{% for key, value in breadcrumb %}
-  {% set value = value|merge({
-    'title': value.text
-  })%}
-  {% set _breadcrumb_links = _breadcrumb_links|merge([value]) %}
+{% for breadcrumb_item in breadcrumb %}
+  {% set item = breadcrumb_item|merge({
+    'label': breadcrumb_item.text,
+    'path': breadcrumb_item.url,
+  }) %}
+  {% set _breadcrumb_links = _breadcrumb_links|merge([item]) %}
 {% endfor %}
-{% if breadcrumb %}
+
+{% if _breadcrumb_links %}
   {{ pattern('breadcrumb', {
     'items': _breadcrumb_links,
     'attributes': {

@@ -1,25 +1,3 @@
-diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-breadcrumb/breadcrumb.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-breadcrumb/breadcrumb.html.twig
-index 3a05365..3bc3d21 100644
---- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-breadcrumb/breadcrumb.html.twig
-+++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-breadcrumb/breadcrumb.html.twig
-@@ -37,7 +37,7 @@
-         class="{{ _segment_classes }}"
-         {{ _segment_attrs|raw }}
-       >
--        {%- if _link.path -%}
-+        {%- if _link.url -%}
-           {% if loop.revindex == 2 %}
-             {% set _link = _link|merge({
-               icon_position: 'before',
-@@ -50,7 +50,7 @@
-           {% endif %}
-           {% include '@oe-bcl/bcl-link/link.html.twig' with _link only %}
-         {% else %}
--          {{- _link.label -}}
-+          {{- _link.title -}}
-         {%- endif -%}
-       </li>
-     {% endfor %}
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig
 index 6e08be9..374f66d 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig
