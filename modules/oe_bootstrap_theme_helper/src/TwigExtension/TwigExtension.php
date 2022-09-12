@@ -7,6 +7,7 @@ namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
@@ -255,15 +256,43 @@ class TwigExtension extends AbstractExtension {
    *
    * @param \Twig\Environment $env
    *   The env.
-   * @param array $context
+   * @param mixed $context
    *   The context.
-   * @param mixed $attributes
-   *   Link attributes.
    *
    * @return array
    *   The link render array.
    */
-  public function bclLink(Environment $env, array $context, $attributes): array {
+  public function bclLink(Environment $env, $context): array {
+    // We typecast because this parameter could be an array or an object.
+    $context = (array) $context;
+    // Set defaults.
+    $variant = $context['variannt'] ?? '';
+    $id = $context['id'] ?? '';
+    $disabled = $context['disabled'] ?? FALSE;
+    $standalone = $context['standalone'] ?? FALSE;
+    $icon = $context['icon'] ?? [];
+    $icon_position = $context['icon_position'] ?? 'after';
+    $remove_icon_spacers = $context['remove_icon_spacers'] ?? FALSE;
+    $attributes = $context['attributes'] ?? new Attribute();
+
+    if ($disabled) {
+      $attributes->addClass('disabled')
+        ->setAttribute('aria-disabled', 'true')
+        ->setAttribute('tabindex', '-1');
+    }
+
+    if (!empty($variant)) {
+      $attributes->addClass('link-' . $variant);
+    }
+
+    if (!empty($id)) {
+      $attributes->setAttribute('id', $id);
+    }
+
+    if ($standalone) {
+      $attributes->addClass('standalone');
+    }
+
     $text = $context['title'] ?? $context['label'];
     $url = $context['url'] ?? $context['path'];
 
@@ -272,9 +301,7 @@ class TwigExtension extends AbstractExtension {
       return [];
     }
 
-    $build = $env->getExtension(CoreTwigExtension::class)->getLink($text, $url, $attributes);
-
-    return $build;
+    return $env->getExtension(CoreTwigExtension::class)->getLink($text, $url, $attributes);
   }
 
 }
