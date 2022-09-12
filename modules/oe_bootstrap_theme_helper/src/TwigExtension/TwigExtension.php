@@ -305,6 +305,7 @@ class TwigExtension extends AbstractExtension {
     }
 
     if (is_string($context['url']) && !UrlHelper::isExternal($context['url'])) {
+      $context['url'] = str_replace(base_path(), '/', $context['url']);
       $context['url'] = Url::fromUserInput($context['url']);
     }
 
