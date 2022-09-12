@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
+use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\RendererInterface;
@@ -293,15 +294,18 @@ class TwigExtension extends AbstractExtension {
       $attributes->addClass('standalone');
     }
 
-    if (is_string($context['url'])) {
+    if (empty($context['url'])) {
       return [
         '#type' => 'inline_template',
-        '#template' => '<a href="{{ item.url }}" {{ attributes }}>{{ item.text }}</a>',
+        '#template' => '<span>{{ item.title }}</span>',
         '#context' => [
           'item' => $context,
-          'attributes' => $attributes,
         ],
       ];
+    }
+
+    if (is_string($context['url']) && !UrlHelper::isExternal($context['url'])) {
+      $context['url'] = Url::fromUserInput($context['url']);
     }
 
     return $env->getExtension(CoreTwigExtension::class)->getLink($context['title'], $context['url'], $attributes);
