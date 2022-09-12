@@ -120,15 +120,42 @@ function oe_bootstrap_theme_preprocess_menu_local_tasks(array &$variables): void
     'sortByWeightProperty',
   ]);
 
-  foreach ($variables['primary'] as &$link) {
-    // @todo Handle access.
-    $link = _oe_bootstrap_theme_menu_link($link['#link']);
+  $links = [];
+  foreach ($variables['primary'] as $link) {
+    if (_oe_bootstrap_theme_prepare_local_task_link($link)) {
+      $links[] = $link;
+    }
   }
+  $variables['primary'] = $links;
 
-  foreach ($variables['secondary'] as &$link) {
-    // @todo Handle access.
-    $link = _oe_bootstrap_theme_menu_link($link['#link']);
+  $links = [];
+  foreach ($variables['secondary'] as $link) {
+    if (_oe_bootstrap_theme_prepare_local_task_link($link)) {
+      $links[] = $link;
+    }
   }
+  $variables['secondary'] = $links;
+}
+
+/**
+ * Prepare a local task menu link.
+ *
+ * @param array $link
+ *   The menu link to alter.
+ *
+ * @return bool
+ *   The access result check.
+ */
+function _oe_bootstrap_theme_prepare_local_task_link(array &$link): bool {
+  if ($link['#access']->isForbidden()) {
+    return FALSE;
+  }
+  if ($link['#active']) {
+    $link['#link']['in_active_trail'] = TRUE;
+  }
+  $link = _oe_bootstrap_theme_menu_link($link['#link']);
+
+  return TRUE;
 }
 
 /**
@@ -140,7 +167,7 @@ function oe_bootstrap_theme_preprocess_menu_local_tasks(array &$variables): void
  * @return array
  *   The altered menu link.
  */
-function _oe_bootstrap_theme_menu_link(array $menu_link, array $bcl_attributes = []): array {
+function _oe_bootstrap_theme_menu_link(array $menu_link): array {
   $attributes = $menu_link['attributes'] ?? new Attribute();
   $attributes->addClass('nav-link');
 
@@ -150,5 +177,5 @@ function _oe_bootstrap_theme_menu_link(array $menu_link, array $bcl_attributes =
 
   $menu_link['attributes'] = $attributes;
 
-  return $menu_link + $bcl_attributes;
+  return $menu_link;
 }
