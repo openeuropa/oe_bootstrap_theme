@@ -266,6 +266,8 @@ class TwigExtension extends AbstractExtension {
   public function bclLink(Environment $env, $context): array {
     // We typecast because this parameter could be an array or an object.
     $context = (array) $context;
+    $context['url'] = $context['url'] ?? $context['path'];
+    $context['title'] = $context['title'] ?? $context['label'];
     // Set defaults.
     $variant = $context['variannt'] ?? '';
     $id = $context['id'] ?? '';
