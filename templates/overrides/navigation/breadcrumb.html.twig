@@ -1,26 +1,12 @@
 {#
 /**
  * @file
- * Default theme implementation for a breadcrumb trail.
- *
- * Available variables:
- * - breadcrumb: Breadcrumb trail items.
- *
- * @ingroup themeable
+ * Override for breadcrumb trail.
  */
 #}
-{% set _breadcrumb_links = {} %}
-{% for breadcrumb_item in breadcrumb %}
-  {% set _links = {
-    'label': breadcrumb_item.text,
-    'path': breadcrumb_item.url
-  } %}
-  {% set _breadcrumb_links = _breadcrumb_links|merge([_links]) %}
-{% endfor %}
-
-{% if _breadcrumb_links %}
+{% if breadcrumb %}
   {{ pattern('breadcrumb', {
-    'items': _breadcrumb_links,
+    'items': breadcrumb,
     'attributes': {
       'class': [
         'mt-3'
