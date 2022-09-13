@@ -1,5 +1,5 @@
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig
-index 6e08be9..ddc41ad 100644
+index 6e08be9..374f66d 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig
 +++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig
 @@ -111,7 +111,7 @@
@@ -11,6 +11,38 @@ index 6e08be9..ddc41ad 100644
        {% set _caption_classes = 'carousel-caption' %}
        {% if _item.caption is not empty and _item.link is empty %}
          {% set _caption_classes = _caption_classes ~ ' d-none d-md-block' %}
+diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
+index 0ccc7ec..f04fed5 100644
+--- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
++++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
+@@ -1,4 +1,4 @@
+-{% spaceless %}
++{% apply spaceless %}
+ 
+ {# Parameters:
+   - label (string) (default: '')
+@@ -72,18 +72,8 @@
+ {% if _classes is not empty %}
+   {% set attributes = attributes.addClass(_classes) %}
+ {% endif %}
+-{% set attributes = attributes.setAttribute('href', _path) %}
+ 
+-<a
+-  {{ attributes }}
+->
+-  {%- if _icon_position == 'before' and _icon_markup is defined -%}
+-    {{ _icon_markup|raw }}
+-  {%- endif -%}
+-  {{- _label -}}
+-  {%- if _icon_position == 'after' and _icon_markup is defined -%}
+-    {{ _icon_markup|raw }}
+-  {%- endif -%}
+-</a>
++{{ bcl_link(_label, _path, attributes, _icon_markup) }}
++
++{% endapply %}
+ 
+-{% endspaceless %}
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-pagination/pagination.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-pagination/pagination.html.twig
 index d33f381..ed77687 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-pagination/pagination.html.twig
