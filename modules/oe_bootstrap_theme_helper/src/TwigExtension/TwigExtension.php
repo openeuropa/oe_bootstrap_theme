@@ -273,7 +273,8 @@ class TwigExtension extends AbstractExtension {
 
     // Here we handle internal urls which already had toString() called.
     if (is_string($path) && !UrlHelper::isExternal($path)) {
-      $path = str_replace(base_path(), 'internal:', $path);
+      $path = str_replace(base_path(), '/', $path);
+      $path = Url::fromUserInput($path);
     }
 
     return $env->getExtension(CoreTwigExtension::class)->getLink($label, $path, $attributes);
