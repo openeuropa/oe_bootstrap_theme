@@ -168,6 +168,10 @@ function _oe_bootstrap_theme_prepare_local_task_link(array &$link): bool {
  *   The altered menu link.
  */
 function _oe_bootstrap_theme_menu_link(array $menu_link): array {
+  $link = $menu_link + [
+    'label' => $menu_link['title'],
+    'path' => $menu_link['url'],
+  ];
   $attributes = $menu_link['attributes'] ?? new Attribute();
   $attributes->addClass('nav-link');
 
@@ -175,7 +179,7 @@ function _oe_bootstrap_theme_menu_link(array $menu_link): array {
     $attributes->addClass('active');
   }
 
-  $menu_link['attributes'] = $attributes;
+  $link['attributes'] = $attributes;
 
-  return $menu_link;
+  return $link;
 }
