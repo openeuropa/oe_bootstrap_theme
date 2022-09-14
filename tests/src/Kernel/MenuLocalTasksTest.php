@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
+use Drupal\Core\Access\AccessResultAllowed;
+use Drupal\Core\Access\AccessResultForbidden;
 use Drupal\Core\Url;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -16,6 +18,8 @@ class MenuLocalTasksTest extends AbstractKernelTestBase {
    * Test menu local tasks.
    */
   public function testMenuLocalTasks(): void {
+    $access_allowed = new AccessResultAllowed();
+    $access_forbidden = new AccessResultForbidden();
     $render = [
       '#theme' => 'menu_local_tasks',
       '#primary' => [
@@ -27,6 +31,7 @@ class MenuLocalTasksTest extends AbstractKernelTestBase {
           ],
           '#active' => TRUE,
           '#weight' => 10,
+          '#access' => $access_allowed,
         ],
         'link2.link' => [
           '#theme' => 'menu_local_task',
@@ -36,6 +41,7 @@ class MenuLocalTasksTest extends AbstractKernelTestBase {
           ],
           '#active' => FALSE,
           '#weight' => -10,
+          '#access' => $access_allowed,
         ],
         'link3.link' => [
           '#theme' => 'menu_local_task',
@@ -45,6 +51,7 @@ class MenuLocalTasksTest extends AbstractKernelTestBase {
           ],
           '#active' => FALSE,
           '#weight' => 0,
+          '#access' => $access_allowed,
         ],
       ],
       '#secondary' => [
@@ -56,6 +63,7 @@ class MenuLocalTasksTest extends AbstractKernelTestBase {
           ],
           '#active' => TRUE,
           '#weight' => 10,
+          '#access' => $access_allowed,
         ],
         'link5.link' => [
           '#theme' => 'menu_local_task',
@@ -65,6 +73,7 @@ class MenuLocalTasksTest extends AbstractKernelTestBase {
           ],
           '#active' => FALSE,
           '#weight' => -10,
+          '#access' => $access_allowed,
         ],
         'link6.link' => [
           '#theme' => 'menu_local_task',
@@ -74,6 +83,17 @@ class MenuLocalTasksTest extends AbstractKernelTestBase {
           ],
           '#active' => FALSE,
           '#weight' => 0,
+          '#access' => $access_allowed,
+        ],
+        'link7.link' => [
+          '#theme' => 'menu_local_task',
+          '#link' => [
+            'title' => 'Forbidden link',
+            'url' => Url::fromUri('http://www.forbiddenlink.com'),
+          ],
+          '#active' => FALSE,
+          '#weight' => 0,
+          '#access' => $access_forbidden,
         ],
       ],
     ];
@@ -82,9 +102,11 @@ class MenuLocalTasksTest extends AbstractKernelTestBase {
     $crawler = new Crawler($html);
 
     $nav = $crawler->filter('nav.nav-tabs');
-    $this->assertCount(2, $nav);
+    $this->assertCount(1, $nav);
+    $nav = $crawler->filter('nav.nav-pills');
+    $this->assertCount(1, $nav);
 
-    $links = $crawler->filter('a.nav-link.standalone');
+    $links = $crawler->filter('a.nav-link');
     $this->assertCount(6, $links);
 
     $active = $crawler->filter('a.active');
