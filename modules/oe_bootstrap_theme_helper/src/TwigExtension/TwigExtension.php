@@ -4,11 +4,9 @@ declare(strict_types = 1);
 
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
-use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
-use Drupal\Core\Render\Markup;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
@@ -76,7 +74,6 @@ class TwigExtension extends AbstractExtension {
   public function getFunctions(): array {
     return [
       new TwigFunction('bcl_link', [$this, 'bclLink'], [
-        'needs_context' => TRUE,
         'needs_environment' => TRUE,
       ]),
     ];
@@ -259,113 +256,34 @@ class TwigExtension extends AbstractExtension {
    *
    * @param \Twig\Environment $env
    *   The env.
-   * @param mixed $context
-   *   The context.
+   * @param string $label
+   *   The link text for the anchor tag as a translated string.
+   * @param \Drupal\Core\Url|string $path
+   *   The URL object or string used for the link.
+   * @param array|\Drupal\Core\Template\Attribute $attributes
+   *   An optional array or Attribute object of link attributes.
    *
    * @return array
    *   The link render array.
    */
-  public function bclLink(Environment $env, $context): array {
-    // We typecast because this parameter could be an array or an object.
-    $context = (array) $context;
-    $context['url'] = $context['url'] ?? $context['path'];
-    $context['title'] = $context['title'] ?? $context['label'];
-
-    if (empty($context['url'])) {
+  public function bclLink(Environment $env, $label, $path, Attribute $attributes): array {
+    if (empty($path)) {
       return [
         '#type' => 'inline_template',
-        '#template' => '<span>{{ item.title }}</span>',
+        '#template' => '<span>{{ label }}</span>',
         '#context' => [
-          'item' => $context,
+          'label' => $label,
         ],
       ];
     }
-    // Set defaults.
-    $variant = $context['variannt'] ?? '';
-    $id = $context['id'] ?? '';
-    $disabled = $context['disabled'] ?? FALSE;
-    $standalone = $context['standalone'] ?? FALSE;
-    $attributes = $context['attributes'] ?? new Attribute();
-
-    if (isset($context['icon'])) {
-      $context['title'] = $this->addBclIcon($context);
-    }
-
-    if ($disabled) {
-      $attributes->addClass('disabled')
-        ->setAttribute('aria-disabled', 'true')
-        ->setAttribute('tabindex', '-1');
-    }
-
-    if (!empty($variant)) {
-      $attributes->addClass('link-' . $variant);
-    }
-
-    if (!empty($id)) {
-      $attributes->setAttribute('id', $id);
-    }
-
-    if ($standalone) {
-      $attributes->addClass('standalone');
-    }
 
     // When url is a string and internal path Url::fromUri would fail.
-    if (is_string($context['url']) && !UrlHelper::isExternal($context['url'])) {
-      $context['url'] = str_replace(base_path(), '/', $context['url']);
-      $context['url'] = Url::fromUserInput($context['url']);
+    if (is_string($path) && !UrlHelper::isExternal($path)) {
+      $path = str_replace(base_path(), '/', $path);
+      $path = Url::fromUserInput($path);
     }
 
-    return $env->getExtension(CoreTwigExtension::class)->getLink($context['title'], $context['url'], $attributes);
-  }
-
-  /**
-   * Add a BCL icon to the link title.
-   *
-   * @param array $context
-   *   The link data.
-   *
-   * @return \Drupal\Component\Render\MarkupInterface
-   *   The link title markup.
-   */
-  protected function addBclIcon(array $context): MarkupInterface {
-    $icon = (array) $context['icon'];
-
-    if (empty($icon)) {
-      return Markup::create($context['title']);
-    }
-
-    $icon_position = $context['icon_position'] ?? 'after';
-    $remove_icon_spacers = $context['remove_icon_spacers'] ?? FALSE;
-
-    $icon_build = [
-      '#type' => 'pattern',
-      '#id' => 'icon',
-      '#fields' => $icon,
-    ];
-
-    if (!empty($context['title']) && !$remove_icon_spacers) {
-      $icon_attributes = $icon['attributes'] ?? new Attribute();
-
-      if ($icon_position === 'before') {
-        $icon_attributes->addClass('me-2-5');
-      }
-      else {
-        $icon_attributes->addClass('ms-2-5');
-      }
-
-      $icon_build['#fields']['attributes'] = $icon_attributes;
-    }
-
-    $icon_markup = $this->renderer->render($icon_build);
-
-    if ($icon_position === 'before') {
-      $context['title'] = $icon_markup . $context['title'];
-    }
-    else {
-      $context['title'] = $context['title'] . $icon_markup;
-    }
-
-    return Markup::create($context['title']);
+    return $env->getExtension(CoreTwigExtension::class)->getLink($label, $path, $attributes);
   }
 
 }

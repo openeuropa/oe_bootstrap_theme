@@ -12,7 +12,7 @@ index 6e08be9..374f66d 100644
        {% if _item.caption is not empty and _item.link is empty %}
          {% set _caption_classes = _caption_classes ~ ' d-none d-md-block' %}
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
-index 0ccc7ec..f04fed5 100644
+index 0ccc7ec..8223d2f 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
 +++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
 @@ -1,4 +1,4 @@
@@ -21,7 +21,7 @@ index 0ccc7ec..f04fed5 100644
  
  {# Parameters:
    - label (string) (default: '')
-@@ -72,18 +72,8 @@
+@@ -72,11 +72,8 @@
  {% if _classes is not empty %}
    {% set attributes = attributes.addClass(_classes) %}
  {% endif %}
@@ -30,15 +30,18 @@ index 0ccc7ec..f04fed5 100644
 -<a
 -  {{ attributes }}
 ->
--  {%- if _icon_position == 'before' and _icon_markup is defined -%}
--    {{ _icon_markup|raw }}
--  {%- endif -%}
--  {{- _label -}}
--  {%- if _icon_position == 'after' and _icon_markup is defined -%}
--    {{ _icon_markup|raw }}
--  {%- endif -%}
++{%- set _label -%}
+   {%- if _icon_position == 'before' and _icon_markup is defined -%}
+     {{ _icon_markup|raw }}
+   {%- endif -%}
+@@ -84,6 +81,9 @@
+   {%- if _icon_position == 'after' and _icon_markup is defined -%}
+     {{ _icon_markup|raw }}
+   {%- endif -%}
 -</a>
-+{{ bcl_link(_label, _path, attributes, _icon_markup) }}
++{%- endset -%}
++
++  {{ bcl_link(_label, _path, attributes, _icon_markup) }}
 +
 +{% endapply %}
  
