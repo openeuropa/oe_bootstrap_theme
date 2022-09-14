@@ -19,7 +19,7 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
 
   $menu_preprocess = \Drupal::classResolver(MenuPreprocess::class);
   foreach ($variables['items'] as &$item) {
-    $item = $menu_preprocess->bclMenuLink($item);
+    $item = $menu_preprocess->bclMenuLink($item, ['nav-link']);
 
     if (empty($item['below'])) {
       continue;

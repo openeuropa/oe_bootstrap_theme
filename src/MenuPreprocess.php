@@ -18,17 +18,19 @@ class MenuPreprocess {
    *
    * @param array $menu_link
    *   The menu link to alter.
+   * @param array $extra_classes
+   *   Extra classes for the link.
    *
    * @return array
    *   The altered menu link.
    */
-  public function bclMenuLink(array $menu_link): array {
+  public function bclMenuLink(array $menu_link, array $extra_classes = []): array {
     $link = $menu_link + [
       'label' => $menu_link['title'],
       'path' => $menu_link['url'],
     ];
     $attributes = $menu_link['attributes'] ?? new Attribute();
-    $attributes->addClass('nav-link');
+    $attributes->addClass($extra_classes);
 
     if (!empty($menu_link['in_active_trail'])) {
       $attributes->addClass('active');
