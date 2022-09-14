@@ -7,7 +7,7 @@
 
 declare(strict_types = 1);
 
-use Drupal\Core\Template\Attribute;
+use Drupal\oe_bootstrap_theme\MenuPreprocess;
 
 /**
  * Implements hook_preprocess_menu().
@@ -17,15 +17,16 @@ function oe_bootstrap_theme_preprocess_menu(&$variables, $hook) {
     return;
   }
 
+  $menu_preprocess = \Drupal::classResolver(MenuPreprocess::class);
   foreach ($variables['items'] as &$item) {
-    $item = _oe_bootstrap_theme_menu_link($item);
+    $item = $menu_preprocess->bclMenuLink($item);
 
     if (empty($item['below'])) {
       continue;
     }
 
     foreach ($item['below'] as &$sub_item) {
-      $sub_item = _oe_bootstrap_theme_menu_link($sub_item);
+      $sub_item = $menu_preprocess->bclMenuLink($sub_item);
     }
 
     $item = [
@@ -120,66 +121,7 @@ function oe_bootstrap_theme_preprocess_menu_local_tasks(array &$variables): void
     'sortByWeightProperty',
   ]);
 
-  $links = [];
-  foreach ($variables['primary'] as $link) {
-    if (_oe_bootstrap_theme_prepare_local_task_link($link)) {
-      $links[] = $link;
-    }
-  }
-  $variables['primary'] = $links;
-
-  $links = [];
-  foreach ($variables['secondary'] as $link) {
-    if (_oe_bootstrap_theme_prepare_local_task_link($link)) {
-      $links[] = $link;
-    }
-  }
-  $variables['secondary'] = $links;
-}
-
-/**
- * Prepare a local task menu link.
- *
- * @param array $link
- *   The menu link to alter.
- *
- * @return bool
- *   The access result check.
- */
-function _oe_bootstrap_theme_prepare_local_task_link(array &$link): bool {
-  if ($link['#access']->isForbidden()) {
-    return FALSE;
-  }
-  if ($link['#active']) {
-    $link['#link']['in_active_trail'] = TRUE;
-  }
-  $link = _oe_bootstrap_theme_menu_link($link['#link']);
-
-  return TRUE;
-}
-
-/**
- * Adapts a menu link to BCL requirements.
- *
- * @param array $menu_link
- *   The menu link to alter.
- *
- * @return array
- *   The altered menu link.
- */
-function _oe_bootstrap_theme_menu_link(array $menu_link): array {
-  $link = $menu_link + [
-    'label' => $menu_link['title'],
-    'path' => $menu_link['url'],
-  ];
-  $attributes = $menu_link['attributes'] ?? new Attribute();
-  $attributes->addClass('nav-link');
-
-  if (!empty($menu_link['in_active_trail'])) {
-    $attributes->addClass('active');
-  }
-
-  $link['attributes'] = $attributes;
-
-  return $link;
+  $menu_preprocess = \Drupal::classResolver(MenuPreprocess::class);
+  $variables['primary'] = $menu_preprocess->prepareLocalTasks($variables['primary']);
+  $variables['secondary'] = $menu_preprocess->prepareLocalTasks($variables['secondary']);
 }
