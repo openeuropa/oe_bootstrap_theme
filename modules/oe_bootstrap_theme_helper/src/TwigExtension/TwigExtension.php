@@ -268,19 +268,12 @@ class TwigExtension extends AbstractExtension {
    */
   public function bclLink(Environment $env, $label, $path, Attribute $attributes): array {
     if (empty($path)) {
-      return [
-        '#type' => 'inline_template',
-        '#template' => '<span>{{ label }}</span>',
-        '#context' => [
-          'label' => $label,
-        ],
-      ];
+      $path = 'route:<nolink>';
     }
 
-    // When url is a string and internal path Url::fromUri would fail.
+    // Here we handle internal urls which already had toString() called.
     if (is_string($path) && !UrlHelper::isExternal($path)) {
-      $path = str_replace(base_path(), '/', $path);
-      $path = Url::fromUserInput($path);
+      $path = str_replace(base_path(), 'internal:', $path);
     }
 
     return $env->getExtension(CoreTwigExtension::class)->getLink($label, $path, $attributes);
