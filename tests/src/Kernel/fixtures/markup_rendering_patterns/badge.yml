@@ -1,3 +1,28 @@
+badge_with_all_values:
+  render:
+    '#type': pattern
+    '#id': badge
+    '#fields':
+      settings:
+        background: 'danger'
+        rounded_pill: true
+        dismissible: true
+        outline: true
+      label: 'A simple badge!'
+      url: 'https://example.com'
+      title: 'The badge title'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\BadgePatternAssert
+      expected:
+        settings:
+          background: 'danger'
+          rounded_pill: true
+          dismissible: true
+          outline: true
+        label: 'A simple badge!'
+        url: 'https://example.com'
+        title: 'The badge title'
 badge_dimissible_with_rounded_pill:
   render:
     '#type': pattern
@@ -9,13 +34,14 @@ badge_dimissible_with_rounded_pill:
         background: 'secondary'
       label: 'A simple badge!'
   assertions:
-    count:
-      'span[data-drupal-selector=badge]': 1
-      'span.rounded-pill': 1
-      'span.badge.bg-secondary': 1
-      'span.icon--close': 1
-    equals:
-      'span.badge.bg-secondary': 'A simple badge!<span class="icon--close" aria-hidden="true"><svg class="bi icon--s"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#x-lg"></use></svg></span>'
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\BadgePatternAssert
+      expected:
+        settings:
+          dismissible: true
+          rounded_pill: true
+          background: 'secondary'
+        label: 'A simple badge!'
 badge_non_dimissible_without_rounded_pill:
   render:
     '#type': pattern
@@ -27,13 +53,14 @@ badge_non_dimissible_without_rounded_pill:
         background: 'danger'
       label: 'A simple badge!'
   assertions:
-    count:
-      'span[data-drupal-selector=badge]': 1
-      'span.rounded-pill': 0
-      'span.badge.bg-danger': 1
-      'span.icon--close': 0
-    equals:
-      'span.badge.bg-danger': 'A simple badge!'
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\BadgePatternAssert
+      expected:
+        settings:
+          dismissible: false
+          rounded_pill: false
+          background: 'danger'
+        label: 'A simple badge!'
 badge_with_url:
   render:
     '#type': pattern
@@ -46,10 +73,12 @@ badge_with_url:
       label: 'A simple badge!'
       url: 'https://example.com'
   assertions:
-    count:
-      'a[data-drupal-selector=badge]': 1
-      'a.rounded-pill': 1
-      'a.badge.bg-secondary': 1
-      'a > span.icon--close': 1
-    equals:
-      'a.badge.bg-secondary': 'A simple badge!<span class="icon--close" aria-hidden="true"><svg class="bi icon--s"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#x-lg"></use></svg></span>'
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\BadgePatternAssert
+      expected:
+        settings:
+          dismissible: true
+          rounded_pill: true
+          background: 'secondary'
+        label: 'A simple badge!'
+        url: 'https://example.com'
