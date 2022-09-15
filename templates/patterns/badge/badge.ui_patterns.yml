@@ -25,6 +25,10 @@ badge:
       label: 'Dismissible badge. Optional'
       description: 'Add a close icon at the end of the badge.'
       preview: true
+    outline:
+      type: boolean
+      label: 'Outine.'
+      description: 'Use a border instead of a background.'
   fields:
     label:
       type: text
