@@ -12,22 +12,33 @@
     {% endblock %}
   {% endset %}
   {% set _item = slide|merge({
-    'image': _image
+    'image': _image,
   }) %}
+  {% if slide.link %}
+    {% set _item = _item|merge({
+      'link': slide.link|merge({
+        'icon_position': 'before',
+        'icon': {
+          'name': 'link',
+          'path': bcl_icon_path,
+        },
+      }),
+    }) %}
+  {% endif %}
   {% set _slides = _slides|merge([_item]) %}
 {% endfor %}
 {% include '@oe-bcl/carousel' with {
   'id': carousel_id,
-  'autoplay': autoplay,
-  'autoinit': autoinit,
+  'autoplay': autoplay ?? true,
+  'autoinit': autoinit ?? true,
   'dark': dark_mode,
   'active_item': active_item,
   'items': _slides,
-  'fade': fade,
-  'with_controls': show_controls,
+  'fade': fade ?? false,
+  'with_controls': show_controls ?? true,
   'prev_label': 'Previous'|t,
   'next_label': 'Next'|t,
-  'with_indicators': show_indicators,
-  'disable_touch': disable_touch,
+  'with_indicators': show_indicators ?? false,
+  'disable_touch': disable_touch ?? false,
   'attributes': attributes,
 } only %}

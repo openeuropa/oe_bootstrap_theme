@@ -1,3 +1,16 @@
+diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig
+index 6e08be9..ddc41ad 100644
+--- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig
++++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig
+@@ -111,7 +111,7 @@
+     {% if _item.image is defined and _item.image is not empty %}
+       {{ _item.image }}
+     {% endif %}
+-    {% if (_item.caption is defined and _item.caption is not empty) or (_item.link is defined and _item.link is not empty) %}
++    {% if (_item.caption is defined and _item.caption is not empty) or (_item.link is defined and _item.link is not empty)  or (_item.caption_title is defined and _item.caption_title is not empty) %}
+       {% set _caption_classes = 'carousel-caption' %}
+       {% if _item.caption is not empty and _item.link is empty %}
+         {% set _caption_classes = _caption_classes ~ ' d-none d-md-block' %}
 diff --git a/node_modules/@openeuropa/bcl-theme-default/src/scss/base/_layout.scss b/node_modules/@openeuropa/bcl-theme-default/src/scss/base/_layout.scss
 index 5d2dfcf..0e8a90f 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/src/scss/base/_layout.scss

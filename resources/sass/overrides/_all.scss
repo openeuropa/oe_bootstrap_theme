@@ -14,3 +14,8 @@ button.link {
   text-decoration: underline;
   appearance: none;
 }
+
+// Avoid z-index clashing between BCL components and Webtools Cookie Consent Kit.
+body .cck-container {
+  z-index: 9999 !important;
+}
