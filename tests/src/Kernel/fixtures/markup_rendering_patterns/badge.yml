@@ -23,6 +23,26 @@ badge_with_all_values:
         label: 'A simple badge!'
         url: 'https://example.com'
         title: 'The badge title'
+badge_no_settings_sent:
+  render:
+    '#type': pattern
+    '#id': badge
+    '#fields':
+      label: 'A simple badge!'
+      url: 'https://example.com'
+      title: 'The badge title'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\BadgePatternAssert
+      expected:
+        settings:
+          background: 'primary'
+          rounded_pill: false
+          dismissible: false
+          outline: false
+        label: 'A simple badge!'
+        url: 'https://example.com'
+        title: 'The badge title'
 badge_dimissible_with_rounded_pill:
   render:
     '#type': pattern
