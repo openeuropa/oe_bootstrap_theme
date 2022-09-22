@@ -27,7 +27,7 @@ badge:
       preview: true
     outline:
       type: boolean
-      label: 'Outine.'
+      label: 'Outline.'
       description: 'Use a border instead of a background.'
   fields:
     label:
