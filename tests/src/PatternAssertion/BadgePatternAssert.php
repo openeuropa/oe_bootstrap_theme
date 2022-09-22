@@ -58,8 +58,10 @@ class BadgePatternAssert extends BasePatternAssert {
 
     if (!empty($expected['outline'])) {
       $this->assertElementExists('.badge-outline-' . $background, $crawler);
+      $this->assertElementNotExists('.bg-' . $background, $crawler);
     }
     else {
+      $this->assertElementNotExists('.badge-outline-' . $background, $crawler);
       $this->assertElementExists('.bg-' . $background, $crawler);
     }
 
