@@ -57,6 +57,17 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
     $variant = $this->getPatternVariant($html);
     $this->assertBaseElements($html, $variant);
     $assertion_map = $this->getAssertions($variant);
+
+    // Add support for asserting the variant if the expected value is passed.
+    // We add the assertion only if a custom one wasn't specified already.
+    if (array_key_exists('variant', $expected) && !array_key_exists('variant', $assertion_map)) {
+      $assertion_map['variant'] = [
+        [self::class . '::assertEquals'],
+        $variant,
+        '',
+      ];
+    }
+
     $crawler = new Crawler($html);
     foreach ($expected as $name => $expected_value) {
       if (!array_key_exists($name, $assertion_map)) {
