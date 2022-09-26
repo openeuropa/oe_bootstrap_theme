@@ -12,7 +12,7 @@ index 6e08be9..374f66d 100644
        {% if _item.caption is not empty and _item.link is empty %}
          {% set _caption_classes = _caption_classes ~ ' d-none d-md-block' %}
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
-index 0ccc7ec..4e50e97 100644
+index 0ccc7ec..97082d8 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
 +++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
 @@ -1,4 +1,4 @@
@@ -50,7 +50,7 @@ index 0ccc7ec..4e50e97 100644
 +  {%- endset -%}
 +{%- endif -%}
 +
-+{{ bcl_link(_label, _path, attributes, _icon_markup) }}
++{{ bcl_link(_label, _path, attributes) }}
 +
 +{% endapply %}
  
