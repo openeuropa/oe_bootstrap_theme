@@ -115,6 +115,53 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
   }
 
   /**
+   * Asserts that an element contains a class.
+   *
+   * @param string|null $expected
+   *   The expected value.
+   * @param string $selector
+   *   The CSS selector to find the element.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertElementHasClass($expected, string $selector, Crawler $crawler): void {
+    $this->assertElementExists($selector, $crawler);
+    $class = $crawler->filter($selector)->attr('class');
+
+    self::assertNotNull($class, \sprintf(
+      'Element %s does not have a class attribute.',
+      $expected
+    ));
+    self::assertStringContainsString($expected, $class, \sprintf(
+      'Expected class "%s" is not contained in the "%s" element class attribute.',
+      $expected, $selector
+    ));
+  }
+
+  /**
+   * Asserts that an element does not contain a class.
+   *
+   * @param string|null $expected
+   *   The expected value.
+   * @param string $selector
+   *   The CSS selector to find the element.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertElementNotHasClass($expected, string $selector, Crawler $crawler): void {
+    $this->assertElementExists($selector, $crawler);
+    $class = $crawler->filter($selector)->attr('class');
+
+    if (is_null($class)) {
+      return;
+    }
+    self::assertStringNotContainsString($expected, $class, \sprintf(
+      'Class "%s" is contained in the %s element class attribute but should not be.',
+      $expected, $selector
+    ));
+  }
+
+  /**
    * Asserts the text of a particular element.
    *
    * @param string|null $expected
