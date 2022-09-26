@@ -267,14 +267,33 @@ class TwigExtension extends AbstractExtension {
    *   The link render array.
    */
   public function bclLink(Environment $env, $label, $path, Attribute $attributes): array {
-    if (empty($path)) {
-      $path = 'route:<nolink>';
-    }
-
-    // Here we handle internal urls which already had toString() called.
     if (is_string($path) && !UrlHelper::isExternal($path)) {
-      $path = str_replace(base_path(), '/', $path);
-      $path = Url::fromUserInput($path);
+      // At this point $path is an internal URI, but unfortunately
+      // Url::fromInternalUri is a protected method, so we have to
+      // re-implement it here.
+      // @see \Drupal\Core\Url::fromInternalUri()
+      if (empty($path)) {
+        $path = '<none>';
+      }
+      elseif ($path === '/') {
+        $path = '<front>';
+      }
+
+      // Some paths (like the ones sent form the breadcrumb) already have the
+      // base_path included, since they are in string format we need to strip
+      // the base_path before creating the Url object to prevent double
+      // prefixing.
+      $base_path = \base_path();
+      if (substr($path, 0, strlen($base_path)) == $base_path) {
+        $path = substr($path, strlen($base_path));
+      }
+
+      if ($path[0] === '/') {
+        $path = substr($path, 1);
+      }
+
+      $path = \Drupal::pathValidator()
+        ->getUrlIfValidWithoutAccessCheck($path) ?: Url::fromUri('base:' . $path);
     }
 
     return $env->getExtension(CoreTwigExtension::class)->getLink($label, $path, $attributes);
