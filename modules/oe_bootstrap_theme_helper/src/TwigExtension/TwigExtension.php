@@ -268,6 +268,15 @@ class TwigExtension extends AbstractExtension {
    */
   public function bclLink(Environment $env, $label, $path, Attribute $attributes): array {
     if (is_string($path) && !UrlHelper::isExternal($path)) {
+      // Some paths (like the ones sent form the breadcrumb) already have the
+      // base_path included, since they are in string format we need to strip
+      // the base_path before creating the Url object to prevent double
+      // prefixing.
+      $base_path = \base_path();
+      if ($path !== '/' && substr($path, 0, strlen($base_path)) === $base_path) {
+        $path = substr($path, strlen($base_path));
+      }
+
       // At this point $path is an internal URI, but unfortunately
       // Url::fromInternalUri is a protected method, so we have to
       // re-implement it here.
@@ -277,15 +286,6 @@ class TwigExtension extends AbstractExtension {
       }
       elseif ($path === '/') {
         $path = '<front>';
-      }
-
-      // Some paths (like the ones sent form the breadcrumb) already have the
-      // base_path included, since they are in string format we need to strip
-      // the base_path before creating the Url object to prevent double
-      // prefixing.
-      $base_path = \base_path();
-      if (substr($path, 0, strlen($base_path)) == $base_path) {
-        $path = substr($path, strlen($base_path));
       }
 
       if ($path[0] === '/') {
