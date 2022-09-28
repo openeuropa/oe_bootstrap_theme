@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
-use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
@@ -14,6 +14,7 @@ use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
+use Twig\Markup as TwigMarkup;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
@@ -267,33 +268,18 @@ class TwigExtension extends AbstractExtension {
    *   The link render array.
    */
   public function bclLink(Environment $env, $label, $path, Attribute $attributes): array {
-    if (is_string($path) && !UrlHelper::isExternal($path)) {
-      // Some paths (like the ones sent form the breadcrumb) already have the
-      // base_path included, since they are in string format we need to strip
-      // the base_path before creating the Url object to prevent double
-      // prefixing.
-      $base_path = \base_path();
-      if ($path !== '/' && substr($path, 0, strlen($base_path)) === $base_path) {
-        $path = substr($path, strlen($base_path));
+    if (is_string($path)) {
+      // The text has been processed by twig already, convert it to a safe
+      // object for the render system.
+      if ($label instanceof TwigMarkup) {
+        $label = Markup::create($label);
       }
-
-      // At this point $path is an internal URI, but unfortunately
-      // Url::fromInternalUri is a protected method, so we have to
-      // re-implement it here.
-      // @see \Drupal\Core\Url::fromInternalUri()
-      if (empty($path)) {
-        $path = '<none>';
-      }
-      elseif ($path === '/') {
-        $path = '<front>';
-      }
-
-      if ($path[0] === '/') {
-        $path = substr($path, 1);
-      }
-
-      $path = \Drupal::pathValidator()
-        ->getUrlIfValidWithoutAccessCheck($path) ?: Url::fromUri('base:' . $path);
+      return [
+        '#type' => 'html_tag',
+        '#tag' => 'a',
+        '#value' => $label,
+        '#attributes' => $attributes->setAttribute('href', $path),
+      ];
     }
 
     return $env->getExtension(CoreTwigExtension::class)->getLink($label, $path, $attributes);
