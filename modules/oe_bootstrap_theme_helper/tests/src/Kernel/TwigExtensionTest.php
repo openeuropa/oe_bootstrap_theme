@@ -8,6 +8,7 @@ use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 use Symfony\Component\DomCrawler\Crawler;
+use Twig\Markup;
 
 /**
  * Test those Twig extensions that require Drupal to be bootstrapped.
@@ -67,7 +68,7 @@ class TwigExtensionTest extends AbstractKernelTestBase {
       ],
       'string_path_front_with_hash' => [
         [
-          'href' => '/user/login#kitty',
+          'href' => '/#kitty',
           'text' => 'Miau',
         ],
         [
@@ -77,7 +78,7 @@ class TwigExtensionTest extends AbstractKernelTestBase {
       ],
       'string_path_current_url_with_hash' => [
         [
-          'href' => '/user/login#kitty',
+          'href' => '#kitty',
           'text' => 'Miau',
         ],
         [
@@ -87,7 +88,7 @@ class TwigExtensionTest extends AbstractKernelTestBase {
       ],
       'just_hash' => [
         [
-          'href' => '/user/login',
+          'href' => '#',
           'text' => 'hash',
         ],
         [
@@ -97,7 +98,7 @@ class TwigExtensionTest extends AbstractKernelTestBase {
       ],
       'string_path_current_url_with_parameters' => [
         [
-          'href' => '/user/login?foo=baz',
+          'href' => '?foo=baz',
           'text' => 'My link',
         ],
         [
@@ -122,13 +123,15 @@ class TwigExtensionTest extends AbstractKernelTestBase {
         ],
         [
           'path' => '/',
-          'label' => ['#markup' => 'This is <em>markup</em>!'],
+          // Emulate markup as sent by twig.
+          'label' => new Markup('This is <em>markup</em>!', NULL),
         ],
       ],
       'label_with_unsafe_markup' => [
         [
           'href' => '/',
-          'text' => 'This is &lt;script type="text/javascript"&gt;unsafe&lt;/script&gt; &lt;em&gt;markup&lt;/em&gt;!',
+          // Xss filtered markup.
+          'text' => 'This is unsafe <em>markup</em>!',
         ],
         [
           'path' => '/',
