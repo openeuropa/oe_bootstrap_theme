@@ -28,7 +28,3 @@ icon:
         2xl: '2xl'
         fluid: 'fluid'
       preview: 'xl'
-    attributes:
-      type: Attribute
-      label: 'Attributes'
-      description: 'A drupal Attribute object.'
