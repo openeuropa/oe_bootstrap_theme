@@ -22,6 +22,9 @@ class IconPatternAssert extends BasePatternAssert {
       'size' => [
         [$this, 'assertSize'],
       ],
+      'attributes' => [
+        [$this, 'assertAttributes'],
+      ],
     ];
   }
 
@@ -62,6 +65,20 @@ class IconPatternAssert extends BasePatternAssert {
    */
   protected function assertSize(string $expected, Crawler $crawler): void {
     $this->assertElementExists('svg.icon--' . $expected, $crawler);
+  }
+
+  /**
+   * Asserts the icon pattern attributes.
+   *
+   * @param array[] $expected
+   *   The expected settings.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The crawler.
+   */
+  protected function assertAttributes(array $expected, Crawler $crawler): void {
+    foreach ($expected as $attribute => $value) {
+      $this->assertElementAttribute($value, 'svg', $attribute, $crawler);
+    }
   }
 
 }
