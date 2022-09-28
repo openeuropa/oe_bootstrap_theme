@@ -95,7 +95,7 @@ class LinkPatternAssert extends BasePatternAssert {
       // If no icon or no label is set then the position is irrelevant.
       if (count($link->childNodes) === 2) {
         $node_name = $expected['icon_position'] === 'before' ? 'svg' : '#text';
-        self::assertSame($node_name, $link->firstChild->nodeName);
+        self::assertEquals($node_name, $link->firstChild->nodeName);
       }
     }
 
