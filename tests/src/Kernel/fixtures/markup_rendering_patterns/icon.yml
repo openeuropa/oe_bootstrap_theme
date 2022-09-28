@@ -46,3 +46,20 @@ icon_name_with_size_fluid:
       expected:
         name: 'eye'
         size: 'fluid'
+icon_with_attributes:
+  render:
+    '#type': pattern
+    '#id': 'icon'
+    '#fields':
+      name: 'eye'
+      attributes:
+        id: 'icon-id'
+        data-attribute: 'some-value'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\IconPatternAssert
+      expected:
+        name: 'eye'
+        attributes:
+          id: 'icon-id'
+          data-attribute: 'some-value'
