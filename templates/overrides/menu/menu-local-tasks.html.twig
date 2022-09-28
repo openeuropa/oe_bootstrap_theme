@@ -5,6 +5,7 @@
  */
 #}
 {% if primary %}
+  <h2 class="visually-hidden">{{ 'Primary tabs'|t }}</h2>
   {{ pattern('navigation', {
     'variant': 'tabs',
     'items': primary,
@@ -12,6 +13,7 @@
 {% endif %}
 
 {% if secondary %}
+  <h2 class="visually-hidden">{{ 'Secondary tabs'|t }}</h2>
   {{ pattern('navigation', {
     'variant': 'pills',
     'items': secondary,
