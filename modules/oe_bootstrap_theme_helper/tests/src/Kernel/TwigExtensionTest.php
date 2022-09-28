@@ -36,12 +36,12 @@ class TwigExtensionTest extends AbstractKernelTestBase {
       $crawler = new Crawler($output);
       $link = $crawler->filter('a');
 
-      $this->assertSame($expected['href'], $link->attr('href'));
-      $this->assertSame($expected['text'], $link->html());
+      $this->assertEquals($expected['href'], $link->attr('href'));
+      $this->assertEquals($expected['text'], $link->html());
 
       if (!empty($expected['attributes'])) {
         foreach ($expected['attributes'] as $name => $value) {
-          $this->assertSame($value, $link->attr($name));
+          $this->assertEquals($value, $link->attr($name));
         }
       }
     }
