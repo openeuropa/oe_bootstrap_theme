@@ -1,10 +1,24 @@
 # Change Log
 
+## [1.0.0-beta6](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta6) (2022-09-29)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta5...1.0.0-beta6)
+
+**Merged pull requests:**
+
+- OEL-2059: Drop patch as it doesn't apply. [\#275](https://github.com/openeuropa/oe_bootstrap_theme/pull/275) ([brummbar](https://github.com/brummbar))
+- OEL-1910: Drupal 9.4 support. [\#273](https://github.com/openeuropa/oe_bootstrap_theme/pull/273) ([drishu](https://github.com/drishu))
+- OEL-1989: Add outline parameter to badges. [\#272](https://github.com/openeuropa/oe_bootstrap_theme/pull/272) ([drishu](https://github.com/drishu))
+- OEL-2006: Add glossary variant to pagination pattern. [\#269](https://github.com/openeuropa/oe_bootstrap_theme/pull/269) ([brummbar](https://github.com/brummbar))
+- OEL-2008: Avoid z-index clashing with Webtools CCK. [\#268](https://github.com/openeuropa/oe_bootstrap_theme/pull/268) ([brummbar](https://github.com/brummbar))
+- OEL-1983: Replace deprecated module\_load\_include\(\) [\#266](https://github.com/openeuropa/oe_bootstrap_theme/pull/266) ([claudiu-cristea](https://github.com/claudiu-cristea))
+- OEL-1912: Revamp carousel pattern. [\#265](https://github.com/openeuropa/oe_bootstrap_theme/pull/265) ([drishu](https://github.com/drishu))
+
 ## [1.0.0-beta5](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta5) (2022-08-09)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta4...1.0.0-beta5)
 
 **Merged pull requests:**
 
+- Prepare changelog for release 1.0.0-beta5. [\#263](https://github.com/openeuropa/oe_bootstrap_theme/pull/263) ([drishu](https://github.com/drishu))
 - OEL-1875: Fix path generation when used from browser tests. [\#262](https://github.com/openeuropa/oe_bootstrap_theme/pull/262) ([brummbar](https://github.com/brummbar))
 - OEL-1650: Add links to content\_banner pattern. [\#261](https://github.com/openeuropa/oe_bootstrap_theme/pull/261) ([drishu](https://github.com/drishu))
 - OEL-1823: BCL 0.24.0 [\#253](https://github.com/openeuropa/oe_bootstrap_theme/pull/253) ([escuriola](https://github.com/escuriola))
