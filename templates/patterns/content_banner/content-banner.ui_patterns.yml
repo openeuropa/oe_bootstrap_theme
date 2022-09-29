@@ -18,7 +18,7 @@ content_banner:
     image_size:
       type: text
       label: 'Image size'
-      description: 'The size of the images. Allowed values: sm, md, lg, xl. Defaults to lg.'
+      description: 'The size of the images. Allowed values: md, lg, xl. Defaults to lg.'
     title:
       type: text
       label: 'Title'
