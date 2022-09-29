@@ -28,8 +28,8 @@ description_list:
           - label:
             - '#markup': 'A label with <em>some</em> markup.'
           definition:
-            - 'First description of third term text goes here.'
-            - 'Second description of third term text goes here.'
+            - label: 'First description of third term text goes here.'
+            - label: 'Second description of third term text goes here.'
         - term:
             - label: 'Custom icon size'
               icon:
