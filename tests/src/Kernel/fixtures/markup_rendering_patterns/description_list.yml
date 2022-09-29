@@ -42,24 +42,24 @@ description_list_default:
       'svg': 3
       'svg.me-2.bi.icon--xs': 2
       'svg.me-2.bi.icon--xl': 1
-      'dl > div:nth-of-type(4) > dt > svg.me-2.bi.icon--xl': 1
+      'dl > div:nth-of-type(4) > dt > div > svg.me-2.bi.icon--xl': 1
     contains:
-      'dl > div:nth-of-type(1) > dt > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#geo-alt-fill'
+      'dl > div:nth-of-type(1) > dt > div > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#geo-alt-fill'
       'dl > div:nth-of-type(2) > dt > div > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#calendar-event'
-      'dl > div:nth-of-type(4) > dt > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#bicycle'
+      'dl > div:nth-of-type(4) > dt > div > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#bicycle'
     equals:
-      'dl > div:nth-child(1) > dt > p': 'Single label with icon'
-      'dl > div:nth-child(2) > dd': 'Description of first term text goes here.'
-      'dl > div:nth-child(3) > dt': 'First label without icon'
-      'dl > div:nth-child(4) > dt > p': 'Second label with icon'
-      'dl > div:nth-child(5) > dd': 'Description of second term text goes here.'
-      'dl > div:nth-child(6) > dt': 'A label with <em>some</em> markup.'
-      'dl > div:nth-child(7) > dd': '<p class="mb-2">First line description of third term text goes here.</p>'
-      'dl > div:nth-child(8) > dd': 'Second line description of third term text goes here.'
-      'dl > div:nth-child(9) > dt > p': 'Custom icon size'
-      'dl > div:nth-child(10) > dd': 'This is a bigger icon.'
-      'dl > div:nth-child(11) > dt': 'A single term without icon.'
-      'dl > div:nth-child(12) > dd': 'Yet another definition text.'
+      'dl > div:nth-child(1) > dt > div > svg + div': 'Single label with icon'
+      'dl > div:nth-child(1) > dd > div': 'Description of first term text goes here.'
+      'dl > div:nth-child(2) > dt:nth-child(1) > div > div': 'First label without icon'
+      'dl > div:nth-child(2) > dt:nth-child(2) > div > div': 'Second label with icon'
+      'dl > div:nth-child(2) > dd > div': 'Description of second term text goes here.'
+      'dl > div:nth-child(3) > dt:nth-child(1) > div > div': 'A label with <em>some</em> markup.'
+      'dl > div:nth-child(3) > dd:nth-child(2) > div': '<p class="mb-2">First line description of third term text goes here.</p>'
+      'dl > div:nth-child(3) > dd:nth-child(3) > div': 'Second line description of third term text goes here.'
+      'dl > div:nth-child(4) > dt > div > svg + div': 'Custom icon size'
+      'dl > div:nth-child(4) > dd > div': 'This is a bigger icon.'
+      'dl > div:nth-child(5) > dt > div > div': 'A single term without icon.'
+      'dl > div:nth-child(5) > dd > div': 'Yet another definition text.'
 description_list_horizontal:
   render:
     '#type': pattern
@@ -83,20 +83,20 @@ description_list_horizontal:
             - label: 'Second definition for third term.'
   assertions:
     count:
-      'dl': 1
-      'dl.d-md-grid.grid-3-9': 1
+      'dl': 3
+      'dl.row.mb-3': 3
       'dt': 4
-      'dd': 3
+      'dd': 4
       'svg.me-2.bi.icon--xs': 2
     contains:
-      'dl > div:nth-child(1) > dt > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#geo-alt-fill'
-      'dl > div:nth-child(3) > dt:nth-child(2) > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#calendar-event'
+      'dl:nth-of-type(1) > div.col-md-3:nth-child(1) > dt > div > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#geo-alt-fill'
+      'dl:nth-of-type(2) > div.col-md-3:nth-child(1) > dt:nth-child(2) > div > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#calendar-event'
     equals:
-      'dl > div:nth-child(1) > dt > p': 'Single label with icon'
-      'dl > dd:nth-child(2)': 'Description of first term text goes here.'
-      'dl > div:nth-child(3) > dt:nth-child(1)': 'First label without icon'
-      'dl > div:nth-child(3) > dt:nth-child(2) > p': 'Second label with icon'
-      'dl > dd:nth-child(4)': 'Description of second term text goes here.'
-      'dl > div:nth-child(5) > dt': 'A single term without icon.'
-      'dl > dd:nth-child(6) > div:nth-child(1)': 'First definition for third term.'
-      'dl > dd:nth-child(6) > div:nth-child(2)': 'Second definition for third term.'
+      'dl:nth-of-type(1) > div.col-md-3:nth-child(1) > dt > div > svg + div': 'Single label with icon'
+      'dl:nth-of-type(1) > div.col:nth-child(2) > dd > div': 'Description of first term text goes here.'
+      'dl:nth-of-type(2) > div.col-md-3:nth-child(1) > dt:nth-child(1) > div > div': 'First label without icon'
+      'dl:nth-of-type(2) > div.col-md-3:nth-child(1) > dt:nth-child(2) > div > svg + div': 'Second label with icon'
+      'dl:nth-of-type(2) > div.col:nth-child(2) > dd > div': 'Description of second term text goes here.'
+      'dl:nth-of-type(3) > div.col-md-3:nth-child(1) > dt > div > div': 'A single term without icon.'
+      'dl:nth-of-type(3) > div.col:nth-child(2) > dd:nth-child(1) > div': 'First definition for third term.'
+      'dl:nth-of-type(3) > div.col:nth-child(2) > dd:nth-child(2) > div': 'Second definition for third term.'
