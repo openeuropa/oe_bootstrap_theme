@@ -43,7 +43,7 @@ class LinkPatternAssert extends BasePatternAssert {
   protected function assertBaseElements(string $html, string $variant): void {
     $crawler = new Crawler($html);
 
-    $this->assertElementExists('a', $crawler);
+    $this->assertElementExists('body > a', $crawler);
   }
 
   /**
