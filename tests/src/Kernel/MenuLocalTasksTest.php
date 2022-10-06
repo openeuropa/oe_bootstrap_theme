@@ -6,6 +6,7 @@ namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
 use Drupal\Core\Access\AccessResultAllowed;
 use Drupal\Core\Access\AccessResultForbidden;
+use Drupal\Core\Access\AccessResultNeutral;
 use Drupal\Core\Url;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -20,6 +21,7 @@ class MenuLocalTasksTest extends AbstractKernelTestBase {
   public function testMenuLocalTasks(): void {
     $access_allowed = new AccessResultAllowed();
     $access_forbidden = new AccessResultForbidden();
+    $access_neutral = new AccessResultNeutral();
     $render = [
       '#theme' => 'menu_local_tasks',
       '#primary' => [
@@ -94,6 +96,16 @@ class MenuLocalTasksTest extends AbstractKernelTestBase {
           '#active' => FALSE,
           '#weight' => 0,
           '#access' => $access_forbidden,
+        ],
+        'link8.link' => [
+          '#theme' => 'menu_local_task',
+          '#link' => [
+            'title' => 'Neutral link',
+            'url' => Url::fromUri('http://www.neutral.com'),
+          ],
+          '#active' => FALSE,
+          '#weight' => 0,
+          '#access' => $access_neutral,
         ],
       ],
     ];

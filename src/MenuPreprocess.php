@@ -193,7 +193,7 @@ class MenuPreprocess {
   public function prepareLocalTasks(array $local_tasks): array {
     $links = [];
     foreach ($local_tasks as $link) {
-      if ($link['#access']->isForbidden()) {
+      if (!$link['#access']->isAllowed()) {
         continue;
       }
       if ($link['#active']) {
