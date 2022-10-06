@@ -55,7 +55,7 @@ class LinkPatternAssert extends BasePatternAssert {
    *   The crawler.
    */
   protected function assertIcon(string $expected, Crawler $crawler): void {
-    $svg = $crawler->filter('svg');
+    $svg = $crawler->filter('body > a > svg');
     self::assertCount(1, $svg);
 
     (new IconPatternAssert())->assertPattern([
