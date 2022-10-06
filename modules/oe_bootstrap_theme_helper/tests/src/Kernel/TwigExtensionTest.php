@@ -172,6 +172,16 @@ class TwigExtensionTest extends AbstractKernelTestBase {
           ],
         ],
       ],
+      'external_link' => [
+        [
+          'href' => 'https://www.example.com',
+          'text' => 'External link',
+        ],
+        [
+          'path' => 'https://www.example.com',
+          'label' => 'External link',
+        ],
+      ],
     ];
   }
 
