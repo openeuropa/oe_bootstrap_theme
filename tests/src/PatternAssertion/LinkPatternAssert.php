@@ -74,19 +74,19 @@ class LinkPatternAssert extends BasePatternAssert {
    */
   protected function assertSettings(array $expected, Crawler $crawler): void {
     if (!empty($expected['disabled'])) {
-      $this->assertElementHasClass('disabled', 'a', $crawler);
+      $this->assertElementExists('a.disabled', $crawler);
       $this->assertElementAttribute('true', 'a', 'aria-disabled', $crawler);
     }
     else {
-      $this->assertElementNotHasClass('disabled', 'a', $crawler);
+      $this->assertElementNotExists('a.disabled', $crawler);
       $this->assertElementAttribute(NULL, 'a', 'aria-disabled', $crawler);
     }
 
     if (!empty($expected['standalone'])) {
-      $this->assertElementHasClass('standalone', 'a', $crawler);
+      $this->assertElementExists('a.standalone', $crawler);
     }
     else {
-      $this->assertElementNotHasClass('standalone', 'a', $crawler);
+      $this->assertElementNotExists('a.standalone', $crawler);
     }
 
     if (isset($expected['icon_position'])) {
@@ -103,8 +103,8 @@ class LinkPatternAssert extends BasePatternAssert {
     // remove_icon_spacers is not set, because it is not the scope here to
     // assert the icon rendering.
     if (!empty($expected['remove_icon_spacers'])) {
-      $this->assertElementNotHasClass('ms-', 'svg', $crawler);
-      $this->assertElementNotHasClass('me-', 'svg', $crawler);
+      $this->assertElementNotExists('svg.ms-2-5', $crawler);
+      $this->assertElementNotExists('svg.ms-2-5', $crawler);
     }
   }
 
