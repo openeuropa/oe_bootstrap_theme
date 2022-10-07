@@ -19,7 +19,7 @@
   Drupal.behaviors.inpage_navigation = {
     attach: function () {
       Array.prototype.forEach.call(document.querySelectorAll('nav.bcl-inpage-navigation'), function (nav) {
-        instances.push(new bootstrap.ScrollSpy(document.body, {
+        instances.push(new bootstrap.ScrollSpy(document.querySelector('[data-off-canvas-main-canvas]'), {
           target: nav
         }));
       });
