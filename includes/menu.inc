@@ -159,7 +159,7 @@ function oe_bootstrap_theme_preprocess_menu_local_tasks(array &$variables): void
 function oe_bootstrap_theme_prepare_menu_local_task_links(array $link, array &$variables, string $type): void {
   /** @var Drupal\Core\Url $url */
   $url = $link['#link']['url'];
-  if ($url->access($variables['user'])) {
+  if (is_a($url, 'Url') && $url->access($variables['user'])) {
     $variables[$type . '_links'][] = [
       'link_style' => $type,
       'path' => $url->toString(),
