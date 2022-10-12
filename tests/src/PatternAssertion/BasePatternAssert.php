@@ -132,7 +132,7 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
     $this->assertElementExists($selector, $crawler);
     $element = $crawler->filter($selector);
     $actual = trim($element->text());
-    self::assertEquals($expected, $actual, \sprintf(
+    self::assertEquals($expected, $actual, sprintf(
       'Expected text value "%s" is not equal to the actual value "%s" found in the selector "%s".',
       $expected, $actual, $selector
     ));
@@ -156,7 +156,7 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
     $this->assertElementExists($selector, $crawler);
     $element = $crawler->filter($selector);
     $actual = trim($element->text());
-    self::assertStringContainsString($expected, $actual, \sprintf(
+    self::assertStringContainsString($expected, $actual, sprintf(
       'Expected text "%s" is not present in "%s" found in the selector "%s".',
       $expected, $actual, $selector
     ));
@@ -192,7 +192,7 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
    */
   protected function assertElementExists(string $selector, Crawler $crawler): void {
     $element = $crawler->filter($selector);
-    self::assertCount(1, $element, \sprintf(
+    self::assertCount(1, $element, sprintf(
       'Element with selector "%s" not found in the provided html.',
       $selector
     ));
@@ -208,7 +208,7 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
    */
   protected function assertElementNotExists(string $selector, Crawler $crawler): void {
     $element = $crawler->filter($selector);
-    self::assertCount(0, $element, \sprintf(
+    self::assertCount(0, $element, sprintf(
       'Element with selector "%s" was found in the provided html.',
       $selector
     ));

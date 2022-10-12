@@ -6,11 +6,17 @@ namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
+use Twig\Environment;
 use Twig\Extension\AbstractExtension;
+use Twig\Markup as TwigMarkup;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * Collection of extra Twig extensions as filters and functions.
@@ -59,6 +65,17 @@ class TwigExtension extends AbstractExtension {
       new TwigFilter('to_internal_language_id', [
         $this,
         'toInternalLanguageId',
+      ]),
+    ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getFunctions(): array {
+    return [
+      new TwigFunction('bcl_link', [$this, 'bclLink'], [
+        'needs_environment' => TRUE,
       ]),
     ];
   }
@@ -233,6 +250,39 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $language_code;
+  }
+
+  /**
+   * Alter a link with BCL logic.
+   *
+   * @param \Twig\Environment $env
+   *   The env.
+   * @param string $label
+   *   The link text for the anchor tag as a translated string.
+   * @param \Drupal\Core\Url|string $path
+   *   The URL object or string used for the link.
+   * @param array|\Drupal\Core\Template\Attribute $attributes
+   *   An optional array or Attribute object of link attributes.
+   *
+   * @return array
+   *   The link render array.
+   */
+  public function bclLink(Environment $env, $label, $path, Attribute $attributes): array {
+    if (is_string($path)) {
+      // The text has been processed by twig already, convert it to a safe
+      // object for the render system.
+      if ($label instanceof TwigMarkup) {
+        $label = Markup::create($label);
+      }
+      return [
+        '#type' => 'html_tag',
+        '#tag' => 'a',
+        '#value' => $label,
+        '#attributes' => $attributes->setAttribute('href', $path),
+      ];
+    }
+
+    return $env->getExtension(CoreTwigExtension::class)->getLink($label, $path, $attributes);
   }
 
 }
