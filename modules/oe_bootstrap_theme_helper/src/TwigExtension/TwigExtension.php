@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
+use Drupal\Component\Render\MarkupInterface;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Markup;
@@ -75,6 +77,9 @@ class TwigExtension extends AbstractExtension {
   public function getFunctions(): array {
     return [
       new TwigFunction('bcl_link', [$this, 'bclLink'], [
+        'needs_environment' => TRUE,
+      ]),
+      new TwigFunction('bcl_gallery_items', [$this, 'bclGalleryItems'], [
         'needs_environment' => TRUE,
       ]),
     ];
@@ -283,6 +288,55 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $env->getExtension(CoreTwigExtension::class)->getLink($label, $path, $attributes);
+  }
+
+  /**
+   * Processes the items for the gallery pattern.
+   *
+   * @param \Twig\Environment $env
+   *   A Twig Environment instance.
+   * @param array $items
+   *   The gallery items.
+   *
+   * @return array
+   *   The process gallery items.
+   */
+  public function bclGalleryItems(Environment $env, array $items): array {
+    /** @var \Drupal\Core\Template\TwigExtension $core_twig_extension */
+    $core_twig_extension = $env->getExtension(CoreTwigExtension::class);
+
+    // Helper function to determine if a variable is of a safe markup type.
+    $is_markup = function ($var) {
+      return $var instanceof TwigMarkup || $var instanceof MarkupInterface;
+    };
+
+    foreach ($items as &$item) {
+      $rendered = $core_twig_extension->renderVar($item['media']);
+      $document = Html::load((string) $rendered);
+      $xpath = new \DOMXPath($document);
+      $is_iframe = (bool) $xpath->query('//iframe')->count();
+      $is_image = (bool) $xpath->query('//img')->count();
+
+      if (!$is_image) {
+        $item['caption'] = '';
+      }
+
+      $item['image'] = $item['media'];
+
+      if (!$is_iframe && !$is_image) {
+        continue;
+      }
+
+      $item['image'] = str_replace(' src=', ' data-src=', (string) $rendered);
+
+      // Restore the value as safe markup if the original value or the rendered
+      // ones were safe already.
+      if ($is_markup($item['media']) || $is_markup($rendered)) {
+        $item['image'] = Markup::create($item['image']);
+      }
+    }
+
+    return $items;
   }
 
 }
