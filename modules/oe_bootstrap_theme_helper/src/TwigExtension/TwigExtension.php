@@ -4,14 +4,13 @@ declare(strict_types = 1);
 
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
-use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Markup;
-use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
+use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
 use Twig\Environment;
@@ -33,23 +32,23 @@ class TwigExtension extends AbstractExtension {
   protected $languageManager;
 
   /**
-   * The renderer.
+   * The Drupal Twig environment.
    *
-   * @var \Drupal\Core\Render\RendererInterface
+   * @var \Drupal\Core\Template\TwigEnvironment
    */
-  protected $renderer;
+  protected TwigEnvironment $twigEnvironment;
 
   /**
    * Constructs a new TwigExtension object.
    *
    * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
    *   The language manager.
-   * @param \Drupal\Core\Render\RendererInterface $renderer
-   *   The renderer service.
+   * @param \Drupal\Core\Template\TwigEnvironment $twigEnvironment
+   *   The Drupal Twig environment.
    */
-  public function __construct(LanguageManagerInterface $languageManager, RendererInterface $renderer) {
+  public function __construct(LanguageManagerInterface $languageManager, TwigEnvironment $twigEnvironment) {
     $this->languageManager = $languageManager;
-    $this->renderer = $renderer;
+    $this->twigEnvironment = $twigEnvironment;
   }
 
   /**
@@ -79,9 +78,7 @@ class TwigExtension extends AbstractExtension {
       new TwigFunction('bcl_link', [$this, 'bclLink'], [
         'needs_environment' => TRUE,
       ]),
-      new TwigFunction('bcl_gallery_items', [$this, 'bclGalleryItems'], [
-        'needs_environment' => TRUE,
-      ]),
+      new TwigFunction('bcl_gallery_items', [$this, 'bclGalleryItems']),
     ];
   }
 
@@ -293,47 +290,35 @@ class TwigExtension extends AbstractExtension {
   /**
    * Processes the items for the gallery pattern.
    *
-   * @param \Twig\Environment $env
-   *   A Twig Environment instance.
    * @param array $items
    *   The gallery items.
    *
    * @return array
    *   The process gallery items.
    */
-  public function bclGalleryItems(Environment $env, array $items): array {
-    /** @var \Drupal\Core\Template\TwigExtension $core_twig_extension */
-    $core_twig_extension = $env->getExtension(CoreTwigExtension::class);
-
-    // Helper function to determine if a variable is of a safe markup type.
-    $is_markup = function ($var) {
-      return $var instanceof TwigMarkup || $var instanceof MarkupInterface;
-    };
-
+  public function bclGalleryItems(array $items): array {
     foreach ($items as &$item) {
-      $rendered = $core_twig_extension->renderVar($item['media']);
+      // Use inline templates to take care of all possible types at once, and to
+      // receive a Markup class as output.
+      $rendered = $this->twigEnvironment->renderInline('{{ value }}', [
+        'value' => $item['media'],
+      ]);
       $document = Html::load((string) $rendered);
       $xpath = new \DOMXPath($document);
       $is_iframe = (bool) $xpath->query('//iframe')->count();
+      $is_video = (bool) $xpath->query('//video')->count();
       $is_image = (bool) $xpath->query('//img')->count();
 
       if (!$is_image) {
         $item['caption'] = '';
       }
 
-      $item['image'] = $item['media'];
-
       if (!$is_iframe && !$is_image) {
+        $item['image'] = $item['media'];
         continue;
       }
 
-      $item['image'] = str_replace(' src=', ' data-src=', (string) $rendered);
-
-      // Restore the value as safe markup if the original value or the rendered
-      // ones were safe already.
-      if ($is_markup($item['media']) || $is_markup($rendered)) {
-        $item['image'] = Markup::create($item['image']);
-      }
+      $item['image'] = Markup::create(str_replace(' src=', ' data-src=', (string) $rendered));
     }
 
     return $items;
