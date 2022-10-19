@@ -1,0 +1,417 @@
+gallery_default:
+  render:
+    '#type': pattern
+    '#id': gallery
+    '#fields':
+      items:
+        - media:
+            '#markup': '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></video>'
+          thumbnail:
+            '#markup': '<img src="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" alt="Example alt text" />'
+          caption_title: 'Bio-defence preparedness programme'
+          caption: 'Caption first item'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/cat" alt="Cat media image alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt" />'
+          caption_title: 'A picture of a cat'
+          caption: 'Caption second item'
+        - media:
+            '#theme': 'image'
+            '#uri': 'https://loremflickr.com/800/600/dog'
+            '#title': 'Dog image media title'
+            '#alt': 'Dog image media alt'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/dog" alt="Dog thumbnail alt" />'
+          caption_title: 'An image of a dog.'
+        - media:
+            '#markup': '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt" />'
+          caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
+          caption: 'Iframe caption.'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\GalleryPatternAssert
+      expected:
+        title: ~
+        items:
+          - thumbnail:
+              rendered: '<img src="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" alt="Example alt text">'
+              caption_title: 'Bio-defence preparedness programme'
+              caption: 'Caption first item'
+            media:
+              rendered: '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></source></video>'
+              caption_title: 'Bio-defence preparedness programme'
+              caption: ~
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt">'
+              caption_title: 'A picture of a cat'
+              caption: 'Caption second item'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/cat" alt="Cat media image alt">'
+              caption_title: 'A picture of a cat'
+              caption: 'Caption second item'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/dog" alt="Dog thumbnail alt">'
+              caption_title: 'An image of a dog.'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/dog" alt="Dog image media alt" title="Dog image media title" class="img-fluid">'
+              caption_title: 'An image of a dog.'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt">'
+              caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
+              caption: 'Iframe caption.'
+            media:
+              rendered: '<iframe width="560" height="315" data-src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+              caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
+              caption: 'Iframe caption.'
+gallery_title_default_tag:
+  render:
+    '#type': pattern
+    '#id': gallery
+    '#fields':
+      title: 'Gallery title'
+      items:
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/cat" alt="Cat media image alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt" />'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\GalleryPatternAssert
+      expected:
+        title: 'Gallery title'
+        title_tag: h2
+        items:
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt">'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/cat" alt="Cat media image alt">'
+gallery_title_custom_tag:
+  render:
+    '#type': pattern
+    '#id': gallery
+    '#fields':
+      title: 'Gallery title'
+      title_tag: h6
+      items:
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/cat" alt="Cat media image alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt" />'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\GalleryPatternAssert
+      expected:
+        title: 'Gallery title'
+        title_tag: h6
+        items:
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt">'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/cat" alt="Cat media image alt">'
+gallery_six_items:
+  render:
+    '#type': pattern
+    '#id': gallery
+    '#fields':
+      items:
+        - media:
+            '#markup': '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></video>'
+          thumbnail:
+            '#markup': '<img src="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" alt="Example alt text" />'
+          caption_title: 'Bio-defence preparedness programme'
+          caption: 'Caption first item'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/cat" alt="Cat media image alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt" />'
+          caption_title: 'A picture of a cat'
+          caption: 'Cat image caption.'
+        - media:
+            '#theme': 'image'
+            '#uri': 'https://loremflickr.com/800/600/dog'
+            '#title': 'Dog image media title'
+            '#alt': 'Dog image media alt'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/dog" alt="Dog thumbnail alt" />'
+          caption_title: 'An image of a dog.'
+        - media:
+            '#markup': '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt" />'
+          caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
+          caption: 'Iframe caption.'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/elephant" alt="Elephant media image alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/elephant" alt="Elephant thumbnail alt" />'
+          caption_title: 'A picture of an elephant'
+          caption: 'Elephant caption.'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/sheep" alt="Sheep media image alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/sheep" alt="Sheep thumbnail alt" />'
+          caption_title: 'A picture of a sheep'
+          caption: 'Sheep caption.'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\GalleryPatternAssert
+      expected:
+        title: ~
+        items:
+          - thumbnail:
+              rendered: '<img src="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" alt="Example alt text">'
+              caption_title: 'Bio-defence preparedness programme'
+              caption: 'Caption first item'
+            media:
+              rendered: '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></source></video>'
+              caption_title: 'Bio-defence preparedness programme'
+              caption: ~
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt">'
+              caption_title: 'A picture of a cat'
+              caption: 'Cat image caption.'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/cat" alt="Cat media image alt">'
+              caption_title: 'A picture of a cat'
+              caption: 'Cat image caption.'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/dog" alt="Dog thumbnail alt">'
+              caption_title: 'An image of a dog.'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/dog" alt="Dog image media alt" title="Dog image media title" class="img-fluid">'
+              caption_title: 'An image of a dog.'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt">'
+              caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
+              caption: 'Iframe caption.'
+            media:
+              rendered: '<iframe width="560" height="315" data-src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+              caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
+              caption: 'Iframe caption.'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/elephant" alt="Elephant thumbnail alt">'
+              caption_title: 'A picture of an elephant'
+              caption: 'Elephant caption.'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/elephant" alt="Elephant media image alt">'
+              caption_title: 'A picture of an elephant'
+              caption: 'Elephant caption.'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/sheep" alt="Sheep thumbnail alt">'
+              caption_title: 'A picture of a sheep'
+              caption: 'Sheep caption.'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/sheep" alt="Sheep media image alt">'
+              caption_title: 'A picture of a sheep'
+              caption: 'Sheep caption.'
+gallery_long:
+  render:
+    '#type': pattern
+    '#id': gallery
+    '#fields':
+      items:
+        - media:
+            '#markup': '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></video>'
+          thumbnail:
+            '#markup': '<img src="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" alt="Example alt text" />'
+          caption_title: 'Bio-defence preparedness programme'
+          caption: 'Caption first item'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/cat" alt="Cat media image alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt" /'
+          caption_title: 'A picture of a cat'
+          caption: 'Cat image caption.'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/lisbon" alt="Lisbon image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/lisbon" alt="Lisbon thumbnail alt" />'
+          caption_title: 'Lisbon'
+          caption: 'Meanwhile in Lisbon, the capital of Portugal'
+        - media:
+            '#theme': 'image'
+            '#uri': 'https://loremflickr.com/800/600/kiev'
+            '#title': 'Kiev image media title'
+            '#alt': 'Kiev image media alt'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/kiev" alt="Kiev thumbnail alt" />'
+          caption_title: 'Kiev'
+          caption: 'Meanwhile in Kiev, the capital of Ukraine'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/paris" alt="Paris image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/paris" alt="Paris thumbnail alt" />'
+          caption_title: 'Paris'
+          caption: 'Meanwhile in Paris, the capital of France'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/rome" alt="Rome image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/rome" alt="Rome thumbnail alt" />'
+          caption_title: 'Rome'
+          caption: 'Meanwhile in Rome, the capital of Italy'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/madrid" alt="Madrid image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/madrid" alt="Madrid thumbnail alt" />'
+          caption_title: 'Spain'
+          caption: 'Meanwhile in Madrid, the capital of Spain'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/brussels" alt="Brussels image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/brussels" alt="Brussels thumbnail alt" />'
+          caption_title: 'Brussels'
+          caption: 'Meanwhile in Brussels, the capital of Belgium'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/budapest" alt="Budapest image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/budapest" alt="Budapest thumbnail alt" />'
+          caption_title: 'Budapest'
+          caption: 'Meanwhile in Budapest, the capital of Hungary'
+        - media:
+            '#markup': '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt" />'
+          caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/stockholm" alt="Stockholm image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/stockholm" alt="Stockholm thumbnail alt" />'
+          caption_title: 'Stockholm'
+          caption: 'Meanwhile in Stockholm, the capital of Sweden'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/helsinki" alt="Helsinki image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/helsinki" alt="Helsinki thumbnail alt" />'
+          caption_title: 'Helsinki'
+          caption: 'Meanwhile in Helsinki, the capital of Finland'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/tallinn" alt="Tallinn image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/tallinn" alt="Tallinn thumbnail alt" />'
+          caption_title: 'Tallinn'
+          caption: 'Meanwhile in Tallinn, the capital of Estonia'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/vilnius" alt="Vilnius image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/vilnius" alt="Vilnius thumbnail alt" />'
+          caption_title: 'Vilnius'
+          caption: 'Meanwhile in Vilnius, the capital of Lithuania'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\GalleryPatternAssert
+      expected:
+        title: ~
+        items:
+          - thumbnail:
+              rendered: '<img src="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" alt="Example alt text">'
+              caption_title: 'Bio-defence preparedness programme'
+              caption: 'Caption first item'
+            media:
+              rendered: '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></source></video>'
+              caption_title: 'Bio-defence preparedness programme'
+              caption: ~
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt">'
+              caption_title: 'A picture of a cat'
+              caption: 'Cat image caption.'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/cat" alt="Cat media image alt">'
+              caption_title: 'A picture of a cat'
+              caption: 'Cat image caption.'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/lisbon" alt="Lisbon thumbnail alt">'
+              caption_title: 'Lisbon'
+              caption: 'Meanwhile in Lisbon, the capital of Portugal'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/lisbon" alt="Lisbon image media alt">'
+              caption_title: 'Lisbon'
+              caption: 'Meanwhile in Lisbon, the capital of Portugal'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/kiev" alt="Kiev thumbnail alt">'
+              caption_title: 'Kiev'
+              caption: 'Meanwhile in Kiev, the capital of Ukraine'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/kiev" alt="Kiev image media alt" title="Kiev image media title" class="img-fluid">'
+              caption_title: 'Kiev'
+              caption: 'Meanwhile in Kiev, the capital of Ukraine'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/paris" alt="Paris thumbnail alt">'
+              caption_title: 'Paris'
+              caption: 'Meanwhile in Paris, the capital of France'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/paris" alt="Paris image media alt">'
+              caption_title: 'Paris'
+              caption: 'Meanwhile in Paris, the capital of France'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/rome" alt="Rome thumbnail alt">'
+              caption_title: 'Rome'
+              caption: 'Meanwhile in Rome, the capital of Italy'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/rome" alt="Rome image media alt">'
+              caption_title: 'Rome'
+              caption: 'Meanwhile in Rome, the capital of Italy'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/madrid" alt="Madrid thumbnail alt">'
+              caption_title: 'Spain'
+              caption: 'Meanwhile in Madrid, the capital of Spain'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/madrid" alt="Madrid image media alt">'
+              caption_title: 'Spain'
+              caption: 'Meanwhile in Madrid, the capital of Spain'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/brussels" alt="Brussels thumbnail alt">'
+              caption_title: 'Brussels'
+              caption: 'Meanwhile in Brussels, the capital of Belgium'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/brussels" alt="Brussels image media alt">'
+              caption_title: 'Brussels'
+              caption: 'Meanwhile in Brussels, the capital of Belgium'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/budapest" alt="Budapest thumbnail alt">'
+              caption_title: 'Budapest'
+              caption: 'Meanwhile in Budapest, the capital of Hungary'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/budapest" alt="Budapest image media alt">'
+              caption_title: 'Budapest'
+              caption: 'Meanwhile in Budapest, the capital of Hungary'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt">'
+              caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
+            media:
+              rendered: '<iframe width="560" height="315" data-src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+              caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/stockholm" alt="Stockholm thumbnail alt">'
+              caption_title: 'Stockholm'
+              caption: 'Meanwhile in Stockholm, the capital of Sweden'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/stockholm" alt="Stockholm image media alt">'
+              caption_title: 'Stockholm'
+              caption: 'Meanwhile in Stockholm, the capital of Sweden'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/helsinki" alt="Helsinki thumbnail alt">'
+              caption_title: 'Helsinki'
+              caption: 'Meanwhile in Helsinki, the capital of Finland'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/helsinki" alt="Helsinki image media alt">'
+              caption_title: 'Helsinki'
+              caption: 'Meanwhile in Helsinki, the capital of Finland'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/tallinn" alt="Tallinn thumbnail alt">'
+              caption_title: 'Tallinn'
+              caption: 'Meanwhile in Tallinn, the capital of Estonia'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/tallinn" alt="Tallinn image media alt">'
+              caption_title: 'Tallinn'
+              caption: 'Meanwhile in Tallinn, the capital of Estonia'
+          - thumbnail:
+              rendered: '<img src="https://loremflickr.com/400/300/vilnius" alt="Vilnius thumbnail alt">'
+              caption_title: 'Vilnius'
+              caption: 'Meanwhile in Vilnius, the capital of Lithuania'
+            media:
+              rendered: '<img data-src="https://loremflickr.com/800/600/vilnius" alt="Vilnius image media alt">'
+              caption_title: 'Vilnius'
+              caption: 'Meanwhile in Vilnius, the capital of Lithuania'

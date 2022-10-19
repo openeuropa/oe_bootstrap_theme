@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures;
 
+use Drupal\Core\Render\Markup;
 use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 
@@ -109,6 +110,27 @@ final class PatternTestDataMassager {
     foreach ($data['#fields']['items'] as &$item) {
       if (isset($item['image'])) {
         $item['image'] = ImageValueObject::fromArray($item['image']);
+      }
+    }
+
+    return $data;
+  }
+
+  /**
+   * Massages data for the "gallery" pattern.
+   *
+   * @param array $data
+   *   The data structure.
+   *
+   * @return array
+   *   The massaged data structure.
+   */
+  private static function massageGalleryPattern(array $data): array {
+    foreach ($data['#fields']['items'] as &$item) {
+      foreach (['thumbnail', 'media'] as $key) {
+        if (isset($item[$key]['#markup'])) {
+          $item[$key] = Markup::create($item[$key]['#markup']);
+        }
       }
     }
 
