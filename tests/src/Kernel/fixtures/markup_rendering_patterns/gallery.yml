@@ -40,6 +40,7 @@ gallery_default:
               rendered: '<img src="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" alt="Example alt text">'
               caption_title: 'Bio-defence preparedness programme'
               caption: 'Caption first item'
+              play_icon: true
             media:
               rendered: '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></source></video>'
               caption_title: 'Bio-defence preparedness programme'
@@ -62,6 +63,7 @@ gallery_default:
               rendered: '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt">'
               caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
               caption: 'Iframe caption.'
+              play_icon: true
             media:
               rendered: '<iframe width="560" height="315" data-src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
               caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
@@ -165,6 +167,7 @@ gallery_six_items:
               rendered: '<img src="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" alt="Example alt text">'
               caption_title: 'Bio-defence preparedness programme'
               caption: 'Caption first item'
+              play_icon: true
             media:
               rendered: '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></source></video>'
               caption_title: 'Bio-defence preparedness programme'
@@ -187,6 +190,7 @@ gallery_six_items:
               rendered: '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt">'
               caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
               caption: 'Iframe caption.'
+              play_icon: true
             media:
               rendered: '<iframe width="560" height="315" data-src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
               caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
@@ -309,6 +313,7 @@ gallery_long:
               rendered: '<img src="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" alt="Example alt text">'
               caption_title: 'Bio-defence preparedness programme'
               caption: 'Caption first item'
+              play_icon: true
             media:
               rendered: '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></source></video>'
               caption_title: 'Bio-defence preparedness programme'
@@ -380,6 +385,7 @@ gallery_long:
           - thumbnail:
               rendered: '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt">'
               caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
+              play_icon: true
             media:
               rendered: '<iframe width="560" height="315" data-src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
               caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
