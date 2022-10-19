@@ -6,6 +6,6 @@ services:
       - { name: twig.loader, priority: -100 }
   oe_bootstrap_theme_helper.twig_extension:
     class: Drupal\oe_bootstrap_theme_helper\TwigExtension\TwigExtension
-    arguments: ['@language_manager', '@renderer']
+    arguments: ['@language_manager', '@twig']
     tags:
       - { name: twig.extension }
