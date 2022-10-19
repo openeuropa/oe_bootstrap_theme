@@ -8,6 +8,7 @@
 declare(strict_types = 1);
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Markup;
 use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
@@ -259,4 +260,27 @@ function oe_bootstrap_theme_preprocess_pattern_pagination__preview(array &$varia
 
   // Mark the letter F as active.
   $variables['items'][5]['active'] = TRUE;
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for gallery pattern.
+ */
+function oe_bootstrap_theme_preprocess_pattern_gallery(array &$variables): void {
+  $variables['id'] = Html::getUniqueId('bcl-gallery');
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for gallery pattern preview.
+ */
+function oe_bootstrap_theme_preprocess_pattern_gallery__preview(array &$variables): void {
+  // When #markup is a string, only safe tags will be kept for rendering.
+  // Convert to a markup object to avoid any filtering.
+  // @see \Drupal\Core\Render\Renderer::ensureMarkupIsSafe()
+  foreach ($variables['items'] as &$item) {
+    foreach (['thumbnail', 'media'] as $key) {
+      if (isset($item[$key]['#markup'])) {
+        $item[$key] = Markup::create($item[$key]['#markup']);
+      }
+    }
+  }
 }
