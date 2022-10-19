@@ -11,6 +11,196 @@ index 6e08be9..374f66d 100644
        {% set _caption_classes = 'carousel-caption' %}
        {% if _item.caption is not empty and _item.link is empty %}
          {% set _caption_classes = _caption_classes ~ ' d-none d-md-block' %}
+diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-gallery/gallery.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-gallery/gallery.html.twig
+index 0fa62f6..c77a195 100644
+--- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-gallery/gallery.html.twig
++++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-gallery/gallery.html.twig
+@@ -53,76 +53,78 @@ Parameters:
+ 
+ {% set attributes = attributes.addClass('bcl-gallery') %}
+ 
+-{# Print the result #}
++{% macro gallery_item(item, slide_number, context) %}
++  <li>
++    <a href="#" data-bs-target="#{{ context._carousel_id }}" data-bs-slide-to="{{ slide_number }}" class="bcl-gallery__item d-block w-100 img-fluid">
++      <div class="bcl-gallery__item-overlay" data-bs-target="#{{ context._modal_id }}" data-bs-toggle="modal">
++        {% if '<iframe' in item.media or '<video' in item.media %}
++          <span class="bcl-gallery__item-play-icon">
++            {% include '@oe-bcl/bcl-icon/icon.html.twig' with {
++              name: 'play-fill',
++              size: 's',
++              path: context._icon_path,
++            } only %}
++          </span>
++        {% endif %}
++        {% if item.caption is not empty or item.caption_title is not empty %}
++          <div class="bcl-gallery__item-caption">
++            {% if item.caption_title is not empty %}
++              <h5>{{ item.caption_title }}</h5>
++            {% endif %}
++            {% if item.caption is not empty %}
++              <div class="bcl-gallery__item-description">
++                {{ item.caption }}
++              </div>
++            {% endif %}
++          </div>
++        {% endif %}
++      </div>
++      {{ item.thumbnail }}
++    </a>
++  </li>
++{% endmacro %}
+ 
+-{% if _items is not empty %}
++{# Print the result #}
+ 
++{% if _items is not empty and _items is iterable %}
+   <div {{ attributes }}>
+-    {% if _items is iterable %}
+       <div class="d-sm-flex flex-sm-row align-items-sm-center">
+-        <div class="flex-sm-grow-1">
+         {% if _title is not empty %}
+-          {% include '@oe-bcl/bcl-heading/heading.html.twig' with {
+-            title: _title,
+-            title_tag: _title_tag,
+-            title_link: _title_link,
+-            attributes: _title_attributes,
+-          } only %}
++          <div class="flex-sm-grow-1">
++            {% include '@oe-bcl/bcl-heading/heading.html.twig' with {
++                title: _title,
++                title_tag: _title_tag,
++                title_link: _title_link,
++                attributes: _title_attributes,
++              } only %}
++          </div>
+         {% endif %}
+-        </div>
+-        <div class="mb-3 mb-sm-0 fw-bold">
+-          {%- if _counter is not empty -%}
++        {%- if _counter is not empty -%}
++          <div class="mb-3 mb-sm-0 fw-bold">
+             {{ _counter|replace({'%d': _items|length}) }}
+-          {%- endif -%}
+-        </div>
++          </div>
++        {%- endif -%}
+       </div>
+ 
+-      {% for _item in _items %}
+-        {% if loop.first %}
+-          <div class="bcl-gallery__thumbnails">
+-        {% endif %}
+-          {% if loop.index == _max_visible_thumbnails %}
+-            <div class="bcl-gallery__thumbnails-collaspe collapse" id="{{ _collpase_id }}">
+-          {% endif %}
+-            {% if loop.index % _max_visible_thumbnails == 0 or loop.first %}
++      <div class="bcl-gallery__thumbnails">
++        <ul class="bcl-gallery__grid">
++          {% for _item in _items|slice(0, 5) %}
++            {{ _self.gallery_item(_item, loop.index0, _context) }}
++          {% endfor %}
++        </ul>
++
++        {% set _hidden_items = _items|slice(5, null, true) %}
++        {% if _hidden_items is not empty %}
++          <div class="bcl-gallery__thumbnails-collaspe collapse" id="{{ _collpase_id }}">
++            {% for chunk in _hidden_items|batch(5) %}
+               <ul class="bcl-gallery__grid">
+-            {% endif %}
+-                <li>
+-                  <a href="#" data-bs-target="#{{ _carousel_id }}" data-bs-slide-to="{{ loop.index - 1 }}" class="bcl-gallery__item d-block w-100 img-fluid">
+-                    <div class="bcl-gallery__item-overlay" data-bs-target="#{{ _modal_id }}" data-bs-toggle="modal">
+-                    {% if '<iframe' in _item.media or '<video' in _item.media %}
+-                      <span class="bcl-gallery__item-play-icon">
+-                      {% include '@oe-bcl/bcl-icon/icon.html.twig' with {
+-                        name: 'play-fill',
+-                        size: 's',
+-                        path: _icon_path,
+-                      } only %}
+-                      </span>
+-                    {% endif %}
+-                    {% if _item.caption is not empty or item.caption_title is not empty %}
+-                      <div class="bcl-gallery__item-caption">
+-                      {% if _item.caption_title is not empty %}
+-                        <h5>{{ _item.caption_title }}</h5>
+-                      {% endif %}
+-                      {% if _item.caption is not empty %}
+-                        <div class="bcl-gallery__item-description">
+-                          {{ _item.caption }}
+-                        </div>
+-                      {% endif %}
+-                      </div>
+-                    {% endif %}
+-                    </div>
+-                    {{ _item.thumbnail }}
+-                  </a>
+-                </li>
+-            {% if loop.index % 5 == 0 or loop.last %}
++                {% for _key, _item in chunk %}
++                  {{ _self.gallery_item(_item, _key, _context) }}
++                {% endfor %}
+               </ul>
+-            {% endif %}  
+-          {% if loop.last %}
+-            </div>
+-          {% endif %}
+-        {% if loop.index > _max_visible_thumbnails and loop.last %}
++            {% endfor %}
+           </div>
++
+           <div class="bg-lighter py-3 px-4 mt-2 rounded text-center">
+             <a
+               class="bcl-gallery__collapse standalone d-none d-sm-inline-block"
+@@ -160,8 +162,7 @@ Parameters:
+             </a>
+           </div>
+         {% endif %}
+-      {% endfor %}
+-    {% endif %}
++      </div>
+ 
+     <div class="modal" id="{{ _modal_id }}" tabindex="-1" aria-labelledby="{{ _modal_id }}" aria-hidden="true" data-bs-backdrop="false">
+       <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+@@ -181,21 +182,23 @@ Parameters:
+           </div>
+ 
+           <div class="modal-body d-flex align-items-center justify-content-center">
+-            {% for _item in _items %}
+-              {% set _carousel_items = _carousel_items|merge([_item|merge({
+-                caption: ('<iframe' in _item.media or '<video' in _item.media) ? '' : _item.caption,
+-                image: ('<iframe' in _item.media or '<img' in _item.media) ? _item.media|replace({'src=': 'data-src='}) : _item.media,
+-              })]) %}
+-            {% endfor %}
+-            {% include '@oe-bcl/bcl-carousel/carousel.html.twig' with {
+-              id: _carousel_id,
+-              with_controls: true,
+-              with_indicators: false,
+-              prev_label: _prev_label,
+-              next_label: _next_label,
+-              autoplay: false,
+-              items: _carousel_items,
+-            } only %}
++            {% block carousel %}
++              {% for _item in _items %}
++                {% set _carousel_items = _carousel_items|merge([_item|merge({
++                  caption: ('<iframe' in _item.media or '<video' in _item.media) ? '' : _item.caption,
++                  image: ('<iframe' in _item.media or '<img' in _item.media) ? _item.media|replace({'src=': 'data-src='}) : _item.media,
++                })]) %}
++              {% endfor %}
++              {% include '@oe-bcl/bcl-carousel/carousel.html.twig' with {
++                id: _carousel_id,
++                with_controls: true,
++                with_indicators: false,
++                prev_label: _prev_label,
++                next_label: _next_label,
++                autoplay: false,
++                items: _carousel_items,
++              } only %}
++            {% endblock %}
+           </div>
+         </div>
+       </div>
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
 index 0ccc7ec..70b5143 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
