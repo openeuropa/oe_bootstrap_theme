@@ -13,6 +13,7 @@
 {% set icon_path = bcl_icon_path %}
 
 {% block carousel %}
+  {# Captions are not rendered for playable medias in the carousel. #}
   {% include '@oe-bcl/carousel' with {
     id: _carousel_id,
     with_controls: true,
@@ -20,7 +21,9 @@
     prev_label: _prev_label,
     next_label: _next_label,
     autoplay: false,
-    items: items,
+    items: items|map(_item => _item|merge({
+      caption: _item.is_playable ? '' : _item.caption
+    })),
   } only %}
 {% endblock %}
 

@@ -309,10 +309,6 @@ class TwigExtension extends AbstractExtension {
       $is_video = (bool) $xpath->query('//video')->count();
       $is_image = (bool) $xpath->query('//img')->count();
 
-      if (!$is_image) {
-        $item['caption'] = '';
-      }
-
       // Playable medias show an icon.
       $item['is_playable'] = $is_iframe || $is_video;
 
