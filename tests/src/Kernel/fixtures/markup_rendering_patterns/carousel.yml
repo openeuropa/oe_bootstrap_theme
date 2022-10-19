@@ -29,9 +29,7 @@ carousel_with_all_settings:
           autoinit: true
           disable_touch: true
         items:
-          - image:
-              src: 'https://images.site.example1'
-              alt: 'alt image 1'
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
             caption_title: 'First slide title'
             caption: 'First slide caption'
 carousel_with_all_settings_false:
@@ -65,9 +63,7 @@ carousel_with_all_settings_false:
           autoinit: false
           disable_touch: false
         items:
-          - image:
-              src: 'https://images.site.example1'
-              alt: 'alt image 1'
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
             caption_title: 'First slide title'
             caption: 'First slide caption'
 carousel_with_settings_combination:
@@ -101,9 +97,7 @@ carousel_with_settings_combination:
           autoinit: false
           disable_touch: true
         items:
-          - image:
-              src: 'https://images.site.example1'
-              alt: 'alt image 1'
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
             caption_title: 'First slide title'
             caption: 'First slide caption'
 carousel_without_settings_assert_defaults:
@@ -130,9 +124,7 @@ carousel_without_settings_assert_defaults:
           autoinit: true
           disable_touch: false
         items:
-          - image:
-              src: 'https://images.site.example1'
-              alt: 'alt image 1'
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
             caption_title: 'First slide title'
             caption: 'First slide caption'
 carousel_just_images:
@@ -159,12 +151,8 @@ carousel_just_images:
           autoinit: true
           disable_touch: false
         items:
-          - image:
-              src: 'https://images.site.example1'
-              alt: 'alt image 1'
-          - image:
-              src: 'https://images.site.example2'
-              alt: 'alt image 2'
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
+          - image: '<img src="https://images.site.example2" alt="alt image 2" class="d-block w-100">'
 carousel_all_item_values:
   render:
     '#type': pattern
@@ -203,9 +191,7 @@ carousel_all_item_values:
           autoinit: true
           disable_touch: false
         items:
-          - image:
-              src: 'https://images.site.example1'
-              alt: 'alt image 1'
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
             caption_title: 'First slide title'
             caption: 'First slide caption'
             caption_classes: 'caption_classes-1'
@@ -213,9 +199,7 @@ carousel_all_item_values:
             link:
               label: First link
               path: https://link.one
-          - image:
-              src: 'https://images.site.example2'
-              alt: 'alt image 2'
+          - image: '<img src="https://images.site.example2" alt="alt image 2" class="d-block w-100">'
             caption_title: 'Second slide title'
             caption: 'Second slide caption'
             caption_classes: 'caption_classes-2'
@@ -245,7 +229,5 @@ carousel_title_present_no_caption_no_link:
           autoinit: true
           disable_touch: false
         items:
-          - image:
-              src: 'https://images.site.example1'
-              alt: 'alt image 1'
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
             caption_title: 'Slide title'
