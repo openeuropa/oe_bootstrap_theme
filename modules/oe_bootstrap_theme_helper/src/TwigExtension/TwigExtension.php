@@ -313,6 +313,9 @@ class TwigExtension extends AbstractExtension {
         $item['caption'] = '';
       }
 
+      // Playable medias show an icon.
+      $item['is_playable'] = $is_iframe || $is_video;
+
       if (!$is_iframe && !$is_image) {
         $item['image'] = $item['media'];
         continue;
