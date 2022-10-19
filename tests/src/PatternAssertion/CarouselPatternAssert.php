@@ -88,7 +88,7 @@ class CarouselPatternAssert extends BasePatternAssert {
       $item = $items->eq($index);
 
       try {
-        $this->assertImage($expected_item['image'], 'img', $item);
+        self::assertStringContainsString($expected_item['image'], $item->html());
         $this->assertElementText($expected_item['caption_title'] ?? NULL, '.carousel-caption h5', $item);
 
         if (isset($expected_item['caption'])) {
