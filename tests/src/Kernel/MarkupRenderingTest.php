@@ -62,6 +62,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'featured_media',
     'file',
     'icon',
+    'gallery',
     'inpage_navigation',
     'link',
     'links_block',
