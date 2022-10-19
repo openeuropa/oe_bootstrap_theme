@@ -117,6 +117,18 @@ class GalleryPatternAssert extends BasePatternAssert {
         self::assertStringContainsString($item['thumbnail']['rendered'], $thumbnail->html());
         $this->assertElementText($item['thumbnail']['caption_title'] ?? NULL, '.bcl-gallery__item-caption > h5', $thumbnail);
         $this->assertElementText($item['thumbnail']['caption'] ?? NULL, '.bcl-gallery__item-caption > .bcl-gallery__item-description', $thumbnail);
+
+        if ($item['thumbnail']['play_icon'] ?? FALSE) {
+          $svg = $thumbnail->filter('svg');
+          self::assertCount(1, $svg);
+          (new IconPatternAssert())->assertPattern([
+            'name' => 'play-fill',
+            'size' => 's',
+          ], $svg->outerHtml());
+        }
+        else {
+          $this->assertElementNotExists('svg', $thumbnail);
+        }
       }
       catch (\Exception $e) {
         throw new \Exception(sprintf('Failed asserting data for loop item %s.', $i), 0, $e);
