@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Gallery pattern.
+ */
+#}
+{% extends '@oe-bcl/gallery' %}
+
+{% set toggle_collapsed = 'view the full gallery (%d)'|t %}
+{% set toggle_expanded = 'view less'|t %}
+{% set title_tag = title_tag|default('h2') %}
+
+{% block carousel %}
+  {% include '@oe-bcl/carousel' with {
+    id: _carousel_id,
+    with_controls: true,
+    with_indicators: false,
+    prev_label: _prev_label,
+    next_label: _next_label,
+    autoplay: false,
+    items: bcl_gallery_items(items),
+  } only %}
+{% endblock %}
+
