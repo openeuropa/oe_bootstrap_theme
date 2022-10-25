@@ -9,7 +9,7 @@
 {% set toggle_collapsed = 'view the full gallery (%d)'|t %}
 {% set toggle_expanded = 'view less'|t %}
 {% set title_tag = title_tag|default('h2') %}
-{% set items = bcl_gallery_items(items) %}
+{% set items = bcl_gallery_items(items|default([])) %}
 {% set icon_path = bcl_icon_path %}
 
 {% block carousel %}
