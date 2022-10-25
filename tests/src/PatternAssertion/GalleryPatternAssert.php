@@ -36,7 +36,10 @@ class GalleryPatternAssert extends BasePatternAssert {
     $crawler = new Crawler($html);
 
     $this->assertElementExists('body > .bcl-gallery', $crawler);
-    $this->assertElementExists('#modalBcl-gallery.modal', $crawler);
+    // The modal should have "bcl-gallery" appended to the ID. The ID must be
+    // unique, so when multiple galleries are rendered a double dash and a
+    // counter are appended.
+    $crawler->filterXPath('//div[@id="modalBcl-gallery" or starts-with(@id, "modalBcl-gallery--")][@class and contains(concat(" ", normalize-space(@class), " "), " modal ")]');
 
     $items = $crawler->filter('ul.bcl-gallery__grid li')->count();
     if ($items > 5) {
