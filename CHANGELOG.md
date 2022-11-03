@@ -1,10 +1,18 @@
 # Change Log
 
+## [1.0.0-beta7](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta7) (2022-11-03)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta6...1.0.0-beta7)
+
+**Merged pull requests:**
+
+- OEL-2002: Preserve Drupal links. [\#270](https://github.com/openeuropa/oe_bootstrap_theme/pull/270) ([drishu](https://github.com/drishu))
+
 ## [1.0.0-beta6](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta6) (2022-09-29)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta5...1.0.0-beta6)
 
 **Merged pull requests:**
 
+- Prepare release 1.0.0-beta6. [\#276](https://github.com/openeuropa/oe_bootstrap_theme/pull/276) ([drishu](https://github.com/drishu))
 - OEL-2059: Drop patch as it doesn't apply. [\#275](https://github.com/openeuropa/oe_bootstrap_theme/pull/275) ([brummbar](https://github.com/brummbar))
 - OEL-1910: Drupal 9.4 support. [\#273](https://github.com/openeuropa/oe_bootstrap_theme/pull/273) ([drishu](https://github.com/drishu))
 - OEL-1989: Add outline parameter to badges. [\#272](https://github.com/openeuropa/oe_bootstrap_theme/pull/272) ([drishu](https://github.com/drishu))
