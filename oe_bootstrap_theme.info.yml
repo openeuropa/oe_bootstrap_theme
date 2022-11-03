@@ -22,7 +22,6 @@ libraries-extend:
 
 ckeditor_stylesheets:
   - assets/css/oe-bcl-default.min.css
-  - assets/css/oe_bootstrap_theme.style.min.css
 
 regions:
   navbar_branding: Navbar branding
