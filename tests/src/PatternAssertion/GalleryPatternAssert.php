@@ -64,7 +64,7 @@ class GalleryPatternAssert extends BasePatternAssert {
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The DomCrawler where to check the element.
    */
-  public function assertTitleTag(string $expected, Crawler $crawler): void {
+  protected function assertTitleTag(string $expected, Crawler $crawler): void {
     $this->assertElementExists($expected . '.mb-4.bcl-heading', $crawler);
   }
 
@@ -76,7 +76,7 @@ class GalleryPatternAssert extends BasePatternAssert {
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The DomCrawler where to check the element.
    */
-  public function assertItems(array $expected, Crawler $crawler): void {
+  protected function assertItems(array $expected, Crawler $crawler): void {
     $expected_visible = array_slice($expected, 0, 5);
     $expected_hidden = array_slice($expected, 5);
 
