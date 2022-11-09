@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Gallery pattern.
+ */
+#}
+{% extends '@oe-bcl/gallery' %}
+
+{% set toggle_collapsed = 'view the full gallery (%d)'|t %}
+{% set toggle_expanded = 'view less'|t %}
+{% set title_tag = title_tag|default('h2') %}
+{% set items = bcl_gallery_items(items|default([])) %}
+{% set icon_path = bcl_icon_path %}
+
+{% block carousel %}
+  {# Captions are not rendered for playable medias in the carousel. #}
+  {% include '@oe-bcl/carousel' with {
+    id: _carousel_id,
+    with_controls: true,
+    with_indicators: false,
+    prev_label: _prev_label,
+    next_label: _next_label,
+    autoplay: false,
+    items: items|map(_item => _item|merge({
+      caption: _item.is_playable ? '' : _item.caption
+    })),
+  } only %}
+{% endblock %}
+
