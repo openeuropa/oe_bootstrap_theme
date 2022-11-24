@@ -193,7 +193,8 @@ class MenuPreprocess {
   public function prepareLocalTasks(array $local_tasks): array {
     $links = [];
     foreach ($local_tasks as $link) {
-      if (!$link['#access']->isAllowed()) {
+      $access = $link['#access'] instanceof AccessResultInterface ? $link['#access']->isAllowed() : $link['#access'];
+      if (!$access) {
         continue;
       }
       if ($link['#active']) {
