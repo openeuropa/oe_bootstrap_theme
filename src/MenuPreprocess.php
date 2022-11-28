@@ -193,10 +193,6 @@ class MenuPreprocess {
   public function prepareLocalTasks(array $local_tasks): array {
     $links = [];
     foreach ($local_tasks as $link) {
-      $access = $link['#access'] instanceof AccessResultInterface ? $link['#access']->isAllowed() : $link['#access'];
-      if (!$access) {
-        continue;
-      }
       if ($link['#active']) {
         $link['#link']['in_active_trail'] = TRUE;
       }
