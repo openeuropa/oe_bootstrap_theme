@@ -1,0 +1,91 @@
+<?php
+
+/**
+ * @file
+ * Test module.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\Core\Access\AccessResultAllowed;
+use Drupal\Core\Access\AccessResultForbidden;
+use Drupal\Core\Access\AccessResultNeutral;
+use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function oe_bootstrap_theme_menu_test_menu_local_tasks_alter(&$data, $route_name, RefinableCacheableDependencyInterface &$cacheability) {
+  // Primary tabs.
+  $data['tabs'][0]['foo'] = [
+    '#theme' => 'menu_local_task',
+    '#link' => [
+      'title' => "Task 11",
+      'url' => Url::fromRoute('example11'),
+    ],
+    '#active' => TRUE,
+    '#access' => TRUE,
+  ];
+  $data['tabs'][0]['bar'] = [
+    '#theme' => 'menu_local_task',
+    '#link' => [
+      'title' => 'Task 12',
+      'url' => Url::fromRoute('example12'),
+    ],
+    '#active' => FALSE,
+  ];
+  $data['tabs'][0]['baz'] = [
+    '#theme' => 'menu_local_task',
+    '#link' => [
+      'title' => 'Task 13',
+      'url' => Url::fromRoute('example13'),
+    ],
+    '#active' => FALSE,
+    '#access' => FALSE,
+  ];
+  // Secondary tabs.
+  $data['tabs'][1]['foo'] = [
+    '#theme' => 'menu_local_task',
+    '#link' => [
+      'title' => "Task 21",
+      'url' => Url::fromRoute('example21'),
+    ],
+    '#active' => FALSE,
+  ];
+  $data['tabs'][1]['bar'] = [
+    '#theme' => 'menu_local_task',
+    '#link' => [
+      'title' => 'Task 22',
+      'url' => Url::fromRoute('example22'),
+    ],
+    '#active' => FALSE,
+  ];
+  $data['tabs'][1]['baz'] = [
+    '#theme' => 'menu_local_task',
+    '#link' => [
+      'title' => 'Task 23',
+      'url' => Url::fromRoute('example23'),
+    ],
+    '#active' => FALSE,
+    '#access' => new AccessResultForbidden(),
+  ];
+  $data['tabs'][1]['puz'] = [
+    '#theme' => 'menu_local_task',
+    '#link' => [
+      'title' => 'Task 24',
+      'url' => Url::fromRoute('example24'),
+    ],
+    '#active' => FALSE,
+    '#access' => new AccessResultNeutral(),
+  ];
+  $data['tabs'][1]['paz'] = [
+    '#theme' => 'menu_local_task',
+    '#link' => [
+      'title' => 'Task 25',
+      'url' => Url::fromRoute('example25'),
+    ],
+    '#active' => FALSE,
+    '#access' => new AccessResultAllowed(),
+  ];
+}

@@ -1,0 +1,71 @@
+example1:
+  path: '/example1'
+  defaults:
+    _controller: 'none'
+    _title: 'Example'
+  requirements:
+    _access: 'TRUE'
+
+example11:
+  path: '/example11'
+  defaults:
+    _controller: '\Drupal\oe_bootstrap_theme_menu_test\Controller\MenuTestController::callback'
+    _title: 'Example'
+  requirements:
+    _access: 'TRUE'
+
+example12:
+  path: '/example12'
+  defaults:
+    _controller: '\Drupal\oe_bootstrap_theme_menu_test\Controller\MenuTestController::callback'
+    _title: 'Example'
+  requirements:
+    _access: 'TRUE'
+
+example13:
+  path: '/example13'
+  defaults:
+    _controller: '\Drupal\oe_bootstrap_theme_menu_test\Controller\MenuTestController::callback'
+    _title: 'Example'
+  requirements:
+    _access: 'TRUE'
+
+example21:
+  path: '/example21'
+  defaults:
+    _controller: '\Drupal\oe_bootstrap_theme_menu_test\Controller\MenuTestController::callback'
+    _title: 'Example'
+  requirements:
+    _access: 'TRUE'
+
+example22:
+  path: '/example22'
+  defaults:
+    _controller: '\Drupal\oe_bootstrap_theme_menu_test\Controller\MenuTestController::callback'
+    _title: 'Example'
+  requirements:
+    _access: 'TRUE'
+
+example23:
+  path: '/example23'
+  defaults:
+    _controller: '\Drupal\oe_bootstrap_theme_menu_test\Controller\MenuTestController::callback'
+    _title: 'Example'
+  requirements:
+    _access: 'TRUE'
+
+example24:
+  path: '/example24'
+  defaults:
+    _controller: '\Drupal\oe_bootstrap_theme_menu_test\Controller\MenuTestController::callback'
+    _title: 'Example'
+  requirements:
+    _access: 'TRUE'
+
+example25:
+  path: '/example25'
+  defaults:
+    _controller: '\Drupal\oe_bootstrap_theme_menu_test\Controller\MenuTestController::callback'
+    _title: 'Example'
+  requirements:
+    _access: 'TRUE'
