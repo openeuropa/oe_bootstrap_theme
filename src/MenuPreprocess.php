@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Drupal\oe_bootstrap_theme;
 
+use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Template\Attribute;
 
 /**
@@ -193,6 +194,12 @@ class MenuPreprocess {
   public function prepareLocalTasks(array $local_tasks): array {
     $links = [];
     foreach ($local_tasks as $link) {
+      $access = (!isset($link['#access'])
+        || (($link['#access'] instanceof AccessResultInterface && $link['#access']->isAllowed()) || ($link['#access'] === TRUE)));
+      if (!$access) {
+        continue;
+      }
+
       if ($link['#active']) {
         $link['#link']['in_active_trail'] = TRUE;
       }
