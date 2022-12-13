@@ -199,3 +199,13 @@ status_messages_multiple:
       'div[data-drupal-messages=""] > div:nth-child(4) .alert-content': 'Error message 1.'
       'div[data-drupal-messages=""] > div:nth-child(5) .alert-content': 'Error message 2.'
       'div[data-drupal-messages=""] > div:nth-child(6) .alert-content': 'Error message 3.'
+table:
+  render:
+    '#type': 'table'
+    '#rows':
+      - ['A', 'B']
+      - ['C', 'D']
+  assert:
+    count:
+      'table.table': 1
+      'td': 4
