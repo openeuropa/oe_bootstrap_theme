@@ -22,23 +22,24 @@ card_horizontal_with_image:
           label: 'Custom action'
       header: 'Header of card'
       footer: 'Footer of card'
-  assert:
-    count:
-      'article[data-drupal-selector="card"]': 1
-      'img[alt="Alternative text for card image"]': 1
-      'div.row.g-0 div.col-4': 1
-      'div.row.g-0 div.col-8': 1
-      'img.card-img-top': 1
-      '.card-body > div > span.text-muted': 2
-    equals:
-      'div.card-header': 'Header of card'
-      'h1.card-title': 'Title card'
-      'h6.card-subtitle': 'Subtitle card'
-      'div.card-text': 'Text card with longer text which is supported'
-      '.card-body > div > span.text-muted:nth-child(1)': 'DIGIT'
-      '.card-body > div > span.text-muted:nth-child(2)': 'Developer'
-    contains:
-      'button.btn-primary': 'Custom action'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
+      expected:
+        horizontal: true
+        title: 'Title card'
+        subtitle: 'Subtitle card'
+        description: 'Text card with longer text which is supported'
+        image:
+          src: 'https://placeimg.com/1000/500/arch'
+          alt: 'Alternative text for card image'
+        content:
+          - 'DIGIT'
+          - 'Developer'
+          - '<button class="btn btn-primary btn-md" type="button">Custom action</button>'
+        header: 'Header of card'
+        footer: 'Footer of card'
+
 card_vertical:
   render:
     '#type': pattern
@@ -60,20 +61,21 @@ card_vertical:
           label: 'Custom action'
       header: 'Header of card'
       footer: 'Footer of card'
-  assert:
-    count:
-      'article.card': 1
-      'article.card[data-drupal-selector="card"]': 1
-      'img[alt="Alternative text for card image"]': 1
-      'div.row': 0
-      'img.card-img-top': 1
-    equals:
-      'div.card-header': 'Header of card'
-      'h1.card-title': 'Title card'
-      'h6.card-subtitle': 'Subtitle card'
-      'div.card-text': 'Text card with longer text which is supported'
-    contains:
-      'button.btn-primary': 'Custom action'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
+      expected:
+        horizontal: false
+        title: 'Title card'
+        subtitle: 'Subtitle card'
+        description: 'Text card with longer text which is supported'
+        image:
+          src: 'https://placeimg.com/1000/500/arch'
+          alt: 'Alternative text for card image'
+        content:
+          - '<button class="btn btn-primary btn-md" type="button">Custom action</button>'
+        header: 'Header of card'
+        footer: 'Footer of card'
 card_variant_search:
   render:
     '#type': pattern
@@ -87,17 +89,15 @@ card_variant_search:
       badges:
         - label: 'Category 1'
         - label: 'Category 2'
-  assert:
-    count:
-      'article.listing-item.border-bottom.border-md-0.border-0.card.text-dark': 1
-      'div.col-md-3.col-lg-2.rounded.mw-listing-img': 1
-      'div.col-md-9.col-lg-10': 1
-      'div.card-body.p-0.pb-md-0.pb-3': 1
-      'img.d-none.d-md-block.card-img-top': 1
-      'img[src="https://placeimg.com/1000/500/arch"]': 1
-      'span.badge.rounded-pill.badge-outline-primary': 2
-    equals:
-      'h1.card-title': 'Title card'
-      'div.card-text.mb-2-5': 'Text card with longer text which is supported'
-      'div > span.badge.badge-outline-primary:nth-child(1)': 'Category 1'
-      'div > span.badge.badge-outline-primary:nth-child(2)': 'Category 2'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
+      expected:
+        title: 'Title card'
+        description: 'Text card with longer text which is supported'
+        image:
+          src: 'https://placeimg.com/1000/500/arch'
+          alt: ''
+        badges:
+          - 'Category 1'
+          - 'Category 2'

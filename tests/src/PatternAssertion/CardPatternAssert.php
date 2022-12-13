@@ -20,7 +20,6 @@ class CardPatternAssert extends BasePatternAssert {
     return [
       'horizontal' => [
         [$this, 'assertHorizontal'],
-        $variant,
       ],
       'header' => [
         [$this, 'assertElementText'],
