@@ -4,10 +4,6 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
-use Drupal\Core\Access\AccessResultAllowed;
-use Drupal\Core\Access\AccessResultForbidden;
-use Drupal\Core\Access\AccessResultNeutral;
-use Drupal\Core\Url;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -16,124 +12,56 @@ use Symfony\Component\DomCrawler\Crawler;
 class MenuLocalTasksTest extends AbstractKernelTestBase {
 
   /**
+   * {@inheritdoc}
+   */
+  protected static $modules = [
+    'block',
+    'link',
+    'oe_bootstrap_theme_menu_test',
+  ];
+
+  /**
    * Test menu local tasks.
    */
   public function testMenuLocalTasks(): void {
-    $access_allowed = new AccessResultAllowed();
-    $access_forbidden = new AccessResultForbidden();
-    $access_neutral = new AccessResultNeutral();
-    $render = [
-      '#theme' => 'menu_local_tasks',
-      '#primary' => [
-        'link1.link' => [
-          '#theme' => 'menu_local_task',
-          '#link' => [
-            'title' => 'Third link - Active',
-            'url' => Url::fromUri('http://www.active.com'),
-          ],
-          '#active' => TRUE,
-          '#weight' => 10,
-          '#access' => $access_allowed,
-        ],
-        'link2.link' => [
-          '#theme' => 'menu_local_task',
-          '#link' => [
-            'title' => 'First link - Inactive',
-            'url' => Url::fromUri('http://www.inactive.com'),
-          ],
-          '#active' => FALSE,
-          '#weight' => -10,
-          '#access' => $access_allowed,
-        ],
-        'link3.link' => [
-          '#theme' => 'menu_local_task',
-          '#link' => [
-            'title' => 'Second link',
-            'url' => Url::fromUri('http://www.middlelink.com'),
-          ],
-          '#active' => FALSE,
-          '#weight' => 0,
-          '#access' => $access_allowed,
-        ],
-      ],
-      '#secondary' => [
-        'link4.link' => [
-          '#theme' => 'menu_local_task',
-          '#link' => [
-            'title' => 'Sixth link - Active',
-            'url' => Url::fromUri('http://www.active.com'),
-          ],
-          '#active' => TRUE,
-          '#weight' => 10,
-          '#access' => $access_allowed,
-        ],
-        'link5.link' => [
-          '#theme' => 'menu_local_task',
-          '#link' => [
-            'title' => 'Fourth link - Inactive',
-            'url' => Url::fromUri('http://www.inactive.com'),
-          ],
-          '#active' => FALSE,
-          '#weight' => -10,
-          '#access' => $access_allowed,
-        ],
-        'link6.link' => [
-          '#theme' => 'menu_local_task',
-          '#link' => [
-            'title' => 'Fifth link',
-            'url' => Url::fromUri('http://www.middlelink.com'),
-          ],
-          '#active' => FALSE,
-          '#weight' => 0,
-          '#access' => $access_allowed,
-        ],
-        'link7.link' => [
-          '#theme' => 'menu_local_task',
-          '#link' => [
-            'title' => 'Forbidden link',
-            'url' => Url::fromUri('http://www.forbiddenlink.com'),
-          ],
-          '#active' => FALSE,
-          '#weight' => 0,
-          '#access' => $access_forbidden,
-        ],
-        'link8.link' => [
-          '#theme' => 'menu_local_task',
-          '#link' => [
-            'title' => 'Neutral link',
-            'url' => Url::fromUri('http://www.neutral.com'),
-          ],
-          '#active' => FALSE,
-          '#weight' => 0,
-          '#access' => $access_neutral,
-        ],
-      ],
-    ];
+    $entity_type_manager = $this->container
+      ->get('entity_type.manager');
+    $entity = $entity_type_manager->getStorage('block')->load('oe_bootstrap_theme_local_tasks');
+    $builder = $entity_type_manager->getViewBuilder('block');
+    $build = $builder->view($entity, 'block');
+    $render = $this->container->get('renderer')->renderRoot($build);
+    $crawler = new Crawler((string) $render);
 
-    $html = $this->renderRoot($render);
-    $crawler = new Crawler($html);
+    $primary = $crawler->filter('nav.nav-tabs');
+    $links = $primary->filter('a');
+    $this->assertElementsTexts([
+      'Task 11',
+      'Task 12',
+    ], $links);
+    $secondary = $crawler->filter('nav.nav-pills');
+    $links = $secondary->filter('a');
+    $this->assertElementsTexts([
+      'Task 21',
+      'Task 22',
+      'Task 25',
+    ], $links);
+  }
 
-    $nav = $crawler->filter('nav.nav-tabs');
-    $this->assertCount(1, $nav);
-    $nav = $crawler->filter('nav.nav-pills');
-    $this->assertCount(1, $nav);
-
-    $links = $crawler->filter('a.nav-link');
-    $this->assertCount(6, $links);
-
-    $active = $crawler->filter('a.active');
-    $this->assertCount(2, $active);
-
-    $this->assertEquals('Third link - Active', trim($active->eq(0)->text()));
-    $this->assertEquals('Sixth link - Active', trim($active->eq(1)->text()));
-
-    // Assert regular links are ordered by weight.
-    $this->assertEquals('First link - Inactive', trim($links->eq(0)->text()));
-    $this->assertEquals('Second link', trim($links->eq(1)->text()));
-    $this->assertEquals('Third link - Active', trim($links->eq(2)->text()));
-    $this->assertEquals('Fourth link - Inactive', trim($links->eq(3)->text()));
-    $this->assertEquals('Fifth link', trim($links->eq(4)->text()));
-    $this->assertEquals('Sixth link - Active', trim($links->eq(5)->text()));
+  /**
+   * Asserts text contents for multiple elements at once.
+   *
+   * @param string[] $expected
+   *   Expected element texts.
+   * @param \Symfony\Component\DomCrawler\Crawler $elements
+   *   Elements to compare.
+   */
+  protected function assertElementsTexts(array $expected, Crawler $elements): void {
+    $items = [];
+    /** @var \DOMElement $element */
+    foreach ($elements as $element) {
+      $items[] = $element->textContent;
+    }
+    $this->assertSame($expected, $items);
   }
 
 }
