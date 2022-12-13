@@ -35,6 +35,10 @@ card:
       preview:
         src: 'https://placeimg.com/1000/500/people'
         alt: 'Alternative text for card image'
+    date:
+      type: array
+      label: 'Date object'
+      description: 'Date for card. Optional.'
     meta:
       type: array
       label: 'Meta items'
