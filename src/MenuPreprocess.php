@@ -194,6 +194,7 @@ class MenuPreprocess {
   public function prepareLocalTasks(array $local_tasks): array {
     $links = [];
     foreach ($local_tasks as $link) {
+      // @see \Drupal\Core\Render\Element::isVisibleElement()
       $access = (!isset($link['#access'])
         || (($link['#access'] instanceof AccessResultInterface && $link['#access']->isAllowed()) || ($link['#access'] === TRUE)));
       if (!$access) {
