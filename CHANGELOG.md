@@ -1,10 +1,25 @@
 # Change Log
 
+## [1.0.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0) (2022-12-13)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta7...1.0.0)
+
+**Closed issues:**
+
+- Error when link \#access property is a boolean [\#285](https://github.com/openeuropa/oe_bootstrap_theme/issues/285)
+
+**Merged pull requests:**
+
+- OEL-2128: Add Skip to main content target. [\#287](https://github.com/openeuropa/oe_bootstrap_theme/pull/287) ([drishu](https://github.com/drishu))
+- ISAICP-7433: The \#access property might be a bool [\#286](https://github.com/openeuropa/oe_bootstrap_theme/pull/286) ([claudiu-cristea](https://github.com/claudiu-cristea))
+- OEL-1572: Add bcl and oebt style sheets to ckeditor. [\#282](https://github.com/openeuropa/oe_bootstrap_theme/pull/282) ([drishu](https://github.com/drishu))
+- OEL-2082: Gallery pattern. [\#281](https://github.com/openeuropa/oe_bootstrap_theme/pull/281) ([brummbar](https://github.com/brummbar))
+
 ## [1.0.0-beta7](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta7) (2022-11-03)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta6...1.0.0-beta7)
 
 **Merged pull requests:**
 
+- Prepare release 1.0.0-beta7. [\#283](https://github.com/openeuropa/oe_bootstrap_theme/pull/283) ([drishu](https://github.com/drishu))
 - OEL-2002: Preserve Drupal links. [\#270](https://github.com/openeuropa/oe_bootstrap_theme/pull/270) ([drishu](https://github.com/drishu))
 
 ## [1.0.0-beta6](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta6) (2022-09-29)
