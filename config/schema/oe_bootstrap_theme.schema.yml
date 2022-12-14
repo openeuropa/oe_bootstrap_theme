@@ -1,3 +1,14 @@
 oe_bootstrap_theme.settings:
   type: theme_settings
   label: 'OpenEuropa Bootstrap Theme settings'
+  mapping:
+    bootstrap_tables:
+      type: mapping
+      label: 'Bootstrap tables'
+      mapping:
+        enable:
+          type: boolean
+          label: 'Enable table styling using Bootstrap'
+        responsive:
+          type: string
+          label: 'Responsive tables'
