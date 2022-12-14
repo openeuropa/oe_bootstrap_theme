@@ -201,11 +201,48 @@ status_messages_multiple:
       'div[data-drupal-messages=""] > div:nth-child(6) .alert-content': 'Error message 3.'
 table:
   render:
-    '#type': 'table'
+    '#theme': 'table'
     '#rows':
       - ['A', 'B']
       - ['C', 'D']
   assert:
     count:
+      'table': 1
       'table.table': 1
+      'td': 4
+table_existing_attributes:
+  render:
+    '#theme': 'table'
+    '#attributes':
+      class: 'existing-class'
+      id: 'table-id'
+    '#rows':
+      - [ 'A', 'B' ]
+      - [ 'C', 'D' ]
+  assert:
+    count:
+      'table': 1
+      'table#table-id.table.existing-class': 1
+      'td': 4
+table_bootstrap:
+  render:
+    '#theme': 'table__bootstrap'
+    '#rows':
+      - ['A', 'B']
+      - ['C', 'D']
+  assert:
+    count:
+      'table': 1
+      'table.table': 1
+      'td': 4
+table_bootstrap_responsive:
+  render:
+    '#theme': 'table'
+    '#rows':
+      - ['A', 'B']
+      - ['C', 'D']
+  assert:
+    count:
+      'table': 1
+      'div.table-responsive table.table': 1
       'td': 4
