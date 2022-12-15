@@ -101,3 +101,58 @@ card_variant_search:
         badges:
           - 'Category 1'
           - 'Category 2'
+card_search_with_date:
+  render:
+    '#type': pattern
+    '#id': 'card'
+    '#variant': 'search'
+    '#fields':
+      title: 'Title card'
+      text: 'Text card with longer text which is supported'
+      date:
+        year: "2021"
+        month: "Jan"
+        day: "23"
+        date_time: "2021-01-23"
+      badges:
+        - label: 'Category 1'
+        - label: 'Category 2'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
+      expected:
+        title: 'Title card'
+        description: 'Text card with longer text which is supported'
+        date:
+          year: "2021"
+          month: "Jan"
+          day: "23"
+          date_time: "2021-01-23"
+        badges:
+          - 'Category 1'
+          - 'Category 2'
+card_with_date_range:
+  render:
+    '#type': pattern
+    '#id': 'card'
+    '#fields':
+      title: 'Title card'
+      date:
+        year: "2021"
+        month: "Jan"
+        day: "23"
+        end_year: "2022"
+        end_month: "Feb"
+        end_day: "11"
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
+      expected:
+        title: 'Title card'
+        date:
+          year: "2021"
+          month: "Jan"
+          day: "23"
+          end_year: "2022"
+          end_month: "Feb"
+          end_day: "11"

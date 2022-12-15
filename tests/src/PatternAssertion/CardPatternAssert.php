@@ -57,6 +57,9 @@ class CardPatternAssert extends BasePatternAssert {
         [$this, 'assertContent'],
         $variant,
       ],
+      'date' => [
+        [$this, 'assertDate'],
+      ],
     ];
   }
 
@@ -111,16 +114,45 @@ class CardPatternAssert extends BasePatternAssert {
    *
    * @param bool $expected
    *   The expected state.
-   * @param string $variant
-   *   The variant of the pattern being checked.
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The DomCrawler where to check the element.
    */
-  protected function assertHorizontal(bool $expected, string $variant, Crawler $crawler): void {
+  protected function assertHorizontal(bool $expected, Crawler $crawler): void {
     if ($expected) {
       $this->assertElementExists('.row .col-4', $crawler);
       $this->assertElementExists('.row .col-8', $crawler);
+      return;
     }
+    $this->assertElementNotExists('.row .col-4', $crawler);
+    $this->assertElementNotExists('.row .col-8', $crawler);
+  }
+
+  /**
+   * Asserts the card date block.
+   *
+   * @param array $expected
+   *   The expected data.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertDate(array $expected, Crawler $crawler): void {
+    // @todo Use dedicated pattern assert once we re-work date_plock pattern.
+    $day_month = $expected['day'] . ' ' . $expected['month'];
+
+    if (isset($expected['end_day']) && isset($expected['end_month'])) {
+      $day_month .= ' - ' . $expected['end_day'] . '      ' . $expected['end_month'];
+    }
+
+    $this->assertElementText($day_month, 'time > span > span:nth-of-type(1)', $crawler);
+
+    $year = $expected['year'];
+
+    if (isset($expected['end_day']) && isset($expected['end_month'])) {
+      $year .= ' - ' . $expected['end_year'];
+    }
+
+    $this->assertElementText($year, 'time > span > span:nth-of-type(2)', $crawler);
+    $this->assertElementAttribute($expected['date_time'] ?? NULL, 'time', 'datetime', $crawler);
   }
 
   /**
