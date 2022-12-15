@@ -26,7 +26,6 @@ class BootstrapTableFilterTest extends UnitTestCase {
    */
   public function testProcess(array $settings, string $html, string $expected): void {
     $filter = new BootstrapTable(['settings' => $settings], 'oe_bootstrap_theme_table', ['provider' => 'test']);
-    $filter->setStringTranslation($this->getStringTranslationStub());
 
     $processed_text = $filter->process($html, NULL)->getProcessedText();
     $this->assertEquals($expected, $processed_text);
