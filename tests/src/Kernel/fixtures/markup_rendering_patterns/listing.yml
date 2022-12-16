@@ -65,7 +65,6 @@ listing_default_1_col:
       'h1.card-title': 4
       'a.standalone': 4
       'a.d-inline-block': 1
-      '.mw-listing-img': 3
     equals:
       'a[href="/example1"]': 'Card title 1'
       'a[href="/example2"]': 'Card title 2'
@@ -161,7 +160,6 @@ listing_default_2_col:
       'h1.card-title': 6
       'a.standalone': 6
       'a.d-inline-block': 1
-      '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': 'Card title 1'
       'a[href="/example2"]': 'Card title 2'
@@ -258,7 +256,6 @@ listing_default_3_col:
       'h1.card-title': 6
       'a.standalone': 6
       'a.d-inline-block': 1
-      '.mw-listing-img': 5
     equals:
       'a[href="/example1"]': 'Card title 1'
       'a[href="/example2"]': 'Card title 2'
