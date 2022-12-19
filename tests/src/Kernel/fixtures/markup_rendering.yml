@@ -199,3 +199,29 @@ status_messages_multiple:
       'div[data-drupal-messages=""] > div:nth-child(4) .alert-content': 'Error message 1.'
       'div[data-drupal-messages=""] > div:nth-child(5) .alert-content': 'Error message 2.'
       'div[data-drupal-messages=""] > div:nth-child(6) .alert-content': 'Error message 3.'
+table:
+  render:
+    '#theme': 'table'
+    '#rows':
+      - ['A', 'B']
+      - ['C', 'D']
+  assert:
+    count:
+      'table': 1
+      # Responsive tables are enabled by default in our shipped config.
+      'div.table-responsive table.table': 1
+      'td': 4
+table_existing_attributes:
+  render:
+    '#theme': 'table'
+    '#attributes':
+      class: 'existing-class'
+      id: 'table-id'
+    '#rows':
+      - [ 'A', 'B' ]
+      - [ 'C', 'D' ]
+  assert:
+    count:
+      'table': 1
+      'div.table-responsive table#table-id.table.existing-class': 1
+      'td': 4
