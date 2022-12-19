@@ -208,7 +208,8 @@ table:
   assert:
     count:
       'table': 1
-      'table.table': 1
+      # Responsive tables are enabled by default in our shipped config.
+      'div.table-responsive table.table': 1
       'td': 4
 table_existing_attributes:
   render:
@@ -222,27 +223,5 @@ table_existing_attributes:
   assert:
     count:
       'table': 1
-      'table#table-id.table.existing-class': 1
-      'td': 4
-table_bootstrap:
-  render:
-    '#theme': 'table__bootstrap'
-    '#rows':
-      - ['A', 'B']
-      - ['C', 'D']
-  assert:
-    count:
-      'table': 1
-      'table.table': 1
-      'td': 4
-table_bootstrap_responsive:
-  render:
-    '#theme': 'table'
-    '#rows':
-      - ['A', 'B']
-      - ['C', 'D']
-  assert:
-    count:
-      'table': 1
-      'div.table-responsive table.table': 1
+      'div.table-responsive table#table-id.table.existing-class': 1
       'td': 4
