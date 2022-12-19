@@ -54,6 +54,10 @@ class ThemeSettingsTest extends BrowserTestBase {
     $assert_session->buttonExists('Save configuration')->press();
     $this->assertEquals('<table data-striping="1" class="table"><tbody><tr><td>A</td><td>B</td></tr></tbody></table>', $this->renderTestTable());
 
+    $responsive_field->setValue('xxl');
+    $assert_session->buttonExists('Save configuration')->press();
+    $this->assertEquals('<div class="table-responsive-xxl"><table data-striping="1" class="table"><tbody><tr><td>A</td><td>B</td></tr></tbody></table></div>', $this->renderTestTable());
+
     $responsive_field->setValue('md');
     $assert_session->buttonExists('Save configuration')->press();
     $this->assertEquals('<div class="table-responsive-md"><table data-striping="1" class="table"><tbody><tr><td>A</td><td>B</td></tr></tbody></table></div>', $this->renderTestTable());
@@ -61,6 +65,11 @@ class ThemeSettingsTest extends BrowserTestBase {
     $assert_session->fieldExists('Style all tables using Bootstrap.')->uncheck();
     $assert_session->buttonExists('Save configuration')->press();
     $this->assertEquals('<table data-striping="1"><tbody><tr><td>A</td><td>B</td></tr></tbody></table>', $this->renderTestTable());
+
+    // Test that when the Bootstrap table setting is off, the rendering can be
+    // forced via theme suggestions.
+    $this->assertEquals('<table data-striping="1" class="table"><tbody><tr><td>A</td><td>B</td></tr></tbody></table>', $this->renderTestTable('table__bootstrap'));
+    $this->assertEquals('<div class="table-responsive-md"><table data-striping="1" class="table"><tbody><tr><td>A</td><td>B</td></tr></tbody></table></div>', $this->renderTestTable('table__bootstrap__responsive'));
   }
 
   /**
@@ -69,9 +78,9 @@ class ThemeSettingsTest extends BrowserTestBase {
    * @return string
    *   The table normalised markup.
    */
-  protected function renderTestTable(): string {
+  protected function renderTestTable(string $theme = 'table'): string {
     $build = [
-      '#theme' => 'table',
+      '#theme' => $theme,
       '#rows' => [
         ['A', 'B'],
       ],
