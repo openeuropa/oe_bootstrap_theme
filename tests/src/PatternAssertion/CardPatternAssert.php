@@ -136,7 +136,7 @@ class CardPatternAssert extends BasePatternAssert {
    *   The DomCrawler where to check the element.
    */
   protected function assertDate(array $expected, Crawler $crawler): void {
-    // @todo Use dedicated pattern assert once we re-work date_plock pattern.
+    // @todo Use dedicated pattern assert once we re-work date_block pattern.
     $day_month = $expected['day'] . ' ' . $expected['month'];
 
     if (isset($expected['end_day']) && isset($expected['end_month'])) {
