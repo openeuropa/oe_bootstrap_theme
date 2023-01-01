@@ -140,7 +140,7 @@ class CardPatternAssert extends BasePatternAssert {
     $day_month = $expected['day'] . ' ' . $expected['month'];
 
     if (isset($expected['end_day']) && isset($expected['end_month'])) {
-      $day_month .= ' - ' . $expected['end_day'] . '      ' . $expected['end_month'];
+      $day_month .= ' - ' . $expected['end_day'] . ' ' . $expected['end_month'];
     }
 
     $this->assertElementText($day_month, 'time > span > span:nth-of-type(1)', $crawler);
