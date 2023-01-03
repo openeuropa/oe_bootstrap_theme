@@ -74,16 +74,15 @@ class CardPatternAssert extends BasePatternAssert {
    *   The DomCrawler where to check the element.
    */
   protected function assertCardImage($expected_image, string $variant, Crawler $crawler): void {
+    $selector = 'article.card img';
+
     if ($variant === 'search') {
-      $image_div = $crawler->filter('.row .col-md-3 img.card-img-top');
-      self::assertEquals($expected_image['alt'], $image_div->attr('alt'));
-      self::assertStringContainsString($expected_image['src'], $image_div->attr('src'));
+      $selector = '.row .col-md-3 img.card-img-top';
     }
-    else {
-      $image_div = $crawler->filter('article.card img');
-      self::assertEquals($expected_image['alt'], $image_div->attr('alt'));
-      self::assertStringContainsString($expected_image['src'], $image_div->attr('src'));
-    }
+
+    $image_div = $crawler->filter($selector);
+    self::assertEquals($expected_image['alt'], $image_div->attr('alt'));
+    self::assertStringContainsString($expected_image['src'], $image_div->attr('src'));
   }
 
   /**
@@ -160,27 +159,14 @@ class CardPatternAssert extends BasePatternAssert {
    */
   protected function assertBaseElements(string $html, string $variant): void {
     $crawler = new Crawler($html);
-    $card = $crawler->filter($this->getBaseItemClass($variant));
-    self::assertCount(1, $card);
-  }
+    $selector = 'article.card';
 
-  /**
-   * Returns the base CSS selector for a list item depending on the variant.
-   *
-   * @param string $variant
-   *   The variant being checked.
-   *
-   * @return string
-   *   The base selector for the variant.
-   */
-  protected function getBaseItemClass(string $variant): string {
-    switch ($variant) {
-      case 'search':
-        return 'article.listing-item.card';
-
-      default:
-        return 'article.card';
+    if ($variant === 'search') {
+      $selector = 'article.listing-item.card';
     }
+
+    $card = $crawler->filter($selector);
+    self::assertCount(1, $card);
   }
 
   /**
