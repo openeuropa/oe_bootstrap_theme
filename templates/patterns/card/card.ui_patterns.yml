@@ -37,8 +37,8 @@ card:
         alt: 'Alternative text for card image'
     date:
       type: array
-      label: 'Date object'
-      description: 'Date for card. Optional.'
+      label: 'Date block'
+      description: 'If set, presents a date block that uses the same parameters as the bcl date-block pattern. Optional.'
     meta:
       type: array
       label: 'Meta items'
