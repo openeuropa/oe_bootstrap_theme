@@ -146,7 +146,7 @@ class CardPatternAssert extends BasePatternAssert {
 
     $year = $expected['year'];
 
-    if (isset($expected['end_day']) && isset($expected['end_month'])) {
+    if (isset($expected['end_year']) && $expected['year'] !== $expected['end_year']) {
       $year .= ' - ' . $expected['end_year'];
     }
 
