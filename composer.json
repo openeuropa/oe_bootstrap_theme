@@ -9,7 +9,7 @@
         "php": ">=8.0",
         "cweagans/composer-patches": "^1.7",
         "drupal/core": "^9.4",
-        "drupal/ui_patterns": "^1.2",
+        "drupal/ui_patterns": "^1.4",
         "drupal/ui_patterns_settings": "^1.1",
         "openeuropa/ecl-twig-loader": "^3.1"
     },
