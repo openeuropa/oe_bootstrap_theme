@@ -35,6 +35,10 @@ card:
       preview:
         src: 'https://placeimg.com/1000/500/people'
         alt: 'Alternative text for card image'
+    date:
+      type: array
+      label: 'Date block'
+      description: 'If set, presents a date block that uses the same parameters as the bcl date-block pattern. Optional.'
     meta:
       type: array
       label: 'Meta items'
