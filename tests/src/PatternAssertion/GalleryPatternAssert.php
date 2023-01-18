@@ -118,7 +118,7 @@ class GalleryPatternAssert extends BasePatternAssert {
 
       try {
         self::assertStringContainsString($item['thumbnail']['rendered'], $thumbnail->html());
-        $this->assertElementText($item['thumbnail']['caption_title'] ?? NULL, '.bcl-gallery__item-caption > h5', $thumbnail);
+        $this->assertElementText($item['thumbnail']['caption_title'] ?? NULL, '.bcl-gallery__item-caption > .fs-5', $thumbnail);
         $this->assertElementText($item['thumbnail']['caption'] ?? NULL, '.bcl-gallery__item-caption > .bcl-gallery__item-description', $thumbnail);
 
         if ($item['thumbnail']['play_icon'] ?? FALSE) {
