@@ -1,8 +1,8 @@
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-date-block/date-block.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-date-block/date-block.html.twig
-index 0fa903c..06f000c 100644
+index 9484d4a..e48d0c6 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-date-block/date-block.html.twig
 +++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-date-block/date-block.html.twig
-@@ -46,12 +46,12 @@
+@@ -45,12 +45,12 @@
    <span class="d-flex flex-column pt-2">
      <span class="d-flex flex-column align-item-center justify-content-center bg-white border border-bottom-0 w-100 h-100 fs-5 text-uppercase">
        <span class="d-block">{{- _day ~ ' ' ~ _month ~ ((_end_day or _end_month) ? ' - ' ) -}}</span>
@@ -21,21 +21,15 @@ index 0fa903c..06f000c 100644
      <span class="bg-lighter border w-100 rounded-bottom py-1">
        {{- _year -}}
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
-index 0ccc7ec..70b5143 100644
+index 615fcf3..aa94eb3 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
 +++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
-@@ -1,4 +1,4 @@
--{% spaceless %}
-+{% apply spaceless %}
-
- {# Parameters:
-   - label (string) (default: '')
-@@ -72,18 +72,20 @@
+@@ -72,18 +72,19 @@
  {% if _classes is not empty %}
    {% set attributes = attributes.addClass(_classes) %}
  {% endif %}
 -{% set attributes = attributes.setAttribute('href', _path) %}
-
+ 
 -<a
 -  {{ attributes }}
 ->
@@ -60,7 +54,5 @@ index 0ccc7ec..70b5143 100644
 +{%- endif -%}
 +
 +{{ bcl_link(_label, _path, attributes) }}
-+
-+{% endapply %}
-
--{% endspaceless %}
+ 
+ {% endapply %}
