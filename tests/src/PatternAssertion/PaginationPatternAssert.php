@@ -65,22 +65,27 @@ class PaginationPatternAssert extends BasePatternAssert {
     $this->assertCounts([
       // Fail on unexpected additional <li> or <a> anywhere in the html.
       'li' => $expected_count,
-      'a' => $expected_count,
+      '.page-link' => $expected_count,
       // Fail if classes are missing or the structure is wrong.
       // The :first-child makes sure that each <li> has exactly one <a>.
-      'nav > ul > li.page-item > a.page-link:first-child' => $expected_count,
+      'nav > ul > li.page-item > .page-link:first-child' => $expected_count,
     ], $crawler);
 
     $icon_pattern_assert = new IconPatternAssert();
-
     $actual_items_selection = $crawler->filter('nav > ul > li');
 
     foreach ($expected as $i => $expected_item) {
       $li = $actual_items_selection->eq($i);
       $this->assertCount(1, $li);
-      $link = $li->filter('a');
-      $this->assertCount(1, $link);
-      $this->assertSame($expected_item['url'], $link->attr('href'));
+      $link = $li->filter('.page-link');
+
+      if (isset($expected_item['url'])) {
+        $this->assertCount(1, $link);
+        $this->assertSame($expected_item['url'], $link->attr('href'));
+      }
+      else {
+        $this->assertNull($link->attr('href'));
+      }
       if (isset($expected_item['icon'])) {
         $icon_pattern_assert->assertPattern([
           'name' => $expected_item['icon'],
