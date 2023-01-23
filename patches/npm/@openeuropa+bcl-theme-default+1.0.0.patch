@@ -1,3 +1,16 @@
+diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig
+index aa1b01a..8b96459 100644
+--- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig
++++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-carousel/carousel.html.twig
+@@ -135,7 +135,7 @@
+             <div class="{{ _item.caption_classes }}">
+           {% endif %}
+           {% if _item.caption_title is not empty %}
+-            <p class="fs-5">{{ _item.caption_title }}</p>
++            <div class="fs-5">{{ _item.caption_title }}</div>
+           {% endif %}
+             {{- _item.caption -}}
+           {% if _item.caption_classes is defined and _item.caption_classes is not empty %}
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-date-block/date-block.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-date-block/date-block.html.twig
 index 9484d4a..e48d0c6 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-date-block/date-block.html.twig
@@ -20,6 +33,19 @@ index 9484d4a..e48d0c6 100644
      </span>
      <span class="bg-lighter border w-100 rounded-bottom py-1">
        {{- _year -}}
+diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-gallery/gallery-item.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-gallery/gallery-item.html.twig
+index aeff199..962d5db 100644
+--- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-gallery/gallery-item.html.twig
++++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-gallery/gallery-item.html.twig
+@@ -48,7 +48,7 @@ Parameters:
+   {% if _item.caption is not empty or item.caption_title is not empty %}
+     <div class="bcl-gallery__item-caption">
+     {% if _item.caption_title is not empty %}
+-      <p class="fs-5">{{ _item.caption_title }}</p>
++      <div class="fs-5">{{ _item.caption_title }}</div>
+     {% endif %}
+     {% if _item.caption is not empty %}
+       <div class="bcl-gallery__item-description">
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
 index 615fcf3..aa94eb3 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
