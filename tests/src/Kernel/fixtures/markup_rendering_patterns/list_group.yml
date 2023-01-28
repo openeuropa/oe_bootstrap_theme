@@ -22,7 +22,7 @@ list_group_unordered_without_flush_vertical:
       'li.list-group-item-primary': 'Label 2'
       'li.list-group-item-secondary span.badge': '10'
     contains:
-      - 'Label 3'
+      li.list-group-item-secondary: 'Label 3'
     count:
       'ul[data-drupal-selector="list-group"]': 1
       'ul.list-group': 1
