@@ -251,9 +251,7 @@ class PagerTest extends AbstractKernelTestBase {
       ],
     ];
     $html = $this->renderRoot($element);
-
     $pagination_assert = new PaginationPatternAssert();
-
     $pagination_assert->assertPattern($expected_args, $html);
   }
 
@@ -266,17 +264,17 @@ class PagerTest extends AbstractKernelTestBase {
   public function viewsMiniPagerDataProvider(): array {
     $scenarios = [
       0 => [
-        ['url' => '', 'label' => '1'],
+        ['label' => '1'],
         ['url' => '/?page=1', 'label' => 'The next'],
       ],
       1 => [
         ['url' => '/?page=0', 'label' => 'The previous'],
-        ['url' => '', 'label' => '2'],
+        ['label' => '2'],
         ['url' => '/?page=2', 'label' => 'The next'],
       ],
       7 => [
         ['url' => '/?page=6', 'label' => 'The previous'],
-        ['url' => '', 'label' => '8'],
+        ['label' => '8'],
       ],
     ];
     $datasets = [];

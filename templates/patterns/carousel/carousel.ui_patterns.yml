@@ -20,17 +20,16 @@ carousel:
     autoplay:
       type: boolean
       label: 'Disable autoplay'
-      description: 'Defaults to true. If set to false the carousel will not slide automatically.'
+      description: 'Whether to initialise and animate the carousel at page load. Defaults to true. If false, the carousel will need to be instantiated explicitly via JavaScript.'
       preview: true
     autoinit:
       type: boolean
       label: 'initialize the carousel'
-      description: 'Defaults to true. If set to false, the carousel will need to be instantiated via javascript.'
+      description: 'DEPRECATED in favour of autoplay. Whether to initialise and animate the carousel at page load. Its value will be used only if autoplay is not present.'
     disable_touch:
       type: boolean
       label: 'Disable touch'
       description: 'Allow the carousel to swipe on touch. Defaults to false.'
-      preview: false
     dark_mode:
       type: boolean
       label: 'Dark mode'
