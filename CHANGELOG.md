@@ -1,5 +1,19 @@
 # Change Log
 
+## [1.1.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.1.0) (2023-01-30)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0...1.1.0)
+
+**Closed issues:**
+
+- JS error on pages using select template override [\#145](https://github.com/openeuropa/oe_bootstrap_theme/issues/145)
+
+**Merged pull requests:**
+
+- OEL-2042: Checkbox description inline fix. [\#295](https://github.com/openeuropa/oe_bootstrap_theme/pull/295) ([tibi2303](https://github.com/tibi2303))
+- OEL-1915: Support date in card pattern. [\#291](https://github.com/openeuropa/oe_bootstrap_theme/pull/291) ([drishu](https://github.com/drishu))
+- OEL-2009: Style tables using BCL. [\#290](https://github.com/openeuropa/oe_bootstrap_theme/pull/290) ([brummbar](https://github.com/brummbar))
+- OEL-2166: Upgrade to BCL 1.0.0 [\#267](https://github.com/openeuropa/oe_bootstrap_theme/pull/267) ([brummbar](https://github.com/brummbar))
+
 ## [1.0.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0) (2022-12-13)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta7...1.0.0)
 
@@ -9,6 +23,7 @@
 
 **Merged pull requests:**
 
+- Prepare changelog for release 1.0.0. [\#289](https://github.com/openeuropa/oe_bootstrap_theme/pull/289) ([brummbar](https://github.com/brummbar))
 - OEL-2128: Add Skip to main content target. [\#287](https://github.com/openeuropa/oe_bootstrap_theme/pull/287) ([drishu](https://github.com/drishu))
 - ISAICP-7433: The \#access property might be a bool [\#286](https://github.com/openeuropa/oe_bootstrap_theme/pull/286) ([claudiu-cristea](https://github.com/claudiu-cristea))
 - OEL-1572: Add bcl and oebt style sheets to ckeditor. [\#282](https://github.com/openeuropa/oe_bootstrap_theme/pull/282) ([drishu](https://github.com/drishu))
