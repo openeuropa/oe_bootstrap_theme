@@ -24,11 +24,11 @@ services:
     # ports:
     #   - 3306:3306
   node:
-    image: node:14.17.3
+    image: node:16.19.0
     user: "node"
     working_dir: /home/node/app
     environment:
-      - NODE_ENV=${NODE_ENV}
+      - NODE_ENV=${NODE_ENV-''}
       - SHELL=bash
     volumes:
       - ./:/home/node/app
