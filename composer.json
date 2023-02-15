@@ -16,7 +16,6 @@
     "require-dev": {
         "ext-dom": "*",
         "composer/installers": "^1.11",
-        "drupal/config_devel": "~1.8",
         "drupal/core-composer-scaffold": "^9.4 || ^10",
         "drupal/core-dev": "^9.4 || ^10",
         "drupal/styleguide": "^2",
