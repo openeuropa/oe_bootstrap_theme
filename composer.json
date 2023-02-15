@@ -20,7 +20,6 @@
         "drupal/core-dev": "^9.4 || ^10",
         "drupal/styleguide": "^2",
         "drush/drush": "^11.1",
-        "mikey179/vfsstream": "^1.6.10",
         "openeuropa/code-review": "^2.0.0-alpha6",
         "openeuropa/task-runner-drupal-project-symlink": "^1.0-beta6",
         "phpspec/prophecy-phpunit": "^2"
@@ -58,14 +57,7 @@
             "locations": {
                 "web-root": "./build"
             }
-        },
-        "_readme": [
-            "Explicit requirement of token module due to PHP 8 compatbility.",
-            "Explicit minimum version requirement of guzzlehttp/guzzle due to lower versions missing return type on CookieJar::getIterator() and CookieJar::count() methods.",
-            "Explicit minimum version requirement of masterminds/html5 due to lower versions passing NULL parameters instead of string when calling DOMImplementation::createDocument() method.",
-            "Explicit minimum version requirement of mikey179/vfsstream due to lower versions missing return type on vfsStreamDirectory::getIterator() method.",
-            "Explicit minimum version requirement of symfony packages due to lower versions missing return type on various methods being incompatible with PHP 8.1 parent methods."
-        ]
+        }
     },
     "config": {
         "sort-packages": true,
