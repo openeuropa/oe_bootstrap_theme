@@ -11,7 +11,7 @@
         "drupal/core": "^9.4 || ^10",
         "drupal/ui_patterns": "^1.4",
         "drupal/ui_patterns_settings": "^2.0",
-        "openeuropa/ecl-twig-loader": "dev-EWPP-3122"
+        "openeuropa/ecl-twig-loader": "^4.0"
     },
     "require-dev": {
         "ext-dom": "*",
