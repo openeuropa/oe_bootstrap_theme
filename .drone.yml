@@ -32,31 +32,14 @@ pipeline:
       - npm install --unsafe-perm
       - NODE_ENV=production npm run production
 
-  composer-install-highest:
-    group: post-prepare
+  composer-install:
+    group: prepare
     image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
     volumes:
-      - /cache:/cache
+      - /cache/${DRONE_REPO_NAME}:/cache
     commands:
       - composer self-update --2
-      - composer install --ansi --no-progress
-    when:
-      matrix:
-        COMPOSER_BOUNDARY: highest
-
-  composer-install-lowest:
-    group: post-prepare
-    image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
-    volumes:
-      - /cache:/cache
-    commands:
-      - composer self-update --2
-      - composer update --prefer-lowest --prefer-stable --ansi --no-progress
-    when:
-      event:
-        exclude: tag
-      matrix:
-        COMPOSER_BOUNDARY: lowest
+      - composer require drupal/core:~${CORE_VERSION} drupal/core-composer-scaffold:~${CORE_VERSION} drupal/core-dev:~${CORE_VERSION} --update-with-all-dependencies --ansi --no-progress --no-interaction
 
   site-install:
     image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
@@ -112,9 +95,10 @@ pipeline:
         PHP_VERSION: 8.0
 
 matrix:
-  COMPOSER_BOUNDARY:
-    - lowest
-    - highest
-  PHP_VERSION:
-    - 8.0
-    - 8.1
+  include:
+    - CORE_VERSION: 9.4.0
+      PHP_VERSION: 8.0
+    - CORE_VERSION: 9.4.0
+      PHP_VERSION: 8.1
+    - CORE_VERSION: 10.0
+      PHP_VERSION: 8.1

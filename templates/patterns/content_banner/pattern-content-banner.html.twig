@@ -4,7 +4,7 @@
  * Content banner pattern.
  */
 #}
-{% spaceless %}
+{% apply spaceless %}
 {# Render the 'meta' items into the content variable. #}
 {% set _content %}
   {% set content_attributes = create_attribute().addClass('mt-4') %}
@@ -41,4 +41,4 @@
   'links': links,
   'attributes': attributes,
 } only %}
-{% endspaceless %}
+{% endapply %}

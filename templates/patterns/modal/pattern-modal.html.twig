@@ -7,7 +7,7 @@
 {% set _id = attributes.id|default(modal_id) %}
 
 {% set _header %}
-  {% spaceless %}
+  {% apply spaceless %}
     {% if title is not empty  %}
       <h5>{{ title }}</h5>
     {% endif %}
@@ -20,7 +20,7 @@
           .setAttribute('aria-label', 'Close'),
       } only %}
     {% endif %}
-  {% endspaceless %}
+  {% endapply %}
 {% endset %}
 
 {% include '@oe-bcl/modal' with {

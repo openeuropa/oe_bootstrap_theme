@@ -2,7 +2,7 @@ name: OpenEuropa Bootstrap Theme Helper
 type: module
 description: OpenEuropa Bootstrap Theme helpers and tools.
 package: OpenEuropa Bootstrap Theme
-core_version_requirement: ^9.3
+core_version_requirement: ^9.4 || ^10
 dependencies:
   - drupal:responsive_image
   - ui_patterns:ui_patterns
