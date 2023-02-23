@@ -79,7 +79,7 @@ pipeline:
     when:
       event: tag
       matrix:
-        COMPOSER_BOUNDARY: highest
+        CORE_VERSION: 9.4.0
         PHP_VERSION: 8.0
 
   github-release:
@@ -91,7 +91,7 @@ pipeline:
     when:
       event: tag
       matrix:
-        COMPOSER_BOUNDARY: highest
+        CORE_VERSION: 9.4.0
         PHP_VERSION: 8.0
 
 matrix:
