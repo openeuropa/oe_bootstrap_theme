@@ -1,10 +1,12 @@
 # Change Log
 
-## [1.2.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.2.0) (2023-02-22)
+## [1.2.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.2.0) (2023-02-23)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.1.0...1.2.0)
 
 **Merged pull requests:**
 
+- OEL-0000: Update params for release drone tasks. [\#300](https://github.com/openeuropa/oe_bootstrap_theme/pull/300) ([brummbar](https://github.com/brummbar))
+- Prepare changelog for release 1.2.0. [\#299](https://github.com/openeuropa/oe_bootstrap_theme/pull/299) ([brummbar](https://github.com/brummbar))
 - EWPP-3013: Drupal 10 compatibility. [\#298](https://github.com/openeuropa/oe_bootstrap_theme/pull/298) ([brummbar](https://github.com/brummbar))
 - OEL-2115: Update to PHP 8.1 [\#292](https://github.com/openeuropa/oe_bootstrap_theme/pull/292) ([brummbar](https://github.com/brummbar))
 
