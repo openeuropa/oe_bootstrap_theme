@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.2.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.2.0) (2023-02-22)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.1.0...1.2.0)
+
+**Merged pull requests:**
+
+- EWPP-3013: Drupal 10 compatibility. [\#298](https://github.com/openeuropa/oe_bootstrap_theme/pull/298) ([brummbar](https://github.com/brummbar))
+- OEL-2115: Update to PHP 8.1 [\#292](https://github.com/openeuropa/oe_bootstrap_theme/pull/292) ([brummbar](https://github.com/brummbar))
+
 ## [1.1.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.1.0) (2023-01-30)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0...1.1.0)
 
@@ -9,6 +17,7 @@
 
 **Merged pull requests:**
 
+- Prepare release 1.1.0 [\#297](https://github.com/openeuropa/oe_bootstrap_theme/pull/297) ([drishu](https://github.com/drishu))
 - OEL-2042: Checkbox description inline fix. [\#295](https://github.com/openeuropa/oe_bootstrap_theme/pull/295) ([tibi2303](https://github.com/tibi2303))
 - OEL-1915: Support date in card pattern. [\#291](https://github.com/openeuropa/oe_bootstrap_theme/pull/291) ([drishu](https://github.com/drishu))
 - OEL-2009: Style tables using BCL. [\#290](https://github.com/openeuropa/oe_bootstrap_theme/pull/290) ([brummbar](https://github.com/brummbar))
