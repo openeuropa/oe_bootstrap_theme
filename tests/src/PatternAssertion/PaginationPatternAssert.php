@@ -93,7 +93,7 @@ class PaginationPatternAssert extends BasePatternAssert {
       }
       if (isset($expected_item['label'])) {
         $this->assertSame($expected_item['label'], $link->html());
-        $this->assertElementAttribute($expected_item['label'], 'nav > ul > li.page-item:nth-child(' . $i . ')', 'aria-label', $crawler);
+        $this->assertElementAttribute($expected_item['label'], 'nav > ul > li.page-item:nth-child(' . ($i + 1) . ')', 'aria-label', $crawler);
       }
       $this->assertSame(
         !empty($expected_item['active']) ? 1 : 0,

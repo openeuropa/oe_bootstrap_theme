@@ -11,28 +11,28 @@
     'first': items.first ? {
       'label': items.first.text|default('First'|t),
       'path': items.first.href,
-      'attributes': items.first.attributes.setAttribute('aria-label', 'First'|t),
+      'attributes': items.first.attributes ? items.first.attributes.setAttribute('aria-label', 'First'|t) : create_attribute().setAttribute('aria-label', 'First'|t),
     },
     'prev': items.previous ? {
       'label': items.previous.text|default('Previous'|t),
       'path': items.previous.href,
-      'attributes': items.previous.attributes.setAttribute('aria-label', 'Previous'|t),
+      'attributes': items.previous.attributes ? items.previous.attributes.setAttribute('aria-label', 'Previous'|t) : create_attribute().setAttribute('aria-label', 'Previous'|t),
     },
     'items': items.pages|map((item, key) => {
       'label': key,
       'path': item.href,
       'active': key == current,
-      'attributes': item.attributes.setAttribute('aria-label', key),
+      'attributes': item.attributes ? item.attributes.setAttribute('aria-label', key) : create_attribute().setAttribute('aria-label', key),
     }),
     'next': items.next ? {
       'label': items.next.text|default('Next'|t),
       'path': items.next.href,
-      'attributes': items.next.attributes.setAttribute('aria-label', 'Next'|t),
+      'attributes': items.next.attributes ? items.next.attributes.setAttribute('aria-label', 'Next'|t) : create_attribute().setAttribute('aria-label', 'Next'|t),
     },
     'last': items.last ? {
       'label': items.last.text|default('Last'|t),
       'path': items.last.href,
-      'attributes': items.last.attributes.setAttribute('aria-label', 'Last'|t),
+      'attributes': items.next.attributes ? items.next.attributes.setAttribute('aria-label', 'Last'|t) : create_attribute().setAttribute('aria-label', 'Last'|t),
     },
   }) }}
 {% endif %}
