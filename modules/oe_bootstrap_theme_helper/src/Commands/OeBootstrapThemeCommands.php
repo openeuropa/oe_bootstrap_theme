@@ -39,7 +39,7 @@ class OeBootstrapThemeCommands extends DrushCommands {
   #[CLI\Option(name: 'description', description: 'The sub-theme description to be used in the *.info.yml and in package.json files.')]
   #[CLI\Option(name: 'machine-name', description: 'The machine-readable name for the new sub-theme. If not provided, the machine name will be the last part of the destination path.')]
   #[CLI\Option(name: 'delete', description: 'Delete the destination directory, if it already exists.')]
-  public function createSubtheme(string $destination, array $options = self::CREATE_SUBTHEME_OPTIONS) {
+  public function createSubtheme(string $destination, array $options = self::CREATE_SUBTHEME_OPTIONS): void {
     $fileSystem = new Filesystem();
 
     // In this proof-of-concept version, only the default kit is supported.
