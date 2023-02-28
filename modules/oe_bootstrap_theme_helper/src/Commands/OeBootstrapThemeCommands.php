@@ -1,5 +1,7 @@
 <?php
 
+// phpcs:ignoreFile -- Until https://www.drupal.org/project/coder/issues/3322615#comment-14945035
+
 declare(strict_types = 1);
 
 namespace Drupal\oe_bootstrap_theme_helper\Commands;
