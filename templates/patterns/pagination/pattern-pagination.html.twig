@@ -9,7 +9,9 @@
 
 {% for item in items %}
   {% set internal_items = internal_items|merge([item|merge({
-      'attributes': item.attributes ? item.attributes.setAttribute('aria-label', item.aria_label|default(item.label)) : create_attribute().setAttribute('aria-label', item.aria_label|default(item.label)),
+      'attributes': item.attributes ?
+                    item.attributes.setAttribute('aria-label', item.aria_label|default(item.label))
+                    : create_attribute().setAttribute('aria-label', item.aria_label|default(item.label)),
     })])
   %}
 {% endfor %}
@@ -21,16 +23,24 @@
   'enable_prev_next_icon': enable_prev_next_icons,
   'enable_first_last_icon': enable_first_last_icons,
   'first': first ? first|merge({
-    'attributes': first.attributes ? first.attributes.setAttribute('aria-label', first.aria_label|default('First'|t)) : create_attribute().setAttribute('aria-label', first.aria_label|default('First'|t)),
+    'attributes': first.attributes ?
+                  first.attributes.setAttribute('aria-label', first.aria_label|default('First'|t))
+                  : create_attribute().setAttribute('aria-label', first.aria_label|default('First'|t)),
   }),
   'prev': prev ? prev|merge({
-    'attributes': prev.attributes ? prev.attributes.setAttribute('aria-label', prev.aria_label|default('Previous'|t)) : create_attribute().setAttribute('aria-label', prev.aria_label|default('Previous'|t)),
+    'attributes': prev.attributes ?
+                  prev.attributes.setAttribute('aria-label', prev.aria_label|default('Previous'|t))
+                  : create_attribute().setAttribute('aria-label', prev.aria_label|default('Previous'|t)),
   }),
   'next': next ? next|merge({
-    'attributes': next.attributes ? next.attributes.setAttribute('aria-label', next.aria_label|default('Next'|t)) : create_attribute().setAttribute('aria-label', next.aria_label|default('Next'|t)),
+    'attributes': next.attributes ?
+                  next.attributes.setAttribute('aria-label', next.aria_label|default('Next'|t))
+                  : create_attribute().setAttribute('aria-label', next.aria_label|default('Next'|t)),
   }),
   'last': last ? last|merge({
-    'attributes': last.attributes ? last.attributes.setAttribute('aria-label', last.aria_label|default('Last'|t)) : create_attribute().setAttribute('aria-label', last.aria_label|default('Last'|t)),
+    'attributes': last.attributes ?
+                  last.attributes.setAttribute('aria-label', last.aria_label|default('Last'|t))
+                  : create_attribute().setAttribute('aria-label', last.aria_label|default('Last'|t)),
   }),
   'items': internal_items,
   'attributes': attributes,
