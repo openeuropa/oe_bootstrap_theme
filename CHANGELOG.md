@@ -1,10 +1,19 @@
 # Change Log
 
+## [1.3.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.3.0) (2023-03-01)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.2.0...1.3.0)
+
+**Merged pull requests:**
+
+- Convert Task Runner commands [\#305](https://github.com/openeuropa/oe_bootstrap_theme/pull/305) ([claudiu-cristea](https://github.com/claudiu-cristea))
+- OEL-0000: Matrix values must be wrapped in quotes when used in step c… [\#302](https://github.com/openeuropa/oe_bootstrap_theme/pull/302) ([brummbar](https://github.com/brummbar))
+
 ## [1.2.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.2.0) (2023-02-23)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.1.0...1.2.0)
 
 **Merged pull requests:**
 
+- Update changelog for release 1.2.0. [\#301](https://github.com/openeuropa/oe_bootstrap_theme/pull/301) ([brummbar](https://github.com/brummbar))
 - OEL-0000: Update params for release drone tasks. [\#300](https://github.com/openeuropa/oe_bootstrap_theme/pull/300) ([brummbar](https://github.com/brummbar))
 - Prepare changelog for release 1.2.0. [\#299](https://github.com/openeuropa/oe_bootstrap_theme/pull/299) ([brummbar](https://github.com/brummbar))
 - EWPP-3013: Drupal 10 compatibility. [\#298](https://github.com/openeuropa/oe_bootstrap_theme/pull/298) ([brummbar](https://github.com/brummbar))
