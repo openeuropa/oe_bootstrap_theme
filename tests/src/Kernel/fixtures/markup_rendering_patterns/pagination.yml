@@ -173,7 +173,8 @@ pagination_with_aria:
           active: true
         - path: '#2'
           label: '2'
-          aria_label: 'Second page'
+          aria_label: ''
+          # Leave aria-label empty to test the defaults are added.
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PaginationPatternAssert
@@ -191,7 +192,7 @@ pagination_with_aria:
             active: true
           - url: '#2'
             label: '2'
-            aria-label: 'Second page'
+            aria-label: '2'
           - url: '#next'
             label: Next
             aria-label: 'Next item'
