@@ -94,7 +94,12 @@ class PaginationPatternAssert extends BasePatternAssert {
       if (isset($expected_item['label'])) {
         $this->assertSame($expected_item['label'], $link->html());
       }
-      $this->assertNotEmpty($link->attr('aria-label'));
+      if (isset($expected_item['aria_label'])) {
+        $this->assertSame($expected_item['aria_label'], $link->attr('aria-label'));
+      }
+      else {
+        $this->assertNotEmpty($link->attr('aria-label'));
+      }
       $this->assertSame(
         !empty($expected_item['active']) ? 1 : 0,
         $li->filter('.active')->count(),

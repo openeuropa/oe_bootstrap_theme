@@ -11,38 +11,23 @@
     'first': items.first ? {
       'label': items.first.text|default('First'|t),
       'path': items.first.href,
-      'attributes': items.first.attributes ?
-                    items.first.attributes.setAttribute('aria-label', items.first.aria_label|default('First'|t))
-                    : create_attribute().setAttribute('aria-label', items.first.aria_label|default('First'|t)),
     },
     'prev': items.previous ? {
       'label': items.previous.text|default('Previous'|t),
       'path': items.previous.href,
-      'attributes': items.previous.attributes ?
-                    items.previous.attributes.setAttribute('aria-label', items.previous.aria_label|default('Previous'|t))
-                    : create_attribute().setAttribute('aria-label', items.previous.aria_label|default('Previous'|t)),
     },
     'items': items.pages|map((item, key) => {
       'label': key,
       'path': item.href,
       'active': key == current,
-      'attributes': item.attributes ? 
-                    item.attributes.setAttribute('aria-label', item.aria_label|default(key))
-                    : create_attribute().setAttribute('aria-label', item.aria_label|default(key)),
     }),
     'next': items.next ? {
       'label': items.next.text|default('Next'|t),
       'path': items.next.href,
-      'attributes': items.next.attributes ?
-                    items.next.attributes.setAttribute('aria-label', items.next.aria_label|default('Next'|t))
-                    : create_attribute().setAttribute('aria-label', items.next.aria_label|default('Next'|t)),
     },
     'last': items.last ? {
       'label': items.last.text|default('Last'|t),
       'path': items.last.href,
-      'attributes': items.last.attributes ?
-                    items.last.attributes.setAttribute('aria-label', items.last.aria_label|default('Last'|t))
-                    : create_attribute().setAttribute('aria-label', items.last.aria_label|default('Last'|t)),
     },
   }) }}
 {% endif %}

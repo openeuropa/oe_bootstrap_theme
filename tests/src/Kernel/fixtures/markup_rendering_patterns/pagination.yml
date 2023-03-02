@@ -35,17 +35,23 @@ pagination:
         links:
           - url: '#first'
             label: First
+            aria-label: 'First'
           - url: '#prev'
             label: Previous
+            aria-label: 'Previous'
           - url: '#1'
             label: '1'
+            aria-label: '1'
             active: true
           - url: '#2'
             label: '2'
+            aria-label: '2'
           - url: '#next'
             label: Next
+            aria-label: 'Next'
           - url: '#last'
             label: Last
+            aria-label: 'Last'
 pagination_with_icon:
   render:
     '#type': pattern
@@ -138,3 +144,57 @@ pagination_glossary:
             label: 'F'
           - url: '#6'
             label: '0-9'
+pagination_with_aria:
+  render:
+    '#type': pattern
+    '#id': pagination
+    '#fields':
+      enable_first_last_icons: false
+      first:
+        path: '#first'
+        label: 'First'
+        aria_label: 'First item'
+      prev:
+        path: '#prev'
+        label: 'Previous'
+        aria_label: 'Previous item'
+      next:
+        path: '#next'
+        label: 'Next'
+        aria_label: 'Next item'
+      last:
+        path: '#last'
+        label: 'Last'
+        aria_label: 'Last item'
+      items:
+        - path: '#1'
+          label: '1'
+          aria_label: 'First page'
+          active: true
+        - path: '#2'
+          label: '2'
+          aria_label: 'Second page'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PaginationPatternAssert
+      expected:
+        links:
+          - url: '#first'
+            label: First
+            aria-label: 'First item'
+          - url: '#prev'
+            label: Previous
+            aria-label: 'Previous item'
+          - url: '#1'
+            label: '1'
+            aria-label: 'First page'
+            active: true
+          - url: '#2'
+            label: '2'
+            aria-label: 'Second page'
+          - url: '#next'
+            label: Next
+            aria-label: 'Next item'
+          - url: '#last'
+            label: Last
+            aria-label: 'Last item'

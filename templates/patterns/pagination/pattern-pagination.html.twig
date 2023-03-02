@@ -6,12 +6,9 @@
 #}
 
 {% set internal_items = [] %}
-
 {% for item in items %}
   {% set internal_items = internal_items|merge([item|merge({
-      'attributes': item.attributes ?
-                    item.attributes.setAttribute('aria-label', item.aria_label|default(item.label))
-                    : create_attribute().setAttribute('aria-label', item.aria_label|default(item.label)),
+      'attributes': create_attribute({'aria-label': item.label}).merge(item.attributes|default(create_attribute())),
     })])
   %}
 {% endfor %}
@@ -23,24 +20,16 @@
   'enable_prev_next_icon': enable_prev_next_icons,
   'enable_first_last_icon': enable_first_last_icons,
   'first': first ? first|merge({
-    'attributes': first.attributes ?
-                  first.attributes.setAttribute('aria-label', first.aria_label|default('First'|t))
-                  : create_attribute().setAttribute('aria-label', first.aria_label|default('First'|t)),
+    'attributes': create_attribute({'aria-label': first.aria_label|default('First'|t)}).merge(first.attributes|default(create_attribute())),
   }),
   'prev': prev ? prev|merge({
-    'attributes': prev.attributes ?
-                  prev.attributes.setAttribute('aria-label', prev.aria_label|default('Previous'|t))
-                  : create_attribute().setAttribute('aria-label', prev.aria_label|default('Previous'|t)),
+    'attributes': create_attribute({'aria-label': prev.aria_label|default('Previous'|t)}).merge(prev.attributes|default(create_attribute())),
   }),
   'next': next ? next|merge({
-    'attributes': next.attributes ?
-                  next.attributes.setAttribute('aria-label', next.aria_label|default('Next'|t))
-                  : create_attribute().setAttribute('aria-label', next.aria_label|default('Next'|t)),
+    'attributes': create_attribute({'aria-label': next.aria_label|default('Next'|t)}).merge(next.attributes|default(create_attribute())),
   }),
   'last': last ? last|merge({
-    'attributes': last.attributes ?
-                  last.attributes.setAttribute('aria-label', last.aria_label|default('Last'|t))
-                  : create_attribute().setAttribute('aria-label', last.aria_label|default('Last'|t)),
+    'attributes': create_attribute({'aria-label': last.aria_label|default('Last'|t)}).merge(first.attributes|default(create_attribute())),
   }),
   'items': internal_items,
   'attributes': attributes,
