@@ -4,6 +4,14 @@
  * Pagination pattern.
  */
 #}
+
+{% set internal_items = [] %}
+{% for item in items %}
+  {% set internal_items = internal_items|merge([item|merge({
+      'attributes': create_attribute({'aria-label': item.label}).merge(item.attributes|default(create_attribute())),
+    })])
+  %}
+{% endfor %}
 {% include '@oe-bcl/pagination' with {
   'variant': variant ?? 'default',
   'size': size,
@@ -11,11 +19,19 @@
   'aria_label': aria_label,
   'enable_prev_next_icon': enable_prev_next_icons,
   'enable_first_last_icon': enable_first_last_icons,
-  'first': first,
-  'prev': prev,
-  'next': next,
-  'last': last,
-  'items': items,
+  'first': first ? first|merge({
+    'attributes': create_attribute({'aria-label': first.aria_label|default('First'|t)}).merge(first.attributes|default(create_attribute())),
+  }),
+  'prev': prev ? prev|merge({
+    'attributes': create_attribute({'aria-label': prev.aria_label|default('Previous'|t)}).merge(prev.attributes|default(create_attribute())),
+  }),
+  'next': next ? next|merge({
+    'attributes': create_attribute({'aria-label': next.aria_label|default('Next'|t)}).merge(next.attributes|default(create_attribute())),
+  }),
+  'last': last ? last|merge({
+    'attributes': create_attribute({'aria-label': last.aria_label|default('Last'|t)}).merge(first.attributes|default(create_attribute())),
+  }),
+  'items': internal_items,
   'attributes': attributes,
   'icon_path': bcl_icon_path,
 } only %}
