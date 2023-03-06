@@ -16,8 +16,8 @@ use Drupal\Core\Render\Markup;
  */
 function oe_bootstrap_theme_page_attachments_alter(array &$attachments) {
   global $base_url;
-  $theme = \Drupal::theme()->getActiveTheme();
-  $theme_path = $base_url . '/' . $theme->getPath();
+  $theme_handler = \Drupal::service('theme_handler');
+  $theme_path = $base_url . '/' . $theme_handler->getTheme('oe_bootstrap_theme')->getPath();
   $theme_path_safe = Html::escape($theme_path);
   $markup = '<link rel="stylesheet" href="' . $theme_path_safe . '/assets/css/bootstrap-ie11.css">'
     . '<script src="https://cdn.jsdelivr.net/combine/npm/ie11-custom-properties@4,npm/element-qsa-scope@1"></script>'
