@@ -45,6 +45,7 @@ content_banner:
           rounded_pill: true
         - label: 'Secondary badge'
           rounded_pill: true
+          outline: false
     links:
       type: array
       label: 'Links'

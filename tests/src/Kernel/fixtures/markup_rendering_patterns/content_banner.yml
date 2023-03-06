@@ -15,6 +15,7 @@ content_banner_white_background_with_image_with_badges_with_meta_with_links:
       badges:
         - label: 'Primary badge'
           rounded_pill: true
+          outline: false
         - label: 'Secondary badge'
           rounded_pill: true
       links:
@@ -33,12 +34,13 @@ content_banner_white_background_with_image_with_badges_with_meta_with_links:
       'div.card-body > div.mt-4': 0
       'div.card-body > div > span.text-muted': 2
       'div.card-body > div > span.badge.rounded-pill': 2
+      'div.card-body > div > span.badge.badge-outline-primary': 1
       'a[href="https://example-1.com"]': 1
       'a[href="https://example-2.com"]': 1
     equals:
       'div.card-body > h1': 'This is the title of this page'
       'div.card-body > div:nth-child(3)': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
-      'div.card-body > div > span.badge:nth-child(1)': 'Primary badge'
+      'div.card-body > div > span.badge.badge-outline-primary': 'Primary badge'
       'div.card-body > div > span.badge:nth-child(2)': 'Secondary badge'
       'div.card-body > div > div:nth-child(1) > a': 'Link 1'
       'div.card-body > div > div:nth-child(2) > a': 'Link 2'
