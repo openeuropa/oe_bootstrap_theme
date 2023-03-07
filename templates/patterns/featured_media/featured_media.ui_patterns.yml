@@ -35,6 +35,14 @@ featured_media:
       label: "Heading"
       description: "The heading, displayed on the top."
       preview: "Lorem ipsum"
+    title_tag:
+      type: text
+      label: 'Title tag'
+      description: 'The tag to use for the title. Defaults to h2.'
+    title_link:
+      type: LinkObject
+      label: 'Title Link'
+      description: 'Link Object including path to set href. Label is set by title attribute.'
     subtitle:
       type: text
       label: 'Subtitle'
