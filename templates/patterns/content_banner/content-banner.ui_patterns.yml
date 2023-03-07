@@ -43,6 +43,7 @@ content_banner:
       preview:
         - label: 'Primary badge'
           rounded_pill: true
+          outline: false
         - label: 'Secondary badge'
           rounded_pill: true
     links:
