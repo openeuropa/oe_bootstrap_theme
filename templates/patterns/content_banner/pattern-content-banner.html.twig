@@ -23,7 +23,7 @@
 {% set _badges = [] %}
 {% for _badge in badges %}
   {% set _badge = _badge|merge({
-    'outline': _badge.outline ?? true,,
+    'outline': _badge.outline ?? true,
   }) %}
   {% set _badges = _badges|merge([_badge]) %}
 {% endfor %}
