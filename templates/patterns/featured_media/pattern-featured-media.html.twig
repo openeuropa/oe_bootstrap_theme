@@ -28,8 +28,10 @@
       {% include '@oe-bcl/heading' with {
         title: title,
         title_tag: title_tag|default('h2'),
-        title_link: title_link,
-        attributes: create_attribute({'class': 'mb-4'}).merge(title.attributes|default(create_attribute())),
+        title_link: title_url ? {
+          path: title_url,
+        },
+        attributes: create_attribute().addClass('mb-4'),
       } only %}
     {%- endif -%}
     <div class="row">

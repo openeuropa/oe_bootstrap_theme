@@ -26,6 +26,9 @@ class GalleryPatternAssert extends BasePatternAssert {
       'title_tag' => [
         [$this, 'assertTitleTag'],
       ],
+      'title_url' => [
+        [$this, 'assertTitleLink'],
+      ],
     ];
   }
 
@@ -66,6 +69,18 @@ class GalleryPatternAssert extends BasePatternAssert {
    */
   protected function assertTitleTag(string $expected, Crawler $crawler): void {
     $this->assertElementExists($expected . '.mb-4.bcl-heading', $crawler);
+  }
+
+  /**
+   * Checks the link used for the title.
+   *
+   * @param string $expected
+   *   The expected tag.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertTitleLink(string $expected, Crawler $crawler): void {
+    $this->assertElementExists('.mb-4.bcl-heading > a[href="' . $expected . '"]', $crawler);
   }
 
   /**

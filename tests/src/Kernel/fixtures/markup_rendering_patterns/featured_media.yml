@@ -28,7 +28,7 @@ featured_media_image_not_wrapper:
       '.md-6,.order-md-1,.order-md-2': 0
     equals:
       'figcaption': 'Media description text goes here.'
-featured_media_image_with_text_aligned_left:
+featured_media_image_with_text_aligned_left_with_link_title:
   render:
     '#type': pattern
     '#id': featured_media
@@ -38,6 +38,7 @@ featured_media_image_with_text_aligned_left:
         alt: 'Alternative text for paragraph image'
         name: 'Example'
       title: 'Title'
+      title_url: 'http://example.com/'
       text: 'Lorem Ipsum dolor sit amet.'
       caption: 'Media description text goes here.'
       text_position: 'left'
@@ -51,7 +52,7 @@ featured_media_image_with_text_aligned_left:
       'figcaption': 1
       'img': 1
       'img[src="https://placeimg.com/1200/600/tech"][alt="Alternative text for paragraph image"][title="Example"]': 1
-      'div.bcl-featured-media > h2.mb-4': 1
+      'div.bcl-featured-media > h2.mb-4.bcl-heading > a': 1
       'div.bcl-featured-media > div.row': 1
       'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-md-1': 1
       'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-md-2': 1
@@ -59,11 +60,11 @@ featured_media_image_with_text_aligned_left:
       'figure > img.img-fluid': 1
       'figure > figcaption.bg-light.p-3': 1
       'h2.mb-4': 1
+      'a': 1
       'h5': 0
-      'a': 0
       '.md-6': 0
     equals:
-      'h2': 'Title'
+      'h2.mb-4.bcl-heading > a[href="http://example.com/"]': 'Title'
       'div.col-12.col-md-6.order-md-1': 'Lorem Ipsum dolor sit amet.'
       'figcaption': 'Media description text goes here.'
 featured_media_image_with_text_aligned_right:

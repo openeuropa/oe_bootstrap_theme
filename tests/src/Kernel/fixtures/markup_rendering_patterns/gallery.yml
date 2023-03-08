@@ -90,13 +90,14 @@ gallery_title_default_tag:
               rendered: '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt">'
             media:
               rendered: '<img data-src="https://loremflickr.com/800/600/cat" alt="Cat media image alt">'
-gallery_title_custom_tag:
+gallery_title_custom_tag_and_link:
   render:
     '#type': pattern
     '#id': gallery
     '#fields':
       title: 'Gallery title'
       title_tag: h6
+      title_url: 'http://example.com/'
       items:
         - media:
             '#markup': '<img src="https://loremflickr.com/800/600/cat" alt="Cat media image alt" />'
@@ -108,6 +109,7 @@ gallery_title_custom_tag:
       expected:
         title: 'Gallery title'
         title_tag: h6
+        title_url: 'http://example.com/'
         items:
           - thumbnail:
               rendered: '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt">'
