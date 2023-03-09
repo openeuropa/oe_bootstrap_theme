@@ -12,12 +12,6 @@
 {% set items = bcl_gallery_items(items|default([])) %}
 {% set icon_path = bcl_icon_path %}
 
-{%- if title_url is not empty -%}
-  {% set title_link = {
-    path: title_url,
-  } %}
-{%- endif -%}
-
 {% block carousel %}
   {# Captions are not rendered for playable medias in the carousel. #}
   {% include '@oe-bcl/carousel' with {
