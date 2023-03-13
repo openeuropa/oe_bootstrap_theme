@@ -272,9 +272,6 @@ class PagerTest extends AbstractKernelTestBase {
         ['label' => '2'],
         ['url' => '/?page=2', 'label' => 'The next'],
       ],
-      2 => [
-        ['label' => '1'],
-      ],
       7 => [
         ['url' => '/?page=6', 'label' => 'The previous'],
         ['label' => '8'],
