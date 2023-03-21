@@ -5,12 +5,14 @@
  */
 #}
 {% apply spaceless %}
-{% set content %}
+{% set _content %}
   {% if meta is not empty %}
     {# Use negative margin to compensate for me-3 on each item. #}
     <div class="my-3 me-n3">
       {% for _meta_item in meta %}
-        <span class="text-muted me-3">{{ _meta_item }}</span>
+        {% if _meta_item is not empty %}
+          <span class="text-muted me-3">{{ _meta_item }}</span>
+        {% endif %}
       {% endfor %}
     </div>
   {% endif %}
