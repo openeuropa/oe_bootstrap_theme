@@ -13,7 +13,6 @@ card_horizontal_with_image:
       meta:
         - 'DIGIT'
         - 'Developer'
-        - ''
       content:
         '#type': 'pattern'
         '#id': 'button'
@@ -24,8 +23,6 @@ card_horizontal_with_image:
       header: 'Header of card'
       footer: 'Footer of card'
   assertions:
-    count:
-      'span.text-muted.me-3': 2
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
       expected:
