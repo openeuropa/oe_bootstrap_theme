@@ -1,4 +1,4 @@
-content_banner_white_background_with_image_with_badges_with_meta_with_links:
+content_banner_white_background_with_image_with_badges_with_meta_with_links_with_action_bar_with_title_tag:
   render:
     '#type': pattern
     '#id': 'content_banner'
@@ -11,6 +11,9 @@ content_banner_white_background_with_image_with_badges_with_meta_with_links:
         src: 'https://placeimg.com/1200/600/tech'
         alt: 'Alternative text for content banner image'
       title: 'This is the title of this page'
+      title_tag: 'h2'
+      action_bar: 
+        - '#markup':  '<div class="action-bar d-flex justify-content-end mt-2 align-items-center col-lg-11"><a href="#" class="standalone" type="button">Submit</a></div>'
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
       badges:
         - label: 'Primary badge'
@@ -28,8 +31,10 @@ content_banner_white_background_with_image_with_badges_with_meta_with_links:
       'div.bcl-content-banner': 1
       'div.bcl-content-banner.bg-white': 1
       'img': 1
+      'div.bcl-content-banner > div.container > div.action-bar': 1
+      'div.bcl-content-banner > div.container > div.action-bar > a.standalone': 1
       'article.card > div.row > div.bcl-card-start-col.bcl-size-large > img[src="https://placeimg.com/1200/600/tech"]': 1
-      'div.card-body > h1': 1
+      'div.card-body > h2': 1
       'div.card-body > div': 4
       'div.card-body > div.mt-4': 0
       'div.card-body > div > span.text-muted': 2
@@ -38,7 +43,7 @@ content_banner_white_background_with_image_with_badges_with_meta_with_links:
       'a[href="https://example-1.com"]': 1
       'a[href="https://example-2.com"]': 1
     equals:
-      'div.card-body > h1': 'This is the title of this page'
+      'div.card-body > h2': 'This is the title of this page'
       'div.card-body > div:nth-child(3)': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
       'div.card-body > div > span.badge:nth-child(1)': 'Primary badge'
       'div.card-body > div > span.badge.badge-outline-primary': 'Secondary badge'
