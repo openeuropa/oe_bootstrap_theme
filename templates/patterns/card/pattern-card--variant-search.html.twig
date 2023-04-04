@@ -10,7 +10,9 @@
     {# Use negative margin to compensate for me-3 on each item. #}
     <div class="my-3 me-n3">
       {% for _meta_item in meta %}
-        <span class="text-muted me-3">{{ _meta_item }}</span>
+        {% if _meta_item is not empty %}
+          <span class="text-muted me-3">{{ _meta_item }}</span>
+        {% endif %}
       {% endfor %}
     </div>
   {% endif %}
@@ -44,13 +46,13 @@
     'classes': 'mb-2-5',
     'tag': 'div',
   } : {},
-  'attributes': create_attribute({'class': [
+  'attributes': attributes.addClass([
     'listing-item',
     'border-bottom',
     'border-md-0',
     'border-0',
     'mb-3',
-  ]}),
+  ]),
   'text_color': 'dark',
   'image': (image is not empty) ? image|merge({
     'position': 'top',
