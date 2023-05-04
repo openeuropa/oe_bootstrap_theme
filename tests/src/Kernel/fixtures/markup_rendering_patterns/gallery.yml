@@ -43,7 +43,7 @@ gallery_default:
               play_icon: true
             media:
               rendered: '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></source></video>'
-              caption_title: 'Bio-defence preparedness programme'
+              caption_title: ~
               caption: ~
           - thumbnail:
               rendered: '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt">'
