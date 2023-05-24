@@ -42,4 +42,16 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
     '#empty_option' => t('Never'),
     '#default_value' => theme_get_setting('bootstrap_tables.responsive') ?? '',
   ];
+
+  $form['oel_improvements'] = [
+    '#type' => 'details',
+    '#title' => t('Improvements'),
+    '#open' => TRUE,
+    '#tree' => TRUE,
+  ];
+  $form['oel_improvements']['oel_2266'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Add image on mobile and fixed spacing in card search.'),
+    '#default_value' => theme_get_setting('oel_improvements.oel_2266'),
+  ];
 }

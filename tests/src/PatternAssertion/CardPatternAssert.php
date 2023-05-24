@@ -77,7 +77,7 @@ class CardPatternAssert extends BasePatternAssert {
     $selector = 'article.card img';
 
     if ($variant === 'search') {
-      $selector = '.row .bcl-card-start-col img.card-img-top';
+      $selector = '.row .col-md-3 img.card-img-top,.row .bcl-card-start-col img.card-img-top';
     }
 
     $image_div = $crawler->filter($selector);
