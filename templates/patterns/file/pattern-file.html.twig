@@ -40,6 +40,10 @@
   } %}
 {% endif %}
 
+{% if file.extension|upper == 'PDF' %}
+  attributes.setAttribute('target', '_blank').removeAttribute('download')
+{% endif %}
+
 {% set _meta = '(' ~ file.extension|upper  ~ ')' %}
 {% if file.size %}
   {% set _meta = '(' ~ file.size|format_size ~ ' - ' ~ file.extension|upper  ~ ')' %}
