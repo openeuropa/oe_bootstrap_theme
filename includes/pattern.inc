@@ -14,6 +14,13 @@ use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 
 /**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_accordion(array &$variables): void {
+  $variables['accordion_id'] = Html::getUniqueId('bcl-accordion');
+}
+
+/**
  * Implements hook_preprocess_HOOK() for badge_preview patterns.
  */
 function oe_bootstrap_theme_preprocess_pattern_badge__preview(array &$variables) {
@@ -23,25 +30,23 @@ function oe_bootstrap_theme_preprocess_pattern_badge__preview(array &$variables)
 }
 
 /**
- * Implements hook_preprocess_HOOK() for page templates.
+ * Implements hook_preprocess_HOOK() for card pattern preview.
  */
-function oe_bootstrap_theme_preprocess_page(&$variables) {
-  // @todo It would be better to have a setting, like bootstrap_barrio do with
-  //   bootstrap_barrio_fluid_container ('container-fluid' : 'container')
-  $variables['container'] = 'container';
+function oe_bootstrap_theme_preprocess_pattern_card__preview(array &$variables): void {
+  if (isset($variables['image'])) {
+    $variables['image'] = ImageValueObject::fromArray($variables['image']);
+  }
 }
 
 /**
- * Implements hook_preprocess_HOOK() for dropdown pattern.
+ * Implements hook_preprocess_HOOK() for card_layout pattern preview.
  */
-function oe_bootstrap_theme_preprocess_pattern_dropdown(array &$variables) {
-  if (array_key_exists('items', $variables) && is_array($variables['items'])) {
-    foreach ($variables['items'] as &$item) {
-      $item['#attributes']['class'][] = 'dropdown-item';
+function oe_bootstrap_theme_preprocess_pattern_card_layout__preview(array &$variables): void {
+  foreach ($variables['items'] as &$item) {
+    if (isset($item['image'])) {
+      $item['image'] = ImageValueObject::fromArray($item['image']);
     }
   }
-
-  $variables['dropdown_id'] = Html::getUniqueId('bcl-dropdown');
 }
 
 /**
@@ -49,13 +54,6 @@ function oe_bootstrap_theme_preprocess_pattern_dropdown(array &$variables) {
  */
 function oe_bootstrap_theme_preprocess_pattern_carousel(array &$variables) {
   $variables['carousel_id'] = Html::getUniqueId('bcl-carousel');
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function oe_bootstrap_theme_preprocess_pattern_offcanvas(array &$variables): void {
-  $variables['offcanvas_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl_offcanvas');
 }
 
 /**
@@ -92,44 +90,30 @@ function oe_bootstrap_theme_preprocess_pattern_description_list(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK().
+ * Implements hook_preprocess_HOOK() for dropdown pattern.
  */
-function oe_bootstrap_theme_preprocess_pattern_accordion(array &$variables): void {
-  $variables['accordion_id'] = Html::getUniqueId('bcl-accordion');
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function oe_bootstrap_theme_preprocess_pattern_modal(array &$variables): void {
-  $variables['modal_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl-modal');
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function oe_bootstrap_theme_preprocess_pattern_link(array &$variables): void {
-  if (!isset($variables['icon'])) {
-    return;
+function oe_bootstrap_theme_preprocess_pattern_dropdown(array &$variables) {
+  if (array_key_exists('items', $variables) && is_array($variables['items'])) {
+    foreach ($variables['items'] as &$item) {
+      $item['#attributes']['class'][] = 'dropdown-item';
+    }
   }
 
-  // Convert to array when only the icon name has been passed.
-  if (!is_array($variables['icon'])) {
-    $variables['icon'] = [
-      'name' => $variables['icon'],
-    ];
-  }
-
-  $variables['icon'] += [
-    'path' => $variables['bcl_icon_path'],
-  ];
+  $variables['dropdown_id'] = Html::getUniqueId('bcl-dropdown');
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function oe_bootstrap_theme_preprocess_pattern_navbar(array &$variables): void {
-  $variables['collapse_id'] = Html::getUniqueId('bcl-navbar');
+function oe_bootstrap_theme_preprocess_pattern_fact_figures(array &$variables): void {
+  foreach ($variables['items'] as &$item) {
+    // If the icon is not an array, the icon name has been passed.
+    if (!is_array($item['icon'])) {
+      $item['icon'] = [
+        'name' => $item['icon'],
+      ];
+    }
+  }
 }
 
 /**
@@ -158,27 +142,6 @@ function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for inpage navigation pattern.
- */
-function oe_bootstrap_theme_preprocess_pattern_inpage_navigation(&$variables): void {
-  $variables['inpage_navigation_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl-inpage-navigation');
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function oe_bootstrap_theme_preprocess_pattern_fact_figures(array &$variables): void {
-  foreach ($variables['items'] as &$item) {
-    // If the icon is not an array, the icon name has been passed.
-    if (!is_array($item['icon'])) {
-      $item['icon'] = [
-        'name' => $item['icon'],
-      ];
-    }
-  }
-}
-
-/**
  * Implements hook_preprocess_HOOK() for file pattern preview.
  */
 function oe_bootstrap_theme_preprocess_pattern_file__preview(array &$variables): void {
@@ -190,23 +153,53 @@ function oe_bootstrap_theme_preprocess_pattern_file__preview(array &$variables):
 }
 
 /**
- * Implements hook_preprocess_HOOK() for card pattern preview.
+ * Implements hook_preprocess_HOOK() for gallery pattern.
  */
-function oe_bootstrap_theme_preprocess_pattern_card__preview(array &$variables): void {
-  if (isset($variables['image'])) {
-    $variables['image'] = ImageValueObject::fromArray($variables['image']);
+function oe_bootstrap_theme_preprocess_pattern_gallery(array &$variables): void {
+  $variables['id'] = Html::getUniqueId('bcl-gallery');
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for gallery pattern preview.
+ */
+function oe_bootstrap_theme_preprocess_pattern_gallery__preview(array &$variables): void {
+  // When #markup is a string, only safe tags will be kept for rendering.
+  // Convert to a markup object to avoid any filtering.
+  // @see \Drupal\Core\Render\Renderer::ensureMarkupIsSafe()
+  foreach ($variables['items'] as &$item) {
+    foreach (['thumbnail', 'media'] as $key) {
+      if (isset($item[$key]['#markup'])) {
+        $item[$key] = Markup::create($item[$key]['#markup']);
+      }
+    }
   }
 }
 
 /**
- * Implements hook_preprocess_HOOK() for card_layout pattern preview.
+ * Implements hook_preprocess_HOOK() for inpage navigation pattern.
  */
-function oe_bootstrap_theme_preprocess_pattern_card_layout__preview(array &$variables): void {
-  foreach ($variables['items'] as &$item) {
-    if (isset($item['image'])) {
-      $item['image'] = ImageValueObject::fromArray($item['image']);
-    }
+function oe_bootstrap_theme_preprocess_pattern_inpage_navigation(&$variables): void {
+  $variables['inpage_navigation_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl-inpage-navigation');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_link(array &$variables): void {
+  if (!isset($variables['icon'])) {
+    return;
   }
+
+  // Convert to array when only the icon name has been passed.
+  if (!is_array($variables['icon'])) {
+    $variables['icon'] = [
+      'name' => $variables['icon'],
+    ];
+  }
+
+  $variables['icon'] += [
+    'path' => $variables['bcl_icon_path'],
+  ];
 }
 
 /**
@@ -218,6 +211,27 @@ function oe_bootstrap_theme_preprocess_pattern_listing__preview(array &$variable
       $item['image'] = ImageValueObject::fromArray($item['image']);
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_modal(array &$variables): void {
+  $variables['modal_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl-modal');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_navbar(array &$variables): void {
+  $variables['collapse_id'] = Html::getUniqueId('bcl-navbar');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_bootstrap_theme_preprocess_pattern_offcanvas(array &$variables): void {
+  $variables['offcanvas_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl_offcanvas');
 }
 
 /**
@@ -260,27 +274,4 @@ function oe_bootstrap_theme_preprocess_pattern_pagination__preview(array &$varia
 
   // Mark the letter F as active.
   $variables['items'][5]['active'] = TRUE;
-}
-
-/**
- * Implements hook_preprocess_HOOK() for gallery pattern.
- */
-function oe_bootstrap_theme_preprocess_pattern_gallery(array &$variables): void {
-  $variables['id'] = Html::getUniqueId('bcl-gallery');
-}
-
-/**
- * Implements hook_preprocess_HOOK() for gallery pattern preview.
- */
-function oe_bootstrap_theme_preprocess_pattern_gallery__preview(array &$variables): void {
-  // When #markup is a string, only safe tags will be kept for rendering.
-  // Convert to a markup object to avoid any filtering.
-  // @see \Drupal\Core\Render\Renderer::ensureMarkupIsSafe()
-  foreach ($variables['items'] as &$item) {
-    foreach (['thumbnail', 'media'] as $key) {
-      if (isset($item[$key]['#markup'])) {
-        $item[$key] = Markup::create($item[$key]['#markup']);
-      }
-    }
-  }
 }
