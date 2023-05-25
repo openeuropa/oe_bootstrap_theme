@@ -49,6 +49,7 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
     '#open' => TRUE,
     '#tree' => TRUE,
   ];
+
   $form['oel_improvements']['oel_2266'] = [
     '#type' => 'checkbox',
     '#title' => t('Add image on mobile and fixed spacing in card search.'),

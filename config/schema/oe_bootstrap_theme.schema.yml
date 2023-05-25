@@ -12,3 +12,10 @@ oe_bootstrap_theme.settings:
         responsive:
           type: string
           label: 'Responsive tables'
+    oel_improvements:
+      type: mapping
+      label: 'OEL Improvements'
+      mapping:
+        oel_2266:
+          type: boolean
+          label: 'OEL 2266'
