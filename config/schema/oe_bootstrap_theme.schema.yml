@@ -12,10 +12,13 @@ oe_bootstrap_theme.settings:
         responsive:
           type: string
           label: 'Responsive tables'
-    oel_improvements:
+    oebt_bc:
       type: mapping
       label: 'OEL Improvements'
       mapping:
-        oel_2266:
+        card_search_image_not_visible_on_mobile:
           type: boolean
-          label: 'OEL 2266'
+          label: 'Card image not visible on mobile'
+        card_search_use_grid_classes:
+          type: boolean
+          label: 'Card to use grid classes'

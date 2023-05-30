@@ -33,14 +33,17 @@
   {% endfor %}
 {% endif %}
 
-{% set _left_col_classes = 'col-md-3 col-lg-2 rounded mw-listing-img' %}
-{% set _right_col_classes = 'col-md-9 col-lg-10' %}
-{% set _image_classes = 'd-none d-md-block' %}
+{% set _left_col_classes = 'bcl-card-start-col mb-3 mb-lg-0 bcl-size-small' %}
+{% set _right_col_classes = 'col-12 col-md' %}
+{% set _image_classes = '' %}
 
-{% if improvements_oel_2266 %}
-  {% set _left_col_classes = 'bcl-card-start-col mb-3 mb-lg-0 bcl-size-small' %}
-  {% set _right_col_classes = 'col-12 col-md' %}
-  {% set _image_classes = '' %}
+{% if oebt_bc_card_search_image_not_visible_on_mobile %}
+  {% set _image_classes = 'd-none d-md-block' %}
+{% endif %}
+
+{% if oebt_bc_card_search_use_grid_classes %}
+  {% set _left_col_classes = 'col-md-3 col-lg-2 rounded mw-listing-img' %}
+  {% set _right_col_classes = 'col-md-9 col-lg-10' %}
 {% endif %}
 
 {% include '@oe-bcl/card' with {

@@ -42,7 +42,6 @@ function oe_bootstrap_theme_theme_suggestions_table_alter(array &$suggestions, a
  */
 function oe_bootstrap_theme_preprocess(&$variables) {
   $variables['bcl_icon_path'] = base_path() . \Drupal::service('extension.list.theme')->getPath('oe_bootstrap_theme') . '/assets/icons/bcl-default-icons.svg';
-  $variables['improvements_oel_2266'] = theme_get_setting('oel_improvements.oel_2266');
 }
 
 /**

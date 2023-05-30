@@ -10,3 +10,6 @@ logo:
 bootstrap_tables:
   enable: true
   responsive: always
+oebt_bc:
+  card_search_image_not_visible_on_mobile: false
+  card_search_use_grid_classes: false
