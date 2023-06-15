@@ -1,5 +1,21 @@
 # Change Log
 
+## [1.4.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.4.0) (2023-06-15)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.3.0...1.4.0)
+
+**Merged pull requests:**
+
+- OEL-0000: Fix symfony/validator incompatibility. [\#334](https://github.com/openeuropa/oe_bootstrap_theme/pull/334) ([drishu](https://github.com/drishu))
+- OEL-2298: Fixed overlapping admin navbar with gallery. [\#326](https://github.com/openeuropa/oe_bootstrap_theme/pull/326) ([tibi2303](https://github.com/tibi2303))
+- OEL-2264: Improvements card default and search variant. [\#321](https://github.com/openeuropa/oe_bootstrap_theme/pull/321) ([tibi2303](https://github.com/tibi2303))
+- OEL-2262: Improvements on content-banner pattern. [\#318](https://github.com/openeuropa/oe_bootstrap_theme/pull/318) ([tibi2303](https://github.com/tibi2303))
+- OEL-2259: Hide views mini pager when there is only 1 page. [\#313](https://github.com/openeuropa/oe_bootstrap_theme/pull/313) ([tibi2303](https://github.com/tibi2303))
+- OEL-2254: Fixed path of bootstrap-ie11.css [\#310](https://github.com/openeuropa/oe_bootstrap_theme/pull/310) ([tibi2303](https://github.com/tibi2303))
+- OEL-2253: Adapt content\_banner template for badges with outline param. [\#309](https://github.com/openeuropa/oe_bootstrap_theme/pull/309) ([tibi2303](https://github.com/tibi2303))
+- OEL-2252: Removed assistive\_text from badge pattern. [\#308](https://github.com/openeuropa/oe_bootstrap_theme/pull/308) ([tibi2303](https://github.com/tibi2303))
+- OEL-2251: Use heading in featured-media pattern. [\#307](https://github.com/openeuropa/oe_bootstrap_theme/pull/307) ([tibi2303](https://github.com/tibi2303))
+- OEL-2249: Pager aria-label accessibility issue fix. [\#304](https://github.com/openeuropa/oe_bootstrap_theme/pull/304) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.3.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.3.0) (2023-03-01)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.2.0...1.3.0)
 
