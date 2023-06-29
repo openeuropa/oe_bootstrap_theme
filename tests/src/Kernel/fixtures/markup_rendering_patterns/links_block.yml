@@ -7,6 +7,7 @@ links_block_vertical_gray:
         background: 'gray'
         orientation: 'vertical'
       title: 'Title Link Block'
+      title_tag: 'h3'
       links:
         - label: 'Link number one'
           path: 'https://example.com'
@@ -17,14 +18,14 @@ links_block_vertical_gray:
   assertions:
     count:
       'div.bg-light.px-4.py-3': 1
-      'h2.bcl-heading': 1
+      'h3.bcl-heading': 1
       'ul.ps-0.mb-0': 1
       'li.list-unstyled': 3
       'li.d-inline': 0
       'li.list-unstyled.me-4-5': 2
       'a.pb-3.d-inline-block': 3
     equals:
-      'div.bg-light > h2': 'Title Link Block'
+      'div.bg-light > h3': 'Title Link Block'
       'div.bg-light > ul > li.list-unstyled.me-4-5:nth-child(1) a[href="https://example.com"]': 'Link number one'
       'div.bg-light > ul > li.list-unstyled.me-4-5:nth-child(2) a[href="https://google.com"]': 'Link number two'
       'div.bg-light > ul > li.list-unstyled:nth-child(3) a[href="https://europa.eu"]': 'More channels'

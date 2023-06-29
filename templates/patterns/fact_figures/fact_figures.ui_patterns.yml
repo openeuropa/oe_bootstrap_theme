@@ -7,6 +7,10 @@ fact_figures:
       label: 'Title'
       description: 'Title of the facts & figures section.'
       preview: 'Fact and figures block'
+    title_tag:
+      type: text
+      label: 'Title tag'
+      description: 'The tag to use for the title. Defaults to h2.'
     columns:
       type: number
       label: 'Columns'

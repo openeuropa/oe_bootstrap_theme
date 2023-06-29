@@ -6,6 +6,7 @@
 #}
 {% include '@oe-bcl/bcl-fact-figures/fact-figures.html.twig' with {
   'title': title,
+  'title_tag': title_tag|default('h2'),
   'items': items,
   'responsive_columns': columns,
   'equal_height': true,
