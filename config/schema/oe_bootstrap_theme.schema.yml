@@ -16,7 +16,7 @@ oe_bootstrap_theme.settings:
       type: mapping
       label: 'OEL Improvements'
       mapping:
-        card_search_image_not_visible_on_mobile:
+        card_search_image_hide_on_mobile:
           type: boolean
           label: 'Card image not visible on mobile'
         card_search_use_grid_classes:

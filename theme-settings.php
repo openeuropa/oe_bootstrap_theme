@@ -52,11 +52,11 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
     '#tree' => TRUE,
   ];
 
-  $form['oebt_bc']['card_search_image_not_visible_on_mobile'] = [
+  $form['oebt_bc']['card_search_image_hide_on_mobile'] = [
     '#type' => 'checkbox',
     '#title' => t('Card image hidden on mobile'),
     '#description' => t('The search variant of the card pattern did not show image on mobile.'),
-    '#default_value' => BackwardsCompatibility::getSetting('card_search_image_not_visible_on_mobile'),
+    '#default_value' => BackwardsCompatibility::getSetting('card_search_image_hide_on_mobile'),
   ];
 
   $form['oebt_bc']['card_search_use_grid_classes'] = [

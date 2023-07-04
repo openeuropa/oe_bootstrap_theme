@@ -110,7 +110,7 @@ class ThemeSettingsTest extends BrowserTestBase {
     $node = $crawler->filter('.col-md-9.col-lg-10');
     $this->assertCount(0, $node);
 
-    // Assert card_search_image_not_visible_on_mobile.
+    // Assert card_search_image_hide_on_mobile.
     $checkbox = $assert_session->fieldExists('Card image not visible on mobile');
     $checkbox->check();
     $assert_session->buttonExists('Save configuration')->press();

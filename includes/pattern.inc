@@ -290,6 +290,6 @@ function oe_bootstrap_theme_preprocess_pattern_gallery__preview(array &$variable
  * Implements hook_preprocess_HOOK() for gallery pattern.
  */
 function oe_bootstrap_theme_preprocess_pattern_card(array &$variables): void {
-  $variables['oebt_bc_card_search_image_not_visible_on_mobile'] = BackwardsCompatibility::getSetting('card_search_image_not_visible_on_mobile');
+  $variables['oebt_bc_card_search_image_hide_on_mobile'] = BackwardsCompatibility::getSetting('card_search_image_hide_on_mobile');
   $variables['oebt_bc_card_search_use_grid_classes'] = BackwardsCompatibility::getSetting('card_search_use_grid_classes');
 }
