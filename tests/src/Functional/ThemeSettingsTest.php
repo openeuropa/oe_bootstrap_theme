@@ -4,8 +4,8 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Functional;
 
+use Drupal\oe_bootstrap_theme\BackwardsCompatibility;
 use Drupal\Tests\BrowserTestBase;
-use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Tests the theme settings.
@@ -85,50 +85,40 @@ class ThemeSettingsTest extends BrowserTestBase {
 
     $this->drupalGet('/admin/appearance/settings/oe_bootstrap_theme');
     $assert_session = $this->assertSession();
+    $bc_wrapper = $assert_session->elementExists('xpath', '//details[./summary[.="Backwards compatibility"]]');
+    $card_image_hidden_checkbox = $assert_session->fieldExists('Card image hidden on mobile', $bc_wrapper);
+    $card_use_grid_checkbox = $assert_session->fieldExists('Card to use grid classes', $bc_wrapper);
 
-    $build = [
-      '#type' => 'pattern',
-      '#id' => 'card',
-      '#variant' => 'search',
-      '#fields' => [
-        'title' => 'Test title',
-        'subtitle' => 'Test subtitle',
-        'text' => 'This is a text example.',
-        'image' => [
-          'src' => 'image_source',
-          'alt' => 'image_alt',
-        ],
-        'content' => '<p>this is the test content</p>',
-      ],
-    ];
+    // BC settings are disabled on new installs.
+    $this->assertFalse($card_image_hidden_checkbox->isChecked());
+    $this->assertFalse($card_use_grid_checkbox->isChecked());
 
-    $crawler = $this->getCrawlerFromBuild($build);
-    $node = $crawler->filter('img.d-none.d-md-block');
-    $this->assertCount(0, $node);
-    $node = $crawler->filter('.col-md-3.col-lg-2.rounded.mw-listing-img');
-    $this->assertCount(0, $node);
-    $node = $crawler->filter('.col-md-9.col-lg-10');
-    $this->assertCount(0, $node);
+    $this->assertFalse(BackwardsCompatibility::getSetting('card_search_image_hide_on_mobile'));
+    $this->assertFalse(BackwardsCompatibility::getSetting('card_search_use_grid_classes'));
 
-    // Assert card_search_image_hide_on_mobile.
-    $checkbox = $assert_session->fieldExists('Card image not visible on mobile');
-    $checkbox->check();
+    $card_image_hidden_checkbox->check();
     $assert_session->buttonExists('Save configuration')->press();
+    $assert_session->pageTextContains('The configuration options have been saved.');
 
-    $crawler = $this->getCrawlerFromBuild($build);
-    $image = $crawler->filter('img.d-none.d-md-block');
-    $this->assertCount(1, $image);
+    $this->assertTrue($card_image_hidden_checkbox->isChecked());
+    $this->assertFalse($card_use_grid_checkbox->isChecked());
 
-    // Assert card_search_use_grid_classes.
-    $checkbox = $assert_session->fieldExists('Card to use grid classes');
-    $checkbox->check();
+    drupal_static_reset('theme_get_setting');
+    \Drupal::configFactory()->clearStaticCache();
+    $this->assertTrue(BackwardsCompatibility::getSetting('card_search_image_hide_on_mobile'));
+    $this->assertFalse(BackwardsCompatibility::getSetting('card_search_use_grid_classes'));
+
+    $card_use_grid_checkbox->check();
     $assert_session->buttonExists('Save configuration')->press();
+    $assert_session->pageTextContains('The configuration options have been saved.');
 
-    $crawler = $this->getCrawlerFromBuild($build);
-    $node = $crawler->filter('.col-md-3.col-lg-2.rounded.mw-listing-img');
-    $this->assertCount(1, $node);
-    $node = $crawler->filter('.col-md-9.col-lg-10');
-    $this->assertCount(1, $node);
+    $this->assertTrue($card_image_hidden_checkbox->isChecked());
+    $this->assertTrue($card_use_grid_checkbox->isChecked());
+
+    drupal_static_reset('theme_get_setting');
+    \Drupal::configFactory()->clearStaticCache();
+    $this->assertTrue(BackwardsCompatibility::getSetting('card_search_image_hide_on_mobile'));
+    $this->assertTrue(BackwardsCompatibility::getSetting('card_search_use_grid_classes'));
   }
 
   /**
@@ -151,25 +141,6 @@ class ThemeSettingsTest extends BrowserTestBase {
 
     $html = (string) $this->container->get('renderer')->renderRoot($build);
     return trim(preg_replace('/>\s+</', '><', $html));
-  }
-
-  /**
-   * Gets a crawled build.
-   *
-   * @param array $build
-   *   The build.
-   *
-   * @return \Symfony\Component\DomCrawler\Crawler
-   *   The crawler.
-   */
-  protected function getCrawlerFromBuild(array $build): Crawler {
-    // Theme settings config is cached statically.
-    drupal_static_reset();
-    \Drupal::configFactory()->clearStaticCache();
-
-    $html = (string) $this->container->get('renderer')->renderRoot($build);
-
-    return new Crawler($html);
   }
 
 }
