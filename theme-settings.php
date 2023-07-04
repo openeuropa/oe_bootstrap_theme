@@ -8,6 +8,7 @@
 declare(strict_types = 1);
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\oe_bootstrap_theme\BackwardsCompatibility;
 
 /**
  * Implements hook_form_system_theme_settings_alter().
@@ -54,13 +55,13 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
     '#type' => 'checkbox',
     '#title' => t('Card image not visible on mobile'),
     '#description' => t('Card search variant did not show image on mobile, check this to keep the behaviour.'),
-    '#default_value' => theme_get_setting('oebt_bc.image_visible_on_mobile'),
+    '#default_value' => BackwardsCompatibility::getSetting('card_search_image_not_visible_on_mobile'),
   ];
 
   $form['oebt_bc']['card_search_use_grid_classes'] = [
     '#type' => 'checkbox',
     '#title' => t('Card to use grid classes'),
     '#description' => t('Card search variant used grid classes to structure its content left-right, this changed to col-12 and cl-card-start-col combination, this has an impact on the column sizes. Check this to keep the old behaviour.'),
-    '#default_value' => theme_get_setting('oebt_bc.image_visible_on_mobile'),
+    '#default_value' => BackwardsCompatibility::getSetting('card_search_use_grid_classes'),
   ];
 }
