@@ -18,6 +18,8 @@ class BackwardsCompatibility {
    * @return bool
    *   The setting value. Settings without a defined value are returned as TRUE,
    *   to maintain the backward compatibility.
+   *
+   * @SuppressWarnings(PHPMD.BooleanGetMethodName)
    */
   public static function getSetting(string $name): bool {
     return theme_get_setting('oebt_bc.' . $name) ?? TRUE;
