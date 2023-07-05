@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\PatternAssertion;
 
+use Drupal\oe_bootstrap_theme\BackwardsCompatibility;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -12,6 +13,28 @@ use Symfony\Component\DomCrawler\Crawler;
  * @see ./templates/patterns/card/card.ui_patterns.yml
  */
 class CardPatternAssert extends BasePatternAssert {
+
+  /**
+   * Backwards compatibility setting: use grid classes in search variant.
+   *
+   * @var bool
+   */
+  protected bool $cardSearchUseGridClasses;
+
+  /**
+   * Backwards compatibility setting: image is hidden in search variant.
+   *
+   * @var bool
+   */
+  protected ?bool $cardSearchImageHideOnMobile;
+
+  /**
+   * Creates a new instance of this class.
+   */
+  public function __construct(?bool $cardSearchUseGridClasses = NULL, ?bool $cardSearchImageHideOnMobile = NULL) {
+    $this->cardSearchUseGridClasses = $cardSearchUseGridClasses ?? BackwardsCompatibility::getSetting('card_search_use_grid_classes');
+    $this->cardSearchImageHideOnMobile = $cardSearchImageHideOnMobile ?? BackwardsCompatibility::getSetting('card_search_image_hide_on_mobile');
+  }
 
   /**
    * {@inheritdoc}
@@ -77,12 +100,20 @@ class CardPatternAssert extends BasePatternAssert {
     $selector = 'article.card img';
 
     if ($variant === 'search') {
-      $selector = '.row .bcl-card-start-col img.card-img-top';
+      $selector = '.row '
+        . ($this->cardSearchUseGridClasses ? '.col-md-3' : '.bcl-card-start-col')
+        . ' img.card-img-top';
     }
 
-    $image_div = $crawler->filter($selector);
-    self::assertEquals($expected_image['alt'], $image_div->attr('alt'));
-    self::assertStringContainsString($expected_image['src'], $image_div->attr('src'));
+    $image_element = $crawler->filter($selector);
+    self::assertCount(1, $image_element);
+
+    if ($variant === 'search') {
+      self::assertCount((int) $this->cardSearchImageHideOnMobile, $crawler->filter($selector . '.d-none.d-md-block'));
+    }
+
+    self::assertEquals($expected_image['alt'], $image_element->attr('alt'));
+    self::assertStringContainsString($expected_image['src'], $image_element->attr('src'));
   }
 
   /**
@@ -100,7 +131,8 @@ class CardPatternAssert extends BasePatternAssert {
     // so we are checking that the expected items are present.
     foreach ($expected_items as $expected_item) {
       if ($variant === 'search') {
-        self::assertStringContainsString($expected_item, $crawler->filter('.row .col-md-9')->html());
+        $selector = '.row ' . ($this->cardSearchUseGridClasses ? '.col-md-9.col-lg-10' : '.col-12.col-md');
+        self::assertStringContainsString($expected_item, $crawler->filter($selector)->html());
       }
       else {
         self::assertStringContainsString($expected_item, $crawler->html());
