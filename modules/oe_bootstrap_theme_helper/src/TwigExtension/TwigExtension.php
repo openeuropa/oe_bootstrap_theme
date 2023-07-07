@@ -125,7 +125,7 @@ class TwigExtension extends AbstractExtension {
       }
       if (isset($item['text'])) {
         $bcl_card['text'] = [
-          'content' => $item['text'],
+          'content' => Markup::create($item['text']),
           'classes' => 'mb-2',
           'tag' => 'div',
         ];
