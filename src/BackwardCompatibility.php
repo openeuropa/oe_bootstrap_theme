@@ -10,7 +10,7 @@ namespace Drupal\oe_bootstrap_theme;
 final class BackwardCompatibility {
 
   /**
-   * The prefix for backward-compatible settings
+   * The prefix for backward-compatible settings.
    */
   public const PREFIX = 'backward_compatibility.';
 

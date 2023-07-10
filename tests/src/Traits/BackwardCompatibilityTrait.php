@@ -7,7 +7,7 @@ namespace Drupal\Tests\oe_bootstrap_theme\Traits;
 use Drupal\oe_bootstrap_theme\BackwardCompatibility;
 
 /**
- * Contains method that handle backwards compatibility.
+ * Contains method that handle backward compatibility.
  */
 trait BackwardCompatibilityTrait {
 

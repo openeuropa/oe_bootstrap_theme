@@ -46,7 +46,7 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
 
   $form['backward_compatibility'] = [
     '#type' => 'details',
-    '#title' => t('Backwards compatibility'),
+    '#title' => t('Backward compatibility'),
     '#description' => t('The following settings allow to keep the backward compatibility with previous releases of <em>oe_bootstrap_theme</em>. When turning them off, please check that your code is updated accordingly. All the settings introduced since the theme installation will be on by default.'),
     '#open' => TRUE,
     '#tree' => TRUE,

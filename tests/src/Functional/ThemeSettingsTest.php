@@ -74,9 +74,9 @@ class ThemeSettingsTest extends BrowserTestBase {
   }
 
   /**
-   * Tests the backwards compatibility theme settings.
+   * Tests the backward compatibility theme settings.
    */
-  public function testBackwardsCompatibilitySettings() {
+  public function testBackwardCompatibilitySettings() {
     $user = $this->drupalCreateUser([
       'access administration pages',
       'administer themes',
@@ -85,7 +85,7 @@ class ThemeSettingsTest extends BrowserTestBase {
 
     $this->drupalGet('/admin/appearance/settings/oe_bootstrap_theme');
     $assert_session = $this->assertSession();
-    $bc_wrapper = $assert_session->elementExists('xpath', '//details[./summary[.="Backwards compatibility"]]');
+    $bc_wrapper = $assert_session->elementExists('xpath', '//details[./summary[.="Backward compatibility"]]');
     $card_image_hidden_checkbox = $assert_session->fieldExists('Card image hidden on mobile', $bc_wrapper);
     $card_use_grid_checkbox = $assert_session->fieldExists('Card to use grid classes', $bc_wrapper);
 

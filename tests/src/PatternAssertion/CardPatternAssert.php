@@ -15,14 +15,14 @@ use Symfony\Component\DomCrawler\Crawler;
 class CardPatternAssert extends BasePatternAssert {
 
   /**
-   * Backwards compatibility setting: use grid classes in search variant.
+   * Backward compatibility setting: use grid classes in search variant.
    *
    * @var bool
    */
   protected bool $cardSearchUseGridClasses;
 
   /**
-   * Backwards compatibility setting: image is hidden in search variant.
+   * Backward compatibility setting: image is hidden in search variant.
    *
    * @var bool
    */
