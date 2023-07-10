@@ -5,12 +5,17 @@ declare(strict_types = 1);
 namespace Drupal\oe_bootstrap_theme;
 
 /**
- * Handles backwards compatibility.
+ * Handles backward compatibility.
  */
-class BackwardsCompatibility {
+final class BackwardCompatibility {
 
   /**
-   * Returns the value of a backwards compatibility setting.
+   * The prefix for backward-compatible settings
+   */
+  public const PREFIX = 'backward_compatibility.';
+
+  /**
+   * Returns the value of a backward compatibility setting.
    *
    * @param string $name
    *   The setting name, without the "backward_compatibility" prefix.
@@ -22,7 +27,7 @@ class BackwardsCompatibility {
    * @SuppressWarnings(PHPMD.BooleanGetMethodName)
    */
   public static function getSetting(string $name): bool {
-    return theme_get_setting('backward_compatibility.' . $name) ?? TRUE;
+    return theme_get_setting(self::PREFIX . $name) ?? TRUE;
   }
 
 }

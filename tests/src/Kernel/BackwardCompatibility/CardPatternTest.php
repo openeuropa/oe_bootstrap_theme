@@ -2,11 +2,11 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\Tests\oe_bootstrap_theme\Kernel\BackwardsCompatibility;
+namespace Drupal\Tests\oe_bootstrap_theme\Kernel\BackwardCompatibility;
 
 use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert;
-use Drupal\Tests\oe_bootstrap_theme\Traits\BackwardsCompatibilityTrait;
+use Drupal\Tests\oe_bootstrap_theme\Traits\BackwardCompatibilityTrait;
 use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -15,7 +15,7 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 class CardPatternTest extends AbstractKernelTestBase {
 
-  use BackwardsCompatibilityTrait;
+  use BackwardCompatibilityTrait;
 
   /**
    * Tests the backward compatibility settings.

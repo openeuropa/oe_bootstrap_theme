@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Functional;
 
-use Drupal\oe_bootstrap_theme\BackwardsCompatibility;
+use Drupal\oe_bootstrap_theme\BackwardCompatibility;
 use Drupal\Tests\BrowserTestBase;
 
 /**
@@ -93,8 +93,8 @@ class ThemeSettingsTest extends BrowserTestBase {
     $this->assertFalse($card_image_hidden_checkbox->isChecked());
     $this->assertFalse($card_use_grid_checkbox->isChecked());
 
-    $this->assertFalse(BackwardsCompatibility::getSetting('card_search_image_hide_on_mobile'));
-    $this->assertFalse(BackwardsCompatibility::getSetting('card_search_use_grid_classes'));
+    $this->assertFalse(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
+    $this->assertFalse(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
 
     $card_image_hidden_checkbox->check();
     $assert_session->buttonExists('Save configuration')->press();
@@ -105,8 +105,8 @@ class ThemeSettingsTest extends BrowserTestBase {
 
     drupal_static_reset('theme_get_setting');
     \Drupal::configFactory()->clearStaticCache();
-    $this->assertTrue(BackwardsCompatibility::getSetting('card_search_image_hide_on_mobile'));
-    $this->assertFalse(BackwardsCompatibility::getSetting('card_search_use_grid_classes'));
+    $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
+    $this->assertFalse(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
 
     $card_use_grid_checkbox->check();
     $assert_session->buttonExists('Save configuration')->press();
@@ -117,8 +117,8 @@ class ThemeSettingsTest extends BrowserTestBase {
 
     drupal_static_reset('theme_get_setting');
     \Drupal::configFactory()->clearStaticCache();
-    $this->assertTrue(BackwardsCompatibility::getSetting('card_search_image_hide_on_mobile'));
-    $this->assertTrue(BackwardsCompatibility::getSetting('card_search_use_grid_classes'));
+    $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
+    $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
   }
 
   /**

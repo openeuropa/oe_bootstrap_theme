@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\PatternAssertion;
 
-use Drupal\oe_bootstrap_theme\BackwardsCompatibility;
+use Drupal\oe_bootstrap_theme\BackwardCompatibility;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -32,8 +32,8 @@ class CardPatternAssert extends BasePatternAssert {
    * Creates a new instance of this class.
    */
   public function __construct(?bool $cardSearchUseGridClasses = NULL, ?bool $cardSearchImageHideOnMobile = NULL) {
-    $this->cardSearchUseGridClasses = $cardSearchUseGridClasses ?? BackwardsCompatibility::getSetting('card_search_use_grid_classes');
-    $this->cardSearchImageHideOnMobile = $cardSearchImageHideOnMobile ?? BackwardsCompatibility::getSetting('card_search_image_hide_on_mobile');
+    $this->cardSearchUseGridClasses = $cardSearchUseGridClasses ?? BackwardCompatibility::getSetting('card_search_use_grid_classes');
+    $this->cardSearchImageHideOnMobile = $cardSearchImageHideOnMobile ?? BackwardCompatibility::getSetting('card_search_image_hide_on_mobile');
   }
 
   /**
