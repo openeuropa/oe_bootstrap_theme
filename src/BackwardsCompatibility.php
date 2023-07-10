@@ -13,7 +13,7 @@ class BackwardsCompatibility {
    * Returns the value of a backwards compatibility setting.
    *
    * @param string $name
-   *   The setting name, without the "oebt_bc" prefix.
+   *   The setting name, without the "backward_compatibility" prefix.
    *
    * @return bool
    *   The setting value. Settings without a defined value are returned as TRUE,
@@ -22,7 +22,7 @@ class BackwardsCompatibility {
    * @SuppressWarnings(PHPMD.BooleanGetMethodName)
    */
   public static function getSetting(string $name): bool {
-    return theme_get_setting('oebt_bc.' . $name) ?? TRUE;
+    return theme_get_setting('backward_compatibility.' . $name) ?? TRUE;
   }
 
 }

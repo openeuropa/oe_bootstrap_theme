@@ -12,7 +12,7 @@ oe_bootstrap_theme.settings:
         responsive:
           type: string
           label: 'Responsive tables'
-    oebt_bc:
+    backward_compatibility:
       type: mapping
       label: 'OEL Improvements'
       mapping:

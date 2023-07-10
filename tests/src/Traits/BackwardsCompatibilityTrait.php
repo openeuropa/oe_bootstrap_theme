@@ -19,7 +19,7 @@ trait BackwardsCompatibilityTrait {
    */
   protected function setBackwardCompatibilitySetting(string $name, bool $value): void {
     $theme_config = $this->container->get('config.factory')->getEditable('oe_bootstrap_theme.settings');
-    $theme_config->set('oebt_bc.' . $name, $value)->save();
+    $theme_config->set('backward_compatibility.' . $name, $value)->save();
     drupal_static_reset();
   }
 
