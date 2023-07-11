@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Functional;
 
+use Drupal\oe_bootstrap_theme\BackwardCompatibility;
 use Drupal\Tests\BrowserTestBase;
 
 /**
@@ -70,6 +71,54 @@ class ThemeSettingsTest extends BrowserTestBase {
     // forced via theme suggestions.
     $this->assertEquals('<table data-striping="1" class="table"><tbody><tr><td>A</td><td>B</td></tr></tbody></table>', $this->renderTestTable('table__bootstrap'));
     $this->assertEquals('<div class="table-responsive-md"><table data-striping="1" class="table"><tbody><tr><td>A</td><td>B</td></tr></tbody></table></div>', $this->renderTestTable('table__bootstrap__responsive'));
+  }
+
+  /**
+   * Tests the backward compatibility theme settings.
+   */
+  public function testBackwardCompatibilitySettings() {
+    $user = $this->drupalCreateUser([
+      'access administration pages',
+      'administer themes',
+    ]);
+    $this->drupalLogin($user);
+
+    $this->drupalGet('/admin/appearance/settings/oe_bootstrap_theme');
+    $assert_session = $this->assertSession();
+    $bc_wrapper = $assert_session->elementExists('xpath', '//details[./summary[.="Backward compatibility"]]');
+    $card_image_hidden_checkbox = $assert_session->fieldExists('Card image hidden on mobile', $bc_wrapper);
+    $card_use_grid_checkbox = $assert_session->fieldExists('Card to use grid classes', $bc_wrapper);
+
+    // BC settings are disabled on new installs.
+    $this->assertFalse($card_image_hidden_checkbox->isChecked());
+    $this->assertFalse($card_use_grid_checkbox->isChecked());
+
+    $this->assertFalse(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
+    $this->assertFalse(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
+
+    $card_image_hidden_checkbox->check();
+    $assert_session->buttonExists('Save configuration')->press();
+    $assert_session->pageTextContains('The configuration options have been saved.');
+
+    $this->assertTrue($card_image_hidden_checkbox->isChecked());
+    $this->assertFalse($card_use_grid_checkbox->isChecked());
+
+    drupal_static_reset('theme_get_setting');
+    \Drupal::configFactory()->clearStaticCache();
+    $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
+    $this->assertFalse(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
+
+    $card_use_grid_checkbox->check();
+    $assert_session->buttonExists('Save configuration')->press();
+    $assert_session->pageTextContains('The configuration options have been saved.');
+
+    $this->assertTrue($card_image_hidden_checkbox->isChecked());
+    $this->assertTrue($card_use_grid_checkbox->isChecked());
+
+    drupal_static_reset('theme_get_setting');
+    \Drupal::configFactory()->clearStaticCache();
+    $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
+    $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
   }
 
   /**

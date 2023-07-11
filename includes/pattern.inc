@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Markup;
+use Drupal\oe_bootstrap_theme\BackwardCompatibility;
 use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
@@ -283,4 +284,12 @@ function oe_bootstrap_theme_preprocess_pattern_gallery__preview(array &$variable
       }
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for gallery pattern.
+ */
+function oe_bootstrap_theme_preprocess_pattern_card(array &$variables): void {
+  $variables['bc_card_search_image_hide_on_mobile'] = BackwardCompatibility::getSetting('card_search_image_hide_on_mobile');
+  $variables['bc_card_search_use_grid_classes'] = BackwardCompatibility::getSetting('card_search_use_grid_classes');
 }
