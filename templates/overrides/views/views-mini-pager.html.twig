@@ -4,7 +4,7 @@
  * Template for a mini pager.
  */
 #}
-{% if items %}
+{% if items.previous or items.next %}
   {{ pattern('pagination', {
     'alignment': 'center',
     'prev': items.previous ? {

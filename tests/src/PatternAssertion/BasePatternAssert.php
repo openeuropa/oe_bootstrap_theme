@@ -57,6 +57,17 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
     $variant = $this->getPatternVariant($html);
     $this->assertBaseElements($html, $variant);
     $assertion_map = $this->getAssertions($variant);
+
+    // Add support for asserting the variant if the expected value is passed.
+    // We add the assertion only if a custom one wasn't specified already.
+    if (array_key_exists('variant', $expected) && !array_key_exists('variant', $assertion_map)) {
+      $assertion_map['variant'] = [
+        [self::class . '::assertEquals'],
+        $variant,
+        '',
+      ];
+    }
+
     $crawler = new Crawler($html);
     foreach ($expected as $name => $expected_value) {
       if (!array_key_exists($name, $assertion_map)) {
@@ -92,12 +103,14 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
    *   The DomCrawler where to check the element.
    */
   protected function assertElementAttribute($expected, string $selector, string $attribute, Crawler $crawler): void {
-    if (is_null($expected)) {
-      $this->assertElementNotExists($selector, $crawler);
-      return;
-    }
     $this->assertElementExists($selector, $crawler);
     $element = $crawler->filter($selector);
+
+    if (is_null($expected)) {
+      self::assertNull($element->attr($attribute));
+      return;
+    }
+
     self::assertEquals($expected, $element->attr($attribute));
   }
 
@@ -119,8 +132,32 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
     $this->assertElementExists($selector, $crawler);
     $element = $crawler->filter($selector);
     $actual = trim($element->text());
-    self::assertEquals($expected, $actual, \sprintf(
+    self::assertEquals($expected, $actual, sprintf(
       'Expected text value "%s" is not equal to the actual value "%s" found in the selector "%s".',
+      $expected, $actual, $selector
+    ));
+  }
+
+  /**
+   * Asserts text is contained in a particular element.
+   *
+   * @param string|null $expected
+   *   The expected value.
+   * @param string $selector
+   *   The CSS selector to find the element.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertElementTextContains(?string $expected, string $selector, Crawler $crawler): void {
+    if (is_null($expected)) {
+      $this->assertElementNotExists($selector, $crawler);
+      return;
+    }
+    $this->assertElementExists($selector, $crawler);
+    $element = $crawler->filter($selector);
+    $actual = trim($element->text());
+    self::assertStringContainsString($expected, $actual, sprintf(
+      'Expected text "%s" is not present in "%s" found in the selector "%s".',
       $expected, $actual, $selector
     ));
   }
@@ -155,7 +192,7 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
    */
   protected function assertElementExists(string $selector, Crawler $crawler): void {
     $element = $crawler->filter($selector);
-    self::assertCount(1, $element, \sprintf(
+    self::assertCount(1, $element, sprintf(
       'Element with selector "%s" not found in the provided html.',
       $selector
     ));
@@ -171,7 +208,7 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
    */
   protected function assertElementNotExists(string $selector, Crawler $crawler): void {
     $element = $crawler->filter($selector);
-    self::assertCount(0, $element, \sprintf(
+    self::assertCount(0, $element, sprintf(
       'Element with selector "%s" was found in the provided html.',
       $selector
     ));

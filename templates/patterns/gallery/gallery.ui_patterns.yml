@@ -1,0 +1,105 @@
+gallery:
+  label: 'Gallery'
+  description: 'A collection of images and videos.'
+  fields:
+    title:
+      type: text
+      label: 'Title'
+      description: 'The title of the gallery.'
+      preview: 'Gallery example'
+    title_tag:
+      type: text
+      label: 'Title tag'
+      description: 'The tag to use for the title. Defaults to h2.'
+    items:
+      type: array
+      label: 'Items'
+      description: 'A list of '
+      # The following data is converted in oe_bootstrap_theme_preprocess_pattern_gallery__preview().
+      preview:
+        - media:
+            '#markup': '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></video>'
+          thumbnail:
+            '#markup': '<img src="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" alt="Example alt text" />'
+          caption_title: 'Bio-defence preparedness programme'
+          caption: 'Caption first item'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/cat" alt="Cat media image alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt" /'
+          caption_title: 'A picture of a cat'
+          caption: 'Cat image caption.'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/lisbon" alt="Lisbon image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/lisbon" alt="Lisbon thumbnail alt" />'
+          caption_title: 'Lisbon'
+          caption: 'Meanwhile in Lisbon, the capital of Portugal'
+        - media:
+            '#theme': 'image'
+            '#uri': 'https://loremflickr.com/800/600/kiev'
+            '#title': 'Kiev image media title'
+            '#alt': 'Kiev image media alt'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/kiev" alt="Kiev thumbnail alt" />'
+          caption_title: 'Kiev'
+          caption: 'Meanwhile in Kiev, the capital of Ukraine'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/paris" alt="Paris image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/paris" alt="Paris thumbnail alt" />'
+          caption_title: 'Paris'
+          caption: 'Meanwhile in Paris, the capital of France'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/rome" alt="Rome image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/rome" alt="Rome thumbnail alt" />'
+          caption_title: 'Rome'
+          caption: 'Meanwhile in Rome, the capital of Italy'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/madrid" alt="Madrid image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/madrid" alt="Madrid thumbnail alt" />'
+          caption_title: 'Spain'
+          caption: 'Meanwhile in Madrid, the capital of Spain'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/brussels" alt="Brussels image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/brussels" alt="Brussels thumbnail alt" />'
+          caption_title: 'Brussels'
+          caption: 'Meanwhile in Brussels, the capital of Belgium'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/budapest" alt="Budapest image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/budapest" alt="Budapest thumbnail alt" />'
+          caption_title: 'Budapest'
+          caption: 'Meanwhile in Budapest, the capital of Hungary'
+        - media:
+            '#markup': '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt" />'
+          caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/stockholm" alt="Stockholm image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/stockholm" alt="Stockholm thumbnail alt" />'
+          caption_title: 'Stockholm'
+          caption: 'Meanwhile in Stockholm, the capital of Sweden'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/helsinki" alt="Helsinki image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/helsinki" alt="Helsinki thumbnail alt" />'
+          caption_title: 'Helsinki'
+          caption: 'Meanwhile in Helsinki, the capital of Finland'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/tallinn" alt="Tallinn image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/tallinn" alt="Tallinn thumbnail alt" />'
+          caption_title: 'Tallinn'
+          caption: 'Meanwhile in Tallinn, the capital of Estonia'
+        - media:
+            '#markup': '<img src="https://loremflickr.com/800/600/vilnius" alt="Vilnius image media alt" />'
+          thumbnail:
+            '#markup': '<img src="https://loremflickr.com/400/300/vilnius" alt="Vilnius thumbnail alt" />'
+          caption_title: 'Vilnius'
+          caption: 'Meanwhile in Vilnius, the capital of Lithuania'

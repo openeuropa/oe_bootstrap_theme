@@ -4,13 +4,20 @@ declare(strict_types = 1);
 
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
-use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Render\Markup;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Template\TwigEnvironment;
+use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
+use Twig\Environment;
 use Twig\Extension\AbstractExtension;
+use Twig\Markup as TwigMarkup;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * Collection of extra Twig extensions as filters and functions.
@@ -25,23 +32,23 @@ class TwigExtension extends AbstractExtension {
   protected $languageManager;
 
   /**
-   * The renderer.
+   * The Drupal Twig environment.
    *
-   * @var \Drupal\Core\Render\RendererInterface
+   * @var \Drupal\Core\Template\TwigEnvironment
    */
-  protected $renderer;
+  protected TwigEnvironment $twigEnvironment;
 
   /**
    * Constructs a new TwigExtension object.
    *
    * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
    *   The language manager.
-   * @param \Drupal\Core\Render\RendererInterface $renderer
-   *   The renderer service.
+   * @param \Drupal\Core\Template\TwigEnvironment $twigEnvironment
+   *   The Drupal Twig environment.
    */
-  public function __construct(LanguageManagerInterface $languageManager, RendererInterface $renderer) {
+  public function __construct(LanguageManagerInterface $languageManager, TwigEnvironment $twigEnvironment) {
     $this->languageManager = $languageManager;
-    $this->renderer = $renderer;
+    $this->twigEnvironment = $twigEnvironment;
   }
 
   /**
@@ -60,6 +67,18 @@ class TwigExtension extends AbstractExtension {
         $this,
         'toInternalLanguageId',
       ]),
+    ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getFunctions(): array {
+    return [
+      new TwigFunction('bcl_link', [$this, 'bclLink'], [
+        'needs_environment' => TRUE,
+      ]),
+      new TwigFunction('bcl_gallery_items', [$this, 'bclGalleryItems']),
     ];
   }
 
@@ -233,6 +252,75 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $language_code;
+  }
+
+  /**
+   * Alter a link with BCL logic.
+   *
+   * @param \Twig\Environment $env
+   *   The env.
+   * @param string $label
+   *   The link text for the anchor tag as a translated string.
+   * @param \Drupal\Core\Url|string $path
+   *   The URL object or string used for the link.
+   * @param array|\Drupal\Core\Template\Attribute $attributes
+   *   An optional array or Attribute object of link attributes.
+   *
+   * @return array
+   *   The link render array.
+   */
+  public function bclLink(Environment $env, $label, $path, Attribute $attributes): array {
+    if (is_string($path)) {
+      // The text has been processed by twig already, convert it to a safe
+      // object for the render system.
+      if ($label instanceof TwigMarkup) {
+        $label = Markup::create($label);
+      }
+      return [
+        '#type' => 'html_tag',
+        '#tag' => 'a',
+        '#value' => $label,
+        '#attributes' => $attributes->setAttribute('href', $path),
+      ];
+    }
+
+    return $env->getExtension(CoreTwigExtension::class)->getLink($label, $path, $attributes);
+  }
+
+  /**
+   * Processes the items for the gallery pattern.
+   *
+   * @param array $items
+   *   The gallery items.
+   *
+   * @return array
+   *   The process gallery items.
+   */
+  public function bclGalleryItems(array $items): array {
+    foreach ($items as &$item) {
+      // Use inline templates to take care of all possible types at once, and to
+      // receive a Markup class as output.
+      $rendered = $this->twigEnvironment->renderInline('{{ value }}', [
+        'value' => $item['media'],
+      ]);
+      $document = Html::load((string) $rendered);
+      $xpath = new \DOMXPath($document);
+      $is_iframe = (bool) $xpath->query('//iframe')->count();
+      $is_video = (bool) $xpath->query('//video')->count();
+      $is_image = (bool) $xpath->query('//img')->count();
+
+      // Playable medias show an icon.
+      $item['is_playable'] = $is_iframe || $is_video;
+
+      if (!$is_iframe && !$is_image) {
+        $item['image'] = $item['media'];
+        continue;
+      }
+
+      $item['image'] = Markup::create(str_replace(' src=', ' data-src=', (string) $rendered));
+    }
+
+    return $items;
   }
 
 }

@@ -19,4 +19,11 @@ body.toolbar-fixed {
       }
     }
   }
+  
+// Custom css for admin toolbar overlapping gallery
+  .bcl-gallery {
+    .modal {
+      z-index: 5001;
+    }
+  }
 }

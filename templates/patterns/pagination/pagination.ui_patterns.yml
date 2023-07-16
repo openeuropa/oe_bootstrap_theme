@@ -1,6 +1,13 @@
 pagination:
   label: 'Pagination'
   description: 'Showing pagination to indicate a series of related content exists across multiple pages. For more information visit: https://getbootstrap.com/docs/5.0/components/pagination/'
+  variants:
+    default:
+      label: 'Default'
+      description: 'The default pagination style.'
+    glossary:
+      label: 'Glossary'
+      description: 'Glossary style.'
   settings:
     size:
       type: select

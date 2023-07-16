@@ -74,6 +74,20 @@ After using the command, first commit the generated sub-theme in git, then revie
 
 An older, manual way to create a sub-theme is described in [kits/README.md](kits/README.md).
 
+### Backward compatibility layer
+
+This component [follows semantic versioning](https://github.com/openeuropa/documentation/blob/master/docs/initiative/release-cycle.md) as per OpenEuropa initiative.\
+The theme provides an API to its sub-themes, which consists of PHP classes and methods, Twig templates, JavaScript, and CSS/SASS, which can all be altered or overridden by the sub-theme.
+
+Bug fixes and improvements that break backward compatibility on the theme layer (Twig, JS, CSS) are shipped in minor versions.\
+Backward compatibility is assured by dedicated "Backward compatibility settings", configurable in the theme settings page.
+These settings allow to restore the previous backward compatible behaviour.\
+When upgrading the theme in an existing installation, new backward compatibility settings will be automatically enabled. They can be disabled when a developer updates the sub-theme code.\
+For new installations, all the backward compatibility settings are disabled.
+
+This approach eases the adoption of changes or improvements that would be otherwise tied to a new major. It allows developers to contribute changes to the current major and selectively enable them
+without having to update the theme completely to a new major release.
+
 ## Development setup
 
 ### Using LAMP stack or similar

@@ -1,4 +1,4 @@
 name: OpenEuropa Bootstrap Theme Test Subtheme 2
 type: theme
 base theme: oe_bootstrap_theme_test_subtheme1
-core_version_requirement: ^8.9 || ^9
+core_version_requirement: ^9.4 || ^10

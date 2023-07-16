@@ -24,7 +24,13 @@
       {% set video_alignment_class = 'order-md-1' %}
     {% endif %}
 
-    <h2 class="mb-4">{{ title }}</h2>
+    {%- if title is not empty -%}
+      {% include '@oe-bcl/heading' with {
+        title: title,
+        title_tag: 'h2',
+        attributes: create_attribute().addClass('mb-4'),
+      } only %}
+    {%- endif -%}
     <div class="row">
       <div class="col-12 col-md-6 {{ text_alignment_class }}">
         {% if subtitle %}

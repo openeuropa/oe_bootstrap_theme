@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Template override that applies Bootstrap styling to tables.
+ *
+ * Available variables: same variables as @system/table.html.twig.
+ *
+ * @see template_preprocess_table()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set attributes = attributes.addClass('table') %}
+{% extends "@system/table.html.twig" %}

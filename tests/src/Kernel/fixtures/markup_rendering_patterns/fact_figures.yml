@@ -9,6 +9,7 @@ fact_figures_default_1col:
         label: 'Read more'
         path: '/example'
       title: 'Fact and figures block'
+      title_tag: 'h3'
       items:
         - icon: 'x-diamond-fill'
           subtitle: 'Jira Tickets'
@@ -37,10 +38,11 @@ fact_figures_default_1col:
   assertions:
     count:
       'div.bcl-fact-figures.bcl-fact-figures--default': 1
-      'h2.bcl-heading': 1
+      'h3.bcl-heading': 1
       'div.row.row-cols-md-1': 1
       'svg.bi.icon--l': 6
     equals:
+      'h3.bcl-heading': 'Fact and figures block'
       'div > div.col:nth-child(1) > div.fs-4': '1529 JIRA Ticket'
       'div > div.col:nth-child(2) > div.fs-4': '337 Features'
       'div > div.col:nth-child(3) > div.fs-4': '107 Tests'

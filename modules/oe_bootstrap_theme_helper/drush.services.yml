@@ -1,0 +1,5 @@
+services:
+  oe_bootstrap_theme_helper.commands:
+    class: Drupal\oe_bootstrap_theme_helper\Commands\OeBootstrapThemeCommands
+    tags:
+      - { name: drush.command }

@@ -22,6 +22,9 @@ class IconPatternAssert extends BasePatternAssert {
       'size' => [
         [$this, 'assertSize'],
       ],
+      'attributes' => [
+        [$this, 'assertAttributes'],
+      ],
     ];
   }
 
@@ -42,12 +45,14 @@ class IconPatternAssert extends BasePatternAssert {
    *   The crawler.
    */
   protected function assertIconPath(string $expected, Crawler $crawler): void {
-    $expected_icon_markup = sprintf(
-      '<use xlink:href="%s/assets/icons/bcl-default-icons.svg#%s"></use>',
+    $icon_path = sprintf(
+      '%s/assets/icons/bcl-default-icons.svg#%s',
       base_path() . \Drupal::service('extension.list.theme')->getPath('oe_bootstrap_theme'),
       $expected
     );
-    self::assertEquals($expected_icon_markup, $crawler->filter('svg')->html());
+
+    $pattern = sprintf('@^<use.* xlink:href="%s".*></use>$@', preg_quote($icon_path));
+    self::assertMatchesRegularExpression($pattern, $crawler->filter('svg')->html());
   }
 
   /**
@@ -60,6 +65,20 @@ class IconPatternAssert extends BasePatternAssert {
    */
   protected function assertSize(string $expected, Crawler $crawler): void {
     $this->assertElementExists('svg.icon--' . $expected, $crawler);
+  }
+
+  /**
+   * Asserts the icon pattern attributes.
+   *
+   * @param array[] $expected
+   *   The expected settings.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The crawler.
+   */
+  protected function assertAttributes(array $expected, Crawler $crawler): void {
+    foreach ($expected as $attribute => $value) {
+      $this->assertElementAttribute($value, 'svg', $attribute, $crawler);
+    }
   }
 
 }

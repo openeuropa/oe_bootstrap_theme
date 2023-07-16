@@ -8,6 +8,8 @@
 declare(strict_types = 1);
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Markup;
+use Drupal\oe_bootstrap_theme\BackwardCompatibility;
 use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
@@ -234,4 +236,60 @@ function oe_bootstrap_theme_preprocess_pattern_pagination(array &$variables): vo
       'size' => 'fluid',
     ];
   }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for pagination pattern preview.
+ */
+function oe_bootstrap_theme_preprocess_pattern_pagination__preview(array &$variables): void {
+  if ($variables['variant'] !== 'glossary') {
+    return;
+  }
+
+  // Remove entries which don't make sense for a glossary.
+  foreach (['first', 'prev', 'next', 'last'] as $key) {
+    unset($variables[$key]);
+  }
+
+  // Create one entry per letter A-Z and number 0-9.
+  $variables['items'] = array_map(function (string $char) {
+    return [
+      'path' => '#',
+      'label' => $char,
+    ];
+  }, array_merge(range('A', 'Z'), range(0, 9)));
+
+  // Mark the letter F as active.
+  $variables['items'][5]['active'] = TRUE;
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for gallery pattern.
+ */
+function oe_bootstrap_theme_preprocess_pattern_gallery(array &$variables): void {
+  $variables['id'] = Html::getUniqueId('bcl-gallery');
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for gallery pattern preview.
+ */
+function oe_bootstrap_theme_preprocess_pattern_gallery__preview(array &$variables): void {
+  // When #markup is a string, only safe tags will be kept for rendering.
+  // Convert to a markup object to avoid any filtering.
+  // @see \Drupal\Core\Render\Renderer::ensureMarkupIsSafe()
+  foreach ($variables['items'] as &$item) {
+    foreach (['thumbnail', 'media'] as $key) {
+      if (isset($item[$key]['#markup'])) {
+        $item[$key] = Markup::create($item[$key]['#markup']);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for gallery pattern.
+ */
+function oe_bootstrap_theme_preprocess_pattern_card(array &$variables): void {
+  $variables['bc_card_search_image_hide_on_mobile'] = BackwardCompatibility::getSetting('card_search_image_hide_on_mobile');
+  $variables['bc_card_search_use_grid_classes'] = BackwardCompatibility::getSetting('card_search_use_grid_classes');
 }

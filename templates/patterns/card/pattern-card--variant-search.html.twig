@@ -10,7 +10,9 @@
     {# Use negative margin to compensate for me-3 on each item. #}
     <div class="my-3 me-n3">
       {% for _meta_item in meta %}
-        <span class="text-muted me-3">{{ _meta_item }}</span>
+        {% if _meta_item is not empty %}
+          <span class="text-muted me-3">{{ _meta_item }}</span>
+        {% endif %}
       {% endfor %}
     </div>
   {% endif %}
@@ -30,11 +32,27 @@
     }|merge(item)]) %}
   {% endfor %}
 {% endif %}
+
+{% set _left_col_classes = 'bcl-card-start-col mb-3 mb-lg-0 bcl-size-small' %}
+{% set _right_col_classes = 'col-12 col-md' %}
+{% set _image_classes = '' %}
+
+{# Backward compatibily setting: image is hidden in mobile viewports. #}
+{% if bc_card_search_image_hide_on_mobile %}
+  {% set _image_classes = 'd-none d-md-block' %}
+{% endif %}
+
+{# Backward compatibility setting: card uses grid classes. #}
+{% if bc_card_search_use_grid_classes %}
+  {% set _left_col_classes = 'col-md-3 col-lg-2 rounded mw-listing-img' %}
+  {% set _right_col_classes = 'col-md-9 col-lg-10' %}
+{% endif %}
+
 {% include '@oe-bcl/card' with {
   'horizontal': true,
   'horizontal_grid': {
-    'left_col_classes': 'col-md-3 col-lg-2 rounded mw-listing-img',
-    'right_col_classes': 'col-md-9 col-lg-10',
+    'left_col_classes': _left_col_classes,
+    'right_col_classes': _right_col_classes,
   },
   'extra_classes_body': 'p-0 pb-md-0 pb-3',
   'badges': _badges,
@@ -44,20 +62,21 @@
     'classes': 'mb-2-5',
     'tag': 'div',
   } : {},
-  'attributes': create_attribute({'class': [
+  'attributes': attributes.addClass([
     'listing-item',
     'border-bottom',
     'border-md-0',
     'border-0',
     'mb-3',
-  ]}),
+  ]),
   'text_color': 'dark',
   'image': (image is not empty) ? image|merge({
     'position': 'top',
-    'classes': 'd-none d-md-block',
+    'classes': _image_classes,
     'path': image.src,
     'alt': image.alt,
   }) : {},
+  'date': date|default({}),
   'content': _content,
 } only %}
 {% endapply %}

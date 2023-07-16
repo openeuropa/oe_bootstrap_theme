@@ -1,3 +1,77 @@
+link_pattern_with_all_settings_true:
+  render:
+    '#type': pattern
+    '#id': 'link'
+    '#fields':
+      settings:
+        disabled: true
+        standalone: true
+        icon_position: 'before'
+        remove_icon_spacers: true
+      label: 'Link to link_pattern_with_all_settings_true'
+      path: 'https://example.com'
+      icon: 'lock'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\LinkPatternAssert
+      expected:
+        settings:
+          disabled: true
+          standalone: true
+          icon_position: 'before'
+          remove_icon_spacers: true
+        label: 'Link to link_pattern_with_all_settings_true'
+        path: 'https://example.com'
+        icon: 'lock'
+link_pattern_with_all_settings_false:
+  render:
+    '#type': pattern
+    '#id': 'link'
+    '#fields':
+      settings:
+        disabled: false
+        standalone: false
+        remove_icon_spacers: false
+      label: 'Link to link_pattern_with_all_settings_false'
+      path: 'https://example.com'
+      icon: 'lock'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\LinkPatternAssert
+      expected:
+        settings:
+          disabled: false
+          standalone: false
+          remove_icon_spacers: false
+        label: 'Link to link_pattern_with_all_settings_false'
+        path: 'https://example.com'
+        icon: 'lock'
+link_pattern_with_external_url_and_fragment:
+  render:
+    '#type': pattern
+    '#id': 'link'
+    '#fields':
+      label: 'Link to link_pattern_with_external_url_and_fragment'
+      path: 'https://example.com?x=baz#bar'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\LinkPatternAssert
+      expected:
+        label: 'Link to link_pattern_with_external_url_and_fragment'
+        path: 'https://example.com?x=baz#bar'
+link_pattern_with_internal_url:
+  render:
+    '#type': pattern
+    '#id': 'link'
+    '#fields':
+      label: 'Link to link_pattern_with_internal_url'
+      path: '/some-path'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\LinkPatternAssert
+      expected:
+        label: 'Link to link_pattern_with_internal_url'
+        path: '/some-path'
 link_pattern_with_icon_before:
   render:
     '#type': pattern
@@ -8,20 +82,15 @@ link_pattern_with_icon_before:
       label: 'Link to example'
       path: 'https://example.com'
       icon: 'lock'
-  assert:
-    contains:
-      'a > svg': '/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#lock'
-      'a': 'Link to example'
-    count:
-      'a': 1
-      'a[href="https://example.com"]': 1
-      'svg.icon--s': 1
-      'a.disabled': 0
-      # This class indicates icon positioned before.
-      'svg.me-2-5': 1
-      # This class indicates icon positioned after.
-      'svg.ms-2-5': 0
-      'a.standalone': 0
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\LinkPatternAssert
+      expected:
+        settings:
+          icon_position: 'before'
+        label: 'Link to example'
+        path: 'https://example.com'
+        icon: 'lock'
 link_pattern_disabled_with_icon_after:
   render:
     '#type': pattern
@@ -33,20 +102,16 @@ link_pattern_disabled_with_icon_after:
       label: 'Link to example'
       path: 'https://example.com'
       icon: 'lock'
-  assert:
-    contains:
-      'a > svg': '/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#lock'
-      'a': 'Link to example'
-    count:
-      'a': 1
-      'a[href="https://example.com"]': 1
-      # Check that only one class is added.
-      'a[class="disabled"]': 1
-      'svg.icon--s': 1
-      'a.disabled': 1
-      'svg.me-2-5': 0
-      'svg.ms-2-5': 1
-      'a.standalone': 0
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\LinkPatternAssert
+      expected:
+        settings:
+          disabled: true
+          icon_position: 'after'
+        label: 'Link to example'
+        path: 'https://example.com'
+        icon: 'lock'
 link_pattern_disabled_with_icon_without_label_removing_icon_spaces_standalone:
   render:
     '#type': pattern
@@ -58,18 +123,18 @@ link_pattern_disabled_with_icon_without_label_removing_icon_spaces_standalone:
         remove_icon_spacers: true
         standalone: true
       path: 'https://example.com'
-      icon:
-        name: 'lock'
-  assert:
-    contains:
-      'a > svg': 'bcl-default-icons.svg#lock'
-    count:
-      'a': 1
-      'a[href="https://example.com"]': 1
-      'svg.icon--s': 1
-      'a.disabled': 1
-      'svg.ms-2-5': 0
-      'a.standalone': 1
+      icon: 'lock'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\LinkPatternAssert
+      expected:
+        settings:
+          disabled: true
+          icon_position: 'after'
+          remove_icon_spacers: true
+          standalone: true
+        path: 'https://example.com'
+        icon: 'lock'
 link_pattern_disabled_with_icon_after_without_removing_icon_spaces:
   render:
     '#type': pattern
@@ -80,62 +145,22 @@ link_pattern_disabled_with_icon_after_without_removing_icon_spaces:
         icon_position: 'after'
       label: 'Link to example'
       path: 'https://example.com'
-      icon:
-        name: 'lock'
-  assert:
-    contains:
-      'a > svg': 'bcl-default-icons.svg#lock'
-      'a': 'Link to example'
-    count:
-      'a': 1
-      'a[href="https://example.com"]': 1
-      'svg.icon--s': 1
-      'a.disabled': 1
-      'svg.ms-2-5': 1
-      'a.standalone': 0
-link_pattern_enabled_without_icon:
-  render:
-    '#type': pattern
-    '#id': 'link'
-    '#fields':
-      settings:
-        disabled: false
-      label: 'Link to example'
-      path: 'https://example.com'
-  assert:
-    equals:
-      'a': 'Link to example'
-    count:
-      'a': 1
-      'a[href="https://example.com"]': 1
-      'svg': 0
-      'a.disabled': 0
-      'a.standalone': 0
-link_pattern_enabled_without_icon_standalone:
-  render:
-    '#type': pattern
-    '#id': 'link'
-    '#fields':
-      settings:
-        standalone: true
-      label: 'Link to example'
-      path: 'https://example.com'
-  assert:
-    equals:
-      'a': 'Link to example'
-    count:
-      'a': 1
-      'a[href="https://example.com"]': 1
-      'svg': 0
-      'a.disabled': 0
-      'a.standalone': 1
+      icon: 'lock'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\LinkPatternAssert
+      expected:
+        settings:
+          disabled: true
+          icon_position: 'after'
+          label: 'Link to example'
+        path: 'https://example.com'
+        icon: 'lock'
 link_pattern_attributes:
   render:
     '#type': pattern
     '#id': 'link'
     '#fields':
-      settings:
-        standalone: true
       label: 'Link to example'
       path: 'https://example.com'
       attributes:
@@ -144,11 +169,13 @@ link_pattern_attributes:
           - 'second'
         id: 'link-id'
         data-attribute: 'some-value'
-  assert:
-    equals:
-      'a.first.second.standalone': 'Link to example'
-    count:
-      'a': 1
-      'a[href="https://example.com"]': 1
-      'svg': 0
-      'a#link-id.first.second.standalone': 1
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\LinkPatternAssert
+      expected:
+        label: 'Link to example'
+        path: 'https://example.com'
+        attributes:
+          class: 'first second'
+          id: 'link-id'
+          data-attribute: 'some-value'

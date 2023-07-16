@@ -1,10 +1,98 @@
 # Change Log
 
+## [1.4.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.4.0) (2023-06-15)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.3.0...1.4.0)
+
+**Merged pull requests:**
+
+- OEL-0000: Fix symfony/validator incompatibility. [\#334](https://github.com/openeuropa/oe_bootstrap_theme/pull/334) ([drishu](https://github.com/drishu))
+- OEL-2298: Fixed overlapping admin navbar with gallery. [\#326](https://github.com/openeuropa/oe_bootstrap_theme/pull/326) ([tibi2303](https://github.com/tibi2303))
+- OEL-2264: Improvements card default and search variant. [\#321](https://github.com/openeuropa/oe_bootstrap_theme/pull/321) ([tibi2303](https://github.com/tibi2303))
+- OEL-2262: Improvements on content-banner pattern. [\#318](https://github.com/openeuropa/oe_bootstrap_theme/pull/318) ([tibi2303](https://github.com/tibi2303))
+- OEL-2259: Hide views mini pager when there is only 1 page. [\#313](https://github.com/openeuropa/oe_bootstrap_theme/pull/313) ([tibi2303](https://github.com/tibi2303))
+- OEL-2254: Fixed path of bootstrap-ie11.css [\#310](https://github.com/openeuropa/oe_bootstrap_theme/pull/310) ([tibi2303](https://github.com/tibi2303))
+- OEL-2253: Adapt content\_banner template for badges with outline param. [\#309](https://github.com/openeuropa/oe_bootstrap_theme/pull/309) ([tibi2303](https://github.com/tibi2303))
+- OEL-2252: Removed assistive\_text from badge pattern. [\#308](https://github.com/openeuropa/oe_bootstrap_theme/pull/308) ([tibi2303](https://github.com/tibi2303))
+- OEL-2251: Use heading in featured-media pattern. [\#307](https://github.com/openeuropa/oe_bootstrap_theme/pull/307) ([tibi2303](https://github.com/tibi2303))
+- OEL-2249: Pager aria-label accessibility issue fix. [\#304](https://github.com/openeuropa/oe_bootstrap_theme/pull/304) ([tibi2303](https://github.com/tibi2303))
+
+## [1.3.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.3.0) (2023-03-01)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.2.0...1.3.0)
+
+**Merged pull requests:**
+
+- Convert Task Runner commands [\#305](https://github.com/openeuropa/oe_bootstrap_theme/pull/305) ([claudiu-cristea](https://github.com/claudiu-cristea))
+- OEL-0000: Matrix values must be wrapped in quotes when used in step c… [\#302](https://github.com/openeuropa/oe_bootstrap_theme/pull/302) ([brummbar](https://github.com/brummbar))
+
+## [1.2.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.2.0) (2023-02-23)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.1.0...1.2.0)
+
+**Merged pull requests:**
+
+- Update changelog for release 1.2.0. [\#301](https://github.com/openeuropa/oe_bootstrap_theme/pull/301) ([brummbar](https://github.com/brummbar))
+- OEL-0000: Update params for release drone tasks. [\#300](https://github.com/openeuropa/oe_bootstrap_theme/pull/300) ([brummbar](https://github.com/brummbar))
+- Prepare changelog for release 1.2.0. [\#299](https://github.com/openeuropa/oe_bootstrap_theme/pull/299) ([brummbar](https://github.com/brummbar))
+- EWPP-3013: Drupal 10 compatibility. [\#298](https://github.com/openeuropa/oe_bootstrap_theme/pull/298) ([brummbar](https://github.com/brummbar))
+- OEL-2115: Update to PHP 8.1 [\#292](https://github.com/openeuropa/oe_bootstrap_theme/pull/292) ([brummbar](https://github.com/brummbar))
+
+## [1.1.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.1.0) (2023-01-30)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0...1.1.0)
+
+**Closed issues:**
+
+- JS error on pages using select template override [\#145](https://github.com/openeuropa/oe_bootstrap_theme/issues/145)
+
+**Merged pull requests:**
+
+- Prepare release 1.1.0 [\#297](https://github.com/openeuropa/oe_bootstrap_theme/pull/297) ([drishu](https://github.com/drishu))
+- OEL-2042: Checkbox description inline fix. [\#295](https://github.com/openeuropa/oe_bootstrap_theme/pull/295) ([tibi2303](https://github.com/tibi2303))
+- OEL-1915: Support date in card pattern. [\#291](https://github.com/openeuropa/oe_bootstrap_theme/pull/291) ([drishu](https://github.com/drishu))
+- OEL-2009: Style tables using BCL. [\#290](https://github.com/openeuropa/oe_bootstrap_theme/pull/290) ([brummbar](https://github.com/brummbar))
+- OEL-2166: Upgrade to BCL 1.0.0 [\#267](https://github.com/openeuropa/oe_bootstrap_theme/pull/267) ([brummbar](https://github.com/brummbar))
+
+## [1.0.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0) (2022-12-13)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta7...1.0.0)
+
+**Closed issues:**
+
+- Error when link \#access property is a boolean [\#285](https://github.com/openeuropa/oe_bootstrap_theme/issues/285)
+
+**Merged pull requests:**
+
+- Prepare changelog for release 1.0.0. [\#289](https://github.com/openeuropa/oe_bootstrap_theme/pull/289) ([brummbar](https://github.com/brummbar))
+- OEL-2128: Add Skip to main content target. [\#287](https://github.com/openeuropa/oe_bootstrap_theme/pull/287) ([drishu](https://github.com/drishu))
+- ISAICP-7433: The \#access property might be a bool [\#286](https://github.com/openeuropa/oe_bootstrap_theme/pull/286) ([claudiu-cristea](https://github.com/claudiu-cristea))
+- OEL-1572: Add bcl and oebt style sheets to ckeditor. [\#282](https://github.com/openeuropa/oe_bootstrap_theme/pull/282) ([drishu](https://github.com/drishu))
+- OEL-2082: Gallery pattern. [\#281](https://github.com/openeuropa/oe_bootstrap_theme/pull/281) ([brummbar](https://github.com/brummbar))
+
+## [1.0.0-beta7](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta7) (2022-11-03)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta6...1.0.0-beta7)
+
+**Merged pull requests:**
+
+- Prepare release 1.0.0-beta7. [\#283](https://github.com/openeuropa/oe_bootstrap_theme/pull/283) ([drishu](https://github.com/drishu))
+- OEL-2002: Preserve Drupal links. [\#270](https://github.com/openeuropa/oe_bootstrap_theme/pull/270) ([drishu](https://github.com/drishu))
+
+## [1.0.0-beta6](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta6) (2022-09-29)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta5...1.0.0-beta6)
+
+**Merged pull requests:**
+
+- Prepare release 1.0.0-beta6. [\#276](https://github.com/openeuropa/oe_bootstrap_theme/pull/276) ([drishu](https://github.com/drishu))
+- OEL-2059: Drop patch as it doesn't apply. [\#275](https://github.com/openeuropa/oe_bootstrap_theme/pull/275) ([brummbar](https://github.com/brummbar))
+- OEL-1910: Drupal 9.4 support. [\#273](https://github.com/openeuropa/oe_bootstrap_theme/pull/273) ([drishu](https://github.com/drishu))
+- OEL-1989: Add outline parameter to badges. [\#272](https://github.com/openeuropa/oe_bootstrap_theme/pull/272) ([drishu](https://github.com/drishu))
+- OEL-2006: Add glossary variant to pagination pattern. [\#269](https://github.com/openeuropa/oe_bootstrap_theme/pull/269) ([brummbar](https://github.com/brummbar))
+- OEL-2008: Avoid z-index clashing with Webtools CCK. [\#268](https://github.com/openeuropa/oe_bootstrap_theme/pull/268) ([brummbar](https://github.com/brummbar))
+- OEL-1983: Replace deprecated module\_load\_include\(\) [\#266](https://github.com/openeuropa/oe_bootstrap_theme/pull/266) ([claudiu-cristea](https://github.com/claudiu-cristea))
+- OEL-1912: Revamp carousel pattern. [\#265](https://github.com/openeuropa/oe_bootstrap_theme/pull/265) ([drishu](https://github.com/drishu))
+
 ## [1.0.0-beta5](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.0.0-beta5) (2022-08-09)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.0.0-beta4...1.0.0-beta5)
 
 **Merged pull requests:**
 
+- Prepare changelog for release 1.0.0-beta5. [\#263](https://github.com/openeuropa/oe_bootstrap_theme/pull/263) ([drishu](https://github.com/drishu))
 - OEL-1875: Fix path generation when used from browser tests. [\#262](https://github.com/openeuropa/oe_bootstrap_theme/pull/262) ([brummbar](https://github.com/brummbar))
 - OEL-1650: Add links to content\_banner pattern. [\#261](https://github.com/openeuropa/oe_bootstrap_theme/pull/261) ([drishu](https://github.com/drishu))
 - OEL-1823: BCL 0.24.0 [\#253](https://github.com/openeuropa/oe_bootstrap_theme/pull/253) ([escuriola](https://github.com/escuriola))

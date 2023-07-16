@@ -62,6 +62,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'featured_media',
     'file',
     'icon',
+    'gallery',
     'inpage_navigation',
     'link',
     'links_block',
@@ -95,6 +96,10 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     $this->container->get('theme_installer')->install(['oe_bootstrap_theme']);
     $this->config('system.theme')->set('default', 'oe_bootstrap_theme')->save();
     $this->container->set('theme.registry', NULL);
+
+    // Prevent NotFoundHttpException in PathProcessorFront.
+    $system_site_config = \Drupal::configFactory()->getEditable('system.site');
+    $system_site_config->set('page.front', '/')->save();
   }
 
   /**
