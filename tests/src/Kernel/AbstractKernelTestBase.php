@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
 use Drupal\Core\Plugin\ContextAwarePluginInterface;
+use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\Traits\RenderTrait;
 use Symfony\Component\Yaml\Yaml;
@@ -47,6 +48,16 @@ abstract class AbstractKernelTestBase extends KernelTestBase {
       'responsive_image',
       'oe_bootstrap_theme_helper',
     ]);
+
+    // Replicate 'file_scan_ignore_directories' from settings.php.
+    $settings = Settings::getAll();
+    $settings['file_scan_ignore_directories'] = [
+      'node_modules',
+      'bower_components',
+      'vendor',
+      'build',
+    ];
+    new Settings($settings);
 
     $this->container->get('theme_installer')->install(['oe_bootstrap_theme']);
     $this->config('system.theme')->set('default', 'oe_bootstrap_theme')->save();
