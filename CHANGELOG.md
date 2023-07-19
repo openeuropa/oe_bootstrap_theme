@@ -1,5 +1,26 @@
 # Change Log
 
+## [1.5.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.5.0) (2023-07-19)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.4.1...1.5.0)
+
+**Implemented enhancements:**
+
+- Card pattern: Support displaying image on small screen [\#320](https://github.com/openeuropa/oe_bootstrap_theme/issues/320)
+
+**Fixed bugs:**
+
+- The styles for the card pattern \(search variant\) and BCL are not consistent [\#319](https://github.com/openeuropa/oe_bootstrap_theme/issues/319)
+
+**Closed issues:**
+
+- Add title tag to other patterns [\#323](https://github.com/openeuropa/oe_bootstrap_theme/issues/323)
+
+**Merged pull requests:**
+
+- OEL-2380: Upgrade BCL to 1.1.1. [\#338](https://github.com/openeuropa/oe_bootstrap_theme/pull/338) ([tibi2303](https://github.com/tibi2303))
+- OEL-2272: Added title\_tag for facts-figures, links-block, listing, timeline. [\#324](https://github.com/openeuropa/oe_bootstrap_theme/pull/324) ([tibi2303](https://github.com/tibi2303))
+- OEL-2266: Added image on mobile and fixed spacing in card search. [\#322](https://github.com/openeuropa/oe_bootstrap_theme/pull/322) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.4.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.4.1) (2023-07-19)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.4.0...1.4.1)
 
@@ -12,6 +33,7 @@
 
 **Merged pull requests:**
 
+- Prepare release 1.4.0. [\#336](https://github.com/openeuropa/oe_bootstrap_theme/pull/336) ([drishu](https://github.com/drishu))
 - OEL-0000: Fix symfony/validator incompatibility. [\#334](https://github.com/openeuropa/oe_bootstrap_theme/pull/334) ([drishu](https://github.com/drishu))
 - OEL-2298: Fixed overlapping admin navbar with gallery. [\#326](https://github.com/openeuropa/oe_bootstrap_theme/pull/326) ([tibi2303](https://github.com/tibi2303))
 - OEL-2264: Improvements card default and search variant. [\#321](https://github.com/openeuropa/oe_bootstrap_theme/pull/321) ([tibi2303](https://github.com/tibi2303))
