@@ -21,7 +21,7 @@ textarea:
     count:
       'textarea.form-textarea': 1
       'textarea.form-control': 1
-checkbox_assertion:
+checkbox:
   render:
     '#type': checkbox
     '#title': 'Checkbox example'
@@ -30,9 +30,22 @@ checkbox_assertion:
   assert:
     count:
       'label.form-check-label': 1
-      'input.form-checkbox.form-check-input': 1
+      '.form-check input.form-checkbox.form-check-input[type=checkbox]': 1
+      '.form-switch': 0
       'input[foo=bar]' : 1
       'input[type=checkbox]': 1
+    equals:
+      'label.form-check-label': 'Checkbox example'
+checkbox_switch:
+  render:
+    '#type': checkbox
+    '#title': 'Checkbox example'
+    '#switch': true
+  assert:
+    count:
+      'label.form-check-label': 1
+      'input[type=checkbox]': 1
+      '.form-switch.form-check input.form-checkbox.form-check-input[type=checkbox]': 1
     equals:
       'label.form-check-label': 'Checkbox example'
 select:

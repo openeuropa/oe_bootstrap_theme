@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.4.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.4.1) (2023-07-19)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.4.0...1.4.1)
+
+**Merged pull requests:**
+
+- EWPP-3483: Remaining incompatibilities with Drupal 10. [\#339](https://github.com/openeuropa/oe_bootstrap_theme/pull/339) ([brummbar](https://github.com/brummbar))
+
 ## [1.4.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.4.0) (2023-06-15)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.3.0...1.4.0)
 
