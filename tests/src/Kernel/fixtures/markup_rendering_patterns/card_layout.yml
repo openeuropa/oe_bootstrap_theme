@@ -100,7 +100,7 @@ card_grid_responsive_columns_2_md_equal_height:
           subtitle: 'Subtitle card 1'
           text: 'Text card with longer text which is supported 1'
           image:
-            src: 'https://placeimg.com/1000/500/arch'
+            src: 'https://loremflickr.com/1000/500/arch'
             alt: 'Alternative text for card image'
           content:
             - '#type': html_tag
@@ -117,7 +117,7 @@ card_grid_responsive_columns_2_md_equal_height:
           subtitle: 'Subtitle card 2'
           text: 'Text card with longer text which is supported 2'
           image:
-            src: 'https://placeimg.com/1000/500/nature'
+            src: 'https://loremflickr.com/1000/500/nature'
             alt: 'Alternative text for card image'
           content: 'Custom test'
           card_header: 'Header of card 2'
@@ -126,7 +126,7 @@ card_grid_responsive_columns_2_md_equal_height:
           subtitle: 'Subtitle card 3'
           text: 'Text card with longer text which is supported 3'
           image:
-            src: 'https://placeimg.com/1000/500/tech'
+            src: 'https://loremflickr.com/1000/500/tech'
             alt: 'Alternative text for card image'
           content: 'Some representative placeholder content for the first card.'
           card_header: 'Header of card 3'
@@ -220,7 +220,7 @@ card_masonry_responsive_columns_2_md_equal_height:
           subtitle: 'Subtitle card 1'
           text: 'Text card with longer text which is supported 1'
           image:
-            src: 'https://placeimg.com/1000/500/arch'
+            src: 'https://loremflickr.com/1000/500/arch'
             alt: 'Alternative text for card image'
           content:
             - '#type': html_tag
@@ -237,7 +237,7 @@ card_masonry_responsive_columns_2_md_equal_height:
           subtitle: 'Subtitle card 2'
           text: 'Text card with longer text which is supported 2'
           image:
-            src: 'https://placeimg.com/1000/500/nature'
+            src: 'https://loremflickr.com/1000/500/nature'
             alt: 'Alternative text for card image'
           content: 'Custom test'
           card_header: 'Header of card 2'
@@ -246,7 +246,7 @@ card_masonry_responsive_columns_2_md_equal_height:
           subtitle: 'Subtitle card 3'
           text: 'Text card with longer text which is supported 3'
           image:
-            src: 'https://placeimg.com/1000/500/tech'
+            src: 'https://loremflickr.com/1000/500/tech'
             alt: 'Alternative text for card image'
           content: 'Some representative placeholder content for the first card.'
           card_header: 'Header of card 3'

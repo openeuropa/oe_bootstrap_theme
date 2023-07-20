@@ -13,7 +13,7 @@ content_banner:
       label: 'Image'
       description: 'Image of the content.'
       preview:
-        src: 'https://placeimg.com/255/255/tech'
+        src: 'https://loremflickr.com/255/255/tech'
         alt: 'Alternative text for content banner image'
     image_size:
       type: text
