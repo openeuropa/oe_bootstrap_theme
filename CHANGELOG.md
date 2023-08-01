@@ -1,5 +1,16 @@
 # Change Log
 
+## [1.5.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.5.1) (2023-08-01)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.5.0...1.5.1)
+
+**Closed issues:**
+
+- Fatal error in patterns [\#345](https://github.com/openeuropa/oe_bootstrap_theme/issues/345)
+
+**Merged pull requests:**
+
+- EPHEH-103: Remove boolean parameter from twig merge call. [\#346](https://github.com/openeuropa/oe_bootstrap_theme/pull/346) ([drishu](https://github.com/drishu))
+
 ## [1.5.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.5.0) (2023-07-19)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.4.1...1.5.0)
 
