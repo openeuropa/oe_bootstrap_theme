@@ -16,7 +16,7 @@ featured_media:
       label: 'Image'
       description: 'The image for the image variant.'
       preview:
-        'src': 'https://loremflickr.com/1200/600/tech'
+        'src': 'https://picsum.photos/1200/600/'
         'alt': 'Alternative text for paragraph image'
         'name': 'Example'
     ratio:

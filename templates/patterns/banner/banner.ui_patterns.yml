@@ -58,4 +58,4 @@ banner:
       type: 'text'
       label: 'Image'
       description: 'URL of the image. Optional.'
-      preview:  'https://loremflickr.com/1000/500/arch'
+      preview:  'https://picsum.photos/1000/500'

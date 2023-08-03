@@ -45,7 +45,7 @@ carousel:
           caption_title: 'First slide title'
           interval: 0
           image:
-            src: 'https://loremflickr.com/1000/500/arch'
+            src: 'https://picsum.photos/1000/500/'
             alt: 'alt image 1'
           link:
             label: First link
@@ -54,7 +54,7 @@ carousel:
           caption_title: 'Second slide title'
           interval: 0
           image:
-            src: 'https://loremflickr.com/1000/500/people'
+            src: 'https://picsum.photos/1000/500/'
             alt: 'alt image 1'
           link:
             label: Second link

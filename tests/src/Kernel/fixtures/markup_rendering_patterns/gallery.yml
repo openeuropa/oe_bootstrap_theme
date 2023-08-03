@@ -11,23 +11,23 @@ gallery_default:
           caption_title: 'Bio-defence preparedness programme'
           caption: 'Caption first item'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/cat" alt="Cat media image alt" />'
+            '#markup': '<img src="https://picsum.photos/id/10/800/600/" alt="Cat media image alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/10/400/300/" alt="Cat thumbnail alt" />'
           caption_title: 'A picture of a cat'
           caption: 'Caption second item'
         - media:
             '#theme': 'image'
-            '#uri': 'https://loremflickr.com/800/600/dog'
+            '#uri': 'https://picsum.photos/id/11/800/600/'
             '#title': 'Dog image media title'
             '#alt': 'Dog image media alt'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/dog" alt="Dog thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/11/400/300/" alt="Dog thumbnail alt" />'
           caption_title: 'An image of a dog.'
         - media:
             '#markup': '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/12/400/300" alt="YouTube thumbnail alt" />'
           caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
           caption: 'Iframe caption.'
   assertions:
@@ -46,21 +46,21 @@ gallery_default:
               caption_title: 'Bio-defence preparedness programme'
               caption: ~
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/10/400/300/" alt="Cat thumbnail alt">'
               caption_title: 'A picture of a cat'
               caption: 'Caption second item'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/cat" alt="Cat media image alt">'
+              rendered: '<img data-src="https://picsum.photos/id/10/800/600/" alt="Cat media image alt">'
               caption_title: 'A picture of a cat'
               caption: 'Caption second item'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/dog" alt="Dog thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/11/400/300/" alt="Dog thumbnail alt">'
               caption_title: 'An image of a dog.'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/dog" alt="Dog image media alt" title="Dog image media title" class="img-fluid">'
+              rendered: '<img data-src="https://picsum.photos/id/11/800/600/" alt="Dog image media alt" title="Dog image media title" class="img-fluid">'
               caption_title: 'An image of a dog.'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/12/400/300" alt="YouTube thumbnail alt">'
               caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
               caption: 'Iframe caption.'
               play_icon: true
@@ -76,9 +76,9 @@ gallery_title_default_tag:
       title: 'Gallery title'
       items:
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/cat" alt="Cat media image alt" />'
+            '#markup': '<img src="https://picsum.photos/id/10/800/600/" alt="Cat media image alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/10/400/300/" alt="Cat thumbnail alt" />'
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\GalleryPatternAssert
@@ -87,9 +87,9 @@ gallery_title_default_tag:
         title_tag: h2
         items:
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/10/400/300/" alt="Cat thumbnail alt">'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/cat" alt="Cat media image alt">'
+              rendered: '<img data-src="https://picsum.photos/id/10/800/600/" alt="Cat media image alt">'
 gallery_title_custom_tag:
   render:
     '#type': pattern
@@ -99,9 +99,9 @@ gallery_title_custom_tag:
       title_tag: h6
       items:
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/cat" alt="Cat media image alt" />'
+            '#markup': '<img src="https://picsum.photos/id/10/800/600/" alt="Cat media image alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/10/400/300/" alt="Cat thumbnail alt" />'
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\GalleryPatternAssert
@@ -110,9 +110,9 @@ gallery_title_custom_tag:
         title_tag: h6
         items:
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/10/400/300/" alt="Cat thumbnail alt">'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/cat" alt="Cat media image alt">'
+              rendered: '<img data-src="https://picsum.photos/id/10/800/600/" alt="Cat media image alt">'
 gallery_six_items:
   render:
     '#type': pattern
@@ -126,35 +126,35 @@ gallery_six_items:
           caption_title: 'Bio-defence preparedness programme'
           caption: 'Caption first item'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/cat" alt="Cat media image alt" />'
+            '#markup': '<img src="https://picsum.photos/id/10/800/600/" alt="Cat media image alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/10/400/300/" alt="Cat thumbnail alt" />'
           caption_title: 'A picture of a cat'
           caption: 'Cat image caption.'
         - media:
             '#theme': 'image'
-            '#uri': 'https://loremflickr.com/800/600/dog'
+            '#uri': 'https://picsum.photos/id/11/800/600/'
             '#title': 'Dog image media title'
             '#alt': 'Dog image media alt'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/dog" alt="Dog thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/11/400/300/" alt="Dog thumbnail alt" />'
           caption_title: 'An image of a dog.'
         - media:
             '#markup': '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/400/300" alt="YouTube thumbnail alt" />'
           caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
           caption: 'Iframe caption.'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/elephant" alt="Elephant media image alt" />'
+            '#markup': '<img src="https://picsum.photos/id/12/800/600/" alt="Elephant media image alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/elephant" alt="Elephant thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/12/400/300/" alt="Elephant thumbnail alt" />'
           caption_title: 'A picture of an elephant'
           caption: 'Elephant caption.'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/sheep" alt="Sheep media image alt" />'
+            '#markup': '<img src="https://picsum.photos/id/13/800/600/" alt="Sheep media image alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/sheep" alt="Sheep thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/13/400/300/" alt="Sheep thumbnail alt" />'
           caption_title: 'A picture of a sheep'
           caption: 'Sheep caption.'
   assertions:
@@ -173,21 +173,21 @@ gallery_six_items:
               caption_title: 'Bio-defence preparedness programme'
               caption: ~
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/10/400/300/" alt="Cat thumbnail alt">'
               caption_title: 'A picture of a cat'
               caption: 'Cat image caption.'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/cat" alt="Cat media image alt">'
+              rendered: '<img data-src="https://picsum.photos/id/10/800/600/" alt="Cat media image alt">'
               caption_title: 'A picture of a cat'
               caption: 'Cat image caption.'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/dog" alt="Dog thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/11/400/300/" alt="Dog thumbnail alt">'
               caption_title: 'An image of a dog.'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/dog" alt="Dog image media alt" title="Dog image media title" class="img-fluid">'
+              rendered: '<img data-src="https://picsum.photos/id/11/800/600/" alt="Dog image media alt" title="Dog image media title" class="img-fluid">'
               caption_title: 'An image of a dog.'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/400/300" alt="YouTube thumbnail alt">'
               caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
               caption: 'Iframe caption.'
               play_icon: true
@@ -196,19 +196,19 @@ gallery_six_items:
               caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
               caption: 'Iframe caption.'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/elephant" alt="Elephant thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/12/400/300/" alt="Elephant thumbnail alt">'
               caption_title: 'A picture of an elephant'
               caption: 'Elephant caption.'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/elephant" alt="Elephant media image alt">'
+              rendered: '<img data-src="https://picsum.photos/id/12/800/600/" alt="Elephant media image alt">'
               caption_title: 'A picture of an elephant'
               caption: 'Elephant caption.'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/sheep" alt="Sheep thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/13/400/300/" alt="Sheep thumbnail alt">'
               caption_title: 'A picture of a sheep'
               caption: 'Sheep caption.'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/sheep" alt="Sheep media image alt">'
+              rendered: '<img data-src="https://picsum.photos/id/13/800/600/" alt="Sheep media image alt">'
               caption_title: 'A picture of a sheep'
               caption: 'Sheep caption.'
 gallery_long:
@@ -224,83 +224,83 @@ gallery_long:
           caption_title: 'Bio-defence preparedness programme'
           caption: 'Caption first item'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/cat" alt="Cat media image alt" />'
+            '#markup': '<img src="https://picsum.photos/id/10/800/600/" alt="Cat media image alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt" /'
+            '#markup': '<img src="https://picsum.photos/id/10/400/300/" alt="Cat thumbnail alt" /'
           caption_title: 'A picture of a cat'
           caption: 'Cat image caption.'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/lisbon" alt="Lisbon image media alt" />'
+            '#markup': '<img src="https://picsum.photos/id/15/800/600/" alt="Lisbon image media alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/lisbon" alt="Lisbon thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/15/400/300/" alt="Lisbon thumbnail alt" />'
           caption_title: 'Lisbon'
           caption: 'Meanwhile in Lisbon, the capital of Portugal'
         - media:
             '#theme': 'image'
-            '#uri': 'https://loremflickr.com/800/600/kiev'
+            '#uri': 'https://picsum.photos/id/16/800/600/'
             '#title': 'Kiev image media title'
             '#alt': 'Kiev image media alt'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/kiev" alt="Kiev thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/16/400/300/" alt="Kiev thumbnail alt" />'
           caption_title: 'Kiev'
           caption: 'Meanwhile in Kiev, the capital of Ukraine'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/paris" alt="Paris image media alt" />'
+            '#markup': '<img src="https://picsum.photos/id/17/800/600/" alt="Paris image media alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/paris" alt="Paris thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/17/400/300/" alt="Paris thumbnail alt" />'
           caption_title: 'Paris'
           caption: 'Meanwhile in Paris, the capital of France'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/rome" alt="Rome image media alt" />'
+            '#markup': '<img src="https://picsum.photos/id/18/800/600/" alt="Rome image media alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/rome" alt="Rome thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/18/400/300/" alt="Rome thumbnail alt" />'
           caption_title: 'Rome'
           caption: 'Meanwhile in Rome, the capital of Italy'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/madrid" alt="Madrid image media alt" />'
+            '#markup': '<img src="https://picsum.photos/id/19/800/600/" alt="Madrid image media alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/madrid" alt="Madrid thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/19/400/300/" alt="Madrid thumbnail alt" />'
           caption_title: 'Spain'
           caption: 'Meanwhile in Madrid, the capital of Spain'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/brussels" alt="Brussels image media alt" />'
+            '#markup': '<img src="https://picsum.photos/id/20/800/600/" alt="Brussels image media alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/brussels" alt="Brussels thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/20/400/300/" alt="Brussels thumbnail alt" />'
           caption_title: 'Brussels'
           caption: 'Meanwhile in Brussels, the capital of Belgium'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/budapest" alt="Budapest image media alt" />'
+            '#markup': '<img src="https://picsum.photos/id/21/800/600/" alt="Budapest image media alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/budapest" alt="Budapest thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/21/400/300/" alt="Budapest thumbnail alt" />'
           caption_title: 'Budapest'
           caption: 'Meanwhile in Budapest, the capital of Hungary'
         - media:
             '#markup': '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/400/300" alt="YouTube thumbnail alt" />'
           caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/stockholm" alt="Stockholm image media alt" />'
+            '#markup': '<img src="https://picsum.photos/id/22/800/600/" alt="Stockholm image media alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/stockholm" alt="Stockholm thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/22/400/300/" alt="Stockholm thumbnail alt" />'
           caption_title: 'Stockholm'
           caption: 'Meanwhile in Stockholm, the capital of Sweden'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/helsinki" alt="Helsinki image media alt" />'
+            '#markup': '<img src="https://picsum.photos/id/23/800/600/" alt="Helsinki image media alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/helsinki" alt="Helsinki thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/23/400/300/" alt="Helsinki thumbnail alt" />'
           caption_title: 'Helsinki'
           caption: 'Meanwhile in Helsinki, the capital of Finland'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/tallinn" alt="Tallinn image media alt" />'
+            '#markup': '<img src="https://picsum.photos/id/24/800/600/" alt="Tallinn image media alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/tallinn" alt="Tallinn thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/24/400/300/" alt="Tallinn thumbnail alt" />'
           caption_title: 'Tallinn'
           caption: 'Meanwhile in Tallinn, the capital of Estonia'
         - media:
-            '#markup': '<img src="https://loremflickr.com/800/600/vilnius" alt="Vilnius image media alt" />'
+            '#markup': '<img src="https://picsum.photos/id/25/800/600/" alt="Vilnius image media alt" />'
           thumbnail:
-            '#markup': '<img src="https://loremflickr.com/400/300/vilnius" alt="Vilnius thumbnail alt" />'
+            '#markup': '<img src="https://picsum.photos/id/25/400/300/" alt="Vilnius thumbnail alt" />'
           caption_title: 'Vilnius'
           caption: 'Meanwhile in Vilnius, the capital of Lithuania'
   assertions:
@@ -319,105 +319,105 @@ gallery_long:
               caption_title: 'Bio-defence preparedness programme'
               caption: ~
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/cat" alt="Cat thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/10/400/300/" alt="Cat thumbnail alt">'
               caption_title: 'A picture of a cat'
               caption: 'Cat image caption.'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/cat" alt="Cat media image alt">'
+              rendered: '<img data-src="https://picsum.photos/id/10/800/600/" alt="Cat media image alt">'
               caption_title: 'A picture of a cat'
               caption: 'Cat image caption.'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/lisbon" alt="Lisbon thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/15/400/300/" alt="Lisbon thumbnail alt">'
               caption_title: 'Lisbon'
               caption: 'Meanwhile in Lisbon, the capital of Portugal'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/lisbon" alt="Lisbon image media alt">'
+              rendered: '<img data-src="https://picsum.photos/id/15/800/600/" alt="Lisbon image media alt">'
               caption_title: 'Lisbon'
               caption: 'Meanwhile in Lisbon, the capital of Portugal'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/kiev" alt="Kiev thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/16/400/300/" alt="Kiev thumbnail alt">'
               caption_title: 'Kiev'
               caption: 'Meanwhile in Kiev, the capital of Ukraine'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/kiev" alt="Kiev image media alt" title="Kiev image media title" class="img-fluid">'
+              rendered: '<img data-src="https://picsum.photos/id/16/800/600/" alt="Kiev image media alt" title="Kiev image media title" class="img-fluid">'
               caption_title: 'Kiev'
               caption: 'Meanwhile in Kiev, the capital of Ukraine'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/paris" alt="Paris thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/17/400/300/" alt="Paris thumbnail alt">'
               caption_title: 'Paris'
               caption: 'Meanwhile in Paris, the capital of France'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/paris" alt="Paris image media alt">'
+              rendered: '<img data-src="https://picsum.photos/id/17/800/600/" alt="Paris image media alt">'
               caption_title: 'Paris'
               caption: 'Meanwhile in Paris, the capital of France'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/rome" alt="Rome thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/18/400/300/" alt="Rome thumbnail alt">'
               caption_title: 'Rome'
               caption: 'Meanwhile in Rome, the capital of Italy'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/rome" alt="Rome image media alt">'
+              rendered: '<img data-src="https://picsum.photos/id/18/800/600/" alt="Rome image media alt">'
               caption_title: 'Rome'
               caption: 'Meanwhile in Rome, the capital of Italy'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/madrid" alt="Madrid thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/19/400/300/" alt="Madrid thumbnail alt">'
               caption_title: 'Spain'
               caption: 'Meanwhile in Madrid, the capital of Spain'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/madrid" alt="Madrid image media alt">'
+              rendered: '<img data-src="https://picsum.photos/id/19/800/600/" alt="Madrid image media alt">'
               caption_title: 'Spain'
               caption: 'Meanwhile in Madrid, the capital of Spain'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/brussels" alt="Brussels thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/20/400/300/" alt="Brussels thumbnail alt">'
               caption_title: 'Brussels'
               caption: 'Meanwhile in Brussels, the capital of Belgium'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/brussels" alt="Brussels image media alt">'
+              rendered: '<img data-src="https://picsum.photos/id/20/800/600/" alt="Brussels image media alt">'
               caption_title: 'Brussels'
               caption: 'Meanwhile in Brussels, the capital of Belgium'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/budapest" alt="Budapest thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/21/400/300/" alt="Budapest thumbnail alt">'
               caption_title: 'Budapest'
               caption: 'Meanwhile in Budapest, the capital of Hungary'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/budapest" alt="Budapest image media alt">'
+              rendered: '<img data-src="https://picsum.photos/id/21/800/600/" alt="Budapest image media alt">'
               caption_title: 'Budapest'
               caption: 'Meanwhile in Budapest, the capital of Hungary'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300" alt="YouTube thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/400/300" alt="YouTube thumbnail alt">'
               caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
               play_icon: true
             media:
               rendered: '<iframe width="560" height="315" data-src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
               caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/stockholm" alt="Stockholm thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/22/400/300/" alt="Stockholm thumbnail alt">'
               caption_title: 'Stockholm'
               caption: 'Meanwhile in Stockholm, the capital of Sweden'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/stockholm" alt="Stockholm image media alt">'
+              rendered: '<img data-src="https://picsum.photos/id/22/800/600/" alt="Stockholm image media alt">'
               caption_title: 'Stockholm'
               caption: 'Meanwhile in Stockholm, the capital of Sweden'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/helsinki" alt="Helsinki thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/23/400/300/" alt="Helsinki thumbnail alt">'
               caption_title: 'Helsinki'
               caption: 'Meanwhile in Helsinki, the capital of Finland'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/helsinki" alt="Helsinki image media alt">'
+              rendered: '<img data-src="https://picsum.photos/id/23/800/600/" alt="Helsinki image media alt">'
               caption_title: 'Helsinki'
               caption: 'Meanwhile in Helsinki, the capital of Finland'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/tallinn" alt="Tallinn thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/24/400/300/" alt="Tallinn thumbnail alt">'
               caption_title: 'Tallinn'
               caption: 'Meanwhile in Tallinn, the capital of Estonia'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/tallinn" alt="Tallinn image media alt">'
+              rendered: '<img data-src="https://picsum.photos/id/24/800/600/" alt="Tallinn image media alt">'
               caption_title: 'Tallinn'
               caption: 'Meanwhile in Tallinn, the capital of Estonia'
           - thumbnail:
-              rendered: '<img src="https://loremflickr.com/400/300/vilnius" alt="Vilnius thumbnail alt">'
+              rendered: '<img src="https://picsum.photos/id/25/400/300/" alt="Vilnius thumbnail alt">'
               caption_title: 'Vilnius'
               caption: 'Meanwhile in Vilnius, the capital of Lithuania'
             media:
-              rendered: '<img data-src="https://loremflickr.com/800/600/vilnius" alt="Vilnius image media alt">'
+              rendered: '<img data-src="https://picsum.photos/id/25/800/600/" alt="Vilnius image media alt">'
               caption_title: 'Vilnius'
               caption: 'Meanwhile in Vilnius, the capital of Lithuania'
