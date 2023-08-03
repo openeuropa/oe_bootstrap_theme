@@ -8,7 +8,7 @@ card_horizontal_with_image:
       subtitle: 'Subtitle card'
       text: 'Text card with longer text which is supported'
       image:
-        src: 'https://placeimg.com/1000/500/arch'
+        src: 'https://picsum.photos/1000/500/'
         alt: 'Alternative text for card image'
       meta:
         - 'DIGIT'
@@ -31,7 +31,7 @@ card_horizontal_with_image:
         subtitle: 'Subtitle card'
         description: 'Text card with longer text which is supported'
         image:
-          src: 'https://placeimg.com/1000/500/arch'
+          src: 'https://picsum.photos/1000/500/'
           alt: 'Alternative text for card image'
         content:
           - 'DIGIT'
@@ -50,7 +50,7 @@ card_vertical:
       subtitle: 'Subtitle card'
       text: 'Text card with longer text which is supported'
       image:
-        src: 'https://placeimg.com/1000/500/arch'
+        src: 'https://picsum.photos/1000/500/'
         alt: 'Alternative text for card image'
       content:
         '#type': 'pattern'
@@ -70,7 +70,7 @@ card_vertical:
         subtitle: 'Subtitle card'
         description: 'Text card with longer text which is supported'
         image:
-          src: 'https://placeimg.com/1000/500/arch'
+          src: 'https://picsum.photos/1000/500/'
           alt: 'Alternative text for card image'
         content:
           - '<button class="btn btn-primary btn-md" type="button">Custom action</button>'
@@ -85,7 +85,7 @@ card_variant_search:
       title: 'Title card'
       text: 'Text card with longer text which is supported'
       image:
-        src: 'https://placeimg.com/1000/500/arch'
+        src: 'https://picsum.photos/1000/500/'
       badges:
         - label: 'Category 1'
         - label: 'Category 2'
@@ -96,7 +96,7 @@ card_variant_search:
         title: 'Title card'
         description: 'Text card with longer text which is supported'
         image:
-          src: 'https://placeimg.com/1000/500/arch'
+          src: 'https://picsum.photos/1000/500/'
           alt: ''
         badges:
           - 'Category 1'
