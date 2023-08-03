@@ -24,7 +24,7 @@ services:
     # ports:
     #   - 3306:3306
   node:
-    image: node:16.19.0
+    image: node:18.12.0
     user: "node"
     working_dir: /home/node/app
     environment:
