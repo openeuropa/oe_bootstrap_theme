@@ -1,0 +1,6 @@
+name: OpenEuropa Bootstrap Theme Featured Media Field
+description: Tools for oe_featured_media field.
+package: OpenEuropa Bootstrap Theme
+
+type: module
+core_version_requirement: ^9.5 || ^10
