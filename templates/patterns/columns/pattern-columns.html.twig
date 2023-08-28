@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Columns pattern.
+ *
+ * Available variables:
+ * - columns: The number of columns. Defaults to 1.
+ * - items: The items to organize in columns.
+ * - tag: HTML tag to use for the wrapper. Defaults to "<section>".
+ * - attributes: Attributes to apply to the wrapper.
+ * - equal_height: Renders all the items with the same height. Note: this affects only the item wrapper, not the item content. Defaults to false.
+ */
+#}
+{% set tag = tag|default('section') %}
+{% set columns = columns|default(1) %}
+{%
+  set wrapper_classes = [
+    'columns',
+    'columns--' ~ columns ~ '-cols',
+    equal_height? 'columns--equal-height'
+  ]
+%}
+
+<{{ tag }}{{ attributes.addClass(wrapper_classes) }}>
+  {% for item in items %}
+    {% block item %}
+    <div class="columns__item">
+      {{ item }}
+    </div>
+    {% endblock %}
+  {% endfor %}
+</{{ tag }}>

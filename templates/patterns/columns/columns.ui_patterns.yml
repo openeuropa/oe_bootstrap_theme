@@ -1,0 +1,29 @@
+columns:
+  label: Columns
+  description: Renders content organised in columns of equal width.
+  group: Version 2.x
+  fields:
+    items:
+      type: array
+      label: Items
+      description: The items to organize in columns. Accepts any render array.
+      preview:
+        - Item 1
+        - Item 2
+        - Item 3
+        - Item 4
+        - Item 5
+        - Item 6
+    columns:
+      type: integer
+      label: Columns
+      description: The number of columns. Defaults to 1.
+  settings:
+    tag:
+      type: textfield
+      label: Tag
+      description: HTML tag to use for the wrapper. Defaults to "<section>".
+    equal_height:
+      type: boolean
+      label: Equal height
+      description: 'Renders all the items with the same height. Note: this affects only the item wrapper, not the item content. Defaults to false.'
