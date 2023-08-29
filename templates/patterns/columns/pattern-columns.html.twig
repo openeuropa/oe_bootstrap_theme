@@ -11,8 +11,8 @@
  * - equal_height: Renders all the items with the same height. Note: this affects only the item wrapper, not the item content. Defaults to false.
  */
 #}
-{% set tag = tag|default('section') %}
-{% set columns = columns|default(1) %}
+{% set tag = tag|default('div') %}
+{% set columns = columns|default(12) %}
 {%
   set wrapper_classes = [
     'columns',
@@ -22,11 +22,15 @@
 %}
 
 <{{ tag }}{{ attributes.addClass(wrapper_classes) }}>
-  {% for item in items %}
-    {% block item %}
-    <div class="columns__item">
-      {{ item }}
+  {% for row in items|batch(columns) %}
+    <div class="columns__row">
+    {% for item in row %}
+      {% block item %}
+      <div class="columns__item">
+        {{ item }}
+      </div>
+      {% endblock %}
+    {% endfor %}
     </div>
-    {% endblock %}
   {% endfor %}
 </{{ tag }}>

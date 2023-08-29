@@ -1,5 +1,8 @@
 // Import custom components that will be shared with the sub themes
 // -----------------------------------------------------------------------------
+@import 'functions';
+@import 'mixins';
+
 @import 'blockquote';
 @import 'navbar';
 @import 'form';

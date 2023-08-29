@@ -1,14 +1,20 @@
 // Columns component.
+
+@include oebt-make-grid-columns();
+
 .columns {
-  display: flex;
-
-  &--1-cols {
-    &__item {
-
-    }
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -var(--oebt-columns--gutter);
+    margin-left: -var(--oebt-columns--gutter);
   }
-
   &__item {
-
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: var(--oebt-columns--gutter);
+    padding-left: var(--oebt-columns--gutter);
+    flex: 1 0 0%;
   }
 }
