@@ -13,7 +13,7 @@
 @mixin oebt-make-grid-columns($columns: 12) {
   @if $columns > 0 {
     @for $i from 1 through $columns {
-      .columns__item-#{$i} {
+      .columns--#{$i}-cols .columns__item {
         @include oebt-make-col($i, $columns);
       }
     }

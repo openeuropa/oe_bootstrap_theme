@@ -14,16 +14,16 @@ columns:
         - Item 4
         - Item 5
         - Item 6
-    columns:
+    columns_size:
       type: integer
       label: Columns
-      description: The number of columns. Defaults to 1.
+      description: The size of columns. Defaults to 1.
+    columns_row:
+      type: integer
+      label: Columns
+      description: The number of columns per row. Defaults to 12.
   settings:
     tag:
       type: textfield
       label: Tag
       description: HTML tag to use for the wrapper. Defaults to "<div>".
-    equal_height:
-      type: boolean
-      label: Equal height
-      description: 'Renders all the items with the same height. Note: this affects only the item wrapper, not the item content. Defaults to false.'

@@ -4,32 +4,32 @@
  * Columns pattern.
  *
  * Available variables:
- * - columns: The number of columns. Defaults to 1.
+ * - columns_size: The size of columns. Defaults to 1.
+ * - columns_row: The number of columns per row. Defaults to 12.
  * - items: The items to organize in columns.
- * - tag: HTML tag to use for the wrapper. Defaults to "<section>".
+ * - tag: HTML tag to use for the wrapper. Defaults to "<div>".
  * - attributes: Attributes to apply to the wrapper.
- * - equal_height: Renders all the items with the same height. Note: this affects only the item wrapper, not the item content. Defaults to false.
  */
 #}
 {% set tag = tag|default('div') %}
-{% set columns = columns|default(12) %}
+{% set columns_size = columns_size|default(1) %}
+{% set columns_row = columns_row|default(12) %}
 {%
   set wrapper_classes = [
     'columns',
-    'columns--' ~ columns ~ '-cols',
-    equal_height? 'columns--equal-height'
+    'columns--' ~ columns_size ~ '-cols',
   ]
 %}
 
 <{{ tag }}{{ attributes.addClass(wrapper_classes) }}>
-  {% for row in items|batch(columns) %}
+  {% for row in items|batch(columns_row) %}
     <div class="columns__row">
     {% for item in row %}
-      {% block item %}
       <div class="columns__item">
+      {% block item %}
         {{ item }}
-      </div>
       {% endblock %}
+      </div>
     {% endfor %}
     </div>
   {% endfor %}
