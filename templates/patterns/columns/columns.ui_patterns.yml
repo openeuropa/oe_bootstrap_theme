@@ -14,14 +14,10 @@ columns:
         - Item 4
         - Item 5
         - Item 6
-    columns_size:
+    columns:
       type: integer
       label: Columns
-      description: The size of columns. Defaults to 1.
-    columns_row:
-      type: integer
-      label: Columns
-      description: The number of columns per row. Defaults to 12.
+      description: The number of columns. Defaults to 4.
   settings:
     tag:
       type: textfield

@@ -12,25 +12,22 @@
  */
 #}
 {% set tag = tag|default('div') %}
-{% set columns_size = columns_size|default(1) %}
-{% set columns_row = columns_row|default(12) %}
+{% set columns = columns|default(4) %}
 {%
   set wrapper_classes = [
     'columns',
-    'columns--' ~ columns_size ~ '-cols',
   ]
 %}
 
-<{{ tag }}{{ attributes.addClass(wrapper_classes) }}>
-  {% for row in items|batch(columns_row) %}
-    <div class="columns__row">
-    {% for item in row %}
-      <div class="columns__item">
-      {% block item %}
-        {{ item }}
-      {% endblock %}
-      </div>
-    {% endfor %}
+{% set responsive_grid_styles = [
+    '--columns-grid--column-count:'  ~ columns ~ ';',
+  ]
+%}
+
+<{{ tag }}{{ attributes.addClass(wrapper_classes).setAttribute('style', responsive_grid_styles|join()) }}>
+  {% for item in items %}
+    <div class="columns__item">
+      {{- item -}}
     </div>
   {% endfor %}
 </{{ tag }}>
