@@ -1,0 +1,78 @@
+columns_default:
+  render:
+    '#type': pattern
+    '#id': 'columns'
+    '#fields':
+      items:
+        - '#plain_text': Column 1
+        - '#plain_text': Column 2
+        - '#plain_text': Column 3
+        - '#plain_text': Column 4
+        - '#plain_text': Column 5
+        - '#plain_text': Column 6
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ColumnsPatternAssert
+      expected:
+        columns: 4
+        tag: div
+        items:
+          - Column 1
+          - Column 2
+          - Column 3
+          - Column 4
+          - Column 5
+          - Column 6
+columns_three_cols:
+  render:
+    '#type': pattern
+    '#id': 'columns'
+    '#fields':
+      items:
+        - '#plain_text': Column 1
+        - '#plain_text': Column 2
+        - '#plain_text': Column 3
+        - '#plain_text': Column 4
+        - '#plain_text': Column 5
+        - '#plain_text': Column 6
+      columns: 3
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ColumnsPatternAssert
+      expected:
+        columns: 3
+        tag: div
+        items:
+          - Column 1
+          - Column 2
+          - Column 3
+          - Column 4
+          - Column 5
+          - Column 6
+columns_selection_element:
+  render:
+    '#type': pattern
+    '#id': 'columns'
+    '#fields':
+      items:
+        - '#plain_text': Column 1
+        - '#plain_text': Column 2
+        - '#plain_text': Column 3
+        - '#plain_text': Column 4
+        - '#plain_text': Column 5
+        - '#plain_text': Column 6
+      tag: section
+      columns: 6
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ColumnsPatternAssert
+      expected:
+        columns: 6
+        tag: section
+        items:
+          - Column 1
+          - Column 2
+          - Column 3
+          - Column 4
+          - Column 5
+          - Column 6
