@@ -22,4 +22,4 @@ columns:
     tag:
       type: textfield
       label: Tag
-      description: HTML tag to use for the wrapper. Defaults to "<div>".
+      description: HTML tag to use for the wrapper. Defaults to "div".
