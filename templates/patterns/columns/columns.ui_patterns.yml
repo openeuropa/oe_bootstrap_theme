@@ -8,12 +8,12 @@ columns:
       label: Items
       description: The items to organize in columns. Accepts any render array.
       preview:
-        - Item 1
-        - Item 2
-        - Item 3
-        - Item 4
-        - Item 5
-        - Item 6
+        - '#plain_text': Item 1
+        - '#plain_text': Item 2
+        - '#plain_text': Item 3
+        - '#plain_text': Item 4
+        - '#plain_text': Item 5
+        - '#plain_text': Item 6
     columns:
       type: integer
       label: Columns
