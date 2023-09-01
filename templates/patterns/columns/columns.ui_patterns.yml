@@ -1,7 +1,7 @@
 columns:
   label: Columns
   description: Renders content organised in columns of equal width.
-  group: Version 2.x
+  category: Version 2.x
   fields:
     items:
       type: array
