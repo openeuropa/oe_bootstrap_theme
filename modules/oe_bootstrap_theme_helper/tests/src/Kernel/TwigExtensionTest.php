@@ -4,9 +4,13 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\oe_bootstrap_theme_helper\Kernel;
 
+use Drupal\Core\Cache\CacheBackendInterface;
+use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Render\RenderContext;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
+use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\DomCrawler\Crawler;
 use Twig\Markup;
 
@@ -183,6 +187,145 @@ class TwigExtensionTest extends AbstractKernelTestBase {
         ],
       ],
     ];
+  }
+
+  /**
+   * Tests the "element_children" Twig filter.
+   */
+  public function testElementChildrenFilter(): void {
+    $required_cache_contexts = $this->container->getParameter('renderer.config')['required_cache_contexts'];
+    $renderer = $this->container->get('renderer');
+
+    try {
+      foreach ($this->elementChildrenFilterDataProvider() as $scenario => [$items, $expected_output]) {
+        $expected_bubbled_metadata = [];
+        BubbleableMetadata::createFromRenderArray($items)
+          ->addCacheContexts($required_cache_contexts)
+          ->applyTo($expected_bubbled_metadata);
+
+        $build = [
+          '#type' => 'inline_template',
+          '#template' => '{{ items|element_children }}',
+          '#context' => [
+            'items' => $items,
+          ],
+        ];
+
+        $render_context = new RenderContext();
+        $output = $renderer->executeInRenderContext($render_context, function () use ($renderer, $build) {
+          return $renderer->render($build, TRUE);
+        });
+
+        $bubbled_metadata = [];
+        $render_context->pop()->applyTo($bubbled_metadata);
+        $this->assertEqualsCanonicalizing($expected_bubbled_metadata, $bubbled_metadata);
+        $this->assertEquals($expected_output, $output);
+      }
+    }
+    catch (ExpectationFailedException $e) {
+      throw new ExpectationFailedException(sprintf('Failed asserting data for scenario "%s".', $scenario), $e->getComparisonFailure(), $e);
+    }
+    catch (\Exception $e) {
+      throw new \Exception(sprintf('Failed asserting data for scenario "%s".', $scenario), 0, $e);
+    }
+  }
+
+  /**
+   * Data provider for testElementChildrenFilter().
+   *
+   * @return array
+   *   The scenarios.
+   */
+  protected function elementChildrenFilterDataProvider(): array {
+    $scenarios = [];
+
+    $basic_build = [
+      [
+        '#plain_text' => 'Hello.',
+      ],
+    ];
+
+    $scenarios['with cache tag'] = [
+      $basic_build + [
+        '#cache' => [
+          'tags' => ['test_tag'],
+        ],
+      ],
+      'Hello.',
+    ];
+
+    $scenarios['with full cache info'] = [
+      $basic_build + [
+        '#cache' => [
+          'tags' => ['test_tag', 'test_tag_2'],
+          'contexts' => ['url'],
+          'max-age' => 30,
+        ],
+      ],
+      'Hello.',
+    ];
+
+    $scenarios['with attachments'] = [
+      $basic_build + [
+        '#attached' => [
+          'library' => [
+            'core/drupal',
+            'core/once',
+          ],
+          'html_head_link' => ['test' => 'head'],
+        ],
+      ],
+      'Hello.',
+    ];
+
+    $scenarios['with attachments and cache'] = [
+      $basic_build + [
+        '#attached' => [
+          'library' => [
+            'core/drupal',
+            'core/once',
+          ],
+          'html_head_link' => ['test' => 'head'],
+        ],
+        '#cache' => [
+          'contexts' => ['url.path'],
+        ],
+      ],
+      'Hello.',
+    ];
+
+    $multiple_items_build = [
+      [
+        '#plain_text' => 'Item 1.',
+      ],
+      [
+        '#plain_text' => 'Item 2.',
+      ],
+    ];
+    $scenarios['multiple items'] = [
+      $multiple_items_build,
+      'Item 1.Item 2.'
+    ];
+
+    $scenarios['multiple items with metadata'] = [
+      $multiple_items_build + [
+        '#cache' => [
+          'max-age' => CacheBackendInterface::CACHE_PERMANENT,
+        ],
+      ],
+      'Item 1.Item 2.'
+    ];
+
+    // Theme wrappers or theme functions are ignored. Only bubbleable metadata
+    // is kept.
+    $scenarios['with theme wrappers'] = [
+      $multiple_items_build + [
+        '#theme_wrappers' => ['container'],
+      ],
+      'Item 1.Item 2.'
+    ];
+
+    return $scenarios;
   }
 
 }
