@@ -9,7 +9,7 @@
   --columns-grid-item--calculated-min-width: min(100%, 100px); /* Ensure that cell minimum width does not overflow container. */
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(max(100px, var(--columns-grid-item--max-width)), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(max(300px, var(--columns-grid-item--max-width)), 1fr));
   gap: var(--oebt-columns--gutter);
 
   &__item {
