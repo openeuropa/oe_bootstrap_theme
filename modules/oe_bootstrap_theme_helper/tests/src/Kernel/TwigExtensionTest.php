@@ -197,7 +197,8 @@ class TwigExtensionTest extends AbstractKernelTestBase {
     $renderer = $this->container->get('renderer');
 
     try {
-      foreach ($this->elementChildrenFilterDataProvider() as $scenario => [$items, $expected_output]) {
+      foreach ($this->elementChildrenFilterDataProvider() as $scenario => $data) {
+        [$items, $expected_output] = $data;
         $expected_bubbled_metadata = [];
         BubbleableMetadata::createFromRenderArray($items)
           ->addCacheContexts($required_cache_contexts)
@@ -304,7 +305,7 @@ class TwigExtensionTest extends AbstractKernelTestBase {
     ];
     $scenarios['multiple items'] = [
       $multiple_items_build,
-      'Item 1.Item 2.'
+      'Item 1.Item 2.',
     ];
 
     $scenarios['multiple items with metadata'] = [
@@ -313,7 +314,7 @@ class TwigExtensionTest extends AbstractKernelTestBase {
           'max-age' => CacheBackendInterface::CACHE_PERMANENT,
         ],
       ],
-      'Item 1.Item 2.'
+      'Item 1.Item 2.',
     ];
 
     // Theme wrappers or theme functions are ignored. Only bubbleable metadata
@@ -322,7 +323,7 @@ class TwigExtensionTest extends AbstractKernelTestBase {
       $multiple_items_build + [
         '#theme_wrappers' => ['container'],
       ],
-      'Item 1.Item 2.'
+      'Item 1.Item 2.',
     ];
 
     return $scenarios;
