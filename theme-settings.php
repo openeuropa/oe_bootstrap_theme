@@ -65,4 +65,11 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
     '#description' => t('Card search variant used grid classes to structure its content left-right, this changed to col-12 and cl-card-start-col combination, this has an impact on the column sizes.'),
     '#default_value' => BackwardCompatibility::getSetting('card_search_use_grid_classes'),
   ];
+
+  $form['backward_compatibility']['featured_media_use_legacy_pattern'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Use featured media legacy pattern'),
+    '#description' => t("Featured media pattern without text did not render the main wrapper div, and used a 'col-12 col-md-4' wrapper around the media. The main wrapper class name 'bcl-featured-media' (legacy pattern) changed to 'bcl-featured-item'. Additionally, the alignment and spacing classes for 2 columns layout column divs changed."),
+    '#default_value' => BackwardCompatibility::getSetting('featured_media_use_legacy_pattern'),
+  ];
 }
