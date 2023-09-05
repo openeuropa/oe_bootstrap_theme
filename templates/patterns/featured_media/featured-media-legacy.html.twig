@@ -1,0 +1,60 @@
+{#
+/**
+ * @file
+ * Featured media pattern.
+ */
+#}
+{% macro featured_media(embedded_media, image, caption, ratio) %}
+  {% include '@oe-bcl/featured-media' with {
+    'embedded_media': embedded_media,
+    'image': image,
+    'content': caption,
+    'content_classes': 'bg-light p-3',
+    'ratio': ratio,
+    'attributes': attributes,
+  } only %}
+{% endmacro %}
+
+<div class="bcl-featured-media">
+  {% if subtitle or text or link %}
+    {% set text_alignment_class = 'order-md-1' %}
+    {% set video_alignment_class = 'order-md-2' %}
+    {% if text_position == 'right' %}
+      {% set text_alignment_class = 'order-md-2' %}
+      {% set video_alignment_class = 'order-md-1' %}
+    {% endif %}
+
+    {%- if title is not empty -%}
+      {% include '@oe-bcl/heading' with {
+        title: title,
+        title_tag: 'h2',
+        attributes: create_attribute().addClass('mb-4'),
+      } only %}
+    {%- endif -%}
+    <div class="row">
+      <div class="col-12 col-md-6 {{ text_alignment_class }}">
+        {% if subtitle %}
+          <h5 class="text-secondary">{{ subtitle }}</h5>
+        {% endif %}
+        {{ text }}
+        {% if link %}
+          {{ pattern('link', {
+            label: link.label,
+            path: link.path,
+            variant: 'link',
+            icon: link.icon
+          }) }}
+        {% endif %}
+      </div>
+      <div class="col-12 col-md-6 {{ video_alignment_class }}">
+        {{ _self.featured_media(embedded_media, image, caption, ratio) }}
+      </div>
+    </div>
+  {% else %}
+    <div class="row">
+      <div class="col-12 col-md-4">
+        {{ _self.featured_media(embedded_media, image, caption, ratio) }}
+      </div>
+    </div>
+  {% endif %}
+</div>
