@@ -4,57 +4,27 @@
  * Featured media pattern.
  */
 #}
-{% macro featured_media(embedded_media, image, caption, ratio) %}
+
+{# Backward compatibily setting: load legacy pattern template. #}
+{% if bc_featured_media_use_legacy_pattern %}
+  {%- include '@oe_bootstrap_theme/patterns/featured_media/featured-media-legacy.html.twig' -%}
+{% else %}
   {% include '@oe-bcl/featured-media' with {
     'embedded_media': embedded_media,
     'image': image,
+    'ratio': ratio,
+    'alignment': text_position == 'right' ? 'left' : 'right',
     'content': caption,
     'content_classes': 'bg-light p-3',
-    'ratio': ratio,
     'attributes': attributes,
+    'with_text': subtitle or text or link,
+    'title': title,
+    'title_tag': title_tag,
+    'description_title': subtitle,
+    'description_title_tag': 'h5',
+    'description_title_attributes': create_attribute().addClass('text-secondary'),
+    'description': text,
+    'read_more': link,
+    'force_wrapper': true,
   } only %}
-{% endmacro %}
-
-<div class="bcl-featured-media">
-  {% if subtitle or text or link %}
-    {% set text_alignment_class = 'order-md-1' %}
-    {% set video_alignment_class = 'order-md-2' %}
-    {% if text_position == 'right' %}
-      {% set text_alignment_class = 'order-md-2' %}
-      {% set video_alignment_class = 'order-md-1' %}
-    {% endif %}
-
-    {%- if title is not empty -%}
-      {% include '@oe-bcl/heading' with {
-        title: title,
-        title_tag: 'h2',
-        attributes: create_attribute().addClass('mb-4'),
-      } only %}
-    {%- endif -%}
-    <div class="row">
-      <div class="col-12 col-md-6 {{ text_alignment_class }}">
-        {% if subtitle %}
-          <h5 class="text-secondary">{{ subtitle }}</h5>
-        {% endif %}
-        {{ text }}
-        {% if link %}
-          {{ pattern('link', {
-            label: link.label,
-            path: link.path,
-            variant: 'link',
-            icon: link.icon
-          }) }}
-        {% endif %}
-      </div>
-      <div class="col-12 col-md-6 {{ video_alignment_class }}">
-        {{ _self.featured_media(embedded_media, image, caption, ratio) }}
-      </div>
-    </div>
-  {% else %}
-    <div class="row">
-      <div class="col-12 col-md-4">
-        {{ _self.featured_media(embedded_media, image, caption, ratio) }}
-      </div>
-    </div>
-  {% endif %}
-</div>
+{% endif %}
