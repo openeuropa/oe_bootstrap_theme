@@ -242,7 +242,7 @@ class TwigExtensionTest extends AbstractKernelTestBase {
 {% endfor %}
 TWIG;
 
-      return  [
+      return [
         '#type' => 'inline_template',
         '#template' => $template,
         '#context' => [

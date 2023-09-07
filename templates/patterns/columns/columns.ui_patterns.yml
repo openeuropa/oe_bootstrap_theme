@@ -19,8 +19,9 @@ columns:
       type: number
       label: Columns
       description: The number of columns. Defaults to 4.
-  settings:
+      allow_token: true
     tag:
       type: textfield
       label: Tag
       description: HTML tag to use for the wrapper. Defaults to "div".
+      allow_token: true
