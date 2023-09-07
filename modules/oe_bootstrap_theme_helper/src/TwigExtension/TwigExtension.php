@@ -340,6 +340,7 @@ class TwigExtension extends AbstractExtension {
   /**
    * Returns the children of an element array, optionally sorted by weight.
    *
+   * This method does not return the keys, but the elements themselves.
    * The method will make sure that bubbleable metadata is propagated.
    *
    * @param array $elements

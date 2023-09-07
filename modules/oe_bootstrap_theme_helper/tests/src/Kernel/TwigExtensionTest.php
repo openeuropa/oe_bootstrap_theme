@@ -224,11 +224,49 @@ class TwigExtensionTest extends AbstractKernelTestBase {
       }
     }
     catch (ExpectationFailedException $e) {
-      throw new ExpectationFailedException(sprintf('Failed asserting data for scenario "%s".', $scenario), $e->getComparisonFailure(), $e);
+      throw new ExpectationFailedException(sprintf('Failed asserting data for scenario "%s": %s', $scenario, $e->getMessage()), $e->getComparisonFailure(), $e);
     }
     catch (\Exception $e) {
       throw new \Exception(sprintf('Failed asserting data for scenario "%s".', $scenario), 0, $e);
     }
+  }
+
+  /**
+   * Test the sorting parameter on "element_children" Twig filter.
+   */
+  public function testElementChildrenFilterSorting(): void {
+    $get_build = function ($sort) {
+      $template = <<<TWIG
+{% for item in items|element_children($sort) %}
+  {{- item -}}
+{% endfor %}
+TWIG;
+
+      return  [
+        '#type' => 'inline_template',
+        '#template' => $template,
+        '#context' => [
+          'items' => [
+            [
+              '#plain_text' => 'Weight 20.',
+              '#weight' => 20,
+            ],
+            [
+              '#plain_text' => 'Weight -3.',
+              '#weight' => -3,
+            ],
+          ],
+        ],
+      ];
+    };
+
+    $build = $get_build('true');
+    $output = $this->renderRoot($build);
+    $this->assertEquals('Weight -3.Weight 20.', $output);
+
+    $build = $get_build('false');
+    $output = $this->renderRoot($build);
+    $this->assertEquals('Weight 20.Weight -3.', $output);
   }
 
   /**
@@ -324,6 +362,20 @@ class TwigExtensionTest extends AbstractKernelTestBase {
         '#theme_wrappers' => ['container'],
       ],
       'Item 1.Item 2.',
+    ];
+
+    $scenarios['sorting applied by default'] = [
+      [
+        [
+          '#plain_text' => 'Weight 20.',
+          '#weight' => 20,
+        ],
+        [
+          '#plain_text' => 'Weight -3.',
+          '#weight' => -3,
+        ],
+      ],
+      'Weight -3.Weight 20.',
     ];
 
     return $scenarios;
