@@ -14,8 +14,9 @@ columns:
         - '#plain_text': Item 4
         - '#plain_text': Item 5
         - '#plain_text': Item 6
+  settings:
     columns:
-      type: integer
+      type: number
       label: Columns
       description: The number of columns. Defaults to 4.
   settings:
