@@ -10,21 +10,36 @@
  * - tag: Tag of the content section.
  * - content: Content of the section.
  * - attributes: Attributes of the section.
+ * - wrapper_attributes: Attributes of the content wrapper.
  */
 #}
 
 {% set tag = tag|default('section') %}
 {% set heading_tag = heading_tag|default('h2') %}
 
-<{{ tag }}
-  {{- attributes -}}
->
+{% if attributes is empty %}
+  {% set attributes = create_attribute() %}
+{% endif %}
+
+{% if heading_attributes is empty %}
+  {% set heading_attributes = create_attribute() %}
+{% endif %}
+
+{% if wrapper_attributes is empty %}
+  {% set wrapper_attributes = create_attribute() %}
+{% endif %}
+
+{% set attributes = attributes.addClass(['section']) %}
+
+{% set heading_attributes = heading_attributes.addClass(['section__title']) %}
+
+{% set wrapper_attributes = wrapper_attributes.addClass(['section__body']) %}
+
+<{{ tag }}{{- attributes -}}>
   {% if heading is not empty %}
-    <{{ heading_tag }}
-      {{- heading_attributes -}}
-    >
+    <{{ heading_tag }}{{- heading_attributes -}}>
       {{ heading }}
     </{{ heading_tag }}>
   {% endif %}
-  <div>{{ content }}</div>
+  <div {{ wrapper_attributes }}>{{ content }}</div>
 </{{ tag }}>

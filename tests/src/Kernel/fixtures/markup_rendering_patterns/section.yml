@@ -7,11 +7,11 @@ section_default:
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
   assertions:
     count:
-      'section > div': 1
-      'section > h2': 1
+      'section.section > div.section__body': 1
+      'section.section > h2.section__title': 1
     contains:
-      'section > div': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
-      'section > h2': 'This is the heading of the section'
+      'section.section > div.section__body': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
+      'section.section > h2.section__title': 'This is the heading of the section'
 section_with_custom_attributes:
   render:
     '#type': pattern
@@ -20,7 +20,6 @@ section_with_custom_attributes:
       attributes:
         class:
           - 'content-wrapper'
-          - 'section'
         id: 'section-id'
         data-attribute: 'some-value'
       heading: 'This is the heading of the section'
@@ -33,6 +32,26 @@ section_with_custom_attributes:
           class: 'content-wrapper section'
           id: 'section-id'
           data-attribute: 'some-value'
+section_with_custom_wrapper_attributes:
+  render:
+    '#type': pattern
+    '#id': 'section'
+    '#fields':
+      wrapper_attributes:
+        class:
+          - 'content-wrapper'
+        id: 'wrapper-id'
+        data-attribute: 'some-value'
+      heading: 'This is the heading of the section'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\SectionPatternAssert
+      expected:
+        wrapper_attributes:
+          class: 'content-wrapper'
+          id: 'wrapper-id'
+          data-attribute: 'some-value'
 section_with_custom_heading_attributes:
   render:
     '#type': pattern
@@ -41,7 +60,6 @@ section_with_custom_heading_attributes:
       heading_attributes:
         class:
           - 'content-heading'
-          - 'section'
         id: 'section-id'
         data-attribute: 'some-value'
       heading: 'This is the heading of the section'
@@ -51,7 +69,7 @@ section_with_custom_heading_attributes:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\SectionPatternAssert
       expected:
         heading_attributes:
-          class: 'content-heading section'
+          class: 'content-heading'
           id: 'section-id'
           data-attribute: 'some-value'
 section_with_custom_tags:
@@ -65,5 +83,5 @@ section_with_custom_tags:
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
   assertions:
     count:
-      'article': 1
-      'h3': 1
+      'article.section': 1
+      'h3.section__title': 1

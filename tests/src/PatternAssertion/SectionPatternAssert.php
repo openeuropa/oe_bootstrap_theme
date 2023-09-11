@@ -18,17 +18,20 @@ class SectionPatternAssert extends BasePatternAssert {
     return [
       'tag' => [
         [$this, 'assertElementTag'],
-        '.content-wrapper',
+        '.section__body',
       ],
       'heading_tag' => [
         [$this, 'assertElementTag'],
-        '.heading-wrapper',
+        '.section__title',
       ],
       'attributes' => [
         [$this, 'assertAttributes'],
       ],
       'heading_attributes' => [
         [$this, 'assertHeadingAttributes'],
+      ],
+      'wrapper_attributes' => [
+        [$this, 'assertWrapperAttributes'],
       ],
     ];
   }
@@ -38,7 +41,7 @@ class SectionPatternAssert extends BasePatternAssert {
    */
   protected function assertBaseElements(string $html, string $variant): void {
     // Verify that only one SVG markup has been passed.
-    $this->assertElementExists('section', new Crawler($html));
+    $this->assertElementExists('.section', new Crawler($html));
   }
 
   /**
@@ -51,7 +54,7 @@ class SectionPatternAssert extends BasePatternAssert {
    */
   protected function assertAttributes(array $expected, Crawler $crawler): void {
     foreach ($expected as $attribute => $value) {
-      $this->assertElementAttribute($value, '.content-wrapper', $attribute, $crawler);
+      $this->assertElementAttribute($value, '.section', $attribute, $crawler);
     }
   }
 
@@ -65,7 +68,21 @@ class SectionPatternAssert extends BasePatternAssert {
    */
   protected function assertHeadingAttributes(array $expected, Crawler $crawler): void {
     foreach ($expected as $attribute => $value) {
-      $this->assertElementAttribute($value, 'h2', $attribute, $crawler);
+      $this->assertElementAttribute($value, '.section__title', $attribute, $crawler);
+    }
+  }
+
+  /**
+   * Asserts the section pattern wrapper attributes.
+   *
+   * @param array[] $expected
+   *   The expected settings.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The crawler.
+   */
+  protected function assertWrapperAttributes(array $expected, Crawler $crawler): void {
+    foreach ($expected as $attribute => $value) {
+      $this->assertElementAttribute($value, '.section__body', $attribute, $crawler);
     }
   }
 
