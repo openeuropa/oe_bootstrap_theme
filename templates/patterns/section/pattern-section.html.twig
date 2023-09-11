@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Section pattern.
+ *
+ * Available variables:
+ * - heading: Heading of the section.
+ * - heading_tag: Tag of the heading.
+ * - heading_attributes: Attributes of the heading.
+ * - tag: Tag of the content section.
+ * - content: Content of the section.
+ * - attributes: Attributes of the section.
+ */
+#}
+
+{% set tag = tag|default('section') %}
+{% set heading_tag = heading_tag|default('h2') %}
+
+<{{ tag }}
+  {{- attributes -}}
+>
+  {% if heading is not empty %}
+    <{{ heading_tag }}
+      {{- heading_attributes -}}
+    >
+      {{ heading }}
+    </{{ heading_tag }}>
+  {% endif %}
+  <div>{{ content }}</div>
+</{{ tag }}>

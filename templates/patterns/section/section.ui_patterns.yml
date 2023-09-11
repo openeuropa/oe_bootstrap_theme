@@ -1,0 +1,36 @@
+section:
+  label: Section
+  description: Renders content and heading inside section.
+  category: Version 2.x
+  fields:
+    content:
+      type: render
+      label: Content
+      description: Content of the section.
+      preview: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Suspendisse ultrices gravida dictum fusce. Sit amet facilisis magna etiam tempor orci eu lobortis. Erat pellentesque adipiscing commodo elit at imperdiet. Iaculis at erat pellentesque adipiscing commodo. Nunc lobortis mattis aliquam faucibus purus in massa. In nulla posuere sollicitudin aliquam ultrices sagittis orci. Id nibh tortor id aliquet lectus proin nibh nisl condimentum. Eleifend donec pretium vulputate sapien nec. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus. Nulla porttitor massa id neque.</p><p>Donec ultrices tincidunt arcu non sodales neque sodales ut. Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum. Porta nibh venenatis cras sed. Magna fermentum iaculis eu non. Tortor dignissim convallis aenean et tortor at. Dictumst quisque sagittis purus sit amet volutpat consequat mauris. Massa tempor nec feugiat nisl pretium fusce id velit ut. Nisl condimentum id venenatis a condimentum vitae sapien. Netus et malesuada fames ac turpis egestas. Dolor morbi non arcu risus quis varius. Odio morbi quis commodo odio aenean sed. Sed arcu non odio euismod lacinia at quis risus. Blandit cursus risus at ultrices mi tempus imperdiet.</p>'
+    heading:
+      type: render
+      label: Heading
+      description: Heading of the section.
+      preview: This is the title of the section
+  settings:
+    heading_attributes:
+      type: attributes
+      label: Heading attributes
+      description: Extra attributes for the heading
+      allow_token: true
+    attributes:
+      type: attributes
+      label: Section attributes
+      description: Extra attributes for the section
+      allow_token: true
+    heading_tag:
+      type: textfield
+      label: Heading tag
+      description: Tag of the heading. Default to h2.
+      allow_token: true
+    tag:
+      type: textfield
+      label: Wrapper tag
+      description: Tag of the wrapper. Defaults to section.
+      allow_token: true
