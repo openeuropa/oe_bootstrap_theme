@@ -19,6 +19,11 @@ section:
       label: Heading attributes
       description: Extra attributes for the heading
       allow_token: true
+    wrapper_attributes:
+      type: attributes
+      label: Wrapper attributes
+      description: Extra attributes for the wrapper
+      allow_token: true
     attributes:
       type: attributes
       label: Section attributes
