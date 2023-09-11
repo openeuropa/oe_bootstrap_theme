@@ -7,7 +7,10 @@ namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
@@ -32,6 +35,13 @@ class TwigExtension extends AbstractExtension {
   protected $languageManager;
 
   /**
+   * The renderer.
+   *
+   * @var \Drupal\Core\Render\RendererInterface
+   */
+  protected RendererInterface $renderer;
+
+  /**
    * The Drupal Twig environment.
    *
    * @var \Drupal\Core\Template\TwigEnvironment
@@ -45,10 +55,13 @@ class TwigExtension extends AbstractExtension {
    *   The language manager.
    * @param \Drupal\Core\Template\TwigEnvironment $twigEnvironment
    *   The Drupal Twig environment.
+   * @param \Drupal\Core\Render\RendererInterface $renderer
+   *   The renderer.
    */
-  public function __construct(LanguageManagerInterface $languageManager, TwigEnvironment $twigEnvironment) {
+  public function __construct(LanguageManagerInterface $languageManager, TwigEnvironment $twigEnvironment, RendererInterface $renderer) {
     $this->languageManager = $languageManager;
     $this->twigEnvironment = $twigEnvironment;
+    $this->renderer = $renderer;
   }
 
   /**
@@ -67,6 +80,7 @@ class TwigExtension extends AbstractExtension {
         $this,
         'toInternalLanguageId',
       ]),
+      new TwigFilter('element_children', [$this, 'elementChildren']),
     ];
   }
 
@@ -321,6 +335,37 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $items;
+  }
+
+  /**
+   * Returns the children of an element array, optionally sorted by weight.
+   *
+   * This method does not return the keys, but the elements themselves.
+   * The method will make sure that bubbleable metadata is propagated.
+   *
+   * @param array $elements
+   *   The element array whose children are to be identified. Passed by
+   *    reference.
+   * @param bool $sort
+   *   Boolean to indicate whether the children should be sorted by weight.
+   *   Defaults to TRUE to mimic Drupal renderer.
+   *
+   * @return array
+   *   A new array with the element's children.
+   */
+  public function elementChildren(array $elements, bool $sort = TRUE): array {
+    $children = [];
+
+    foreach (Element::children($elements, $sort) as $key) {
+      $children[$key] = $elements[$key];
+    }
+
+    // Make sure to bubble all cache and metadata information, like libraries.
+    $bubbleable = [];
+    BubbleableMetadata::createFromRenderArray($elements)->applyTo($bubbleable);
+    $this->renderer->render($bubbleable);
+
+    return $children;
   }
 
 }

@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Columns pattern.
+ *
+ * Available variables:
+ * - columns: The number of columns. Defaults to 4.
+ * - items: The items to organize in columns.
+ * - tag: HTML tag to use for the wrapper. Defaults to "<div>".
+ * - attributes: Attributes to apply to the wrapper.
+ */
+#}
+{% set tag = tag|default('div') %}
+{% set columns = columns|default(4) %}
+{%
+  set wrapper_classes = [
+    'columns',
+  ]
+%}
+{%
+  set responsive_grid_styles = [
+    '--columns-grid--column-count: ' ~ columns ~ ';',
+  ]
+%}
+
+<{{ tag }}{{ attributes.addClass(wrapper_classes).setAttribute('style', responsive_grid_styles|join()) }}>
+  {% for item in items|element_children %}
+    <div class="columns__item">
+      {{- item -}}
+    </div>
+  {% endfor %}
+</{{ tag }}>
