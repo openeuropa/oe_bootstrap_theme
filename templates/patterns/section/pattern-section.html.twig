@@ -16,30 +16,29 @@
 
 {% set tag = tag|default('section') %}
 {% set heading_tag = heading_tag|default('h2') %}
+{%
+  set section_classes = [
+    'section',
+  ]
+%}
+{%
+  set heading_classes = [
+    'section__title',
+  ]
+%}
+{%
+  set wrapper_classes = [
+    'section__body',
+  ]
+%}
 
-{% if attributes is empty %}
-  {% set attributes = create_attribute() %}
-{% endif %}
-
-{% if heading_attributes is empty %}
-  {% set heading_attributes = create_attribute() %}
-{% endif %}
-
-{% if wrapper_attributes is empty %}
-  {% set wrapper_attributes = create_attribute() %}
-{% endif %}
-
-{% set attributes = attributes.addClass(['section']) %}
-
-{% set heading_attributes = heading_attributes.addClass(['section__title']) %}
-
-{% set wrapper_attributes = wrapper_attributes.addClass(['section__body']) %}
-
-<{{ tag }}{{- attributes -}}>
+<{{ tag }}{{ attributes.addClass(section_classes) }}>
   {% if heading is not empty %}
-    <{{ heading_tag }}{{- heading_attributes -}}>
-      {{- heading -}}
+    <{{ heading_tag }}{{ heading_attributes.addClass(heading_classes) }}>
+      {{ heading }}
     </{{ heading_tag }}>
   {% endif %}
-  <div {{ wrapper_attributes }}>{{ content }}</div>
+  <div{{ wrapper_attributes.addClass(wrapper_classes) }}>
+    {{ content }}
+  </div>
 </{{ tag }}>
