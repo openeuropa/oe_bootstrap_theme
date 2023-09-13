@@ -75,6 +75,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'offcanvas',
     'pagination',
     'progress',
+    'section',
     'timeline',
   ];
 
