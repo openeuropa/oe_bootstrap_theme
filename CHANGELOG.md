@@ -1,10 +1,19 @@
 # Change Log
 
+## [1.7.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.7.0) (2023-09-15)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.6.0...1.7.0)
+
+**Merged pull requests:**
+
+- OEL-2502: Added new section pattern. [\#355](https://github.com/openeuropa/oe_bootstrap_theme/pull/355) ([tibi2303](https://github.com/tibi2303))
+- OEL-2469: Add a new columns pattern. [\#354](https://github.com/openeuropa/oe_bootstrap_theme/pull/354) ([brummbar](https://github.com/brummbar))
+
 ## [1.6.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.6.0) (2023-08-25)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.5.1...1.6.0)
 
 **Merged pull requests:**
 
+- Prepare changelog for release 1.6.0. [\#353](https://github.com/openeuropa/oe_bootstrap_theme/pull/353) ([brummbar](https://github.com/brummbar))
 - OEL-2472: Update to BCL 1.2.0. [\#352](https://github.com/openeuropa/oe_bootstrap_theme/pull/352) ([brummbar](https://github.com/brummbar))
 - OEL-2424: Updated node drone version. [\#351](https://github.com/openeuropa/oe_bootstrap_theme/pull/351) ([tibi2303](https://github.com/tibi2303))
 - OEL-2422: Updated node. [\#349](https://github.com/openeuropa/oe_bootstrap_theme/pull/349) ([tibi2303](https://github.com/tibi2303))
