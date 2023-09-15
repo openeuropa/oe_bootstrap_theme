@@ -88,6 +88,14 @@ For new installations, all the backward compatibility settings are disabled.
 This approach eases the adoption of changes or improvements that would be otherwise tied to a new major. It allows developers to contribute changes to the current major and selectively enable them
 without having to update the theme completely to a new major release.
 
+### "Version 2.x" patterns
+
+For version 2.x of this theme, we want to reduce the number of preprocess needed to use the patterns, and instead be able to use formatters and view modes
+directly as much as possible.\
+We started to ship in version 1.x patterns that already embrace this new approach. They have been tagged with category "Version 2.x".\
+We will do the best to avoid any breaking changes to these patterns during the 1.x lifecycle. But it might be that some changes will be still
+needed. We will communicate such changes together with the release.
+
 ## Development setup
 
 ### Using LAMP stack or similar
