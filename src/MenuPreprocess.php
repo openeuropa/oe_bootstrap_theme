@@ -162,7 +162,7 @@ class MenuPreprocess {
   public function menuLink(array $menu_link, array $extra_classes = []): array {
     $link = $menu_link + [
       'label' => $menu_link['title'],
-      'path' => $menu_link['url'],
+      'path' => $menu_link['url']->isRouted() ? '/' . $menu_link['url']->getInternalPath() : $menu_link['url'],
     ];
 
     $attributes = [];
