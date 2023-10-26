@@ -137,10 +137,11 @@ function oe_bootstrap_theme_preprocess_pattern_navbar(array &$variables): void {
  * Implements hook_preprocess_HOOK() for featured media pattern.
  */
 function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
+  $variables['bc_featured_media_use_legacy_pattern'] = BackwardCompatibility::getSetting('featured_media_use_legacy_pattern');
+
   if (!isset($variables['image'])) {
     return;
   }
-
   // This conversion is needed only to run markup rendering tests, as they
   // are reading from a yaml file where we cannot specify objects.
   // Do not ever rely on this for your patterns.

@@ -88,13 +88,16 @@ class ThemeSettingsTest extends BrowserTestBase {
     $bc_wrapper = $assert_session->elementExists('xpath', '//details[./summary[.="Backward compatibility"]]');
     $card_image_hidden_checkbox = $assert_session->fieldExists('Card image hidden on mobile', $bc_wrapper);
     $card_use_grid_checkbox = $assert_session->fieldExists('Card to use grid classes', $bc_wrapper);
+    $featured_media_use_legacy = $assert_session->fieldExists('Use featured media legacy pattern', $bc_wrapper);
 
     // BC settings are disabled on new installs.
     $this->assertFalse($card_image_hidden_checkbox->isChecked());
     $this->assertFalse($card_use_grid_checkbox->isChecked());
+    $this->assertFalse($featured_media_use_legacy->isChecked());
 
     $this->assertFalse(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertFalse(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
+    $this->assertFalse(BackwardCompatibility::getSetting('featured_media_use_legacy_pattern'));
 
     $card_image_hidden_checkbox->check();
     $assert_session->buttonExists('Save configuration')->press();
@@ -102,11 +105,13 @@ class ThemeSettingsTest extends BrowserTestBase {
 
     $this->assertTrue($card_image_hidden_checkbox->isChecked());
     $this->assertFalse($card_use_grid_checkbox->isChecked());
+    $this->assertFalse($featured_media_use_legacy->isChecked());
 
     drupal_static_reset('theme_get_setting');
     \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertFalse(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
+    $this->assertFalse(BackwardCompatibility::getSetting('featured_media_use_legacy_pattern'));
 
     $card_use_grid_checkbox->check();
     $assert_session->buttonExists('Save configuration')->press();
@@ -119,6 +124,16 @@ class ThemeSettingsTest extends BrowserTestBase {
     \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
+    $this->assertFalse(BackwardCompatibility::getSetting('featured_media_use_legacy_pattern'));
+
+    $featured_media_use_legacy->check();
+    $assert_session->buttonExists('Save configuration')->press();
+    $assert_session->pageTextContains('The configuration options have been saved.');
+    drupal_static_reset('theme_get_setting');
+    \Drupal::configFactory()->clearStaticCache();
+    $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
+    $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
+    $this->assertTrue(BackwardCompatibility::getSetting('featured_media_use_legacy_pattern'));
   }
 
   /**

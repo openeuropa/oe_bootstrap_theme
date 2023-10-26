@@ -22,3 +22,6 @@ oe_bootstrap_theme.settings:
         card_search_use_grid_classes:
           type: boolean
           label: 'Card to use grid classes'
+        featured_media_use_legacy_pattern:
+          type: boolean
+          label: 'Use featured media legacy pattern'

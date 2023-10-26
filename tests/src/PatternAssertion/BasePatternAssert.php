@@ -249,7 +249,30 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
     $this->assertElementExists($selector, $crawler);
     $element = $crawler->filter($selector);
     self::assertEquals($expected_image['alt'], $element->attr('alt'));
+    if (isset($expected_image['title'])) {
+      self::assertEquals($expected_image['title'], $element->attr('title'));
+    }
     self::assertStringContainsString($expected_image['src'], $element->attr('src'));
+  }
+
+  /**
+   * Asserts the iframe of the pattern.
+   *
+   * @param array|null $expected_iframe
+   *   The expected iframe.
+   * @param string $selector
+   *   The CSS selector to find the element.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertIframe(?array $expected_iframe, string $selector, Crawler $crawler): void {
+    if (is_null($expected_iframe)) {
+      $this->assertElementNotExists($selector, $crawler);
+      return;
+    }
+    $this->assertElementExists($selector, $crawler);
+    $element = $crawler->filter($selector);
+    self::assertEquals($expected_iframe['src'], $element->attr('src'));
   }
 
   /**
