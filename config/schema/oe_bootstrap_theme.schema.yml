@@ -22,3 +22,6 @@ oe_bootstrap_theme.settings:
         card_search_use_grid_classes:
           type: boolean
           label: 'Card to use grid classes'
+        fieldset_wrapper_col_sm_10:
+          type: boolean
+          label: 'Fieldset wrapper uses col-sm-10'

@@ -29,6 +29,12 @@
     errors ? 'has-error',
   ]
 %}
+{%
+  set wrapper_classes = [
+    'fieldset-wrapper',
+    fieldset_wrapper_col_sm_10 ? 'col-sm-10',
+  ]
+%}
 <fieldset{{ attributes.addClass(classes) }}>
   {% set legend_classes = [
     'col-form-label',
@@ -42,7 +48,7 @@
   <legend{{ legend.attributes.addClass(legend_classes) }}>
     <span{{ legend_span.attributes.addClass(legend_span_classes) }}>{{ legend.title }}</span>
   </legend>
-  <div class="fieldset-wrapper col-sm-10">
+  <div{{ create_attribute({class: wrapper_classes}) }}>
     {% if prefix %}
       <span class="field-prefix">{{ prefix }}</span>
     {% endif %}

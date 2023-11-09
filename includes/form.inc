@@ -8,6 +8,7 @@
 declare(strict_types = 1);
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\oe_bootstrap_theme\BackwardCompatibility;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
@@ -66,4 +67,11 @@ function oe_bootstrap_theme_preprocess_form_element(&$variables) {
  */
 function oe_bootstrap_theme_form_node_form_alter(&$form, FormStateInterface $form_state) {
   $form['#theme'] = ['node_edit_form'];
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for fieldset template.
+ */
+function oe_bootstrap_theme_preprocess_fieldset(&$variables) {
+  $variables['fieldset_wrapper_col_sm_10'] = BackwardCompatibility::getSetting('fieldset_wrapper_col_sm_10');
 }

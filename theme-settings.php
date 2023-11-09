@@ -65,4 +65,11 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
     '#description' => t('Card search variant used grid classes to structure its content left-right, this changed to col-12 and cl-card-start-col combination, this has an impact on the column sizes.'),
     '#default_value' => BackwardCompatibility::getSetting('card_search_use_grid_classes'),
   ];
+
+  $form['backward_compatibility']['fieldset_wrapper_col_sm_10'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Fieldset wrapper uses col-sm-10'),
+    '#description' => t('Fieldset wrapper had a class col-sm-10 which caused a different width for its content compared to the rest of the elements.'),
+    '#default_value' => BackwardCompatibility::getSetting('fieldset_wrapper_col_sm_10'),
+  ];
 }
