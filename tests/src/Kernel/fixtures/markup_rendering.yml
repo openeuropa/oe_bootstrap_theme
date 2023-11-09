@@ -137,6 +137,19 @@ fieldset:
     equals:
       'fieldset legend.col-form-label span.fieldset-legend': 'Fieldset title'
       'fieldset div.fieldset-wrapper': 'This is a child of the fieldset.'
+fieldset_bc_fieldset_wrapper_col_sm_10:
+  render:
+    '#type': fieldset
+    '#title': 'Fieldset title'
+    'child':
+      '#plain_text': 'This is a child of the fieldset.'
+  assert:
+    count:
+      'fieldset': 1
+      'fieldset div.fieldset-wrapper': 1
+      'fieldset div.fieldset-wrapper.col-sm-10': 1
+  backward_compatibility:
+    fieldset_wrapper_col_sm_10: true
 status_messages_error:
   render:
     '#theme': 'status_messages'
