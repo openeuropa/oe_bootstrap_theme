@@ -21,7 +21,9 @@
     next_label: _next_label,
     autoplay: false,
     items: items|map(_item => _item|merge({
-      caption: _item.is_playable ? '' : _item.caption
+      caption: _item.is_playable ? '' : _item.caption,
+      caption_title: _item.is_playable ? '' : _item.caption_title,
+      link: _item.is_playable ? '' : _item.link,
     })),
   } only %}
 {% endblock %}
