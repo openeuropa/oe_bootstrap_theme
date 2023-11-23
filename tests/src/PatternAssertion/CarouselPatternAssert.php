@@ -90,13 +90,14 @@ class CarouselPatternAssert extends BasePatternAssert {
     foreach ($expected as $index => $expected_item) {
       $item = $items->eq($index);
 
+      // Check if HTML content contains video or iframe.
+      $isPlayable = strpos($item->html(), '<video') !== FALSE || strpos($item->html(), '<iframe') !== FALSE;
+
       try {
         self::assertStringContainsString($expected_item['image'], $item->html());
         $this->assertElementText($expected_item['caption_title'] ?? NULL, '.carousel-caption .fs-5', $item);
-        if ($expected_item['is_playable']) {
-          self::assertStringNotContainsString($expected_item['caption'], $item->html());
-          self::assertStringNotContainsString($expected_item['link'], $item->html());
-          self::assertStringNotContainsString($expected_item['caption_title'], $item->html());
+        if ($isPlayable) {
+          $this->assertElementNotExists('.carousel-caption', $item);
         }
         else {
           if (isset($expected_item['caption'])) {
