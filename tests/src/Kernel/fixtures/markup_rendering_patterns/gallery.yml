@@ -43,7 +43,7 @@ gallery_default:
               play_icon: true
             media:
               rendered: '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></source></video>'
-              caption_title: 'Bio-defence preparedness programme'
+              caption_title: ~
               caption: ~
           - thumbnail:
               rendered: '<img src="https://picsum.photos/id/10/400/300/" alt="Cat thumbnail alt">'
@@ -66,8 +66,8 @@ gallery_default:
               play_icon: true
             media:
               rendered: '<iframe width="560" height="315" data-src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-              caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
-              caption: 'Iframe caption.'
+              caption_title: ~
+              caption: ~
 gallery_title_default_tag:
   render:
     '#type': pattern
@@ -170,7 +170,7 @@ gallery_six_items:
               play_icon: true
             media:
               rendered: '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></source></video>'
-              caption_title: 'Bio-defence preparedness programme'
+              caption_title: ~
               caption: ~
           - thumbnail:
               rendered: '<img src="https://picsum.photos/id/10/400/300/" alt="Cat thumbnail alt">'
@@ -193,8 +193,8 @@ gallery_six_items:
               play_icon: true
             media:
               rendered: '<iframe width="560" height="315" data-src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-              caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
-              caption: 'Iframe caption.'
+              caption_title: ~
+              caption: ~
           - thumbnail:
               rendered: '<img src="https://picsum.photos/id/12/400/300/" alt="Elephant thumbnail alt">'
               caption_title: 'A picture of an elephant'
@@ -316,7 +316,7 @@ gallery_long:
               play_icon: true
             media:
               rendered: '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></source></video>'
-              caption_title: 'Bio-defence preparedness programme'
+              caption_title: ~
               caption: ~
           - thumbnail:
               rendered: '<img src="https://picsum.photos/id/10/400/300/" alt="Cat thumbnail alt">'
@@ -388,7 +388,7 @@ gallery_long:
               play_icon: true
             media:
               rendered: '<iframe width="560" height="315" data-src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-              caption_title: 'Safer electric vehicles - through harmonised test procedures for battery technology'
+              caption_title: ~
           - thumbnail:
               rendered: '<img src="https://picsum.photos/id/22/400/300/" alt="Stockholm thumbnail alt">'
               caption_title: 'Stockholm'
