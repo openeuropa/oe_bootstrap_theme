@@ -98,28 +98,34 @@ class CarouselPatternAssert extends BasePatternAssert {
     foreach ($expected as $index => $expected_item) {
       $item = $items->eq($index);
 
+      // Check if HTML content contains video or iframe.
+      $isPlayable = strpos($item->html(), '<video') !== FALSE || strpos($item->html(), '<iframe') !== FALSE;
+
       try {
         self::assertStringContainsString($expected_item['image'], $item->html());
         $this->assertElementText($expected_item['caption_title'] ?? NULL, '.carousel-caption .fs-5', $item);
-
-        if (isset($expected_item['caption'])) {
-          $this->assertElementTextContains($expected_item['caption'], '.carousel-caption', $item);
+        if ($isPlayable) {
+          $this->assertElementNotExists('.carousel-caption', $item);
         }
-
-        if (isset($expected_item['caption_classes'])) {
-          $this->assertElementExists('.carousel-caption > .' . $expected_item['caption_classes'], $item);
+        else {
+          if (isset($expected_item['caption'])) {
+            $this->assertElementTextContains($expected_item['caption'], '.carousel-caption', $item);
+          }
+          if (isset($expected_item['caption_classes'])) {
+            $this->assertElementExists('.carousel-caption > .' . $expected_item['caption_classes'], $item);
+          }
+          if (isset($expected_item['link'])) {
+            $this->assertElementText($expected_item['link']['label'], '.carousel-caption a', $item);
+            $this->assertElementAttribute($expected_item['link']['path'], '.carousel-caption a', 'href', $item);
+            $this->assertElementExists('.carousel-caption a svg', $item);
+          }
+          else {
+            $this->assertElementNotExists('.carousel-caption a', $item);
+          }
         }
 
         $this->assertElementAttribute($expected_item['interval'] ?? 0, '.carousel-item', 'data-bs-interval', $item);
 
-        if (isset($expected_item['link'])) {
-          $this->assertElementText($expected_item['link']['label'], '.carousel-caption a', $item);
-          $this->assertElementAttribute($expected_item['link']['path'], '.carousel-caption a', 'href', $item);
-          $this->assertElementExists('.carousel-caption a svg', $item);
-        }
-        else {
-          $this->assertElementNotExists('.carousel-caption a', $item);
-        }
       }
       catch (\Exception $e) {
         throw new \Exception(sprintf('Failed asserting data for item %s.', $index), 0, $e);
