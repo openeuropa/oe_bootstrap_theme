@@ -62,9 +62,9 @@ card_layout:
       label: 'Card items'
       description: 'An array of card pattern items.'
       preview:
-        - title: 'Title card 1'
-          subtitle: 'Subtitle card 1'
-          text: 'Text card with longer text which is supported 1'
+        - title: '<span class="fw-bold">Title card 1</span>'
+          subtitle: '<span class="fw-bold">Subtitle card 1</span>'
+          text: '<span class="fw-bold">Text card with longer text which is supported 1</span>'
           image:
             src: 'https://picsum.photos/1000/500/'
             alt: 'Alternative text for card image'
@@ -76,8 +76,8 @@ card_layout:
                 class:
                   - 'btn'
                   - 'btn-primary'
-          card_header: 'Header of card 1'
-          card_footer: 'Footer of card 1'
+          card_header: '<span class="fw-bold">Header of card 1</span>'
+          card_footer: '<span class="fw-bold">Footer of card 1</span>'
         - title: 'Title card 2'
           subtitle: 'Subtitle card 2'
           text: 'Text card with longer text which is supported 2'

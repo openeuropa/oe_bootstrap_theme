@@ -7,9 +7,10 @@ card_group:
       settings:
         equal_height: true
       items:
-        - title: 'Card title 1'
-          text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
-          card_footer: 'Footer of card 1'
+        - title: '<span class="fw-bold">Card title 1</span>'
+          text: '<span class="fw-bold">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</span>'
+          card_footer: '<span class="fw-bold">Footer of card 1</span>'
+          card_header: '<span class="fw-bold">Header of card 1</span>'
         - title: 'Card title 2'
           text: 'This card has supporting text below as a natural lead-in to additional content.'
           card_footer: 'Footer of card 2'
@@ -26,18 +27,19 @@ card_group:
       'h1.card-title': 4
       'div.card-text': 4
     equals:
-      'article.card:nth-child(1) h1.card-title': 'Card title 1'
+      'article.card:nth-child(1) h1.card-title span.fw-bold': 'Card title 1'
       'article.card:nth-child(2) h1.card-title': 'Card title 2'
       'article.card:nth-child(3) h1.card-title': 'Card title 3'
       'article.card:nth-child(4) h1.card-title': 'Card title 4'
-      'article.card:nth-child(1) div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'article.card:nth-child(1) div.card-text span.fw-bold': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
       'article.card:nth-child(2) div.card-text': 'This card has supporting text below as a natural lead-in to additional content.'
       'article.card:nth-child(3) div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
       'article.card:nth-child(4) div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
-      'article.card:nth-child(1) div.card-footer': 'Footer of card 1'
+      'article.card:nth-child(1) div.card-footer span.fw-bold': 'Footer of card 1'
       'article.card:nth-child(2) div.card-footer': 'Footer of card 2'
       'article.card:nth-child(3) div.card-footer': 'Footer of card 3'
       'article.card:nth-child(4) div.card-footer': 'Footer of card 4'
+      'article.card:nth-child(1) div.card-header span.fw-bold': 'Header of card 1'
 card_grid_responsive_xxl_3_responsive_columns:
   render:
     '#type': pattern

@@ -117,7 +117,7 @@ class TwigExtension extends AbstractExtension {
       $bcl_card = $item;
       // Some fields need to be rewritten.
       if (isset($item['title'])) {
-        $title = $item['title'];
+        $title = Markup::create($item['title']);
         // Allow to specify the item url in a separate key, as an Url object.
         // Unfortunately this cannot be covered in yml-based tests and previews.
         // Alternatively, the 'title' key can already contain a rendered link,
@@ -133,13 +133,13 @@ class TwigExtension extends AbstractExtension {
       }
       if (isset($item['subtitle'])) {
         $bcl_card['subtitle'] = [
-          'content' => $item['subtitle'],
+          'content' => Markup::create($item['subtitle']),
           'classes' => 'mb-2',
         ];
       }
       if (isset($item['text'])) {
         $bcl_card['text'] = [
-          'content' => $item['text'],
+          'content' => Markup::create($item['text']),
           'classes' => 'mb-2',
           'tag' => 'div',
         ];
