@@ -120,14 +120,13 @@ class TwigExtension extends AbstractExtension {
       $bcl_card = $item;
       // Some fields need to be rewritten.
       if (isset($item['title'])) {
-        $title = Markup::create($item['title']);
-        // Allow to specify the item url in a separate key, as an Url object.
-        // Unfortunately this cannot be covered in yml-based tests and previews.
-        // Alternatively, the 'title' key can already contain a rendered link,
-        // but then the calling template must add the 'text-underline-hover'
-        // class.
+        $title = $item['title'];
+        // Check if the title is a string and create Markup if needed.
+        if (is_string($title)) {
+          $title = Markup::create($title);
+        }
+        // Check for a valid URL to potentially create a link.
         if (!empty($item['url']) && $item['url'] instanceof Url) {
-          // Use clone, to not pollute the original object with attributes.
           $url = clone $item['url'];
           $url->setOptions(['attributes' => ['class' => 'standalone']]);
           $title = Link::fromTextAndUrl($title, $url);
