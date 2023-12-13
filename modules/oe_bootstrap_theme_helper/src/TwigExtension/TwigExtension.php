@@ -24,6 +24,9 @@ use Twig\TwigFunction;
 
 /**
  * Collection of extra Twig extensions as filters and functions.
+ *
+ * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+ * @SuppressWarnings(PHPMD.NPathComplexity)
  */
 class TwigExtension extends AbstractExtension {
 
@@ -113,7 +116,43 @@ class TwigExtension extends AbstractExtension {
   public function bclCardList(array $items): array {
     $bcl_cards = [];
     foreach ($items as $item) {
-      $bcl_card = $this->processFields($item);
+      // Copy most of the fields.
+      $bcl_card = $item;
+      // Some fields need to be rewritten.
+      if (isset($item['title'])) {
+        $title = Markup::create($item['title']);
+        // Allow to specify the item url in a separate key, as an Url object.
+        // Unfortunately this cannot be covered in yml-based tests and previews.
+        // Alternatively, the 'title' key can already contain a rendered link,
+        // but then the calling template must add the 'text-underline-hover'
+        // class.
+        if (!empty($item['url']) && $item['url'] instanceof Url) {
+          // Use clone, to not pollute the original object with attributes.
+          $url = clone $item['url'];
+          $url->setOptions(['attributes' => ['class' => 'standalone']]);
+          $title = Link::fromTextAndUrl($title, $url);
+        }
+        $bcl_card['title'] = $title;
+      }
+      if (isset($item['card_header'])) {
+        $bcl_card['card_header'] = Markup::create($item['card_header']);
+      }
+      if (isset($item['card_footer'])) {
+        $bcl_card['card_footer'] = Markup::create($item['card_footer']);
+      }
+      if (isset($item['subtitle'])) {
+        $bcl_card['subtitle'] = [
+          'content' => Markup::create($item['subtitle']),
+          'classes' => 'mb-2',
+        ];
+      }
+      if (isset($item['text'])) {
+        $bcl_card['text'] = [
+          'content' => Markup::create($item['text']),
+          'classes' => 'mb-2',
+          'tag' => 'div',
+        ];
+      }
       $bcl_card['badges'] = [];
       foreach ($item['badges'] ?? [] as $badge) {
         $bcl_card['badges'][] = [
@@ -127,132 +166,11 @@ class TwigExtension extends AbstractExtension {
           'alt' => $item['image']->getAlt(),
         ];
       }
-      $bcl_card['content'] = $item['content'];
+
       $bcl_cards[] = $bcl_card;
     }
+
     return $bcl_cards;
-  }
-
-  /**
-   * Processes the 'title' field of the item.
-   *
-   * @param array $item
-   *   The item to process.
-   *
-   * @return array|null
-   *   Processed 'title' field.
-   */
-  private function processTitle(array $item): ?array {
-    $title = $item['title'];
-
-    // Check if the title is a string and create Markup if needed.
-    if (is_string($title)) {
-      $title = Markup::create($title);
-    }
-
-    // Check for a valid URL to potentially create a link.
-    if (!empty($item['url']) && $item['url'] instanceof Url) {
-      $url = clone $item['url'];
-      $url->setOptions(['attributes' => ['class' => 'standalone']]);
-      $title = Link::fromTextAndUrl($title, $url);
-    }
-
-    return ['title' => $title];
-  }
-
-  /**
-   * Processes the 'subtitle' field of the item.
-   *
-   * @param array $item
-   *   The item to process.
-   *
-   * @return array|null
-   *   Processed 'subtitle' field.
-   */
-  private function processSubtitle(array $item): ?array {
-    return [
-      'subtitle' => [
-        'content' => Markup::create($item['subtitle']),
-        'classes' => 'mb-2',
-      ],
-    ];
-  }
-
-  /**
-   * Processes the 'text' field of the item.
-   *
-   * @param array $item
-   *   The item to process.
-   *
-   * @return array|null
-   *   Processed 'text' field.
-   */
-  private function processText(array $item): ?array {
-    return [
-      'text' => [
-        'content' => Markup::create($item['text']),
-        'classes' => 'mb-2',
-        'tag' => 'div',
-      ],
-    ];
-  }
-
-  /**
-   * Processes the 'card_header' field of the item.
-   *
-   * @param array $item
-   *   The item to process.
-   *
-   * @return array|null
-   *   Processed 'card_header' field.
-   */
-  private function processCardHeader(array $item): ?array {
-    return ['card_header' => Markup::create($item['card_header'])];
-  }
-
-  /**
-   * Processes the 'card_footer' field of the item.
-   *
-   * @param array $item
-   *   The item to process.
-   *
-   * @return array|null
-   *   Processed 'card_footer' field.
-   */
-  private function processCardFooter(array $item): ?array {
-    return ['card_footer' => Markup::create($item['card_footer'])];
-  }
-
-  /**
-   * Processes fields of the item.
-   *
-   * @param array $item
-   *   The item to process.
-   *
-   * @return array
-   *   Processed fields.
-   */
-  private function processFields(array $item): array {
-    $bcl_card = [];
-
-    $processors = [
-      'title' => 'processTitle',
-      'subtitle' => 'processSubtitle',
-      'text' => 'processText',
-      'card_header' => 'processCardHeader',
-      'card_footer' => 'processCardFooter',
-    ];
-
-    foreach ($processors as $field => $processor) {
-      if (isset($item[$field])) {
-        $processed = $this->{$processor}($item);
-        if ($processed !== NULL) {
-          $bcl_card += $processed;
-        }
-      }
-    }
-
-    return $bcl_card;
   }
 
   /**
