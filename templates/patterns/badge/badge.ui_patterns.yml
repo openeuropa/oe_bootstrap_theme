@@ -5,7 +5,7 @@ badge:
     background:
       type: select
       label: 'Badge background'
-      description: 'Set the background color of the badge:'
+      description: 'Set the background color of the badge.'
       options:
         primary: 'primary (default)'
         secondary: 'secondary'
