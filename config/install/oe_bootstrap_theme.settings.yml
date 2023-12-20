@@ -13,3 +13,4 @@ bootstrap_tables:
 backward_compatibility:
   card_search_image_hide_on_mobile: false
   card_search_use_grid_classes: false
+  fieldset_wrapper_col_sm_10: false

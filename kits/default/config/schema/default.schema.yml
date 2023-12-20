@@ -1,5 +1,5 @@
 # Schema for the configuration files of the OE_BOOTSTRAP_THEME_SUBTHEME_NAME theme.
 
 OE_BOOTSTRAP_THEME_SUBTHEME_MACHINE_NAME.settings:
-  type: theme_settings
+  type: oe_bootstrap_theme.settings
   label: 'OE_BOOTSTRAP_THEME_SUBTHEME_NAME settings'
