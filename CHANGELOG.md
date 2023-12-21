@@ -1,10 +1,27 @@
 # Change Log
 
+## [1.8.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.8.0) (2023-12-21)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.7.0...1.8.0)
+
+**Closed issues:**
+
+- Fatal error after saving theme settings. [\#364](https://github.com/openeuropa/oe_bootstrap_theme/issues/364)
+- Change description text of background for badge pattern  [\#359](https://github.com/openeuropa/oe_bootstrap_theme/issues/359)
+- AV Portal Video is not sized correctly in featured media pattern [\#358](https://github.com/openeuropa/oe_bootstrap_theme/issues/358)
+- HTML tags are visible using bcl\_card\_list Twig Filter [\#330](https://github.com/openeuropa/oe_bootstrap_theme/issues/330)
+
+**Merged pull requests:**
+
+- OEL-2782: Update to use PHP 8.1/8.2 and Drupal 10.0.x/10.1.x. [\#367](https://github.com/openeuropa/oe_bootstrap_theme/pull/367) ([brummbar](https://github.com/brummbar))
+- OEL-0000: Sentence should end with period. [\#366](https://github.com/openeuropa/oe_bootstrap_theme/pull/366) ([brummbar](https://github.com/brummbar))
+- OEL-2256: Remove col-sm-10 class from fieldsets. [\#360](https://github.com/openeuropa/oe_bootstrap_theme/pull/360) ([brummbar](https://github.com/brummbar))
+
 ## [1.7.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.7.0) (2023-09-15)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.6.0...1.7.0)
 
 **Merged pull requests:**
 
+- Prepare changelog for release 1.7.0 [\#357](https://github.com/openeuropa/oe_bootstrap_theme/pull/357) ([brummbar](https://github.com/brummbar))
 - OEL-2502: Added new section pattern. [\#355](https://github.com/openeuropa/oe_bootstrap_theme/pull/355) ([tibi2303](https://github.com/tibi2303))
 - OEL-2469: Add a new columns pattern. [\#354](https://github.com/openeuropa/oe_bootstrap_theme/pull/354) ([brummbar](https://github.com/brummbar))
 
