@@ -3,7 +3,7 @@ description: OpenEuropa base theme using Bootstrap.
 screenshot: screenshot.png
 type: theme
 base theme: false
-core_version_requirement: ^9.4 || ^10
+core_version_requirement: ^10
 
 libraries:
   - oe_bootstrap_theme/bcl
