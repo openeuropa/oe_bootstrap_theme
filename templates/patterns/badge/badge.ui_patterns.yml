@@ -5,7 +5,7 @@ badge:
     background:
       type: select
       label: 'Badge background'
-      description: 'Set the background color of the badge:'
+      description: 'Set the background color of the badge.'
       options:
         primary: 'primary (default)'
         secondary: 'secondary'
@@ -40,6 +40,7 @@ badge:
       label: 'Badge URL'
       description: 'Converts the badge in a link. Optional.'
       preview: 'https://europa.eu'
+      escape: false
     title:
       type: text
       label: 'Link title'

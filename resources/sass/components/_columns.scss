@@ -1,0 +1,20 @@
+// Columns component.
+
+.columns {
+  --columns-grid--column-count: 4;  /* Will be overridden by an inline style. */
+
+  --columns-grid--gap-count: calc(var(--columns-grid--column-count) - 1);
+  --columns-grid--total-gap-width: calc(var(--columns-grid--gap-count) * var(--oebt-columns--gutter));
+  --columns-grid-item--max-width: calc((100% - var(--columns-grid--total-gap-width)) / var(--columns-grid--column-count));
+  --columns-grid-item--calculated-min-width: min(100%, 100px); /* Ensure that cell minimum width does not overflow container. */
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max(300px, var(--columns-grid-item--max-width)), 1fr));
+  gap: var(--oebt-columns--gutter);
+
+  &__item {
+    padding-bottom: var(--oebt-columns--gutter);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}

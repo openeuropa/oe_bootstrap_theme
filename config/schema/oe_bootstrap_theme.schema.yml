@@ -12,3 +12,16 @@ oe_bootstrap_theme.settings:
         responsive:
           type: string
           label: 'Responsive tables'
+    backward_compatibility:
+      type: mapping
+      label: 'OEL Improvements'
+      mapping:
+        card_search_image_hide_on_mobile:
+          type: boolean
+          label: 'Card image not visible on mobile'
+        card_search_use_grid_classes:
+          type: boolean
+          label: 'Card to use grid classes'
+        fieldset_wrapper_col_sm_10:
+          type: boolean
+          label: 'Fieldset wrapper uses col-sm-10'

@@ -33,6 +33,7 @@ link:
       label: 'URL'
       description: 'The button URL (optional).'
       preview: 'http://example.com'
+      escape: false
     icon:
       type: mixed
       label: 'Icon'

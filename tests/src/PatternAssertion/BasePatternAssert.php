@@ -115,6 +115,23 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
   }
 
   /**
+   * Asserts the tag of a particular element.
+   *
+   * @param string $expected
+   *   The expected tag.
+   * @param string $selector
+   *   The CSS selector for the element.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertElementTag(string $expected, string $selector, Crawler $crawler): void {
+    $element = $crawler->filter($selector);
+    self::assertCount(1, $element, sprintf('Multiple elements found with selector "%s".', $selector));
+
+    self::assertEquals($expected, $element->nodeName());
+  }
+
+  /**
    * Asserts the text of a particular element.
    *
    * @param string|null $expected

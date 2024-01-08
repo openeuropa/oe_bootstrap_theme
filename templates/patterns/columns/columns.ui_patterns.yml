@@ -1,0 +1,27 @@
+columns:
+  label: Columns
+  description: Renders content organised in columns of equal width.
+  category: Version 2.x
+  fields:
+    items:
+      type: array
+      label: Items
+      description: The items to organize in columns. Accepts any render array.
+      preview:
+        - '#plain_text': Item 1
+        - '#plain_text': Item 2
+        - '#plain_text': Item 3
+        - '#plain_text': Item 4
+        - '#plain_text': Item 5
+        - '#plain_text': Item 6
+  settings:
+    columns:
+      type: number
+      label: Columns
+      description: The number of columns. Defaults to 4.
+      allow_token: true
+    tag:
+      type: textfield
+      label: Tag
+      description: HTML tag to use for the wrapper. Defaults to "div".
+      allow_token: true

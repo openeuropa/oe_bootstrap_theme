@@ -1,10 +1,112 @@
 # Change Log
 
+## [1.8.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.8.0) (2023-12-21)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.7.0...1.8.0)
+
+**Closed issues:**
+
+- Fatal error after saving theme settings. [\#364](https://github.com/openeuropa/oe_bootstrap_theme/issues/364)
+- Change description text of background for badge pattern  [\#359](https://github.com/openeuropa/oe_bootstrap_theme/issues/359)
+- AV Portal Video is not sized correctly in featured media pattern [\#358](https://github.com/openeuropa/oe_bootstrap_theme/issues/358)
+- HTML tags are visible using bcl\_card\_list Twig Filter [\#330](https://github.com/openeuropa/oe_bootstrap_theme/issues/330)
+
+**Merged pull requests:**
+
+- OEL-2782: Update to use PHP 8.1/8.2 and Drupal 10.0.x/10.1.x. [\#367](https://github.com/openeuropa/oe_bootstrap_theme/pull/367) ([brummbar](https://github.com/brummbar))
+- OEL-0000: Sentence should end with period. [\#366](https://github.com/openeuropa/oe_bootstrap_theme/pull/366) ([brummbar](https://github.com/brummbar))
+- OEL-2256: Remove col-sm-10 class from fieldsets. [\#360](https://github.com/openeuropa/oe_bootstrap_theme/pull/360) ([brummbar](https://github.com/brummbar))
+
+## [1.7.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.7.0) (2023-09-15)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.6.0...1.7.0)
+
+**Merged pull requests:**
+
+- Prepare changelog for release 1.7.0 [\#357](https://github.com/openeuropa/oe_bootstrap_theme/pull/357) ([brummbar](https://github.com/brummbar))
+- OEL-2502: Added new section pattern. [\#355](https://github.com/openeuropa/oe_bootstrap_theme/pull/355) ([tibi2303](https://github.com/tibi2303))
+- OEL-2469: Add a new columns pattern. [\#354](https://github.com/openeuropa/oe_bootstrap_theme/pull/354) ([brummbar](https://github.com/brummbar))
+
+## [1.6.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.6.0) (2023-08-25)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.5.1...1.6.0)
+
+**Merged pull requests:**
+
+- Prepare changelog for release 1.6.0. [\#353](https://github.com/openeuropa/oe_bootstrap_theme/pull/353) ([brummbar](https://github.com/brummbar))
+- OEL-2472: Update to BCL 1.2.0. [\#352](https://github.com/openeuropa/oe_bootstrap_theme/pull/352) ([brummbar](https://github.com/brummbar))
+- OEL-2424: Updated node drone version. [\#351](https://github.com/openeuropa/oe_bootstrap_theme/pull/351) ([tibi2303](https://github.com/tibi2303))
+- OEL-2422: Updated node. [\#349](https://github.com/openeuropa/oe_bootstrap_theme/pull/349) ([tibi2303](https://github.com/tibi2303))
+- UCPKN-2311: Replace placeimg with picsum in previews and tests. [\#344](https://github.com/openeuropa/oe_bootstrap_theme/pull/344) ([kp77](https://github.com/kp77))
+
+## [1.5.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.5.1) (2023-08-01)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.5.0...1.5.1)
+
+**Closed issues:**
+
+- Fatal error in patterns [\#345](https://github.com/openeuropa/oe_bootstrap_theme/issues/345)
+
+**Merged pull requests:**
+
+- Prepare release 1.5.1. [\#347](https://github.com/openeuropa/oe_bootstrap_theme/pull/347) ([drishu](https://github.com/drishu))
+- EPHEH-103: Remove boolean parameter from twig merge call. [\#346](https://github.com/openeuropa/oe_bootstrap_theme/pull/346) ([drishu](https://github.com/drishu))
+
+## [1.5.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.5.0) (2023-07-19)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.4.1...1.5.0)
+
+**Implemented enhancements:**
+
+- Card pattern: Support displaying image on small screen [\#320](https://github.com/openeuropa/oe_bootstrap_theme/issues/320)
+
+**Fixed bugs:**
+
+- The styles for the card pattern \(search variant\) and BCL are not consistent [\#319](https://github.com/openeuropa/oe_bootstrap_theme/issues/319)
+
+**Closed issues:**
+
+- Add title tag to other patterns [\#323](https://github.com/openeuropa/oe_bootstrap_theme/issues/323)
+
+**Merged pull requests:**
+
+- OEL-2380: Upgrade BCL to 1.1.1. [\#338](https://github.com/openeuropa/oe_bootstrap_theme/pull/338) ([tibi2303](https://github.com/tibi2303))
+- OEL-2272: Added title\_tag for facts-figures, links-block, listing, timeline. [\#324](https://github.com/openeuropa/oe_bootstrap_theme/pull/324) ([tibi2303](https://github.com/tibi2303))
+- OEL-2266: Added image on mobile and fixed spacing in card search. [\#322](https://github.com/openeuropa/oe_bootstrap_theme/pull/322) ([tibi2303](https://github.com/tibi2303))
+
+## [1.4.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.4.1) (2023-07-19)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.4.0...1.4.1)
+
+**Merged pull requests:**
+
+- EWPP-3483: Remaining incompatibilities with Drupal 10. [\#339](https://github.com/openeuropa/oe_bootstrap_theme/pull/339) ([brummbar](https://github.com/brummbar))
+
+## [1.4.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.4.0) (2023-06-15)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.3.0...1.4.0)
+
+**Merged pull requests:**
+
+- Prepare release 1.4.0. [\#336](https://github.com/openeuropa/oe_bootstrap_theme/pull/336) ([drishu](https://github.com/drishu))
+- OEL-0000: Fix symfony/validator incompatibility. [\#334](https://github.com/openeuropa/oe_bootstrap_theme/pull/334) ([drishu](https://github.com/drishu))
+- OEL-2298: Fixed overlapping admin navbar with gallery. [\#326](https://github.com/openeuropa/oe_bootstrap_theme/pull/326) ([tibi2303](https://github.com/tibi2303))
+- OEL-2264: Improvements card default and search variant. [\#321](https://github.com/openeuropa/oe_bootstrap_theme/pull/321) ([tibi2303](https://github.com/tibi2303))
+- OEL-2262: Improvements on content-banner pattern. [\#318](https://github.com/openeuropa/oe_bootstrap_theme/pull/318) ([tibi2303](https://github.com/tibi2303))
+- OEL-2259: Hide views mini pager when there is only 1 page. [\#313](https://github.com/openeuropa/oe_bootstrap_theme/pull/313) ([tibi2303](https://github.com/tibi2303))
+- OEL-2254: Fixed path of bootstrap-ie11.css [\#310](https://github.com/openeuropa/oe_bootstrap_theme/pull/310) ([tibi2303](https://github.com/tibi2303))
+- OEL-2253: Adapt content\_banner template for badges with outline param. [\#309](https://github.com/openeuropa/oe_bootstrap_theme/pull/309) ([tibi2303](https://github.com/tibi2303))
+- OEL-2252: Removed assistive\_text from badge pattern. [\#308](https://github.com/openeuropa/oe_bootstrap_theme/pull/308) ([tibi2303](https://github.com/tibi2303))
+- OEL-2251: Use heading in featured-media pattern. [\#307](https://github.com/openeuropa/oe_bootstrap_theme/pull/307) ([tibi2303](https://github.com/tibi2303))
+- OEL-2249: Pager aria-label accessibility issue fix. [\#304](https://github.com/openeuropa/oe_bootstrap_theme/pull/304) ([tibi2303](https://github.com/tibi2303))
+
+## [1.3.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.3.0) (2023-03-01)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.2.0...1.3.0)
+
+**Merged pull requests:**
+
+- Convert Task Runner commands [\#305](https://github.com/openeuropa/oe_bootstrap_theme/pull/305) ([claudiu-cristea](https://github.com/claudiu-cristea))
+- OEL-0000: Matrix values must be wrapped in quotes when used in step c… [\#302](https://github.com/openeuropa/oe_bootstrap_theme/pull/302) ([brummbar](https://github.com/brummbar))
+
 ## [1.2.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.2.0) (2023-02-23)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.1.0...1.2.0)
 
 **Merged pull requests:**
 
+- Update changelog for release 1.2.0. [\#301](https://github.com/openeuropa/oe_bootstrap_theme/pull/301) ([brummbar](https://github.com/brummbar))
 - OEL-0000: Update params for release drone tasks. [\#300](https://github.com/openeuropa/oe_bootstrap_theme/pull/300) ([brummbar](https://github.com/brummbar))
 - Prepare changelog for release 1.2.0. [\#299](https://github.com/openeuropa/oe_bootstrap_theme/pull/299) ([brummbar](https://github.com/brummbar))
 - EWPP-3013: Drupal 10 compatibility. [\#298](https://github.com/openeuropa/oe_bootstrap_theme/pull/298) ([brummbar](https://github.com/brummbar))

@@ -13,7 +13,7 @@ content_banner:
       label: 'Image'
       description: 'Image of the content.'
       preview:
-        src: 'https://placeimg.com/255/255/tech'
+        src: 'https://picsum.photos/255/255/'
         alt: 'Alternative text for content banner image'
     image_size:
       type: text
@@ -24,6 +24,15 @@ content_banner:
       label: 'Title'
       description: 'Title of the content.'
       preview: 'This is the title of this page'
+    title_tag:
+      type: text
+      label: 'Title tag'
+      description: 'The tag to use for the title. Defaults to h1.'
+    action_bar:
+      type: render
+      label: 'Action bar region'
+      description: 'Action bar region. E.g. for action buttons.'
+      preview: '<div class="d-flex justify-content-end mt-2 align-items-center col-lg-11"><button class="w-auto me-3 btn btn-outline-primary btn-md" type="button">Submit</button></div>'
     content:
       type: text
       label: 'Content'
@@ -43,6 +52,7 @@ content_banner:
       preview:
         - label: 'Primary badge'
           rounded_pill: true
+          outline: false
         - label: 'Secondary badge'
           rounded_pill: true
     links:

@@ -21,7 +21,7 @@ textarea:
     count:
       'textarea.form-textarea': 1
       'textarea.form-control': 1
-checkbox_assertion:
+checkbox:
   render:
     '#type': checkbox
     '#title': 'Checkbox example'
@@ -30,9 +30,22 @@ checkbox_assertion:
   assert:
     count:
       'label.form-check-label': 1
-      'input.form-checkbox.form-check-input': 1
+      '.form-check input.form-checkbox.form-check-input[type=checkbox]': 1
+      '.form-switch': 0
       'input[foo=bar]' : 1
       'input[type=checkbox]': 1
+    equals:
+      'label.form-check-label': 'Checkbox example'
+checkbox_switch:
+  render:
+    '#type': checkbox
+    '#title': 'Checkbox example'
+    '#switch': true
+  assert:
+    count:
+      'label.form-check-label': 1
+      'input[type=checkbox]': 1
+      '.form-switch.form-check input.form-checkbox.form-check-input[type=checkbox]': 1
     equals:
       'label.form-check-label': 'Checkbox example'
 select:
@@ -108,6 +121,35 @@ submit_disabled:
       'input[type=submit].form-submit.button.btn': 1
       'input[value=Save]': 1
       'input.btn-primary': 1
+fieldset:
+  render:
+    '#type': fieldset
+    '#title': 'Fieldset title'
+    'child':
+      '#plain_text': 'This is a child of the fieldset.'
+  assert:
+    count:
+      'fieldset': 1
+      'fieldset.form-item.mb-3': 1
+      'fieldset div.fieldset-wrapper': 1
+      # BC compatibility setting should be disabled by default.
+      'fieldset div.fieldset-wrapper.col-sm-10': 0
+    equals:
+      'fieldset legend.col-form-label span.fieldset-legend': 'Fieldset title'
+      'fieldset div.fieldset-wrapper': 'This is a child of the fieldset.'
+fieldset_bc_fieldset_wrapper_col_sm_10:
+  render:
+    '#type': fieldset
+    '#title': 'Fieldset title'
+    'child':
+      '#plain_text': 'This is a child of the fieldset.'
+  assert:
+    count:
+      'fieldset': 1
+      'fieldset div.fieldset-wrapper': 1
+      'fieldset div.fieldset-wrapper.col-sm-10': 1
+  backward_compatibility:
+    fieldset_wrapper_col_sm_10: true
 status_messages_error:
   render:
     '#theme': 'status_messages'

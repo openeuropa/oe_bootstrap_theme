@@ -6,6 +6,8 @@ timeline_items_hide:
       settings:
         hide_from: 7
         hide_to: 0
+      title: 'Title example'
+      title_tag: 'h3'
       items:
         - label: '13 September 2017'
           title: 'Item 1'
@@ -22,12 +24,14 @@ timeline_items_hide:
           content: 'Lorem Ipsum 6'
   assertions:
     count:
+      'h3.bcl-heading': 1
       'ol.bcl-timeline': 1
       'li > p.fs-5.fw-medium': 6
       'li a': 1
       'button': 0
       '.collapse': 0
     equals:
+      'h3.bcl-heading': 'Title example'
       '.bcl-timeline li:nth-child(1) p.fs-5.fw-medium': '13 September 2017'
       '.bcl-timeline li:nth-child(1) p.fs-6.fw-medium': 'Item 1'
       '.bcl-timeline li:nth-child(1) div': '<a href="/example" class="ecl-link">Economic and Monetary Union package of proposals</a>'

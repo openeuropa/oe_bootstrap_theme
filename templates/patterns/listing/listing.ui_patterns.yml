@@ -16,6 +16,10 @@ listing:
       label: 'Title'
       description: 'Title of the listing block.'
       preview: 'This is the listing title'
+    title_tag:
+      type: text
+      label: 'Title tag'
+      description: 'The tag to use for the title. Defaults to h2.'
     link:
       type: array
       label: 'Link'

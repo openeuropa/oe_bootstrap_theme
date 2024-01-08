@@ -12,6 +12,7 @@ use Drupal\Core\Serialization\Yaml;
 use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
+use Drupal\Tests\oe_bootstrap_theme\Traits\BackwardCompatibilityTrait;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -25,6 +26,8 @@ use Symfony\Component\DomCrawler\Crawler;
  * @group oe_bootstrap_theme
  */
 class MarkupRenderingTest extends KernelTestBase implements FormInterface {
+
+  use BackwardCompatibilityTrait;
 
   /**
    * {@inheritdoc}
@@ -54,6 +57,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'card',
     'card_layout',
     'carousel',
+    'columns',
     'content_banner',
     'date_block',
     'description_list',
@@ -74,6 +78,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'offcanvas',
     'pagination',
     'progress',
+    'section',
     'timeline',
   ];
 
@@ -109,10 +114,18 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    *   A render array.
    * @param array $expectations
    *   Test assertion expectations.
+   * @param array $bc_settings
+   *   A list of backward compatibility settings and their values.
    *
    * @dataProvider markupRenderingProvider
    */
-  public function testMarkupRendering(array $render_array, array $expectations): void {
+  public function testMarkupRendering(array $render_array, array $expectations, array $bc_settings = []): void {
+    if (!empty($bc_settings)) {
+      foreach ($bc_settings as $name => $value) {
+        $this->setBackwardCompatibilitySetting($name, $value);
+      }
+    }
+
     // Wrap all the test structure inside a form. This will allow proper
     // processing of form elements and invocation of form alter hooks. Even if
     // the elements being tested are not form related, the form can host them

@@ -12,18 +12,22 @@
     {% set content_attributes = create_attribute() %}
     <div class="my-4">
       {% for _meta_item in meta %}
-        <span class="text-muted me-3">{{ _meta_item }}</span>
+        {% if _meta_item is not empty %}
+          <span class="text-muted me-3">{{ _meta_item }}</span>
+        {% endif %}
       {% endfor %}
     </div>
   {% endif %}
-  <div{{ content_attributes }}>{{ content }}</div>
+  {% if content is not empty %}
+    <div{{ content_attributes }}>{{ content }}</div>
+  {% endif %}
 {% endset %}
 
 {# Enable 'outline' in every badge. #}
 {% set _badges = [] %}
 {% for _badge in badges %}
   {% set _badge = _badge|merge({
-    'outline': true,
+    'outline': _badge.outline ?? true,
   }) %}
   {% set _badges = _badges|merge([_badge]) %}
 {% endfor %}
@@ -31,6 +35,7 @@
 {% include '@oe-bcl/bcl-content-banner/bcl-content-banner.html.twig' with {
   'background': background,
   'title': title,
+  'title_tag': title_tag|default('h1'),
   'content': _content,
   'image': image ? {
     'path': image.src,
@@ -39,6 +44,7 @@
   'image_size': image_size ?? 'lg',
   'badges': _badges,
   'links': links,
+  'action_bar': action_bar,
   'attributes': attributes,
 } only %}
 {% endapply %}

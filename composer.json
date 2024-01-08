@@ -6,9 +6,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.1",
         "cweagans/composer-patches": "^1.7",
-        "drupal/core": "^9.4 || ^10",
+        "drupal/core": "^10",
         "drupal/ui_patterns": "^1.4",
         "drupal/ui_patterns_settings": "^2.0",
         "openeuropa/ecl-twig-loader": "^4.0"
@@ -16,8 +16,8 @@
     "require-dev": {
         "ext-dom": "*",
         "composer/installers": "^1.11",
-        "drupal/core-composer-scaffold": "^9.4 || ^10",
-        "drupal/core-dev": "^9.4 || ^10",
+        "drupal/core-composer-scaffold": "^10",
+        "drupal/core-dev": "^10",
         "drupal/styleguide": "^2",
         "drush/drush": "^11.1",
         "openeuropa/code-review": "^2.0.0-alpha6",
@@ -67,7 +67,8 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "drupal/core-composer-scaffold": true,
             "phpro/grumphp": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "php-http/discovery": false
         }
     }
 }

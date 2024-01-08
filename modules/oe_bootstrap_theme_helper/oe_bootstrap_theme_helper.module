@@ -44,9 +44,9 @@ function oe_bootstrap_theme_helper_field_widget_settings_summary_alter(array &$s
 }
 
 /**
- * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ * Implements hook_field_widget_single_element_WIDGET_TYPE_form_alter().
  */
-function oe_bootstrap_theme_helper_field_widget_boolean_checkbox_form_alter(&$element, FormStateInterface $form_state, $context) {
+function oe_bootstrap_theme_helper_field_widget_single_element_boolean_checkbox_form_alter(&$element, FormStateInterface $form_state, $context) {
   /** @var \Drupal\Core\Field\Plugin\Field\FieldWidget\BooleanCheckboxWidget $widget */
   $widget = $context['widget'];
   if (isset($element['value']['#type'])
@@ -58,9 +58,9 @@ function oe_bootstrap_theme_helper_field_widget_boolean_checkbox_form_alter(&$el
 }
 
 /**
- * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ * Implements hook_field_widget_single_element_WIDGET_TYPE_form_alter().
  */
-function oe_bootstrap_theme_helper_field_widget_options_buttons_form_alter(&$element, FormStateInterface $form_state, $context) {
+function oe_bootstrap_theme_helper_field_widget_single_element_options_buttons_form_alter(&$element, FormStateInterface $form_state, $context) {
   /** @var \Drupal\Core\Field\Plugin\Field\FieldWidget\OptionsButtonsWidget $widget */
   $widget = $context['widget'];
   if ($widget->getThirdPartySetting('oe_bootstrap_theme_helper', 'switch')) {

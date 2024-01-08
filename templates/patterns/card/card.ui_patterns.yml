@@ -33,7 +33,7 @@ card:
       label: 'Image'
       description: 'Image for the card. Optional.'
       preview:
-        src: 'https://placeimg.com/1000/500/people'
+        src: 'https://picsum.photos/1000/500/'
         alt: 'Alternative text for card image'
     date:
       type: array

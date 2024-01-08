@@ -22,6 +22,10 @@ links_block:
         label: 'Title'
         description: 'Link block title (optional).'
         preview: 'More information'
+      title_tag:
+        type: text
+        label: 'Title tag'
+        description: 'The tag to use for the title. Defaults to h2.'
       links:
         type: array
         label: 'Links'
