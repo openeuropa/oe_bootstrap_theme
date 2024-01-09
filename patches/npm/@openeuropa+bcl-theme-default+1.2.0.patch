@@ -1,3 +1,18 @@
+diff --git a/node_modules/@openeuropa/bcl-theme-default/src/scss/_multiselect.scss b/node_modules/@openeuropa/bcl-theme-default/src/scss/_multiselect.scss
+index 2ea5d7d..6a6fda0 100644
+--- a/node_modules/@openeuropa/bcl-theme-default/src/scss/_multiselect.scss
++++ b/node_modules/@openeuropa/bcl-theme-default/src/scss/_multiselect.scss
+@@ -47,8 +47,8 @@ select.multi-select {
+       font-weight: $badge-font-weight;
+       line-height: 1;
+       color: $badge-color;
+-      text-align: center;
+-      white-space: nowrap;
++      text-align: left;
++      white-space: normal;
+       vertical-align: baseline;
+       padding-right: map-get($spacers, "3-5");
+       @include border-radius($badge-border-radius);
 diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
 index 171972f..aa94eb3 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
