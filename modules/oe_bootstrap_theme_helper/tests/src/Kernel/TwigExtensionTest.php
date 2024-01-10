@@ -520,7 +520,7 @@ TWIG;
             ],
           ],
           'text' => [
-            'content' => 'this is a textx',
+            'content' => 'this is a text',
             'classes' => 'mb-2',
             'tag' => 'div',
           ],
