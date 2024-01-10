@@ -126,7 +126,7 @@ class TwigExtension extends AbstractExtension {
         if (!empty($item['url']) && $item['url'] instanceof Url) {
           // Use clone, to not pollute the original object with attributes.
           $url = clone $item['url'];
-          $url->setOptions(['attributes' => ['class' => 'standalone']]);
+          $url->mergeOptions(['attributes' => ['class' => 'standalone']]);
           $title = Link::fromTextAndUrl($title, $url);
         }
         $bcl_card['title'] = $title;
