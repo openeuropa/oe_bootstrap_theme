@@ -20,6 +20,7 @@
         "drupal/core-dev": "^10",
         "drupal/styleguide": "^2",
         "drush/drush": "^11.1",
+        "nikic/php-parser": "^4",
         "openeuropa/code-review": "^2.0.0-alpha6",
         "openeuropa/task-runner-drupal-project-symlink": "^1.0-beta6",
         "phpspec/prophecy-phpunit": "^2"
@@ -57,7 +58,10 @@
             "locations": {
                 "web-root": "./build"
             }
-        }
+        },
+        "_readme": [
+            "Explicit requirement of nikic/php-parser ^4 as later versions are not compatible with grumphp @see https://github.com/phpro/grumphp/issues/1119"
+        ]
     },
     "config": {
         "sort-packages": true,
