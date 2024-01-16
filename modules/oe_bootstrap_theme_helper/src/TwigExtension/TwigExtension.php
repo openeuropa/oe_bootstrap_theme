@@ -290,6 +290,10 @@ class TwigExtension extends AbstractExtension {
       if ($label instanceof TwigMarkup) {
         $label = Markup::create($label);
       }
+      elseif (is_array($label)) {
+        // @see \Drupal\Core\Utility\LinkGenerator::generate()
+        $label = $this->renderer->render($label);
+      }
       return [
         '#type' => 'html_tag',
         '#tag' => 'a',
