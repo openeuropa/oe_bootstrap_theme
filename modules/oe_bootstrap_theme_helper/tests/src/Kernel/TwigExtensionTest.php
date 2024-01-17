@@ -186,6 +186,52 @@ class TwigExtensionTest extends AbstractKernelTestBase {
           'label' => 'External link',
         ],
       ],
+      'url with array label' => [
+        [
+          'href' => 'https://www.example.com/template/',
+          'text' => 'user: admin',
+        ],
+        [
+          'path' => 'https://www.example.com/template/',
+          'label' => [
+            '#type' => 'inline_template',
+            '#template' => '{{ prefix }}: {{ suffix }}',
+            '#context' => [
+              'prefix' => 'user',
+              'suffix' => 'admin',
+            ],
+          ],
+        ],
+      ],
+      'url with array label and url object' => [
+        [
+          'href' => '/',
+          'text' => 'user: anonymous',
+        ],
+        [
+          'path' => Url::fromRoute('<front>'),
+          'label' => [
+            '#type' => 'inline_template',
+            '#template' => '{{ prefix }}: {{ suffix }}',
+            '#context' => [
+              'prefix' => 'user',
+              'suffix' => 'anonymous',
+            ],
+          ],
+        ],
+      ],
+      'url with array #markup label' => [
+        [
+          'href' => 'https://www.example.com/markup/',
+          'text' => '<b>test</b>',
+        ],
+        [
+          'path' => 'https://www.example.com/markup/',
+          'label' => [
+            '#markup' => '<b>test</b>',
+          ],
+        ],
+      ],
     ];
   }
 
