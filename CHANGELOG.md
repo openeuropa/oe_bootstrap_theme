@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.8.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.8.1) (2024-01-17)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.8.0...1.8.1)
+
+**Merged pull requests:**
+
+- OEL-2767: Links with render array as labels cannot be rendered. [\#375](https://github.com/openeuropa/oe_bootstrap_theme/pull/375) ([brummbar](https://github.com/brummbar))
+- OEL-2782: Unlock symfony/validator to allow to install Drupal 10.1.x. [\#369](https://github.com/openeuropa/oe_bootstrap_theme/pull/369) ([brummbar](https://github.com/brummbar))
+
 ## [1.8.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.8.0) (2023-12-21)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.7.0...1.8.0)
 
@@ -12,6 +20,7 @@
 
 **Merged pull requests:**
 
+- Prepare changelog for release 1.8.0. [\#368](https://github.com/openeuropa/oe_bootstrap_theme/pull/368) ([brummbar](https://github.com/brummbar))
 - OEL-2782: Update to use PHP 8.1/8.2 and Drupal 10.0.x/10.1.x. [\#367](https://github.com/openeuropa/oe_bootstrap_theme/pull/367) ([brummbar](https://github.com/brummbar))
 - OEL-0000: Sentence should end with period. [\#366](https://github.com/openeuropa/oe_bootstrap_theme/pull/366) ([brummbar](https://github.com/brummbar))
 - OEL-2256: Remove col-sm-10 class from fieldsets. [\#360](https://github.com/openeuropa/oe_bootstrap_theme/pull/360) ([brummbar](https://github.com/brummbar))
