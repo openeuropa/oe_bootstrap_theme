@@ -1,0 +1,89 @@
+{% apply spaceless %}
+
+{# Parameters:
+  - title: (string) (default: '')
+  - title_tag: (string) (default: 'h1')
+  - title_attributes (drupal attrs)
+  - image_position: (string) (default: '')
+  - card_body: (string) (default: '')
+  - card_header: (string) (default: '')
+  - card_footer: (string) (default: '')
+
+  - body_attributes (drupal attrs)
+  - header_attributes (drupal attrs)
+  - footer_attributes (drupal attrs)
+  - attributes (drupal attrs)
+#}
+
+{% set _title = title|default('') %}
+{% set _title_tag = title_tag|default('h1') %}
+{% set _title_attributes = title_attributes ?: create_attribute() %}
+
+{% set _image_position = image_position|default('') %}
+{% set _image = image|default('') %}
+
+{% set _card_body = card_body|default('') %}
+{% set _card_header = card_header|default('') %}
+{% set _card_footer = card_footer|default('') %}
+
+{% set _body_attributes = body_attributes|default({}) %}
+{% set _header_attributes = header_attributes|default({}) %}
+{% set _footer_attributes = footer_attributes|default({}) %}
+
+{% if attributes is empty %}
+  {% set attributes = create_attribute() %}
+{% endif %}
+
+{% set attributes = attributes.addClass(['card', 'v2']) %}
+
+{% if _body_attributes is empty %}
+  {% set _body_attributes = create_attribute() %}
+{% endif %}
+
+{% if _header_attributes is empty %}
+  {% set _header_attributes = create_attribute() %}
+{% endif %}
+
+{% if _footer_attributes is empty %}
+  {% set _footer_attributes = create_attribute() %}
+{% endif %}
+
+{% set _body_attributes = _body_attributes.addClass('card-body') %}
+{% set _header_attributes = _header_attributes.addClass('card-header') %}
+{% set _footer_attributes = _footer_attributes.addClass('card-footer') %}
+
+{% if _image_position is not empty %}
+  {% set attributes = attributes.addClass(['image-' ~ _image_position]) %}
+{% endif %}
+
+
+<article
+  {{ attributes }}
+>
+{% if _card_header is not empty %}
+  <div {{ _header_attributes }}>
+    {{- _card_header -}}
+  </div>
+{% endif %}
+  {% if _image is not empty %}
+    {{ _image }}
+  {% endif %}
+  <div {{ _body_attributes }}>
+  {% if _title is not empty %}
+    {% set _title_attributes = _title_attributes.addClass('card-title') %}
+    {% include '@oe-bcl/bcl-heading/heading.html.twig' with {
+      title: _title,
+      title_tag: _title_tag,
+      attributes: _title_attributes,
+    } only %}
+  {% endif %}
+  {{- _card_body -}}
+  </div>
+{% if _card_footer is not empty %}
+  <div {{ _footer_attributes }}>
+    {{- _card_footer -}}
+  </div>
+{% endif %}
+</article>
+
+{% endapply %}

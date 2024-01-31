@@ -1,0 +1,40 @@
+card_v2:
+  render:
+    '#type': pattern
+    '#id': 'card'
+    '#fields':
+      title: 'New title with <b>markup</b>'
+      title_tag: 'h4'
+      card_body_content: '<p>Body content card</p>'
+      card_footer_content: '<p>Footer content card</p>'
+      card_header_content: '<p>Header content card</p>'
+      image: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
+      attributes: 'class="new-class" id="card-id" data-attribute="some-value"'
+      body_attributes: 'class="new-class" id="body-id" data-attribute="some-value"'
+      header_attributes: 'class="new-class" id="header-id" data-attribute="some-value"'
+      footer_attributes: 'class="new-class" id="footer-id" data-attribute="some-value"'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardV2PatternAssert
+      expected:
+        title: 'New title with <b>markup</b>'
+        image: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
+        card_body_content: '<p>Body content card</p>'
+        card_footer_content: '<p>Footer content card</p>'
+        card_header_content: '<p>Header content card</p>'
+        attributes:
+          class: 'new-class card'
+          id: 'card-id'
+          data-attribute: 'some-value'
+        body_attributes:
+          class: 'new-class card-body'
+          id: 'body-id'
+          data-attribute: 'some-value'
+        header_attributes:
+          class: 'new-class card-header'
+          id: 'card-id'
+          data-attribute: 'some-value'
+        footer_attributes:
+          class: 'new-class card-footer'
+          id: 'card-id'
+          data-attribute: 'some-value'

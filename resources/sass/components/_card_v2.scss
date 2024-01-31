@@ -1,0 +1,26 @@
+// Custom style for Card v2.
+// -----------------------------------------------------------------------------
+.card.v2 {
+  .card-header {
+    order: 1;
+  }
+  img,
+  figure {
+    order: 2;
+  }
+  .card-body {
+    order: 3;
+  }
+  .card-footer {
+    order: 4;
+  }
+  &.image-bottom {
+    .card-body {
+      order: 2;
+    }
+    img,
+    figure {
+      order: 3;
+    }
+  }
+}
