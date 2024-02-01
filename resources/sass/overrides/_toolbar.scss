@@ -1,9 +1,9 @@
 // Drupal overrides for the admin toolbar
 // -----------------------------------------------------------------------------
 
-// Increase admin toolbar z-index
+// Lower admin toolbar z-index in order to not overlap offcanvas and modal.
 #toolbar-administration {
   #toolbar-bar {
-    z-index: 5000;
+    z-index: 61;
   }
 }
