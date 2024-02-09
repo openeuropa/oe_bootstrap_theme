@@ -28,6 +28,11 @@ card:
       label: 'Title'
       description: 'Card title. Supports markup, e.g. for links.'
       preview: 'Title card'
+    title_tag:
+      type: text
+      label: 'Title tag'
+      description: 'Tag to be used for heading'
+      preview: 'h5'
     subtitle:
       type: text
       label: 'Subtitle'
