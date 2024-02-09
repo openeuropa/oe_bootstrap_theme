@@ -5,6 +5,8 @@
  */
 #}
 {% apply spaceless %}
+{% set _left_col_classes = left_col_classes|default('col-4') %}
+{% set _right_col_classes = right_col_classes|default('col-8') %}
 {% set _image = image ? image|merge({
     'path': image.src,
     'alt': image.alt,
@@ -39,8 +41,8 @@
 {% include '@oe-bcl/card' with {
   'horizontal': orientation == 'horizontal',
   'horizontal_grid': (orientation == 'horizontal') ? {
-    left_col_classes: 'col-4',
-    right_col_classes: 'col-8',
+    left_col_classes: _left_col_classes,
+    right_col_classes: _right_col_classes,
     gutter: 0,
   } : {},
   'title': title,

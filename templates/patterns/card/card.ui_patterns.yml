@@ -13,6 +13,16 @@ card:
       type: string
       label:  'Orientation'
       description: 'Can be set to horizontal or vertical. Defaults to vertical.'
+    left_col_classes:
+      type: string
+      label:  'Left column classes'
+      description: 'When horizontal orientation. Classes of left column.'
+      preview: 'col-3'
+    right_col_classes:
+      type: string
+      label: 'Right column classes'
+      description: 'When horizontal orientation. Classes of right column.'
+      preview: 'col-9'
     title:
       type: text
       label: 'Title'
