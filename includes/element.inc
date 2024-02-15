@@ -5,7 +5,7 @@
  * Theme and preprocess functions for elements.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use Drupal\Core\Render\Element;
 use Drupal\oe_bootstrap_theme\Theme\OpenEuropaBootstrapThemePreRender;

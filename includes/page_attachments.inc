@@ -5,7 +5,7 @@
  * Custom page attachments hooks.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Html;

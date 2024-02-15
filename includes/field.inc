@@ -5,7 +5,7 @@
  * Theme and preprocess functions for fields.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 /**
  * Implements hook_preprocess_field().

@@ -5,7 +5,7 @@
  * Post update functions for the OE Bootstrap theme helper module.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 /**
  * Uninstall OE Bootstrap Theme Paragraphs module.

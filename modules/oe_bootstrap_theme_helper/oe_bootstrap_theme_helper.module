@@ -5,7 +5,7 @@
  * Hook implementations for OpenEuropa Bootstrap Theme Helper module.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\WidgetInterface;
