@@ -5,7 +5,7 @@
  * The oe_bootstrap_theme hooks.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use Drupal\Core\Template\Attribute;
 

@@ -5,7 +5,7 @@
  * Theme and preprocess functions for forms.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\oe_bootstrap_theme\BackwardCompatibility;
