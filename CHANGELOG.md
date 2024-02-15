@@ -1,10 +1,18 @@
 # Change Log
 
+## [1.9.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.9.0) (2024-02-15)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.8.1...1.9.0)
+
+**Merged pull requests:**
+
+- OEL-2794: Update components to run on Drupal 10.2.x. [\#382](https://github.com/openeuropa/oe_bootstrap_theme/pull/382) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
+
 ## [1.8.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.8.1) (2024-01-17)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.8.0...1.8.1)
 
 **Merged pull requests:**
 
+- Prepare changelog for release 1.8.1. [\#376](https://github.com/openeuropa/oe_bootstrap_theme/pull/376) ([brummbar](https://github.com/brummbar))
 - OEL-2767: Links with render array as labels cannot be rendered. [\#375](https://github.com/openeuropa/oe_bootstrap_theme/pull/375) ([brummbar](https://github.com/brummbar))
 - OEL-2782: Unlock symfony/validator to allow to install Drupal 10.1.x. [\#369](https://github.com/openeuropa/oe_bootstrap_theme/pull/369) ([brummbar](https://github.com/brummbar))
 
