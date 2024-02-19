@@ -7,3 +7,19 @@
     z-index: 5000;
   }
 }
+
+// Offcanvas
+.offcanvas-backdrop {
+  z-index: 5065;
+}
+.offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl {
+  --bs-offcanvas-zindex: 5070;
+}
+
+// Modal
+.modal {
+  --bs-modal-zindex: 5120;
+}
+.modal-backdrop {
+  --bs-backdrop-zindex: 5110;
+}
