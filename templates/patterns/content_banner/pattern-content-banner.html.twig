@@ -6,6 +6,10 @@
 #}
 {% apply spaceless %}
 {# Render the 'meta' items into the content variable. #}
+{% set _image = image ? image|merge({
+    'path': image.src,
+    'alt': image.alt,
+}) %}
 {% set _content %}
   {% set content_attributes = create_attribute().addClass('mt-4') %}
   {% if meta is not empty %}
@@ -37,10 +41,7 @@
   'title': title,
   'title_tag': title_tag|default('h1'),
   'content': _content,
-  'image': image ? {
-    'path': image.src,
-    'alt': image.alt,
-  } : {},
+  'image': _image,
   'image_size': image_size ?? 'lg',
   'badges': _badges,
   'links': links,
