@@ -5,6 +5,10 @@
  */
 #}
 {% apply spaceless %}
+{% set _image = image ? image|merge({
+    'path': image.src,
+    'alt': image.alt,
+}) %}
 {% set _content %}
   {% if meta is not empty %}
     {# Use negative margin to compensate for me-3 on each item. #}
@@ -50,10 +54,7 @@
     'tag': 'div',
   } : {},
   'content': _content,
-  'image': image ? {
-    'path': image.src,
-    'alt': image.alt,
-  },
+  'image': _image,
   'date': date|default({}),
   'card_header': header,
   'card_footer': footer,
