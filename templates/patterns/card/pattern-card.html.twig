@@ -7,10 +7,6 @@
 {% apply spaceless %}
 {% set _left_col_classes = left_col_classes|default('col-4') %}
 {% set _right_col_classes = right_col_classes|default('col-8') %}
-{% set _image = image ? image|merge({
-    'path': image.src,
-    'alt': image.alt,
-  }) %}
 {% set _content %}
   {% if meta is not empty %}
     {# Use negative margin to compensate for me-3 on each item. #}
@@ -57,7 +53,10 @@
     'tag': 'div',
   } : {},
   'content': _content,
-  'image': _image,
+  'image': image ? {
+    'path': image.src,
+    'alt': image.alt,
+  },
   'date': date|default({}),
   'card_header': header,
   'card_footer': footer,
