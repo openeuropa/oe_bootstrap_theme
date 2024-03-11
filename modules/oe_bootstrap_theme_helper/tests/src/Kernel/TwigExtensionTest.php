@@ -429,7 +429,7 @@ TWIG;
   }
 
   /**
-   * Tests BCL card list.
+   * Tests BCL card list filter.
    */
   public function testBclCardList(): void {
     $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
