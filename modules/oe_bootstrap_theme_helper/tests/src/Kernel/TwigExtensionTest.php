@@ -459,7 +459,7 @@ TWIG;
   }
 
   /**
-   * Provides dara for testBclCardList().
+   * Provides data for testBclCardList().
    *
    * @return array
    *   The scenarios.
