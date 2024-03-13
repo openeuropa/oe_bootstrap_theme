@@ -1,10 +1,19 @@
 # Change Log
 
+## [1.9.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.9.1) (2024-03-13)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.9.0...1.9.1)
+
+**Merged pull requests:**
+
+- OEL-2593: Margin bottom of form elements increased to 1rem. [\#380](https://github.com/openeuropa/oe_bootstrap_theme/pull/380) ([tibi2303](https://github.com/tibi2303))
+- OEL-2595: Fixed overlap of toolbar. [\#379](https://github.com/openeuropa/oe_bootstrap_theme/pull/379) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.9.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.9.0) (2024-02-15)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.8.1...1.9.0)
 
 **Merged pull requests:**
 
+- Prepare changelog for release 1.9.0. [\#384](https://github.com/openeuropa/oe_bootstrap_theme/pull/384) ([brummbar](https://github.com/brummbar))
 - OEL-2794: Update components to run on Drupal 10.2.x. [\#382](https://github.com/openeuropa/oe_bootstrap_theme/pull/382) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
 
 ## [1.8.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.8.1) (2024-01-17)
@@ -68,13 +77,17 @@
 ## [1.5.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.5.0) (2023-07-19)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.4.1...1.5.0)
 
+**Merged pull requests:**
+
+- Prepare changelog for release 1.5.0. [\#343](https://github.com/openeuropa/oe_bootstrap_theme/pull/343) ([brummbar](https://github.com/brummbar))
+- Merge 1.4.1 changes into 1.x [\#342](https://github.com/openeuropa/oe_bootstrap_theme/pull/342) ([brummbar](https://github.com/brummbar))
+
+## [1.4.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.4.1) (2023-07-19)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.4.0...1.4.1)
+
 **Implemented enhancements:**
 
 - Card pattern: Support displaying image on small screen [\#320](https://github.com/openeuropa/oe_bootstrap_theme/issues/320)
-
-**Fixed bugs:**
-
-- The styles for the card pattern \(search variant\) and BCL are not consistent [\#319](https://github.com/openeuropa/oe_bootstrap_theme/issues/319)
 
 **Closed issues:**
 
@@ -86,20 +99,35 @@
 - OEL-2272: Added title\_tag for facts-figures, links-block, listing, timeline. [\#324](https://github.com/openeuropa/oe_bootstrap_theme/pull/324) ([tibi2303](https://github.com/tibi2303))
 - OEL-2266: Added image on mobile and fixed spacing in card search. [\#322](https://github.com/openeuropa/oe_bootstrap_theme/pull/322) ([tibi2303](https://github.com/tibi2303))
 
-## [1.4.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.4.1) (2023-07-19)
-[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.4.0...1.4.1)
-
-**Merged pull requests:**
-
-- EWPP-3483: Remaining incompatibilities with Drupal 10. [\#339](https://github.com/openeuropa/oe_bootstrap_theme/pull/339) ([brummbar](https://github.com/brummbar))
-
 ## [1.4.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.4.0) (2023-06-15)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.3.0...1.4.0)
+
+**Implemented enhancements:**
+
+- Inconsistencies between card and card search variant pattern templates. [\#317](https://github.com/openeuropa/oe_bootstrap_theme/issues/317)
+- Card pattern: Do not display empty meta. [\#316](https://github.com/openeuropa/oe_bootstrap_theme/issues/316)
+- Content banner pattern fixes and improvements [\#314](https://github.com/openeuropa/oe_bootstrap_theme/issues/314)
+- Accessibility issue with pager [\#277](https://github.com/openeuropa/oe_bootstrap_theme/issues/277)
+
+**Fixed bugs:**
+
+- Only display heading for title in the pattern featured media if it is not empty [\#288](https://github.com/openeuropa/oe_bootstrap_theme/issues/288)
+- Views mini pager display \[1\] when the view result is empty [\#278](https://github.com/openeuropa/oe_bootstrap_theme/issues/278)
+- Badge pattern assistive\_text [\#204](https://github.com/openeuropa/oe_bootstrap_theme/issues/204)
+- The bootstrap-ie11.css is included from the active theme [\#202](https://github.com/openeuropa/oe_bootstrap_theme/issues/202)
+
+**Closed issues:**
+
+- \[pattern\_file\] Open PDF file to other tab.  [\#332](https://github.com/openeuropa/oe_bootstrap_theme/issues/332)
+- Admin toolbar media gallery modal z-index issue [\#325](https://github.com/openeuropa/oe_bootstrap_theme/issues/325)
+- Make it possible to set the outline badge parameter in content banner [\#293](https://github.com/openeuropa/oe_bootstrap_theme/issues/293)
 
 **Merged pull requests:**
 
 - Prepare release 1.4.0. [\#336](https://github.com/openeuropa/oe_bootstrap_theme/pull/336) ([drishu](https://github.com/drishu))
+- OEL-0000: Fix symfony/validator incompatibility.  [\#335](https://github.com/openeuropa/oe_bootstrap_theme/pull/335) ([julien-](https://github.com/julien-))
 - OEL-0000: Fix symfony/validator incompatibility. [\#334](https://github.com/openeuropa/oe_bootstrap_theme/pull/334) ([drishu](https://github.com/drishu))
+- ELA-667: HTML tags are visible using bcl\_card\_list. [\#329](https://github.com/openeuropa/oe_bootstrap_theme/pull/329) ([julien-](https://github.com/julien-))
 - OEL-2298: Fixed overlapping admin navbar with gallery. [\#326](https://github.com/openeuropa/oe_bootstrap_theme/pull/326) ([tibi2303](https://github.com/tibi2303))
 - OEL-2264: Improvements card default and search variant. [\#321](https://github.com/openeuropa/oe_bootstrap_theme/pull/321) ([tibi2303](https://github.com/tibi2303))
 - OEL-2262: Improvements on content-banner pattern. [\#318](https://github.com/openeuropa/oe_bootstrap_theme/pull/318) ([tibi2303](https://github.com/tibi2303))
@@ -115,11 +143,31 @@
 
 **Merged pull requests:**
 
+- Prepare changelog for release 1.3.0. [\#306](https://github.com/openeuropa/oe_bootstrap_theme/pull/306) ([brummbar](https://github.com/brummbar))
 - Convert Task Runner commands [\#305](https://github.com/openeuropa/oe_bootstrap_theme/pull/305) ([claudiu-cristea](https://github.com/claudiu-cristea))
 - OEL-0000: Matrix values must be wrapped in quotes when used in step c… [\#302](https://github.com/openeuropa/oe_bootstrap_theme/pull/302) ([brummbar](https://github.com/brummbar))
 
 ## [1.2.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.2.0) (2023-02-23)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.1.0...1.2.0)
+
+**Implemented enhancements:**
+
+- Table theming has been removed [\#249](https://github.com/openeuropa/oe_bootstrap_theme/issues/249)
+- Badge pattern is missing outline parameter in new BCL [\#184](https://github.com/openeuropa/oe_bootstrap_theme/issues/184)
+
+**Fixed bugs:**
+
+- Description list pattern multiple definition per term [\#255](https://github.com/openeuropa/oe_bootstrap_theme/issues/255)
+- Conversion in featured media pattern preprocess breaks pattern preview [\#208](https://github.com/openeuropa/oe_bootstrap_theme/issues/208)
+- Modal anchor not working in patterns page [\#163](https://github.com/openeuropa/oe_bootstrap_theme/issues/163)
+- Grid row is displaying empty cards [\#161](https://github.com/openeuropa/oe_bootstrap_theme/issues/161)
+
+**Closed issues:**
+
+- Pattern overview page broken after update to ui\_patterns 1.5.0 [\#294](https://github.com/openeuropa/oe_bootstrap_theme/issues/294)
+- Inpage navigation ScrollSpy offset [\#284](https://github.com/openeuropa/oe_bootstrap_theme/issues/284)
+- Change class for secondary buttons [\#218](https://github.com/openeuropa/oe_bootstrap_theme/issues/218)
+- Patterns with missing svg icons [\#165](https://github.com/openeuropa/oe_bootstrap_theme/issues/165)
 
 **Merged pull requests:**
 
@@ -199,6 +247,11 @@
 
 - Missing comma in field--comment.html.twig template [\#251](https://github.com/openeuropa/oe_bootstrap_theme/issues/251)
 
+**Closed issues:**
+
+- Put back title tag in pattern listing [\#252](https://github.com/openeuropa/oe_bootstrap_theme/issues/252)
+- Return type of getIterator\(\) at ValueObjectBase.php [\#246](https://github.com/openeuropa/oe_bootstrap_theme/issues/246)
+
 **Merged pull requests:**
 
 - Prepare changelog for release 1.0.0-beta4. [\#260](https://github.com/openeuropa/oe_bootstrap_theme/pull/260) ([brummbar](https://github.com/brummbar))
@@ -234,6 +287,11 @@
 - bcl lib templates take precedence over override [\#61](https://github.com/openeuropa/oe_bootstrap_theme/issues/61)
 - update composer to the last 1.x version [\#51](https://github.com/openeuropa/oe_bootstrap_theme/issues/51)
 - Don't mix NPM whith Composer [\#37](https://github.com/openeuropa/oe_bootstrap_theme/issues/37)
+- Add Tooltip pattern with BCL component [\#33](https://github.com/openeuropa/oe_bootstrap_theme/issues/33)
+- Add Toast  pattern with BCL component [\#32](https://github.com/openeuropa/oe_bootstrap_theme/issues/32)
+- Add Pagination pattern with BCL component [\#30](https://github.com/openeuropa/oe_bootstrap_theme/issues/30)
+- Refactor Collapse pattern with BCL component [\#19](https://github.com/openeuropa/oe_bootstrap_theme/issues/19)
+- Assets are missing from the release [\#9](https://github.com/openeuropa/oe_bootstrap_theme/issues/9)
 
 **Merged pull requests:**
 
