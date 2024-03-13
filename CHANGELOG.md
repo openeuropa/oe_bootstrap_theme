@@ -1,10 +1,19 @@
 # Change Log
 
+## [1.9.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.9.1) (2024-03-13)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.9.0...1.9.1)
+
+**Merged pull requests:**
+
+- OEL-2593: Margin bottom of form elements increased to 1rem. [\#380](https://github.com/openeuropa/oe_bootstrap_theme/pull/380) ([tibi2303](https://github.com/tibi2303))
+- OEL-2595: Fixed overlap of toolbar. [\#379](https://github.com/openeuropa/oe_bootstrap_theme/pull/379) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.9.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.9.0) (2024-02-15)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.8.1...1.9.0)
 
 **Merged pull requests:**
 
+- Prepare changelog for release 1.9.0. [\#384](https://github.com/openeuropa/oe_bootstrap_theme/pull/384) ([brummbar](https://github.com/brummbar))
 - OEL-2794: Update components to run on Drupal 10.2.x. [\#382](https://github.com/openeuropa/oe_bootstrap_theme/pull/382) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
 
 ## [1.8.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.8.1) (2024-01-17)
