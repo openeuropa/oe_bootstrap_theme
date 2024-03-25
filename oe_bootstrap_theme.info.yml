@@ -19,7 +19,7 @@ libraries-extend:
   core/drupal.progress:
     - oe_bootstrap_theme/drupal.progress
 
-ckeditor_stylesheets:
+ckeditor5-stylesheets:
   - assets/css/oe-bcl-default.min.css
 
 regions:
