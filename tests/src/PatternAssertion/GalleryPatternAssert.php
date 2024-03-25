@@ -94,6 +94,7 @@ class GalleryPatternAssert extends BasePatternAssert {
         'image' => $item['media']['rendered'],
         'caption_title' => $item['media']['caption_title'] ?? NULL,
         'caption' => $item['media']['caption_media'] ?? NULL,
+        'is_playable' => $item['media']['is_playable'] ?? NULL,
       ];
     }
 
