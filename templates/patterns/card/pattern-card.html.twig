@@ -5,6 +5,8 @@
  */
 #}
 {% apply spaceless %}
+{% set _left_col_classes = left_col_classes|default('col-4') %}
+{% set _right_col_classes = right_col_classes|default('col-8') %}
 {% set _content %}
   {% if meta is not empty %}
     {# Use negative margin to compensate for me-3 on each item. #}
@@ -35,11 +37,12 @@
 {% include '@oe-bcl/card' with {
   'horizontal': orientation == 'horizontal',
   'horizontal_grid': (orientation == 'horizontal') ? {
-    left_col_classes: 'col-4',
-    right_col_classes: 'col-8',
+    left_col_classes: _left_col_classes,
+    right_col_classes: _right_col_classes,
     gutter: 0,
   } : {},
   'title': title,
+  'title_tag' : title_tag,
   'subtitle': (subtitle is not empty) ? {
     'content': subtitle,
     'classes': 'mb-2',
