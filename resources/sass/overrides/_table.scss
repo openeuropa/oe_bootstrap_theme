@@ -7,3 +7,24 @@ a.tabledrag-handle {
     margin: -0.2em 0.5em 0;
   }
 }
+
+th.priority-low,
+th.priority-medium,
+td.priority-low,
+td.priority-medium {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  th.priority-medium,
+  td.priority-medium {
+    display: table-cell;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  th.priority-low,
+  td.priority-low {
+    display: table-cell;
+  }
+}
