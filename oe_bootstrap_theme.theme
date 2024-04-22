@@ -93,3 +93,24 @@ function _oe_bootstrap_theme_bootstrap_responsive_table(array &$variables): void
 
   $variables['wrapper_attributes'] = new Attribute(['class' => $class]);
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for Card V2 Template.
+ */
+function oe_bootstrap_theme_preprocess_pattern_card_v2(&$variables) {
+  if (empty($variables['media_attributes'])) {
+    $variables['media_attributes'] = create_attribute();
+  }
+
+  if (empty($variables['content_attributes'])) {
+    $variables['content_attributes'] = create_attribute();
+  }
+
+  if (empty($variables['header_attributes'])) {
+    $variables['header_attributes'] = create_attribute();
+  }
+
+  if (empty($variables['footer_attributes'])) {
+    $variables['footer_attributes'] = create_attribute();
+  }
+}

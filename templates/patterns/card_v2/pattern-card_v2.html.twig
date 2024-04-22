@@ -9,22 +9,22 @@
   - footer: (string) (default: '')
 
   - content_attributes (drupal attrs)
+  - media_attributes (drupal attrs)
   - header_attributes (drupal attrs)
   - footer_attributes (drupal attrs)
   - attributes (drupal attrs)
 #}
 
+
+{% set _media = media|default('') %}
+
 {% set _title = title|default('') %}
-{% set _title_tag = title_tag|default('h1') %}
-{% set _title_attributes = title_attributes ?: create_attribute() %}
-
-{% set _image = image|default('') %}
-
 {% set _content = content|default('') %}
 {% set _header = header|default('') %}
 {% set _footer = footer|default('') %}
 
 {% set _content_attributes = content_attributes|default({}) %}
+{% set _media_attributes = media_attributes|default({}) %}
 {% set _header_attributes = header_attributes|default({}) %}
 {% set _footer_attributes = footer_attributes|default({}) %}
 
@@ -34,40 +34,23 @@
 
 {% set attributes = attributes.addClass(['card', 'v2']) %}
 
-{% if _content_attribute is empty %}
-  {% set _content_attributes = create_attribute() %}
-{% endif %}
-
-{% if _header_attributes is empty %}
-  {% set _header_attributes = create_attribute() %}
-{% endif %}
-
-{% if _footer_attributes is empty %}
-  {% set _footer_attributes = create_attribute() %}
-{% endif %}
-
 <article{{ attributes }}>
 {% if _header is not empty %}
-  <div{{ _header_attributes.addClass('card-header') }}>
+  <div{{ header_attributes.addClass('card-header') }}>
     {{- _header -}}
   </div>
 {% endif %}
-  {% if _image is not empty %}
-    {{ _image }}
+  {% if _media is not empty %}
+    <div{{ header_attributes.addClass('card-media') }}>
+      {{ _media }}
+    </div>
   {% endif %}
-  <div{{ _content_attributes.addClass('card-body') }}>
-  {% if _title is not empty %}
-    {% set _title_attributes = _title_attributes.addClass('card-title') %}
-    {% include '@oe-bcl/bcl-heading/heading.html.twig' with {
-      title: _title,
-      title_tag: _title_tag,
-      attributes: _title_attributes,
-    } only %}
-  {% endif %}
+  <div{{ content_attributes.addClass('card-body') }}>
+  {{- _title -}}
   {{- _content -}}
   </div>
 {% if _footer is not empty %}
-  <div{{ _footer_attributes.addClass('card-footer') }}>
+  <div{{ footer_attributes.addClass('card-footer') }}>
     {{- _footer -}}
   </div>
 {% endif %}

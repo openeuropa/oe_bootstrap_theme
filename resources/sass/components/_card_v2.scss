@@ -4,9 +4,11 @@
   .card-header {
     order: 1;
   }
-  img,
-  figure {
+  .card-media {
     order: 2;
+    flex: 1 0 100%;
+    display: flex;
+    flex-direction: column;
   }
   .card-body {
     order: 3;

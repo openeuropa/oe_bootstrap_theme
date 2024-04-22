@@ -1,6 +1,7 @@
 card_v2:
-  label: 'Card V2'
+  label: 'Card'
   description: 'A card is a flexible and extensible content container. The V2 leaves more possibility for content and render items as we transformed all the content areas into render options. https://v5.getbootstrap.com/docs/5.0/components/card'
+  category: Version 2.x
   variants:
     default:
       label: 'Default'
@@ -10,16 +11,11 @@ card_v2:
       type: text
       label: 'Title'
       description: 'Card title. Supports markup, e.g. for links.'
-      preview: 'Title card'
-    title_tag:
-      type: text
-      label: 'Title tag'
-      description: 'Card title tag. Default h1.'
-      preview: 'h4'
-    image:
+      preview: '<h4 class="card-title">Title card</h4>'
+    media:
       type: render
-      label: 'Image'
-      description: 'Image for the card. Optional.'
+      label: 'Media'
+      description: 'Media for the card. Optional.'
       preview: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
     content:
       type: render
@@ -37,6 +33,11 @@ card_v2:
       description: 'Card footer content. Optional.'
       preview: 'Footer of <span class="fw-bold">card</span>'
   settings:
+    media_attributes:
+      type: attributes
+      label: Media attributes
+      description: Extra attributes for the card media
+      allow_token: true
     content_attributes:
       type: attributes
       label: Content attributes
