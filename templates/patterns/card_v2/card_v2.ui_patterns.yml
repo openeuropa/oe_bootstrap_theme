@@ -21,40 +21,35 @@ card_v2:
       label: 'Image'
       description: 'Image for the card. Optional.'
       preview: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
-    image_position:
-      type: text
-      label: 'Image position'
-      description: 'Image position of the card. Options: bottom, top. Optional. Default: top.'
-      preview: 'top'
-    card_body:
+    content:
       type: render
-      label: 'Card body'
-      description: 'Card body content.'
+      label: 'Content'
+      description: 'Card content.'
       preview: '<h6 class="card-subtitle mb-2">Subtitle card</h6><div class="card-text mb-2">Text card with longer text which is supported</div><div class="my-3 me-n3"><span class="text-muted me-3">Organisation</span><span class="text-muted me-3">Position</span></div><div><button class="btn btn-primary">Custom action</button></div><div class="mt-2-5"><span class="mb-2 me-2 badge rounded-pill badge-outline-primary">A badge</span><span class="mb-2 me-2 badge badge-outline-primary">A non-rounded badge</span><span class="mb-2 badge rounded-pill text-bg-primary">A solid badge</span></div>'
-    card_header:
+    header:
       type: render
-      label: 'Card header'
+      label: 'Header'
       description: 'Card header content. Optional.'
       preview: 'Header of <span class="fw-bold">card</span>'
-    card_footer:
+    footer:
       type: render
-      label: 'Card footer'
+      label: 'Footer'
       description: 'Card footer content. Optional.'
       preview: 'Footer of <span class="fw-bold">card</span>'
   settings:
-    body_attributes:
+    content_attributes:
       type: attributes
-      label: Card body attributes
-      description: Extra attributes for the card body
+      label: Content attributes
+      description: Extra attributes for the card content
       allow_token: true
     header_attributes:
       type: attributes
-      label: Card header attributes
+      label: Header attributes
       description: Extra attributes for the card header
       allow_token: true
     footer_attributes:
       type: attributes
-      label: Card footer attributes
+      label: Footer attributes
       description: Extra attributes for the card footer
       allow_token: true
     attributes:

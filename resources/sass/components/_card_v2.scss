@@ -14,13 +14,4 @@
   .card-footer {
     order: 4;
   }
-  &.image-bottom {
-    .card-body {
-      order: 2;
-    }
-    img,
-    figure {
-      order: 3;
-    }
-  }
 }
