@@ -52,3 +52,18 @@
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel mauris vitae ipsum blandit condimentum ut eget quam. Nunc eget nisi aliquam, accumsan sapien eu, blandit turpis...',
   }) }}
 </div>
+
+{% set _title %}
+  <h2><a href="#">Longer title that might span into multiple lines</a></h2>
+{% endset %}
+<div class="row mb-5">
+  <h2 class="mb-2">Card with date</h2>
+  <div class="col-md-3">
+    {{ pattern('card_v2', {
+      title: _title,
+      media: pattern('date_block', {
+        date: '2021-05-26',
+      })
+    }) }}
+  </div>
+</div>
