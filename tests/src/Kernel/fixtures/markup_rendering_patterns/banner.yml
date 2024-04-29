@@ -10,6 +10,7 @@ default_page_banner_centered_with_call_to_action_full_width:
         full_width: true
         centered: true
       title: 'EU Budget for the future'
+      title_tag: 'h4'
       description: 'Innovation, economy, environment and geopolitics'
       call_to_action:
         label: 'Subscribe'
@@ -17,6 +18,7 @@ default_page_banner_centered_with_call_to_action_full_width:
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
+      '.bcl-banner__content h4.bcl-heading': 1
       'div.bg-lighter.text-dark.bcl-banner': 1
       'div.full-width': 1
       'div.text-center': 1
@@ -25,9 +27,9 @@ default_page_banner_centered_with_call_to_action_full_width:
       'div.hero': 0
       'div.bcl-banner__image': 0
     contains:
-      '.bcl-banner__content div': 'EU Budget for the future'
       '.bcl-banner__content p': 'Innovation, economy, environment and geopolitics'
     equals:
+      '.bcl-banner__content h4.bcl-heading': 'EU Budget for the future'
       '.bcl-banner__content a[href="https://example.com"]': 'Subscribe'
 default_page_banner_aligned_left_without_call_to_action:
   render:

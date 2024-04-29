@@ -20,8 +20,8 @@ links_block:
       title:
         type: text
         label: 'Title'
-        description: 'Link block title (optional).'
-        preview: 'More information'
+        description: 'Title of the links block.'
+        preview: 'This is the title of this links block element.'
       title_tag:
         type: text
         label: 'Title tag'

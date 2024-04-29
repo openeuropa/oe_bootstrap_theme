@@ -33,8 +33,8 @@ featured_media:
     title:
       type: text
       label: "Heading"
-      description: "The heading, displayed on the top."
-      preview: "Lorem ipsum"
+      description: 'Title of the featured media.'
+      preview: 'This is the title of this featured media.'
     subtitle:
       type: text
       label: 'Subtitle'

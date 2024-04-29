@@ -3,6 +3,8 @@ file_with_translations:
     '#type': pattern
     '#id': file
     '#fields':
+      title: 'The file title'
+      title_tag: 'h4'
       file:
         title: 'Icon PDF specs'
         name: 'druplicon.pdf'
@@ -30,6 +32,8 @@ file_with_translations:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\FilePatternAssert
       expected:
+        title: 'The file title'
+        title_tag: 'h4'
         file:
           title: 'Icon PDF specs'
           language: 'English'

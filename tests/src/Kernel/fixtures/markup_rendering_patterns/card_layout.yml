@@ -4,6 +4,8 @@ card_group:
     '#id': 'card_layout'
     '#variant': 'group'
     '#fields':
+      title: 'The card layout title'
+      title_tag: 'h4'
       settings:
         equal_height: true
       items:
@@ -22,10 +24,12 @@ card_group:
   assert:
     count:
       'div.card-group': 1
+      'h4.bcl-heading': 1
       'article.card': 4
       'h1.card-title': 4
       'div.card-text': 4
     equals:
+      'h4.bcl-heading': 'The card layout title'
       'article.card:nth-child(1) h1.card-title': 'Card title 1'
       'article.card:nth-child(2) h1.card-title': 'Card title 2'
       'article.card:nth-child(3) h1.card-title': 'Card title 3'
@@ -44,6 +48,7 @@ card_grid_responsive_xxl_3_responsive_columns:
     '#id': 'card_layout'
     '#variant': 'grid'
     '#fields':
+      title: 'The card layout title'
       settings:
         responsiveness: 'xxl'
         responsive_columns: 3
@@ -64,6 +69,7 @@ card_grid_responsive_xxl_3_responsive_columns:
           card_footer: 'Footer of card 4'
   assert:
     count:
+      'h2.bcl-heading': 1
       'article.card': 4
       'h1.card-title': 4
       'div.card-text': 4
@@ -71,6 +77,7 @@ card_grid_responsive_xxl_3_responsive_columns:
       'div.g-0': 1
       'div.row-cols-xxl-3': 1
     equals:
+      'h2.bcl-heading': 'The card layout title'
       'div.col:nth-child(1) article.card h1.card-title': 'Card title 1'
       'div.col:nth-child(2) article.card h1.card-title': 'Card title 2'
       'div.col:nth-child(3) article.card h1.card-title': 'Card title 3'

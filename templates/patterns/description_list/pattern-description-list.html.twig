@@ -5,6 +5,8 @@
  */
 #}
 {% include '@oe-bcl/description-list' with {
+  'title': title,
+  'title_tag': title_tag|default('h2'),
   'items': items,
   'variant': orientation,
   'attributes': attributes,

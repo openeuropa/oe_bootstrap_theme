@@ -25,6 +25,13 @@ class FilePatternAssert extends BasePatternAssert {
       'link_label' => [
         [$this, 'assertDownloadLinksLabel'],
       ],
+      'title' => [
+        [$this, 'assertElementText'],
+        '.bcl-heading',
+      ],
+      'title_tag' => [
+        [$this, 'assertTitleTag'],
+      ],
     ];
   }
 
@@ -64,6 +71,18 @@ class FilePatternAssert extends BasePatternAssert {
     $this->assertDownloadLink($expected, $crawler);
     $this->assertElementText($expected['title'], 'p.fw-medium.m-0.fs-5', $crawler);
     $this->assertItemData($expected, $crawler->filter('p.fw-medium.m-0 + small.fw-medium'));
+  }
+
+  /**
+   * Checks the tag used for the title.
+   *
+   * @param string $expected
+   *   The expected tag.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertTitleTag(string $expected, Crawler $crawler): void {
+    $this->assertElementExists($expected . '.bcl-heading', $crawler);
   }
 
   /**

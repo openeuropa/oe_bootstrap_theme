@@ -5,8 +5,8 @@ inpage_navigation:
     title:
       type: text
       label: 'Title'
-      description: 'Heading of the inpage navigation element.'
-      preview: 'Page content'
+      description: 'Title of the inpage navigation element.'
+      preview: 'This is the title of this inpage navigation.'
     links:
       type: array
       label: 'Links'

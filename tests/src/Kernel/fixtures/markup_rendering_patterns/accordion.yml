@@ -3,6 +3,8 @@ accordion_with_bare_layout:
     '#type': pattern
     '#id': accordion
     '#fields':
+      title: 'The accordion title'
+      title_tag: 'h4'
       settings:
         open_item: 1
         bare_layout: true
@@ -16,6 +18,7 @@ accordion_with_bare_layout:
   assertions:
     count:
       'div.accordion': 1
+      'h4.bcl-heading': 1
       'div[data-drupal-selector=accordion]': 1
       'div.accordion.accordion-flush': 1
       'div.accordion-item': 3
@@ -24,6 +27,7 @@ accordion_with_bare_layout:
       'div.accordion-item div.accordion-collapse.collapse': 3
       'div.accordion-item div.accordion-collapse.collapse.show': 1
     equals:
+      'h4.bcl-heading': 'The accordion title'
       'div.accordion-item:nth-child(1) button.accordion-button': 'Accordion Item #1'
       'div.accordion-item:nth-child(2) button.accordion-button': 'Accordion Item #2'
       'div.accordion-item:nth-child(3) button.accordion-button': 'Accordion Item #3'
@@ -35,6 +39,7 @@ accordion_without_flush:
     '#type': pattern
     '#id': accordion
     '#fields':
+      title: 'The accordion title'
       settings:
         open_item: 1
         bare_layout: false
@@ -48,6 +53,7 @@ accordion_without_flush:
   assertions:
     count:
       'div.accordion': 1
+      'h2.bcl-heading': 1
       'div[data-drupal-selector=accordion]': 1
       'div.accordion.accordion-flush': 0
       'div.accordion-item': 3
@@ -56,6 +62,7 @@ accordion_without_flush:
       'div.accordion-item div.accordion-collapse.collapse': 3
       'div.accordion-item div.accordion-collapse.collapse.show': 1
     equals:
+      'h2.bcl-heading': 'The accordion title'
       'div.accordion-item:nth-child(1) button.accordion-button': 'Accordion Item #1'
       'div.accordion-item:nth-child(2) button.accordion-button': 'Accordion Item #2'
       'div.accordion-item:nth-child(3) button.accordion-button': 'Accordion Item #3'
