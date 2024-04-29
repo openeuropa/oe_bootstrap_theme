@@ -23,11 +23,6 @@
 {% set _header = header|default('') %}
 {% set _footer = footer|default('') %}
 
-{% set _content_attributes = content_attributes|default({}) %}
-{% set _media_attributes = media_attributes|default({}) %}
-{% set _header_attributes = header_attributes|default({}) %}
-{% set _footer_attributes = footer_attributes|default({}) %}
-
 {% if attributes is empty %}
   {% set attributes = create_attribute() %}
 {% endif %}
@@ -41,12 +36,16 @@
   </div>
 {% endif %}
   {% if _media is not empty %}
-    <div{{ header_attributes.addClass('card-media') }}>
+    <div{{ media_attributes.addClass('card-media') }}>
       {{ _media }}
     </div>
   {% endif %}
   <div{{ content_attributes.addClass('card-body') }}>
-  {{- _title -}}
+  {% if _title is not empty %}
+    <div class="card-title">
+      {{- _title -}}
+    </div>
+  {% endif %}
   {{- _content -}}
   </div>
 {% if _footer is not empty %}

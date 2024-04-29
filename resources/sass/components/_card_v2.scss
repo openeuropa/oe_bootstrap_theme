@@ -10,10 +10,31 @@
     display: flex;
     flex-direction: column;
   }
+  a:not(.card-title a),
+  input,
+  select,
+  a.badge:not(.card-title a),
+  .btn:not(.card-title a) {
+    position: relative;
+  }
   .card-body {
     order: 3;
   }
   .card-footer {
     order: 4;
+  }
+  .card-title {
+    a {
+      color: var(--bs-body-color);
+      text-decoration: none;
+      &:after {
+        position: absolute;
+        content: "";
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+      }
+    }
   }
 }
