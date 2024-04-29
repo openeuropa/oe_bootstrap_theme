@@ -31,9 +31,9 @@ accordion_with_bare_layout:
       'div.accordion-item:nth-child(2) button.accordion-button': 'Accordion Item #1'
       'div.accordion-item:nth-child(3) button.accordion-button': 'Accordion Item #2'
       'div.accordion-item:nth-child(4) button.accordion-button': 'Accordion Item #3'
-      'div.accordion-item:nth-child(5) div.accordion-body': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
-      'div.accordion-item:nth-child(6) div.accordion-body': 'Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer.'
-      'div.accordion-item:nth-child(7) div.accordion-body': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      'div.accordion-item:nth-child(2) div.accordion-body': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
+      'div.accordion-item:nth-child(3) div.accordion-body': 'Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer.'
+      'div.accordion-item:nth-child(4) div.accordion-body': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 accordion_without_flush:
   render:
     '#type': pattern
