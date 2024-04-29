@@ -57,7 +57,7 @@ listing_default_1_col:
   assertions:
     count:
       'h3.bcl-heading': 1
-      'div.bcl-listing.bcl-listing--default-1-col': 1
+      'div.bcl-listing.bcl-listing--default-1-col.text-break': 1
       'div.row.row-cols-1.g-4': 1
       'div.row': 4
       'article.listing-item': 4
