@@ -1,58 +1,33 @@
-{% apply spaceless %}
-
-{# Parameters:
-  - title: (string) (default: '')
-  - title_tag: (string) (default: 'h1')
-  - title_attributes (drupal attrs)
-  - content: (string) (default: '')
-  - header: (string) (default: '')
-  - footer: (string) (default: '')
-
-  - content_attributes (drupal attrs)
-  - media_attributes (drupal attrs)
-  - header_attributes (drupal attrs)
-  - footer_attributes (drupal attrs)
-  - attributes (drupal attrs)
+{#
+/**
+ * @file
+ * Default template for "Card V2" pattern.
+ *
+ * For available variables, refer to the pattern declaration.
+ */
 #}
-
-
-{% set _media = media|default('') %}
-
-{% set _title = title|default('') %}
-{% set _content = content|default('') %}
-{% set _header = header|default('') %}
-{% set _footer = footer|default('') %}
-
-{% if attributes is empty %}
-  {% set attributes = create_attribute() %}
-{% endif %}
-
-{% set attributes = attributes.addClass(['card', 'v2']) %}
-
-<article{{ attributes }}>
-{% if _header is not empty %}
-  <div{{ header_attributes.addClass('card-header') }}>
-    {{- _header -}}
-  </div>
-{% endif %}
-  {% if _media is not empty %}
+<{{ tag }}{{ attributes.addClass(['card', 'v2']) }}>
+  {% if header is not empty %}
+    <div{{ header_attributes.addClass('card-header') }}>
+      {{ header }}
+    </div>
+  {% endif %}
+  {% if media is not empty %}
     <div{{ media_attributes.addClass('card-media') }}>
-      {{ _media }}
+      {{ media }}
     </div>
   {% endif %}
   <div{{ content_attributes.addClass('card-body') }}>
-  {% if _title is not empty %}
-    <div class="card-title">
-      {{- _title -}}
+    {% if title is not empty %}
+      <div class="card-title">
+        {{ title }}
+      </div>
+    {% endif %}
+    {{ content }}
+  </div>
+  {% if footer is not empty %}
+    <div{{ footer_attributes.addClass('card-footer') }}>
+      {{ footer }}
     </div>
   {% endif %}
-  {{- _content -}}
-  </div>
-{% if _footer is not empty %}
-  <div{{ footer_attributes.addClass('card-footer') }}>
-    {{- _footer -}}
-  </div>
-{% endif %}
-</article>
-
-{% endapply %}
+</{{ tag }}>
