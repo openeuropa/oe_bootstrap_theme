@@ -10,11 +10,8 @@
     display: flex;
     flex-direction: column;
   }
-  a:not(.card-title a),
-  input,
-  select,
-  a.badge:not(.card-title a),
-  .btn:not(.card-title a) {
+  // Fix for overlapping with card anchor for anchors inside card
+  a:not(.card-title a) {
     position: relative;
   }
   .card-body {
@@ -28,12 +25,7 @@
       color: var(--bs-body-color);
       text-decoration: none;
       &:after {
-        position: absolute;
-        content: "";
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
+        @include pseudo-absolute-full-size;
       }
     }
   }
