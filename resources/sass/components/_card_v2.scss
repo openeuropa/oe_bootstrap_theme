@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
   }
-  // Fix for overlapping with card anchor for anchors inside card
+  // Allow links to be clicked through the card title link.
   a:not(.card-title a) {
     position: relative;
   }
@@ -24,9 +24,7 @@
     a {
       color: var(--bs-body-color);
       text-decoration: none;
-      &:after {
-        @include pseudo-absolute-full-size;
-      }
+      @include clickable-parent;
     }
   }
 }

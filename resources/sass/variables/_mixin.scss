@@ -1,8 +1,15 @@
-@mixin pseudo-absolute-full-size {
-  position: absolute;
-  content: "";
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+// Makes an element expand to cover the full size of the parent.
+// Useful for allowing to follow a link by clicking anywhere in the parent.
+// Usage notes:
+// - the parent position must be set to relative.
+// - links inside the parent must be set to have position relative, so they will float above this element.
+@mixin clickable-parent {
+  &::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
 }
