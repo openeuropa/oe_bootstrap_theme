@@ -13,7 +13,8 @@
 {% set _content %}
   <h6 class="card-subtitle mb-2">Subtitle card</h6>
   <div class="card-text mb-2">
-    Text card with longer text which is supported <a href="#" class="d-block">Link example</a>
+    Text card with longer text which is supported. An example of a <a href="https://www.example.com/1">link</a> in the text.
+    <a href="#" class="d-block">Link example</a>
   </div>
   <div class="my-3 me-n3">
     <span class="text-muted me-3">Organisation</span><span class="text-muted me-3">Position</span>
@@ -45,10 +46,13 @@
   }) }}
 </div>
 
+{% set _title %}
+  <h2>Simple title</h2>
+{% endset %}
 <div class="mb-5">
   <h2 class="mb-2">Simple card</h2>
   {{ pattern('card_v2', {
-    title: 'Simple title',
+    title: _title,
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel mauris vitae ipsum blandit condimentum ut eget quam. Nunc eget nisi aliquam, accumsan sapien eu, blandit turpis...',
   }) }}
 </div>
