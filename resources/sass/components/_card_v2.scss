@@ -25,6 +25,10 @@
       color: var(--bs-body-color);
       text-decoration: none;
       @include clickable-parent;
+
+      &:focus {
+        text-decoration: underline;
+      }
     }
   }
 }
