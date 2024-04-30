@@ -11,11 +11,10 @@
     'content': caption,
     'content_classes': 'bg-light p-3',
     'ratio': ratio,
-    'attributes': attributes,
   } only %}
 {% endmacro %}
 
-<div class="bcl-featured-media">
+<div{{ attributes.addClass('bcl-featured-media') }}>
   {% if subtitle or text or link %}
     {% set text_alignment_class = 'order-md-1' %}
     {% set video_alignment_class = 'order-md-2' %}
