@@ -24,7 +24,8 @@ class GalleryPatternAssert extends BasePatternAssert {
         '.mb-4.bcl-heading',
       ],
       'title_tag' => [
-        [$this, 'assertTitleTag'],
+        [$this, 'assertElementTag'],
+        '.mb-4.bcl-heading',
       ],
     ];
   }
@@ -54,18 +55,6 @@ class GalleryPatternAssert extends BasePatternAssert {
       $this->assertElementNotExists('.bcl-gallery a.bcl-gallery__mobile-view-more', $crawler);
     }
 
-  }
-
-  /**
-   * Checks the tag used for the title.
-   *
-   * @param string $expected
-   *   The expected tag.
-   * @param \Symfony\Component\DomCrawler\Crawler $crawler
-   *   The DomCrawler where to check the element.
-   */
-  protected function assertTitleTag(string $expected, Crawler $crawler): void {
-    $this->assertElementExists($expected . '.mb-4.bcl-heading', $crawler);
   }
 
   /**

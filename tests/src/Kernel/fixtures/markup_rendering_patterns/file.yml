@@ -4,7 +4,6 @@ file_with_translations:
     '#id': file
     '#fields':
       title: 'The file title'
-      title_tag: 'h4'
       file:
         title: 'Icon PDF specs'
         name: 'druplicon.pdf'
@@ -33,7 +32,7 @@ file_with_translations:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\FilePatternAssert
       expected:
         title: 'The file title'
-        title_tag: 'h4'
+        title_tag: 'h2'
         file:
           title: 'Icon PDF specs'
           language: 'English'
@@ -54,7 +53,7 @@ file_with_translations:
             url: 'https://example.com/translation_fr.html'
             meta: '(121 bytes - PDF)'
         link_label: 'Download'
-file_without_translations:
+file_without_translations_without_title:
   render:
     '#type': pattern
     '#id': file
@@ -71,6 +70,7 @@ file_without_translations:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\FilePatternAssert
       expected:
+        title: ~
         file:
           title: 'Foglio di calcolo'
           language: 'italiano'
@@ -79,3 +79,31 @@ file_without_translations:
           icon: 'file-excel-fill'
         translations: ~
         link_label: 'Scarica'
+file_with_title_tag:
+  render:
+    '#type': pattern
+    '#id': file
+    '#fields':
+      title: 'The file title'
+      title_tag: 'h4'
+      file:
+        title: 'Icon PDF specs'
+        name: 'druplicon.pdf'
+        url: 'https://example.com/document.pdf'
+        mime: 'application/pdf'
+        size: '23423'
+        language_code: 'en'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\FilePatternAssert
+      expected:
+        title: 'The file title'
+        title_tag: 'h4'
+        file:
+          title: 'Icon PDF specs'
+          language: 'English'
+          url: 'https://example.com/document.pdf'
+          meta: '(22.87 KB - PDF)'
+          icon: 'file-pdf-fill'
+        translations: ~
+        link_label: 'Download'

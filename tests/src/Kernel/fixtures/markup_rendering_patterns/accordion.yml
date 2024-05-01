@@ -3,8 +3,6 @@ accordion_with_bare_layout:
     '#type': pattern
     '#id': accordion
     '#fields':
-      title: 'The accordion title'
-      title_tag: 'h4'
       settings:
         open_item: 1
         bare_layout: true
@@ -18,7 +16,7 @@ accordion_with_bare_layout:
   assertions:
     count:
       'div.accordion': 1
-      'h4.bcl-heading': 1
+      '.bcl-heading': 0
       'div[data-drupal-selector=accordion]': 1
       'div.accordion.accordion-flush': 1
       'div.accordion-item': 3
@@ -27,14 +25,13 @@ accordion_with_bare_layout:
       'div.accordion-item div.accordion-collapse.collapse': 3
       'div.accordion-item div.accordion-collapse.collapse.show': 1
     equals:
-      'h4.bcl-heading': 'The accordion title'
-      'div.accordion-item:nth-child(2) button.accordion-button': 'Accordion Item #1'
-      'div.accordion-item:nth-child(3) button.accordion-button': 'Accordion Item #2'
-      'div.accordion-item:nth-child(4) button.accordion-button': 'Accordion Item #3'
-      'div.accordion-item:nth-child(2) div.accordion-body': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
-      'div.accordion-item:nth-child(3) div.accordion-body': 'Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer.'
-      'div.accordion-item:nth-child(4) div.accordion-body': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-accordion_without_flush:
+      'div.accordion-item:nth-child(1) button.accordion-button': 'Accordion Item #1'
+      'div.accordion-item:nth-child(2) button.accordion-button': 'Accordion Item #2'
+      'div.accordion-item:nth-child(3) button.accordion-button': 'Accordion Item #3'
+      'div.accordion-item:nth-child(1) div.accordion-body': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
+      'div.accordion-item:nth-child(2) div.accordion-body': 'Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer.'
+      'div.accordion-item:nth-child(3) div.accordion-body': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+accordion_without_flush_with_title:
   render:
     '#type': pattern
     '#id': accordion
@@ -53,6 +50,7 @@ accordion_without_flush:
   assertions:
     count:
       'div.accordion': 1
+      '.bcl-heading': 1
       'h2.bcl-heading': 1
       'div[data-drupal-selector=accordion]': 1
       'div.accordion.accordion-flush': 0
@@ -63,6 +61,42 @@ accordion_without_flush:
       'div.accordion-item div.accordion-collapse.collapse.show': 1
     equals:
       'h2.bcl-heading': 'The accordion title'
+      'div.accordion-item:nth-child(2) button.accordion-button': 'Accordion Item #1'
+      'div.accordion-item:nth-child(3) button.accordion-button': 'Accordion Item #2'
+      'div.accordion-item:nth-child(4) button.accordion-button': 'Accordion Item #3'
+      'div.accordion-item:nth-child(2) div.accordion-body': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
+      'div.accordion-item:nth-child(3) div.accordion-body': 'Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer.'
+      'div.accordion-item:nth-child(4) div.accordion-body': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+accordion_with_title_tag:
+  render:
+    '#type': pattern
+    '#id': accordion
+    '#fields':
+      title: 'The title tag is customisable'
+      title_tag: 'h5'
+      settings:
+        open_item: 1
+      items:
+        - title: 'Accordion Item #1'
+          content: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
+        - title: 'Accordion Item #2'
+          content: 'Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer.'
+        - title: 'Accordion Item #3'
+          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+  assertions:
+    count:
+      'div.accordion': 1
+      '.bcl-heading': 1
+      'h5.bcl-heading': 1
+      'div[data-drupal-selector=accordion]': 1
+      'div.accordion.accordion-flush': 0
+      'div.accordion-item': 3
+      'div.accordion-item h2.accordion-header': 3
+      'div.accordion-item button.accordion-button': 3
+      'div.accordion-item div.accordion-collapse.collapse': 3
+      'div.accordion-item div.accordion-collapse.collapse.show': 1
+    equals:
+      'h5.bcl-heading': 'The title tag is customisable'
       'div.accordion-item:nth-child(2) button.accordion-button': 'Accordion Item #1'
       'div.accordion-item:nth-child(3) button.accordion-button': 'Accordion Item #2'
       'div.accordion-item:nth-child(4) button.accordion-button': 'Accordion Item #3'

@@ -31,7 +31,7 @@ default_page_banner_centered_with_call_to_action_full_width:
     equals:
       '.bcl-banner__content h4.bcl-heading': 'EU Budget for the future'
       '.bcl-banner__content a[href="https://example.com"]': 'Subscribe'
-default_page_banner_aligned_left_without_call_to_action:
+default_page_banner_aligned_left_without_call_to_action_without_title_tag:
   render:
     '#type': pattern
     '#id': banner
@@ -47,6 +47,7 @@ default_page_banner_aligned_left_without_call_to_action:
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
+      '.bcl-banner__content div.bcl-heading': 1
       'div.bg-lighter.text-dark.bcl-banner': 1
       'div.full-width': 0
       'div.text-center': 0
@@ -55,9 +56,10 @@ default_page_banner_aligned_left_without_call_to_action:
       'div.hero': 0
       'div.bcl-banner__image': 0
     contains:
-      '.bcl-banner__content div': 'EU Budget for the future'
       '.bcl-banner__content p': 'Innovation, economy, environment and geopolitics'
-default_page_hero_banner_aligned_left_without_call_to_action_full_width:
+    equals:
+      '.bcl-banner__content div.bcl-heading': 'EU Budget for the future'
+default_page_hero_banner_aligned_left_without_call_to_action_full_width_without_title:
   render:
     '#type': pattern
     '#id': banner
@@ -68,11 +70,11 @@ default_page_hero_banner_aligned_left_without_call_to_action_full_width:
         shade: false
         full_width: true
         centered: false
-      title: 'EU Budget for the future'
       description: 'Innovation, economy, environment and geopolitics'
   assertions:
     count:
       'div[data-drupal-selector=banner]': 1
+      '.bcl-banner__content .bcl-heading': 0
       'div.bg-lighter.text-dark.bcl-banner': 1
       'div.full-width': 1
       'div.text-center': 0
@@ -81,7 +83,6 @@ default_page_hero_banner_aligned_left_without_call_to_action_full_width:
       'div.hero': 1
       'div.bcl-banner__image': 0
     contains:
-      '.bcl-banner__content div': 'EU Budget for the future'
       '.bcl-banner__content p': 'Innovation, economy, environment and geopolitics'
 default_page_hero_banner_centered_with_call_to_action:
   render:

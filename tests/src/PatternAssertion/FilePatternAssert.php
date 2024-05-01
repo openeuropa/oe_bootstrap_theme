@@ -30,7 +30,8 @@ class FilePatternAssert extends BasePatternAssert {
         '.bcl-heading',
       ],
       'title_tag' => [
-        [$this, 'assertTitleTag'],
+        [$this, 'assertElementTag'],
+        '.bcl-heading',
       ],
     ];
   }
@@ -40,8 +41,6 @@ class FilePatternAssert extends BasePatternAssert {
    */
   protected function assertBaseElements(string $html, string $variant): void {
     $crawler = new Crawler($html);
-    // No titles should be rendered in the pattern.
-    $this->assertElementNotExists('h2', $crawler);
     // Only one icon should be rendered. The type will be asserted in the file
     // assert.
     $this->assertElementExists('svg.icon--2xl', $crawler);
@@ -71,18 +70,6 @@ class FilePatternAssert extends BasePatternAssert {
     $this->assertDownloadLink($expected, $crawler);
     $this->assertElementText($expected['title'], 'p.fw-medium.m-0.fs-5', $crawler);
     $this->assertItemData($expected, $crawler->filter('p.fw-medium.m-0 + small.fw-medium'));
-  }
-
-  /**
-   * Checks the tag used for the title.
-   *
-   * @param string $expected
-   *   The expected tag.
-   * @param \Symfony\Component\DomCrawler\Crawler $crawler
-   *   The DomCrawler where to check the element.
-   */
-  protected function assertTitleTag(string $expected, Crawler $crawler): void {
-    $this->assertElementExists($expected . '.bcl-heading', $crawler);
   }
 
   /**

@@ -22,6 +22,7 @@ carousel_with_all_settings:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
       expected:
+        title: ~
         settings:
           fade: true
           show_controls: true
@@ -152,6 +153,8 @@ carousel_all_item_values:
     '#type': pattern
     '#id': carousel
     '#fields':
+      title: 'Carousel title'
+      title_tag: 'h4'
       slides:
         - image:
             src: 'https://images.site.example1'
@@ -177,6 +180,8 @@ carousel_all_item_values:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
       expected:
+        title: 'Carousel title'
+        title_tag: 'h4'
         settings:
           fade: false
           show_controls: true
@@ -238,3 +243,15 @@ carousel_with_deprecated_autoinit_ignored:
         settings:
           show_controls: true
           autoplay: false
+carousel_with_title_default_tag:
+  render:
+    '#type': pattern
+    '#id': carousel
+    '#fields':
+      title: 'Carousel title'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        title: 'Carousel title'
+        title_tag: 'h2'
