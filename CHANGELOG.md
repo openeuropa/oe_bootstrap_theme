@@ -1,10 +1,20 @@
 # Change Log
 
+## [1.10.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.10.0) (2024-05-03)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.9.1...1.10.0)
+
+**Merged pull requests:**
+
+- OEL-2270: Added text-break class in listing attributes. [\#390](https://github.com/openeuropa/oe_bootstrap_theme/pull/390) ([tibi2303](https://github.com/tibi2303))
+- OEL-2744: Responsive tables missing the toggle to show/hide "low priority column". [\#387](https://github.com/openeuropa/oe_bootstrap_theme/pull/387) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
+- OEL-2787: Fix url options loss in bclCardList\(\). [\#374](https://github.com/openeuropa/oe_bootstrap_theme/pull/374) ([drishu](https://github.com/drishu))
+
 ## [1.9.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.9.1) (2024-03-13)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.9.0...1.9.1)
 
 **Merged pull requests:**
 
+- Prepare changelog for release 1.9.1. [\#389](https://github.com/openeuropa/oe_bootstrap_theme/pull/389) ([tibi2303](https://github.com/tibi2303))
 - OEL-2593: Margin bottom of form elements increased to 1rem. [\#380](https://github.com/openeuropa/oe_bootstrap_theme/pull/380) ([tibi2303](https://github.com/tibi2303))
 - OEL-2595: Fixed overlap of toolbar. [\#379](https://github.com/openeuropa/oe_bootstrap_theme/pull/379) ([tibi2303](https://github.com/tibi2303))
 
