@@ -43,8 +43,8 @@ class GalleryPatternAssert extends BasePatternAssert {
 
     $items = $crawler->filter('ul.bcl-gallery__grid li')->count();
     if ($items > 5) {
-      $view_more_text = "view the full gallery ($items)";
-      $this->assertElementText('view less', '.bcl-gallery a.bcl-gallery__collapse span.label-expanded', $crawler);
+      $view_more_text = "View the full gallery ($items)";
+      $this->assertElementText('View less', '.bcl-gallery a.bcl-gallery__collapse span.label-expanded', $crawler);
       $this->assertElementText($view_more_text, '.bcl-gallery a.bcl-gallery__collapse span.label-collapsed', $crawler);
       $this->assertElementText($view_more_text, '.bcl-gallery a.bcl-gallery__mobile-view-more span.label-collapsed', $crawler);
 
