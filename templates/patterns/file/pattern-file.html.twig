@@ -50,7 +50,7 @@
   <div class="mt-4">
     {% include '@oe-bcl/file' with {
       'title': title,
-      'title_tag': title_tag|default('h2'),
+      'title_tag': title_tag,
       'icon_path': bcl_icon_path,
       'item_title': file.title,
       'language': file.language_code|to_native_language,

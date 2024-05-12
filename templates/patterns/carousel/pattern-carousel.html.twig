@@ -29,7 +29,7 @@
 {% endfor %}
 {% include '@oe-bcl/carousel' with {
   'title': title,
-  'title_tag': title_tag|default('h2'),
+  'title_tag': title_tag,
   'id': carousel_id,
   'autoplay': autoplay ?? true,
   'dark': dark_mode,

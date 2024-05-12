@@ -41,7 +41,7 @@ banner:
     title_tag:
       type: text
       label: 'Title tag'
-      description: 'The tag to use for the title. Defaults to h2.'
+      description: 'The tag to use for the title. Defaults to div.'
     description:
       type: text
       label: 'Description'

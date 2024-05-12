@@ -18,6 +18,11 @@ card:
       label: 'Title'
       description: 'Title of the card.'
       preview: 'This is the title of this card.'
+    title_tag:
+      type: text
+      label: 'Title tag'
+      description: 'Title tag of the card.'
+      preview: 'This is the title tag of this card.'
     subtitle:
       type: text
       label: 'Subtitle'
