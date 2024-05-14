@@ -21,8 +21,7 @@ card:
     title_tag:
       type: text
       label: 'Title tag'
-      description: 'Title tag of the card.'
-      preview: 'This is the title tag of this card.'
+      description: 'Title tag of the card. Default h1.'
     subtitle:
       type: text
       label: 'Subtitle'

@@ -58,7 +58,7 @@ class CardPatternAssert extends BasePatternAssert {
       ],
       'title_tag' => [
         [$this, 'assertElementTag'],
-        '.bcl-heading',
+        '.card-title',
       ],
       'subtitle' => [
         [$this, 'assertElementText'],
