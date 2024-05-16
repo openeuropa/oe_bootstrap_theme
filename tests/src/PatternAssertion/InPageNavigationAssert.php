@@ -18,7 +18,7 @@ class InPageNavigationAssert extends BasePatternAssert {
     return [
       'title' => [
         [$this, 'assertElementText'],
-        'h2',
+        'h2.bcl-heading',
       ],
       'links' => [
         [$this, 'assertList'],
