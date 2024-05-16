@@ -20,6 +20,9 @@ class ContentBannerAssert extends BasePatternAssert {
         [$this, 'assertImage'],
         '.card-img-top',
       ],
+      'image_size' => [
+        [$this, 'assertImageSize'],
+      ],
       'title' => [
         [$this, 'assertElementText'],
         '.card-title.bcl-heading',
@@ -108,6 +111,31 @@ class ContentBannerAssert extends BasePatternAssert {
    */
   protected function assertTitleTag(string $expected, Crawler $crawler): void {
     $this->assertElementExists($expected . '.card-title.bcl-heading', $crawler);
+  }
+
+  /**
+   * Checks the image size used for the image.
+   *
+   * @param string $expected
+   *   The expected tag.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertImageSize(string $expected, Crawler $crawler): void {
+    $element = $crawler->filter('.bcl-card-start-col');
+
+    if ($expected === 'xl') {
+      self::assertStringContainsString('bcl-size-extra-large', $element->attr('class'));
+    }
+    elseif ($expected === 'md') {
+      self::assertStringContainsString('bg-lighter', $element->attr('class'));
+    }
+    else {
+      // Check that the element has only one class: bcl-card-start-col.
+      $classes = explode(' ', $element->attr('class'));
+      self::assertCount(1, $classes);
+      self::assertEquals('bcl-card-start-col', $classes[0]);
+    }
   }
 
   /**
