@@ -41,7 +41,6 @@ card_horizontal_with_image:
           - '<button class="btn btn-primary btn-md" type="button">Custom action</button>'
         header: 'Header of card'
         footer: 'Footer of card'
-
 card_vertical:
   render:
     '#type': pattern

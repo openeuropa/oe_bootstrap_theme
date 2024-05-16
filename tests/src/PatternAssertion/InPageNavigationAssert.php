@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Drupal\Tests\oe_bootstrap_theme\PatternAssertions;
+namespace Drupal\Tests\oe_bootstrap_theme\PatternAssertion;
 
 use Symfony\Component\DomCrawler\Crawler;
 
