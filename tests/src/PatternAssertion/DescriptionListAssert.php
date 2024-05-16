@@ -41,115 +41,127 @@ class DescriptionListAssert extends BasePatternAssert {
     // Initialize arrays to store labels, values, and icons.
     $labels = [];
     $values = [];
-    $icons = ['dt' => [], 'dd' => []];
+    $dt_icons = [];
+    $dd_icons = [];
 
     // Extract labels, values, and icons from expected items.
+    $this->extractLabelsValuesAndIcons($expected_items, $labels, $values, $dt_icons, $dd_icons);
+
+    // Assert labels.
+    $this->assertLabels($labels, $crawler);
+
+    // Assert icons in <dt> elements.
+    $this->assertIcons($dt_icons, 'dt', $crawler);
+
+    // Assert icons in <dd> elements.
+    $this->assertIcons($dd_icons, 'dd', $crawler);
+
+    // Assert values.
+    $this->assertValues($values, $crawler);
+  }
+
+  /**
+   * Extracts labels, values, and icons from expected items.
+   *
+   * @param array $expected_items
+   *   The expected item values.
+   * @param array $labels
+   *   An array to store labels.
+   * @param array $values
+   *   An array to store values.
+   * @param array $dt_icons
+   *   An array to store icons for <dt> elements.
+   * @param array $dd_icons
+   *   An array to store icons for <dd> elements.
+   */
+  private function extractLabelsValuesAndIcons(array $expected_items, array &$labels, array &$values, array &$dt_icons, array &$dd_icons): void {
     foreach ($expected_items as $item) {
-      $this->extractItemData($item, $labels, $values, $icons);
-    }
-
-    // Assert labels and values.
-    $this->assertLabelsAndValues($labels, $values, $crawler);
-
-    // Assert icons in <dt> and <dd> elements.
-    foreach (['dt', 'dd'] as $element) {
-      $this->assertIcons($icons[$element], $crawler->filter('div')->children($element)->filter('svg'), $element);
+      $this->extractLabelsAndIcons($item['term'] ?? NULL, $labels, $dt_icons);
+      $this->extractLabelsAndIcons($item['definition'] ?? NULL, $values, $dd_icons);
     }
   }
 
   /**
-   * Extracts label, value, and icon data from an item.
+   * Extracts labels and icons from an item.
    *
-   * @param array $item
-   *   The item data.
+   * @param mixed $item
+   *   The item to extract labels and icons from.
    * @param array $labels
-   *   Array to store extracted labels.
-   * @param array $values
-   *   Array to store extracted values.
+   *   An array to store labels.
    * @param array $icons
-   *   Array to store extracted icons.
+   *   An array to store icons.
    */
-  private function extractItemData(array $item, array &$labels, array &$values, array &$icons): void {
-    foreach (['term' => 'dt', 'definition' => 'dd'] as $key => $element) {
-      $data = $item[$key] ?? NULL;
-      if (is_array($data)) {
-        foreach ($data as $subItem) {
-          $this->extractSubItemData($subItem, $labels, $values, $icons[$element]);
+  private function extractLabelsAndIcons($item, array &$labels, array &$icons): void {
+    if ($item === NULL) {
+      return;
+    }
+
+    if (is_array($item)) {
+      foreach ($item as $subItem) {
+        if (isset($subItem['label'])) {
+          $labels[] = is_array($subItem['label']) ? strip_tags($subItem['label'][0]['#markup'] ?? $subItem['label'][0]) : strip_tags($subItem['label']);
+        }
+        // Extract icon if provided.
+        $icon = $subItem['icon'] ?? NULL;
+        if ($icon) {
+          $icons[] = $icon['name'] ?? $icon;
         }
       }
-      elseif (is_string($data)) {
-        ${$element . 's'}[] = strip_tags($data);
-      }
+    }
+    elseif (is_string($item)) {
+      $labels[] = strip_tags($item);
     }
   }
 
   /**
-   * Extracts label, value, and icon data from a sub-item.
-   *
-   * @param array $subItem
-   *   The sub-item data.
-   * @param array $labels
-   *   Array to store extracted labels.
-   * @param array $values
-   *   Array to store extracted values.
-   * @param array $icons
-   *   Array to store extracted icons.
-   */
-  private function extractSubItemData(array $subItem, array &$labels, array &$values, array &$icons): void {
-    $label = $subItem['label'] ?? NULL;
-    if ($label) {
-      $labels[] = is_array($label) ? strip_tags($label[0]['#markup'] ?? $label[0]) : strip_tags($label);
-    }
-    $icon = $subItem['icon'] ?? NULL;
-    if ($icon) {
-      $icons[] = $icon['name'] ?? $icon;
-    }
-    $value = $subItem['value'] ?? NULL;
-    if ($value) {
-      $values[] = is_array($value) ? strip_tags($value[0]['#markup'] ?? $value[0]) : strip_tags($value);
-    }
-  }
-
-  /**
-   * Asserts labels and values.
+   * Asserts labels against the DOM crawler.
    *
    * @param array $labels
-   *   The array of expected labels.
-   * @param array $values
-   *   The array of expected values.
+   *   An array of labels.
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
-   *   The DomCrawler object.
+   *   The DOM crawler.
    */
-  private function assertLabelsAndValues(array $labels, array $values, Crawler $crawler): void {
+  private function assertLabels(array $labels, Crawler $crawler): void {
     $label_items = $crawler->filter('div')->children('dt');
     self::assertSameSize($labels, $label_items, 'Mismatch in label count.');
     foreach ($labels as $index => $expected_label) {
       self::assertEquals($expected_label, trim(strip_tags($label_items->eq($index)->text())), 'Label assertion failed.');
     }
+  }
 
-    $value_items = $crawler->filter('div')->children('dd');
-    self::assertCount(count($values), $value_items, 'Mismatch in value count.');
-    foreach ($values as $index => $expected_value) {
-      self::assertEquals($expected_value, trim(strip_tags($value_items->eq($index)->text())), 'Value assertion failed.');
+  /**
+   * Asserts icons against the DOM crawler.
+   *
+   * @param array $icons
+   *   An array of icons.
+   * @param string $element
+   *   The HTML element containing the icons.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DOM crawler.
+   */
+  private function assertIcons(array $icons, string $element, Crawler $crawler): void {
+    $icon_items = $crawler->filter('div')->children($element)->filter('svg');
+    self::assertSameSize($icons, $icon_items, "Mismatch in icon count ($element).");
+    foreach ($icons as $index => $expected_icon) {
+      $expectedIcon = '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#' . $expected_icon . '"></use>';
+      self::assertTrue($icon_items->eq($index)->count() > 0, "Icon element not found ($element).");
+      self::assertEquals($expectedIcon, $icon_items->eq($index)->html(), "Icon assertion failed ($element).");
     }
   }
 
   /**
-   * Asserts icons.
+   * Asserts values against the DOM crawler.
    *
-   * @param array $expected_icons
-   *   The array of expected icons.
-   * @param \Symfony\Component\DomCrawler\Crawler $icon_items
-   *   The Crawler object containing icon items.
-   * @param string $element
-   *   The element type ('dt' or 'dd').
+   * @param array $values
+   *   An array of values.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DOM crawler.
    */
-  private function assertIcons(array $expected_icons, Crawler $icon_items, string $element): void {
-    self::assertSameSize($expected_icons, $icon_items, "Mismatch in icon count ($element).");
-    foreach ($expected_icons as $index => $expected_icon) {
-      $expectedIcon = '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#' . $expected_icon . '"></use>';
-      self::assertTrue($icon_items->eq($index)->count() > 0, "Icon element not found ($element).");
-      self::assertEquals($expectedIcon, $icon_items->eq($index)->html(), "Icon assertion failed ($element).");
+  private function assertValues(array $values, Crawler $crawler): void {
+    $value_items = $crawler->filter('div')->children('dd');
+    self::assertCount(count($values), $value_items, 'Mismatch in value count.');
+    foreach ($values as $index => $expected_value) {
+      self::assertEquals($expected_value, trim(strip_tags($value_items->eq($index)->text())), 'Value assertion failed.');
     }
   }
 
