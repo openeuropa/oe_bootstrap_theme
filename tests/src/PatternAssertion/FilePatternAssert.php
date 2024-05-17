@@ -46,8 +46,9 @@ class FilePatternAssert extends BasePatternAssert {
     $this->assertElementExists('svg.icon--2xl', $crawler);
     $this->assertElementExists('svg.icon--file', $crawler);
     // Only one wrapper element is present.
-    $this->assertElementExists('body > .mt-4', $crawler);
-    $this->assertElementExists('body > div.mt-4 > div.border.rounded', $crawler);
+    $this->assertCount(1, $crawler->filter('body > .bcl-file-container'));
+    // Only one wrapper element is present within bcl-file-container.
+    $this->assertCount(1, $crawler->filter('body > .bcl-file-container > .bcl-file.border.rounded'));
   }
 
   /**
@@ -59,7 +60,7 @@ class FilePatternAssert extends BasePatternAssert {
    *   The crawler.
    */
   protected function assertFile(array $expected, Crawler $crawler): void {
-    $file = $crawler->filter('body > div.mt-4 > div.border.rounded > div:first-child');
+    $file = $crawler->filter('body > .bcl-file-container > .bcl-file.border.rounded > div:first-child');
     self::assertCount(1, $file);
 
     (new IconPatternAssert())->assertPattern([
@@ -85,7 +86,7 @@ class FilePatternAssert extends BasePatternAssert {
     // This selector targets the DIVs that wrap the main file and the
     // translations. When no translations are present, there should be only one
     // node.
-    $container_selector = 'body > div.mt-4 > div.border.rounded > div';
+    $container_selector = 'body > .bcl-file-container > .bcl-file.border.rounded > div';
 
     if ($expected === NULL) {
       // When no translations are present, only one div exists inside the
@@ -117,7 +118,7 @@ class FilePatternAssert extends BasePatternAssert {
    *   The crawler.
    */
   protected function assertDownloadLinksLabel(string $expected, Crawler $crawler): void {
-    $this->assertElementText($expected, 'body > div.mt-4 > div.border.rounded > div:first-child a', $crawler);
+    $this->assertElementText($expected, 'body > .bcl-file-container > .bcl-file.border.rounded > div:first-child a', $crawler);
     foreach ($crawler->filter('.collapse > div a') as $node) {
       self::assertEquals($expected, $node->textContent);
     }
