@@ -7,7 +7,7 @@ namespace Drupal\Tests\oe_bootstrap_theme\PatternAssertion;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
- * Assertions for the field list pattern.
+ * Assertions for the description list pattern.
  */
 class DescriptionListAssert extends BasePatternAssert {
 
@@ -26,7 +26,9 @@ class DescriptionListAssert extends BasePatternAssert {
    * {@inheritdoc}
    */
   protected function assertBaseElements(string $html, string $variant): void {
-    $this->assertElementExists('body > .bcl-description-list', new Crawler($html));
+    $crawler = new Crawler($html);
+    $description_list = $crawler->filter('body > .bcl-description-list');
+    self::assertCount(1, $description_list);
   }
 
   /**

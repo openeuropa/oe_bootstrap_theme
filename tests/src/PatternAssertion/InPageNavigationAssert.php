@@ -31,8 +31,8 @@ class InPageNavigationAssert extends BasePatternAssert {
    */
   protected function assertBaseElements(string $html, string $variant): void {
     $crawler = new Crawler($html);
-    $page_header = $crawler->filter('body');
-    self::assertCount(1, $page_header);
+    $inpage_nav = $crawler->filter('ul.nav-pills');
+    self::assertCount(1, $inpage_nav);
   }
 
   /**
@@ -44,8 +44,6 @@ class InPageNavigationAssert extends BasePatternAssert {
    *   The DomCrawler where to check the element.
    */
   protected function assertList($expected, Crawler $crawler): void {
-    $this->assertElementExists('ul.nav-pills', $crawler);
-
     $actual = [];
     $crawler->filter('ul.nav-pills  a.nav-link')->each(function (Crawler $node) use (&$actual) {
       $actual[] = [

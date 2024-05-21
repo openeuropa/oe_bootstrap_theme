@@ -41,7 +41,7 @@
     'path': image.src,
     'alt': image.alt,
   } : {},
-  'image_size': image_size ?? 'lg',
+  'image_size': image_size|default('lg'),
   'badges': _badges,
   'links': links,
   'action_bar': action_bar,

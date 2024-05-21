@@ -57,8 +57,8 @@ class ContentBannerAssert extends BasePatternAssert {
    */
   protected function assertBaseElements(string $html, string $variant): void {
     $crawler = new Crawler($html);
-    $page_header = $crawler->filter('.bcl-content-banner');
-    self::assertCount(1, $page_header);
+    $content_banner = $crawler->filter('.bcl-content-banner');
+    self::assertCount(1, $content_banner);
   }
 
   /**
@@ -127,8 +127,8 @@ class ContentBannerAssert extends BasePatternAssert {
     if ($expected === 'xl') {
       self::assertStringContainsString('bcl-size-extra-large', $element->attr('class'));
     }
-    elseif ($expected === 'md') {
-      self::assertStringContainsString('bg-lighter', $element->attr('class'));
+    elseif ($expected === 'lg') {
+      self::assertStringContainsString('bcl-size-large', $element->attr('class'));
     }
     else {
       // Check that the element has only one class: bcl-card-start-col.
