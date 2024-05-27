@@ -63,6 +63,7 @@ card_layout:
       description: 'An array of card pattern items.'
       preview:
         - title: 'Title card 1'
+          title_tag: 'h2'
           subtitle: 'Subtitle card 1'
           text: 'Text card with longer text which is supported 1'
           image:
@@ -79,6 +80,7 @@ card_layout:
           card_header: 'Header of card 1'
           card_footer: 'Footer of card 1'
         - title: 'Title card 2'
+          title_tag: 'h2'
           subtitle: 'Subtitle card 2'
           text: 'Text card with longer text which is supported 2'
           image:
@@ -88,6 +90,7 @@ card_layout:
           card_header: 'Header of card 2'
           card_footer: 'Footer of card 2'
         - title: 'Title card 3'
+          title_tag: 'h2'
           subtitle: 'Subtitle card 3'
           text: 'Text card with longer text which is supported 3'
           image:
@@ -97,6 +100,7 @@ card_layout:
           card_header: 'Header of card 3'
           card_footer: 'Footer of card 3'
         - title: 'Title card 4'
+          title_tag: 'h2'
           subtitle: 'Subtitle card 4'
           text: 'Text card with longer text which is supported 4'
           content:

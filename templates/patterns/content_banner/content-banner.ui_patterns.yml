@@ -22,8 +22,8 @@ content_banner:
     title:
       type: text
       label: 'Title'
-      description: 'Title of the content.'
-      preview: 'This is the title of this page'
+      description: 'Title of the content banner.'
+      preview: 'This is the title of this page.'
     title_tag:
       type: text
       label: 'Title tag'

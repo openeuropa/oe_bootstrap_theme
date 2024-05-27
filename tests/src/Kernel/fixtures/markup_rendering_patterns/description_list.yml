@@ -3,6 +3,8 @@ description_list_default:
     '#type': pattern
     '#id': description_list
     '#fields':
+      title: 'The description list title'
+      title_tag: 'h4'
       settings:
         orientation: default
       items:
@@ -35,6 +37,8 @@ description_list_default:
           definition: 'Yet another definition text.'
   assertions:
     count:
+      '.bcl-heading': 1
+      'h4.bcl-heading': 1
       'dl': 1
       'dl.d-md-grid': 0
       'dt': 6
@@ -48,6 +52,7 @@ description_list_default:
       'dl > div:nth-of-type(2) > dt > div > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#calendar-event'
       'dl > div:nth-of-type(4) > dt > div > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#bicycle'
     equals:
+      'h4.bcl-heading': 'The description list title'
       'dl > div:nth-child(1) > dt > div > svg + div': 'Single label with icon'
       'dl > div:nth-child(1) > dd > div': 'Description of first term text goes here.'
       'dl > div:nth-child(2) > dt:nth-child(1) > div > div': 'First label without icon'
@@ -65,6 +70,7 @@ description_list_horizontal:
     '#type': pattern
     '#id': description_list
     '#fields':
+      title: 'The description list title'
       settings:
         orientation: horizontal
       items:
@@ -83,6 +89,8 @@ description_list_horizontal:
             - label: 'Second definition for third term.'
   assertions:
     count:
+      '.bcl-heading': 1
+      'h2.bcl-heading': 1
       'dl': 3
       'dl.row.mb-3': 3
       'dt': 4
@@ -92,6 +100,7 @@ description_list_horizontal:
       'dl:nth-of-type(1) > div.col-md-3:nth-child(1) > dt > div > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#geo-alt-fill'
       'dl:nth-of-type(2) > div.col-md-3:nth-child(1) > dt:nth-child(2) > div > svg': '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#calendar-event'
     equals:
+      'h2.bcl-heading': 'The description list title'
       'dl:nth-of-type(1) > div.col-md-3:nth-child(1) > dt > div > svg + div': 'Single label with icon'
       'dl:nth-of-type(1) > div.col:nth-child(2) > dd > div': 'Description of first term text goes here.'
       'dl:nth-of-type(2) > div.col-md-3:nth-child(1) > dt:nth-child(1) > div > div': 'First label without icon'
@@ -100,3 +109,21 @@ description_list_horizontal:
       'dl:nth-of-type(3) > div.col-md-3:nth-child(1) > dt > div > div': 'A single term without icon.'
       'dl:nth-of-type(3) > div.col:nth-child(2) > dd:nth-child(1) > div': 'First definition for third term.'
       'dl:nth-of-type(3) > div.col:nth-child(2) > dd:nth-child(2) > div': 'Second definition for third term.'
+description_list_no_title:
+  render:
+    '#type': pattern
+    '#id': description_list
+    '#fields':
+      items:
+        - term:
+            - label: 'Single label with icon'
+          definition: 'Description of first term text goes here.'
+  assertions:
+    count:
+      '.bcl-heading': 0
+      'dl': 1
+      'dt': 1
+      'dd': 1
+    equals:
+      'dl > div:nth-child(1) > dt > div > div': 'Single label with icon'
+      'dl > div:nth-child(1) > dd > div': 'Description of first term text goes here.'

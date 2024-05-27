@@ -6,7 +6,7 @@ fact_figures:
       type: text
       label: 'Title'
       description: 'Title of the facts & figures section.'
-      preview: 'Fact and figures block'
+      preview: 'This is the title of this facts & figures section.'
     title_tag:
       type: text
       label: 'Title tag'

@@ -16,8 +16,12 @@ card:
     title:
       type: text
       label: 'Title'
-      description: 'Card title. Supports markup, e.g. for links.'
-      preview: 'Title card'
+      description: 'Title of the card.'
+      preview: 'This is the title of this card.'
+    title_tag:
+      type: text
+      label: 'Title tag'
+      description: 'Title tag of the card. Defaults to h1.'
     subtitle:
       type: text
       label: 'Subtitle'

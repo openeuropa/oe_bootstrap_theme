@@ -32,9 +32,14 @@ featured_media:
         path: '#example'
     title:
       type: text
-      label: "Heading"
-      description: "The heading, displayed on the top."
-      preview: "Lorem ipsum"
+      label: "Title"
+      description: 'Title of the featured media.'
+      preview: 'This is the title of this featured media.'
+    title_tag:
+      type: text
+      label: "Title tag"
+      description: 'Title tag of the featured media. Defaults to h2'
+      preview: 'h2'
     subtitle:
       type: text
       label: 'Subtitle'

@@ -38,6 +38,10 @@ banner:
       label: 'Title'
       description: 'Title of the banner.'
       preview: 'EU Budget for the future'
+    title_tag:
+      type: text
+      label: 'Title tag'
+      description: 'The tag to use for the title. Defaults to div.'
     description:
       type: text
       label: 'Description'

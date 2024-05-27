@@ -8,6 +8,7 @@ card_group:
         equal_height: true
       items:
         - title: 'Card title 1'
+          title_tag: 'h2'
           text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
           card_footer: 'Footer of card 1'
         - title: 'Card title 2'
@@ -23,10 +24,11 @@ card_group:
     count:
       'div.card-group': 1
       'article.card': 4
-      'h1.card-title': 4
+      'h1.card-title': 3
+      'h2.card-title': 1
       'div.card-text': 4
     equals:
-      'article.card:nth-child(1) h1.card-title': 'Card title 1'
+      'article.card:nth-child(1) h2.card-title': 'Card title 1'
       'article.card:nth-child(2) h1.card-title': 'Card title 2'
       'article.card:nth-child(3) h1.card-title': 'Card title 3'
       'article.card:nth-child(4) h1.card-title': 'Card title 4'

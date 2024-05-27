@@ -3,6 +3,8 @@ blockquote:
     '#type': pattern
     '#id': blockquote
     '#fields':
+      title: 'The blockquote title'
+      title_tag: 'h4'
       settings:
         alignment: 'left'
       quote: 'A well-known quote, contained in a blockquote element.'
@@ -10,6 +12,8 @@ blockquote:
       cite: 'Source title'
   assertions:
     count:
+      '.bcl-heading': 1
+      'h4.bcl-heading': 1
       'figure.text-left': 1
       'blockquote.blockquote': 1
       'figcaption.blockquote-footer': 1
@@ -17,13 +21,15 @@ blockquote:
     contains:
       'figcaption.blockquote-footer': 'Someone famous in'
     equals:
+      'h4.bcl-heading': 'The blockquote title'
       'blockquote.blockquote p': 'A well-known quote, contained in a blockquote element.'
       'cite[title="Source title"]': 'Source title'
-blockquote_right_alignment:
+blockquote_right_alignment_no_title_tag:
   render:
     '#type': pattern
     '#id': blockquote
     '#fields':
+      title: 'The blockquote title'
       settings:
         alignment: 'end'
       quote: 'A well-known quote, contained in a blockquote element.'
@@ -31,6 +37,8 @@ blockquote_right_alignment:
       cite: 'Source title'
   assertions:
     count:
+      '.bcl-heading': 1
+      'h2.bcl-heading': 1
       'figure.text-end': 1
       'blockquote.blockquote': 1
       'figcaption.blockquote-footer': 1
@@ -38,9 +46,10 @@ blockquote_right_alignment:
     contains:
       'figcaption.blockquote-footer': 'Someone famous in'
     equals:
+      'h2.bcl-heading': 'The blockquote title'
       'blockquote.blockquote p': 'A well-known quote, contained in a blockquote element.'
       'cite[title="Source title"]': 'Source title'
-blockquote_with_no_cite_no_alignment:
+blockquote_with_no_cite_no_alignment_no_title:
   render:
     '#type': pattern
     '#id': blockquote
@@ -49,6 +58,7 @@ blockquote_with_no_cite_no_alignment:
       attribution: 'Someone famous in'
   assertions:
     count:
+      '.bcl-heading': 0
       'figure.text-left': 1
       'blockquote.blockquote': 1
       'figcaption.blockquote-footer': 1

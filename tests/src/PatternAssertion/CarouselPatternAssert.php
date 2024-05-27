@@ -22,6 +22,14 @@ class CarouselPatternAssert extends BasePatternAssert {
       'settings' => [
         [$this, 'assertSettings'],
       ],
+      'title' => [
+        [$this, 'assertElementText'],
+        '.bcl-heading',
+      ],
+      'title_tag' => [
+        [$this, 'assertElementTag'],
+        '.bcl-heading',
+      ],
     ];
   }
 

@@ -36,6 +36,15 @@ carousel:
       description: 'Enable the dark mode. Defaults to false.'
       preview: false
   fields:
+    title:
+      type: text
+      label: 'Title'
+      description: 'Title of the carousel.'
+      preview: 'This is the title of this carousel.'
+    title_tag:
+      type: text
+      label: 'Title tag'
+      description: 'The tag to use for the title. Defaults to h2.'
     slides:
       type: array
       label: 'Slides'

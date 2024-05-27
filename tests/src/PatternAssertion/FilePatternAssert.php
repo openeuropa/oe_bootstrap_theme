@@ -25,6 +25,14 @@ class FilePatternAssert extends BasePatternAssert {
       'link_label' => [
         [$this, 'assertDownloadLinksLabel'],
       ],
+      'title' => [
+        [$this, 'assertElementText'],
+        '.bcl-heading',
+      ],
+      'title_tag' => [
+        [$this, 'assertElementTag'],
+        '.bcl-heading',
+      ],
     ];
   }
 
@@ -33,8 +41,6 @@ class FilePatternAssert extends BasePatternAssert {
    */
   protected function assertBaseElements(string $html, string $variant): void {
     $crawler = new Crawler($html);
-    // No titles should be rendered in the pattern.
-    $this->assertElementNotExists('h2', $crawler);
     // Only one icon should be rendered. The type will be asserted in the file
     // assert.
     $this->assertElementExists('svg.icon--2xl', $crawler);
