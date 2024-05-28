@@ -41,7 +41,7 @@ class ContentBannerAssert extends BasePatternAssert {
       ],
       'content' => [
         [$this, 'assertElementText'],
-        '.banner-content',
+        '.card-text',
       ],
       'meta' => [
         [$this, 'assertMeta'],
