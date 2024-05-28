@@ -192,10 +192,15 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
       $this->assertElementNotExists('.badge', $crawler);
       return;
     }
-    $badges_items = $crawler->filter('.mt-2-5');
+    $badges_items = $crawler->filter('.badge');
     self::assertCount(count($badges), $badges_items);
     foreach ($badges as $index => $badge) {
-      self::assertEquals($badge, trim($badges_items->eq($index)->text()));
+      $expected_rounded_pill = $badge['rounded_pill'] ?? FALSE;
+      $badge_element = $badges_items->eq($index);
+      self::assertEquals($badge['label'], trim($badge_element->text()));
+      if ($expected_rounded_pill) {
+        self::assertStringContainsString('rounded-pill', $badge_element->attr('class'));
+      }
     }
   }
 

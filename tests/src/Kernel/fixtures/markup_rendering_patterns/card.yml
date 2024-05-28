@@ -103,8 +103,8 @@ card_variant_search:
           src: 'https://picsum.photos/1000/500/'
           alt: ''
         badges:
-          - 'Category 1'
-          - 'Category 2'
+          - label: 'Category 1'
+          - label: 'Category 2'
 card_search_with_date:
   render:
     '#type': pattern
@@ -134,8 +134,8 @@ card_search_with_date:
           day: "23"
           date_time: "2021-01-23"
         badges:
-          - 'Category 1'
-          - 'Category 2'
+          - label: 'Category 1'
+          - label: 'Category 2'
 card_with_date_range:
   render:
     '#type': pattern
