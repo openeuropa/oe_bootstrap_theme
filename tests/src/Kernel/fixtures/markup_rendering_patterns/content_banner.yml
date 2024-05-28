@@ -93,7 +93,7 @@ content_banner_gray_background_with_image_without_badges_without_meta_without_li
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ContentBannerAssert
       expected:
-        background: 'gray'
+        background: 'lighter'
         image:
           src: 'https://picsum.photos/1200/600/'
           alt: 'Alternative text for content banner image'
@@ -120,7 +120,7 @@ content_banner_gray_background_without_image_with_badges_with_meta_without_links
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ContentBannerAssert
       expected:
-        background: 'gray'
+        background: 'lighter'
         meta:
           - '26 May 2020'
           - '1 comment'

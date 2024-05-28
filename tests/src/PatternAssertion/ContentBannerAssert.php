@@ -90,15 +90,7 @@ class ContentBannerAssert extends BasePatternAssert {
   protected function assertBackground(string $expected, Crawler $crawler): void {
     $element = $crawler->filter('.bcl-content-banner');
 
-    if ($expected === 'white') {
-      self::assertStringContainsString('bg-white', $element->attr('class'));
-    }
-    elseif ($expected === 'gray') {
-      self::assertStringContainsString('bg-lighter', $element->attr('class'));
-    }
-    else {
-      self::assertStringContainsString('bg-transparent', $element->attr('class'));
-    }
+    self::assertStringContainsString('bg-' . $expected, $element->attr('class'));
   }
 
   /**
@@ -124,32 +116,18 @@ class ContentBannerAssert extends BasePatternAssert {
   protected function assertImageSize(string $expected, Crawler $crawler): void {
     $element = $crawler->filter('.bcl-card-start-col');
 
-    if ($expected === 'xl') {
-      self::assertStringContainsString('bcl-size-extra-large', $element->attr('class'));
-    }
-    elseif ($expected === 'lg') {
-      self::assertStringContainsString('bcl-size-large', $element->attr('class'));
-    }
-    else {
-      // Check that the element has only one class: bcl-card-start-col.
+    $expectedClass = match ($expected) {
+      'xl' => 'bcl-size-extra-large',
+      'lg' => 'bcl-size-large',
+      default => 'bcl-card-start-col',
+    };
+
+    if ($expectedClass === 'bcl-card-start-col') {
       $classes = explode(' ', $element->attr('class'));
       self::assertCount(1, $classes);
-      self::assertEquals('bcl-card-start-col', $classes[0]);
     }
-  }
 
-  /**
-   * Asserts the content banner description.
-   *
-   * @param string $text
-   *   The expected description.
-   * @param \Symfony\Component\DomCrawler\Crawler $crawler
-   *   The dom crawler.
-   */
-  protected function assertDescription(string $text, Crawler $crawler): void {
-    $element = $crawler->filter('.card-body');
-    self::assertCount(1, $element);
-    self::assertStringContainsString($text, $element->text());
+    self::assertStringContainsString($expectedClass, $element->attr('class'));
   }
 
   /**

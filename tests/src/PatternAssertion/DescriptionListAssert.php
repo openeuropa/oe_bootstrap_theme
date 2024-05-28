@@ -40,62 +40,51 @@ class DescriptionListAssert extends BasePatternAssert {
    *   The DomCrawler where to check the element.
    */
   protected function assertItems(array $expected_items, Crawler $crawler): void {
-    // Initialize arrays to store labels, values, and icons.
-    $labels = [];
-    $values = [];
-    $dt_icons = [];
-    $dd_icons = [];
+    $labels = $this->extractLabels($expected_items, 'term');
+    $values = $this->extractLabels($expected_items, 'definition');
+    $dt_icons = $this->extractIcons($expected_items, 'term');
+    $dd_icons = $this->extractIcons($expected_items, 'definition');
 
-    // Extract labels, values, and icons from expected items.
-    $this->extractLabelsValuesAndIcons($expected_items, $labels, $values, $dt_icons, $dd_icons);
-
-    // Assert labels.
     $this->assertLabels($labels, $crawler);
-
-    // Assert icons in <dt> elements.
     $this->assertIcons($dt_icons, 'dt', $crawler);
-
-    // Assert icons in <dd> elements.
     $this->assertIcons($dd_icons, 'dd', $crawler);
-
-    // Assert values.
     $this->assertValues($values, $crawler);
   }
 
   /**
-   * Extracts labels, values, and icons from expected items.
+   * Extracts labels from expected items.
    *
    * @param array $expected_items
    *   The expected item values.
-   * @param array $labels
-   *   An array to store labels.
-   * @param array $values
-   *   An array to store values.
-   * @param array $dt_icons
-   *   An array to store icons for <dt> elements.
-   * @param array $dd_icons
-   *   An array to store icons for <dd> elements.
+   * @param string $key
+   *   The key to extract labels for ('term' or 'definition').
+   *
+   * @return array
+   *   The extracted labels.
    */
-  private function extractLabelsValuesAndIcons(array $expected_items, array &$labels, array &$values, array &$dt_icons, array &$dd_icons): void {
+  private function extractLabels(array $expected_items, string $key): array {
+    $labels = [];
     foreach ($expected_items as $item) {
-      $this->extractLabelsAndIcons($item['term'] ?? NULL, $labels, $dt_icons);
-      $this->extractLabelsAndIcons($item['definition'] ?? NULL, $values, $dd_icons);
+      if (isset($item[$key])) {
+        $labels = array_merge($labels, $this->extractLabel($item[$key]));
+      }
     }
+    return $labels;
   }
 
   /**
-   * Extracts labels and icons from an item.
+   * Extracts label from an item.
    *
    * @param mixed $item
-   *   The item to extract labels and icons from.
-   * @param array $labels
-   *   An array to store labels.
-   * @param array $icons
-   *   An array to store icons.
+   *   The item to extract label from.
+   *
+   * @return array
+   *   The extracted labels.
    */
-  private function extractLabelsAndIcons($item, array &$labels, array &$icons): void {
+  private function extractLabel($item): array {
+    $labels = [];
     if ($item === NULL) {
-      return;
+      return $labels;
     }
 
     if (is_array($item)) {
@@ -103,16 +92,59 @@ class DescriptionListAssert extends BasePatternAssert {
         if (isset($subItem['label'])) {
           $labels[] = is_array($subItem['label']) ? strip_tags($subItem['label'][0]['#markup'] ?? $subItem['label'][0]) : strip_tags($subItem['label']);
         }
-        // Extract icon if provided.
+      }
+    }
+    elseif (is_string($item)) {
+      $labels[] = strip_tags($item);
+    }
+    return $labels;
+  }
+
+  /**
+   * Extracts icons from expected items.
+   *
+   * @param array $expected_items
+   *   The expected item values.
+   * @param string $key
+   *   The key to extract icons for ('term' or 'definition').
+   *
+   * @return array
+   *   The extracted icons.
+   */
+  private function extractIcons(array $expected_items, string $key): array {
+    $icons = [];
+    foreach ($expected_items as $item) {
+      if (isset($item[$key])) {
+        $icons = array_merge($icons, $this->extractIcon($item[$key]));
+      }
+    }
+    return $icons;
+  }
+
+  /**
+   * Extracts icons from an item.
+   *
+   * @param mixed $item
+   *   The item to extract icons from.
+   *
+   * @return array
+   *   The extracted icons.
+   */
+  private function extractIcon($item): array {
+    $icons = [];
+    if ($item === NULL) {
+      return $icons;
+    }
+
+    if (is_array($item)) {
+      foreach ($item as $subItem) {
         $icon = $subItem['icon'] ?? NULL;
         if ($icon) {
           $icons[] = $icon['name'] ?? $icon;
         }
       }
     }
-    elseif (is_string($item)) {
-      $labels[] = strip_tags($item);
-    }
+    return $icons;
   }
 
   /**
