@@ -6,15 +6,22 @@
  * For available variables, refer to the pattern declaration.
  */
 #}
-<{{ tag }}{{ attributes.addClass(['card', 'v2']) }}>
-  {% if header is not empty %}
-    <div{{ header_attributes.addClass('card-header') }}>
-      {{ header }}
-    </div>
-  {% endif %}
+
+{% set _classes = ['card', 'v2'] %}
+
+{% if orientation == 'horizontal' %}
+  {% set _classes = _classes|merge(['horizontal']) %}
+{% endif %}
+
+<{{ tag }}{{ attributes.addClass(_classes) }}>
   {% if media is not empty %}
     <div{{ media_attributes.addClass('card-media') }}>
       {{ media }}
+    </div>
+  {% endif %}
+  {% if header is not empty %}
+    <div{{ header_attributes.addClass('card-header') }}>
+      {{ header }}
     </div>
   {% endif %}
   <div{{ content_attributes.addClass('card-body') }}>

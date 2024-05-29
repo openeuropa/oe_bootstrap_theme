@@ -3,6 +3,10 @@ card_v2:
   description: 'A card is a flexible and extensible content container. The V2 leaves more possibility for content and render items as we transformed all the content areas into render options. https://v5.getbootstrap.com/docs/5.0/components/card'
   category: Version 2.x
   fields:
+    orientation:
+      type: string
+      label:  'Orientation'
+      description: 'Can be set to horizontal or vertical. Defaults to vertical.'
     title:
       type: render
       label: 'Title'
