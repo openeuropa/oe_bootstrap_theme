@@ -72,8 +72,7 @@ class DescriptionListAssert extends BasePatternAssert {
       if (is_array($item[$key])) {
         $labels = array_merge($labels, $this->extractLabelFromArray($item[$key]));
       }
-
-      if (is_string($item[$key])) {
+      else {
         $labels = array_merge($labels, $this->extractLabelFromString($item[$key]));
       }
     }
@@ -130,32 +129,48 @@ class DescriptionListAssert extends BasePatternAssert {
       if (!isset($item[$key])) {
         continue;
       }
-      $icons = array_merge($icons, $this->extractIcon($item[$key]));
+      if (is_array($item[$key])) {
+        $icons = array_merge($icons, $this->extractIconFromArray($item[$key]));
+      }
+      elseif (isset($item[$key]['icon'])) {
+        $icons = array_merge($icons, $this->extractIconFromString($item[$key]));
+      }
     }
     return $icons;
   }
 
   /**
-   * Extracts icons from an item.
+   * Extracts icons from an item array.
    *
-   * @param mixed $item
+   * @param array $item
    *   The item to extract icons from.
    *
    * @return array
    *   The extracted icons.
    */
-  private function extractIcon($item): array {
+  private function extractIconFromArray(array $item): array {
     $icons = [];
 
-    if (is_array($item)) {
-      foreach ($item as $subItem) {
-        $icon = $subItem['icon'] ?? NULL;
-        if ($icon) {
-          $icons[] = $icon['name'] ?? $icon;
-        }
+    foreach ($item as $subItem) {
+      if (!isset($subItem['icon'])) {
+        continue;
       }
+      $icons[] = $subItem['icon']['name'] ?? $subItem['icon'];
     }
     return $icons;
+  }
+
+  /**
+   * Extracts icons from an item string.
+   *
+   * @param string $item
+   *   The item to extract icons from.
+   *
+   * @return array
+   *   The extracted icons.
+   */
+  private function extractIconFromString(string $item): array {
+    return [strip_tags($item)];
   }
 
   /**
