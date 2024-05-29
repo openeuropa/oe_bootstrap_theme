@@ -82,7 +82,7 @@ class DescriptionListAssert extends BasePatternAssert {
   /**
    * Extracts label from an array of item.
    *
-   * @param mixed $item
+   * @param array $item
    *   The item to extract label from.
    *
    * @return array
@@ -102,7 +102,7 @@ class DescriptionListAssert extends BasePatternAssert {
   /**
    * Extracts label from an item string.
    *
-   * @param mixed $item
+   * @param string $item
    *   The item to extract label from.
    *
    * @return array
