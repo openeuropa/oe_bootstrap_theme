@@ -195,9 +195,10 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
     $badges_items = $crawler->filter('.badge');
     self::assertCount(count($badges), $badges_items);
     foreach ($badges as $index => $badge) {
-      $expected_rounded_pill = $badge['rounded_pill'] ?? FALSE;
       $badge_element = $badges_items->eq($index);
-      self::assertEquals($badge['label'], trim($badge_element->text()));
+      $label = is_array($badge) ? $badge['label'] : $badge;
+      $expected_rounded_pill = is_array($badge) && isset($badge['rounded_pill']) && $badge['rounded_pill'] === TRUE;
+      self::assertEquals($label, trim($badge_element->text()));
       if ($expected_rounded_pill) {
         self::assertStringContainsString('rounded-pill', $badge_element->attr('class'));
       }
