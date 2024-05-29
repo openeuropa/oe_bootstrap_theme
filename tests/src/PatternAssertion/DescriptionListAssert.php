@@ -65,15 +65,23 @@ class DescriptionListAssert extends BasePatternAssert {
   private function extractLabels(array $expected_items, string $key): array {
     $labels = [];
     foreach ($expected_items as $item) {
-      if (isset($item[$key])) {
-        $labels = array_merge($labels, $this->extractLabel($item[$key]));
+      if (!isset($item[$key])) {
+        continue;
+      }
+
+      if (is_array($item[$key])) {
+        $labels = array_merge($labels, $this->extractLabelFromArray($item[$key]));
+      }
+
+      if (is_string($item[$key])) {
+        $labels = array_merge($labels, $this->extractLabelFromString($item[$key]));
       }
     }
     return $labels;
   }
 
   /**
-   * Extracts label from an item.
+   * Extracts label from an array of item.
    *
    * @param mixed $item
    *   The item to extract label from.
@@ -81,23 +89,28 @@ class DescriptionListAssert extends BasePatternAssert {
    * @return array
    *   The extracted labels.
    */
-  private function extractLabel($item): array {
+  private function extractLabelFromArray(array $item): array {
     $labels = [];
-    if ($item === NULL) {
-      return $labels;
+
+    foreach ($item as $subItem) {
+      $label = is_array($subItem['label']) ? $subItem['label'][0]['#markup'] ?? $subItem['label'][0] : $subItem['label'];
+      $labels[] = strip_tags($label);
     }
 
-    if (is_array($item)) {
-      foreach ($item as $subItem) {
-        if (isset($subItem['label'])) {
-          $labels[] = is_array($subItem['label']) ? strip_tags($subItem['label'][0]['#markup'] ?? $subItem['label'][0]) : strip_tags($subItem['label']);
-        }
-      }
-    }
-    elseif (is_string($item)) {
-      $labels[] = strip_tags($item);
-    }
     return $labels;
+  }
+
+  /**
+   * Extracts label from an item string.
+   *
+   * @param mixed $item
+   *   The item to extract label from.
+   *
+   * @return array
+   *   The extracted labels.
+   */
+  private function extractLabelFromString(string $item): array {
+    return [strip_tags($item)];
   }
 
   /**
@@ -114,9 +127,10 @@ class DescriptionListAssert extends BasePatternAssert {
   private function extractIcons(array $expected_items, string $key): array {
     $icons = [];
     foreach ($expected_items as $item) {
-      if (isset($item[$key])) {
-        $icons = array_merge($icons, $this->extractIcon($item[$key]));
+      if (!isset($item[$key])) {
+        continue;
       }
+      $icons = array_merge($icons, $this->extractIcon($item[$key]));
     }
     return $icons;
   }
@@ -132,9 +146,6 @@ class DescriptionListAssert extends BasePatternAssert {
    */
   private function extractIcon($item): array {
     $icons = [];
-    if ($item === NULL) {
-      return $icons;
-    }
 
     if (is_array($item)) {
       foreach ($item as $subItem) {
