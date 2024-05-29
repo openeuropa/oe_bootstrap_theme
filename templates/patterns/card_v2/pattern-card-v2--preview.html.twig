@@ -7,6 +7,9 @@
 {% set _title %}
   <h4><a href="https://google.com">Title card</a></h4>
 {% endset %}
+{% set _media_horizontal %}
+  <img src="https://picsum.photos/400/800/" alt="Alternative text for card image">
+{% endset %}
 {% set _media %}
   <img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">
 {% endset %}
@@ -76,7 +79,7 @@
   <h2 class="mb-2">Horizontal card</h2>
   {{ pattern('card_v2', {
     title: _title,
-    media: _media,
+    media: _media_horizontal,
     content: _content,
     orientation: 'horizontal',
   }) }}
