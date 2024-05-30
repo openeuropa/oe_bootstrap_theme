@@ -180,6 +180,32 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
   }
 
   /**
+   * Asserts the badges items of the pattern.
+   *
+   * @param array $badges
+   *   The expected badges item values.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertBadgesElements(array $badges, Crawler $crawler): void {
+    if (empty($badges)) {
+      $this->assertElementNotExists('.badge', $crawler);
+      return;
+    }
+    $badges_items = $crawler->filter('.badge');
+    self::assertCount(count($badges), $badges_items);
+    foreach ($badges as $index => $badge) {
+      $badge_element = $badges_items->eq($index);
+      $label = is_array($badge) ? $badge['label'] : $badge;
+      $expected_rounded_pill = is_array($badge) && isset($badge['rounded_pill']) && $badge['rounded_pill'] === TRUE;
+      self::assertEquals($label, trim($badge_element->text()));
+      if ($expected_rounded_pill) {
+        self::assertStringContainsString('rounded-pill', $badge_element->attr('class'));
+      }
+    }
+  }
+
+  /**
    * Asserts the rendered html of a particular element.
    *
    * @param string|null $expected

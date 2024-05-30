@@ -13,7 +13,7 @@ content_banner_white_background_with_image_with_badges_with_meta_with_links_with
       title: 'This is the title of this page'
       title_tag: 'h2'
       action_bar:
-        - '#markup':  '<div class="action-bar d-flex justify-content-end mt-2 align-items-center col-lg-11"><a href="#" class="standalone" type="button">Submit</a></div>'
+        - '#markup': '<div class="action-bar d-flex justify-content-end mt-2 align-items-center col-lg-11"><a href="#" class="standalone" type="button">Submit</a></div>'
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
       badges:
         - label: 'Primary badge'
@@ -27,30 +27,31 @@ content_banner_white_background_with_image_with_badges_with_meta_with_links_with
         - label: 'Link 2'
           path: 'https://example-2.com'
   assertions:
-    count:
-      'div.bcl-content-banner': 1
-      'div.bcl-content-banner.bg-white': 1
-      'img': 1
-      'div.bcl-content-banner > div.container > div.action-bar': 1
-      'div.bcl-content-banner > div.container > div.action-bar > a.standalone': 1
-      'article.card > div.row > div.bcl-card-start-col.bcl-size-large > img[src="https://picsum.photos/1200/600/"]': 1
-      'div.card-body > h2': 1
-      'div.card-body > div': 4
-      'div.card-body > div.mt-4': 0
-      'div.card-body > div > span.text-muted': 2
-      'div.card-body > div > span.badge.rounded-pill': 2
-      'div.card-body > div > span.badge.badge-outline-primary': 1
-      'a[href="https://example-1.com"]': 1
-      'a[href="https://example-2.com"]': 1
-    equals:
-      'div.card-body > h2': 'This is the title of this page'
-      'div.card-body > div:nth-child(3)': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
-      'div.card-body > div > span.badge:nth-child(1)': 'Primary badge'
-      'div.card-body > div > span.badge.badge-outline-primary': 'Secondary badge'
-      'div.card-body > div > div:nth-child(1) > a': 'Link 1'
-      'div.card-body > div > div:nth-child(2) > a': 'Link 2'
-      'span.text-muted.me-3:nth-child(1)': '26 May 2020'
-      'span.text-muted.me-3:nth-child(2)': '1 comment'
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ContentBannerAssert
+      expected:
+        background: 'white'
+        meta:
+          - '26 May 2020'
+          - '1 comment'
+        image:
+          src: 'https://picsum.photos/1200/600/'
+          alt: 'Alternative text for content banner image'
+        title: 'This is the title of this page'
+        title_tag: 'h2'
+        action_bar: '<div class="action-bar d-flex justify-content-end mt-2 align-items-center col-lg-11"><a href="#" class="standalone" type="button">Submit</a></div>'
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+        badges:
+          - label: 'Primary badge'
+            rounded_pill: true
+            outline: false
+          - label: 'Secondary badge'
+            rounded_pill: true
+        links:
+          - label: 'Link 1'
+            path: 'https://example-1.com'
+          - label: 'Link 2'
+            path: 'https://example-2.com'
 content_banner_white_background_without_image_with_badges_without_meta_without_links:
   render:
     '#type': pattern
@@ -65,19 +66,17 @@ content_banner_white_background_without_image_with_badges_without_meta_without_l
         - label: 'Secondary badge'
           rounded_pill: true
   assertions:
-    count:
-      'div.bcl-content-banner': 1
-      'div.bcl-content-banner.bg-white': 1
-      'div.card-body > h1': 1
-      'img': 0
-      'div.card-body > div': 2
-      'div.card-body > div.mt-4': 1
-      'div.card-body > div > span.badge.rounded-pill': 2
-    equals:
-      'div.card-body > h1': 'This is the title of this page'
-      'div.card-body > div:nth-child(2)': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
-      'div.card-body > div > span.badge:nth-child(1)': 'Primary badge'
-      'div.card-body > div > span.badge:nth-child(2)': 'Secondary badge'
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ContentBannerAssert
+      expected:
+        background: 'white'
+        title: 'This is the title of this page'
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+        badges:
+          - label: 'Primary badge'
+            rounded_pill: true
+          - label: 'Secondary badge'
+            rounded_pill: true
 content_banner_gray_background_with_image_without_badges_without_meta_without_links:
   render:
     '#type': pattern
@@ -91,17 +90,16 @@ content_banner_gray_background_with_image_without_badges_without_meta_without_li
       title: 'This is the title of this page'
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
   assertions:
-    count:
-      'div.bcl-content-banner': 1
-      'div.bcl-content-banner.bg-lighter': 1
-      'img': 1
-      'article.card > div.row > div.bcl-card-start-col.bcl-size-extra-large > img[src="https://picsum.photos/1200/600/"]': 1
-      'div.card-body > h1': 1
-      'div.card-body > div.mt-4': 1
-      'div.card-body > div > span.badge': 0
-    equals:
-      'div.card-body > h1': 'This is the title of this page'
-      'div.card-body > div:nth-child(2)': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ContentBannerAssert
+      expected:
+        background: 'lighter'
+        image:
+          src: 'https://picsum.photos/1200/600/'
+          alt: 'Alternative text for content banner image'
+        image_size: 'xl'
+        title: 'This is the title of this page'
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
 content_banner_gray_background_without_image_with_badges_with_meta_without_links:
   render:
     '#type': pattern
@@ -119,19 +117,17 @@ content_banner_gray_background_without_image_with_badges_with_meta_without_links
         - label: 'Secondary badge'
           rounded_pill: true
   assertions:
-    count:
-      'div.bcl-content-banner': 1
-      'div.bcl-content-banner.bg-lighter': 1
-      'div.card-body > h1': 1
-      'img': 0
-      'div.card-body > div': 3
-      'div.card-body > div.mt-4': 0
-      'div.card-body > div > span.text-muted': 2
-      'div.card-body > div > span.badge.rounded-pill': 2
-    equals:
-      'div.card-body > h1': 'This is the title of this page'
-      'div.card-body > div:nth-child(3)': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
-      'div.card-body > div > span.badge:nth-child(1)': 'Primary badge'
-      'div.card-body > div > span.badge:nth-child(2)': 'Secondary badge'
-      'span.text-muted.me-3:nth-child(1)': '26 May 2020'
-      'span.text-muted.me-3:nth-child(2)': '1 comment'
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ContentBannerAssert
+      expected:
+        background: 'lighter'
+        meta:
+          - '26 May 2020'
+          - '1 comment'
+        title: 'This is the title of this page'
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+        badges:
+          - label: 'Primary badge'
+            rounded_pill: true
+          - label: 'Secondary badge'
+            rounded_pill: true
