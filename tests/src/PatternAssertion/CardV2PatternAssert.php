@@ -100,7 +100,7 @@ class CardV2PatternAssert extends BasePatternAssert {
    */
   protected function assertWrapperAttributes(array $expected, string $selector, Crawler $crawler): void {
     foreach ($expected as $attribute => $value) {
-      $this->assertElementAttribute($value, '.section__body', $attribute, $crawler);
+      $this->assertElementAttribute($value, $selector, $attribute, $crawler);
     }
   }
 
