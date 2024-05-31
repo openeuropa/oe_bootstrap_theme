@@ -43,8 +43,7 @@ class FilePatternAssert extends BasePatternAssert {
     $crawler = new Crawler($html);
     // Only one icon should be rendered. The type will be asserted in the file
     // assert.
-    $this->assertElementExists('svg.icon--2xl', $crawler);
-    $this->assertElementExists('svg.icon--file', $crawler);
+    $this->assertElementExists('svg.icon--file.icon--2xl', $crawler);
     // Only one wrapper element is present.
     $this->assertCount(1, $crawler->filter('.bcl-file-container'));
     // Only one wrapper element is present within bcl-file-container.
