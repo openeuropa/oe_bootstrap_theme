@@ -1,82 +1,109 @@
-card_v2:
+card_v2_default:
   render:
     '#type': pattern
-    '#id': 'card'
+    '#id': 'card_v2'
     '#fields':
-      title: 'New title with <b>markup</b>'
-      title_tag: 'h4'
-      card_body_content: '<p>Body content card</p>'
-      card_footer_content: '<p>Footer content card</p>'
-      card_header_content: '<p>Header content card</p>'
-      image: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
-      attributes: 'class="new-class" id="card-id" data-attribute="some-value"'
-      body_attributes: 'class="new-class" id="body-id" data-attribute="some-value"'
-      header_attributes: 'class="new-class" id="header-id" data-attribute="some-value"'
-      footer_attributes: 'class="new-class" id="footer-id" data-attribute="some-value"'
+      attributes:
+        class: 'new-class'
+        id: 'card-id'
+        data-attribute: 'some-value'
+      media_attributes:
+        class: 'new-class'
+        id: 'card-id'
+        data-attribute: 'some-value'
+      body_attributes:
+        class: 'new-class'
+        id: 'body-id'
+        data-attribute: 'some-value'
+      header_attributes:
+        class: 'new-class'
+        id: 'header-id'
+        data-attribute: 'some-value'
+      footer_attributes:
+        class: 'new-class'
+        id: 'footer-id'
+        data-attribute: 'some-value'
+      title:
+        '#markup': 'New title with <b>markup</b>'
+      content:
+        '#markup': '<p>Body content card</p>'
+      footer:
+        '#markup': '<p>Footer content card</p>'
+      header:
+        '#markup': '<p>Header content card</p>'
+      media:
+        '#markup': '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardV2PatternAssert
       expected:
         title: 'New title with <b>markup</b>'
-        image: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
-        card_body_content: '<p>Body content card</p>'
-        card_footer_content: '<p>Footer content card</p>'
-        card_header_content: '<p>Header content card</p>'
+        tag: 'article'
+        media: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
+        content: 'Body content card'
+        footer: 'Footer content card'
+        header: 'Header content card'
         attributes:
           class: 'new-class card'
           id: 'card-id'
           data-attribute: 'some-value'
+        media_attributes:
+          class: 'new-class card-media'
+          id: 'card-id'
+          data-attribute: 'some-value'
         body_attributes:
           class: 'new-class card-body'
           id: 'body-id'
           data-attribute: 'some-value'
         header_attributes:
           class: 'new-class card-header'
-          id: 'card-id'
+          id: 'header-id'
           data-attribute: 'some-value'
         footer_attributes:
           class: 'new-class card-footer'
-          id: 'card-id'
+          id: 'footer-id'
           data-attribute: 'some-value'
 card_v2_horizontal:
   render:
     '#type': pattern
-    '#id': 'card'
+    '#id': 'card_v2'
     '#fields':
-      title: 'New title with <b>markup</b>'
-      title_tag: 'h4'
+      title:
+        '#markup': 'New title with <b>markup</b>'
+      tag: 'div'
       variant: 'horizontal'
-      card_body_content: '<p>Body content card</p>'
-      card_footer_content: '<p>Footer content card</p>'
-      card_header_content: '<p>Header content card</p>'
-      image: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
-      attributes: 'class="new-class" id="card-id" data-attribute="some-value"'
-      body_attributes: 'class="new-class" id="body-id" data-attribute="some-value"'
-      header_attributes: 'class="new-class" id="header-id" data-attribute="some-value"'
-      footer_attributes: 'class="new-class" id="footer-id" data-attribute="some-value"'
+      content:
+        '#markup': '<p>Body content card</p>'
+      footer:
+        '#markup': '<p>Footer content card</p>'
+      header:
+        '#markup': '<p>Header content card</p>'
+      media:
+        '#markup': '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
+      attributes:
+        class: 'new-class'
+        id: 'card-id'
+        data-attribute: 'some-value'
+      body_attributes:
+        class: 'new-class'
+        id: 'body-id'
+        data-attribute: 'some-value'
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardV2PatternAssert
       expected:
         title: 'New title with <b>markup</b>'
+        tag: 'div'
         variant: 'horizontal'
-        image: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
-        card_body_content: '<p>Body content card</p>'
-        card_footer_content: '<p>Footer content card</p>'
-        card_header_content: '<p>Header content card</p>'
+        footer: '<p>Footer content card</p>'
+        header: '<p>Header content card</p>'
+        content: '<div class="card-title"> New title with <b>markup</b> </div> <p>Body content card</p>'
+        media: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
         attributes:
-          class: 'new-class card horizontal'
+          class: 'new-class'
           id: 'card-id'
           data-attribute: 'some-value'
         body_attributes:
-          class: 'new-class card-body'
+          class: 'new-class'
           id: 'body-id'
-          data-attribute: 'some-value'
-        header_attributes:
-          class: 'new-class card-header'
-          id: 'card-id'
-          data-attribute: 'some-value'
-        footer_attributes:
-          class: 'new-class card-footer'
-          id: 'card-id'
           data-attribute: 'some-value'

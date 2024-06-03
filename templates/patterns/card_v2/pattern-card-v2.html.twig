@@ -15,16 +15,16 @@
 
 <{{ tag }}{{ attributes.addClass(_classes) }}>
   {% if media is not empty %}
-    <div{{ media_attributes.addClass('card-media') }}>
+    <div{{ media_attributes.addClass(['card-media']) }}>
       {{ media }}
     </div>
   {% endif %}
   {% if header is not empty %}
-    <div{{ header_attributes.addClass('card-header') }}>
+    <div{{ header_attributes.addClass(['card-header']) }}>
       {{ header }}
     </div>
   {% endif %}
-  <div{{ content_attributes.addClass('card-body') }}>
+  <div{{ body_attributes.addClass(['card-body']) }}>
     {% if title is not empty %}
       <div class="card-title">
         {{ title }}
@@ -33,7 +33,7 @@
     {{ content }}
   </div>
   {% if footer is not empty %}
-    <div{{ footer_attributes.addClass('card-footer') }}>
+    <div{{ footer_attributes.addClass(['card-footer']) }}>
       {{ footer }}
     </div>
   {% endif %}

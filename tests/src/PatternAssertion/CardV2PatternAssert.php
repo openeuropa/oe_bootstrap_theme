@@ -14,42 +14,49 @@ class CardV2PatternAssert extends BasePatternAssert {
   /**
    * {@inheritdoc}
    */
-  protected function getAssertions(): array {
+  protected function getAssertions($variant): array {
     return [
       'title' => [
         [$this, 'assertElementNormalisedHtml'],
-        '.bcl-heading',
+        '.card-title',
       ],
-      'image' => [
-        [$this, 'assertElementNormalisedHtml'],
-        'img',
+      'media' => [
+        [$this, 'assertCardMedia'],
       ],
-      'card_body_content' => [
+      'tag' => [
+        [$this, 'assertElementTag'],
+        '.card',
+      ],
+      'content' => [
         [$this, 'assertElementNormalisedHtml'],
         '.card-body',
       ],
-      'card_footer_content' => [
+      'footer' => [
         [$this, 'assertElementNormalisedHtml'],
         '.card-footer',
       ],
-      'card_header_content' => [
+      'header' => [
         [$this, 'assertElementNormalisedHtml'],
         '.card-header',
       ],
       'attributes' => [
-        [$this, 'assertWrapperAttributes'],
+        [$this, 'assertElementAttributes'],
         '.card',
       ],
+      'media_attributes' => [
+        [$this, 'assertElementAttributes'],
+        '.card-media',
+      ],
       'body_attributes' => [
-        [$this, 'assertWrapperAttributes'],
+        [$this, 'assertElementAttributes'],
         '.card-body',
       ],
       'header_attributes' => [
-        [$this, 'assertWrapperAttributes'],
+        [$this, 'assertElementAttributes'],
         '.card-header',
       ],
       'footer_attributes' => [
-        [$this, 'assertWrapperAttributes'],
+        [$this, 'assertElementAttributes'],
         '.card-footer',
       ],
     ];
@@ -61,10 +68,10 @@ class CardV2PatternAssert extends BasePatternAssert {
   protected function assertBaseElements(string $html, string $variant): void {
     $crawler = new Crawler($html);
     $this->assertElementExists('body > .card', $crawler);
-    $this->assertElementExists('.card > .card_body', $crawler);
-    $this->assertElementExists('.card > .card_header', $crawler);
-    $this->assertElementExists('.card > .card_footer', $crawler);
-    $this->assertElementExists('.card > img', $crawler);
+    $this->assertElementExists('.card > .card-body', $crawler);
+    $this->assertElementExists('.card > .card-media', $crawler);
+    $this->assertElementExists('.card > .card-header', $crawler);
+    $this->assertElementExists('.card > .card-footer', $crawler);
   }
 
   /**
@@ -89,18 +96,62 @@ class CardV2PatternAssert extends BasePatternAssert {
   }
 
   /**
-   * Asserts the card v2 pattern wrapper attributes.
+   * Asserts the media of a card.
    *
-   * @param string[] $expected
-   *   The expected settings.
+   * @param string|null $expected_media
+   *   The expected media values.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertCardMedia(string $expected_media, Crawler $crawler): void {
+    $selector = '.card-media';
+
+    $image_element = $crawler->filter($selector);
+    self::assertCount(1, $image_element);
+
+    $html = trim(preg_replace('/\s+/u', ' ', $image_element->html()));
+
+    self::assertEquals($expected_media, $html);
+  }
+
+  /**
+   * Asserts the attributes of a particular element.
+   *
+   * @param array $expected_attributes
+   *   The expected attributes and their values.
    * @param string $selector
    *   The CSS selector to find the element.
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
-   *   The crawler.
+   *   The DomCrawler where to check the element.
    */
-  protected function assertWrapperAttributes(array $expected, string $selector, Crawler $crawler): void {
-    foreach ($expected as $attribute => $value) {
-      $this->assertElementAttribute($value, $selector, $attribute, $crawler);
+  protected function assertElementAttributes(array $expected_attributes, string $selector, Crawler $crawler): void {
+    $this->assertElementExists($selector, $crawler);
+    $element = $crawler->filter($selector);
+
+    foreach ($expected_attributes as $attribute => $value) {
+      if ($attribute === 'class') {
+        $this->assertClassAttribute($value, $element);
+      }
+      else {
+        self::assertEquals($value, $element->attr($attribute));
+      }
+    }
+  }
+
+  /**
+   * Asserts the class attribute contains the expected classes.
+   *
+   * @param string $expected_classes
+   *   The expected classes.
+   * @param \Symfony\Component\DomCrawler\Crawler $element
+   *   The DomCrawler element.
+   */
+  protected function assertClassAttribute(string $expected_classes, Crawler $element): void {
+    $classes = explode(' ', $expected_classes);
+    $element_classes = explode(' ', $element->attr('class'));
+
+    foreach ($classes as $class) {
+      self::assertContains($class, $element_classes);
     }
   }
 

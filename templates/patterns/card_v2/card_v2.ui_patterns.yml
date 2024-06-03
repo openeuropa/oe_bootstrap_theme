@@ -46,7 +46,7 @@ card_v2:
       label: Media attributes
       description: Extra attributes for the card media
       allow_token: true
-    content_attributes:
+    body_attributes:
       type: attributes
       label: Content attributes
       description: Extra attributes for the card content
