@@ -56,3 +56,29 @@ function oe_bootstrap_theme_preprocess_table__bootstrap__responsive(&$variables)
 
   $variables['wrapper_attributes'] = new Attribute(['class' => $class]);
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for views-view-table.html.twig.
+ */
+function oe_bootstrap_theme_preprocess_views_view_table(&$variables) {
+  $enabled = theme_get_setting('bootstrap_tables.enable');
+
+  if (!$enabled) {
+    return;
+  }
+
+  $breakpoint = theme_get_setting('bootstrap_tables.responsive');
+  $variables['bootstrap_table'] = ['responsive' => ''];
+
+  if (empty($breakpoint)) {
+    return;
+  }
+
+  $class = 'table-responsive';
+
+  if ($breakpoint !== 'always') {
+    $class .= '-' . $breakpoint;
+  }
+
+  $variables['bootstrap_table']['responsive'] = $class;
+}
