@@ -72,6 +72,9 @@ class CardV2PatternAssert extends BasePatternAssert {
     $this->assertElementExists('.card > .card-media', $crawler);
     $this->assertElementExists('.card > .card-header', $crawler);
     $this->assertElementExists('.card > .card-footer', $crawler);
+    if ($variant === 'horizontal') {
+      $this->assertElementExists('body > .card.horizontal', $crawler);
+    }
   }
 
   /**

@@ -3,26 +3,6 @@ card_v2_default:
     '#type': pattern
     '#id': 'card_v2'
     '#fields':
-      attributes:
-        class: 'new-class'
-        id: 'card-id'
-        data-attribute: 'some-value'
-      media_attributes:
-        class: 'new-class'
-        id: 'card-id'
-        data-attribute: 'some-value'
-      body_attributes:
-        class: 'new-class'
-        id: 'body-id'
-        data-attribute: 'some-value'
-      header_attributes:
-        class: 'new-class'
-        id: 'header-id'
-        data-attribute: 'some-value'
-      footer_attributes:
-        class: 'new-class'
-        id: 'footer-id'
-        data-attribute: 'some-value'
       title:
         '#markup': 'New title with <b>markup</b>'
       content:
@@ -33,6 +13,12 @@ card_v2_default:
         '#markup': '<p>Header content card</p>'
       media:
         '#markup': '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
+    '#settings':
+      attributes: 'class="new-class" id="card-id" data-attribute="some-value"'
+      media_attributes: 'class="new-class" id="media-id" data-attribute="some-value"'
+      body_attributes: 'class="new-class" id="body-id" data-attribute="some-value"'
+      header_attributes: 'class="new-class" id="header-id" data-attribute="some-value"'
+      footer_attributes: 'class="new-class" id="footer-id" data-attribute="some-value"'
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardV2PatternAssert
@@ -40,16 +26,16 @@ card_v2_default:
         title: 'New title with <b>markup</b>'
         tag: 'article'
         media: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
-        content: 'Body content card'
-        footer: 'Footer content card'
-        header: 'Header content card'
+        content: '<div class="card-title"> New title with <b>markup</b> </div> <p>Body content card</p>'
+        footer: '<p>Footer content card</p>'
+        header: '<p>Header content card</p>'
         attributes:
           class: 'new-class card'
           id: 'card-id'
           data-attribute: 'some-value'
         media_attributes:
           class: 'new-class card-media'
-          id: 'card-id'
+          id: 'media-id'
           data-attribute: 'some-value'
         body_attributes:
           class: 'new-class card-body'
@@ -67,11 +53,11 @@ card_v2_horizontal:
   render:
     '#type': pattern
     '#id': 'card_v2'
+    '#variant': 'horizontal'
     '#fields':
       title:
         '#markup': 'New title with <b>markup</b>'
       tag: 'div'
-      variant: 'horizontal'
       content:
         '#markup': '<p>Body content card</p>'
       footer:
@@ -80,30 +66,39 @@ card_v2_horizontal:
         '#markup': '<p>Header content card</p>'
       media:
         '#markup': '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
-      attributes:
-        class: 'new-class'
-        id: 'card-id'
-        data-attribute: 'some-value'
-      body_attributes:
-        class: 'new-class'
-        id: 'body-id'
-        data-attribute: 'some-value'
+    '#settings':
+      attributes: 'class="new-class" id="card-id" data-attribute="some-value"'
+      media_attributes: 'class="new-class" id="media-id" data-attribute="some-value"'
+      body_attributes: 'class="new-class" id="body-id" data-attribute="some-value"'
+      header_attributes: 'class="new-class" id="header-id" data-attribute="some-value"'
+      footer_attributes: 'class="new-class" id="footer-id" data-attribute="some-value"'
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardV2PatternAssert
       expected:
         title: 'New title with <b>markup</b>'
         tag: 'div'
-        variant: 'horizontal'
         footer: '<p>Footer content card</p>'
         header: '<p>Header content card</p>'
         content: '<div class="card-title"> New title with <b>markup</b> </div> <p>Body content card</p>'
         media: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
         attributes:
-          class: 'new-class'
+          class: 'new-class card'
           id: 'card-id'
           data-attribute: 'some-value'
+        media_attributes:
+          class: 'new-class card-media'
+          id: 'media-id'
+          data-attribute: 'some-value'
         body_attributes:
-          class: 'new-class'
+          class: 'new-class card-body'
           id: 'body-id'
+          data-attribute: 'some-value'
+        header_attributes:
+          class: 'new-class card-header'
+          id: 'header-id'
+          data-attribute: 'some-value'
+        footer_attributes:
+          class: 'new-class card-footer'
+          id: 'footer-id'
           data-attribute: 'some-value'
