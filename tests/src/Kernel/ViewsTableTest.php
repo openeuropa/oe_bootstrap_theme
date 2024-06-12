@@ -31,11 +31,8 @@ class ViewsTableTest extends AbstractKernelTestBase {
    */
   protected function setUp(): void {
     parent::setUp();
-
-    // Configuration and schemas needed for view test.
-    $this->installConfig(['system']);
-
-    // Define the schema and views data variable before enabling the module.
+    // Here we set up views test modules schemas and configuration.
+    // @see \Drupal\Tests\views\Kernel\ViewsKernelTestBase::setUpFixtures()
     /** @var \Drupal\Core\State\StateInterface $state */
     $state = $this->container->get('state');
     $state->set('views_test_data_schema', ViewTestData::schemaDefinition());
@@ -45,7 +42,6 @@ class ViewsTableTest extends AbstractKernelTestBase {
     foreach (ViewTestData::schemaDefinition() as $table => $schema) {
       $this->installSchema('views_test_data', $table);
     }
-
     // Load the test dataset.
     $data_set = ViewTestData::dataSet();
     $query = Database::getConnection()->insert('views_test_data')
@@ -60,11 +56,6 @@ class ViewsTableTest extends AbstractKernelTestBase {
     $config_dir = \Drupal::service('extension.list.module')->getPath('views_test_config') . '/test_views';
     $file_storage = new FileStorage($config_dir);
     $storage->create($file_storage->read('views.view.test_table'))->save();
-
-    // Enable the theme.
-    $this->container->get('theme_installer')->install(['oe_bootstrap_theme']);
-    $this->config('system.theme')->set('default', 'oe_bootstrap_theme')->save();
-    $this->container->set('theme.registry', NULL);
   }
 
   /**
@@ -80,7 +71,8 @@ class ViewsTableTest extends AbstractKernelTestBase {
       $this->getViewTableHtml(),
       [
         'count' => [
-          'table.table.table-responsive' => 1,
+          'div.table-responsive' => 1,
+          'table.table' => 1,
           '.table' => 1,
           '.table-responsive' => 1,
         ],
@@ -120,7 +112,8 @@ class ViewsTableTest extends AbstractKernelTestBase {
       $this->getViewTableHtml(),
       [
         'count' => [
-          'table.table.table-responsive-lg' => 1,
+          'div.table-responsive-lg' => 1,
+          'table.table' => 1,
           '.table' => 1,
           '.table-responsive-lg' => 1,
           '.table-responsive' => 0,
@@ -134,7 +127,8 @@ class ViewsTableTest extends AbstractKernelTestBase {
       $this->getViewTableHtml(),
       [
         'count' => [
-          'table.table.table-responsive-md' => 1,
+          'div.table-responsive-md' => 1,
+          'table.table' => 1,
           '.table' => 1,
           '.table-responsive-md' => 1,
           '.table-responsive-lg' => 0,

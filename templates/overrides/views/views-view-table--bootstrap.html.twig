@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Template override that applies Bootstrap styling to tables.
+ *
+ * Available variables: same variables as @views/views-view-table.html.twig.
+ *
+ * @see template_preprocess_views_view_table()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set attributes = attributes.addClass('table') %}
+{% extends "@views/views-view-table.html.twig" %}

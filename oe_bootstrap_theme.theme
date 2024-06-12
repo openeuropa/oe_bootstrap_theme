@@ -38,6 +38,26 @@ function oe_bootstrap_theme_theme_suggestions_table_alter(array &$suggestions, a
 }
 
 /**
+ * Implements hook_theme_suggestions_HOOK_alter() for views-view-table.
+ */
+function oe_bootstrap_theme_theme_suggestions_views_view_table_alter(array &$suggestions, array $variables) {
+  if (!theme_get_setting('bootstrap_tables.enable')) {
+    return;
+  }
+
+  $extra_suggestions[] = 'views_view_table__bootstrap';
+
+  $responsive = theme_get_setting('bootstrap_tables.responsive');
+  if (is_string($responsive) && $responsive !== '') {
+    $extra_suggestions[] = 'views_view_table__bootstrap__responsive';
+  }
+
+  // Add the new suggestions first in the list, so existing child theme
+  // overrides will keep precedence.
+  array_unshift($suggestions, ...$extra_suggestions);
+}
+
+/**
  * Implements hook_preprocess().
  */
 function oe_bootstrap_theme_preprocess(&$variables) {
@@ -48,6 +68,20 @@ function oe_bootstrap_theme_preprocess(&$variables) {
  * Implements hook_preprocess_HOOK() for table--bootstrap--responsive.html.twig.
  */
 function oe_bootstrap_theme_preprocess_table__bootstrap__responsive(&$variables) {
+  _oe_bootstrap_theme_bootstrap_responsive_table($variables);
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for views-view-table--bootstrap--responsive.html.twig.
+ */
+function oe_bootstrap_theme_preprocess_views_view_table__bootstrap__responsive(&$variables) {
+  _oe_bootstrap_theme_bootstrap_responsive_table($variables);
+}
+
+/**
+ * Function that applies responsiveness to Bootstrap tables.
+ */
+function _oe_bootstrap_theme_bootstrap_responsive_table(&$variables) {
   $class = 'table-responsive';
   $breakpoint = theme_get_setting('bootstrap_tables.responsive');
   if ($breakpoint !== 'always') {
@@ -55,30 +89,4 @@ function oe_bootstrap_theme_preprocess_table__bootstrap__responsive(&$variables)
   }
 
   $variables['wrapper_attributes'] = new Attribute(['class' => $class]);
-}
-
-/**
- * Implements hook_preprocess_HOOK() for views-view-table.html.twig.
- */
-function oe_bootstrap_theme_preprocess_views_view_table(&$variables) {
-  $enabled = theme_get_setting('bootstrap_tables.enable');
-
-  if (!$enabled) {
-    return;
-  }
-
-  $breakpoint = theme_get_setting('bootstrap_tables.responsive');
-  $variables['bootstrap_table'] = ['responsive' => ''];
-
-  if (empty($breakpoint)) {
-    return;
-  }
-
-  $class = 'table-responsive';
-
-  if ($breakpoint !== 'always') {
-    $class .= '-' . $breakpoint;
-  }
-
-  $variables['bootstrap_table']['responsive'] = $class;
 }
