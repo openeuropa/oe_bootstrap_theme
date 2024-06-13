@@ -73,5 +73,5 @@ function oe_bootstrap_theme_helper_field_widget_single_element_options_buttons_f
  */
 function oe_bootstrap_theme_helper_preprocess_html(array &$variables) {
   $style = '--icon-path: ' . base_path() . \Drupal::service('extension.list.theme')->getPath('oe_bootstrap_theme') . '/assets/icons/bcl-default-icons.svg';
-  $variables['attributes']['style'][] = $style;
+  $variables['attributes']['style']['icon-path'] = $style;
 }
