@@ -1,5 +1,5 @@
 card_v2:
-  label: 'Card'
+  label: 'Card V2'
   description: 'A card is a flexible and extensible content container. The V2 leaves more possibility for content and render items as we transformed all the content areas into render options. https://v5.getbootstrap.com/docs/5.0/components/card'
   category: Version 2.x
   variants:
@@ -46,7 +46,7 @@ card_v2:
       label: Media attributes
       description: Extra attributes for the card media
       allow_token: true
-    body_attributes:
+    content_attributes:
       type: attributes
       label: Content attributes
       description: Extra attributes for the card content

@@ -9,6 +9,9 @@
     flex: 1 0 100%;
     display: flex;
     flex-direction: column;
+    > * {
+      width: 100%;
+    }
   }
   // Allow links to be clicked through the card title link.
   a:not(.card-title a) {
@@ -39,10 +42,14 @@
         order: 1;
         flex: none;
         flex-basis: 160px;
-        > * {
-          width: 100%;
-        }
       }
+    }
+  }
+  &:has(.bcl-date-block) {
+    border: none;
+    &:not(.horizontal) .card-body {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 }

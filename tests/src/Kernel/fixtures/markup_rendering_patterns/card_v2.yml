@@ -16,7 +16,7 @@ card_v2_default:
     '#settings':
       attributes: 'class="new-class" id="card-id" data-attribute="some-value"'
       media_attributes: 'class="new-class" id="media-id" data-attribute="some-value"'
-      body_attributes: 'class="new-class" id="body-id" data-attribute="some-value"'
+      content_attributes: 'class="new-class" id="body-id" data-attribute="some-value"'
       header_attributes: 'class="new-class" id="header-id" data-attribute="some-value"'
       footer_attributes: 'class="new-class" id="footer-id" data-attribute="some-value"'
   assertions:
@@ -37,7 +37,7 @@ card_v2_default:
           class: 'new-class card-media'
           id: 'media-id'
           data-attribute: 'some-value'
-        body_attributes:
+        content_attributes:
           class: 'new-class card-body'
           id: 'body-id'
           data-attribute: 'some-value'
@@ -69,7 +69,7 @@ card_v2_horizontal:
     '#settings':
       attributes: 'class="new-class" id="card-id" data-attribute="some-value"'
       media_attributes: 'class="new-class" id="media-id" data-attribute="some-value"'
-      body_attributes: 'class="new-class" id="body-id" data-attribute="some-value"'
+      content_attributes: 'class="new-class" id="body-id" data-attribute="some-value"'
       header_attributes: 'class="new-class" id="header-id" data-attribute="some-value"'
       footer_attributes: 'class="new-class" id="footer-id" data-attribute="some-value"'
   assertions:
@@ -90,7 +90,7 @@ card_v2_horizontal:
           class: 'new-class card-media'
           id: 'media-id'
           data-attribute: 'some-value'
-        body_attributes:
+        content_attributes:
           class: 'new-class card-body'
           id: 'body-id'
           data-attribute: 'some-value'

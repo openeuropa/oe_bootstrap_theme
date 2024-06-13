@@ -47,7 +47,7 @@ class CardV2PatternAssert extends BasePatternAssert {
         [$this, 'assertElementAttributes'],
         '.card-media',
       ],
-      'body_attributes' => [
+      'content_attributes' => [
         [$this, 'assertElementAttributes'],
         '.card-body',
       ],
@@ -101,7 +101,7 @@ class CardV2PatternAssert extends BasePatternAssert {
   /**
    * Asserts the media of a card.
    *
-   * @param string|null $expected_media
+   * @param string $expected_media
    *   The expected media values.
    * @param \Symfony\Component\DomCrawler\Crawler $crawler
    *   The DomCrawler where to check the element.
