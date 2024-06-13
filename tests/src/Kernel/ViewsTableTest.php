@@ -71,8 +71,7 @@ class ViewsTableTest extends AbstractKernelTestBase {
       $this->getViewTableHtml(),
       [
         'count' => [
-          'div.table-responsive' => 1,
-          'table.table' => 1,
+          'div.table-responsive > table.table' => 1,
           '.table' => 1,
           '.table-responsive' => 1,
         ],
@@ -112,8 +111,7 @@ class ViewsTableTest extends AbstractKernelTestBase {
       $this->getViewTableHtml(),
       [
         'count' => [
-          'div.table-responsive-lg' => 1,
-          'table.table' => 1,
+          'div.table-responsive-lg > table.table' => 1,
           '.table' => 1,
           '.table-responsive-lg' => 1,
           '.table-responsive' => 0,
@@ -127,8 +125,7 @@ class ViewsTableTest extends AbstractKernelTestBase {
       $this->getViewTableHtml(),
       [
         'count' => [
-          'div.table-responsive-md' => 1,
-          'table.table' => 1,
+          'div.table-responsive-md > table.table' => 1,
           '.table' => 1,
           '.table-responsive-md' => 1,
           '.table-responsive-lg' => 0,

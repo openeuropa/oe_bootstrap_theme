@@ -80,8 +80,11 @@ function oe_bootstrap_theme_preprocess_views_view_table__bootstrap__responsive(&
 
 /**
  * Function that applies responsiveness to Bootstrap tables.
+ *
+ * @param array $variables
+ *   The variables to process.
  */
-function _oe_bootstrap_theme_bootstrap_responsive_table(&$variables) {
+function _oe_bootstrap_theme_bootstrap_responsive_table(array &$variables): void {
   $class = 'table-responsive';
   $breakpoint = theme_get_setting('bootstrap_tables.responsive');
   if ($breakpoint !== 'always') {
