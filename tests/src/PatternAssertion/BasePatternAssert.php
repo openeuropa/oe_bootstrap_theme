@@ -115,6 +115,22 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
   }
 
   /**
+   * Asserts the attributes of a particular element.
+   *
+   * @param array $expected_attributes
+   *   The expected attributes and their values.
+   * @param string $selector
+   *   The CSS selector to find the element.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertElementAttributes(array $expected_attributes, string $selector, Crawler $crawler): void {
+    foreach ($expected_attributes as $attribute => $expected_value) {
+      $this->assertElementAttribute($expected_value, $selector, $attribute, $crawler);
+    }
+  }
+
+  /**
    * Asserts the tag of a particular element.
    *
    * @param string $expected

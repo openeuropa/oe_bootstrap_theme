@@ -30,7 +30,7 @@ card_v2_default:
         footer: '<p>Footer content card</p>'
         header: '<p>Header content card</p>'
         attributes:
-          class: 'card-class card'
+          class: 'card-class card v2'
           id: 'card-id'
           data-card-attribute: 'card-attr-value'
         media_attributes:
@@ -83,7 +83,7 @@ card_v2_horizontal:
         content: '<div class="card-title"> New title with <b>markup</b> </div> <p>Body content card</p>'
         media: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
         attributes:
-          class: 'card-class card'
+          class: 'card-class card v2 horizontal'
           id: 'card-id'
           data-card-attribute: 'card-attr-value'
         media_attributes:

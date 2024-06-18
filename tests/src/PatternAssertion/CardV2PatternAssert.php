@@ -117,45 +117,4 @@ class CardV2PatternAssert extends BasePatternAssert {
     self::assertEquals($expected_media, $html);
   }
 
-  /**
-   * Asserts the attributes of a particular element.
-   *
-   * @param array $expected_attributes
-   *   The expected attributes and their values.
-   * @param string $selector
-   *   The CSS selector to find the element.
-   * @param \Symfony\Component\DomCrawler\Crawler $crawler
-   *   The DomCrawler where to check the element.
-   */
-  protected function assertElementAttributes(array $expected_attributes, string $selector, Crawler $crawler): void {
-    $this->assertElementExists($selector, $crawler);
-    $element = $crawler->filter($selector);
-
-    foreach ($expected_attributes as $attribute => $value) {
-      if ($attribute === 'class') {
-        $this->assertClassAttribute($value, $element);
-      }
-      else {
-        self::assertEquals($value, $element->attr($attribute));
-      }
-    }
-  }
-
-  /**
-   * Asserts the class attribute contains the expected classes.
-   *
-   * @param string $expected_classes
-   *   The expected classes.
-   * @param \Symfony\Component\DomCrawler\Crawler $element
-   *   The DomCrawler element.
-   */
-  protected function assertClassAttribute(string $expected_classes, Crawler $element): void {
-    $classes = explode(' ', $expected_classes);
-    $element_classes = explode(' ', $element->attr('class'));
-
-    foreach ($classes as $class) {
-      self::assertContains($class, $element_classes);
-    }
-  }
-
 }
