@@ -21,7 +21,8 @@ class CardV2PatternAssert extends BasePatternAssert {
         '.card-title',
       ],
       'media' => [
-        [$this, 'assertCardMedia'],
+        [$this, 'assertElementNormalisedHtml'],
+        '.card-media',
       ],
       'tag' => [
         [$this, 'assertElementTag'],
@@ -68,32 +69,15 @@ class CardV2PatternAssert extends BasePatternAssert {
   protected function assertBaseElements(string $html, string $variant): void {
     $crawler = new Crawler($html);
     $this->assertElementExists('body > .card', $crawler);
-    $this->assertElementExists('.card > .card-body', $crawler);
-    $this->assertElementExists('.card > .card-media', $crawler);
-    $this->assertElementExists('.card > .card-header', $crawler);
-    $this->assertElementExists('.card > .card-footer', $crawler);
-    if ($variant === 'horizontal') {
-      $this->assertElementExists('body > .card.horizontal', $crawler);
-    }
   }
 
   /**
-   * Asserts the media of a card.
-   *
-   * @param string $expected_media
-   *   The expected media values.
-   * @param \Symfony\Component\DomCrawler\Crawler $crawler
-   *   The DomCrawler where to check the element.
+   * {@inheritdoc}
    */
-  protected function assertCardMedia(string $expected_media, Crawler $crawler): void {
-    $selector = '.card-media';
+  protected function getPatternVariant(string $html): string {
+    $crawler = new Crawler($html);
 
-    $image_element = $crawler->filter($selector);
-    self::assertCount(1, $image_element);
-
-    $html = trim(preg_replace('/\s+/u', ' ', $image_element->html()));
-
-    self::assertEquals($expected_media, $html);
+    return $crawler->filter('body > .card.horizontal')->count() ? 'horizontal' : 'default';
   }
 
 }
