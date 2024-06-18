@@ -78,27 +78,6 @@ class CardV2PatternAssert extends BasePatternAssert {
   }
 
   /**
-   * Asserts the rendered html of a particular element.
-   *
-   * @param string|null $expected
-   *   The expected value.
-   * @param string $selector
-   *   The CSS selector to find the element.
-   * @param \Symfony\Component\DomCrawler\Crawler $crawler
-   *   The DomCrawler where to check the element.
-   */
-  protected function assertElementNormalisedHtml(?string $expected, string $selector, Crawler $crawler): void {
-    if (is_null($expected)) {
-      $this->assertElementNotExists($selector, $crawler);
-      return;
-    }
-    $this->assertElementExists($selector, $crawler);
-    $element = $crawler->filter($selector);
-    $html = trim(preg_replace('/\s+/u', ' ', $element->html()));
-    self::assertEquals($expected, $html);
-  }
-
-  /**
    * Asserts the media of a card.
    *
    * @param string $expected_media
