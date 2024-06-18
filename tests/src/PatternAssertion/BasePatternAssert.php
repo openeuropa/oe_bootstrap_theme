@@ -62,7 +62,7 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
     // We add the assertion only if a custom one wasn't specified already.
     if (array_key_exists('variant', $expected) && !array_key_exists('variant', $assertion_map)) {
       $assertion_map['variant'] = [
-        [self::class . '::assertEquals'],
+        [self::class, 'assertEquals'],
         $variant,
         '',
       ];
