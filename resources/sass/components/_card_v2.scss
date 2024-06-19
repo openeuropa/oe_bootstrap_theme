@@ -1,0 +1,55 @@
+// Custom style for Card v2.
+// -----------------------------------------------------------------------------
+.card.v2 {
+  .card-header {
+    order: 1;
+  }
+  .card-media {
+    order: 2;
+    flex: 1 0 100%;
+    display: flex;
+    flex-direction: column;
+    > * {
+      width: 100%;
+    }
+  }
+  // Allow links to be clicked through the card title link.
+  a:not(.card-title a) {
+    position: relative;
+  }
+  .card-body {
+    order: 3;
+  }
+  .card-footer {
+    order: 4;
+  }
+  .card-title {
+    a {
+      color: var(--bs-body-color);
+      text-decoration: none;
+      @include clickable-parent;
+
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+  &.horizontal {
+    overflow: hidden;
+    @media (min-width: 768px) {
+      flex-direction: row;
+      .card-media {
+        order: 1;
+        flex: none;
+        flex-basis: 160px;
+      }
+    }
+  }
+  &:has(.bcl-date-block) {
+    border: none;
+    &:not(.horizontal) .card-body {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}

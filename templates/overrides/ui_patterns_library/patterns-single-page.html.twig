@@ -6,10 +6,12 @@
 #}
 
 {% if pattern is not empty %}
-  <div class="pattern-preview pattern-preview__{{ pattern.definition.id }} mb-5">
+  <div class="pattern-preview pattern-preview__{{ pattern.definition.id }} pattern-single-page mb-5">
     {{ pattern.meta }}
 
-    {# Rendered pattern preview. #}
-    {{ pattern.rendered }}
+    <div class="mt-5">
+      {# Rendered pattern preview. #}
+      {{ pattern.rendered }}
+    </div>
   </div>
 {% endif %}
