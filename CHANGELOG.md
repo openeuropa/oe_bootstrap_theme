@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.11.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.11.0) (2024-07-17)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.10.1...1.11.0)
+
+**Merged pull requests:**
+
+- OEL-3054: Update steps to create releases. [\#408](https://github.com/openeuropa/oe_bootstrap_theme/pull/408) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
+- OEL-3054: Update to Drupal 10.3 [\#407](https://github.com/openeuropa/oe_bootstrap_theme/pull/407) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
+- Update 1.x with 1.10.1. [\#403](https://github.com/openeuropa/oe_bootstrap_theme/pull/403) ([brummbar](https://github.com/brummbar))
+- OEL-2646: Added margin-bottom for backward compatibility card. [\#399](https://github.com/openeuropa/oe_bootstrap_theme/pull/399) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.10.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.10.1) (2024-06-27)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.10.0...1.10.1)
 
