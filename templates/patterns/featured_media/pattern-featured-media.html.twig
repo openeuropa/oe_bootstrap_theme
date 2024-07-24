@@ -27,7 +27,7 @@
     {%- if title is not empty -%}
       {% include '@oe-bcl/heading' with {
         title: title,
-        title_tag: 'h2',
+        title_tag: title_tag|default('h2'),
         attributes: create_attribute().addClass('mb-4'),
       } only %}
     {%- endif -%}

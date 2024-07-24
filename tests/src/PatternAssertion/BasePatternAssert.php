@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\PatternAssertion;
 
@@ -62,7 +62,7 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
     // We add the assertion only if a custom one wasn't specified already.
     if (array_key_exists('variant', $expected) && !array_key_exists('variant', $assertion_map)) {
       $assertion_map['variant'] = [
-        [self::class . '::assertEquals'],
+        [self::class, 'assertEquals'],
         $variant,
         '',
       ];
@@ -112,6 +112,22 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
     }
 
     self::assertEquals($expected, $element->attr($attribute));
+  }
+
+  /**
+   * Asserts the attributes of a particular element.
+   *
+   * @param array $expected_attributes
+   *   The expected attributes and their values.
+   * @param string $selector
+   *   The CSS selector to find the element.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertElementAttributes(array $expected_attributes, string $selector, Crawler $crawler): void {
+    foreach ($expected_attributes as $attribute => $expected_value) {
+      $this->assertElementAttribute($expected_value, $selector, $attribute, $crawler);
+    }
   }
 
   /**
@@ -180,6 +196,32 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
   }
 
   /**
+   * Asserts the badges items of the pattern.
+   *
+   * @param array $badges
+   *   The expected badges item values.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertBadgesElements(array $badges, Crawler $crawler): void {
+    if (empty($badges)) {
+      $this->assertElementNotExists('.badge', $crawler);
+      return;
+    }
+    $badges_items = $crawler->filter('.badge');
+    self::assertCount(count($badges), $badges_items);
+    foreach ($badges as $index => $badge) {
+      $badge_element = $badges_items->eq($index);
+      $label = is_array($badge) ? $badge['label'] : $badge;
+      $expected_rounded_pill = is_array($badge) && isset($badge['rounded_pill']) && $badge['rounded_pill'] === TRUE;
+      self::assertEquals($label, trim($badge_element->text()));
+      if ($expected_rounded_pill) {
+        self::assertStringContainsString('rounded-pill', $badge_element->attr('class'));
+      }
+    }
+  }
+
+  /**
    * Asserts the rendered html of a particular element.
    *
    * @param string|null $expected
@@ -197,6 +239,27 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
     $this->assertElementExists($selector, $crawler);
     $element = $crawler->filter($selector);
     self::assertEquals($expected, $element->html());
+  }
+
+  /**
+   * Asserts the rendered normalised HTML of a particular element.
+   *
+   * @param string|null $expected
+   *   The expected value.
+   * @param string $selector
+   *   The CSS selector to find the element.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The DomCrawler where to check the element.
+   */
+  protected function assertElementNormalisedHtml(?string $expected, string $selector, Crawler $crawler): void {
+    if (is_null($expected)) {
+      $this->assertElementNotExists($selector, $crawler);
+      return;
+    }
+    $this->assertElementExists($selector, $crawler);
+    $element = $crawler->filter($selector);
+    $html = trim(preg_replace('/\s+/u', ' ', $element->html()));
+    self::assertEquals($expected, $html);
   }
 
   /**

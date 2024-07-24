@@ -1,5 +1,58 @@
 # Change Log
 
+## [1.11.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.11.0) (2024-07-17)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.10.1...1.11.0)
+
+**Merged pull requests:**
+
+- OEL-3054: Update steps to create releases. [\#408](https://github.com/openeuropa/oe_bootstrap_theme/pull/408) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
+- OEL-3054: Update to Drupal 10.3 [\#407](https://github.com/openeuropa/oe_bootstrap_theme/pull/407) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
+- Update 1.x with 1.10.1. [\#403](https://github.com/openeuropa/oe_bootstrap_theme/pull/403) ([brummbar](https://github.com/brummbar))
+- OEL-2646: Added margin-bottom for backward compatibility card. [\#399](https://github.com/openeuropa/oe_bootstrap_theme/pull/399) ([tibi2303](https://github.com/tibi2303))
+
+## [1.10.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.10.1) (2024-06-27)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.10.0...1.10.1)
+
+**Merged pull requests:**
+
+- OEL-3079: Security fix for PSA-2024-06-26. [\#400](https://github.com/openeuropa/oe_bootstrap_theme/pull/400) ([tibi2303](https://github.com/tibi2303))
+
+## [1.10.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.10.0) (2024-05-03)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.9.1...1.10.0)
+
+**Merged pull requests:**
+
+- Prepare changelog for release 1.10.0. [\#393](https://github.com/openeuropa/oe_bootstrap_theme/pull/393) ([brummbar](https://github.com/brummbar))
+- OEL-2270: Added text-break class in listing attributes. [\#390](https://github.com/openeuropa/oe_bootstrap_theme/pull/390) ([tibi2303](https://github.com/tibi2303))
+- OEL-2744: Responsive tables missing the toggle to show/hide "low priority column". [\#387](https://github.com/openeuropa/oe_bootstrap_theme/pull/387) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
+- OEL-2787: Fix url options loss in bclCardList\(\). [\#374](https://github.com/openeuropa/oe_bootstrap_theme/pull/374) ([drishu](https://github.com/drishu))
+
+## [1.9.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.9.1) (2024-03-13)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.9.0...1.9.1)
+
+**Merged pull requests:**
+
+- Prepare changelog for release 1.9.1. [\#389](https://github.com/openeuropa/oe_bootstrap_theme/pull/389) ([tibi2303](https://github.com/tibi2303))
+- OEL-2593: Margin bottom of form elements increased to 1rem. [\#380](https://github.com/openeuropa/oe_bootstrap_theme/pull/380) ([tibi2303](https://github.com/tibi2303))
+- OEL-2595: Fixed overlap of toolbar. [\#379](https://github.com/openeuropa/oe_bootstrap_theme/pull/379) ([tibi2303](https://github.com/tibi2303))
+
+## [1.9.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.9.0) (2024-02-15)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.8.1...1.9.0)
+
+**Merged pull requests:**
+
+- Prepare changelog for release 1.9.0. [\#384](https://github.com/openeuropa/oe_bootstrap_theme/pull/384) ([brummbar](https://github.com/brummbar))
+- OEL-2794: Update components to run on Drupal 10.2.x. [\#382](https://github.com/openeuropa/oe_bootstrap_theme/pull/382) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
+
+## [1.8.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.8.1) (2024-01-17)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.8.0...1.8.1)
+
+**Merged pull requests:**
+
+- Prepare changelog for release 1.8.1. [\#376](https://github.com/openeuropa/oe_bootstrap_theme/pull/376) ([brummbar](https://github.com/brummbar))
+- OEL-2767: Links with render array as labels cannot be rendered. [\#375](https://github.com/openeuropa/oe_bootstrap_theme/pull/375) ([brummbar](https://github.com/brummbar))
+- OEL-2782: Unlock symfony/validator to allow to install Drupal 10.1.x. [\#369](https://github.com/openeuropa/oe_bootstrap_theme/pull/369) ([brummbar](https://github.com/brummbar))
+
 ## [1.8.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.8.0) (2023-12-21)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.7.0...1.8.0)
 
@@ -12,6 +65,7 @@
 
 **Merged pull requests:**
 
+- Prepare changelog for release 1.8.0. [\#368](https://github.com/openeuropa/oe_bootstrap_theme/pull/368) ([brummbar](https://github.com/brummbar))
 - OEL-2782: Update to use PHP 8.1/8.2 and Drupal 10.0.x/10.1.x. [\#367](https://github.com/openeuropa/oe_bootstrap_theme/pull/367) ([brummbar](https://github.com/brummbar))
 - OEL-0000: Sentence should end with period. [\#366](https://github.com/openeuropa/oe_bootstrap_theme/pull/366) ([brummbar](https://github.com/brummbar))
 - OEL-2256: Remove col-sm-10 class from fieldsets. [\#360](https://github.com/openeuropa/oe_bootstrap_theme/pull/360) ([brummbar](https://github.com/brummbar))

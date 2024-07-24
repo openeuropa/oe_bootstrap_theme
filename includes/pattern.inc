@@ -5,7 +5,7 @@
  * Theme and preprocess functions for patterns.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Markup;

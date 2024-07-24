@@ -5,7 +5,7 @@
  * Theme and preprocess functions for forms.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\oe_bootstrap_theme\BackwardCompatibility;
@@ -54,7 +54,7 @@ function oe_bootstrap_theme_preprocess_form_element(&$variables) {
   $variables['col_class'] = $element['#col_class'] ?? '';
 
   // Add default margin.
-  $variables['margin_class'] = $element['#margin_class'] ?? 'mb-2';
+  $variables['margin_class'] = $element['#margin_class'] ?? 'mb-3';
 
   // Add required class for checkbox and radio labels.
   if (in_array($element['#type'], ['checkbox', 'radio'])) {

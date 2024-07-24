@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\PatternAssertion;
 
@@ -21,6 +21,14 @@ class CarouselPatternAssert extends BasePatternAssert {
       ],
       'settings' => [
         [$this, 'assertSettings'],
+      ],
+      'title' => [
+        [$this, 'assertElementText'],
+        '.bcl-heading',
+      ],
+      'title_tag' => [
+        [$this, 'assertElementTag'],
+        '.bcl-heading',
       ],
     ];
   }

@@ -5,8 +5,8 @@ gallery:
     title:
       type: text
       label: 'Title'
-      description: 'The title of the gallery.'
-      preview: 'Gallery example'
+      description: 'Title of the gallery.'
+      preview: 'This is the title of gallery.'
     title_tag:
       type: text
       label: 'Title tag'

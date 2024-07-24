@@ -11,8 +11,8 @@ timeline:
     title:
       type: text
       label: 'Title'
-      description: 'Title of the listing block.'
-      preview: 'This is the listing title'
+      description: 'Title of the timeline block.'
+      preview: 'This is the timeline title'
     title_tag:
       type: text
       label: 'Title tag'

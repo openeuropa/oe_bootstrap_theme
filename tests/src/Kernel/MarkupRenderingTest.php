@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
@@ -55,6 +55,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'breadcrumb',
     'button',
     'card',
+    'card_v2',
     'card_layout',
     'carousel',
     'columns',

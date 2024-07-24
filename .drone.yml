@@ -18,7 +18,7 @@ services:
     environment:
       - DOCUMENT_ROOT=/test/oe_bootstrap_theme
   mysql:
-    image: registry.fpfis.eu/fpfis/sql:percona-5.7
+    image: git.fpfis.tech.ec.europa.eu/fpfis/dependency_proxy/containers/percona:5.7
     command: --innodb-log-file-size=1G --max_allowed_packet=1G --innodb-buffer-pool-size=512M --wait_timeout=3000 --net_write_timeout=3000 --log_error_verbosity=3
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
@@ -27,7 +27,7 @@ services:
 pipeline:
   npm-build:
     group: prepare
-    image: registry.fpfis.eu/fpfis/node:18
+    image: git.fpfis.tech.ec.europa.eu/fpfis/dependency_proxy/containers/node:18
     commands:
       - npm install --unsafe-perm
       - NODE_ENV=production npm run production
@@ -79,7 +79,7 @@ pipeline:
     when:
       event: tag
       matrix:
-        CORE_VERSION: "10.0.0"
+        CORE_VERSION: "10.2.0"
         PHP_VERSION: "8.1"
 
   github-release:
@@ -91,16 +91,16 @@ pipeline:
     when:
       event: tag
       matrix:
-        CORE_VERSION: "10.0.0"
+        CORE_VERSION: "10.2.0"
         PHP_VERSION: "8.1"
 
 matrix:
   include:
-    - CORE_VERSION: 10.0.0
+    - CORE_VERSION: 10.2.0
       PHP_VERSION: 8.1
-    - CORE_VERSION: 10.0.0
+    - CORE_VERSION: 10.2.0
       PHP_VERSION: 8.2
-    - CORE_VERSION: 10.1.0
+    - CORE_VERSION: 10.3.0
       PHP_VERSION: 8.1
-    - CORE_VERSION: 10.1.0
+    - CORE_VERSION: 10.3.0
       PHP_VERSION: 8.2

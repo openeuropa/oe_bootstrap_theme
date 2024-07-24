@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\PatternAssertion;
 
@@ -24,7 +24,8 @@ class GalleryPatternAssert extends BasePatternAssert {
         '.mb-4.bcl-heading',
       ],
       'title_tag' => [
-        [$this, 'assertTitleTag'],
+        [$this, 'assertElementTag'],
+        '.mb-4.bcl-heading',
       ],
     ];
   }
@@ -43,8 +44,8 @@ class GalleryPatternAssert extends BasePatternAssert {
 
     $items = $crawler->filter('ul.bcl-gallery__grid li')->count();
     if ($items > 5) {
-      $view_more_text = "view the full gallery ($items)";
-      $this->assertElementText('view less', '.bcl-gallery a.bcl-gallery__collapse span.label-expanded', $crawler);
+      $view_more_text = "View the full gallery ($items)";
+      $this->assertElementText('View less', '.bcl-gallery a.bcl-gallery__collapse span.label-expanded', $crawler);
       $this->assertElementText($view_more_text, '.bcl-gallery a.bcl-gallery__collapse span.label-collapsed', $crawler);
       $this->assertElementText($view_more_text, '.bcl-gallery a.bcl-gallery__mobile-view-more span.label-collapsed', $crawler);
 
@@ -54,18 +55,6 @@ class GalleryPatternAssert extends BasePatternAssert {
       $this->assertElementNotExists('.bcl-gallery a.bcl-gallery__mobile-view-more', $crawler);
     }
 
-  }
-
-  /**
-   * Checks the tag used for the title.
-   *
-   * @param string $expected
-   *   The expected tag.
-   * @param \Symfony\Component\DomCrawler\Crawler $crawler
-   *   The DomCrawler where to check the element.
-   */
-  protected function assertTitleTag(string $expected, Crawler $crawler): void {
-    $this->assertElementExists($expected . '.mb-4.bcl-heading', $crawler);
   }
 
   /**

@@ -13,6 +13,15 @@ accordion:
       description: 'Index value of the item to open (starting from 1), all closed by default (0).'
       preview: 1
   fields:
+    title:
+      type: text
+      label: 'Title'
+      description: 'Title of the accordion.'
+      preview: 'This is the title of this accordion.'
+    title_tag:
+      type: text
+      label: 'Title tag'
+      description: 'The tag to use for the title. Defaults to h2.'
     items:
       type: array
       label: 'Accordion items'

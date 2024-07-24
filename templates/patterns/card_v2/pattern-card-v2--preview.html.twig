@@ -1,0 +1,84 @@
+{#
+/**
+ * @file
+ * Template override for preview mode of "Card V2" pattern.
+ */
+#}
+{% set _title %}
+  <h4><a href="https://google.com">Title card</a></h4>
+{% endset %}
+{% set _media_horizontal %}
+  <img src="https://picsum.photos/400/800/" alt="Alternative text for card image">
+{% endset %}
+{% set _media %}
+  <img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">
+{% endset %}
+{% set _content %}
+  <h6 class="card-subtitle mb-2">Subtitle card</h6>
+  <div class="card-text mb-2">
+    Text card with longer text which is supported. An example of a <a href="https://www.example.com/1">link</a> in the text.
+    <a href="#" class="d-block">Link example</a>
+  </div>
+  <div class="my-3 me-n3">
+    <span class="text-muted me-3">Organisation</span><span class="text-muted me-3">Position</span>
+  </div>
+  <div>
+    <button class="btn btn-primary">Custom action</button>
+  </div>
+  <div class="mt-2-5">
+    <a href="#" class="mb-2 me-2 badge rounded-pill badge-outline-primary">A link badge</a>
+    <span class="mb-2 me-2 badge badge-outline-primary">A non-rounded badge</span>
+    <span class="mb-2 badge rounded-pill text-bg-primary">A solid badge</span>
+  </div>
+{% endset %}
+{% set _header %}
+  Header of <span class="fw-bold">card</span>
+{% endset %}
+{% set _footer %}
+  Footer of <span class="fw-bold">card</span>
+{% endset %}
+{% set _title %}
+  <h2>Simple title</h2>
+{% endset %}
+{% set _link_title %}
+  <h2><a href="#">Longer title that might span into multiple lines</a></h2>
+{% endset %}
+
+<div class="row">
+  <div class="col-12 col-md-8">
+    <div class="mb-5">
+      <h2 class="mb-2">Full card</h2>
+      {{ pattern('card_v2', {
+        variant: variant,
+        title: _title,
+        media: variant == 'default' ? _media : _media_horizontal,
+        content: _content,
+        header: variant == 'default' ? _header : '',
+        footer: variant == 'default' ? _footer : '',
+      }) }}
+    </div>
+  </div>
+  <div class="col-12 col-md-8">
+    <div class="mb-5">
+      <h2 class="mb-2">Simple card</h2>
+      {{ pattern('card_v2', {
+        variant: variant,
+        title: _title,
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel mauris vitae ipsum blandit condimentum ut eget quam. Nunc eget nisi aliquam, accumsan sapien eu, blandit turpis...',
+      }) }}
+    </div>
+  </div>
+</div>
+<div class="row mb-5">
+  <h2 class="mb-2">Card with date</h2>
+  <div class="col-12 col-md-8">
+    {{ pattern('card_v2', {
+      variant: variant,
+      title: _title,
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel mauris vitae ipsum blandit condimentum ut eget quam. Nunc eget nisi aliquam, accumsan sapien eu, blandit turpis...',
+      media: pattern('date_block', {
+        date: '2021-05-26',
+      })
+    }) }}
+  </div>
+</div>

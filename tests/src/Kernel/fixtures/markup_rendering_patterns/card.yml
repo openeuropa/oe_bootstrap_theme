@@ -5,6 +5,7 @@ card_horizontal_with_image:
     '#fields':
       orientation: 'horizontal'
       title: 'Title card'
+      title_tag: 'h2'
       subtitle: 'Subtitle card'
       text: 'Text card with longer text which is supported'
       image:
@@ -28,6 +29,7 @@ card_horizontal_with_image:
       expected:
         horizontal: true
         title: 'Title card'
+        title_tag: 'h2'
         subtitle: 'Subtitle card'
         description: 'Text card with longer text which is supported'
         image:
@@ -39,7 +41,6 @@ card_horizontal_with_image:
           - '<button class="btn btn-primary btn-md" type="button">Custom action</button>'
         header: 'Header of card'
         footer: 'Footer of card'
-
 card_vertical:
   render:
     '#type': pattern
@@ -67,6 +68,7 @@ card_vertical:
       expected:
         horizontal: false
         title: 'Title card'
+        title_tag: 'h1'
         subtitle: 'Subtitle card'
         description: 'Text card with longer text which is supported'
         image:
@@ -83,6 +85,7 @@ card_variant_search:
     '#variant': 'search'
     '#fields':
       title: 'Title card'
+      title_tag: 'h3'
       text: 'Text card with longer text which is supported'
       image:
         src: 'https://picsum.photos/1000/500/'
@@ -94,13 +97,14 @@ card_variant_search:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
       expected:
         title: 'Title card'
+        title_tag: 'h3'
         description: 'Text card with longer text which is supported'
         image:
           src: 'https://picsum.photos/1000/500/'
           alt: ''
         badges:
-          - 'Category 1'
-          - 'Category 2'
+          - label: 'Category 1'
+          - label: 'Category 2'
 card_search_with_date:
   render:
     '#type': pattern
@@ -122,6 +126,7 @@ card_search_with_date:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
       expected:
         title: 'Title card'
+        title_tag: 'h1'
         description: 'Text card with longer text which is supported'
         date:
           year: "2021"
@@ -129,8 +134,8 @@ card_search_with_date:
           day: "23"
           date_time: "2021-01-23"
         badges:
-          - 'Category 1'
-          - 'Category 2'
+          - label: 'Category 1'
+          - label: 'Category 2'
 card_with_date_range:
   render:
     '#type': pattern
@@ -149,6 +154,7 @@ card_with_date_range:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
       expected:
         title: 'Title card'
+        title_tag: 'h1'
         date:
           year: "2021"
           month: "Jan"

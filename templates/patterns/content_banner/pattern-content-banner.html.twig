@@ -7,9 +7,9 @@
 {% apply spaceless %}
 {# Render the 'meta' items into the content variable. #}
 {% set _content %}
-  {% set content_attributes = create_attribute().addClass('mt-4') %}
+  {% set content_attributes = create_attribute().addClass(['mt-4', 'card-content']) %}
   {% if meta is not empty %}
-    {% set content_attributes = create_attribute() %}
+    {% set content_attributes = create_attribute().addClass('card-content') %}
     <div class="my-4">
       {% for _meta_item in meta %}
         {% if _meta_item is not empty %}
@@ -35,7 +35,7 @@
 {% include '@oe-bcl/bcl-content-banner/bcl-content-banner.html.twig' with {
   'background': background,
   'title': title,
-  'title_tag': title_tag|default('h1'),
+  'title_tag': title_tag,
   'content': _content,
   'image': image ? {
     'path': image.src,

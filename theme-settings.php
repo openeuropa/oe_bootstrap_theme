@@ -5,7 +5,7 @@
  * Functions to support OpenEuropa Bootstrap theme settings.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\oe_bootstrap_theme\BackwardCompatibility;

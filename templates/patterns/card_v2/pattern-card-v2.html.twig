@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Default template for "Card V2" pattern.
+ *
+ * For available variables, refer to the pattern declaration.
+ */
+#}
+
+{% set _classes = ['card', 'v2'] %}
+
+{% if variant == 'horizontal' %}
+  {% set _classes = _classes|merge(['horizontal']) %}
+{% endif %}
+
+<{{ tag }}{{ attributes.addClass(_classes) }}>
+  {% if media is not empty %}
+    <div{{ media_attributes.addClass(['card-media']) }}>
+      {{ media }}
+    </div>
+  {% endif %}
+  {% if header is not empty %}
+    <div{{ header_attributes.addClass(['card-header']) }}>
+      {{ header }}
+    </div>
+  {% endif %}
+  <div{{ content_attributes.addClass(['card-body']) }}>
+    {% if title is not empty %}
+      <div class="card-title">
+        {{ title }}
+      </div>
+    {% endif %}
+    {{ content }}
+  </div>
+  {% if footer is not empty %}
+    <div{{ footer_attributes.addClass(['card-footer']) }}>
+      {{ footer }}
+    </div>
+  {% endif %}
+</{{ tag }}>

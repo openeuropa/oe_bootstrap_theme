@@ -5,7 +5,7 @@
  * Custom page attachments hooks.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Html;
@@ -21,7 +21,7 @@ function oe_bootstrap_theme_page_attachments_alter(array &$attachments) {
   $theme_path_safe = Html::escape($theme_path);
   $markup = '<link rel="stylesheet" href="' . $theme_path_safe . '/assets/css/bootstrap-ie11.css">'
     . '<script src="https://cdn.jsdelivr.net/combine/npm/ie11-custom-properties@4,npm/element-qsa-scope@1"></script>'
-    . '<script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=default%2CNumber.parseInt%2CNumber.parseFloat%2CArray.prototype.find%2CArray.prototype.includes"></script>';
+    . '<script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=3.111.0&features=Array.prototype.find%2CArray.prototype.includes%2CNumber.parseFloat%2CNumber.parseInt%2Cdefault"></script>';
 
   // Bootstrap-ie11 inline JS which will load the CSS and JS just for IE users.
   // https://github.com/coliff/bootstrap-ie11

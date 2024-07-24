@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme_helper\Kernel;
 
@@ -9,6 +9,7 @@ use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Render\RenderContext;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\DomCrawler\Crawler;
@@ -184,6 +185,52 @@ class TwigExtensionTest extends AbstractKernelTestBase {
         [
           'path' => 'https://www.example.com',
           'label' => 'External link',
+        ],
+      ],
+      'url with array label' => [
+        [
+          'href' => 'https://www.example.com/template/',
+          'text' => 'user: admin',
+        ],
+        [
+          'path' => 'https://www.example.com/template/',
+          'label' => [
+            '#type' => 'inline_template',
+            '#template' => '{{ prefix }}: {{ suffix }}',
+            '#context' => [
+              'prefix' => 'user',
+              'suffix' => 'admin',
+            ],
+          ],
+        ],
+      ],
+      'url with array label and url object' => [
+        [
+          'href' => '/',
+          'text' => 'user: anonymous',
+        ],
+        [
+          'path' => Url::fromRoute('<front>'),
+          'label' => [
+            '#type' => 'inline_template',
+            '#template' => '{{ prefix }}: {{ suffix }}',
+            '#context' => [
+              'prefix' => 'user',
+              'suffix' => 'anonymous',
+            ],
+          ],
+        ],
+      ],
+      'url with array #markup label' => [
+        [
+          'href' => 'https://www.example.com/markup/',
+          'text' => '<b>test</b>',
+        ],
+        [
+          'path' => 'https://www.example.com/markup/',
+          'label' => [
+            '#markup' => '<b>test</b>',
+          ],
         ],
       ],
     ];
@@ -379,6 +426,145 @@ TWIG;
     ];
 
     return $scenarios;
+  }
+
+  /**
+   * Tests BCL card list filter.
+   */
+  public function testBclCardList(): void {
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $data = $this->bclCardListDataProvider();
+    $result = $extension->bclCardList($data['items']);
+
+    foreach ($data['expected'] as $key => $expected) {
+      $title = $result[$key]['title'] ?? NULL;
+      $this->assertEquals($expected['title'], $title ? $title->getText() : '');
+      $url = $title ? $title->getUrl() : NULL;
+
+      if (isset($expected['url'])) {
+        if ($url->isRouted()) {
+          $this->assertEquals($expected['url'], $url->getRouteName());
+        }
+        else {
+          $this->assertEquals($expected['url'], $url->getUri());
+        }
+        $this->assertEquals($expected['options'], $url->getOptions());
+      }
+
+      $this->assertEquals($expected['subtitle'], $result[$key]['subtitle'] ?? []);
+      $this->assertEquals($expected['text'], $result[$key]['text'] ?? []);
+      $this->assertEquals($expected['image'], $result[$key]['image'] ?? []);
+      $this->assertEquals($expected['badges'], $result[$key]['badges'] ?? []);
+    }
+  }
+
+  /**
+   * Provides data for testBclCardList().
+   *
+   * @return array
+   *   The scenarios.
+   */
+  public function bclCardListDataProvider(): array {
+    return [
+      'items' => [
+        [
+          'title' => 'Test title',
+          'subtitle' => 'Test subtitle',
+          'url' => Url::fromUserInput('/test#something'),
+        ],
+        [
+          'title' => 'Test title',
+          'url' => Url::fromRoute('<front>'),
+          'text' => 'this is a text',
+        ],
+        [
+          'title' => 'Some title',
+          'url' => Url::fromUserInput('/test?foo=1&baz=2'),
+        ],
+        [
+          'image' => ImageValueObject::fromArray([
+            'src' => 'http://localhost:8080/web/sites/default/files/testimage.png',
+            'name' => 'testimage',
+          ]),
+          'badges' => [
+            'meta 1',
+            'meta 2',
+          ],
+        ],
+      ],
+      'expected' => [
+        [
+          'title' => 'Test title',
+          'subtitle' => [
+            'content' => 'Test subtitle',
+            'classes' => 'mb-2',
+          ],
+          'url' => 'base:test',
+          'options' => [
+            'attributes' => [
+              'class' => 'standalone',
+            ],
+            'fragment' => 'something',
+          ],
+          'text' => [],
+          'image' => [],
+          'badges' => [],
+        ],
+        [
+          'title' => 'Test title',
+          'subtitle' => [],
+          'url' => '<front>',
+          'options' => [
+            'attributes' => [
+              'class' => 'standalone',
+            ],
+          ],
+          'text' => [
+            'content' => 'this is a text',
+            'classes' => 'mb-2',
+            'tag' => 'div',
+          ],
+          'image' => [],
+          'badges' => [],
+        ],
+        [
+          'title' => 'Some title',
+          'subtitle' => [],
+          'url' => 'base:test',
+          'options' => [
+            'attributes' => [
+              'class' => 'standalone',
+            ],
+            'query' => [
+              'foo' => 1,
+              'baz' => 2,
+            ],
+          ],
+          'text' => [],
+          'image' => [],
+          'badges' => [],
+        ],
+        [
+          'title' => '',
+          'subtitle' => [],
+          'text' => [],
+          'image' => [
+            'path' => 'http://localhost:8080/web/sites/default/files/testimage.png',
+            'alt' => '',
+          ],
+          'badges' => [
+            [
+              'label' => 'meta 1',
+              'background' => 'primary',
+            ],
+            [
+              'label' => 'meta 2',
+              'background' => 'primary',
+            ],
+          ],
+        ],
+      ],
+    ];
   }
 
 }

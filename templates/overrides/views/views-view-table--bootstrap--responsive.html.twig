@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Template override that applies responsiveness to Bootstrap tables.
+ *
+ * Available variables:
+ * - wrapper_attributes: HTML attributes for the table wrapper.
+ * - all the variables from @views/views-view-table.html.twig.
+ *
+ * @see template_preprocess_views_view_table()
+ * @see oe_bootstrap_theme_preprocess_views_view_table__bootstrap__responsive()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ wrapper_attributes }}>
+  {% include "@oe_bootstrap_theme/overrides/views/views-view-table--bootstrap.html.twig"  %}
+</div>
