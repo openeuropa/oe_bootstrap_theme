@@ -18,7 +18,7 @@ card:
       label:  'Left column classes'
       description: 'When horizontal orientation. Classes of left column.'
       preview: 'col-3'
-     right_col_classes:
+    right_col_classes:
       type: string
       label: 'Right column classes'
       description: 'When horizontal orientation. Classes of right column.'
