@@ -98,7 +98,7 @@ class CarouselPatternAssert extends BasePatternAssert {
     foreach ($expected as $index => $expected_item) {
       $item = $items->eq($index);
 
-      // Check if HTML content contains video or iframe.
+      // Check if the HTML content contains video or iframe.
       $isPlayable = strpos($item->html(), '<video') !== FALSE || strpos($item->html(), '<iframe') !== FALSE;
 
       try {
