@@ -5,6 +5,12 @@
  */
 #}
 {% apply spaceless %}
+{% set _image = image ? image|merge({
+    'path': image.src,
+    'alt': image.alt,
+}) %}
+{% set _left_col_classes = left_col_classes|default('col-4') %}
+{% set _right_col_classes = right_col_classes|default('col-8') %}
 {% set _content %}
   {% if meta is not empty %}
     {# Use negative margin to compensate for me-3 on each item. #}
@@ -35,8 +41,8 @@
 {% include '@oe-bcl/card' with {
   'horizontal': orientation == 'horizontal',
   'horizontal_grid': (orientation == 'horizontal') ? {
-    left_col_classes: 'col-4',
-    right_col_classes: 'col-8',
+    left_col_classes: _left_col_classes,
+    right_col_classes: _right_col_classes,
     gutter: 0,
   } : {},
   'title': title,
@@ -51,6 +57,7 @@
     'tag': 'div',
   } : {},
   'content': _content,
+  'extra_classes_body' : extra_classes_body,
   'image': image ? {
     'path': image.src,
     'alt': image.alt,
@@ -58,6 +65,7 @@
   'date': date|default({}),
   'card_header': header,
   'card_footer': footer,
+  'extra_classes_footer' : extra_classes_footer,
   'badges': _badges,
   'attributes': attributes,
 } only %}
