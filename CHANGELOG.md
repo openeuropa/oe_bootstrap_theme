@@ -3,12 +3,28 @@
 ## [1.11.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.11.0) (2024-07-17)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.10.1...1.11.0)
 
+**Implemented enhancements:**
+
+- Theme views table [\#312](https://github.com/openeuropa/oe_bootstrap_theme/issues/312)
+- Responsive tables missing the toggle to show/hide "low priority column" [\#311](https://github.com/openeuropa/oe_bootstrap_theme/issues/311)
+
+**Closed issues:**
+
+- OEL-2770: \[Gallery pattern\] Sentence case for actions [\#363](https://github.com/openeuropa/oe_bootstrap_theme/issues/363)
+
 **Merged pull requests:**
 
+- Prepare release 1.11.0. [\#409](https://github.com/openeuropa/oe_bootstrap_theme/pull/409) ([drishu](https://github.com/drishu))
 - OEL-3054: Update steps to create releases. [\#408](https://github.com/openeuropa/oe_bootstrap_theme/pull/408) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
 - OEL-3054: Update to Drupal 10.3 [\#407](https://github.com/openeuropa/oe_bootstrap_theme/pull/407) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
 - Update 1.x with 1.10.1. [\#403](https://github.com/openeuropa/oe_bootstrap_theme/pull/403) ([brummbar](https://github.com/brummbar))
 - OEL-2646: Added margin-bottom for backward compatibility card. [\#399](https://github.com/openeuropa/oe_bootstrap_theme/pull/399) ([tibi2303](https://github.com/tibi2303))
+- OEL-2743: Theme views table. [\#397](https://github.com/openeuropa/oe_bootstrap_theme/pull/397) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
+- OEL-1863: Changed selector from FilePattern. [\#396](https://github.com/openeuropa/oe_bootstrap_theme/pull/396) ([tibi2303](https://github.com/tibi2303))
+- OEL-1771: Moved patterns tests from oe\_whitelabel. [\#395](https://github.com/openeuropa/oe_bootstrap_theme/pull/395) ([tibi2303](https://github.com/tibi2303))
+- OEL-2770: Changed actions label for gallery. [\#394](https://github.com/openeuropa/oe_bootstrap_theme/pull/394) ([tibi2303](https://github.com/tibi2303))
+- OEL-1948: Added title and title\_tag to patterns. [\#391](https://github.com/openeuropa/oe_bootstrap_theme/pull/391) ([tibi2303](https://github.com/tibi2303))
+- OEL-2769: Card v2. [\#378](https://github.com/openeuropa/oe_bootstrap_theme/pull/378) ([tibi2303](https://github.com/tibi2303))
 
 ## [1.10.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.10.1) (2024-06-27)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.10.0...1.10.1)
