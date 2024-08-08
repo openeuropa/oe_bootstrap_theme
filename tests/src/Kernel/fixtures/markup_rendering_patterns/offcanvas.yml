@@ -13,6 +13,7 @@ offcanvas_top_with_backdrop_and_toggle:
         label: 'Toggle offcanvas'
   assertions:
     count:
+      '.offcanvas-body:not(.bcl-offcanvas)': 1
       'button[data-bs-target="#bcl-offcanvas"]': 2
       '.btn-primary[data-bs-toggle="offcanvas"]': 1
       '.btn-close[data-bs-target="#bcl-offcanvas"]': 1
