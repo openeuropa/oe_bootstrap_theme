@@ -6,23 +6,21 @@ namespace Drupal\oe_bootstrap_theme_helper\Plugin\Filter;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
-use Drupal\filter\Attribute\Filter;
 use Drupal\filter\FilterProcessResult;
 use Drupal\filter\Plugin\FilterBase;
-use Drupal\filter\Plugin\FilterInterface;
 
 /**
  * Provides a filter to add Bootstrap styling to tables.
+ *
+ * @Filter(
+ *   id = "oe_bootstrap_theme_table",
+ *   title = @Translation("Bootstrap tables"),
+ *   type = Drupal\filter\Plugin\FilterInterface::TYPE_TRANSFORM_IRREVERSIBLE,
+ *   settings = {
+ *     "responsive" = "",
+ *   }
+ * )
  */
-#[Filter(
-  id: "oe_bootstrap_theme_table",
-  title: new TranslatableMarkup("Bootstrap tables"),
-  type: FilterInterface::TYPE_TRANSFORM_IRREVERSIBLE,
-  settings: [
-    "responsive" => "",
-  ],
-)]
 final class BootstrapTable extends FilterBase {
 
   /**
@@ -55,7 +53,7 @@ final class BootstrapTable extends FilterBase {
     $result = new FilterProcessResult($text);
 
     // Ensure that we have tables in the markup.
-    if (stripos($text, '<table') === FALSE) {
+    if (stristr($text, '<table') === FALSE) {
       return $result;
     }
 
