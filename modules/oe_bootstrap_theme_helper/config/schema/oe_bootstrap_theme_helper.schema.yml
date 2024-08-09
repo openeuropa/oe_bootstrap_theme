@@ -5,3 +5,11 @@ field.widget.third_party.oe_bootstrap_theme_helper:
     switch:
       type: boolean
       label: Change the widget of checkboxes into switches
+
+filter_settings.oe_bootstrap_theme_table:
+  type: mapping
+  label: 'Filter settings'
+  mapping:
+    responsive:
+      type: string
+      label: 'Responsive tables'
