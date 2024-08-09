@@ -53,7 +53,7 @@ final class BootstrapTable extends FilterBase {
     $result = new FilterProcessResult($text);
 
     // Ensure that we have tables in the markup.
-    if (stripos($text, '<table') === FALSE) {
+    if (stristr($text, '<table') === FALSE) {
       return $result;
     }
 
