@@ -1,3 +1,4 @@
+version: '2'
 services:
   web:
     image: fpfis/httpd-php-dev:8.2
