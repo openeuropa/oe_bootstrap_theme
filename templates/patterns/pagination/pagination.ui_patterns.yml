@@ -25,6 +25,11 @@ pagination:
         center: 'center'
         end: 'end'
       preview: 'center'
+    list_attributes:
+      type: attributes
+      label: List attributes
+      description: Extra attributes for the list container
+      allow_token: true
   fields:
     enable_prev_next_icons:
       type: boolean

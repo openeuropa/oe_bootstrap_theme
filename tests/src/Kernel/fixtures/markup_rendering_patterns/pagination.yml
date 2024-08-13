@@ -25,6 +25,7 @@ pagination:
           active: true
         - path: '#2'
           label: '2'
+      list_attributes: 'class="list-class" id="list-id" data-list-attribute="list-attr-value"'
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PaginationPatternAssert
@@ -52,6 +53,10 @@ pagination:
           - url: '#last'
             label: Last
             aria-label: 'Last'
+        list_attributes:
+          class: 'list-class pagination js-pager__items'
+          id: 'list-id'
+          data-list-attribute: 'list-attr-value'
 pagination_with_icon:
   render:
     '#type': pattern
