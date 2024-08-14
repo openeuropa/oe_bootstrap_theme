@@ -6,6 +6,7 @@ pagination:
       settings:
         size: 'sm'
         alignment: 'center'
+        list_attributes: 'class="list-class" id="list-id" data-list-attribute="list-attr-value"'
       enable_first_last_icons: false
       first:
         path: '#first'
@@ -25,7 +26,6 @@ pagination:
           active: true
         - path: '#2'
           label: '2'
-      list_attributes: 'class="list-class" id="list-id" data-list-attribute="list-attr-value"'
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PaginationPatternAssert
@@ -54,7 +54,7 @@ pagination:
             label: Last
             aria-label: 'Last'
         list_attributes:
-          class: 'list-class pagination js-pager__items'
+          class: 'list-class js-pager__items pagination pagination-sm justify-content-center'
           id: 'list-id'
           data-list-attribute: 'list-attr-value'
 pagination_with_icon:
