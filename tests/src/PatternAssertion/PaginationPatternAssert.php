@@ -27,7 +27,7 @@ class PaginationPatternAssert extends BasePatternAssert {
       ],
       'list_attributes' => [
         [$this, 'assertElementAttributes'],
-        '.pagination.js-pager__items',
+        '.pagination',
       ],
     ];
   }
