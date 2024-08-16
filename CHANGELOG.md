@@ -1,5 +1,19 @@
 # Change Log
 
+## [1.12.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.12.0) (2024-08-16)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.11.0...1.12.0)
+
+**Fixed bugs:**
+
+- Drupal 10.3: 'responsive' is not a supported key. [\#411](https://github.com/openeuropa/oe_bootstrap_theme/issues/411)
+
+**Merged pull requests:**
+
+- OEL-3176: Wrong changelog for 1.11.0 [\#416](https://github.com/openeuropa/oe_bootstrap_theme/pull/416) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
+- OEL-1686: Removed duplicated class on offcanvas body. [\#415](https://github.com/openeuropa/oe_bootstrap_theme/pull/415) ([tibi2303](https://github.com/tibi2303))
+- ELA-1118: Add schema for the filter settings [\#412](https://github.com/openeuropa/oe_bootstrap_theme/pull/412) ([piotrsmykaj](https://github.com/piotrsmykaj))
+- EPHEH-318: Add Color Scheme [\#392](https://github.com/openeuropa/oe_bootstrap_theme/pull/392) ([drishu](https://github.com/drishu))
+
 ## [1.11.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.11.0) (2024-07-17)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.10.1...1.11.0)
 
