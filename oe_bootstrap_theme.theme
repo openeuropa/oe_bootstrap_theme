@@ -61,7 +61,15 @@ function oe_bootstrap_theme_theme_suggestions_views_view_table_alter(array &$sug
  * Implements hook_preprocess().
  */
 function oe_bootstrap_theme_preprocess(&$variables) {
-  $variables['bcl_icon_path'] = base_path() . \Drupal::service('extension.list.theme')->getPath('oe_bootstrap_theme') . '/assets/icons/bcl-default-icons.svg';
+  // Get the active theme and its path.
+  $theme = \Drupal::theme()->getActiveTheme();
+  $theme_path = \Drupal::service('extension.list.theme')->getPath($theme->getName());
+
+  // Get the BCL icon path from the theme info, with a default fallback.
+  $bcl_icon_path = $theme->getExtension()->info['openeuropa']['bootstrap_component_library']['bcl_icon_path'] ?? 'assets/icons/bcl-default-icons.svg';
+
+  // Construct the full URL for the BCL icons.
+  $variables['bcl_icon_path'] = base_path() . $theme_path . '/' . $bcl_icon_path;
 }
 
 /**
