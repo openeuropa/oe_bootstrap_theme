@@ -1,0 +1,104 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
+
+use Drupal\Core\Site\Settings;
+use Drupal\KernelTests\KernelTestBase;
+
+/**
+ * Tests the bcl_icon_path theme override functionality.
+ */
+class BclIconPathOverrideTest extends KernelTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  protected static $modules = [
+    'system',
+  ];
+
+  /**
+   * Set up the test environment.
+   */
+  protected function setUp(): void {
+    parent::setUp();
+
+    // Replicate 'file_scan_ignore_directories' from settings.php.
+    $settings = Settings::getAll();
+    $settings['file_scan_ignore_directories'] = [
+      'node_modules',
+      'bower_components',
+      'vendor',
+      'build',
+    ];
+  }
+
+  /**
+   * Tests that the bcl_icon_path is correctly handled in the theme.
+   *
+   * @param string $theme
+   *   The theme to set as default.
+   * @param string|null $expected_icon_path
+   *   The expected bcl_icon_path value in the theme.
+   *
+   * @dataProvider bclIconPathTestCasesProvider
+   */
+  public function testBclIconPath(string $theme, ?string $expected_icon_path): void {
+    // Install the theme and set it as the default.
+    $this->container->get('theme_installer')->install([$theme]);
+    $this->config('system.theme')->set('default', $theme)->save();
+
+    // Retrieve the active theme.
+    $themeManager = $this->container->get('theme.manager');
+    $active_theme = $themeManager->getActiveTheme();
+
+    // Access the bcl_icon_path from the theme info file.
+    $theme_info = $active_theme->getExtension()->info;
+    $bcl_icon_path = $theme_info['openeuropa']['bootstrap_component_library']['bcl_icon_path'] ?? NULL;
+
+    // If expected icon path is provided, check if it matches.
+    if ($expected_icon_path) {
+      $this->assertEquals($expected_icon_path, $bcl_icon_path);
+    }
+    else {
+      $this->assertNull($bcl_icon_path);
+    }
+
+    // Create a renderable array to simulate the theme preprocess.
+    $variables = [];
+    oe_bootstrap_theme_preprocess($variables);
+
+    // Extract the path set in the preprocess function.
+    $actual_icon_path = $variables['bcl_icon_path'];
+    $expected_full_path = base_path() . $active_theme->getPath() . '/' . ($bcl_icon_path ?? 'assets/icons/bcl-default-icons.svg');
+
+    // Check if the paths match.
+    $this->assertEquals($expected_full_path, $actual_icon_path);
+  }
+
+  /**
+   * Provides test cases for ::testBclIconPath().
+   *
+   * @return array
+   *   A list of test cases.
+   */
+  public function bclIconPathTestCasesProvider(): array {
+    return [
+      'default theme with overridden path' => [
+        'oe_bootstrap_theme_test_subtheme1',
+        'assets/icons/bcl-default-icons-test.svg',
+      ],
+      'default theme with fallback path' => [
+        'oe_bootstrap_theme_test_subtheme2',
+        NULL,
+      ],
+      'original theme with default path' => [
+        'oe_bootstrap_theme',
+        NULL,
+      ],
+    ];
+  }
+
+}

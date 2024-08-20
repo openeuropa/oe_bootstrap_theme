@@ -63,7 +63,7 @@ function oe_bootstrap_theme_theme_suggestions_views_view_table_alter(array &$sug
 function oe_bootstrap_theme_preprocess(&$variables) {
   // Get the active theme and its path.
   $theme = \Drupal::theme()->getActiveTheme();
-  $theme_path = \Drupal::service('extension.list.theme')->getPath($theme->getName());
+  $theme_path = $theme->getPath();
 
   // Get the BCL icon path from the theme info, with a default fallback.
   $bcl_icon_path = $theme->getExtension()->info['openeuropa']['bootstrap_component_library']['bcl_icon_path'] ?? 'assets/icons/bcl-default-icons.svg';
