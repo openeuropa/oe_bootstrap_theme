@@ -19,7 +19,7 @@ badge:
     rounded_pill:
       type: boolean
       label: 'Pill badge.'
-      description: 'Make the badge a rounded pill. False by default.'
+      description: 'Make the badge a rounded pill. Defaults to FALSE.'
     dismissible:
       type: boolean
       label: 'Dismissible badge. Optional'

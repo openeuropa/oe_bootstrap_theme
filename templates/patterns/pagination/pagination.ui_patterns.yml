@@ -34,12 +34,12 @@ pagination:
     enable_prev_next_icons:
       type: boolean
       label: 'Enable previous/next icons'
-      description: 'Show icons instead of texts in links to previous and next page. False by default.'
+      description: 'Show icons instead of texts in links to previous and next page. Defaults to FALSE.'
       preview: false
     enable_first_last_icons:
       type: boolean
       label: 'Enable first/last icons'
-      description: 'Show icons instead of texts in links to first and last page. True by default.'
+      description: 'Show icons instead of texts in links to first and last page. Defaults to TRUE.'
       preview: true
     first:
       type: array
