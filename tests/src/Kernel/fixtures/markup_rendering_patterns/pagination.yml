@@ -199,3 +199,62 @@ pagination_with_aria:
           - url: '#last'
             label: Last
             aria-label: 'Last item'
+pagination_with_list_parent_attributes:
+  render:
+    '#type': pattern
+    '#id': pagination
+    '#fields':
+      settings:
+        size: 'sm'
+        alignment: 'center'
+        list_attributes: 'class="list-class" id="list-id" data-list-attribute="list-attr-value"'
+      enable_first_last_icons: false
+      first:
+        path: '#first'
+        label: 'First'
+      prev:
+        path: '#prev'
+        label: 'Previous'
+      next:
+        path: '#next'
+        label: 'Next'
+      last:
+        path: '#last'
+        label: 'Last'
+      items:
+        - path: '#1'
+          label: '1'
+          active: true
+        - path: '#2'
+          label: '2'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PaginationPatternAssert
+      expected:
+        variant: 'default'
+        alignment: 'center'
+        size: 'sm'
+        links:
+          - url: '#first'
+            label: First
+            aria-label: 'First'
+          - url: '#prev'
+            label: Previous
+            aria-label: 'Previous'
+          - url: '#1'
+            label: '1'
+            aria-label: '1'
+            active: true
+          - url: '#2'
+            label: '2'
+            aria-label: '2'
+          - url: '#next'
+            label: Next
+            aria-label: 'Next'
+          - url: '#last'
+            label: Last
+            aria-label: 'Last'
+        list_attributes:
+          class: 'list-class js-pager__items pagination pagination-sm justify-content-center'
+          id: 'list-id'
+          data-list-attribute: 'list-attr-value'
