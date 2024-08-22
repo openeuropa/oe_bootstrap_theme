@@ -33,6 +33,7 @@ class BclIconPathOverrideTest extends KernelTestBase {
       'vendor',
       'build',
     ];
+    new Settings($settings);
   }
 
   /**
