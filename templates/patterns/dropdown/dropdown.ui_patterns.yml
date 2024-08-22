@@ -5,7 +5,7 @@ dropdown:
     dark_mode:
       type: boolean
       label: 'Dark mode'
-      description: 'When enabled, sets dark mode. Defaults to FALSE.'
+      description: 'When enabled, sets dark mode. Defaults to false.'
   fields:
     button_label:
       type: string

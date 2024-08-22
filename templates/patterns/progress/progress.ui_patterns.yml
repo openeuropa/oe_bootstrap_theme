@@ -19,12 +19,12 @@ progress:
     striped:
       type: boolean
       label: 'Striped'
-      description: 'Stripped style for the progress bar. Defaults to FALSE.'
+      description: 'Stripped style for the progress bar. Defaults to false.'
       preview: true
     animated:
       type: boolean
       label: 'Animated'
-      description: 'Animation on striped bar. Defaults to FALSE.'
+      description: 'Animation on striped bar. Defaults to false.'
       preview: true
   fields:
     label:

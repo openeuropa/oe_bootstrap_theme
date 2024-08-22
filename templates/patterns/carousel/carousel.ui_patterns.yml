@@ -5,12 +5,12 @@ carousel:
     fade:
       type: boolean
       label: 'Fade'
-      description: 'Animate slides with a fade transition instead of a slide. Defaults to FALSE.'
+      description: 'Animate slides with a fade transition instead of a slide. Defaults to false.'
       preview: true
     show_controls:
       type: boolean
       label: 'Show controls'
-      description: 'Enable the controls (prev and next buttons). Defaults to FALSE.'
+      description: 'Enable the controls (prev and next buttons). Defaults to false.'
       preview: true
     show_indicators:
       type: boolean

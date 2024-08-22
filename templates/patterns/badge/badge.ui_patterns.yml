@@ -19,16 +19,16 @@ badge:
     rounded_pill:
       type: boolean
       label: 'Pill badge.'
-      description: 'Make the badge a rounded pill. Defaults to FALSE.'
+      description: 'Make the badge a rounded pill. Defaults to false.'
     dismissible:
       type: boolean
       label: 'Dismissible badge. Optional'
-      description: 'Add a close icon at the end of the badge. Defaults to FALSE.'
+      description: 'Add a close icon at the end of the badge. Defaults to false.'
       preview: true
     outline:
       type: boolean
       label: 'Outline.'
-      description: 'Use a border instead of a background. Defaults to FALSE.'
+      description: 'Use a border instead of a background. Defaults to false.'
   fields:
     label:
       type: text
@@ -38,11 +38,11 @@ badge:
     url:
       type: text
       label: 'Badge URL'
-      description: 'Converts the badge in a link. Optional. Defaults to "".'
+      description: 'Converts the badge in a link. Optional.'
       preview: 'https://europa.eu'
       escape: false
     title:
       type: text
       label: 'Link title'
-      description: 'Title attribute if the badge is a link. Defaults to "".'
+      description: 'Title attribute if the badge is a link. Optional.'
       preview: 'European website.'
