@@ -5,11 +5,11 @@ link:
     disabled:
       type: boolean
       label: 'Disabled'
-      description: 'When enabled, sets the link as disabled. False by default.'
+      description: 'When enabled, sets the link as disabled. Defaults to false.'
     standalone:
       type: boolean
       label: 'Standalone'
-      description: 'When enabled, adds extra class to underline the link item when hover. False by default.'
+      description: 'When enabled, adds extra class to underline the link item when hover. Defaults to false.'
       preview: 'true'
     icon_position:
       type: select
@@ -21,7 +21,7 @@ link:
     remove_icon_spacers:
       type: boolean
       label: 'Remove icon spacers'
-      description: 'When enabled, prevents margins to be added to the icon. False by default.'
+      description: 'When enabled, prevents margins to be added to the icon. Defaults to false.'
   fields:
     label:
       type: text

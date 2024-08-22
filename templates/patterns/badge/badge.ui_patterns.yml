@@ -5,7 +5,7 @@ badge:
     background:
       type: select
       label: 'Badge background'
-      description: 'Set the background color of the badge.'
+      description: 'Set the background color of the badge. Defaults to "primary".'
       options:
         primary: 'primary (default)'
         secondary: 'secondary'
@@ -19,16 +19,16 @@ badge:
     rounded_pill:
       type: boolean
       label: 'Pill badge.'
-      description: 'Make the badge a rounded pill. False by default.'
+      description: 'Make the badge a rounded pill. Defaults to false.'
     dismissible:
       type: boolean
       label: 'Dismissible badge. Optional'
-      description: 'Add a close icon at the end of the badge.'
+      description: 'Add a close icon at the end of the badge. Defaults to false.'
       preview: true
     outline:
       type: boolean
       label: 'Outline.'
-      description: 'Use a border instead of a background.'
+      description: 'Use a border instead of a background. Defaults to false.'
   fields:
     label:
       type: text
@@ -44,5 +44,5 @@ badge:
     title:
       type: text
       label: 'Link title'
-      description: 'Title attribute if the badge is a link.'
+      description: 'Title attribute if the badge is a link. Optional.'
       preview: 'European website.'

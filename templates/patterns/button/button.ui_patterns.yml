@@ -24,7 +24,7 @@ button:
     outline:
       type: boolean
       label: 'Button outline'
-      description: 'Lighter button style removing background color. False by default.'
+      description: 'Lighter button style removing background color. Defaults to false.'
     size:
       type: select
       label: 'Button size'
@@ -44,7 +44,7 @@ button:
     disabled:
       type: boolean
       label: 'Disabled'
-      description: 'If true, the button will not be enabled when clicking. False by default.'
+      description: 'If true, the button will not be enabled when clicking. Defaults to false.'
     icon_position:
       type: select
       label: 'Icon position'

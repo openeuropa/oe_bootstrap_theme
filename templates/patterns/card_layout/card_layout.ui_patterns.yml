@@ -55,7 +55,7 @@ card_layout:
     equal_height:
       type: boolean
       label: 'Equal height'
-      description: 'If true, all cards will have the same height. False by default.'
+      description: 'If true, all cards will have the same height. Defaults to false.'
   fields:
     items:
       type: array

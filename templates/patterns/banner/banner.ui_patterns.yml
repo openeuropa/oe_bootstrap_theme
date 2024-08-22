@@ -18,19 +18,19 @@ banner:
     shade:
       type: boolean
       label: 'Shade'
-      description: 'Enable the shadow effect to the image. False by default.'
+      description: 'Enable the shadow effect to the image. Defaults to false.'
     hero:
       type: boolean
       label: 'Hero'
-      description: 'Display as hero banner. False by default.'
+      description: 'Display as hero banner. Defaults to false.'
     full_width:
       type: boolean
       label: 'Full width'
-      description: 'Possibility of having a full-width banner within a bootstrap container. False by default.'
+      description: 'Possibility of having a full-width banner within a bootstrap container. Defaults to false.'
     centered:
       type: boolean
       label: 'Centered'
-      description: 'Whether the content of the banner is centered or not. False by default.'
+      description: 'Whether the content of the banner is centered or not. Defaults to false.'
       preview: true
   fields:
     title:

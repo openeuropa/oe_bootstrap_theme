@@ -13,7 +13,7 @@ list_group:
     flush:
       type: boolean
       label: 'Flush'
-      description: 'When enabled, adds flush to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards). False by default.'
+      description: 'When enabled, adds flush to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards). Defaults to false.'
   fields:
     items:
       type: array
