@@ -41,7 +41,7 @@ class BclIconPathOverrideTest extends KernelTestBase {
    *
    * @param string $theme
    *   The theme to set as default.
-   * @param string|null $expected_icon_path
+   * @param string $expected_icon_path
    *   The expected bcl_icon_path value in the theme.
    *
    * @dataProvider bclIconPathTestCasesProvider
@@ -52,8 +52,7 @@ class BclIconPathOverrideTest extends KernelTestBase {
     $this->config('system.theme')->set('default', $theme)->save();
 
     // Retrieve the active theme.
-    $themeManager = $this->container->get('theme.manager');
-    $active_theme = $themeManager->getActiveTheme();
+    \Drupal::theme()->getActiveTheme();
 
     // Create a renderable array to simulate the theme preprocess.
     $variables = [];
