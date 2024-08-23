@@ -46,8 +46,8 @@ class BclIconPathOverrideTest extends KernelTestBase {
    *
    * @dataProvider bclIconPathTestCasesProvider
    */
-  public function testBclIconPath(string $theme, ?string $expected_icon_path): void {
-    // Install the theme and set it as the default.
+  public function testBclIconPath(string $theme, string $expected_icon_path): void {
+    // Install the theme. Subsequently, this installs also the base themes.
     $this->container->get('theme_installer')->install([$theme]);
     $this->config('system.theme')->set('default', $theme)->save();
 
@@ -55,28 +55,15 @@ class BclIconPathOverrideTest extends KernelTestBase {
     $themeManager = $this->container->get('theme.manager');
     $active_theme = $themeManager->getActiveTheme();
 
-    // Access the bcl_icon_path from the theme info file.
-    $theme_info = $active_theme->getExtension()->info;
-    $bcl_icon_path = $theme_info['openeuropa']['bootstrap_component_library']['bcl_icon_path'] ?? NULL;
-
-    // If expected icon path is provided, check if it matches.
-    if ($expected_icon_path) {
-      $this->assertEquals($expected_icon_path, $bcl_icon_path);
-    }
-    else {
-      $this->assertNull($bcl_icon_path);
-    }
-
     // Create a renderable array to simulate the theme preprocess.
     $variables = [];
     oe_bootstrap_theme_preprocess($variables);
 
     // Extract the path set in the preprocess function.
     $actual_icon_path = $variables['bcl_icon_path'];
-    $expected_full_path = base_path() . $active_theme->getPath() . '/' . ($bcl_icon_path ?? 'assets/icons/bcl-default-icons.svg');
 
     // Check if the paths match.
-    $this->assertEquals($expected_full_path, $actual_icon_path);
+    $this->assertEquals($expected_icon_path, $actual_icon_path);
   }
 
   /**
@@ -87,17 +74,17 @@ class BclIconPathOverrideTest extends KernelTestBase {
    */
   public function bclIconPathTestCasesProvider(): array {
     return [
-      'default theme with overridden path' => [
+      'subtheme theme with overridden path' => [
         'oe_bootstrap_theme_test_subtheme1',
-        'assets/icons/bcl-default-icons-test.svg',
+        '/themes/custom/oe_bootstrap_theme/modules/oe_bootstrap_theme_helper/tests/themes/oe_bootstrap_theme_test_subtheme1/assets/icons/bcl-default-icons-test.svg',
       ],
-      'default theme with fallback path' => [
+      'subtheme theme with fallback path' => [
         'oe_bootstrap_theme_test_subtheme2',
-        NULL,
+        '/themes/custom/oe_bootstrap_theme/modules/oe_bootstrap_theme_helper/tests/themes/oe_bootstrap_theme_test_subtheme2/assets/icons/bcl-default-icons.svg',
       ],
-      'original theme with default path' => [
+      'base theme with default path' => [
         'oe_bootstrap_theme',
-        NULL,
+        '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg',
       ],
     ];
   }

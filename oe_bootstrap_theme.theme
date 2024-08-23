@@ -66,7 +66,7 @@ function oe_bootstrap_theme_preprocess(&$variables) {
   $theme_path = $theme->getPath();
 
   // Get the BCL icon path from the theme info, with a default fallback.
-  $bcl_icon_path = $theme->getExtension()->info['openeuropa']['bootstrap_component_library']['bcl_icon_path'] ?? 'assets/icons/bcl-default-icons.svg';
+  $bcl_icon_path = $theme->getExtension()->info['openeuropa']['bootstrap_component_library']['icon_path'] ?? 'assets/icons/bcl-default-icons.svg';
 
   // Construct the full URL for the BCL icons.
   $variables['bcl_icon_path'] = base_path() . $theme_path . '/' . $bcl_icon_path;
