@@ -51,7 +51,8 @@ class BclIconPathOverrideTest extends KernelTestBase {
     $this->container->get('theme_installer')->install([$theme]);
     $this->config('system.theme')->set('default', $theme)->save();
 
-    // Retrieve the active theme.
+    // In order to call the preprocess function we need to initialize the theme.
+    // Retrieving the active theme will do a full initialisation.
     \Drupal::theme()->getActiveTheme();
 
     // Create a renderable array to simulate the theme preprocess.
