@@ -1,0 +1,4 @@
+name: OpenEuropa Bootstrap Theme Test Subtheme 3
+type: theme
+base theme: oe_bootstrap_theme
+core_version_requirement: ^10

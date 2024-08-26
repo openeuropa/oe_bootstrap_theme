@@ -74,13 +74,17 @@ class BclIconPathOverrideTest extends KernelTestBase {
    */
   public function bclIconPathTestCasesProvider(): array {
     return [
-      'subtheme theme with overridden path' => [
+      'subtheme theme with path provided' => [
         'oe_bootstrap_theme_test_subtheme1',
         '/themes/custom/oe_bootstrap_theme/modules/oe_bootstrap_theme_helper/tests/themes/oe_bootstrap_theme_test_subtheme1/assets/icons/bcl-default-icons-test.svg',
       ],
-      'subtheme theme with fallback path' => [
+      'subtheme theme with subtheme as base theme that has path provided' => [
         'oe_bootstrap_theme_test_subtheme2',
-        '/themes/custom/oe_bootstrap_theme/modules/oe_bootstrap_theme_helper/tests/themes/oe_bootstrap_theme_test_subtheme2/assets/icons/bcl-default-icons.svg',
+        '/themes/custom/oe_bootstrap_theme/modules/oe_bootstrap_theme_helper/tests/themes/oe_bootstrap_theme_test_subtheme1/assets/icons/bcl-default-icons-test.svg',
+      ],
+      'subtheme theme with base theme with default path' => [
+        'oe_bootstrap_theme_test_subtheme3',
+        '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg',
       ],
       'base theme with default path' => [
         'oe_bootstrap_theme',
