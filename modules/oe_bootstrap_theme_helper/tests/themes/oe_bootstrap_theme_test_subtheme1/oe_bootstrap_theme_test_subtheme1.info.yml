@@ -6,3 +6,4 @@ core_version_requirement: ^10
 openeuropa:
   bootstrap_component_library:
     components_location: components/templates
+    icon_path: 'assets/icons/bcl-default-icons-test.svg'

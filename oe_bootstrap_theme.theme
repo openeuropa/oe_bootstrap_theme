@@ -61,7 +61,42 @@ function oe_bootstrap_theme_theme_suggestions_views_view_table_alter(array &$sug
  * Implements hook_preprocess().
  */
 function oe_bootstrap_theme_preprocess(&$variables) {
-  $variables['bcl_icon_path'] = base_path() . \Drupal::service('extension.list.theme')->getPath('oe_bootstrap_theme') . '/assets/icons/bcl-default-icons.svg';
+  // Get the active theme.
+  $theme = \Drupal::theme()->getActiveTheme();
+
+  // Get the theme handler service.
+  $theme_handler = \Drupal::service('theme_handler');
+
+  // Initialize variables for the theme path and icon path.
+  $bcl_icon_path = NULL;
+  $theme_path = '';
+
+  // Traverse up the theme chain until the root theme (oe_bootstrap_theme).
+  while ($theme) {
+    $theme_name = $theme->getName();
+    $theme_info = $theme_handler->getTheme($theme_name)->info;
+
+    // Check if the BCL icon path is set in the current theme.
+    if (!empty($theme_info['openeuropa']['bootstrap_component_library']['icon_path'])) {
+      $bcl_icon_path = $theme_info['openeuropa']['bootstrap_component_library']['icon_path'];
+      $theme_path = $theme_handler->getTheme($theme_name)->getPath();
+      break;
+    }
+
+    // Move to the base theme (if any).
+    $parent_theme = $theme_info['base theme'] ?? NULL;
+    $theme = $parent_theme ? $theme_handler->getTheme($parent_theme) : NULL;
+  }
+
+  // If no BCL icon path was found, use the default path.
+  if (!$bcl_icon_path) {
+    $oe_bootstrap_theme = $theme_handler->getTheme('oe_bootstrap_theme');
+    $bcl_icon_path = 'assets/icons/bcl-default-icons.svg';
+    $theme_path = $oe_bootstrap_theme->getPath();
+  }
+
+  // Construct the full URL for the BCL icons.
+  $variables['bcl_icon_path'] = base_path() . $theme_path . '/' . $bcl_icon_path;
 }
 
 /**
