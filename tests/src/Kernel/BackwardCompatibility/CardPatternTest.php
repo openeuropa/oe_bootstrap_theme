@@ -79,7 +79,7 @@ class CardPatternTest extends AbstractKernelTestBase {
     $this->setBackwardCompatibilitySetting('card_search_use_grid_classes', TRUE);
     $html = $this->renderBuild($build);
     $crawler = new Crawler($html);
-    $this->assertCount(1, $crawler->filter('.row .col-md-3.mw-listing-img.mb-3 img.card-img-top'));
+    $this->assertCount(1, $crawler->filter('.row .col-md-3.mw-listing-img.mb-md-0.mb-3 img.card-img-top'));
     $this->assertCount(0, $crawler->filter('.row .bcl-card-start-col img'));
     $this->assertCount(0, $crawler->filter('.row .bcl-card-start-col.bcl-size-small img'));
     $this->assertCount(1, $crawler->filter('.row .col-md-9.col-lg-10 .card-body'));
