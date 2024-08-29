@@ -1,0 +1,8 @@
+// Listing
+
+// Rounded corners on mobile listing item fix
+@media only screen and (max-width: 768px) {
+  .card.listing-item {
+    border-radius: 0;
+  }
+}
