@@ -79,6 +79,8 @@ inpage_navigation_with_dropdown_id_and_id:
     '#id': inpage_navigation
     '#fields':
       title: 'Page content'
+      attributes:
+        id: 'custom-id'
       links:
         - label: 'Heading 1'
           path: '#item-1'
@@ -95,8 +97,8 @@ inpage_navigation_with_dropdown_id_and_id:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\InPageNavigationAssert
       expected:
         title: 'Page content'
-        dropdown_id: 'bcl-inpage-navigation-dropdown'
-        id: 'bcl-inpage-navigation'
+        dropdown_id: 'custom-id-dropdown'
+        id: 'custom-id'
         links:
           - label: 'Heading 1'
             href: '#item-1'
