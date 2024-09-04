@@ -62,7 +62,7 @@ class InPageNavigationAssert extends BasePatternAssert {
    */
   protected function assertList($expected, Crawler $crawler): void {
     $actual = [];
-    $crawler->filter('ul.nav-pills  a.nav-link')->each(function (Crawler $node) use (&$actual) {
+    $crawler->filter('ul.nav-pills a.nav-link')->each(function (Crawler $node) use (&$actual) {
       $actual[] = [
         'label' => $node->text(),
         'href' => $node->attr('href'),

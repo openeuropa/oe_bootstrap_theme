@@ -29,6 +29,8 @@ inpage_navigation_default:
             href: '#item-3'
           - label: 'Heading 4'
             href: '#item-4'
+        id: 'bcl-inpage-navigation'
+        dropdown_id: 'bcl-inpage-navigation-dropdown'
 inpage_navigation_non_full:
   render:
     '#type': pattern
