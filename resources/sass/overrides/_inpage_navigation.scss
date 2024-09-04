@@ -12,9 +12,10 @@
   }
 }
 
-body:has(#globan) {
+body:has(.globan.fixed) {
   .bcl-inpage-navigation,
   .bcl-sidebar {
+    // Globan doesn't have the "data-offset-top" attribute which allows to use the variable above.
     top: 28px;
   }
 }
