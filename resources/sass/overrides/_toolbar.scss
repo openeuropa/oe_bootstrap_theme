@@ -7,14 +7,6 @@
     z-index: 5000;
   }
 }
-.toolbar-fixed {
-  .bcl-sidebar {
-    top: 38px;
-    .bcl-inpage-navigation {
-      top: 3rem;
-    }
-  }
-}
 
 // Offcanvas
 .offcanvas-backdrop {
@@ -22,13 +14,6 @@
 }
 .offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl {
   --bs-offcanvas-zindex: 5070;
-}
-
-body:has(#globan) {
-  .bcl-inpage-navigation,
-  .bcl-sidebar {
-    top: 28px;
-  }
 }
 
 // Modal
