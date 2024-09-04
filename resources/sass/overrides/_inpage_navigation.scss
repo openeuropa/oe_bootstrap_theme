@@ -2,9 +2,12 @@
 // -----------------------------------------------------------------------------
 .toolbar-fixed {
   .bcl-sidebar {
-    top: 38px;
+    // Top spacing for mobile viewports.
+    top: var(--drupal-displace-offset-top, 0);
+
     .bcl-inpage-navigation {
-      top: 3rem;
+      // Top spacing for the other viewports.
+      top: var(--drupal-displace-offset-top, 0);
     }
   }
 }
