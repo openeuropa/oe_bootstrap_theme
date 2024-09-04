@@ -1,0 +1,17 @@
+// Styling for the inpage navigation component.
+// -----------------------------------------------------------------------------
+.toolbar-fixed {
+  .bcl-sidebar {
+    top: 38px;
+    .bcl-inpage-navigation {
+      top: 3rem;
+    }
+  }
+}
+
+body:has(#globan) {
+  .bcl-inpage-navigation,
+  .bcl-sidebar {
+    top: 28px;
+  }
+}
