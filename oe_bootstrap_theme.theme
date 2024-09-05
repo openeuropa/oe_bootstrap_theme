@@ -7,6 +7,7 @@
 
 declare(strict_types=1);
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Template\Attribute;
 
 // Include all files from the includes directory.
@@ -123,7 +124,7 @@ function _oe_bootstrap_theme_get_icon_path(): string {
 
     // Check if the BCL icon path is set in the current theme.
     if (!empty($theme_info['openeuropa']['bootstrap_component_library']['icon_path'])) {
-      $bcl_icon_path = $theme_info['openeuropa']['bootstrap_component_library']['icon_path'];
+      $bcl_icon_path = Html::escape($theme_info['openeuropa']['bootstrap_component_library']['icon_path']);
       $theme_path = $theme_handler->getTheme($theme_name)->getPath();
       break;
     }
