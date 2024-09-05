@@ -61,6 +61,51 @@ function oe_bootstrap_theme_theme_suggestions_views_view_table_alter(array &$sug
  * Implements hook_preprocess().
  */
 function oe_bootstrap_theme_preprocess(&$variables) {
+  // Construct the full URL for the BCL icons.
+  $variables['bcl_icon_path'] = _oe_bootstrap_theme_get_icon_path();
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for table--bootstrap--responsive.html.twig.
+ */
+function oe_bootstrap_theme_preprocess_table__bootstrap__responsive(&$variables) {
+  _oe_bootstrap_theme_bootstrap_responsive_table($variables);
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for views-view-table--bootstrap--responsive.html.twig.
+ */
+function oe_bootstrap_theme_preprocess_views_view_table__bootstrap__responsive(&$variables) {
+  _oe_bootstrap_theme_bootstrap_responsive_table($variables);
+}
+
+/**
+ * Function that applies responsiveness to Bootstrap tables.
+ *
+ * @param array $variables
+ *   The variables to process.
+ */
+function _oe_bootstrap_theme_bootstrap_responsive_table(array &$variables): void {
+  $class = 'table-responsive';
+  $breakpoint = theme_get_setting('bootstrap_tables.responsive');
+  if ($breakpoint !== 'always') {
+    $class .= '-' . $breakpoint;
+  }
+
+  $variables['wrapper_attributes'] = new Attribute(['class' => $class]);
+}
+
+/**
+ * Function to generate the BCL icon path.
+ *
+ * @return string
+ *   The full URL for the BCL icons.
+ */
+function _oe_bootstrap_theme_get_icon_path(): string {
+  $path = &drupal_static(__FUNCTION__);
+  if (isset($path)) {
+    return $path;
+  }
   // Get the active theme.
   $theme = \Drupal::theme()->getActiveTheme();
 
@@ -94,37 +139,5 @@ function oe_bootstrap_theme_preprocess(&$variables) {
     $bcl_icon_path = 'assets/icons/bcl-default-icons.svg';
     $theme_path = $oe_bootstrap_theme->getPath();
   }
-
-  // Construct the full URL for the BCL icons.
-  $variables['bcl_icon_path'] = base_path() . $theme_path . '/' . $bcl_icon_path;
-}
-
-/**
- * Implements hook_preprocess_HOOK() for table--bootstrap--responsive.html.twig.
- */
-function oe_bootstrap_theme_preprocess_table__bootstrap__responsive(&$variables) {
-  _oe_bootstrap_theme_bootstrap_responsive_table($variables);
-}
-
-/**
- * Implements hook_preprocess_HOOK() for views-view-table--bootstrap--responsive.html.twig.
- */
-function oe_bootstrap_theme_preprocess_views_view_table__bootstrap__responsive(&$variables) {
-  _oe_bootstrap_theme_bootstrap_responsive_table($variables);
-}
-
-/**
- * Function that applies responsiveness to Bootstrap tables.
- *
- * @param array $variables
- *   The variables to process.
- */
-function _oe_bootstrap_theme_bootstrap_responsive_table(array &$variables): void {
-  $class = 'table-responsive';
-  $breakpoint = theme_get_setting('bootstrap_tables.responsive');
-  if ($breakpoint !== 'always') {
-    $class .= '-' . $breakpoint;
-  }
-
-  $variables['wrapper_attributes'] = new Attribute(['class' => $class]);
+  return  base_path() . $theme_path . '/' . $bcl_icon_path;
 }

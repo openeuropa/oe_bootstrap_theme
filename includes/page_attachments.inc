@@ -41,4 +41,6 @@ function oe_bootstrap_theme_page_attachments_alter(array &$attachments) {
     'bootstrapIe11',
   ];
 
+  // Add the icon path to drupalSettings.
+  $attachments['#attached']['drupalSettings']['bcl_icon_path'] = _oe_bootstrap_theme_get_icon_path();
 }
