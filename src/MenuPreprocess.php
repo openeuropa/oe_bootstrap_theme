@@ -23,7 +23,7 @@ class MenuPreprocess {
    *   The preprocess hook.
    */
   public function preprocessMenu(array &$variables, string $hook): void {
-    if ($hook === 'menu__toolbar') {
+    if (in_array($hook, ['menu__toolbar', 'navigation_menu'])) {
       return;
     }
 
