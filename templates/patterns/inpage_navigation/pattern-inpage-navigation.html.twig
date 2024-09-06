@@ -8,11 +8,13 @@
   {{ attach_library('oe_bootstrap_theme/inpage_navigation') }}
 {% endif %}
 <div class="row">
-  <div class="bcl-sidebar col-md-3 d-none d-lg-block">
+  <div class="bcl-sidebar col-md-3">
     {% include '@oe-bcl/inpage-navigation' with {
       'title': title,
       'links': links,
+      'icon_path': bcl_icon_path,
       'id': inpage_navigation_id,
+      'dropdown_id': inpage_navigation_dropdown_id,
     } only %}
   </div>
   <div class="col-md-9">

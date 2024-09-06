@@ -29,6 +29,8 @@ inpage_navigation_default:
             href: '#item-3'
           - label: 'Heading 4'
             href: '#item-4'
+        id: 'bcl-inpage-navigation'
+        dropdown_id: 'bcl-inpage-navigation-dropdown'
 inpage_navigation_non_full:
   render:
     '#type': pattern
@@ -73,3 +75,38 @@ inpage_navigation_with_no_links:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\InPageNavigationAssert
       expected:
         title: 'Page content'
+inpage_navigation_with_dropdown_id_and_id:
+  render:
+    '#type': pattern
+    '#id': inpage_navigation
+    '#fields':
+      title: 'Page content'
+      attributes:
+        id: 'custom-id'
+      links:
+        - label: 'Heading 1'
+          path: '#item-1'
+        - label: 'Heading 2 with a long title going on several lines'
+          path: '#item-2'
+        - label: 'Heading 3'
+          path: '#item-3'
+        - label: 'Heading 4'
+          path: '#item-4'
+      content:
+        '#markup': '<h2 id="item-1">Heading 1</h2><p>Et pariatur qui quis ullamco magna esse aliqua. Ea eiusmod commodo in laborum cillum anim.</p><p>Culpa sint dolor aliquip pariatur proident ipsum id. Est voluptate et eiusmod nostrud ad.</p><h2 id="item-2">Heading 2 with a long title going on several lines</h2><p>Exercitation sint laborum velit consequat magna dolor voluptate incididunteu deserunt sunt.</p><p>Mollit qui sunt commodo id voluptate voluptate Lorem dolore est consectetur ullamco est.</p><h2 id="item-3">Heading 3</h2><p>Enim minim sunt ex non pariatur ex labore qui laborum. Aute cupidatat id sint incididunt Lorem.</p><p>Nostrud proident exercitation veniam elit ullamco ullamco officia minim officia commodo id duis.</p><h2 id="item-4">Heading 4</h2><p>Culpa sint dolor aliquip pariatur proident ipsum id. Est voluptate et eiusmod labore ea ad consectetur</p><p>Proin id venenatis diam, a viverra lectus. Integer blandit placerat sodales.</p>'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\InPageNavigationAssert
+      expected:
+        title: 'Page content'
+        dropdown_id: 'custom-id-dropdown'
+        id: 'custom-id'
+        links:
+          - label: 'Heading 1'
+            href: '#item-1'
+          - label: 'Heading 2 with a long title going on several lines'
+            href: '#item-2'
+          - label: 'Heading 3'
+            href: '#item-3'
+          - label: 'Heading 4'
+            href: '#item-4'

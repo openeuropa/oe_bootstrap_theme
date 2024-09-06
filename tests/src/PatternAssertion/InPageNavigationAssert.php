@@ -23,6 +23,16 @@ class InPageNavigationAssert extends BasePatternAssert {
       'links' => [
         [$this, 'assertList'],
       ],
+      'id' => [
+        [$this, 'assertElementAttribute'],
+        '.bcl-inpage-navigation',
+        'id',
+      ],
+      'dropdown_id' => [
+        [$this, 'assertElementAttribute'],
+        '.dropdown-toggle',
+        'id',
+      ],
     ];
   }
 
@@ -31,8 +41,15 @@ class InPageNavigationAssert extends BasePatternAssert {
    */
   protected function assertBaseElements(string $html, string $variant): void {
     $crawler = new Crawler($html);
+
     $inpage_nav = $crawler->filter('ul.nav-pills');
     self::assertCount(1, $inpage_nav);
+
+    $svg_icon = $crawler->filter('h2.bcl-heading svg');
+    self::assertCount(1, $svg_icon);
+
+    $base_element = $crawler->filter('.bcl-inpage-navigation');
+    self::assertStringNotContainsString('d-none', $base_element->attr('class'));
   }
 
   /**
@@ -45,7 +62,7 @@ class InPageNavigationAssert extends BasePatternAssert {
    */
   protected function assertList($expected, Crawler $crawler): void {
     $actual = [];
-    $crawler->filter('ul.nav-pills  a.nav-link')->each(function (Crawler $node) use (&$actual) {
+    $crawler->filter('ul.nav-pills a.nav-link')->each(function (Crawler $node) use (&$actual) {
       $actual[] = [
         'label' => $node->text(),
         'href' => $node->attr('href'),

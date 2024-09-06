@@ -1,0 +1,21 @@
+// Styling for the inpage navigation component.
+// -----------------------------------------------------------------------------
+.toolbar-fixed {
+  .bcl-sidebar {
+    // Top spacing for mobile viewports.
+    top: var(--drupal-displace-offset-top, 0);
+
+    .bcl-inpage-navigation {
+      // Top spacing for the other viewports.
+      top: var(--drupal-displace-offset-top, 0);
+    }
+  }
+}
+
+body:has(.globan.fixed) {
+  .bcl-inpage-navigation,
+  .bcl-sidebar {
+    // Globan doesn't have the "data-offset-top" attribute which allows to use the variable above.
+    top: 28px;
+  }
+}
