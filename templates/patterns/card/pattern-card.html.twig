@@ -8,7 +8,7 @@
 {% set _content %}
   {% if meta is not empty %}
     {# Use negative margin to compensate for me-3 on each item. #}
-    <div class="my-3 me-n3">
+    <div class="mt-3 me-n3">
       {% for _meta_item in meta %}
         {% if _meta_item is not empty %}
           <span class="text-muted me-3">{{ _meta_item }}</span>
@@ -20,7 +20,7 @@
     {{ content }}
   {% endset %}
   {% if _rendered_content|trim is not empty %}
-    <div>{{ _rendered_content }}</div>
+    <div class="mt-3">{{ _rendered_content }}</div>
   {% endif %}
 {% endset %}
 {% set _badges = [] %}
@@ -43,11 +43,10 @@
   'title_tag': title_tag,
   'subtitle': (subtitle is not empty) ? {
     'content': subtitle,
-    'classes': 'mb-2',
   } : {},
   'text': (text is not empty) ? {
     'content': text,
-    'classes': 'mb-2',
+    'classes': 'mt-2',
     'tag': 'div',
   } : {},
   'content': _content,
