@@ -1,5 +1,27 @@
 # Change Log
 
+## [1.13.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.13.0) (2024-09-10)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.12.0...1.13.0)
+
+**Implemented enhancements:**
+
+- Clean up badge.ui\_patterns.yml [\#377](https://github.com/openeuropa/oe_bootstrap_theme/issues/377)
+
+**Fixed bugs:**
+
+- Card pattern meta and text add extra space to the bottom [\#386](https://github.com/openeuropa/oe_bootstrap_theme/issues/386)
+
+**Merged pull requests:**
+
+- OEL-3325: Responsive inpage navigation. [\#427](https://github.com/openeuropa/oe_bootstrap_theme/pull/427) ([tibi2303](https://github.com/tibi2303))
+- OEL-3316: Fix card margin regression. [\#426](https://github.com/openeuropa/oe_bootstrap_theme/pull/426) ([drishu](https://github.com/drishu))
+- OEL-3019: Improved spacing between content in card. [\#425](https://github.com/openeuropa/oe_bootstrap_theme/pull/425) ([tibi2303](https://github.com/tibi2303))
+- OEL-3018: Style fix for rounded corners on listing item. [\#424](https://github.com/openeuropa/oe_bootstrap_theme/pull/424) ([tibi2303](https://github.com/tibi2303))
+- OEL-3020: Changed description on multiple patterns. [\#423](https://github.com/openeuropa/oe_bootstrap_theme/pull/423) ([tibi2303](https://github.com/tibi2303))
+- OEL-2283: Added overridable icon\_path. [\#422](https://github.com/openeuropa/oe_bootstrap_theme/pull/422) ([tibi2303](https://github.com/tibi2303))
+- OEL-3024: Added tests for new class on pagination. [\#420](https://github.com/openeuropa/oe_bootstrap_theme/pull/420) ([tibi2303](https://github.com/tibi2303))
+
+
 ## [1.12.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.12.0) (2024-08-16)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.11.0...1.12.0)
 
@@ -9,6 +31,7 @@
 
 **Merged pull requests:**
 
+- Prepare release 1.12.0. [\#421](https://github.com/openeuropa/oe_bootstrap_theme/pull/421) ([drishu](https://github.com/drishu))
 - OEL-3176: Wrong changelog for 1.11.0 [\#416](https://github.com/openeuropa/oe_bootstrap_theme/pull/416) ([AaronGilMartinez](https://github.com/AaronGilMartinez))
 - OEL-1686: Removed duplicated class on offcanvas body. [\#415](https://github.com/openeuropa/oe_bootstrap_theme/pull/415) ([tibi2303](https://github.com/tibi2303))
 - ELA-1118: Add schema for the filter settings [\#412](https://github.com/openeuropa/oe_bootstrap_theme/pull/412) ([piotrsmykaj](https://github.com/piotrsmykaj))
