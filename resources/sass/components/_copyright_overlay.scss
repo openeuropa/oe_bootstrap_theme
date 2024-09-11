@@ -1,0 +1,11 @@
+.copyright-overlay {
+  background-color: rgba(var(--bs-white-rgb),var(--bs-bg-opacity));
+  .preview {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 108px;
+    vertical-align: top;
+  }
+}
