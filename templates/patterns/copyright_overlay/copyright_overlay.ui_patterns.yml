@@ -1,0 +1,14 @@
+copyright_overlay:
+  label: 'Copyright overlay'
+  description: 'A component to show copyright information.'
+  fields:
+    trigger_label:
+      type: text
+      label: 'Trigger label'
+      description: 'The label of the modal trigger. Optional.'
+      preview: 'View more'
+    text:
+      type: render
+      label: 'Text'
+      description: 'Copyright overlay text.'
+      preview: '© Lorem ipsum amet <a href="#">Amirhossein Soltani</a> on <a href="#">Getty Images</a>'
