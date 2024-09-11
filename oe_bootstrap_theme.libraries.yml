@@ -21,3 +21,7 @@ drupal.progress:
 inpage_navigation:
   js:
     resources/js/inpage_navigation.js: {}
+
+copy_clipboard:
+  js:
+    resources/js/copy_clipboard.js: {}
