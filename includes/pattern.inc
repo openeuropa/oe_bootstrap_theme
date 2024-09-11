@@ -102,6 +102,13 @@ function oe_bootstrap_theme_preprocess_pattern_accordion(array &$variables): voi
 /**
  * Implements hook_preprocess_HOOK().
  */
+function oe_bootstrap_theme_preprocess_pattern_copyright_overlay(array &$variables): void {
+  $variables['modal_id'] = Html::getUniqueId('bcl-copyright-modal');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
 function oe_bootstrap_theme_preprocess_pattern_modal(array &$variables): void {
   $variables['modal_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl-modal');
 }
