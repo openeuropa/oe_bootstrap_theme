@@ -21,7 +21,7 @@
 {% set _header %}
   <h5 class="mb-0">{{ 'Copyright'|t }}</h5>
   {% include '@oe-bcl/button' with {
-    clean_class: TRUE,
+    clean_class: true,
     attributes:  create_attribute()
       .addClass(['btn-close'])
       .setAttribute('data-bs-dismiss', 'modal')
@@ -48,7 +48,6 @@
   }) }}
 </div>
 {% include '@oe-bcl/modal' with {
-  'size': size,
   'id': modal_id,
   'header': _header,
   'show_close_button': true,
