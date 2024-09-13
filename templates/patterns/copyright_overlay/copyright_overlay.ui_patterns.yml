@@ -7,6 +7,11 @@ copyright_overlay:
       label: 'Trigger label'
       description: 'The label of the modal trigger. Optional.'
       preview: 'View more'
+    modal_title:
+      type: text
+      label: 'Modal title'
+      description: 'The title of the modal header. Optional.'
+      preview: 'Copyright'
     content:
       type: render
       label: 'Content'
