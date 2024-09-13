@@ -8,50 +8,40 @@
 
 {% set _trigger_label = trigger_label|default('View more'|t) %}
 
-{% set _classes = ['copyright-overlay', 'px-2', 'text-muted'] %}
-
 {% set _footer %}
   {% include '@oe-bcl/button' with {
     label: 'Copy Copyright'|t,
     attributes:  create_attribute()
-      .setAttribute('data-copy-target', 'copyright-text'),
-  } only %}
-{% endset %}
-
-{% set _header %}
-  <h5 class="mb-0">{{ 'Copyright'|t }}</h5>
-  {% include '@oe-bcl/button' with {
-    clean_class: true,
-    attributes:  create_attribute()
-      .addClass(['btn-close'])
       .setAttribute('data-bs-dismiss', 'modal')
-      .setAttribute('aria-label', 'Close'),
+      .setAttribute('data-copy-target', 'copyright-content'),
   } only %}
 {% endset %}
 
-{% set _body %}
-  <div class="copyright-text">
-    {{ text }}
+{% set _content %}
+  <div class="copyright-content">
+    {{ content }}
   </div>
 {% endset %}
 
-<div{{ attributes.addClass(_classes) }}>
+<div{{ attributes.addClass('copyright-overlay') }}>
   <span class="preview">
-    {{ text }}
+    {{ content }}
   </span>
   {{ pattern('link', {
     label: _trigger_label,
     path: '#',
-    attributes: create_attribute()
+    attributes: trigger_attributes
+      .addClass('copyright-trigger')
       .setAttribute('data-bs-toggle', 'modal')
       .setAttribute('data-bs-target', '#' ~ modal_id),
   }) }}
+  {{ pattern('modal', {
+    'title': 'Copyright'|t,
+    'show_close_button': true,
+    'body': _content,
+    'footer': _footer,
+    'attributes': create_attribute()
+      .setAttribute('id', modal_id)
+  }) }}
 </div>
-{% include '@oe-bcl/modal' with {
-  'id': modal_id,
-  'header': _header,
-  'show_close_button': true,
-  'body': _body,
-  'footer': _footer
-} only %}
 
