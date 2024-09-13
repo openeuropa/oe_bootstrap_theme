@@ -1,11 +1,20 @@
 .copyright-overlay {
   background-color: rgba(var(--bs-white-rgb),var(--bs-bg-opacity));
+  color: var(--bs-gray-700);
+  padding: 0 0.5rem;
+  display: inline-flex;
   .preview {
     display: inline-block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    max-width: 108px;
-    vertical-align: top;
+    max-width: 112px;
+    font-size: 0.875rem;
+  }
+  .copyright-trigger {
+    font-size: 0.875rem;
+  }
+  .copyright-header {
+    font-size: 1.25rem;
   }
 }
