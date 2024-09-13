@@ -7,6 +7,7 @@
 {{ attach_library('oe_bootstrap_theme/copy_clipboard') }}
 
 {% set _trigger_label = trigger_label|default('View more'|t) %}
+{% set _modal_title = modal_title|default('Copyright'|t) %}
 
 {% set _footer %}
   {% include '@oe-bcl/button' with {
@@ -36,7 +37,7 @@
       .setAttribute('data-bs-target', '#' ~ modal_id),
   }) }}
   {{ pattern('modal', {
-    'title': 'Copyright'|t,
+    'title': _modal_title,
     'show_close_button': true,
     'body': _content,
     'footer': _footer,
