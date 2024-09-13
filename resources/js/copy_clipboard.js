@@ -14,7 +14,7 @@
    * @prop {Drupal~behaviorDetach} detach
    *   Cleans up any event listeners or instances to avoid memory leaks.
    */
-  Drupal.behaviors.copy_clipboard = {
+  Drupal.behaviors.copyClipboard = {
     attach: function (context) {
       Array.prototype.forEach.call(document.querySelectorAll('[data-copy-target]'), function (element) {
         var targetClass = element.getAttribute('data-copy-target');
@@ -22,8 +22,6 @@
         if (targetElement) {
           element.addEventListener('click', function () {
             var copyText = targetElement.innerText || targetElement.value;
-
-            // Copy the text to the clipboard
             navigator.clipboard.writeText(copyText);
           });
         }
