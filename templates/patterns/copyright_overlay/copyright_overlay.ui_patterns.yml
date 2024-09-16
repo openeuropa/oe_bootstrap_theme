@@ -22,3 +22,9 @@ copyright_overlay:
       type: attributes
       label: Trigger attributes
       description: Extra attributes for the modal trigger
+      allow_token: true
+    attributes:
+      type: attributes
+      label: Copyright overlay attributes
+      description: Extra attributes for the copyright overlay
+      allow_token: true
