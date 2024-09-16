@@ -3,52 +3,51 @@ copyright_overlay:
     '#type': pattern
     '#id': copyright_overlay
     '#fields':
-      text: 'Lorem Ipsum dolor sit amet'
+      content: 'Lorem Ipsum dolor sit amet'
   assert:
     contains:
+      '.modal-header h5': 'Copyright'
       'span.preview': 'Lorem Ipsum dolor sit amet'
-      'div.copyright-text': 'Lorem Ipsum dolor sit amet'
-      'button[data-bs-target="#bcl-copyright-modal"]': 'View more'
+      'div.copyright-content': 'Lorem Ipsum dolor sit amet'
+      '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 'View more'
     count:
-      'button[data-bs-toggle=modal]': 1
-      'button[data-bs-target="#bcl-copyright-modal"]': 1
+      '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 1
       'div#bcl-copyright-modal': 1
       '.copyright-overlay': 1
-      'button[data-copy-target="copyright-text"]': 1
+      'button[data-copy-target="copyright-content"]': 1
 copyright_overlay_with_custom_trigger_label:
   render:
     '#type': pattern
     '#id': copyright_overlay
     '#fields':
-      text: 'Lorem Ipsum dolor sit amet'
+      content: 'Lorem Ipsum dolor sit amet'
       trigger_label: 'Show more'
   assert:
     contains:
+      '.modal-header h5': 'Copyright'
       'span.preview': 'Lorem Ipsum dolor sit amet'
-      'div.copyright-text': 'Lorem Ipsum dolor sit amet'
-      'button[data-bs-target="#bcl-copyright-modal"]': 'Show more'
+      'div.copyright-content': 'Lorem Ipsum dolor sit amet'
+      '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 'Show more'
     count:
-      'button[data-bs-toggle=modal]': 1
-      'button[data-bs-target="#bcl-copyright-modal"]': 1
+      '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 1
       'div#bcl-copyright-modal': 1
       '.copyright-overlay': 1
-      'button[data-copy-target="copyright-text"]': 1
+      'button[data-copy-target="copyright-content"]': 1
 copyright_overlay_with_custom_modal_title:
   render:
     '#type': pattern
     '#id': copyright_overlay
     '#fields':
-      text: 'Lorem Ipsum dolor sit amet'
+      content: 'Lorem Ipsum dolor sit amet'
       modal_title: 'New title'
   assert:
     contains:
       '.modal-header h5': 'New title'
       'span.preview': 'Lorem Ipsum dolor sit amet'
-      'div.copyright-text': 'Lorem Ipsum dolor sit amet'
-      'button[data-bs-target="#bcl-copyright-modal"]': 'Show more'
+      'div.copyright-content': 'Lorem Ipsum dolor sit amet'
+      '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 'View more'
     count:
-      'button[data-bs-toggle=modal]': 1
-      'button[data-bs-target="#bcl-copyright-modal"]': 1
+      '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 1
       'div#bcl-copyright-modal': 1
       '.copyright-overlay': 1
-      'button[data-copy-target="copyright-text"]': 1
+      'button[data-copy-target="copyright-content"]': 1
