@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.14.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.14.0) (2024-09-20)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.13.0...1.14.0)
+
+**Merged pull requests:**
+
+- OEL-3431: Update BCL package. [\#434](https://github.com/openeuropa/oe_bootstrap_theme/pull/434) ([drishu](https://github.com/drishu))
+
 ## [1.13.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.13.0) (2024-09-10)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.12.0...1.13.0)
 
@@ -13,6 +20,7 @@
 
 **Merged pull requests:**
 
+- Prepare release 1.13.0. [\#429](https://github.com/openeuropa/oe_bootstrap_theme/pull/429) ([drishu](https://github.com/drishu))
 - OEL-3325: Responsive inpage navigation. [\#427](https://github.com/openeuropa/oe_bootstrap_theme/pull/427) ([tibi2303](https://github.com/tibi2303))
 - OEL-3316: Fix card margin regression. [\#426](https://github.com/openeuropa/oe_bootstrap_theme/pull/426) ([drishu](https://github.com/drishu))
 - OEL-3019: Improved spacing between content in card. [\#425](https://github.com/openeuropa/oe_bootstrap_theme/pull/425) ([tibi2303](https://github.com/tibi2303))
