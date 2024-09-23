@@ -25,3 +25,13 @@ inpage_navigation:
 copy_clipboard:
   js:
     resources/js/copy_clipboard.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+pattern.copyright_overlay:
+  css:
+    theme:
+      assets/css/copyright-overlay.style.min.css: {}
+  dependencies:
+    - oe_bootstrap_theme/copy_clipboard

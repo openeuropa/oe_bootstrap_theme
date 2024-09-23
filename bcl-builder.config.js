@@ -9,6 +9,15 @@ const includePaths = [nodeModules];
 module.exports = {
   styles: [
     {
+      entry: path.resolve(outputFolder, "resources/sass/copyright_overlay.scss"),
+      dest: path.resolve(outputFolder, "assets/css/copyright-overlay.style.min.css"),
+      options: {
+        includePaths,
+        minify: true,
+        sourceMap: "file",
+      },
+    },
+    {
       entry: path.resolve(outputFolder, "resources/sass/oe_bootstrap_theme.style.scss"),
       dest: path.resolve(outputFolder, "assets/css/oe_bootstrap_theme.style.min.css"),
       options: {

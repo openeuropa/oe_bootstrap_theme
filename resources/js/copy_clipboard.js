@@ -4,34 +4,30 @@
  */
 (function (Drupal) {
 
-  /**
-   * Attaches the copy-to-clipboard behavior to elements with the 'data-copy-target' attribute.
-   *
-   * @type {Drupal~behavior}
-   *
-   * @prop {Drupal~behaviorAttach} attach
-   *   Initializes copy-to-clipboard functionality for each element.
-   * @prop {Drupal~behaviorDetach} detach
-   *   Cleans up any event listeners or instances to avoid memory leaks.
-   */
   Drupal.behaviors.copyClipboard = {
     attach: function (context) {
-      Array.prototype.forEach.call(document.querySelectorAll('[data-copy-target]'), function (element) {
-        var targetClass = element.getAttribute('data-copy-target');
-        var targetElement = document.querySelector('.' + targetClass);
+      // Use a scoped function to handle click events
+      const handleClick = function (event) {
+        const element = event.currentTarget;
+        const targetSelector = element.getAttribute('data-copy-target');
+        const targetElement = document.querySelector(targetSelector);
+        
         if (targetElement) {
-          element.addEventListener('click', function () {
-            var copyText = targetElement.innerText || targetElement.value;
-            navigator.clipboard.writeText(copyText);
-          });
+          const copyText = targetElement.innerText || targetElement.value;
+          navigator.clipboard.writeText(copyText);
         }
+      };
+
+      // Attach click event listener to elements with data-copy-target
+      once('oebt-clipcopy', '[data-copy-target]', context).forEach(function (element) {
+        element.addEventListener('click', handleClick);
       });
     },
 
     detach: function (context, settings, trigger) {
       if (trigger === 'unload') {
-        Array.prototype.forEach.call(document.querySelectorAll('[data-copy-target]'), function (element) {
-          element.removeEventListener('click');
+        Array.prototype.forEach.call(context.querySelectorAll('[data-copy-target]'), function (element) {
+          element.removeEventListener('click', handleClick);
         });
       }
     }
