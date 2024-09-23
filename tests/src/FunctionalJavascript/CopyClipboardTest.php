@@ -17,32 +17,52 @@ class CopyClipboardTest extends WebDriverTestBase {
   protected $defaultTheme = 'oe_bootstrap_theme';
 
   /**
+   * {@inheritdoc}
+   */
+  protected static $modules = [
+    'oe_bootstrap_theme_helper',
+    'system',
+    'ui_patterns',
+    'ui_patterns_settings',
+    'ui_patterns_library',
+  ];
+
+  /**
    * Tests the copy to clipboard behavior in the copyright overlay.
    */
   public function testCopyToClipboard(): void {
+    $assert_session = $this->assertSession();
+
+    // Create and log in an admin user with full permissions.
+    $admin_user = $this->drupalCreateUser([], NULL, TRUE);
+    $this->drupalLogin($admin_user);
+
+    // Navigate to the copyright overlay page.
     $this->drupalGet('/patterns/copyright_overlay');
 
     // Open the modal by clicking the trigger.
-    $this->assertSession()->elementExists('css', '.copyright-trigger')->click();
-    $this->assertSession()->waitForElementVisible('css', '.modal.show');
+    $assert_session->elementExists('css', '.copyright-trigger')->click();
+    $assert_session->waitForElementVisible('css', '.modal.show');
 
-    // Ensure the copy button exists and simulate click.
-    $this->assertSession()->elementExists('css', '[data-copy-target=".copyright-content"]');
-    $this->getSession()->getPage()->clickButton('[data-copy-target=".copyright-content"]');
+    // Mock the clipboard API.
+    $this->getSession()->executeScript('
+      navigator.clipboard = {
+        writeText: function(text) {
+          window.copiedText = text; // Store the copied text in a variable
+          return Promise.resolve();
+        }
+      };
+    ');
 
-    // Get the clipboard text via JavaScript.
-    $expectedText = '© Lorem ipsum amet <a href="#">John Doe</a> on <a href="#">Doe Images</a>';
-    $actualText = $this->getClipboardText();
+    // Ensure the copy button exists and simulate a click.
+    $assert_session->elementExists('css', '[data-copy-target=".copyright-content"]')->click();
 
-    // Assert the copied text matches expected text.
+    // Now get the text from the mocked clipboard.
+    $expectedText = '© Lorem ipsum amet John Doe on Doe Images';
+    $actualText = $this->getSession()->evaluateScript('return window.copiedText;');
+
+    // Assert the copied text matches the expected text.
     $this->assertEquals($expectedText, $actualText);
-  }
-
-  /**
-   * Helper method to retrieve clipboard text using JavaScript.
-   */
-  protected function getClipboardText(): string {
-    return $this->getSession()->evaluateScript('return navigator.clipboard.readText();');
   }
 
 }
