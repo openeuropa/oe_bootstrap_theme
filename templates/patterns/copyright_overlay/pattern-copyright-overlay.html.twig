@@ -4,7 +4,7 @@
  * Copyright overlay pattern.
  */
 #}
-{{ attach_library('oe_bootstrap_theme/copy_clipboard') }}
+{{ attach_library('oe_bootstrap_theme/pattern.copyright_overlay') }}
 
 {% set _trigger_label = trigger_label|default('View more'|t) %}
 {% set _modal_title = modal_title|default('Copyright'|t) %}
@@ -12,9 +12,10 @@
 {% set _footer %}
   {% include '@oe-bcl/button' with {
     label: 'Copy Copyright'|t,
-    attributes:  create_attribute()
-      .setAttribute('data-bs-dismiss', 'modal')
-      .setAttribute('data-copy-target', 'copyright-content'),
+    attributes: create_attribute({
+      'data-bs-dismiss': 'modal',
+      'data-copy-target': '.copyright-content'
+    })
   } only %}
 {% endset %}
 
@@ -41,8 +42,9 @@
     'show_close_button': true,
     'body': _content,
     'footer': _footer,
-    'attributes': create_attribute()
-      .setAttribute('id', modal_id)
+    'attributes': create_attribute({
+      id: modal_id
+    })
   }) }}
 </div>
 
