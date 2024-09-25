@@ -7,7 +7,7 @@ namespace Drupal\Tests\oe_bootstrap_theme\FunctionalJavascript;
 use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
 
 /**
- * Tests the copy to clipboard functionality.
+ * Tests the copy to clipboard javascript behaviour.
  */
 class CopyClipboardTest extends WebDriverTestBase {
 
@@ -33,14 +33,11 @@ class CopyClipboardTest extends WebDriverTestBase {
   public function testCopyToClipboard(): void {
     $assert_session = $this->assertSession();
 
-    // Create and log in an admin user with full permissions.
     $admin_user = $this->drupalCreateUser([], NULL, TRUE);
     $this->drupalLogin($admin_user);
 
-    // Navigate to the copyright overlay page.
     $this->drupalGet('/patterns/copyright_overlay');
 
-    // Open the modal by clicking the trigger.
     $assert_session->elementExists('css', '.copyright-trigger')->click();
     $assert_session->waitForElementVisible('css', '.modal.show');
 
@@ -54,14 +51,11 @@ class CopyClipboardTest extends WebDriverTestBase {
       };
     ');
 
-    // Ensure the copy button exists and simulate a click.
     $assert_session->elementExists('css', '[data-copy-target=".copyright-content"]')->click();
 
-    // Now get the text from the mocked clipboard.
     $expectedText = '© Lorem ipsum amet John Doe on Doe Images';
     $actualText = $this->getSession()->evaluateScript('return window.copiedText;');
 
-    // Assert the copied text matches the expected text.
     $this->assertEquals($expectedText, $actualText);
   }
 
