@@ -23,7 +23,7 @@
     },
 
     detach: function (context, settings, trigger) {
-      Array.prototype.forEach.call(context.querySelectorAll('[data-copy-target]'), function (element) {
+      once.remove('oebt-clipcopy', '[data-copy-target]', context).forEach(function (element) {
         element.removeEventListener('click', handleClick);
       });
     }
