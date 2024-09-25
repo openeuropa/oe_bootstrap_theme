@@ -6,9 +6,6 @@
 #}
 {{ attach_library('oe_bootstrap_theme/pattern.copyright_overlay') }}
 
-{% set _trigger_label = trigger_label|default('View more'|t) %}
-{% set _modal_title = modal_title|default('Copyright'|t) %}
-
 {% set _footer %}
   {% include '@oe-bcl/button' with {
     label: 'Copy Copyright'|t,
@@ -32,16 +29,18 @@
   <span class="preview">
     {{ content }}
   </span>
+
   {{ pattern('link', {
-    label: _trigger_label,
+    label: trigger_label|default('View more'|t),
     path: '#',
     attributes: trigger_attributes
       .addClass('copyright-trigger')
       .setAttribute('data-bs-toggle', 'modal')
       .setAttribute('data-bs-target', '#' ~ modal_id),
   }) }}
+
   {{ pattern('modal', {
-    'title': _modal_title,
+    'title': modal_title|default('Copyright'|t),
     'show_close_button': true,
     'body': _content,
     'footer': _footer,
@@ -50,4 +49,3 @@
     })
   }) }}
 </div>
-
