@@ -42,14 +42,15 @@ class CopyClipboardTest extends WebDriverTestBase {
     $assert_session->waitForElementVisible('css', '.modal.show');
 
     // Mock the clipboard API.
-    $this->getSession()->executeScript('
+    $this->getSession()->executeScript(<<<JS
       navigator.clipboard = {
         writeText: function(text) {
-          window.copiedText = text; // Store the copied text in a variable
+          // Store the copied text in a variable.
+          window.copiedText = text;
           return Promise.resolve();
         }
       };
-    ');
+    JS);
 
     $assert_session->elementExists('css', '[data-copy-target]')->click();
 
