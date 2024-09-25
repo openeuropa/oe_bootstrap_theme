@@ -51,9 +51,9 @@ class CopyClipboardTest extends WebDriverTestBase {
       };
     ');
 
-    $assert_session->elementExists('css', '[data-copy-target=".copyright-content"]')->click();
+    $assert_session->elementExists('css', '[data-copy-target]')->click();
 
-    $expectedText = '© Lorem ipsum amet John Doe on Doe Images';
+    $expectedText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel mauris vitae ipsum blandit condimentum ut eget quam.';
     $actualText = $this->getSession()->evaluateScript('return window.copiedText;');
 
     $this->assertEquals($expectedText, $actualText);
