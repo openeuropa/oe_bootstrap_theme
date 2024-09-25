@@ -14,7 +14,7 @@ copyright_overlay:
       '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 1
       'div#bcl-copyright-modal': 1
       '.copyright-overlay': 1
-      'button[data-copy-target=".copyright-content"]': 1
+      'button[data-copy-target="#copy-selector"]': 1
 copyright_overlay_with_custom_trigger_label:
   render:
     '#type': pattern
@@ -32,7 +32,7 @@ copyright_overlay_with_custom_trigger_label:
       '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 1
       'div#bcl-copyright-modal': 1
       '.copyright-overlay': 1
-      'button[data-copy-target=".copyright-content"]': 1
+      'button[data-copy-target="#copy-selector"]': 1
 copyright_overlay_with_custom_modal_title:
   render:
     '#type': pattern
@@ -50,4 +50,4 @@ copyright_overlay_with_custom_modal_title:
       '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 1
       'div#bcl-copyright-modal': 1
       '.copyright-overlay': 1
-      'button[data-copy-target=".copyright-content"]': 1
+      'button[data-copy-target="#copy-selector"]': 1
