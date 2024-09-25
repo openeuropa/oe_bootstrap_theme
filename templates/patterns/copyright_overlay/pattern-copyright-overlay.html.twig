@@ -17,10 +17,10 @@
 {% endset %}
 
 {% set _content %}
-  <div {{ create_attribute()
-            .addClass('copyright-content')
-            .setAttribute('id', copy_selector)
-  }}>
+  <div {{ create_attribute({
+    'class': 'copyright-content',
+    'id': copy_selector
+  }) }}>
     {{ content }}
   </div>
 {% endset %}
