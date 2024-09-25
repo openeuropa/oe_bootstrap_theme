@@ -29,7 +29,6 @@ services:
       - DISPLAY=:99
       - VNC_NO_PASSWORD=1
     ports:
-      - '4444:4444'
       - '5900:5900'
     expose:
       - '4444'
