@@ -104,6 +104,7 @@ function oe_bootstrap_theme_preprocess_pattern_accordion(array &$variables): voi
  */
 function oe_bootstrap_theme_preprocess_pattern_copyright_overlay(array &$variables): void {
   $variables['modal_id'] = Html::getUniqueId('bcl-copyright-modal');
+  $variables['copy_selector'] = Html::getUniqueId('copy-selector');
 }
 
 /**
