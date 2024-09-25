@@ -23,11 +23,9 @@
     },
 
     detach: function (context, settings, trigger) {
-      if (trigger === 'unload') {
-        Array.prototype.forEach.call(context.querySelectorAll('[data-copy-target]'), function (element) {
-          element.removeEventListener('click', handleClick);
-        });
-      }
+      Array.prototype.forEach.call(context.querySelectorAll('[data-copy-target]'), function (element) {
+        element.removeEventListener('click', handleClick);
+      });
     }
   };
 
