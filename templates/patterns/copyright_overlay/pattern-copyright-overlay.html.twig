@@ -14,13 +14,16 @@
     label: 'Copy Copyright'|t,
     attributes: create_attribute({
       'data-bs-dismiss': 'modal',
-      'data-copy-target': '.copyright-content'
+      'data-copy-target': '#' ~ copy_selector
     })
   } only %}
 {% endset %}
 
 {% set _content %}
-  <div class="copyright-content">
+  <div {{ create_attribute()
+            .addClass('copyright-content')
+            .setAttribute('id', copy_selector)
+  }}>
     {{ content }}
   </div>
 {% endset %}
