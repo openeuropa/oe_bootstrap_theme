@@ -49,8 +49,8 @@ class CopyClipboardTest extends WebDriverTestBase {
 
     $elements = $this->getSession()->getPage()->findAll('css', '.copyright-overlay');
 
-    $this->assertCopyrightCopiedToClipboard($elements['0'], 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel mauris vitae ipsum blandit condimentum ut eget quam.');
-    $this->assertCopyrightCopiedToClipboard($elements['1'], '© Lorem ipsum amet John Doe on Doe Images');
+    $this->assertCopyrightCopiedToClipboard($elements['0'], '© Copyright ipsum amet John Doe on Doe Images.');
+    $this->assertCopyrightCopiedToClipboard($elements['1'], '© Second copyright element. Suspendisse vel mauris vitae ipsum blandit condimentum ut eget quam.');
   }
 
   /**
