@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\FunctionalJavascript;
 
+use Behat\Mink\Element\NodeElement;
 use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
 
 /**
@@ -31,15 +32,9 @@ class CopyClipboardTest extends WebDriverTestBase {
    * Tests the copy to clipboard behavior in the copyright overlay.
    */
   public function testCopyToClipboard(): void {
-    $assert_session = $this->assertSession();
-
-    $admin_user = $this->drupalCreateUser([], NULL, TRUE);
-    $this->drupalLogin($admin_user);
+    $this->drupalLogin($this->drupalCreateUser([], NULL, TRUE));
 
     $this->drupalGet('/patterns/copyright_overlay');
-
-    $assert_session->elementExists('css', '.copyright-trigger')->click();
-    $assert_session->waitForElementVisible('css', '.modal.show');
 
     // Mock the clipboard API.
     $this->getSession()->executeScript(<<<JS
@@ -52,12 +47,31 @@ class CopyClipboardTest extends WebDriverTestBase {
       };
     JS);
 
-    $assert_session->elementExists('css', '[data-copy-target]')->click();
+    $elements = $this->getSession()->getPage()->findAll('css', '.copyright-overlay');
 
-    $expectedText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel mauris vitae ipsum blandit condimentum ut eget quam.';
-    $actualText = $this->getSession()->evaluateScript('return window.copiedText;');
+    $this->assertCopyrightCopiedToClipboard($elements['0'], 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel mauris vitae ipsum blandit condimentum ut eget quam.');
+    $this->assertCopyrightCopiedToClipboard($elements['1'], '© Lorem ipsum amet John Doe on Doe Images');
+  }
 
-    $this->assertEquals($expectedText, $actualText);
+  /**
+   * Asserts that the text in the element corresponds to the clipboard.
+   *
+   * @param \Behat\Mink\Element\NodeElement $element
+   *   The copyright element.
+   * @param string $expected
+   *   The expected result.
+   */
+  protected function assertCopyrightCopiedToClipboard(NodeElement $element, string $expected): void {
+    $assert_session = $this->assertSession();
+
+    $assert_session->elementExists('css', '.copyright-trigger', $element)->click();
+    $modal = $assert_session->waitForElementVisible('css', '.modal.show');
+
+    $assert_session->elementExists('css', '[data-copy-target]', $modal)->click();
+
+    $actual = $this->getSession()->evaluateScript('return window.copiedText;');
+
+    $this->assertEquals($expected, $actual);
   }
 
 }
