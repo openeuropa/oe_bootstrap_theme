@@ -51,3 +51,28 @@ copyright_overlay_with_custom_modal_title:
       'div#bcl-copyright-modal': 1
       '.copyright-overlay': 1
       'button[data-copy-target="#copy-selector"]': 1
+copyright_overlay_with_attributes:
+  render:
+    '#type': pattern
+    '#id': copyright_overlay
+    '#fields':
+      content: 'Lorem Ipsum dolor sit amet'
+    '#settings':
+      attributes: 'class="test-class" id="test-id" data-test="attr-value"'
+      trigger_attributes: 'class="my-trigger-class" data-test="trigger-attr-value"'
+  assert:
+    contains:
+      '.modal-header h5': 'Copyright'
+      'span.copyright-preview': 'Lorem Ipsum dolor sit amet'
+      'div.copyright-content': 'Lorem Ipsum dolor sit amet'
+      '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 'View more'
+    count:
+      '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 1
+      'div#bcl-copyright-modal': 1
+      '.copyright-overlay': 1
+      'button[data-copy-target="#copy-selector"]': 1
+      '.copyright-overlay.test-class': 1
+      '.copyright-overlay#test-id': 1
+      '.copyright-overlay[data-test="attr-value"]': 1
+      '.copyright-trigger.my-trigger-class': 1
+      '.copyright-trigger[data-test="trigger-attr-value"]': 1
