@@ -3,12 +3,12 @@ copyright_overlay:
     '#type': pattern
     '#id': copyright_overlay
     '#fields':
-      content: 'Lorem Ipsum dolor sit amet'
+      content: 'Default ipsum dolor sit amet.'
   assert:
     contains:
       '.modal-header h5': 'Copyright'
-      'span.copyright-preview': 'Lorem Ipsum dolor sit amet'
-      'div.copyright-content': 'Lorem Ipsum dolor sit amet'
+      'span.copyright-preview': 'Default ipsum dolor sit amet'
+      'div.copyright-content': 'Default ipsum dolor sit amet'
       '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 'View more'
     count:
       '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 1
@@ -38,13 +38,13 @@ copyright_overlay_with_custom_modal_title:
     '#type': pattern
     '#id': copyright_overlay
     '#fields':
-      content: 'Lorem Ipsum dolor sit amet'
+      content: 'Aenean eget accumsan neque, eu accumsan eros.'
       modal_title: 'New title'
   assert:
     contains:
       '.modal-header h5': 'New title'
-      'span.copyright-preview': 'Lorem Ipsum dolor sit amet'
-      'div.copyright-content': 'Lorem Ipsum dolor sit amet'
+      'span.copyright-preview': 'Aenean eget accumsan neque, eu accumsan eros.'
+      'div.copyright-content': 'Aenean eget accumsan neque, eu accumsan eros.'
       '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 'View more'
     count:
       '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 1
@@ -56,15 +56,15 @@ copyright_overlay_with_attributes:
     '#type': pattern
     '#id': copyright_overlay
     '#fields':
-      content: 'Lorem Ipsum dolor sit amet'
+      content: 'Pellentesque ullamcorper erat sed arcu dapibus.'
     '#settings':
       attributes: 'class="test-class" id="test-id" data-test="attr-value"'
       trigger_attributes: 'class="my-trigger-class" data-test="trigger-attr-value"'
   assert:
     contains:
       '.modal-header h5': 'Copyright'
-      'span.copyright-preview': 'Lorem Ipsum dolor sit amet'
-      'div.copyright-content': 'Lorem Ipsum dolor sit amet'
+      'span.copyright-preview': 'Pellentesque ullamcorper erat sed arcu dapibus.'
+      'div.copyright-content': 'Pellentesque ullamcorper erat sed arcu dapibus.'
       '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 'View more'
     count:
       '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 1
