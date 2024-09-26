@@ -16,7 +16,7 @@ copyright_overlay:
       type: render
       label: 'Content'
       description: 'Copyright overlay content.'
-      preview: '© Lorem ipsum amet <a href="#">John Doe</a> on <a href="#">Doe Images</a>'
+      preview: '© Copyright ipsum amet <a href="#">John Doe</a> on <a href="#">Doe Images</a>.'
   settings:
     trigger_attributes:
       type: attributes
