@@ -1,0 +1,5 @@
+// Remove default js ajax form elements for accessibility contrast error.
+// -----------------------------------------------------------------------------
+.js input.form-autocomplete {
+  background-image: none;
+}
