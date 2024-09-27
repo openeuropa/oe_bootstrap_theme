@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Functional;
 
-use Drupal\oe_bootstrap_theme\BackwardCompatibility;
 use Drupal\Tests\BrowserTestBase;
+use Drupal\oe_bootstrap_theme\BackwardCompatibility;
 
 /**
  * Tests the theme settings.
