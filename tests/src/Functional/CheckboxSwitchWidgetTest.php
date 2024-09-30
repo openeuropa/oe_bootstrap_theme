@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Functional;
 
+use Drupal\Tests\BrowserTestBase;
 use Drupal\entity_test\Entity\EntityTest;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
-use Drupal\Tests\BrowserTestBase;
 
 /**
  * Tests the checkbox switch third party settings on compatible widgets.

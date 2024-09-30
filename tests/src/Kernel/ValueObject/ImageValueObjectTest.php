@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel\ValueObject;
 
+use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 use Drupal\entity_test\Entity\EntityTest;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
-use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 
 /**
  * Test image value object with image field type. Extracted from oe_theme.
