@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme_helper\Unit;
 
-use Drupal\oe_bootstrap_theme_helper\Plugin\Filter\BootstrapTable;
 use Drupal\Tests\UnitTestCase;
+use Drupal\oe_bootstrap_theme_helper\Plugin\Filter\BootstrapTable;
 
 /**
  * Tests the bootstrap table filter.

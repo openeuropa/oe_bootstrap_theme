@@ -23,6 +23,16 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     # ports:
     #   - 3306:3306
+  selenium:
+    image: selenium/standalone-chrome:4.1.3
+    environment:
+      - DISPLAY=:99
+      - VNC_NO_PASSWORD=1
+    ports:
+      - '5900:5900'
+    expose:
+      - '4444'
+    shm_size: 2g
   node:
     image: node:18.12.0
     user: "node"
