@@ -156,6 +156,8 @@ function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
     $variables['image'] = ImageValueObject::fromArray($variables['image']->getArray())
       ->toRenderArray();
   }
+
+  $variables['featured_media_subtitle_tag_h5'] = BackwardCompatibility::getSetting('featured_media_subtitle_tag_h5');
 }
 
 /**

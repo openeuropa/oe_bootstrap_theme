@@ -263,3 +263,37 @@ featured_media_iframe_with_text_container_right_aligned_with_link_ratio_21x9:
     contains:
       'div.col-12.col-md-6.order-md-2': 'Lorem Ipsum dolor sit amet.'
       'div.col-12.col-md-6.order-md-2 a': 'View all'
+featured_media_with_subtitle_and_subtitle_tag:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      title: 'Main Title'
+      subtitle: 'Subtitle'
+      subtitle_tag: 'h6'
+  assertions:
+    count:
+      'h6.text-secondary': 1
+      'h2.bcl-heading': 1
+featured_media_with_subtitle_and_no_subtitle_tag_and_title:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      title: 'Main Title'
+      subtitle: 'Subtitle'
+  assertions:
+    count:
+      'h3.text-secondary': 1
+      'h2.bcl-heading': 1
+featured_media_with_subtitle_empty_title_and_subtitle_tag:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      title: ''
+      subtitle: 'Subtitle Here'
+  assertions:
+    count:
+      'h2.text-secondary': 1
+      'h2.bcl-heading': 0

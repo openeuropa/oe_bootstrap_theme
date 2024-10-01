@@ -72,4 +72,11 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
     '#description' => t('Fieldset wrapper had a class col-sm-10 which caused a different width for its content compared to the rest of the elements.'),
     '#default_value' => BackwardCompatibility::getSetting('fieldset_wrapper_col_sm_10'),
   ];
+
+  $form['backward_compatibility']['featured_media_subtitle_tag_h5'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Use h5 for subtitle tags in featured media'),
+    '#description' => t('Sets subtitle tags to h5 for backward compatibility in featured media.'),
+    '#default_value' => BackwardCompatibility::getSetting('featured_media_subtitle_tag_h5'),
+  ];
 }

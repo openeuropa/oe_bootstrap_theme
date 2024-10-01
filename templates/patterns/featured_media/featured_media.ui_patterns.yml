@@ -40,6 +40,11 @@ featured_media:
       label: "Title tag"
       description: 'Title tag of the featured media. Defaults to h2'
       preview: 'h2'
+    subtitle_tag:
+      type: text
+      label: "Subtitle tag"
+      description: 'Subtitle tag of the featured media. Defaults to h3'
+      preview: 'h3'
     subtitle:
       type: text
       label: 'Subtitle'
