@@ -36,7 +36,7 @@
           {% if featured_media_subtitle_tag_h5 %}
             {% set _subtitle_tag = 'h5' %}
           {% else %}
-            {% set _subtitle_tag = subtitle_tag is not empty ? subtitle_tag : (title is not empty ? 'h3' : 'h2') %}
+            {% set _subtitle_tag = subtitle_tag|default(title is not empty ? 'h3' : 'h2') %}
           {% endif %}
           <{{ _subtitle_tag }} class="text-secondary">{{ subtitle }}</{{ _subtitle_tag }}>
         {% endif %}
