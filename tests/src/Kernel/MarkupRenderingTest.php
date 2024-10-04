@@ -166,6 +166,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
         $test_cases[$key] = $test_case;
       }
     }
+
     return $test_cases;
   }
 
