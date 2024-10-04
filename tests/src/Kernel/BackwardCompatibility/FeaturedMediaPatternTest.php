@@ -33,22 +33,24 @@ class FeaturedMediaPatternTest extends AbstractKernelTestBase {
         ],
         'caption' => 'This is a caption.',
         'ratio' => '16x9',
+        'subtitle_tag' => 'h6',
       ],
     ];
 
-    // Test with backward compatibility setting enabled (h5).
+    // Test with backward compatibility setting enabled (h5), but explicit tag.
     $this->setBackwardCompatibilitySetting('featured_media_subtitle_tag_h5', TRUE);
     $html = $this->renderBuild($build);
     $crawler = new Crawler($html);
     $this->assertCount(1, $crawler->filter('h5.text-secondary'));
+    $this->assertCount(0, $crawler->filter('h3.text-secondary'));
     $this->assertEquals('Test Subtitle', $crawler->filter('h5.text-secondary')->text());
 
-    // Test with backward compatibility setting disabled (h3).
+    // Test with backward compatibility setting disabled (h3), but explicit tag.
     $this->setBackwardCompatibilitySetting('featured_media_subtitle_tag_h5', FALSE);
     $html = $this->renderBuild($build);
     $crawler = new Crawler($html);
     $this->assertCount(0, $crawler->filter('h5.text-secondary'));
-    $this->assertCount(1, $crawler->filter('h3.text-secondary'));
+    $this->assertCount(1, $crawler->filter('h6.text-secondary'));
   }
 
   /**
