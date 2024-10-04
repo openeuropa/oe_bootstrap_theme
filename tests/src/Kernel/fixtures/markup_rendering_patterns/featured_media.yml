@@ -297,3 +297,43 @@ featured_media_with_subtitle_empty_title_and_subtitle_tag:
     count:
       'h2.text-secondary': 1
       'h2.bcl-heading': 0
+featured_media_with_bc_on_subtitle_and_subtitle_tag:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      title: 'Main Title'
+      subtitle: 'Subtitle'
+      subtitle_tag: 'h6'
+  assertions:
+    count:
+      'h5.text-secondary': 1
+      'h2.bcl-heading': 1
+  backward_compatibility:
+    featured_media_subtitle_tag_h5: true
+featured_media_with_bc_on_subtitle_and_no_subtitle_tag_and_title:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      title: 'Main Title'
+      subtitle: 'Subtitle'
+  assertions:
+    count:
+      'h5.text-secondary': 1
+      'h2.bcl-heading': 1
+  backward_compatibility:
+    featured_media_subtitle_tag_h5: true
+featured_media_with_bc_on_subtitle_empty_title_and_subtitle_tag:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      title: ''
+      subtitle: 'Subtitle Here'
+  assertions:
+    count:
+      'h5.text-secondary': 1
+      'h2.bcl-heading': 0
+  backward_compatibility:
+    featured_media_subtitle_tag_h5: true

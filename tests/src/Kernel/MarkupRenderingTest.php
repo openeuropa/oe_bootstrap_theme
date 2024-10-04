@@ -162,10 +162,10 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
         } while (isset($test_cases[$candidate_key]));
         $key = $candidate_key;
         $test_case['render'] = PatternTestDataMassager::massageData($pattern, $test_case['render']);
+        $test_case['bc_settings'] = $test_case['bc_settings'] ?? [];
         $test_cases[$key] = $test_case;
       }
     }
-
     return $test_cases;
   }
 
