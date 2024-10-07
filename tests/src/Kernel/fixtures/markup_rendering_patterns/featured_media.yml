@@ -286,7 +286,7 @@ featured_media_with_subtitle_and_no_subtitle_tag_and_title:
     count:
       'h3.text-secondary': 1
       'h2.bcl-heading': 1
-featured_media_with_subtitle_empty_title_and_subtitle_tag:
+featured_media_with_subtitle_empty_title:
   render:
     '#type': pattern
     '#id': featured_media
