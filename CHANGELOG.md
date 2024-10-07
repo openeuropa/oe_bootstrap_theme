@@ -1,5 +1,26 @@
 # Change Log
 
+## [1.15.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.15.0) (2024-10-07)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.14.0...1.15.0)
+
+**Implemented enhancements:**
+
+- Gallery pattern: caption title, link is rendered for playable media [\#327](https://github.com/openeuropa/oe_bootstrap_theme/issues/327)
+
+**Fixed bugs:**
+
+- Extra space added to image/dateblock in card \(search variant\) in md size [\#414](https://github.com/openeuropa/oe_bootstrap_theme/issues/414)
+- Rounded bottom border [\#388](https://github.com/openeuropa/oe_bootstrap_theme/issues/388)
+- The styles for the card pattern \(search variant\) and BCL are not consistent [\#319](https://github.com/openeuropa/oe_bootstrap_theme/issues/319)
+- Media Library pagination not working [\#257](https://github.com/openeuropa/oe_bootstrap_theme/issues/257)
+- PHP Notice when Listing item block title is not set [\#141](https://github.com/openeuropa/oe_bootstrap_theme/issues/141)
+
+**Merged pull requests:**
+
+- OEL-0000: Fix drupal/coder issues. [\#437](https://github.com/openeuropa/oe_bootstrap_theme/pull/437) ([tibi2303](https://github.com/tibi2303))
+- OEL-3413: Removed default throbbler image of js form elements. [\#436](https://github.com/openeuropa/oe_bootstrap_theme/pull/436) ([tibi2303](https://github.com/tibi2303))
+- OEL-2742: Gallery captions hide on video. [\#361](https://github.com/openeuropa/oe_bootstrap_theme/pull/361) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.14.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.14.0) (2024-09-20)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.13.0...1.14.0)
 
