@@ -89,15 +89,18 @@ class ThemeSettingsTest extends BrowserTestBase {
     $card_image_hidden_checkbox = $assert_session->fieldExists('Card image hidden on mobile', $bc_wrapper);
     $card_use_grid_checkbox = $assert_session->fieldExists('Card to use grid classes', $bc_wrapper);
     $fieldset_wrapper_col_sm_10 = $assert_session->fieldExists('Fieldset wrapper uses col-sm-10', $bc_wrapper);
+    $featured_media_subtitle_tag_h5 = $assert_session->fieldExists('Use h5 for subtitle tags in featured media', $bc_wrapper);
 
     // BC settings are disabled on new installs.
     $this->assertFalse($card_image_hidden_checkbox->isChecked());
     $this->assertFalse($card_use_grid_checkbox->isChecked());
     $this->assertFalse($fieldset_wrapper_col_sm_10->isChecked());
+    $this->assertFalse($featured_media_subtitle_tag_h5->isChecked());
 
     $this->assertFalse(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertFalse(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
     $this->assertFalse(BackwardCompatibility::getSetting('fieldset_wrapper_col_sm_10'));
+    $this->assertFalse(BackwardCompatibility::getSetting('featured_media_subtitle_tag_h5'));
 
     $card_image_hidden_checkbox->check();
     $assert_session->buttonExists('Save configuration')->press();
@@ -105,12 +108,15 @@ class ThemeSettingsTest extends BrowserTestBase {
 
     $this->assertTrue($card_image_hidden_checkbox->isChecked());
     $this->assertFalse($card_use_grid_checkbox->isChecked());
+    $this->assertFalse($fieldset_wrapper_col_sm_10->isChecked());
+    $this->assertFalse($featured_media_subtitle_tag_h5->isChecked());
 
     drupal_static_reset('theme_get_setting');
     \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertFalse(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
     $this->assertFalse(BackwardCompatibility::getSetting('fieldset_wrapper_col_sm_10'));
+    $this->assertFalse(BackwardCompatibility::getSetting('featured_media_subtitle_tag_h5'));
 
     $card_use_grid_checkbox->check();
     $assert_session->buttonExists('Save configuration')->press();
@@ -119,12 +125,14 @@ class ThemeSettingsTest extends BrowserTestBase {
     $this->assertTrue($card_image_hidden_checkbox->isChecked());
     $this->assertTrue($card_use_grid_checkbox->isChecked());
     $this->assertFalse($fieldset_wrapper_col_sm_10->isChecked());
+    $this->assertFalse($featured_media_subtitle_tag_h5->isChecked());
 
     drupal_static_reset('theme_get_setting');
     \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
     $this->assertFalse(BackwardCompatibility::getSetting('fieldset_wrapper_col_sm_10'));
+    $this->assertFalse(BackwardCompatibility::getSetting('featured_media_subtitle_tag_h5'));
 
     $fieldset_wrapper_col_sm_10->check();
     $assert_session->buttonExists('Save configuration')->press();
@@ -133,12 +141,30 @@ class ThemeSettingsTest extends BrowserTestBase {
     $this->assertTrue($card_image_hidden_checkbox->isChecked());
     $this->assertTrue($card_use_grid_checkbox->isChecked());
     $this->assertTrue($fieldset_wrapper_col_sm_10->isChecked());
+    $this->assertFalse($featured_media_subtitle_tag_h5->isChecked());
 
     drupal_static_reset('theme_get_setting');
     \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
     $this->assertTrue(BackwardCompatibility::getSetting('fieldset_wrapper_col_sm_10'));
+    $this->assertFalse(BackwardCompatibility::getSetting('featured_media_subtitle_tag_h5'));
+
+    $featured_media_subtitle_tag_h5->check();
+    $assert_session->buttonExists('Save configuration')->press();
+    $assert_session->pageTextContains('The configuration options have been saved.');
+
+    $this->assertTrue($card_image_hidden_checkbox->isChecked());
+    $this->assertTrue($card_use_grid_checkbox->isChecked());
+    $this->assertTrue($fieldset_wrapper_col_sm_10->isChecked());
+    $this->assertTrue($featured_media_subtitle_tag_h5->isChecked());
+
+    drupal_static_reset('theme_get_setting');
+    \Drupal::configFactory()->clearStaticCache();
+    $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
+    $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
+    $this->assertTrue(BackwardCompatibility::getSetting('fieldset_wrapper_col_sm_10'));
+    $this->assertTrue(BackwardCompatibility::getSetting('featured_media_subtitle_tag_h5'));
   }
 
   /**

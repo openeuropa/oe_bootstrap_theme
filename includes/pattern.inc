@@ -137,6 +137,8 @@ function oe_bootstrap_theme_preprocess_pattern_navbar(array &$variables): void {
  * Implements hook_preprocess_HOOK() for featured media pattern.
  */
 function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
+  $variables['featured_media_subtitle_tag_h5'] = BackwardCompatibility::getSetting('featured_media_subtitle_tag_h5');
+
   if (!isset($variables['image'])) {
     return;
   }

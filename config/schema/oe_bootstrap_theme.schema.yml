@@ -25,3 +25,6 @@ oe_bootstrap_theme.settings:
         fieldset_wrapper_col_sm_10:
           type: boolean
           label: 'Fieldset wrapper uses col-sm-10'
+        featured_media_subtitle_tag_h5:
+          type: boolean
+          label: 'Featured media subtitle tag as h5'
