@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.16.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.16.0) (2024-10-08)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.15.0...1.16.0)
+
+**Merged pull requests:**
+
+- OEL-2742: Fixed gallery tests. [\#441](https://github.com/openeuropa/oe_bootstrap_theme/pull/441) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.15.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.15.0) (2024-10-07)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.14.0...1.15.0)
 
@@ -17,6 +24,7 @@
 
 **Merged pull requests:**
 
+- Prepare release 1.15.0. [\#440](https://github.com/openeuropa/oe_bootstrap_theme/pull/440) ([drishu](https://github.com/drishu))
 - OEL-0000: Fix drupal/coder issues. [\#437](https://github.com/openeuropa/oe_bootstrap_theme/pull/437) ([tibi2303](https://github.com/tibi2303))
 - OEL-3413: Removed default throbbler image of js form elements. [\#436](https://github.com/openeuropa/oe_bootstrap_theme/pull/436) ([tibi2303](https://github.com/tibi2303))
 - OEL-2742: Gallery captions hide on video. [\#361](https://github.com/openeuropa/oe_bootstrap_theme/pull/361) ([tibi2303](https://github.com/tibi2303))
