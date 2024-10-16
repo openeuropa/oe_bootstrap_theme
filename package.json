@@ -15,8 +15,8 @@
     "production": "npm-run-all build:*"
   },
   "devDependencies": {
-    "@openeuropa/bcl-builder": "0.3414.202410101410",
-    "@openeuropa/bcl-theme-default": "0.3414.202410101410",
+    "@openeuropa/bcl-builder": "0.3414.2024101161330",
+    "@openeuropa/bcl-theme-default": "0.3414.2024101161330",
     "bootstrap-ie11": "5.0.2",
     "chokidar-cli": "^3.0.0",
     "copyfiles": "2.4.1",
