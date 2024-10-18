@@ -1,6 +1,6 @@
 bcl:
   js:
-    assets/js/oe-bcl-default.bundle.min.js: {}
+    assets/js/oe-bcl-default.bundle.js: {}
   css:
     theme:
       assets/css/oe-bcl-default.min.css: {}
@@ -21,3 +21,7 @@ drupal.progress:
 inpage_navigation:
   js:
     resources/js/inpage_navigation.js: {}
+
+accessible_toggle:
+  js:
+    resources/js/accessible_toggle.js: {}
