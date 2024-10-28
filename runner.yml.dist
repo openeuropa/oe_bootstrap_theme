@@ -30,6 +30,11 @@ drupal:
         - "vendor"
         - "${drupal.root}"
 
+selenium:
+  host: "http://selenium"
+  port: "4444"
+  browser: "chrome"
+
 commands:
   drupal:site-setup:
     - { task: "run", command: "drupal:symlink-project" }

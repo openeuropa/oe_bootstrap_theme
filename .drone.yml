@@ -23,6 +23,12 @@ services:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=drupal
+  selenium:
+    image: git.fpfis.tech.ec.europa.eu/fpfis/dependency_proxy/containers/selenium/standalone-chrome:4.1.3-20220405
+    environment:
+      - DISPLAY=:99
+      - NODE_MAX_INSTANCES=5
+      - NODE_MAX_SESSION=5
 
 pipeline:
   npm-build:
