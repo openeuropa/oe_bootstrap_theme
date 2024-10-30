@@ -38,25 +38,25 @@ class AccessibleToggleTest extends WebDriverTestBase {
     $modalTrigger = $this->getSession()->getPage()->find('css', '[data-bs-toggle="modal"]');
     $offcanvasTrigger = $this->getSession()->getPage()->find('css', '[data-bs-toggle="offcanvas"]');
 
-    $this->assertAccessibleAttributes($modalTrigger);
-    $this->assertAccessibleAttributes($offcanvasTrigger);
+    $this->assertAccessibleAttributes($modalTrigger, expanded: FALSE);
+    $this->assertAccessibleAttributes($offcanvasTrigger, expanded: FALSE);
 
     $modalTrigger->click();
-    $this->assertEquals('true', $modalTrigger->getAttribute('aria-expanded'));
-    $this->assertEquals('false', $offcanvasTrigger->getAttribute('aria-expanded'));
+    $this->assertAccessibleAttributes($modalTrigger, expanded: TRUE);
+    $this->assertAccessibleAttributes($offcanvasTrigger, expanded: FALSE);
 
     $this->getSession()->getPage()->find('css', '.modal .btn-close')->click();
-    $this->assertEquals('false', $modalTrigger->getAttribute('aria-expanded'));
-    $this->assertEquals('false', $offcanvasTrigger->getAttribute('aria-expanded'));
+    $this->assertAccessibleAttributes($modalTrigger, expanded: FALSE);
+    $this->assertAccessibleAttributes($offcanvasTrigger, expanded: FALSE);
 
     $offcanvasTrigger->click();
-    $this->assertEquals('false', $modalTrigger->getAttribute('aria-expanded'));
-    $this->assertEquals('true', $offcanvasTrigger->getAttribute('aria-expanded'));
+    $this->assertAccessibleAttributes($modalTrigger, expanded: FALSE);
+    $this->assertAccessibleAttributes($offcanvasTrigger, expanded: TRUE);
 
     // Close offcanvas and check attribute updates.
     $this->getSession()->getPage()->find('css', '.offcanvas-backdrop')->click();
-    $this->assertEquals('false', $modalTrigger->getAttribute('aria-expanded'));
-    $this->assertEquals('false', $offcanvasTrigger->getAttribute('aria-expanded'));
+    $this->assertAccessibleAttributes($modalTrigger, expanded: FALSE);
+    $this->assertAccessibleAttributes($offcanvasTrigger, expanded: FALSE);
   }
 
   /**
@@ -64,11 +64,13 @@ class AccessibleToggleTest extends WebDriverTestBase {
    *
    * @param \Behat\Mink\Element\NodeElement|null $trigger
    *   The trigger element.
+   * @param bool $expanded
+   *   The expected state of aria-expanded attribute.
    */
-  protected function assertAccessibleAttributes(?NodeElement $trigger): void {
+  protected function assertAccessibleAttributes(?NodeElement $trigger, bool $expanded): void {
     $this->assertNotNull($trigger);
     $this->assertEquals('true', $trigger->getAttribute('aria-haspopup'));
-    $this->assertEquals('false', $trigger->getAttribute('aria-expanded'));
+    $this->assertEquals($expanded, $trigger->getAttribute('aria-expanded'));
   }
 
 }
