@@ -337,3 +337,48 @@ featured_media_with_bc_on_subtitle_empty_title_and_subtitle_tag:
       'h2.bcl-heading': 0
   backward_compatibility:
     featured_media_subtitle_tag_h5: true
+featured_media_with_bc_featured_media_mobile_text_top_right:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      image:
+        src: 'https://picsum.photos/1200/600/'
+        alt: 'Alternative text for paragraph image'
+        name: 'Example'
+      title: 'Test title'
+      text: 'Text text'
+      text_position: 'right'
+  assertions:
+    count:
+      'h2.bcl-heading': 1
+      'div.bcl-featured-media > div.row > .col-12.col-md-6.order-md-2': 1
+      'div.bcl-featured-media > div.row > .col-12.col-md-6.order-md-1': 1
+      'div.bcl-featured-media > div.row > .col-12.col-md-6.order-md-1 figure': 1
+    equals:
+      '.bcl-heading': 'Test title'
+      '.col-12.col-md-6.order-md-2': 'Text text'
+  backward_compatibility:
+    featured_media_mobile_text_top: true
+featured_media_with_bc_featured_media_mobile_text_top_left:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      image:
+        src: 'https://picsum.photos/1200/600/'
+        alt: 'Alternative text for paragraph image'
+        name: 'Example'
+      title: 'Test title'
+      text: 'Text text'
+      text_position: 'left'
+  assertions:
+    count:
+      'h2.bcl-heading': 1
+      'div.bcl-featured-media > div.row > .col-12.col-md-6': 2
+      'div.bcl-featured-media > div.row > .col-12.col-md-6 figure': 1
+    equals:
+      '.bcl-heading': 'Test title'
+      '.col-12.col-md-6': 'Text text'
+  backward_compatibility:
+    featured_media_mobile_text_top: true
