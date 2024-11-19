@@ -62,7 +62,7 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
   $form['backward_compatibility']['card_search_use_grid_classes'] = [
     '#type' => 'checkbox',
     '#title' => t('Card to use grid classes'),
-    '#description' => t('Card search variant used grid classes to structure its content left-right, this changed to col-12 and cl-card-start-col combination, this has an impact on the column sizes.'),
+    '#description' => t('Card search variant used grid classes to structure its content left-right, this changed to col-12 and bcl-card-start-col combination, this has an impact on the column sizes.'),
     '#default_value' => BackwardCompatibility::getSetting('card_search_use_grid_classes'),
   ];
 
