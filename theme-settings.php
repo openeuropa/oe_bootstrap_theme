@@ -79,4 +79,11 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
     '#description' => t('Sets subtitle tags to h5 for backward compatibility in featured media.'),
     '#default_value' => BackwardCompatibility::getSetting('featured_media_subtitle_tag_h5'),
   ];
+
+  $form['backward_compatibility']['featured_media_mobile_text_top'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Text on top in featured media mobile'),
+    '#description' => t('Featured media pattern used to present text allways on top when in mobile viewport.'),
+    '#default_value' => BackwardCompatibility::getSetting('featured_media_mobile_text_top'),
+  ];
 }

@@ -138,6 +138,7 @@ function oe_bootstrap_theme_preprocess_pattern_navbar(array &$variables): void {
  */
 function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
   $variables['featured_media_subtitle_tag_h5'] = BackwardCompatibility::getSetting('featured_media_subtitle_tag_h5');
+  $variables['featured_media_mobile_text_top'] = BackwardCompatibility::getSetting('featured_media_mobile_text_top');
 
   if (!isset($variables['image'])) {
     return;
