@@ -16,8 +16,6 @@
 
 <div{{ attributes.addClass('bcl-featured-media') }}>
   {% if subtitle or text or link %}
-    {% set text_alignment_class = 'order-md-1' %}
-    {% set video_alignment_class = 'order-md-2' %}
     {% if text_position == 'right' %}
       {% set text_alignment_class = 'order-md-2' %}
       {% set video_alignment_class = 'order-md-1' %}
