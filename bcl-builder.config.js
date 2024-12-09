@@ -26,8 +26,8 @@ module.exports = {
     },
     {
       from: ["node_modules/@openeuropa/bcl-theme-default/js/**"],
-      to: path.resolve(outputFolder, "assets/js"),
-      options: { up: true },
+      to: path.resolve(outputFolder, "assets"),
+      options: { up: 3 },
     },
     {
       from: ["node_modules/bootstrap-ie11/css/**"],
