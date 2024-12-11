@@ -38,11 +38,21 @@ class MenuPreprocess {
         $sub_item = $this->menuLink($sub_item);
       }
 
+      $trigger = $this->menuLink([
+        'title' => $item['title'],
+        'url' => '#',
+        'attributes' => [
+          'class' => ['nav-link', 'dropdown-toggle'],
+          'data-bs-toggle' => 'dropdown',
+          'aria-expanded' => 'false',
+        ],
+      ]);
+
       $item = [
         'standalone' => TRUE,
         'dropdown' => TRUE,
         'link' => TRUE,
-        'trigger' => $item,
+        'trigger' => $trigger,
         'items' => $item['below'],
       ];
     }
