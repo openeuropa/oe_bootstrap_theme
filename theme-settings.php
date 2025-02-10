@@ -83,7 +83,7 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
   $form['backward_compatibility']['featured_media_mobile_text_top'] = [
     '#type' => 'checkbox',
     '#title' => t('Text on top in featured media mobile'),
-    '#description' => t('Featured media pattern used to present text allways on top when in mobile viewport.'),
+    '#description' => t('Featured media pattern used to present text always on top when in mobile viewport.'),
     '#default_value' => BackwardCompatibility::getSetting('featured_media_mobile_text_top'),
   ];
 }
