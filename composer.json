@@ -8,6 +8,7 @@
     "require": {
         "php": ">=8.1",
         "drupal/core": "^10",
+        "drupal/file_link": "^2.1",
         "drupal/ui_patterns": "^1.4",
         "drupal/ui_patterns_settings": "^2.0",
         "openeuropa/ecl-twig-loader": "^4.0"
@@ -20,8 +21,8 @@
         "drupal/styleguide": "^2",
         "drush/drush": "^12",
         "nikic/php-parser": "^4",
-        "openeuropa/code-review": "^2.0.0-alpha6",
-        "openeuropa/task-runner-drupal-project-symlink": "^1.0-beta6",
+        "openeuropa/code-review-drupal": "^1.0.0-alpha",
+        "openeuropa/task-runner-drupal-project-symlink": "^1.0",
         "phpspec/prophecy-phpunit": "^2"
     },
     "scripts": {
@@ -32,6 +33,10 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/openeuropa/code-review-drupal.git"
         }
     ],
     "autoload": {
@@ -69,7 +74,7 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "drupal/core-composer-scaffold": true,
             "php-http/discovery": false,
-            "phpro/grumphp": true,
+            "phpro/grumphp-shim": true,
             "phpstan/extension-installer": true,
             "tbachert/spi": false
         }
