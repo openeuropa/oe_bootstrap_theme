@@ -1,6 +1,12 @@
 inpage_navigation:
   label: 'Inpage navigation'
   description: 'Inpage navigation adds a navigation element and content element so when scrolling the active element is indicated in the nav part.'
+  settings:
+    dynamic_active:
+      type: boolean
+      label: 'Dynamic Active'
+      description: 'Automated behaviour for the active item in mobile.'
+      preview: true
   fields:
     title:
       type: text
