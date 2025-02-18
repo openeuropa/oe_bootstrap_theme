@@ -1,0 +1,70 @@
+mega_menu_default:
+  render:
+    '#type': pattern
+    '#id': 'mega_menu'
+    '#fields':
+      link: false
+      button_label: 'Mega menu toggle'
+      back_button_label: 'Back'
+      content_block: 'Content block description'
+      items:
+        - id: 'dropdown-megamenu-inner'
+          trigger:
+            label: 'A link with dropdown'
+            path: '/example.html'
+          items:
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a button"
+              button: true
+        - label: 'A simple link!'
+          path: '/example.html'
+        - id: 'dropdown-megamenu-inner-2'
+          trigger:
+            label: 'A link with dropdown and column'
+            path: '/example.html'
+          collapse: "<a href='#' class='mb-3 d-block'>Example link</a><img src='https://inno-ecl.s3.amazonaws.com/media/examples/example-image.jpg' alt='image'>"
+          items:
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a button"
+              button: true
+            - label: "I'm a disabled button"
+              button: true
+              disabled: true
+            - label: "I'm a active button"
+              button: true
+        - label: 'A simple link!'
+          path: '/example.html'
+        - label: 'A simple link!'
+          path: '/example.html'
+        - label: 'A simple link!'
+          path: '/example.html'
+  assertions:
+    count:
+      'div.bcl-mega-menu': 1
+      'button.dropdown-toggle[data-bs-toggle="dropdown"]': 1
+      'button#bcl-mega-menu': 1
+      'div.mega-menu-container.dropdown-menu[aria-labelledby="bcl-mega-menu"]': 1
+      'button.back-button': 1
+      'div.navigation-items > div.dropdown': 2
+      'div.navigation-items > a': 4
+      'div.navigation-items > div.collapse': 1
+    equals:
+      'button.dropdown-toggle[data-bs-toggle="dropdown"]': 'Mega menu toggle'
+      'div.content-block': 'Content block description'
+      '.collapse': '<a href="#" class="mb-3 d-block">Example link</a><img src="https://inno-ecl.s3.amazonaws.com/media/examples/example-image.jpg" alt="image">'

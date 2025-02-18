@@ -74,6 +74,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'list_group',
     'listing',
     'modal',
+    'mega_menu',
     'navigation',
     'navbar',
     'offcanvas',
