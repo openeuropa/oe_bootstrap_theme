@@ -1,0 +1,75 @@
+mega_menu:
+  label: 'Mega Menu'
+  description: 'Unfolds when website visitors hover over, click, or tap on a high-level navigation bar option.'
+  fields:
+    button_label:
+      type: string
+      label: 'Mega menu trigger button label'
+      description: 'The label to show in the mega menu trigger button.'
+      preview: 'Mega menu toggle'
+    link:
+      type: boolean
+      label: 'Trigger as a link'
+      description: 'If enabled, the main trigger is rendered as a link. Otherwise, it is rendered as a button.'
+    back_button_label:
+      type: text
+      label: 'Back button label'
+      description: 'Text used for the “Back” button inside the menu.'
+    content_block:
+      type: textarea
+      label: 'Content block'
+      description: 'HTML or text to display in the left column of the mega menu.'
+      preview: '<h4>Mega Menu Content Title</h4><p>Description text, lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
+    items:
+      type: array
+      label: 'Mega menu items'
+      description: 'An array of items displayed in the right column. Each item can be a simple link or a nested dropdown object.'
+      preview:
+        - id: 'dropdown-megamenu-inner'
+          trigger:
+            label: 'A link with dropdown'
+            path: '/example.html'
+          items:
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a button"
+              button: true
+
+        - label: 'A simple link!'
+          path: '/example.html'
+
+        - id: 'dropdown-megamenu-inner-2'
+          trigger:
+            label: 'A link with dropdown and column'
+            path: '/example.html'
+          collapse: "<a href='#' class='mb-3 d-block'>Example link</a><img src='https://inno-ecl.s3.amazonaws.com/media/examples/example-image.jpg' alt='image'>"
+          items:
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a link"
+              path: "/example.html"
+            - label: "I'm a button"
+              button: true
+            - label: "I'm a disabled button"
+              button: true
+              disabled: true
+            - label: "I'm a active button"
+              button: true
+        - label: 'A simple link!'
+          path: '/example.html'
+        - label: 'A simple link!'
+          path: '/example.html'
+        - label: 'A simple link!'
+          path: '/example.html'

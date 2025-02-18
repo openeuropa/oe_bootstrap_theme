@@ -95,6 +95,13 @@ function oe_bootstrap_theme_preprocess_pattern_description_list(&$variables) {
 /**
  * Implements hook_preprocess_HOOK().
  */
+function oe_bootstrap_theme_preprocess_pattern_mega_menu(array &$variables): void {
+  $variables['mega_menu_id'] = Html::getUniqueId('bcl-mega-menu');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
 function oe_bootstrap_theme_preprocess_pattern_accordion(array &$variables): void {
   $variables['accordion_id'] = Html::getUniqueId('bcl-accordion');
 }

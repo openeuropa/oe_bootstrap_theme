@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Mega menu pattern.
+ */
+#}
+
+{% include '@oe-bcl/mega-menu' with {
+  'id': mega_menu_id,
+  'link': link,
+  'trigger': {
+    label: button_label
+  },
+  'content_block': content_block,
+  'items': items,
+  'back_button_label': back_button_label,
+  'icon_path': bcl_icon_path,
+  'attributes': attributes,
+} only %}
