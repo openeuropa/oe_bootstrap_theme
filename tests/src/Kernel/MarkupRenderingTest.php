@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
+use Drupal\Component\Serialization\Yaml;
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
-use Drupal\Core\Serialization\Yaml;
 use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
