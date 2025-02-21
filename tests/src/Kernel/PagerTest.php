@@ -183,7 +183,7 @@ class PagerTest extends AbstractKernelTestBase {
    * @return array[]
    *   Argument lists.
    */
-  public function pagerDataProvider(): array {
+  public static function pagerDataProvider(): array {
     $scenarios = [
       0 => [
         ['url' => '?page=0', 'label' => '1', 'active' => TRUE],
@@ -261,7 +261,7 @@ class PagerTest extends AbstractKernelTestBase {
    * @return array[]
    *   Argument lists.
    */
-  public function viewsMiniPagerDataProvider(): array {
+  public static function viewsMiniPagerDataProvider(): array {
     $scenarios = [
       0 => [
         ['label' => '1'],

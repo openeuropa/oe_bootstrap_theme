@@ -72,7 +72,7 @@ class BclIconPathOverrideTest extends KernelTestBase {
    * @return array
    *   A list of test cases.
    */
-  public function bclIconPathTestCasesProvider(): array {
+  public static function bclIconPathTestCasesProvider(): array {
     return [
       'subtheme theme with path provided' => [
         'oe_bootstrap_theme_test_subtheme1',
