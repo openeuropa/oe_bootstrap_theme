@@ -7,6 +7,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.1",
+        "cweagans/composer-patches": "^1.7",
         "drupal/core": "^10.3 || ^11",
         "drupal/file_link": "dev-3430560-automated-drupal-11",
         "drupal/ui_patterns": "^1.10",
@@ -85,6 +86,11 @@
                 "web-root": "./build"
             }
         },
+        "patches": {
+            "drupal/ui_patterns_settings": {
+                "Case mismatch between loaded and declared class names @see https://www.drupal.org/project/ui_patterns_settings/issues/3508198": "https://www.drupal.org/files/issues/2025-02-21/3508198-case-mismatch.patch"
+            }
+        },
         "_readme": [
             "Explicit requirement of nikic/php-parser ^4 as later versions are not compatible with grumphp @see https://github.com/phpro/grumphp/issues/1119"
         ]
@@ -93,6 +99,7 @@
         "sort-packages": true,
         "allow-plugins": {
             "composer/installers": true,
+            "cweagans/composer-patches": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "drupal/core-composer-scaffold": true,
             "php-http/discovery": false,
