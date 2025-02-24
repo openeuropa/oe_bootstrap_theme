@@ -12,7 +12,7 @@ modal_secondary_small:
       show_close_button: true
       body: 'Lorem Ipsum dolor sit amet'
       footer: 'Footer text'
-  assert:
+  assertions:
     contains:
       'button[data-bs-toggle=modal]': 'Open Modal'
       '.modal-header': 'Header text'
@@ -38,7 +38,7 @@ modal_dark_fullscreen:
       show_close_button: true
       body: 'Lorem Ipsum dolor sit amet'
       footer: 'Footer text'
-  assert:
+  assertions:
     contains:
       'button[data-bs-toggle=modal]': 'Open Modal'
       '.modal-header': 'Header text'
@@ -66,7 +66,7 @@ modal_with_id:
       footer: 'Footer text'
       attributes:
         id: 'custom-modal'
-  assert:
+  assertions:
     contains:
       'button[data-bs-toggle=modal]': 'Open Modal'
       '.modal-header': 'Header text'
