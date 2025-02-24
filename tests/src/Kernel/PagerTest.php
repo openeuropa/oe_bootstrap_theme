@@ -6,6 +6,8 @@ namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
 use Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PaginationPatternAssert;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 
 /**
  * Tests rendering of the pager.
@@ -233,11 +235,11 @@ class PagerTest extends AbstractKernelTestBase {
    * @dataProvider viewsMiniPagerDataProvider
    */
   public function testViewsMiniPager(array $expected_args, int $page): void {
-    \Drupal::requestStack()->push(
-      Request::create('/admin', 'GET', [
-        'page' => $page,
-      ]),
-    );
+    $request = Request::create('/admin', 'GET', [
+      'page' => $page,
+    ]);
+    $request->setSession(new Session(new MockArraySessionStorage()));
+    \Drupal::requestStack()->push($request);
 
     /** @var \Drupal\Core\Pager\PagerManagerInterface $pager_manager */
     $pager_manager = $this->container->get('pager.manager');
