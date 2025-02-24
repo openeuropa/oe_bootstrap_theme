@@ -21,7 +21,6 @@
         "drupal/core-dev": "^10.3 || ^11",
         "drupal/styleguide": "dev-custom",
         "drush/drush": "^12 || ^13",
-        "nikic/php-parser": "^4",
         "openeuropa/code-review-drupal": "^1.0.0-alpha",
         "openeuropa/task-runner-drupal-project-symlink": "^1.0",
         "phpspec/prophecy-phpunit": "^2"
@@ -90,10 +89,7 @@
             "drupal/ui_patterns_settings": {
                 "Case mismatch between loaded and declared class names @see https://www.drupal.org/project/ui_patterns_settings/issues/3508198": "https://www.drupal.org/files/issues/2025-02-21/3508198-case-mismatch.patch"
             }
-        },
-        "_readme": [
-            "Explicit requirement of nikic/php-parser ^4 as later versions are not compatible with grumphp @see https://github.com/phpro/grumphp/issues/1119"
-        ]
+        }
     },
     "config": {
         "sort-packages": true,
