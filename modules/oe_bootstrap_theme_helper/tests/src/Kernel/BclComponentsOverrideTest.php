@@ -87,7 +87,7 @@ class BclComponentsOverrideTest extends KernelTestBase {
    *
    * @see self::testBclComponentsOverriding()
    */
-  public function bclComponentsOverridingTestCasesProvider(): array {
+  public static function bclComponentsOverridingTestCasesProvider(): array {
     return [
       'oe_bootstrap_theme as active theme' => [
         'oe_bootstrap_theme',
