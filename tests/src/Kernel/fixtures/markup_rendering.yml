@@ -4,7 +4,7 @@ form assertion:
       '#markup': 'Hello World!'
     plain:
       '#plain_text': 'Papa Was A Rolling Stone <1972>'
-  assert:
+  assertions:
     count:
       'form.oe-bootstrap-theme-markup-rendering-test-form': 1
     contains:
@@ -14,7 +14,7 @@ textarea:
     '#type': textarea
     '#title': 'Textarea example'
     '#value': 'Lorem ipsum dolor sit amet.'
-  assert:
+  assertions:
     equals:
       'label.form-label': 'Textarea example'
       'textarea.form-control': 'Lorem ipsum dolor sit amet.'
@@ -27,7 +27,7 @@ checkbox:
     '#title': 'Checkbox example'
     '#attributes':
       'foo': 'bar'
-  assert:
+  assertions:
     count:
       'label.form-check-label': 1
       '.form-check input.form-checkbox.form-check-input[type=checkbox]': 1
@@ -41,7 +41,7 @@ checkbox_switch:
     '#type': checkbox
     '#title': 'Checkbox example'
     '#switch': true
-  assert:
+  assertions:
     count:
       'label.form-check-label': 1
       'input[type=checkbox]': 1
@@ -56,7 +56,7 @@ select:
       - 'One'
       - 'Two'
       - 'Three'
-  assert:
+  assertions:
     equals:
       'label.form-label': 'Select example'
       'option[value=0]': 'One'
@@ -76,7 +76,7 @@ select_multiple_required:
     '#multiple': true
     '#attributes':
       'required': 'required'
-  assert:
+  assertions:
     equals:
       'label.form-label': 'Select Multiple example'
       'option[value=0]': 'One'
@@ -94,7 +94,7 @@ submit_primary:
     '#attributes':
       'class':
         - 'button--primary'
-  assert:
+  assertions:
     count:
       'input[type=submit].form-submit.btn': 1
       'input[value=Save]': 1
@@ -103,7 +103,7 @@ submit_seconday:
   render:
     '#type': submit
     '#value': 'Save'
-  assert:
+  assertions:
     count:
       'input[type=submit].form-submit.button.btn': 1
       'input[value=Save]': 1
@@ -116,7 +116,7 @@ submit_disabled:
       'disabled': 'disabled'
       'class':
         - 'button--primary'
-  assert:
+  assertions:
     count:
       'input[type=submit].form-submit.button.btn': 1
       'input[value=Save]': 1
@@ -127,7 +127,7 @@ fieldset:
     '#title': 'Fieldset title'
     'child':
       '#plain_text': 'This is a child of the fieldset.'
-  assert:
+  assertions:
     count:
       'fieldset': 1
       'fieldset.form-item.mb-3': 1
@@ -143,7 +143,7 @@ fieldset_bc_fieldset_wrapper_col_sm_10:
     '#title': 'Fieldset title'
     'child':
       '#plain_text': 'This is a child of the fieldset.'
-  assert:
+  assertions:
     count:
       'fieldset': 1
       'fieldset div.fieldset-wrapper': 1
@@ -156,7 +156,7 @@ status_messages_error:
     '#message_list':
       'error':
         - 'Error message.'
-  assert:
+  assertions:
     count:
       'div[data-drupal-messages=""]': 1
       'div.alert': 1
@@ -175,7 +175,7 @@ status_messages_success:
     '#message_list':
       'status':
         - 'Success message.'
-  assert:
+  assertions:
     count:
       'div[data-drupal-messages=""]': 1
       'div.alert': 1
@@ -194,7 +194,7 @@ status_messages_warning:
     '#message_list':
       'warning':
         - 'Warning message.'
-  assert:
+  assertions:
     count:
       'div[data-drupal-messages=""]': 1
       'div.alert': 1
@@ -220,7 +220,7 @@ status_messages_multiple:
         - 'Error message 1.'
         - 'Error message 2.'
         - 'Error message 3.'
-  assert:
+  assertions:
     count:
       'div[data-drupal-messages=""]': 1
       'div.alert': 6
@@ -247,7 +247,7 @@ table:
     '#rows':
       - ['A', 'B']
       - ['C', 'D']
-  assert:
+  assertions:
     count:
       'table': 1
       # Responsive tables are enabled by default in our shipped config.
@@ -262,7 +262,7 @@ table_existing_attributes:
     '#rows':
       - [ 'A', 'B' ]
       - [ 'C', 'D' ]
-  assert:
+  assertions:
     count:
       'table': 1
       'div.table-responsive table#table-id.table.existing-class': 1
