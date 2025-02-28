@@ -38,21 +38,11 @@ class MenuPreprocess {
         $sub_item = $this->menuLink($sub_item);
       }
 
-      $trigger = $this->menuLink([
-        'title' => $item['title'],
-        'url' => '#',
-        'attributes' => [
-          'class' => ['nav-link', 'dropdown-toggle'],
-          'data-bs-toggle' => 'dropdown',
-          'aria-expanded' => 'false',
-        ],
-      ]);
-
       $item = [
         'standalone' => TRUE,
         'dropdown' => TRUE,
         'link' => TRUE,
-        'trigger' => $trigger,
+        'trigger' => $item,
         'items' => $item['below'],
       ];
     }
@@ -172,7 +162,8 @@ class MenuPreprocess {
   public function menuLink(array $menu_link, array $extra_classes = []): array {
     $link = $menu_link + [
       'label' => $menu_link['title'],
-      'path' => $menu_link['url'],
+      // Setting path to # for dropdown trigger to be rendered as anchor tags.
+      'path' => $menu_link['url']->getRouteName() === '<nolink>' ? '/#' : $menu_link['url'],
     ];
 
     $attributes = [];
