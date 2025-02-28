@@ -163,7 +163,7 @@ class MenuPreprocess {
     $link = $menu_link + [
       'label' => $menu_link['title'],
       // Setting path to # for dropdown trigger to be rendered as anchor tags.
-      'path' => $menu_link['url']->getRouteName() === '<nolink>' ? '/#' : $menu_link['url'],
+      'path' => ($menu_link['url']->getRouteName() === '<nolink>' && !empty($menu_link['below'])) ? '#' : $menu_link['url'],
     ];
 
     $attributes = [];
