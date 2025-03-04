@@ -25,13 +25,11 @@ accordion:
     expand_button_label:
       type: text
       label: 'Expand button'
-      description: 'Title of the accordion.'
-      preview: 'Expand section'
+      description: 'Label of the expand button.'
     collapse_button_label:
       type: text
       label: 'Collapse button'
       description: 'Label of the collapse button.'
-      preview: 'Collapse section.'
     items:
       type: array
       label: 'Accordion items'
