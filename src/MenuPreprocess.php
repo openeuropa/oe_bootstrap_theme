@@ -162,7 +162,8 @@ class MenuPreprocess {
   public function menuLink(array $menu_link, array $extra_classes = []): array {
     $link = $menu_link + [
       'label' => $menu_link['title'],
-      'path' => $menu_link['url'],
+      // Setting path to # for dropdown trigger to be rendered as anchor tags.
+      'path' => ($menu_link['url']->getRouteName() === '<nolink>' && !empty($menu_link['below'])) ? '#' : $menu_link['url'],
     ];
 
     $attributes = [];
