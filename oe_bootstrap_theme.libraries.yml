@@ -2,6 +2,7 @@ bcl:
   js:
     assets/js/oe-bcl-default.bundle.min.js: {}
     resources/js/accessible_toggle.js: {}
+    resources/js/accordion_toggle.js: {}
   css:
     theme:
       assets/css/oe-bcl-default.min.css: {}

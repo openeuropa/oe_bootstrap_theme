@@ -22,6 +22,14 @@ accordion:
       type: text
       label: 'Title tag'
       description: 'The tag to use for the title. Defaults to h2.'
+    expand_button_label:
+      type: text
+      label: 'Expand button'
+      description: 'Label of the expand button.'
+    collapse_button_label:
+      type: text
+      label: 'Collapse button'
+      description: 'Label of the collapse button.'
     items:
       type: array
       label: 'Accordion items'

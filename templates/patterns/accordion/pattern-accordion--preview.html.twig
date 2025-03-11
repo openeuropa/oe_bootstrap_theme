@@ -1,0 +1,70 @@
+{#
+/**
+ * @file
+ * Template override for preview mode of "Accordion" pattern.
+ */
+#}
+<div class="mb-5">
+  {{ pattern('accordion', {
+    'title': title,
+    'title_tag': title_tag,
+    'accordion_id': accordion_id,
+    'bare_layout': bare_layout,
+    'items': items,
+    'open_item': open_item,
+    'attributes': attributes,
+  }) }}
+</div>
+
+<div class="mt-5">
+  {% set expand_button_label = "Expand" %}
+  {% set collapse_button_label = "Collapse" %}
+
+  {{ pattern('accordion', {
+    'title': title,
+    'title_tag': title_tag,
+    'accordion_id': accordion_id,
+    'bare_layout': bare_layout,
+    'items': items,
+    'open_item': open_item,
+    'expand_button_label': expand_button_label,
+    'collapse_button_label': collapse_button_label,
+    'attributes': attributes,
+  }) }}
+</div>
+
+<div class="mt-4">
+  <h2 class="mb-4">Adding Expand/Collapse Button Labels</h2>
+  <ol>
+    <li>
+      <strong>Add Fields to the Paragraph Type:</strong>
+      <ul>
+        <li>Create a text field for <code>field_expand_button_label</code> (Expand Button Label).</li>
+        <li>Create a text field for <code>field_collapse_button_label</code> (Collapse Button Label).</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Configure the Form Display:</strong>
+      <ul>
+        <li>Go to <em>Manage form display</em> for your Accordion paragraph type and ensure the new fields are visible.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Update the Preprocess Function (Optional):</strong>
+      <ul>
+        <li>Add code to pass these field values to your Twig template. For example:</li>
+        <pre>
+          <code>
+            function YOURMODULE_preprocess_paragraph(&$variables) {
+              if ($variables['paragraph']->bundle() === 'oe_accordion') {
+                $paragraph = $variables['paragraph'];
+                $variables['expand_button_label'] = $paragraph->get('field_expand_button_label')->value;
+                $variables['collapse_button_label'] = $paragraph->get('field_collapse_button_label')->value;
+              }
+            }
+          </code>
+        </pre>
+      </ul>
+    </li>
+  </ol>
+</div>
