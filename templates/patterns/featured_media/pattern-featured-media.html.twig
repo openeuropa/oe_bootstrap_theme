@@ -16,11 +16,21 @@
 
 <div{{ attributes.addClass('bcl-featured-media') }}>
   {% if subtitle or text or link %}
-    {% set text_alignment_class = 'order-md-1' %}
-    {% set video_alignment_class = 'order-md-2' %}
+    {% set text_alignment_class = 'order-1' %}
+    {% set video_alignment_class = 'order-2' %}
     {% if text_position == 'right' %}
-      {% set text_alignment_class = 'order-md-2' %}
-      {% set video_alignment_class = 'order-md-1' %}
+      {% set text_alignment_class = 'order-2' %}
+      {% set video_alignment_class = 'order-1' %}
+    {% endif %}
+
+    {# Backward compatibily setting: Text always on top in mobile viewports. #}
+    {% if featured_media_mobile_text_top %}
+      {% set text_alignment_class = 'order-md-1' %}
+      {% set video_alignment_class = 'order-md-2' %}
+      {% if text_position == 'right' %}
+        {% set text_alignment_class = 'order-md-2' %}
+        {% set video_alignment_class = 'order-md-1' %}
+      {% endif %}
     {% endif %}
 
     {%- if title is not empty -%}

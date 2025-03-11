@@ -1,10 +1,20 @@
 # Change Log
 
+## [1.19.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.19.0) (2025-03-05)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.18.0...1.19.0)
+
+**Merged pull requests:**
+
+- OEL-3354: BC for text always on top in mobile viewports. [\#450](https://github.com/openeuropa/oe_bootstrap_theme/pull/450) ([drishu](https://github.com/drishu))
+- OEL-3503: Support slim select V2 [\#452](https://github.com/openeuropa/oe_bootstrap_theme/pull/452) ([piotrsmykaj](https://github.com/piotrsmykaj))
+- EWPP-4991: Update to php8.3. [\#457](https://github.com/openeuropa/oe_bootstrap_theme/pull/457) ([drishu](https://github.com/drishu))
+
 ## [1.18.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.18.0) (2024-12-16)
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.17.0...1.18.0)
 
 **Merged pull requests:**
 
+- Prepare release 1.18.0. [\#455](https://github.com/openeuropa/oe_bootstrap_theme/pull/455) ([drishu](https://github.com/drishu))
 - OEL-3577: Bump up BCL version. [\#454](https://github.com/openeuropa/oe_bootstrap_theme/pull/454) ([drishu](https://github.com/drishu))
 
 ## [1.17.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.17.0) (2024-11-06)

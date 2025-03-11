@@ -62,7 +62,7 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
   $form['backward_compatibility']['card_search_use_grid_classes'] = [
     '#type' => 'checkbox',
     '#title' => t('Card to use grid classes'),
-    '#description' => t('Card search variant used grid classes to structure its content left-right, this changed to col-12 and cl-card-start-col combination, this has an impact on the column sizes.'),
+    '#description' => t('Card search variant used grid classes to structure its content left-right, this changed to col-12 and bcl-card-start-col combination, this has an impact on the column sizes.'),
     '#default_value' => BackwardCompatibility::getSetting('card_search_use_grid_classes'),
   ];
 
@@ -78,5 +78,12 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
     '#title' => t('Use h5 for subtitle tags in featured media'),
     '#description' => t('Sets subtitle tags to h5 for backward compatibility in featured media.'),
     '#default_value' => BackwardCompatibility::getSetting('featured_media_subtitle_tag_h5'),
+  ];
+
+  $form['backward_compatibility']['featured_media_mobile_text_top'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Text on top in featured media mobile'),
+    '#description' => t('Featured media pattern used to present text always on top when in mobile viewport.'),
+    '#default_value' => BackwardCompatibility::getSetting('featured_media_mobile_text_top'),
   ];
 }

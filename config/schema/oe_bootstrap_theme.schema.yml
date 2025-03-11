@@ -28,3 +28,6 @@ oe_bootstrap_theme.settings:
         featured_media_subtitle_tag_h5:
           type: boolean
           label: 'Featured media subtitle tag as h5'
+        featured_media_mobile_text_top:
+          type: boolean
+          label: 'Text on top in featured media mobile'
