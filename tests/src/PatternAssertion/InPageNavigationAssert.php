@@ -33,6 +33,9 @@ class InPageNavigationAssert extends BasePatternAssert {
         '.dropdown-toggle',
         'id',
       ],
+      'settings' => [
+        [$this, 'assertSettings'],
+      ],
     ];
   }
 
@@ -50,6 +53,20 @@ class InPageNavigationAssert extends BasePatternAssert {
 
     $base_element = $crawler->filter('.bcl-inpage-navigation');
     self::assertStringNotContainsString('d-none', $base_element->attr('class'));
+  }
+
+  /**
+   * Asserts the in-page-navigation settings.
+   *
+   * @param array[] $expected
+   *   The expected settings.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The crawler.
+   */
+  protected function assertSettings(array $expected, Crawler $crawler): void {
+    if (!empty($expected['dynamic_active'])) {
+      $this->assertElementExists('.bcl-inpage-navigation.dynamic-active', $crawler);
+    }
   }
 
   /**
