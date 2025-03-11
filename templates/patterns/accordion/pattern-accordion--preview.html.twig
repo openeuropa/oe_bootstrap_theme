@@ -56,7 +56,7 @@
         <pre>
           <code>
             function YOURMODULE_preprocess_paragraph(&$variables) {
-              if ($variables['paragraph']->bundle() === 'accordion') {
+              if ($variables['paragraph']->bundle() === 'oe_accordion') {
                 $paragraph = $variables['paragraph'];
                 $variables['expand_button_label'] = $paragraph->get('field_expand_button_label')->value;
                 $variables['collapse_button_label'] = $paragraph->get('field_collapse_button_label')->value;
