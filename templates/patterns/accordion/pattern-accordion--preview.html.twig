@@ -35,36 +35,15 @@
 
 <div class="mt-4">
   <h2 class="mb-4">Adding Expand/Collapse Button Labels</h2>
-  <ol>
-    <li>
-      <strong>Add Fields to the Paragraph Type:</strong>
-      <ul>
-        <li>Create a text field for <code>field_expand_button_label</code> (Expand Button Label).</li>
-        <li>Create a text field for <code>field_collapse_button_label</code> (Collapse Button Label).</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Configure the Form Display:</strong>
-      <ul>
-        <li>Go to <em>Manage form display</em> for your Accordion paragraph type and ensure the new fields are visible.</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Update the Preprocess Function (Optional):</strong>
-      <ul>
-        <li>Add code to pass these field values to your Twig template. For example:</li>
-        <pre>
-          <code>
-            function YOURMODULE_preprocess_paragraph(&$variables) {
-              if ($variables['paragraph']->bundle() === 'oe_accordion') {
-                $paragraph = $variables['paragraph'];
-                $variables['expand_button_label'] = $paragraph->get('field_expand_button_label')->value;
-                $variables['collapse_button_label'] = $paragraph->get('field_collapse_button_label')->value;
-              }
-            }
-          </code>
-        </pre>
-      </ul>
-    </li>
-  </ol>
+  <ul>
+    <li>To enable or disable the feature as needed, implement a preprocess function where the pattern is used.</li>
+    <pre>
+      <code>
+        function YOURMODULE_preprocess_paragraph__oe_accordion(array &$variables): void {
+          $variables['expand_button_label'] = t('Expand');
+          $variables['collapse_button_label'] = t('Collapse');
+        }
+      </code>
+    </pre>
+  </ul>
 </div>
