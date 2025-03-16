@@ -1,10 +1,23 @@
 # Change Log
 
-## [1.19.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.19.0) (2025-03-05)
+## [1.20.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.20.0) (2025-03-17)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.19.0...1.20.0)
+
+**Merged pull requests:**
+
+- OEL-3547: Updated docs. [\#462](https://github.com/openeuropa/oe_bootstrap_theme/pull/462) ([tibi2303](https://github.com/tibi2303))
+- OEL-3500: Dynamic active for inpage navigation. [\#458](https://github.com/openeuropa/oe_bootstrap_theme/pull/458) ([tibi2303](https://github.com/tibi2303))
+- OEL-3547: Init for actionable accordion. [\#456](https://github.com/openeuropa/oe_bootstrap_theme/pull/456) ([tibi2303](https://github.com/tibi2303))
+- OEL-3569: Changed dropdown trigger from span to anchors for accessibility. [\#453](https://github.com/openeuropa/oe_bootstrap_theme/pull/453) ([tibi2303](https://github.com/tibi2303))
+
+## [1.19.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.19.0) (2025-03-06)
+
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.18.0...1.19.0)
 
 **Merged pull requests:**
 
+- Prepare release 1.19.0. [\#461](https://github.com/openeuropa/oe_bootstrap_theme/pull/461) ([drishu](https://github.com/drishu))
 - OEL-3354: BC for text always on top in mobile viewports. [\#450](https://github.com/openeuropa/oe_bootstrap_theme/pull/450) ([drishu](https://github.com/drishu))
 - OEL-3503: Support slim select V2 [\#452](https://github.com/openeuropa/oe_bootstrap_theme/pull/452) ([piotrsmykaj](https://github.com/piotrsmykaj))
 - EWPP-4991: Update to php8.3. [\#457](https://github.com/openeuropa/oe_bootstrap_theme/pull/457) ([drishu](https://github.com/drishu))
