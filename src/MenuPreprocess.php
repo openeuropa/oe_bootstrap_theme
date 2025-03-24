@@ -87,7 +87,7 @@ class MenuPreprocess {
     if (isset($link['link']) && ($url = $link['link']['#url'])) {
       $button = $link['link'];
 
-      if ($url->getRouteName() !== '<nolink>') {
+      if (($url->isRouted() && $url->getRouteName() !== '<nolink>') || $url->isExternal()) {
         $variables['split'] = TRUE;
         $button['#options']['attributes']['class'][] = 'btn';
         $button['#options']['attributes']['class'][] = 'btn-sm';

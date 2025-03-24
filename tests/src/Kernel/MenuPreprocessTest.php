@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
+use Drupal\Core\Access\AccessResultAllowed;
+use Drupal\Core\Access\AccessResultForbidden;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme\MenuPreprocess;
@@ -122,6 +125,205 @@ class MenuPreprocessTest extends KernelTestBase {
         '#',
       ],
     ];
+  }
+
+  /**
+   * Tests MenuPreprocess::preprocessMenu().
+   */
+  public function testPreprocessMenu(): void {
+    $preprocess = new MenuPreprocess();
+
+    $variables = [
+      'items' => [
+        [
+          'title' => 'Parent 1',
+          'url' => Url::fromRoute('<front>'),
+          'below' => [
+            [
+              'title' => 'Child 1',
+              'url' => Url::fromRoute('<front>'),
+            ],
+            [
+              'title' => 'Child 2',
+              'url' => Url::fromUri('https://example.com'),
+            ],
+          ],
+        ],
+        [
+          'title' => 'Parent 2 (no children)',
+          'url' => Url::fromUri('https://drupal.org'),
+        ],
+      ],
+    ];
+
+    $preprocess->preprocessMenu($variables, 'menu__main');
+    $this->assertCount(2, $variables['items']);
+
+    $item1 = $variables['items'][0];
+    $this->assertArrayHasKey('standalone', $item1);
+    $this->assertTrue($item1['standalone']);
+    $this->assertTrue($item1['dropdown']);
+    $this->assertTrue($item1['link']);
+    $this->assertArrayHasKey('trigger', $item1);
+    $this->assertArrayHasKey('items', $item1);
+    $this->assertCount(2, $item1['items']);
+
+    $item2 = $variables['items'][1];
+    $this->assertArrayNotHasKey('standalone', $item2);
+    $this->assertArrayNotHasKey('dropdown', $item2);
+    $this->assertArrayNotHasKey('trigger', $item2);
+  }
+
+  /**
+   * Tests MenuPreprocess::preprocessMenuLocalAction().
+   */
+  public function testPreprocessMenuLocalAction(): void {
+    $preprocess = new MenuPreprocess();
+
+    $variables = [
+      'link' => [
+        '#options' => [
+          'attributes' => [
+            'class' => [],
+          ],
+        ],
+      ],
+    ];
+
+    $preprocess->preprocessMenuLocalAction($variables);
+
+    $this->assertContains('btn', $variables['link']['#options']['attributes']['class']);
+    $this->assertContains('btn-sm', $variables['link']['#options']['attributes']['class']);
+    $this->assertContains('btn-primary', $variables['link']['#options']['attributes']['class']);
+  }
+
+  /**
+   * Tests MenuPreprocess::preprocessLinksDropbutton().
+   */
+  public function testPreprocessLinksDropbutton(): void {
+    $preprocess = new MenuPreprocess();
+
+    $variables = [
+      'links' => [
+        'first_link' => [
+          'text' => 'Main action',
+          'link' => [
+            '#url' => Url::fromUri('https://example.com'),
+            '#options' => [
+              'attributes' => [
+                'class' => [],
+              ],
+            ],
+          ],
+        ],
+        'second_link' => [
+          'text' => 'Secondary action',
+          'link' => [
+            '#url' => Url::fromRoute('<front>'),
+            '#options' => [
+              'attributes' => [
+                'class' => [],
+              ],
+            ],
+          ],
+        ],
+      ],
+    ];
+
+    $preprocess->preprocessLinksDropbutton($variables);
+
+    $this->assertTrue($variables['split']);
+
+    $this->assertArrayHasKey('button', $variables);
+    $this->assertIsArray($variables['button'], 'Button array is populated.');
+    $this->assertContains('btn', $variables['button']['#options']['attributes']['class']);
+    $this->assertContains('btn-sm', $variables['button']['#options']['attributes']['class']);
+    $this->assertContains('btn-outline-primary', $variables['button']['#options']['attributes']['class']);
+
+    $this->assertCount(1, $variables['links']);
+    $this->assertContains('dropdown-item', $variables['links']['second_link']['link']['#options']['attributes']['class']);
+  }
+
+  /**
+   * Tests MenuPreprocess::preprocessMenuLocalTasks().
+   */
+  public function testPreprocessMenuLocalTasks(): void {
+    $preprocess = new MenuPreprocess();
+
+    $variables = [
+      'primary' => [
+        'some_task' => [
+          '#access' => AccessResultAllowed::allowed(),
+          '#active' => FALSE,
+          '#weight' => 5,
+          '#link' => [
+            'title' => 'Some Task',
+            'url' => Url::fromRoute('entity.node.edit_form', ['node' => 1]),
+          ],
+        ],
+        'another_task' => [
+          '#access' => AccessResultAllowed::allowed(),
+          '#active' => TRUE,
+          '#weight' => 2,
+          '#link' => [
+            'title' => 'Active Task',
+            'url' => Url::fromRoute('entity.node.edit_form', ['node' => 2]),
+          ],
+        ],
+        'forbidden_task' => [
+          '#access' => AccessResultForbidden::forbidden(),
+          '#active' => FALSE,
+          '#weight' => 1,
+          '#link' => [
+            'title' => 'Forbidden Task',
+            'url' => Url::fromRoute('entity.node.delete_form', ['node' => 1]),
+          ],
+        ],
+      ],
+      'secondary' => [],
+    ];
+
+    $preprocess->preprocessMenuLocalTasks($variables);
+
+    $this->assertCount(2, $variables['primary']);
+    $this->assertEquals('Active Task', $variables['primary'][0]['label']);
+    $this->assertEquals('Some Task', $variables['primary'][1]['label']);
+
+    $this->assertTrue($variables['primary'][0]['attributes']->hasClass('active'),);
+  }
+
+  /**
+   * Tests MenuPreprocess::addDropbuttonClasses().
+   */
+  public function testAddDropbuttonClasses(): void {
+    $preprocess = new MenuPreprocess();
+
+    $links = [
+      'first_item' => [
+        'link' => [
+          '#title' => 'Edit',
+          '#url' => Url::fromRoute('entity.node.edit_form', ['node' => 1]),
+          '#options' => [
+            'attributes' => [
+              'class' => ['existing-class'],
+            ],
+          ],
+        ],
+      ],
+      'second_item' => [
+        'text' => [
+          '#markup' => Markup::create('Delete'),
+          '#attributes' => [
+            'class' => [],
+          ],
+        ],
+      ],
+    ];
+
+    $preprocess->addDropbuttonClasses($links);
+
+    $this->assertContains('dropdown-item', $links['first_item']['link']['#options']['attributes']['class']);
+    $this->assertContains('dropdown-item', $links['second_item']['text']['#attributes']['class']);
   }
 
 }
