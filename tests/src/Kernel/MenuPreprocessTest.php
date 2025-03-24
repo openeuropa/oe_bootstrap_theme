@@ -10,6 +10,8 @@ use Drupal\oe_bootstrap_theme\MenuPreprocess;
 use Drupal\KernelTests\KernelTestBase;
 
 /**
+ * @covers \Drupal\oe_bootstrap_theme\MenuPreprocess
+ *
  * Tests the MenuPreprocess service logic.
  */
 class MenuPreprocessTest extends KernelTestBase {
@@ -23,89 +25,103 @@ class MenuPreprocessTest extends KernelTestBase {
   ];
 
   /**
-   * The MenuPreprocess service under test.
+   * Tests various scenarios for MenuPreprocess::menuLink().
    *
-   * @var \Drupal\oe_bootstrap_theme\MenuPreprocess
+   * @dataProvider menuLinkProvider
    */
-  protected MenuPreprocess $preprocess;
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function setUp(): void {
-    parent::setUp();
-    $this->preprocess = new MenuPreprocess();
-  }
-
-  /**
-   * Tests that the 'active' class and custom classes are added to links.
-   */
-  public function testMenuLinkAddsActiveClass(): void {
-    $url = Url::fromRoute('<front>');
-    $menu_link = [
-      'title' => 'Home',
-      'url' => $url,
-      'in_active_trail' => TRUE,
-    ];
-
-    $result = $this->preprocess->menuLink($menu_link, ['custom-class']);
+  public function testMenuLink(array $menu_link, array $expected_classes, $expected_path = NULL): void {
+    $preprocess = new MenuPreprocess();
+    $result = $preprocess->menuLink($menu_link, $menu_link['classes'] ?? []);
 
     $this->assertInstanceOf(Attribute::class, $result['attributes']);
-    $this->assertContains('active', $result['attributes']->getClass());
-    $this->assertContains('custom-class', $result['attributes']->getClass());
+    foreach ($expected_classes as $class) {
+      $this->assertContains($class, $result['attributes']->getClass());
+    }
+
+    if ($expected_path !== NULL) {
+      $actual_path = $result['path'] instanceof Url ? $result['path']->toString() : $result['path'];
+      $expected_path_str = $expected_path instanceof Url ? $expected_path->toString() : $expected_path;
+
+      $this->assertSame($expected_path_str, $actual_path);
+    }
   }
 
   /**
-   * Tests that a <nolink> item with children uses '#' as its path.
+   * Provides test cases for testMenuLink().
    */
-  public function testMenuLinkUsesHashForNoLinkWithChildren(): void {
-    $url = Url::fromRoute('<nolink>');
-    $menu_link = [
-      'title' => 'Parent item',
-      'url' => $url,
-      'below' => [
-        ['title' => 'Child item', 'url' => Url::fromRoute('<front>')],
+  public function menuLinkProvider(): array {
+    return [
+      'Active link with custom class' => [
+        [
+          'title' => 'Home',
+          'url' => Url::fromRoute('<front>'),
+          'in_active_trail' => TRUE,
+          'classes' => ['custom-class'],
+        ],
+        ['active', 'custom-class'],
+        '/',
+      ],
+      'Internal link' => [
+        [
+          'title' => 'Internal link',
+          'url' => Url::fromRoute('<front>'),
+          'below' => [],
+        ],
+        [],
+        '/',
+      ],
+      'External link' => [
+        [
+          'title' => 'External link',
+          'url' => Url::fromUri('https://example.com'),
+          'below' => [],
+        ],
+        [],
+        'https://example.com',
+      ],
+      'Nolink' => [
+        [
+          'title' => 'No link item',
+          'url' => Url::fromRoute('<nolink>'),
+          'below' => [],
+        ],
+        [],
+        Url::fromRoute('<nolink>'),
+      ],
+      'Internal link with children' => [
+        [
+          'title' => 'Internal link with children',
+          'url' => Url::fromRoute('<front>'),
+          'below' => [
+            ['title' => 'Child item', 'url' => Url::fromRoute('<front>')],
+          ],
+        ],
+        [],
+        '/',
+      ],
+      'External link with children' => [
+        [
+          'title' => 'External link with children',
+          'url' => Url::fromUri('https://example.com'),
+          'below' => [
+            ['title' => 'Child item', 'url' => Url::fromRoute('<front>')],
+          ],
+        ],
+        [],
+        'https://example.com',
+      ],
+      'Nolink with children' => [
+        [
+          'title' => 'Nolink item with children',
+          'url' => Url::fromRoute('<nolink>'),
+          'below' => [
+            ['title' => 'Child item', 'url' => Url::fromRoute('<front>')],
+          ],
+        ],
+        [],
+        '#',
       ],
     ];
-
-    $result = $this->preprocess->menuLink($menu_link);
-
-    $this->assertEquals('#', $result['path']);
-  }
-
-  /**
-   * Tests that normal external links retain their original URL path.
-   */
-  public function testMenuLinkKeepsOriginalUrl(): void {
-    $url = Url::fromUri('https://example.com');
-    $menu_link = [
-      'title' => 'External link',
-      'url' => $url,
-      'below' => [],
-    ];
-
-    $result = $this->preprocess->menuLink($menu_link);
-
-    $this->assertSame($url, $result['path']);
-  }
-
-  /**
-   * Tests that external (non-routed) URLs do not trigger getRouteName().
-   */
-  public function testMenuLinkWithExternalUrl(): void {
-    $url = Url::fromUri('https://example.com');
-
-    $menu_link = [
-      'title' => 'External link',
-      'url' => $url,
-      'below' => [
-        ['title' => 'Child item', 'url' => Url::fromRoute('<front>')],
-      ],
-    ];
-
-    $result = $this->preprocess->menuLink($menu_link);
-
-    $this->assertSame($url, $result['path']);
   }
 
 }
