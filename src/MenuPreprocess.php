@@ -87,7 +87,7 @@ class MenuPreprocess {
     if (isset($link['link']) && ($url = $link['link']['#url'])) {
       $button = $link['link'];
 
-      if ($url->getRouteName() !== '<nolink>') {
+      if (($url->isRouted() && $url->getRouteName() !== '<nolink>') || $url->isExternal()) {
         $variables['split'] = TRUE;
         $button['#options']['attributes']['class'][] = 'btn';
         $button['#options']['attributes']['class'][] = 'btn-sm';
@@ -163,7 +163,7 @@ class MenuPreprocess {
     $link = $menu_link + [
       'label' => $menu_link['title'],
       // Setting path to # for dropdown trigger to be rendered as anchor tags.
-      'path' => ($menu_link['url']->getRouteName() === '<nolink>' && !empty($menu_link['below'])) ? '#' : $menu_link['url'],
+      'path' => ($menu_link['url']->isRouted() && $menu_link['url']->getRouteName() === '<nolink>' && !empty($menu_link['below'])) ? '#' : $menu_link['url'],
     ];
 
     $attributes = [];
