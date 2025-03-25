@@ -153,11 +153,16 @@ class MenuPreprocessTest extends KernelTestBase {
           'title' => 'Parent 2 (no children)',
           'url' => Url::fromUri('https://drupal.org'),
         ],
+        [
+          'title' => 'Parent 3 (no children) and active trail',
+          'url' => Url::fromUri('https://drupal.org'),
+          'in_active_trail' => TRUE,
+        ],
       ],
     ];
 
     $preprocess->preprocessMenu($variables, 'menu__main');
-    $this->assertCount(2, $variables['items']);
+    $this->assertCount(3, $variables['items']);
 
     $item1 = $variables['items'][0];
     $this->assertArrayHasKey('standalone', $item1);
@@ -165,13 +170,44 @@ class MenuPreprocessTest extends KernelTestBase {
     $this->assertTrue($item1['dropdown']);
     $this->assertTrue($item1['link']);
     $this->assertArrayHasKey('trigger', $item1);
+    $this->assertEquals('Parent 1', $item1['trigger']['label']);
+    $this->assertInstanceOf(Url::class, $item1['trigger']['path']);
+    $this->assertEquals('/', $item1['trigger']['path']->toString());
+    $this->assertInstanceOf(Attribute::class, $item1['trigger']['attributes']);
+    $this->assertContains('nav-link', $item1['trigger']['attributes']->getClass());
     $this->assertArrayHasKey('items', $item1);
+    $this->assertIsArray($item1['items']);
     $this->assertCount(2, $item1['items']);
 
-    $item2 = $variables['items'][1];
-    $this->assertArrayNotHasKey('standalone', $item2);
-    $this->assertArrayNotHasKey('dropdown', $item2);
-    $this->assertArrayNotHasKey('trigger', $item2);
+    // First child.
+    $child1 = $item1['items'][0];
+    $this->assertEquals('Child 1', $child1['label']);
+    $this->assertInstanceOf(Url::class, $child1['path']);
+    $this->assertEquals('/', $child1['path']->toString());
+    $this->assertInstanceOf(Attribute::class, $child1['attributes']);
+
+    // Second child.
+    $child2 = $item1['items'][1];
+    $this->assertEquals('Child 2', $child2['label']);
+    $this->assertInstanceOf(Url::class, $child2['path']);
+    $this->assertEquals('https://example.com', $child2['path']->toString());
+    $this->assertInstanceOf(Attribute::class, $child2['attributes']);
+
+    // Second item - no children.
+    $item_no_children = $variables['items'][1];
+    $this->assertArrayNotHasKey('standalone', $item_no_children);
+    $this->assertArrayNotHasKey('dropdown', $item_no_children);
+    $this->assertArrayNotHasKey('trigger', $item_no_children);
+
+    // Third item - no children but active trail.
+    $item_active = $variables['items'][2];
+    $this->assertArrayNotHasKey('standalone', $item_active);
+    $this->assertArrayNotHasKey('dropdown', $item_active);
+    $this->assertArrayNotHasKey('trigger', $item_active);
+    $this->assertArrayHasKey('attributes', $item_active);
+    $this->assertInstanceOf(Attribute::class, $item_active['attributes']);
+    $this->assertContains('nav-link', $item_active['attributes']->getClass());
+    $this->assertContains('active', $item_active['attributes']->getClass());
   }
 
   /**
@@ -289,7 +325,7 @@ class MenuPreprocessTest extends KernelTestBase {
     $this->assertEquals('Active Task', $variables['primary'][0]['label']);
     $this->assertEquals('Some Task', $variables['primary'][1]['label']);
 
-    $this->assertTrue($variables['primary'][0]['attributes']->hasClass('active'),);
+    $this->assertTrue($variables['primary'][0]['attributes']->hasClass('active'));
   }
 
   /**
