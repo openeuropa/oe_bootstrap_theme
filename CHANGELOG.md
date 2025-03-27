@@ -1,11 +1,20 @@
 # Change Log
 
+## [1.21.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.21.0) (2025-03-27)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.20.0...1.21.0)
+
+**Merged pull requests:**
+
+- OEL-3691: Fixed routed issue and added test. [\#466](https://github.com/openeuropa/oe_bootstrap_theme/pull/466) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.20.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.20.0) (2025-03-17)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.19.0...1.20.0)
 
 **Merged pull requests:**
 
+- Prepare release 1.20.0 [\#463](https://github.com/openeuropa/oe_bootstrap_theme/pull/463) ([tibi2303](https://github.com/tibi2303))
 - OEL-3547: Updated docs. [\#462](https://github.com/openeuropa/oe_bootstrap_theme/pull/462) ([tibi2303](https://github.com/tibi2303))
 - OEL-3500: Dynamic active for inpage navigation. [\#458](https://github.com/openeuropa/oe_bootstrap_theme/pull/458) ([tibi2303](https://github.com/tibi2303))
 - OEL-3547: Init for actionable accordion. [\#456](https://github.com/openeuropa/oe_bootstrap_theme/pull/456) ([tibi2303](https://github.com/tibi2303))
