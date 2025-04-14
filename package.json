@@ -15,8 +15,13 @@
     "production": "npm-run-all build:*"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@openeuropa/bcl-builder": "0.1.202504161030",
     "@openeuropa/bcl-theme-default": "0.1.202504161030",
+=======
+    "@openeuropa/bcl-builder": "0.3752.202504141700",
+    "@openeuropa/bcl-theme-default": "0.3752.202504141700",
+>>>>>>> abc1bd36 (OEL-3752: Slim-select 2 removed patches.)
     "bootstrap-ie11": "5.0.2",
     "chokidar-cli": "^3.0.0",
     "copyfiles": "2.4.1",
