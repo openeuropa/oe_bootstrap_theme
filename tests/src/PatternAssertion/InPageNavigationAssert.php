@@ -48,7 +48,7 @@ class InPageNavigationAssert extends BasePatternAssert {
     $inpage_nav = $crawler->filter('ul.nav-pills');
     self::assertCount(1, $inpage_nav);
 
-    $svg_icon = $crawler->filter('h2.bcl-heading svg');
+    $svg_icon = $crawler->filter('.dropdown-toggle.h2 svg');
     self::assertCount(1, $svg_icon);
 
     $base_element = $crawler->filter('.bcl-inpage-navigation');

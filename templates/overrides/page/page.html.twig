@@ -51,9 +51,9 @@
     right: page.navbar_right ? page.navbar_right : false,
   }) }}
 
-  <main class="pt-5 pb-5">
+  <main class="pt-5 pb-5" aria-label="{{ "Main content"|t }}">
     {% if page.header %}
-      <header class="page__header mb-3">
+      <header class="page__header mb-3" aria-label="{{ "Main header"|t }}">
         <div class="container">
           {{ page.header }}
         </div>

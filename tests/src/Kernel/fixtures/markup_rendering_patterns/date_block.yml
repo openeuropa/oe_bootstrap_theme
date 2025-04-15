@@ -10,5 +10,6 @@ date_block_default:
       'time': 1
       'time.bcl-date-block[datetime="2021-05-26"]': 1
     equals:
-      'time > span > span:nth-child(1) > span': '26 May'
-      'time > span > span:nth-child(2)': '2021'
+      'time > div > div > div:nth-child(1) .date-month': 'May'
+      'time > div > div > div:nth-child(1) .date-day': '26'
+      'time > div > div:nth-child(2) .year-start': '2021'

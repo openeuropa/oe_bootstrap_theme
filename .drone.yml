@@ -14,7 +14,7 @@ workspace:
 
 services:
   web:
-    image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
+    image: registry.fpfis.eu/digit/devsecops/httpd-php:${PHP_VERSION}-ci
     environment:
       - DOCUMENT_ROOT=/test/oe_bootstrap_theme
   mysql:
@@ -40,7 +40,7 @@ pipeline:
 
   composer-install:
     group: prepare
-    image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
+    image: registry.fpfis.eu/digit/devsecops/httpd-php:${PHP_VERSION}-ci
     volumes:
       - /cache/${DRONE_REPO_NAME}:/cache
     commands:
@@ -48,7 +48,7 @@ pipeline:
       - composer require drupal/core:~${CORE_VERSION} drupal/core-composer-scaffold:~${CORE_VERSION} drupal/core-dev:~${CORE_VERSION} --update-with-all-dependencies --ansi --no-progress --no-interaction
 
   site-install:
-    image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
+    image: registry.fpfis.eu/digit/devsecops/httpd-php:${PHP_VERSION}-ci
     commands:
       - while ! mysqladmin ping -h mysql --silent; do sleep 1; done
       - ./vendor/bin/run drupal:site-install
@@ -58,7 +58,7 @@ pipeline:
 
   grumphp:
     group: test
-    image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
+    image: registry.fpfis.eu/digit/devsecops/httpd-php:${PHP_VERSION}-ci
     commands:
       - ./vendor/bin/grumphp run
     when:
@@ -67,7 +67,7 @@ pipeline:
 
   phpunit:
     group: test
-    image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
+    image: registry.fpfis.eu/digit/devsecops/httpd-php:${PHP_VERSION}-ci
     commands:
       - ./vendor/bin/phpunit
     when:
@@ -75,7 +75,7 @@ pipeline:
         exclude: tag
 
   before-release:
-    image: registry.fpfis.eu/fpfis/httpd-php:${PHP_VERSION}-ci
+    image: registry.fpfis.eu/digit/devsecops/httpd-php:${PHP_VERSION}-ci
     commands:
       - git config --global --add safe.directory /test/oe_bootstrap_theme
       - apt-get update
@@ -109,4 +109,6 @@ matrix:
     - CORE_VERSION: 10.4.0
       PHP_VERSION: 8.1
     - CORE_VERSION: 10.4.0
+      PHP_VERSION: 8.3
+    - CORE_VERSION: 11.1.0
       PHP_VERSION: 8.3

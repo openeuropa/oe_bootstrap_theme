@@ -20,7 +20,7 @@ featured_media_image_not_wrapper:
       'div.bcl-featured-media > div.row': 1
       'div.bcl-featured-media > div.row > div.col-12.col-md-4': 1
       'div.bcl-featured-media > div.row > div.col-12.col-md-4 > figure': 1
-      'figure > img.img-fluid': 1
+      'figure > img.img-fluid.flex-end-100': 1
       'figure > figcaption.bg-light.p-3': 1
       'h2': 0
       'h5': 0
@@ -56,7 +56,7 @@ featured_media_image_with_title_tag:
       'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-1': 1
       'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-2': 1
       'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-2 > figure': 1
-      'figure > img.img-fluid': 1
+      'figure > img.img-fluid.flex-end-100': 1
       'figure > figcaption.bg-light.p-3': 1
       'h1.mb-4': 1
       'h5': 0
@@ -94,7 +94,7 @@ featured_media_image_with_text_aligned_left:
       'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-1': 1
       'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-2': 1
       'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-2 > figure': 1
-      'figure > img.img-fluid': 1
+      'figure > img.img-fluid.flex-end-100': 1
       'figure > figcaption.bg-light.p-3': 1
       'h2.mb-4': 1
       'h5': 0
@@ -132,7 +132,7 @@ featured_media_image_with_text_aligned_right:
       'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-1': 1
       'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-1 > figure': 1
       'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-2': 1
-      'figure > img.img-fluid': 1
+      'figure > img.img-fluid.flex-end-100': 1
       'figure > figcaption.bg-light.p-3': 1
       'h2.mb-4': 1
       'h5': 0
