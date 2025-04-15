@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
+use Drupal\Component\Serialization\Yaml;
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
-use Drupal\Core\Serialization\Yaml;
 use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
@@ -111,18 +111,18 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
   /**
    * Tests rendering of elements.
    *
-   * @param array $render_array
+   * @param array $render
    *   A render array.
-   * @param array $expectations
+   * @param array $assertions
    *   Test assertion expectations.
-   * @param array $bc_settings
+   * @param array $backward_compatibility
    *   A list of backward compatibility settings and their values.
    *
    * @dataProvider markupRenderingProvider
    */
-  public function testMarkupRendering(array $render_array, array $expectations, array $bc_settings = []): void {
-    if (!empty($bc_settings)) {
-      foreach ($bc_settings as $name => $value) {
+  public function testMarkupRendering(array $render, array $assertions, array $backward_compatibility = []): void {
+    if (!empty($backward_compatibility)) {
+      foreach ($backward_compatibility as $name => $value) {
         $this->setBackwardCompatibilitySetting($name, $value);
       }
     }
@@ -132,11 +132,11 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     // the elements being tested are not form related, the form can host them
     // without causing any issues.
     $form_state = new FormState();
-    $form_state->addBuildInfo('args', [$render_array]);
+    $form_state->addBuildInfo('args', [$render]);
     $form_state->setProgrammed();
 
     $form = $this->container->get('form_builder')->buildForm($this, $form_state);
-    $this->assertMarkupRendering($expectations, (string) $this->container->get('renderer')->renderRoot($form));
+    $this->assertMarkupRendering($assertions, (string) $this->container->get('renderer')->renderRoot($form));
   }
 
   /**
@@ -148,13 +148,13 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * @see self::testMarkupRendering()
    * @see tests/fixtures/markup_rendering.yml
    */
-  public function markupRenderingProvider(): array {
+  public static function markupRenderingProvider(): array {
     $path = __DIR__ . '/fixtures';
     $patterns_path = "{$path}/markup_rendering_patterns";
     $test_cases = Yaml::decode(file_get_contents("{$path}/markup_rendering.yml"));
     foreach (self::$patternList as $pattern) {
       foreach (Yaml::decode(file_get_contents("{$patterns_path}/{$pattern}.yml")) as $key => $test_case) {
-        // Ensure unique test case key as the two files might share same keys.
+        // Ensure a unique test case key as the two files might share same keys.
         $suffix = 0;
         do {
           $candidate_key = $key . ($suffix ? sprintf(' (%s)', $suffix) : '');

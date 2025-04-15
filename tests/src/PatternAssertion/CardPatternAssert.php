@@ -135,7 +135,7 @@ class CardPatternAssert extends BasePatternAssert {
     // so we are checking that the expected items are present.
     foreach ($expected_items as $expected_item) {
       if ($variant === 'search') {
-        $selector = '.row ' . ($this->cardSearchUseGridClasses ? '.col-md-9.col-lg-10' : '.col-12.col-md');
+        $selector = '.row ' . ($this->cardSearchUseGridClasses ? '.col-md-9.col-lg-8.col-xl-10' : '.col-12.col-md');
         self::assertStringContainsString($expected_item, $crawler->filter($selector)->html());
       }
       else {
@@ -171,22 +171,22 @@ class CardPatternAssert extends BasePatternAssert {
    *   The DomCrawler where to check the element.
    */
   protected function assertDate(array $expected, Crawler $crawler): void {
-    // @todo Use dedicated pattern assert once we re-work date_block pattern.
-    $day_month = $expected['day'] . ' ' . $expected['month'];
+    // Assert day(s) and month(s).
+    $this->assertElementText($expected['month'], 'time > div > div > div:nth-of-type(1) .date-month', $crawler);
+    $this->assertElementText($expected['day'], 'time > div > div > div:nth-of-type(1) .date-day', $crawler);
 
     if (isset($expected['end_day']) && isset($expected['end_month'])) {
-      $day_month .= ' - ' . $expected['end_day'] . ' ' . $expected['end_month'];
+      $this->assertElementText($expected['end_month'], 'time > div > div > div:nth-of-type(3) .date-month', $crawler);
+      $this->assertElementText($expected['end_day'], 'time > div > div > div:nth-of-type(3) .date-day', $crawler);
     }
 
-    $this->assertElementText($day_month, 'time > span > span:nth-of-type(1)', $crawler);
-
-    $year = $expected['year'];
-
+    // Assert year(s).
+    $this->assertElementText($expected['year'], 'time > div > div:nth-of-type(2) .year-start', $crawler);
     if (isset($expected['end_year']) && $expected['year'] !== $expected['end_year']) {
-      $year .= ' - ' . $expected['end_year'];
+      $this->assertElementText($expected['end_year'], 'time > div > div:nth-of-type(2) .year-end', $crawler);
     }
 
-    $this->assertElementText($year, 'time > span > span:nth-of-type(2)', $crawler);
+    // Assert datetime attribute.
     $this->assertElementAttribute($expected['date_time'] ?? NULL, 'time', 'datetime', $crawler);
   }
 

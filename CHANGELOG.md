@@ -1,11 +1,34 @@
 # Change Log
 
+## [1.23.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.23.0) (2025-05-31)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.22.0...1.23.0)
+
+**Merged pull requests:**
+
+- OEL-3820: Added flex-end class to img in featured media. [\#485](https://github.com/openeuropa/oe_bootstrap_theme/pull/485) ([tibi2303](https://github.com/tibi2303))
+- OEL-3731: Make sure landmarks are unique. [\#484](https://github.com/openeuropa/oe_bootstrap_theme/pull/484) ([vengador](https://github.com/vengador))
+- ELA-1304: Card with new date block display. [\#470](https://github.com/openeuropa/oe_bootstrap_theme/pull/470) ([Aporie](https://github.com/Aporie))
+- EWPP-4655: Support D11 [\#460](https://github.com/openeuropa/oe_bootstrap_theme/pull/460) ([msnassar](https://github.com/msnassar))
+
+## [1.22.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.22.0) (2025-05-19)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.21.0...1.22.0)
+
+**Merged pull requests:**
+
+- Prepare release 1.22.0 [\#483](https://github.com/openeuropa/oe_bootstrap_theme/pull/483) ([tibi2303](https://github.com/tibi2303))
+- OEL-0000: Update bcl. [\#478](https://github.com/openeuropa/oe_bootstrap_theme/pull/478) ([tibi2303](https://github.com/tibi2303))
+- OEL-0000: Update oe\_bt. [\#477](https://github.com/openeuropa/oe_bootstrap_theme/pull/477) ([tibi2303](https://github.com/tibi2303))
+- OEL-0000: Updated bcl. [\#474](https://github.com/openeuropa/oe_bootstrap_theme/pull/474) ([tibi2303](https://github.com/tibi2303))
+- OEL-3081: Update BCL [\#472](https://github.com/openeuropa/oe_bootstrap_theme/pull/472) ([piotrsmykaj](https://github.com/piotrsmykaj))
+
 ## [1.21.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.21.0) (2025-03-27)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.20.0...1.21.0)
 
 **Merged pull requests:**
 
+- Prepare release 1.21.0 [\#469](https://github.com/openeuropa/oe_bootstrap_theme/pull/469) ([tibi2303](https://github.com/tibi2303))
 - OEL-3691: Fixed routed issue and added test. [\#466](https://github.com/openeuropa/oe_bootstrap_theme/pull/466) ([tibi2303](https://github.com/tibi2303))
 
 ## [1.20.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.20.0) (2025-03-17)

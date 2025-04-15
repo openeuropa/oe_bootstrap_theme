@@ -52,7 +52,7 @@ class MenuPreprocessTest extends KernelTestBase {
   /**
    * Provides test cases for testMenuLink().
    */
-  public function menuLinkProvider(): array {
+  public static function menuLinkProvider(): array {
     return [
       'Active link with custom class' => [
         [

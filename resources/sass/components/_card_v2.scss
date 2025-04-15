@@ -1,6 +1,12 @@
 // Custom style for Card v2.
 // -----------------------------------------------------------------------------
 .card.v2 {
+  &:has(.stretched-link) {
+    a:not(.stretched-link) {
+      position: relative;
+      z-index: 1;
+    }
+  }
   .card-header {
     order: 1;
   }
