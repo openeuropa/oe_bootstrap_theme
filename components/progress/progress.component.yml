@@ -1,0 +1,45 @@
+name: Progress
+description: 'Indicate the progress as a bar. For more information visit: https://getbootstrap.com/docs/5.0/components/progress/'
+slots:
+  label:
+    title: Label
+    description: 'Text before the progress bar.'
+  progress:
+    title: Progress
+    description: 'The progress value for the bar.'
+  min:
+    title: Minimum
+    description: 'Minimum value shown in the progress bar.'
+  max:
+    title: Maximum
+    description: 'Maximum value shown in the progress bar.'
+  text:
+    title: Text
+    description: 'Text inside the progress bar.'
+  message:
+    title: Message
+    description: 'Optional description text below the progress bar.'
+props:
+  type: object
+  properties:
+    style:
+      title: 'Bar style'
+      description: 'Set the bar style:'
+      type: string
+      enum:
+        - primary
+        - secondary
+        - success
+        - danger
+        - warning
+        - info
+        - light
+        - dark
+    striped:
+      title: Striped
+      description: 'Stripped style for the progress bar. Defaults to false.'
+      type: boolean
+    animated:
+      title: Animated
+      description: 'Animation on striped bar. Defaults to false.'
+      type: boolean

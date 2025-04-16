@@ -1,0 +1,10 @@
+name: Preview
+slots:
+  title: 'An offcanvas title'
+  body: 'An interesting content for this offcanvas'
+  toggle:
+    label: Toggle
+    icon: filter
+props:
+  placement: start
+  backdrop: true

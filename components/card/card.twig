@@ -1,0 +1,63 @@
+{#
+/**
+ * @file
+ * Card pattern.
+ */
+#}
+{% apply spaceless %}
+{% set _content %}
+  {% if meta is not empty %}
+    {# Use negative margin to compensate for me-3 on each item. #}
+    <div class="mt-3 me-n3">
+      {% for _meta_item in meta %}
+        {% if _meta_item is not empty %}
+          <span class="text-muted me-3">{{ _meta_item }}</span>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% set _rendered_content %}
+    {{ content }}
+  {% endset %}
+  {% if _rendered_content|trim is not empty %}
+    <div class="mt-3">{{ _rendered_content }}</div>
+  {% endif %}
+{% endset %}
+{% set _badges = [] %}
+{% if badges is not empty %}
+  {% for item in badges %}
+    {% set _badges = _badges|merge([{
+      outline: true,
+      rounded_pill: true,
+    }|merge(item)]) %}
+  {% endfor %}
+{% endif %}
+{% include '@oe-bcl/card' with {
+  'horizontal': orientation == 'horizontal',
+  'horizontal_grid': (orientation == 'horizontal') ? {
+    left_col_classes: 'col-4',
+    right_col_classes: 'col-8',
+    gutter: 0,
+  } : {},
+  'title': title,
+  'title_tag': title_tag,
+  'subtitle': (subtitle is not empty) ? {
+    'content': subtitle,
+  } : {},
+  'text': (text is not empty) ? {
+    'content': text,
+    'classes': 'mt-2',
+    'tag': 'div',
+  } : {},
+  'content': _content,
+  'image': image ? {
+    'path': image.src,
+    'alt': image.alt,
+  },
+  'date': date|default({}),
+  'card_header': header,
+  'card_footer': footer,
+  'badges': _badges,
+  'attributes': attributes,
+} only %}
+{% endapply %}

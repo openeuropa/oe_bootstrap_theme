@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Description list pattern.
+ */
+#}
+{% include '@oe-bcl/description-list' with {
+  'title': title,
+  'title_tag': title_tag,
+  'items': items,
+  'variant': orientation,
+  'attributes': attributes,
+} only %}

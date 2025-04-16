@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Navbar pattern.
+ */
+#}
+
+{% extends '@oe-bcl/navbar' %}
+
+{% set color_set = color_scheme|default('light') %}
+{% if background ?? true %}
+  {% set background = color_set %}
+{% endif %}
+{% if not expanded_breakpoint %}
+  {% set disable_collapse = true %}
+{% endif %}
+{% set expand = expanded_breakpoint|default('lg') %}
+
+{% block branding %}
+  {{ branding }}
+{% endblock %}
+
+{% block navigation %}
+  {{ navigation }}
+{% endblock %}
+
+{% block right %}
+  {{ right }}
+{% endblock %}

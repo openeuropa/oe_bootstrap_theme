@@ -1,0 +1,10 @@
+name: Preview
+slots:
+  label: 'This is the label of the progress bar'
+  progress: 50
+  max: 100
+  text: 50%
+props:
+  style: primary
+  striped: true
+  animated: true

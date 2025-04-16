@@ -1,0 +1,63 @@
+name: 'Card layout'
+description: 'In addition to styling the content within cards, Bootstrap includes a few options for laying out series of cards. For more information: https://getbootstrap.com/docs/5.0/components/card/#card-layout'
+variants:
+  group:
+    title: Group
+    description: 'Use card groups to render cards as a single, attached element with equal width and height columns.'
+  grid:
+    title: Grid
+    description: 'Use the Bootstrap grid system and its classes to control how many grid columns (wrapped around your cards) are shown per row.'
+  masonry:
+    title: Masonry
+    description: 'It works by placing elements in optimal position based on available vertical space.'
+slots:
+  items:
+    title: 'Card items'
+    description: 'An array of card pattern items.'
+props:
+  type: object
+  properties:
+    grid_columns:
+      title: 'Grid columns'
+      description: 'Number of grid columns:'
+      type: integer
+      enum:
+        - 1
+        - 2
+        - 3
+      'meta:enum':
+        1: '1 (default)'
+        2: '2'
+        3: '3'
+    responsiveness:
+      title: Responsiveness
+      description: 'Pick a maximum breakpoint with which to have a responsive layout up to by using:'
+      type: string
+      enum:
+        - sm
+        - md
+        - lg
+        - xl
+        - xxl
+    responsive_columns:
+      title: 'Responsive columns'
+      description: 'Number of responsive columns:'
+      type: integer
+      enum:
+        - 2
+        - 3
+    gutter:
+      title: Gutter
+      description: 'Select the gutter between cards:'
+      type: integer
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+    equal_height:
+      title: 'Equal height'
+      description: 'If true, all cards will have the same height. Defaults to false.'
+      type: boolean
