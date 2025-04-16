@@ -1,0 +1,5 @@
+name: Preview
+slots:
+  heading: 'Well done!'
+  message: 'A simple alert—check it out!'
+  icon: info-circle

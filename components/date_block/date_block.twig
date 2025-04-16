@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Date block pattern.
+ */
+#}
+
+{% include '@oe-bcl/date-block' with {
+  'day': date|date('d'),
+  'month': date|date('M'),
+  'year': date|date('Y'),
+  'date_time': date|date('Y-m-d'),
+  'attributes': attributes,
+} only %}

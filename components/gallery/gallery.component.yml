@@ -1,0 +1,12 @@
+name: Gallery
+description: 'A collection of images and videos.'
+slots:
+  title:
+    title: Title
+    description: 'Title of the gallery.'
+  title_tag:
+    title: 'Title tag'
+    description: 'The tag to use for the title. Defaults to h2.'
+  items:
+    title: Items
+    description: 'A list of '

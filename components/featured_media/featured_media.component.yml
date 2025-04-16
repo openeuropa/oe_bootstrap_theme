@@ -1,0 +1,36 @@
+name: 'Featured Media'
+description: 'Pattern used for the presentation of Featured media paragraph. Media types can be iframe, video, image or featured item (media + text).'
+slots:
+  caption:
+    title: Caption
+    description: 'Description of the featured media.'
+  embedded_media:
+    title: 'Embedded media'
+    description: 'The embedded media.'
+  image:
+    title: Image
+    description: 'The image for the image variant.'
+  ratio:
+    title: Ratio
+    description: 'The embedded media aspect ratio. One of 1x1, 4x3, 16x9 or 21x9.'
+  link:
+    title: Link
+    description: 'Call to action link with icon. A link pattern definition must be passed.'
+  title:
+    title: Title
+    description: 'Title of the featured media.'
+  title_tag:
+    title: 'Title tag'
+    description: 'Title tag of the featured media. Defaults to h2'
+  subtitle_tag:
+    title: 'Subtitle tag'
+    description: 'Subtitle tag of the featured media. Defaults to h3'
+  subtitle:
+    title: Subtitle
+    description: 'The title, displayed below the title but before the text.'
+  text:
+    title: 'Full text'
+    description: 'The full rich text.'
+  text_position:
+    title: 'Text position'
+    description: 'The position of the text when present. Either left or right. Defaults to left.'

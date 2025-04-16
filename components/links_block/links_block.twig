@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Links block pattern.
+ */
+#}
+{% include '@oe-bcl/links-block' with {
+  background: background,
+  variant: orientation,
+  title: title,
+  title_tag: title_tag,
+  links: links,
+  attributes: attributes,
+} only %}

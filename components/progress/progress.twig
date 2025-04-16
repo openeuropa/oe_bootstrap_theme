@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Progress pattern.
+ */
+#}
+{% include '@oe-bcl/progress' with {
+  'progress': progress,
+  'min': min,
+  'max': max,
+  'message': message,
+  'striped': striped,
+  'animated': animated,
+  'label': label,
+  'variant': style,
+  'bar_label': text,
+  'attributes': attributes,
+} only %}

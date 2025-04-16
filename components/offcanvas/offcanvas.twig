@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Offcanvas pattern.
+ */
+#}
+{% block offcanvas %}
+{% include '@oe-bcl/offcanvas' with {
+  'title': title,
+  'placement': placement,
+  'id': offcanvas_id,
+  'body': body,
+  'with_body_scroll': body_scroll,
+  'with_backdrop': backdrop,
+  'attributes': attributes,
+  'responsiveness': 'lg'
+} only %}
+{% endblock %}
+
+{% block toggle_button %}
+{% if toggle is not empty %}
+  {% set _toggle_attributes = toggle.attributes|default({}) %}
+  {% set _toggle_attributes = _toggle_attributes|merge({
+    'data-bs-toggle': 'offcanvas',
+    'data-bs-target': '#' ~  offcanvas_id,
+    'aria-controls': offcanvas_id
+  }) %}
+  {% set _toggle = toggle|merge({
+    attributes: _toggle_attributes
+  }) %}
+  {{ pattern('button', _toggle) }}
+{% endif %}
+{% endblock %}

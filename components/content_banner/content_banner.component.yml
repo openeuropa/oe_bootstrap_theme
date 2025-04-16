@@ -1,0 +1,33 @@
+name: 'Content banner'
+description: 'Shows the content summary along with the title, image and badges.'
+slots:
+  background:
+    title: Background
+    description: 'Set a gray or white background at the content banner. Defaults to white.'
+  image:
+    title: Image
+    description: 'Image of the content.'
+  image_size:
+    title: 'Image size'
+    description: 'The size of the images. Allowed values: md, lg, xl. Defaults to lg.'
+  title:
+    title: Title
+    description: 'Title of the content banner.'
+  title_tag:
+    title: 'Title tag'
+    description: 'The tag to use for the title. Defaults to h1.'
+  action_bar:
+    title: 'Action bar region'
+    description: 'Action bar region. E.g. for action buttons.'
+  content:
+    title: Content
+    description: 'Text with the summary of the content.'
+  meta:
+    title: Meta
+    description: 'Miscellaneous information as date, author, etc.'
+  badges:
+    title: Badges
+    description: 'List of badges.'
+  links:
+    title: Links
+    description: 'List of links.'

@@ -1,0 +1,14 @@
+name: Preview
+slots:
+  title: 'EU Budget for the future'
+  description: 'Innovation, economy, environment and geopolitics'
+  call_to_action:
+    label: Subscribe
+    path: 'https://example.com'
+    link_style: warning
+    icon_position: after
+    icon:
+      name: chevron-right
+  image: 'https://picsum.photos/1000/500'
+props:
+  centered: true

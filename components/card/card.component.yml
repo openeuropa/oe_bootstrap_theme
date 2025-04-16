@@ -1,0 +1,46 @@
+name: Card
+description: 'A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. For more information: https://v5.getbootstrap.com/docs/5.0/components/card'
+variants:
+  default:
+    title: Default
+    description: 'Standard bootstrap card.'
+  search:
+    title: Search
+    description: 'Card with special behaviour for print search results items.'
+slots:
+  orientation:
+    title: Orientation
+    description: 'Can be set to horizontal or vertical. Defaults to vertical.'
+  title:
+    title: Title
+    description: 'Title of the card.'
+  title_tag:
+    title: 'Title tag'
+    description: 'Title tag of the card. Defaults to h1.'
+  subtitle:
+    title: Subtitle
+    description: 'Card subtitle.'
+  text:
+    title: Text
+    description: 'Card text.'
+  image:
+    title: Image
+    description: 'Image for the card. Optional.'
+  date:
+    title: 'Date block'
+    description: 'If set, presents a date block that uses the same parameters as the bcl date-block pattern. Optional.'
+  meta:
+    title: 'Meta items'
+    description: 'Date or other meta information.'
+  content:
+    title: Content
+    description: 'Card content.'
+  header:
+    title: 'Card header'
+    description: 'Card header content.'
+  footer:
+    title: 'Card footer'
+    description: 'Card footer content.'
+  badges:
+    title: Badges
+    description: 'List of badges for the card.'
