@@ -284,6 +284,9 @@ class TwigExtension extends AbstractExtension {
    *   The link render array.
    */
   public function bclLink(Environment $env, $label, $path, Attribute $attributes): array {
+    if (is_array($path) && isset($path['#children'])) {
+      $path = $path['#children']?->__toString();
+    }
     if (is_string($path)) {
       // The text has been processed by twig already, convert it to a safe
       // object for the render system.
