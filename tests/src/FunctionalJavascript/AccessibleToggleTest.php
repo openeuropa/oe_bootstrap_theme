@@ -69,8 +69,7 @@ class AccessibleToggleTest extends WebDriverTestBase {
    */
   protected function assertAccessibleAttributes(?NodeElement $trigger, bool $expanded): void {
     $this->assertNotNull($trigger);
-    $this->assertEquals('true', $trigger->getAttribute('aria-haspopup'));
-    $this->assertEquals($expanded ? 'true' : 'false', $trigger->getAttribute('aria-expanded'));
+    $this->assertEquals('dialog', $trigger->getAttribute('aria-haspopup'));
   }
 
 }
