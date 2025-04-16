@@ -1,0 +1,16 @@
+name: Preview
+slots:
+  caption: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.'
+  image:
+    src: 'https://picsum.photos/1200/600/'
+    alt: 'Alternative text for paragraph image'
+    name: Example
+  link:
+    label: 'View all'
+    path: '#example'
+  title: 'This is the title of this featured media.'
+  title_tag: h2
+  subtitle_tag: h3
+  subtitle: 'Lorem ipsum'
+  text:
+    '#markup': '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non enim iam stirpis bonum quaeret, sed animalis. Ego vero volo in virtute vim esse quam maximam; <b>A mene tu?</b> Quid, quod res alia tota est? Duo Reges: constructio interrete.</p>'

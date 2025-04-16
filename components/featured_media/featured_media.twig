@@ -1,0 +1,76 @@
+{#
+/**
+ * @file
+ * Featured media pattern.
+ */
+#}
+{% macro featured_media(embedded_media, image, caption, ratio) %}
+  {% include '@oe-bcl/featured-media' with {
+    'embedded_media': embedded_media,
+    'image': image,
+    'content': caption,
+    'content_classes': 'bg-light p-3',
+    'ratio': ratio,
+  } only %}
+{% endmacro %}
+
+<div{{ attributes.addClass('bcl-featured-media') }}>
+  {% if subtitle or text or link %}
+    {% set text_alignment_class = 'order-1' %}
+    {% set video_alignment_class = 'order-2' %}
+    {% if text_position == 'right' %}
+      {% set text_alignment_class = 'order-2' %}
+      {% set video_alignment_class = 'order-1' %}
+    {% endif %}
+
+    {# Backward compatibily setting: Text always on top in mobile viewports. #}
+    {% if featured_media_mobile_text_top %}
+      {% set text_alignment_class = 'order-md-1' %}
+      {% set video_alignment_class = 'order-md-2' %}
+      {% if text_position == 'right' %}
+        {% set text_alignment_class = 'order-md-2' %}
+        {% set video_alignment_class = 'order-md-1' %}
+      {% endif %}
+    {% endif %}
+
+    {%- if title is not empty -%}
+      {% include '@oe-bcl/heading' with {
+        title: title,
+        title_tag: title_tag|default('h2'),
+        attributes: create_attribute().addClass('mb-4'),
+      } only %}
+    {%- endif -%}
+    <div class="row">
+      <div class="col-12 col-md-6 {{ text_alignment_class }}">
+        {% if subtitle %}
+          {% if subtitle_tag is not empty %}
+            {% set _subtitle_tag = subtitle_tag %}
+          {% elseif featured_media_subtitle_tag_h5 %}
+            {% set _subtitle_tag = 'h5' %}
+          {% else %}
+            {% set _subtitle_tag = title is not empty ? 'h3' : 'h2' %}
+          {% endif %}
+          <{{ _subtitle_tag }} class="text-secondary">{{ subtitle }}</{{ _subtitle_tag }}>
+        {% endif %}
+        {{ text }}
+        {% if link %}
+          {{ pattern('link', {
+            label: link.label,
+            path: link.path,
+            variant: 'link',
+            icon: link.icon
+          }) }}
+        {% endif %}
+      </div>
+      <div class="col-12 col-md-6 {{ video_alignment_class }}">
+        {{ _self.featured_media(embedded_media, image, caption, ratio) }}
+      </div>
+    </div>
+  {% else %}
+    <div class="row">
+      <div class="col-12 col-md-4">
+        {{ _self.featured_media(embedded_media, image, caption, ratio) }}
+      </div>
+    </div>
+  {% endif %}
+</div>

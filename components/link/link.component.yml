@@ -1,0 +1,37 @@
+name: Link
+description: 'A simple link.'
+slots:
+  label:
+    title: Label
+    description: 'The button label'
+  path:
+    title: URL
+    description: 'The button URL (optional).'
+  icon:
+    title: Icon
+    description: 'An icon name or an icon array definition (optional).'
+props:
+  type: object
+  properties:
+    disabled:
+      title: Disabled
+      description: 'When enabled, sets the link as disabled. Defaults to false.'
+      type: boolean
+    standalone:
+      title: Standalone
+      description: 'When enabled, adds extra class to underline the link item when hover. Defaults to false.'
+      type: boolean
+    icon_position:
+      title: 'Icon position'
+      description: 'The position of the icon in relation to the text of the link:'
+      type: string
+      enum:
+        - before
+        - after
+      'meta:enum':
+        before: before
+        after: 'after (default)'
+    remove_icon_spacers:
+      title: 'Remove icon spacers'
+      description: 'When enabled, prevents margins to be added to the icon. Defaults to false.'
+      type: boolean

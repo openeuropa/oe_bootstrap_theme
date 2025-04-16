@@ -1,0 +1,4 @@
+name: Preview
+slots:
+  label: Submit
+  icon: arrow-right

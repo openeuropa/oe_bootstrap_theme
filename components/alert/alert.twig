@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Alert component.
+ */
+#}
+{% include '@oe-bcl/alert' with {
+  'heading': heading,
+  'message': message,
+  'variant': variant,
+  'dismissible': dismissible,
+  'animated_dismiss': animated_dismiss,
+  'icon_path': bcl_icon_path,
+  'icon_name': icon,
+  'attributes': attributes,
+} only %}

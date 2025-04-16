@@ -1,0 +1,56 @@
+name: Preview
+slots:
+  title: 'This is the listing title'
+  link:
+    label: 'European Commission'
+    path: 'https://link-1.com'
+  items:
+    -
+      title: 'Card Title 1'
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+      image:
+        src: 'https://picsum.photos/seed/1002/600/400'
+        alt: 'alt img'
+      content:
+        '#markup': '<div> <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span> <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 October 2019</span> </div>'
+    -
+      title:
+        '#markup': '<a href="#" class="standalone">Card title 2 with link markup</a>'
+      text: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+      image:
+        src: 'https://picsum.photos/seed/1003/600/400'
+        alt: 'alt img'
+      content:
+        '#markup': '<div> <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span> <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 October 2019</span> </div>'
+    -
+      title: 'Card title 3'
+      text: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+      image:
+        src: 'https://picsum.photos/seed/1004/600/400'
+        alt: 'alt img'
+      content:
+        '#markup': '<div> <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span> <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 October 2019</span> </div>'
+    -
+      title: 'Card title 4'
+      text: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+      image:
+        src: 'https://picsum.photos/seed/1005/600/400'
+        alt: 'alt img'
+      content:
+        '#markup': '<div> <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span> <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 October 2019</span> </div>'
+    -
+      title: 'Card title 5'
+      text: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+      image:
+        src: 'https://picsum.photos/seed/1006/600/400'
+        alt: 'alt img'
+      content:
+        '#markup': '<div> <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span> <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 October 2019</span> </div>'
+    -
+      title: 'Card title 6'
+      text: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+      image:
+        src: 'https://picsum.photos/seed/1007/600/400'
+        alt: 'alt img'
+      content:
+        '#markup': '<div> <span class="text-muted d-md-inline d-block me-4 mb-2 mb-md-0">Article</span> <span class="d-md-inline d-block text-muted mb-2 mb-md-0">17 October 2019</span> </div>'

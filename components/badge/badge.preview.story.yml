@@ -1,0 +1,7 @@
+name: Preview
+slots:
+  label: New
+  url: 'https://europa.eu'
+  title: 'European website.'
+props:
+  dismissible: true

@@ -1,0 +1,23 @@
+name: Preview
+slots:
+  title: 'Modal title'
+  show_close_button: true
+  body: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<p>'
+  footer:
+    -
+      type: html_tag
+      tag: button
+      attributes:
+        class: 'btn btn-secondary'
+        data-bs-dismiss: modal
+      value: Close
+    -
+      type: html_tag
+      tag: button
+      attributes:
+        class: 'btn btn-primary'
+      value: 'Save changes'
+  toggle:
+    label: 'Show modal'
+props:
+  size: lg

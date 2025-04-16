@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Banner pattern.
+ */
+#}
+{% block attributes %}
+  {% set attributes = attributes.addClass([
+      'bg-lighter',
+      'text-dark',
+    ])
+  %}
+{% endblock %}
+{% if centered  %}
+  {% set attributes = attributes.addClass(['text-center'])%}
+{% endif %}
+{% if call_to_action %}
+  {% set call_to_action = call_to_action|merge(
+    {'variant': call_to_action.link_style}
+  ) %}
+{% endif %}
+{% include '@oe-bcl/banner' with {
+  shade: variant == 'image_shade' ? true : shade,
+  hero: hero,
+  full_width: full_width,
+  centered: centered,
+  title: title,
+  title_tag: title_tag,
+  description: description,
+  link: call_to_action,
+  image: variant == 'image' or variant == 'image_shade' ? image : '' ,
+  content_classes: content_classes,
+  attributes: attributes,
+} only %}

@@ -1,0 +1,18 @@
+name: 'Fact and Figures'
+description: 'Fact and Figures pattern used for the paragraph of same type.'
+slots:
+  title:
+    title: Title
+    description: 'Title of the facts & figures section.'
+  title_tag:
+    title: 'Title tag'
+    description: 'The tag to use for the title. Defaults to h2.'
+  columns:
+    title: Columns
+    description: 'One, two or three columns layout for responsive. Defaults to 3.'
+  items:
+    title: Items
+    description: 'List of facts, with icon, title, subtitle and content.'
+  link:
+    title: Link
+    description: 'Additional link to be displayed after facts. A link pattern definition must be passed.'

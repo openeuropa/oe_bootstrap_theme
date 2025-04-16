@@ -1,0 +1,16 @@
+name: Dropdown
+description: 'Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. For more information visit: https://v5.getbootstrap.com/docs/5.0/components/dropdowns/'
+slots:
+  button_label:
+    title: 'Dropdown button label'
+    description: 'The label to show in the toggle button.'
+  items:
+    title: 'Dropdown items'
+    description: 'An array of dropdown items.'
+props:
+  type: object
+  properties:
+    dark_mode:
+      title: 'Dark mode'
+      description: 'When enabled, sets dark mode. Defaults to false.'
+      type: boolean

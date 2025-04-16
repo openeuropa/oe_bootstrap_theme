@@ -1,0 +1,54 @@
+name: 'Card V2'
+description: 'A card is a flexible and extensible content container. The V2 leaves more possibility for content and render items as we transformed all the content areas into render options. https://v5.getbootstrap.com/docs/5.0/components/card'
+group: 'Version 2.x'
+variants:
+  default:
+    title: Default
+    description: 'Standard bootstrap card.'
+  horizontal:
+    title: Horizontal
+    description: 'Card shown horizontal with image on the left and content on the right.'
+slots:
+  title:
+    title: Title
+    description: 'Card title. Supports markup, e.g. for links.'
+  media:
+    title: Media
+    description: 'Media for the card. Optional.'
+  content:
+    title: Content
+    description: 'Card content.'
+  header:
+    title: Header
+    description: 'Card header content. Optional.'
+  footer:
+    title: Footer
+    description: 'Card footer content. Optional.'
+props:
+  type: object
+  properties:
+    tag:
+      title: Tag
+      description: 'The tag to use for the card main wrapper. Defaults to "article".'
+      type: string
+      default: article
+    attributes:
+      title: 'Card attributes'
+      description: 'Extra attributes for the card'
+      $ref: 'ui-patterns://attributes'
+    media_attributes:
+      title: 'Media attributes'
+      description: 'Extra attributes for the card media'
+      $ref: 'ui-patterns://attributes'
+    content_attributes:
+      title: 'Content attributes'
+      description: 'Extra attributes for the card content'
+      $ref: 'ui-patterns://attributes'
+    header_attributes:
+      title: 'Header attributes'
+      description: 'Extra attributes for the card header'
+      $ref: 'ui-patterns://attributes'
+    footer_attributes:
+      title: 'Footer attributes'
+      description: 'Extra attributes for the card footer'
+      $ref: 'ui-patterns://attributes'

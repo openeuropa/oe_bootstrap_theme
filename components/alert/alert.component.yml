@@ -1,0 +1,42 @@
+name: Alert
+description: 'Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. https://v5.getbootstrap.com/docs/5.0/components/alerts/'
+variants:
+  primary:
+    title: 'Primary (default)'
+  secondary:
+    title: Secondary
+  success:
+    title: Success
+  danger:
+    title: Danger
+  warning:
+    title: Warning
+  info:
+    title: Info
+  light:
+    title: Light
+  dark:
+    title: Dark
+  link:
+    title: Link
+slots:
+  heading:
+    title: Heading
+    description: 'The alert heading. Optional.'
+  message:
+    title: Message
+    description: 'The alert message.'
+  icon:
+    title: 'Icon name'
+    description: 'Add an icon to the alert. Optional.'
+props:
+  type: object
+  properties:
+    dismissible:
+      title: Dismissible
+      description: 'Add close button to dismiss the alert inline. Defaults to true.'
+      type: boolean
+    animated_dismiss:
+      title: 'Animated dismiss'
+      description: 'Add fade animation to the dismissible alert. Defaults to true.'
+      type: boolean
