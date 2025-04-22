@@ -7,6 +7,7 @@ dependencies:
   - drupal:responsive_image
   - ui_patterns:ui_patterns
   - ui_patterns:ui_patterns_library
+  - ui_patterns:ui_patterns_legacy
   - ui_patterns_settings:ui_patterns_settings
 config_devel:
   install:
