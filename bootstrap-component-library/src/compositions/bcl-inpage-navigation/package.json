@@ -1,0 +1,30 @@
+{
+  "name": "@openeuropa/bcl-inpage-navigation",
+  "author": "European Commission",
+  "license": "EUPL-1.2",
+  "version": "1.10.0",
+  "description": "OE - BCL inpage navigation",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@openeuropa/bcl-navigation": "^1.10.0"
+  },
+  "devDependencies": {
+    "lorem-ipsum": "2.0.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openeuropa/bootstrap-component-library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/openeuropa/bootstrap-component-library.git/issues"
+  },
+  "homepage": "https://github.com/openeuropa/bootstrap-component-library",
+  "keywords": [
+    "openeuropa",
+    "bootstrap-component-library",
+    "design-system",
+    "twig"
+  ]
+}

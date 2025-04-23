@@ -1,0 +1,426 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OE - navigation renders correctly 1`] = `
+<jest>
+  <nav
+    class="nav nav-pills"
+  >
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 1
+    </a>
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 2
+    </a>
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 3
+    </a>
+    <a
+      class="nav-link active"
+      href="/example.html"
+    >
+      I'm a link active
+    </a>
+    <a
+      aria-disabled="true"
+      class="nav-link disabled"
+      href="/example.html"
+      tabindex="-1"
+    >
+      I'm a link disabled
+    </a>
+  </nav>
+</jest>
+`;
+
+exports[`OE - navigation renders correctly as list 1`] = `
+<jest>
+  <ul
+    class="nav nav-pills"
+  >
+    <li
+      class="nav-item"
+    >
+      <a
+        class="nav-link"
+        href="/example.html"
+      >
+        I'm a link 1
+      </a>
+    </li>
+    <li
+      class="nav-item"
+    >
+      <a
+        class="nav-link"
+        href="/example.html"
+      >
+        I'm a link 2
+      </a>
+    </li>
+    <li
+      class="nav-item"
+    >
+      <a
+        class="nav-link"
+        href="/example.html"
+      >
+        I'm a link 3
+      </a>
+    </li>
+    <li
+      class="nav-item"
+    >
+      <a
+        class="nav-link active"
+        href="/example.html"
+      >
+        I'm a link active
+      </a>
+    </li>
+    <li
+      class="nav-item"
+    >
+      <a
+        aria-disabled="true"
+        class="nav-link disabled"
+        href="/example.html"
+        tabindex="-1"
+      >
+        I'm a link disabled
+      </a>
+    </li>
+  </ul>
+</jest>
+`;
+
+exports[`OE - navigation renders correctly full width 1`] = `
+<jest>
+  <nav
+    class="nav nav-pills nav-fill"
+  >
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 1
+    </a>
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 2
+    </a>
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 3
+    </a>
+    <a
+      class="nav-link active"
+      href="/example.html"
+    >
+      I'm a link active
+    </a>
+    <a
+      aria-disabled="true"
+      class="nav-link disabled"
+      href="/example.html"
+      tabindex="-1"
+    >
+      I'm a link disabled
+    </a>
+  </nav>
+</jest>
+`;
+
+exports[`OE - navigation renders correctly on vertical 1`] = `
+<jest>
+  <nav
+    class="nav nav-pills flex-column"
+  >
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 1
+    </a>
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 2
+    </a>
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 3
+    </a>
+    <a
+      class="nav-link active"
+      href="/example.html"
+    >
+      I'm a link active
+    </a>
+    <a
+      aria-disabled="true"
+      class="nav-link disabled"
+      href="/example.html"
+      tabindex="-1"
+    >
+      I'm a link disabled
+    </a>
+  </nav>
+</jest>
+`;
+
+exports[`OE - navigation renders correctly with custom styles 1`] = `
+<jest>
+  <nav
+    class="nav nav-tabs"
+    role="tablist"
+  >
+    <a
+      class="nav-link"
+      href="/example.html"
+      role="tab"
+    >
+      I'm a link 1
+    </a>
+    <a
+      class="nav-link"
+      href="/example.html"
+      role="tab"
+    >
+      I'm a link 2
+    </a>
+    <a
+      class="nav-link"
+      href="/example.html"
+      role="tab"
+    >
+      I'm a link 3
+    </a>
+    <a
+      class="nav-link active"
+      href="/example.html"
+      role="tab"
+    >
+      I'm a link active
+    </a>
+    <a
+      aria-disabled="true"
+      class="nav-link disabled"
+      href="/example.html"
+      role="tab"
+      tabindex="-1"
+    >
+      I'm a link disabled
+    </a>
+  </nav>
+</jest>
+`;
+
+exports[`OE - navigation renders correctly with elements aligned right 1`] = `
+<jest>
+  <nav
+    class="nav nav-pills justify-content-justify-content-end"
+  >
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 1
+    </a>
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 2
+    </a>
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 3
+    </a>
+    <a
+      class="nav-link active"
+      href="/example.html"
+    >
+      I'm a link active
+    </a>
+    <a
+      aria-disabled="true"
+      class="nav-link disabled"
+      href="/example.html"
+      tabindex="-1"
+    >
+      I'm a link disabled
+    </a>
+  </nav>
+</jest>
+`;
+
+exports[`OE - navigation renders correctly with pills style on elements 1`] = `
+<jest>
+  <nav
+    class="nav nav-pills"
+  >
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 1
+    </a>
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 2
+    </a>
+    <a
+      class="nav-link"
+      href="/example.html"
+    >
+      I'm a link 3
+    </a>
+    <a
+      class="nav-link active"
+      href="/example.html"
+    >
+      I'm a link active
+    </a>
+    <a
+      aria-disabled="true"
+      class="nav-link disabled"
+      href="/example.html"
+      tabindex="-1"
+    >
+      I'm a link disabled
+    </a>
+  </nav>
+</jest>
+`;
+
+exports[`OE - navigation renders correctly with tabs 1`] = `
+<jest>
+  <nav
+    class="nav nav-tabs"
+    role="tablist"
+  >
+    <a
+      aria-controls="first"
+      class="nav-link"
+      data-bs-toggle="tab"
+      href="#first"
+      id="first-tab"
+      role="tab"
+    >
+      I'm a link
+    </a>
+    <button
+      aria-controls="second"
+      autocomplete="off"
+      class="nav-link"
+      data-bs-target="#second"
+      data-bs-toggle="tab"
+      id="second-tab"
+      role="tab"
+      type="button"
+    >
+      I'm a button
+    </button>
+    <button
+      aria-controls="third"
+      aria-disabled="true"
+      autocomplete="off"
+      class="nav-link"
+      data-bs-target="#third"
+      data-bs-toggle="tab"
+      disabled="true"
+      id="third-tab"
+      role="tab"
+      type="button"
+    >
+      I'm a disabled button
+    </button>
+    <button
+      aria-controls="fourth"
+      autocomplete="off"
+      class="nav-link active"
+      data-bs-target="#fourth"
+      data-bs-toggle="tab"
+      id="fourth-tab"
+      role="tab"
+      type="button"
+    >
+      I'm a active button
+    </button>
+  </nav>
+  <div
+    class="tab-content"
+  >
+    <div
+      aria-labelledby="first-tab"
+      class="tab-pane fade"
+      id="first"
+      role="tabpanel"
+    >
+      <p
+        class="mt-4"
+      >
+        This is a demo content for the First Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+    </div>
+    <div
+      aria-labelledby="second-tab"
+      class="tab-pane fade"
+      id="second"
+      role="tabpanel"
+    >
+      <p
+        class="mt-4"
+      >
+        This is a demo content for the Second Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+    </div>
+    <div
+      aria-labelledby="third-tab"
+      class="tab-pane fade"
+      id="third"
+      role="tabpanel"
+    >
+      <p
+        class="mt-4"
+      >
+        This is a demo content for the Third Tab.
+      </p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      <p />
+    </div>
+    <div
+      aria-labelledby="fourth-tab"
+      class="tab-pane fade show active"
+      id="fourth"
+      role="tabpanel"
+    >
+      <p
+        class="mt-4"
+      >
+        This is a demo content for the Fourth Tab. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+    </div>
+  </div>
+</jest>
+`;

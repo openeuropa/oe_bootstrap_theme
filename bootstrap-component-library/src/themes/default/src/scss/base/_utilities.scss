@@ -1,0 +1,159 @@
+$utilities: map-merge(
+  $utilities,
+  (
+    "background-color": map-merge(
+        map-get($utilities, "background-color"),
+        (
+          values: map-merge(
+              map-get(map-get($utilities, "background-color"), "values"),
+              (
+                date: $date,
+              )
+            ),
+        )
+      ),
+    "width": map-merge(
+        map-get($utilities, "width"),
+        (
+          values: map-merge(
+              map-get(map-get($utilities, "width"), "values"),
+              (
+                min-content: min-content,
+              )
+            ),
+        )
+      ),
+    "flex": map-merge(
+        map-get($utilities, "flex"),
+        (
+          values: map-merge(
+              map-get(map-get($utilities, "flex"), "values"),
+              (
+                1: 1,
+                end-100: 1 0 100%,
+              )
+            ),
+        )
+      ),
+    // Extend rounded-top utility.
+    "max-width": map-merge(
+        map-get($utilities, "max-width"),
+        (
+          values: map-merge(
+              map-get(map-get($utilities, "max-width"), "values"),
+              (
+                date: 10rem,
+                col-date: calc(10rem + var(--#{$variable-prefix}gutter-x)),
+                "listing-img": 10rem,
+              )
+            ),
+        )
+      ),
+    // Create responsive classes for padding
+    "padding": map-merge(
+        map-get($utilities, "padding"),
+        (
+          responsive: true,
+        )
+      ),
+    // Create responsive classes for borders
+    "border": map-merge(
+        map-get($utilities, "border"),
+        (
+          responsive: true,
+        )
+      ),
+    "border-top": map-merge(
+        map-get($utilities, "border-top"),
+        (
+          responsive: true,
+        )
+      ),
+    "border-bottom": map-merge(
+        map-get($utilities, "border-bottom"),
+        (
+          responsive: true,
+        )
+      ),
+    // Create medium font weight class
+    "font-weight": map-merge(
+        map-get($utilities, "font-weight"),
+        (
+          values: map-merge(
+              map-get(map-get($utilities, "font-weight"), "values"),
+              (
+                medium: 500,
+              )
+            ),
+        )
+      ),
+  )
+);
+
+/* stylelint-disable no-descending-specificity */
+a {
+  text-underline-offset: 2px;
+
+  &:not(.text-underline-hover):not(.standalone) {
+    text-decoration-color: rgba($primary, 0.3);
+
+    &:visited {
+      text-decoration-color: rgba($purple, 0.3);
+    }
+
+    &:hover {
+      text-decoration-color: currentColor;
+
+      &:visited {
+        text-decoration-color: $purple;
+      }
+    }
+  }
+
+  &.standalone,
+  &.text-underline-hover {
+    text-decoration-color: transparent;
+
+    &:hover {
+      text-decoration-color: currentColor;
+
+      &:visited {
+        text-decoration-color: $purple;
+      }
+    }
+  }
+}
+/* stylelint-enable no-descending-specificity */
+
+svg {
+  fill: currentColor;
+}
+
+@include media-breakpoint-down(md) {
+  .n-mx-container {
+    padding-right: $container-padding-x;
+    padding-left: $container-padding-x;
+    margin-right: -$container-padding-x;
+    margin-left: -$container-padding-x;
+  }
+}
+
+.bg-lighter {
+  background-color: $lighter;
+}
+
+.bg-gray-200 {
+  background-color: $gray-200;
+}
+
+.bg-gray-400 {
+  background-color: $gray-400;
+}
+
+.border-gray-300 {
+  border-color: $gray-300;
+}
+
+.grid-3-9 {
+  grid-template-columns: 25% 75%;
+}

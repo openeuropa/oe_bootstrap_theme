@@ -1,0 +1,23 @@
+{
+  "name": "@openeuropa/bcl-data-modal",
+  "author": "European Commission",
+  "license": "EUPL-1.2",
+  "version": "1.10.0",
+  "description": "OE modal data",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "keywords": [
+    "oe",
+    "component-library",
+    "design-system"
+  ]
+}
