@@ -1,7 +1,7 @@
 import { getTitleControls } from "@openeuropa/bcl-story-utils";
 import drupalAttribute from "drupal-attribute";
 
-import demoData from "@openeuropa/bcl-data-accordion/data";
+import demoData from "@openeuropa/bcl-data-accordion/data.js";
 import accordion from "@openeuropa/bcl-accordion/accordion.html.twig";
 
 const getArgs = (data) => ({

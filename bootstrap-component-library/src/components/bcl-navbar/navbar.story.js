@@ -1,7 +1,7 @@
 import { getVariants, correctPaths } from "@openeuropa/bcl-story-utils";
 import drupalAttribute from "drupal-attribute";
 
-import demoData from "@openeuropa/bcl-data-navbar/data";
+import demoData from "@openeuropa/bcl-data-navbar/data.js";
 import navbar from "@openeuropa/bcl-navbar/navbar.html.twig";
 
 const getArgs = () => ({

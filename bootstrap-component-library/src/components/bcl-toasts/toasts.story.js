@@ -1,4 +1,4 @@
-import demoSingle from "@openeuropa/bcl-data-toasts/data";
+import demoSingle from "@openeuropa/bcl-data-toasts/data.js";
 import demoMultiple from "@openeuropa/bcl-data-toasts/data--multiple";
 import toasts from "@openeuropa/bcl-toast/toasts.html.twig";
 

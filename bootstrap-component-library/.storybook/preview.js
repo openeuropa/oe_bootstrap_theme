@@ -1,3 +1,7 @@
+import { Buffer } from 'buffer';
+
+global.Buffer = Buffer;
+
 export const parameters = {
   a11y: {
     element: "#storybook-root",

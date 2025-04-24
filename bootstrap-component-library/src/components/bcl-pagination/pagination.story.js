@@ -1,6 +1,6 @@
 import { correctPaths } from "@openeuropa/bcl-story-utils";
 
-import demoData from "@openeuropa/bcl-data-pagination/data";
+import demoData from "@openeuropa/bcl-data-pagination/data.js";
 import pagination from "@openeuropa/bcl-pagination/pagination.html.twig";
 
 const getArgs = () => ({

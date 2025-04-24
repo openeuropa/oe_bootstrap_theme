@@ -41,12 +41,8 @@
 
 {% set _classes = _classes|merge(['text-dark']) %}
 
-{% set _icon_classes = [
-  'flex-shrink-0',
-  'me-3',
-  'mt-1',
-  'align-self-start',
-] %}
+{% set _icon_classes = ['flex-shrink-0 me-3 mt-1 align-self-start' ] %}
+
 {% if _variant != 'light' %}
   {% set _icon_classes = _icon_classes|merge(['text-' ~ _variant]) %}
 {% endif %}

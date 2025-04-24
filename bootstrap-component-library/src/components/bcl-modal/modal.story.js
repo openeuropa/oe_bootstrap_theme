@@ -1,4 +1,4 @@
-import demoData from "@openeuropa/bcl-data-modal/data";
+import demoData from "@openeuropa/bcl-data-modal/data.js";
 import modal from "@openeuropa/bcl-modal/modal.html.twig";
 
 const getArgs = () => ({

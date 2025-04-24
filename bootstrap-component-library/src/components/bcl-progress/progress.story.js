@@ -1,6 +1,6 @@
 import { getVariants } from "@openeuropa/bcl-story-utils";
 
-import demoData from "@openeuropa/bcl-data-progress/data";
+import demoData from "@openeuropa/bcl-data-progress/data.js";
 import progress from "@openeuropa/bcl-progress/progress.html.twig";
 
 const getArgs = (data) => ({

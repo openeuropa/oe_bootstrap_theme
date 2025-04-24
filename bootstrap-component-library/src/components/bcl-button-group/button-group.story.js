@@ -1,6 +1,6 @@
 import drupalAttribute from "drupal-attribute";
 
-import demoData from "@openeuropa/bcl-data-button-group/data";
+import demoData from "@openeuropa/bcl-data-button-group/data.js";
 import toolbarData from "@openeuropa/bcl-data-button-group/data--toolbar";
 import inputGroupData from "@openeuropa/bcl-data-button-group/data--input-group";
 import buttonGroup from "@openeuropa/bcl-button-group/button-group.html.twig";

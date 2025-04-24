@@ -1,6 +1,6 @@
 import { correctPaths, getTitleControls } from "@openeuropa/bcl-story-utils";
 
-import dataDefault from "@openeuropa/bcl-timeline/data/data.js";
+import dataDefault from "@openeuropa/bcl-timeline/data.js";
 import timeline from "@openeuropa/bcl-timeline/timeline.html.twig";
 
 const getArgs = (data) => ({
