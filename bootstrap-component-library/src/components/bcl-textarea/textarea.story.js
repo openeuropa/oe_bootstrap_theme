@@ -1,7 +1,7 @@
 import { getFormControls } from "@openeuropa/bcl-story-utils";
 import drupalAttribute from "drupal-attribute";
 
-import demoData from "@openeuropa/bcl-data-textarea/data.js";
+import demoData from "@openeuropa/bcl-data-textarea/data";
 import textarea from "@openeuropa/bcl-textarea/textarea.html.twig";
 
 const getArgs = (data) => ({

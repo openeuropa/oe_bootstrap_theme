@@ -1,6 +1,6 @@
 import { getVariants } from "@openeuropa/bcl-story-utils";
 
-import demoData from "@openeuropa/bcl-data-placeholder/data.js";
+import demoData from "@openeuropa/bcl-data-placeholder/data";
 import placeholder from "@openeuropa/bcl-placeholder/placeholder.html.twig";
 
 const getArgs = (data) => ({

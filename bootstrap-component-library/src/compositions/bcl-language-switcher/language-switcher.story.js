@@ -1,6 +1,6 @@
 import { correctPaths } from "@openeuropa/bcl-story-utils";
 
-import demoData from "@openeuropa/bcl-language-switcher/data.js";
+import demoData from "@openeuropa/bcl-language-switcher/data/data.js";
 import languageSwitcher from "@openeuropa/bcl-language-switcher/language-switcher.html.twig";
 
 export default {

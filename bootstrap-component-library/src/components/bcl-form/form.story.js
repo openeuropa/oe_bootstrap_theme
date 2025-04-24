@@ -1,8 +1,8 @@
-import demoData from "@openeuropa/bcl-data-form/data.js";
-import demoDisabled from "@openeuropa/bcl-data-form/data--disabled.js";
-import demoGrid from "@openeuropa/bcl-data-form/data--grid.js";
-import demoHorizontal from "@openeuropa/bcl-data-form/data--horizontal.js";
-import demoInline from "@openeuropa/bcl-data-form/data--inline.js";
+import demoData from "@openeuropa/bcl-data-form/data";
+import demoDisabled from "@openeuropa/bcl-data-form/data--disabled";
+import demoGrid from "@openeuropa/bcl-data-form/data--grid";
+import demoHorizontal from "@openeuropa/bcl-data-form/data--horizontal";
+import demoInline from "@openeuropa/bcl-data-form/data--inline";
 import form from "@openeuropa/bcl-form/form.html.twig";
 
 export default {

@@ -3,5 +3,8 @@
   "version": "1.10.0",
   "description": "Providing controls for the stories",
   "main": "index.js",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@openeuropa/bcl-theme-default": "workspace:*"
+  }
 }

@@ -1,6 +1,6 @@
 import drupalAttribute from "drupal-attribute";
 
-import demoData from "@openeuropa/bcl-data-offcanvas/data.js";
+import demoData from "@openeuropa/bcl-data-offcanvas/data";
 import offCanvas from "@openeuropa/bcl-offcanvas/offcanvas.html.twig";
 
 const getArgs = (data) => ({

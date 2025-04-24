@@ -23,6 +23,7 @@
     "@ecl/resources-flag-icons": "3.7.1",
     "@openeuropa/bcl-bootstrap": "^1.10.0",
     "@openeuropa/bcl-builder": "^1.10.0",
+    "@openeuropa/bcl-theme-ucpkn": "workspace:*",
     "@openeuropa/bcl-theme-default": "^1.10.0",
     "@openeuropa/bcl-twig-templates": "^1.10.0",
     "@rollup/plugin-replace": "6.0.2",

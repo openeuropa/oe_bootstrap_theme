@@ -1,8 +1,8 @@
 import drupalAttribute from "drupal-attribute";
 
-import demoDataGroup from "@openeuropa/bcl-data-card-layout/data--group.js";
-import demoDataGrid from "@openeuropa/bcl-data-card-layout/data--grid.js";
-import demoDataMasonry from "@openeuropa/bcl-data-card-layout/data--masonry.js";
+import demoDataGroup from "@openeuropa/bcl-data-card-layout/data--group";
+import demoDataGrid from "@openeuropa/bcl-data-card-layout/data--grid";
+import demoDataMasonry from "@openeuropa/bcl-data-card-layout/data--masonry";
 import cardLayout from "@openeuropa/bcl-card-layout/card-layout.html.twig";
 
 const getArgs = (data, type) => {

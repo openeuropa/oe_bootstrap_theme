@@ -9,9 +9,9 @@ import dataHeader from "@openeuropa/bcl-data-header/data--neutral.js";
 import dataFooter from "@openeuropa/bcl-data-footer/data.js";
 import dataBlockquote from "@openeuropa/bcl-data-blockquote/data.js";
 import dataDescriptionList from "@openeuropa/bcl-description-list/data/data.js";
-import dataFactFigures from "@openeuropa/bcl-fact-figures/data.js";
+import dataFactFigures from "@openeuropa/bcl-fact-figures/data/data.js";
 import dataLinksBlock from "@openeuropa/bcl-links-block/data/data.js";
-import dataTimeline from "@openeuropa/bcl-timeline/data.js";
+import dataTimeline from "@openeuropa/bcl-timeline/data/data.js";
 import dataListing from "@openeuropa/bcl-listing/data/listing--default-1-col.js";
 import dataFile from "@openeuropa/bcl-file/data/data.js";
 

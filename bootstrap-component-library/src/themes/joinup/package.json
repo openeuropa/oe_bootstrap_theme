@@ -30,6 +30,7 @@
     "@fontsource/roboto": "5.1.1",
     "@openeuropa/bcl-bootstrap": "^1.10.0",
     "@openeuropa/bcl-builder": "^1.10.0",
+    "@openeuropa/bcl-theme-joinup": "workspace:*",
     "@openeuropa/bcl-theme-default": "^1.10.0",
     "@openeuropa/bcl-twig-templates": "^1.10.0",
     "@rollup/plugin-replace": "6.0.2",

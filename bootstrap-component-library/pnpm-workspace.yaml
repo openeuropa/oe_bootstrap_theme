@@ -1,0 +1,9 @@
+packages:
+  - "bootstrap"
+  - "builder"
+  - "src/data/*"
+  - "src/components/*"
+  - "src/compositions/*"
+  - "tools/**"
+  - "src/themes/*"
+  - "src/themes/**/storybook"

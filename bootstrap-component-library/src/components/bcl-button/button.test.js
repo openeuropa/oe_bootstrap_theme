@@ -5,7 +5,7 @@ import {
 } from "@openeuropa/bcl-test-utils";
 import { axe, toHaveNoViolations } from "jest-axe";
 
-import demoData from "@openeuropa/bcl-data-button/data.js";
+import demoData from "@openeuropa/bcl-data-button/data";
 import toggleDemoData from "@openeuropa/bcl-data-button/data--toggle";
 import popoverDemoData from "@openeuropa/bcl-data-button/data--popover";
 import tooltipDemoData from "@openeuropa/bcl-data-button/data--tooltip";

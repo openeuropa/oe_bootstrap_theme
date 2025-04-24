@@ -1,6 +1,6 @@
 import { correctPaths } from "@openeuropa/bcl-story-utils";
 
-import demoData from "@openeuropa/bcl-data-breadcrumb/data.js";
+import demoData from "@openeuropa/bcl-data-breadcrumb/data";
 import breadcrumb from "@openeuropa/bcl-breadcrumb/breadcrumb.html.twig";
 
 const getArgs = (data) => ({

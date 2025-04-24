@@ -1,9 +1,9 @@
 import { getFormControls } from "@openeuropa/bcl-story-utils";
 import drupalAttribute from "drupal-attribute";
 
-import demoData from "@openeuropa/bcl-data-select/data.js";
-import demoMultiData from "@openeuropa/bcl-data-select/data--multiselect.js";
-import demoSingleData from "@openeuropa/bcl-data-select/data--single.js";
+import demoData from "@openeuropa/bcl-data-select/data";
+import demoMultiData from "@openeuropa/bcl-data-select/data--multiselect";
+import demoSingleData from "@openeuropa/bcl-data-select/data--single";
 import select from "@openeuropa/bcl-select/select.html.twig";
 
 const getArgs = (data) => {

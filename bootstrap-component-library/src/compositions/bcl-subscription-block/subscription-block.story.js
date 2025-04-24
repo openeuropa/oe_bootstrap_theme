@@ -1,7 +1,7 @@
 import { correctPaths } from "@openeuropa/bcl-story-utils";
 
 import subscriptionBlock from "@openeuropa/bcl-subscription-block/subscription-block.html.twig";
-import demoData from "@openeuropa/bcl-subscription-block/data.js";
+import demoData from "@openeuropa/bcl-subscription-block/data/data.js";
 
 export default {
   title: "Compositions/Subscription Block",

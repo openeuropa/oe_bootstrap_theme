@@ -1,0 +1,15 @@
+{
+  "version": "1.10.0",
+  "useNx": false,
+  "npmClient": "pnpm",
+  "packages": [
+    "bootstrap",
+    "builder",
+    "src/data/*",
+    "src/components/*",
+    "src/compositions/*",
+    "tools/**",
+    "src/themes/*",
+    "src/themes/**/storybook"
+  ]
+}

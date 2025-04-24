@@ -3,15 +3,6 @@ const path = require("path");
 
 let stories = ["../bcl-stories/!(test*|deprecated*).story.js"];
 
-const addons = [
-  getAbsolutePath("@storybook/addon-docs"),
-  getAbsolutePath("@storybook/addon-controls"),
-  getAbsolutePath("@storybook/addon-designs"),
-  getAbsolutePath("@storybook/addon-viewport"),
-  getAbsolutePath("@storybook/addon-a11y"),
-  getAbsolutePath("@storybook/addon-webpack5-compiler-babel"),
-];
-
 const webpackFinal = (config) => {
   config.module.rules.push({
     test: /\.twig$/,
@@ -38,7 +29,6 @@ const config = {
 
   staticDirs: ["../../../../../assets/"],
   stories,
-  addons,
   webpackFinal,
 
   features: {

@@ -5,7 +5,7 @@ import {
 } from "@openeuropa/bcl-story-utils";
 import drupalAttribute from "drupal-attribute";
 
-import demoData from "@openeuropa/bcl-data-badge/data.js";
+import demoData from "@openeuropa/bcl-data-badge/data";
 import badge from "@openeuropa/bcl-badge/badge.html.twig";
 
 const getArgs = (data) => ({

@@ -1,6 +1,6 @@
 import drupalAttribute from "drupal-attribute";
 
-import demoData from "@openeuropa/bcl-data-list-group/data.js";
+import demoData from "@openeuropa/bcl-data-list-group/data";
 import actionableDemoData from "@openeuropa/bcl-data-list-group/data--actionable";
 import orderedData from "@openeuropa/bcl-data-list-group/data--ordered";
 import listGroup from "@openeuropa/bcl-list-group/list-group.html.twig";
