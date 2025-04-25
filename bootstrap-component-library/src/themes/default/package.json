@@ -24,7 +24,7 @@
     "@ecl/resources-flag-icons": "3.7.1",
     "@openeuropa/bcl-theme-default": "workspace:*",
     "@openeuropa/bcl-bootstrap": "^1.10.0",
-    "@openeuropa/bcl-builder": "^1.10.0",
+    "@openeuropa/bcl-builder": "workspace:*",
     "@openeuropa/bcl-twig-templates": "^1.10.0",
     "@rollup/plugin-replace": "6.0.2",
     "copyfiles": "2.4.1",

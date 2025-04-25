@@ -4,7 +4,7 @@ const iconList = require("./src/icons/icons");
 const customIconList = require("./src/icons/custom-icons");
 
 const outputFolder = path.resolve(__dirname);
-const nodeModules = "../../../node_modules";
+const nodeModules = "./node_modules";
 
 // SCSS includePaths
 const includePaths = [nodeModules];
@@ -162,17 +162,17 @@ module.exports = {
     {
       from: [`${nodeModules}/flag-icons/flags/**/*.svg`],
       to: path.resolve(outputFolder, "icons/world-flags"),
-      options: { up: 6 },
+      options: { up: 3 },
     },
     {
       from: [`${nodeModules}/@ecl/resources-ec-logo/**/*.svg`],
       to: path.resolve(outputFolder, "logos/ec"),
-      options: { up: 7 },
+      options: { up: 4 },
     },
     {
       from: [`${nodeModules}/@ecl/resources-eu-logo/**/*.svg`],
       to: path.resolve(outputFolder, "logos/eu"),
-      options: { up: 7 },
+      options: { up: 4 },
     },
     {
       from: [

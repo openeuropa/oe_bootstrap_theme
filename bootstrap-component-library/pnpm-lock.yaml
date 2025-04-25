@@ -1165,8 +1165,8 @@ importers:
         specifier: ^1.10.0
         version: 1.10.0
       '@openeuropa/bcl-builder':
-        specifier: ^1.10.0
-        version: 1.10.0(@types/babel__core@7.20.5)(jiti@2.4.2)
+        specifier: workspace:*
+        version: link:../../../builder
       '@openeuropa/bcl-theme-default':
         specifier: workspace:*
         version: 'link:'
