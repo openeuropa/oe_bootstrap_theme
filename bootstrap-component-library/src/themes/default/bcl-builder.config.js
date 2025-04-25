@@ -176,7 +176,7 @@ module.exports = {
     },
     {
       from: [
-        `${nodeModules}/@openeuropa/bcl-twig-templates/templates/**/*.twig`,
+        `../../../src/components/bcl-twig-templates/templates/**/*.twig`,
       ],
       to: path.resolve(outputFolder, "templates"),
       options: { up: 7 },

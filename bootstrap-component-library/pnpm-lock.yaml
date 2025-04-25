@@ -65,6 +65,9 @@ importers:
       css-loader:
         specifier: ^7.1.2
         version: 7.1.2(webpack@5.99.6(esbuild@0.25.3))
+      drupal-attribute:
+        specifier: 1.0.2
+        version: 1.0.2
       eslint:
         specifier: ^9.21.0
         version: 9.25.1(jiti@2.4.2)
@@ -1237,8 +1240,8 @@ importers:
         specifier: 7.0.3
         version: 7.0.3
       drupal-attribute:
-        specifier: 1.1.0
-        version: 1.1.0
+        specifier: 1.0.2
+        version: 1.0.2
       null-loader:
         specifier: 4.0.1
         version: 4.0.1(webpack@5.99.6(esbuild@0.25.3))
@@ -1375,8 +1378,8 @@ importers:
         specifier: 7.0.3
         version: 7.0.3
       drupal-attribute:
-        specifier: 1.1.0
-        version: 1.1.0
+        specifier: 1.0.2
+        version: 1.0.2
       null-loader:
         specifier: 4.0.1
         version: 4.0.1(webpack@5.99.6(esbuild@0.25.3))
@@ -1498,8 +1501,8 @@ importers:
         specifier: 7.0.3
         version: 7.0.3
       drupal-attribute:
-        specifier: 1.1.0
-        version: 1.1.0
+        specifier: 1.0.2
+        version: 1.0.2
       null-loader:
         specifier: 4.0.1
         version: 4.0.1(webpack@5.99.6(esbuild@0.25.3))
@@ -4978,8 +4981,8 @@ packages:
     resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
     engines: {node: '>=12'}
 
-  drupal-attribute@1.1.0:
-    resolution: {integrity: sha512-xVSqSAXk/3Thi1+CyLbcghi7gIWEZYQsA65C4PoFr3EtI1jUPj76xfnCIQspEi4RXj0rGO+dpmp9lvC7SAcWmQ==}
+  drupal-attribute@1.0.2:
+    resolution: {integrity: sha512-jsgfdE3EzN6UFUASPKVr9il68ymytaCAv/EAFLCLe1Wdu0iQ3xWghcpbjiZBJp2hxBG9rjeDt4yMJrW2oTtBwg==}
 
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
@@ -14348,7 +14351,7 @@ snapshots:
 
   dotenv@16.4.7: {}
 
-  drupal-attribute@1.1.0: {}
+  drupal-attribute@1.0.2: {}
 
   dunder-proto@1.0.1:
     dependencies:

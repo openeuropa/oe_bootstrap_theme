@@ -23,21 +23,6 @@ const webpackFinal = async (config) => {
     },
   });
 
-  // Add Sass loader
-  config.module.rules.push({
-    test: /\.s[ac]ss$/i,
-    use: [
-      "style-loader",
-      "css-loader",
-      {
-        loader: "sass-loader",
-        options: {
-          implementation: require("sass"),
-        },
-      },
-    ],
-  });
-
   // Remove ProgressPlugin
   config.plugins = config.plugins.filter(
     (plugin) => plugin.constructor.name !== "ProgressPlugin"
