@@ -2,8 +2,8 @@ const path = require("path");
 
 const outputFolder = path.resolve(__dirname);
 const nodeModules = path.resolve(__dirname, "./node_modules");
+const bclThemeDefault = path.resolve(__dirname, "bootstrap-component-library/src/themes/default");
 
-// SCSS includePaths
 const includePaths = [nodeModules];
 
 module.exports = {
@@ -20,14 +20,14 @@ module.exports = {
   ],
   copy: [
     {
-      from: ["node_modules/@openeuropa/bcl-theme-default/css/**"],
+      from: [path.join(bclThemeDefault, "css/**")],
       to: path.resolve(outputFolder, "assets/css"),
       options: { up: true },
     },
     {
-      from: ["node_modules/@openeuropa/bcl-theme-default/js/**"],
+      from: [path.join(bclThemeDefault, "js/**")],
       to: path.resolve(outputFolder, "assets"),
-      options: { up: 3 },
+      options: { up: 9 },
     },
     {
       from: ["node_modules/bootstrap-ie11/css/**"],
@@ -35,32 +35,32 @@ module.exports = {
       options: { up: true },
     },
     {
-      from: ["node_modules/@openeuropa/bcl-theme-default/icons/bcl-default-icons.svg"],
+      from: [path.join(bclThemeDefault, "icons/bcl-default-icons.svg")],
       to: path.resolve(outputFolder, "assets/icons"),
       options: { up: true },
     },
     {
-      from: ["node_modules/@openeuropa/bcl-theme-default/templates/**/*.twig"],
+      from: [path.join(bclThemeDefault, "templates/**/*.twig")],
       to: path.resolve(outputFolder, "assets/bcl"),
-      options: { up: 4 },
+      options: { up: 10 },
     },
     {
-      from: ["node_modules/@openeuropa/bcl-theme-default/logos/ec/positive/*.svg"],
+      from: [path.join(bclThemeDefault, "logos/ec/positive/*.svg")],
       to: path.resolve(outputFolder, "assets/logos/ec"),
       options: { up: true },
     },
     {
-      from: ["node_modules/@openeuropa/bcl-theme-default/logos/eu/standard-version/**"],
+      from: [path.join(bclThemeDefault, "logos/eu/standard-version/**")],
       to: path.resolve(outputFolder, "assets/logos/eu"),
       options: { up: true },
     },
     {
-      from: ["node_modules/@openeuropa/bcl-theme-default/logos/eu/condensed-version/**"],
+      from: [path.join(bclThemeDefault, "logos/eu/condensed-version/**")],
       to: path.resolve(outputFolder, "assets/logos/eu/mobile"),
       options: { up: true },
     },
   ],
-  "rename": [
+  rename: [
     {
       from: path.resolve(outputFolder, "assets/bcl/**/*"),
       to: "bcl-",

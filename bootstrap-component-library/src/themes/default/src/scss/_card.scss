@@ -1,0 +1,13 @@
+.card {
+  border-color: $gray-300;
+}
+
+@each $color, $value in $theme-colors {
+  .card.text-bg-#{$color} {
+    .card-header,
+    .card-footer {
+      border: none;
+      background: shade-color($value, 20%);
+    }
+  }
+}
