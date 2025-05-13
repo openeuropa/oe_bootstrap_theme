@@ -227,10 +227,9 @@ function oe_bootstrap_theme_preprocess_pattern_listing__preview(array &$variable
 
 /**
  * Implements hook_preprocess_HOOK() for the pagination pattern.
- *
- * Adds default values for custom icons.
  */
 function oe_bootstrap_theme_preprocess_pattern_pagination(array &$variables): void {
+  // Adds default values for custom icons.
   foreach (['first', 'prev', 'next', 'last'] as $key) {
     if (empty($variables[$key]['icon']['name'])) {
       continue;
@@ -240,6 +239,13 @@ function oe_bootstrap_theme_preprocess_pattern_pagination(array &$variables): vo
       'size' => 'fluid',
     ];
   }
+
+  // Add aria label for Glossary pagination.
+  if ($variables['variant'] !== 'glossary') {
+    return;
+  }
+
+  $variables['attributes']['aria-label'] = t('Glossary links');
 }
 
 /**
