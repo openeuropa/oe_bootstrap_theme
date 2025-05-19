@@ -1,4 +1,12 @@
-# Change Log
+# Change log
+
+## [1.22.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.22.0) (2025-05-19)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.21.0...1.22.0)
+
+**Merged pull requests:**
+
+- OEL-0000: Update bcl. [\#478](https://github.com/openeuropa/oe_bootstrap_theme/pull/478) ([tibi2303](https://github.com/tibi2303))
 
 ## [1.21.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.21.0) (2025-03-27)
 
@@ -6,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Prepare release 1.21.0 [\#469](https://github.com/openeuropa/oe_bootstrap_theme/pull/469) ([tibi2303](https://github.com/tibi2303))
 - OEL-3691: Fixed routed issue and added test. [\#466](https://github.com/openeuropa/oe_bootstrap_theme/pull/466) ([tibi2303](https://github.com/tibi2303))
 
 ## [1.20.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.20.0) (2025-03-17)
