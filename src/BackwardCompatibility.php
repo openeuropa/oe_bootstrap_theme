@@ -27,7 +27,7 @@ final class BackwardCompatibility {
    * @SuppressWarnings(PHPMD.BooleanGetMethodName)
    */
   public static function getSetting(string $name): bool {
-    return theme_get_setting(self::PREFIX . $name) ?? TRUE;
+    return (bool) theme_get_setting(self::PREFIX . $name) ?? TRUE;
   }
 
 }
