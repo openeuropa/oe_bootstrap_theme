@@ -159,6 +159,14 @@ function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
     $variables['image'] = ImageValueObject::fromArray($variables['image']->getArray())
       ->toRenderArray();
   }
+
+  // Add the 'flex-end-100' class to the image.
+  if (isset($variables['image']['#attributes']['class'])) {
+    $variables['image']['#attributes']['class'][] = 'flex-end-100';
+  }
+  else {
+    $variables['image']['#attributes']['class'] = ['flex-end-100'];
+  }
 }
 
 /**
