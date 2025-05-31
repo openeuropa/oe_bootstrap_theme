@@ -37,7 +37,7 @@ class BootstrapTableFilterTest extends UnitTestCase {
    * @return array[]
    *   A list of test scenarios.
    */
-  public function processDataProvider(): array {
+  public static function processDataProvider(): array {
     return [
       'No tables' => [
         ['responsive' => ''],

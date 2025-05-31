@@ -70,7 +70,7 @@ class TwigExtension extends AbstractExtension {
   public function getFilters(): array {
     return [
       new TwigFilter('bcl_card_list', [$this, 'bclCardList']),
-      new TwigFilter('format_size', 'format_size'),
+      new TwigFilter('format_size', 'Drupal\Core\StringTranslation\ByteSizeMarkup::create'),
       new TwigFilter('to_file_icon', [$this, 'toFileIcon']),
       new TwigFilter('to_native_language', [
         $this,

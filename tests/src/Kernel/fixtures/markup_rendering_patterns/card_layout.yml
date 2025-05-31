@@ -20,7 +20,7 @@ card_group:
         - title: 'Card title 4'
           text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
           card_footer: 'Footer of card 4'
-  assert:
+  assertions:
     count:
       'div.card-group': 1
       'article.card': 4
@@ -64,7 +64,7 @@ card_grid_responsive_xxl_3_responsive_columns:
         - title: 'Card title 4'
           text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
           card_footer: 'Footer of card 4'
-  assert:
+  assertions:
     count:
       'article.card': 4
       'h1.card-title': 4
@@ -133,7 +133,7 @@ card_grid_responsive_columns_2_md_equal_height:
           content: 'Some representative placeholder content for the first card.'
           card_header: 'Header of card 3'
           card_footer: 'Footer of card 3'
-  assert:
+  assertions:
     count:
       'article.h-100.card': 3
       'img.card-img-top': 3
@@ -183,7 +183,7 @@ card_masonry_responsive_xxl_3_responsive_columns:
         - title: 'Card title 4'
           text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
           card_footer: 'Footer of card 4'
-  assert:
+  assertions:
     count:
       'article.card': 4
       'h1.card-title': 4
@@ -253,7 +253,7 @@ card_masonry_responsive_columns_2_md_equal_height:
           content: 'Some representative placeholder content for the first card.'
           card_header: 'Header of card 3'
           card_footer: 'Footer of card 3'
-  assert:
+  assertions:
     count:
       'article.h-100.card': 3
       'img.card-img-top': 3

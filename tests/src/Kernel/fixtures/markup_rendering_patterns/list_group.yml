@@ -16,7 +16,7 @@ list_group_unordered_without_flush_vertical:
           badge:
             label: '10'
             rounded_pill: TRUE
-  assert:
+  assertions:
     equals:
       'li.list-group-item-danger': 'Label 1'
       'li.list-group-item-primary': 'Label 2'
@@ -42,7 +42,7 @@ list_group_actionable_without_flush_vertical:
          - label: 'Label 1'
          - label: 'Label 2'
          - label: 'Label 3'
-  assert:
+  assertions:
     equals:
       'div.list-group a.list-group-item:nth-child(1)': 'Label 1'
       'div.list-group a.list-group-item:nth-child(2)': 'Label 2'
