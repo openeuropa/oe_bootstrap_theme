@@ -44,8 +44,15 @@
 
 {# Backward compatibility setting: card uses grid classes. #}
 {% if bc_card_search_use_grid_classes %}
-  {% set _left_col_classes = 'col-md-3 col-lg-2 rounded mw-listing-img mb-md-0 mb-3' %}
-  {% set _right_col_classes = 'col-md-9 col-lg-10' %}
+  {% set _left_col_classes = 'col-md-3 col-lg-4 col-xl-2 rounded mw-listing-img mb-md-0 mb-3' %}
+  {% set _right_col_classes = 'col-md-9 col-lg-8 col-xl-10' %}
+{% endif %}
+
+{% set _date = date|default({}) %}
+{% if _date is not empty %}
+  {% set _date = _date|merge({
+    icon_path: bcl_icon_path
+  })%}
 {% endif %}
 
 {% include '@oe-bcl/card' with {
@@ -77,7 +84,7 @@
     'path': image.src,
     'alt': image.alt,
   }) : {},
-  'date': date|default({}),
+  'date': _date,
   'content': _content,
 } only %}
 {% endapply %}
