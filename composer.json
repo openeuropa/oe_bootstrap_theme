@@ -61,11 +61,6 @@
             "locations": {
                 "web-root": "./build"
             }
-        },
-        "patches": {
-            "drupal/ui_patterns_settings": {
-                "Case mismatch between loaded and declared class names @see https://www.drupal.org/project/ui_patterns_settings/issues/3508198": "https://www.drupal.org/files/issues/2025-02-21/3508198-case-mismatch.patch"
-            }
         }
     },
     "config": {
