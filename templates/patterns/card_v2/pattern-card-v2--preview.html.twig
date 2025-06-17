@@ -4,14 +4,22 @@
  * Template override for preview mode of "Card V2" pattern.
  */
 #}
+
 {% set _title %}
-  <h4><a href="https://google.com">Title card</a></h4>
+  <h2>Simple title</h2>
+{% endset %}
+
+{# Shared media #}
+{% set _media %}
+  <img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">
 {% endset %}
 {% set _media_horizontal %}
   <img src="https://picsum.photos/400/800/" alt="Alternative text for card image">
 {% endset %}
-{% set _media %}
-  <img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">
+
+{# 1. Full Card Demo #}
+{% set _title %}
+  <h4><a href="https://example.com/">Title card</a></h4>
 {% endset %}
 {% set _content %}
   <h6 class="card-subtitle mb-2">Subtitle card</h6>
@@ -37,12 +45,6 @@
 {% set _footer %}
   Footer of <span class="fw-bold">card</span>
 {% endset %}
-{% set _title %}
-  <h2>Simple title</h2>
-{% endset %}
-{% set _link_title %}
-  <h2><a href="#">Longer title that might span into multiple lines</a></h2>
-{% endset %}
 
 <div class="row">
   <div class="col-12 col-md-8">
@@ -58,6 +60,10 @@
       }) }}
     </div>
   </div>
+</div>
+
+{# 2. Simple Card Demo #}
+<div class="row">
   <div class="col-12 col-md-8">
     <div class="mb-5">
       <h2 class="mb-2">Simple card</h2>
@@ -69,9 +75,11 @@
     </div>
   </div>
 </div>
+
+{# 3. Card with Date Media #}
 <div class="row mb-5">
-  <h2 class="mb-2">Card with date</h2>
   <div class="col-12 col-md-8">
+    <h2 class="mb-2">Card with date</h2>
     {{ pattern('card_v2', {
       variant: variant,
       title: _title,
@@ -80,5 +88,76 @@
         date: '2021-05-26',
       })
     }) }}
+  </div>
+</div>
+
+{# 4. Clickable Wrapper Card via <a> tag #}
+{% set _clickable_title %}
+  <a href="https://example.com/" class="stretched-link"><h2 class="h5 mb-2">Card wrapped in anchor</h2></a>
+{% endset %}
+{% set _clickable_content %}
+  <p class="card-text">
+    This entire card is rendered as a <code>&lt;a&gt;</code> tag. To avoid invalid HTML nesting, embedded links and buttons should be styled as text or pseudo-interactive elements. However, links that do not conflict with native semantics may still work.
+  </p>
+  <ul class="mb-3">
+    <li><a href="https://example.com/alt" class="text-decoration-underline">Safe inline link</a></li>
+  </ul>
+  <div class="mt-2">
+    <span class="badge bg-secondary me-2">Static badge</span>
+    <a href="https://example.com/tag" class="badge rounded-pill bg-primary text-white text-decoration-none me-2">Clickable badge</a>
+    <a href="https://example.com/another-tag" class="badge badge-outline-primary rounded-pill text-decoration-none">Another badge</a>
+  </div>
+{% endset %}
+
+<div class="row">
+  <div class="col-12 col-md-8">
+    <div class="mb-5">
+      <h2 class="mb-2">Clickable wrapper card</h2>
+      {{ pattern('card_v2', {
+        variant: variant,
+        attributes: create_attribute({
+          href: 'https://example.com',
+          class: ['position-relative', 'text-decoration-none']
+        }),
+        title: _clickable_title,
+        media: variant == 'default' ? _media : _media_horizontal,
+        content: _clickable_content,
+        footer: variant == 'default' ? _footer : ''
+      }) }}
+    </div>
+  </div>
+</div>
+
+{# 5. Card with Badges Demo #}
+{% set _badges_title %}
+  <h2 class="h5 mb-2">Card with badges</h2>
+{% endset %}
+{% set _badges_content %}
+  <p class="card-text">
+    This card contains various badges that can represent categories, filters, tags, or actions.
+  </p>
+  <div class="mt-3">
+    <a href="#" class="badge rounded-pill text-bg-primary me-2 mb-2">Solid badge</a>
+    <span class="badge rounded-pill badge-outline-primary me-2 mb-2">Outlined badge</span>
+    <a href="#" class="badge rounded-pill bg-success text-white me-2 mb-2">Clickable success</a>
+    <span class="badge bg-warning text-dark me-2 mb-2">Static warning</span>
+    <a href="#" class="badge bg-info-subtle text-info-emphasis me-2 mb-2">Info tag</a>
+    <a href="#" class="badge bg-secondary-subtle text-secondary-emphasis me-2 mb-2">Another tag</a>
+  </div>
+{% endset %}
+
+<div class="row">
+  <div class="col-12 col-md-8">
+    <div class="mb-5">
+      <h2 class="mb-2">Card with badges</h2>
+      {{ pattern('card_v2', {
+        variant: variant,
+        tag: 'article',
+        attributes: create_attribute().addClass(['position-relative']),
+        title: _badges_title,
+        media: variant == 'default' ? _media : _media_horizontal,
+        content: _badges_content
+      }) }}
+    </div>
   </div>
 </div>
