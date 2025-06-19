@@ -3,6 +3,12 @@
 .idea
 /vendor/
 /node_modules/
+**/node_modules/
+bcl/bootstrap/plugins
+bcl/bootstrap/js
+bcl/bootstrap/scss
+bcl/bootstrap/*.svg
+bcl/bootstrap/icons/*.svg
 /build/
 /npm-debug.log
 /grumphp.yml
@@ -11,6 +17,7 @@
 /runner.yml
 /.idea/
 /package-lock.json
+**/package-lock.json
 /phpunit.xml
 /.stylelintrc.json
 /docker-compose.*.yml
