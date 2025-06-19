@@ -10,7 +10,6 @@
     "build:bcl": "npm --workspace bcl run build",
     "build:styles": "cross-env ./bcl/builder/bin/build.js styles",
     "build:copy": "cross-env ./bcl/builder/bin/build.js copy",
-    "build:rename": "cross-env ./bcl/builder/bin/build.js rename",
     "watch:styles": "chokidar \"./resources/sass/**/*.scss\" -i \"/node_modules/\" -c \"npm run build:styles\"",
     "watch": "npm-run-all --parallel watch:* -ln",
     "postinstall": "patch-package --patch-dir=patches/npm",
@@ -18,8 +17,6 @@
     "production": "npm run build"
   },
   "devDependencies": {
-    "@openeuropa/bcl-builder": "^1.11",
-    "@openeuropa/bcl-theme-default": "^1.11",
     "bootstrap-ie11": "5.0.2",
     "chokidar-cli": "^3.0.0",
     "copyfiles": "2.4.1",

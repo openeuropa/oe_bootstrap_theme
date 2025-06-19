@@ -170,21 +170,19 @@ module.exports = {
       options: { up: 4 },
     },
     {
-      from: [`${nodeModules}/@ecl/resources-ec-logo/**/*.svg`],
+      from: [`${nodeModules}/@ecl/resources-ec-logo/dist/positive/*.svg`],
       to: path.resolve(outputFolder, "logos/ec"),
-      options: { up: 5 },
+      options: { up: true },
     },
     {
-      from: [`${nodeModules}/@ecl/resources-eu-logo/**/*.svg`],
+      from: [`${nodeModules}/@ecl/resources-eu-logo/dist/standard-version/**`],
       to: path.resolve(outputFolder, "logos/eu"),
-      options: { up: 5 },
+      options: { up: true },
     },
     {
-      from: [
-        `${nodeModules}/@openeuropa/bcl-twig-templates/templates/**/*.twig`,
-      ],
-      to: path.resolve(outputFolder, "templates"),
-      options: { up: 3 },
+      from: [`${nodeModules}/@ecl/resources-eu-logo/dist/condensed-version/**`],
+      to: path.resolve(outputFolder, "logos/eu/mobile"),
+      options: { up: true },
     },
   ],
 };
