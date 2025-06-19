@@ -1,0 +1,165 @@
+{% apply spaceless %}
+
+{#
+  Parameters:
+  - title (string) (default: '')
+  - title_tag (string) (default: 'h2')
+  - title_link: (link object) (default: {})
+  - title_attributes (drupal attrs)
+  - item_title (string) (default: '')
+  - icon (icon Object) (default: {})
+  - icon_inline (boolean) (deafult: true)
+  - text (string) (default: '')
+  - content (string) (default: '')
+  - image (object) (default: {}) - format: {
+    path: '',
+    alt: '',
+  }
+  - badges (badge[]) (default: [])
+  - meta (string) (default: '')
+  - language (string) (default: '')
+  - variant (string) (default: 'default')
+    - options: ['default', 'card']
+  - download (link Object) (default: {})
+  - translation (file translation Object) (default: {}) format: {
+    id: '',
+    label: {}, - link Object
+    items: [
+      {
+        extension: '',
+        language: '',
+        size: '',
+        download: {}, - link Object
+      },
+  }
+  - icon_path (string) (default: '')
+  - attributes (drupal attrs)
+#}
+
+{# Internal properties #}
+
+{% set _title = title|default('') %}
+{% set _title_tag = title_tag|default('h2') %}
+{% set _title_link = title_link|default({}) %}
+{% set _title_attributes = title_attributes ?: create_attribute() %}
+{% set _item_title = item_title|default('') %}
+{% set _icon = icon|default({}) %}
+{% set _icon_inline = icon_inline ?? true %}
+{% set _text = text|default('') %}
+{% set _content = content|default('') %}
+{% set _image = image|default({}) %}
+{% set _badges = badges|default([]) %}
+{% set _meta = meta|default('') %}
+{% set _language = language|default('') %}
+{% set _variant = variant|default('default') %}
+{% set _download = download|default({}) %}
+{% set _translation = translation|default({}) %}
+{% set _icon_path = icon_path|default('') %}
+
+{% set _classes = ['bcl-file'] %}
+
+{% if attributes is empty %}
+  {% set attributes = create_attribute() %}
+{% endif %}
+
+{% set attributes = attributes.addClass(_classes) %}
+
+{% if _icon is not empty %}
+  {% set _container_classes = _container_classes ~ ' ms-2-5' %}
+  {% set _icon = _icon|merge({
+    attributes: create_attribute().addClass(['mt-1', 'icon--file'])
+  }) %}
+{% endif %}
+
+{% if _title is not empty %}
+  {% include '@oe-bcl/bcl-heading/heading.html.twig' with {
+    title: _title,
+    title_tag: _title_tag,
+    title_link: _title_link,
+    attributes: _title_attributes,
+  } only %}
+{% endif %}
+
+{% set attributes = attributes.addClass(['border', 'rounded']) %}
+
+{% set _container_classes = 'd-md-flex flex-grow-1' %}
+
+<div
+  {{ attributes }}
+>
+  {% if _variant == 'card' %}
+    <div class="border-bottom px-3-5 py-3 d-md-flex">
+      <div class="pe-2 pb-2">
+      {% if _icon is not empty %}
+        {%- include '@oe-bcl/bcl-icon/icon.html.twig' with _icon|merge({
+          path: _icon_path,
+        }) only -%}
+      {% endif %}
+      </div>
+      <div>
+        {% if _item_title is not empty %}
+          <p class="fw-medium mb-2 fs-5">{{ _item_title }}</p>
+        {% endif %}
+        {% if _text is not empty %}
+          <p class="mb-3">{{ _text }}</p>
+        {% endif %}
+        {% if _content is not empty %}
+          {{ _content }}
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  <div class="px-3-5 py-3">
+    <div class="d-md-flex">
+      {% if _icon is not empty and _variant == 'default' %}
+        <div class="pe-2 pb-2">
+        {% if _icon is not empty %}
+          {%- include '@oe-bcl/bcl-icon/icon.html.twig' with _icon|merge({
+            path: _icon_path,
+          }) only -%}
+        {% endif %}
+        </div>
+      {% endif %}
+      <div class="{{ _container_classes }}">
+        <div class="flex-grow-1">
+          {% if _item_title is not empty and _variant == 'default' %}
+            <p class="fw-medium m-0 fs-5">{{ _item_title }}</p>
+          {% endif %}
+          {% if _language is not empty or _meta is not empty %}
+          <small class="fw-medium m-0">
+            {%- if _language is not empty -%}
+              {{- _language -}}
+            {%- endif -%}
+            {%- if _meta is not empty -%}
+              <span class="fw-normal">
+                {{- ' ' ~ _meta -}}
+              </span>
+            {%- endif -%}
+          </small>
+          {% endif %}
+        </div>
+        {% set download_attributes = create_attribute()
+                                      .setAttribute('download', 'true')
+                                      .setAttribute('target', '_blank')
+                                      .addClass(['standalone', 'align-self-center', 'd-inline-block', 'mt-1', 'mt-md-0', 'flex-shrink-0']) %}
+        {% set _download = _download|merge({
+          icon_position: "after",
+          icon: {
+            name: "download",
+            size: "fluid",
+            path: _icon_path,
+          }|merge(_download.icon|default({})),
+          attributes: download_attributes.merge(_download.attributes|default(create_attribute()))
+        }) %}
+        {% include '@oe-bcl/bcl-link/link.html.twig' with _download only %}
+      </div>
+    </div>
+  </div>
+  {% if _translation is not empty %}
+    {% include '@oe-bcl/bcl-file/file-translations.html.twig' with _translation|merge({
+      icon_path: _icon_path
+    }) only %}
+  {% endif %}
+</div>
+
+{% endapply %}
