@@ -1,0 +1,15 @@
+uuid: 074913fa-e4ad-4a69-bb23-7e6ad8d1fac9
+langcode: en
+status: true
+dependencies: {  }
+name: oe_md_960
+label: 'OE MD 960'
+effects:
+  75dc430f-d2a6-448c-a10f-32de663b4e6b:
+    uuid: 75dc430f-d2a6-448c-a10f-32de663b4e6b
+    id: image_scale
+    weight: 1
+    data:
+      width: 960
+      height: null
+      upscale: false
