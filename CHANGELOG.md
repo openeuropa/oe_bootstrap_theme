@@ -1,10 +1,22 @@
 # Change Log
 
-## [1.23.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.23.0) (2025-05-31)
+## [1.24.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.24.0) (2025-07-03)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.23.0...1.24.0)
+
+**Merged pull requests:**
+
+- OEL-0000: Update bcl. [\#495](https://github.com/openeuropa/oe_bootstrap_theme/pull/495) ([tibi2303](https://github.com/tibi2303))
+- OEL-3776: Improved doc for card v2. [\#489](https://github.com/openeuropa/oe_bootstrap_theme/pull/489) ([tibi2303](https://github.com/tibi2303))
+- OEL-3858: Updated images. [\#488](https://github.com/openeuropa/oe_bootstrap_theme/pull/488) ([tibi2303](https://github.com/tibi2303))
+
+## [1.23.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.23.0) (2025-06-04)
+
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.22.0...1.23.0)
 
 **Merged pull requests:**
 
+- Prepare release 1.23.0. [\#487](https://github.com/openeuropa/oe_bootstrap_theme/pull/487) ([drishu](https://github.com/drishu))
 - OEL-3820: Added flex-end class to img in featured media. [\#485](https://github.com/openeuropa/oe_bootstrap_theme/pull/485) ([tibi2303](https://github.com/tibi2303))
 - OEL-3731: Make sure landmarks are unique. [\#484](https://github.com/openeuropa/oe_bootstrap_theme/pull/484) ([vengador](https://github.com/vengador))
 - ELA-1304: Card with new date block display. [\#470](https://github.com/openeuropa/oe_bootstrap_theme/pull/470) ([Aporie](https://github.com/Aporie))
