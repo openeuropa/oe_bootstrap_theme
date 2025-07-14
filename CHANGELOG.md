@@ -1,11 +1,20 @@
 # Change Log
 
+## [1.25.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.25.0) (2025-07-10)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.24.0...1.25.0)
+
+**Merged pull requests:**
+
+- OEL-0000: Update bcl. [\#500](https://github.com/openeuropa/oe_bootstrap_theme/pull/500) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.24.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.24.0) (2025-07-03)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.23.0...1.24.0)
 
 **Merged pull requests:**
 
+- Prepare release 1.24.0. [\#496](https://github.com/openeuropa/oe_bootstrap_theme/pull/496) ([tibi2303](https://github.com/tibi2303))
 - OEL-0000: Update bcl. [\#495](https://github.com/openeuropa/oe_bootstrap_theme/pull/495) ([tibi2303](https://github.com/tibi2303))
 - OEL-3776: Improved doc for card v2. [\#489](https://github.com/openeuropa/oe_bootstrap_theme/pull/489) ([tibi2303](https://github.com/tibi2303))
 - OEL-3858: Updated images. [\#488](https://github.com/openeuropa/oe_bootstrap_theme/pull/488) ([tibi2303](https://github.com/tibi2303))
