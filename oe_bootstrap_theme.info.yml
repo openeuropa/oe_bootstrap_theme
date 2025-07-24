@@ -22,6 +22,9 @@ libraries-extend:
 ckeditor_stylesheets:
   - assets/css/oe-bcl-default.min.css
 
+ckeditor5-stylesheets:
+  - assets/css/oe-bcl-ckeditor5.min.css
+
 regions:
   navbar_branding: Navbar branding
   navbar_left: Navbar left
