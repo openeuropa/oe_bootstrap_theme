@@ -1,0 +1,4 @@
+name: 'OpenEuropa Bootstrap Theme route test'
+description: 'Provides a dynamic test route that can be used as link destination for menu links.'
+type: module
+core_version_requirement: ^10 || ^11
