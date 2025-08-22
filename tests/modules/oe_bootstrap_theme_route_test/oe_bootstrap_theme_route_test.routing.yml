@@ -1,0 +1,9 @@
+
+oe_bootstrap_theme_route_test.example.dynamic:
+  path: '/oebt/example/{arg}'
+  defaults:
+    _controller: '\Drupal\oe_bootstrap_theme_route_test\Controller\RouteTestDynamicController::page'
+    _title_callback: '\Drupal\oe_bootstrap_theme_route_test\Controller\RouteTestDynamicController::title'
+  requirements:
+    _access: 'TRUE'
+    arg: '\w+(-\w+)*'
