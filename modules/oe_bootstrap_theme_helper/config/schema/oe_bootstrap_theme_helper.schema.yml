@@ -13,3 +13,12 @@ filter_settings.oe_bootstrap_theme_table:
     responsive:
       type: string
       label: 'Responsive tables'
+
+block.settings.oel_mega_menu:
+  type: block_settings
+  label: 'OEL Mega Menu'
+  mapping:
+    menu:
+      type: string
+      label: 'Menu'
+
