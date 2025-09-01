@@ -1,11 +1,20 @@
 # Change Log
 
+## [1.27.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.27.0) (2025-08-29)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.26.0...1.27.0)
+
+**Merged pull requests:**
+
+- OEL-0000: Update bcl. [\#506](https://github.com/openeuropa/oe_bootstrap_theme/pull/506) ([piotrsmykaj](https://github.com/piotrsmykaj))
+
 ## [1.26.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.26.0) (2025-07-29)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.25.0...1.26.0)
 
 **Merged pull requests:**
 
+- Prepare release 1.26.0. [\#503](https://github.com/openeuropa/oe_bootstrap_theme/pull/503) ([tibi2303](https://github.com/tibi2303))
 - OEL-3902: Remove visually hidden H2 from menu templates. [\#490](https://github.com/openeuropa/oe_bootstrap_theme/pull/490) ([vengador](https://github.com/vengador))
 - OEL-3428: Added stylesheets for ckeditor5. [\#498](https://github.com/openeuropa/oe_bootstrap_theme/pull/498) ([tibi2303](https://github.com/tibi2303))
 
