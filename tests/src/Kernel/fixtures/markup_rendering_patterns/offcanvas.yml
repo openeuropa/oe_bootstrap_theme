@@ -16,7 +16,7 @@ offcanvas_top_with_backdrop_and_toggle:
       '.offcanvas-body:not(.bcl-offcanvas)': 1
       'button[data-bs-target="#bcl-offcanvas"]': 2
       '.btn-primary[data-bs-toggle="offcanvas"]': 1
-      '.btn-close[data-bs-target="#bcl-offcanvas"]': 1
+      '.btn-close[data-bs-target="#bcl-offcanvas"][aria-label="Close"]': 1
       'div[data-drupal-selector="offcanvas"]': 1
       'div#bcl-offcanvas': 1
       'div#bcl-offcanvas .btn-close[data-bs-target="#bcl-offcanvas"]': 1
@@ -43,7 +43,7 @@ offcanvas_start_with_body_scroll:
       'div.offcanvas-lg.offcanvas-start': 1
       'button[data-bs-target="#bcl-offcanvas"]': 1
       '.btn-primary[data-bs-toggle="offcanvas"]': 0
-      '.btn-close[data-bs-target="#bcl-offcanvas"]': 1
+      '.btn-close[data-bs-target="#bcl-offcanvas"][aria-label="Close"]': 1
       'div#bcl-offcanvas .btn-close[data-bs-target="#bcl-offcanvas"]': 1
     equals:
       '.offcanvas-title': 'Offcanvas title'
@@ -66,11 +66,11 @@ offcanvas_with_toggle_with_icon:
     count:
       'button[data-bs-target="#bcl-offcanvas"]': 2
       '.btn-primary[data-bs-toggle="offcanvas"]': 1
-      '.btn-close[data-bs-target="#bcl-offcanvas"]': 1
+      '.btn-close[data-bs-target="#bcl-offcanvas"][aria-label="Close"]': 1
       'div[data-drupal-selector="offcanvas"]': 1
       'div#bcl-offcanvas': 1
       'div.offcanvas-lg.offcanvas-top': 1
-      'div#bcl-offcanvas .btn-close[data-bs-target="#bcl-offcanvas"]': 1
+      'div#bcl-offcanvas .btn-close[data-bs-target="#bcl-offcanvas"][aria-label="Close"]': 1
       'svg.bi': 1
     equals:
       '.offcanvas-title': 'Offcanvas title'
@@ -99,8 +99,8 @@ offcanvas_with_id_from_attributes:
       'svg.bi': 1
       'button[data-bs-target="#custom-id"]': 2
       '.btn-primary[data-bs-toggle="offcanvas"]': 1
-      '.btn-close[data-bs-target="#custom-id"]': 1
-      'div#custom-id .btn-close[data-bs-target="#custom-id"]': 1
+      '.btn-close[data-bs-target="#custom-id"][aria-label="Close"]': 1
+      'div#custom-id .btn-close[data-bs-target="#custom-id"][aria-label="Close"]': 1
     equals:
       '.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
@@ -125,10 +125,10 @@ offcanvas_search_variant:
       'h2': 1
       'button[data-bs-target="#bcl-offcanvas"]': 2
       '.btn-primary[data-bs-toggle="offcanvas"]': 1
-      '.btn-close[data-bs-target="#bcl-offcanvas"]': 1
+      '.btn-close[data-bs-target="#bcl-offcanvas"][aria-label="Close"]': 1
       'div[data-drupal-selector="offcanvas"]': 1
       'div#bcl-offcanvas': 1
-      'div#bcl-offcanvas .btn-close[data-bs-target="#bcl-offcanvas"]': 1
+      'div#bcl-offcanvas .btn-close[data-bs-target="#bcl-offcanvas"][aria-label="Close"]': 1
       'div.offcanvas-lg.offcanvas-top': 1
       'svg.bi': 1
     equals:
