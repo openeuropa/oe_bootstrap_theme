@@ -8,6 +8,7 @@ use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Block\BlockManagerInterface;
+use Drupal\Core\Block\Plugin\Block\Broken;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -125,6 +126,11 @@ class MegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
         'expand_all_items' => TRUE,
       ],
     );
+    if ($system_menu_block instanceof Broken) {
+      // The menu does not exist.
+      // The block manager already logs this, so it is ok to simply return NULL.
+      return NULL;
+    }
     assert($system_menu_block instanceof SystemMenuBlock);
     return $system_menu_block;
   }
