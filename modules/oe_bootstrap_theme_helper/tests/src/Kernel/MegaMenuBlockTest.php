@@ -150,7 +150,12 @@ class MegaMenuBlockTest extends AbstractKernelTestBase {
       ],
       'content_link' => [
         'label' => 't(Discover more)',
-        'path' => "/oebt/example/$name",
+        'path' => [
+          'url' => "/oebt/example/$name",
+          'attributes' => [
+            'title' => "Link description for '$name'",
+          ],
+        ],
       ],
     ];
     if ($nolink) {
@@ -259,7 +264,12 @@ class MegaMenuBlockTest extends AbstractKernelTestBase {
       'items' => [],
       'see_all' => [
         'label' => "t(More of link to &#039;$name&#039;)",
-        'path' => "/oebt/example/$name",
+        'path' => [
+          'url' => "/oebt/example/$name",
+          'attributes' => [
+            'title' => "Link description for '$name'",
+          ],
+        ],
       ],
     ];
     // Add a level 2 child item.
@@ -291,7 +301,12 @@ class MegaMenuBlockTest extends AbstractKernelTestBase {
     $leaf = $this->createExampleMenuLink($name, parent: $parent_id, nolink: $nolink);
     $expected_items_at_level[$leaf->getPluginId()] = [
       'label' => "Link to '$name'",
-      'path' => $nolink ? '' : "/oebt/example/$name",
+      'path' => [
+        'url' => $nolink ? '' : "/oebt/example/$name",
+        'attributes' => [
+          'title' => "Link description for '$name'",
+        ],
+      ],
       'attributes' => match ($level) {
         0 => ['class' => ['nav-link']],
         default => ['class' => []],
@@ -432,7 +447,21 @@ class MegaMenuBlockTest extends AbstractKernelTestBase {
     }
     if (is_object($value)) {
       if (get_class($value) === Url::class) {
-        return $value->toString();
+        $url_options = $value->getOptions();
+        unset($url_options['fragment'], $url_options['query']);
+        if ($url_options['set_active_class'] ?? NULL === TRUE) {
+          unset($url_options['set_active_class']);
+        }
+        elseif (!array_key_exists('set_active_class', $url_options)) {
+          $url_options['set_active_class'] = '(not set)';
+        }
+        if (($url_options['attributes']['class'] ?? NULL) === []) {
+          unset($url_options['attributes']['class']);
+        }
+        if (($url_options['attributes'] ?? NULL) === []) {
+          unset($url_options['attributes']);
+        }
+        return ['url' => $value->toString(), ...$url_options];
       }
       if (get_class($value) === Attribute::class) {
         return $value->toArray();
