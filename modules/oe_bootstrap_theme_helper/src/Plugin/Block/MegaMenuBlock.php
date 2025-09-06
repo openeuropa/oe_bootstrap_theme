@@ -151,7 +151,7 @@ class MegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
     assert($url instanceof Url);
     $bcl_link = [
       'label' => $item['title'],
-      'path' => $item['url'],
+      'path' => $url,
       'attributes' => $this->buildLinkAttributes($item, $level),
     ];
     $is_nolink = $url->isRouted() && $url->getRouteName() === '<nolink>';
@@ -176,14 +176,14 @@ class MegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
       if (!$is_nolink) {
         $bcl_item['content_link'] = [
           'label' => $this->t('Discover more'),
-          'path' => $bcl_link['path'],
+          'path' => $url,
         ];
       }
     }
     elseif (!$is_nolink) {
       $bcl_item['see_all'] = [
         'label' => $this->t('More of @title', ['@title' => mb_lcfirst($item['title'])]),
-        'path' => $bcl_link['path'],
+        'path' => $url,
       ];
     }
     return $bcl_item;
