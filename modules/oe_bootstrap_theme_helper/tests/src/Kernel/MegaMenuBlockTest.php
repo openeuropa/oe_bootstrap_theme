@@ -84,6 +84,14 @@ class MegaMenuBlockTest extends AbstractKernelTestBase {
     $this->treeSetLongDescription($expected_items[$parent->getPluginId()], $parent);
     $assert();
 
+    // Test descriptions with html.
+    $this->treeSetUnsafeDescription($expected_items[$parent->getPluginId()], $parent);
+    $assert();
+
+    $item = $this->addLeaf($expected_items, 'unsafe-description-leaf-0');
+    $this->leafSetUnsafeDescription($expected_items[$item->getPluginId()], $item);
+    $assert();
+
     // Add some nolink leaf items.
     $this->addLeaf($expected_items, 'nolink-leaf-0', nolink: TRUE);
     $this->addLeaf($expected_items[$parent->getPluginId()]['items'], 'nolink-leaf-1', $parent->getPluginId(), nolink: TRUE);
@@ -205,6 +213,43 @@ class MegaMenuBlockTest extends AbstractKernelTestBase {
       // The description is truncated.
       '#value' => "This is the first sentence. This is the second sentence. This is the third sentence. This is the fourth of the sentences. This is the fifth sentence. This is the sixth se",
     ];
+  }
+
+  /**
+   * Sets a description with html tags for a top-level parent item.
+   *
+   * @param array $expected_item
+   *   Expected item as in the render element, to be modified.
+   * @param \Drupal\menu_link_content\Entity\MenuLinkContent $link
+   *   The parent menu link to be modified.
+   */
+  protected function treeSetUnsafeDescription(array &$expected_item, MenuLinkContent $link): void {
+    // Set a description with html.
+    $link->set('description', 'A <strong>bold</strong> word in a tree description.');
+    $link->save();
+    $expected_item['content_block']['text'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'p',
+      // The description is sanitized.
+      '#value' => 'A <strong>bold</strong> word in a tree description.',
+    ];
+  }
+
+  /**
+   * Sets an unsafe description in a leaf item.
+   *
+   * @param array $expected_item
+   *   The expected item to be modified.
+   * @param \Drupal\menu_link_content\Entity\MenuLinkContent $link
+   *   The link to be modified.
+   */
+  protected function leafSetUnsafeDescription(array &$expected_item, MenuLinkContent $link): void {
+    // Set a description with html.
+    $link->set('description', 'A <strong>bold</strong> word in a link description.');
+    $link->save();
+    // The attribute value still contains the html tags, it will be escaped when
+    // the attributes are printed.
+    $expected_item['path']['attributes']['title'] = 'A <strong>bold</strong> word in a link description.';
   }
 
   /**
