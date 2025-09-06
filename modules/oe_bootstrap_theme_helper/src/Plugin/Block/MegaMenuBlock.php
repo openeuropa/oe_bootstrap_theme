@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\oe_bootstrap_theme_helper\Plugin\Block;
 
+use Drupal\Component\Render\MarkupInterface;
+use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
@@ -12,6 +14,7 @@ use Drupal\Core\Block\Plugin\Block\Broken;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\Core\Template\Attribute;
@@ -241,7 +244,7 @@ class MegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
       ],
     ];
     $description = $this->extractItemDescription($item);
-    if (trim($description ?? '') !== '') {
+    if ($description !== NULL) {
       $content_block['text'] = [
         '#type' => 'html_tag',
         '#tag' => 'p',
@@ -257,20 +260,30 @@ class MegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
    * @param array $item
    *   Menu item as from $build['#items'].
    *
-   * @return string|null
+   * @return \Drupal\Component\Render\MarkupInterface|null
    *   Item description, or NULL if item has no description.
    */
-  protected function extractItemDescription(array $item): string|null {
+  protected function extractItemDescription(array $item): MarkupInterface|null {
     $url = $item['url'] ?? NULL;
     if (!$url instanceof Url) {
       return NULL;
     }
     $attributes = $url->getOption('attributes');
     $description = $attributes['title'] ?? NULL;
-    if ($description !== NULL) {
-      $description = Unicode::truncate($description, 170);
+    if ($description === NULL || $description === '') {
+      return NULL;
     }
-    return $description;
+    // Apply the same processing as for the 'title' attribute in LinkGenerator.
+    /* @see \Drupal\Core\Utility\LinkGenerator::generate() */
+    if (str_contains($description, '<')) {
+      $description = strip_tags($description);
+    }
+    if (trim($description) === '') {
+      return NULL;
+    }
+    $description = Unicode::truncate($description, 170);
+    $description = Html::escape($description);
+    return Markup::create($description);
   }
 
   /**
