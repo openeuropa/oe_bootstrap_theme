@@ -174,9 +174,18 @@ class MegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
         'content_block' => $this->buildContentBlock($item),
       ];
       if (!$is_nolink) {
+        // Remove the link title attribute, it is now idenical with the
+        // description.
+        $more_url = clone $url;
+        assert($more_url instanceof Url);
+        $attributes = $more_url->getOption('attributes');
+        if (is_array($attributes)) {
+          unset($attributes['title']);
+          $more_url->setOption('attributes', $attributes);
+        }
         $bcl_item['content_link'] = [
           'label' => $this->t('Discover more'),
-          'path' => $url,
+          'path' => $more_url,
         ];
       }
     }
