@@ -210,12 +210,13 @@ class MegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
    *   Attributes for the link element.
    */
   protected function buildLinkAttributes(array $item, int $level): Attribute {
-    $extra_classes = ($level === 0) ? ['nav-link'] : [];
     $attributes = $item['attributes'] ?? [];
     if (!$attributes instanceof Attribute) {
       $attributes = new Attribute($attributes);
     }
-    $attributes->addClass($extra_classes);
+    if ($level === 0) {
+      $attributes->addClass('nav-link');
+    }
     if (!empty($item['in_active_trail'])) {
       $attributes->addClass('active');
     }
