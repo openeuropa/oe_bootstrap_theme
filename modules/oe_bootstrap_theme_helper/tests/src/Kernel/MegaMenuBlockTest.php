@@ -7,6 +7,7 @@ namespace Drupal\Tests\oe_bootstrap_theme_helper\Kernel;
 use Drupal\Core\Block\BlockManagerInterface;
 use Drupal\Core\Menu\MenuActiveTrailInterface;
 use Drupal\Core\ProxyClass\Menu\MenuActiveTrail;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Routing\AccessAwareRouterInterface;
 use Drupal\Core\Routing\CurrentRouteMatch;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -511,6 +512,9 @@ class MegaMenuBlockTest extends AbstractKernelTestBase {
       }
       if (get_class($value) === TranslatableMarkup::class) {
         return "t($value)";
+      }
+      if (get_class($value) === Markup::class) {
+        return "Markup($value)";
       }
       return get_class($value) . ' object';
     }
