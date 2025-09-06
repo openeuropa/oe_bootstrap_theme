@@ -159,10 +159,8 @@ class MegaMenuBlockTest extends AbstractKernelTestBase {
       'content_link' => [
         'label' => 't(Discover more)',
         'path' => [
+          // This url has the link title attribute removed.
           'url' => "/oebt/example/$name",
-          'attributes' => [
-            'title' => "Link description for '$name'",
-          ],
         ],
       ],
     ];
