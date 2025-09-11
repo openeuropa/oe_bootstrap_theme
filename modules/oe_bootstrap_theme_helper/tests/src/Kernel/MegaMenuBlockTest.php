@@ -154,7 +154,7 @@ class MegaMenuBlockTest extends AbstractKernelTestBase {
         'text' => [
           '#type' => 'html_tag',
           '#tag' => 'p',
-          '#value' => "Link description for '$name'",
+          '#value' => "Markup(Link description for &#039;$name&#039;)",
         ],
       ],
       'content_link' => [
@@ -210,7 +210,7 @@ class MegaMenuBlockTest extends AbstractKernelTestBase {
       '#type' => 'html_tag',
       '#tag' => 'p',
       // The description is truncated.
-      '#value' => "This is the first sentence. This is the second sentence. This is the third sentence. This is the fourth of the sentences. This is the fifth sentence. This is the sixth se",
+      '#value' => "Markup(This is the first sentence. This is the second sentence. This is the third sentence. This is the fourth of the sentences. This is the fifth sentence. This is the sixth se)",
     ];
   }
 
@@ -230,7 +230,7 @@ class MegaMenuBlockTest extends AbstractKernelTestBase {
       '#type' => 'html_tag',
       '#tag' => 'p',
       // The description is sanitized.
-      '#value' => 'A <strong>bold</strong> word in a tree description.',
+      '#value' => 'Markup(A bold word in a tree description.)',
     ];
   }
 
@@ -303,7 +303,7 @@ class MegaMenuBlockTest extends AbstractKernelTestBase {
     $expected_items[$parent_id]['items'][$subtree_parent->getPluginId()] = [
       'trigger' => [
         'label' => "Link to '$name'",
-        'attributes' => ['class' => []],
+        'attributes' => [],
       ],
       'items' => [],
       'see_all' => [
@@ -353,7 +353,7 @@ class MegaMenuBlockTest extends AbstractKernelTestBase {
       ],
       'attributes' => match ($level) {
         0 => ['class' => ['nav-link']],
-        default => ['class' => []],
+        default => [],
       },
     ];
     return $leaf;
