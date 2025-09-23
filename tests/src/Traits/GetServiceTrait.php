@@ -14,6 +14,8 @@ trait GetServiceTrait {
   /**
    * Gets a service from the container.
    *
+   * @phpcs:disable Drupal.Commenting.DocComment.ParamNotFirst
+   *
    * @template TService of object
    *
    * @param class-string<TService> $type
