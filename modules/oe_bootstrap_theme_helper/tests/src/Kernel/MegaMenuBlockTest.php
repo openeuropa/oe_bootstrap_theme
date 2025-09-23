@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme_helper\Kernel;
 
+use Drupal\Component\Serialization\Yaml;
 use Drupal\Core\Block\BlockManagerInterface;
 use Drupal\Core\Menu\MenuActiveTrailInterface;
 use Drupal\Core\ProxyClass\Menu\MenuActiveTrail;
@@ -11,7 +12,6 @@ use Drupal\Core\Render\Markup;
 use Drupal\Core\Routing\AccessAwareRouterInterface;
 use Drupal\Core\Routing\CurrentRouteMatch;
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\Serialization\Yaml;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
