@@ -33,7 +33,7 @@ function oe_bootstrap_theme_helper_post_update_00002(): string {
   $report = 'The new mega menu block was placed in the navigation region for oe_bootstrap_theme.';
 
   $old_navigation_block = Block::load('oe_bootstrap_theme_mainnavigation');
-  if (!$old_navigation_block || !$old_navigation_block->getTheme() !== 'oe_bootstrap_theme') {
+  if (!$old_navigation_block || $old_navigation_block->getTheme() !== 'oe_bootstrap_theme') {
     return $report . "\nThe old navigation block was not found.";
   }
   if (!$old_navigation_block->status()) {
