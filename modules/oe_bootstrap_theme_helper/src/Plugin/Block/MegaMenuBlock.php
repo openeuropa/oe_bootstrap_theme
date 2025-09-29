@@ -298,6 +298,19 @@ class MegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
       '#default_value' => $this->configuration['menu'] ?? NULL,
     ];
 
+    $form['help'] = [
+      '#type' => 'fieldset',
+      '#title' => $this->t('Notes'),
+      '#open' => TRUE,
+      '#collapsible' => FALSE,
+      'notes' => [
+        '#markup' => '<ul>
+<li>' . $this->t('Only the first 3 levels of menu links will be displayed.') . '</li>
+<li>' . $this->t('The text in the left column of a mega menu panel is coming from the description field of the menu link associated with it.') . '</li>
+<ul>',
+      ],
+    ];
+
     return $form;
   }
 
