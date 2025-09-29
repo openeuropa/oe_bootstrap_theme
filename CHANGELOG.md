@@ -1,11 +1,23 @@
 # Change Log
 
-## [1.27.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.27.0) (2025-08-29)
+## [1.28.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.28.0) (2025-09-29)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.27.0...1.28.0)
+
+**Merged pull requests:**
+
+- OEL-0000: Update bcl vers to fixed release. [\#510](https://github.com/openeuropa/oe_bootstrap_theme/pull/510) ([tibi2303](https://github.com/tibi2303))
+- OEL-3730: Changed id to main and removed anchor plus test. [\#509](https://github.com/openeuropa/oe_bootstrap_theme/pull/509) ([tibi2303](https://github.com/tibi2303))
+- OEL-2127: Aria-label for offcanvas close. [\#508](https://github.com/openeuropa/oe_bootstrap_theme/pull/508) ([tibi2303](https://github.com/tibi2303))
+- OEL-4016: Mega menu [\#504](https://github.com/openeuropa/oe_bootstrap_theme/pull/504) ([donquixote](https://github.com/donquixote))
+
+## [1.27.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.27.0) (2025-09-01)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.26.0...1.27.0)
 
 **Merged pull requests:**
 
+- Prepare release 1.27.0. [\#507](https://github.com/openeuropa/oe_bootstrap_theme/pull/507) ([piotrsmykaj](https://github.com/piotrsmykaj))
 - OEL-0000: Update bcl. [\#506](https://github.com/openeuropa/oe_bootstrap_theme/pull/506) ([piotrsmykaj](https://github.com/piotrsmykaj))
 
 ## [1.26.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.26.0) (2025-07-29)
