@@ -194,7 +194,7 @@ class MegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
     }
     elseif (!$is_nolink) {
       $bcl_item['see_all'] = [
-        'label' => $this->t('More of @title', ['@title' => mb_lcfirst($item['title'])]),
+        'label' => $this->t('More of @title', ['@title' => Unicode::lcfirst($item['title'])]),
         'path' => $url,
       ];
     }
