@@ -33,3 +33,17 @@ regions:
   content: Content
   page_bottom: Page bottom
   footer: Footer
+
+config_devel:
+  install:
+    - oe_bootstrap_theme.settings
+  optional:
+    - block.block.oe_bootstrap_theme_branding
+    - block.block.oe_bootstrap_theme_breadcrumbs
+    - block.block.oe_bootstrap_theme_local_actions
+    - block.block.oe_bootstrap_theme_local_tasks
+    - block.block.oe_bootstrap_theme_mainnavigation
+    - block.block.oe_bootstrap_theme_messages
+    - block.block.oe_bootstrap_theme_oelmegamenu
+    - block.block.oe_bootstrap_theme_page_title
+    - block.block.oe_bootstrap_theme_useraccountmenu
