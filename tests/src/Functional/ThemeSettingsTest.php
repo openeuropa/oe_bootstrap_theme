@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace Drupal\Tests\oe_bootstrap_theme\Functional;
 
 use Drupal\Tests\BrowserTestBase;
+use Drupal\Tests\oe_bootstrap_theme\Traits\GetSelectOptionsTrait;
 use Drupal\oe_bootstrap_theme\BackwardCompatibility;
 
 /**
  * Tests the theme settings.
  */
 class ThemeSettingsTest extends BrowserTestBase {
+
+  use GetSelectOptionsTrait;
 
   /**
    * {@inheritdoc}
@@ -47,7 +50,7 @@ class ThemeSettingsTest extends BrowserTestBase {
       'lg' => 'Large',
       'xl' => 'Extra large',
       'xxl' => 'Extra extra large',
-    ], $this->getOptions($responsive_field));
+    ], $this->getSelectOptions($responsive_field));
     $this->assertEquals('always', $responsive_field->getValue());
     // The MarkupRenderingTest runs assertions on the default config values
     // already.
