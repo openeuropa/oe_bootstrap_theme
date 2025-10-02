@@ -87,8 +87,8 @@ jobs:
         # We use only one, but report both.
         run: |
           git config --global --add safe.directory /test/oe_bootstrap_theme
-          docker compose exec -T web ./vendor/bin/run release:create-archive --tag=$TAG_NAME
-          docker compose exec -T web ./vendor/bin/run release:create-archive --tag=$TAG_NAME --zip
+          docker compose exec -T web ./vendor/bin/run toolkit:release:create-archive --tag=$TAG_NAME
+          docker compose exec -T web ./vendor/bin/run toolkit:release:create-archive --tag=$TAG_NAME --zip
 
       - name: gh release upload
         # Use `--clobber` to overwrite existing files on force-push.
