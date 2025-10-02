@@ -168,18 +168,28 @@ docker-compose exec web ./vendor/bin/run drupal:site-install
 
 Using default configuration, the development site files should be available in the `build` directory and the development site should be available at: [http://127.0.0.1:8080/build](http://127.0.0.1:8080/build) or [http://web:8080/build](http://web:8080/build).
 
-#### Run the tests
+#### Run code review
 
 Run the grumphp checks:
 
 ```bash
 docker-compose exec web ./vendor/bin/grumphp run
 ```
+or
+```bash
+docker-compose exec web ./vendor/bin/run toolkit:code-review
+```
+
+#### Run phpunit tests
 
 Run the phpunit tests:
 
 ```bash
 docker-compose exec web ./vendor/bin/phpunit
+```
+or, using the toolkit command as in the pipeline:
+```bash
+docker-compose exec web ./vendor/bin/run toolkit:test-phpunit --junit
 ```
 
 ## Rebuild assets during development
