@@ -159,8 +159,8 @@ docker-compose exec web rm -rf build/
 Install dependencies, build artifacts, and install Drupal.
 
 ```bash
-docker-compose exec -u node node npm install
-docker-compose exec -u node node npm run build
+docker-compose exec web npm install
+docker-compose exec web npm run build
 docker-compose exec web composer install
 docker-compose exec web ./vendor/bin/run drupal:site-install
 ```
