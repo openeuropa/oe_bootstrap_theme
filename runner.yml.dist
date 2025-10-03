@@ -37,6 +37,8 @@ selenium:
 
 commands:
   drupal:site-setup:
+    - { task: "exec", command: "npm install" }
+    - { task: "exec", command: "npm run build" }
     - { task: "run", command: "drupal:symlink-project" }
     - { task: "run", command: "drupal:drush-setup" }
     - { task: "run", command: "drupal:settings-setup" }
