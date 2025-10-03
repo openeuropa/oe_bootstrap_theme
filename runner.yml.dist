@@ -7,7 +7,7 @@ drupal:
   database:
     host: "mysql"
     port: "3306"
-    name: "oe_bootstrap_theme"
+    name: "drupal"
     user: "root"
     password: ""
   post_install:
