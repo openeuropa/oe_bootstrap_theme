@@ -33,16 +33,6 @@ services:
     expose:
       - '4444'
     shm_size: 2g
-  node:
-    image: node:18.12.0
-    user: "node"
-    working_dir: /home/node/app
-    environment:
-      - NODE_ENV=${NODE_ENV-''}
-      - SHELL=bash
-    volumes:
-      - ./:/home/node/app
-    command: "sleep infinity"
 
 #### Mac users: uncomment the "volumes" key to enable the NFS file sharing. You can find more information about Docker for Mac here: https://github.com/openeuropa/openeuropa/blob/master/docs/starting/tooling.md#using-docker-on-macos
 
