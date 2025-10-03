@@ -57,7 +57,7 @@ jobs:
           docker compose exec -T web ./vendor/bin/run release:create-archive --tag=${{ github.ref_name }} --zip
 
       - run: >
-          gh release upload "${{ github.ref_name }}"
+          gh release upload --clobber "${{ github.ref_name }}"
           "oe_bootstrap_theme-${{ github.ref_name }}.tar.gz"
           "oe_bootstrap_theme-${{ github.ref_name }}.zip"
         env:
