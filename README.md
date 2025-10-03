@@ -159,8 +159,8 @@ docker-compose exec web rm -rf build/
 Install dependencies, build artifacts, and install Drupal.
 
 ```bash
-docker-compose exec -u node node npm install
-docker-compose exec -u node node npm run build
+docker-compose exec web npm install
+docker-compose exec web npm run build
 docker-compose exec web composer install
 docker-compose exec web ./vendor/bin/run drupal:site-install
 ```
@@ -193,9 +193,7 @@ To patch a component:
 2. Run:
 
 ```bash
-docker-compose exec -u node node git config --global user.email "name@example.com"
-docker-compose exec -u node node git config --global user.name "Name"
-docker-compose exec -u node node npx patch-package @openeuropa/bcl-theme-default --patch-dir=patches/npm
+docker-compose exec web npx patch-package @openeuropa/bcl-theme-default --patch-dir=patches/npm
 ```
 
 Patches will be generated in `./patches/npm` and applied when running `npm install`.\
