@@ -58,7 +58,7 @@ jobs:
 
       - name: Upload release archive
         run: >
-          gh release upload "${{ github.ref_name }}"
+          gh release upload --clobber "${{ github.ref_name }}"
           "oe_bootstrap_theme-${{ github.ref_name }}.tar.gz"
           "oe_bootstrap_theme-${{ github.ref_name }}.zip"
         env:
