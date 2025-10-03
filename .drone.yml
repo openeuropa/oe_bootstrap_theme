@@ -31,13 +31,6 @@ services:
       - NODE_MAX_SESSION=5
 
 pipeline:
-  npm-build:
-    group: prepare
-    image: git.fpfis.tech.ec.europa.eu/fpfis/dependency_proxy/containers/node:18
-    commands:
-      - npm install --unsafe-perm
-      - NODE_ENV=production npm run production
-
   composer-install:
     group: prepare
     image: registry.fpfis.eu/digit/devsecops/httpd-php:${PHP_VERSION}-ci
