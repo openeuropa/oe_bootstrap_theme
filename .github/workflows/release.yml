@@ -1,0 +1,65 @@
+name: release
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php_version: ["8.3"]
+        core_version: ["10.4.0"]
+    env:
+      PHP_VERSION: ${{ matrix.php_version }}
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Modify web container version
+        run: |
+          # Set the php version, and replace -dev with -ci.
+          sed -i 's/httpd-php:8\.3-\(dev\|ci\)/httpd-php:${{ matrix.php_version}}-ci/g' docker-compose.yml
+          # Report the difference.
+          git diff
+
+      - name: Start services with Docker Compose
+        run: docker compose up -d
+
+      - name: Install zip
+        run: |
+          docker compose exec -T web apt-get update -y
+          docker compose exec -T web apt-get install zip -y
+
+      - name: Composer self-update
+        run: docker compose exec -T web composer self-update --2
+
+      - name: Composer install
+        run: docker compose exec -T web composer require drupal/core:~${{ matrix.core_version }} drupal/core-composer-scaffold:~${{ matrix.core_version }} --update-with-all-dependencies --ansi --no-progress --no-interaction
+
+      - name: Run grumphp
+        run: docker compose exec -T web ./vendor/bin/grumphp run
+
+      - name: Build assets with npm
+        run: |
+          docker compose exec -T web npm install --unsafe-perm
+          docker compose exec -T -e NODE_ENV=production web npm run production
+
+      - name: Create release archive
+        # There are different ways to get the current tag.
+        # We use only one, but report both.
+        run: |
+          git config --global --add safe.directory /test/oe_bootstrap_theme
+          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+          echo "Tag name from github.ref_name: ${{ github.ref_name }}"
+          docker compose exec -T web ./vendor/bin/run release:create-archive --tag=${{ github.ref_name }}
+          docker compose exec -T web ./vendor/bin/run release:create-archive --tag=${{ github.ref_name }} --zip
+
+      - name: Upload release archive
+        run: >
+          gh release upload "${{ github.ref_name }}"
+          "oe_bootstrap_theme-${{ github.ref_name }}.tar.gz"
+          "oe_bootstrap_theme-${{ github.ref_name }}.zip"
+        env:
+          GH_TOKEN: ${{ github.token }}
