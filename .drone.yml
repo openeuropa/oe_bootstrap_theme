@@ -2,11 +2,7 @@ clone:
   git:
     image: registry.fpfis.eu/drone-plugins/git:next
     when:
-      event: [ push, pull_request, tag ]
-  git:
-    image: registry.fpfis.eu/drone-plugins/git
-    when:
-      event: [ deployment ]
+      event: [ push, pull_request ]
 
 workspace:
   base: /test
@@ -52,53 +48,18 @@ pipeline:
     commands:
       - while ! mysqladmin ping -h mysql --silent; do sleep 1; done
       - ./vendor/bin/run drupal:site-install
-    when:
-      event:
-        exclude: tag
 
   grumphp:
     group: test
     image: registry.fpfis.eu/digit/devsecops/httpd-php:${PHP_VERSION}-ci
     commands:
       - ./vendor/bin/grumphp run
-    when:
-      event:
-        exclude: tag
 
   phpunit:
     group: test
     image: registry.fpfis.eu/digit/devsecops/httpd-php:${PHP_VERSION}-ci
     commands:
       - ./vendor/bin/phpunit
-    when:
-      event:
-        exclude: tag
-
-  before-release:
-    image: registry.fpfis.eu/digit/devsecops/httpd-php:${PHP_VERSION}-ci
-    commands:
-      - git config --global --add safe.directory /test/oe_bootstrap_theme
-      - apt-get update
-      - apt-get install zip
-      - ./vendor/bin/run release:create-archive --tag=${DRONE_TAG}
-      - ./vendor/bin/run release:create-archive --tag=${DRONE_TAG} --zip
-    when:
-      event: tag
-      matrix:
-        CORE_VERSION: "10.4.0"
-        PHP_VERSION: "8.3"
-
-  github-release:
-    image: registry.fpfis.eu/drone-plugins/github-release
-    secrets: [ github_token ]
-    files:
-      - oe_bootstrap_theme-${DRONE_TAG}.tar.gz
-      - oe_bootstrap_theme-${DRONE_TAG}.zip
-    when:
-      event: tag
-      matrix:
-        CORE_VERSION: "10.4.0"
-        PHP_VERSION: "8.3"
 
 matrix:
   include:
