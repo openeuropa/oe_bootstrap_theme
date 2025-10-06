@@ -22,14 +22,13 @@ drupal:
     - { task: "exec", command: "./vendor/bin/drush config-set node.settings use_admin_theme 1 -y" }
     - { task: "exec", command: "./vendor/bin/drush config-set system.logging error_level verbose -y" }
     - { task: "exec", command: "./vendor/bin/drush cr" }
-  settings:
-    additional_settings: |
-      $settings['file_scan_ignore_directories'] = [
-        'node_modules',
-        'bower_components',
-        'vendor',
-        'build',
-      ];
+  additional_settings: |
+    $settings['file_scan_ignore_directories'] = [
+      'node_modules',
+      'bower_components',
+      'vendor',
+      'build',
+    ];
 
 selenium:
   host: "http://selenium"
