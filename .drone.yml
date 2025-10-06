@@ -3,10 +3,6 @@ clone:
     image: registry.fpfis.eu/drone-plugins/git:next
     when:
       event: [ push, pull_request, tag ]
-  git:
-    image: registry.fpfis.eu/drone-plugins/git
-    when:
-      event: [ deployment ]
 
 workspace:
   base: /test
