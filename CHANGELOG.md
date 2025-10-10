@@ -1,11 +1,17 @@
 # Change Log
 
-## [1.28.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.28.0) (2025-09-29)
+## [1.29.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.29.0) (2025-10-10)
 
-[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.27.0...1.28.0)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/TEST_RELEASE_2...1.29.0)
 
 **Merged pull requests:**
 
+- OEL-0000: Update bcl version. [\#515](https://github.com/openeuropa/oe_bootstrap_theme/pull/515) ([tibi2303](https://github.com/tibi2303))
+- OEL-4178: Test with drupal/core:~11.2.0. [\#512](https://github.com/openeuropa/oe_bootstrap_theme/pull/512) ([donquixote](https://github.com/donquixote))
+
+**Merged pull requests:**
+
+- Prepare release 1.28.0. [\#511](https://github.com/openeuropa/oe_bootstrap_theme/pull/511) ([tibi2303](https://github.com/tibi2303))
 - OEL-0000: Update bcl vers to fixed release. [\#510](https://github.com/openeuropa/oe_bootstrap_theme/pull/510) ([tibi2303](https://github.com/tibi2303))
 - OEL-3730: Changed id to main and removed anchor plus test. [\#509](https://github.com/openeuropa/oe_bootstrap_theme/pull/509) ([tibi2303](https://github.com/tibi2303))
 - OEL-2127: Aria-label for offcanvas close. [\#508](https://github.com/openeuropa/oe_bootstrap_theme/pull/508) ([tibi2303](https://github.com/tibi2303))
