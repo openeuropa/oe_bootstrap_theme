@@ -9,6 +9,8 @@
 - OEL-0000: Update bcl version. [\#515](https://github.com/openeuropa/oe_bootstrap_theme/pull/515) ([tibi2303](https://github.com/tibi2303))
 - OEL-4178: Test with drupal/core:~11.2.0. [\#512](https://github.com/openeuropa/oe_bootstrap_theme/pull/512) ([donquixote](https://github.com/donquixote))
 
+## [1.28.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.28.0) (2025-09-29)
+
 **Merged pull requests:**
 
 - Prepare release 1.28.0. [\#511](https://github.com/openeuropa/oe_bootstrap_theme/pull/511) ([tibi2303](https://github.com/tibi2303))
