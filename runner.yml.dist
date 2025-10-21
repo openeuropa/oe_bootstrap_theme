@@ -66,9 +66,9 @@ commands:
 
 release:
   tasks:
-    - { task: "copy", from: "assets", to: "oe_bootstrap_theme/assets" }
+    - { task: "copy", from: "assets", to: "_release_/assets" }
     - task: "append"
-      file: "oe_bootstrap_theme/oe_bootstrap_theme.info.yml"
+      file: "_release_/oe_bootstrap_theme.info.yml"
       text: |
 
         # Information added by OpenEuropa packaging script on ${release.date} at ${release.time}.

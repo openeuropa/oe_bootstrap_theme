@@ -54,17 +54,24 @@ class ReleaseCommands extends AbstractCommands {
 
     $tasks = [
       // Make sure we do not have a release directory yet.
-      $this->taskFilesystemStack()->remove([$archive, $name]),
+      $this->taskFilesystemStack()->remove([$archive, '_release_', $name]),
 
       // Get non-modified code using git archive.
-      $this->taskGitStack()->exec(["archive", "HEAD", "-o $name.zip"]),
-      $this->taskExtract("$name.zip")->to("$name"),
-      $this->taskFilesystemStack()->remove("$name.zip"),
+      $this->taskGitStack()->exec(["archive", "HEAD", "-o _release_.zip"]),
+      $this->taskExtract("_release_.zip")->to("_release_"),
+      $this->taskFilesystemStack()->remove("_release_.zip"),
     ];
 
     // Append release tasks defined in runner.yml.dist.
+    // When these run, the release files will be in /_release_/, so that these
+    // tasks don't need to know about the `--name` parameter passed to this
+    // command.
     $release_tasks = $this->getConfig()->get("release.tasks");
     $tasks[] = $this->task(ConfigurationCommand::class, $release_tasks);
+
+    // Rename the directory, so that the name within the archive will be the
+    // provided name.
+    $tasks[] = $this->taskFilesystemStack()->rename('_release_', $name);
 
     // Create archive.
     if ($options['zip']) {
