@@ -54,12 +54,12 @@ class ReleaseCommands extends AbstractCommands {
 
     $tasks = [
       // Make sure we do not have a release directory yet.
-      $this->taskFilesystemStack()->remove([$archive, $name]),
+      $this->taskFilesystemStack()->remove([$archive, '_release_', $name]),
 
       // Get non-modified code using git archive.
-      $this->taskGitStack()->exec(["archive", "HEAD", "-o $name.zip"]),
-      $this->taskExtract("$name.zip")->to("$name"),
-      $this->taskFilesystemStack()->remove("$name.zip"),
+      $this->taskGitStack()->exec(["archive", "HEAD", "-o _release_.zip"]),
+      $this->taskExtract("_release_.zip")->to("_release_"),
+      $this->taskFilesystemStack()->remove("_release_.zip"),
     ];
 
     // Append release tasks defined in runner.yml.dist.
@@ -68,14 +68,17 @@ class ReleaseCommands extends AbstractCommands {
 
     // Create archive.
     if ($options['zip']) {
-      $tasks[] = $this->taskExecStack()->exec("zip -r $archive $name");
+      $tasks[] = $this->taskExecStack()->exec("zip -r $archive _release_");
     }
     else {
-      $tasks[] = $this->taskExecStack()->exec("tar -czf $archive $name");
+      $tasks[] = $this->taskExecStack()->exec("tar -czf $archive _release_");
     }
     // Remove release directory, if not specified otherwise.
     if (!$options['keep']) {
-      $tasks[] = $this->taskFilesystemStack()->remove($name);
+      $tasks[] = $this->taskFilesystemStack()->remove('_release_');
+    }
+    else {
+      $tasks[] = $this->taskFilesystemStack()->rename('_release_', $name);
     }
 
     return $this->collectionBuilder()->addTaskList($tasks);
