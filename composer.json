@@ -46,6 +46,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "Drupal\\oe_bootstrap_theme_commands\\": "./toolkit/src/",
             "Drupal\\Tests\\oe_bootstrap_theme\\": "./tests/src"
         }
     },
