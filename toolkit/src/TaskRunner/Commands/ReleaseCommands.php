@@ -44,8 +44,12 @@ class ReleaseCommands extends AbstractCommands {
     ],
   ) {
     $file_format = $options['zip'] ? 'zip' : 'tar.gz';
-    $name = $options['name'];
-    $version = $options['tag'];
+    $name = $options['name']
+      // The InputOption::VALUE_REQUIRED is not reliable.
+      // Throw an exception instead.
+      ?? throw new \Exception('Missing --name parameter.');
+    $version = $options['tag']
+      ?? throw new \Exception('Missing --tag parameter.');
     $archive = "$name-$version." . $file_format;
 
     $tasks = [
