@@ -12,6 +12,9 @@ use Symfony\Component\Console\Input\InputOption;
  * Defines commands to create a release artifact.
  *
  * The artifact can be used by openeuropa/composer-artifacts.
+ *
+ * This class is based on similar code in openeuropa/task-runner.
+ * Some design choices are intentionally kept aligned with the source.
  */
 class ReleaseCommands extends AbstractCommands {
 
@@ -27,10 +30,10 @@ class ReleaseCommands extends AbstractCommands {
    *
    * @command toolkit:release:create-archive
    *
-   * @option name Project name.
-   * @option tag  Release tag, will override current repository tag.
-   * @option keep Whereas to keep the temporary release directory or not.
-   * @option zip Create archive in zip file format.
+   * @option name Project name to use in the archive file name.
+   * @option tag Release tag to use in the archive file name.
+   * @option keep Keep the release directory, in addition to the archive.
+   * @option zip Create *.zip instead of *.tar.gz archive.
    */
   public function createRelease(
     array $options = [
