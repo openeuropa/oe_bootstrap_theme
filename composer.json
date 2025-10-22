@@ -12,7 +12,6 @@
         "drupal/file_link": "^2.2",
         "drupal/ui_patterns": "^1.10",
         "drupal/ui_patterns_settings": "^2.3",
-        "ec-europa/toolkit": "^10.23",
         "openeuropa/ecl-twig-loader": "^4.0"
     },
     "require-dev": {
@@ -23,6 +22,7 @@
         "drupal/core-dev": "^10.3 || ^11",
         "drupal/styleguide": "^2.2",
         "drush/drush": "^12 || ^13",
+        "ec-europa/toolkit": "^10.24",
         "openeuropa/code-review-drupal": "^1.0.0-alpha"
     },
     "scripts": {
