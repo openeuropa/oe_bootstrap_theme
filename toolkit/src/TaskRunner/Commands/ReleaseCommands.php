@@ -60,6 +60,7 @@ class ReleaseCommands extends AbstractCommands {
       $this->taskGitStack()->exec(["archive", "HEAD", "-o _release_.zip"]),
       $this->taskExtract("_release_.zip")->to("_release_"),
       $this->taskFilesystemStack()->remove("_release_.zip"),
+      ...$this->createDrupalInfoTasks($name),
     ];
 
     // Append release tasks defined in runner.yml.dist.
@@ -86,6 +87,41 @@ class ReleaseCommands extends AbstractCommands {
     }
 
     return $this->collectionBuilder()->addTaskList($tasks);
+  }
+
+  /**
+   * Creates tasks to add metadata in *.info.yml files.
+   *
+   * @param string $name
+   *   Project name to use in the *.info.yml file.
+   *
+   * @return list<\Robo\Contract\TaskInterface>
+   *   List of tasks.
+   */
+  protected function createDrupalInfoTasks(string $name): array {
+    $date = new \DateTimeImmutable(timezone: new \DateTimeZone('UTC'));
+    $commit = trim(shell_exec('git rev-parse HEAD'));
+    $text = sprintf(
+      <<<EOT
+
+# Information added by OpenEuropa packaging script on %s at %s UTC.
+project: %s
+version: %s
+datestamp: %s
+
+EOT,
+      $date->format('Y-m-d'),
+      $date->format('H:i:s'),
+      $name,
+      $commit,
+      $date->getTimestamp(),
+    );
+    $this->say("Text to append to info files:\n$text");
+    $tasks = [];
+    foreach ($this->getConfig()->get('release.drupal_info_files') as $file) {
+      $tasks[] = $this->taskWriteToFile('_release_/' . $file)->append()->text($text);
+    }
+    return $tasks;
   }
 
 }
