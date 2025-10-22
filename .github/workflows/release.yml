@@ -1,0 +1,100 @@
+name: Release artifacts
+on:
+  # Build artifacts when a release is published.
+  release:
+    types: [published]
+  # Rebuild artifacts when a tag for a published release is updated.
+  push:
+    tags:
+      - '*'
+
+jobs:
+  # Use a separate job to detect if the tag being pushed points to a published release.
+  # This produces an output variable which is used as a condition in the other job.
+  # For a release 'published' event, this should always result in 'public'.
+  get-release-status:
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.get_release_status.outputs.status }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Detect release status
+        id: get_release_status
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          TAG_NAME=${{ github.event.release.tag_name || github.ref_name }}
+          IS_DRAFT=$(gh release view --json isDraft --jq '.isDraft' $TAG_NAME 2>/dev/null) || true
+          case "$IS_DRAFT" in
+            "true") STATUS="draft" ;;
+            "false") STATUS="public" ;;
+            *) STATUS="missing" ;;
+          esac
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+
+  release:
+    runs-on: ubuntu-latest
+    needs: get-release-status
+    if: ${{ needs.get-release-status.outputs.status == 'public' }}
+    strategy:
+      matrix:
+        php_version: ["8.3"]
+        core_version: ["10.4.0"]
+    env:
+      PHP_VERSION: ${{ matrix.php_version }}
+    steps:
+      - name: "Set TAG_NAME=${{ github.event.release.tag_name || github.ref_name }} in env"
+        # Make the tag name available in every step.
+        run: |
+          echo "TAG_NAME=${{ github.event.release.tag_name || github.ref_name }}" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v2
+
+      - name: Use -ci web container
+        run: |
+          # Set the php version, and replace -dev with -ci.
+          sed -i 's/httpd-php:8\.3-\(dev\|ci\)/httpd-php:${{ matrix.php_version}}-ci/g' docker-compose.yml
+          # Report the difference.
+          git diff
+
+      - name: docker compose up
+        # Only start the web container.
+        run: docker compose up -d web
+
+      - name: apt install zip
+        run: |
+          docker compose exec -T web apt-get update -y
+          docker compose exec -T web apt-get install zip -y
+
+      - name: composer self-update
+        run: docker compose exec -T web composer self-update --2
+
+      - name: composer install
+        run: docker compose exec -T web composer require drupal/core:~${{ matrix.core_version }} drupal/core-composer-scaffold:~${{ matrix.core_version }} --update-with-all-dependencies --ansi --no-progress --no-interaction
+
+      - name: grumphp
+        run: docker compose exec -T web ./vendor/bin/grumphp run
+
+      - name: npm install
+        run: docker compose exec -T web npm install --unsafe-perm
+
+      - name: npm run production
+        run: docker compose exec -T -e NODE_ENV=production web npm run production
+
+      - name: release:create-archive
+        # There are different ways to get the current tag.
+        # We use only one, but report both.
+        run: |
+          git config --global --add safe.directory /test/oe_bootstrap_theme
+          docker compose exec -T web ./vendor/bin/run toolkit:release:create-archive --name=oe_bootstrap_theme --tag=$TAG_NAME
+          docker compose exec -T web ./vendor/bin/run toolkit:release:create-archive --name=oe_bootstrap_theme --tag=$TAG_NAME --zip
+
+      - name: gh release upload
+        # Use `--clobber` to overwrite existing files on force-push.
+        run: >
+          gh release upload --clobber "${TAG_NAME}"
+          "oe_bootstrap_theme-${TAG_NAME}.tar.gz"
+          "oe_bootstrap_theme-${TAG_NAME}.zip"
+        env:
+          GH_TOKEN: ${{ github.token }}

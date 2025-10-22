@@ -159,8 +159,7 @@ docker-compose exec web rm -rf build/
 Install dependencies, build artifacts, and install Drupal.
 
 ```bash
-docker-compose exec -u node node npm install
-docker-compose exec -u node node npm run build
+# This will trigger npm commands to build assets.
 docker-compose exec web composer install
 docker-compose exec web ./vendor/bin/run drupal:site-install
 ```
@@ -169,18 +168,39 @@ docker-compose exec web ./vendor/bin/run drupal:site-install
 
 Using default configuration, the development site files should be available in the `build` directory and the development site should be available at: [http://127.0.0.1:8080/build](http://127.0.0.1:8080/build) or [http://web:8080/build](http://web:8080/build).
 
-#### Run the tests
+#### Run code review
 
 Run the grumphp checks:
 
 ```bash
 docker-compose exec web ./vendor/bin/grumphp run
 ```
+or
+```bash
+docker-compose exec web ./vendor/bin/run toolkit:code-review
+```
+
+#### Run phpunit tests
 
 Run the phpunit tests:
 
 ```bash
 docker-compose exec web ./vendor/bin/phpunit
+```
+or, using the toolkit command as in the pipeline:
+```bash
+docker-compose exec web ./vendor/bin/run toolkit:test-phpunit --junit
+```
+
+## Rebuild assets during development
+
+To rebuild assets with npm during development, without having to run `composer install` or `composer update`:
+
+```bash
+docker-compose exec web npm install
+docker-compose exec web npm run build
+# or, for continuous updates:
+docker-compose exec web npm run watch
 ```
 
 ## Patch BCL components
@@ -193,9 +213,7 @@ To patch a component:
 2. Run:
 
 ```bash
-docker-compose exec -u node node git config --global user.email "name@example.com"
-docker-compose exec -u node node git config --global user.name "Name"
-docker-compose exec -u node node npx patch-package @openeuropa/bcl-theme-default --patch-dir=patches/npm
+docker-compose exec web npx patch-package @openeuropa/bcl-theme-default --patch-dir=patches/npm
 ```
 
 Patches will be generated in `./patches/npm` and applied when running `npm install`.\
