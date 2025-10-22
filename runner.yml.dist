@@ -65,16 +65,10 @@ commands:
     - { task: "exec", command: "./vendor/bin/phpunit --log-junit $(pwd)/junit-export/junit-phpunit.xml" }
 
 release:
+  drupal_info_files:
+    - oe_bootstrap_theme.info.yml
   tasks:
     - { task: "copy", from: "assets", to: "_release_/assets" }
-    - task: "append"
-      file: "_release_/oe_bootstrap_theme.info.yml"
-      text: |
-
-        # Information added by OpenEuropa packaging script on ${release.date} at ${release.time}.
-        project: oe_bootstrap_theme
-        version: ${release.version}
-        datestamp: ${release.timestamp}
 
 toolkit:
   build:
