@@ -34,7 +34,7 @@ class CopyClipboardTest extends WebDriverTestBase {
   public function testCopyToClipboard(): void {
     $this->drupalLogin($this->drupalCreateUser([], NULL, TRUE));
 
-    $this->drupalGet('/patterns/copyright_overlay');
+    $this->drupalGet('/admin/appearance/ui/patterns/copyright_overlay');
 
     // Mock the clipboard API.
     $this->getSession()->executeScript(<<<JS
