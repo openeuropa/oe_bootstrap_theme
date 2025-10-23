@@ -1,5 +1,5 @@
 .copyright-overlay {
-  background-color: rgba(var(--bs-white-rgb),var(--bs-bg-opacity));
+  background-color: var(--bs-white);
   color: var(--bs-gray-700);
   padding: 0 0.5rem;
   display: inline-flex;
@@ -16,5 +16,14 @@
   }
   .copyright-header {
     font-size: 1.25rem;
+  }
+}
+
+.media-container {
+  .copyright-overlay {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    border-radius: 4px;
   }
 }
