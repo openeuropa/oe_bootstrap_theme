@@ -1,0 +1,80 @@
+media_container_default:
+  render:
+    '#type': pattern
+    '#id': media_container
+    '#fields':
+      media:
+        '#markup': '<img src="https://picsum.photos/800/450" alt="Sample image">'
+      description:
+        '#markup': '<p>Sample description for the media content.</p>'
+      copyright:
+        content:
+          '#markup': '© 2024 Example Organisation'
+  assertions:
+    count:
+      'figure.media-container': 1
+      'figure.media-container .media-container__media img': 1
+      'figure.media-container .media-container__copyright .copyright-overlay': 1
+      'figure.media-container figcaption.media-container__description': 1
+    contains:
+      'figure.media-container figcaption.media-container__description': 'Sample description for the media content.'
+      '.media-container__copyright .copyright-overlay span.copyright-preview': '© 2024 Example Organisation'
+      '.media-container__copyright .copyright-overlay .copyright-trigger': 'View more'
+media_container_with_custom_settings:
+  render:
+    '#type': pattern
+    '#id': media_container
+    '#fields':
+      media:
+        '#markup': '<video controls><source src="movie.mp4" type="video/mp4"></video>'
+      description:
+        '#markup': '<p>Video description.</p>'
+      copyright:
+        content:
+          '#markup': '© 2024 Example Organisation'
+        trigger_label: 'Licence'
+        modal_title: 'Usage rights'
+    '#settings':
+      tag: section
+      attributes: 'class="media-container--custom" data-component="media-container"'
+  assertions:
+    count:
+      'section.media-container.media-container--custom': 1
+      'section[data-component="media-container"]': 1
+      'section .media-container__media': 1
+      'section .media-container__media video': 1
+      'section .media-container__copyright': 1
+      'section .copyright-overlay .modal-header h5': 1
+    contains:
+      'section .copyright-overlay .copyright-trigger': 'Licence'
+      'section .copyright-overlay .modal-header h5': 'Usage rights'
+      'section .media-container__description': 'Video description.'
+media_container_without_copyright:
+  render:
+    '#type': pattern
+    '#id': media_container
+    '#fields':
+      media:
+        '#markup': '<img src="https://picsum.photos/400/300" alt="Another image">'
+      description:
+        '#markup': '<p>Only a caption, no copyright.</p>'
+  assertions:
+    count:
+      'figure.media-container': 1
+      '.media-container__media img': 1
+      '.media-container__copyright': 0
+      'figcaption.media-container__description': 1
+media_container_description_only:
+  render:
+    '#type': pattern
+    '#id': media_container
+    '#fields':
+      description:
+        '#markup': '<p>Description only.</p>'
+  assertions:
+    count:
+      'figure.media-container': 1
+      'figure.media-container .media-container__media': 0
+      'figure.media-container .media-container__description': 1
+    contains:
+      'figure.media-container .media-container__description': 'Description only.'
