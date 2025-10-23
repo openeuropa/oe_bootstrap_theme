@@ -27,9 +27,7 @@
       <div class="media-container__media position-relative">
         {{ media }}
         {% if has_copyright %}
-          <div class="media-container__copyright position-absolute bottom-0 start-0">
-            {{ pattern('copyright_overlay', copyright) }}
-          </div>
+          {{ pattern('copyright_overlay', copyright) }}
         {% endif %}
       </div>
     {% endif %}
