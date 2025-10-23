@@ -1,0 +1,30 @@
+copyright_overlay:
+  label: 'Copyright overlay'
+  description: 'A component to show copyright information.'
+  fields:
+    trigger_label:
+      type: text
+      label: 'Trigger label'
+      description: 'The label of the modal trigger. Optional.'
+      preview: 'View more'
+    modal_title:
+      type: text
+      label: 'Modal title'
+      description: 'The title of the modal header. Optional.'
+      preview: 'Copyright'
+    content:
+      type: render
+      label: 'Content'
+      description: 'Copyright overlay content.'
+      preview: '© Copyright ipsum amet <a href="#">John Doe</a> on <a href="#">Doe Images</a>.'
+  settings:
+    trigger_attributes:
+      type: attributes
+      label: Trigger attributes
+      description: Extra attributes for the modal trigger
+      allow_token: true
+    attributes:
+      type: attributes
+      label: Copyright overlay attributes
+      description: Extra attributes for the copyright overlay
+      allow_token: true
