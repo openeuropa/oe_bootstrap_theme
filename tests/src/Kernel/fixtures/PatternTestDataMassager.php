@@ -138,6 +138,34 @@ final class PatternTestDataMassager {
   }
 
   /**
+   * Massages data for the "media_container" pattern.
+   *
+   * @param array $data
+   *   The data structure.
+   *
+   * @return array
+   *   The massaged data structure.
+   */
+  private static function massageMediaContainerPattern(array $data): array {
+    if (isset($data['#fields']['media']['#markup'])) {
+      $data['#fields']['media'] = Markup::create($data['#fields']['media']['#markup']);
+    }
+
+    if (isset($data['#fields']['description']['#markup'])) {
+      $data['#fields']['description'] = Markup::create($data['#fields']['description']['#markup']);
+    }
+
+    if (isset($data['#fields']['copyright']['content']['#markup'])) {
+      $data['#fields']['copyright']['content'] = Markup::create($data['#fields']['copyright']['content']['#markup']);
+    }
+    elseif (isset($data['#fields']['copyright']['#markup'])) {
+      $data['#fields']['copyright'] = Markup::create($data['#fields']['copyright']['#markup']);
+    }
+
+    return $data;
+  }
+
+  /**
    * Transforms a string from snake_case to CamelCase.
    *
    * @param string $string
