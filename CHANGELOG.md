@@ -1,11 +1,22 @@
 # Change Log
 
+## [1.30.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.30.0) (2025-10-30)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.29.0...1.30.0)
+
+**Merged pull requests:**
+
+- OEL-0000: Update bcl. [\#524](https://github.com/openeuropa/oe_bootstrap_theme/pull/524) ([tibi2303](https://github.com/tibi2303))
+- OEL-4093: Move toolkit to require-dev. [\#519](https://github.com/openeuropa/oe_bootstrap_theme/pull/519) ([donquixote](https://github.com/donquixote))
+- OEL-4093: Move to gitlab CI [\#514](https://github.com/openeuropa/oe_bootstrap_theme/pull/514) ([donquixote](https://github.com/donquixote))
+
 ## [1.29.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.29.0) (2025-10-10)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/TEST_RELEASE_2...1.29.0)
 
 **Merged pull requests:**
 
+- Prepare release 1.29.0. [\#517](https://github.com/openeuropa/oe_bootstrap_theme/pull/517) ([tibi2303](https://github.com/tibi2303))
 - OEL-0000: Update bcl version. [\#515](https://github.com/openeuropa/oe_bootstrap_theme/pull/515) ([tibi2303](https://github.com/tibi2303))
 - OEL-4178: Test with drupal/core:~11.2.0. [\#512](https://github.com/openeuropa/oe_bootstrap_theme/pull/512) ([donquixote](https://github.com/donquixote))
 
