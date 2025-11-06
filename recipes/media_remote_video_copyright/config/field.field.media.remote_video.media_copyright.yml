@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.media_copyright
+    - media.type.remote_video
+id: media.remote_video.media_copyright
+field_name: media_copyright
+entity_type: media
+bundle: remote_video
+label: Copyright
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
