@@ -10,7 +10,7 @@ config:
   actions:
     core.entity_view_display.media.remote_video.default:
       simpleConfigUpdate:
-        content.media_copyright:
+        content.field_media_copyright:
           type: string
           label: visually_hidden
           settings:
@@ -18,10 +18,10 @@ config:
           third_party_settings: { }
           weight: 1
           region: content
-        hidden.media_copyright: false
+        hidden.field_media_copyright: false
     core.entity_form_display.media.remote_video.default:
       simpleConfigUpdate:
-        content.media_copyright:
+        content.field_media_copyright:
           type: string_textfield
           settings:
             size: 60
@@ -29,4 +29,4 @@ config:
           third_party_settings: { }
           weight: 1
           region: content
-        hidden.media_copyright: false
+        hidden.field_media_copyright: false

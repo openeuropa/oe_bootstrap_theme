@@ -2,10 +2,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.media_copyright
+    - field.storage.media.field_media_copyright
     - media.type.remote_video
-id: media.remote_video.media_copyright
-field_name: media_copyright
+id: media.remote_video.field_media_copyright
+field_name: field_media_copyright
 entity_type: media
 bundle: remote_video
 label: Copyright
