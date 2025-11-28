@@ -8,8 +8,8 @@ id: media.image.media_copyright
 field_name: media_copyright
 entity_type: media
 bundle: image
-label: Copyright
-description: ''
+label: 'Copyright'
+description: 'Copyright information for this image.'
 required: false
 translatable: true
 default_value: {  }
