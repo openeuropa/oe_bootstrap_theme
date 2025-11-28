@@ -7,3 +7,26 @@ install:
   - media
 config:
   strict: false
+  actions:
+    core.entity_view_display.media.image.default:
+      simpleConfigUpdate:
+        content.media_copyright:
+          type: string
+          label: visually_hidden
+          settings:
+            link_to_entity: false
+          third_party_settings: { }
+          weight: 1
+          region: content
+        hidden.media_copyright: false
+    core.entity_form_display.media.image.default:
+      simpleConfigUpdate:
+        content.media_copyright:
+          type: string_textfield
+          settings:
+            size: 60
+            placeholder: ''
+          third_party_settings: { }
+          weight: 1
+          region: content
+        hidden.media_copyright: false
