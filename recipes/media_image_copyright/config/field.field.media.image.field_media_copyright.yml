@@ -2,10 +2,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.media_copyright
+    - field.storage.media.field_media_copyright
     - media.type.image
-id: media.image.media_copyright
-field_name: media_copyright
+id: media.image.field_media_copyright
+field_name: field_media_copyright
 entity_type: media
 bundle: image
 label: 'Copyright'
