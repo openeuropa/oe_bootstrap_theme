@@ -8,8 +8,8 @@ id: media.remote_video.field_media_copyright
 field_name: field_media_copyright
 entity_type: media
 bundle: remote_video
-label: Copyright
-description: ''
+label: 'Copyright'
+description: 'Copyright information for this video.'
 required: false
 translatable: true
 default_value: {  }
