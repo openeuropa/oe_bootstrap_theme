@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - media
-id: media.media_copyright
-field_name: media_copyright
+id: media.field_media_copyright
+field_name: field_media_copyright
 entity_type: media
 type: string
 settings:
