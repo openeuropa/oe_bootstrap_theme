@@ -1,8 +1,6 @@
 name: 'Media image copyright'
 description: 'Adds a reusable copyright text field to media images and exposes it in the default view mode.'
 type: 'Field'
-recipes:
-  - core/recipes/image_media_type
 install:
   - media
 config:
