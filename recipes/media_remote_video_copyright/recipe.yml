@@ -1,8 +1,6 @@
 name: 'Media remote video copyright'
 description: 'Adds a reusable copyright text field to remotely hosted videos and exposes it in the default view mode.'
 type: 'Field'
-recipes:
-  - core/recipes/remote_video_media_type
 install:
   - media
 config:
