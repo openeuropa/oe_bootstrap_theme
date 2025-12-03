@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.31.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.31.0) (2025-12-03)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.30.0...1.31.0)
+
+**Merged pull requests:**
+
+- OEL-0000: Update bcl. [\#526](https://github.com/openeuropa/oe_bootstrap_theme/pull/526) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.30.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.30.0) (2025-10-30)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.29.0...1.30.0)
