@@ -23,7 +23,7 @@ links_block_vertical_gray:
       'li.list-unstyled': 3
       'li.d-inline': 0
       'li.list-unstyled.me-4-5': 2
-      'a.pb-3.d-inline-block': 3
+      'a.mb-3.d-inline-block': 3
     equals:
       'div.bg-light > h3': 'Title Link Block'
       'div.bg-light > ul > li.list-unstyled.me-4-5:nth-child(1) a[href="https://example.com"]': 'Link number one'
@@ -53,7 +53,7 @@ links_block_horizontal_gray:
       'li.d-inline': 3
       'li.list-unstyled': 3
       'li.list-unstyled.me-4-5': 2
-      'a.pb-3.d-inline-block': 3
+      'a.mb-3.d-inline-block': 3
     equals:
       'div.bg-light > h2': 'Title Link Block'
       'div.bg-light > ul > li.list-unstyled.d-inline.me-4-5:nth-child(1) a[href="https://example.com"]': 'Link number one'
@@ -83,7 +83,7 @@ links_block_vertical_transparent:
       'li.d-inline': 0
       'li.list-unstyled': 3
       'li.list-unstyled.me-4-5': 2
-      'a.pb-3.d-inline-block': 3
+      'a.mb-3.d-inline-block': 3
     equals:
       'div > h2': 'Title Link Block'
       'div > ul > li.list-unstyled.me-4-5:nth-child(1) a[href="https://example.com"]': 'Link number one'
@@ -113,7 +113,7 @@ links_block_horizontal_transparent:
       'li.d-inline': 3
       'li.list-unstyled': 3
       'li.list-unstyled.me-4-5': 2
-      'a.pb-3.d-inline-block': 3
+      'a.mb-3.d-inline-block': 3
     equals:
       'div > h2': 'Title Link Block'
       'div > ul > li.list-unstyled.d-inline:nth-child(1) a[href="https://example.com"]': 'Link number one'
@@ -142,7 +142,7 @@ links_block_no_title:
       'li.list-unstyled': 3
       'li.d-inline': 0
       'li.list-unstyled.me-4-5': 2
-      'a.pb-3.d-inline-block': 3
+      'a.mb-3.d-inline-block': 3
     equals:
       'div.bg-light > ul > li.list-unstyled.me-4-5:nth-child(1) a[href="https://example.com"]': 'Link number one'
       'div.bg-light > ul > li.list-unstyled.me-4-5:nth-child(2) a[href="https://google.com"]': 'Link number two'
