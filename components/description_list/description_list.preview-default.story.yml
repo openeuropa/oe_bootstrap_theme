@@ -1,0 +1,44 @@
+name: Preview
+slots:
+  title: 'This is the title of this description list.'
+props:
+  items:
+    -
+      term:
+        -
+          label: 'Single label with icon'
+          icon:
+            name: 'geo-alt-fill'
+      definition: 'Description of first term text goes here.'
+    -
+      term:
+        -
+          label: 'First label without icon'
+        -
+          label: 'Second label'
+          icon:
+            name: 'upload'
+      definition: 'Description of second term text goes here.'
+    -
+      term:
+        -
+          label:
+            -
+              '#markup': 'A label with <em>some</em> markup.'
+      definition:
+        -
+          label: 'First description of third term text goes here.'
+        -
+          label: 'Second description of third term text goes here.'
+    -
+      term:
+        -
+          label: 'Custom icon size'
+          icon:
+            name: calendar-x
+            size: xl
+      definition: 'This is a bigger icon.'
+    -
+      term: 'A single term without icon.'
+      definition: 'Yet another definition text.'
+  orientation: horizontal

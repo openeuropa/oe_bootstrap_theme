@@ -21,7 +21,7 @@ class PagerTest extends AbstractKernelTestBase {
     'oe_bootstrap_theme_helper',
     'system',
     'ui_patterns',
-    'ui_patterns_settings',
+    'ui_patterns_legacy',
     'user',
     'views',
   ];

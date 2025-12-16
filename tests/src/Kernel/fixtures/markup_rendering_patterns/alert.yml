@@ -1,14 +1,14 @@
 alert_dimissible_animated:
   render:
-    '#type': pattern
-    '#id': alert
-    '#variant': 'danger'
-    '#fields':
-      settings:
-        dismissible: true
-        animated_dismiss: true
+    '#type': component
+    '#component': oe_bootstrap_theme:alert
+    '#slots':
       heading: 'Well done!'
       message: 'A simple alert. check it out!'
+    '#props':
+      variant: 'danger'
+      dismissible: true
+      animated_dismiss: true
       icon: 'lock'
   assertions:
     count:
@@ -22,15 +22,15 @@ alert_dimissible_animated:
       'svg': '#lock'
 alert_dimissible_non_animated:
   render:
-    '#type': pattern
-    '#id': alert
-    '#variant': 'info'
-    '#fields':
-      settings:
-        dismissible: true
-        animated_dismiss: false
+    '#type': component
+    '#component': oe_bootstrap_theme:alert
+    '#slots':
       heading: 'Well done!'
       message: 'A simple alert. check it out!'
+    '#props':
+      variant: 'info'
+      dismissible: true
+      animated_dismiss: false
       icon: 'lock'
   assertions:
     count:
@@ -45,15 +45,15 @@ alert_dimissible_non_animated:
       'svg': "#lock"
 alert_not_dimissible:
   render:
-    '#type': pattern
-    '#id': alert
-    '#variant': 'secondary'
-    '#fields':
-      settings:
-        dismissible: false
-        animated_dismiss: false
+    '#type': component
+    '#component': oe_bootstrap_theme:alert
+    '#slots':
       heading: 'Well done!'
       message: 'A simple alert. check it out!'
+    '#props':
+      variant: 'secondary'
+      dismissible: false
+      animated_dismiss: false
       icon: 'search'
   assertions:
     count:

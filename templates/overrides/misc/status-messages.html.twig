@@ -29,11 +29,11 @@
 <div data-drupal-messages>
   {% for type, messages in message_list %}
     {% for message in messages %}
-      {{ pattern('alert', {
+      {% include 'oe_bootstrap_theme:alert' with {
         'variant': _mapping[type] ?? '',
         'message': message,
-        'dismissible': true
-      }) }}
+        'dismissible': true,
+      } only %}
     {% endfor %}
 
   {% endfor %}

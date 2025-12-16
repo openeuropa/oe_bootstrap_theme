@@ -45,11 +45,11 @@
 
 <div class="page">
 
-  {{ pattern('navbar', {
-    branding: page.navbar_branding ? page.navbar_branding : false,
-    navigation: page.navbar_left ? page.navbar_left : false,
-    right: page.navbar_right ? page.navbar_right : false,
-  }) }}
+{#  {{ pattern('navbar', {#}
+{#    branding: page.navbar_branding ? page.navbar_branding : false,#}
+{#    navigation: page.navbar_left ? page.navbar_left : false,#}
+{#    right: page.navbar_right ? page.navbar_right : false,#}
+{#  }) }}#}
 
   <main class="pt-5 pb-5" aria-label="{{ "Main content"|t }}" id="main-content" tabindex="-1">
     {% if page.header %}

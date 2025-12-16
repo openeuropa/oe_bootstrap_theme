@@ -19,13 +19,13 @@
 {% endfor %}
 
 {% if _breadcrumb_links %}
-  {{ pattern('breadcrumb', {
-    'items': _breadcrumb_links,
-    'attributes': {
-      'class': [
-        'mt-3'
-      ],
-      'aria-label': "breadcrumb"
-    }
-  }) }}
+{#  {{ pattern('breadcrumb', {#}
+{#    'items': _breadcrumb_links,#}
+{#    'attributes': {#}
+{#      'class': [#}
+{#        'mt-3'#}
+{#      ],#}
+{#      'aria-label': "breadcrumb"#}
+{#    }#}
+{#  }) }}#}
 {% endif %}
