@@ -1,12 +1,12 @@
 description_list_default:
   render:
-    '#type': pattern
-    '#id': description_list
-    '#fields':
+    '#type': component
+    '#component': oe_bootstrap_theme:description_list
+    '#slots':
       title: 'The description list title'
+    '#props':
       title_tag: 'h4'
-      settings:
-        orientation: default
+      orientation: default
       items:
         - term:
             - label: 'Single label with icon'
@@ -40,7 +40,7 @@ description_list_default:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\DescriptionListAssert
       expected:
         items:
-          - term: 
+          - term:
               - label: 'Single label with icon'
                 icon: 'geo-alt-fill'
             definition: 'Description of first term text goes here.'
@@ -65,12 +65,12 @@ description_list_default:
             definition: 'Yet another definition text.'
 description_list_horizontal:
   render:
-    '#type': pattern
-    '#id': description_list
-    '#fields':
+    '#type': component
+    '#component': oe_bootstrap_theme:description_list
+    '#slots':
       title: 'The description list title'
-      settings:
-        orientation: horizontal
+    '#props':
+      orientation: horizontal
       items:
         - term:
           - label: 'Single label with icon'

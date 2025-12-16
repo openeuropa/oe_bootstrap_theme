@@ -38,7 +38,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     'system',
     'ui_patterns',
     'ui_patterns_library',
-    'ui_patterns_settings',
+    'ui_patterns_legacy',
   ];
 
   /**

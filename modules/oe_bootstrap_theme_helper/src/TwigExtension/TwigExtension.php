@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
@@ -49,6 +50,13 @@ class TwigExtension extends AbstractExtension {
   protected TwigEnvironment $twigEnvironment;
 
   /**
+   * The theme extension list service.
+   *
+   * @var \Drupal\Core\Extension\ThemeExtensionList
+   */
+  protected $themeList;
+
+  /**
    * Constructs a new TwigExtension object.
    *
    * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
@@ -57,11 +65,14 @@ class TwigExtension extends AbstractExtension {
    *   The Drupal Twig environment.
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer.
+   * @param \Drupal\Core\Extension\ThemeExtensionList $theme_list
+   *   The theme extension list.
    */
-  public function __construct(LanguageManagerInterface $languageManager, TwigEnvironment $twigEnvironment, RendererInterface $renderer) {
+  public function __construct(LanguageManagerInterface $languageManager, TwigEnvironment $twigEnvironment, RendererInterface $renderer, ThemeExtensionList $theme_list) {
     $this->languageManager = $languageManager;
     $this->twigEnvironment = $twigEnvironment;
     $this->renderer = $renderer;
+    $this->themeList = $theme_list;
   }
 
   /**
@@ -93,6 +104,7 @@ class TwigExtension extends AbstractExtension {
         'needs_environment' => TRUE,
       ]),
       new TwigFunction('bcl_gallery_items', [$this, 'bclGalleryItems']),
+      new TwigFunction('get_theme_path', [$this, 'getThemePath']),
     ];
   }
 
@@ -339,6 +351,24 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $items;
+  }
+
+  /**
+   * Returns the path to a given theme.
+   *
+   * @param string $theme_name
+   *   The machine name of the theme.
+   *
+   * @return string
+   *   The relative path to the theme.
+   */
+  public function getThemePath(string $theme_name) {
+    try {
+      return $this->themeList->getPath($theme_name);
+    }
+    catch (\Exception) {
+      return '';
+    }
   }
 
   /**

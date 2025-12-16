@@ -50,6 +50,10 @@ final class PatternTestDataMassager {
    *   The massaged data structure.
    */
   private static function massageFilePattern(array $data): array {
+    if (!isset($data['#fields']['file'])) {
+      return $data;
+    }
+
     $data['#fields']['file'] = FileValueObject::fromArray($data['#fields']['file']);
 
     if (!empty($data['#fields']['translations'])) {
@@ -71,9 +75,11 @@ final class PatternTestDataMassager {
    *   The massaged data structure.
    */
   private static function massageCardPattern(array $data): array {
-    if (isset($data['#fields']['image'])) {
-      $data['#fields']['image'] = ImageValueObject::fromArray($data['#fields']['image']);
+    if (!isset($data['#fields']['items'])) {
+      return $data;
     }
+
+    $data['#fields']['image'] = ImageValueObject::fromArray($data['#fields']['image']);
 
     return $data;
   }
@@ -88,6 +94,10 @@ final class PatternTestDataMassager {
    *   The massaged data structure.
    */
   private static function massageCardLayoutPattern(array $data): array {
+    if (!isset($data['#fields']['items'])) {
+      return $data;
+    }
+
     foreach ($data['#fields']['items'] as &$item) {
       if (isset($item['image'])) {
         $item['image'] = ImageValueObject::fromArray($item['image']);
@@ -107,6 +117,10 @@ final class PatternTestDataMassager {
    *   The massaged data structure.
    */
   private static function massageListingPattern(array $data): array {
+    if (!isset($data['#fields']['items'])) {
+      return $data;
+    }
+
     foreach ($data['#fields']['items'] as &$item) {
       if (isset($item['image'])) {
         $item['image'] = ImageValueObject::fromArray($item['image']);
@@ -126,6 +140,10 @@ final class PatternTestDataMassager {
    *   The massaged data structure.
    */
   private static function massageGalleryPattern(array $data): array {
+    if (!isset($data['#fields']['items'])) {
+      return $data;
+    }
+
     foreach ($data['#fields']['items'] as &$item) {
       foreach (['thumbnail', 'media'] as $key) {
         if (isset($item[$key]['#markup'])) {

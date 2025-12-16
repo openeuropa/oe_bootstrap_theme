@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Description list component.
+ */
+#}
+
+{% set _bcl_icon_path = file_url(get_theme_path('oe_bootstrap_theme') ~ '/assets/icons/bcl-default-icons.svg') %}
+{% set _icon_path = icon_path|default(_bcl_icon_path) %}
+
+{% set _items = [] %}
+{% for item in items %}
+  {% set _terms = [] %}
+  {% set item_terms = item.term is iterable ? item.term : [item.term] %}
+  {% for term in item_terms %}
+    {% set _term = term is iterable ? term : {'label': term} %}
+
+    {% if _term.icon is defined and _term.icon %}
+      {% set _icon = _term.icon is iterable ? _term.icon : {'name': _term.icon} %}
+      {% set _term = _term|merge({
+        'icon': {'size': 'xs', 'path': _icon_path}|merge(_icon)
+      }) %}
+    {% endif %}
+
+    {% set _terms = _terms|merge([_term]) %}
+  {% endfor %}
+
+  {% set _items = _items|merge([item|merge({'term': _terms})]) %}
+{% endfor %}
+
+{% include '@oe-bcl/description-list' with {
+  title: title,
+  title_tag: title_tag|default('h2'),
+  title_attributes: title_attributes,
+  items: _items,
+  variant: orientation,
+  bordered: bordered,
+  col_classes: col_classes,
+  attributes: wrapper_attributes,
+} %}
