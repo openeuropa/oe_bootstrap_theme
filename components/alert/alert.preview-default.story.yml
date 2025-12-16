@@ -1,0 +1,6 @@
+name: Preview
+slots:
+  heading: 'Well done!'
+  message: 'A simple alert—check it out!'
+props:
+  icon: info-circle

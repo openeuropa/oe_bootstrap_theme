@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Alert component.
+ */
+#}
+
+{% set _bcl_icon_path = file_url(get_theme_path('oe_bootstrap_theme') ~ '/assets/icons/bcl-default-icons.svg') %}
+{% set _icon_path = icon_path|default(_bcl_icon_path) %}
+
+{% include '@oe-bcl/alert' with {
+  'heading': heading,
+  'message': message,
+  'variant': variant,
+  'dismissible': dismissible,
+  'animated_dismiss': animated_dismiss,
+  'icon_path': _icon_path,
+  'icon_name': icon,
+  'attributes': attributes,
+} only %}

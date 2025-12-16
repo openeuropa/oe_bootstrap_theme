@@ -27,7 +27,7 @@ abstract class AbstractKernelTestBase extends KernelTestBase {
     'responsive_image',
     'system',
     'ui_patterns',
-    'ui_patterns_settings',
+    'ui_patterns_legacy',
     'ui_patterns_library',
     'user',
     'node',

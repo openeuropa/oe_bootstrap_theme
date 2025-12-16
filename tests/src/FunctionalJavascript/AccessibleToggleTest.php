@@ -25,7 +25,7 @@ class AccessibleToggleTest extends WebDriverTestBase {
     'system',
     'ui_patterns',
     'ui_patterns_library',
-    'ui_patterns_settings',
+    'ui_patterns_legacy',
   ];
 
   /**
@@ -33,7 +33,7 @@ class AccessibleToggleTest extends WebDriverTestBase {
    */
   public function testAccessibleToggleAttributes(): void {
     $this->drupalLogin($this->drupalCreateUser([], NULL, TRUE));
-    $this->drupalGet('/admin/appearance/ui/patterns');
+    $this->drupalGet('/admin/appearance/ui/components');
 
     $modalTrigger = $this->getSession()->getPage()->find('css', '[data-bs-toggle="modal"]');
     $offcanvasTrigger = $this->getSession()->getPage()->find('css', '[data-bs-toggle="offcanvas"]');
