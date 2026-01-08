@@ -24,7 +24,7 @@ card_group:
     count:
       'div.card-group': 1
       'article.card': 4
-      'h1.card-title': 3
+      'div.card-title': 3
       'h2.card-title': 1
       'div.card-text': 4
     equals:
