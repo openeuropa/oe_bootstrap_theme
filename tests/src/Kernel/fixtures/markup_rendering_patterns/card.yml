@@ -68,7 +68,7 @@ card_vertical:
       expected:
         horizontal: false
         title: 'Title card'
-        title_tag: 'h1'
+        title_tag: 'div'
         subtitle: 'Subtitle card'
         description: 'Text card with longer text which is supported'
         image:
@@ -126,7 +126,7 @@ card_search_with_date:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
       expected:
         title: 'Title card'
-        title_tag: 'h1'
+        title_tag: 'div'
         description: 'Text card with longer text which is supported'
         date:
           year: "2021"
@@ -154,7 +154,7 @@ card_with_date_range:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
       expected:
         title: 'Title card'
-        title_tag: 'h1'
+        title_tag: 'div'
         date:
           year: "2021"
           month: "Jan"
