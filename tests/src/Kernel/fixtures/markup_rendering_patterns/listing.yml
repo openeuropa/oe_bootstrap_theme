@@ -64,7 +64,7 @@ listing_default_1_col:
       'div.card-text': 4
       'span.me-4': 4
       'span.mb-2': 8
-      'h1.card-title': 4
+      'div.card-title': 4
       'a.standalone': 4
       'a.d-inline-block': 1
     equals:
@@ -160,7 +160,7 @@ listing_default_2_col:
       'div.card-text': 6
       'span.me-4': 6
       'span.mb-2': 12
-      'h1.card-title': 6
+      'div.card-title': 6
       'a.standalone': 6
       'a.d-inline-block': 1
     equals:
@@ -256,7 +256,7 @@ listing_default_3_col:
       'div.card-text': 6
       'span.me-4': 6
       'span.mb-2': 12
-      'h1.card-title': 6
+      'div.card-title': 6
       'a.standalone': 6
       'a.d-inline-block': 1
     equals:
