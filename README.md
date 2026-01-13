@@ -201,7 +201,22 @@ docker-compose exec web npm install
 docker-compose exec web npm run build
 # or, for continuous updates:
 docker-compose exec web npm run watch
-```
+
+## Visual regression testing (BackstopJS)
+
+BackstopJS lives under `tests/vrt/`. The scenario builder and Playwright helper scripts in this directory generate `tests/vrt/scenarios/patterns.json` and `tests/vrt/backstop.generated.json`, which Backstop consumes for visual checks.
+
+### Prerequisites
+
+- A running Drupal site reachable at `http://localhost:8080/build`. Override the target with the `VRT_BASE_URL` environment variable if needed.
+- Valid credentials. The default `admin` / `admin` values can be overridden with `DRUPAL_USER` and `DRUPAL_PASS`.
+
+### Available commands
+
+- `docker compose exec web npm run vrt:build` – scrapes the UI Patterns catalog and generates `tests/vrt/scenarios/patterns.json` plus `tests/vrt/backstop.generated.json`.
+- `docker compose exec web npm run vrt:reference` – captures fresh reference screenshots into `tests/vrt/bitmaps_reference`.
+- `docker compose exec web npm run vrt:test` – compares the current UI against the references, writing results to `tests/vrt/bitmaps_test` and `tests/vrt/html_report`.
+- `docker compose exec web npm run vrt:approve` – promotes the latest passing screenshots to the reference set.
 
 ## Patch BCL components
 

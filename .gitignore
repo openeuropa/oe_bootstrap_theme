@@ -22,3 +22,9 @@
 /junit-export/
 # Toolkit sets the config sync directory to '../config/sync/'.
 /config/sync/
+# BackstopJS
+tests/vrt/bitmaps_test/
+tests/vrt/html_report/
+tests/vrt/scenarios/patterns.json
+tests/vrt/backstop.generated.json
+
