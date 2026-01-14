@@ -148,7 +148,10 @@ class MegaMenuBlockTest extends AbstractKernelTestBase {
       'content_block' => [
         'title' => [
           '#type' => 'html_tag',
-          '#tag' => 'h4',
+          '#tag' => 'div',
+          '#attributes' => [
+            'class' => ['h4'],
+          ],
           '#value' => "Link to '$name'",
         ],
         'text' => [

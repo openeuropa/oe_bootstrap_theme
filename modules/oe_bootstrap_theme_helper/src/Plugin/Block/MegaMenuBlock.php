@@ -239,7 +239,10 @@ class MegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
     $content_block = [
       'title' => [
         '#type' => 'html_tag',
-        '#tag' => 'h4',
+        '#tag' => 'div',
+        '#attributes' => [
+          'class' => ['h4'],
+        ],
         '#value' => $item['title'],
       ],
     ];
