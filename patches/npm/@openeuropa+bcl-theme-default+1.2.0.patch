@@ -2,12 +2,12 @@ diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.
 index 171972f..aa94eb3 100644
 --- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
 +++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
-@@ -72,18 +72,19 @@
+@@ -70,17 +70,17 @@
  {% if _classes is not empty %}
-   {% set attributes = attributes.addClass(_classes) %}
+   {%- set attributes = attributes.addClass(_classes) %}
  {% endif %}
--{% set attributes = attributes.setAttribute('href', _path) %}
- 
+-{% set attributes = attributes.setAttribute('href', _path) -%}
+-
 -<a
 -  {{ attributes }}
 ->
@@ -19,6 +19,7 @@ index 171972f..aa94eb3 100644
 -    {{ _icon_markup }}
 -  {%- endif -%}
 -</a>
+-{#--#}
 +{% if _icon_markup is defined %}
 +  {%- set _label -%}
 +    {%- if _icon_position == 'before' -%}
@@ -32,5 +33,4 @@ index 171972f..aa94eb3 100644
 +{%- endif -%}
 +
 +{{ bcl_link(_label, _path, attributes) }}
- 
- {% endapply %}
++{#--#}
