@@ -4,7 +4,7 @@ copyright_overlay:
     '#id': copyright_overlay
     '#fields':
       content: 'Default ipsum dolor sit amet.'
-  assert:
+  assertions:
     contains:
       '.modal-header h5': 'Copyright'
       'span.copyright-preview': 'Default ipsum dolor sit amet'
@@ -21,7 +21,7 @@ copyright_overlay_with_custom_trigger_label:
     '#fields':
       content: 'Lorem Ipsum dolor sit amet'
       trigger_label: 'Show more'
-  assert:
+  assertions:
     contains:
       '.modal-header h5': 'Copyright'
       'span.copyright-preview': 'Lorem Ipsum dolor sit amet'
@@ -38,7 +38,7 @@ copyright_overlay_with_custom_modal_title:
     '#fields':
       content: 'Aenean eget accumsan neque, eu accumsan eros.'
       modal_title: 'New title'
-  assert:
+  assertions:
     contains:
       '.modal-header h5': 'New title'
       'span.copyright-preview': 'Aenean eget accumsan neque, eu accumsan eros.'
@@ -57,7 +57,7 @@ copyright_overlay_with_attributes:
     '#settings':
       attributes: 'class="test-class" id="test-id" data-test="attr-value"'
       trigger_attributes: 'class="my-trigger-class" data-test="trigger-attr-value"'
-  assert:
+  assertions:
     contains:
       '.modal-header h5': 'Copyright'
       'span.copyright-preview': 'Pellentesque ullamcorper erat sed arcu dapibus.'
