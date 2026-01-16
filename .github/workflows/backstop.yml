@@ -1,0 +1,56 @@
+name: BackstopJS VRT
+
+on:
+  pull_request:
+
+env:
+  REPORT_DIR: tests/vrt/html_report
+  CI: true
+
+jobs:
+  backstop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npx playwright install --with-deps
+          npm run vrt:build
+
+      - name: Run BackstopJS
+        id: backstop
+        run: |
+          npm run vrt:test
+        continue-on-error: true
+
+      - name: Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backstop-report-${{ github.sha }}
+          path: ${{ env.REPORT_DIR }}
+          if-no-files-found: warn
+
+      - name: Upload Backstop bitmaps (artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backstop-bitmaps-${{ github.sha }}
+          path: |
+            tests/vrt/bitmaps_test
+            tests/vrt/bitmaps_reference
+          if-no-files-found: warn
+
+      - name: Fail if Backstop failed
+        if: steps.backstop.outcome != 'success'
+        run: exit 1
