@@ -1,11 +1,22 @@
 # Change Log
 
-## [1.31.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.31.0) (2025-12-03)
+## [1.32.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.32.0) (2026-01-20)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.31.0...1.32.0)
+
+**Merged pull requests:**
+
+- OEL-4426: Removed obsolete drupal versions. [\#532](https://github.com/openeuropa/oe_bootstrap_theme/pull/532) ([tibi2303](https://github.com/tibi2303))
+- OEL-3732: Prerelease bcl. [\#530](https://github.com/openeuropa/oe_bootstrap_theme/pull/530) ([tibi2303](https://github.com/tibi2303))
+- OEL-3983: Added accessibility test for menu. [\#529](https://github.com/openeuropa/oe_bootstrap_theme/pull/529) ([tibi2303](https://github.com/tibi2303))
+
+## [1.31.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.31.0) (2025-12-04)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.30.0...1.31.0)
 
 **Merged pull requests:**
 
+- Prepare release 1.31.0. [\#527](https://github.com/openeuropa/oe_bootstrap_theme/pull/527) ([tibi2303](https://github.com/tibi2303))
 - OEL-0000: Update bcl. [\#526](https://github.com/openeuropa/oe_bootstrap_theme/pull/526) ([tibi2303](https://github.com/tibi2303))
 
 ## [1.30.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.30.0) (2025-10-30)
