@@ -13,6 +13,16 @@ card:
       type: string
       label:  'Orientation'
       description: 'Can be set to horizontal or vertical. Defaults to vertical.'
+    left_col_classes:
+      type: string
+      label:  'Left column classes'
+      description: 'When horizontal orientation. Classes of left column.'
+      preview: 'col-3'
+    right_col_classes:
+      type: string
+      label: 'Right column classes'
+      description: 'When horizontal orientation. Classes of right column.'
+      preview: 'col-9'
     title:
       type: text
       label: 'Title'
@@ -55,6 +65,10 @@ card:
       label: 'Content'
       description: 'Card content.'
       preview: '<button class="btn btn-primary">Custom action</button>'
+    extra_classes_body:
+      type: string
+      label:  'Extra classes body'
+      description: 'Can be set additional classes for card body/content.'
     header:
       type: text
       label: 'Card header'
@@ -65,6 +79,10 @@ card:
       label: 'Card footer'
       description: 'Card footer content.'
       preview: 'Footer of card'
+    extra_classes_footer:
+      type: string
+      label:  'Extra classes footer'
+      description: 'Can be set additional classes for card footer.'
     badges:
       type: array
       label: 'Badges'
