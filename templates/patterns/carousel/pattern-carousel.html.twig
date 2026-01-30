@@ -11,6 +11,15 @@
       <img{{ create_attribute(slide.image).addClass(['d-block', 'w-100']) }} />
     {% endblock %}
   {% endset %}
+  {% if slide.copyright is defined and slide.copyright is not empty %}
+    {% set _image = pattern('media_container', {
+      media: _image,
+      copyright: {
+        content: slide.copyright,
+      },
+      tag: 'div',
+    }) %}
+  {% endif %}
   {% set _item = slide|merge({
     'image': _image,
   }) %}
