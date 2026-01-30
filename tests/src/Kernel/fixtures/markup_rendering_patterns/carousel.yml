@@ -118,6 +118,11 @@ carousel_without_settings_assert_defaults:
           show_controls: true
           show_indicators: false
           autoplay: true
+          disable_touch: false
+        items:
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
+            caption_title: 'First slide title'
+            caption: 'First slide caption'
 carousel_with_copyright_overlay:
   render:
     '#type': pattern
@@ -137,11 +142,6 @@ carousel_with_copyright_overlay:
       '.carousel .media-container .copyright-overlay': 1
     contains:
       '.copyright-overlay span.copyright-preview': '© 2024 Example Organisation'
-          disable_touch: false
-        items:
-          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
-            caption_title: 'First slide title'
-            caption: 'First slide caption'
 carousel_just_images:
   render:
     '#type': pattern
