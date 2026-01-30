@@ -60,3 +60,8 @@ featured_media:
       type: string
       label: 'Text position'
       description: 'The position of the text when present. Either left or right. Defaults to left.'
+    copyright:
+      type: text
+      label: 'Copyright'
+      description: 'Optional copyright text displayed as an overlay.'
+      preview: '© 2024 Example Organisation'
