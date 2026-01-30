@@ -19,16 +19,33 @@
     {'variant': call_to_action.link_style}
   ) %}
 {% endif %}
-{% include '@oe-bcl/banner' with {
-  shade: variant == 'image_shade' ? true : shade,
-  hero: hero,
-  full_width: full_width,
-  centered: centered,
-  title: title,
-  title_tag: title_tag,
-  description: description,
-  link: call_to_action,
-  image: variant == 'image' or variant == 'image_shade' ? image : '' ,
-  content_classes: content_classes,
-  attributes: attributes,
-} only %}
+{% set _banner_attributes = attributes %}
+{% if copyright is not empty %}
+  {% set _banner_attributes = create_attribute(attributes.toArray()|without('id')) %}
+{% endif %}
+{% set _banner %}
+  {% include '@oe-bcl/banner' with {
+    shade: variant == 'image_shade' ? true : shade,
+    hero: hero,
+    full_width: full_width,
+    centered: centered,
+    title: title,
+    title_tag: title_tag,
+    description: description,
+    link: call_to_action,
+    image: variant == 'image' or variant == 'image_shade' ? image : '' ,
+    content_classes: content_classes,
+    attributes: _banner_attributes,
+  } only %}
+{% endset %}
+{% if copyright is not empty %}
+  {% set _copyright = copyright.content is defined ? copyright : { content: copyright } %}
+  {{ pattern('media_container', {
+    media: _banner,
+    copyright: _copyright,
+    tag: 'div',
+    attributes: attributes,
+  }) }}
+{% else %}
+  {{ _banner }}
+{% endif %}

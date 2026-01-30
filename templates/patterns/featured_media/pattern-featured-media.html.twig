@@ -4,14 +4,26 @@
  * Featured media pattern.
  */
 #}
-{% macro featured_media(embedded_media, image, caption, ratio) %}
-  {% include '@oe-bcl/featured-media' with {
-    'embedded_media': embedded_media,
-    'image': image,
-    'content': caption,
-    'content_classes': 'bg-light p-3',
-    'ratio': ratio,
-  } only %}
+{% macro featured_media(embedded_media, image, caption, ratio, copyright) %}
+  {% set _media %}
+    {% include '@oe-bcl/featured-media' with {
+      'embedded_media': embedded_media,
+      'image': image,
+      'content': caption,
+      'content_classes': 'bg-light p-3',
+      'ratio': ratio,
+    } only %}
+  {% endset %}
+  {% if copyright is not empty %}
+    {% set _copyright = copyright.content is defined ? copyright : { content: copyright } %}
+    {{ pattern('media_container', {
+      media: _media,
+      copyright: _copyright,
+      tag: 'div',
+    }) }}
+  {% else %}
+    {{ _media }}
+  {% endif %}
 {% endmacro %}
 
 <div{{ attributes.addClass('bcl-featured-media') }}>
@@ -63,13 +75,13 @@
         {% endif %}
       </div>
       <div class="col-12 col-md-6 {{ video_alignment_class }}">
-        {{ _self.featured_media(embedded_media, image, caption, ratio) }}
+        {{ _self.featured_media(embedded_media, image, caption, ratio, copyright) }}
       </div>
     </div>
   {% else %}
     <div class="row">
       <div class="col-12 col-md-4">
-        {{ _self.featured_media(embedded_media, image, caption, ratio) }}
+        {{ _self.featured_media(embedded_media, image, caption, ratio, copyright) }}
       </div>
     </div>
   {% endif %}
