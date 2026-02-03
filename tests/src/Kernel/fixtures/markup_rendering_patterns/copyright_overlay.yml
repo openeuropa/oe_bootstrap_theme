@@ -62,10 +62,10 @@ copyright_overlay_with_attributes:
       '.modal-header h5': 'Copyright'
       'span.copyright-preview': 'Pellentesque ullamcorper erat sed arcu dapibus.'
       'div.copyright-content': 'Pellentesque ullamcorper erat sed arcu dapibus.'
-      '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 'View more'
+      '.copyright-trigger[data-bs-target="#test-id-modal"]': 'View more'
     count:
-      '.copyright-trigger[data-bs-target="#bcl-copyright-modal"]': 1
-      'div#bcl-copyright-modal': 1
+      '.copyright-trigger[data-bs-target="#test-id-modal"]': 1
+      'div#test-id-modal': 1
       '.copyright-overlay': 1
       '.copyright-overlay.test-class': 1
       '.copyright-overlay#test-id': 1

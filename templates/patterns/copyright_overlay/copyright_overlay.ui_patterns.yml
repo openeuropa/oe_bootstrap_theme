@@ -26,5 +26,5 @@ copyright_overlay:
     attributes:
       type: attributes
       label: Copyright overlay attributes
-      description: Extra attributes for the copyright overlay
+      description: Extra attributes for the copyright overlay. If an id is provided, it will be used as the base for internal modal/content ids.
       allow_token: true

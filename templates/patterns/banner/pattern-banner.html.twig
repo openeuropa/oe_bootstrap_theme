@@ -39,7 +39,7 @@
   } only %}
 {% endset %}
 {% if copyright is not empty %}
-  {% set _copyright = copyright.content is defined ? copyright : { content: copyright } %}
+  {% set _copyright = { content: copyright } %}
   {{ pattern('media_container', {
     media: _banner,
     copyright: _copyright,
