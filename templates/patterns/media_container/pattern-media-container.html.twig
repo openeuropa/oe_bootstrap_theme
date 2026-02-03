@@ -14,16 +14,16 @@
   - attributes: Attributes for the outer wrapper.
 #}
 
-{% set tag = tag|default('figure') %}
+{%- set tag = tag|default('figure') %}
 {% set attributes = attributes|default(create_attribute()) %}
 
-{% set has_media = media is not empty %}
+{%- set has_media = media is not empty %}
 {% set has_description = description is not empty %}
 {% set has_copyright = copyright is not empty %}
 
-{% if has_media or has_description %}
+{%- if has_media or has_description %}
   <{{ tag }}{{ attributes.addClass('media-container') }}>
-    {% if has_media %}
+    {%- if has_media %}
       <div class="media-container__media position-relative">
         {{- media -}}
         {% if has_copyright %}
