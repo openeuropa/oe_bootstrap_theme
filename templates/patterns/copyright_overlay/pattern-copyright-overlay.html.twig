@@ -17,19 +17,19 @@
 
 <div{{ attributes.addClass('copyright-overlay') }}>
   <span class="copyright-preview">
-    {{ content }}
+    {{- content -}}
   </span>
 
-  {{ pattern('link', {
+  {{- pattern('link', {
     label: trigger_label|default('View more'|t),
     path: '#',
     attributes: trigger_attributes
       .addClass('copyright-trigger')
       .setAttribute('data-bs-toggle', 'modal')
       .setAttribute('data-bs-target', '#' ~ modal_id),
-  }) }}
+  }) -}}
 
-  {{ pattern('modal', {
+  {{- pattern('modal', {
     'title': modal_title|default('Copyright'|t),
     'show_close_button': true,
     'body': _content,
@@ -37,5 +37,5 @@
     'attributes': create_attribute({
       id: modal_id
     })
-  }) }}
+  }) -}}
 </div>
