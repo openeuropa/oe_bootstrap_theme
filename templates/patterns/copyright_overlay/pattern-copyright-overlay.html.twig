@@ -6,14 +6,14 @@
 #}
 {{ attach_library('oe_bootstrap_theme/pattern.copyright_overlay') }}
 
-{% set _content %}
+{% set _content -%}
   <div{{ create_attribute({
     'class': 'copyright-content',
     'id': copy_selector
   }) }}>
-    {{ content }}
+    {{- content -}}
   </div>
-{% endset %}
+{%- endset %}
 
 <div{{ attributes.addClass('copyright-overlay') }}>
   <span class="copyright-preview">
