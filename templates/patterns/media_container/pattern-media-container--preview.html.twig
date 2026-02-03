@@ -25,21 +25,21 @@
 
 <div class="row g-4">
   <div class="col-12 col-md-6">
-    {{ pattern('media_container', {
+    {{- pattern('media_container', {
       media: image_media,
       description: image_description,
       copyright: {
         content: image_copyright
       }
-    }) }}
+    }) -}}
   </div>
   <div class="col-12 col-md-6">
-    {{ pattern('media_container', {
+    {{- pattern('media_container', {
       media: video_media,
       description: video_description,
       copyright: {
         content: image_copyright
       }
-    }) }}
+    }) -}}
   </div>
 </div>

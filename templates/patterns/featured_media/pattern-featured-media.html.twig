@@ -16,13 +16,13 @@
   {% endset %}
   {% if copyright is not empty %}
     {% set _copyright = { content: copyright } %}
-    {{ pattern('media_container', {
+    {{- pattern('media_container', {
       media: _media,
       copyright: _copyright,
       tag: 'div',
-    }) }}
+    }) -}}
   {% else %}
-    {{ _media }}
+    {{- _media -}}
   {% endif %}
 {% endmacro %}
 
@@ -62,26 +62,26 @@
           {% else %}
             {% set _subtitle_tag = title is not empty ? 'h3' : 'h2' %}
           {% endif %}
-          <{{ _subtitle_tag }} class="text-secondary">{{ subtitle }}</{{ _subtitle_tag }}>
+          <{{ _subtitle_tag }} class="text-secondary">{{- subtitle -}}</{{ _subtitle_tag }}>
         {% endif %}
-        {{ text }}
+        {{- text -}}
         {% if link %}
-          {{ pattern('link', {
+          {{- pattern('link', {
             label: link.label,
             path: link.path,
             variant: 'link',
             icon: link.icon
-          }) }}
+          }) -}}
         {% endif %}
       </div>
       <div class="col-12 col-md-6 {{ video_alignment_class }}">
-        {{ _self.featured_media(embedded_media, image, caption, ratio, copyright) }}
+        {{- _self.featured_media(embedded_media, image, caption, ratio, copyright) -}}
       </div>
     </div>
   {% else %}
     <div class="row">
       <div class="col-12 col-md-4">
-        {{ _self.featured_media(embedded_media, image, caption, ratio, copyright) }}
+        {{- _self.featured_media(embedded_media, image, caption, ratio, copyright) -}}
       </div>
     </div>
   {% endif %}

@@ -25,15 +25,15 @@
   <{{ tag }}{{ attributes.addClass('media-container') }}>
     {% if has_media %}
       <div class="media-container__media position-relative">
-        {{ media }}
+        {{- media -}}
         {% if has_copyright %}
-          {{ pattern('copyright_overlay', copyright) }}
+          {{- pattern('copyright_overlay', copyright) -}}
         {% endif %}
       </div>
     {% endif %}
     {% if has_description %}
       <figcaption class="media-container__description">
-        {{ description }}
+        {{- description -}}
       </figcaption>
     {% endif %}
   </{{ tag }}>
