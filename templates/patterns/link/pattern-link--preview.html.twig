@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Template override for preview mode of "Link" pattern.
+ */
+#}
+<div class="vstack gap-3">
+  <p class="mb-0">
+    This is a simple inline link example with surrounding text to show spacing:
+    {{ pattern('link', {
+      label: 'Simple link',
+      path: 'http://example.com',
+      standalone: true,
+    }) }}
+    that continues with more text after the link.
+  </p>
+
+  <p class="mb-0">
+    Inline text with an icon before the label:
+    {{ pattern('link', {
+      label: 'Link with icon before',
+      path: 'http://example.com',
+      icon: 'arrow-right',
+      icon_position: 'before',
+      standalone: true,
+    }) }}
+    plus a bit of extra text after the link to make spacing obvious.
+  </p>
+
+  <p class="mb-0">
+    Inline text with an icon after the label:
+    {{ pattern('link', {
+      label: 'Link with icon after',
+      path: 'http://example.com',
+      icon: 'arrow-right',
+      icon_position: 'after',
+      standalone: true,
+    }) }}
+    and more text after it for context.
+  </p>
+</div>
