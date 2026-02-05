@@ -18,6 +18,14 @@ link:
       options:
         before: 'before'
         after: 'after (default)'
+    icon_display:
+      type: select
+      label: 'Icon display'
+      description: 'Enable flex gap spacing for icon and label. Use inline-flex for inline links.'
+      options:
+        '': 'default (no flex)'
+        flex: 'flex'
+        inline-flex: 'inline-flex'
     remove_icon_spacers:
       type: boolean
       label: 'Remove icon spacers'
