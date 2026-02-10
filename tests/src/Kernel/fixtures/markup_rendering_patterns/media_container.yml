@@ -7,9 +7,7 @@ media_container_default:
         '#markup': '<img src="https://picsum.photos/800/450" alt="Sample image">'
       description:
         '#markup': '<p>Sample description for the media content.</p>'
-      copyright:
-        content:
-          '#markup': '© 2024 Example Organisation'
+      copyright: '© 2024 Example Organisation'
   assertions:
     count:
       'figure.media-container': 1

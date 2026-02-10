@@ -198,11 +198,11 @@ primary_page_hero_banner_aligned_left_without_call_to_action_full_width:
     contains:
       '.bcl-banner__content div': 'EU Budget for the future'
       '.bcl-banner__content p': 'Innovation, economy, environment and geopolitics'
-default_page_banner_with_copyright_overlay:
+image_page_banner_with_copyright_overlay:
   render:
     '#type': pattern
     '#id': banner
-    '#variant': default
+    '#variant': image
     '#fields':
       settings:
         hero: false
@@ -212,6 +212,7 @@ default_page_banner_with_copyright_overlay:
       title: 'EU Budget for the future'
       description: 'Innovation, economy, environment and geopolitics'
       copyright: '© 2024 Example Organisation'
+      image: 'https://picsum.photos/1000/500/'
   assertions:
     count:
       'div.media-container': 1
