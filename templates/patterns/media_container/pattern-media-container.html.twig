@@ -15,11 +15,15 @@
 #}
 
 {%- set tag = tag|default('figure') %}
-{% set attributes = attributes|default(create_attribute()) %}
+{%- set attributes = attributes|default(create_attribute()) %}
 
 {%- set has_media = media is not empty %}
 {% set has_description = description is not empty %}
 {% set has_copyright = copyright is not empty %}
+{% set _copyright = copyright %}
+{% if has_copyright and (copyright is not iterable) %}
+  {% set _copyright = { content: copyright } %}
+{% endif %}
 
 {%- if has_media or has_description %}
   <{{ tag }}{{ attributes.addClass('media-container') }}>
@@ -27,7 +31,7 @@
       <div class="media-container__media position-relative">
         {{- media -}}
         {% if has_copyright %}
-          {{- pattern('copyright_overlay', copyright) -}}
+          {{- pattern('copyright_overlay', _copyright) -}}
         {% endif %}
       </div>
     {% endif %}

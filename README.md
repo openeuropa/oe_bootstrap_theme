@@ -98,16 +98,17 @@ needed. We will communicate such changes together with the release.
 
 ### Media copyright overlays
 
-The theme ships patterns and recipes that make it easy to display a copyright overlay on media (images, remote videos, AV Portal photos/videos).
+The theme ships patterns that make it easy to display a copyright overlay on media (images, remote videos, AV Portal photos/videos).
+The installation recipes live in `oe_whitelabel`.
 
 1) Apply the recipes (they are not auto-applied):
 
 ```bash
 # Run in your Drupal root where the theme is installed.
-./vendor/bin/drush recipe "/var/www/html/build/themes/contrib/oe_bootstrap_theme/recipes/media_image_copyright"
-./vendor/bin/drush recipe "/var/www/html/build/themes/contrib/oe_bootstrap_theme/recipes/media_remote_video_copyright"
-./vendor/bin/drush recipe "/var/www/html/build/themes/contrib/oe_bootstrap_theme/recipes/media_av_portal_photo_copyright"
-./vendor/bin/drush recipe "/var/www/html/build/themes/contrib/oe_bootstrap_theme/recipes/media_av_portal_video_copyright"
+./vendor/bin/drush recipe "/var/www/html/build/themes/contrib/oe_whitelabel/recipes/media_image_copyright"
+./vendor/bin/drush recipe "/var/www/html/build/themes/contrib/oe_whitelabel/recipes/media_remote_video_copyright"
+./vendor/bin/drush recipe "/var/www/html/build/themes/contrib/oe_whitelabel/recipes/media_av_portal_photo_copyright"
+./vendor/bin/drush recipe "/var/www/html/build/themes/contrib/oe_whitelabel/recipes/media_av_portal_video_copyright"
 ```
 
 2) Fill `field_media_copyright` on your media items (or set a default/backfill).
