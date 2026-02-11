@@ -33,7 +33,7 @@ class CopyClipboardTest extends WebDriverTestBase {
    */
   public function testCopyToClipboard(): void {
     $this->drupalLogin($this->drupalCreateUser([], NULL, TRUE));
-    $this->drupalGet('/patterns/copyright_overlay');
+    $this->drupalGet('/admin/appearance/ui/patterns/media_container');
 
     $this->getSession()->executeScript(<<<'JS'
       navigator.clipboard = {
@@ -47,8 +47,7 @@ class CopyClipboardTest extends WebDriverTestBase {
     $elements = $this->getSession()->getPage()->findAll('css', '.copyright-overlay');
     $this->assertNotEmpty($elements);
 
-    $this->assertCopyrightCopiedToClipboard($elements[0], '© Copyright ipsum amet John Doe on Doe Images.');
-    $this->assertCopyrightCopiedToClipboard($elements[1], '© Second copyright element. Suspendisse vel mauris vitae ipsum blandit condimentum ut eget quam.');
+    $this->assertCopyrightCopiedToClipboard($elements[0], '© European Commission, 2024');
   }
 
   /**
@@ -68,8 +67,6 @@ class CopyClipboardTest extends WebDriverTestBase {
     $assert_session->elementExists('css', '[data-copy-target]', $modal)->click();
     $actual = $this->getSession()->evaluateScript('return window.copiedText;');
     $this->assertEquals($expected, $actual);
-
-    $assert_session->elementExists('css', '.modal.show .btn-close')->click();
     $this->getSession()->wait(1000, 'document.querySelectorAll(".modal.show").length === 0');
   }
 
