@@ -38,15 +38,15 @@
       .setAttribute('data-bs-toggle', 'modal')
       .setAttribute('data-bs-target', '#' ~ modal_id),
   }) }}
-
-  {{ pattern('modal', {
-    'title': modal_title|default('Copyright'|t),
-    'show_close_button': true,
-    'vertically_centered': true,
-    'body': _content,
-    'footer': _footer,
-    'attributes': create_attribute({
-      id: modal_id
-    })
-  }) }}
 </div>
+
+{{ pattern('modal', {
+  'title': modal_title|default('Copyright'|t),
+  'show_close_button': true,
+  'vertically_centered': true,
+  'body': _content,
+  'footer': _footer,
+  'attributes': create_attribute({
+    id: modal_id
+  })
+}) }}
