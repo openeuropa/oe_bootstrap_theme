@@ -115,7 +115,7 @@ The installation recipes live in `oe_whitelabel`.
 
 3) For gallery/carousel usage, ensure your view mode maps `field_media_copyright` to the `copyright` field (like `oe_w_pattern_gallery_item` does).
 
-Once the field has values, the overlay appears automatically in banner, carousel, gallery, featured media, and media templates that use `media_container`.
+Once the field has values, the overlay appears automatically in banner, carousel, gallery, featured media, and media templates that use `copyright_wrapper`.
 
 ## Development setup
 

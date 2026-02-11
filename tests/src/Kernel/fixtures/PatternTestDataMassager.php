@@ -138,7 +138,7 @@ final class PatternTestDataMassager {
   }
 
   /**
-   * Massages data for the "media_container" pattern.
+   * Massages data for the "copyright_wrapper" pattern.
    *
    * @param array $data
    *   The data structure.
@@ -146,13 +146,9 @@ final class PatternTestDataMassager {
    * @return array
    *   The massaged data structure.
    */
-  private static function massageMediaContainerPattern(array $data): array {
-    if (isset($data['#fields']['media']['#markup'])) {
-      $data['#fields']['media'] = Markup::create($data['#fields']['media']['#markup']);
-    }
-
-    if (isset($data['#fields']['description']['#markup'])) {
-      $data['#fields']['description'] = Markup::create($data['#fields']['description']['#markup']);
+  private static function massageCopyrightWrapperPattern(array $data): array {
+    if (isset($data['#fields']['content']['#markup'])) {
+      $data['#fields']['content'] = Markup::create($data['#fields']['content']['#markup']);
     }
 
     if (isset($data['#fields']['copyright']['content']['#markup'])) {

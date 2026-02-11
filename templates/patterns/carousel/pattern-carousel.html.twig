@@ -12,8 +12,8 @@
     {% endblock %}
   {% endset %}
   {% if slide.copyright is defined and slide.copyright is not empty %}
-    {% set _image = pattern('media_container', {
-      media: _image,
+    {% set _image = pattern('copyright_wrapper', {
+      content: _image,
       copyright: {
         content: slide.copyright,
       },

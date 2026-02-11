@@ -33,7 +33,7 @@ class CopyClipboardTest extends WebDriverTestBase {
    */
   public function testCopyToClipboard(): void {
     $this->drupalLogin($this->drupalCreateUser([], NULL, TRUE));
-    $this->drupalGet('/admin/appearance/ui/patterns/media_container');
+    $this->drupalGet('/admin/appearance/ui/patterns/copyright_wrapper');
 
     $this->getSession()->executeScript(<<<'JS'
       navigator.clipboard = {
@@ -47,7 +47,7 @@ class CopyClipboardTest extends WebDriverTestBase {
     $elements = $this->getSession()->getPage()->findAll('css', '.copyright-overlay');
     $this->assertNotEmpty($elements);
 
-    $this->assertCopyrightCopiedToClipboard($elements[0], '© European Commission, 2024');
+    $this->assertCopyrightCopiedToClipboard($elements[0], 'Copyright European Commission, 2024');
   }
 
   /**

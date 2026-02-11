@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Copyright wrapper pattern preview.
+ */
+#}
+
+<div class="row g-4">
+  <div class="col-12 col-md-6">
+    {{ pattern('copyright_wrapper', {
+      content: '<img src="https://picsum.photos/900/400" alt="Sample image" class="img-fluid">',
+      copyright: {
+        content: 'Copyright European Commission, 2024',
+        trigger_label: 'View more'|t,
+        modal_title: 'Usage rights'|t,
+      },
+    }) }}
+  </div>
+  <div class="col-12 col-md-6">
+    {{ pattern('copyright_wrapper', {
+      content: '<img src="https://picsum.photos/900/400" alt="Sample image" class="img-fluid">',
+      copyright: {
+        content: 'Copyright European Commission, 2024',
+        trigger_label: 'View more'|t,
+        modal_title: 'Usage rights'|t,
+      },
+    }) }}
+  </div>
+</div>
