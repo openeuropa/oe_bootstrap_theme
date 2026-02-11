@@ -42,10 +42,10 @@ media_container_with_custom_settings:
       'section .media-container__media': 1
       'section .media-container__media video': 1
       'section .copyright-overlay': 1
-      'section .copyright-overlay .modal-header h5': 1
+      'div#bcl-copyright-modal .modal-header h5': 1
     contains:
       'section .copyright-overlay .copyright-trigger': 'Licence'
-      'section .copyright-overlay .modal-header h5': 'Usage rights'
+      'div#bcl-copyright-modal .modal-header h5': 'Usage rights'
       'section .media-container__description': 'Video description.'
 media_container_without_copyright:
   render:
