@@ -1,30 +1,25 @@
-media_container:
-  label: 'Media container'
-  description: 'Wraps media with optional description/caption and copyright overlay.'
+copyright_wrapper:
+  label: 'Copyright wrapper'
+  description: 'Wraps content with an optional copyright overlay.'
   category: 'Version 2.x'
   fields:
-    media:
+    content:
       type: render
-      label: 'Media'
-      description: 'Primary media element (image, video, iframe, etc.).'
+      label: 'Content'
+      description: 'Primary content element (image, video, iframe, etc.).'
       preview: '<img src="https://picsum.photos/900/600" alt="Sample image">'
-    description:
-      type: render
-      label: 'Description'
-      description: 'Optional description rendered below the media.'
-      preview: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
     copyright:
       type: array
       label: 'Copyright'
       description: 'Optional copyright overlay configuration. Provide the same keys accepted by the copyright_overlay pattern.'
       preview:
         content:
-          '#markup': '© 2024 European Union'
+          '#markup': 'Copyright European Union 2024'
   settings:
     tag:
       type: textfield
       label: 'Wrapper tag'
-      description: 'HTML tag for the outer wrapper. Defaults to &lt;figure&gt;.'
+      description: 'HTML tag for the outer wrapper. Defaults to &lt;div&gt;.'
       allow_token: true
     attributes:
       type: attributes

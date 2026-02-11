@@ -41,8 +41,8 @@
 {% endset %}
 {% if has_copyright_media %}
   {% set _copyright = { content: copyright } %}
-  {{ pattern('media_container', {
-    media: _banner,
+  {{ pattern('copyright_wrapper', {
+    content: _banner,
     copyright: _copyright,
     tag: 'div',
     attributes: attributes,

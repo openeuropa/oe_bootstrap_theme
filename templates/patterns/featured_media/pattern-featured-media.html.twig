@@ -16,8 +16,8 @@
   {% endset %}
   {% if copyright is not empty %}
     {% set _copyright = { content: copyright } %}
-    {{ pattern('media_container', {
-      media: _media,
+    {{ pattern('copyright_wrapper', {
+      content: _media,
       copyright: _copyright,
       tag: 'div',
     }) }}
