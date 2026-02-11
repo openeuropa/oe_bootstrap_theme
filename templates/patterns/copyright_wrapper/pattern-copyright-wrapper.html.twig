@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Copyright wrapper pattern.
+ */
+#}
+
+{# Parameters:
+  - content: Content markup (image, video, iframe, etc.).
+  - copyright: Optional configuration passed to the copyright overlay pattern. Provide an array
+    matching the copyright_overlay fields (content, trigger_label, modal_title, etc.).
+  - tag: HTML tag for the outer wrapper. Defaults to <div>.
+  - attributes: Attributes for the outer wrapper.
+#}
+
+{%- set tag = tag|default('div') %}
+{%- set attributes = attributes|default(create_attribute()) %}
+
+{%- set has_content = content is not empty %}
+{% set has_copyright = copyright is not empty %}
+{% set _copyright = copyright %}
+{% if has_copyright and (copyright is not iterable) %}
+  {% set _copyright = { content: copyright } %}
+{% endif %}
+
+{%- if has_content %}
+  <{{ tag }}{{ attributes.addClass('media-container') }}>
+    <div class="media-container__media position-relative">
+      {{- content|raw -}}
+      {% if has_copyright %}
+        {{- pattern('copyright_overlay', _copyright) -}}
+      {% endif %}
+    </div>
+  </{{ tag }}>
+{% endif %}

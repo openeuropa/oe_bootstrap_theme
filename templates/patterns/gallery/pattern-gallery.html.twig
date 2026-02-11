@@ -11,8 +11,8 @@
 {% set items = items|default([]) %}
 {% set items = items|map(_item => (_item.copyright is defined and _item.copyright is not empty)
   ? _item|merge({
-    media: pattern('media_container', {
-      media: _item.media,
+    media: pattern('copyright_wrapper', {
+      content: _item.media,
       copyright: {
         content: _item.copyright,
       },
