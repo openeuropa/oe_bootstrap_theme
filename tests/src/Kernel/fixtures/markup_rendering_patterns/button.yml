@@ -102,7 +102,7 @@ button_dark_with_icon_before_and_type_reset:
     count:
       'button[data-drupal-selector="button"]': 1
       'button.btn': 1
-      'svg.icon--fluid.me-2-5': 1
+      'svg.icon--fluid': 1
       'button.btn-dark': 1
       'button svg': 1
       'button[type=reset]': 1
