@@ -39,7 +39,7 @@ content_banner_white_background_with_image_with_badges_with_meta_with_links_with
           alt: 'Alternative text for content banner image'
         title: 'This is the title of this page'
         title_tag: 'h2'
-        action_bar: '<div class="action-bar d-flex justify-content-end mt-2 align-items-center col-lg-11"><a href="#" class="standalone" type="button">Submit</a></div>'
+        action_bar: '<div class="position-relative z-1"><div class="action-bar d-flex justify-content-end mt-2 align-items-center col-lg-11"><a href="#" class="standalone" type="button">Submit</a></div></div>'
         content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
         badges:
           - label: 'Primary badge'

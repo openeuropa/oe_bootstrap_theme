@@ -75,7 +75,7 @@ offcanvas_with_toggle_with_icon:
     equals:
       '.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
-      'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas<svg class="ms-2-5 bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#filter"></use></svg>'
+      'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas<svg class="bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#filter"></use></svg>'
 offcanvas_with_id_from_attributes:
   render:
     '#type': pattern
@@ -104,7 +104,7 @@ offcanvas_with_id_from_attributes:
     equals:
       '.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
-      'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas<svg class="ms-2-5 bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#filter"></use></svg>'
+      'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas<svg class="bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#filter"></use></svg>'
 offcanvas_search_variant:
   render:
     '#type': pattern
@@ -134,4 +134,4 @@ offcanvas_search_variant:
     equals:
       '.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
-      'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas<svg class="ms-2-5 bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#filter"></use></svg>'
+      'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas<svg class="bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#filter"></use></svg>'
