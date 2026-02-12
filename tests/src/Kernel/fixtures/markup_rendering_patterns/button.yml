@@ -13,7 +13,7 @@ button_dark_with_icon_after:
     count:
       'button[data-drupal-selector="button"]': 1
       'button.btn': 1
-      'svg.icon--fluid.ms-2-5': 1
+      'svg.icon--fluid': 1
       'button.btn-dark': 1
       'button svg': 1
     contains:
