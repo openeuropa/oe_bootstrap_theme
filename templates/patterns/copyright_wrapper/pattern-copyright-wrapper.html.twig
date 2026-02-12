@@ -24,12 +24,10 @@
 {% endif %}
 
 {%- if has_content %}
-  <{{ tag }}{{ attributes.addClass('media-container') }}>
-    <div class="media-container__media position-relative">
-      {{- content|raw -}}
-      {% if has_copyright %}
-        {{- pattern('copyright_overlay', _copyright) -}}
-      {% endif %}
-    </div>
+  <{{ tag }}{{ attributes.addClass('media-container', 'position-relative') }}>
+    {{- content|raw -}}
+    {% if has_copyright %}
+      {{- pattern('copyright_overlay', _copyright) -}}
+    {% endif %}
   </{{ tag }}>
 {% endif %}
