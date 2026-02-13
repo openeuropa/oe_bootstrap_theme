@@ -39,7 +39,14 @@
   </div>
 {% else %}
   {{ pattern('button', {
-    label: 'Button',
-    variant: variant,
+    'label': label,
+    'variant': variant,
+    'icon': icon,
+    'outline': outline,
+    'size': size,
+    'type': type,
+    'disabled': disabled,
+    'icon_position': icon_position,
+    'attributes': attributes,
   }) }}
 {% endif %}
