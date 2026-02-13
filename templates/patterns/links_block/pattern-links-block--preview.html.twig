@@ -1,0 +1,80 @@
+{#
+/**
+ * @file
+ * Template override for preview mode of "Links block" pattern.
+ */
+#}
+{% set _links_icon = [
+  {
+    label: 'Link with icon before',
+    path: 'http://example.com',
+    icon: {
+      name: 'arrow-right',
+      path: bcl_icon_path,
+    },
+    icon_position: 'before',
+  },
+  {
+    label: 'Another link with icon before',
+    path: 'http://example.com',
+    icon: {
+      name: 'arrow-right',
+      path: bcl_icon_path,
+    },
+    icon_position: 'before',
+  },
+  {
+    label: 'Third link with icon before',
+    path: 'http://example.com',
+    icon: {
+      name: 'arrow-right',
+      path: bcl_icon_path,
+    },
+    icon_position: 'before',
+  },
+] %}
+
+{% set _links = [
+  {
+    label: 'Link with inline-flex icon before',
+    path: 'http://example.com',
+    icon: {
+      name: 'arrow-right',
+      path: bcl_icon_path,
+    },
+    icon_position: 'before',
+    icon_display: 'inline-flex',
+  },
+  {
+    label: 'Link with inline-flex icon after',
+    path: 'http://example.com',
+    icon: {
+      name: 'arrow-right',
+      path: bcl_icon_path,
+    },
+    icon_position: 'after',
+    icon_display: 'inline-flex',
+  },
+  {
+    label: 'Link without icon',
+    path: 'http://example.com',
+  },
+] %}
+
+<div class="mb-4">
+  <h2 class="h4 mb-3">Links with icons</h2>
+  {{ pattern('links_block', {
+    title: 'Resources',
+    background: 'gray',
+    links: _links_icon,
+  }) }}
+</div>
+
+<div>
+  <h2 class="h4 mb-3">Mixed icons with inline-flex</h2>
+  {{ pattern('links_block', {
+    title: 'More links',
+    background: 'gray',
+    links: _links,
+  }) }}
+</div>

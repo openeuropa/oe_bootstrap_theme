@@ -4,16 +4,10 @@
  * Links block pattern.
  */
 #}
-{% set _links = [] %}
-{% if links is not empty %}
-  {% for _link in links %}
-    {% set _links = _links|merge([
-      _link|merge({
-        icon_display: (_link.icon is defined and _link.icon) ? 'flex' : ''
-      })
-    ]) %}
-  {% endfor %}
-{% endif %}
+{% set _links = (links ?? [])|map((_link) => {
+  icon_display: (_link.icon_display is defined and _link.icon_display) ? _link.icon_display : ((_link.icon is defined and _link.icon) ? 'flex' : ''),
+  ..._link,
+}) %}
 
 {% include '@oe-bcl/links-block' with {
   background: background,
