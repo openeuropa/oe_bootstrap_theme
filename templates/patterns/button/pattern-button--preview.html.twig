@@ -1,0 +1,52 @@
+{#
+/**
+ * @file
+ * Template override for preview mode of "Button" pattern.
+ */
+#}
+{% if variant == 'primary' %}
+  <div class="vstack gap-3">
+    <p class="mb-0">
+      Text before
+      {{ pattern('button', {
+        label: 'Simple button',
+        variant: 'primary',
+      }) }}
+      and more text after to show inline flow.
+    </p>
+
+    <p class="mb-0">
+      Text before
+      {{ pattern('button', {
+        label: 'Button with icon before',
+        variant: 'primary',
+        icon: 'arrow-right',
+        icon_position: 'before',
+      }) }}
+      plus some extra text after the button.
+    </p>
+
+    <p class="mb-0">
+      Text before
+      {{ pattern('button', {
+        label: 'Button with icon after',
+        variant: 'primary',
+        icon: 'arrow-right',
+        icon_position: 'after',
+      }) }}
+      and more text after it for context.
+    </p>
+  </div>
+{% else %}
+  {{ pattern('button', {
+    'label': label,
+    'variant': variant,
+    'icon': icon,
+    'outline': outline,
+    'size': size,
+    'type': type,
+    'disabled': disabled,
+    'icon_position': icon_position,
+    'attributes': attributes,
+  }) }}
+{% endif %}

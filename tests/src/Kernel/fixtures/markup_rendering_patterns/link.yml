@@ -91,6 +91,27 @@ link_pattern_with_icon_before:
         label: 'Link to example'
         path: 'https://example.com'
         icon: 'lock'
+link_pattern_with_icon_display_inline_flex:
+  render:
+    '#type': pattern
+    '#id': 'link'
+    '#fields':
+      settings:
+        icon_position: 'before'
+        icon_display: 'inline-flex'
+      label: 'Link with icon display'
+      path: 'https://example.com'
+      icon: 'lock'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\LinkPatternAssert
+      expected:
+        settings:
+          icon_position: 'before'
+          icon_display: 'inline-flex'
+        label: 'Link with icon display'
+        path: 'https://example.com'
+        icon: 'lock'
 link_pattern_disabled_with_icon_after:
   render:
     '#type': pattern

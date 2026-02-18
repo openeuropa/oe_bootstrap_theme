@@ -4,11 +4,16 @@
  * Links block pattern.
  */
 #}
+{% set _links = (links ?? [])|map((_link) => {
+  icon_display: (_link.icon_display is defined and _link.icon_display) ? _link.icon_display : ((_link.icon is defined and _link.icon) ? 'flex' : ''),
+  ..._link,
+}) %}
+
 {% include '@oe-bcl/links-block' with {
   background: background,
   variant: orientation,
   title: title,
   title_tag: title_tag,
-  links: links,
+  links: _links,
   attributes: attributes,
 } only %}

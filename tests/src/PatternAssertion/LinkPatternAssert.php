@@ -89,6 +89,14 @@ class LinkPatternAssert extends BasePatternAssert {
       $this->assertElementNotExists('a.standalone', $crawler);
     }
 
+    if (!empty($expected['icon_display'])) {
+      $this->assertElementExists('a.d-' . $expected['icon_display'], $crawler);
+      $this->assertElementExists('a.gap-2-5', $crawler);
+      // When using flex gap, no margin spacer classes should be present.
+      $this->assertElementNotExists('svg.ms-2-5', $crawler);
+      $this->assertElementNotExists('svg.me-2-5', $crawler);
+    }
+
     if (isset($expected['icon_position'])) {
       $link = $crawler->filter('a')->getNode(0);
 
@@ -104,7 +112,7 @@ class LinkPatternAssert extends BasePatternAssert {
     // assert the icon rendering.
     if (!empty($expected['remove_icon_spacers'])) {
       $this->assertElementNotExists('svg.ms-2-5', $crawler);
-      $this->assertElementNotExists('svg.ms-2-5', $crawler);
+      $this->assertElementNotExists('svg.me-2-5', $crawler);
     }
   }
 

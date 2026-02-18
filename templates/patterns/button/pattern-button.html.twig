@@ -4,10 +4,10 @@
  * Button pattern.
  */
 #}
-{%  if icon %}
+{% if icon %}
   {% set _icon = {
     path: bcl_icon_path,
-    name: icon,
+    ...icon is iterable ? icon : { name: icon },
   } %}
 {% endif %}
 {% include '@oe-bcl/button' with {
