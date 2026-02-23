@@ -49,6 +49,10 @@ class ContentBannerAssert extends BasePatternAssert {
       'action_bar' => [
         [$this, 'assertActionBar'],
       ],
+      'copyright' => [
+        [$this, 'assertElementTextContains'],
+        '.copyright-overlay',
+      ],
     ];
   }
 

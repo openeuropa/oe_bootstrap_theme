@@ -52,6 +52,29 @@ content_banner_white_background_with_image_with_badges_with_meta_with_links_with
             path: 'https://example-1.com'
           - label: 'Link 2'
             path: 'https://example-2.com'
+content_banner_white_background_with_image_and_copyright:
+  render:
+    '#type': pattern
+    '#id': 'content_banner'
+    '#fields':
+      background: 'white'
+      image:
+        src: 'https://picsum.photos/1200/600/'
+        alt: 'Alternative text for content banner image'
+      title: 'This is the title of this page'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      copyright: '© 2024 Example Organisation'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ContentBannerAssert
+      expected:
+        background: 'white'
+        image:
+          src: 'https://picsum.photos/1200/600/'
+          alt: 'Alternative text for content banner image'
+        title: 'This is the title of this page'
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        copyright: '© 2024 Example Organisation'
 content_banner_white_background_without_image_with_badges_without_meta_without_links:
   render:
     '#type': pattern

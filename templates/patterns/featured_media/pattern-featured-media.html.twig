@@ -5,25 +5,14 @@
  */
 #}
 {% macro featured_media(embedded_media, image, caption, ratio, copyright) %}
-  {% set _media %}
-    {% include '@oe-bcl/featured-media' with {
-      'embedded_media': embedded_media,
-      'image': image,
-      'content': caption,
-      'content_classes': 'bg-light p-3',
-      'ratio': ratio,
-    } only %}
-  {% endset %}
-  {% if copyright is not empty %}
-    {% set _copyright = { content: copyright } %}
-    {{ pattern('copyright_wrapper', {
-      content: _media,
-      copyright: _copyright,
-      tag: 'div',
-    }) }}
-  {% else %}
-    {{ _media }}
-  {% endif %}
+  {% include '@oe-bcl/featured-media' with {
+    'embedded_media': embedded_media,
+    'image': image,
+    'content': caption,
+    'content_classes': 'bg-light p-3',
+    'ratio': ratio,
+    'copyright': copyright,
+  } only %}
 {% endmacro %}
 
 <div{{ attributes.addClass('bcl-featured-media') }}>

@@ -11,7 +11,7 @@ copyright_wrapper:
     copyright:
       type: array
       label: 'Copyright'
-      description: 'Optional copyright overlay configuration. Provide the same keys accepted by the copyright_overlay pattern.'
+      description: 'Optional copyright configuration. Provide the same keys accepted by the copyright_overlay pattern.'
       preview:
         content:
           '#markup': 'Copyright European Union 2024'
