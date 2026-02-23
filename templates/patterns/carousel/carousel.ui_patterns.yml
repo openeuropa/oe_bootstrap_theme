@@ -69,9 +69,11 @@ carousel:
           link:
             label: Second link
             path: https://link.two
+          copyright: '© 2024 Example Organisation'
         - caption: 'Third slide caption'
           caption_title: 'Third slide title'
           interval: 0
           image:
             src: 'https://picsum.photos/seed/oe-carousel-3/1000/500'
             alt: 'Alt image 3'
+          copyright: '© 2024 Example Organisation'

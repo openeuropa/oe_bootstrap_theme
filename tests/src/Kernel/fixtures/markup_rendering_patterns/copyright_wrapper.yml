@@ -12,8 +12,7 @@ copyright_wrapper_default:
       'div.media-container img': 1
       'div.media-container .copyright-overlay': 1
     contains:
-      '.copyright-overlay span.copyright-preview': 'Copyright 2024 Example Organisation'
-      '.copyright-overlay .copyright-trigger': 'View more'
+      '.copyright-overlay': 'Copyright 2024 Example Organisation'
 copyright_wrapper_with_custom_settings:
   render:
     '#type': pattern
@@ -24,8 +23,6 @@ copyright_wrapper_with_custom_settings:
       copyright:
         content:
           '#markup': 'Copyright 2024 Example Organisation'
-        trigger_label: 'Licence'
-        modal_title: 'Usage rights'
     '#settings':
       tag: section
       attributes: 'class="media-container--custom" data-component="media-container"'
@@ -35,10 +32,8 @@ copyright_wrapper_with_custom_settings:
       'section[data-component="media-container"]': 1
       'section video': 1
       'section .copyright-overlay': 1
-      'div#bcl-copyright-modal .modal-header h5': 1
     contains:
-      'section .copyright-overlay .copyright-trigger': 'Licence'
-      'div#bcl-copyright-modal .modal-header h5': 'Usage rights'
+      'section .copyright-overlay': 'Copyright 2024 Example Organisation'
 copyright_wrapper_without_copyright:
   render:
     '#type': pattern

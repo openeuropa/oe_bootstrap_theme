@@ -137,11 +137,14 @@ carousel_with_copyright_overlay:
             alt: 'alt image 1'
           copyright: '© 2024 Example Organisation'
   assertions:
-    count:
-      '.carousel .media-container': 1
-      '.carousel .media-container .copyright-overlay': 1
-    contains:
-      '.copyright-overlay span.copyright-preview': '© 2024 Example Organisation'
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        items:
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
+            caption_title: 'First slide title'
+            caption: 'First slide caption'
+            copyright: '© 2024 Example Organisation'
 carousel_just_images:
   render:
     '#type': pattern

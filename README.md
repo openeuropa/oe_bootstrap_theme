@@ -96,9 +96,9 @@ We started to ship in version 1.x patterns that already embrace this new approac
 We will do the best to avoid any breaking changes to these patterns during the 1.x lifecycle. But it might be that some changes will be still
 needed. We will communicate such changes together with the release.
 
-### Media copyright overlays
+### Media copyright text
 
-The theme ships patterns that make it easy to display a copyright overlay on media (images, remote videos, AV Portal photos/videos).
+The theme ships patterns that make it easy to display copyright text under media (images, remote videos, AV Portal photos/videos).
 The installation recipes live in `oe_whitelabel`.
 
 1) Apply the recipes (they are not auto-applied):
@@ -115,7 +115,7 @@ The installation recipes live in `oe_whitelabel`.
 
 3) For gallery/carousel usage, ensure your view mode maps `field_media_copyright` to the `copyright` field (like `oe_w_pattern_gallery_item` does).
 
-Once the field has values, the overlay appears automatically in banner, carousel, gallery, featured media, and media templates that use `copyright_wrapper`.
+Once the field has values, the copyright text appears automatically in banner, carousel, gallery, featured media, and media templates that use `copyright_wrapper`.
 
 ## Development setup
 

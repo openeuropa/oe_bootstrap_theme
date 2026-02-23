@@ -15,6 +15,11 @@ content_banner:
       preview:
         src: 'https://picsum.photos/255/255/'
         alt: 'Alternative text for content banner image'
+    copyright:
+      type: text
+      label: 'Copyright'
+      description: 'Optional copyright text displayed below the banner.'
+      preview: '© 2024 Example Organisation'
     image_size:
       type: text
       label: 'Image size'

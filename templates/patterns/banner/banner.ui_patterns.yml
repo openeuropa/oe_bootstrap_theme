@@ -66,5 +66,5 @@ banner:
     copyright:
       type: text
       label: 'Copyright'
-      description: 'Optional copyright text displayed as an overlay.'
+      description: 'Optional copyright text displayed below the banner.'
       preview: '© 2024 Example Organisation'
