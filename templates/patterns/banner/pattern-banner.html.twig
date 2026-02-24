@@ -19,34 +19,17 @@
     {'variant': call_to_action.link_style}
   ) %}
 {% endif %}
-{% set has_copyright_media = copyright is not empty and image is not empty and (variant == 'image' or variant == 'image_shade') %}
-{% set _banner_attributes = attributes %}
-{% if has_copyright_media %}
-  {% set _banner_attributes = create_attribute(attributes.toArray()|without('id')) %}
-{% endif %}
-{% set _banner %}
-  {% include '@oe-bcl/banner' with {
-    shade: variant == 'image_shade' ? true : shade,
-    hero: hero,
-    full_width: full_width,
-    centered: centered,
-    title: title,
-    title_tag: title_tag,
-    description: description,
-    link: call_to_action,
-    image: variant == 'image' or variant == 'image_shade' ? image : '' ,
-    content_classes: content_classes,
-    attributes: _banner_attributes,
-  } only %}
-{% endset %}
-{% if has_copyright_media %}
-  {% set _copyright = { content: copyright } %}
-  {{ pattern('copyright_wrapper', {
-    content: _banner,
-    copyright: _copyright,
-    tag: 'div',
-    attributes: attributes,
-  }) }}
-{% else %}
-  {{ _banner }}
-{% endif %}
+{% include '@oe-bcl/banner' with {
+  shade: variant == 'image_shade' ? true : shade,
+  hero: hero,
+  full_width: full_width,
+  centered: centered,
+  title: title,
+  title_tag: title_tag,
+  description: description,
+  link: call_to_action,
+  copyright: copyright,
+  image: variant == 'image' or variant == 'image_shade' ? image : '' ,
+  content_classes: content_classes,
+  attributes: attributes,
+} only %}

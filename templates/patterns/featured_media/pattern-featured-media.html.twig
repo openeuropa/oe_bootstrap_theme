@@ -51,7 +51,7 @@
           {% else %}
             {% set _subtitle_tag = title is not empty ? 'h3' : 'h2' %}
           {% endif %}
-          <{{ _subtitle_tag }} class="text-secondary">{{- subtitle -}}</{{ _subtitle_tag }}>
+          <{{ _subtitle_tag }} class="text-secondary">{{ subtitle }}</{{ _subtitle_tag }}>
         {% endif %}
         {{- text -}}
         {% if link %}
