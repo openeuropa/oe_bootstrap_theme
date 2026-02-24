@@ -9,18 +9,6 @@
 {% set toggle_collapsed = 'View the full gallery (%d)'|t %}
 {% set toggle_expanded = 'View less'|t %}
 {% set items = items|default([]) %}
-{% set items = items|map(_item => (_item.copyright is defined and _item.copyright is not empty)
-  ? _item|merge({
-    media: pattern('copyright_wrapper', {
-      content: _item.media,
-      copyright: {
-        content: _item.copyright,
-      },
-      tag: 'div',
-    }),
-  })
-  : _item
-) %}
 {% set items = bcl_gallery_items(items) %}
 {% set icon_path = bcl_icon_path %}
 
@@ -40,4 +28,3 @@
     })),
   } only %}
 {% endblock %}
-
