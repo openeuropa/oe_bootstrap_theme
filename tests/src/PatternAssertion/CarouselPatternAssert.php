@@ -124,7 +124,7 @@ class CarouselPatternAssert extends BasePatternAssert {
           $this->assertElementNotExists('.carousel-caption a', $item);
         }
         if (isset($expected_item['copyright'])) {
-          $this->assertElementTextContains($expected_item['copyright'], '.carousel-caption .copyright-text', $item);
+          $this->assertElementTextContains($expected_item['copyright'], '.carousel-item > .copyright-overlay > .copyright-text', $item);
         }
       }
       catch (\Exception $e) {
