@@ -69,7 +69,6 @@ carousel:
           link:
             label: Second link
             path: https://link.two
-          copyright: '© 2024 Example Organisation'
         - caption: 'Third slide caption'
           caption_title: 'Third slide title'
           interval: 0
