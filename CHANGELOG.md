@@ -1,11 +1,22 @@
 # Change Log
 
+## [1.33.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.33.0) (2026-02-25)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.32.0...1.33.0)
+
+**Merged pull requests:**
+
+- OEL-0000: Update bcl version. [\#539](https://github.com/openeuropa/oe_bootstrap_theme/pull/539) ([tibi2303](https://github.com/tibi2303))
+- OEL-4032: Fix button pattern. [\#538](https://github.com/openeuropa/oe_bootstrap_theme/pull/538) ([tibi2303](https://github.com/tibi2303))
+- OEL-4032: Changed from margin to gap in button and link. [\#537](https://github.com/openeuropa/oe_bootstrap_theme/pull/537) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.32.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.32.0) (2026-01-20)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.31.0...1.32.0)
 
 **Merged pull requests:**
 
+- Prepare release 1.32.0. [\#536](https://github.com/openeuropa/oe_bootstrap_theme/pull/536) ([tibi2303](https://github.com/tibi2303))
 - OEL-4426: Removed obsolete drupal versions. [\#532](https://github.com/openeuropa/oe_bootstrap_theme/pull/532) ([tibi2303](https://github.com/tibi2303))
 - OEL-3732: Prerelease bcl. [\#530](https://github.com/openeuropa/oe_bootstrap_theme/pull/530) ([tibi2303](https://github.com/tibi2303))
 - OEL-3983: Added accessibility test for menu. [\#529](https://github.com/openeuropa/oe_bootstrap_theme/pull/529) ([tibi2303](https://github.com/tibi2303))
