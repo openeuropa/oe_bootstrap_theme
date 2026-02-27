@@ -51,7 +51,7 @@ class ContentBannerAssert extends BasePatternAssert {
       ],
       'copyright' => [
         [$this, 'assertElementTextContains'],
-        'bcl-copyright',
+        '.bcl-copyright',
       ],
     ];
   }
