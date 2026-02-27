@@ -98,24 +98,9 @@ needed. We will communicate such changes together with the release.
 
 ### Media copyright text
 
-The theme ships patterns that make it easy to display copyright text under media (images, remote videos, AV Portal photos/videos).
-The installation recipes live in `oe_whitelabel`.
-
-1) Apply the recipes (they are not auto-applied):
-
-```bash
-# Run in your Drupal root where the theme is installed.
-./vendor/bin/drush recipe "/var/www/html/build/themes/contrib/oe_whitelabel/recipes/media_image_copyright"
-./vendor/bin/drush recipe "/var/www/html/build/themes/contrib/oe_whitelabel/recipes/media_remote_video_copyright"
-./vendor/bin/drush recipe "/var/www/html/build/themes/contrib/oe_whitelabel/recipes/media_av_portal_photo_copyright"
-./vendor/bin/drush recipe "/var/www/html/build/themes/contrib/oe_whitelabel/recipes/media_av_portal_video_copyright"
-```
-
-2) Fill `field_media_copyright` on your media items (or set a default/backfill).
-
-3) For gallery/carousel usage, ensure your view mode maps `field_media_copyright` to the `copyright` field (like `oe_w_pattern_gallery_item` does).
-
-Once the field has values, the copyright text appears automatically in banner, carousel, gallery, featured media, and media templates that use `copyright_wrapper`.
+Patterns that render media accept a `copyright` parameter to display copyright
+text under the media. See the pattern documentation for usage details. The
+field and recipe setup for media entities is documented in `oe_whitelabel`.
 
 ## Development setup
 

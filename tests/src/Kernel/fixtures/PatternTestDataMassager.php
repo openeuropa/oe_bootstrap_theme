@@ -138,30 +138,6 @@ final class PatternTestDataMassager {
   }
 
   /**
-   * Massages data for the "copyright_wrapper" pattern.
-   *
-   * @param array $data
-   *   The data structure.
-   *
-   * @return array
-   *   The massaged data structure.
-   */
-  private static function massageCopyrightWrapperPattern(array $data): array {
-    if (isset($data['#fields']['content']['#markup'])) {
-      $data['#fields']['content'] = Markup::create($data['#fields']['content']['#markup']);
-    }
-
-    if (isset($data['#fields']['copyright']['content']['#markup'])) {
-      $data['#fields']['copyright']['content'] = Markup::create($data['#fields']['copyright']['content']['#markup']);
-    }
-    elseif (isset($data['#fields']['copyright']['#markup'])) {
-      $data['#fields']['copyright'] = Markup::create($data['#fields']['copyright']['#markup']);
-    }
-
-    return $data;
-  }
-
-  /**
    * Transforms a string from snake_case to CamelCase.
    *
    * @param string $string

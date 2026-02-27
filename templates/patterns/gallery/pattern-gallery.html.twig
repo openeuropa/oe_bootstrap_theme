@@ -8,8 +8,7 @@
 
 {% set toggle_collapsed = 'View the full gallery (%d)'|t %}
 {% set toggle_expanded = 'View less'|t %}
-{% set items = items|default([]) %}
-{% set items = bcl_gallery_items(items) %}
+{% set items = bcl_gallery_items(items|default([])) %}
 {% set icon_path = bcl_icon_path %}
 
 {% block carousel %}
