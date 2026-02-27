@@ -43,9 +43,9 @@ featured_media_image_with_copyright_overlay:
     count:
       'div.bcl-featured-media': 1
       'div.bcl-featured-media figure': 1
-      'div.bcl-featured-media .copyright-overlay': 1
+      'div.bcl-featured-media .bcl-copyright': 1
     contains:
-      '.copyright-overlay': '© 2024 Example Organisation'
+      '.bcl-copyright': '© 2024 Example Organisation'
 featured_media_image_with_title_tag:
   render:
     '#type': pattern

@@ -216,9 +216,9 @@ image_page_banner_with_copyright_overlay:
   assertions:
     count:
       '.bcl-banner': 1
-      '.copyright-overlay': 1
+      '.bcl-copyright': 1
     contains:
-      '.copyright-overlay': '© 2024 Example Organisation'
+      '.bcl-copyright': '© 2024 Example Organisation'
 primary_page_hero_banner_centered_with_call_to_action:
   render:
     '#type': pattern
