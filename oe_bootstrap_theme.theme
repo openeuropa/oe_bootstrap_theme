@@ -8,6 +8,7 @@
 declare(strict_types=1);
 
 use Drupal\Core\Template\Attribute;
+use Drupal\oe_bootstrap_theme\DrupalCompatibility;
 
 // Include all files from the includes directory.
 $includes_path = __DIR__ . '/includes/*.inc';
@@ -21,13 +22,13 @@ foreach (glob($includes_path) as $filename) {
  * Implements hook_theme_suggestions_HOOK_alter() for table.
  */
 function oe_bootstrap_theme_theme_suggestions_table_alter(array &$suggestions, array $variables) {
-  if (!theme_get_setting('bootstrap_tables.enable')) {
+  if (!DrupalCompatibility::themeGetSetting('bootstrap_tables.enable')) {
     return;
   }
 
   $extra_suggestions[] = 'table__bootstrap';
 
-  $responsive = theme_get_setting('bootstrap_tables.responsive');
+  $responsive = DrupalCompatibility::themeGetSetting('bootstrap_tables.responsive');
   if (is_string($responsive) && $responsive !== '') {
     $extra_suggestions[] = 'table__bootstrap__responsive';
   }
@@ -41,13 +42,13 @@ function oe_bootstrap_theme_theme_suggestions_table_alter(array &$suggestions, a
  * Implements hook_theme_suggestions_HOOK_alter() for views-view-table.
  */
 function oe_bootstrap_theme_theme_suggestions_views_view_table_alter(array &$suggestions, array $variables) {
-  if (!theme_get_setting('bootstrap_tables.enable')) {
+  if (!DrupalCompatibility::themeGetSetting('bootstrap_tables.enable')) {
     return;
   }
 
   $extra_suggestions[] = 'views_view_table__bootstrap';
 
-  $responsive = theme_get_setting('bootstrap_tables.responsive');
+  $responsive = DrupalCompatibility::themeGetSetting('bootstrap_tables.responsive');
   if (is_string($responsive) && $responsive !== '') {
     $extra_suggestions[] = 'views_view_table__bootstrap__responsive';
   }
@@ -121,7 +122,7 @@ function oe_bootstrap_theme_preprocess_views_view_table__bootstrap__responsive(&
  */
 function _oe_bootstrap_theme_bootstrap_responsive_table(array &$variables): void {
   $class = 'table-responsive';
-  $breakpoint = theme_get_setting('bootstrap_tables.responsive');
+  $breakpoint = DrupalCompatibility::themeGetSetting('bootstrap_tables.responsive');
   if ($breakpoint !== 'always') {
     $class .= '-' . $breakpoint;
   }
