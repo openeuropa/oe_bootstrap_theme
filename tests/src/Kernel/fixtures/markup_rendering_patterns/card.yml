@@ -162,3 +162,21 @@ card_with_date_range:
           end_year: "2022"
           end_month: "Feb"
           end_day: "11"
+card_with_image_copyright:
+  render:
+    '#type': pattern
+    '#id': 'card'
+    '#fields':
+      title: 'Title card'
+      text: 'Text card with longer text which is supported'
+      image:
+        src: 'https://picsum.photos/1000/500/'
+        alt: 'Alternative text for card image'
+      image_copyright: '© 2024 Example Organisation'
+  assertions:
+    count:
+      'article.card': 1
+      'article.card img.card-img-top': 1
+      'article.card .bcl-card__image-footer .bcl-copyright': 1
+    equals:
+      'article.card .bcl-copyright': '© 2024 Example Organisation'

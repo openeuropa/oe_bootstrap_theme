@@ -39,6 +39,11 @@ card:
       preview:
         src: 'https://picsum.photos/1000/500/'
         alt: 'Alternative text for card image'
+    image_copyright:
+      type: text
+      label: 'Image Copyright'
+      description: 'Optional copyright text displayed as an overlay.'
+      preview: '© 2024 Example Organisation'
     date:
       type: array
       label: 'Date block'
