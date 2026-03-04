@@ -66,6 +66,7 @@ card_layout:
           title_tag: 'h2'
           subtitle: 'Subtitle card 1'
           text: 'Text card with longer text which is supported 1'
+          image_copyright: '© 2024 Example Organisation'
           image:
             src: 'https://picsum.photos/1000/500/'
             alt: 'Alternative text for card image'
