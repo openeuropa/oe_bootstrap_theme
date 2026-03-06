@@ -28,6 +28,24 @@ featured_media_image_not_wrapper:
       '.md-6,.order-1,.order-2': 0
     equals:
       'figcaption': 'Media description text goes here.'
+featured_media_image_with_copyright_overlay:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      image:
+        src: 'https://picsum.photos/1200/600/'
+        alt: 'Alternative text for paragraph image'
+        name: 'Example'
+      caption: 'Media description text goes here.'
+      copyright: '© 2024 Example Organisation'
+  assertions:
+    count:
+      'div.bcl-featured-media': 1
+      'div.bcl-featured-media figure': 1
+      'div.bcl-featured-media .bcl-copyright': 1
+    contains:
+      '.bcl-copyright': '© 2024 Example Organisation'
 featured_media_image_with_title_tag:
   render:
     '#type': pattern

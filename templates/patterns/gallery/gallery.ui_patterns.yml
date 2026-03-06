@@ -28,6 +28,7 @@ gallery:
           thumbnail:
             '#markup': '<img src="https://picsum.photos/id/40/400/300/" alt="Cat thumbnail alt" /'
           caption_title: 'A picture of a cat'
+          copyright: '© 2024 Example Organisation'
           caption: 'Cat image caption.'
         - media:
             '#markup': '<img src="https://picsum.photos/id/116/800/600/" alt="Lisbon image media alt" />'

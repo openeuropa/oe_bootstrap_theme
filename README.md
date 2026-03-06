@@ -96,6 +96,12 @@ We started to ship in version 1.x patterns that already embrace this new approac
 We will do the best to avoid any breaking changes to these patterns during the 1.x lifecycle. But it might be that some changes will be still
 needed. We will communicate such changes together with the release.
 
+### Media copyright text
+
+Patterns that render media accept a `copyright` parameter to display copyright
+text under the media. See the pattern documentation for usage details. The
+field and recipe setup for media entities is documented in `oe_whitelabel`.
+
 ## Development setup
 
 ### Using LAMP stack or similar

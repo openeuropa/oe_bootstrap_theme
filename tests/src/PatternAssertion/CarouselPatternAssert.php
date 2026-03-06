@@ -123,6 +123,9 @@ class CarouselPatternAssert extends BasePatternAssert {
         else {
           $this->assertElementNotExists('.carousel-caption a', $item);
         }
+        if (isset($expected_item['copyright'])) {
+          $this->assertElementTextContains($expected_item['copyright'], '.carousel-item .bcl-copyright', $item);
+        }
       }
       catch (\Exception $e) {
         throw new \Exception(sprintf('Failed asserting data for item %s.', $index), 0, $e);

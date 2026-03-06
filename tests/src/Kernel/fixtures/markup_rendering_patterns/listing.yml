@@ -525,3 +525,93 @@ listing_highlight_3_col:
       'a[href="/example4"]': 'Card title 4'
       'a[href="/example5"]': 'Card title 5'
       'a[href="/example6"]': 'Card title 6'
+listing_default_1_col_with_image_copyright:
+  render:
+    '#type': pattern
+    '#id': 'listing'
+    '#variant': 'default'
+    '#fields':
+      columns: '1'
+      title: 'Listing item block title'
+      items:
+        - title: 'Card title 1'
+          text: 'Lorem ipsum dolor sit amet.'
+          image:
+            src: 'https://picsum.photos/600/400/'
+            alt: 'alt img'
+          image_copyright: '© 2024 Example Organisation'
+  assertions:
+    count:
+      'div.bcl-listing.bcl-listing--default-1-col': 1
+      'article.listing-item': 1
+      'article.listing-item .bcl-card__image-footer .bcl-copyright': 1
+    equals:
+      'article.listing-item .bcl-copyright': '© 2024 Example Organisation'
+listing_default_2_col_with_image_copyright:
+  render:
+    '#type': pattern
+    '#id': 'listing'
+    '#variant': 'default'
+    '#fields':
+      columns: '2'
+      title: 'Listing item block title'
+      items:
+        - title: 'Card title 1'
+          text: 'Lorem ipsum dolor sit amet.'
+          image:
+            src: 'https://picsum.photos/600/400/'
+            alt: 'alt img'
+          image_copyright: '© 2024 Example Organisation'
+  assertions:
+    count:
+      'div.bcl-listing.bcl-listing--default-2-col': 1
+      'article.listing-item': 1
+      'article.listing-item .bcl-card__image-footer .bcl-copyright': 1
+    equals:
+      'article.listing-item .bcl-copyright': '© 2024 Example Organisation'
+listing_default_1_col_highlight_with_image_copyright:
+  render:
+    '#type': pattern
+    '#id': 'listing'
+    '#variant': 'highlight'
+    '#fields':
+      columns: '1'
+      title: 'Listing item block title'
+      items:
+        - title: 'Card title 1'
+          text: 'Lorem ipsum dolor sit amet.'
+          image:
+            src: 'https://picsum.photos/600/400/'
+            alt: 'alt img'
+          image_copyright: '© 2024 Example Organisation'
+  assertions:
+    count:
+      'div.bcl-listing.bcl-listing--highlight-1-col': 1
+      'article.listing-item--highlight': 1
+      'article.listing-item--highlight .bcl-card__image-footer .bcl-copyright': 1
+      'article.listing-item--highlight .card-body.pt-3': 1
+    equals:
+      'article.listing-item--highlight .bcl-copyright': '© 2024 Example Organisation'
+listing_default_2_col_highlight_with_image_copyright:
+  render:
+    '#type': pattern
+    '#id': 'listing'
+    '#variant': 'highlight'
+    '#fields':
+      columns: '2'
+      title: 'Listing item block title'
+      items:
+        - title: 'Card title 1'
+          text: 'Lorem ipsum dolor sit amet.'
+          image:
+            src: 'https://picsum.photos/600/400/'
+            alt: 'alt img'
+          image_copyright: '© 2024 Example Organisation'
+  assertions:
+    count:
+      'div.bcl-listing.bcl-listing--highlight-2-col': 1
+      'article.listing-item--highlight': 1
+      'article.listing-item--highlight .bcl-card__image-footer .bcl-copyright': 1
+      'article.listing-item--highlight .card-body.pt-3': 1
+    equals:
+      'article.listing-item--highlight .bcl-copyright': '© 2024 Example Organisation'

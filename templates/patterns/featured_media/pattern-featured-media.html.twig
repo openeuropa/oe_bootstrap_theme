@@ -4,13 +4,14 @@
  * Featured media pattern.
  */
 #}
-{% macro featured_media(embedded_media, image, caption, ratio) %}
+{% macro featured_media(embedded_media, image, caption, ratio, copyright) %}
   {% include '@oe-bcl/featured-media' with {
     'embedded_media': embedded_media,
     'image': image,
     'content': caption,
     'content_classes': 'bg-light p-3',
     'ratio': ratio,
+    'copyright': copyright,
   } only %}
 {% endmacro %}
 
@@ -34,11 +35,11 @@
     {% endif %}
 
     {%- if title is not empty -%}
-      {% include '@oe-bcl/heading' with {
+      {%- include '@oe-bcl/heading' with {
         title: title,
         title_tag: title_tag|default('h2'),
         attributes: create_attribute().addClass('mb-4'),
-      } only %}
+      } only -%}
     {%- endif -%}
     <div class="row">
       <div class="col-12 col-md-6 {{ text_alignment_class }}">
@@ -63,13 +64,13 @@
         {% endif %}
       </div>
       <div class="col-12 col-md-6 {{ video_alignment_class }}">
-        {{ _self.featured_media(embedded_media, image, caption, ratio) }}
+        {{- _self.featured_media(embedded_media, image, caption, ratio, copyright) -}}
       </div>
     </div>
   {% else %}
     <div class="row">
       <div class="col-12 col-md-4">
-        {{ _self.featured_media(embedded_media, image, caption, ratio) }}
+        {{- _self.featured_media(embedded_media, image, caption, ratio, copyright) -}}
       </div>
     </div>
   {% endif %}

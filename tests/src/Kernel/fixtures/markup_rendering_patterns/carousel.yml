@@ -123,6 +123,28 @@ carousel_without_settings_assert_defaults:
           - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
             caption_title: 'First slide title'
             caption: 'First slide caption'
+carousel_with_copyright_overlay:
+  render:
+    '#type': pattern
+    '#id': carousel
+    '#fields':
+      slides:
+        - caption: 'First slide caption'
+          caption_title: 'First slide title'
+          interval: 0
+          image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+          copyright: '© 2024 Example Organisation'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        items:
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
+            caption_title: 'First slide title'
+            caption: 'First slide caption'
+            copyright: '© 2024 Example Organisation'
 carousel_just_images:
   render:
     '#type': pattern
