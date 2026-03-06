@@ -564,7 +564,7 @@ listing_default_2_col_with_image_copyright:
           image_copyright: '© 2024 Example Organisation'
   assertions:
     count:
-      'div.bcl-listing.bcl-listing--default-1-col': 1
+      'div.bcl-listing.bcl-listing--default-2-col': 1
       'article.listing-item': 1
       'article.listing-item .bcl-card__image-footer .bcl-copyright': 1
     equals:
@@ -586,12 +586,12 @@ listing_default_1_col_highlight_with_image_copyright:
           image_copyright: '© 2024 Example Organisation'
   assertions:
     count:
-      'div.bcl-listing.bcl-listing--default-1-col': 1
-      'article.listing-item': 1
-      'article.listing-item .bcl-card__image-footer .bcl-copyright': 1
-      'article.listing-item .card-body.pt-3': 1
+      'div.bcl-listing.bcl-listing--highlight-1-col': 1
+      'article.listing-item--highlight': 1
+      'article.listing-item--highlight .bcl-card__image-footer .bcl-copyright': 1
+      'article.listing-item--highlight .card-body.pt-3': 1
     equals:
-      'article.listing-item .bcl-copyright': '© 2024 Example Organisation'
+      'article.listing-item--highlight .bcl-copyright': '© 2024 Example Organisation'
 listing_default_2_col_highlight_with_image_copyright:
   render:
     '#type': pattern
@@ -609,9 +609,9 @@ listing_default_2_col_highlight_with_image_copyright:
           image_copyright: '© 2024 Example Organisation'
   assertions:
     count:
-      'div.bcl-listing.bcl-listing--default-1-col': 1
-      'article.listing-item': 1
-      'article.listing-item .bcl-card__image-footer .bcl-copyright': 1
-      'article.listing-item .card-body.pt-3': 1
+      'div.bcl-listing.bcl-listing--highlight-2-col': 1
+      'article.listing-item--highlight': 1
+      'article.listing-item--highlight .bcl-card__image-footer .bcl-copyright': 1
+      'article.listing-item--highlight .card-body.pt-3': 1
     equals:
-      'article.listing-item .bcl-copyright': '© 2024 Example Organisation'
+      'article.listing-item--highlight .bcl-copyright': '© 2024 Example Organisation'
