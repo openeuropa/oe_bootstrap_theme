@@ -15,11 +15,6 @@ final class BackwardCompatibility {
   public const PREFIX = 'backward_compatibility.';
 
   /**
-   * The theme where backward compatibility settings are stored.
-   */
-  private const THEME = 'oe_bootstrap_theme';
-
-  /**
    * Returns the value of a backward compatibility setting.
    *
    * @param string $name
@@ -32,7 +27,7 @@ final class BackwardCompatibility {
    * @SuppressWarnings(PHPMD.BooleanGetMethodName)
    */
   public static function getSetting(string $name): bool {
-    return (bool) (DrupalCompatibility::themeGetSetting(self::PREFIX . $name, self::THEME) ?? TRUE);
+    return (bool) (DrupalCompatibility::themeGetSetting(self::PREFIX . $name) ?? TRUE);
   }
 
 }

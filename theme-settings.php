@@ -26,7 +26,7 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
     '#type' => 'checkbox',
     '#title' => t('Style all tables using Bootstrap.'),
     '#description' => t('Applies Bootstrap classes to all tables rendered using this theme. Note that some table instances (such as calendars) might not render correctly when Bootstrap is applied to them.'),
-    '#default_value' => DrupalCompatibility::themeGetSetting('bootstrap_tables.enable', 'oe_bootstrap_theme'),
+    '#default_value' => DrupalCompatibility::themeGetSetting('bootstrap_tables.enable'),
   ];
 
   $form['bootstrap_tables']['responsive'] = [
@@ -42,7 +42,7 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
       'xxl' => t('Extra extra large'),
     ],
     '#empty_option' => t('Never'),
-    '#default_value' => DrupalCompatibility::themeGetSetting('bootstrap_tables.responsive', 'oe_bootstrap_theme') ?? '',
+    '#default_value' => DrupalCompatibility::themeGetSetting('bootstrap_tables.responsive') ?? '',
   ];
 
   $form['backward_compatibility'] = [
