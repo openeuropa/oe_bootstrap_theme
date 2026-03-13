@@ -1,7 +1,7 @@
-diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/templates/bcl-link/link.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/templates/bcl-link/link.html.twig
+diff --git a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
 index 32eb999..dd0d6d5 100644
---- a/node_modules/@openeuropa/bcl-theme-default/templates/templates/bcl-link/link.html.twig
-+++ b/node_modules/@openeuropa/bcl-theme-default/templates/templates/bcl-link/link.html.twig
+--- a/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
++++ b/node_modules/@openeuropa/bcl-theme-default/templates/bcl-link/link.html.twig
 @@ -78,17 +78,17 @@
  {% if _classes is not empty %}
    {%- set attributes = attributes.addClass(_classes) %}
