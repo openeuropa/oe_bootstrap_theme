@@ -30,19 +30,24 @@ final class DrupalCompatibility {
   }
 
   /**
-   * Resets the theme settings cache across supported Drupal core versions.
+   * Resets the theme settings memory cache across supported Drupal versions.
    *
-   * In Drupal >= 11.3, ThemeSettingsProvider uses an in-memory cache that must
-   * be cleared separately from the config factory static cache.
+   * This is needed in functional tests, when a separate request made changes to
+   * configuration, but the old version is still in the memory cache of the
+   * process where that test is running.
+   *
+   * In Drupal < 11.3, this memory cache was using the drupal_static()
+   * mechanism. In Drupal >= 11.3, the new memory cache service is used.
+   *
+   * See https://www.drupal.org/node/3035289.
    */
   public static function resetThemeSettingsCache(): void {
     DeprecationHelper::backwardsCompatibleCall(
       \Drupal::VERSION,
       '11.3.0',
-      fn () => \Drupal::service('cache.memory')->deleteAll(),
+      fn () => \Drupal::service('cache_tags.invalidator')->invalidateTags(['config:system.theme.global']),
       fn () => drupal_static_reset('theme_get_setting'),
     );
-    \Drupal::configFactory()->clearStaticCache();
   }
 
 }

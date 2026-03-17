@@ -120,6 +120,7 @@ class ThemeSettingsTest extends BrowserTestBase {
     $this->assertFalse($featured_media_mobile_text_top->isChecked());
 
     DrupalCompatibility::resetThemeSettingsCache();
+    \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertFalse(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
     $this->assertFalse(BackwardCompatibility::getSetting('fieldset_wrapper_col_sm_10'));
@@ -137,6 +138,7 @@ class ThemeSettingsTest extends BrowserTestBase {
     $this->assertFalse($featured_media_mobile_text_top->isChecked());
 
     DrupalCompatibility::resetThemeSettingsCache();
+    \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
     $this->assertFalse(BackwardCompatibility::getSetting('fieldset_wrapper_col_sm_10'));
@@ -154,6 +156,7 @@ class ThemeSettingsTest extends BrowserTestBase {
     $this->assertFalse($featured_media_mobile_text_top->isChecked());
 
     DrupalCompatibility::resetThemeSettingsCache();
+    \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
     $this->assertTrue(BackwardCompatibility::getSetting('fieldset_wrapper_col_sm_10'));
@@ -171,6 +174,7 @@ class ThemeSettingsTest extends BrowserTestBase {
     $this->assertFalse($featured_media_mobile_text_top->isChecked());
 
     DrupalCompatibility::resetThemeSettingsCache();
+    \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
     $this->assertTrue(BackwardCompatibility::getSetting('fieldset_wrapper_col_sm_10'));
@@ -189,6 +193,7 @@ class ThemeSettingsTest extends BrowserTestBase {
     $this->assertTrue($featured_media_mobile_text_top->isChecked());
 
     DrupalCompatibility::resetThemeSettingsCache();
+    \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
     $this->assertTrue(BackwardCompatibility::getSetting('fieldset_wrapper_col_sm_10'));
@@ -212,6 +217,7 @@ class ThemeSettingsTest extends BrowserTestBase {
 
     // Theme settings config is cached statically.
     DrupalCompatibility::resetThemeSettingsCache();
+    \Drupal::configFactory()->clearStaticCache();
 
     $html = (string) $this->container->get('renderer')->renderRoot($build);
     return trim(preg_replace('/>\s+</', '><', $html));
