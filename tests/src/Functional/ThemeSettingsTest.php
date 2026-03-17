@@ -211,7 +211,6 @@ class ThemeSettingsTest extends BrowserTestBase {
     ];
 
     // Theme settings config is cached statically.
-    drupal_static_reset();
     DrupalCompatibility::resetThemeSettingsCache();
 
     $html = (string) $this->container->get('renderer')->renderRoot($build);
