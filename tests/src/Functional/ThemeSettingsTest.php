@@ -7,6 +7,7 @@ namespace Drupal\Tests\oe_bootstrap_theme\Functional;
 use Drupal\Tests\BrowserTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Traits\GetSelectOptionsTrait;
 use Drupal\oe_bootstrap_theme\BackwardCompatibility;
+use Drupal\oe_bootstrap_theme\DrupalCompatibility;
 
 /**
  * Tests the theme settings.
@@ -118,7 +119,7 @@ class ThemeSettingsTest extends BrowserTestBase {
     $this->assertFalse($featured_media_subtitle_tag_h5->isChecked());
     $this->assertFalse($featured_media_mobile_text_top->isChecked());
 
-    drupal_static_reset('theme_get_setting');
+    DrupalCompatibility::resetThemeSettingsCache();
     \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertFalse(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
@@ -136,7 +137,7 @@ class ThemeSettingsTest extends BrowserTestBase {
     $this->assertFalse($featured_media_subtitle_tag_h5->isChecked());
     $this->assertFalse($featured_media_mobile_text_top->isChecked());
 
-    drupal_static_reset('theme_get_setting');
+    DrupalCompatibility::resetThemeSettingsCache();
     \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
@@ -154,7 +155,7 @@ class ThemeSettingsTest extends BrowserTestBase {
     $this->assertFalse($featured_media_subtitle_tag_h5->isChecked());
     $this->assertFalse($featured_media_mobile_text_top->isChecked());
 
-    drupal_static_reset('theme_get_setting');
+    DrupalCompatibility::resetThemeSettingsCache();
     \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
@@ -172,7 +173,7 @@ class ThemeSettingsTest extends BrowserTestBase {
     $this->assertTrue($featured_media_subtitle_tag_h5->isChecked());
     $this->assertFalse($featured_media_mobile_text_top->isChecked());
 
-    drupal_static_reset('theme_get_setting');
+    DrupalCompatibility::resetThemeSettingsCache();
     \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
@@ -191,7 +192,7 @@ class ThemeSettingsTest extends BrowserTestBase {
     $this->assertTrue($featured_media_subtitle_tag_h5->isChecked());
     $this->assertTrue($featured_media_mobile_text_top->isChecked());
 
-    drupal_static_reset('theme_get_setting');
+    DrupalCompatibility::resetThemeSettingsCache();
     \Drupal::configFactory()->clearStaticCache();
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_image_hide_on_mobile'));
     $this->assertTrue(BackwardCompatibility::getSetting('card_search_use_grid_classes'));
@@ -215,7 +216,7 @@ class ThemeSettingsTest extends BrowserTestBase {
     ];
 
     // Theme settings config is cached statically.
-    drupal_static_reset();
+    DrupalCompatibility::resetThemeSettingsCache();
     \Drupal::configFactory()->clearStaticCache();
 
     $html = (string) $this->container->get('renderer')->renderRoot($build);
