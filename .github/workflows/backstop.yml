@@ -2,7 +2,6 @@ name: BackstopJS VRT
 
 on:
   pull_request:
-  workflow_dispatch:
 
 env:
   # Reused when uploading the generated Backstop HTML report.
@@ -21,11 +20,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Install dependencies
         run: |
-          npm ci
+          npm install
           npx playwright install --with-deps
           npm run vrt:build
 
