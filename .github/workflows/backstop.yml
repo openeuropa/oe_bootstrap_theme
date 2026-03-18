@@ -3,11 +3,6 @@ name: BackstopJS VRT
 on:
   pull_request:
 
-env:
-  # Reused when uploading the generated Backstop HTML report.
-  REPORT_DIR: tests/vrt/html_report
-  CI: true
-
 jobs:
   backstop:
     runs-on: ubuntu-latest
@@ -44,22 +39,14 @@ jobs:
         # Keep artifact uploads running even when Backstop finds visual diffs.
         continue-on-error: true
 
-      - name: Report
+      - name: Upload Backstop results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          # Add the commit SHA so each workflow run gets a distinct artifact name.
-          name: backstop-report-${{ github.sha }}
-          path: ${{ env.REPORT_DIR }}
-          if-no-files-found: warn
-
-      - name: Upload Backstop bitmaps (artifact)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          # Preserve test and reference screenshots to inspect failures after the run.
-          name: backstop-bitmaps-${{ github.sha }}
+          # Preserve the HTML report together with test and reference screenshots.
+          name: backstop-results-${{ github.sha }}
           path: |
+            tests/vrt/html_report
             tests/vrt/bitmaps_test
             tests/vrt/bitmaps_reference
           if-no-files-found: warn
