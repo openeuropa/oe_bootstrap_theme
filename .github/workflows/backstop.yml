@@ -17,15 +17,25 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Install dependencies
         run: |
           npm install
           npx playwright install --with-deps
-          npm run vrt:build
+
+      - name: Start Drupal stack
+        run: docker compose up -d mysql web
+
+      - name: Install Drupal
+        run: |
+          docker compose exec -T web composer install
+          docker compose exec -T web ./vendor/bin/run drupal:site-install
+
+      - name: Build Backstop config
+        run: npm run vrt:build
 
       - name: Run BackstopJS
         id: backstop
@@ -58,3 +68,7 @@ jobs:
         # Fail the job only after the report and bitmaps have been uploaded.
         if: steps.backstop.outcome != 'success'
         run: exit 1
+
+      - name: Stop Drupal stack
+        if: always()
+        run: docker compose down
