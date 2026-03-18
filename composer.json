@@ -67,9 +67,6 @@
         "patches": {
             "drupal/ui_patterns_settings": {
                 "Case mismatch between loaded and declared class names @see https://www.drupal.org/project/ui_patterns_settings/issues/3508198": "https://www.drupal.org/files/issues/2025-02-21/3508198-case-mismatch.patch"
-            },
-            "drupal/ui_patterns": {
-                "8.x Incompatibility with Drupal 11.3 - Constraint Regex parameter mismatch @see https://www.drupal.org/project/ui_patterns/issues/3563941": "https://www.drupal.org/files/issues/2025-12-22/ui_patterns-3563941-2.patch.txt"
             }
         }
     },
