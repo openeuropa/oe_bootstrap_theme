@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme_helper\Kernel;
 
+use Drupal\Component\Render\MarkupInterface;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Render\RenderContext;
@@ -456,6 +457,22 @@ TWIG;
       $this->assertEquals($expected['image'], $result[$key]['image'] ?? []);
       $this->assertEquals($expected['badges'], $result[$key]['badges'] ?? []);
     }
+  }
+
+  /**
+   * Tests BCL card list preserves formatted text as safe markup.
+   */
+  public function testBclCardListFormattedText(): void {
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $result = $extension->bclCardList([
+      [
+        'text' => '<p>I add a text with <strong>bolds</strong>, <em>italic</em> and <a href="https://www.google.es">loopy link</a></p>',
+      ],
+    ]);
+
+    $content = $result[0]['text']['content'] ?? NULL;
+    $this->assertInstanceOf(MarkupInterface::class, $content);
+    $this->assertSame('<p>I add a text with <strong>bolds</strong>, <em>italic</em> and <a href="https://www.google.es">loopy link</a></p>', (string) $content);
   }
 
   /**
