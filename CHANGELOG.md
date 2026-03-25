@@ -1,5 +1,24 @@
 # Change Log
 
+## [1.34.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.34.0) (2026-03-25)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.33.0...1.34.0)
+
+**Merged pull requests:**
+
+- OEL-0000: Set bcl version to minor latest. [\#545](https://github.com/openeuropa/oe_bootstrap_theme/pull/545) ([tibi2303](https://github.com/tibi2303))
+- OEL-4511: Update to Drupal 11.3.x. [\#541](https://github.com/openeuropa/oe_bootstrap_theme/pull/541) ([tibi2303](https://github.com/tibi2303))
+- OEL-3342: Copyright for images. [\#520](https://github.com/openeuropa/oe_bootstrap_theme/pull/520) ([tibi2303](https://github.com/tibi2303))
+
+## [1.33.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.33.0) (2026-02-25)
+
+**Merged pull requests:**
+
+- Prepare release 1.33.0. [\#540](https://github.com/openeuropa/oe_bootstrap_theme/pull/540) ([tibi2303](https://github.com/tibi2303))
+- OEL-0000: Update bcl version. [\#539](https://github.com/openeuropa/oe_bootstrap_theme/pull/539) ([tibi2303](https://github.com/tibi2303))
+- OEL-4032: Fix button pattern. [\#538](https://github.com/openeuropa/oe_bootstrap_theme/pull/538) ([tibi2303](https://github.com/tibi2303))
+- OEL-4032: Changed from margin to gap in button and link. [\#537](https://github.com/openeuropa/oe_bootstrap_theme/pull/537) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.33.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.33.0) (2026-02-25)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.32.0...1.33.0)
