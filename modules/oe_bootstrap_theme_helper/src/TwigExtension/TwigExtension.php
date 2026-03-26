@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Extension\ThemeExtensionList;
+use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
@@ -49,6 +51,20 @@ class TwigExtension extends AbstractExtension {
   protected TwigEnvironment $twigEnvironment;
 
   /**
+   * The theme extension list service.
+   *
+   * @var \Drupal\Core\Extension\ThemeExtensionList
+   */
+  protected $themeList;
+
+  /**
+   * The theme manager.
+   *
+   * @var \Drupal\Core\Theme\ThemeManagerInterface
+   */
+  protected ThemeManagerInterface $themeManager;
+
+  /**
    * Constructs a new TwigExtension object.
    *
    * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
@@ -57,11 +73,17 @@ class TwigExtension extends AbstractExtension {
    *   The Drupal Twig environment.
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer.
+   * @param \Drupal\Core\Extension\ThemeExtensionList $theme_list
+   *   The theme extension list.
+   * @param \Drupal\Core\Theme\ThemeManagerInterface $theme_manager
+   *   The theme manager.
    */
-  public function __construct(LanguageManagerInterface $languageManager, TwigEnvironment $twigEnvironment, RendererInterface $renderer) {
+  public function __construct(LanguageManagerInterface $languageManager, TwigEnvironment $twigEnvironment, RendererInterface $renderer, ThemeExtensionList $theme_list, ThemeManagerInterface $theme_manager) {
     $this->languageManager = $languageManager;
     $this->twigEnvironment = $twigEnvironment;
     $this->renderer = $renderer;
+    $this->themeList = $theme_list;
+    $this->themeManager = $theme_manager;
   }
 
   /**
@@ -93,6 +115,7 @@ class TwigExtension extends AbstractExtension {
         'needs_environment' => TRUE,
       ]),
       new TwigFunction('bcl_gallery_items', [$this, 'bclGalleryItems']),
+      new TwigFunction('bcl_icon_path', [$this, 'getBclIconPath']),
     ];
   }
 
@@ -339,6 +362,17 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $items;
+  }
+
+  /**
+   * Returns the URL to the BCL default icons SVG file.
+   *
+   * @return string
+   *   The relative URL to the BCL icons SVG file.
+   */
+  public function getBclIconPath(): string {
+    $theme = $this->themeList->get('oe_bootstrap_theme');
+    return base_path() . $theme->getPath() . '/assets/icons/bcl-default-icons.svg';
   }
 
   /**
