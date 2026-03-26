@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Component\Utility\Xss;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
@@ -139,7 +140,7 @@ class TwigExtension extends AbstractExtension {
       }
       if (isset($item['text'])) {
         $bcl_card['text'] = [
-          'content' => $item['text'],
+          'content' => $this->normalizeCardTextContent($item['text']),
           'classes' => 'mb-2',
           'tag' => 'div',
         ];
@@ -162,6 +163,27 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $bcl_cards;
+  }
+
+  /**
+   * Normalizes card text values so processed HTML keeps rendering as markup.
+   *
+   * Formatted text can reach the listing/card templates as an already filtered
+   * HTML string. Wrap those strings in safe markup so Twig does not escape
+   * them back into raw HTML source.
+   *
+   * @param mixed $content
+   *   The card text value.
+   *
+   * @return mixed
+   *   The normalized text value.
+   */
+  private function normalizeCardTextContent(mixed $content): mixed {
+    if (!is_string($content) || !preg_match('/<[a-zA-Z\\/][^>]*>/', $content)) {
+      return $content;
+    }
+
+    return Markup::create(Xss::filterAdmin($content));
   }
 
   /**

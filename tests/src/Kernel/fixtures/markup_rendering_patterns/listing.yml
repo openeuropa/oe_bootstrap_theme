@@ -615,3 +615,55 @@ listing_default_2_col_highlight_with_image_copyright:
       'article.listing-item--highlight .card-body.pt-3': 1
     equals:
       'article.listing-item--highlight .bcl-copyright': '© 2024 Example Organisation'
+listing_default_1_col_with_formatted_text:
+  render:
+    '#type': pattern
+    '#id': 'listing'
+    '#variant': 'default'
+    '#fields':
+      columns: '1'
+      title: 'Listing item block title'
+      items:
+        - title:
+            '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
+          text: '<p>I add a text with <strong>bolds</strong>, <em>italic</em> and <a href="https://www.google.es">loopy link</a></p>'
+          image:
+            src: 'https://picsum.photos/600/400/'
+            alt: 'alt img'
+  assertions:
+    count:
+      'article.listing-item': 1
+      'article.listing-item .card-text p': 1
+      'article.listing-item .card-text strong': 1
+      'article.listing-item .card-text em': 1
+      'article.listing-item .card-text a[href="https://www.google.es"]': 1
+    equals:
+      'article.listing-item .card-text strong': 'bolds'
+      'article.listing-item .card-text em': 'italic'
+      'article.listing-item .card-text a[href="https://www.google.es"]': 'loopy link'
+listing_highlight_1_col_with_formatted_text:
+  render:
+    '#type': pattern
+    '#id': 'listing'
+    '#variant': 'highlight'
+    '#fields':
+      columns: '1'
+      title: 'Listing item block title'
+      items:
+        - title:
+            '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
+          text: '<p>I add a text with <strong>bolds</strong>, <em>italic</em> and <a href="https://www.google.es">loopy link</a></p>'
+          image:
+            src: 'https://picsum.photos/600/400/'
+            alt: 'alt img'
+  assertions:
+    count:
+      'article.listing-item--highlight': 1
+      'article.listing-item--highlight .card-text p': 1
+      'article.listing-item--highlight .card-text strong': 1
+      'article.listing-item--highlight .card-text em': 1
+      'article.listing-item--highlight .card-text a[href="https://www.google.es"]': 1
+    equals:
+      'article.listing-item--highlight .card-text strong': 'bolds'
+      'article.listing-item--highlight .card-text em': 'italic'
+      'article.listing-item--highlight .card-text a[href="https://www.google.es"]': 'loopy link'
