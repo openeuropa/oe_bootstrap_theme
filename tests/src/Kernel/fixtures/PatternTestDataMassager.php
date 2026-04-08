@@ -7,6 +7,7 @@ namespace Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures;
 use Drupal\Core\Render\Markup;
 use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Symfony\Component\Yaml\Tag\TaggedValue;
 
 /**
  * Transforms test data coming from YAML files.
@@ -17,137 +18,27 @@ use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 final class PatternTestDataMassager {
 
   /**
-   * Massages test data for a pattern.
-   *
-   * @param string $patternName
-   *   The pattern name.
-   * @param array $data
-   *   The data structure.
-   *
-   * @return array
-   *   The massaged data structure.
-   */
-  public static function massageData(string $patternName, array $data): array {
-    $callable = [
-      self::class,
-      'massage' . self::snakeToCamel($patternName) . 'Pattern',
-    ];
-
-    if (is_callable($callable)) {
-      $data = call_user_func($callable, $data);
-    }
-
-    return $data;
-  }
-
-  /**
-   * Massages data for the "file" pattern.
+   * Prepares a render element from yaml data.
    *
    * @param array $data
-   *   The data structure.
+   *   The data from yaml, which does not contain any objects besides
+   *   TaggedValue.
    *
    * @return array
-   *   The massaged data structure.
+   *   The massaged render element, with objects based on the TaggedValue itesm.
    */
-  private static function massageFilePattern(array $data): array {
-    $data['#fields']['file'] = FileValueObject::fromArray($data['#fields']['file']);
-
-    if (!empty($data['#fields']['translations'])) {
-      foreach ($data['#fields']['translations'] as $index => $translation) {
-        $data['#fields']['translations'][$index] = FileValueObject::fromArray($translation);
-      }
+  public static function massageDataRecursive(mixed $data): mixed {
+    if (is_array($data)) {
+      return array_map(self::massageDataRecursive(...), $data);
     }
-
-    return $data;
-  }
-
-  /**
-   * Massages data for the "card" pattern.
-   *
-   * @param array $data
-   *   The data structure.
-   *
-   * @return array
-   *   The massaged data structure.
-   */
-  private static function massageCardPattern(array $data): array {
-    if (isset($data['#fields']['image'])) {
-      $data['#fields']['image'] = ImageValueObject::fromArray($data['#fields']['image']);
+    if (!$data instanceof TaggedValue) {
+      return $data;
     }
-
-    return $data;
-  }
-
-  /**
-   * Massages data for the "card_layout" pattern.
-   *
-   * @param array $data
-   *   The data structure.
-   *
-   * @return array
-   *   The massaged data structure.
-   */
-  private static function massageCardLayoutPattern(array $data): array {
-    foreach ($data['#fields']['items'] as &$item) {
-      if (isset($item['image'])) {
-        $item['image'] = ImageValueObject::fromArray($item['image']);
-      }
-    }
-
-    return $data;
-  }
-
-  /**
-   * Massages data for the "listing" pattern.
-   *
-   * @param array $data
-   *   The data structure.
-   *
-   * @return array
-   *   The massaged data structure.
-   */
-  private static function massageListingPattern(array $data): array {
-    foreach ($data['#fields']['items'] as &$item) {
-      if (isset($item['image'])) {
-        $item['image'] = ImageValueObject::fromArray($item['image']);
-      }
-    }
-
-    return $data;
-  }
-
-  /**
-   * Massages data for the "gallery" pattern.
-   *
-   * @param array $data
-   *   The data structure.
-   *
-   * @return array
-   *   The massaged data structure.
-   */
-  private static function massageGalleryPattern(array $data): array {
-    foreach ($data['#fields']['items'] as &$item) {
-      foreach (['thumbnail', 'media'] as $key) {
-        if (isset($item[$key]['#markup'])) {
-          $item[$key] = Markup::create($item[$key]['#markup']);
-        }
-      }
-    }
-
-    return $data;
-  }
-
-  /**
-   * Transforms a string from snake_case to CamelCase.
-   *
-   * @param string $string
-   *   The string in snake case.
-   *
-   * @return string
-   *   The string in camel case.
-   */
-  private static function snakeToCamel(string $string): string {
-    return strtr(ucwords($string, '_'), ['_' => '']);
+    return match ($data->getTag()) {
+      'Markup' => Markup::create($data->getValue()),
+      'FileValueObject' => FileValueObject::fromArray($data->getValue()),
+      'ImageValueObject' => ImageValueObject::fromArray($data->getValue()),
+    };
   }
 
 }

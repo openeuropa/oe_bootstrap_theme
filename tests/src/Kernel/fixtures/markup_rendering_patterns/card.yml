@@ -8,7 +8,7 @@ card_horizontal_with_image:
       title_tag: 'h2'
       subtitle: 'Subtitle card'
       text: 'Text card with longer text which is supported'
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1000/500/'
         alt: 'Alternative text for card image'
       meta:
@@ -50,7 +50,7 @@ card_vertical:
       title: 'Title card'
       subtitle: 'Subtitle card'
       text: 'Text card with longer text which is supported'
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1000/500/'
         alt: 'Alternative text for card image'
       content:
@@ -87,7 +87,7 @@ card_variant_search:
       title: 'Title card'
       title_tag: 'h3'
       text: 'Text card with longer text which is supported'
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1000/500/'
       badges:
         - label: 'Category 1'
@@ -169,7 +169,7 @@ card_with_image_copyright:
     '#fields':
       title: 'Title card'
       text: 'Text card with longer text which is supported'
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1000/500/'
         alt: 'Alternative text for card image'
       image_copyright: '© 2024 Example Organisation'

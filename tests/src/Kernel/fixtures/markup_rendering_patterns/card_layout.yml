@@ -101,7 +101,7 @@ card_grid_responsive_columns_2_md_equal_height:
         - title: 'Title card 1'
           subtitle: 'Subtitle card 1'
           text: 'Text card with longer text which is supported 1'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/1000/500/arch'
             alt: 'Alternative text for card image'
           content:
@@ -118,7 +118,7 @@ card_grid_responsive_columns_2_md_equal_height:
         - title: 'Title card 2'
           subtitle: 'Subtitle card 2'
           text: 'Text card with longer text which is supported 2'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/1000/500/'
             alt: 'Alternative text for card image'
           content: 'Custom test'
@@ -127,7 +127,7 @@ card_grid_responsive_columns_2_md_equal_height:
         - title: 'Title card 3'
           subtitle: 'Subtitle card 3'
           text: 'Text card with longer text which is supported 3'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/1000/500/'
             alt: 'Alternative text for card image'
           content: 'Some representative placeholder content for the first card.'
@@ -221,7 +221,7 @@ card_masonry_responsive_columns_2_md_equal_height:
         - title: 'Title card 1'
           subtitle: 'Subtitle card 1'
           text: 'Text card with longer text which is supported 1'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/1000/500/'
             alt: 'Alternative text for card image'
           content:
@@ -238,7 +238,7 @@ card_masonry_responsive_columns_2_md_equal_height:
         - title: 'Title card 2'
           subtitle: 'Subtitle card 2'
           text: 'Text card with longer text which is supported 2'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/1000/500/'
             alt: 'Alternative text for card image'
           content: 'Custom test'
@@ -247,7 +247,7 @@ card_masonry_responsive_columns_2_md_equal_height:
         - title: 'Title card 3'
           subtitle: 'Subtitle card 3'
           text: 'Text card with longer text which is supported 3'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/1000/500/'
             alt: 'Alternative text for card image'
           content: 'Some representative placeholder content for the first card.'
