@@ -20,6 +20,7 @@
     prev_label: _prev_label,
     next_label: _next_label,
     autoplay: false,
+    copyright_label: 'Image credit:'|t,
     items: items|map(_item => _item|merge({
       caption: _item.is_playable ? '' : _item.caption,
       caption_title: _item.is_playable ? '' : _item.caption_title,

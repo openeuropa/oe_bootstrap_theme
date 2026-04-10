@@ -4,7 +4,7 @@
  * Featured media pattern.
  */
 #}
-{% macro featured_media(embedded_media, image, caption, ratio, copyright) %}
+{% macro featured_media(embedded_media, image, caption, ratio, copyright, image_description_id) %}
   {% include '@oe-bcl/featured-media' with {
     'embedded_media': embedded_media,
     'image': image,
@@ -13,6 +13,7 @@
     'ratio': ratio,
     'copyright': copyright,
     'copyright_label': 'Image credit:'|t,
+    'image_description_id': image_description_id,
   } only %}
 {% endmacro %}
 
@@ -65,13 +66,13 @@
         {% endif %}
       </div>
       <div class="col-12 col-md-6 {{ video_alignment_class }}">
-        {{- _self.featured_media(embedded_media, image, caption, ratio, copyright) -}}
+        {{- _self.featured_media(embedded_media, image, caption, ratio, copyright, image_description_id) -}}
       </div>
     </div>
   {% else %}
     <div class="row">
       <div class="col-12 col-md-4">
-        {{- _self.featured_media(embedded_media, image, caption, ratio, copyright) -}}
+        {{- _self.featured_media(embedded_media, image, caption, ratio, copyright, image_description_id) -}}
       </div>
     </div>
   {% endif %}
