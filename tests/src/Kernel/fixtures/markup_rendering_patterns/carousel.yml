@@ -141,7 +141,7 @@ carousel_with_copyright_overlay:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
       expected:
         items:
-          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
+          - image: '<img src="https://images.site.example1" alt="alt image 1" aria-describedby="bcl-carousel-img-desc" class="d-block w-100">'
             caption_title: 'First slide title'
             caption: 'First slide caption'
             copyright: '© 2024 Example Organisation'
