@@ -179,4 +179,4 @@ card_with_image_copyright:
       'article.card img.card-img-top': 1
       'article.card .bcl-card__image-footer .bcl-copyright': 1
     equals:
-      'article.card .bcl-copyright': '© 2024 Example Organisation'
+      'article.card .bcl-copyright': '<span class="visually-hidden">Image credit:</span>© 2024 Example Organisation'

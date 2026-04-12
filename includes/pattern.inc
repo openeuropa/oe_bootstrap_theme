@@ -50,12 +50,16 @@ function oe_bootstrap_theme_preprocess_pattern_dropdown(array &$variables) {
  */
 function oe_bootstrap_theme_preprocess_pattern_carousel(array &$variables) {
   $variables['carousel_id'] = Html::getUniqueId('bcl-carousel');
+  if (empty($variables['slides'])) {
+    return;
+  }
   foreach ($variables['slides'] as &$slide) {
-    if (!empty($slide['copyright'])) {
-      $desc_id = Html::getUniqueId('bcl-carousel-img-desc');
-      $slide['image']['aria-describedby'] = $desc_id;
-      $slide['description_id'] = $desc_id;
+    if (empty($slide['copyright'])) {
+      continue;
     }
+    $desc_id = Html::getUniqueId('bcl-carousel-img-desc');
+    $slide['image']['aria-describedby'] = $desc_id;
+    $slide['description_id'] = $desc_id;
   }
 }
 
