@@ -546,7 +546,7 @@ listing_default_1_col_with_image_copyright:
       'article.listing-item': 1
       'article.listing-item .bcl-card__image-footer .bcl-copyright': 1
     equals:
-      'article.listing-item .bcl-copyright': '© 2024 Example Organisation'
+      'article.listing-item .bcl-copyright': '<span class="visually-hidden">Image credit:</span>© 2024 Example Organisation'
 listing_default_2_col_with_image_copyright:
   render:
     '#type': pattern
@@ -568,7 +568,7 @@ listing_default_2_col_with_image_copyright:
       'article.listing-item': 1
       'article.listing-item .bcl-card__image-footer .bcl-copyright': 1
     equals:
-      'article.listing-item .bcl-copyright': '© 2024 Example Organisation'
+      'article.listing-item .bcl-copyright': '<span class="visually-hidden">Image credit:</span>© 2024 Example Organisation'
 listing_default_1_col_highlight_with_image_copyright:
   render:
     '#type': pattern
@@ -591,7 +591,7 @@ listing_default_1_col_highlight_with_image_copyright:
       'article.listing-item--highlight .bcl-card__image-footer .bcl-copyright': 1
       'article.listing-item--highlight .card-body.pt-3': 1
     equals:
-      'article.listing-item--highlight .bcl-copyright': '© 2024 Example Organisation'
+      'article.listing-item--highlight .bcl-copyright': '<span class="visually-hidden">Image credit:</span>© 2024 Example Organisation'
 listing_default_2_col_highlight_with_image_copyright:
   render:
     '#type': pattern
@@ -614,4 +614,4 @@ listing_default_2_col_highlight_with_image_copyright:
       'article.listing-item--highlight .bcl-card__image-footer .bcl-copyright': 1
       'article.listing-item--highlight .card-body.pt-3': 1
     equals:
-      'article.listing-item--highlight .bcl-copyright': '© 2024 Example Organisation'
+      'article.listing-item--highlight .bcl-copyright': '<span class="visually-hidden">Image credit:</span>© 2024 Example Organisation'
