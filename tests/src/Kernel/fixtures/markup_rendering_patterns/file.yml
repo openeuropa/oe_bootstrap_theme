@@ -4,7 +4,7 @@ file_with_translations:
     '#id': file
     '#fields':
       title: 'The file title'
-      file:
+      file: !FileValueObject
         title: 'Icon PDF specs'
         name: 'druplicon.pdf'
         url: 'https://example.com/document.pdf'
@@ -12,17 +12,20 @@ file_with_translations:
         size: '23423'
         language_code: 'en'
       translations:
-        - language_code: 'bg'
+        - !FileValueObject
+          language_code: 'bg'
           name: 'translation_bg.docx'
           mime: 'application/msword'
           size: '40391'
           url: '/translation_bg.docx'
-        - language_code: 'es'
+        - !FileValueObject
+          language_code: 'es'
           name: 'translation_es.pdf'
           mime: 'application/pdf'
           size: '425'
           url: '/translation_es.html'
-        - language_code: 'fr'
+        - !FileValueObject
+          language_code: 'fr'
           name: 'translation_fr.pdf'
           mime: 'application/pdf'
           size: '121'
@@ -58,7 +61,7 @@ file_without_translations_without_title:
     '#type': pattern
     '#id': file
     '#fields':
-      file:
+      file: !FileValueObject
         title: 'Foglio di calcolo'
         name: 'calculations.xls'
         url: 'https://example.com/document.pdf'
@@ -86,7 +89,7 @@ file_with_title_tag:
     '#fields':
       title: 'The file title'
       title_tag: 'h4'
-      file:
+      file: !FileValueObject
         title: 'Icon PDF specs'
         name: 'druplicon.pdf'
         url: 'https://example.com/document.pdf'

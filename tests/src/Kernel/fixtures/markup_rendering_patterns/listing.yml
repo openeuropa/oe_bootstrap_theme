@@ -16,7 +16,7 @@ listing_default_1_col:
         - title:
             '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -27,7 +27,7 @@ listing_default_1_col:
         - title:
             '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text: 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -46,7 +46,7 @@ listing_default_1_col:
         - title:
             '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -90,7 +90,7 @@ listing_default_2_col:
         - title:
             '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -109,7 +109,7 @@ listing_default_2_col:
         - title:
             '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text: 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -121,7 +121,7 @@ listing_default_2_col:
             '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text: 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
 
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -132,7 +132,7 @@ listing_default_2_col:
         - title:
             '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text: 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -143,7 +143,7 @@ listing_default_2_col:
         - title:
             '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text: 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -187,7 +187,7 @@ listing_default_3_col:
         - title:
             '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -206,7 +206,7 @@ listing_default_3_col:
         - title:
             '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:  'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -217,7 +217,7 @@ listing_default_3_col:
         - title:
             '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:  'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -228,7 +228,7 @@ listing_default_3_col:
         - title:
             '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:  'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -239,7 +239,7 @@ listing_default_3_col:
         - title:
             '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:  'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -283,7 +283,7 @@ listing_highlight_1_col:
         - title:
             '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
 
@@ -295,7 +295,7 @@ listing_highlight_1_col:
         - title:
             '#markup': '<a class="standalone" href="/example2">Card title 2</a>'
           text:  'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -314,7 +314,7 @@ listing_highlight_1_col:
         - title:
             '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:  'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           content:
@@ -354,7 +354,7 @@ listing_highlight_2_col:
         - title:
             '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/people'
             alt: 'alt img'
           content:
@@ -373,7 +373,7 @@ listing_highlight_2_col:
         - title:
             '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:  'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/nature/sepia'
             alt: 'alt img'
           content:
@@ -384,7 +384,7 @@ listing_highlight_2_col:
         - title:
             '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:  'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/nature'
             alt: 'alt img'
           content:
@@ -395,7 +395,7 @@ listing_highlight_2_col:
         - title:
             '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:  'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/people/sepia'
             alt: 'alt img'
           content:
@@ -406,7 +406,7 @@ listing_highlight_2_col:
         - title:
             '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:  'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/animals'
             alt: 'alt img'
           content:
@@ -448,7 +448,7 @@ listing_highlight_3_col:
         - title:
             '#markup': '<a class="standalone" href="/example1">Card title 1</a>'
           text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/people'
             alt: 'alt img'
           content:
@@ -467,7 +467,7 @@ listing_highlight_3_col:
         - title:
             '#markup': '<a class="standalone" href="/example3">Card title 3</a>'
           text:  'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/nature/sepia'
             alt: 'alt img'
           content:
@@ -478,7 +478,7 @@ listing_highlight_3_col:
         - title:
             '#markup': '<a class="standalone" href="/example4">Card title 4</a>'
           text:  'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/nature'
             alt: 'alt img'
           content:
@@ -489,7 +489,7 @@ listing_highlight_3_col:
         - title:
             '#markup': '<a class="standalone" href="/example5">Card title 5</a>'
           text:  'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/people/sepia'
             alt: 'alt img'
           content:
@@ -500,7 +500,7 @@ listing_highlight_3_col:
         - title:
             '#markup': '<a class="standalone" href="/example6">Card title 6</a>'
           text:  'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/animals'
             alt: 'alt img'
           content:
@@ -536,7 +536,7 @@ listing_default_1_col_with_image_copyright:
       items:
         - title: 'Card title 1'
           text: 'Lorem ipsum dolor sit amet.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           image_copyright: '© 2024 Example Organisation'
@@ -558,7 +558,7 @@ listing_default_2_col_with_image_copyright:
       items:
         - title: 'Card title 1'
           text: 'Lorem ipsum dolor sit amet.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           image_copyright: '© 2024 Example Organisation'
@@ -580,7 +580,7 @@ listing_default_1_col_highlight_with_image_copyright:
       items:
         - title: 'Card title 1'
           text: 'Lorem ipsum dolor sit amet.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           image_copyright: '© 2024 Example Organisation'
@@ -603,7 +603,7 @@ listing_default_2_col_highlight_with_image_copyright:
       items:
         - title: 'Card title 1'
           text: 'Lorem ipsum dolor sit amet.'
-          image:
+          image: !ImageValueObject
             src: 'https://picsum.photos/600/400/'
             alt: 'alt img'
           image_copyright: '© 2024 Example Organisation'
