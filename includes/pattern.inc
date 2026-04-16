@@ -50,17 +50,6 @@ function oe_bootstrap_theme_preprocess_pattern_dropdown(array &$variables) {
  */
 function oe_bootstrap_theme_preprocess_pattern_carousel(array &$variables) {
   $variables['carousel_id'] = Html::getUniqueId('bcl-carousel');
-  if (empty($variables['slides'])) {
-    return;
-  }
-  foreach ($variables['slides'] as &$slide) {
-    if (empty($slide['copyright'])) {
-      continue;
-    }
-    $desc_id = Html::getUniqueId('bcl-carousel-img-desc');
-    $slide['image']['aria-describedby'] = $desc_id;
-    $slide['description_id'] = $desc_id;
-  }
 }
 
 /**
@@ -177,12 +166,6 @@ function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
   }
   else {
     $variables['image']['#attributes']['class'] = ['flex-end-100'];
-  }
-
-  if (!empty($variables['copyright'])) {
-    $desc_id = Html::getUniqueId('bcl-featured-media-img-desc');
-    $variables['image']['#attributes']['aria-describedby'] = $desc_id;
-    $variables['image_description_id'] = $desc_id;
   }
 }
 
@@ -303,16 +286,6 @@ function oe_bootstrap_theme_preprocess_pattern_pagination__preview(array &$varia
  */
 function oe_bootstrap_theme_preprocess_pattern_gallery(array &$variables): void {
   $variables['id'] = Html::getUniqueId('bcl-gallery');
-  foreach ($variables['items'] as &$item) {
-    if (empty($item['copyright'])) {
-      continue;
-    }
-    $desc_id = Html::getUniqueId('bcl-gallery-img-desc');
-    $item['description_id'] = $desc_id;
-    if (isset($item['media']['#attributes'])) {
-      $item['media']['#attributes']['aria-describedby'] = $desc_id;
-    }
-  }
 }
 
 /**
@@ -337,18 +310,6 @@ function oe_bootstrap_theme_preprocess_pattern_gallery__preview(array &$variable
 function oe_bootstrap_theme_preprocess_pattern_card(array &$variables): void {
   $variables['bc_card_search_image_hide_on_mobile'] = BackwardCompatibility::getSetting('card_search_image_hide_on_mobile');
   $variables['bc_card_search_use_grid_classes'] = BackwardCompatibility::getSetting('card_search_use_grid_classes');
-  if (!empty($variables['image_copyright'])) {
-    $variables['image_description_id'] = Html::getUniqueId('bcl-card-img-desc');
-  }
-}
-
-/**
- * Implements hook_preprocess_HOOK() for content banner pattern.
- */
-function oe_bootstrap_theme_preprocess_pattern_content_banner(array &$variables): void {
-  if (!empty($variables['copyright'])) {
-    $variables['image_description_id'] = Html::getUniqueId('bcl-content-banner-img-desc');
-  }
 }
 
 /**
@@ -358,7 +319,6 @@ function oe_bootstrap_theme_preprocess_pattern_listing(array &$variables): void 
   foreach ($variables['items'] as &$item) {
     if (!empty($item['image_copyright'])) {
       $item['image_copyright_label'] = t('Image credit:');
-      $item['image_description_id'] = Html::getUniqueId('bcl-listing-img-desc');
     }
   }
 }
