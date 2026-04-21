@@ -1,0 +1,180 @@
+pagination_v2_default:
+  render:
+    '#type': pattern
+    '#id': pagination_v2
+    '#fields':
+      aria_label: 'Search results pages'
+      enable_prev_next_icons: false
+      enable_first_last_icons: false
+      first:
+        path: '#first'
+        label: 'First'
+      prev:
+        path: '#prev'
+        label: 'Previous'
+      next:
+        path: '#next'
+        label: 'Next'
+      last:
+        path: '#last'
+        label: 'Last'
+      items:
+        - path: '#1'
+          label: '1'
+        - label: '2'
+          active: true
+        - path: '#3'
+          label: '3'
+          disabled: true
+    '#settings':
+      size: sm
+      alignment: end
+      attributes: 'class="pager-class" id="pager-id" data-pager-attribute="pager-attr-value"'
+      list_attributes: 'class="list-class" id="list-id" data-list-attribute="list-attr-value"'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PaginationV2PatternAssert
+      expected:
+        alignment: end
+        size: sm
+        attributes:
+          class: 'pager-class pager pagination-v2'
+          id: 'pager-id'
+          data-pager-attribute: 'pager-attr-value'
+          aria-label: 'Search results pages'
+        list_attributes:
+          class: 'list-class pagination pager__items js-pager__items d-flex flex-row justify-content-between pagination-sm justify-content-md-end'
+          id: 'list-id'
+          data-list-attribute: 'list-attr-value'
+        items:
+          - url: '#prev'
+            label: 'Previous'
+            aria_label: 'Previous'
+            item_classes:
+              - 'pager__item--prev'
+              - 'd-inline-block'
+          - url: '#first'
+            label: 'First'
+            aria_label: 'First'
+            item_classes:
+              - 'd-none'
+              - 'd-md-inline-block'
+          - url: '#1'
+            label: '1'
+            aria_label: '1'
+            item_classes:
+              - 'd-none'
+              - 'd-md-inline-block'
+          - label: '2'
+            aria_label: '2'
+            active: true
+            item_classes:
+              - 'd-inline-block'
+          - url: '#3'
+            label: '3'
+            aria_label: '3'
+            disabled: true
+            item_classes:
+              - 'd-none'
+              - 'd-md-inline-block'
+          - url: '#last'
+            label: 'Last'
+            aria_label: 'Last'
+            item_classes:
+              - 'd-none'
+              - 'd-md-inline-block'
+          - url: '#next'
+            label: 'Next'
+            aria_label: 'Next'
+            item_classes:
+              - 'pager__item--next'
+              - 'd-inline-block'
+pagination_v2_icons_and_ellipsis:
+  render:
+    '#type': pattern
+    '#id': pagination_v2
+    '#fields':
+      enable_first_last_icons: true
+      ellipsis_before: true
+      ellipsis_after: true
+      current_mobile_label: 'Page 6 of 10'
+      first:
+        path: '#first'
+      prev:
+        path: '#prev'
+      next:
+        path: '#next'
+      last:
+        path: '#last'
+      items:
+        - path: '#4'
+          label: '4'
+        - path: '#5'
+          label: '5'
+        - label: '6'
+          active: true
+        - path: '#7'
+          label: '7'
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PaginationV2PatternAssert
+      expected:
+        alignment: center
+        items:
+          - url: '#prev'
+            icon: chevron-left
+            aria_label: 'Previous'
+            item_classes:
+              - 'pager__item--prev'
+              - 'd-inline-block'
+          - url: '#first'
+            icon: chevron-double-left
+            aria_label: 'First'
+            item_classes:
+              - 'd-none'
+              - 'd-md-inline-block'
+          - label: '…'
+            item_classes:
+              - 'd-none'
+              - 'd-md-inline-block'
+          - url: '#4'
+            label: '4'
+            aria_label: '4'
+            item_classes:
+              - 'd-none'
+              - 'd-md-inline-block'
+          - url: '#5'
+            label: '5'
+            aria_label: '5'
+            item_classes:
+              - 'd-none'
+              - 'd-md-inline-block'
+          - label: '6'
+            aria_label: '6'
+            active: true
+            desktop_label: '6'
+            mobile_label: 'Page 6 of 10'
+            item_classes:
+              - 'd-inline-block'
+          - url: '#7'
+            label: '7'
+            aria_label: '7'
+            item_classes:
+              - 'd-none'
+              - 'd-md-inline-block'
+          - label: '…'
+            item_classes:
+              - 'd-none'
+              - 'd-md-inline-block'
+          - url: '#last'
+            icon: chevron-double-right
+            aria_label: 'Last'
+            item_classes:
+              - 'd-none'
+              - 'd-md-inline-block'
+          - url: '#next'
+            icon: chevron-right
+            aria_label: 'Next'
+            item_classes:
+              - 'pager__item--next'
+              - 'd-inline-block'
