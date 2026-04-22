@@ -65,8 +65,8 @@ class PaginationV2PatternAssert extends BasePatternAssert {
     $icon_pattern_assert = new IconPatternAssert();
 
     foreach ($expected as $index => $expected_item) {
+      self::assertGreaterThan($index, $items->count());
       $item = $items->eq($index);
-      $this->assertCount(1, $item);
 
       $link = $item->filter('.page-link');
       $this->assertCount(1, $link);
@@ -107,6 +107,9 @@ class PaginationV2PatternAssert extends BasePatternAssert {
 
       if (array_key_exists('aria_label', $expected_item)) {
         self::assertSame($expected_item['aria_label'], $link->attr('aria-label'));
+      }
+      else {
+        self::assertNotEmpty($link->attr('aria-label'));
       }
 
       if (!empty($expected_item['active'])) {

@@ -4,8 +4,8 @@ pagination_v2_default:
     '#id': pagination_v2
     '#fields':
       aria_label: 'Search results pages'
-      enable_prev_next_icons: false
-      enable_first_last_icons: false
+      enable_prev_next_icon: false
+      enable_first_last_icon: false
       first:
         path: '#first'
         label: 'First'
@@ -94,7 +94,8 @@ pagination_v2_icons_and_ellipsis:
     '#type': pattern
     '#id': pagination_v2
     '#fields':
-      enable_first_last_icons: true
+      enable_prev_next_icon: true
+      enable_first_last_icon: true
       ellipsis_before: true
       ellipsis_after: true
       current_mobile_label: 'Page 6 of 10'
@@ -134,6 +135,7 @@ pagination_v2_icons_and_ellipsis:
               - 'd-none'
               - 'd-md-inline-block'
           - label: '…'
+            aria_label: 'Ellipsis'
             item_classes:
               - 'd-none'
               - 'd-md-inline-block'
@@ -163,6 +165,7 @@ pagination_v2_icons_and_ellipsis:
               - 'd-none'
               - 'd-md-inline-block'
           - label: '…'
+            aria_label: 'Ellipsis'
             item_classes:
               - 'd-none'
               - 'd-md-inline-block'

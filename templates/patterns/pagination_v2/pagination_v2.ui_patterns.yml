@@ -36,12 +36,12 @@ pagination_v2:
       label: Aria label
       description: 'Aria label for the navigation wrapper.'
       preview: Pagination
-    enable_prev_next_icons:
+    enable_prev_next_icon:
       type: boolean
       label: Enable previous/next icons
       description: 'Show icons instead of text for previous and next links. Defaults to true.'
       preview: true
-    enable_first_last_icons:
+    enable_first_last_icon:
       type: boolean
       label: Enable first/last icons
       description: 'Show icons instead of text for first and last links. Defaults to false.'
