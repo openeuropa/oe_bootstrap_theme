@@ -10,8 +10,6 @@
   {% set _attributes = _attributes.setAttribute('aria-label', aria_label) %}
 {% endif %}
 
-{% set _enable_prev_next_icon = enable_prev_next_icon ?? enable_prev_next_icons ?? true %}
-{% set _enable_first_last_icon = enable_first_last_icon ?? enable_first_last_icons ?? false %}
 {% set _items = [] %}
 {% if ellipsis_before %}
   {% set _items = _items|merge([{
@@ -38,8 +36,8 @@
 {% include '@oe-bcl/bcl-pagination-v2/pagination.html.twig' with {
   'size': size,
   'alignment': alignment,
-  'enable_prev_next_icon': _enable_prev_next_icon,
-  'enable_first_last_icon': _enable_first_last_icon,
+  'enable_prev_next_icon': enable_prev_next_icon,
+  'enable_first_last_icon': enable_first_last_icon,
   'current_mobile_label': current_mobile_label,
   'first': first ? first|merge({
     'aria_label': first.aria_label|default('First'|t),
