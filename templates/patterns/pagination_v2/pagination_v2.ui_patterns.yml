@@ -1,0 +1,103 @@
+pagination_v2:
+  label: Pagination V2
+  description: 'Bootstrap 5 pagination pattern in the Version 2.x API. Uses the Pagination V2 BCL markup, including ellipsis items and mobile current-page labels.'
+  category: Version 2.x
+  settings:
+    size:
+      type: select
+      label: Size
+      description: 'Size of the pagination.'
+      options:
+        sm: Small
+        lg: Large
+      preview: sm
+    alignment:
+      type: select
+      label: Alignment
+      description: 'Align the pagination on medium screens and above.'
+      options:
+        start: start
+        center: center
+        end: end
+      preview: center
+    attributes:
+      type: attributes
+      label: Pager attributes
+      description: Extra attributes for the navigation wrapper.
+      allow_token: true
+    list_attributes:
+      type: attributes
+      label: List attributes
+      description: Extra attributes for the list container.
+      allow_token: true
+  fields:
+    aria_label:
+      type: text
+      label: Aria label
+      description: 'Aria label for the navigation wrapper.'
+      preview: Pagination
+    enable_prev_next_icon:
+      type: boolean
+      label: Enable previous/next icons
+      description: 'Show icons instead of text for previous and next links. Defaults to true.'
+      preview: true
+    enable_first_last_icon:
+      type: boolean
+      label: Enable first/last icons
+      description: 'Show icons instead of text for first and last links. Defaults to false.'
+      preview: false
+    ellipsis_before:
+      type: boolean
+      label: Ellipsis before items
+      description: 'Add an ellipsis item before the main page items.'
+      preview: false
+    ellipsis_after:
+      type: boolean
+      label: Ellipsis after items
+      description: 'Add an ellipsis item after the main page items.'
+      preview: false
+    current_mobile_label:
+      type: text
+      label: Current mobile label
+      description: 'Replacement label for the active item on mobile.'
+      preview: Page 2 of 8
+    first:
+      type: array
+      label: First link
+      description: 'Pagination first link with path, label or icon.'
+      preview:
+        path: '#'
+        label: First
+    prev:
+      type: array
+      label: Previous link
+      description: 'Pagination previous link with path, label or icon.'
+      preview:
+        path: '#'
+        label: Previous
+    next:
+      type: array
+      label: Next link
+      description: 'Pagination next link with path, label or icon.'
+      preview:
+        path: '#'
+        label: Next
+    last:
+      type: array
+      label: Last link
+      description: 'Pagination last link with path, label or icon.'
+      preview:
+        path: '#'
+        label: Last
+    items:
+      type: array
+      label: Pagination items
+      description: 'List of items with path, label, disabled, active and aria_label.'
+      preview:
+        - path: '#'
+          label: '1'
+        - path: '#'
+          label: '2'
+          active: true
+        - path: '#'
+          label: '3'
