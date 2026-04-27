@@ -29,62 +29,13 @@ use Twig\TwigFunction;
  */
 class TwigExtension extends AbstractExtension {
 
-  /**
-   * The language manager.
-   *
-   * @var \Drupal\Core\Language\LanguageManagerInterface
-   */
-  protected $languageManager;
-
-  /**
-   * The renderer.
-   *
-   * @var \Drupal\Core\Render\RendererInterface
-   */
-  protected RendererInterface $renderer;
-
-  /**
-   * The Drupal Twig environment.
-   *
-   * @var \Drupal\Core\Template\TwigEnvironment
-   */
-  protected TwigEnvironment $twigEnvironment;
-
-  /**
-   * The theme extension list service.
-   *
-   * @var \Drupal\Core\Extension\ThemeExtensionList
-   */
-  protected $themeList;
-
-  /**
-   * The theme manager.
-   *
-   * @var \Drupal\Core\Theme\ThemeManagerInterface
-   */
-  protected ThemeManagerInterface $themeManager;
-
-  /**
-   * Constructs a new TwigExtension object.
-   *
-   * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
-   *   The language manager.
-   * @param \Drupal\Core\Template\TwigEnvironment $twigEnvironment
-   *   The Drupal Twig environment.
-   * @param \Drupal\Core\Render\RendererInterface $renderer
-   *   The renderer.
-   * @param \Drupal\Core\Extension\ThemeExtensionList $theme_list
-   *   The theme extension list.
-   * @param \Drupal\Core\Theme\ThemeManagerInterface $theme_manager
-   *   The theme manager.
-   */
-  public function __construct(LanguageManagerInterface $languageManager, TwigEnvironment $twigEnvironment, RendererInterface $renderer, ThemeExtensionList $theme_list, ThemeManagerInterface $theme_manager) {
-    $this->languageManager = $languageManager;
-    $this->twigEnvironment = $twigEnvironment;
-    $this->renderer = $renderer;
-    $this->themeList = $theme_list;
-    $this->themeManager = $theme_manager;
-  }
+  public function __construct(
+    protected LanguageManagerInterface $languageManager,
+    protected TwigEnvironment $twigEnvironment,
+    protected RendererInterface $renderer,
+    protected ThemeExtensionList $themeList,
+    protected ThemeManagerInterface $themeManager,
+  ) {}
 
   /**
    * {@inheritdoc}
@@ -92,6 +43,7 @@ class TwigExtension extends AbstractExtension {
   public function getFilters(): array {
     return [
       new TwigFilter('bcl_card_list', [$this, 'bclCardList']),
+      new TwigFilter('bcl_description_list_items', [$this, 'bclDescriptionListItems']),
       new TwigFilter('format_size', 'Drupal\Core\StringTranslation\ByteSizeMarkup::create'),
       new TwigFilter('to_file_icon', [$this, 'toFileIcon']),
       new TwigFilter('to_native_language', [
@@ -185,6 +137,33 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $bcl_cards;
+  }
+
+  /**
+   * Processes items for the description list component.
+   *
+   * @param array $items
+   *   The description list items.
+   * @param string $icon_path
+   *   Path to the icons SVG file. Defaults to the BCL icon path.
+   *
+   * @return array
+   *   The processed items.
+   */
+  public function bclDescriptionListItems(array $items, ?string $icon_path = NULL): array {
+    if (!$icon_path) {
+      $icon_path = $this->getBclIconPath();
+    }
+
+    foreach ($items as &$item) {
+      foreach ($item['term'] as &$term) {
+        if (!empty($term['icon'])) {
+          $term['icon'] += ['size' => 'xs', 'path' => $icon_path];
+        }
+      }
+    }
+
+    return $items;
   }
 
   /**

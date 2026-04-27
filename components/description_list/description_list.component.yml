@@ -1,12 +1,12 @@
 name: 'Description list'
 description: 'Description lists are used to display and organise content that belongs to a category with a descriptions. Common use cases include glossary type lists or a list of speakers with their biographies.'
-slots:
-  title:
-    title: Title
-    description: 'Title of the description list.'
 props:
   type: object
   properties:
+    title:
+      title: Title
+      type: [string, array, object]
+      description: 'Title of the description list.'
     title_tag:
       title: 'Title tag'
       type: string
@@ -20,8 +20,8 @@ props:
         properties:
           term:
             title: 'Terms'
-            type: [string, array]
-            description: 'Can be a single string or an array of term objects.'
+            type: array
+            description: 'An array of term objects.'
             items:
               type: object
               properties:
@@ -30,7 +30,7 @@ props:
                   type: [string, array, object]
                   description: 'Label text or render array.'
                 icon:
-                  type: [object, string]
+                  type: object
                   properties:
                     name:
                       type: string
