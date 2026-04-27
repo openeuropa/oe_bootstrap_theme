@@ -2,20 +2,21 @@ description_list_default:
   render:
     '#type': component
     '#component': oe_bootstrap_theme:description_list
-    '#slots':
-      title: 'The description list title'
     '#props':
+      title: 'The description list title'
       title_tag: 'h4'
       orientation: default
       items:
         - term:
             - label: 'Single label with icon'
-              icon: 'geo-alt-fill'
+              icon:
+                name: 'geo-alt-fill'
           definition: 'Description of first term text goes here.'
         - term:
             - label: 'First label without icon'
             - label: 'Second label with icon'
-              icon: 'calendar-event'
+              icon:
+                name: 'calendar-event'
           definition: 'Description of second term text goes here.'
         - term:
             - label:
@@ -25,15 +26,14 @@ description_list_default:
                 - '#markup': '<p class="mb-2">First line description of third term text goes here.</p>'
             - label:
                 - '#markup': 'Second line description of third term text goes here.'
-        # This entry covers the scenario of passing an array as icon.
         - term:
           - label: 'Custom icon size'
             icon:
               name: 'bicycle'
               size: 'xl'
           definition: 'This is a bigger icon.'
-        # This entry covers the scenario when a simple string is passed as term, skipping the "label" key.
-        - term: 'A single term without icon.'
+        - term:
+            - label: 'A single term without icon.'
           definition: 'Yet another definition text.'
   assertions:
     component:
@@ -67,21 +67,23 @@ description_list_horizontal:
   render:
     '#type': component
     '#component': oe_bootstrap_theme:description_list
-    '#slots':
-      title: 'The description list title'
     '#props':
+      title: 'The description list title'
       orientation: horizontal
       items:
         - term:
           - label: 'Single label with icon'
-            icon: 'geo-alt-fill'
+            icon:
+              name: 'geo-alt-fill'
           definition: 'Description of first term text goes here.'
         - term:
           - label: 'First label without icon'
           - label: 'Second label with icon'
-            icon: 'calendar-event'
+            icon:
+              name: 'calendar-event'
           definition: 'Description of second term text goes here.'
-        - term: 'A single term without icon.'
+        - term:
+            - label: 'A single term without icon.'
           definition:
             - label: 'First definition for third term.'
             - label: 'Second definition for third term.'
