@@ -1,4 +1,5 @@
-{% embed 'oe_bootstrap_theme:description_list' with {
+{% include 'oe_bootstrap_theme:description_list' with {
+  title: 'This is the title of this description list.',
   items: [
     {
       term: [
@@ -32,11 +33,9 @@
       definition: 'This is a bigger icon.'
     },
     {
-      term: 'A single term without icon.',
+      term: [{ label: 'A single term without icon.' }],
       definition: 'Yet another definition text.'
     }
   ],
   orientation: 'horizontal',
 } only %}
-  {% block title %}This is the title of this description list.{% endblock %}
-{% endembed %}
