@@ -20,32 +20,37 @@ props:
         properties:
           term:
             title: 'Terms'
-            type: array
-            description: 'An array of term objects.'
-            items:
-              type: object
-              properties:
-                label:
-                  title: Label
-                  type: [string, array, object]
-                  description: 'Label text or render array.'
-                icon:
+            description: 'A string or an array of term objects.'
+            anyOf:
+              - type: string
+              - type: array
+                items:
                   type: object
                   properties:
-                    name:
-                      type: string
-                    size:
-                      type: string
-                    path:
-                      type: string
+                    label:
+                      title: Label
+                      type: [string, array, object]
+                      description: 'Label text or render array.'
+                    icon:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        size:
+                          type: string
+                        path:
+                          type: string
           definition:
             title: 'Definition'
-            type: [string, array]
-            items:
-              type: object
-              properties:
-                label:
-                  type: [string, array, object]
+            description: 'A string or an array of definition objects.'
+            anyOf:
+              - type: string
+              - type: array
+                items:
+                  type: object
+                  properties:
+                    label:
+                      type: [string, array, object]
     icon_path:
       type: string
       title: "Icons path"
