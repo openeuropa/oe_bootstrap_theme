@@ -30,11 +30,11 @@ use Twig\TwigFunction;
 class TwigExtension extends AbstractExtension {
 
   public function __construct(
-    protected LanguageManagerInterface $languageManager,
-    protected TwigEnvironment $twigEnvironment,
-    protected RendererInterface $renderer,
-    protected ThemeExtensionList $themeList,
-    protected ThemeManagerInterface $themeManager,
+    protected readonly LanguageManagerInterface $languageManager,
+    protected readonly TwigEnvironment $twigEnvironment,
+    protected readonly RendererInterface $renderer,
+    protected readonly ThemeExtensionList $themeList,
+    protected readonly ThemeManagerInterface $themeManager,
   ) {}
 
   /**
@@ -156,12 +156,20 @@ class TwigExtension extends AbstractExtension {
     }
 
     foreach ($items as &$item) {
+      if (empty($item['term']) || is_string($item['term'])) {
+        continue;
+      }
+      if (!is_array($item['term'])) {
+        throw new \InvalidArgumentException('Expected term to be a string or array.');
+      }
       foreach ($item['term'] as &$term) {
         if (!empty($term['icon'])) {
           $term['icon'] += ['size' => 'xs', 'path' => $icon_path];
         }
       }
+      unset($term);
     }
+    unset($item);
 
     return $items;
   }
