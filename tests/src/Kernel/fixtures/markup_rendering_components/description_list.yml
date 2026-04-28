@@ -32,8 +32,7 @@ description_list_default:
               name: 'bicycle'
               size: 'xl'
           definition: 'This is a bigger icon.'
-        - term:
-            - label: 'A single term without icon.'
+        - term: 'A single term without icon.'
           definition: 'Yet another definition text.'
   assertions:
     component:
