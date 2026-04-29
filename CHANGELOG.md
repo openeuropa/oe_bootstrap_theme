@@ -1,11 +1,22 @@
 # Change Log
 
+## [1.35.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.35.0) (2026-04-28)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.34.0...1.35.0)
+
+**Merged pull requests:**
+
+- OEL-0000: Fix accessible toggle tests. [\#557](https://github.com/openeuropa/oe_bootstrap_theme/pull/557) ([tibi2303](https://github.com/tibi2303))
+- OEL-4709: Added pagination v2 patterns. [\#554](https://github.com/openeuropa/oe_bootstrap_theme/pull/554) ([tibi2303](https://github.com/tibi2303))
+- OEL-4505: Simplify test data massaging with TaggedValue. [\#550](https://github.com/openeuropa/oe_bootstrap_theme/pull/550) ([donquixote](https://github.com/donquixote))
+
 ## [1.34.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.34.0) (2026-03-25)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.33.0...1.34.0)
 
 **Merged pull requests:**
 
+- Prepare release 1.34.0. [\#546](https://github.com/openeuropa/oe_bootstrap_theme/pull/546) ([tibi2303](https://github.com/tibi2303))
 - OEL-0000: Set bcl version to minor latest. [\#545](https://github.com/openeuropa/oe_bootstrap_theme/pull/545) ([tibi2303](https://github.com/tibi2303))
 - OEL-4511: Update to Drupal 11.3.x. [\#541](https://github.com/openeuropa/oe_bootstrap_theme/pull/541) ([tibi2303](https://github.com/tibi2303))
 - OEL-3342: Copyright for images. [\#520](https://github.com/openeuropa/oe_bootstrap_theme/pull/520) ([tibi2303](https://github.com/tibi2303))
