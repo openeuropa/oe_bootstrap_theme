@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- OEL-0000: Fix accessible toggle tests. [\#557](https://github.com/openeuropa/oe_bootstrap_theme/pull/557) ([tibi2303](https://github.com/tibi2303))
 - OEL-4709: Added pagination v2 patterns. [\#554](https://github.com/openeuropa/oe_bootstrap_theme/pull/554) ([tibi2303](https://github.com/tibi2303))
 - OEL-4505: Simplify test data massaging with TaggedValue. [\#550](https://github.com/openeuropa/oe_bootstrap_theme/pull/550) ([donquixote](https://github.com/donquixote))
 
