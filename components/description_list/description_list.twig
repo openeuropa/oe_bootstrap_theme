@@ -7,7 +7,7 @@
 {% include '@oe-bcl/description-list' with {
   title: title,
   title_link: title_link,
-  title_tag: title_tag|default('h2'),
+  title_tag: title_tag,
   title_attributes: title_attributes,
   items: items|bcl_description_list_items(icon_path),
   variant: orientation,
