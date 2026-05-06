@@ -1,0 +1,40 @@
+{
+  "name": "@openeuropa/bcl-theme-default",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OEL Component Library",
+  "author": "EUROPEAN COMMISSION",
+  "license": "EUPL",
+  "scripts": {
+    "build": "npm-run-all 'build:*'",
+    "build:styles": "cross-env ./builder/bin/build.js styles",
+    "build:color-scheme": "cross-env ./builder/bin/build.js color-scheme",
+    "build:scripts": "cross-env ./builder/bin/build.js scripts",
+    "build:copy": "cross-env ./builder/bin/build.js copy",
+    "build:sprite": "cross-env ./builder/bin/build.js sprite",
+    "clean": "rimraf css js templates logos icons",
+    "prepublish": "npm run build",
+    "update:styles": "npm run build:styles && npm run build:color-scheme && copyfiles -f css/*.min.css ../assets",
+    "update:scripts": "npm run build:scripts && copyfiles -f js/* ../assets"
+  },
+  "devDependencies": {
+    "@ecl/resources-ec-logo": "3.7.1",
+    "@ecl/resources-eu-logo": "3.7.1",
+    "@ecl/resources-flag-icons": "3.7.1",
+    "@rollup/plugin-replace": "6.0.2",
+    "copyfiles": "2.4.1",
+    "cross-env": "7.0.3",
+    "flag-icons": "6.9.2",
+    "glob": "11.0.1",
+    "npm-run-all": "4.1.5",
+    "slim-select": "1.27.1",
+    "slim-select-2": "brianvoe/slim-select#e6239514875df954edd772fd146aed5657f0a498"
+  },
+  "files": [
+    "src",
+    "bootstrap"
+  ],
+  "workspaces": [
+    "bootstrap"
+  ]
+}

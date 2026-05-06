@@ -4,19 +4,19 @@
   "description": "OpenEuropa Bootstrap base theme for Drupal.",
   "private": true,
   "scripts": {
-    "build": "npm-run-all build:*",
-    "build:styles": "cross-env bcl-builder styles",
-    "build:copy": "cross-env bcl-builder copy",
-    "build:rename": "cross-env bcl-builder rename",
+    "clean": "npm --workspace bcl/bootstrap run clean",
+    "build": "npm-run-all build:bootstrap build:bcl build:*",
+    "build:bootstrap": "npm --workspace bcl/bootstrap run prepublish",
+    "build:bcl": "npm --workspace bcl run build",
+    "build:styles": "cross-env ./bcl/builder/bin/build.js styles",
+    "build:copy": "cross-env ./bcl/builder/bin/build.js copy",
     "watch:styles": "chokidar \"./resources/sass/**/*.scss\" -i \"/node_modules/\" -c \"npm run build:styles\"",
     "watch": "npm-run-all --parallel watch:* -ln",
     "postinstall": "patch-package --patch-dir=patches/npm",
-    "prepare": "npm-run-all build:*",
-    "production": "npm-run-all build:*"
+    "prepare": "npm run build",
+    "production": "npm run build"
   },
   "devDependencies": {
-    "@openeuropa/bcl-builder": "^1.11",
-    "@openeuropa/bcl-theme-default": "^1.11",
     "bootstrap-ie11": "5.0.2",
     "chokidar-cli": "^3.0.0",
     "copyfiles": "2.4.1",
@@ -24,5 +24,10 @@
     "glob": "10.0.0",
     "npm-run-all": "4.1.5",
     "patch-package": "^6.4.7"
-  }
+  },
+  "workspaces": [
+    "bcl",
+    "bcl/*",
+    "bcl/bootstrap"
+  ]
 }

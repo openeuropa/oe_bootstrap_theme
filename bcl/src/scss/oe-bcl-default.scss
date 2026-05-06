@@ -1,0 +1,88 @@
+// Configuration Variables
+@import "@openeuropa/bcl-bootstrap/scss/functions";
+
+// Base theme colors
+@import "base/colors";
+
+// Configuration Methods Maps and Mixins
+@import "@openeuropa/bcl-bootstrap/scss/variables";
+@import "@openeuropa/bcl-bootstrap/scss/maps";
+@import "@openeuropa/bcl-bootstrap/scss/mixins";
+
+// Custom variables
+@import "base/variables";
+
+@import "@openeuropa/bcl-bootstrap/scss/utilities";
+
+// Layout & components
+@import "@openeuropa/bcl-bootstrap/scss/root";
+@import "@openeuropa/bcl-bootstrap/scss/reboot";
+@import "@openeuropa/bcl-bootstrap/scss/type";
+@import "@openeuropa/bcl-bootstrap/scss/images";
+@import "@openeuropa/bcl-bootstrap/scss/containers";
+@import "@openeuropa/bcl-bootstrap/scss/grid";
+@import "@openeuropa/bcl-bootstrap/scss/tables";
+@import "@openeuropa/bcl-bootstrap/scss/forms";
+@import "@openeuropa/bcl-bootstrap/scss/buttons";
+@import "@openeuropa/bcl-bootstrap/scss/transitions";
+@import "@openeuropa/bcl-bootstrap/scss/dropdown";
+@import "@openeuropa/bcl-bootstrap/scss/button-group";
+@import "@openeuropa/bcl-bootstrap/scss/nav";
+@import "@openeuropa/bcl-bootstrap/scss/navbar";
+@import "@openeuropa/bcl-bootstrap/scss/card";
+@import "@openeuropa/bcl-bootstrap/scss/accordion";
+@import "@openeuropa/bcl-bootstrap/scss/breadcrumb";
+@import "@openeuropa/bcl-bootstrap/scss/pagination";
+@import "@openeuropa/bcl-bootstrap/scss/placeholders";
+@import "@openeuropa/bcl-bootstrap/scss/badge";
+@import "@openeuropa/bcl-bootstrap/scss/alert";
+@import "@openeuropa/bcl-bootstrap/scss/progress";
+@import "@openeuropa/bcl-bootstrap/scss/list-group";
+@import "@openeuropa/bcl-bootstrap/scss/close";
+@import "@openeuropa/bcl-bootstrap/scss/toasts";
+@import "@openeuropa/bcl-bootstrap/scss/modal";
+@import "@openeuropa/bcl-bootstrap/scss/tooltip";
+@import "@openeuropa/bcl-bootstrap/scss/popover";
+@import "@openeuropa/bcl-bootstrap/scss/carousel";
+@import "@openeuropa/bcl-bootstrap/scss/spinners";
+@import "@openeuropa/bcl-bootstrap/scss/offcanvas";
+
+// Helpers
+@import "@openeuropa/bcl-bootstrap/scss/helpers";
+@import "base/layout";
+@import "base/utilities";
+
+// Utilities
+@import "@openeuropa/bcl-bootstrap/scss/utilities/api";
+
+// BCL mixins
+@import "base/mixins";
+
+// Custom styles
+@import "accordion";
+@import "alert";
+@import "button";
+@import "blockquote";
+@import "card";
+@import "collapse";
+@import "circular-progress-bar";
+@import "description_list";
+@import "reset";
+@import "header";
+@import "footer";
+@import "tabs";
+@import "icon";
+@import "search-form";
+@import "input";
+@import "spinners";
+@import "badge";
+@import "multiselect";
+@import "multiselect-2";
+@import "breadcrumb";
+@import "banners";
+@import "timeline";
+@import "inpage-navigation";
+@import "language-list";
+@import "carousel";
+@import "gallery";
+@import "pagination";

@@ -1,0 +1,314 @@
+// header
+$header-background: #004494 !default;
+$header-background-start: #039 !default;
+$header-background-end: #1b4ac3 !default;
+$header-link-active-background: #003776 !default;
+
+.bcl-header .container {
+  position: relative;
+}
+
+.bcl-header__project,
+.bcl-header__navbar {
+  background: linear-gradient(
+    90deg,
+    $header-background-start 0%,
+    $header-background-end 100%
+  );
+}
+
+.bcl-header__top-navbar {
+  .navbar-collapse {
+    justify-content: end;
+  }
+
+  .navbar-toggler {
+    border: none;
+    color: $light;
+  }
+
+  .navbar-toggler-icon {
+    background: url("data:image/svg+xml;utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2Ij48cmVjdCB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSIvPjxjaXJjbGUgY3g9IjEyOCIgY3k9IjY0IiByPSIxNiIvPjxjaXJjbGUgY3g9IjEyOCIgY3k9IjEyOCIgcj0iMTYiLz48Y2lyY2xlIGN4PSIxMjgiIGN5PSIxOTIiIHI9IjE2Ii8+PC9zdmc+");
+  }
+}
+
+.bcl-header .nav-link {
+  color: $eu-blue;
+  display: flex;
+  align-items: center;
+  padding: map-get($spacers, 2);
+}
+
+.bcl-header__navbar {
+  .navbar-collapse {
+    padding-bottom: map-get($spacers, 3);
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: $gray-100;
+
+      &:focus,
+      &:hover,
+      &.active {
+        color: #fff;
+      }
+      &:focus-visible {
+        outline: 2px solid $white;
+        border-radius: 4px;
+        outline-offset: 0;
+      }
+    }
+  }
+
+  .navbar-toggler {
+    position: absolute;
+    top: -43px;
+    left: map-get($spacers, "2-5");
+    border-color: $white;
+  }
+
+  .navbar-toggler-icon {
+    background: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+
+  input:active,
+  input:focus {
+    box-shadow: 0 0 0 0.25rem hsl(210deg 2% 83% / 50%);
+  }
+}
+
+.bcl-header--ec,
+.ec__header {
+  .bcl-header__project,
+  .bcl-header__navbar {
+    background: $header-background;
+  }
+  /* stylelint-disable-next-line no-descending-specificity */
+  .nav-link {
+    color: $ec-blue;
+  }
+}
+
+.bcl-navbar-header {
+  align-items: flex-end;
+}
+
+.bcl-header--neutral {
+  .bcl-header__project,
+  .bcl-header__navbar {
+    background: $gray-700;
+  }
+}
+
+.bcl-header:not(.bcl-header--neutral) .bcl-header__project {
+  padding-top: map-get($spacers, 3);
+}
+
+.bcl-header {
+  .navbar-brand img {
+    width: 100px;
+  }
+
+  .notification {
+    position: relative;
+    padding-right: 0;
+
+    span {
+      z-index: 1;
+      height: 18px;
+      padding-right: 5px;
+      padding-left: 5px;
+      line-height: 0.6rem;
+      border-radius: 10px;
+      transform: translate(-11px, 5px);
+    }
+  }
+}
+
+.bcl-header__project .bcl-header__site-name {
+  display: inline-block;
+  margin-bottom: 0;
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: $white;
+  vertical-align: middle;
+  max-width: 80%;
+}
+
+@media only screen and (max-width: 400px) {
+  .bcl-header--neutral .bcl-header__project-logo {
+    display: none;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .bcl-header .navbar:first-child .nav-link {
+    padding: 0.5rem 0.4rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .bcl-header--ec,
+  .ec__header {
+    .navbar-brand img {
+      width: 180px;
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .bcl-header__site-name {
+    margin-left: 5rem;
+  }
+
+  .bcl-header__top-navbar .navbar-collapse {
+    z-index: 1050;
+    position: absolute;
+    right: map-get($spacers, "2-5");
+    top: 100%;
+    background: white;
+    border: 1px solid $gray-300;
+    border-radius: 4px;
+
+    .nav {
+      align-items: flex-start;
+      flex-direction: column;
+      min-width: 16rem;
+      padding: map-get($spacers, 3);
+
+      li {
+        width: 100%;
+      }
+    }
+  }
+
+  .bcl-header__project {
+    min-height: map-get($spacers, 5);
+    padding-top: map-get($spacers, 3);
+  }
+
+  .bcl-header nav + nav {
+    min-height: 3.5rem;
+
+    .navbar-toggler {
+      position: static;
+    }
+  }
+
+  .bcl-header__navbar {
+    .navbar-collapse {
+      max-width: 100%;
+      .nav-item {
+        &.dropdown {
+          max-width: 100%;
+          a {
+            white-space: normal;
+          }
+          .dropdown-menu {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .bcl-header__project.light,
+  .bcl-header--ec .bcl-header__project.light,
+  .ec__header .bcl-header__project.light {
+    background: $white;
+  }
+
+  .bcl-header__site-name {
+    margin-left: map-get($spacers, 4);
+    font-weight: 500;
+  }
+
+  .bcl-header__project.light .bcl-header__site-name {
+    color: $black;
+  }
+
+  .bcl-header .navbar-toggler {
+    position: relative;
+    right: 0;
+    bottom: 0;
+  }
+
+  .bcl-header .navbar-brand img {
+    width: auto;
+  }
+
+  .bcl-header__navbar .navbar-collapse {
+    padding-bottom: 0;
+  }
+
+  .bcl-header__navbar .dropdown-menu {
+    z-index: 1050; // Make sure dropdown overlaps the search offcanvas
+  }
+
+  .bcl-header:not(.bcl-header--neutral) .bcl-header__project {
+    padding-bottom: map-get($spacers, 3);
+  }
+
+  .bcl-header--ec,
+  .ec__header {
+    .navbar-brand img {
+      width: 285px;
+    }
+  }
+}
+
+.bcl-language-list-modal {
+  .btn-close {
+    opacity: 1;
+  }
+  .modal-title {
+    @extend %heading;
+    @include font-size($h5-font-size);
+  }
+  &.bcl-language-list-modal--ec,
+  &.bcl-language-list-modal--eu {
+    .modal-body {
+      padding-top: map-get($spacers, 2);
+      overflow: visible;
+    }
+    .modal-header {
+      border: 0;
+      padding: 0;
+    }
+  }
+  &.bcl-language-list-modal--eu {
+    .modal-body {
+      background: $white;
+    }
+    .modal-dialog {
+      background: $white;
+    }
+    .modal-title {
+      color: $eu-cta-color;
+    }
+    svg {
+      color: $eu-cta-color;
+    }
+    .btn-close {
+      filter: $btn-close-eu-filter;
+    }
+  }
+  &.bcl-language-list-modal--ec {
+    background: $eu-background-color;
+    .modal-content {
+      background: $eu-background-color;
+    }
+    .modal-title {
+      color: $white;
+    }
+    svg {
+      color: $white;
+    }
+    .btn-close {
+      filter: $btn-close-white-filter;
+    }
+  }
+}
