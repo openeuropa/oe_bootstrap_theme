@@ -311,3 +311,14 @@ function oe_bootstrap_theme_preprocess_pattern_card(array &$variables): void {
   $variables['bc_card_search_image_hide_on_mobile'] = BackwardCompatibility::getSetting('card_search_image_hide_on_mobile');
   $variables['bc_card_search_use_grid_classes'] = BackwardCompatibility::getSetting('card_search_use_grid_classes');
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for listing pattern.
+ */
+function oe_bootstrap_theme_preprocess_pattern_listing(array &$variables): void {
+  foreach ($variables['items'] as &$item) {
+    if (!empty($item['image_copyright'])) {
+      $item['image_copyright_label'] = t('Image credit:');
+    }
+  }
+}

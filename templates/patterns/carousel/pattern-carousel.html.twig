@@ -28,6 +28,7 @@
   {% set _slides = _slides|merge([_item]) %}
 {% endfor %}
 {% include '@oe-bcl/carousel' with {
+  'copyright_label': 'Image credit:'|t,
   'title': title,
   'title_tag': title_tag,
   'id': carousel_id,
