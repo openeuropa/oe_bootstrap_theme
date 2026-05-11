@@ -62,6 +62,13 @@ module.exports = {
   ],
   "rename": [
     {
+      from: path.resolve(outputFolder, "assets/js/slimselect.js"),
+      to: "slimselect.min.js",
+      options: {
+        operation: "rewrite",
+      },
+    },
+    {
       from: path.resolve(outputFolder, "assets/bcl/**/*"),
       to: "bcl-",
       options: {
