@@ -1,4 +1,5 @@
 # Change Log
+
 ## [1.35.5](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.35.5) (2026-05-11)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.35.0...1.35.5)
