@@ -1,11 +1,22 @@
 # Change Log
 
-## [1.35.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.35.0) (2026-04-28)
+## [1.35.5](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.35.5) (2026-05-11)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.35.0...1.35.5)
+
+**Merged pull requests:**
+
+- OEL-0000: Rename slim select and bcl version. [\#561](https://github.com/openeuropa/oe_bootstrap_theme/pull/561) ([tibi2303](https://github.com/tibi2303))
+- OEL-0000: Update docker image to dev. [\#559](https://github.com/openeuropa/oe_bootstrap_theme/pull/559) ([tibi2303](https://github.com/tibi2303))
+- OEL-4643: Media Copyright Accessibility improvements [\#551](https://github.com/openeuropa/oe_bootstrap_theme/pull/551) ([piotrsmykaj](https://github.com/piotrsmykaj))
+
+## [1.35.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.35.0) (2026-05-05)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.34.0...1.35.0)
 
 **Merged pull requests:**
 
+- Prepare release 1.35.0. [\#556](https://github.com/openeuropa/oe_bootstrap_theme/pull/556) ([tibi2303](https://github.com/tibi2303))
 - OEL-0000: Fix accessible toggle tests. [\#557](https://github.com/openeuropa/oe_bootstrap_theme/pull/557) ([tibi2303](https://github.com/tibi2303))
 - OEL-4709: Added pagination v2 patterns. [\#554](https://github.com/openeuropa/oe_bootstrap_theme/pull/554) ([tibi2303](https://github.com/tibi2303))
 - OEL-4505: Simplify test data massaging with TaggedValue. [\#550](https://github.com/openeuropa/oe_bootstrap_theme/pull/550) ([donquixote](https://github.com/donquixote))
