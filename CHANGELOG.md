@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.35.6](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.35.6) (2026-05-12)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.35.5...1.35.6)
+
+**Merged pull requests:**
+
+- OEL-0000: JS lib path available for ss-2 deprecation. [\#563](https://github.com/openeuropa/oe_bootstrap_theme/pull/563) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.35.5](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.35.5) (2026-05-11)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.35.0...1.35.5)
