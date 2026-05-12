@@ -30,6 +30,11 @@ module.exports = {
       options: { up: 3 },
     },
     {
+      from: ["node_modules/@openeuropa/bcl-theme-default/js/slimselect.js"],
+      to: path.resolve(outputFolder, "assets/js/slim-select-2"),
+      options: { up: true },
+    },
+    {
       from: ["node_modules/bootstrap-ie11/css/**"],
       to: path.resolve(outputFolder, "assets/css"),
       options: { up: true },
@@ -63,6 +68,13 @@ module.exports = {
   "rename": [
     {
       from: path.resolve(outputFolder, "assets/js/slimselect.js"),
+      to: "slimselect.min.js",
+      options: {
+        operation: "rewrite",
+      },
+    },
+    {
+      from: path.resolve(outputFolder, "assets/js/slim-select-2/slimselect.js"),
       to: "slimselect.min.js",
       options: {
         operation: "rewrite",
