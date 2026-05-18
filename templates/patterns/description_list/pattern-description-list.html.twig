@@ -4,10 +4,10 @@
  * Description list pattern.
  */
 #}
-{% embed 'oe_bootstrap_theme:description_list' with {
+{% include 'oe_bootstrap_theme:description_list' with {
   title: title,
   title_tag: title_tag,
   items: items,
   orientation: orientation,
   attributes: attributes,
-} only %}{% endembed %}
+} only %}
