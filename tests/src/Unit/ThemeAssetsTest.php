@@ -25,6 +25,7 @@ class ThemeAssetsTest extends UnitTestCase {
       'assets/logos/eu/mobile/logo-eu--en.svg',
       'node_modules/@openeuropa/bcl-theme-default/css/oe-bcl-default.min.css',
       'node_modules/@openeuropa/bcl-theme-default/logos/ec/positive/logo-ec--en.svg',
+      'node_modules/@openeuropa/bcl-theme-default/logos/ec/positive/non-existing-file.svg',
       'node_modules/@openeuropa/bcl-theme-default/logos/eu/standard-version/positive/logo-eu--en.svg',
       'node_modules/@openeuropa/bcl-theme-default/templates/bcl-button/button.html.twig',
     ];
