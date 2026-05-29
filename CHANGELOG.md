@@ -1,11 +1,26 @@
 # Change Log
 
+## [1.36.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.36.0) (2026-05-29)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.35.6...1.36.0)
+
+**Closed issues:**
+
+- eu logo of the header missing from the assets folder [\#552](https://github.com/openeuropa/oe_bootstrap_theme/issues/552)
+
+**Merged pull requests:**
+
+- OEL-0000: Update bcl version. [\#568](https://github.com/openeuropa/oe_bootstrap_theme/pull/568) ([tibi2303](https://github.com/tibi2303))
+- OEL-4746: Added test for logos path exists. [\#565](https://github.com/openeuropa/oe_bootstrap_theme/pull/565) ([tibi2303](https://github.com/tibi2303))
+- OEL-4732: Remove selenium version. [\#560](https://github.com/openeuropa/oe_bootstrap_theme/pull/560) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.35.6](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.35.6) (2026-05-12)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.35.5...1.35.6)
 
 **Merged pull requests:**
 
+- Prepare release 1.35.6. [\#564](https://github.com/openeuropa/oe_bootstrap_theme/pull/564) ([tibi2303](https://github.com/tibi2303))
 - OEL-0000: JS lib path available for ss-2 deprecation. [\#563](https://github.com/openeuropa/oe_bootstrap_theme/pull/563) ([tibi2303](https://github.com/tibi2303))
 
 ## [1.35.5](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.35.5) (2026-05-11)
