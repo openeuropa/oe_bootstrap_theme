@@ -13,8 +13,6 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v6
-        with:
-          node-version: 22
 
       - name: Install dependencies
         run: |
@@ -39,7 +37,16 @@ jobs:
         # Keep artifact uploads running even when Backstop finds visual diffs.
         continue-on-error: true
 
+      - name: Check Backstop report exists
+        if: always()
+        run: |
+          if [ ! -f tests/vrt/html_report/index.html ]; then
+            echo "Backstop HTML report was not generated"
+            exit 1
+          fi
+
       - name: Upload Backstop results
+        id: upload_report
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -52,9 +59,10 @@ jobs:
           if-no-files-found: warn
 
       - name: Fail if Backstop failed
-        # Fail the job only after the report and bitmaps have been uploaded.
-        if: steps.backstop.outcome != 'success'
-        run: exit 1
+        if: always() && steps.backstop.outcome != 'success'
+        run: |
+          echo "::error title=Run BackstopJS failed::Check the 'Run BackstopJS' step above."
+          exit 1
 
       - name: Stop Drupal stack
         if: always()
