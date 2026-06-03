@@ -12,17 +12,24 @@
     "watch": "npm-run-all --parallel watch:* -ln",
     "postinstall": "patch-package --patch-dir=patches/npm",
     "prepare": "npm-run-all build:*",
-    "production": "npm-run-all build:*"
+    "production": "npm-run-all build:*",
+    "vrt:build": "node tests/vrt/build-pattern-scenarios.js && node tests/vrt/build-config.js",
+    "vrt:reference": "backstop reference --config=tests/vrt/backstop.generated.json",
+    "vrt:test": "backstop test --config=tests/vrt/backstop.generated.json",
+    "vrt:approve": "backstop approve --config=tests/vrt/backstop.generated.json"
   },
   "devDependencies": {
-    "@openeuropa/bcl-builder": "^1.13",
-    "@openeuropa/bcl-theme-default": "^1.13",
+    "@openeuropa/bcl-builder": "0.1.202603061200",
+    "@openeuropa/bcl-theme-default": "0.1.202603061200",
+    "backstopjs": "^6.3.25",
     "bootstrap-ie11": "5.0.2",
+    "cheerio": "^1.1.2",
     "chokidar-cli": "^3.0.0",
     "copyfiles": "2.4.1",
     "cross-env": "7.0.3",
     "glob": "10.0.0",
     "npm-run-all": "4.1.5",
-    "patch-package": "^6.4.7"
+    "patch-package": "^6.4.7",
+    "playwright": "^1.57.0"
   }
 }
