@@ -1,0 +1,106 @@
+description_list_default:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:description_list
+    '#props':
+      title: 'The description list title'
+      title_tag: 'h4'
+      orientation: default
+      items:
+        - term:
+            - label: 'Single label with icon'
+              icon:
+                name: 'geo-alt-fill'
+          definition: 'Description of first term text goes here.'
+        - term:
+            - label: 'First label without icon'
+            - label: 'Second label with icon'
+              icon:
+                name: 'calendar-event'
+          definition: 'Description of second term text goes here.'
+        - term:
+            - label:
+              - '#markup': 'A label with <em>some</em> markup.'
+          definition:
+            - label:
+                - '#markup': '<p class="mb-2">First line description of third term text goes here.</p>'
+            - label:
+                - '#markup': 'Second line description of third term text goes here.'
+        - term:
+          - label: 'Custom icon size'
+            icon:
+              name: 'bicycle'
+              size: 'xl'
+          definition: 'This is a bigger icon.'
+        - term: 'A single term without icon.'
+          definition: 'Yet another definition text.'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\DescriptionListAssert
+      expected:
+        items:
+          - term:
+              - label: 'Single label with icon'
+                icon: 'geo-alt-fill'
+            definition: 'Description of first term text goes here.'
+          - term:
+              - label: 'First label without icon'
+              - label: 'Second label with icon'
+                icon: 'calendar-event'
+            definition: 'Description of second term text goes here.'
+          - term:
+              - label:
+                - '#markup': 'A label with <em>some</em> markup.'
+            definition:
+              - label: '<p class="mb-2">First line description of third term text goes here.</p>'
+              - label: 'Second line description of third term text goes here.'
+          - term:
+            - label: 'Custom icon size'
+              icon:
+                name: 'bicycle'
+                size: 'xl'
+            definition: 'This is a bigger icon.'
+          - term: 'A single term without icon.'
+            definition: 'Yet another definition text.'
+description_list_horizontal:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:description_list
+    '#props':
+      title: 'The description list title'
+      orientation: horizontal
+      items:
+        - term:
+          - label: 'Single label with icon'
+            icon:
+              name: 'geo-alt-fill'
+          definition: 'Description of first term text goes here.'
+        - term:
+          - label: 'First label without icon'
+          - label: 'Second label with icon'
+            icon:
+              name: 'calendar-event'
+          definition: 'Description of second term text goes here.'
+        - term:
+            - label: 'A single term without icon.'
+          definition:
+            - label: 'First definition for third term.'
+            - label: 'Second definition for third term.'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\DescriptionListAssert
+      expected:
+        items:
+          - term:
+            - label: 'Single label with icon'
+              icon: 'geo-alt-fill'
+            definition: 'Description of first term text goes here.'
+          - term:
+            - label: 'First label without icon'
+            - label: 'Second label with icon'
+              icon: 'calendar-event'
+            definition: 'Description of second term text goes here.'
+          - term: 'A single term without icon.'
+            definition:
+              - label: 'First definition for third term.'
+              - label: 'Second definition for third term.'

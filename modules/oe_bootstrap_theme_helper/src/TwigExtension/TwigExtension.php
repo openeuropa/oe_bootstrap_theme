@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Extension\ThemeExtensionList;
+use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
@@ -27,42 +29,13 @@ use Twig\TwigFunction;
  */
 class TwigExtension extends AbstractExtension {
 
-  /**
-   * The language manager.
-   *
-   * @var \Drupal\Core\Language\LanguageManagerInterface
-   */
-  protected $languageManager;
-
-  /**
-   * The renderer.
-   *
-   * @var \Drupal\Core\Render\RendererInterface
-   */
-  protected RendererInterface $renderer;
-
-  /**
-   * The Drupal Twig environment.
-   *
-   * @var \Drupal\Core\Template\TwigEnvironment
-   */
-  protected TwigEnvironment $twigEnvironment;
-
-  /**
-   * Constructs a new TwigExtension object.
-   *
-   * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
-   *   The language manager.
-   * @param \Drupal\Core\Template\TwigEnvironment $twigEnvironment
-   *   The Drupal Twig environment.
-   * @param \Drupal\Core\Render\RendererInterface $renderer
-   *   The renderer.
-   */
-  public function __construct(LanguageManagerInterface $languageManager, TwigEnvironment $twigEnvironment, RendererInterface $renderer) {
-    $this->languageManager = $languageManager;
-    $this->twigEnvironment = $twigEnvironment;
-    $this->renderer = $renderer;
-  }
+  public function __construct(
+    protected readonly LanguageManagerInterface $languageManager,
+    protected readonly TwigEnvironment $twigEnvironment,
+    protected readonly RendererInterface $renderer,
+    protected readonly ThemeExtensionList $themeList,
+    protected readonly ThemeManagerInterface $themeManager,
+  ) {}
 
   /**
    * {@inheritdoc}
@@ -70,6 +43,7 @@ class TwigExtension extends AbstractExtension {
   public function getFilters(): array {
     return [
       new TwigFilter('bcl_card_list', [$this, 'bclCardList']),
+      new TwigFilter('bcl_description_list_items', [$this, 'bclDescriptionListItems']),
       new TwigFilter('format_size', 'Drupal\Core\StringTranslation\ByteSizeMarkup::create'),
       new TwigFilter('to_file_icon', [$this, 'toFileIcon']),
       new TwigFilter('to_native_language', [
@@ -93,6 +67,7 @@ class TwigExtension extends AbstractExtension {
         'needs_environment' => TRUE,
       ]),
       new TwigFunction('bcl_gallery_items', [$this, 'bclGalleryItems']),
+      new TwigFunction('bcl_icon_path', [$this, 'getBclIconPath']),
     ];
   }
 
@@ -162,6 +137,41 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $bcl_cards;
+  }
+
+  /**
+   * Processes items for the description list component.
+   *
+   * @param array $items
+   *   The description list items.
+   * @param string $icon_path
+   *   Path to the icons SVG file. Defaults to the BCL icon path.
+   *
+   * @return array
+   *   The processed items.
+   */
+  public function bclDescriptionListItems(array $items, ?string $icon_path = NULL): array {
+    if (!$icon_path) {
+      $icon_path = $this->getBclIconPath();
+    }
+
+    foreach ($items as &$item) {
+      if (empty($item['term']) || is_string($item['term'])) {
+        continue;
+      }
+      if (!is_array($item['term'])) {
+        throw new \InvalidArgumentException('Expected term to be a string or array.');
+      }
+      foreach ($item['term'] as &$term) {
+        if (!empty($term['icon'])) {
+          $term['icon'] += ['size' => 'xs', 'path' => $icon_path];
+        }
+      }
+      unset($term);
+    }
+    unset($item);
+
+    return $items;
   }
 
   /**
@@ -339,6 +349,17 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $items;
+  }
+
+  /**
+   * Returns the URL to the BCL default icons SVG file.
+   *
+   * @return string
+   *   The relative URL to the BCL icons SVG file.
+   */
+  public function getBclIconPath(): string {
+    $theme = $this->themeList->get('oe_bootstrap_theme');
+    return base_path() . $theme->getPath() . '/assets/icons/bcl-default-icons.svg';
   }
 
   /**
