@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Badge component.
+ */
+#}
+
+{% include '@oe-bcl/badge' with {
+  label: label,
+  title: title,
+  url: url,
+  rounded_pill: rounded_pill,
+  background: background,
+  icon_path: icon_path|default(bcl_icon_path|default(bcl_icon_path())),
+  dismissible: dismissible,
+  outline: outline,
+  attributes: attributes,
+} only %}
