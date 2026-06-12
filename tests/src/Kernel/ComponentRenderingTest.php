@@ -36,6 +36,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
    */
   private static $componentList = [
     'alert',
+    'badge',
     'description_list',
   ];
 
