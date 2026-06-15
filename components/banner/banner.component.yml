@@ -1,0 +1,77 @@
+name: 'Banner'
+description: 'Banner or heroes with text and/or background image and/or with call to action.'
+props:
+  type: object
+  properties:
+    variant:
+      title: Variant
+      type: string
+      description: 'The banner variant. Defaults to default.'
+      enum:
+        - default
+        - primary
+        - image
+        - image_shade
+      'meta:enum':
+        default: 'Default text banner'
+        primary: 'Primary text banner'
+        image: 'Image banner'
+        image_shade: 'Image shade banner'
+    shade:
+      title: Shade
+      type: boolean
+      description: 'Enables the shadow effect to the image. Defaults to false.'
+    hero:
+      title: Hero
+      type: boolean
+      description: 'Displays as hero banner. Defaults to false.'
+    full_width:
+      title: 'Full width'
+      type: boolean
+      description: 'Allows a full-width banner within a bootstrap container. Defaults to false.'
+    centered:
+      title: Centered
+      type: boolean
+      description: 'Whether the content of the banner is centered or not. Defaults to false.'
+    title:
+      title: Title
+      type: [string, array, object]
+      description: 'Title of the banner.'
+    title_tag:
+      title: 'Title tag'
+      type: string
+      description: 'The tag to use for the title. Defaults to div.'
+    description:
+      title: Description
+      type: [string, array, object]
+      description: 'Sub-heading of the banner.'
+    call_to_action:
+      title: 'Call to action'
+      type: object
+      description: 'Link to print a CTA button.'
+      properties:
+        label:
+          type: [string, array, object]
+        path:
+          type: string
+        link_style:
+          type: string
+        icon_position:
+          type: string
+        icon:
+          type: object
+    image:
+      title: Image
+      type: string
+      description: 'URL of the image.'
+    copyright:
+      title: Copyright
+      type: [string, array, object]
+      description: 'Optional copyright text displayed below the banner.'
+    content_classes:
+      title: 'Content classes'
+      type: string
+      description: 'Classes for the content wrapper.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute
