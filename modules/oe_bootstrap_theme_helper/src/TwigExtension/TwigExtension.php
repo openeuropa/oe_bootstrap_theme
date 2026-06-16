@@ -68,6 +68,7 @@ class TwigExtension extends AbstractExtension {
       ]),
       new TwigFunction('bcl_gallery_items', [$this, 'bclGalleryItems']),
       new TwigFunction('bcl_icon_path', [$this, 'getBclIconPath']),
+      new TwigFunction('html_unique_id', [Html::class, 'getUniqueId']),
     ];
   }
 
