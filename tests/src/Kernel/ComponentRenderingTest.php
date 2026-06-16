@@ -36,6 +36,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
    * @var string[]
    */
   private static $componentList = [
+    'accordion',
     'alert',
     'badge',
     'banner',
