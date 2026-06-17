@@ -103,6 +103,7 @@ accordion_with_actionable_buttons:
     '#component': oe_bootstrap_theme:accordion
     '#props':
       title: 'The accordion title'
+      accordion_id: test-accordion
       expand_button_label: 'Expand'
       collapse_button_label: 'Collapse'
       open_item: 1
@@ -120,8 +121,11 @@ accordion_with_actionable_buttons:
       '.bcl-heading': 1
       'h2.bcl-heading': 1
       'div.accordion.accordion-flush': 0
+      'div#accordion-test-accordion.accordion': 1
       'button[data-action="expand"]': 1
       'button[data-action="collapse"]': 1
+      'button[data-action="expand"][data-target="accordion-test-accordion"]': 1
+      'button[data-action="collapse"][data-target="accordion-test-accordion"]': 1
       'div.accordion-item': 3
       'div.accordion-item h2.accordion-header': 3
       'div.accordion-item button.accordion-button': 3
