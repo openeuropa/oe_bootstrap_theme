@@ -8,18 +8,19 @@ badge_with_all_values:
       dismissible: true
       outline: true
       label: 'A simple badge!'
+      assistive_text: 'Unread status'
       url: 'https://example.com'
       title: 'The badge title'
   assertions:
     component:
-      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\BadgePatternAssert
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\BadgeComponentAssert
       expected:
-        settings:
-          background: danger
-          rounded_pill: true
-          dismissible: true
-          outline: true
+        background: danger
+        rounded_pill: true
+        dismissible: true
+        outline: true
         label: 'A simple badge!'
+        assistive_text: 'Unread status'
         url: 'https://example.com'
         title: 'The badge title'
 badge_no_settings_sent:
@@ -32,13 +33,12 @@ badge_no_settings_sent:
       title: 'The badge title'
   assertions:
     component:
-      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\BadgePatternAssert
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\BadgeComponentAssert
       expected:
-        settings:
-          background: primary
-          rounded_pill: false
-          dismissible: false
-          outline: false
+        background: primary
+        rounded_pill: false
+        dismissible: false
+        outline: false
         label: 'A simple badge!'
         url: 'https://example.com'
         title: 'The badge title'
@@ -53,12 +53,11 @@ badge_dismissible_with_rounded_pill:
       label: 'A simple badge!'
   assertions:
     component:
-      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\BadgePatternAssert
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\BadgeComponentAssert
       expected:
-        settings:
-          dismissible: true
-          rounded_pill: true
-          background: secondary
+        dismissible: true
+        rounded_pill: true
+        background: secondary
         label: 'A simple badge!'
 badge_non_dismissible_without_rounded_pill:
   render:
@@ -71,12 +70,11 @@ badge_non_dismissible_without_rounded_pill:
       label: 'A simple badge!'
   assertions:
     component:
-      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\BadgePatternAssert
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\BadgeComponentAssert
       expected:
-        settings:
-          dismissible: false
-          rounded_pill: false
-          background: danger
+        dismissible: false
+        rounded_pill: false
+        background: danger
         label: 'A simple badge!'
 badge_with_url:
   render:
@@ -90,11 +88,10 @@ badge_with_url:
       url: 'https://example.com'
   assertions:
     component:
-      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\BadgePatternAssert
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\BadgeComponentAssert
       expected:
-        settings:
-          dismissible: true
-          rounded_pill: true
-          background: secondary
+        dismissible: true
+        rounded_pill: true
+        background: secondary
         label: 'A simple badge!'
         url: 'https://example.com'
