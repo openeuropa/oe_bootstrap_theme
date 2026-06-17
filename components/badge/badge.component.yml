@@ -32,7 +32,6 @@ props:
         - info
         - light
         - dark
-        - link
       'meta:enum':
         primary: 'Primary (default)'
         secondary: Secondary
@@ -42,7 +41,6 @@ props:
         info: Info
         light: Light
         dark: Dark
-        link: Link
     rounded_pill:
       title: 'Pill badge'
       type: boolean
