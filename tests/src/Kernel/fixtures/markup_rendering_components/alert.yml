@@ -7,7 +7,7 @@ alert_dismissible_animated:
       dismissible: true
       animated_dismiss: true
       heading: 'Well done!'
-      message: 'A simple alert. check it out!'
+      message: 'A simple alert. Check it out!'
       icon: lock
   assertions:
     count:
@@ -17,7 +17,7 @@ alert_dismissible_animated:
     equals:
       'div.h4.alert-heading': 'Well done!'
     contains:
-      'div.alert-content': 'A simple alert. check it out!'
+      'div.alert-content': 'A simple alert. Check it out!'
       'svg': '#lock'
 alert_dismissible_non_animated:
   render:
@@ -28,7 +28,7 @@ alert_dismissible_non_animated:
       dismissible: true
       animated_dismiss: false
       heading: 'Well done!'
-      message: 'A simple alert. check it out!'
+      message: 'A simple alert. Check it out!'
       icon: lock
   assertions:
     count:
@@ -38,7 +38,7 @@ alert_dismissible_non_animated:
       'button.btn-close': 1
     equals:
       'div.h4.alert-heading': 'Well done!'
-      'div.alert-content': '<div class="alert-heading h4">Well done!</div>A simple alert. check it out!'
+      'div.alert-content': '<div class="alert-heading h4">Well done!</div>A simple alert. Check it out!'
     contains:
       'svg': '#lock'
 alert_not_dismissible:
@@ -50,7 +50,7 @@ alert_not_dismissible:
       dismissible: false
       animated_dismiss: false
       heading: 'Well done!'
-      message: 'A simple alert. check it out!'
+      message: 'A simple alert. Check it out!'
       icon: search
   assertions:
     count:
@@ -60,6 +60,6 @@ alert_not_dismissible:
       'div.h4.alert-heading': 1
     equals:
       'div.h4.alert-heading': 'Well done!'
-      'div.alert-content': '<div class="alert-heading h4">Well done!</div>A simple alert. check it out!'
+      'div.alert-content': '<div class="alert-heading h4">Well done!</div>A simple alert. Check it out!'
     contains:
       'svg': '#search'
