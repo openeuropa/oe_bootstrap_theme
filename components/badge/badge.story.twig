@@ -1,9 +1,48 @@
-{% include 'oe_bootstrap_theme:badge' with {
-  label: 'A simple badge!',
-  url: 'https://example.com',
-  title: 'The badge title',
-  background: 'danger',
-  rounded_pill: true,
-  dismissible: true,
-  outline: true,
-} only %}
+{% set badges = [
+  { label: 'Primary', background: 'primary' },
+  { label: 'Secondary', background: 'secondary' },
+  { label: 'Success', background: 'success' },
+  { label: 'Danger', background: 'danger' },
+  { label: 'Warning', background: 'warning' },
+  { label: 'Info', background: 'info' },
+  { label: 'Light', background: 'light' },
+  { label: 'Dark', background: 'dark' },
+  { label: 'Link', background: 'link' },
+] %}
+
+<div class="d-flex flex-column gap-3">
+  <div class="d-flex flex-wrap gap-2">
+    {% for badge in badges %}
+      {% include 'oe_bootstrap_theme:badge' with badge only %}
+    {% endfor %}
+  </div>
+
+  <div class="d-flex flex-wrap gap-2">
+    {% for badge in badges %}
+      {% include 'oe_bootstrap_theme:badge' with badge|merge({ outline: true }) only %}
+    {% endfor %}
+  </div>
+
+  <div class="d-flex flex-wrap gap-2">
+    {% include 'oe_bootstrap_theme:badge' with {
+      label: 'Rounded pill',
+      background: 'success',
+      rounded_pill: true,
+    } only %}
+
+    {% include 'oe_bootstrap_theme:badge' with {
+      label: 'Linked badge',
+      url: 'https://example.com',
+      title: 'The badge title',
+      background: 'info',
+    } only %}
+
+    {% include 'oe_bootstrap_theme:badge' with {
+      label: 'Dismissible',
+      background: 'danger',
+      rounded_pill: true,
+      dismissible: true,
+      assistive_text: 'Remove badge',
+    } only %}
+  </div>
+</div>
