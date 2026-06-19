@@ -110,6 +110,5 @@ banner_image_shade_centered_with_call_to_action_full_width:
     contains:
       '.bcl-banner__content div': 'EU Budget for the future'
       '.bcl-banner__content p': 'Innovation, economy, environment and geopolitics'
-      'svg': 'chevron-right'
-    equals:
       '.bcl-banner__content a[href="https://example.com"]': Subscribe
+      'svg': 'chevron-right'
