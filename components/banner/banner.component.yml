@@ -60,6 +60,13 @@ props:
           type: string
         icon:
           type: object
+          properties:
+            name:
+              type: string
+            size:
+              type: string
+            path:
+              type: string
     image:
       title: Image
       type: string
