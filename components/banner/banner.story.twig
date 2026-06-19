@@ -1,19 +1,48 @@
+{% set image = 'https://picsum.photos/1000/500/' %}
+{% set call_to_action = {
+  label: 'Subscribe',
+  path: 'https://example.com',
+  link_style: 'warning',
+  icon_position: 'after',
+  icon: {
+    name: 'chevron-right',
+    path: bcl_icon_path(),
+  },
+} %}
+
+{% include 'oe_bootstrap_theme:banner' with {
+  variant: 'default',
+  full_width: true,
+  centered: true,
+  title: 'EU Budget for the future',
+  title_tag: 'h4',
+  description: 'Innovation, economy, environment and geopolitics',
+  call_to_action: call_to_action,
+} only %}
+
+{% include 'oe_bootstrap_theme:banner' with {
+  variant: 'primary',
+  hero: true,
+  full_width: true,
+  title: 'EU Budget for the future',
+  description: 'Innovation, economy, environment and geopolitics',
+} only %}
+
+{% include 'oe_bootstrap_theme:banner' with {
+  variant: 'image',
+  title: 'EU Budget for the future',
+  description: 'Innovation, economy, environment and geopolitics',
+  copyright: '© 2024 Example Organisation',
+  image: image,
+} only %}
+
 {% include 'oe_bootstrap_theme:banner' with {
   variant: 'image_shade',
-  hero: true,
   shade: true,
-  full_width: false,
+  full_width: true,
   centered: true,
   title: 'EU Budget for the future',
   description: 'Innovation, economy, environment and geopolitics',
-  call_to_action: {
-    label: 'Subscribe',
-    path: 'https://example.com',
-    link_style: 'warning',
-    icon_position: 'after',
-    icon: {
-      name: 'chevron-right',
-    },
-  },
-  image: 'https://picsum.photos/1000/500/',
+  call_to_action: call_to_action,
+  image: image,
 } only %}

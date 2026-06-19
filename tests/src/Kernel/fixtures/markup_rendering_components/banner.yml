@@ -92,13 +92,17 @@ banner_image_shade_centered_with_call_to_action_full_width:
       call_to_action:
         label: Subscribe
         path: 'https://example.com'
+        link_style: warning
+        icon:
+          name: chevron-right
       image: 'https://picsum.photos/1000/500/'
   assertions:
     count:
       'div.bcl-banner.bg-lighter': 1
+      'div.bcl-banner.bg-lighter.text-dark': 0
       'div.full-width': 1
       'div.text-center': 1
-      'a': 1
+      'a.link-warning': 1
       'div.hero': 0
       'div.overlay': 0
       'div.shade': 1
@@ -106,5 +110,6 @@ banner_image_shade_centered_with_call_to_action_full_width:
     contains:
       '.bcl-banner__content div': 'EU Budget for the future'
       '.bcl-banner__content p': 'Innovation, economy, environment and geopolitics'
+      'svg': 'chevron-right'
     equals:
       '.bcl-banner__content a[href="https://example.com"]': Subscribe
