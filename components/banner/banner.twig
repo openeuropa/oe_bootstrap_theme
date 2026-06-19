@@ -23,6 +23,11 @@
 {% if _call_to_action and _call_to_action.link_style is defined %}
   {% set _call_to_action = _call_to_action|merge({variant: _call_to_action.link_style}) %}
 {% endif %}
+{% if _call_to_action.icon is defined and _call_to_action.icon is not empty and _call_to_action.icon.path is not defined %}
+  {% set _call_to_action = _call_to_action|merge({
+    icon: _call_to_action.icon|merge({path: bcl_icon_path()})
+  }) %}
+{% endif %}
 
 {% include '@oe-bcl/banner' with {
   shade: _variant == 'image_shade' ? true : shade,
