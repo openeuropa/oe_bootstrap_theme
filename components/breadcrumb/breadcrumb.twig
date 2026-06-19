@@ -1,0 +1,11 @@
+{#
+/**
+ * @file
+ * Breadcrumb component.
+ */
+#}
+{% include '@oe-bcl/breadcrumb' with {
+  links: items|default([]),
+  icon_path: icon_path|default(bcl_icon_path()),
+  attributes: attributes,
+} only %}
