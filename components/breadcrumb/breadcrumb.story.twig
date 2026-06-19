@@ -1,0 +1,16 @@
+{% include 'oe_bootstrap_theme:breadcrumb' with {
+  attributes: create_attribute().addClass('mt-3'),
+  items: [
+    {
+      label: 'Home',
+      path: '/index',
+    },
+    {
+      label: 'About the European Commission',
+      path: '/example',
+    },
+    {
+      label: 'Link title',
+    },
+  ],
+} only %}
