@@ -4,3 +4,17 @@
     display: none;
   }
 }
+
+.components-preview__components {
+  .bcl-banner {
+    width: 100%;
+    left: auto;
+    margin: 0 0 1rem 0;
+    &:has(+.bcl-copyright) {
+      margin-bottom: 0;
+      + .bcl-copyright {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
