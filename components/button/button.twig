@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * Button component.
+ */
+#}
+{% set _icon = {} %}
+{% if icon is defined and icon %}
+  {% set _icon = icon is iterable ? icon : { name: icon } %}
+  {% if _icon.path is not defined or _icon.path is empty %}
+    {% set _icon = _icon|merge({ path: bcl_icon_path() }) %}
+  {% endif %}
+{% endif %}
+
+{% set _attributes = attributes|default(create_attribute()) %}
+{% if show_spinner is defined and show_spinner and label is defined and label %}
+  {% set _attributes = _attributes.addClass(['d-inline-flex', 'align-items-center', 'gap-2']) %}
+{% endif %}
+
+{% include '@oe-bcl/button' with {
+  label: label,
+  variant: variant|default('primary'),
+  size: size|default('md'),
+  type: type|default('button'),
+  outline: outline,
+  disabled: disabled ?? _attributes.disabled ?? false,
+  text_nowrap: text_nowrap,
+  assistive_text: assistive_text,
+  id: id,
+  icon: _icon,
+  icon_position: icon_position|default('after'),
+  icon_spacing: icon_spacing,
+  spinner: spinner,
+  show_spinner: show_spinner,
+  clean_class: clean_class,
+  remove_icon_spacers: remove_icon_spacers,
+  attributes: _attributes,
+} only %}
