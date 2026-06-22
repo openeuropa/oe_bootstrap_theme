@@ -1,0 +1,74 @@
+{% set variants = [
+  'primary',
+  'secondary',
+  'success',
+  'danger',
+  'warning',
+  'info',
+  'light',
+  'dark',
+  'link',
+] %}
+
+<div class="vstack gap-3 align-items-start">
+  <div class="d-flex flex-wrap gap-2">
+    {% for variant in variants %}
+      {% include 'oe_bootstrap_theme:button' with {
+        label: variant|capitalize,
+        variant: variant,
+      } only %}
+    {% endfor %}
+  </div>
+
+  <div>
+    {% include 'oe_bootstrap_theme:button' with {
+      label: 'Outline',
+      variant: 'primary',
+      outline: true,
+    } only %}
+
+    {% include 'oe_bootstrap_theme:button' with {
+      label: 'Small',
+      variant: 'secondary',
+      size: 'sm',
+    } only %}
+
+    {% include 'oe_bootstrap_theme:button' with {
+      label: 'Large',
+      variant: 'warning',
+      size: 'lg',
+    } only %}
+
+    {% include 'oe_bootstrap_theme:button' with {
+      label: 'Disabled',
+      variant: 'dark',
+      disabled: true,
+    } only %}
+  </div>
+
+  <div class="d-flex flex-wrap gap-2">
+    {% include 'oe_bootstrap_theme:button' with {
+      label: 'Icon before',
+      variant: 'primary',
+      icon: 'arrow-right',
+      icon_position: 'before',
+    } only %}
+
+    {% include 'oe_bootstrap_theme:button' with {
+      label: 'Icon after',
+      variant: 'primary',
+      icon: 'arrow-right',
+      icon_position: 'after',
+    } only %}
+
+    {% include 'oe_bootstrap_theme:button' with {
+      label: 'Loading',
+      variant: 'primary',
+      show_spinner: true,
+      spinner: {
+        size: 'sm',
+        assistive_text: 'Loading',
+      },
+    } only %}
+  </div>
+</div>

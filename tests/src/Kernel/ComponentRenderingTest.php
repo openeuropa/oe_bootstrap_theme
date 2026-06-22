@@ -40,6 +40,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     'alert',
     'badge',
     'banner',
+    'button',
     'blockquote',
     'breadcrumb',
     'description_list',
