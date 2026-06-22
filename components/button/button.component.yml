@@ -1,0 +1,144 @@
+name: 'Button'
+description: 'For actions in forms, dialogs, and more with support for multiple sizes, states, and icons.'
+props:
+  type: object
+  properties:
+    label:
+      title: Label
+      type: [string, array, object]
+      description: 'The button label.'
+    variant:
+      title: Variant
+      type: string
+      description: 'The button variant. Defaults to primary.'
+      enum:
+        - primary
+        - secondary
+        - success
+        - danger
+        - warning
+        - info
+        - light
+        - dark
+        - link
+      'meta:enum':
+        primary: 'Primary (default)'
+        secondary: Secondary
+        success: Success
+        danger: Danger
+        warning: Warning
+        info: Info
+        light: Light
+        dark: Dark
+        link: Link
+    size:
+      title: Size
+      type: string
+      description: 'Size of the button. Defaults to md.'
+      enum:
+        - sm
+        - md
+        - lg
+      'meta:enum':
+        sm: Small
+        md: 'Medium (default)'
+        lg: Large
+    type:
+      title: Type
+      type: string
+      description: 'Sets the button behavior type. Defaults to button.'
+      enum:
+        - button
+        - submit
+        - reset
+      'meta:enum':
+        button: 'Button (default)'
+        submit: Submit
+        reset: Reset
+    outline:
+      title: Outline
+      type: boolean
+      description: 'Lighter button style removing background color. Defaults to false.'
+    disabled:
+      title: Disabled
+      type: boolean
+      description: 'If true, the button will not be enabled when clicking. Defaults to false.'
+    text_nowrap:
+      title: 'No text wrap'
+      type: boolean
+      description: 'Prevents the button label from wrapping.'
+    assistive_text:
+      title: 'Assistive text'
+      type: string
+      description: 'Visually hidden text printed before the button label.'
+    id:
+      title: ID
+      type: string
+      description: 'Button ID attribute.'
+    icon:
+      title: Icon
+      description: 'Icon name as a string or an icon object.'
+      type: [string, object]
+      properties:
+        name:
+          type: string
+        size:
+          type: string
+        path:
+          type: string
+        transformation:
+          type: string
+        attributes:
+          type: object
+    icon_position:
+      title: 'Icon position'
+      type: string
+      description: 'If button has an icon, it can be placed before or after text. Defaults to after.'
+      enum:
+        - before
+        - after
+      'meta:enum':
+        before: Before
+        after: 'After (default)'
+    icon_spacing:
+      title: 'Icon spacing'
+      type: string
+      description: 'Spacing between icon and label.'
+      enum:
+        - sm
+        - md
+        - lg
+      'meta:enum':
+        sm: Small
+        md: Medium
+        lg: Large
+    spinner:
+      title: Spinner
+      type: object
+      description: 'Spinner object.'
+      properties:
+        type:
+          type: string
+        variant:
+          type: string
+        size:
+          type: string
+        assistive_text:
+          type: string
+        attributes:
+          type: object
+    show_spinner:
+      title: 'Show spinner'
+      type: boolean
+      description: 'Displays the spinner before the button label.'
+    clean_class:
+      title: 'Clean class'
+      type: boolean
+      description: 'If true, BCL button classes are not added.'
+    remove_icon_spacers:
+      title: 'Remove icon spacers'
+      type: boolean
+      description: 'Removes the default spacing between icon and label.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute
