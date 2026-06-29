@@ -1,0 +1,167 @@
+card_horizontal_with_image:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card
+    '#props':
+      variant: default
+      orientation: horizontal
+      title: 'Title card'
+      title_tag: 'h2'
+      subtitle: 'Subtitle card'
+      text: 'Text card with longer text which is supported'
+      image:
+        src: 'https://picsum.photos/1000/500/'
+        alt: 'Alternative text for card image'
+      meta:
+        - 'DIGIT'
+        - 'Developer'
+      content:
+        '#type': html_tag
+        '#tag': button
+        '#value': 'Custom action'
+        '#attributes':
+          class:
+            - btn
+            - btn-primary
+      header: 'Header of card'
+      footer: 'Footer of card'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
+      expected:
+        horizontal: true
+        title: 'Title card'
+        title_tag: 'h2'
+        subtitle: 'Subtitle card'
+        description: 'Text card with longer text which is supported'
+        image:
+          src: 'https://picsum.photos/1000/500/'
+          alt: 'Alternative text for card image'
+        content:
+          - 'DIGIT'
+          - 'Developer'
+          - '<button class="btn btn-primary">Custom action</button>'
+        header: 'Header of card'
+        footer: 'Footer of card'
+card_vertical_with_title_link:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card
+    '#props':
+      variant: default
+      orientation: vertical
+      title: 'Title card'
+      title_link:
+        path: 'https://example.com'
+      subtitle: 'Subtitle card'
+      text: 'Text card with longer text which is supported'
+      image:
+        src: 'https://picsum.photos/1000/500/'
+        alt: 'Alternative text for card image'
+      content:
+        '#type': html_tag
+        '#tag': button
+        '#value': 'Custom action'
+        '#attributes':
+          class:
+            - btn
+            - btn-primary
+      header: 'Header of card'
+      footer: 'Footer of card'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
+      expected:
+        horizontal: false
+        title: 'Title card'
+        title_tag: 'div'
+        url: 'https://example.com'
+        subtitle: 'Subtitle card'
+        description: 'Text card with longer text which is supported'
+        image:
+          src: 'https://picsum.photos/1000/500/'
+          alt: 'Alternative text for card image'
+        content:
+          - '<button class="btn btn-primary">Custom action</button>'
+        header: 'Header of card'
+        footer: 'Footer of card'
+card_variant_search:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card
+    '#props':
+      variant: search
+      title: 'Title card'
+      title_tag: 'h3'
+      text: 'Text card with longer text which is supported'
+      image:
+        src: 'https://picsum.photos/1000/500/'
+        alt: ''
+      badges:
+        - label: 'Category 1'
+        - label: 'Category 2'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
+      expected:
+        variant: search
+        title: 'Title card'
+        title_tag: 'h3'
+        description: 'Text card with longer text which is supported'
+        image:
+          src: 'https://picsum.photos/1000/500/'
+          alt: ''
+        badges:
+          - label: 'Category 1'
+            rounded_pill: true
+          - label: 'Category 2'
+            rounded_pill: true
+card_with_date_range:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card
+    '#props':
+      variant: default
+      orientation: horizontal
+      title: 'Title card'
+      date:
+        year: "2021"
+        month: "Jan"
+        day: "23"
+        end_year: "2022"
+        end_month: "Feb"
+        end_day: "11"
+  assertions:
+    count:
+      '.row .bcl-card-start-col': 1
+      '.row .col': 1
+      '.row .col-4': 0
+      '.row .col-8': 0
+    equals:
+      'article.card .card-title': 'Title card'
+      'time > div > div > div:nth-of-type(1) .date-month': 'Jan'
+      'time > div > div > div:nth-of-type(1) .date-day': '23'
+      'time > div > div > div:nth-of-type(3) .date-month': 'Feb'
+      'time > div > div > div:nth-of-type(3) .date-day': '11'
+      'time .year-start': '2021'
+      'time .year-end': '2022'
+card_with_image_copyright:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card
+    '#props':
+      variant: default
+      orientation: vertical
+      title: 'Title card'
+      text: 'Text card with longer text which is supported'
+      image:
+        src: 'https://picsum.photos/1000/500/'
+        alt: 'Alternative text for card image'
+      image_copyright: '© 2024 Example Organisation'
+  assertions:
+    count:
+      'article.card': 1
+      'article.card img.card-img-top': 1
+      'article.card .bcl-card__image-footer .bcl-copyright': 1
+    equals:
+      'article.card .bcl-copyright': '<span class="visually-hidden">Image credit: </span>© 2024 Example Organisation'
