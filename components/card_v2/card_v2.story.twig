@@ -1,0 +1,144 @@
+{% set title %}
+  <h4>Title card</h4>
+{% endset %}
+
+{% set linked_title %}
+  <h4><a href="https://example.com/">Linked title card</a></h4>
+{% endset %}
+
+{% set media %}
+  <img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">
+{% endset %}
+
+{% set media_horizontal %}
+  <img src="https://picsum.photos/400/800/" alt="Alternative text for card image">
+{% endset %}
+
+{% set content %}
+  <h6 class="card-subtitle mb-2">Subtitle card</h6>
+  <div class="card-text mb-2">
+    This card includes a longer description to show how body text wraps across multiple lines in the component preview.
+    <a href="https://www.example.com/1">Example link</a>
+  </div>
+  <div class="my-3 me-n3">
+    <span class="text-muted me-3">Organisation</span><span class="text-muted me-3">Position</span>
+  </div>
+  <div>
+    <button class="btn btn-primary">Custom action</button>
+  </div>
+  <div class="mt-2-5">
+    <a href="#" class="mb-2 me-2 badge rounded-pill badge-outline-primary">A link badge</a>
+    <span class="mb-2 me-2 badge badge-outline-primary">A non-rounded badge</span>
+    <span class="mb-2 badge rounded-pill text-bg-primary">A solid badge</span>
+  </div>
+{% endset %}
+
+{% set header %}
+  Header of <span class="fw-bold">card</span>
+{% endset %}
+
+{% set footer %}
+  Footer of <span class="fw-bold">card</span>
+{% endset %}
+
+{% set simple_content %}
+  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel mauris vitae ipsum blandit condimentum ut eget quam.</p>
+{% endset %}
+
+{% set date_media %}
+  <time class="bcl-date-block bg-date rounded mw-date text-center d-flex flex-column ratio ratio-1x1" datetime="2021-05-26">
+    <div class="d-flex flex-column pt-2">
+      <div class="d-flex align-item-center bg-white border border-bottom-0 w-100 h-100 text-uppercase justify-content-center gap-2">
+        <div class="d-flex flex-column align-item-center justify-content-center">
+          <div class="date-month lh-1">May</div>
+          <div class="date-day fw-bold fs-4 lh-1">26</div>
+        </div>
+      </div>
+      <div class="bg-lighter border w-100 rounded-bottom py-1 d-flex gap-4 justify-content-center">
+        <div class="date-year year-start">2021</div>
+      </div>
+    </div>
+  </time>
+{% endset %}
+
+{% set clickable_title %}
+  <h2 class="h5 mb-2">Card wrapped in anchor</h2>
+{% endset %}
+
+{% set clickable_content %}
+  <p class="card-text">
+    This entire card is rendered as an anchor tag. Embedded links should be used carefully to avoid invalid interactive nesting.
+  </p>
+  <div class="mt-2">
+    <span class="badge bg-secondary me-2">Static badge</span>
+    <span class="badge rounded-pill bg-primary text-white me-2">Clickable style badge</span>
+    <span class="badge badge-outline-primary rounded-pill">Another badge</span>
+  </div>
+{% endset %}
+
+{% set badges_title %}
+  <h2 class="h5 mb-2">Card with badges</h2>
+{% endset %}
+
+{% set badges_content %}
+  <p class="card-text">
+    This card contains various badges that can represent categories, filters, tags, or actions.
+  </p>
+  <div class="mt-3">
+    <a href="#" class="badge rounded-pill text-bg-primary me-2 mb-2">Solid badge</a>
+    <span class="badge rounded-pill badge-outline-primary me-2 mb-2">Outlined badge</span>
+    <a href="#" class="badge bg-success text-white me-2 mb-2">Clickable success</a>
+    <span class="badge bg-warning text-dark me-2 mb-2">Static warning</span>
+  </div>
+{% endset %}
+
+<div class="vstack gap-4">
+  {% include 'oe_bootstrap_theme:card_v2' with {
+    variant: 'default',
+    title: linked_title,
+    media: media,
+    content: content,
+    header: header,
+    footer: footer,
+  } only %}
+
+  {% include 'oe_bootstrap_theme:card_v2' with {
+    variant: 'horizontal',
+    title: title,
+    media: media_horizontal,
+    content: content,
+  } only %}
+
+  {% include 'oe_bootstrap_theme:card_v2' with {
+    variant: 'default',
+    title: title,
+    content: simple_content,
+  } only %}
+
+  {% include 'oe_bootstrap_theme:card_v2' with {
+    variant: 'horizontal',
+    title: title,
+    media: date_media,
+    content: simple_content,
+  } only %}
+
+  {% include 'oe_bootstrap_theme:card_v2' with {
+    variant: 'default',
+    tag: 'a',
+    attributes: create_attribute({
+      href: 'https://example.com',
+      class: ['position-relative', 'text-decoration-none']
+    }),
+    title: clickable_title,
+    media: media,
+    content: clickable_content,
+    footer: footer,
+  } only %}
+
+  {% include 'oe_bootstrap_theme:card_v2' with {
+    variant: 'default',
+    title: badges_title,
+    media: media,
+    content: badges_content,
+  } only %}
+</div>

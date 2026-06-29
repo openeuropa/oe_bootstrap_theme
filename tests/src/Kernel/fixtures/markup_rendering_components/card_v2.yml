@@ -1,0 +1,112 @@
+card_v2_default:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card_v2
+    '#props':
+      variant: default
+      title:
+        '#markup': 'New title with <b>markup</b>'
+      content:
+        '#markup': '<p>Body content card</p>'
+      footer:
+        '#markup': '<p>Footer content card</p>'
+      header:
+        '#markup': '<p>Header content card</p>'
+      media:
+        '#markup': '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardV2PatternAssert
+      expected:
+        variant: default
+        title: 'New title with <b>markup</b>'
+        tag: article
+        media: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
+        content: '<div class="card-title"> New title with <b>markup</b> </div> <p>Body content card</p>'
+        footer: '<p>Footer content card</p>'
+        header: '<p>Header content card</p>'
+        attributes:
+          class: 'card v2'
+          id: ~
+        media_attributes:
+          class: 'card-media'
+          id: ~
+        content_attributes:
+          class: 'card-body'
+          id: ~
+        header_attributes:
+          class: 'card-header'
+          id: ~
+        footer_attributes:
+          class: 'card-footer'
+          id: ~
+card_v2_horizontal:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card_v2
+    '#props':
+      variant: horizontal
+      tag: div
+      title:
+        '#markup': 'New title with <b>markup</b>'
+      content:
+        '#markup': '<p>Body content card</p>'
+      footer:
+        '#markup': '<p>Footer content card</p>'
+      header:
+        '#markup': '<p>Header content card</p>'
+      media:
+        '#markup': '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardV2PatternAssert
+      expected:
+        variant: horizontal
+        title: 'New title with <b>markup</b>'
+        tag: div
+        media: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
+        content: '<div class="card-title"> New title with <b>markup</b> </div> <p>Body content card</p>'
+        footer: '<p>Footer content card</p>'
+        header: '<p>Header content card</p>'
+        attributes:
+          class: 'card v2 horizontal'
+          id: ~
+card_v2_no_values:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card_v2
+    '#props':
+      variant: default
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardV2PatternAssert
+      expected:
+        variant: default
+        tag: article
+        title: ~
+        media: ~
+        content: ''
+        footer: ~
+        header: ~
+        attributes:
+          class: 'card v2'
+card_v2_only_content:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card_v2
+    '#props':
+      variant: default
+      content: 'Just a simple content.'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardV2PatternAssert
+      expected:
+        variant: default
+        tag: article
+        title: ~
+        media: ~
+        content: 'Just a simple content.'
+        footer: ~
+        header: ~
+        attributes:
+          class: 'card v2'
