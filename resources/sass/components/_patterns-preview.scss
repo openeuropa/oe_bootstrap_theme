@@ -18,3 +18,10 @@
     }
   }
 }
+.components-preview__main {
+  [data-component-id="oe_bootstrap_theme:card"] {
+    img {
+      max-inline-size: 100%;
+    }
+  }
+}
