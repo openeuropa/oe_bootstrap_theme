@@ -1,0 +1,153 @@
+{#
+/**
+ * @file
+ * Card component.
+ */
+#}
+{% apply spaceless %}
+{% set _variant = variant|default('default') %}
+{% set _orientation = orientation|default('vertical') %}
+{% set _attributes = attributes|default(create_attribute()) %}
+
+{% set _content %}
+  {% if meta is not empty %}
+    {# Use negative margin to compensate for me-3 on each item. #}
+    <div class="mt-3 me-n3">
+      {% for _meta_item in meta %}
+        {% if _meta_item is not empty %}
+          <span class="text-muted me-3">{{ _meta_item }}</span>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% set _rendered_content %}
+    {{ content }}
+  {% endset %}
+  {% if _rendered_content|trim is not empty %}
+    <div class="mt-3">{{ _rendered_content }}</div>
+  {% endif %}
+{% endset %}
+
+{% set _badges = [] %}
+{% if badges is not empty %}
+  {% for item in badges %}
+    {% set _badge = item is iterable ? item : { label: item } %}
+    {% set _badges = _badges|merge([{
+      outline: true,
+      rounded_pill: true,
+    }|merge(_badge)]) %}
+  {% endfor %}
+{% endif %}
+
+{% set _image = {} %}
+{% if image is not empty %}
+  {% set _image = image|merge({
+    path: image.path|default(image.src|default('')),
+    alt: image.alt|default(''),
+  }) %}
+{% endif %}
+
+{% set _date = date|default({}) %}
+{% if _date is not empty and (_date.icon_path is not defined or _date.icon_path is empty) %}
+  {% set _date = _date|merge({
+    icon_path: bcl_icon_path(),
+  }) %}
+{% endif %}
+{% set _horizontal_grid = {} %}
+{% if _orientation == 'horizontal' %}
+  {% set _horizontal_grid = {
+    left_col_classes: 'col-4',
+    right_col_classes: 'col-8',
+    gutter: 0,
+  } %}
+  {% if _date is not empty and _image is empty %}
+    {% set _horizontal_grid = {
+      left_col_classes: 'bcl-card-start-col',
+      right_col_classes: 'col',
+      gutter: 0,
+    } %}
+  {% endif %}
+{% endif %}
+
+{% if _variant == 'search' %}
+  {% set _left_col_classes = 'bcl-card-start-col mb-3 mb-lg-0 bcl-size-small' %}
+  {% set _right_col_classes = 'col-12 col-md' %}
+  {% set _image_classes = '' %}
+
+  {# Backward compatibility setting: image is hidden in mobile viewports. #}
+  {% if bc_card_search_image_hide_on_mobile %}
+    {% set _image_classes = 'd-none d-md-block' %}
+  {% endif %}
+
+  {# Backward compatibility setting: card uses grid classes. #}
+  {% if bc_card_search_use_grid_classes %}
+    {% set _left_col_classes = 'col-md-3 col-lg-4 col-xl-2 rounded mw-listing-img mb-md-0 mb-3' %}
+    {% set _right_col_classes = 'col-md-9 col-lg-8 col-xl-10' %}
+  {% endif %}
+  {% if _image.classes is not empty and _image_classes is not empty %}
+    {% set _image_classes = _image.classes ~ ' ' ~ _image_classes %}
+  {% elseif _image.classes is not empty %}
+    {% set _image_classes = _image.classes %}
+  {% endif %}
+
+  {% include '@oe-bcl/card' with {
+    horizontal: true,
+    horizontal_grid: {
+      left_col_classes: _left_col_classes,
+      right_col_classes: _right_col_classes,
+    },
+    extra_classes_body: 'p-0 pb-md-0 pb-3',
+    badges: _badges,
+    title: title,
+    title_tag: title_tag,
+    title_link: title_link,
+    title_attributes: title_attributes,
+    image_copyright: image_copyright,
+    text: (text is not empty) ? {
+      content: text,
+      classes: 'mt-2',
+      tag: 'div',
+    } : {},
+    attributes: _attributes.addClass([
+      'listing-item',
+      'border-bottom',
+      'border-md-0',
+      'border-0',
+      'mb-3',
+    ]),
+    text_color: 'dark',
+    image: (_image is not empty) ? _image|merge({
+      position: _image.position|default('top'),
+      classes: _image_classes,
+    }) : {},
+    date: _date,
+    content: _content,
+  } only %}
+{% else %}
+  {% include '@oe-bcl/card' with {
+    horizontal: _orientation == 'horizontal',
+    horizontal_grid: _horizontal_grid,
+    title: title,
+    title_link: title_link,
+    title_tag: title_tag,
+    title_attributes: title_attributes,
+    image_copyright: image_copyright,
+    image_copyright_label: 'Image credit:'|t,
+    subtitle: (subtitle is not empty) ? {
+      content: subtitle,
+    } : {},
+    text: (text is not empty) ? {
+      content: text,
+      classes: 'mt-2',
+      tag: 'div',
+    } : {},
+    content: _content,
+    image: _image,
+    date: _date,
+    card_header: header,
+    card_footer: footer,
+    badges: _badges,
+    attributes: _attributes,
+  } only %}
+{% endif %}
+{% endapply %}
