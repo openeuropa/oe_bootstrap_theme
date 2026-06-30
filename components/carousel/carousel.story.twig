@@ -1,0 +1,48 @@
+{% include 'oe_bootstrap_theme:carousel' with {
+  title: 'Featured priorities',
+  title_tag: 'h2',
+  carousel_id: 'carousel-sdc-preview',
+  fade: true,
+  show_controls: true,
+  show_indicators: true,
+  autoplay: false,
+  slides: [
+    {
+      image: {
+        src: 'https://picsum.photos/seed/oe-carousel-sdc-1/1000/500',
+        alt: 'Modern building with glass facade'
+      },
+      caption_title: 'Research and innovation',
+      caption: 'Programmes and initiatives supporting sustainable growth across Europe.',
+      interval: 5000,
+      copyright: '© 2026 Example Organisation',
+      link: {
+        label: 'Read more',
+        path: 'https://example.com/research'
+      }
+    },
+    {
+      image: {
+        src: 'https://picsum.photos/seed/oe-carousel-sdc-2/1000/500',
+        alt: 'People walking through a public square'
+      },
+      caption_title: 'Digital services',
+      caption: 'Accessible public services designed around the needs of people and businesses.',
+      interval: 4000,
+      copyright: '© 2026 Example Organisation'
+    },
+    {
+      image: {
+        src: 'https://picsum.photos/seed/oe-carousel-sdc-3/1000/500',
+        alt: 'Coastal landscape at sunset'
+      },
+      caption_title: 'Climate action',
+      caption: 'Policies and projects that help communities adapt and reduce emissions.',
+      interval: 4000,
+      link: {
+        label: 'View priorities',
+        path: 'https://example.com/climate'
+      }
+    }
+  ]
+} only %}
