@@ -4,3 +4,9 @@
     display: none;
   }
 }
+
+.components-preview__main {
+  .carousel img {
+    max-inline-size: 100%;
+  }
+}
