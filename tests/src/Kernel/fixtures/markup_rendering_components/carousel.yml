@@ -1,0 +1,102 @@
+carousel_default:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel
+    '#props':
+      carousel_id: carousel-default
+      slides:
+        - caption: 'First slide caption'
+          caption_title: 'First slide title'
+          interval: 0
+          image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        settings:
+          fade: false
+          show_controls: true
+          show_indicators: false
+          autoplay: true
+          disable_touch: false
+        items:
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
+            caption_title: 'First slide title'
+            caption: 'First slide caption'
+
+carousel_with_all_settings:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel
+    '#props':
+      title: 'Carousel title'
+      title_tag: 'h4'
+      carousel_id: carousel-all-settings
+      fade: true
+      show_controls: true
+      show_indicators: true
+      autoplay: false
+      disable_touch: true
+      slides:
+        - image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+          caption_title: 'First slide title'
+          caption: 'First slide caption'
+          caption_classes: 'caption_classes-1'
+          interval: 1
+          copyright: '© 2024 Example Organisation'
+          link:
+            label: First link
+            path: https://link.one
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        title: 'Carousel title'
+        title_tag: 'h4'
+        settings:
+          fade: true
+          show_controls: true
+          show_indicators: true
+          autoplay: false
+          disable_touch: true
+        items:
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
+            caption_title: 'First slide title'
+            caption: 'First slide caption'
+            caption_classes: 'caption_classes-1'
+            interval: 1
+            copyright: '© 2024 Example Organisation'
+            link:
+              label: First link
+              path: https://link.one
+carousel_settings_disabled:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel
+    '#props':
+      carousel_id: carousel-settings-disabled
+      fade: false
+      show_controls: false
+      show_indicators: false
+      autoplay: false
+      disable_touch: false
+      slides:
+        - image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        settings:
+          fade: false
+          show_controls: false
+          show_indicators: false
+          autoplay: false
+          disable_touch: false
+        items:
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
