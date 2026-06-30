@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Carousel component.
+ */
+#}
+{% set icon_path = icon_path|default(bcl_icon_path()) %}
+{% set items = [] %}
+
+{% for slide in slides|default([]) %}
+  {% set image %}
+    {% if slide.image is defined and slide.image is not empty %}
+      <img{{ create_attribute(slide.image).addClass(['d-block', 'w-100']) }} />
+    {% endif %}
+  {% endset %}
+
+  {% set item = slide|merge({ image: image }) %}
+  {% if slide.link is defined and slide.link is not empty %}
+    {% set item = item|merge({
+      link: slide.link|merge({
+        icon_position: slide.link.icon_position|default('before'),
+        icon: slide.link.icon|default({})|merge({
+          name: slide.link.icon.name|default('link'),
+          path: slide.link.icon.path|default(icon_path),
+        }),
+      }),
+    }) %}
+  {% endif %}
+
+  {% set items = items|merge([item]) %}
+{% endfor %}
+
+{% include '@oe-bcl/carousel' with {
+  copyright_label: 'Image credit:'|t,
+  title: title,
+  title_tag: title_tag|default('h2'),
+  id: carousel_id,
+  autoplay: autoplay ?? true,
+  dark: dark_mode,
+  active_item: active_item,
+  items: items,
+  fade: fade ?? false,
+  with_controls: show_controls ?? true,
+  prev_label: 'Previous'|t,
+  next_label: 'Next'|t,
+  with_indicators: show_indicators ?? false,
+  disable_touch: disable_touch ?? false,
+  attributes: attributes,
+} only %}
