@@ -22,6 +22,7 @@ blockquote:
     equals:
       'h4.bcl-heading': 'The blockquote title'
       'blockquote.blockquote p': 'A well-known quote, contained in a blockquote element.'
+      'figcaption.blockquote-footer': 'Someone famous in <cite title="Source title">Source title</cite>'
       'cite[title="Source title"]': 'Source title'
 blockquote_right_alignment_no_title_tag:
   render:
@@ -46,6 +47,7 @@ blockquote_right_alignment_no_title_tag:
     equals:
       'h2.bcl-heading': 'The blockquote title'
       'blockquote.blockquote p': 'A well-known quote, contained in a blockquote element.'
+      'figcaption.blockquote-footer': 'Someone famous in <cite title="Source title">Source title</cite>'
       'cite[title="Source title"]': 'Source title'
 blockquote_with_no_cite_no_alignment_no_title:
   render:

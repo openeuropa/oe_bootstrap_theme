@@ -1,8 +1,33 @@
+{% set _quote = 'A well-known quote, contained in a blockquote element.' %}
+{% set _attribution = 'Someone famous in' %}
+{% set _cite = 'Source title' %}
+
+<h3>Left alignment</h3>
 {% include 'oe_bootstrap_theme:blockquote' with {
   title: 'The blockquote title',
   title_tag: 'h4',
   alignment: 'left',
-  quote: 'A well-known quote, contained in a blockquote element.',
-  attribution: 'Someone famous in',
-  cite: 'Source title',
+  quote: _quote,
+  attribution: _attribution,
+  cite: _cite,
+} only %}
+
+<h3>Center alignment</h3>
+{% include 'oe_bootstrap_theme:blockquote' with {
+  title: 'The blockquote title',
+  title_tag: 'h4',
+  alignment: 'center',
+  quote: _quote,
+  attribution: _attribution,
+  cite: _cite,
+} only %}
+
+<h3>Right alignment</h3>
+{% include 'oe_bootstrap_theme:blockquote' with {
+  title: 'The blockquote title',
+  title_tag: 'h4',
+  alignment: 'end',
+  quote: _quote,
+  attribution: _attribution,
+  cite: _cite,
 } only %}
