@@ -6,6 +6,7 @@ breadcrumb:
       items:
         - path: '/index'
           label: 'Home'
+          id: breadcrumb-home-link
         - path: '/example'
           label: 'About the European Commission'
         - path: 'https://example.com'
@@ -15,9 +16,10 @@ breadcrumb:
       'nav[aria-label="breadcrumb"]': 1
       'ol.breadcrumb': 1
       'li.breadcrumb-item': 3
-      'li.breadcrumb-item:nth-child(1) a[href="/index"]': 1
+      'li.breadcrumb-item:nth-child(1) a[href="/index"]#breadcrumb-home-link': 1
       'li.breadcrumb-item:nth-child(2) a[href="/example"]': 1
       'li.breadcrumb-item:nth-child(3) a[href="https://example.com"]': 1
+      'li.breadcrumb-item:nth-child(3).active[aria-current="page"]': 1
       'li.breadcrumb-item:nth-child(2) a svg.d-md-none.bi.icon--s': 1
       'svg.d-md-none.ms-0.me-2.me-2-5.bi.icon--s': 1
     equals:
