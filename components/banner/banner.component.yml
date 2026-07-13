@@ -7,24 +7,27 @@ props:
       title: Variant
       type: string
       description: 'The banner variant. Defaults to default.'
+      default: default
       enum:
+        - ''
         - default
         - primary
         - image
         - image_shade
       'meta:enum':
+        '': 'Default text banner'
         default: 'Default text banner'
         primary: 'Primary text banner'
         image: 'Image banner'
         image_shade: 'Image shade banner'
-    shade:
-      title: Shade
-      type: boolean
-      description: 'Enables the shadow effect to the image. Defaults to false.'
     hero:
       title: Hero
       type: boolean
       description: 'Displays as hero banner. Defaults to false.'
+    shade:
+      title: Shade
+      type: boolean
+      description: 'Enables the shadow effect to the image. Defaults to true for the image shade variant and false otherwise.'
     full_width:
       title: 'Full width'
       type: boolean
