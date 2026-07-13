@@ -16,8 +16,8 @@ props:
             description: 'Link label text or render array.'
           path:
             title: Path
-            type: string
-            description: 'Link URL.'
+            type: [string, object]
+            description: 'Link URL string or URL object.'
           id:
             title: ID
             type: string
