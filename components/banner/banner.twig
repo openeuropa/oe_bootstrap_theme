@@ -4,7 +4,8 @@
  * Banner component.
  */
 #}
-{% set _variant = variant|default('default') %}
+{% set _variant = variant ?: 'default' %}
+{% set _shade = shade ?? _variant == 'image_shade' %}
 {% set _attributes = attributes|default(create_attribute()) %}
 
 {% if _variant == 'primary' %}
@@ -30,7 +31,7 @@
 {% endif %}
 
 {% include '@oe-bcl/banner' with {
-  shade: _variant == 'image_shade' ? true : shade,
+  shade: _shade,
   hero: hero,
   full_width: full_width,
   centered: centered,
