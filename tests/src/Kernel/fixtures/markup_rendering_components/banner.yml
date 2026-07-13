@@ -181,12 +181,12 @@ banner_with_custom_attributes_and_content_classes:
   render:
     '#type': component
     '#component': oe_bootstrap_theme:banner
-    '#attributes':
-      class:
-        - custom-banner-class
-      id: banner-id
-      data-banner-attribute: banner-attr-value
     '#props':
+      attributes:
+        class:
+          - custom-banner-class
+        id: banner-id
+        data-banner-attribute: banner-attr-value
       title: 'EU Budget for the future'
       description: 'Innovation, economy, environment and geopolitics'
       content_classes: 'custom-content-class another-content-class'
