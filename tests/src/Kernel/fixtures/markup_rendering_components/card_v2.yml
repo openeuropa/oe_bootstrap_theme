@@ -40,6 +40,78 @@ card_v2_default:
         footer_attributes:
           class: 'card-footer'
           id: ~
+card_v2_default_with_custom_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card_v2
+    '#props':
+      variant: default
+      title:
+        '#markup': 'New title with <b>markup</b>'
+      content:
+        '#markup': '<p>Body content card</p>'
+      footer:
+        '#markup': '<p>Footer content card</p>'
+      header:
+        '#markup': '<p>Header content card</p>'
+      media:
+        '#markup': '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
+      attributes:
+        class:
+          - card-class
+        id: card-id
+        data-card-attribute: card-attr-value
+      media_attributes:
+        class:
+          - media-class
+        id: media-id
+        data-media-attribute: media-attr-value
+      content_attributes:
+        class:
+          - content-class
+        id: content-id
+        data-content-attribute: content-attr-value
+      header_attributes:
+        class:
+          - header-class
+        id: header-id
+        data-header-attribute: header-attr-value
+      footer_attributes:
+        class:
+          - footer-class
+        id: footer-id
+        data-footer-attribute: footer-attr-value
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardV2PatternAssert
+      expected:
+        variant: default
+        title: 'New title with <b>markup</b>'
+        tag: article
+        media: '<img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">'
+        content: '<div class="card-title"> New title with <b>markup</b> </div> <p>Body content card</p>'
+        footer: '<p>Footer content card</p>'
+        header: '<p>Header content card</p>'
+        attributes:
+          class: 'card-class card v2'
+          id: card-id
+          data-card-attribute: card-attr-value
+        media_attributes:
+          class: 'media-class card-media'
+          id: media-id
+          data-media-attribute: media-attr-value
+        content_attributes:
+          class: 'content-class card-body'
+          id: content-id
+          data-content-attribute: content-attr-value
+        header_attributes:
+          class: 'header-class card-header'
+          id: header-id
+          data-header-attribute: header-attr-value
+        footer_attributes:
+          class: 'footer-class card-footer'
+          id: footer-id
+          data-footer-attribute: footer-attr-value
 card_v2_horizontal:
   render:
     '#type': component
@@ -106,6 +178,29 @@ card_v2_only_content:
         title: ~
         media: ~
         content: 'Just a simple content.'
+        footer: ~
+        header: ~
+        attributes:
+          class: 'card v2'
+card_v2_default_content_and_title:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card_v2
+    '#props':
+      variant: default
+      title:
+        '#markup': 'New title with <b>markup</b>'
+      content:
+        '#markup': '<p>Body content card</p>'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardV2PatternAssert
+      expected:
+        variant: default
+        tag: article
+        title: 'New title with <b>markup</b>'
+        media: ~
+        content: '<div class="card-title"> New title with <b>markup</b> </div> <p>Body content card</p>'
         footer: ~
         header: ~
         attributes:
