@@ -141,4 +141,17 @@
     media: media,
     content: badges_content,
   } only %}
+
+  {% include 'oe_bootstrap_theme:card_v2' with {
+    variant: 'default',
+    title: title,
+    media: media,
+    content: simple_content,
+    header: header,
+    footer: footer,
+    media_attributes: create_attribute().addClass(['bg-info-subtle']),
+    content_attributes: create_attribute().addClass(['bg-warning-subtle']),
+    header_attributes: create_attribute().addClass(['bg-primary-subtle']),
+    footer_attributes: create_attribute().addClass(['bg-success-subtle']),
+  } only %}
 </div>

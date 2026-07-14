@@ -17,6 +17,14 @@ props:
       title: 'HTML wrapper tag'
       type: string
       description: 'Semantic element for the outer wrapper. Defaults to article.'
+      enum:
+        - article
+        - section
+        - div
+      'meta:enum':
+        article: '<article> (default)'
+        section: '<section>'
+        div: '<div>'
     title:
       title: Title
       type: [string, array, object]

@@ -213,8 +213,12 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     // Drupal 10.6 SDC validates Attribute props as objects, while YAML
     // fixtures can only provide arrays. Normalize them for test rendering.
     // @todo Remove this when Drupal 10.6 support is dropped.
-    if (($render_array['#type'] ?? NULL) === 'component' && is_array($render_array['#props']['attributes'] ?? NULL)) {
-      $render_array['#props']['attributes'] = new Attribute($render_array['#props']['attributes']);
+    if (($render_array['#type'] ?? NULL) === 'component') {
+      foreach (['attributes', 'media_attributes', 'content_attributes', 'header_attributes', 'footer_attributes'] as $attribute_prop) {
+        if (is_array($render_array['#props'][$attribute_prop] ?? NULL)) {
+          $render_array['#props'][$attribute_prop] = new Attribute($render_array['#props'][$attribute_prop]);
+        }
+      }
     }
 
     $form['test'] = $render_array;
