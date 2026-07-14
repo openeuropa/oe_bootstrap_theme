@@ -99,10 +99,6 @@ props:
       title: Autoplay
       type: boolean
       description: 'Whether to initialise and animate the carousel at page load. Defaults to true.'
-    autoinit:
-      title: 'Auto init'
-      type: boolean
-      description: 'Deprecated in favour of autoplay.'
     disable_touch:
       title: 'Disable touch'
       type: boolean

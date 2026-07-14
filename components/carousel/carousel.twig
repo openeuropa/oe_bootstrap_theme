@@ -5,6 +5,7 @@
  */
 #}
 {% set icon_path = icon_path|default(bcl_icon_path()) %}
+{% set carousel_id = carousel_id|default('carousel'|clean_unique_id) %}
 {% set items = [] %}
 
 {% for slide in slides|default([]) %}
