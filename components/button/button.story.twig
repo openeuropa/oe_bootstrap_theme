@@ -62,6 +62,29 @@
     } only %}
 
     {% include 'oe_bootstrap_theme:button' with {
+      label: 'Large icon spacing',
+      variant: 'primary',
+      icon: 'arrow-right',
+      icon_spacing: 'lg',
+    } only %}
+
+    {% include 'oe_bootstrap_theme:button' with {
+      label: 'Rotated icon',
+      variant: 'primary',
+      icon: {
+        name: 'arrow-right',
+        transformation: 'rotate-90',
+      },
+    } only %}
+
+    {% include 'oe_bootstrap_theme:button' with {
+      label: 'No icon spacer',
+      variant: 'primary',
+      icon: 'arrow-right',
+      remove_icon_spacers: true,
+    } only %}
+
+    {% include 'oe_bootstrap_theme:button' with {
       label: 'Loading',
       variant: 'primary',
       show_spinner: true,
@@ -69,6 +92,13 @@
         size: 'sm',
         assistive_text: 'Loading',
       },
+    } only %}
+  </div>
+
+  <div>
+    {% include 'oe_bootstrap_theme:button' with {
+      label: 'Clean class',
+      clean_class: true,
     } only %}
   </div>
 </div>
