@@ -128,3 +128,87 @@ button_with_assistive_text_and_spinner:
     equals:
       'button > span.visually-hidden': 'Form action'
       'button > div.spinner-border span.visually-hidden': 'Loading'
+button_with_id:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      type: button
+      id: button-id
+      label: 'Button label'
+  assertions:
+    count:
+      'button#button-id': 1
+      'button.btn.btn-primary': 1
+button_disabled_via_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      type: button
+      label: 'Button label'
+      attributes:
+        disabled: true
+  assertions:
+    count:
+      'button[disabled]': 1
+      'button[aria-disabled="true"]': 1
+button_with_icon_spacing:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      type: button
+      label: 'Button label'
+      icon: arrow-right
+      icon_spacing: lg
+  assertions:
+    count:
+      'button.gap-lg-2-5': 1
+    contains:
+      'svg': '#arrow-right'
+button_with_icon_transformation:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      type: button
+      label: 'Button label'
+      icon:
+        name: arrow-right
+        transformation: rotate-90
+  assertions:
+    count:
+      'svg.icon--rotate-90': 1
+button_clean_class:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      type: button
+      label: 'Button label'
+      clean_class: true
+  assertions:
+    count:
+      'button': 1
+      'button.btn': 0
+      'button.btn-primary': 0
+button_icon_without_spacer:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      type: button
+      label: 'Button label'
+      icon: arrow-right
+      remove_icon_spacers: true
+  assertions:
+    count:
+      'svg': 1
+      'button.gap-2-5': 0
