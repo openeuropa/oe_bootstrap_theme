@@ -131,12 +131,14 @@ card_with_date_range:
         end_year: "2022"
         end_month: "Feb"
         end_day: "11"
+        date_time: '2021-01-23'
   assertions:
     count:
       '.row .bcl-card-start-col': 1
       '.row .col': 1
       '.row .col-4': 0
       '.row .col-8': 0
+      'time[datetime="2021-01-23"]': 1
     equals:
       'article.card .card-title': 'Title card'
       'time > div > div > div:nth-of-type(1) .date-month': 'Jan'
@@ -165,3 +167,58 @@ card_with_image_copyright:
       'article.card .bcl-card__image-footer .bcl-copyright': 1
     equals:
       'article.card .bcl-copyright': '<span class="visually-hidden">Image credit: </span>© 2024 Example Organisation'
+card_title_link_full_options:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card
+    '#props':
+      variant: default
+      title: 'Title card'
+      title_link:
+        label: 'Custom link label'
+        path: 'https://example.com'
+        variant: warning
+        id: 'card-title-link'
+        disabled: true
+        icon:
+          name: arrow-right
+      text: 'Text card with longer text which is supported'
+  assertions:
+    count:
+      '.card-title a.link-warning#card-title-link.disabled[href="https://example.com"][aria-disabled="true"]': 1
+      '.card-title a svg': 1
+    contains:
+      '.card-title a': 'Custom link label'
+      '.card-title a svg': '#arrow-right'
+card_with_image_position_bottom:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card
+    '#props':
+      variant: default
+      title: 'Title card'
+      image:
+        src: 'https://picsum.photos/1000/500/'
+        alt: 'Alternative text for card image'
+        position: bottom
+        classes: 'custom-bottom-class'
+  assertions:
+    count:
+      'article.card img.card-img-bottom.custom-bottom-class': 1
+      'article.card img.card-img-top': 0
+card_with_image_rounded:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card
+    '#props':
+      variant: default
+      orientation: horizontal
+      title: 'Title card'
+      image:
+        src: 'https://picsum.photos/500/500/'
+        alt: 'Alternative text for card image'
+        rounded: circle
+  assertions:
+    count:
+      'article.card > div.row.g-0': 1
+      'article.card img.card-img-top.rounded-circle': 1

@@ -46,8 +46,6 @@ props:
           type: string
         disabled:
           type: boolean
-        standalone:
-          type: boolean
         icon:
           type: object
           properties:
