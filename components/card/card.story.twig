@@ -91,4 +91,29 @@
       end_day: '11',
     },
   } only %}
+
+  {% include 'oe_bootstrap_theme:card' with {
+    variant: 'default',
+    title: 'Card with a linked title',
+    title_link: {
+      path: 'https://example.com',
+      variant: 'warning',
+      icon: {
+        name: 'arrow-right',
+      },
+    },
+    text: 'This card includes a longer description to show how body text wraps across multiple lines in the component preview.',
+  } only %}
+
+  {% include 'oe_bootstrap_theme:card' with {
+    variant: 'default',
+    orientation: 'horizontal',
+    title: 'Card with a rounded image',
+    text: 'This card includes a longer description to show how body text wraps across multiple lines in the component preview.',
+    image: {
+      src: 'https://picsum.photos/500/500/',
+      alt: 'Alternative text for card image',
+      rounded: 'circle',
+    },
+  } only %}
 </div>

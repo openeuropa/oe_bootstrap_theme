@@ -9,6 +9,13 @@
 {% set _orientation = orientation|default('vertical') %}
 {% set _attributes = attributes|default(create_attribute()) %}
 
+{% set _title_link = title_link|default({}) %}
+{% if _title_link.icon is defined and _title_link.icon is not empty and _title_link.icon.path is not defined %}
+  {% set _title_link = _title_link|merge({
+    icon: _title_link.icon|merge({path: bcl_icon_path()})
+  }) %}
+{% endif %}
+
 {% set _content %}
   {% if meta is not empty %}
     {# Use negative margin to compensate for me-3 on each item. #}
@@ -100,7 +107,7 @@
     badges: _badges,
     title: title,
     title_tag: title_tag,
-    title_link: title_link,
+    title_link: _title_link,
     title_attributes: title_attributes,
     image_copyright: image_copyright,
     text: (text is not empty) ? {
@@ -128,7 +135,7 @@
     horizontal: _orientation == 'horizontal',
     horizontal_grid: _horizontal_grid,
     title: title,
-    title_link: title_link,
+    title_link: _title_link,
     title_tag: title_tag,
     title_attributes: title_attributes,
     image_copyright: image_copyright,
