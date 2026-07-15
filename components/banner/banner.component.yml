@@ -9,13 +9,11 @@ props:
       description: 'The banner variant. Defaults to default.'
       default: default
       enum:
-        - ''
         - default
         - primary
         - image
         - image_shade
       'meta:enum':
-        '': 'Default text banner'
         default: 'Default text banner'
         primary: 'Primary text banner'
         image: 'Image banner'
