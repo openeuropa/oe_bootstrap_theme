@@ -4,7 +4,7 @@
  * Banner component.
  */
 #}
-{% set _variant = variant ?: 'default' %}
+{% set _variant = variant|default('default') %}
 {% set _shade = shade ?? _variant == 'image_shade' %}
 {% set _attributes = attributes|default(create_attribute()) %}
 
