@@ -33,6 +33,7 @@ banner_default_props_omitted:
     '#type': component
     '#component': oe_bootstrap_theme:banner
     '#props':
+      variant: default
       title: 'EU Budget for the future'
       description: 'Innovation, economy, environment and geopolitics'
   assertions:
@@ -182,6 +183,7 @@ banner_with_custom_attributes_and_content_classes:
     '#type': component
     '#component': oe_bootstrap_theme:banner
     '#props':
+      variant: default
       attributes:
         class:
           - custom-banner-class
