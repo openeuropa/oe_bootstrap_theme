@@ -49,6 +49,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     'description_list',
     'progress',
     'timeline',
+    'section',
   ];
 
   /**

@@ -1,0 +1,82 @@
+section_default:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:section
+    '#props':
+      heading: 'This is the heading of the section'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\SectionPatternAssert
+      expected:
+        tag: section
+        heading_tag: h2
+        heading: 'This is the heading of the section'
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
+section_with_custom_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:section
+    '#props':
+      attributes:
+        class:
+          - content-wrapper
+        id: section-id
+        data-attribute: some-value
+      wrapper_attributes:
+        class:
+          - content-body
+        id: wrapper-id
+        data-wrapper-attribute: wrapper-value
+      heading_attributes:
+        class:
+          - content-heading
+        id: heading-id
+        data-heading-attribute: heading-value
+      heading: 'This is the heading of the section'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\SectionPatternAssert
+      expected:
+        attributes:
+          class: 'content-wrapper section'
+          id: section-id
+          data-attribute: some-value
+        wrapper_attributes:
+          class: 'content-body section__body'
+          id: wrapper-id
+          data-wrapper-attribute: wrapper-value
+        heading_attributes:
+          class: 'content-heading section__title'
+          id: heading-id
+          data-heading-attribute: heading-value
+section_with_custom_tags:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:section
+    '#props':
+      tag: article
+      heading_tag: h3
+      heading: 'This is the heading of the section'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\SectionPatternAssert
+      expected:
+        tag: article
+        heading_tag: h3
+        heading: 'This is the heading of the section'
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
+section_with_no_title:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:section
+    '#props':
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\SectionPatternAssert
+      expected:
+        heading: ~
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
