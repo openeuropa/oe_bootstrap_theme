@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Timeline component.
+ */
+#}
+{% include '@oe-bcl/timeline' with {
+  toggle_collapsed: collapse_button_label|default('Show more %d items'|t),
+  toggle_expanded: expand_button_label|default('Hide %d items'|t),
+  hide: {
+    from: hide_from,
+    to: hide_to|default(0),
+  },
+  items: items,
+  icon_path: icon_path|default(bcl_icon_path()),
+  attributes: attributes,
+  title: title,
+  title_tag: title_tag,
+} only %}
