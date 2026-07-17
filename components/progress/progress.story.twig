@@ -1,0 +1,66 @@
+{% set examples = [
+  {
+    style: 'primary',
+    striped: true,
+    animated: true,
+    progress: 60,
+    label: 'Primary progress',
+    message: 'Progress bar description',
+  },
+  {
+    style: 'secondary',
+    progress: 45,
+    label: 'Secondary progress',
+  },
+  {
+    style: 'success',
+    progress: 75,
+    label: 'Success progress',
+    message: 'Most of the work is complete.',
+  },
+  {
+    style: 'danger',
+    progress: 25,
+    label: 'Danger progress',
+  },
+  {
+    style: 'warning',
+    progress: 50,
+    label: 'Warning progress',
+  },
+  {
+    style: 'info',
+    progress: 65,
+    label: 'Info progress',
+  },
+  {
+    style: 'light',
+    progress: 35,
+    label: 'Light progress',
+    wrapper_attributes: create_attribute().addClass(['bg-secondary', 'p-3', 'text-white']),
+  },
+  {
+    style: 'dark',
+    progress: 85,
+    label: 'Dark progress',
+  },
+] %}
+
+<div class="vstack gap-4">
+  {% for example in examples %}
+    {% set wrapper_attributes = example.wrapper_attributes|default(create_attribute()) %}
+    <div{{ wrapper_attributes }}>
+      {% include 'oe_bootstrap_theme:progress' with {
+        style: example.style,
+        striped: example.striped|default(false),
+        animated: example.animated|default(false),
+        progress: example.progress,
+        min: 0,
+        max: 100,
+        label: example.label,
+        text: example.progress ~ '%',
+        message: example.message|default(''),
+      } only %}
+    </div>
+  {% endfor %}
+</div>
