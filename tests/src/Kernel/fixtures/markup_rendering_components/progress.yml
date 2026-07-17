@@ -1,0 +1,64 @@
+progress_primary_striped_animated:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:progress
+    '#props':
+      style: primary
+      striped: true
+      animated: true
+      progress: 60
+      min: 10
+      max: 90
+      label: 'Progress label'
+      text: 'Bar label'
+      message: 'Progress bar description'
+  assertions:
+    count:
+      'div[data-component-id="oe_bootstrap_theme:progress"]': 1
+      'div.progress-bar': 1
+      'div.progress': 1
+      'div[role="progressbar"]': 1
+      'div[style="width: 60%"]': 1
+      'div[aria-valuenow="60"]': 1
+      'div[aria-valuemin="10"]': 1
+      'div[aria-valuemax="90"]': 1
+      'small.progress-bar-message': 1
+      'div.text-bg-primary': 1
+      'div.progress-bar-animated': 1
+      'div.progress-bar-striped': 1
+    contains:
+      'label.progress-bar-label': 'Progress label'
+      'div.progress': 'Bar label'
+      'small.progress-bar-message': 'Progress bar description'
+progress_light_non_striped_non_animated:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:progress
+    '#props':
+      style: light
+      striped: false
+      animated: false
+      progress: 60
+      min: 10
+      max: 90
+      label: 'Progress label'
+      text: 'Bar label'
+      message: 'Progress bar description'
+  assertions:
+    count:
+      'div[data-component-id="oe_bootstrap_theme:progress"]': 1
+      'div.progress-bar': 1
+      'div.progress': 1
+      'div[role="progressbar"]': 1
+      'div[style="width: 60%"]': 1
+      'div[aria-valuenow="60"]': 1
+      'div[aria-valuemin="10"]': 1
+      'div[aria-valuemax="90"]': 1
+      'small.progress-bar-message': 1
+      'div.text-bg-light': 1
+      'div.progress-bar-animated': 0
+      'div.progress-bar-striped': 0
+    contains:
+      'label.progress-bar-label': 'Progress label'
+      'div.progress': 'Bar label'
+      'small.progress-bar-message': 'Progress bar description'
