@@ -1,0 +1,68 @@
+name: 'Fact and Figures'
+description: 'Fact and Figures pattern used for the paragraph of same type.'
+props:
+  type: object
+  properties:
+    title:
+      title: Title
+      type: [string, array, object]
+      description: 'Title of the facts and figures section.'
+    title_tag:
+      title: 'Title tag'
+      type: string
+      description: 'The tag to use for the title. Defaults to h2.'
+    columns:
+      title: Columns
+      type: number
+      description: 'One, two or three columns layout for responsive. Defaults to 3.'
+    items:
+      title: Items
+      type: array
+      description: 'List of facts, with icon, title, subtitle and content.'
+      items:
+        type: object
+        properties:
+          icon:
+            title: Icon
+            description: 'Icon name or icon object.'
+            anyOf:
+              - type: string
+              - type: object
+                properties:
+                  name:
+                    type: string
+                  size:
+                    type: string
+                  path:
+                    type: string
+                  attributes:
+                    type: object
+          title:
+            title: Title
+            type: [string, array, object]
+          subtitle:
+            title: Subtitle
+            type: [string, array, object]
+          description:
+            title: Description
+            type: [string, array, object]
+    link:
+      title: Link
+      type: object
+      description: 'Additional link to be displayed after facts.'
+      properties:
+        label:
+          type: [string, array, object]
+        path:
+          type: [string, object]
+        url:
+          type: [string, object]
+        attributes:
+          type: object
+    icon_path:
+      title: 'Icons path'
+      type: string
+      description: 'Path to icons.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute
