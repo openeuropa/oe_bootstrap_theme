@@ -1,0 +1,80 @@
+{% set items = [
+  {
+    icon: 'sticky',
+    title: '1529 JIRA Ticket',
+    subtitle: 'Jira Tickets',
+    description: 'Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum liber',
+  },
+  {
+    icon: 'inboxes',
+    title: '337 Features',
+    subtitle: 'Feature tickets',
+    description: 'Turpis varius congue venenatis, erat dui feugiat felis.',
+  },
+  {
+    icon: 'shield-check',
+    title: '107 Tests',
+    subtitle: 'Test tickets',
+    description: 'Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem.',
+  },
+  {
+    icon: 'file-earmark-code',
+    title: '5670 Variants',
+    subtitle: 'Test variants',
+    description: 'Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum.',
+  },
+  {
+    icon: 'inbox',
+    title: '345 Dev Ticket',
+    subtitle: 'Jira ticket',
+    description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor.',
+  },
+  {
+    icon: 'eye',
+    title: '43 Components',
+    subtitle: 'Figma components',
+    description: 'Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur.',
+  },
+] %}
+
+<div class="vstack gap-5">
+  <div>
+    <h3>One column</h3>
+    {% include 'oe_bootstrap_theme:fact_figures' with {
+      title: 'Fact and figures block',
+      title_tag: 'h3',
+      columns: 1,
+      items: items,
+      link: {
+        label: 'Read more',
+        path: '/example',
+      },
+    } only %}
+  </div>
+
+  <div>
+    <h3>Two columns</h3>
+    {% include 'oe_bootstrap_theme:fact_figures' with {
+      title: 'Fact and figures block',
+      columns: 2,
+      items: items,
+      link: {
+        label: 'Read more',
+        path: '/example',
+      },
+    } only %}
+  </div>
+
+  <div>
+    <h3>Three columns</h3>
+    {% include 'oe_bootstrap_theme:fact_figures' with {
+      title: 'Fact and figures block',
+      columns: 3,
+      items: items,
+      link: {
+        label: 'Read more',
+        path: '/example',
+      },
+    } only %}
+  </div>
+</div>

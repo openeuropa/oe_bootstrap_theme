@@ -1,0 +1,158 @@
+fact_figures_default_1col:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:fact_figures
+    '#props':
+      columns: 1
+      link:
+        label: 'Read more'
+        path: '/example'
+      title: 'Fact and figures block'
+      title_tag: 'h3'
+      items:
+        - icon: 'sticky'
+          subtitle: 'Jira Tickets'
+          title: '1529 JIRA Ticket'
+          description: 'Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum liber'
+        - icon: 'inboxes'
+          subtitle: 'Feature tickets'
+          title: '337 Features'
+          description: 'Turpis varius congue venenatis, erat dui feugiat felis.'
+        - icon: 'shield-check'
+          subtitle: 'Test tickets'
+          title: '107 Tests'
+          description: 'Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem.'
+        - icon: 'file-earmark-code'
+          subtitle: 'Test variants'
+          title: '5670 Variants'
+          description: 'Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum.'
+        - icon: 'inbox'
+          subtitle: 'Jira ticket'
+          title: '345 Dev Ticket'
+          description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor.'
+        - icon: 'eye'
+          subtitle: 'Figma components'
+          title: '43 Components'
+          description: 'Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur.'
+  assertions:
+    count:
+      'div[data-component-id="oe_bootstrap_theme:fact_figures"].bcl-fact-figures.bcl-fact-figures--default': 1
+      'h3.bcl-heading': 1
+      'div.row.row-cols-md-1': 1
+      'svg.bi.icon--l': 6
+      'svg use': 6
+    contains:
+      'svg': '#sticky'
+      'a[href="/example"]': 'Read more'
+    equals:
+      'h3.bcl-heading': 'Fact and figures block'
+      'div > div.col:nth-child(1) > div.fs-4': '1529 JIRA Ticket'
+      'div > div.col:nth-child(2) > div.fs-4': '337 Features'
+      'div > div.col:nth-child(3) > div.fs-4': '107 Tests'
+      'div > div.col:nth-child(4) > div.fs-4': '5670 Variants'
+      'div > div.col:nth-child(5) > div.fs-4': '345 Dev Ticket'
+      'div > div.col:nth-child(6) > div.fs-4': '43 Components'
+      'div > div.col:nth-child(1) > div.fs-5': 'Jira Tickets'
+      'div > div.col:nth-child(2) > div.fs-5': 'Feature tickets'
+      'div > div.col:nth-child(3) > div.fs-5': 'Test tickets'
+      'div > div.col:nth-child(4) > div.fs-5': 'Test variants'
+      'div > div.col:nth-child(5) > div.fs-5': 'Jira ticket'
+      'div > div.col:nth-child(6) > div.fs-5': 'Figma components'
+      'a[href="/example"]': 'Read more'
+fact_figures_default_2col:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:fact_figures
+    '#props':
+      columns: 2
+      link:
+        label: 'Read more'
+        path: '/example'
+      title: 'Fact and figures block'
+      items:
+        - icon: 'sticky'
+          subtitle: 'Jira Tickets'
+          title: '1529 JIRA Ticket'
+          description: 'Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum liber'
+        - icon: 'inboxes'
+          subtitle: 'Feature tickets'
+          title: '337 Features'
+          description: 'Turpis varius congue venenatis, erat dui feugiat felis.'
+        - icon: 'shield-check'
+          subtitle: 'Test tickets'
+          title: '107 Tests'
+          description: 'Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem.'
+        - icon: 'file-earmark-code'
+          subtitle: 'Test variants'
+          title: '5670 Variants'
+          description: 'Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum.'
+        - icon: 'inbox'
+          subtitle: 'Jira ticket'
+          title: '345 Dev Ticket'
+          description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor. '
+        - icon: 'eye'
+          subtitle: 'Figma components'
+          title: '43 Components'
+          description: 'Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur.'
+  assertions:
+    count:
+      'div[data-component-id="oe_bootstrap_theme:fact_figures"].bcl-fact-figures.bcl-fact-figures--default': 1
+      'h2.bcl-heading': 1
+      'div.row.row-cols-md-2': 1
+      'svg.bi.icon--l': 6
+    equals:
+      'h2.bcl-heading': 'Fact and figures block'
+      'div > div.col:nth-child(1) > div.fs-4': '1529 JIRA Ticket'
+      'div > div.col:nth-child(6) > div.fs-4': '43 Components'
+      'a[href="/example"]': 'Read more'
+fact_figures_default_3col:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:fact_figures
+    '#props':
+      columns: 3
+      link:
+        label: 'Read more'
+        path: '/example'
+      title: 'Fact and figures block'
+      items:
+        - icon: 'sticky'
+          subtitle: 'Jira Tickets'
+          title: '1529 JIRA Ticket'
+          description: 'Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum liber'
+        - icon: 'inboxes'
+          subtitle: 'Feature tickets'
+          title: '337 Features'
+          description: 'Turpis varius congue venenatis, erat dui feugiat felis.'
+        - icon: 'shield-check'
+          subtitle: 'Test tickets'
+          title: '107 Tests'
+          description: 'Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem.'
+        - icon: 'file-earmark-code'
+          subtitle: 'Test variants'
+          title: '5670 Variants'
+          description: 'Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum.'
+        - icon:
+            name: 'inbox'
+          subtitle: 'Jira ticket'
+          title: '345 Dev Ticket'
+          description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor. '
+        - icon: 'eye'
+          subtitle: 'Figma components'
+          title: '43 Components'
+          description: 'Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur.'
+  assertions:
+    count:
+      'div[data-component-id="oe_bootstrap_theme:fact_figures"].bcl-fact-figures.bcl-fact-figures--default': 1
+      'h2.bcl-heading': 1
+      'div.row.row-cols-md-3': 1
+      'div.row.row-cols-sm-2': 1
+      'svg.bi.icon--l': 6
+    contains:
+      'div > div.col:nth-child(5) > svg': '#inbox'
+      'a[href="/example"]': 'Read more'
+    equals:
+      'h2.bcl-heading': 'Fact and figures block'
+      'div > div.col:nth-child(1) > div.fs-4': '1529 JIRA Ticket'
+      'div > div.col:nth-child(6) > div.fs-4': '43 Components'
+      'a[href="/example"]': 'Read more'
