@@ -1,0 +1,20 @@
+name: Columns
+description: 'Renders content organised in columns of equal width.'
+props:
+  type: object
+  properties:
+    items:
+      title: Items
+      type: array
+      description: 'The items to organize in columns. Accepts any render array.'
+    columns:
+      title: Columns
+      type: number
+      description: 'The number of columns. Defaults to 4.'
+    tag:
+      title: Tag
+      type: string
+      description: 'HTML tag to use for the wrapper. Defaults to div.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute
