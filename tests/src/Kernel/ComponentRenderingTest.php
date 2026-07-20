@@ -10,6 +10,7 @@ use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Site\Settings;
+use Drupal\Core\Template\Attribute;
 use Drupal\KernelTests\KernelTestBase;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -37,6 +38,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
   private static $componentList = [
     'alert',
     'badge',
+    'banner',
     'blockquote',
     'description_list',
   ];
@@ -202,6 +204,13 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, ?array $render_array = NULL): array {
+    // Drupal 10.6 SDC validates Attribute props as objects, while YAML
+    // fixtures can only provide arrays. Normalize them for test rendering.
+    // @todo Remove this when Drupal 10.6 support is dropped.
+    if (($render_array['#type'] ?? NULL) === 'component' && is_array($render_array['#props']['attributes'] ?? NULL)) {
+      $render_array['#props']['attributes'] = new Attribute($render_array['#props']['attributes']);
+    }
+
     $form['test'] = $render_array;
     return $form;
   }
