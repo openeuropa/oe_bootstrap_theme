@@ -1,0 +1,214 @@
+button_dark_with_icon_after:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: dark
+      icon_position: after
+      type: button
+      label: 'Button label'
+      icon: arrow-right
+  assertions:
+    count:
+      'button.btn': 1
+      'svg.icon--fluid': 1
+      'button.btn-dark': 1
+      'button svg': 1
+    contains:
+      'button.btn-dark': 'Button label'
+      'svg': '#arrow-right'
+button_without_icon:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      type: button
+      label: 'Button label'
+  assertions:
+    count:
+      'button.btn.btn-primary': 1
+      'button svg': 0
+    equals:
+      'button': 'Button label'
+button_secondary:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: secondary
+      type: button
+      label: 'Button label'
+  assertions:
+    count:
+      'button.btn.btn-secondary': 1
+    equals:
+      'button.btn-secondary': 'Button label'
+button_primary_small_with_outline_and_disabled:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      outline: true
+      disabled: true
+      size: sm
+      type: button
+      label: 'Button label'
+  assertions:
+    count:
+      'button[disabled]': 1
+      'button[aria-disabled="true"]': 1
+      'button.btn.btn-outline-primary': 1
+      'button.btn-sm': 1
+    equals:
+      'button.btn-outline-primary': 'Button label'
+button_warning_large:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: warning
+      outline: false
+      disabled: false
+      size: lg
+      type: button
+      label: 'Button label'
+  assertions:
+    count:
+      'button.btn.btn-warning': 1
+      'button[disabled]': 0
+      'button.btn-lg': 1
+    equals:
+      'button.btn-warning': 'Button label'
+button_dark_with_icon_before_and_type_reset:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: dark
+      icon_position: before
+      type: reset
+      label: 'Button label'
+      icon: arrow-right
+  assertions:
+    count:
+      'button.btn': 1
+      'svg.icon--fluid': 1
+      'button.btn-dark': 1
+      'button svg': 1
+      'button[type=reset]': 1
+    contains:
+      'button.btn-dark': 'Button label'
+      'svg': '#arrow-right'
+button_with_assistive_text_and_spinner:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      type: submit
+      label: 'Save'
+      assistive_text: 'Form action'
+      text_nowrap: true
+      show_spinner: true
+      spinner:
+        size: sm
+        assistive_text: 'Loading'
+  assertions:
+    count:
+      'button.btn.btn-primary[type=submit]': 1
+      'button.text-nowrap': 1
+      'button.d-inline-flex.align-items-center.gap-2': 1
+      'button > span.visually-hidden': 1
+      'button > div.spinner-border.spinner-border-sm[role="status"]': 1
+      'button > div.spinner-border span.visually-hidden': 1
+    contains:
+      'button.btn-primary': 'Save'
+    equals:
+      'button > span.visually-hidden': 'Form action'
+      'button > div.spinner-border span.visually-hidden': 'Loading'
+button_with_id:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      type: button
+      id: button-id
+      label: 'Button label'
+  assertions:
+    count:
+      'button#button-id': 1
+      'button.btn.btn-primary': 1
+button_disabled_via_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      type: button
+      label: 'Button label'
+      attributes:
+        disabled: true
+  assertions:
+    count:
+      'button[disabled]': 1
+      'button[aria-disabled="true"]': 1
+button_with_icon_spacing:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      type: button
+      label: 'Button label'
+      icon: arrow-right
+      icon_spacing: lg
+  assertions:
+    count:
+      'button.gap-lg-2-5': 1
+    contains:
+      'svg': '#arrow-right'
+button_with_icon_transformation:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      type: button
+      label: 'Button label'
+      icon:
+        name: arrow-right
+        transformation: rotate-90
+  assertions:
+    count:
+      'svg.icon--rotate-90': 1
+button_clean_class:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      type: button
+      label: 'Button label'
+      clean_class: true
+  assertions:
+    count:
+      'button': 1
+      'button.btn': 0
+      'button.btn-primary': 0
+button_icon_without_spacer:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:button
+    '#props':
+      variant: primary
+      type: button
+      label: 'Button label'
+      icon: arrow-right
+      remove_icon_spacers: true
+  assertions:
+    count:
+      'svg': 1
+      'button.gap-2-5': 0
