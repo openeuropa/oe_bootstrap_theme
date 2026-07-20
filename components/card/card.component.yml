@@ -1,0 +1,168 @@
+name: Card
+description: 'A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options.'
+props:
+  type: object
+  properties:
+    variant:
+      title: Variant
+      type: string
+      description: 'The card variant. Defaults to default.'
+      enum:
+        - default
+        - search
+      'meta:enum':
+        default: 'Default'
+        search: Search
+    orientation:
+      title: Orientation
+      type: string
+      description: 'Can be set to horizontal or vertical. Defaults to vertical.'
+      enum:
+        - vertical
+        - horizontal
+      'meta:enum':
+        vertical: 'Vertical (default)'
+        horizontal: Horizontal
+    title:
+      title: Title
+      type: [string, array, object]
+      description: 'Title of the card.'
+    title_tag:
+      title: 'Title tag'
+      type: string
+      description: 'Title tag of the card. Defaults to div.'
+    title_link:
+      title: 'Title link'
+      type: object
+      description: 'Optional link object for the title.'
+      properties:
+        label:
+          type: [string, array, object]
+        path:
+          type: string
+        variant:
+          type: string
+        id:
+          type: string
+        disabled:
+          type: boolean
+        icon:
+          type: object
+          properties:
+            name:
+              type: string
+            size:
+              type: string
+            path:
+              type: string
+        icon_position:
+          type: string
+        icon_display:
+          type: string
+        remove_icon_spacers:
+          type: boolean
+        attributes:
+          type: object
+    subtitle:
+      title: Subtitle
+      type: [string, array, object]
+      description: 'Card subtitle.'
+    text:
+      title: Text
+      type: [string, array, object]
+      description: 'Card text.'
+    image:
+      title: Image
+      type: object
+      description: 'Image for the card. Optional.'
+      properties:
+        src:
+          type: string
+        path:
+          type: string
+        alt:
+          type: string
+        position:
+          type: string
+        classes:
+          type: string
+        rounded:
+          type: string
+    image_copyright:
+      title: 'Image copyright'
+      type: [string, array, object]
+      description: 'Optional copyright text displayed as an overlay.'
+    date:
+      title: 'Date block'
+      type: object
+      description: 'If set, presents a date block that uses the same parameters as the BCL date-block template. Optional.'
+      properties:
+        day:
+          type: [string, integer]
+        month:
+          type: string
+        date_time:
+          type: string
+        year:
+          type: [string, integer]
+        end_day:
+          type: [string, integer]
+        end_month:
+          type: string
+        end_year:
+          type: [string, integer]
+        icon_path:
+          type: string
+        attributes:
+          type: object
+    meta:
+      title: 'Meta items'
+      type: array
+      description: 'Date or other meta information.'
+      items:
+        type: [string, array, object]
+    content:
+      title: Content
+      type: [string, array, object]
+      description: 'Card content.'
+    header:
+      title: 'Card header'
+      type: [string, array, object]
+      description: 'Card header content.'
+    footer:
+      title: 'Card footer'
+      type: [string, array, object]
+      description: 'Card footer content.'
+    badges:
+      title: Badges
+      type: array
+      description: 'List of badges for the card.'
+      items:
+        type: object
+        properties:
+          label:
+            type: [string, array, object]
+          background:
+            type: string
+          url:
+            type: string
+          title:
+            type: string
+          dismissible:
+            type: boolean
+          assistive_text:
+            type: string
+          rounded_pill:
+            type: boolean
+          outline:
+            type: boolean
+          icon_path:
+            type: string
+          attributes:
+            type: object
+    title_attributes:
+      title: 'Title attributes'
+      type: Drupal\Core\Template\Attribute
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute
