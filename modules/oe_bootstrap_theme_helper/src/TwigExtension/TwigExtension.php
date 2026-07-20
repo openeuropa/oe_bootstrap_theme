@@ -128,10 +128,18 @@ class TwigExtension extends AbstractExtension {
         ];
       }
       if (isset($item['image'])) {
-        $bcl_card['image'] = [
-          'path' => $item['image']->getSource(),
-          'alt' => $item['image']->getAlt(),
-        ];
+        if (is_array($item['image'])) {
+          $bcl_card['image'] = $item['image'] + [
+            'path' => $item['image']['src'] ?? '',
+            'alt' => '',
+          ];
+        }
+        else {
+          $bcl_card['image'] = [
+            'path' => $item['image']->getSource(),
+            'alt' => $item['image']->getAlt(),
+          ];
+        }
       }
 
       $bcl_cards[] = $bcl_card;

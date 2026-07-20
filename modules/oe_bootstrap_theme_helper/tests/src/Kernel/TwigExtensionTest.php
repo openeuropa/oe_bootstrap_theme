@@ -491,6 +491,12 @@ TWIG;
             'meta 2',
           ],
         ],
+        [
+          'image' => [
+            'src' => 'https://picsum.photos/1000/500/',
+            'alt' => 'Alternative text for card image',
+          ],
+        ],
       ],
       'expected' => [
         [
@@ -562,6 +568,17 @@ TWIG;
               'background' => 'primary',
             ],
           ],
+        ],
+        [
+          'title' => '',
+          'subtitle' => [],
+          'text' => [],
+          'image' => [
+            'src' => 'https://picsum.photos/1000/500/',
+            'alt' => 'Alternative text for card image',
+            'path' => 'https://picsum.photos/1000/500/',
+          ],
+          'badges' => [],
         ],
       ],
     ];

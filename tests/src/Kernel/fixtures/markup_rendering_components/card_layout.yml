@@ -1,0 +1,160 @@
+card_group:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card_layout
+    '#props':
+      variant: group
+      equal_height: true
+      items:
+        - title: 'Card title 1'
+          title_tag: 'h2'
+          text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+          card_footer: 'Footer of card 1'
+        - title: 'Card title 2'
+          text: 'This card has supporting text below as a natural lead-in to additional content.'
+          card_footer: 'Footer of card 2'
+        - title: 'Card title 3'
+          text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+          card_footer: 'Footer of card 3'
+        - title: 'Card title 4'
+          text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+          card_footer: 'Footer of card 4'
+  assertions:
+    count:
+      'div[data-component-id="oe_bootstrap_theme:card_layout"].card-group': 1
+      'article.card': 4
+      'article.card.h-100': 0
+      'div.card-title': 3
+      'h2.card-title': 1
+      'div.card-text': 4
+    equals:
+      'article.card:nth-child(1) h2.card-title': 'Card title 1'
+      'article.card:nth-child(2) div.card-title': 'Card title 2'
+      'article.card:nth-child(3) div.card-title': 'Card title 3'
+      'article.card:nth-child(4) div.card-title': 'Card title 4'
+      'article.card:nth-child(1) div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'article.card:nth-child(2) div.card-text': 'This card has supporting text below as a natural lead-in to additional content.'
+      'article.card:nth-child(3) div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'article.card:nth-child(4) div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'article.card:nth-child(1) div.card-footer': 'Footer of card 1'
+      'article.card:nth-child(2) div.card-footer': 'Footer of card 2'
+      'article.card:nth-child(3) div.card-footer': 'Footer of card 3'
+      'article.card:nth-child(4) div.card-footer': 'Footer of card 4'
+card_grid_responsive_xxl_3_responsive_columns:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card_layout
+    '#props':
+      variant: grid
+      responsiveness: xxl
+      responsive_columns: 3
+      gutter: 0
+      equal_height: false
+      items:
+        - title: 'Card title 1'
+          text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+          card_footer: 'Footer of card 1'
+        - title: 'Card title 2'
+          text: 'This card has supporting text below as a natural lead-in to additional content.'
+          card_footer: 'Footer of card 2'
+        - title: 'Card title 3'
+          text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+          card_footer: 'Footer of card 3'
+        - title: 'Card title 4'
+          text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+          card_footer: 'Footer of card 4'
+  assertions:
+    count:
+      'div[data-component-id="oe_bootstrap_theme:card_layout"].row': 1
+      'article.card': 4
+      'div.card-title': 4
+      'div.card-text': 4
+      'article.card.h-100': 0
+      'div.g-0': 1
+      'div.row-cols-xxl-3': 1
+    equals:
+      'div.col:nth-child(1) article.card div.card-title': 'Card title 1'
+      'div.col:nth-child(2) article.card div.card-title': 'Card title 2'
+      'div.col:nth-child(3) article.card div.card-title': 'Card title 3'
+      'div.col:nth-child(4) article.card div.card-title': 'Card title 4'
+      'div.col:nth-child(1) article.card div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'div.col:nth-child(2) article.card div.card-text': 'This card has supporting text below as a natural lead-in to additional content.'
+      'div.col:nth-child(3) article.card div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'div.col:nth-child(4) article.card div.card-text': 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      'div.col:nth-child(1) article.card div.card-footer': 'Footer of card 1'
+      'div.col:nth-child(2) article.card div.card-footer': 'Footer of card 2'
+      'div.col:nth-child(3) article.card div.card-footer': 'Footer of card 3'
+      'div.col:nth-child(4) article.card div.card-footer': 'Footer of card 4'
+card_grid_responsive_columns_2_md_equal_height:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card_layout
+    '#props':
+      variant: grid
+      grid_columns: 2
+      responsiveness: md
+      gutter: 2
+      equal_height: true
+      responsive_columns: 2
+      items:
+        - title: 'Title card 1'
+          subtitle: 'Subtitle card 1'
+          text: 'Text card with longer text which is supported 1'
+          image:
+            src: 'https://picsum.photos/1000/500/arch'
+            alt: 'Alternative text for card image'
+          content:
+            '#type': html_tag
+            '#tag': button
+            '#value': 'Custom action'
+            '#attributes':
+              class:
+                - btn
+                - btn-primary
+          card_header: 'Header of card 1'
+          card_footer: 'Footer of card 1'
+        - title: 'Title card 2'
+          subtitle: 'Subtitle card 2'
+          text: 'Text card with longer text which is supported 2'
+          image:
+            src: 'https://picsum.photos/1000/500/'
+            alt: 'Alternative text for card image'
+          content: 'Custom test'
+          card_header: 'Header of card 2'
+          card_footer: 'Footer of card 2'
+        - title: 'Title card 3'
+          subtitle: 'Subtitle card 3'
+          text: 'Text card with longer text which is supported 3'
+          image:
+            src: 'https://picsum.photos/1000/500/'
+            alt: 'Alternative text for card image'
+          content: 'Some representative placeholder content for the first card.'
+          card_header: 'Header of card 3'
+          card_footer: 'Footer of card 3'
+  assertions:
+    count:
+      'div[data-component-id="oe_bootstrap_theme:card_layout"].row.row-cols-2.row-cols-md-2.g-2': 1
+      'article.h-100.card': 3
+      'img.card-img-top': 3
+      'div.card-header': 3
+      'div.card-body': 3
+      'div.card-title': 3
+      'h6.card-subtitle': 3
+      'div.card-text': 3
+      'div.card-footer': 3
+    equals:
+      'div.col:nth-child(1) div.card-header': 'Header of card 1'
+      'div.col:nth-child(1) div.card-title': 'Title card 1'
+      'div.col:nth-child(1) h6.card-subtitle': 'Subtitle card 1'
+      'div.col:nth-child(1) div.card-text': 'Text card with longer text which is supported 1'
+      'div.col:nth-child(1) div.card-footer': 'Footer of card 1'
+      'div.col:nth-child(2) div.card-header': 'Header of card 2'
+      'div.col:nth-child(2) div.card-title': 'Title card 2'
+      'div.col:nth-child(2) h6.card-subtitle': 'Subtitle card 2'
+      'div.col:nth-child(2) div.card-text': 'Text card with longer text which is supported 2'
+      'div.col:nth-child(2) div.card-footer': 'Footer of card 2'
+      'div.col:nth-child(3) div.card-header': 'Header of card 3'
+      'div.col:nth-child(3) div.card-title': 'Title card 3'
+      'div.col:nth-child(3) h6.card-subtitle': 'Subtitle card 3'
+      'div.col:nth-child(3) div.card-text': 'Text card with longer text which is supported 3'
+      'div.col:nth-child(3) div.card-footer': 'Footer of card 3'
