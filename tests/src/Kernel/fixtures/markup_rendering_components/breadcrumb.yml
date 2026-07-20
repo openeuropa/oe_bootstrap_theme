@@ -1,0 +1,57 @@
+breadcrumb:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:breadcrumb
+    '#props':
+      items:
+        - path: '/index'
+          label: 'Home'
+          id: breadcrumb-home-link
+        - path: '/example'
+          label: 'About the European Commission'
+        - path: 'https://example.com'
+          label: 'Link title'
+  assertions:
+    count:
+      'nav[aria-label="breadcrumb"]': 1
+      'ol.breadcrumb': 1
+      'li.breadcrumb-item': 3
+      'li.breadcrumb-item:nth-child(1) a[href="/index"]#breadcrumb-home-link': 1
+      'li.breadcrumb-item:nth-child(2) a[href="/example"]': 1
+      'li.breadcrumb-item:nth-child(3) a[href="https://example.com"]': 1
+      'li.breadcrumb-item:nth-child(3).active[aria-current="page"]': 1
+      'li.breadcrumb-item:nth-child(2) a svg.d-md-none.bi.icon--s': 1
+      'svg.d-md-none.ms-0.me-2.me-2-5.bi.icon--s': 1
+    equals:
+      'li.breadcrumb-item:nth-child(1) a': 'Home'
+      'li.breadcrumb-item:nth-child(3) a': 'Link title'
+    contains:
+      'li.breadcrumb-item:nth-child(2) a': 'About the European Commission'
+      'svg': '/icons/bcl-default-icons.svg#arrow-left'
+breadcrumb_current_page_without_link:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:breadcrumb
+    '#props':
+      items:
+        - path: '/index'
+          label: 'Home'
+        - path: '/example'
+          label: 'Library'
+        - label: 'Current page'
+  assertions:
+    count:
+      'nav[aria-label="breadcrumb"]': 1
+      'ol.breadcrumb': 1
+      'li.breadcrumb-item': 3
+      'li.breadcrumb-item:nth-child(1) a[href="/index"]': 1
+      'li.breadcrumb-item:nth-child(2) a[href="/example"]': 1
+      'li.breadcrumb-item:nth-child(3).active[aria-current="page"]': 1
+      'li.breadcrumb-item:nth-child(3) a': 0
+      'li.breadcrumb-item:nth-child(2) a svg.d-md-none.bi.icon--s': 1
+    equals:
+      'li.breadcrumb-item:nth-child(1) a': 'Home'
+    contains:
+      'li.breadcrumb-item:nth-child(2) a': 'Library'
+      'li.breadcrumb-item:nth-child(3)': 'Current page'
+      'svg': '/icons/bcl-default-icons.svg#arrow-left'
