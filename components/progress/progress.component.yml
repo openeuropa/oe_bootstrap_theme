@@ -57,6 +57,10 @@ props:
       title: Animated
       type: boolean
       description: 'Animation on striped bar. Defaults to false.'
+    hidden_label:
+      title: 'Hidden label'
+      type: boolean
+      description: 'Hides the text inside the progress bar. Defaults to false.'
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

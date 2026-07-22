@@ -38,9 +38,10 @@ progress_light_non_striped_non_animated:
       style: light
       striped: false
       animated: false
+      hidden_label: true
       progress: 60
-      min: 10
-      max: 90
+      min: 10.5
+      max: '90.5'
       label: 'Progress label'
       text: 'Bar label'
       message: 'Progress bar description'
@@ -52,13 +53,46 @@ progress_light_non_striped_non_animated:
       'div[role="progressbar"]': 1
       'div[style="width: 60%"]': 1
       'div[aria-valuenow="60"]': 1
-      'div[aria-valuemin="10"]': 1
-      'div[aria-valuemax="90"]': 1
+      'div[aria-valuemin="10.5"]': 1
+      'div[aria-valuemax="90.5"]': 1
       'small.progress-bar-message': 1
       'div.text-bg-light': 1
       'div.progress-bar-animated': 0
       'div.progress-bar-striped': 0
     contains:
       'label.progress-bar-label': 'Progress label'
-      'div.progress': 'Bar label'
       'small.progress-bar-message': 'Progress bar description'
+    equals:
+      'div.progress-bar': ''
+progress_defaults_without_text_or_style:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:progress
+    '#props':
+      progress: 33.5
+      label: 'Default progress'
+  assertions:
+    count:
+      'div.progress-bar': 1
+      'div[style="width: 33.5%"]': 1
+      'div[aria-valuenow="33.5"]': 1
+      'div[aria-valuemin="0"]': 1
+      'div[aria-valuemax="100"]': 1
+      'div.progress-bar[class*="text-bg-"]': 0
+    equals:
+      'label.progress-bar-label': 'Default progress'
+      'div.progress-bar': '33.5%'
+progress_string_min_number_max:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:progress
+    '#props':
+      progress: 50
+      min: '5.5'
+      max: 95.5
+  assertions:
+    count:
+      'div[aria-valuemin="5.5"]': 1
+      'div[aria-valuemax="95.5"]': 1
+    equals:
+      'div.progress-bar': '50%'
