@@ -4,6 +4,13 @@
  * Timeline component.
  */
 #}
+{% set _items = [] %}
+{% for item in items|default([]) %}
+  {% set _items = _items|merge([item|merge({
+    attributes: create_attribute(item.attributes|default({})),
+  })]) %}
+{% endfor %}
+
 {% include '@oe-bcl/timeline' with {
   toggle_collapsed: collapse_button_label|default('Show more %d items'|t),
   toggle_expanded: expand_button_label|default('Hide %d items'|t),
@@ -11,9 +18,11 @@
     from: hide_from,
     to: hide_to|default(0),
   },
-  items: items,
+  items: _items,
   icon_path: icon_path|default(bcl_icon_path()),
   attributes: attributes,
   title: title,
+  title_link: title_link,
   title_tag: title_tag,
+  title_attributes: title_attributes,
 } only %}
