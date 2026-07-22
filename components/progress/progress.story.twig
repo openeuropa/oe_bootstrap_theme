@@ -44,6 +44,12 @@
     progress: 85,
     label: 'Dark progress',
   },
+  {
+    style: 'primary',
+    progress: 33.5,
+    label: 'Progress with hidden value',
+    hidden_label: true,
+  },
 ] %}
 
 <div class="vstack gap-4">
@@ -54,6 +60,7 @@
         style: example.style,
         striped: example.striped|default(false),
         animated: example.animated|default(false),
+        hidden_label: example.hidden_label|default(false),
         progress: example.progress,
         min: 0,
         max: 100,
