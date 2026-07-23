@@ -17,6 +17,11 @@
       }
     }
   }
+
+  .date-block-story__preview {
+    inline-size: 10rem;
+    max-inline-size: 100%;
+  }
 }
 .components-preview__main {
   [data-component-id="oe_bootstrap_theme:card"] {
