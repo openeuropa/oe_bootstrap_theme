@@ -1,0 +1,255 @@
+content_banner_white_with_all_content:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:content_banner
+    '#props':
+      background: white
+      meta:
+        - '26 May 2020'
+        - '1 comment'
+      image:
+        src: 'https://picsum.photos/1200/600/'
+        alt: 'Alternative text for content banner image'
+      title: 'This is the title of this page'
+      title_tag: h2
+      action_bar:
+        - '#markup': '<div class="action-bar d-flex justify-content-end mt-2 align-items-center col-lg-11"><a href="#" class="standalone" type="button">Submit</a></div>'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+      badges:
+        - label: 'Primary badge'
+          rounded_pill: true
+          outline: false
+        - label: 'Secondary badge'
+          rounded_pill: true
+      links:
+        - label: 'Link 1'
+          path: 'https://example-1.com'
+        - label: 'Link 2'
+          path: 'https://example-2.com'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ContentBannerAssert
+      expected:
+        background: white
+        meta:
+          - '26 May 2020'
+          - '1 comment'
+        image:
+          src: 'https://picsum.photos/1200/600/'
+          alt: 'Alternative text for content banner image'
+        title: 'This is the title of this page'
+        title_tag: h2
+        action_bar: '<div class="position-relative z-1"><div class="action-bar d-flex justify-content-end mt-2 align-items-center col-lg-11"><a href="#" class="standalone" type="button">Submit</a></div></div>'
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+        badges:
+          - label: 'Primary badge'
+            rounded_pill: true
+            outline: false
+          - label: 'Secondary badge'
+            rounded_pill: true
+        links:
+          - label: 'Link 1'
+            path: 'https://example-1.com'
+          - label: 'Link 2'
+            path: 'https://example-2.com'
+content_banner_white_with_image_and_copyright:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:content_banner
+    '#props':
+      background: white
+      image:
+        src: 'https://picsum.photos/1200/600/'
+        alt: 'Alternative text for content banner image'
+      title: 'This is the title of this page'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      copyright: '© 2024 Example Organisation'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ContentBannerAssert
+      expected:
+        background: white
+        image:
+          src: 'https://picsum.photos/1200/600/'
+          alt: 'Alternative text for content banner image'
+        image_size: lg
+        title: 'This is the title of this page'
+        title_tag: h1
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        copyright: '© 2024 Example Organisation'
+content_banner_white_without_image:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:content_banner
+    '#props':
+      title: 'This is the title of this page'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+      badges:
+        - label: 'Primary badge'
+          rounded_pill: true
+        - label: 'Secondary badge'
+          rounded_pill: true
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ContentBannerAssert
+      expected:
+        background: white
+        title: 'This is the title of this page'
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+        badges:
+          - label: 'Primary badge'
+            rounded_pill: true
+          - label: 'Secondary badge'
+            rounded_pill: true
+content_banner_gray_with_extra_large_image:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:content_banner
+    '#props':
+      background: gray
+      image:
+        src: 'https://picsum.photos/1200/600/'
+        alt: 'Alternative text for content banner image'
+      image_size: xl
+      title: 'This is the title of this page'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ContentBannerAssert
+      expected:
+        background: lighter
+        image:
+          src: 'https://picsum.photos/1200/600/'
+          alt: 'Alternative text for content banner image'
+        image_size: xl
+        title: 'This is the title of this page'
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+content_banner_gray_without_image:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:content_banner
+    '#props':
+      background: gray
+      meta:
+        - '26 May 2020'
+        - '1 comment'
+      title: 'This is the title of this page'
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+      badges:
+        - label: 'Primary badge'
+          rounded_pill: true
+        - label: 'Secondary badge'
+          rounded_pill: true
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ContentBannerAssert
+      expected:
+        background: lighter
+        meta:
+          - '26 May 2020'
+          - '1 comment'
+        title: 'This is the title of this page'
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+        badges:
+          - label: 'Primary badge'
+            rounded_pill: true
+          - label: 'Secondary badge'
+            rounded_pill: true
+content_banner_white_with_medium_image:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:content_banner
+    '#props':
+      image:
+        src: 'https://picsum.photos/1200/600/'
+        alt: 'Alternative text for content banner image'
+      image_size: md
+      title: 'Content banner with medium image'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\ContentBannerAssert
+      expected:
+        background: white
+        image:
+          src: 'https://picsum.photos/1200/600/'
+          alt: 'Alternative text for content banner image'
+        image_size: md
+        title: 'Content banner with medium image'
+content_banner_badge_outline_defaults:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:content_banner
+    '#props':
+      title: 'Content banner badge defaults'
+      badges:
+        - label: 'Default outlined badge'
+        - label: 'Explicit solid badge'
+          outline: false
+  assertions:
+    count:
+      '.badge.badge-outline-primary': 1
+      '.badge.text-bg-primary': 1
+    equals:
+      '.badge.badge-outline-primary': 'Default outlined badge'
+      '.badge.text-bg-primary': 'Explicit solid badge'
+content_banner_subtitle_text_and_copyright_label:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:content_banner
+    '#props':
+      image:
+        src: 'https://picsum.photos/1200/600/'
+        alt: 'Alternative text for content banner image'
+      copyright: '© 2026 Example Organisation'
+      copyright_label: 'Photo credit:'
+      title: 'Content banner inherited card content'
+      subtitle:
+        content: 'Content banner subtitle'
+        tag: h3
+        classes: custom-subtitle-class
+      text:
+        content: 'Content banner card text'
+        tag: div
+        classes: custom-text-class
+  assertions:
+    count:
+      'h3.card-subtitle.custom-subtitle-class': 1
+      'div.card-text.custom-text-class': 1
+      '.bcl-copyright .visually-hidden': 1
+    equals:
+      'h3.card-subtitle': 'Content banner subtitle'
+      'div.card-text': 'Content banner card text'
+      '.bcl-copyright': '<span class="visually-hidden">Photo credit: </span>© 2026 Example Organisation'
+content_banner_custom_attributes_title_link_and_date:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:content_banner
+    '#props':
+      attributes:
+        id: custom-content-banner
+        class:
+          - custom-content-banner-class
+        data-content-banner: custom-value
+      title: 'Linked content banner title'
+      title_link:
+        path: 'https://example.com'
+      title_attributes:
+        class:
+          - custom-title-class
+      date:
+        day: 23
+        month: Jul
+        year: 2026
+        date_time: '2026-07-23'
+      content: 'Content banner with a date block.'
+  assertions:
+    count:
+      '#custom-content-banner.bcl-content-banner.custom-content-banner-class': 1
+      '#custom-content-banner[data-content-banner="custom-value"]': 1
+      'h1.card-title.bcl-heading.custom-title-class a[href="https://example.com"]': 1
+      'time.bcl-date-block[datetime="2026-07-23"]': 1
+    equals:
+      'h1.card-title.bcl-heading a': 'Linked content banner title'
+      'time .date-month': Jul
+      'time .date-day': '23'
+      'time .year-start': '2026'
