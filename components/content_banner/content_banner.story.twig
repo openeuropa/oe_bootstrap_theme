@@ -1,0 +1,99 @@
+{% set image = {
+  src: 'https://picsum.photos/id/1015/1200/600',
+  alt: 'Mountain landscape reflected in a lake',
+} %}
+
+{% set badges = [
+  {
+    label: 'Primary badge',
+    rounded_pill: true,
+    outline: false,
+  },
+  {
+    label: 'Secondary badge',
+    rounded_pill: true,
+  },
+] %}
+
+{% set links = [
+  {
+    label: 'Read the latest updates',
+    path: '/example-1',
+  },
+  {
+    label: 'View related policies',
+    path: '/example-2',
+  },
+] %}
+
+{% set action_bar %}
+  <div class="d-flex justify-content-end mt-2 align-items-center col-lg-11">
+    {% include 'oe_bootstrap_theme:button' with {
+      label: 'Subscribe',
+      variant: 'primary',
+      type: 'button',
+    } only %}
+  </div>
+{% endset %}
+
+<div class="vstack gap-5">
+  <div>
+    <h3>White background with image</h3>
+    {% include 'oe_bootstrap_theme:content_banner' with {
+      background: 'white',
+      image: image,
+      copyright: '© 2026 Example Organisation',
+      copyright_label: 'Photo credit:',
+      title: 'Building a greener and more resilient Europe',
+      title_tag: 'h2',
+      subtitle: {
+        content: 'Climate and energy',
+        tag: 'div',
+        classes: 'fs-5',
+      },
+      text: {
+        content: 'Supporting practical action across regions and sectors.',
+        tag: 'p',
+        classes: 'mt-2',
+      },
+      meta: ['23 July 2026', 'Policy update'],
+      content: 'Discover the latest initiatives supporting clean energy, sustainable industry and stronger communities across Europe.',
+      badges: badges,
+      links: links,
+      action_bar: action_bar,
+    } only %}
+  </div>
+
+  <div>
+    <h3>Gray background with extra large image</h3>
+    {% include 'oe_bootstrap_theme:content_banner' with {
+      background: 'gray',
+      image: image,
+      image_size: 'xl',
+      title: 'A shared plan for sustainable growth',
+      content: 'Investment and cooperation are helping regions deliver practical solutions for citizens and businesses.',
+    } only %}
+  </div>
+
+  <div>
+    <h3>Gray background without image</h3>
+    {% include 'oe_bootstrap_theme:content_banner' with {
+      background: 'gray',
+      title: 'Key figures and programme highlights',
+      meta: ['Updated 23 July 2026', '6 min read'],
+      content: 'An overview of current priorities, milestones and expected results.',
+      badges: badges,
+    } only %}
+  </div>
+
+  <div>
+    <h3>White background with medium image</h3>
+    {% include 'oe_bootstrap_theme:content_banner' with {
+      background: 'white',
+      image: image,
+      image_size: 'md',
+      title: 'Regional projects making a difference',
+      content: 'Local projects are turning shared priorities into measurable improvements.',
+    } only %}
+  </div>
+</div>
