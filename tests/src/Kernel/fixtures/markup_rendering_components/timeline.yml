@@ -3,7 +3,7 @@ timeline_items_hide:
     '#type': component
     '#component': oe_bootstrap_theme:timeline
     '#props':
-      hide_from: 0
+      hide_from: 7
       hide_to: 0
       title: 'Title example'
       title_tag: 'h3'
@@ -57,6 +57,23 @@ timeline_items_hide:
       '.bcl-timeline li:nth-child(6) p.fs-5.fw-medium': '6 February 2018'
       '.bcl-timeline li:nth-child(6) p.fs-6.fw-medium': 'Item 6'
       '.bcl-timeline li:nth-child(6) div': 'Lorem Ipsum 6'
+timeline_items_hide_from_zero:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:timeline
+    '#props':
+      hide_from: 0
+      items:
+        - title: 'Item 1'
+          content: 'Lorem Ipsum 1'
+        - title: 'Item 2'
+          content: 'Lorem Ipsum 2'
+  assertions:
+    count:
+      '.bcl-timeline': 1
+      '.bcl-timeline > li': 2
+      '.bcl-timeline > li.collapse': 0
+      '.bcl-timeline > li.bcl-timeline__item--toggle': 0
 timeline_items_show_more:
   render:
     '#type': component
