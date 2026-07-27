@@ -80,3 +80,16 @@ section_with_no_title:
       expected:
         heading: ~
         content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
+section_with_no_content:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:section
+    '#props':
+      heading: 'This is the heading of the section'
+  assertions:
+    count:
+      '.section > .section__body': 1
+    equals:
+      '.section__body': ''
+    contains:
+      '.section__title': 'This is the heading of the section'
