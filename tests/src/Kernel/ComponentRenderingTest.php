@@ -224,6 +224,8 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
         'content_attributes',
         'header_attributes',
         'footer_attributes',
+        'wrapper_attributes',
+        'heading_attributes',
       ] as $attribute_prop) {
         if (is_array($render_array['#props'][$attribute_prop] ?? NULL)) {
           $render_array['#props'][$attribute_prop] = new Attribute($render_array['#props'][$attribute_prop]);
