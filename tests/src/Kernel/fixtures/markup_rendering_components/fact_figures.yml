@@ -39,6 +39,7 @@ fact_figures_default_1col:
       'div[data-component-id="oe_bootstrap_theme:fact_figures"].bcl-fact-figures.bcl-fact-figures--default': 1
       'h3.bcl-heading': 1
       'div.row.row-cols-md-1': 1
+      'div.row.row-cols-sm-2': 0
       'svg.bi.icon--l': 6
       'svg use': 6
     contains:
@@ -65,9 +66,6 @@ fact_figures_default_2col:
     '#component': oe_bootstrap_theme:fact_figures
     '#props':
       columns: 2
-      link:
-        label: 'Read more'
-        path: '/example'
       title: 'Fact and figures block'
       items:
         - icon: 'sticky'
@@ -99,12 +97,14 @@ fact_figures_default_2col:
       'div[data-component-id="oe_bootstrap_theme:fact_figures"].bcl-fact-figures.bcl-fact-figures--default': 1
       'h2.bcl-heading': 1
       'div.row.row-cols-md-2': 1
+      'div.row.row-cols-sm-2': 0
       'svg.bi.icon--l': 6
+      'div.border-top': 0
+      'a': 0
     equals:
       'h2.bcl-heading': 'Fact and figures block'
       'div > div.col:nth-child(1) > div.fs-4': '1529 JIRA Ticket'
       'div > div.col:nth-child(6) > div.fs-4': '43 Components'
-      'a[href="/example"]': 'Read more'
 fact_figures_default_3col:
   render:
     '#type': component
@@ -134,6 +134,9 @@ fact_figures_default_3col:
           description: 'Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum.'
         - icon:
             name: 'inbox'
+            attributes:
+              class:
+                - custom-class
           subtitle: 'Jira ticket'
           title: '345 Dev Ticket'
           description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor. '
@@ -148,6 +151,7 @@ fact_figures_default_3col:
       'div.row.row-cols-md-3': 1
       'div.row.row-cols-sm-2': 1
       'svg.bi.icon--l': 6
+      'svg.custom-class.mb-2.icon--primary': 1
     contains:
       'div > div.col:nth-child(5) > svg': '#inbox'
       'a[href="/example"]': 'Read more'

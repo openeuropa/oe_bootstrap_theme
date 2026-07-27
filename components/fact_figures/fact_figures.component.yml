@@ -55,8 +55,6 @@ props:
           type: [string, array, object]
         path:
           type: [string, object]
-        url:
-          type: [string, object]
         attributes:
           type: object
     icon_path:
