@@ -91,6 +91,9 @@ class TwigExtension extends AbstractExtension {
     foreach ($items as $item) {
       // Copy most of the fields.
       $bcl_card = $item;
+      if (isset($item['attributes']) && is_array($item['attributes'])) {
+        $bcl_card['attributes'] = new Attribute($item['attributes']);
+      }
       // Some fields need to be rewritten.
       if (isset($item['title'])) {
         $title = $item['title'];
