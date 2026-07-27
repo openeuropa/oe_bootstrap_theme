@@ -54,6 +54,9 @@ card_grid_responsive_xxl_3_responsive_columns:
         - title: 'Card title 1'
           text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
           card_footer: 'Footer of card 1'
+          attributes:
+            class:
+              - custom-card-class
         - title: 'Card title 2'
           text: 'This card has supporting text below as a natural lead-in to additional content.'
           card_footer: 'Footer of card 2'
@@ -70,6 +73,7 @@ card_grid_responsive_xxl_3_responsive_columns:
       'div.card-title': 4
       'div.card-text': 4
       'article.card.h-100': 0
+      'div.col:nth-child(1) article.card.custom-card-class': 1
       'div.g-0': 1
       'div.row-cols-xxl-3': 1
     equals:
@@ -103,6 +107,12 @@ card_grid_responsive_columns_2_md_equal_height:
           image:
             src: 'https://picsum.photos/1000/500/arch'
             alt: 'Alternative text for card image'
+            classes: custom-image-class
+            rounded: '2'
+          image_copyright: '© 2026 Example Organisation'
+          badges:
+            - 'Category 1'
+            - 'Category 2'
           content:
             '#type': html_tag
             '#tag': button
@@ -113,12 +123,17 @@ card_grid_responsive_columns_2_md_equal_height:
                 - btn-primary
           card_header: 'Header of card 1'
           card_footer: 'Footer of card 1'
+          attributes:
+            class:
+              - custom-class
         - title: 'Title card 2'
           subtitle: 'Subtitle card 2'
           text: 'Text card with longer text which is supported 2'
           image:
             src: 'https://picsum.photos/1000/500/'
             alt: 'Alternative text for card image'
+            position: bottom
+            classes: custom-bottom-image
           content: 'Custom test'
           card_header: 'Header of card 2'
           card_footer: 'Footer of card 2'
@@ -135,13 +150,21 @@ card_grid_responsive_columns_2_md_equal_height:
     count:
       'div[data-component-id="oe_bootstrap_theme:card_layout"].row.row-cols-2.row-cols-md-2.g-2': 1
       'article.h-100.card': 3
-      'img.card-img-top': 3
+      'div.col:nth-child(1) article.card.h-100.custom-class': 1
+      'img.card-img-top': 2
+      'img.card-img-top.rounded-2.custom-image-class': 1
+      'img.card-img-bottom.custom-bottom-image': 1
+      'span.badge.text-bg-primary': 2
       'div.card-header': 3
       'div.card-body': 3
       'div.card-title': 3
       'h6.card-subtitle': 3
       'div.card-text': 3
       'div.card-footer': 3
+    contains:
+      'div.col:nth-child(1) .bcl-copyright': '© 2026 Example Organisation'
+      'div.col:nth-child(1) span.badge:nth-child(1)': 'Category 1'
+      'div.col:nth-child(1) span.badge:nth-child(2)': 'Category 2'
     equals:
       'div.col:nth-child(1) div.card-header': 'Header of card 1'
       'div.col:nth-child(1) div.card-title': 'Title card 1'
@@ -158,3 +181,25 @@ card_grid_responsive_columns_2_md_equal_height:
       'div.col:nth-child(3) h6.card-subtitle': 'Subtitle card 3'
       'div.col:nth-child(3) div.card-text': 'Text card with longer text which is supported 3'
       'div.col:nth-child(3) div.card-footer': 'Footer of card 3'
+card_masonry:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card_layout
+    '#props':
+      variant: masonry
+      grid_columns: 1
+      responsiveness: md
+      responsive_columns: 3
+      gutter: 3
+      items:
+        - title: 'Card title 1'
+          text: 'This is a longer card used in the masonry layout.'
+        - title: 'Card title 2'
+          text: 'Short card.'
+        - title: 'Card title 3'
+          text: 'This card has a medium amount of supporting text.'
+  assertions:
+    count:
+      "div[data-component-id='oe_bootstrap_theme:card_layout'][data-masonry='{\"percentPosition\": true }'].row.row-cols-1.row-cols-md-3.g-3": 1
+      'div.col': 3
+      'article.card': 3
