@@ -56,3 +56,12 @@
   expand_button_label: 'Hide %d items',
   items: items,
 } only %}
+
+{% include 'oe_bootstrap_theme:timeline' with {
+  title: 'Timeline with a linked title, no truncation',
+  title_tag: 'h3',
+  title_link: {
+    path: '/example',
+  },
+  items: items,
+} only %}
