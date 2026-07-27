@@ -10,9 +10,11 @@ props:
       enum:
         - group
         - grid
+        - masonry
       'meta:enum':
         group: 'Group (default)'
         grid: Grid
+        masonry: Masonry
     items:
       title: 'Card items'
       type: array
