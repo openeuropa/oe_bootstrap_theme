@@ -50,6 +50,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     'description_list',
     'dropdown',
     'fact_figures',
+    'featured_media',
     'progress',
     'timeline',
     'section',
@@ -223,6 +224,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
       foreach ([
         'attributes',
         'title_attributes',
+        'subtitle_attributes',
         'media_attributes',
         'content_attributes',
         'header_attributes',
