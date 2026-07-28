@@ -99,7 +99,7 @@ card_variant_search:
         alt: ''
       badges:
         - label: 'Category 1'
-        - label: 'Category 2'
+        - 'Category 2'
   assertions:
     component:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CardPatternAssert
@@ -114,8 +114,54 @@ card_variant_search:
         badges:
           - label: 'Category 1'
             rounded_pill: true
-          - label: 'Category 2'
-            rounded_pill: true
+          - 'Category 2'
+card_badge_with_custom_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card
+    '#props':
+      variant: default
+      title: 'Title card'
+      badges:
+        - label: 'Custom badge'
+          attributes:
+            class:
+              - custom-badge-class
+  assertions:
+    count:
+      'span.badge.custom-badge-class': 1
+card_title_link_with_custom_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card
+    '#props':
+      variant: default
+      title: 'Title card'
+      title_link:
+        path: 'https://example.com'
+        attributes:
+          class:
+            - custom-link-class
+  assertions:
+    count:
+      '.card-title a.custom-link-class[href="https://example.com"]': 1
+card_date_with_custom_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:card
+    '#props':
+      variant: default
+      title: 'Title card'
+      date:
+        year: '2021'
+        month: 'Jan'
+        day: '23'
+        attributes:
+          class:
+            - custom-date-class
+  assertions:
+    count:
+      'time.custom-date-class': 1
 card_with_date_range:
   render:
     '#type': component
