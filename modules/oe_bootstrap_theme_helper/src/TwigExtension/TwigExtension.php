@@ -125,10 +125,14 @@ class TwigExtension extends AbstractExtension {
       }
       $bcl_card['badges'] = [];
       foreach ($item['badges'] ?? [] as $badge) {
-        $bcl_card['badges'][] = [
+        $bcl_badge = is_array($badge) ? $badge + ['background' => 'primary'] : [
           'label' => $badge,
           'background' => 'primary',
         ];
+        if (isset($bcl_badge['attributes']) && is_array($bcl_badge['attributes'])) {
+          $bcl_badge['attributes'] = new Attribute($bcl_badge['attributes']);
+        }
+        $bcl_card['badges'][] = $bcl_badge;
       }
       if (isset($item['image'])) {
         if (is_array($item['image'])) {
