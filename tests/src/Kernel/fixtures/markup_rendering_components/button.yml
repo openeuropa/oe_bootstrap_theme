@@ -115,13 +115,16 @@ button_with_assistive_text_and_spinner:
       spinner:
         size: sm
         assistive_text: 'Loading'
+        attributes:
+          class:
+            - custom-spinner-class
   assertions:
     count:
       'button.btn.btn-primary[type=submit]': 1
       'button.text-nowrap': 1
       'button.d-inline-flex.align-items-center.gap-2': 1
       'button > span.visually-hidden': 1
-      'button > div.spinner-border.spinner-border-sm[role="status"]': 1
+      'button > div.spinner-border.spinner-border-sm.custom-spinner-class[role="status"]': 1
       'button > div.spinner-border span.visually-hidden': 1
     contains:
       'button.btn-primary': 'Save'
@@ -181,9 +184,12 @@ button_with_icon_transformation:
       icon:
         name: arrow-right
         transformation: rotate-90
+        attributes:
+          class:
+            - custom-icon-class
   assertions:
     count:
-      'svg.icon--rotate-90': 1
+      'svg.icon--rotate-90.custom-icon-class': 1
 button_clean_class:
   render:
     '#type': component
