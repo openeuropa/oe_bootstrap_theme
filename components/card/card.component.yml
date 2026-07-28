@@ -138,7 +138,7 @@ props:
       type: array
       description: 'List of badges for the card.'
       items:
-        type: object
+        type: [string, object]
         properties:
           label:
             type: [string, array, object]
