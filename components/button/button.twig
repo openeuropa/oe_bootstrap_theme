@@ -10,6 +10,16 @@
   {% if _icon.path is not defined or _icon.path is empty %}
     {% set _icon = _icon|merge({ path: bcl_icon_path() }) %}
   {% endif %}
+  {% set _icon = _icon|merge({
+    attributes: create_attribute(_icon.attributes|default({})),
+  }) %}
+{% endif %}
+
+{% set _spinner = spinner|default({}) %}
+{% if _spinner is not empty %}
+  {% set _spinner = _spinner|merge({
+    attributes: create_attribute(_spinner.attributes|default({})),
+  }) %}
 {% endif %}
 
 {% set _attributes = attributes|default(create_attribute()) %}
@@ -30,7 +40,7 @@
   icon: _icon,
   icon_position: icon_position|default('after'),
   icon_spacing: icon_spacing,
-  spinner: spinner,
+  spinner: _spinner,
   show_spinner: show_spinner,
   clean_class: clean_class,
   remove_icon_spacers: remove_icon_spacers,
