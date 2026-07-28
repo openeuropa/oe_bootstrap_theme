@@ -65,8 +65,30 @@ props:
           badges:
             title: Badges
             type: array
+            description: 'List of badges for the card.'
             items:
               type: [string, object]
+              properties:
+                label:
+                  type: [string, array, object]
+                background:
+                  type: string
+                url:
+                  type: string
+                title:
+                  type: string
+                dismissible:
+                  type: boolean
+                assistive_text:
+                  type: string
+                rounded_pill:
+                  type: boolean
+                outline:
+                  type: boolean
+                icon_path:
+                  type: string
+                attributes:
+                  type: object
           attributes:
             title: Attributes
             type: object

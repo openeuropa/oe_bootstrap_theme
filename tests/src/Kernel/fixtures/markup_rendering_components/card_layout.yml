@@ -105,14 +105,15 @@ card_grid_responsive_columns_2_md_equal_height:
           subtitle: 'Subtitle card 1'
           text: 'Text card with longer text which is supported 1'
           image:
-            src: 'https://picsum.photos/1000/500/arch'
+            src: 'https://picsum.photos/1000/500/'
             alt: 'Alternative text for card image'
             classes: custom-image-class
             rounded: '2'
           image_copyright: '© 2026 Example Organisation'
           badges:
             - 'Category 1'
-            - 'Category 2'
+            - label: 'Category 2'
+              background: success
           content:
             '#type': html_tag
             '#tag': button
@@ -154,7 +155,8 @@ card_grid_responsive_columns_2_md_equal_height:
       'img.card-img-top': 2
       'img.card-img-top.rounded-2.custom-image-class': 1
       'img.card-img-bottom.custom-bottom-image': 1
-      'span.badge.text-bg-primary': 2
+      'span.badge.text-bg-primary': 1
+      'span.badge.text-bg-success': 1
       'div.card-header': 3
       'div.card-body': 3
       'div.card-title': 3
@@ -163,8 +165,8 @@ card_grid_responsive_columns_2_md_equal_height:
       'div.card-footer': 3
     contains:
       'div.col:nth-child(1) .bcl-copyright': '© 2026 Example Organisation'
-      'div.col:nth-child(1) span.badge:nth-child(1)': 'Category 1'
-      'div.col:nth-child(1) span.badge:nth-child(2)': 'Category 2'
+      'div.col:nth-child(1) span.badge.text-bg-primary': 'Category 1'
+      'div.col:nth-child(1) span.badge.text-bg-success': 'Category 2'
     equals:
       'div.col:nth-child(1) div.card-header': 'Header of card 1'
       'div.col:nth-child(1) div.card-title': 'Title card 1'
