@@ -4,8 +4,15 @@
  * Breadcrumb component.
  */
 #}
+{% set _items = [] %}
+{% for item in items|default([]) %}
+  {% set _items = _items|merge([item|merge({
+    attributes: create_attribute(item.attributes|default({})),
+  })]) %}
+{% endfor %}
+
 {% include '@oe-bcl/breadcrumb' with {
-  links: items|default([]),
+  links: _items,
   icon_path: icon_path|default(bcl_icon_path()),
   attributes: attributes,
 } only %}

@@ -7,6 +7,9 @@ breadcrumb:
         - path: '/index'
           label: 'Home'
           id: breadcrumb-home-link
+          attributes:
+            class:
+              - custom-class
         - path: '/example'
           label: 'About the European Commission'
         - path: 'https://example.com'
@@ -16,7 +19,7 @@ breadcrumb:
       'nav[aria-label="breadcrumb"]': 1
       'ol.breadcrumb': 1
       'li.breadcrumb-item': 3
-      'li.breadcrumb-item:nth-child(1) a[href="/index"]#breadcrumb-home-link': 1
+      'li.breadcrumb-item:nth-child(1) a.custom-class[href="/index"]#breadcrumb-home-link': 1
       'li.breadcrumb-item:nth-child(2) a[href="/example"]': 1
       'li.breadcrumb-item:nth-child(3) a[href="https://example.com"]': 1
       'li.breadcrumb-item:nth-child(3).active[aria-current="page"]': 1
