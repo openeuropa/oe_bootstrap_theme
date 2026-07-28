@@ -15,6 +15,11 @@
     icon: _title_link.icon|merge({path: bcl_icon_path()})
   }) %}
 {% endif %}
+{% if _title_link is not empty %}
+  {% set _title_link = _title_link|merge({
+    attributes: create_attribute(_title_link.attributes|default({})),
+  }) %}
+{% endif %}
 
 {% set _content %}
   {% if meta is not empty %}
@@ -39,6 +44,9 @@
 {% if badges is not empty %}
   {% for item in badges %}
     {% set _badge = item is iterable ? item : { label: item } %}
+    {% set _badge = _badge|merge({
+      attributes: create_attribute(_badge.attributes|default({})),
+    }) %}
     {% set _badges = _badges|merge([{
       outline: true,
       rounded_pill: true,
@@ -55,9 +63,14 @@
 {% endif %}
 
 {% set _date = date|default({}) %}
-{% if _date is not empty and (_date.icon_path is not defined or _date.icon_path is empty) %}
+{% if _date is not empty %}
+  {% if _date.icon_path is not defined or _date.icon_path is empty %}
   {% set _date = _date|merge({
     icon_path: bcl_icon_path(),
+  }) %}
+{% endif %}
+  {% set _date = _date|merge({
+    attributes: create_attribute(_date.attributes|default({})),
   }) %}
 {% endif %}
 {% set _horizontal_grid = {} %}
