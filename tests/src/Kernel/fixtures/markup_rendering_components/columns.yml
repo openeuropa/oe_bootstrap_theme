@@ -6,18 +6,23 @@ columns_default:
       items:
         - '#plain_text': Column 1
         - '#plain_text': Column 2
-        - '#plain_text': Column 3
+        - '#type': html_tag
+          '#tag': strong
+          '#value': 'Column 3'
         - '#plain_text': Column 4
         - '#plain_text': Column 5
-        - '#plain_text': Column 6
+        - '#markup': '<a href="/example">Column 6</a>'
   assertions:
     count:
       'div[data-component-id="oe_bootstrap_theme:columns"].columns': 1
       'div[data-component-id="oe_bootstrap_theme:columns"][style="--columns-grid--column-count: 4;"]': 1
       'div[data-component-id="oe_bootstrap_theme:columns"] > .columns__item': 6
+      'div[data-component-id="oe_bootstrap_theme:columns"] > .columns__item:nth-child(3) strong': 1
+      'div[data-component-id="oe_bootstrap_theme:columns"] > .columns__item:nth-child(6) a[href="/example"]': 1
     equals:
       'div[data-component-id="oe_bootstrap_theme:columns"] > .columns__item:nth-child(1)': 'Column 1'
-      'div[data-component-id="oe_bootstrap_theme:columns"] > .columns__item:nth-child(6)': 'Column 6'
+      'div[data-component-id="oe_bootstrap_theme:columns"] > .columns__item:nth-child(3) strong': 'Column 3'
+      'div[data-component-id="oe_bootstrap_theme:columns"] > .columns__item:nth-child(6) a[href="/example"]': 'Column 6'
 columns_three_cols:
   render:
     '#type': component
@@ -55,3 +60,20 @@ columns_section_element:
       'section[data-component-id="oe_bootstrap_theme:columns"].columns': 1
       'section[data-component-id="oe_bootstrap_theme:columns"][style="--columns-grid--column-count: 6;"]': 1
       'section[data-component-id="oe_bootstrap_theme:columns"] > .columns__item': 6
+columns_with_custom_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:columns
+    '#props':
+      attributes:
+        class:
+          - custom-columns-class
+        id: columns-id
+        data-columns-attribute: columns-attr-value
+      items:
+        - '#plain_text': Column 1
+        - '#plain_text': Column 2
+  assertions:
+    count:
+      'div[data-component-id="oe_bootstrap_theme:columns"].columns.custom-columns-class#columns-id[data-columns-attribute="columns-attr-value"]': 1
+      '.columns__item': 2
