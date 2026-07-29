@@ -21,9 +21,6 @@ date_block_explicit_values_and_attributes:
     '#props':
       date: '2020-01-01'
       day: 23
-      month: Jul
-      date_time: '2026-07-23'
-      year: 2026
       attributes:
         id: custom-date-block
         class:
@@ -33,12 +30,12 @@ date_block_explicit_values_and_attributes:
     count:
       'time#custom-date-block.bcl-date-block.custom-date-block-class': 1
       'time[data-date-block="custom-value"]': 1
-      'time[datetime="2026-07-23"]': 1
+      'time[datetime="2020-01-01"]': 1
       'time svg': 0
     equals:
-      'time .date-month': Jul
+      'time .date-month': Jan
       'time .date-day': '23'
-      'time .year-start': '2026'
+      'time .year-start': '2020'
 date_block_range_with_custom_icon_path:
   render:
     '#type': component
