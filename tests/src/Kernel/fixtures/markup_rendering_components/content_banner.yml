@@ -253,3 +253,27 @@ content_banner_custom_attributes_title_link_and_date:
       'time .date-month': Jul
       'time .date-day': '23'
       'time .year-start': '2026'
+content_banner_badge_and_link_with_custom_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:content_banner
+    '#props':
+      title: 'Content banner title'
+      badges:
+        - label: 'Custom badge'
+          attributes:
+            class:
+              - custom-badge-class
+      links:
+        - label: 'Custom link'
+          path: 'https://example.com'
+          attributes:
+            class:
+              - custom-link-class
+  assertions:
+    count:
+      '.badge.custom-badge-class': 1
+      'a.custom-link-class[href="https://example.com"]': 1
+    contains:
+      '.badge.custom-badge-class': 'Custom badge'
+      'a.custom-link-class': 'Custom link'
