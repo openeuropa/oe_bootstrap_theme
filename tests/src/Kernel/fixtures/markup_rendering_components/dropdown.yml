@@ -66,7 +66,9 @@ dropdown_dark_aligned_dropup:
     '#component': oe_bootstrap_theme:dropdown
     '#props':
       dropdown_id: dark-dropdown
-      button_label: 'Dark dropdown'
+      trigger:
+        label: 'Dark dropdown'
+        disabled: true
       dark_mode: true
       direction: dropup
       alignment: dropdown-menu-lg-end
@@ -76,7 +78,7 @@ dropdown_dark_aligned_dropup:
   assertions:
     count:
       'div.dropdown.dropup': 1
-      'button#dark-dropdown.dropdown-toggle': 1
+      'button#dark-dropdown.dropdown-toggle[disabled][aria-disabled="true"]': 1
       'ul.dropdown-menu.dropdown-menu-dark.dropdown-menu-lg-end': 1
       'a.dropdown-item[href="/example"]': 1
 dropdown_link_without_wrapper:
