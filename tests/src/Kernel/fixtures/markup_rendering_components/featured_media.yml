@@ -226,3 +226,16 @@ featured_media_native_video:
       'figure iframe': 0
     equals:
       'figcaption > div.bg-light.p-3': 'Native video caption.'
+
+featured_media_image_as_markup:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:featured_media
+    '#props':
+      image:
+        '#markup': '<img src="https://example.com/pre-rendered.jpg" alt="Pre-rendered image">'
+  assertions:
+    count:
+      'figure > img[src="https://example.com/pre-rendered.jpg"][alt="Pre-rendered image"]': 1
+      'figure > img.img-fluid': 0
+      'figure > img.flex-end-100': 0
