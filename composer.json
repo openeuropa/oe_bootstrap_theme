@@ -16,6 +16,7 @@
     },
     "require-dev": {
         "ext-dom": "*",
+        "aarongilmartinez/gitattributes-guard": "dev-OEL-4914",
         "composer/installers": "^1.11",
         "drupal/config_devel": "^1.10",
         "drupal/core-composer-scaffold": "^10.3 || ^11",
@@ -37,6 +38,10 @@
         {
             "type": "git",
             "url": "https://github.com/openeuropa/code-review-drupal.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/AaronGilMartinez/gitattributes-guard.git"
         }
     ],
     "autoload": {
@@ -73,6 +78,7 @@
     "config": {
         "sort-packages": true,
         "allow-plugins": {
+            "aarongilmartinez/gitattributes-guard": true,
             "composer/installers": true,
             "cweagans/composer-patches": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
@@ -81,6 +87,7 @@
             "php-http/discovery": false,
             "phpro/grumphp-shim": true,
             "phpstan/extension-installer": true,
+            "symfony/runtime": true,
             "tbachert/spi": false
         }
     }
