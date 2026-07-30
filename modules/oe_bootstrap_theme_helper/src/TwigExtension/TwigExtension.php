@@ -91,6 +91,9 @@ class TwigExtension extends AbstractExtension {
     foreach ($items as $item) {
       // Copy most of the fields.
       $bcl_card = $item;
+      if (isset($item['attributes']) && is_array($item['attributes'])) {
+        $bcl_card['attributes'] = new Attribute($item['attributes']);
+      }
       // Some fields need to be rewritten.
       if (isset($item['title'])) {
         $title = $item['title'];
@@ -122,16 +125,28 @@ class TwigExtension extends AbstractExtension {
       }
       $bcl_card['badges'] = [];
       foreach ($item['badges'] ?? [] as $badge) {
-        $bcl_card['badges'][] = [
+        $bcl_badge = is_array($badge) ? $badge + ['background' => 'primary'] : [
           'label' => $badge,
           'background' => 'primary',
         ];
+        if (isset($bcl_badge['attributes']) && is_array($bcl_badge['attributes'])) {
+          $bcl_badge['attributes'] = new Attribute($bcl_badge['attributes']);
+        }
+        $bcl_card['badges'][] = $bcl_badge;
       }
       if (isset($item['image'])) {
-        $bcl_card['image'] = [
-          'path' => $item['image']->getSource(),
-          'alt' => $item['image']->getAlt(),
-        ];
+        if (is_array($item['image'])) {
+          $bcl_card['image'] = $item['image'] + [
+            'path' => $item['image']['src'] ?? '',
+            'alt' => '',
+          ];
+        }
+        else {
+          $bcl_card['image'] = [
+            'path' => $item['image']->getSource(),
+            'alt' => $item['image']->getAlt(),
+          ];
+        }
       }
 
       $bcl_cards[] = $bcl_card;
