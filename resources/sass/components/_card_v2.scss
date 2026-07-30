@@ -1,6 +1,8 @@
 // Custom style for Card v2.
 // -----------------------------------------------------------------------------
 .card.v2 {
+  overflow: hidden;
+
   &:has(.stretched-link) {
     a:not(.stretched-link) {
       position: relative;
@@ -41,7 +43,6 @@
     }
   }
   &.horizontal {
-    overflow: hidden;
     @media (min-width: 768px) {
       flex-direction: row;
       .card-media {
