@@ -1,0 +1,77 @@
+{#
+/**
+ * @file
+ * File component.
+ */
+#}
+{% apply spaceless %}
+{% set _icon_path = icon_path|default(bcl_icon_path()) %}
+{% set _link_label = link_label|default('Download'|t) %}
+
+{% set _translations = {} %}
+{% if translations is not empty and translations is iterable %}
+  {% set _items = [] %}
+  {% for translation in translations %}
+    {% set _translation_meta = '(' ~ translation.extension|upper ~ ')' %}
+    {% if translation.size %}
+      {% set _translation_meta = '(' ~ translation.size|format_size ~ ' - ' ~ translation.extension|upper ~ ')' %}
+    {% endif %}
+    {% set _items = _items|merge([{
+      title: translation.title,
+      language: translation.language_code is not empty ? translation.language_code|to_native_language : '',
+      meta: _translation_meta,
+      download: {
+        label: _link_label,
+        path: translation.url,
+      },
+    }]) %}
+  {% endfor %}
+  {% set _translations = {
+    label: {
+      path: _icon_path,
+      label: 'Other languages (@count)'|t({'@count': _items|length}),
+      icon_position: 'after',
+      icon: {
+        name: 'caret-down-fill',
+        size: '2xs',
+        path: _icon_path,
+      },
+    },
+    items: _items,
+  } %}
+{% endif %}
+
+{% if file is not empty %}
+  {% set _meta = '(' ~ file.extension|upper ~ ')' %}
+  {% if file.size %}
+    {% set _meta = '(' ~ file.size|format_size ~ ' - ' ~ file.extension|upper ~ ')' %}
+  {% endif %}
+  <div class="bcl-file-container mt-4">
+    {% include '@oe-bcl/file' with {
+      title: title,
+      title_tag: title_tag|default('h2'),
+      title_attributes: title_attributes,
+      item_title: file.title,
+      language: file.language_code is not empty ? file.language_code|to_native_language : '',
+      meta: _meta,
+      icon: {
+        path: _icon_path,
+        name: file.extension|to_file_icon,
+        size: '2xl',
+      },
+      download: {
+        label: _link_label,
+        path: file.url,
+        icon: {
+          path: _icon_path,
+          name: 'download',
+          size: 'fluid',
+        },
+      },
+      translation: _translations,
+      icon_path: _icon_path,
+      attributes: attributes,
+    } only %}
+  </div>
+{% endif %}
+{% endapply %}

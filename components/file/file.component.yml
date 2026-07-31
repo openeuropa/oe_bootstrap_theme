@@ -1,0 +1,59 @@
+name: File
+description: 'Presents a file available for download, optionally with translations.'
+props:
+  type: object
+  properties:
+    title:
+      title: Title
+      type: [string, array, object]
+      description: 'Title displayed above the file.'
+    title_tag:
+      title: 'Title tag'
+      type: string
+      description: 'Tag used for the title. Defaults to h2.'
+    title_attributes:
+      title: 'Title attributes'
+      type: Drupal\Core\Template\Attribute
+    link_label:
+      title: 'Download link label'
+      type: string
+      description: 'Label used for the download links. Defaults to Download.'
+    file:
+      title: File
+      type: object
+      description: 'File presented for download.'
+      properties:
+        title:
+          type: string
+        url:
+          type: string
+        size:
+          type: [string, integer]
+        extension:
+          type: string
+        language_code:
+          type: string
+    translations:
+      title: Translations
+      type: array
+      description: 'List of translations of the file.'
+      items:
+        type: object
+        properties:
+          title:
+            type: string
+          url:
+            type: string
+          size:
+            type: [string, integer]
+          extension:
+            type: string
+          language_code:
+            type: string
+    icon_path:
+      title: 'Icons path'
+      type: string
+      description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute
