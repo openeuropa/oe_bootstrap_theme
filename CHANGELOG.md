@@ -1,8 +1,28 @@
 # Change Log
+## [1.37.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.37.0) (2026-08-03)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.36.0...1.37.0)
+
+**Fixed bugs:**
+
+- Deprecation warnings [\#418](https://github.com/openeuropa/oe_bootstrap_theme/issues/418)
+
+**Closed issues:**
+
+- Card v2 - overflow not hidden [\#439](https://github.com/openeuropa/oe_bootstrap_theme/issues/439)
+
+**Merged pull requests:**
+
+- OEL-4820: Fix card v2 visible corners on image. [\#570](https://github.com/openeuropa/oe_bootstrap_theme/pull/570) ([tibi2303](https://github.com/tibi2303))
+
+
+## [1.36.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.36.1) (2026-05-29)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.35.6...1.36.1)
 
 ## [1.36.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.36.0) (2026-05-29)
 
-[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.35.6...1.36.0)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.36.1...1.36.0)
 
 **Closed issues:**
 
@@ -10,6 +30,7 @@
 
 **Merged pull requests:**
 
+- Prepare release 1.36.0. [\#569](https://github.com/openeuropa/oe_bootstrap_theme/pull/569) ([tibi2303](https://github.com/tibi2303))
 - OEL-0000: Update bcl version. [\#568](https://github.com/openeuropa/oe_bootstrap_theme/pull/568) ([tibi2303](https://github.com/tibi2303))
 - OEL-4746: Added test for logos path exists. [\#565](https://github.com/openeuropa/oe_bootstrap_theme/pull/565) ([tibi2303](https://github.com/tibi2303))
 - OEL-4732: Remove selenium version. [\#560](https://github.com/openeuropa/oe_bootstrap_theme/pull/560) ([tibi2303](https://github.com/tibi2303))
