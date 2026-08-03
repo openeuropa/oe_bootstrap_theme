@@ -3,10 +3,6 @@ description: 'Date block allows to present a date that can be placed in other co
 props:
   type: object
   properties:
-    date:
-      title: Date
-      type: [string, object]
-      description: 'Date string or DateTime object used to derive the day, month, year and datetime values.'
     day:
       title: Day
       type: [string, integer]
