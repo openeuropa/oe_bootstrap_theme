@@ -1,7 +1,16 @@
 # Change Log
+
+## [1.37.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.37.1)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.37.0...1.37.1)
+
+**Merged pull requests:**
+
+- OEL-0000: Update bcl version [\#604](https://github.com/openeuropa/oe_bootstrap_theme/pull/604) ([piotrsmykaj](https://github.com/piotrsmykaj))
+
 ## [1.37.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.37.0) (2026-08-03)
 
-[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.36.0...1.37.0)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.36.1...1.37.0)
 
 **Fixed bugs:**
 
@@ -13,16 +22,16 @@
 
 **Merged pull requests:**
 
+- Prepare release 1.37.0. [\#603](https://github.com/openeuropa/oe_bootstrap_theme/pull/603) ([tibi2303](https://github.com/tibi2303))
 - OEL-4820: Fix card v2 visible corners on image. [\#570](https://github.com/openeuropa/oe_bootstrap_theme/pull/570) ([tibi2303](https://github.com/tibi2303))
-
 
 ## [1.36.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.36.1) (2026-05-29)
 
-[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.35.6...1.36.1)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.36.0...1.36.1)
 
 ## [1.36.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.36.0) (2026-05-29)
 
-[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.36.1...1.36.0)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.35.6...1.36.0)
 
 **Closed issues:**
 
