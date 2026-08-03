@@ -40,8 +40,6 @@ props:
             properties:
               src:
                 type: string
-              path:
-                type: string
               alt:
                 type: string
               position:
