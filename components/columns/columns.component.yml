@@ -9,7 +9,7 @@ props:
       description: 'The items to organize in columns. Accepts any render array.'
     columns:
       title: Columns
-      type: number
+      type: integer
       description: 'The number of columns. Defaults to 4.'
     tag:
       title: Tag
