@@ -61,7 +61,7 @@
 {% set _image = {} %}
 {% if image is not empty %}
   {% set _image = image|merge({
-    path: image.path|default(image.src|default('')),
+    path: image.src|default(''),
     alt: image.alt|default(''),
   }) %}
 {% endif %}
