@@ -4,23 +4,11 @@
  * Date block component.
  */
 #}
-{% set _day = day|default('') %}
-{% set _month = month|default('') %}
-{% set _year = year|default('') %}
-{% set _date_time = date_time|default('') %}
-
-{% if date is not empty %}
-  {% set _day = day|default(date|date('d')) %}
-  {% set _month = month|default(date|date('M')) %}
-  {% set _year = year|default(date|date('Y')) %}
-  {% set _date_time = date_time|default(date|date('Y-m-d')) %}
-{% endif %}
-
 {% include '@oe-bcl/date-block' with {
-  day: _day,
-  month: _month,
-  date_time: _date_time,
-  year: _year,
+  day: day,
+  month: month,
+  date_time: date_time,
+  year: year,
   end_day: end_day,
   end_month: end_month,
   end_year: end_year,

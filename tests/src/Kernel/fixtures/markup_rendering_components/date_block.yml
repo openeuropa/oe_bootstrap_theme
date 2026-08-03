@@ -1,26 +1,12 @@
-date_block_legacy_date:
-  render:
-    '#type': component
-    '#component': oe_bootstrap_theme:date_block
-    '#props':
-      date: '2021-05-26'
-  assertions:
-    count:
-      'time': 1
-      'time.bcl-date-block[datetime="2021-05-26"]': 1
-      'time svg': 0
-      'time .year-end': 0
-    equals:
-      'time > div > div > div:nth-child(1) .date-month': May
-      'time > div > div > div:nth-child(1) .date-day': '26'
-      'time > div > div:nth-child(2) .year-start': '2021'
 date_block_explicit_values_and_attributes:
   render:
     '#type': component
     '#component': oe_bootstrap_theme:date_block
     '#props':
-      date: '2020-01-01'
       day: 23
+      month: Jul
+      date_time: '2026-07-23'
+      year: 2026
       attributes:
         id: custom-date-block
         class:
@@ -30,12 +16,12 @@ date_block_explicit_values_and_attributes:
     count:
       'time#custom-date-block.bcl-date-block.custom-date-block-class': 1
       'time[data-date-block="custom-value"]': 1
-      'time[datetime="2020-01-01"]': 1
+      'time[datetime="2026-07-23"]': 1
       'time svg': 0
     equals:
-      'time .date-month': Jan
+      'time .date-month': Jul
       'time .date-day': '23'
-      'time .year-start': '2020'
+      'time .year-start': '2026'
 date_block_range_with_custom_icon_path:
   render:
     '#type': component
