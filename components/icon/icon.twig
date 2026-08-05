@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Icon component.
+ */
+#}
+{% include '@oe-bcl/icon' with {
+  name: name,
+  path: icon_path|default(bcl_icon_path()),
+  size: size|default('s'),
+  transformation: transformation,
+  attributes: attributes,
+} only %}
