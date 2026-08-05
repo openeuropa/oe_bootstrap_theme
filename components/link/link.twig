@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Link component.
+ */
+#}
+{% set _icon = {} %}
+{% if icon is defined and icon %}
+  {% set _icon = icon is iterable ? icon : { name: icon } %}
+  {% if _icon.path is not defined or _icon.path is empty %}
+    {% set _icon = _icon|merge({ path: bcl_icon_path() }) %}
+  {% endif %}
+  {% set _icon = _icon|merge({
+    attributes: create_attribute(_icon.attributes|default({})),
+  }) %}
+{% endif %}
+
+{% include '@oe-bcl/link' with {
+  label: label,
+  path: path,
+  variant: variant,
+  id: id,
+  disabled: disabled,
+  standalone: standalone,
+  icon: _icon,
+  icon_position: icon_position,
+  icon_display: icon_display,
+  remove_icon_spacers: remove_icon_spacers,
+  attributes: attributes,
+} only %}
