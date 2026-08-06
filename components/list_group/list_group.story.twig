@@ -1,0 +1,158 @@
+{% set variants = [
+  'primary',
+  'secondary',
+  'success',
+  'danger',
+  'warning',
+  'info',
+  'light',
+  'dark',
+] %}
+{% set variant_items = [] %}
+{% for variant in variants %}
+  {% set variant_items = variant_items|merge([{
+    html: variant|capitalize ~ ' item',
+    variant: variant,
+  }]) %}
+{% endfor %}
+{% set variant_items = variant_items|merge([
+  {
+    html: [{ '#markup': 'Item with <strong>rendered markup</strong>' }],
+    extra_classes: 'fw-medium',
+  },
+  {
+    html: 'Item with a badge',
+    badge: {
+      label: '10',
+      background: 'success',
+      rounded_pill: true,
+      attributes: { class: ['float-end'] },
+    },
+  },
+]) %}
+
+<div class="vstack gap-5">
+  <div>
+    <h3>Unordered items and variants</h3>
+    {% include 'oe_bootstrap_theme:list_group' with {
+      items: variant_items,
+    } only %}
+  </div>
+
+  <div>
+    <h3>Ordered and flush</h3>
+    {% include 'oe_bootstrap_theme:list_group' with {
+      type: 'ordered',
+      flush: true,
+      id: 'ordered-list-group',
+      attributes: create_attribute()
+        .addClass('custom-list-group')
+        .setAttribute('data-list-group', 'ordered'),
+      items: [
+        { html: 'First step' },
+        { html: 'Second step' },
+        { html: 'Third step' },
+      ],
+    } only %}
+  </div>
+
+  <div>
+    <h3>Horizontal</h3>
+    {% include 'oe_bootstrap_theme:list_group' with {
+      horizontal: 'horizontal',
+      items: [
+        { html: 'First item' },
+        { html: 'Second item' },
+        { html: 'Third item' },
+      ],
+    } only %}
+
+    <h3 class="mt-4">Horizontal from medium</h3>
+    {% include 'oe_bootstrap_theme:list_group' with {
+      horizontal: 'horizontal-md',
+      items: [
+        { html: 'First item' },
+        { html: 'Second item' },
+        { html: 'Third item' },
+      ],
+    } only %}
+  </div>
+
+  <div>
+    <h3>Form inputs</h3>
+    {% include 'oe_bootstrap_theme:list_group' with {
+      items: [
+        {
+          input: true,
+          input_type: 'checkbox',
+          id: 'list-group-checkbox',
+          label: 'Checked switch',
+          checked: true,
+          required: true,
+          switch: true,
+          attributes: { class: ['custom-checkbox'] },
+        },
+        {
+          input: true,
+          input_type: 'text',
+          id: 'list-group-text',
+          label: 'Validated text input',
+          placeholder: 'Enter a value',
+          valid: true,
+          valid_feedback: 'The value is valid.',
+          helper_text: 'Supporting text for this field.',
+          helper_text_id: 'list-group-text-help',
+        },
+        {
+          input: true,
+          input_type: 'text',
+          id: 'list-group-invalid',
+          label: 'Invalid floating input',
+          placeholder: 'Enter a value',
+          floating: true,
+          invalid: true,
+          invalid_feedback: 'Enter a valid value.',
+        },
+      ],
+    } only %}
+  </div>
+
+  <div>
+    <h3>Actionable links and buttons</h3>
+    {% include 'oe_bootstrap_theme:list_group' with {
+      type: 'actionable',
+      items: [
+        {
+          label: 'Link with icon',
+          path: '/example',
+          variant: 'primary',
+          icon: 'arrow-right',
+          icon_position: 'before',
+          attributes: { class: ['custom-action-link'] },
+        },
+        {
+          label: 'Disabled standalone link',
+          path: '/example',
+          disabled: true,
+          standalone: true,
+        },
+        {
+          button: true,
+          label: 'Button with spinner',
+          type: 'button',
+          icon: {
+            name: 'check',
+            transformation: 'rotate-90',
+            attributes: { class: ['custom-button-icon'] },
+          },
+          show_spinner: true,
+          spinner: {
+            size: 'sm',
+            assistive_text: 'Loading',
+          },
+          attributes: { class: ['custom-action-button'] },
+        },
+      ],
+    } only %}
+  </div>
+</div>
