@@ -58,6 +58,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     'icon',
     'inpage_navigation',
     'link',
+    'list_group',
     'progress',
     'timeline',
     'section',
