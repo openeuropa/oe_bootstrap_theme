@@ -1,0 +1,23 @@
+{% set default_links = [
+  { label: 'Overview', path: '#overview' },
+  { label: 'Eligibility', path: '#eligibility' },
+  { label: 'Apply', path: '#how-to-apply' },
+  { label: 'Support', path: '#support' },
+] %}
+{% set default_content %}
+  <h2 id="overview">Overview</h2>
+  <p>This funding programme supports projects that strengthen cooperation and create measurable benefits across Europe.</p>
+  <h2 id="eligibility">Eligibility</h2>
+  <p>Public authorities, non-profit organisations, and research institutions established in eligible countries can participate.</p>
+  <h2 id="how-to-apply">How to apply</h2>
+  <p>Prepare the required documents, complete the application form, and submit the proposal before the published deadline.</p>
+  <h2 id="support">Support</h2>
+  <p>Contact the programme helpdesk for guidance about eligibility, documentation, or the submission process.</p>
+{% endset %}
+
+{% include 'oe_bootstrap_theme:inpage_navigation' with {
+  title: 'Contents',
+  links: default_links,
+  content: default_content,
+  dynamic_active: true,
+} only %}

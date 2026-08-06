@@ -1,0 +1,173 @@
+inpage_navigation_default_props_omitted:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:inpage_navigation
+    '#props': {}
+  assertions:
+    count:
+      'nav[data-component-id="oe_bootstrap_theme:inpage_navigation"]': 1
+      'div.row > div.bcl-sidebar.col-md-3': 1
+      'div.row > div.col-md-9': 1
+      'nav.bcl-inpage-navigation.position-sticky[id^="bcl-inpage-navigation"]': 1
+      'nav.dynamic-active': 0
+      'button.dropdown-toggle.h2.d-md-none[id^="bcl-inpage-navigation"][aria-expanded="false"][data-bs-toggle="dropdown"]': 1
+      'button.dropdown-toggle svg.icon--s': 1
+      'h2.bcl-heading': 0
+      'ul.nav.nav-pills.flex-column': 1
+      'ul.nav-pills > li': 0
+    equals:
+      'div.row > div.col-md-9': ''
+
+inpage_navigation_with_content_and_links:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:inpage_navigation
+    '#props':
+      title: 'Page content'
+      id: page-navigation
+      dropdown_id: page-navigation-dropdown
+      links:
+        - label:
+            '#markup': 'Heading <strong>one</strong>'
+          path: '#heading-1'
+          active: true
+          attributes:
+            class:
+              - custom-navigation-link
+            data-link-attribute: first
+        - label: 'Heading two'
+          path: '#heading-2'
+          id: heading-two-link
+          variant: warning
+          standalone: true
+        - label: 'Unavailable heading'
+          path: '#heading-3'
+          disabled: true
+      content:
+        '#markup': '<h2 id="heading-1">Heading one</h2><p>First section content.</p><h2 id="heading-2">Heading two</h2><p>Second section content.</p>'
+  assertions:
+    count:
+      'nav#page-navigation.bcl-inpage-navigation[aria-labelledby="page-navigation-dropdown"]': 1
+      'button#page-navigation-dropdown.dropdown-toggle[type="button"]': 1
+      'button#page-navigation-dropdown svg.icon--s': 1
+      'nav#page-navigation h2.bcl-heading': 1
+      'ul.nav-pills > li.nav-item': 3
+      'a.nav-link.active.custom-navigation-link[href="#heading-1"][data-link-attribute="first"]': 1
+      'a#heading-two-link.nav-link.link-warning.standalone[href="#heading-2"]': 1
+      'a.nav-link.disabled[href="#heading-3"][aria-disabled="true"][tabindex="-1"]': 1
+      'div.col-md-9 > h2#heading-1': 1
+      'div.col-md-9 > h2#heading-2': 1
+    equals:
+      'nav#page-navigation h2.bcl-heading': 'Page content'
+      'a.custom-navigation-link strong': one
+      'div.col-md-9 > h2#heading-2': 'Heading two'
+    contains:
+      'button#page-navigation-dropdown svg': 'assets/icons/bcl-default-icons.svg#chevron-down'
+
+inpage_navigation_with_all_optional_parameters:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:inpage_navigation
+    '#props':
+      title:
+        '#markup': 'Related <em>information</em>'
+      title_tag: h3
+      title_link:
+        path: '/overview'
+        variant: success
+        id: linked-navigation-title
+        disabled: true
+        icon:
+          name: arrow-right
+          size: l
+          transformation: rotate-90
+          attributes:
+            class:
+              - custom-title-icon
+        icon_position: after
+        icon_display: inline-flex
+        attributes:
+          class:
+            - custom-title-link
+          data-title-link-attribute: custom-value
+      title_attributes:
+        class:
+          - custom-title
+        data-title-attribute: custom-value
+      links:
+        - label: 'Active section'
+          path: '#active-section'
+          active: true
+          icon:
+            name: bookmark
+            attributes:
+              class:
+                - custom-link-icon
+          icon_position: before
+          icon_display: inline-flex
+          attributes:
+            class:
+              - custom-link
+        - label: 'Custom sprite section'
+          path: '#custom-section'
+          variant: danger
+          icon:
+            name: custom-symbol
+            path: '/other/icons.svg'
+            size: xl
+            transformation: flip-vertical
+            attributes:
+              class:
+                - custom-sprite-icon
+          remove_icon_spacers: true
+      content:
+        '#markup': '<h2 id="active-section">Active section</h2><p>Active content.</p><h2 id="custom-section">Custom section</h2><p>Custom content.</p>'
+      dynamic_active: true
+      icon_path: '/custom/icons.svg'
+      attributes:
+        id: attributes-navigation
+        class:
+          - custom-navigation
+        aria-label: 'Related information'
+        data-navigation-attribute: custom-value
+  assertions:
+    count:
+      'nav#attributes-navigation.bcl-inpage-navigation.position-sticky.dynamic-active.custom-navigation[aria-label="Related information"][data-navigation-attribute="custom-value"]': 1
+      'nav#attributes-navigation[aria-labelledby]': 0
+      'button#attributes-navigation-dropdown.dropdown-toggle': 1
+      'nav h3.bcl-heading.custom-title[data-title-attribute="custom-value"]': 1
+      'h3.bcl-heading > a#linked-navigation-title.link-success.standalone.disabled.d-inline-flex.gap-2-5.custom-title-link[href="/overview"][aria-disabled="true"][tabindex="-1"][data-title-link-attribute="custom-value"]': 1
+      'h3.bcl-heading a > svg.icon--l.icon--rotate-90.custom-title-icon': 1
+      'a.nav-link.active.custom-link.d-inline-flex.gap-2-5[href="#active-section"]': 1
+      'a.custom-link > svg:first-child.custom-link-icon': 1
+      'a.nav-link.link-danger[href="#custom-section"] > svg.icon--xl.icon--flip-vertical.custom-sprite-icon': 1
+      'a[href="#custom-section"] > svg.ms-2-5': 0
+      'a[href="#custom-section"] > svg.me-2-5': 0
+    equals:
+      'h3.bcl-heading a em': information
+    contains:
+      'button#attributes-navigation-dropdown svg': '/custom/icons.svg#chevron-down'
+      'h3.bcl-heading a svg': '/custom/icons.svg#arrow-right'
+      'a.custom-link svg': '/custom/icons.svg#bookmark'
+      'a[href="#custom-section"] svg': '/other/icons.svg#custom-symbol'
+
+inpage_navigation_without_links:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:inpage_navigation
+    '#props':
+      title: 'Page content'
+      id: navigation-without-links
+      dropdown_id: navigation-without-links-dropdown
+      content:
+        '#markup': '<div class="content-example">Content remains visible without navigation links.</div>'
+  assertions:
+    count:
+      'nav#navigation-without-links': 1
+      'button#navigation-without-links-dropdown': 1
+      'nav h2.bcl-heading': 1
+      'ul.nav-pills a.nav-link': 0
+      'div.col-md-9 > div.content-example': 1
+    equals:
+      'nav h2.bcl-heading': 'Page content'
+      'div.content-example': 'Content remains visible without navigation links.'
