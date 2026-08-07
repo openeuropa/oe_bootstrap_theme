@@ -1,0 +1,38 @@
+{% set resource_links = [
+  {
+    label: 'Funding opportunities',
+    path: '/example',
+    icon: 'arrow-right',
+    icon_position: 'before',
+  },
+  {
+    label: 'Calls for proposals',
+    path: '/example',
+    icon: 'arrow-right',
+    icon_position: 'before',
+  },
+  {
+    label: 'Programme guidance',
+    path: '/example',
+    icon: 'arrow-right',
+    icon_position: 'before',
+  },
+] %}
+
+<div class="vstack gap-5">
+  {% include 'oe_bootstrap_theme:links_block' with {
+    title: 'Useful resources',
+    links: resource_links,
+  } only %}
+
+  {% include 'oe_bootstrap_theme:links_block' with {
+    title: 'Related topics',
+    background: 'transparent',
+    orientation: 'horizontal',
+    links: [
+      { label: 'Digital strategy', path: '/example' },
+      { label: 'Research and innovation', path: '/example' },
+      { label: 'Regional development', path: '/example' },
+    ],
+  } only %}
+</div>
