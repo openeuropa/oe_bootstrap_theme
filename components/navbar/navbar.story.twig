@@ -1,0 +1,52 @@
+{% set branding %}
+  <a class="navbar-brand" href="/example" rel="home">Europa</a>
+{% endset %}
+
+{% set navigation %}
+  <ul class="navbar-nav me-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="/example">Priorities</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/example">Funding</a>
+    </li>
+  </ul>
+{% endset %}
+
+{% set right %}
+  <a class="btn btn-primary btn-sm" href="/example">Sign in</a>
+{% endset %}
+
+<div class="vstack gap-5">
+  <div>
+    <h3 class="h5 mb-3">Light navbar</h3>
+    {% include 'oe_bootstrap_theme:navbar' with {
+      expanded_breakpoint: 'lg',
+      branding: branding,
+      navigation: navigation,
+      right: right,
+    } only %}
+  </div>
+
+  <div>
+    <h3 class="h5 mb-3">Dark navbar</h3>
+    {% include 'oe_bootstrap_theme:navbar' with {
+      collapse_id: 'dark-navbar',
+      expanded_breakpoint: 'md',
+      color_scheme: 'dark',
+      branding: branding,
+      navigation: navigation,
+    } only %}
+  </div>
+
+  <div>
+    <h3 class="h5 mb-3">Without background or collapse</h3>
+    {% include 'oe_bootstrap_theme:navbar' with {
+      expanded_breakpoint: 'sm',
+      background: false,
+      disable_collapse: true,
+      branding: branding,
+      navigation: navigation,
+    } only %}
+  </div>
+</div>
