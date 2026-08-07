@@ -1,0 +1,133 @@
+navbar_default_props_omitted:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:navbar
+    '#props': {}
+  assertions:
+    count:
+      'nav[data-component-id="oe_bootstrap_theme:navbar"].navbar.navbar-expand-lg.navbar-light.bg-light': 1
+      'nav > div.container': 1
+      'button.navbar-toggler': 0
+      'div.navbar-collapse': 0
+    equals:
+      'nav > div.container': ''
+
+navbar_light_with_all_regions:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:navbar
+    '#props':
+      expanded_breakpoint: lg
+      branding:
+        '#type': html_tag
+        '#tag': a
+        '#value': 'OpenEuropa Site'
+        '#attributes':
+          href: 'https://europa.eu/'
+          rel: home
+          class:
+            - navbar-brand
+      navigation:
+        - '#markup': '<a class="nav-link" href="#priorities">Priorities</a>'
+        - '#type': html_tag
+          '#tag': a
+          '#value': Funding
+          '#attributes':
+            href: '#funding'
+            class:
+              - nav-link
+      right:
+        '#type': html_tag
+        '#tag': form
+        '#attributes':
+          class:
+            - d-flex
+          action: /search
+        '#children': '<label for="navbar-search">Search</label><input id="navbar-search" name="search">'
+  assertions:
+    count:
+      'nav.navbar.navbar-expand-lg.navbar-light.bg-light': 1
+      'nav.navbar-expand-sm': 0
+      'nav.navbar-expand-md': 0
+      'nav > .container > a.navbar-brand[href="https://europa.eu/"][rel="home"]': 1
+      'button.navbar-toggler[type="button"][data-bs-toggle="collapse"][aria-expanded="false"][aria-label="Toggle navigation"]': 1
+      'button.navbar-toggler[data-bs-target^="#bcl-navbar"][aria-controls^="bcl-navbar"]': 1
+      'div.navbar-collapse[id^="bcl-navbar"]': 1
+      'div.navbar-collapse > a.nav-link': 2
+      'div.navbar-collapse > a.nav-link[href="#priorities"]': 1
+      'div.navbar-collapse > a.nav-link[href="#funding"]': 1
+      'div.navbar-collapse > form.d-flex[action="/search"]': 1
+      'form.d-flex input#navbar-search[name="search"]': 1
+    equals:
+      'a.navbar-brand': 'OpenEuropa Site'
+      'a[href="#priorities"]': Priorities
+      'a[href="#funding"]': Funding
+      'form.d-flex label': Search
+
+navbar_dark_with_custom_id_and_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:navbar
+    '#props':
+      collapse_id: custom-navbar-collapse
+      expanded_breakpoint: md
+      color_scheme: dark
+      branding:
+        '#markup': '<a class="navbar-brand" href="/home"><strong>Digital Europe</strong></a>'
+      navigation:
+        '#type': html_tag
+        '#tag': a
+        '#value': 'About the programme'
+        '#attributes':
+          href: /about
+          class:
+            - nav-link
+      right:
+        '#type': html_tag
+        '#tag': button
+        '#value': Account
+        '#attributes':
+          class:
+            - btn
+            - btn-light
+          type: button
+      attributes:
+        id: custom-navbar
+        class:
+          - custom-navbar
+        aria-label: 'Primary navigation'
+        data-navbar-attribute: custom-value
+  assertions:
+    count:
+      'nav#custom-navbar.navbar.navbar-expand-md.navbar-dark.bg-dark.custom-navbar[aria-label="Primary navigation"][data-navbar-attribute="custom-value"]': 1
+      'nav.navbar-expand-lg': 0
+      'button.navbar-toggler[data-bs-target="#custom-navbar-collapse"][aria-controls="custom-navbar-collapse"]': 1
+      'div#custom-navbar-collapse.collapse.navbar-collapse': 1
+      'a.navbar-brand[href="/home"] > strong': 1
+      'div.navbar-collapse > a.nav-link[href="/about"]': 1
+      'div.navbar-collapse > button.btn.btn-light[type="button"]': 1
+    equals:
+      'a.navbar-brand strong': 'Digital Europe'
+      'a.nav-link': 'About the programme'
+      'button.btn-light': Account
+
+navbar_without_background_or_collapse:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:navbar
+    '#props':
+      expanded_breakpoint: sm
+      background: false
+      disable_collapse: true
+      navigation:
+        '#markup': '<a class="nav-link" href="/direct-link">Direct link</a>'
+  assertions:
+    count:
+      'nav.navbar.navbar-expand-sm.navbar-light': 1
+      'nav.bg-light': 0
+      'nav.bg-dark': 0
+      'button.navbar-toggler': 0
+      'div.navbar-collapse': 0
+      'nav > .container > a.nav-link[href="/direct-link"]': 1
+    equals:
+      'a.nav-link': 'Direct link'
