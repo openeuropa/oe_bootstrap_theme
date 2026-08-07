@@ -1,0 +1,148 @@
+links_block_default_props_omitted:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:links_block
+    '#props': {}
+  assertions:
+    count:
+      '.bcl-links-block': 0
+
+links_block_vertical_gray:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:links_block
+    '#props':
+      title:
+        '#markup': 'Useful <strong>resources</strong>'
+      links:
+        - label:
+            '#markup': 'Funding <em>opportunities</em>'
+          path: 'https://example.com/funding'
+        - label: 'Programme guidance'
+          path: 'https://example.com/guidance'
+        - label: 'Contact support'
+          path: 'https://example.com/support'
+  assertions:
+    count:
+      'div[data-component-id="oe_bootstrap_theme:links_block"].bcl-links-block.bg-light.px-4.py-3.rounded-2': 1
+      'h2.bcl-heading.pb-3.mb-3.border-bottom': 1
+      'ul.ps-0.mb-0': 1
+      'ul > li.list-unstyled': 3
+      'ul > li.d-inline': 0
+      'ul > li.me-4-5': 2
+      'a.mb-3.d-inline-block.standalone': 3
+      'a svg': 0
+    equals:
+      'h2.bcl-heading strong': resources
+      'li:nth-child(1) a em': opportunities
+      'li:nth-child(2) a[href="https://example.com/guidance"]': 'Programme guidance'
+
+links_block_horizontal_transparent_with_optional_parameters:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:links_block
+    '#props':
+      title:
+        '#markup': 'Related <em>information</em>'
+      title_tag: h3
+      title_link:
+        path: '/resources'
+        variant: success
+        id: resources-title-link
+        disabled: true
+        icon:
+          name: arrow-right
+          size: l
+          transformation: rotate-90
+          attributes:
+            class:
+              - custom-title-icon
+        icon_position: after
+        icon_display: inline-flex
+        attributes:
+          class:
+            - custom-title-link
+          data-title-link-attribute: custom-value
+      title_attributes:
+        class:
+          - custom-title
+        data-title-attribute: custom-value
+      background: transparent
+      orientation: horizontal
+      links:
+        - label:
+            '#markup': 'Disabled <strong>link</strong>'
+          path: '/disabled'
+          variant: warning
+          id: disabled-link
+          disabled: true
+          icon: lock
+          icon_position: before
+          attributes:
+            class:
+              - custom-link
+            data-link-attribute: custom-value
+        - label: 'Custom icon'
+          path: '/custom-icon'
+          icon:
+            name: custom-symbol
+            path: '/other/icons.svg'
+            size: xl
+            transformation: flip-vertical
+            attributes:
+              class:
+                - custom-link-icon
+          icon_position: after
+          icon_display: inline-flex
+        - label: 'No icon spacing'
+          path: '/no-spacing'
+          icon: arrow-right
+          icon_display: inline-flex
+          remove_icon_spacers: true
+      icon_path: '/custom/icons.svg'
+      attributes:
+        id: custom-links-block
+        class:
+          - custom-links-block
+        data-block-attribute: custom-value
+  assertions:
+    count:
+      'div#custom-links-block.bcl-links-block.custom-links-block[data-block-attribute="custom-value"]': 1
+      'div#custom-links-block.bg-light': 0
+      'h3.bcl-heading.pb-3.mb-3.border-bottom.custom-title[data-title-attribute="custom-value"]': 1
+      'h3 > a#resources-title-link.link-success.standalone.disabled.d-inline-flex.gap-2-5.custom-title-link[href="/resources"][aria-disabled="true"][tabindex="-1"][data-title-link-attribute="custom-value"]': 1
+      'h3 a > svg.icon--l.icon--rotate-90.custom-title-icon': 1
+      'ul > li.list-unstyled.d-inline': 3
+      'ul > li.me-4-5': 2
+      'a#disabled-link.link-warning.disabled.d-flex.gap-2-5.custom-link[href="/disabled"][aria-disabled="true"][tabindex="-1"][data-link-attribute="custom-value"]': 1
+      'a#disabled-link > svg:first-child': 1
+      'a[href="/custom-icon"].d-inline-flex.gap-2-5 > svg:last-child.icon--xl.icon--flip-vertical.custom-link-icon': 1
+      'a[href="/no-spacing"] > svg': 1
+      'a[href="/no-spacing"].gap-2-5': 0
+      'a[href="/no-spacing"] > svg.ms-2-5': 0
+      'a[href="/no-spacing"] > svg.me-2-5': 0
+    equals:
+      'h3 a em': information
+      'a#disabled-link strong': link
+    contains:
+      'h3 a svg': '/custom/icons.svg#arrow-right'
+      'a#disabled-link svg': '/custom/icons.svg#lock'
+      'a[href="/custom-icon"] svg': '/other/icons.svg#custom-symbol'
+      'a[href="/no-spacing"] svg': '/custom/icons.svg#arrow-right'
+
+links_block_without_title:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:links_block
+    '#props':
+      links:
+        - label: 'Single link'
+          path: '/single-link'
+  assertions:
+    count:
+      'div.bcl-links-block.bg-light': 1
+      'div.bcl-links-block h2.bcl-heading': 0
+      'ul > li.list-unstyled': 1
+      'a[href="/single-link"]': 1
+    equals:
+      'a[href="/single-link"]': 'Single link'
