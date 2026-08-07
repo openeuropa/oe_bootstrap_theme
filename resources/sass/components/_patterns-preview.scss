@@ -34,6 +34,26 @@
   }
 }
 
-.components-preview__preview {
-  background: var(--bs-white);
+.components-preview {
+  background: transparent;
+  padding: 0;
+  .components-preview__wrapper {
+    gap: 0;
+    .components-preview__sidebar {
+      background-color: transparent;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    .components-preview__components {
+      background-color: transparent;
+      border-radius: 0;
+      border: 0;
+      box-shadow: none;
+      .components-preview__preview {
+        background: transparent;
+        border-radius: 0;
+        --padding-base: 19px;
+      }
+    }
+  }
 }
