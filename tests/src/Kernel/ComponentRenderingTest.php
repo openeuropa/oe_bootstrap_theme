@@ -62,6 +62,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     'navbar',
     'offcanvas',
     'pagination',
+    'pagination_v2',
     'progress',
     'timeline',
     'section',
@@ -241,6 +242,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
         'content_attributes',
         'header_attributes',
         'footer_attributes',
+        'list_attributes',
         'wrapper_attributes',
         'heading_attributes',
       ] as $attribute_prop) {
