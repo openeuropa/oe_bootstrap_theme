@@ -1,0 +1,282 @@
+name: Listing
+description: 'Displays cards in default or highlighted one-, two-, or three-column listings.'
+props:
+  type: object
+  properties:
+    variant:
+      title: Variant
+      type: string
+      description: 'Visual style of the listing. Defaults to default.'
+      enum:
+        - default
+        - highlight
+      'meta:enum':
+        default: 'Default (default)'
+        highlight: Highlight
+    columns:
+      title: Columns
+      type: integer
+      description: 'Number of columns. Defaults to 1.'
+      enum:
+        - 1
+        - 2
+        - 3
+      'meta:enum':
+        1: 'One (default)'
+        2: Two
+        3: Three
+    title:
+      title: Title
+      type: [string, array, object]
+      description: 'Title of the listing.'
+    title_tag:
+      title: 'Title tag'
+      type: string
+      description: 'The tag to use for the title. Defaults to h2.'
+    title_link:
+      title: 'Title link'
+      type: object
+      description: 'Optional link applied to the listing title. The title prop is used as its label.'
+      properties:
+        path:
+          type: [string, object]
+        variant:
+          type: string
+        id:
+          type: string
+        disabled:
+          type: boolean
+        standalone:
+          type: boolean
+        icon:
+          type: object
+          properties:
+            name:
+              type: string
+            size:
+              type: string
+            path:
+              type: string
+            transformation:
+              type: string
+            attributes:
+              type: object
+        icon_position:
+          type: string
+          enum:
+            - before
+            - after
+        icon_display:
+          type: string
+          enum:
+            - flex
+            - inline-flex
+        remove_icon_spacers:
+          type: boolean
+        attributes:
+          type: object
+    items:
+      title: Items
+      type: array
+      description: 'Cards displayed in the listing.'
+      items:
+        type: object
+        properties:
+          title:
+            type: [string, array, object]
+          title_tag:
+            type: string
+          title_link:
+            type: object
+            description: 'Optional link applied to the card title. The title prop is used as its label.'
+            properties:
+              path:
+                type: [string, object]
+              variant:
+                type: string
+              id:
+                type: string
+              disabled:
+                type: boolean
+              standalone:
+                type: boolean
+              icon:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  size:
+                    type: string
+                  path:
+                    type: string
+                  transformation:
+                    type: string
+                  attributes:
+                    type: object
+              icon_position:
+                type: string
+                enum:
+                  - before
+                  - after
+              icon_display:
+                type: string
+                enum:
+                  - flex
+                  - inline-flex
+              remove_icon_spacers:
+                type: boolean
+              attributes:
+                type: object
+          url:
+            type: object
+            description: 'Drupal URL object optionally applied to the card title.'
+          subtitle:
+            type: [string, array, object]
+          text:
+            type: [string, array, object]
+          image:
+            type: object
+            properties:
+              src:
+                type: string
+              alt:
+                type: string
+              position:
+                type: string
+                enum:
+                  - top
+                  - bottom
+                  - background
+              classes:
+                type: string
+              rounded:
+                type: string
+          image_copyright:
+            type: [string, array, object]
+          date:
+            type: object
+            properties:
+              day:
+                type: [string, integer]
+              month:
+                type: string
+              date_time:
+                type: string
+              year:
+                type: [string, integer]
+              end_day:
+                type: [string, integer]
+              end_month:
+                type: string
+              end_year:
+                type: [string, integer]
+              icon_path:
+                type: string
+              attributes:
+                type: object
+          content:
+            type: [string, array, object]
+          header:
+            type: [string, array, object]
+          footer:
+            type: [string, array, object]
+          badges:
+            type: array
+            items:
+              type: [string, object]
+              properties:
+                label:
+                  type: [string, array, object]
+                background:
+                  type: string
+                url:
+                  type: string
+                title:
+                  type: string
+                dismissible:
+                  type: boolean
+                assistive_text:
+                  type: string
+                rounded_pill:
+                  type: boolean
+                outline:
+                  type: boolean
+                icon_path:
+                  type: string
+                attributes:
+                  type: object
+    link:
+      title: Link
+      type: object
+      description: 'Optional call-to-action link displayed below the cards.'
+      properties:
+        label:
+          type: [string, array, object]
+        path:
+          type: [string, object]
+        variant:
+          type: string
+        id:
+          type: string
+        disabled:
+          type: boolean
+        standalone:
+          type: boolean
+        icon:
+          type: object
+          properties:
+            path:
+              type: string
+            transformation:
+              type: string
+            attributes:
+              type: object
+        icon_position:
+          type: string
+          enum:
+            - before
+            - after
+        icon_display:
+          type: string
+          enum:
+            - flex
+            - inline-flex
+        remove_icon_spacers:
+          type: boolean
+        attributes:
+          type: object
+    alignment:
+      title: Alignment
+      type: string
+      description: 'Vertical alignment of card media and content.'
+      enum:
+        - start
+        - end
+        - center
+        - baseline
+        - stretch
+      'meta:enum':
+        start: Start
+        end: End
+        center: Center
+        baseline: Baseline
+        stretch: Stretch
+    image_size:
+      title: 'Image size'
+      type: string
+      description: 'Width of card media in horizontal listings.'
+      enum:
+        - small
+        - large
+        - extra-large
+      'meta:enum':
+        small: Small
+        large: Large
+        extra-large: 'Extra large'
+    icon_path:
+      title: 'Icons path'
+      type: string
+      description: 'Path to the icons SVG file. Defaults to the BCL icon path.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

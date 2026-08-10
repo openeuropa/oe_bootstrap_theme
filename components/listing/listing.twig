@@ -1,0 +1,93 @@
+{#
+/**
+ * @file
+ * Listing component.
+ */
+#}
+{% set _icon_path = icon_path|default(bcl_icon_path()) %}
+{% set _items = [] %}
+{% for item in items|default([]) %}
+  {% set _item = item|merge({
+    image_copyright_label: 'Image credit:'|t,
+  }) %}
+
+  {% if item.title_link is not empty %}
+    {% set _item_title_link = item.title_link|merge({
+      attributes: create_attribute(item.title_link.attributes|default({})),
+    }) %}
+    {% if item.title_link.icon is not empty %}
+      {% set _item_title_link = _item_title_link|merge({
+        icon: item.title_link.icon|merge({
+          path: item.title_link.icon.path|default(_icon_path),
+          attributes: create_attribute(item.title_link.icon.attributes|default({})),
+        }),
+      }) %}
+    {% endif %}
+    {% set _item = _item|merge({title_link: _item_title_link}) %}
+  {% endif %}
+
+  {% if item.date is not empty %}
+    {% set _item = _item|merge({
+      date: item.date|merge({
+        icon_path: item.date.icon_path|default(_icon_path),
+        attributes: create_attribute(item.date.attributes|default({})),
+      }),
+    }) %}
+  {% endif %}
+
+  {% if item.header is defined %}
+    {% set _item = _item|merge({card_header: item.header}) %}
+  {% endif %}
+  {% if item.footer is defined %}
+    {% set _item = _item|merge({card_footer: item.footer}) %}
+  {% endif %}
+
+  {% set _badges = [] %}
+  {% for badge in item.badges|default([]) %}
+    {% if badge is iterable %}
+      {% set badge = badge|merge({
+        icon_path: badge.icon_path|default(_icon_path),
+        attributes: create_attribute(badge.attributes|default({})),
+      }) %}
+    {% endif %}
+    {% set _badges = _badges|merge([badge]) %}
+  {% endfor %}
+  {% set _items = _items|merge([_item|merge({badges: _badges})]) %}
+{% endfor %}
+
+{% set _title_link = title_link|default({}) %}
+{% if _title_link is not empty %}
+  {% set _title_link = _title_link|merge({attributes: create_attribute(_title_link.attributes|default({}))}) %}
+  {% if _title_link.icon is not empty %}
+    {% set _title_link = _title_link|merge({
+      icon: _title_link.icon|merge({
+        path: _title_link.icon.path|default(_icon_path),
+        attributes: create_attribute(_title_link.icon.attributes|default({})),
+      }),
+    }) %}
+  {% endif %}
+{% endif %}
+
+{% set _link = link|default({}) %}
+{% if _link is not empty %}
+  {% set _link_icon = _link.icon|default({})|merge({
+    path: _link.icon.path|default(_icon_path),
+    attributes: create_attribute(_link.icon.attributes|default({})),
+  }) %}
+  {% set _link = _link|merge({
+    icon: _link_icon,
+    attributes: create_attribute(_link.attributes|default({})),
+  }) %}
+{% endif %}
+
+{% include '@oe-bcl/listing' with {
+  title: title,
+  title_tag: title_tag|default('h2'),
+  title_link: _title_link,
+  items: _items|bcl_card_list,
+  variant: variant|default('default') ~ '-' ~ columns|default(1) ~ '-col',
+  link: _link,
+  alignment: alignment,
+  image_size: image_size,
+  attributes: attributes|default(create_attribute()).addClass('text-break'),
+} only %}
