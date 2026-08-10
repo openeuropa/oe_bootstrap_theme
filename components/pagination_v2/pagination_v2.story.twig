@@ -1,0 +1,66 @@
+{% set pages = [
+  { path: '#page-1', label: '1' },
+  { label: '2', active: true },
+  { path: '#page-3', label: '3' },
+  { path: '#page-4', label: '4' },
+] %}
+
+<div class="vstack gap-5">
+  <div>
+    <h3>Default</h3>
+    {% include 'oe_bootstrap_theme:pagination_v2' with {
+      aria_label: 'Default pagination',
+      first: { path: '#first', label: 'First' },
+      prev: { path: '#previous', label: 'Previous' },
+      next: { path: '#next', label: 'Next' },
+      last: { path: '#last', label: 'Last' },
+      items: pages,
+    } only %}
+  </div>
+
+  <div>
+    <h3>Icons and ellipses</h3>
+    {% include 'oe_bootstrap_theme:pagination_v2' with {
+      aria_label: 'Pagination with icons and ellipses',
+      enable_first_last_icon: true,
+      ellipsis_before: true,
+      ellipsis_after: true,
+      current_mobile_label: 'Page 6 of 10',
+      first: { path: '#first' },
+      prev: { path: '#previous' },
+      next: { path: '#next' },
+      last: { path: '#last' },
+      items: [
+        { path: '#page-4', label: '4' },
+        { path: '#page-5', label: '5' },
+        { label: '6', active: true },
+        { path: '#page-7', label: '7' },
+      ],
+    } only %}
+  </div>
+
+  <div>
+    <h3>Small, aligned to start</h3>
+    {% include 'oe_bootstrap_theme:pagination_v2' with {
+      aria_label: 'Small pagination',
+      size: 'sm',
+      alignment: 'start',
+      prev: { path: '#previous', label: 'Previous' },
+      next: { path: '#next', label: 'Next' },
+      items: pages,
+    } only %}
+  </div>
+
+  <div>
+    <h3>Large, aligned to end</h3>
+    {% include 'oe_bootstrap_theme:pagination_v2' with {
+      aria_label: 'Large pagination',
+      size: 'lg',
+      alignment: 'end',
+      enable_prev_next_icon: false,
+      prev: { path: '#previous', label: 'Previous' },
+      next: { path: '#next', label: 'Next' },
+      items: pages,
+    } only %}
+  </div>
+</div>
