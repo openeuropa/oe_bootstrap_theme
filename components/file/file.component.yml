@@ -33,6 +33,8 @@ props:
           type: string
         language_code:
           type: string
+        meta:
+          type: string
     translations:
       title: Translations
       type: array
@@ -49,6 +51,8 @@ props:
           extension:
             type: string
           language_code:
+            type: string
+          meta:
             type: string
     icon_path:
       title: 'Icons path'
