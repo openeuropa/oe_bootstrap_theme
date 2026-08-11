@@ -1,0 +1,167 @@
+name: Modal
+description: 'Displays content in a dialog layered over the page, with an optional trigger button.'
+props:
+  type: object
+  properties:
+    modal_id:
+      title: 'Modal ID'
+      type: string
+      description: 'Unique ID connecting the modal and its trigger. A unique ID is generated when omitted.'
+    size:
+      title: Size
+      type: string
+      description: 'Size of the modal.'
+      enum:
+        - sm
+        - lg
+        - xl
+        - fullscreen
+      'meta:enum':
+        sm: Small
+        lg: Large
+        xl: 'Extra large'
+        fullscreen: Fullscreen
+    fullscreen_responsive:
+      title: 'Responsive fullscreen'
+      type: string
+      description: 'Display the modal fullscreen below the selected breakpoint.'
+      enum:
+        - sm
+        - md
+        - lg
+        - xl
+        - xxl
+      'meta:enum':
+        sm: Small
+        md: Medium
+        lg: Large
+        xl: 'Extra large'
+        xxl: 'Extra extra large'
+    static_backdrop:
+      title: 'Static backdrop'
+      type: boolean
+      description: 'Prevent the modal from closing when its backdrop is selected.'
+    vertically_centered:
+      title: 'Vertically centered'
+      type: boolean
+      description: 'Center the modal vertically in the viewport.'
+    scrollable:
+      title: Scrollable
+      type: boolean
+      description: 'Allow the modal body to scroll independently.'
+    title:
+      title: Title
+      type: [string, array, object]
+      description: 'Title displayed in the modal header.'
+    show_close_button:
+      title: 'Show close button'
+      type: boolean
+      description: 'Display a close button in the modal header. Defaults to false.'
+    messages:
+      title: Messages
+      type: [string, array, object]
+      description: 'Content displayed between the modal header and body.'
+    body:
+      title: Body
+      type: [string, array, object]
+      description: 'Main modal content.'
+    footer:
+      title: Footer
+      type: [string, array, object]
+      description: 'Optional modal footer content.'
+    toggle:
+      title: 'Toggle button'
+      type: object
+      description: 'Optional button that opens the modal.'
+      properties:
+        label:
+          type: [string, array, object]
+        variant:
+          type: string
+          enum:
+            - primary
+            - secondary
+            - success
+            - danger
+            - warning
+            - info
+            - light
+            - dark
+            - link
+        size:
+          type: string
+          enum:
+            - sm
+            - md
+            - lg
+        type:
+          type: string
+          enum:
+            - button
+            - submit
+            - reset
+        outline:
+          type: boolean
+        disabled:
+          type: boolean
+        text_nowrap:
+          type: boolean
+        assistive_text:
+          type: string
+        id:
+          type: string
+        icon:
+          type: [string, object]
+          properties:
+            name:
+              type: string
+            path:
+              type: string
+            transformation:
+              type: string
+            attributes:
+              type: object
+        icon_position:
+          type: string
+          enum:
+            - before
+            - after
+        icon_spacing:
+          type: string
+          enum:
+            - sm
+            - md
+            - lg
+        spinner:
+          type: object
+          properties:
+            type:
+              type: string
+            variant:
+              type: string
+            size:
+              type: string
+            assistive_text:
+              type: string
+            attributes:
+              type: object
+        show_spinner:
+          type: boolean
+        clean_class:
+          type: boolean
+        remove_icon_spacers:
+          type: boolean
+        attributes:
+          type: object
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute
+    header_attributes:
+      title: 'Header attributes'
+      type: Drupal\Core\Template\Attribute
+    body_attributes:
+      title: 'Body attributes'
+      type: Drupal\Core\Template\Attribute
+    footer_attributes:
+      title: 'Footer attributes'
+      type: Drupal\Core\Template\Attribute
