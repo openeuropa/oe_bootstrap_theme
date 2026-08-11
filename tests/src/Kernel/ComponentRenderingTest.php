@@ -61,6 +61,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     'link',
     'list_group',
     'navbar',
+    'navigation',
     'offcanvas',
     'pagination',
     'pagination_v2',
