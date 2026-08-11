@@ -11,9 +11,12 @@
 {%- if translations is not empty and translations is iterable -%}
   {%- set _items = [] -%}
   {%- for translation in translations -%}
-    {%- set _translation_meta = '(' ~ translation.extension|upper ~ ')' -%}
-    {%- if translation.size -%}
-      {%- set _translation_meta = '(' ~ translation.size|format_size ~ ' - ' ~ translation.extension|upper ~ ')' -%}
+    {%- set _translation_meta = translation.meta|default('') -%}
+    {%- if _translation_meta is empty -%}
+      {%- set _translation_meta = '(' ~ translation.extension|upper ~ ')' -%}
+      {%- if translation.size -%}
+        {%- set _translation_meta = '(' ~ translation.size|format_size ~ ' - ' ~ translation.extension|upper ~ ')' -%}
+      {%- endif -%}
     {%- endif -%}
     {%- set _items = _items|merge([{
       title: translation.title,
@@ -41,9 +44,12 @@
 {%- endif -%}
 
 {%- if file is not empty -%}
-  {%- set _meta = '(' ~ file.extension|upper ~ ')' -%}
-  {%- if file.size -%}
-    {%- set _meta = '(' ~ file.size|format_size ~ ' - ' ~ file.extension|upper ~ ')' -%}
+  {%- set _meta = file.meta|default('') -%}
+  {%- if _meta is empty -%}
+    {%- set _meta = '(' ~ file.extension|upper ~ ')' -%}
+    {%- if file.size -%}
+      {%- set _meta = '(' ~ file.size|format_size ~ ' - ' ~ file.extension|upper ~ ')' -%}
+    {%- endif -%}
   {%- endif -%}
   <div class="bcl-file-container mt-4">
     {%- include '@oe-bcl/file' with {

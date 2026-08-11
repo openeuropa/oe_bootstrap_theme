@@ -48,6 +48,7 @@ file_with_translations_and_custom_link_label:
           size: 40391
           extension: docx
           language_code: bg
+          meta: 'Draft'
   assertions:
     count:
       'h2': 0
@@ -58,12 +59,12 @@ file_with_translations_and_custom_link_label:
     equals:
       '.collapse > div.py-3.border-bottom p.fw-bold': 'Exemple de document'
       '.collapse > div.pt-3 p.fw-bold': 'Пример документ'
+      '.collapse > div.pt-3 small.fw-bold span.fw-normal': 'Draft'
     contains:
       'a[href="https://example.com/document.pdf"]': 'Get the file'
       '.text-end.text-md-center a': 'Other languages (2)'
       '.collapse > div.py-3.border-bottom small.fw-bold': 'français'
       '.collapse > div.py-3.border-bottom small.fw-bold span.fw-normal': '(4.22 KB - PDF)'
-      '.collapse > div.pt-3 small.fw-bold span.fw-normal': '(39.44 KB - DOCX)'
       '.bcl-file .collapse a[href="https://example.com/document-fr.pdf"]': 'Get the file'
 
 file_custom_attributes_and_icon_path:
@@ -87,12 +88,15 @@ file_custom_attributes_and_icon_path:
         size: 4444
         extension: pdf
         language_code: en
+        meta: 'Updated last week'
   assertions:
     count:
       'h2.custom-title-class.bcl-heading': 1
       'h2.mb-4': 0
       '#custom-file.bcl-file.custom-file-class': 1
       '#custom-file[data-file="custom-value"]': 1
+    equals:
+      '.bcl-file small.fw-medium span.fw-normal': 'Updated last week'
     contains:
       '.pe-2.pb-2 > svg': '/custom-icons.svg#file-pdf-fill'
       'a[download] svg': '/custom-icons.svg#download'
