@@ -4,81 +4,80 @@
  * Content banner component.
  */
 #}
-{% apply spaceless %}
-{% set _content %}
-  {% set content_attributes = create_attribute().addClass(['mt-4', 'card-content']) %}
-  {% if meta is not empty %}
-    {% set content_attributes = create_attribute().addClass('card-content') %}
+{%- set _content -%}
+  {%- set content_attributes = create_attribute().addClass(['mt-4', 'card-content']) -%}
+  {%- if meta is not empty -%}
+    {%- set content_attributes = create_attribute().addClass('card-content') -%}
     <div class="my-4">
-      {% for meta_item in meta %}
-        {% if meta_item is not empty %}
-          <span class="text-muted me-3">{{ meta_item }}</span>
-        {% endif %}
-      {% endfor %}
+      {%- for meta_item in meta -%}
+        {%- if meta_item is not empty -%}
+          <span class="text-muted me-3">{{- meta_item -}}</span>
+        {%- endif -%}
+      {%- endfor -%}
     </div>
-  {% endif %}
-  {% if content is not empty %}
-    <div{{ content_attributes }}>{{ content }}</div>
-  {% endif %}
-{% endset %}
+  {%- endif -%}
+  {%- if content is not empty -%}
+    <div{{ content_attributes }}>{{- content -}}</div>
+  {%- endif -%}
+{%- endset -%}
 
-{% set _badges = [] %}
-{% for badge in badges|default([]) %}
-  {% set _badge = {
+{%- set _badges = [] -%}
+{%- for badge in badges|default([]) -%}
+  {%- set _badge = {
     outline: true,
-  }|merge(badge) %}
-  {% set _badge = _badge|merge({
+  }|merge(badge) -%}
+  {%- set _badge = _badge|merge({
     attributes: create_attribute(_badge.attributes|default({})),
-  }) %}
-  {% set _badges = _badges|merge([_badge]) %}
-{% endfor %}
+  }) -%}
+  {%- set _badges = _badges|merge([_badge]) -%}
+{%- endfor -%}
 
-{% set _links = [] %}
-{% for link in links|default([]) %}
-  {% set _link = link|merge({
+{%- set _links = [] -%}
+{%- for link in links|default([]) -%}
+  {%- set _link = link|merge({
     attributes: create_attribute(link.attributes|default({})),
-  }) %}
-  {% if _link.icon is defined and _link.icon is not empty and _link.icon.path is not defined %}
-    {% set _link = _link|merge({
+  }) -%}
+  {%- if _link.icon is defined and _link.icon is not empty and _link.icon.path is not defined -%}
+    {%- set _link = _link|merge({
       icon: _link.icon|merge({path: bcl_icon_path()}),
-    }) %}
-  {% endif %}
-  {% set _links = _links|merge([_link]) %}
-{% endfor %}
+    }) -%}
+  {%- endif -%}
+  {%- set _links = _links|merge([_link]) -%}
+{%- endfor -%}
 
-{% set _title_link = title_link|default({}) %}
-{% if _title_link is not empty %}
-  {% set _title_link = _title_link|merge({
+{%- set _title_link = title_link|default({}) -%}
+{%- if _title_link is not empty -%}
+  {%- set _title_link = _title_link|merge({
     attributes: create_attribute(_title_link.attributes|default({})),
-  }) %}
-  {% if _title_link.icon is defined and _title_link.icon is not empty and _title_link.icon.path is not defined %}
-    {% set _title_link = _title_link|merge({
+  }) -%}
+  {%- if _title_link.icon is defined and _title_link.icon is not empty and _title_link.icon.path is not defined -%}
+    {%- set _title_link = _title_link|merge({
       icon: _title_link.icon|merge({path: bcl_icon_path()}),
-    }) %}
-  {% endif %}
-{% endif %}
+    }) -%}
+  {%- endif -%}
+{%- endif -%}
 
-{% set _image = {} %}
-{% if image is not empty %}
-  {% set _image = image|merge({
+{%- set _image = {} -%}
+{%- if image is not empty -%}
+  {%- set _image = image|merge({
     path: image.src|default(''),
     alt: image.alt|default(''),
-  }) %}
-{% endif %}
+  }) -%}
+{%- endif -%}
 
-{% set _date = date|default({}) %}
-{% if _date is not empty %}
-  {% set _date = _date|merge({
+{%- set _date = date|default({}) -%}
+{%- if _date is not empty -%}
+  {%- set _date = _date|merge({
     attributes: create_attribute(_date.attributes|default({})),
-  }) %}
-  {% if _date.icon_path is not defined or _date.icon_path is empty %}
-    {% set _date = _date|merge({
+  }) -%}
+  {%- if _date.icon_path is not defined or _date.icon_path is empty -%}
+    {%- set _date = _date|merge({
       icon_path: bcl_icon_path(),
-    }) %}
-  {% endif %}
-{% endif %}
+    }) -%}
+  {%- endif -%}
+{%- endif -%}
 
-{% include '@oe-bcl/bcl-content-banner/bcl-content-banner.html.twig' with {
+{%- include '@oe-bcl/bcl-content-banner/bcl-content-banner.html.twig' with {
   background: background|default('white'),
   title: title,
   title_tag: title_tag|default('h1'),
@@ -96,5 +95,4 @@
   links: _links,
   action_bar: action_bar,
   attributes: attributes,
-} only %}
-{% endapply %}
+} only -%}
