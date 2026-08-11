@@ -1,0 +1,141 @@
+{% set overview_content %}
+  <p class="mt-3 mb-0">Overview content displayed by the active tab.</p>
+{% endset %}
+{% set details_content %}
+  <p class="mt-3 mb-0">Detailed information displayed by the second tab.</p>
+{% endset %}
+
+<div class="vstack gap-5">
+  <div>
+    <h3>Default</h3>
+    {% include 'oe_bootstrap_theme:navigation' with {
+      variant: 'default',
+      alignment: 'start',
+      items: [
+        { label: 'Overview', path: '#overview', active: true },
+        { label: 'Documents', path: '#documents' },
+        { label: 'Calendar', path: '#calendar', icon: 'calendar', icon_position: 'before' },
+        { label: 'Disabled', path: '#disabled', disabled: true },
+      ],
+    } only %}
+  </div>
+
+  <div class="pb-5">
+    <h3>Vertical pills with dropdown</h3>
+    <div class="col-12 col-md-6 col-xl-4">
+      {% include 'oe_bootstrap_theme:navigation' with {
+        variant: 'pills',
+        orientation: 'vertical',
+        navigation_id: 'navigation-pills',
+        items: [
+          {
+            label: 'Profile',
+            path: '#profile',
+            active: true,
+            icon: 'person',
+            icon_position: 'before',
+            icon_display: 'flex',
+          },
+          {
+            label: 'Settings',
+            path: '#settings',
+            icon: 'gear',
+            icon_position: 'before',
+            icon_display: 'flex',
+          },
+          {
+            dropdown: true,
+            link: true,
+            id: 'navigation-dropdown',
+            trigger: {
+              label: 'More',
+              path: '#',
+              icon: 'list',
+              icon_position: 'before',
+              icon_display: 'flex',
+              attributes: { class: ['nav-link', 'align-items-center'] },
+            },
+            items: [
+              { label: 'Related information', path: '#related', icon: 'link', icon_position: 'before' },
+              { label: 'Download', path: '#download', icon: 'download', icon_position: 'before' },
+            ],
+          },
+        ],
+      } only %}
+    </div>
+  </div>
+
+  <div>
+    <h3>Tabs with content</h3>
+    {% include 'oe_bootstrap_theme:navigation' with {
+      variant: 'tabs',
+      navigation_id: 'navigation-tabs',
+      tabs_content: true,
+      items: [
+        {
+          id: 'overview-tab',
+          label: 'Overview',
+          path: '#overview-panel',
+          target: 'overview-panel',
+          content: overview_content,
+          active: true,
+        },
+        {
+          id: 'details-tab',
+          label: 'Details',
+          path: '#details-panel',
+          target: 'details-panel',
+          content: details_content,
+        },
+      ],
+    } only %}
+  </div>
+
+  <div>
+    <h3>Navbar</h3>
+    {% include 'oe_bootstrap_theme:navigation' with {
+      variant: 'navbar',
+      alignment: 'center',
+      items: [
+        { label: 'Home', path: '#home', active: true },
+        { label: 'Topics', path: '#topics' },
+        { label: 'Contact', path: '#contact' },
+      ],
+    } only %}
+  </div>
+
+  <div>
+    <h3>Full width, aligned to end</h3>
+    {% include 'oe_bootstrap_theme:navigation' with {
+      variant: 'default',
+      full_width: true,
+      alignment: 'end',
+      items: [
+        { label: 'First item', path: '#first' },
+        { label: 'Second item', path: '#second' },
+        { label: 'Third item', path: '#third' },
+      ],
+    } only %}
+  </div>
+
+  <div>
+    <h3>Nested navigation</h3>
+    {% include 'oe_bootstrap_theme:navigation' with {
+      variant: 'default',
+      items: [
+        {
+          label: 'Parent section',
+          path: '#parent',
+          navigation: {
+            variant: 'pills',
+            orientation: 'vertical',
+            items: [
+              { label: 'Child page one', path: '#child-one' },
+              { label: 'Child page two', path: '#child-two' },
+            ],
+          },
+        },
+      ],
+    } only %}
+  </div>
+</div>
