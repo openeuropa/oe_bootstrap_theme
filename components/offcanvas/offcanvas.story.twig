@@ -1,0 +1,152 @@
+{% set body %}
+  <p>Use this panel for supporting navigation, filters, or focused actions without leaving the current page.</p>
+  <a href="/example">View related information</a>
+{% endset %}
+
+{% set search_body %}
+  <form action="/search" method="get" class="vstack gap-3">
+    <div>
+      <label class="form-label fw-semibold" for="offcanvas-search">What are you looking for?</label>
+      <input class="form-control form-control-lg" id="offcanvas-search" name="search" type="search" placeholder="Search policies, news and publications">
+    </div>
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      {% include 'oe_bootstrap_theme:button' with {
+        label: 'Search',
+        type: 'submit',
+        icon: 'search',
+        icon_position: 'before',
+      } only %}
+      <a href="/search" class="fw-semibold">Advanced search</a>
+    </div>
+  </form>
+{% endset %}
+
+<div class="vstack gap-5">
+  <div>
+    <h3 class="h5 mb-3">Start placement</h3>
+    {% include 'oe_bootstrap_theme:offcanvas' with {
+      variant: 'default',
+      offcanvas_id: 'offcanvas-start-demo',
+      placement: 'start',
+      responsiveness: 'none',
+      title: 'Navigation and information',
+      body: body,
+      extra_classes_body: 'd-block',
+      toggle: {
+        label: 'Open start panel',
+        icon: 'filter',
+        icon_position: 'before',
+      },
+    } only %}
+  </div>
+
+  <div>
+    <h3 class="h5 mb-3">End placement with backdrop</h3>
+    {% include 'oe_bootstrap_theme:offcanvas' with {
+      variant: 'default',
+      offcanvas_id: 'offcanvas-end-demo',
+      placement: 'end',
+      responsiveness: 'none',
+      backdrop: true,
+      title: 'Supporting actions',
+      body: body,
+      extra_classes_body: 'd-block',
+      toggle: { label: 'Open end panel', variant: 'secondary' },
+    } only %}
+  </div>
+
+  <div>
+    <h3 class="h5 mb-3">Search variant</h3>
+    {% include 'oe_bootstrap_theme:offcanvas' with {
+      variant: 'search',
+      offcanvas_id: 'offcanvas-search-demo',
+      placement: 'top',
+      responsiveness: 'none',
+      title: 'Search this site',
+      body: search_body,
+      extra_classes_header: 'border-bottom',
+      extra_classes_body: 'py-4',
+      toggle: { label: 'Open search', icon: 'search' },
+    } only %}
+    <p class="small text-muted mt-2 mb-0">
+      Select <strong>Open search</strong> again, use the panel close button, or press <kbd>Esc</kbd> to close it.
+    </p>
+  </div>
+
+  <div>
+    <h3 class="h5 mb-3">Bottom placement</h3>
+    {% include 'oe_bootstrap_theme:offcanvas' with {
+      variant: 'default',
+      offcanvas_id: 'offcanvas-bottom-demo',
+      placement: 'bottom',
+      responsiveness: 'none',
+      title: 'Additional options',
+      body: body,
+      extra_classes_body: 'd-block',
+      toggle: { label: 'Open bottom panel', outline: true },
+    } only %}
+  </div>
+
+  <div>
+    <h3 class="h5 mb-3">Responsive from extra-extra-large screens</h3>
+    {% include 'oe_bootstrap_theme:offcanvas' with {
+      variant: 'default',
+      offcanvas_id: 'offcanvas-responsive-xxl-demo',
+      placement: 'end',
+      responsiveness: 'xxl',
+      title: 'Responsive filters',
+      body: body,
+      body_scroll: true,
+      extra_classes_body: 'd-block py-3',
+      toggle: {
+        label: 'Open responsive filters',
+        outline: true,
+        icon: 'funnel',
+        icon_position: 'before',
+        attributes: { class: ['d-xxl-none'] },
+      },
+    } only %}
+  </div>
+
+  <div>
+    <h3 class="h5 mb-3">Custom options</h3>
+    {% include 'oe_bootstrap_theme:offcanvas' with {
+      variant: 'default',
+      offcanvas_id: 'offcanvas-custom-demo',
+      placement: 'end',
+      responsiveness: 'none',
+      title: 'Linked panel title',
+      title_tag: 'h4',
+      title_link: {
+        path: '/example',
+        icon: {
+          name: 'arrow-right',
+          transformation: 'rotate-45',
+        },
+        icon_position: 'after',
+      },
+      title_attributes: create_attribute().addClass('text-success'),
+      body: body,
+      body_scroll: true,
+      backdrop: true,
+      close_aria_label: 'Close custom panel',
+      extra_classes_header: 'border-bottom bg-light',
+      extra_classes_body: 'd-block py-4',
+      extra_classes_close: 'me-1',
+      attributes: create_attribute().addClass('custom-offcanvas').setAttribute('data-demo', 'custom-options'),
+      toggle: {
+        label: 'Open custom panel',
+        variant: 'success',
+        size: 'lg',
+        assistive_text: 'Custom offcanvas example',
+        icon: {
+          name: 'arrow-left',
+          transformation: 'flip-horizontal',
+        },
+        icon_position: 'before',
+        icon_spacing: 'sm',
+        attributes: { 'data-demo-trigger': 'custom-options' },
+      },
+    } only %}
+  </div>
+</div>
