@@ -1,0 +1,216 @@
+offcanvas_default:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:offcanvas
+    '#props':
+      variant: default
+      offcanvas_id: default-offcanvas
+  assertions:
+    count:
+      'div[data-component-id="oe_bootstrap_theme:offcanvas"]#default-offcanvas.offcanvas-lg[tabindex="-1"][data-bs-backdrop="false"]': 1
+      'div.offcanvas-start': 0
+      'div.offcanvas-end': 0
+      'div.offcanvas-top': 0
+      'div.offcanvas-bottom': 0
+      'div.offcanvas-header': 1
+      'div.offcanvas-body': 0
+      'button.btn-close[data-bs-dismiss="offcanvas"][data-bs-target="#default-offcanvas"][aria-controls="default-offcanvas"][aria-label="Close"]': 1
+      'button[data-bs-toggle="offcanvas"]': 0
+
+offcanvas_with_all_parameters:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:offcanvas
+    '#props':
+      variant: default
+      offcanvas_id: detailed-offcanvas
+      title:
+        '#markup': '<em>Linked offcanvas title</em>'
+      title_tag: h3
+      title_link:
+        path: '/offcanvas-title'
+        variant: success
+        id: custom-title-link-id
+        disabled: true
+        icon:
+          name: link
+          path: /title-icons.svg
+          transformation: flip-horizontal
+          attributes:
+            class:
+              - custom-title-icon
+        icon_position: before
+        icon_display: inline-flex
+        attributes:
+          class:
+            - custom-title-link
+          title: 'Title link tooltip'
+          target: _blank
+          data-title-link: custom-value
+      title_attributes:
+        class:
+          - custom-title
+        data-title: custom-value
+      placement: end
+      body:
+        '#type': html_tag
+        '#tag': strong
+        '#value': 'Rendered body content'
+      body_scroll: true
+      backdrop: true
+      close_aria_label: 'Close detailed panel'
+      extra_classes_body: custom-body
+      extra_classes_header: custom-header
+      extra_classes_close: custom-close
+      responsiveness: xl
+      toggle:
+        label: 'Open detailed panel'
+        variant: secondary
+        size: lg
+        type: button
+        outline: true
+        disabled: true
+        text_nowrap: true
+        assistive_text: 'Panel action'
+        id: custom-toggle
+        icon:
+          name: filter
+          path: /custom-icons.svg
+          transformation: rotate-90
+          attributes:
+            class:
+              - custom-toggle-icon
+            data-icon: custom-value
+        icon_position: before
+        icon_spacing: lg
+        attributes:
+          class:
+            - custom-toggle
+          data-toggle: custom-value
+      attributes:
+        class:
+          - custom-offcanvas
+        aria-label: 'Detailed offcanvas'
+        data-offcanvas: custom-value
+  assertions:
+    count:
+      'div#detailed-offcanvas.offcanvas-xl.offcanvas-end.custom-offcanvas[tabindex="-1"][aria-label="Detailed offcanvas"][data-offcanvas="custom-value"]': 1
+      'div#detailed-offcanvas[data-bs-scroll="true"]': 1
+      'div#detailed-offcanvas[data-bs-backdrop]': 0
+      'div#detailed-offcanvas[aria-labelledby="detailed-offcanvas-title"]': 1
+      'div.offcanvas-header.custom-header': 1
+      'h3#detailed-offcanvas-title.offcanvas-title.bcl-heading.custom-title[data-title="custom-value"]': 1
+      'h3 a#custom-title-link-id.custom-title-link.link-success.disabled[href="/offcanvas-title"][title="Title link tooltip"][target="_blank"][data-title-link="custom-value"][aria-disabled="true"][tabindex="-1"]': 1
+      'h3 a#custom-title-link-id.d-inline-flex.gap-2-5 > svg.icon--flip-horizontal.custom-title-icon': 1
+      'h3 a#custom-title-link-id > em': 1
+      'div.offcanvas-body.custom-body > strong': 1
+      'button.btn-close.custom-close[aria-label="Close detailed panel"]': 1
+      'button#custom-toggle.btn-outline-secondary.btn-lg.custom-toggle[data-bs-toggle="offcanvas"][data-bs-target="#detailed-offcanvas"][aria-controls="detailed-offcanvas"][data-toggle="custom-value"][disabled][aria-disabled="true"]': 1
+      'button#custom-toggle.text-nowrap': 1
+      'button#custom-toggle.gap-lg-2-5': 1
+      'button#custom-toggle > span.visually-hidden': 1
+      'button#custom-toggle > svg.icon--rotate-90.custom-toggle-icon[data-icon="custom-value"]': 1
+    contains:
+      'h3 a#custom-title-link-id svg': '/title-icons.svg#link'
+      'button#custom-toggle svg': '/custom-icons.svg#filter'
+    equals:
+      'h3 a em': 'Linked offcanvas title'
+      'div.offcanvas-body strong': 'Rendered body content'
+      'button#custom-toggle > span.visually-hidden': 'Panel action'
+
+offcanvas_without_close:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:offcanvas
+    '#props':
+      variant: default
+      offcanvas_id: offcanvas-without-close
+      placement: bottom
+      responsiveness: none
+      title: 'Persistent panel'
+      title_link:
+        path: '/persistent-panel'
+        icon: link
+        icon_position: before
+        remove_icon_spacers: true
+      body: 'Persistent panel content.'
+      with_close: false
+  assertions:
+    count:
+      'div#offcanvas-without-close.offcanvas.offcanvas-bottom': 1
+      'div#offcanvas-without-close.offcanvas-md': 0
+      'div.offcanvas-header': 1
+      'button.btn-close': 0
+      'div.offcanvas-body': 1
+      'h2.offcanvas-title > a[href="/persistent-panel"] > svg': 1
+      'h2.offcanvas-title > a.gap-2-5': 0
+      'h2.offcanvas-title > a > svg.me-2-5': 0
+    equals:
+      'div.offcanvas-body': 'Persistent panel content.'
+    contains:
+      'h2.offcanvas-title > a': 'Persistent panel'
+      'h2.offcanvas-title > a svg': '#link'
+
+offcanvas_search_variant:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:offcanvas
+    '#props':
+      variant: search
+      offcanvas_id: search-offcanvas
+      placement: top
+      title: 'Search filters'
+      body: 'Filter controls'
+      extra_classes_body: custom-search-body
+      extra_classes_header: custom-search-header
+      extra_classes_close: custom-search-close
+      title_attributes:
+        class:
+          - custom-search-title
+  assertions:
+    count:
+      'div#search-offcanvas.bcl-offcanvas.offcanvas-lg.offcanvas-top': 1
+      'div.offcanvas-header.p-lg-0.d-lg-block.custom-search-header': 1
+      'h2.offcanvas-title.mb-lg-4.custom-search-title': 1
+      'div.offcanvas-body.p-lg-0.d-block.custom-search-body': 1
+      'button.btn-close.d-lg-none.custom-search-close': 1
+    equals:
+      'h2.offcanvas-title': 'Search filters'
+      'div.offcanvas-body': 'Filter controls'
+
+offcanvas_id_from_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:offcanvas
+    '#props':
+      variant: default
+      placement: start
+      attributes:
+        id: attribute-offcanvas-id
+      toggle:
+        label: 'Open attribute ID panel'
+  assertions:
+    count:
+      'div#attribute-offcanvas-id.offcanvas-lg.offcanvas-start': 1
+      'button.btn-close[data-bs-target="#attribute-offcanvas-id"][aria-controls="attribute-offcanvas-id"]': 1
+      'button[data-bs-toggle="offcanvas"][data-bs-target="#attribute-offcanvas-id"][aria-controls="attribute-offcanvas-id"]': 1
+    equals:
+      'button[data-bs-toggle="offcanvas"]': 'Open attribute ID panel'
+
+offcanvas_with_generated_id_and_no_header_or_body:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:offcanvas
+    '#props':
+      variant: default
+      responsiveness: xxl
+      with_close: false
+      toggle:
+        label: 'Open generated ID panel'
+  assertions:
+    count:
+      'div[id^="offcanvas"].offcanvas-xxl': 1
+      'div.offcanvas-header': 0
+      'div.offcanvas-body': 0
+      'button[data-bs-toggle="offcanvas"][data-bs-target^="#offcanvas"][aria-controls^="offcanvas"]': 1
+      'button.btn-close': 0
