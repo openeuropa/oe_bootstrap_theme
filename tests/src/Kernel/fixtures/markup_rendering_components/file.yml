@@ -1,0 +1,132 @@
+file_default_without_translations:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:file
+    '#props':
+      title: 'Download the document'
+      file:
+        title: 'Example document'
+        url: 'https://example.com/document.pdf'
+        size: 4444
+        extension: pdf
+        language_code: en
+  assertions:
+    count:
+      'div.bcl-file-container.mt-4 > h2.mb-4.bcl-heading': 1
+      'div.bcl-file-container > div.bcl-file.border.rounded': 1
+      '.pe-2.pb-2 > svg': 1
+      'a[download][target="_blank"][href="https://example.com/document.pdf"]': 1
+      '.bcl-file .collapse': 0
+    equals:
+      'h2.bcl-heading': 'Download the document'
+      'p.fw-medium.fs-5': 'Example document'
+    contains:
+      '.bcl-file small.fw-medium': 'English'
+      '.bcl-file small.fw-medium span.fw-normal': '(4.34 KB - PDF)'
+      '.pe-2.pb-2 > svg': '/icons/bcl-default-icons.svg#file-pdf-fill'
+      'a[download] svg': '/icons/bcl-default-icons.svg#download'
+
+file_with_translations_and_custom_link_label:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:file
+    '#props':
+      link_label: 'Get the file'
+      file:
+        title: 'Example document'
+        url: 'https://example.com/document.pdf'
+        extension: pdf
+        language_code: en
+      translations:
+        - title: 'Exemple de document'
+          url: 'https://example.com/document-fr.pdf'
+          size: 4321
+          extension: pdf
+          language_code: fr
+        - title: 'Пример документ'
+          url: 'https://example.com/document-bg.docx'
+          size: 40391
+          extension: docx
+          language_code: bg
+          meta: 'Draft'
+  assertions:
+    count:
+      'h2': 0
+      '.bcl-file > .border-top': 1
+      '.bcl-file .collapse .row': 2
+      '.bcl-file .collapse a[href="https://example.com/document-fr.pdf"]': 1
+      '.bcl-file .collapse a[href="https://example.com/document-bg.docx"]': 1
+    equals:
+      '.collapse > div.py-3.border-bottom p.fw-bold': 'Exemple de document'
+      '.collapse > div.pt-3 p.fw-bold': 'Пример документ'
+      '.collapse > div.pt-3 small.fw-bold span.fw-normal': 'Draft'
+    contains:
+      'a[href="https://example.com/document.pdf"]': 'Get the file'
+      '.text-end.text-md-center a': 'Other languages (2)'
+      '.collapse > div.py-3.border-bottom small.fw-bold': 'français'
+      '.collapse > div.py-3.border-bottom small.fw-bold span.fw-normal': '(4.22 KB - PDF)'
+      '.bcl-file .collapse a[href="https://example.com/document-fr.pdf"]': 'Get the file'
+
+file_custom_attributes_and_icon_path:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:file
+    '#props':
+      title: 'Custom attrs file'
+      title_attributes:
+        class:
+          - custom-title-class
+      attributes:
+        id: custom-file
+        class:
+          - custom-file-class
+        data-file: custom-value
+      icon_path: '/custom-icons.svg'
+      file:
+        title: 'Example document'
+        url: 'https://example.com/document.pdf'
+        size: 4444
+        extension: pdf
+        language_code: en
+        meta: 'Updated last week'
+  assertions:
+    count:
+      'h2.custom-title-class.bcl-heading': 1
+      'h2.mb-4': 0
+      '#custom-file.bcl-file.custom-file-class': 1
+      '#custom-file[data-file="custom-value"]': 1
+    equals:
+      '.bcl-file small.fw-medium span.fw-normal': 'Updated last week'
+    contains:
+      '.pe-2.pb-2 > svg': '/custom-icons.svg#file-pdf-fill'
+      'a[download] svg': '/custom-icons.svg#download'
+
+file_without_language_code_or_size:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:file
+    '#props':
+      file:
+        title: 'No language file'
+        url: 'https://example.com/no-lang.txt'
+        extension: txt
+  assertions:
+    count:
+      'h2': 0
+      '.bcl-file small.fw-medium': 1
+    equals:
+      '.bcl-file small.fw-medium': '<span class="fw-normal"> (TXT)</span>'
+    contains:
+      '.pe-2.pb-2 > svg': '/icons/bcl-default-icons.svg#file-text-fill'
+
+file_without_file_renders_nothing:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:file
+    '#props':
+      title: 'Should not render body'
+  assertions:
+    count:
+      'h2': 0
+      '.bcl-file-container': 0
+      '.bcl-file': 0
