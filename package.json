@@ -4,19 +4,20 @@
   "description": "OpenEuropa Bootstrap base theme for Drupal.",
   "private": true,
   "scripts": {
+    "apply-patches": "patch-package --patch-dir=patches/npm",
     "build": "npm-run-all build:*",
     "build:styles": "cross-env bcl-builder styles",
     "build:copy": "cross-env bcl-builder copy",
     "build:rename": "cross-env bcl-builder rename",
     "watch:styles": "chokidar \"./resources/sass/**/*.scss\" -i \"/node_modules/\" -c \"npm run build:styles\"",
     "watch": "npm-run-all --parallel watch:* -ln",
-    "postinstall": "patch-package --patch-dir=patches/npm",
+    "postinstall": "npm run apply-patches",
     "prepare": "npm-run-all build:*",
     "production": "npm-run-all build:*"
   },
   "devDependencies": {
-    "@openeuropa/bcl-builder": "^1.14",
-    "@openeuropa/bcl-theme-default": "^1.14",
+    "@openeuropa/bcl-builder": "0.4973.202608141400",
+    "@openeuropa/bcl-theme-default": "0.4973.202608141400",
     "bootstrap-ie11": "5.0.2",
     "chokidar-cli": "^3.0.0",
     "copyfiles": "2.4.1",

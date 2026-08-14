@@ -9,7 +9,7 @@
     "build:copy": "cross-env bcl-builder copy",
     "watch:styles": "chokidar \"./resources/sass/**/*.scss\" -i \"/node_modules/\" -c \"npm run build:styles\"",
     "watch": "npm-run-all --parallel watch:* -ln",
-    "postinstall": "npm-run-all build:*",
+    "postinstall": "npm run build",
     "production": "npm-run-all build:*"
   },
   "devDependencies": {

@@ -203,7 +203,8 @@ docker-compose exec web ./vendor/bin/run toolkit:test-phpunit --junit
 To rebuild assets with npm during development, without having to run `composer install` or `composer update`:
 
 ```bash
-docker-compose exec web npm install
+docker-compose exec web npm ci --ignore-scripts
+docker-compose exec web npm run apply-patches
 docker-compose exec web npm run build
 # or, for continuous updates:
 docker-compose exec web npm run watch
@@ -211,7 +212,7 @@ docker-compose exec web npm run watch
 
 ## Patch BCL components
 
-BCL components can be patched by using the [`patch-package`](https://www.npmjs.com/package/patch-package) NPM project.
+BCL components can be patched by using the [`patch-package`](https://www.npmjs.com/package/patch-package) npm project.
 
 To patch a component:
 
@@ -219,11 +220,12 @@ To patch a component:
 2. Run:
 
 ```bash
-docker-compose exec web npx patch-package @openeuropa/bcl-theme-default --patch-dir=patches/npm
+docker-compose exec web npm exec -- patch-package @openeuropa/bcl-theme-default --patch-dir=patches/npm
 ```
 
-Patches will be generated in `./patches/npm` and applied when running `npm install`.\
-**Note:** generate patches **only** inside the docker container to use the same version of npm/npx.
+Patches will be generated in `./patches/npm`. Install-time lifecycle scripts are
+disabled, so run `npm run apply-patches` explicitly before building assets.\
+**Note:** generate patches **only** inside the Docker container to use the same version of npm.
 
 ## Contribute
 

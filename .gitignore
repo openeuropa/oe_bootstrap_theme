@@ -10,7 +10,6 @@
 /yarn.lock
 /runner.yml
 /.idea/
-/package-lock.json
 /phpunit.xml
 /.stylelintrc.json
 /docker-compose.*.yml
