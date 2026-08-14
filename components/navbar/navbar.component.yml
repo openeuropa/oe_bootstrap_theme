@@ -1,0 +1,56 @@
+name: Navbar
+description: 'Displays a responsive navigation bar with branding, navigation, and right-aligned content regions.'
+props:
+  type: object
+  properties:
+    collapse_id:
+      title: 'Collapse ID'
+      type: string
+      description: 'ID connecting the responsive toggle and collapsible content. A unique ID is generated when omitted.'
+    expanded_breakpoint:
+      title: 'Expanded breakpoint'
+      type: string
+      description: 'Breakpoint at which the navbar is expanded. Defaults to lg.'
+      enum:
+        - sm
+        - md
+        - lg
+      'meta:enum':
+        sm: Small
+        md: Medium
+        lg: 'Large (default)'
+    color_scheme:
+      title: 'Color scheme'
+      type: string
+      description: 'Color scheme used by the navbar. Defaults to light.'
+      default: light
+      enum:
+        - light
+        - dark
+      'meta:enum':
+        light: 'Light (default)'
+        dark: Dark
+    background:
+      title: Background
+      type: boolean
+      description: 'Adds a background matching the color scheme. Defaults to true.'
+      default: true
+    disable_collapse:
+      title: 'Disable collapse'
+      type: boolean
+      description: 'Keeps all navbar content visible and removes the responsive toggle. Defaults to true when no expanded breakpoint is provided.'
+    branding:
+      title: 'Branding region'
+      type: [string, array, object]
+      description: 'Branding content, such as a linked site name or logo.'
+    navigation:
+      title: 'Navigation region'
+      type: [string, array, object]
+      description: 'Primary navigation content.'
+    right:
+      title: 'Right region'
+      type: [string, array, object]
+      description: 'Content aligned to the end of the navbar, such as search or account actions.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute
