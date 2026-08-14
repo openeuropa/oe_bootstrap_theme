@@ -77,7 +77,7 @@ jobs:
         run: docker compose exec -T web ./vendor/bin/grumphp run
 
       - name: Install dependencies
-        run: docker compose exec -T web npm ci --ignore-scripts
+        run: docker compose exec -T web npx --yes --package=npm@12.0.2 npm ci --ignore-scripts
 
       - name: Apply npm dependency patches
         run: docker compose exec -T web npm run apply-patches

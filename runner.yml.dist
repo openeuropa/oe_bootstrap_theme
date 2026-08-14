@@ -37,7 +37,7 @@ selenium:
 
 commands:
   drupal:site-setup:
-    - { task: "exec", command: "npm ci --ignore-scripts" }
+    - { task: "exec", command: "npx --yes --package=npm@12.0.2 npm ci --ignore-scripts" }
     - { task: "exec", command: "npm run apply-patches" }
     - { task: "exec", command: "npm run build" }
     - { task: "run", command: "drupal:symlink-project" }
