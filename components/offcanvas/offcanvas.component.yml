@@ -1,0 +1,178 @@
+name: Offcanvas
+description: 'Displays content in a responsive panel with an optional button to show and hide it.'
+props:
+  type: object
+  properties:
+    variant:
+      title: Variant
+      type: string
+      description: 'The offcanvas presentation. Defaults to default.'
+      enum:
+        - default
+        - search
+      'meta:enum':
+        default: Default
+        search: Search
+    offcanvas_id:
+      title: 'Offcanvas ID'
+      type: string
+      description: 'ID connecting the panel, close button, and toggle. A unique ID is generated when omitted.'
+    title:
+      title: Title
+      type: [string, array, object]
+      description: 'Offcanvas title.'
+    title_tag:
+      title: 'Title tag'
+      type: string
+      description: 'HTML tag used for the title. Defaults to h2.'
+    title_link:
+      title: 'Title link'
+      type: object
+      properties:
+        path:
+          type: [string, object]
+        label:
+          type: [string, array, object]
+        variant:
+          type: string
+        id:
+          type: string
+        disabled:
+          type: boolean
+        icon:
+          anyOf:
+            - type: string
+            - type: object
+              properties:
+                name:
+                  type: string
+                path:
+                  type: string
+                transformation:
+                  type: string
+                attributes:
+                  type: object
+        icon_position:
+          type: string
+        icon_display:
+          type: string
+        remove_icon_spacers:
+          type: boolean
+        attributes:
+          type: object
+    title_attributes:
+      title: 'Title attributes'
+      type: Drupal\Core\Template\Attribute
+    placement:
+      title: Placement
+      type: string
+      description: 'Side from which the offcanvas opens.'
+      enum:
+        - start
+        - end
+        - top
+        - bottom
+      'meta:enum':
+        start: Start
+        end: End
+        top: Top
+        bottom: Bottom
+    body:
+      title: Body
+      type: [string, array, object]
+      description: 'Offcanvas body content.'
+    body_scroll:
+      title: 'Body scroll'
+      type: boolean
+      description: 'Allows the page body to scroll while the offcanvas is open. Defaults to false.'
+    backdrop:
+      title: Backdrop
+      type: boolean
+      description: 'Displays a backdrop while the offcanvas is open. Defaults to false.'
+    with_close:
+      title: 'Close button'
+      type: boolean
+      description: 'Displays the close button. Defaults to true.'
+    close_aria_label:
+      title: 'Close button accessible label'
+      type: string
+      description: 'Accessible label for the close button. Defaults to Close.'
+    extra_classes_body:
+      title: 'Body classes'
+      type: string
+      description: 'Additional classes for the offcanvas body.'
+    extra_classes_header:
+      title: 'Header classes'
+      type: string
+      description: 'Additional classes for the offcanvas header.'
+    extra_classes_close:
+      title: 'Close button classes'
+      type: string
+      description: 'Additional classes for the close button.'
+    responsiveness:
+      title: Responsiveness
+      type: string
+      description: 'Breakpoint at which the offcanvas becomes static. Defaults to lg.'
+      enum:
+        - none
+        - sm
+        - md
+        - lg
+        - xl
+        - xxl
+      'meta:enum':
+        none: 'Always offcanvas'
+        sm: Small
+        md: Medium
+        lg: 'Large (default)'
+        xl: 'Extra large'
+        xxl: 'Extra extra large'
+    toggle:
+      title: 'Toggle button'
+      type: object
+      description: 'Optional button that opens the offcanvas.'
+      properties:
+        label:
+          type: [string, array, object]
+        variant:
+          type: string
+        size:
+          type: string
+        type:
+          type: string
+        outline:
+          type: boolean
+        disabled:
+          type: boolean
+        text_nowrap:
+          type: boolean
+        assistive_text:
+          type: string
+        id:
+          type: string
+        icon:
+          anyOf:
+            - type: string
+            - type: object
+              properties:
+                name:
+                  type: string
+                path:
+                  type: string
+                transformation:
+                  type: string
+                attributes:
+                  type: object
+        icon_position:
+          type: string
+        icon_spacing:
+          type: string
+        clean_class:
+          type: boolean
+        remove_icon_spacers:
+          type: boolean
+        attributes:
+          type: object
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute
