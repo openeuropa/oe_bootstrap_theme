@@ -7,6 +7,10 @@ listing_default_complete:
       columns: 1
       title: 'Latest publications'
       title_tag: h3
+      title_attributes:
+        class:
+          - custom-listing-title
+        data-title-attribute: custom-value
       title_link:
         path: '/publications'
         variant: info
@@ -51,6 +55,7 @@ listing_default_complete:
             classes: custom-image-class
             rounded: '2'
           image_copyright: '© European Union, 2026'
+          image_copyright_label: 'Cover credit:'
           content:
             '#markup': '<span class="custom-card-content">Published 24 July 2026</span>'
           header:
@@ -139,7 +144,7 @@ listing_default_complete:
       '.bcl-listing > .row > .col:first-child > article.listing-item a.badge': 'Open data'
       '.bcl-listing > .row > .col:first-child > article.listing-item a.badge .visually-hidden': 'Data type:'
     equals:
-      '.bcl-listing > .row > .col:first-child > article.listing-item .visually-hidden': 'Image credit:'
+      '.bcl-listing > .row > .col:first-child > article.listing-item .visually-hidden': 'Cover credit:'
       '.bcl-listing > .row > .col:first-child > article.listing-item span.badge.text-bg-primary': 'Report'
 
 listing_default_two_columns:
@@ -190,6 +195,7 @@ listing_highlight_one_column:
           image:
             src: 'https://example.com/highlight.jpg'
             alt: 'Highlighted card image'
+          image_copyright: '© European Union, 2026'
           text: 'Highlighted card content.'
   assertions:
     count:
@@ -197,6 +203,8 @@ listing_highlight_one_column:
       '.row.row-cols-1.g-4': 1
       'article.listing-item--highlight.bg-lighter.border-0': 1
       'article.listing-item--highlight img.card-img-top': 1
+    equals:
+      'article.listing-item--highlight .bcl-copyright .visually-hidden': 'Image credit:'
 
 listing_highlight_two_columns:
   render:
@@ -245,3 +253,24 @@ listing_optional_props_omitted:
       '.bcl-listing .bcl-heading': 0
       '.bcl-listing article.card': 0
       '.bcl-listing > a': 0
+
+listing_title_label_and_text_break_disabled:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:listing
+    '#props':
+      variant: default
+      columns: 1
+      text_break: false
+      title: 'Archive heading'
+      title_link:
+        label: 'Browse the archive'
+        path: '/archive-overview'
+  assertions:
+    count:
+      '.bcl-listing.bcl-listing--default-1-col': 1
+      '.bcl-listing.text-break': 0
+      '.bcl-listing h2 > a[href="/archive-overview"]': 1
+      '.bcl-listing > a': 0
+    equals:
+      '.bcl-listing h2 > a[href="/archive-overview"]': 'Browse the archive'

@@ -8,7 +8,7 @@
 {% set _items = [] %}
 {% for item in items|default([]) %}
   {% set _item = item|merge({
-    image_copyright_label: 'Image credit:'|t,
+    image_copyright_label: item.image_copyright_label is defined ? item.image_copyright_label : ('Image credit:'|t),
   }) %}
 
   {% if item.title_link is not empty %}
@@ -70,24 +70,33 @@
 
 {% set _link = link|default({}) %}
 {% if _link is not empty %}
-  {% set _link_icon = _link.icon|default({})|merge({
-    path: _link.icon.path|default(_icon_path),
-    attributes: create_attribute(_link.icon.attributes|default({})),
-  }) %}
   {% set _link = _link|merge({
-    icon: _link_icon,
     attributes: create_attribute(_link.attributes|default({})),
   }) %}
+  {% if _link.icon is not empty %}
+    {% set _link = _link|merge({
+      icon: _link.icon|merge({
+        path: _link.icon.path|default(_icon_path),
+        attributes: create_attribute(_link.icon.attributes|default({})),
+      }),
+    }) %}
+  {% endif %}
+{% endif %}
+
+{% set _attributes = attributes|default(create_attribute()) %}
+{% if text_break ?? true %}
+  {% set _attributes = _attributes.addClass('text-break') %}
 {% endif %}
 
 {% include '@oe-bcl/listing' with {
   title: title,
   title_tag: title_tag|default('h2'),
   title_link: _title_link,
+  title_attributes: title_attributes,
   items: _items|bcl_card_list,
   variant: variant|default('default') ~ '-' ~ columns|default(1) ~ '-col',
   link: _link,
   alignment: alignment,
   image_size: image_size,
-  attributes: attributes|default(create_attribute()).addClass('text-break'),
+  attributes: _attributes,
 } only %}
