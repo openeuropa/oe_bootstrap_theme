@@ -38,6 +38,8 @@ props:
       type: object
       description: 'Optional link applied to the listing title. The title prop is used as its label.'
       properties:
+        label:
+          type: [string, array, object]
         path:
           type: [string, object]
         variant:
@@ -75,6 +77,9 @@ props:
           type: boolean
         attributes:
           type: object
+    title_attributes:
+      title: 'Title attributes'
+      type: Drupal\Core\Template\Attribute
     items:
       title: Items
       type: array
@@ -153,6 +158,9 @@ props:
                 type: string
           image_copyright:
             type: [string, array, object]
+          image_copyright_label:
+            type: string
+            description: 'Assistive label displayed before the image copyright. Defaults to "Image credit:".'
           date:
             type: object
             properties:
@@ -277,6 +285,10 @@ props:
       title: 'Icons path'
       type: string
       description: 'Path to the icons SVG file. Defaults to the BCL icon path.'
+    text_break:
+      title: 'Break long text'
+      type: boolean
+      description: 'Adds the text-break class to the listing wrapper. Defaults to true.'
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute
