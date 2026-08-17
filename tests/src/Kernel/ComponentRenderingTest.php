@@ -48,6 +48,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     'carousel',
     'card_v2',
     'columns',
+    'content_banner',
     'date_block',
     'description_list',
     'dropdown',
