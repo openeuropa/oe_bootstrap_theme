@@ -36,6 +36,11 @@ modal_with_all_content_and_attributes:
       scrollable: true
       title:
         - '#markup': 'Custom <em>modal</em>'
+      title_tag: h4
+      title_attributes:
+        class:
+          - custom-modal-title
+        data-modal-title: custom-value
       show_close_button: true
       messages:
         - '#markup': '<div class="alert alert-info">Status message</div>'
@@ -91,7 +96,8 @@ modal_with_all_content_and_attributes:
       'div#custom-modal.modal.fade.custom-modal[data-modal="custom-value"][data-bs-backdrop="static"]': 1
       'div#custom-modal > div.modal-dialog.modal-sm.modal-dialog-centered.modal-dialog-scrollable': 1
       'div#custom-modal .modal-header#custom-modal-header.custom-modal-header': 1
-      'div#custom-modal .modal-header h5 em': 1
+      'div#custom-modal .modal-header h4.custom-modal-title[data-modal-title="custom-value"] em': 1
+      'div#custom-modal .modal-header h5': 0
       'div#custom-modal .modal-header button.btn-close[data-bs-dismiss="modal"][aria-label="Close"]': 1
       'div#custom-modal .alert.alert-info': 1
       'div#custom-modal .modal-body#custom-modal-body.custom-modal-body > p': 1
@@ -103,7 +109,7 @@ modal_with_all_content_and_attributes:
     contains:
       'button#custom-modal-toggle svg': '/custom-icons.svg#box-arrow-up-right'
     equals:
-      'div#custom-modal .modal-header h5': 'Custom <em>modal</em>'
+      'div#custom-modal .modal-header h4': 'Custom <em>modal</em>'
       'div#custom-modal .alert': 'Status message'
       'div#custom-modal .modal-body p': 'Custom modal body.'
       'div#custom-modal .modal-footer button': Cancel
