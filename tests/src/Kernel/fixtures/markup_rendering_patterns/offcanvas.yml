@@ -19,6 +19,7 @@ offcanvas_top_with_backdrop_and_toggle:
       '.btn-close[data-bs-target="#bcl-offcanvas"][aria-label="Close"]': 1
       'div[data-drupal-selector="offcanvas"]': 1
       'div#bcl-offcanvas': 1
+      'div#bcl-offcanvas[role="region"][aria-labelledby="bcl-offcanvas-title"]': 1
       'div#bcl-offcanvas .btn-close[data-bs-target="#bcl-offcanvas"]': 1
       'div.offcanvas-lg.offcanvas-top': 1
     equals:
@@ -40,6 +41,7 @@ offcanvas_start_with_body_scroll:
     count:
       'div[data-drupal-selector="offcanvas"]': 1
       'div#bcl-offcanvas': 1
+      'div#bcl-offcanvas[role="region"][aria-labelledby="bcl-offcanvas-title"]': 1
       'div.offcanvas-lg.offcanvas-start': 1
       'button[data-bs-target="#bcl-offcanvas"]': 1
       '.btn-primary[data-bs-toggle="offcanvas"]': 0
@@ -47,6 +49,20 @@ offcanvas_start_with_body_scroll:
       'div#bcl-offcanvas .btn-close[data-bs-target="#bcl-offcanvas"]': 1
     equals:
       '.offcanvas-title': 'Offcanvas title'
+      'div.offcanvas-body': 'This is the offcanvas body content.'
+offcanvas_without_title:
+  render:
+    '#type': pattern
+    '#id': offcanvas
+    '#fields':
+      settings:
+        placement: start
+      body: 'This is the offcanvas body content.'
+  assertions:
+    count:
+      'div#bcl-offcanvas[role]': 0
+      'div#bcl-offcanvas[aria-labelledby]': 0
+    equals:
       'div.offcanvas-body': 'This is the offcanvas body content.'
 offcanvas_with_toggle_with_icon:
   render:
@@ -69,6 +85,7 @@ offcanvas_with_toggle_with_icon:
       '.btn-close[data-bs-target="#bcl-offcanvas"][aria-label="Close"]': 1
       'div[data-drupal-selector="offcanvas"]': 1
       'div#bcl-offcanvas': 1
+      'div#bcl-offcanvas[role="region"][aria-labelledby="bcl-offcanvas-title"]': 1
       'div.offcanvas-lg.offcanvas-top': 1
       'div#bcl-offcanvas .btn-close[data-bs-target="#bcl-offcanvas"][aria-label="Close"]': 1
       'svg.bi': 1
@@ -92,9 +109,11 @@ offcanvas_with_id_from_attributes:
         icon: 'filter'
       attributes:
         id: 'custom-id'
+        role: 'complementary'
   assertions:
     count:
       'div#custom-id': 1
+      'div#custom-id[role="complementary"][aria-labelledby="custom-id-title"]': 1
       'div.offcanvas-lg.offcanvas-bottom': 1
       'svg.bi': 1
       'button[data-bs-target="#custom-id"]': 2
@@ -128,6 +147,7 @@ offcanvas_search_variant:
       '.btn-close[data-bs-target="#bcl-offcanvas"][aria-label="Close"]': 1
       'div[data-drupal-selector="offcanvas"]': 1
       'div#bcl-offcanvas': 1
+      'div#bcl-offcanvas[role="region"][aria-labelledby="bcl-offcanvas-title"]': 1
       'div#bcl-offcanvas .btn-close[data-bs-target="#bcl-offcanvas"][aria-label="Close"]': 1
       'div.offcanvas-lg.offcanvas-top': 1
       'svg.bi': 1
