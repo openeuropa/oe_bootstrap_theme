@@ -41,9 +41,12 @@ class AccessibleToggleTest extends WebDriverTestBase {
 
     $modalTrigger = $assert->waitForElementVisible('css', "{$modalSelector}[aria-haspopup=\"dialog\"]");
     $offcanvasTrigger = $assert->waitForElementVisible('css', "{$offcanvasSelector}[aria-haspopup=\"dialog\"]");
+    $offcanvasTarget = $offcanvasTrigger->getAttribute('data-bs-target');
+    $this->assertNotEmpty($offcanvasTarget);
 
     $this->assertAccessibleAttributes($modalTrigger);
     $this->assertAccessibleAttributes($offcanvasTrigger, expanded: FALSE);
+    $assert->elementExists('css', "{$offcanvasTarget}[role=\"region\"]");
 
     $this->clickWhenInViewport($modalSelector);
     $assert->waitForElementVisible('css', '.modal.show');
@@ -58,13 +61,14 @@ class AccessibleToggleTest extends WebDriverTestBase {
     $this->assertAccessibleAttributes($offcanvasTrigger, expanded: FALSE);
 
     $this->clickWhenInViewport($offcanvasSelector);
-    $assert->waitForElementVisible('css', '.offcanvas.show');
+    $assert->waitForElementVisible('css', "{$offcanvasTarget}.show[role=\"dialog\"][aria-modal=\"true\"]");
     $offcanvasTrigger = $assert->waitForElement('css', "{$offcanvasSelector}[aria-expanded=\"true\"]");
     $this->assertAccessibleAttributes($modalTrigger, expanded: FALSE);
     $this->assertAccessibleAttributes($offcanvasTrigger, expanded: TRUE);
 
     $this->clickWhenInViewport('.offcanvas-backdrop');
     $offcanvasTrigger = $assert->waitForElement('css', "{$offcanvasSelector}[aria-expanded=\"false\"]");
+    $assert->waitForElement('css', "{$offcanvasTarget}[role=\"region\"]:not([aria-modal])");
     $this->assertAccessibleAttributes($modalTrigger, expanded: FALSE);
     $this->assertAccessibleAttributes($offcanvasTrigger, expanded: FALSE);
   }
