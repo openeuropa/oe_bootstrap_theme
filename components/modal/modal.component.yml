@@ -53,6 +53,13 @@ props:
       title: Title
       type: [string, array, object]
       description: 'Title displayed in the modal header.'
+    title_tag:
+      title: 'Title tag'
+      type: string
+      description: 'The tag to use for the title. Defaults to h5.'
+    title_attributes:
+      title: 'Title attributes'
+      type: Drupal\Core\Template\Attribute
     show_close_button:
       title: 'Show close button'
       type: boolean

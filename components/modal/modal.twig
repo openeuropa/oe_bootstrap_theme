@@ -7,11 +7,12 @@
 {% set _attributes = attributes|default(create_attribute()) %}
 {% set _id = _attributes.id|default(modal_id|default('modal'|clean_unique_id)) %}
 {% set _header = '' %}
+{% set _title_tag = title_tag|default('h5') %}
 
 {% if title is not empty or show_close_button ?? false %}
   {% set _header %}
     {% if title is not empty %}
-      <h5>{{ title }}</h5>
+      <{{ _title_tag }}{{ title_attributes|default(create_attribute()) }}>{{ title }}</{{ _title_tag }}>
     {% endif %}
     {% if show_close_button ?? false %}
       {% include 'oe_bootstrap_theme:button' with {
