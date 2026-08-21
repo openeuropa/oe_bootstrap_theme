@@ -111,7 +111,8 @@ listing_default_complete:
           data-cta: custom-value
   assertions:
     count:
-      'div#custom-listing[data-component-id="oe_bootstrap_theme:listing"].bcl-listing.bcl-listing--default-1-col.text-break.custom-listing-class[data-listing="custom-value"]': 1
+      'div#custom-listing[data-component-id="oe_bootstrap_theme:listing"].bcl-listing.bcl-listing--default-1-col.custom-listing-class[data-listing="custom-value"]': 1
+      'div#custom-listing.text-break': 0
       'h3.bcl-heading': 1
       'h3 > a#listing-title-link.link-info.standalone.d-inline-flex.gap-2-5[href="/publications"][data-title-link="custom-value"]': 1
       'h3 > a#listing-title-link svg.icon--xs': 1
@@ -254,21 +255,23 @@ listing_optional_props_omitted:
       '.bcl-listing article.card': 0
       '.bcl-listing > a': 0
 
-listing_title_label_and_text_break_disabled:
+listing_title_label_and_custom_attributes:
   render:
     '#type': component
     '#component': oe_bootstrap_theme:listing
     '#props':
       variant: default
       columns: 1
-      text_break: false
       title: 'Archive heading'
       title_link:
         label: 'Browse the archive'
         path: '/archive-overview'
+      attributes:
+        class:
+          - custom-listing-attributes
   assertions:
     count:
-      '.bcl-listing.bcl-listing--default-1-col': 1
+      '.bcl-listing.bcl-listing--default-1-col.custom-listing-attributes': 1
       '.bcl-listing.text-break': 0
       '.bcl-listing h2 > a[href="/archive-overview"]': 1
       '.bcl-listing > a': 0
