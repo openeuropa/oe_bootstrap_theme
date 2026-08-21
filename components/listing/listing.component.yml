@@ -285,10 +285,6 @@ props:
       title: 'Icons path'
       type: string
       description: 'Path to the icons SVG file. Defaults to the BCL icon path.'
-    text_break:
-      title: 'Break long text'
-      type: boolean
-      description: 'Adds the text-break class to the listing wrapper. Defaults to true.'
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

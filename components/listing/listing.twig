@@ -8,7 +8,7 @@
 {% set _items = [] %}
 {% for item in items|default([]) %}
   {% set _item = item|merge({
-    image_copyright_label: item.image_copyright_label is defined ? item.image_copyright_label : ('Image credit:'|t),
+    image_copyright_label: item.image_copyright_label|default('Image credit:'|t),
   }) %}
 
   {% if item.title_link is not empty %}
@@ -83,11 +83,6 @@
   {% endif %}
 {% endif %}
 
-{% set _attributes = attributes|default(create_attribute()) %}
-{% if text_break ?? true %}
-  {% set _attributes = _attributes.addClass('text-break') %}
-{% endif %}
-
 {% include '@oe-bcl/listing' with {
   title: title,
   title_tag: title_tag|default('h2'),
@@ -98,5 +93,5 @@
   link: _link,
   alignment: alignment,
   image_size: image_size,
-  attributes: _attributes,
+  attributes: attributes|default(create_attribute().addClass('text-break')),
 } only %}
