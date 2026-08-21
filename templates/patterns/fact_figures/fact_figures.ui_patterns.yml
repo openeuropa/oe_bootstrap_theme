@@ -1,6 +1,14 @@
 fact_figures:
   label: 'Fact and Figures'
   description: 'Fact and Figures pattern used for the paragraph of same type.'
+  settings:
+    alignment:
+      type: select
+      label: 'Alignment'
+      description: 'Align the facts and figures items. Center alignment keeps descriptions justified.'
+      options:
+        left: 'Left (default)'
+        center: 'Center'
   fields:
     title:
       type: text
