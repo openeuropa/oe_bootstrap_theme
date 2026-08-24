@@ -83,6 +83,11 @@
   {% endif %}
 {% endif %}
 
+{% set _attributes = attributes|default(create_attribute()) %}
+{% if _attributes.class is empty %}
+  {% set _attributes = _attributes.addClass('text-break') %}
+{% endif %}
+
 {% include '@oe-bcl/listing' with {
   title: title,
   title_tag: title_tag|default('h2'),
@@ -93,5 +98,5 @@
   link: _link,
   alignment: alignment,
   image_size: image_size,
-  attributes: attributes|default(create_attribute().addClass('text-break')),
+  attributes: _attributes,
 } only %}
