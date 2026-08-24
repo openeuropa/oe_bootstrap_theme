@@ -1,0 +1,261 @@
+{% set items = [
+  {
+    title: 'Digital policy and legislation',
+    title_link: {
+      path: '/digital-policy',
+    },
+    text: 'Current initiatives, legislation and practical guidance for Europe’s digital transformation.',
+    image: {
+      src: 'https://picsum.photos/seed/listing-policy/800/500',
+      alt: 'People working together in an office',
+    },
+    image_copyright: '© European Union, 2026',
+    content: {
+      '#markup': '<span class="text-muted">Policy · 24 July 2026</span>',
+    },
+    badges: [
+      'Digital',
+      {
+        label: 'Policy',
+        background: 'success',
+      },
+    ],
+  },
+  {
+    title: 'Funding opportunities',
+    title_link: {
+      path: '/funding',
+    },
+    text: 'Find open calls, programme information and resources for applicants and beneficiaries.',
+    image: {
+      src: 'https://picsum.photos/seed/listing-funding/800/500',
+      alt: 'Modern public building',
+      classes: 'mb-3',
+    },
+    content: {
+      '#markup': '<span class="text-muted">Funding · 18 July 2026</span>',
+    },
+  },
+  {
+    title: 'Upcoming consultation',
+    title_link: {
+      path: '/consultation',
+    },
+    text: 'Contribute your views to an open consultation before the submission deadline.',
+    date: {
+      day: 12,
+      month: 'Sep',
+      year: 2026,
+      date_time: '2026-09-12',
+    },
+    content: {
+      '#markup': '<span class="text-muted">Consultation · Open</span>',
+    },
+  },
+] %}
+
+{% set image_items = items|slice(0, 2)|merge([
+  {
+    title: 'Research and innovation',
+    title_link: {
+      path: '/research',
+    },
+    text: 'Explore European research programmes, scientific results and opportunities for collaboration.',
+    image: {
+      src: 'https://picsum.photos/seed/listing-research/800/500',
+      alt: 'Research facility interior',
+      classes: 'mb-3',
+    },
+    content: {
+      '#markup': '<span class="text-muted">Research · 10 July 2026</span>',
+    },
+  },
+]) %}
+
+{% set date_items = items|slice(2, 1)|merge([
+  {
+    title: 'Information session',
+    title_link: {
+      path: '/information-session',
+    },
+    text: 'Join an online session covering the programme, eligibility requirements and application process.',
+    date: {
+      day: 4,
+      month: 'Oct',
+      year: 2026,
+      date_time: '2026-10-04',
+    },
+    content: {
+      '#markup': '<span class="text-muted">Online event · Registration open</span>',
+    },
+  },
+  {
+    title: 'Application deadline',
+    title_link: {
+      path: '/application-deadline',
+    },
+    text: 'Submit completed applications and supporting documents before the final deadline.',
+    date: {
+      day: 18,
+      month: 'Nov',
+      year: 2026,
+      date_time: '2026-11-18',
+    },
+    content: {
+      '#markup': '<span class="text-muted">Funding · Final deadline</span>',
+    },
+  },
+]) %}
+
+{% set compact_items = [
+  {
+    title: 'Digital policy and legislation',
+    title_link: {
+      path: '/digital-policy',
+    },
+    text: 'Current initiatives, legislation and practical guidance for Europe’s digital transformation.',
+    content: {
+      '#markup': '<span class="text-muted">Policy · 24 July 2026</span>',
+    },
+    badges: ['Digital', 'Policy'],
+  },
+  {
+    title: 'Funding opportunities',
+    title_link: {
+      path: '/funding',
+    },
+    text: 'Find open calls, programme information and resources for applicants and beneficiaries.',
+    content: {
+      '#markup': '<span class="text-muted">Funding · 18 July 2026</span>',
+    },
+  },
+  {
+    title: 'Upcoming consultation',
+    title_link: {
+      path: '/consultation',
+    },
+    text: 'Contribute your views to an open consultation before the submission deadline.',
+    content: {
+      '#markup': '<span class="text-muted">Consultation · Open</span>',
+    },
+  },
+] %}
+
+{% set examples = [
+  {
+    heading: 'Default, one column with images',
+    variant: 'default',
+    columns: 1,
+    alignment: 'start',
+    image_size: 'large',
+  },
+  {
+    heading: 'Default, two columns',
+    variant: 'default',
+    columns: 2,
+    alignment: 'start',
+    items: compact_items,
+  },
+  {
+    heading: 'Default, three columns',
+    variant: 'default',
+    columns: 3,
+    alignment: 'start',
+    items: compact_items,
+  },
+  {
+    heading: 'Highlight, one column with images',
+    variant: 'highlight',
+    columns: 1,
+    alignment: 'baseline',
+  },
+  {
+    heading: 'Highlight, two columns with images',
+    variant: 'highlight',
+    columns: 2,
+    alignment: 'stretch',
+  },
+  {
+    heading: 'Highlight, three columns with images',
+    variant: 'highlight',
+    columns: 3,
+    alignment: 'center',
+  },
+  {
+    heading: 'Default date blocks, one column',
+    variant: 'default',
+    columns: 1,
+    alignment: 'start',
+    image_size: 'small',
+    items: date_items,
+  },
+  {
+    heading: 'Default date blocks, two columns',
+    variant: 'default',
+    columns: 2,
+    alignment: 'start',
+    image_size: 'small',
+    items: date_items,
+  },
+  {
+    heading: 'Default date blocks, three columns',
+    variant: 'default',
+    columns: 3,
+    alignment: 'start',
+    image_size: 'small',
+    items: date_items,
+  },
+  {
+    heading: 'Highlight date blocks, one column',
+    variant: 'highlight',
+    columns: 1,
+    alignment: 'start',
+    items: date_items,
+  },
+  {
+    heading: 'Highlight date blocks, two columns',
+    variant: 'highlight',
+    columns: 2,
+    alignment: 'start',
+    items: date_items,
+  },
+  {
+    heading: 'Highlight date blocks, three columns',
+    variant: 'highlight',
+    columns: 3,
+    alignment: 'start',
+    items: date_items,
+  },
+] %}
+
+<div class="vstack gap-5">
+  {% for example in examples %}
+    <div>
+      <h3 class="h4 mb-3">{{ example.heading }}</h3>
+      {% set _props = {
+        variant: example.variant,
+        columns: example.columns,
+        items: example.items|default(image_items),
+        alignment: example.alignment,
+      } %}
+      {% if example.image_size is defined %}
+        {% set _props = _props|merge({image_size: example.image_size}) %}
+      {% endif %}
+      {% if loop.first %}
+        {% set _props = _props|merge({
+          title: 'Latest updates',
+          title_tag: 'h4',
+          title_link: {
+            path: '/latest-updates',
+          },
+          link: {
+            label: 'View all updates',
+            path: '/updates',
+            icon_position: 'after',
+          },
+        }) %}
+      {% endif %}
+      {% include 'oe_bootstrap_theme:listing' with _props only %}
+    </div>
+  {% endfor %}
+</div>
