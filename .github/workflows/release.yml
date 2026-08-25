@@ -76,10 +76,13 @@ jobs:
       - name: grumphp
         run: docker compose exec -T web ./vendor/bin/grumphp run
 
-      - name: npm install
-        run: docker compose exec -T web npm install --unsafe-perm
+      - name: Install dependencies
+        run: docker compose exec -T web npx --yes --package=npm@12.0.2 npm ci --ignore-scripts
 
-      - name: npm run production
+      - name: Apply npm dependency patches
+        run: docker compose exec -T web npm run apply-patches
+
+      - name: Build production assets
         run: docker compose exec -T -e NODE_ENV=production web npm run production
 
       - name: release:create-archive

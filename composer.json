@@ -22,7 +22,7 @@
         "drupal/core-dev": "^10.3 || ^11",
         "drupal/styleguide": "^2.2",
         "drush/drush": "^12 || ^13",
-        "ec-europa/toolkit": "^10.24",
+        "ec-europa/toolkit": "^10.29.3",
         "openeuropa/code-review-drupal": "^1.0.0-alpha"
     },
     "scripts": {
