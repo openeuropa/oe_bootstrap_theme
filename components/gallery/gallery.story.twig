@@ -1,0 +1,108 @@
+{% set gallery_items = [
+  {
+    media: {
+      '#markup': '<img src="https://picsum.photos/seed/oe-gallery-1/1200/800" alt="Modern public building">'
+    },
+    thumbnail: {
+      '#markup': '<img src="https://picsum.photos/seed/oe-gallery-1/600/400" alt="Modern public building thumbnail">'
+    },
+    caption_title: 'Public architecture',
+    caption: 'A contemporary public building designed around an open civic space.',
+    copyright: '© 2026 Example Organisation'
+  },
+  {
+    media: {
+      '#markup': '<video poster="https://picsum.photos/seed/oe-gallery-video/1200/800" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></video>',
+      '#allowed_tags': ['video', 'source']
+    },
+    thumbnail: {
+      '#markup': '<img src="https://picsum.photos/seed/oe-gallery-video/600/400" alt="Video thumbnail">'
+    },
+    caption_title: 'Programme overview',
+    caption: 'A short introduction to the programme.',
+    copyright: '© 2026 Example Organisation'
+  },
+  {
+    media: {
+      '#markup': '<img src="https://picsum.photos/seed/oe-gallery-3/1200/800" alt="People in a public square">'
+    },
+    thumbnail: {
+      '#markup': '<img src="https://picsum.photos/seed/oe-gallery-3/600/400" alt="People in a public square thumbnail">'
+    },
+    caption_title: 'Connected communities',
+    caption: 'People meeting in a shared urban space.',
+    link: {
+      label: 'Read the story',
+      path: 'https://example.com/community',
+      icon_position: 'after',
+      icon: {
+        name: 'chevron-right'
+      }
+    }
+  },
+  {
+    media: {
+      '#markup': '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ty5axPlgMuk" title="Electric vehicle testing" frameborder="0" allowfullscreen></iframe>',
+      '#allowed_tags': ['iframe']
+    },
+    thumbnail: {
+      '#markup': '<img src="https://picsum.photos/seed/oe-gallery-iframe/600/400" alt="Electric vehicle testing video thumbnail">'
+    },
+    caption_title: 'Safer electric vehicles',
+    caption: 'Harmonised test procedures for battery technology.'
+  },
+  {
+    media: {
+      '#markup': '<img src="https://picsum.photos/seed/oe-gallery-5/1200/800" alt="Coastal landscape">'
+    },
+    thumbnail: {
+      '#markup': '<img src="https://picsum.photos/seed/oe-gallery-5/600/400" alt="Coastal landscape thumbnail">'
+    },
+    caption_title: 'Coastal regions',
+    caption: 'Communities adapting to environmental change.'
+  },
+  {
+    media: {
+      '#markup': '<img src="https://picsum.photos/seed/oe-gallery-6/1200/800" alt="Solar panels in a field">'
+    },
+    thumbnail: {
+      '#markup': '<img src="https://picsum.photos/seed/oe-gallery-6/600/400" alt="Solar panels thumbnail">'
+    },
+    caption_title: 'Clean energy',
+    caption: 'Renewable energy infrastructure supporting the green transition.'
+  }
+] %}
+
+<div class="vstack gap-5">
+  <div>
+    <h3>Compact gallery</h3>
+    {% include 'oe_bootstrap_theme:gallery' with {
+      title: 'Featured media',
+      items: gallery_items|slice(0, 4),
+    } only %}
+  </div>
+
+  <div>
+    <h3>Mixed media gallery</h3>
+    {% include 'oe_bootstrap_theme:gallery' with {
+      gallery_id: 'gallery-story-mixed-media',
+      title: 'Projects across Europe',
+      title_tag: 'h4',
+      title_link: {
+        path: 'https://example.com/projects',
+        attributes: {
+          class: ['custom-gallery-title-link']
+        }
+      },
+      title_attributes: create_attribute().addClass('custom-gallery-title'),
+      counter: '%d media items',
+      collapse_button_label: 'Show all %d items',
+      expand_button_label: 'Show fewer items',
+      previous_label: 'Previous media',
+      next_label: 'Next media',
+      max_visible_thumbnails: 3,
+      items: gallery_items,
+      attributes: create_attribute().addClass('custom-gallery'),
+    } only %}
+  </div>
+</div>

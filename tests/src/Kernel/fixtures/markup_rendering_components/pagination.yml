@@ -1,0 +1,179 @@
+pagination_default:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:pagination
+    '#props':
+      variant: default
+  assertions:
+    count:
+      'nav[data-component-id="oe_bootstrap_theme:pagination"][role="navigation"]': 1
+      'nav > ul.pagination.js-pager__items': 1
+      'ul.pagination--glossary': 0
+      'ul.pagination-sm': 0
+      'ul.pagination-lg': 0
+      'ul[class*="justify-content-"]': 0
+      'ul > li': 0
+
+pagination_text_controls_and_custom_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:pagination
+    '#props':
+      variant: default
+      size: sm
+      alignment: center
+      enable_first_last_icons: false
+      first:
+        path: '/pages/first'
+        label: First
+        attributes:
+          aria-label: 'Go to the first page'
+          class:
+            - custom-first-link
+      prev:
+        path: '/pages/previous'
+        label: Previous
+      next:
+        path: '/pages/next'
+        label: Next
+        disabled: true
+      last:
+        path: '/pages/last'
+        label: Last
+      items:
+        - path: '/pages/1'
+          label:
+            '#markup': '<strong>1</strong>'
+          active: true
+          attributes:
+            aria-label: 'Page 1'
+            class:
+              - custom-page-link
+            data-page-attribute: custom-value
+        - path: '/pages/2'
+          label: '2'
+          disabled: true
+      list_attributes:
+        id: custom-pagination-list
+        class:
+          - custom-pagination-list
+        data-list-attribute: custom-value
+      attributes:
+        id: custom-pagination
+        class:
+          - custom-pagination
+        aria-label: 'Search results pages'
+        data-pagination-attribute: custom-value
+  assertions:
+    count:
+      'nav#custom-pagination.custom-pagination[role="navigation"][aria-label="Search results pages"][data-pagination-attribute="custom-value"]': 1
+      'ul#custom-pagination-list.pagination.pagination-sm.justify-content-center.js-pager__items.custom-pagination-list[data-list-attribute="custom-value"]': 1
+      'ul > li.page-item': 6
+      'li.page-item.active > a.page-link.custom-page-link[href="/pages/1"][aria-current="page"][aria-label="Page 1"][data-page-attribute="custom-value"]': 1
+      'li.page-item.disabled > a.page-link.disabled[href="/pages/2"][aria-disabled="true"][tabindex="-1"]': 1
+      'li.page-item.disabled > a.page-link.disabled[href="/pages/next"]': 1
+      'a.custom-first-link[href="/pages/first"][aria-label="Go to the first page"]': 1
+      'a[href="/pages/previous"][aria-label="Previous"]': 1
+      'a[href="/pages/last"][aria-label="Last"]': 1
+      'a.page-link svg': 0
+    equals:
+      'a[href="/pages/first"]': First
+      'a[href="/pages/previous"]': Previous
+      'a[href="/pages/1"] strong': '1'
+      'a[href="/pages/2"]': '2'
+      'a[href="/pages/next"]': Next
+      'a[href="/pages/last"]': Last
+
+pagination_icons_and_ellipsis:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:pagination
+    '#props':
+      variant: default
+      size: lg
+      alignment: end
+      enable_prev_next_icons: true
+      ellipsis_before: true
+      ellipsis_after: true
+      first:
+        path: '/pages/first'
+        label: First
+      prev:
+        path: '/pages/previous'
+        label: Previous
+        icon:
+          name: arrow-left
+          path: '/other/icons.svg'
+          size: xl
+          transformation: rotate-90
+          attributes:
+            class:
+              - custom-previous-icon
+            data-icon-attribute: custom-value
+      next:
+        path: '/pages/next'
+        label: Next
+      last:
+        path: '/pages/last'
+        label: Last
+      items:
+        - path: '/pages/5'
+          label: '5'
+          active: true
+      icon_path: '/custom/icons.svg'
+  assertions:
+    count:
+      'ul.pagination.pagination-lg.justify-content-end.js-pager__items': 1
+      'ul > li.page-item': 7
+      'li:nth-child(3) > div.page-link > span[aria-hidden="true"]': 1
+      'li:nth-child(5) > div.page-link > span[aria-hidden="true"]': 1
+      'a[href="/pages/first"] > svg.icon--fluid': 1
+      'a[href="/pages/previous"] > svg.icon--xl.icon--rotate-90.custom-previous-icon[data-icon-attribute="custom-value"]': 1
+      'a[href="/pages/next"] > svg.icon--fluid': 1
+      'a[href="/pages/last"] > svg.icon--fluid': 1
+      'li:nth-child(4).active > a[href="/pages/5"][aria-current="page"]': 1
+    contains:
+      'a[href="/pages/first"] svg': '/custom/icons.svg#chevron-double-left'
+      'a[href="/pages/previous"] svg': '/other/icons.svg#arrow-left'
+      'a[href="/pages/next"] svg': '/custom/icons.svg#chevron-right'
+      'a[href="/pages/last"] svg': '/custom/icons.svg#chevron-double-right'
+
+pagination_glossary:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:pagination
+    '#props':
+      variant: glossary
+      items:
+        - path: '#a'
+          label:
+            '#markup': '<strong>A</strong>'
+          attributes:
+            aria-label: 'Letter A'
+            class:
+              - custom-letter-link
+        - path: '#b'
+          label: B
+          active: true
+        - path: '#c'
+          label: C
+        - label: '0-9'
+      attributes:
+        class:
+          - custom-glossary
+        data-glossary-attribute: custom-value
+  assertions:
+    count:
+      'nav.bcl-glossary.custom-glossary[role="navigation"][aria-label="Glossary links"][data-glossary-attribute="custom-value"]': 1
+      'ul.pagination.pagination--glossary.js-pager__items': 1
+      'ul > li.page-item': 4
+      'a.custom-letter-link[href="#a"][aria-label="Letter A"] > strong': 1
+      'li.active > a[href="#b"][aria-current="page"][aria-label="B"]': 1
+      'a[href="#c"][aria-label="C"]': 1
+      'li:nth-child(4) > div.page-link[aria-label="0-9"]': 1
+      'nav > ul > li > svg': 0
+    equals:
+      'a[href="#a"] strong': A
+      'a[href="#b"]': B
+      'a[href="#c"]': C
+      'li:nth-child(4) > div.page-link': '0-9'

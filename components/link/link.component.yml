@@ -1,0 +1,106 @@
+name: Link
+description: 'A link with optional color, icon, disabled and standalone styles.'
+props:
+  type: object
+  properties:
+    label:
+      title: Label
+      type: [string, array, object]
+      description: 'Link label text or render array.'
+    path:
+      title: Path
+      type: [string, object]
+      description: 'Link URL string or URL object. Defaults to #.'
+    variant:
+      title: Variant
+      type: string
+      description: 'Link color variant. Defaults to the standard link style.'
+      enum:
+        - ''
+        - primary
+        - secondary
+        - success
+        - danger
+        - warning
+        - info
+        - light
+        - dark
+      'meta:enum':
+        '': Default
+        primary: Primary
+        secondary: Secondary
+        success: Success
+        danger: Danger
+        warning: Warning
+        info: Info
+        light: Light
+        dark: Dark
+    id:
+      title: ID
+      type: string
+      description: 'Link ID attribute.'
+    disabled:
+      title: Disabled
+      type: boolean
+      description: 'Disables keyboard and pointer interaction. Defaults to false.'
+    standalone:
+      title: Standalone
+      type: boolean
+      description: 'Applies standalone link styling. Defaults to false.'
+    icon:
+      title: Icon
+      type: [string, object]
+      description: 'Icon name as a string or an icon object.'
+      properties:
+        name:
+          type: string
+        path:
+          type: string
+        size:
+          type: string
+          enum:
+            - 2xs
+            - xs
+            - s
+            - m
+            - l
+            - xl
+            - 2xl
+            - fluid
+        transformation:
+          type: string
+          enum:
+            - rotate-90
+            - rotate-180
+            - rotate-270
+            - flip-horizontal
+            - flip-vertical
+        attributes:
+          type: object
+    icon_position:
+      title: 'Icon position'
+      type: string
+      description: 'Position of the icon relative to the label. Defaults to after.'
+      enum:
+        - before
+        - after
+      'meta:enum':
+        before: Before
+        after: 'After (default)'
+    icon_display:
+      title: 'Icon display'
+      type: string
+      description: 'Uses flexbox gap spacing between the icon and label.'
+      enum:
+        - flex
+        - inline-flex
+      'meta:enum':
+        flex: Flex
+        inline-flex: 'Inline flex'
+    remove_icon_spacers:
+      title: 'Remove icon spacers'
+      type: boolean
+      description: 'Removes spacing between the icon and label. Defaults to false.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

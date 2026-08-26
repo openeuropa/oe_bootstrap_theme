@@ -1,0 +1,279 @@
+listing_default_complete:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:listing
+    '#props':
+      variant: default
+      columns: 1
+      title: 'Latest publications'
+      title_tag: h3
+      title_attributes:
+        class:
+          - custom-listing-title
+        data-title-attribute: custom-value
+      title_link:
+        path: '/publications'
+        variant: info
+        id: listing-title-link
+        standalone: true
+        icon:
+          name: arrow-up-right
+          size: xs
+        icon_position: after
+        icon_display: inline-flex
+        attributes:
+          data-title-link: custom-value
+      alignment: center
+      image_size: large
+      icon_path: '/custom/icons.svg'
+      attributes:
+        id: custom-listing
+        class:
+          - custom-listing-class
+        data-listing: custom-value
+      items:
+        - title: 'First publication'
+          title_tag: h4
+          title_link:
+            path: '/publication/first'
+            variant: danger
+            id: first-publication-link
+            icon:
+              name: file-text
+              size: sm
+            icon_position: before
+            remove_icon_spacers: true
+            attributes:
+              class:
+                - custom-card-link
+          subtitle: 'Research report'
+          text:
+            '#markup': 'A publication with <strong>rendered text</strong>.'
+          image:
+            src: 'https://example.com/publication.jpg'
+            alt: 'Publication cover'
+            classes: custom-image-class
+            rounded: '2'
+          image_copyright: '© European Union, 2026'
+          image_copyright_label: 'Cover credit:'
+          content:
+            '#markup': '<span class="custom-card-content">Published 24 July 2026</span>'
+          header:
+            '#markup': '<span class="custom-card-header">Featured</span>'
+          footer:
+            '#markup': '<span class="custom-card-footer">Publication footer</span>'
+          badges:
+            - 'Report'
+            - label: 'Open data'
+              background: success
+              url: '/open-data'
+              title: 'Open data badge'
+              dismissible: true
+              assistive_text: 'Data type:'
+              rounded_pill: true
+              outline: true
+              attributes:
+                class:
+                  - custom-badge-class
+        - title:
+            '#markup': 'Consultation deadline'
+          text: 'The second item uses a date block instead of an image.'
+          date:
+            day: 12
+            month: Sep
+            year: 2026
+            end_day: 18
+            end_month: Sep
+            end_year: 2026
+            date_time: '2026-09-12'
+            attributes:
+              id: consultation-date
+              class:
+                - custom-date-class
+      link:
+        label: 'View all publications'
+        path: '/publications/all'
+        variant: success
+        id: listing-cta
+        disabled: true
+        standalone: true
+        icon_position: before
+        icon_display: inline-flex
+        remove_icon_spacers: true
+        icon:
+          transformation: rotate-90
+          attributes:
+            class:
+              - custom-cta-icon
+        attributes:
+          class:
+            - custom-cta-class
+          data-cta: custom-value
+  assertions:
+    count:
+      'div#custom-listing[data-component-id="oe_bootstrap_theme:listing"].bcl-listing.bcl-listing--default-1-col.custom-listing-class[data-listing="custom-value"]': 1
+      'div#custom-listing.text-break': 0
+      'h3.bcl-heading': 1
+      'h3 > a#listing-title-link.link-info.standalone.d-inline-flex.gap-2-5[href="/publications"][data-title-link="custom-value"]': 1
+      'h3 > a#listing-title-link svg.icon--xs': 1
+      'h3 > a#listing-title-link use[xlink\:href="/custom/icons.svg#arrow-up-right"]': 1
+      'div.row.row-cols-1.g-4': 1
+      'article.listing-item': 2
+      '.bcl-listing > .row > .col:first-child > article.listing-item .bcl-card-start-col.bcl-size-large.align-self-center': 1
+      '.bcl-listing > .row > .col:first-child > article.listing-item .col-12.col-md.align-self-center': 1
+      '.bcl-listing > .row > .col:first-child > article.listing-item .card-header .custom-card-header': 1
+      '.bcl-listing > .row > .col:first-child > article.listing-item .card-footer .custom-card-footer': 1
+      '.bcl-listing > .row > .col:first-child > article.listing-item img[src="https://example.com/publication.jpg"][alt="Publication cover"].custom-image-class.rounded-2': 1
+      '.bcl-listing > .row > .col:first-child > article.listing-item .bcl-copyright .visually-hidden': 1
+      '.bcl-listing > .row > .col:first-child > article.listing-item h4.card-title a#first-publication-link.custom-card-link.link-danger[href="/publication/first"]': 1
+      '.bcl-listing > .row > .col:first-child > article.listing-item h4.card-title a#first-publication-link svg.icon--sm': 1
+      '.bcl-listing > .row > .col:first-child > article.listing-item .card-text strong': 1
+      '.bcl-listing > .row > .col:first-child > article.listing-item .custom-card-content': 1
+      '.bcl-listing > .row > .col:first-child > article.listing-item span.badge.text-bg-primary': 1
+      '.bcl-listing > .row > .col:first-child > article.listing-item a.badge.badge-outline-success.rounded-pill.custom-badge-class[href="/open-data"][title="Open data badge"]': 1
+      '.bcl-listing > .row > .col:first-child > article.listing-item a.badge .visually-hidden': 1
+      '.bcl-listing > .row > .col:first-child > article.listing-item a.badge svg.icon--xs': 1
+      'time#consultation-date.custom-date-class[datetime="2026-09-12"]': 1
+      'time#consultation-date use[xlink\:href="/custom/icons.svg#chevron-right"]': 1
+      'a#listing-cta.link-success.disabled.custom-cta-class[data-cta="custom-value"][href="/publications/all"][aria-disabled="true"][tabindex="-1"]': 1
+      'a#listing-cta svg.icon--rotate-90.custom-cta-icon': 1
+      'a#listing-cta use[xlink\:href="/custom/icons.svg#chevron-right"]': 1
+    contains:
+      '.bcl-listing > .row > .col:first-child > article.listing-item .bcl-copyright': '© European Union, 2026'
+      'a#listing-cta': 'View all publications'
+      'h3 > a': 'Latest publications'
+      '.bcl-listing > .row > .col:first-child > article.listing-item a.badge': 'Open data'
+      '.bcl-listing > .row > .col:first-child > article.listing-item a.badge .visually-hidden': 'Data type:'
+    equals:
+      '.bcl-listing > .row > .col:first-child > article.listing-item .visually-hidden': 'Cover credit:'
+      '.bcl-listing > .row > .col:first-child > article.listing-item span.badge.text-bg-primary': 'Report'
+
+listing_default_two_columns:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:listing
+    '#props':
+      variant: default
+      columns: 2
+      items:
+        - title: 'First card'
+          text: 'First card content.'
+        - title: 'Second card'
+          text: 'Second card content.'
+  assertions:
+    count:
+      '.bcl-listing.bcl-listing--default-2-col': 1
+      '.row.row-cols-1.row-cols-md-2.g-4': 1
+      'article.listing-item': 2
+
+listing_default_three_columns:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:listing
+    '#props':
+      variant: default
+      columns: 3
+      items:
+        - title: 'First card'
+        - title: 'Second card'
+        - title: 'Third card'
+  assertions:
+    count:
+      '.bcl-listing.bcl-listing--default-3-col': 1
+      '.row.row-cols-1.row-cols-md-2.row-cols-xl-3.g-4': 1
+      'article.listing-item': 3
+
+listing_highlight_one_column:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:listing
+    '#props':
+      variant: highlight
+      columns: 1
+      alignment: end
+      items:
+        - title: 'Highlighted card'
+          image:
+            src: 'https://example.com/highlight.jpg'
+            alt: 'Highlighted card image'
+          image_copyright: '© European Union, 2026'
+          text: 'Highlighted card content.'
+  assertions:
+    count:
+      '.bcl-listing.bcl-listing--highlight-1-col': 1
+      '.row.row-cols-1.g-4': 1
+      'article.listing-item--highlight.bg-lighter.border-0': 1
+      'article.listing-item--highlight img.card-img-top': 1
+    equals:
+      'article.listing-item--highlight .bcl-copyright .visually-hidden': 'Image credit:'
+
+listing_highlight_two_columns:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:listing
+    '#props':
+      variant: highlight
+      columns: 2
+      items:
+        - title: 'First highlighted card'
+        - title: 'Second highlighted card'
+  assertions:
+    count:
+      '.bcl-listing.bcl-listing--highlight-2-col': 1
+      '.row.row-cols-1.row-cols-md-2.g-4': 1
+      'article.listing-item--highlight.bg-lighter.h-100.rounded-2': 2
+
+listing_highlight_three_columns:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:listing
+    '#props':
+      variant: highlight
+      columns: 3
+      items:
+        - title: 'First highlighted card'
+        - title: 'Second highlighted card'
+        - title: 'Third highlighted card'
+  assertions:
+    count:
+      '.bcl-listing.bcl-listing--highlight-3-col': 1
+      '.row.row-cols-1.row-cols-md-3.g-4': 1
+      'article.listing-item--highlight.bg-lighter.h-100.rounded-2': 3
+
+listing_optional_props_omitted:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:listing
+    '#props':
+      variant: default
+      columns: 1
+  assertions:
+    count:
+      '.bcl-listing.bcl-listing--default-1-col.text-break': 1
+      '.bcl-listing .row.row-cols-1.g-4': 1
+      '.bcl-listing .bcl-heading': 0
+      '.bcl-listing article.card': 0
+      '.bcl-listing > a': 0
+
+listing_title_label_and_custom_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:listing
+    '#props':
+      variant: default
+      columns: 1
+      title: 'Archive heading'
+      title_link:
+        label: 'Browse the archive'
+        path: '/archive-overview'
+      attributes:
+        class:
+          - custom-listing-attributes
+  assertions:
+    count:
+      '.bcl-listing.bcl-listing--default-1-col.custom-listing-attributes': 1
+      '.bcl-listing.text-break': 0
+      '.bcl-listing h2 > a[href="/archive-overview"]': 1
+      '.bcl-listing > a': 0
+    equals:
+      '.bcl-listing h2 > a[href="/archive-overview"]': 'Browse the archive'

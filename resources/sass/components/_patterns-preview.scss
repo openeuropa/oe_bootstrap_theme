@@ -4,3 +4,61 @@
     display: none;
   }
 }
+
+.components-preview__components {
+  .bcl-content-banner,
+  .bcl-banner {
+    width: 100%;
+    left: auto;
+    margin: 0 0 1rem 0;
+    &:has(+.bcl-copyright) {
+      margin-bottom: 0;
+      + .bcl-copyright {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  .date-block-story__preview {
+    inline-size: 10rem;
+    max-inline-size: 100%;
+  }
+
+  &::after {
+    display: none;
+  }
+}
+.components-preview__main {
+  [data-component-id="oe_bootstrap_theme:card"] {
+    img {
+      max-inline-size: 100%;
+    }
+  }
+  .carousel img {
+    max-inline-size: 100%;
+  }
+}
+
+.components-preview {
+  background: transparent;
+  padding: 0;
+  .components-preview__wrapper {
+    gap: 0;
+    .components-preview__sidebar {
+      background-color: transparent;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    .components-preview__components {
+      background-color: transparent;
+      border-radius: 0;
+      border: 0;
+      box-shadow: none;
+      .components-preview__preview {
+        background: transparent;
+        border-radius: 0;
+        --padding-base: 19px;
+      }
+    }
+  }
+}

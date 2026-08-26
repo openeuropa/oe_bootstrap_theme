@@ -1,0 +1,54 @@
+{#
+/**
+ * @file
+ * Dropdown component.
+ */
+#}
+{% set _icon_path = icon_path|default(bcl_icon_path()) %}
+{% set _trigger = trigger|default({}) %}
+{% set _trigger = _trigger|merge({
+  label: _trigger.label|default(button_label|default('')),
+  attributes: create_attribute(_trigger.attributes|default({})),
+}) %}
+
+{% if _trigger.icon is defined and _trigger.icon is not empty %}
+  {% set _trigger_icon = _trigger.icon is iterable ? _trigger.icon : { name: _trigger.icon } %}
+  {% set _trigger = _trigger|merge({
+    icon: _trigger_icon|merge({
+      path: _trigger_icon.path|default(_icon_path),
+      attributes: create_attribute(_trigger_icon.attributes|default({})),
+    }),
+  }) %}
+{% endif %}
+
+{% set _items = [] %}
+{% for item in items|default([]) %}
+  {% set _item = item|merge({
+    attributes: create_attribute(item.attributes|default({})),
+  }) %}
+
+  {% if _item.icon is defined and _item.icon is not empty %}
+    {% set _item_icon = _item.icon is iterable ? _item.icon : { name: _item.icon } %}
+    {% set _item = _item|merge({
+      icon: _item_icon|merge({
+        path: _item_icon.path|default(_icon_path),
+        attributes: create_attribute(_item_icon.attributes|default({})),
+      }),
+    }) %}
+  {% endif %}
+
+  {% set _items = _items|merge([_item]) %}
+{% endfor %}
+
+{% include '@oe-bcl/dropdown' with {
+  id: dropdown_id|default('dropdown'|clean_unique_id),
+  trigger: _trigger,
+  link: link ?? false,
+  direction: direction,
+  alignment: alignment,
+  dark: dark_mode ?? false,
+  remove_wrapper: remove_wrapper ?? false,
+  inside_navigation: inside_navigation ?? false,
+  items: _items,
+  attributes: attributes,
+} only %}

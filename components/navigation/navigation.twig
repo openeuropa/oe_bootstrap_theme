@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Navigation component.
+ */
+#}
+{% set _variant = variant|default('default') %}
+
+{% include '@oe-bcl/navigation' with {
+  id: navigation_id,
+  items: items|default([])|bcl_navigation_items(icon_path),
+  pills: _variant == 'pills',
+  tabs: _variant == 'tabs',
+  tabs_content: tabs_content ?? false,
+  vertical: orientation|default('horizontal') == 'vertical',
+  full_width: full_width ?? false,
+  alignment: alignment,
+  nav: _variant in ['pills', 'tabs'],
+  navbar: _variant == 'navbar',
+  attributes: attributes,
+} only %}

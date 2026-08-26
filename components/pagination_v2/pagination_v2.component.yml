@@ -1,0 +1,248 @@
+name: 'Pagination v2'
+description: 'Indicates a series of related content split across multiple pages, with responsive labels and optional ellipses.'
+props:
+  type: object
+  properties:
+    size:
+      title: Size
+      type: string
+      description: 'Size of the pagination.'
+      enum:
+        - sm
+        - lg
+      'meta:enum':
+        sm: Small
+        lg: Large
+    alignment:
+      title: Alignment
+      type: string
+      description: 'Alignment of the pagination on medium screens and above. Defaults to center.'
+      enum:
+        - start
+        - center
+        - end
+      'meta:enum':
+        start: Start
+        center: Center
+        end: End
+    aria_label:
+      title: 'ARIA label'
+      type: string
+      description: 'Accessible label for the navigation wrapper.'
+    enable_prev_next_icon:
+      title: 'Previous and next icons'
+      type: boolean
+      description: 'Show icons instead of text for previous and next links. Defaults to true.'
+    enable_first_last_icon:
+      title: 'First and last icons'
+      type: boolean
+      description: 'Show icons instead of text for first and last links. Defaults to false.'
+    ellipsis_before:
+      title: 'Ellipsis before'
+      type: boolean
+      description: 'Add an ellipsis before the page items.'
+    ellipsis_after:
+      title: 'Ellipsis after'
+      type: boolean
+      description: 'Add an ellipsis after the page items.'
+    current_mobile_label:
+      title: 'Current mobile label'
+      type: [string, array, object]
+      description: 'Replacement label for the active page on small screens.'
+    first:
+      title: 'First link'
+      type: object
+      description: 'Link to the first page.'
+      properties:
+        path:
+          type: [string, object]
+        label:
+          type: [string, array, object]
+        aria_label:
+          type: string
+        disabled:
+          type: boolean
+        active:
+          type: boolean
+        icon:
+          type: object
+          properties:
+            name:
+              type: string
+            size:
+              type: string
+            path:
+              type: string
+            transformation:
+              type: string
+            attributes:
+              type: object
+        icon_position:
+          type: string
+          enum:
+            - before
+            - after
+        icon_path:
+          type: string
+        attributes:
+          type: object
+    prev:
+      title: 'Previous link'
+      type: object
+      description: 'Link to the previous page.'
+      properties:
+        path:
+          type: [string, object]
+        label:
+          type: [string, array, object]
+        aria_label:
+          type: string
+        disabled:
+          type: boolean
+        active:
+          type: boolean
+        icon:
+          type: object
+          properties:
+            name:
+              type: string
+            size:
+              type: string
+            path:
+              type: string
+            transformation:
+              type: string
+            attributes:
+              type: object
+        icon_position:
+          type: string
+          enum:
+            - before
+            - after
+        icon_path:
+          type: string
+        attributes:
+          type: object
+    next:
+      title: 'Next link'
+      type: object
+      description: 'Link to the next page.'
+      properties:
+        path:
+          type: [string, object]
+        label:
+          type: [string, array, object]
+        aria_label:
+          type: string
+        disabled:
+          type: boolean
+        active:
+          type: boolean
+        icon:
+          type: object
+          properties:
+            name:
+              type: string
+            size:
+              type: string
+            path:
+              type: string
+            transformation:
+              type: string
+            attributes:
+              type: object
+        icon_position:
+          type: string
+          enum:
+            - before
+            - after
+        icon_path:
+          type: string
+        attributes:
+          type: object
+    last:
+      title: 'Last link'
+      type: object
+      description: 'Link to the last page.'
+      properties:
+        path:
+          type: [string, object]
+        label:
+          type: [string, array, object]
+        aria_label:
+          type: string
+        disabled:
+          type: boolean
+        active:
+          type: boolean
+        icon:
+          type: object
+          properties:
+            name:
+              type: string
+            size:
+              type: string
+            path:
+              type: string
+            transformation:
+              type: string
+            attributes:
+              type: object
+        icon_position:
+          type: string
+          enum:
+            - before
+            - after
+        icon_path:
+          type: string
+        attributes:
+          type: object
+    items:
+      title: 'Pagination items'
+      type: array
+      description: 'Page links displayed by the pagination.'
+      items:
+        type: object
+        properties:
+          path:
+            type: [string, object]
+          label:
+            type: [string, array, object]
+          aria_label:
+            type: string
+          disabled:
+            type: boolean
+          active:
+            type: boolean
+          icon:
+            type: object
+            properties:
+              name:
+                type: string
+              size:
+                type: string
+              path:
+                type: string
+              transformation:
+                type: string
+              attributes:
+                type: object
+          icon_position:
+            type: string
+            enum:
+              - before
+              - after
+          icon_path:
+            type: string
+          attributes:
+            type: object
+    icon_path:
+      title: 'Icons path'
+      type: string
+      description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute
+    list_attributes:
+      title: 'List attributes'
+      type: Drupal\Core\Template\Attribute

@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Fact figures component.
+ */
+#}
+{% set processed_items = [] %}
+{% for item in items|default([]) %}
+  {% if item.icon is defined and item.icon is not empty and item.icon is not iterable %}
+    {% set item = item|merge({icon: {name: item.icon}}) %}
+  {% elseif item.icon is defined and item.icon is not empty %}
+    {% set item = item|merge({
+      icon: item.icon|merge({
+        attributes: create_attribute(item.icon.attributes|default({})),
+      }),
+    }) %}
+  {% endif %}
+  {% set processed_items = processed_items|merge([item]) %}
+{% endfor %}
+
+{% include '@oe-bcl/bcl-fact-figures/fact-figures.html.twig' with {
+  title: title,
+  title_tag: title_tag|default('h2'),
+  items: processed_items,
+  responsive_columns: columns|default(3),
+  equal_height: true,
+  icon_path: icon_path|default(bcl_icon_path()),
+  link_more: link,
+  attributes: attributes,
+} only %}
