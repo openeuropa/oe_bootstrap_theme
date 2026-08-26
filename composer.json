@@ -8,7 +8,7 @@
     "require": {
         "php": ">=8.1",
         "cweagans/composer-patches": "^1.7",
-        "drupal/core": "^10.3 || ^11",
+        "drupal/core": "^10.6 || ^11",
         "drupal/file_link": "^2.2",
         "drupal/ui_patterns": "^1.10",
         "drupal/ui_patterns_settings": "^2.3",
@@ -16,13 +16,13 @@
     },
     "require-dev": {
         "ext-dom": "*",
-        "composer/installers": "^1.11",
-        "drupal/config_devel": "^1.10",
-        "drupal/core-composer-scaffold": "^10.3 || ^11",
-        "drupal/core-dev": "^10.3 || ^11",
+        "composer/installers": "^1.12",
+        "drupal/config_devel": "^1.12",
+        "drupal/core-composer-scaffold": "^10.6 || ^11",
+        "drupal/core-dev": "^10.6 || ^11",
         "drupal/styleguide": "^2.2",
         "drush/drush": "^12 || ^13",
-        "ec-europa/toolkit": "^10.29.3",
+        "ec-europa/toolkit": "^10.30",
         "openeuropa/code-review-drupal": "^1.0.0-alpha"
     },
     "scripts": {
@@ -81,6 +81,7 @@
             "php-http/discovery": false,
             "phpro/grumphp-shim": true,
             "phpstan/extension-installer": true,
+            "symfony/runtime": true,
             "tbachert/spi": false
         }
     }
