@@ -46,7 +46,22 @@ class AccessibleToggleTest extends WebDriverTestBase {
 
     $this->assertAccessibleAttributes($modalTrigger);
     $this->assertAccessibleAttributes($offcanvasTrigger, expanded: FALSE);
-    $assert->elementExists('css', "{$offcanvasTarget}[role=\"region\"]");
+    $assert->elementExists('css', "{$offcanvasTarget}[role=\"region\"][data-offcanvas-static-role=\"region\"]");
+
+    // Ensure late behavior attachment does not cache Bootstrap's dialog role.
+    $this->getSession()->executeScript(<<<'JS'
+      (function () {
+        var offcanvas = document.createElement('div');
+        offcanvas.id = 'late-offcanvas';
+        offcanvas.classList.add('offcanvas-lg');
+        offcanvas.setAttribute('role', 'dialog');
+        offcanvas.setAttribute('data-offcanvas-static-role', 'complementary');
+        document.body.appendChild(offcanvas);
+        Drupal.behaviors.accessibleToggle.attach(document, drupalSettings);
+        offcanvas.dispatchEvent(new Event('hidden.bs.offcanvas'));
+      }());
+    JS);
+    $assert->elementExists('css', '#late-offcanvas[role="complementary"]');
 
     $this->clickWhenInViewport($modalSelector);
     $assert->waitForElementVisible('css', '.modal.show');
