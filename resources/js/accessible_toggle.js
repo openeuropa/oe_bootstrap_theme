@@ -23,13 +23,16 @@
       ]);
 
       document
-        .querySelectorAll('[class*="offcanvas-"][role]')
+        .querySelectorAll('[class*="offcanvas-"][data-offcanvas-static-role]')
         .forEach(function initializeStaticOffcanvasRole(offcanvas) {
           if (staticOffcanvasRoles.has(offcanvas)) {
             return;
           }
 
-          staticOffcanvasRoles.set(offcanvas, offcanvas.getAttribute('role'));
+          staticOffcanvasRoles.set(
+            offcanvas,
+            offcanvas.getAttribute('data-offcanvas-static-role')
+          );
           // Bootstrap removes its dialog role when the offcanvas closes.
           offcanvas.addEventListener(
             'hidden.bs.offcanvas',
