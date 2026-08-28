@@ -6,7 +6,7 @@ gallery:
       type: select
       label: 'Thumbnail fit'
       description: 'Controls how thumbnails fit their grid cells. Cover fills the available space and may crop images.'
-      default_value: ''
+      default_value: 'original'
       preview: cover
       options:
         original: 'Original aspect ratio (default)'
