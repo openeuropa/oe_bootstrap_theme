@@ -10,7 +10,10 @@
 {% set toggle_expanded = 'View less'|t %}
 {% set items = bcl_gallery_items(items|default([])) %}
 {% set icon_path = bcl_icon_path %}
-{% set thumbnail_fit = thumbnail_fit|default('') %}
+{% set thumbnail_fit = thumbnail_fit|default('original') %}
+{% if thumbnail_fit != 'cover' %}
+  {% set thumbnail_fit = '' %}
+{% endif %}
 
 {% block carousel %}
   {# Captions are not rendered for playable medias in the carousel. #}
