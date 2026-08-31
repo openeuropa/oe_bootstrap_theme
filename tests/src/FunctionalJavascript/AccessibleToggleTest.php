@@ -33,6 +33,9 @@ class AccessibleToggleTest extends WebDriverTestBase {
    */
   public function testAccessibleToggleAttributes(): void {
     $this->drupalLogin($this->drupalCreateUser([], NULL, TRUE));
+    // The offcanvas toggle is only visible below Bootstrap's "lg" breakpoint
+    // in the pattern preview, so resize the window to a mobile width.
+    $this->getSession()->resizeWindow(600, 800);
     $this->drupalGet('/admin/appearance/ui/patterns');
     $assert = $this->assertSession();
 
