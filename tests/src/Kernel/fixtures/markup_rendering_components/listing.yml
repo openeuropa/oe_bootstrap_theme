@@ -15,7 +15,6 @@ listing_default_complete:
         path: '/publications'
         variant: info
         id: listing-title-link
-        standalone: true
         icon:
           name: arrow-up-right
           size: xs
@@ -160,11 +159,18 @@ listing_default_two_columns:
           text: 'First card content.'
         - title: 'Second card'
           text: 'Second card content.'
+      link:
+        label: 'View all'
+        path: '/all'
   assertions:
     count:
       '.bcl-listing.bcl-listing--default-2-col': 1
       '.row.row-cols-1.row-cols-md-2.g-4': 1
       'article.listing-item': 2
+      'a[href="/all"] > svg.icon--xs': 1
+    contains:
+      'a[href="/all"] svg': '#chevron-right'
+      'a[href="/all"]': 'View all'
 
 listing_default_three_columns:
   render:
