@@ -5,7 +5,7 @@ fact_figures:
     alignment:
       type: select
       label: 'Alignment'
-      description: 'Align the facts and figures items. Center alignment keeps descriptions justified.'
+      description: 'Align icons, values, and labels. Descriptions remain left-aligned.'
       options:
         left: 'Left (default)'
         center: 'Center'

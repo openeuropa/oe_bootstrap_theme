@@ -41,7 +41,7 @@ fact_figures_default_1col:
     count:
       'div.bcl-fact-figures.bcl-fact-figures--default': 1
       'div.row > div.col.text-center': 6
-      'div.row > div.col > p.text-justify': 6
+      'div.row > div.col.text-center > p.text-start': 6
       'h3.bcl-heading': 1
       'div.row.row-cols-md-1': 1
       'svg.bi.icon--l': 6
@@ -106,7 +106,7 @@ fact_figures_default_2col:
     count:
       'div.bcl-fact-figures.bcl-fact-figures--default': 1
       'div.row > div.col.text-center': 0
-      'div.row > div.col > p.text-justify': 0
+      'div.row > div.col.text-center > p.text-start': 0
       'h2.bcl-heading': 1
       'div.row.row-cols-md-2': 1
       'svg.bi.icon--l': 6
