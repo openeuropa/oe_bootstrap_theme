@@ -24,6 +24,7 @@
           name: slide.link.icon.name|default('link'),
           path: slide.link.icon.path|default(icon_path),
         }),
+        attributes: create_attribute(slide.link.attributes|default({})),
       }),
     }) %}
   {% endif %}
