@@ -9,11 +9,16 @@ blockquote:
       quote: 'A well-known quote, contained in a blockquote element.'
       attribution: 'Someone famous in'
       cite: 'Source title'
+      attributes:
+        id: custom-blockquote
+        class:
+          - custom-blockquote-class
+        data-blockquote: custom-value
   assertions:
     count:
       '.bcl-heading': 1
       'h4.bcl-heading': 1
-      'figure.text-left': 1
+      'figure#custom-blockquote.text-left.custom-blockquote-class[data-blockquote="custom-value"]': 1
       'blockquote.blockquote': 1
       'figcaption.blockquote-footer': 1
       'cite[title="Source title"]': 1
