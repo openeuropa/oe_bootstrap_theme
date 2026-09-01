@@ -14,6 +14,7 @@ breadcrumb:
           label: 'About the European Commission'
         - path: 'https://example.com'
           label: 'Link title'
+      icon_path: '/custom-icons.svg'
   assertions:
     count:
       'nav[aria-label="breadcrumb"]': 1
@@ -30,7 +31,7 @@ breadcrumb:
       'li.breadcrumb-item:nth-child(3) a': 'Link title'
     contains:
       'li.breadcrumb-item:nth-child(2) a': 'About the European Commission'
-      'svg': '/icons/bcl-default-icons.svg#arrow-left'
+      'svg': '/custom-icons.svg#arrow-left'
 breadcrumb_current_page_without_link:
   render:
     '#type': component

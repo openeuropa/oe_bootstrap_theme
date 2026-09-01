@@ -73,6 +73,7 @@ file_custom_attributes_and_icon_path:
     '#component': oe_bootstrap_theme:file
     '#props':
       title: 'Custom attrs file'
+      title_tag: 'h3'
       title_attributes:
         class:
           - custom-title-class
@@ -91,8 +92,8 @@ file_custom_attributes_and_icon_path:
         meta: 'Updated last week'
   assertions:
     count:
-      'h2.custom-title-class.bcl-heading': 1
-      'h2.mb-4': 0
+      'h3.custom-title-class.bcl-heading': 1
+      'h2': 0
       '#custom-file.bcl-file.custom-file-class': 1
       '#custom-file[data-file="custom-value"]': 1
     equals:
