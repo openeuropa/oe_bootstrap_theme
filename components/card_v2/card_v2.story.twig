@@ -1,9 +1,21 @@
-{% set title %}
-  <h4>Title card</h4>
-{% endset %}
-
 {% set linked_title %}
   <h4><a href="https://example.com/">Linked title card</a></h4>
+{% endset %}
+
+{% set horizontal_title %}
+  <h4>Horizontal card</h4>
+{% endset %}
+
+{% set simple_title %}
+  <h4>Card with plain content</h4>
+{% endset %}
+
+{% set date_title %}
+  <h4>Card with a date block</h4>
+{% endset %}
+
+{% set attributes_title %}
+  <h4>Card with tinted sections</h4>
 {% endset %}
 
 {% set media %}
@@ -104,20 +116,20 @@
 
   {% include 'oe_bootstrap_theme:card_v2' with {
     variant: 'horizontal',
-    title: title,
+    title: horizontal_title,
     media: media_horizontal,
     content: content,
   } only %}
 
   {% include 'oe_bootstrap_theme:card_v2' with {
     variant: 'default',
-    title: title,
+    title: simple_title,
     content: simple_content,
   } only %}
 
   {% include 'oe_bootstrap_theme:card_v2' with {
     variant: 'horizontal',
-    title: title,
+    title: date_title,
     media: date_media,
     content: simple_content,
   } only %}
@@ -143,7 +155,7 @@
 
   {% include 'oe_bootstrap_theme:card_v2' with {
     variant: 'default',
-    title: title,
+    title: attributes_title,
     media: media,
     content: simple_content,
     header: header,
