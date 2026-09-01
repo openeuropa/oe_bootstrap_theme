@@ -15,7 +15,47 @@ props:
         label:
           type: [string, array, object]
         path:
+          type: [string, object]
+        variant:
           type: string
+          enum:
+            - primary
+            - secondary
+            - success
+            - danger
+            - warning
+            - info
+            - light
+            - dark
+        id:
+          type: string
+        disabled:
+          type: boolean
+        icon:
+          type: [string, object]
+          properties:
+            name:
+              type: string
+            path:
+              type: string
+            transformation:
+              type: string
+            attributes:
+              type: object
+        icon_position:
+          type: string
+          enum:
+            - before
+            - after
+        icon_display:
+          type: string
+          enum:
+            - flex
+            - inline-flex
+        remove_icon_spacers:
+          type: boolean
+        attributes:
+          type: object
     title_tag:
       title: 'Title tag'
       type: string
