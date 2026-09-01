@@ -208,8 +208,9 @@ class TwigExtension extends AbstractExtension {
     foreach ($items as &$item) {
       $item = $this->prepareNavigationElement($item, $icon_path);
 
-      if (isset($item['trigger']) && is_array($item['trigger'])) {
-        $item['trigger'] = $this->prepareNavigationElement($item['trigger'], $icon_path);
+      if (isset($item['dropdown']) || isset($item['trigger'])) {
+        $trigger = is_array($item['trigger'] ?? NULL) ? $item['trigger'] : [];
+        $item['trigger'] = $this->prepareNavigationElement($trigger, $icon_path);
       }
 
       if (isset($item['items']) && is_array($item['items'])) {
@@ -251,9 +252,8 @@ class TwigExtension extends AbstractExtension {
    *   The processed element.
    */
   protected function prepareNavigationElement(array $item, string $icon_path): array {
-    if (isset($item['attributes']) && is_array($item['attributes'])) {
-      $item['attributes'] = new Attribute($item['attributes']);
-    }
+    $attributes = $item['attributes'] ?? [];
+    $item['attributes'] = new Attribute(is_array($attributes) ? $attributes : []);
 
     if (!empty($item['icon'])) {
       $icon = is_array($item['icon']) ? $item['icon'] : ['name' => $item['icon']];
