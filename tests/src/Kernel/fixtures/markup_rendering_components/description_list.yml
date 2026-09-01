@@ -79,15 +79,30 @@ description_list_title_link:
           attributes:
             class:
               - custom-title-link-icon
+      title_attributes:
+        id: custom-list-title
+        class:
+          - custom-title-class
+      orientation: horizontal
+      bordered: true
+      col_classes: 'col-md-4 custom-col-class'
+      icon_path: '/custom-icons.svg'
       items:
-        - term: 'A term'
-          definition: 'A definition'
+        - term:
+            - label: 'A term with icon'
+              icon:
+                name: 'geo-alt-fill'
+          definition: 'A definition.'
   assertions:
     count:
-      'h2.bcl-heading a.link-warning.custom-title-link-class[href="/list"]': 1
+      'h2#custom-list-title.custom-title-class a.link-warning.custom-title-link-class[href="/list"]': 1
       'h2.bcl-heading a > svg.custom-title-link-icon': 1
+      'dl.border-bottom.pb-2-5.mb-2-5.row': 1
+      'dl.border-bottom .col-md-4.custom-col-class svg': 1
     contains:
       'h2.bcl-heading a': 'Linked list title'
+      'h2.bcl-heading a > svg.custom-title-link-icon': '/custom-icons.svg#arrow-right'
+      'dl.border-bottom .col-md-4.custom-col-class svg': '/custom-icons.svg#geo-alt-fill'
 
 description_list_horizontal:
   render:

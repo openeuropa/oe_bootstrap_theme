@@ -76,6 +76,36 @@ badge_non_dismissible_without_rounded_pill:
         rounded_pill: false
         background: danger
         label: 'A simple badge!'
+badge_with_icon_path:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:badge
+    '#props':
+      label: 'A simple badge!'
+      dismissible: true
+      icon_path: '/custom-icons.svg'
+  assertions:
+    count:
+      'span.badge .icon--close svg': 1
+    contains:
+      'span.badge .icon--close svg': '/custom-icons.svg#x-circle-fill'
+    equals:
+      'span.badge': 'A simple badge!<span class="icon--close" aria-hidden="true"><svg class="bi icon--xs"><use xlink:href="/custom-icons.svg#x-circle-fill"></use></svg></span>'
+badge_with_custom_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:badge
+    '#props':
+      label: 'A simple badge!'
+      background: info
+      attributes:
+        id: custom-badge
+        class:
+          - custom-badge-class
+        data-badge: custom-value
+  assertions:
+    count:
+      'span#custom-badge.badge.text-bg-info.custom-badge-class[data-badge="custom-value"]': 1
 badge_with_url:
   render:
     '#type': component
