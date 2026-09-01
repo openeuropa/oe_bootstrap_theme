@@ -10,38 +10,52 @@
   },
 } %}
 
-{% include 'oe_bootstrap_theme:banner' with {
-  variant: 'default',
-  full_width: true,
-  centered: true,
-  title: 'EU Budget for the future',
-  title_tag: 'h4',
-  description: 'Innovation, economy, environment and geopolitics',
-  call_to_action: call_to_action,
-} only %}
+<div class="vstack gap-5">
+  <div>
+    <h3>Default</h3>
+    {% include 'oe_bootstrap_theme:banner' with {
+      variant: 'default',
+      full_width: true,
+      centered: true,
+      title: 'EU Budget for the future',
+      title_tag: 'h4',
+      description: 'Innovation, economy, environment and geopolitics',
+      call_to_action: call_to_action,
+    } only %}
+  </div>
 
-{% include 'oe_bootstrap_theme:banner' with {
-  variant: 'primary',
-  hero: true,
-  full_width: true,
-  title: 'EU Budget for the future',
-  description: 'Innovation, economy, environment and geopolitics',
-} only %}
+  <div>
+    <h3>Primary hero</h3>
+    {% include 'oe_bootstrap_theme:banner' with {
+      variant: 'primary',
+      hero: true,
+      full_width: true,
+      title: 'EU Budget for the future',
+      description: 'Innovation, economy, environment and geopolitics',
+    } only %}
+  </div>
 
-{% include 'oe_bootstrap_theme:banner' with {
-  variant: 'image',
-  title: 'EU Budget for the future',
-  description: 'Innovation, economy, environment and geopolitics',
-  copyright: '© 2024 Example Organisation',
-  image: image,
-} only %}
+  <div>
+    <h3>Image with copyright</h3>
+    {% include 'oe_bootstrap_theme:banner' with {
+      variant: 'image',
+      title: 'EU Budget for the future',
+      description: 'Innovation, economy, environment and geopolitics',
+      copyright: '© 2024 Example Organisation',
+      image: image,
+    } only %}
+  </div>
 
-{% include 'oe_bootstrap_theme:banner' with {
-  variant: 'image_shade',
-  full_width: true,
-  centered: true,
-  title: 'EU Budget for the future',
-  description: 'Innovation, economy, environment and geopolitics',
-  call_to_action: call_to_action,
-  image: image,
-} only %}
+  <div>
+    <h3>Image with shade</h3>
+    {% include 'oe_bootstrap_theme:banner' with {
+      variant: 'image_shade',
+      full_width: true,
+      centered: true,
+      title: 'EU Budget for the future',
+      description: 'Innovation, economy, environment and geopolitics',
+      call_to_action: call_to_action,
+      image: image,
+    } only %}
+  </div>
+</div>
