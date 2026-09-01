@@ -52,14 +52,20 @@ alert_not_dismissible:
       heading: 'Well done!'
       message: 'A simple alert. Check it out!'
       icon: search
+      icon_path: '/custom-icons.svg'
+      attributes:
+        id: custom-alert
+        class:
+          - custom-alert-class
+        data-alert: custom-value
   assertions:
     count:
       'div.alert-dismissible': 0
       'button.btn-close': 0
-      'div.alert-secondary': 1
+      'div#custom-alert.alert-secondary.custom-alert-class[data-alert="custom-value"]': 1
       'div.h4.alert-heading': 1
     equals:
       'div.h4.alert-heading': 'Well done!'
       'div.alert-content': '<div class="alert-heading h4">Well done!</div>A simple alert. Check it out!'
     contains:
-      'svg': '#search'
+      'svg': '/custom-icons.svg#search'

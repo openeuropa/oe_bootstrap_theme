@@ -95,6 +95,7 @@ timeline_items_show_more:
       expand_button_label: 'Stash %d items'
       hide_from: 2
       hide_to: 5
+      icon_path: '/custom-icons.svg'
       items:
         - title: 'Item 1'
           content: 'Lorem Ipsum 1'
@@ -119,7 +120,7 @@ timeline_items_show_more:
       '.bcl-timeline > li:nth-child(6).bcl-timeline__item--toggle': 1
       '.bcl-timeline > li:nth-child(7).collapse': 0
     contains:
-      'button svg': '#chevron-down'
+      'button svg': '/custom-icons.svg#chevron-down'
     equals:
       '.label-expanded': 'Stash 3 items'
       '.label-collapsed': 'Display 3 more'

@@ -12,11 +12,16 @@ progress_primary_striped_animated:
       label: 'Progress label'
       text: 'Bar label'
       message: 'Progress bar description'
+      attributes:
+        id: custom-progress
+        class:
+          - custom-progress-class
+        data-progress: custom-value
   assertions:
     count:
       'div[data-component-id="oe_bootstrap_theme:progress"]': 1
       'div.progress-bar': 1
-      'div.progress': 1
+      'div#custom-progress.progress.custom-progress-class[data-progress="custom-value"]': 1
       'div[role="progressbar"]': 1
       'div[style="width: 60%"]': 1
       'div[aria-valuenow="60"]': 1

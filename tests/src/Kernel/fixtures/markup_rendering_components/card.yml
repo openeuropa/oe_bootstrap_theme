@@ -142,9 +142,14 @@ card_title_link_with_custom_attributes:
         attributes:
           class:
             - custom-link-class
+      title_attributes:
+        id: custom-card-title
+        class:
+          - custom-title-class
   assertions:
     count:
       '.card-title a.custom-link-class[href="https://example.com"]': 1
+      'div#custom-card-title.card-title.custom-title-class': 1
 card_date_with_custom_attributes:
   render:
     '#type': component
