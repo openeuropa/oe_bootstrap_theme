@@ -96,4 +96,32 @@
       content: 'Local projects are turning shared priorities into measurable improvements.',
     } only %}
   </div>
+
+  <div>
+    <h3>Gray background with linked title</h3>
+    {% include 'oe_bootstrap_theme:content_banner' with {
+      background: 'gray',
+      title: 'Read the full policy update',
+      title_link: {
+        path: '/example',
+        variant: 'success',
+        icon: { name: 'arrow-right' },
+      },
+      content: 'Selecting the title opens the full policy update.',
+    } only %}
+  </div>
+
+  <div>
+    <h3>White background with date block</h3>
+    {% include 'oe_bootstrap_theme:content_banner' with {
+      background: 'white',
+      title: 'Public consultation deadline',
+      date: {
+        day: '23',
+        month: 'Jul',
+        year: '2026',
+      },
+      content: 'A date block is displayed in place of an image to highlight a key milestone.',
+    } only %}
+  </div>
 </div>

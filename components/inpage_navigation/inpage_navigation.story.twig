@@ -15,9 +15,28 @@
   <p>Contact the programme helpdesk for guidance about eligibility, documentation, or the submission process.</p>
 {% endset %}
 
-{% include 'oe_bootstrap_theme:inpage_navigation' with {
-  title: 'Contents',
-  links: default_links,
-  content: default_content,
-  dynamic_active: true,
-} only %}
+<div class="vstack gap-5">
+  <div>
+    <h3>Default</h3>
+    {% include 'oe_bootstrap_theme:inpage_navigation' with {
+      title: 'Contents',
+      links: default_links,
+      content: default_content,
+      dynamic_active: true,
+    } only %}
+  </div>
+
+  <div>
+    <h3>With a linked title</h3>
+    {% include 'oe_bootstrap_theme:inpage_navigation' with {
+      title: 'View all sections',
+      title_link: {
+        path: '/example',
+        variant: 'success',
+        icon: { name: 'arrow-right' },
+      },
+      links: default_links,
+      content: default_content,
+    } only %}
+  </div>
+</div>
