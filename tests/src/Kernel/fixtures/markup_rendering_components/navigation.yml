@@ -153,6 +153,14 @@ navigation_tabs_with_content:
             - '#type': html_tag
               '#tag': strong
               '#value': 'Details content'
+        - dropdown: true
+          items:
+            - label: 'Sub item'
+              path: '#sub'
+        - dropdown: false
+          items:
+            - label: 'Sub item 2'
+              path: '#sub2'
   assertions:
     count:
       'nav#tab-navigation.nav.nav-tabs[role="tablist"]': 1
@@ -161,6 +169,9 @@ navigation_tabs_with_content:
       'div.tab-content': 1
       'div.tab-content > div#overview-panel.tab-pane.fade.show.active[role="tabpanel"][aria-labelledby="overview-tab"] p.overview-content': 1
       'div.tab-content > div#details-panel.tab-pane.fade[role="tabpanel"][aria-labelledby="details-tab"] strong': 1
+      'nav#tab-navigation button.dropdown-toggle[role="tab"]': 2
+      'nav#tab-navigation ul.dropdown-menu a.dropdown-item[href="#sub"]': 1
+      'nav#tab-navigation ul.dropdown-menu a.dropdown-item[href="#sub2"]': 1
     equals:
       'div#overview-panel p': 'Overview content'
       'div#details-panel strong': 'Details content'
