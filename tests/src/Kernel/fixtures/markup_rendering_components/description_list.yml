@@ -62,6 +62,33 @@ description_list_default:
             definition: 'This is a bigger icon.'
           - term: 'A single term without icon.'
             definition: 'Yet another definition text.'
+description_list_title_link:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:description_list
+    '#props':
+      title: 'Linked list title'
+      title_link:
+        path: '/list'
+        variant: warning
+        attributes:
+          class:
+            - custom-title-link-class
+        icon:
+          name: arrow-right
+          attributes:
+            class:
+              - custom-title-link-icon
+      items:
+        - term: 'A term'
+          definition: 'A definition'
+  assertions:
+    count:
+      'h2.bcl-heading a.link-warning.custom-title-link-class[href="/list"]': 1
+      'h2.bcl-heading a > svg.custom-title-link-icon': 1
+    contains:
+      'h2.bcl-heading a': 'Linked list title'
+
 description_list_horizontal:
   render:
     '#type': component
