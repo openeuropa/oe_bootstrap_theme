@@ -84,7 +84,7 @@ class AccessibleToggleTest extends WebDriverTestBase {
     $this->assertAccessibleAttributes($modalTrigger, expanded: FALSE);
     $this->assertAccessibleAttributes($offcanvasTrigger, expanded: TRUE);
 
-    $this->clickWhenInViewport('.offcanvas-backdrop');
+    $this->clickWhenInViewport("{$offcanvasTarget}.show .btn-close");
     $offcanvasTrigger = $assert->waitForElement('css', "{$offcanvasSelector}[aria-expanded=\"false\"]");
     $assert->waitForElement('css', "{$offcanvasTarget}[role=\"region\"]:not([aria-modal])");
     $this->assertAccessibleAttributes($modalTrigger, expanded: FALSE);
