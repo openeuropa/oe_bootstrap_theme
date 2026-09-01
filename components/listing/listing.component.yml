@@ -48,8 +48,6 @@ props:
           type: string
         disabled:
           type: boolean
-        standalone:
-          type: boolean
         icon:
           type: object
           properties:
@@ -102,8 +100,6 @@ props:
               id:
                 type: string
               disabled:
-                type: boolean
-              standalone:
                 type: boolean
               icon:
                 type: object
