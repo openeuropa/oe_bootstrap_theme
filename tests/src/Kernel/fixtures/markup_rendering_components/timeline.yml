@@ -9,6 +9,15 @@ timeline_items_hide:
       title_tag: 'h3'
       title_link:
         path: '/timeline'
+        variant: warning
+        attributes:
+          class:
+            - custom-title-link-class
+        icon:
+          name: arrow-right
+          attributes:
+            class:
+              - custom-title-link-icon
       title_attributes:
         class:
           - custom-title-class
@@ -34,14 +43,17 @@ timeline_items_hide:
     count:
       'h3.bcl-heading': 1
       'h3.bcl-heading.custom-title-class a[href="/timeline"]': 1
+      'h3 a.link-warning.custom-title-link-class': 1
+      'h3 a > svg.custom-title-link-icon': 1
       'ol.bcl-timeline': 1
       'li#timeline-item-1.custom-class': 1
       'li > p.fs-5.fw-medium': 6
       'li a': 1
       'button': 0
       '.collapse': 0
-    equals:
+    contains:
       'h3.bcl-heading a': 'Title example'
+    equals:
       '.bcl-timeline li:nth-child(1) p.fs-5.fw-medium': '13 September 2017'
       '.bcl-timeline li:nth-child(1) p.fs-6.fw-medium': 'Item 1'
       '.bcl-timeline li:nth-child(1) div': '<a href="/example" class="ecl-link">Economic and Monetary Union package of proposals</a>'
