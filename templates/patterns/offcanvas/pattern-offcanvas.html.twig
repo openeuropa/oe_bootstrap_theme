@@ -4,6 +4,15 @@
  * Offcanvas pattern.
  */
 #}
+{% set _offcanvas_attributes = attributes %}
+{# Bootstrap replaces this static role with dialog while the panel is open. #}
+{% if not _offcanvas_attributes.hasAttribute('role') and title is not empty %}
+  {% set _offcanvas_attributes = _offcanvas_attributes.setAttribute('role', 'region') %}
+{% endif %}
+{% if _offcanvas_attributes.hasAttribute('role') %}
+  {% set _offcanvas_attributes = _offcanvas_attributes.setAttribute('data-offcanvas-static-role', _offcanvas_attributes['role']) %}
+{% endif %}
+
 {% block offcanvas %}
 {% include '@oe-bcl/offcanvas' with {
   'title': title,
@@ -13,7 +22,7 @@
   'with_body_scroll': body_scroll,
   'with_backdrop': backdrop,
   'close_aria_label': 'Close'|t,
-  'attributes': attributes,
+  'attributes': _offcanvas_attributes,
   'responsiveness': 'lg'
 } only %}
 {% endblock %}
