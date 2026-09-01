@@ -35,4 +35,14 @@
       { label: 'Regional development', path: '/example' },
     ],
   } only %}
+
+  {% include 'oe_bootstrap_theme:links_block' with {
+    title: 'Browse all resources',
+    title_link: {
+      path: '/example',
+      variant: 'success',
+      icon: { name: 'arrow-right' },
+    },
+    links: resource_links,
+  } only %}
 </div>

@@ -72,15 +72,11 @@
 {% if _link is not empty %}
   {% set _link = _link|merge({
     attributes: create_attribute(_link.attributes|default({})),
+    icon: (_link.icon|default({}))|merge({
+      path: _link.icon.path|default(_icon_path),
+      attributes: create_attribute(_link.icon.attributes|default({})),
+    }),
   }) %}
-  {% if _link.icon is not empty %}
-    {% set _link = _link|merge({
-      icon: _link.icon|merge({
-        path: _link.icon.path|default(_icon_path),
-        attributes: create_attribute(_link.icon.attributes|default({})),
-      }),
-    }) %}
-  {% endif %}
 {% endif %}
 
 {% set _attributes = attributes|default(create_attribute()) %}

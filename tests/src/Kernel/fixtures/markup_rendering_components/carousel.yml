@@ -167,6 +167,7 @@ carousel_with_image_attributes_and_link_icon:
     '#component': oe_bootstrap_theme:carousel
     '#props':
       carousel_id: carousel-image-attributes
+      icon_path: '/custom-icons.svg'
       slides:
         - image:
             src: 'https://images.site.example1'
@@ -185,9 +186,12 @@ carousel_with_image_attributes_and_link_icon:
             icon_position: after
             icon:
               name: chevron-right
+            attributes:
+              class:
+                - custom-link-class
   assertions:
     count:
       '.carousel-item img[title="Image title"][loading="lazy"][width="1000"][height="500"].custom-image-class.d-block.w-100': 1
-      '.carousel-caption a svg.ms-2-5': 1
+      '.carousel-caption a.custom-link-class svg.ms-2-5': 1
     contains:
-      '.carousel-caption a svg': '#chevron-right'
+      '.carousel-caption a svg': '/custom-icons.svg#chevron-right'

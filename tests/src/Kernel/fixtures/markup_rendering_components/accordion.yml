@@ -108,6 +108,10 @@ accordion_with_actionable_buttons:
       collapse_button_label: 'Collapse'
       open_item: 1
       bare_layout: false
+      attributes:
+        class:
+          - custom-accordion-class
+        data-accordion: custom-value
       items:
         - title: 'Accordion Item #1'
           content: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
@@ -121,7 +125,7 @@ accordion_with_actionable_buttons:
       '.bcl-heading': 1
       'h2.bcl-heading': 1
       'div.accordion.accordion-flush': 0
-      'div#accordion-test-accordion.accordion': 1
+      'div#accordion-test-accordion.accordion.custom-accordion-class[data-accordion="custom-value"]': 1
       'button[data-action="expand"]': 1
       'button[data-action="collapse"]': 1
       'button[data-action="expand"][data-target="accordion-test-accordion"]': 1

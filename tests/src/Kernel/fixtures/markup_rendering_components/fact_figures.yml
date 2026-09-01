@@ -9,6 +9,7 @@ fact_figures_default_1col:
         path: '/example'
       title: 'Fact and figures block'
       title_tag: 'h3'
+      icon_path: '/custom-icons.svg'
       items:
         - icon: 'sticky'
           subtitle: 'Jira Tickets'
@@ -43,7 +44,7 @@ fact_figures_default_1col:
       'svg.bi.icon--l': 6
       'svg use': 6
     contains:
-      'svg': '#sticky'
+      'svg': '/custom-icons.svg#sticky'
       'a[href="/example"]': 'Read more'
     equals:
       'h3.bcl-heading': 'Fact and figures block'
