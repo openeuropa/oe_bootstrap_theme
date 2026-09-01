@@ -75,6 +75,8 @@ props:
                     type: string
                   path:
                     type: string
+              attributes:
+                type: object
     icon_path:
       title: 'Icons path'
       type: string
