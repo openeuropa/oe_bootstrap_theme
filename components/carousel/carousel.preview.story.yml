@@ -1,0 +1,30 @@
+name: Preview
+slots:
+  title: 'This is the title of this carousel.'
+  slides:
+    -
+      caption: 'First slide caption'
+      caption_title: 'First slide title'
+      interval: 0
+      image:
+        src: 'https://picsum.photos/1000/500/'
+        alt: 'alt image 1'
+      link:
+        label: 'First link'
+        path: 'https://link.one'
+    -
+      caption: 'Second slide caption'
+      caption_title: 'Second slide title'
+      interval: 0
+      image:
+        src: 'https://picsum.photos/1000/500/'
+        alt: 'alt image 1'
+      link:
+        label: 'Second link'
+        path: 'https://link.two'
+props:
+  fade: true
+  show_controls: true
+  show_indicators: true
+  autoplay: true
+  dark_mode: false

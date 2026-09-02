@@ -10,8 +10,8 @@
         "cweagans/composer-patches": "^1.7",
         "drupal/core": "^10.6 || ^11",
         "drupal/file_link": "^2.2",
-        "drupal/ui_patterns": "^1.10",
-        "drupal/ui_patterns_settings": "^2.3",
+        "drupal/ui_patterns": "^2.0",
+        "drupal/ui_patterns_settings": "3.0.x-dev",
         "openeuropa/ecl-twig-loader": "^4.0"
     },
     "require-dev": {
@@ -62,11 +62,6 @@
         "drupal-scaffold": {
             "locations": {
                 "web-root": "./build"
-            }
-        },
-        "patches": {
-            "drupal/ui_patterns_settings": {
-                "Case mismatch between loaded and declared class names @see https://www.drupal.org/project/ui_patterns_settings/issues/3508198": "https://www.drupal.org/files/issues/2025-02-21/3508198-case-mismatch.patch"
             }
         }
     },

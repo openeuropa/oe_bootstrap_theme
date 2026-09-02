@@ -1,0 +1,29 @@
+name: Preview
+slots:
+  background: gray
+  image:
+    src: 'https://picsum.photos/255/255/'
+    alt: 'Alternative text for content banner image'
+  title: 'This is the title of this page.'
+  action_bar: '<div class="d-flex justify-content-end mt-2 align-items-center col-lg-11"><button class="w-auto me-3 btn btn-outline-primary btn-md" type="button">Submit</button></div>'
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec. Sed facilisis dictum vestibulum. Fusce commodo hendrerit diam, pretium tempus leo varius sit amet. Etiam interdum, orci at sagittis luctus, lorem libero tempus mauris, a fermentum libero orci semper lacus. Duis tristique fringilla magna, eu egestas dolor molestie non.'
+  meta:
+    -
+      plain_text: '26 May 2020'
+    -
+      plain_text: '1 comment'
+  badges:
+    -
+      label: 'Primary badge'
+      rounded_pill: true
+      outline: false
+    -
+      label: 'Secondary badge'
+      rounded_pill: true
+  links:
+    -
+      label: 'Link 1'
+      path: /example-1.html
+    -
+      label: 'Link 2'
+      path: /example-2.html

@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Accordion pattern.
+ */
+#}
+{% include '@oe-bcl/accordion' with {
+  'title': title,
+  'title_tag': title_tag,
+  'id': accordion_id,
+  'flush': bare_layout,
+  'items': items,
+  'open_item_id': open_item,
+  'expand_button': expand_button_label|render is not empty ? {
+    'label': expand_button_label,
+  },
+  'collapse_button': collapse_button_label|render is not empty ? {
+    'label': collapse_button_label,
+    'variant': 'secondary',
+  },
+  'attributes': attributes,
+} only %}

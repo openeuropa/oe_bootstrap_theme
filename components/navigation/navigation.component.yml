@@ -1,0 +1,25 @@
+name: Navigation
+description: 'Renders a series of links in a navigation element.'
+variants:
+  default:
+    title: Default
+    description: 'Default navigation style.'
+  tabs:
+    title: Tabs
+    description: 'Shows the items styled as tabs.'
+  pills:
+    title: Pills
+    description: 'Shows the items styled as pills.'
+  navbar:
+    title: Navbar
+    description: 'When the navigation is part of a navbar element.'
+slots:
+  orientation:
+    title: Orientation
+    description: 'Can be set to horizontal or vertical. Defaults to horizontal.'
+props:
+  properties:
+    items:
+      type: array
+      title: 'Navigation items'
+      description: 'Array of navigation items'

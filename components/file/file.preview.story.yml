@@ -1,0 +1,29 @@
+name: Preview
+slots:
+  title: 'This is the title of this file.'
+  file:
+    title: 'Example document'
+    mime: application/pdf
+    url: 'https://example.com/document.pdf'
+    size: '4444'
+    name: document.pdf
+    language_code: en
+  translations:
+    -
+      language_code: bg
+      name: translation_bg.docx
+      mime: application/msword
+      size: '40391'
+      url: /translation_bg.docx
+    -
+      language_code: es
+      name: translation_es.pdf
+      mime: application/pdf
+      size: '425'
+      url: /translation_es.html
+    -
+      language_code: fr
+      name: translation_fr.pdf
+      mime: application/pdf
+      size: '121'
+      url: 'https://example.com/translation_fr.html'

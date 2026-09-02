@@ -1,0 +1,65 @@
+name: Preview
+slots:
+  expanded_breakpoint: lg
+  background: true
+  branding:
+    -
+      type: html_tag
+      tag: a
+      value: Navbar
+      attributes:
+        href: '#navbar'
+        rel: home
+        class: navbar-brand
+  navigation:
+    -
+      type: component
+      label: 'I am a link'
+      path: '#first'
+      attributes:
+        class: nav-link
+      component: link
+    -
+      type: component
+      label: 'I am a link 2'
+      path: '#second'
+      attributes:
+        class: nav-link
+      component: link
+    -
+      type: component
+      label: 'I am a link 3'
+      path: '#third'
+      attributes:
+        class: nav-link
+      component: link
+    -
+      type: component
+      component: dropdown
+      slots:
+        button_label: 'Dropdown Toggle'
+        items:
+          -
+            path: '#navbar'
+            label: 'I am a link'
+          -
+            path: '#navbar'
+            label: 'I am an active button'
+            button: true
+            active: true
+          -
+            divider: true
+          -
+            path: '#navbar'
+            button: true
+            disabled: true
+            label: 'I am a disabled button'
+      props:
+        variant: default
+  right:
+    -
+      type: html_tag
+      tag: form
+      attributes:
+        class: d-flex
+      children: '<label for="inlineFormInputGroupSearch" class="form-label visually-hidden">Search</label><input class="form-control" type="text" id="inlineFormInputGroupSearch" required="true" placeholder="Search"/><div class="ms-2"><button class="btn btn-primary btn-md" type="Search">Search</button></div>'

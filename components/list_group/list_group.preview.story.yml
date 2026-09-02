@@ -1,0 +1,26 @@
+name: Preview
+slots:
+  items:
+    -
+      variant: danger
+      html: 'Label 1'
+    -
+      variant: secondary
+      html: 'Label 2'
+    -
+      variant: primary
+      html: 'Label 3'
+    -
+      label: 'Example form input'
+      required: false
+      readonly: false
+      id: example-form-input-1
+      size: sm
+      input: true
+      input_type: checkbox
+    -
+      variant: warning
+      html: 'Label 5'
+      badge:
+        label: '10'
+        rounded_pill: true

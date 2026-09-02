@@ -1,0 +1,6 @@
+name: Breadcrumb
+description: 'Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS. For more information: https://v5.getbootstrap.com/docs/5.0/components/breadcrumb/'
+slots:
+  items:
+    title: Items
+    description: 'List with the breadcrumbs items.'

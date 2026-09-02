@@ -1,0 +1,7 @@
+name: Preview
+slots:
+  label: Submit
+  path: 'http://example.com'
+  icon: key
+props:
+  standalone: 'true'

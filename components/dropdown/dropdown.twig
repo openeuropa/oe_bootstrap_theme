@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Dropdown pattern.
+ */
+#}
+{% include '@oe-bcl/dropdown' with {
+  'trigger': {
+    label: button_label
+  },
+  'link': false,
+  'dark': dark_mode,
+  'id': dropdown_id,
+  'items': items
+} only %}

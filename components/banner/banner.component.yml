@@ -1,0 +1,50 @@
+name: Banner
+description: 'Banner or heroes with text and/or background image and/or with call to action. For more information: https://getbootstrap.com/docs/5.0/examples/heroes/'
+variants:
+  default:
+    title: 'Default text banner'
+    description: 'Gray text banner.'
+  primary:
+    title: 'Primary text banner'
+    description: 'Text banner with a primary style.'
+  image:
+    title: 'Image banner'
+    description: 'Banner with text and an image.'
+  image_shade:
+    title: 'Image shade banner'
+    description: 'Banner with text and a shade image.'
+slots:
+  title:
+    title: Title
+    description: 'Title of the banner.'
+  title_tag:
+    title: 'Title tag'
+    description: 'The tag to use for the title. Defaults to div.'
+  description:
+    title: Description
+    description: 'Sub-heading of the banner.'
+  call_to_action:
+    title: 'Call to action'
+    description: 'Link to print a CTA button. Optional.'
+  image:
+    title: Image
+    description: 'URL of the image. Optional.'
+props:
+  type: object
+  properties:
+    shade:
+      title: Shade
+      description: 'Enable the shadow effect to the image. Defaults to false.'
+      type: boolean
+    hero:
+      title: Hero
+      description: 'Display as hero banner. Defaults to false.'
+      type: boolean
+    full_width:
+      title: 'Full width'
+      description: 'Possibility of having a full-width banner within a bootstrap container. Defaults to false.'
+      type: boolean
+    centered:
+      title: Centered
+      description: 'Whether the content of the banner is centered or not. Defaults to false.'
+      type: boolean

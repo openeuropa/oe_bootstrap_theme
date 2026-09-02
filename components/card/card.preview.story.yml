@@ -1,0 +1,25 @@
+name: Preview
+slots:
+  title: 'This is the title of this card.'
+  subtitle: 'Subtitle card'
+  text: 'Text card with longer text which is supported'
+  image:
+    src: 'https://picsum.photos/1000/500/'
+    alt: 'Alternative text for card image'
+  meta:
+    -
+      plain_text: Organisation
+    -
+      plain_text: Position
+  content: '<button class="btn btn-primary">Custom action</button>'
+  header: 'Header of card'
+  footer: 'Footer of card'
+  badges:
+    -
+      label: 'A badge'
+    -
+      label: 'A non-rounded badge'
+      rounded_pill: false
+    -
+      label: 'A solid badge'
+      outline: false
