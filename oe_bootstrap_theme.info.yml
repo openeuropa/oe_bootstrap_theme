@@ -18,6 +18,8 @@ libraries-override:
 libraries-extend:
   core/drupal.progress:
     - oe_bootstrap_theme/drupal.progress
+  core/drupal.message:
+    - oe_bootstrap_theme/messages
 
 ckeditor_stylesheets:
   - assets/css/oe-bcl-default.min.css
