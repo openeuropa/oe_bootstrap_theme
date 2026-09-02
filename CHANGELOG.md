@@ -1,11 +1,21 @@
 # Change Log
 
-## [1.37.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.37.1)
+## [1.38.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.38.0) (2026-09-02)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.37.1...1.38.0)
+
+**Merged pull requests:**
+
+- OEL-4908: Update to Drupal 11.4 [\#624](https://github.com/openeuropa/oe_bootstrap_theme/pull/624) ([piotrsmykaj](https://github.com/piotrsmykaj))
+- OEL-4973: Harden npm dependency installation and release workflow. [\#621](https://github.com/openeuropa/oe_bootstrap_theme/pull/621) ([tibi2303](https://github.com/tibi2303))
+
+## [1.37.1](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.37.1) (2026-08-03)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.37.0...1.37.1)
 
 **Merged pull requests:**
 
+- Prepare release 1.37.1 [\#605](https://github.com/openeuropa/oe_bootstrap_theme/pull/605) ([piotrsmykaj](https://github.com/piotrsmykaj))
 - OEL-0000: Update bcl version [\#604](https://github.com/openeuropa/oe_bootstrap_theme/pull/604) ([piotrsmykaj](https://github.com/piotrsmykaj))
 
 ## [1.37.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.37.0) (2026-08-03)
