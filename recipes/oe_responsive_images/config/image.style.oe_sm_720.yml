@@ -1,0 +1,15 @@
+uuid: aad5a6a2-f170-43af-affb-604fbb94277c
+langcode: en
+status: true
+dependencies: {  }
+name: oe_sm_720
+label: 'OE SM 720'
+effects:
+  b063018a-4682-4fab-b6fa-11340d2de9fc:
+    uuid: b063018a-4682-4fab-b6fa-11340d2de9fc
+    id: image_scale
+    weight: 1
+    data:
+      width: 720
+      height: null
+      upscale: false

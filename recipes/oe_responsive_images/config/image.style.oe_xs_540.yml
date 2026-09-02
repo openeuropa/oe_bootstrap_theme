@@ -1,0 +1,15 @@
+uuid: 410ec956-3bcb-49be-bd42-fe363c7c042f
+langcode: en
+status: true
+dependencies: {  }
+name: oe_xs_540
+label: 'OE XS 540'
+effects:
+  fa6fea53-90a5-4988-a2be-4f99783e23e4:
+    uuid: fa6fea53-90a5-4988-a2be-4f99783e23e4
+    id: image_scale
+    weight: 1
+    data:
+      width: 540
+      height: null
+      upscale: false
