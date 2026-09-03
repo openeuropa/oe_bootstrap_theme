@@ -10,6 +10,8 @@ logo:
 bootstrap_tables:
   enable: true
   responsive: always
+facts_figures:
+  icon_size: 3xl
 backward_compatibility:
   card_search_image_hide_on_mobile: false
   card_search_use_grid_classes: false
