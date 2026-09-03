@@ -12,6 +12,13 @@ oe_bootstrap_theme.settings:
         responsive:
           type: string
           label: 'Responsive tables'
+    facts_figures:
+      type: mapping
+      label: 'Facts and figures'
+      mapping:
+        icon_size:
+          type: string
+          label: 'Icon size'
     backward_compatibility:
       type: mapping
       label: 'OEL Improvements'

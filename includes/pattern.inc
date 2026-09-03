@@ -10,6 +10,7 @@ declare(strict_types=1);
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Markup;
 use Drupal\oe_bootstrap_theme\BackwardCompatibility;
+use Drupal\oe_bootstrap_theme\DrupalCompatibility;
 use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
@@ -181,6 +182,8 @@ function oe_bootstrap_theme_preprocess_pattern_inpage_navigation(&$variables): v
  * Implements hook_preprocess_HOOK().
  */
 function oe_bootstrap_theme_preprocess_pattern_fact_figures(array &$variables): void {
+  $variables['icon_size'] = DrupalCompatibility::themeGetSetting('facts_figures.icon_size') ?: 'l';
+
   foreach ($variables['items'] as &$item) {
     // If the icon is not an array, the icon name has been passed.
     if (!is_array($item['icon'])) {

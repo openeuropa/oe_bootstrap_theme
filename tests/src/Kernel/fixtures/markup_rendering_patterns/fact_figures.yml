@@ -40,7 +40,7 @@ fact_figures_default_1col:
       'div.bcl-fact-figures.bcl-fact-figures--default': 1
       'h3.bcl-heading': 1
       'div.row.row-cols-md-1': 1
-      'svg.bi.icon--l': 6
+      'svg.bi.icon--3xl': 6
     equals:
       'h3.bcl-heading': 'Fact and figures block'
       'div > div.col:nth-child(1) > div.fs-4': '1529 JIRA Ticket'
@@ -103,7 +103,7 @@ fact_figures_default_2col:
       'div.bcl-fact-figures.bcl-fact-figures--default': 1
       'h2.bcl-heading': 1
       'div.row.row-cols-md-2': 1
-      'svg.bi.icon--l': 6
+      'svg.bi.icon--3xl': 6
     equals:
       'div > div.col:nth-child(1) > div.fs-4': '1529 JIRA Ticket'
       'div > div.col:nth-child(2) > div.fs-4': '337 Features'
@@ -164,7 +164,7 @@ fact_figures_default_3col:
       'div.bcl-fact-figures.bcl-fact-figures--default': 1
       'h2.bcl-heading': 1
       'div.row.row-cols-md-3': 1
-      'svg.bi.icon--l': 6
+      'svg.bi.icon--3xl': 6
     contains:
       'div > div.col:nth-child(1) > div.fs-4': '1529 JIRA Ticket'
       'div > div.col:nth-child(2) > div.fs-4': '337 Features'
