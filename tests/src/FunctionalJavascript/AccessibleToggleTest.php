@@ -49,7 +49,28 @@ class AccessibleToggleTest extends WebDriverTestBase {
 
     $this->assertAccessibleAttributes($modalTrigger);
     $this->assertAccessibleAttributes($offcanvasTrigger, expanded: FALSE);
-    $assert->elementExists('css', "{$offcanvasTarget}[role=\"region\"][data-offcanvas-static-role=\"region\"]");
+    $offcanvas = $assert->elementExists('css', "{$offcanvasTarget}[role=\"region\"][data-offcanvas-static-role=\"region\"]");
+    $offcanvasLabelledBy = $offcanvas->getAttribute('aria-labelledby');
+    $this->assertNotEmpty($offcanvasLabelledBy);
+    $this->assertEquals(
+      $offcanvasLabelledBy,
+      $offcanvas->getAttribute('data-offcanvas-aria-labelledby')
+    );
+
+    // The default responsive offcanvas title is hidden at the "lg" breakpoint.
+    $this->getSession()->resizeWindow(1200, 800);
+    $assert->waitForElement('css', "{$offcanvasTarget}:not([aria-labelledby])");
+    $assert->waitForElementVisible(
+      'css',
+      '.bcl-offcanvas[aria-labelledby] .offcanvas-title'
+    );
+
+    // The title becomes visible and labels the offcanvas again below "lg".
+    $this->getSession()->resizeWindow(600, 800);
+    $assert->waitForElement(
+      'css',
+      "{$offcanvasTarget}[aria-labelledby=\"{$offcanvasLabelledBy}\"]"
+    );
 
     // Ensure late behavior attachment does not cache Bootstrap's dialog role.
     $this->getSession()->executeScript(<<<'JS'
@@ -79,14 +100,14 @@ class AccessibleToggleTest extends WebDriverTestBase {
     $this->assertAccessibleAttributes($offcanvasTrigger, expanded: FALSE);
 
     $this->clickWhenInViewport($offcanvasSelector);
-    $assert->waitForElementVisible('css', "{$offcanvasTarget}.show[role=\"dialog\"][aria-modal=\"true\"]");
+    $assert->waitForElementVisible('css', "{$offcanvasTarget}.show[role=\"dialog\"][aria-modal=\"true\"][aria-labelledby=\"{$offcanvasLabelledBy}\"]");
     $offcanvasTrigger = $assert->waitForElement('css', "{$offcanvasSelector}[aria-expanded=\"true\"]");
     $this->assertAccessibleAttributes($modalTrigger, expanded: FALSE);
     $this->assertAccessibleAttributes($offcanvasTrigger, expanded: TRUE);
 
     $this->clickWhenInViewport("{$offcanvasTarget}.show .btn-close");
     $offcanvasTrigger = $assert->waitForElement('css', "{$offcanvasSelector}[aria-expanded=\"false\"]");
-    $assert->waitForElement('css', "{$offcanvasTarget}[role=\"region\"]:not([aria-modal])");
+    $assert->waitForElement('css', "{$offcanvasTarget}[role=\"region\"]:not([aria-modal])[aria-labelledby=\"{$offcanvasLabelledBy}\"]");
     $this->assertAccessibleAttributes($modalTrigger, expanded: FALSE);
     $this->assertAccessibleAttributes($offcanvasTrigger, expanded: FALSE);
   }
