@@ -33,6 +33,9 @@ class AccessibleToggleTest extends WebDriverTestBase {
    */
   public function testAccessibleToggleAttributes(): void {
     $this->drupalLogin($this->drupalCreateUser([], NULL, TRUE));
+    // The offcanvas toggle is only visible below Bootstrap's "lg" breakpoint
+    // in the pattern preview, so resize the window to a mobile width.
+    $this->getSession()->resizeWindow(600, 800);
     $this->drupalGet('/admin/appearance/ui/patterns');
     $assert = $this->assertSession();
 
@@ -41,9 +44,48 @@ class AccessibleToggleTest extends WebDriverTestBase {
 
     $modalTrigger = $assert->waitForElementVisible('css', "{$modalSelector}[aria-haspopup=\"dialog\"]");
     $offcanvasTrigger = $assert->waitForElementVisible('css', "{$offcanvasSelector}[aria-haspopup=\"dialog\"]");
+    $offcanvasTarget = $offcanvasTrigger->getAttribute('data-bs-target');
+    $this->assertNotEmpty($offcanvasTarget);
 
     $this->assertAccessibleAttributes($modalTrigger);
     $this->assertAccessibleAttributes($offcanvasTrigger, expanded: FALSE);
+    $offcanvas = $assert->elementExists('css', "{$offcanvasTarget}[role=\"region\"][data-offcanvas-static-role=\"region\"]");
+    $offcanvasLabelledBy = $offcanvas->getAttribute('aria-labelledby');
+    $this->assertNotEmpty($offcanvasLabelledBy);
+    $this->assertEquals(
+      $offcanvasLabelledBy,
+      $offcanvas->getAttribute('data-offcanvas-aria-labelledby')
+    );
+
+    // The default responsive offcanvas title is hidden at the "lg" breakpoint.
+    $this->getSession()->resizeWindow(1200, 800);
+    $assert->waitForElement('css', "{$offcanvasTarget}:not([aria-labelledby])");
+    $assert->waitForElementVisible(
+      'css',
+      '.bcl-offcanvas[aria-labelledby] .offcanvas-title'
+    );
+
+    // The title becomes visible and labels the offcanvas again below "lg".
+    $this->getSession()->resizeWindow(600, 800);
+    $assert->waitForElement(
+      'css',
+      "{$offcanvasTarget}[aria-labelledby=\"{$offcanvasLabelledBy}\"]"
+    );
+
+    // Ensure late behavior attachment does not cache Bootstrap's dialog role.
+    $this->getSession()->executeScript(<<<'JS'
+      (function () {
+        var offcanvas = document.createElement('div');
+        offcanvas.id = 'late-offcanvas';
+        offcanvas.classList.add('offcanvas-lg');
+        offcanvas.setAttribute('role', 'dialog');
+        offcanvas.setAttribute('data-offcanvas-static-role', 'complementary');
+        document.body.appendChild(offcanvas);
+        Drupal.behaviors.accessibleToggle.attach(document, drupalSettings);
+        offcanvas.dispatchEvent(new Event('hidden.bs.offcanvas'));
+      }());
+    JS);
+    $assert->elementExists('css', '#late-offcanvas[role="complementary"]');
 
     $this->clickWhenInViewport($modalSelector);
     $assert->waitForElementVisible('css', '.modal.show');
@@ -58,13 +100,14 @@ class AccessibleToggleTest extends WebDriverTestBase {
     $this->assertAccessibleAttributes($offcanvasTrigger, expanded: FALSE);
 
     $this->clickWhenInViewport($offcanvasSelector);
-    $assert->waitForElementVisible('css', '.offcanvas.show');
+    $assert->waitForElementVisible('css', "{$offcanvasTarget}.show[role=\"dialog\"][aria-modal=\"true\"][aria-labelledby=\"{$offcanvasLabelledBy}\"]");
     $offcanvasTrigger = $assert->waitForElement('css', "{$offcanvasSelector}[aria-expanded=\"true\"]");
     $this->assertAccessibleAttributes($modalTrigger, expanded: FALSE);
     $this->assertAccessibleAttributes($offcanvasTrigger, expanded: TRUE);
 
-    $this->clickWhenInViewport('.offcanvas-backdrop');
+    $this->clickWhenInViewport("{$offcanvasTarget}.show .btn-close");
     $offcanvasTrigger = $assert->waitForElement('css', "{$offcanvasSelector}[aria-expanded=\"false\"]");
+    $assert->waitForElement('css', "{$offcanvasTarget}[role=\"region\"]:not([aria-modal])[aria-labelledby=\"{$offcanvasLabelledBy}\"]");
     $this->assertAccessibleAttributes($modalTrigger, expanded: FALSE);
     $this->assertAccessibleAttributes($offcanvasTrigger, expanded: FALSE);
   }
