@@ -1,0 +1,40 @@
+name: 'Date block'
+description: 'Date block allows to present a date that can be placed in other components.'
+props:
+  type: object
+  properties:
+    day:
+      title: Day
+      type: [string, integer]
+      description: 'Day displayed in the date block.'
+    month:
+      title: Month
+      type: string
+      description: 'Month displayed in the date block.'
+    date_time:
+      title: Datetime
+      type: string
+      description: 'Machine-readable date added to the datetime attribute.'
+    year:
+      title: Year
+      type: [string, integer]
+      description: 'Year displayed in the date block.'
+    end_day:
+      title: 'End day'
+      type: [string, integer]
+      description: 'End day displayed for a date range.'
+    end_month:
+      title: 'End month'
+      type: string
+      description: 'End month displayed for a date range.'
+    end_year:
+      title: 'End year'
+      type: [string, integer]
+      description: 'End year displayed for a date range.'
+    icon_path:
+      title: 'Icons path'
+      type: string
+      description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

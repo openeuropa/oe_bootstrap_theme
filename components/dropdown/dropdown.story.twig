@@ -1,0 +1,83 @@
+{% set items = [
+  {
+    label: 'A link',
+    path: '/example',
+  },
+  {
+    label: 'A button',
+    button: true,
+  },
+  {
+    divider: true,
+  },
+  {
+    label: 'A disabled button',
+    button: true,
+    disabled: true,
+  },
+  {
+    label: 'An active button',
+    button: true,
+    active: true,
+  },
+] %}
+
+<div class="vstack gap-4">
+  <div>
+    <h3>Default</h3>
+    {% include 'oe_bootstrap_theme:dropdown' with {
+      button_label: 'Dropdown toggle',
+      items: items,
+    } only %}
+  </div>
+
+  <div>
+    <h3>Dark menu aligned to the end</h3>
+    {% include 'oe_bootstrap_theme:dropdown' with {
+      button_label: 'Dark dropdown',
+      alignment: 'dropdown-menu-end',
+      dark_mode: true,
+      items: items,
+    } only %}
+  </div>
+
+  <div>
+    <h3>Dropup</h3>
+    {% include 'oe_bootstrap_theme:dropdown' with {
+      button_label: 'Dropup toggle',
+      direction: 'dropup',
+      items: items,
+    } only %}
+  </div>
+
+  <div>
+    <h3>Dropend</h3>
+    {% include 'oe_bootstrap_theme:dropdown' with {
+      button_label: 'Dropend toggle',
+      direction: 'dropend',
+      items: items,
+    } only %}
+  </div>
+
+  <div>
+    <h3>Dropstart</h3>
+    {% include 'oe_bootstrap_theme:dropdown' with {
+      button_label: 'Dropstart toggle',
+      direction: 'dropstart',
+      items: items,
+    } only %}
+  </div>
+
+  <div>
+    <h3>Link trigger</h3>
+    {% include 'oe_bootstrap_theme:dropdown' with {
+      link: true,
+      trigger: {
+        label: 'Linked dropdown',
+        path: '/example',
+        icon: 'list',
+      },
+      items: items,
+    } only %}
+  </div>
+</div>

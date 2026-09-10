@@ -1,0 +1,231 @@
+navigation_default_with_mixed_items:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:navigation
+    '#props':
+      variant: default
+      icon_path: /custom-icons.svg
+      items:
+        - label:
+            - '#type': html_tag
+              '#tag': strong
+              '#value': Overview
+          path: /overview
+          attributes:
+            class:
+              - custom-overview-link
+            data-navigation-item: overview
+        - label: 'Action button'
+          button: true
+          active: true
+          show_spinner: true
+          spinner:
+            type: border
+            size: sm
+            assistive_text: Loading
+            attributes:
+              class:
+                - custom-navigation-spinner
+          attributes:
+            class:
+              - custom-action-button
+        - label: 'Disabled link'
+          path: /disabled
+          disabled: true
+        - label: Calendar
+          path: /calendar
+          icon:
+            name: calendar-event
+            transformation: rotate-90
+            attributes:
+              class:
+                - custom-navigation-icon
+          icon_position: before
+  assertions:
+    count:
+      'ul[data-component-id="oe_bootstrap_theme:navigation"].nav': 1
+      'nav[data-component-id="oe_bootstrap_theme:navigation"]': 0
+      'ul.nav-pills': 0
+      'ul.nav-tabs': 0
+      'ul.navbar-nav': 0
+      'ul.flex-column': 0
+      'ul.nav-fill': 0
+      'ul > li.nav-item': 4
+      'li:nth-child(1) > a.nav-link.custom-overview-link[data-navigation-item="overview"] strong': 1
+      'li:nth-child(2) > button.nav-link.custom-action-button.active': 1
+      'li:nth-child(2) > button > div.spinner-border.spinner-border-sm.custom-navigation-spinner[role="status"]': 1
+      'li:nth-child(2) > button > div.spinner-border span.visually-hidden': 1
+      'li:nth-child(2) > button.btn': 0
+      'li:nth-child(3) > a.nav-link.disabled[href="/disabled"][aria-disabled="true"][tabindex="-1"]': 1
+      'li:nth-child(4) > a.nav-link[href="/calendar"] svg.icon--rotate-90.custom-navigation-icon': 1
+    contains:
+      'li:nth-child(4) svg': '/custom-icons.svg#calendar-event'
+      'li:nth-child(2) button': 'Action button'
+    equals:
+      'li:nth-child(1) strong': Overview
+
+navigation_vertical_pills_dropdown_and_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:navigation
+    '#props':
+      variant: pills
+      orientation: vertical
+      navigation_id: custom-navigation
+      full_width: true
+      alignment: end
+      attributes:
+        class:
+          - custom-navigation
+        data-navigation: custom-value
+      items:
+        - label: Profile
+          path: '#profile'
+          active: true
+        - label: Settings
+          button: true
+        - dropdown: true
+          link: true
+          id: navigation-dropdown
+          alignment: dropdown-menu-end
+          dark_mode: true
+          attributes:
+            class:
+              - custom-dropdown-menu
+          trigger:
+            label: More
+            path: '#more'
+            attributes:
+              class:
+                - custom-dropdown-trigger
+          items:
+            - label: 'Dropdown link'
+              path: /dropdown-link
+              attributes:
+                class:
+                  - custom-dropdown-link
+            - label: 'Dropdown button'
+              button: true
+              active: true
+            - divider: true
+            - label: 'Disabled dropdown button'
+              button: true
+              disabled: true
+  assertions:
+    count:
+      'nav#custom-navigation.nav.nav-pills.flex-column.nav-fill.justify-content-end.custom-navigation[data-navigation="custom-value"]': 1
+      'nav#custom-navigation > a.nav-link.active[href="#profile"]': 1
+      'nav#custom-navigation > button.nav-link': 1
+      'nav#custom-navigation > a#navigation-dropdown.dropdown-toggle.custom-dropdown-trigger[href="#more"][data-bs-toggle="dropdown"]': 1
+      'nav#custom-navigation > ul.dropdown-menu.dropdown-menu-end.dropdown-menu-dark.custom-dropdown-menu': 1
+      'ul.dropdown-menu > li': 4
+      'a.dropdown-item.custom-dropdown-link[href="/dropdown-link"]': 1
+      'button.dropdown-item.active': 1
+      'hr.dropdown-divider': 1
+      'button.dropdown-item[disabled][aria-disabled="true"]': 1
+    equals:
+      'nav#custom-navigation > button.nav-link': Settings
+      'a.custom-dropdown-link': 'Dropdown link'
+
+navigation_tabs_with_content:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:navigation
+    '#props':
+      variant: tabs
+      navigation_id: tab-navigation
+      tabs_content: true
+      items:
+        - id: overview-tab
+          label: Overview
+          path: '#overview-panel'
+          target: overview-panel
+          active: true
+          content:
+            - '#markup': '<p class="overview-content">Overview content</p>'
+          attributes:
+            data-tab: overview
+        - id: details-tab
+          label: Details
+          path: '#details-panel'
+          target: details-panel
+          content:
+            - '#type': html_tag
+              '#tag': strong
+              '#value': 'Details content'
+  assertions:
+    count:
+      'nav#tab-navigation.nav.nav-tabs[role="tablist"]': 1
+      'nav#tab-navigation > a.nav-link[role="tab"]': 2
+      'nav#tab-navigation > a#overview-tab.nav-link.active[href="#overview-panel"][data-tab="overview"]': 1
+      'div.tab-content': 1
+      'div.tab-content > div#overview-panel.tab-pane.fade.show.active[role="tabpanel"][aria-labelledby="overview-tab"] p.overview-content': 1
+      'div.tab-content > div#details-panel.tab-pane.fade[role="tabpanel"][aria-labelledby="details-tab"] strong': 1
+    equals:
+      'div#overview-panel p': 'Overview content'
+      'div#details-panel strong': 'Details content'
+
+navigation_navbar_with_attribute_id:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:navigation
+    '#props':
+      variant: navbar
+      alignment: center
+      attributes:
+        id: navbar-navigation
+        class:
+          - custom-navbar-navigation
+      items:
+        - label: Home
+          path: /home
+        - label: Contact
+          path: /contact
+  assertions:
+    count:
+      'ul#navbar-navigation.navbar-nav.justify-content-center.custom-navbar-navigation': 1
+      'ul#navbar-navigation.nav': 0
+      'ul#navbar-navigation > li.nav-item': 2
+      'li:nth-child(1) > a.nav-link[href="/home"]': 1
+      'li:nth-child(2) > a.nav-link[href="/contact"]': 1
+
+navigation_nested:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:navigation
+    '#props':
+      variant: default
+      icon_path: /nested-icons.svg
+      items:
+        - label: 'Parent section'
+          path: '#parent'
+          navigation:
+            id: child-navigation
+            variant: pills
+            orientation: vertical
+            attributes:
+              class:
+                - custom-child-navigation
+              data-level: child
+            items:
+              - label: 'Child link'
+                path: '#child-link'
+                attributes:
+                  class:
+                    - custom-child-link
+              - label: 'Child action'
+                button: true
+                icon: arrow-right
+                icon_position: after
+  assertions:
+    count:
+      'ul[data-component-id="oe_bootstrap_theme:navigation"].nav > li.nav-item': 1
+      'li.nav-item > a.nav-link[href="#parent"]': 1
+      'li.nav-item > nav#child-navigation.nav.nav-pills.flex-column.custom-child-navigation[data-level="child"]': 1
+      'nav#child-navigation > a.nav-link.custom-child-link[href="#child-link"]': 1
+      'nav#child-navigation > button.nav-link': 1
+      'nav#child-navigation > button.nav-link svg': 1
+    contains:
+      'nav#child-navigation > button svg': '/nested-icons.svg#arrow-right'
+    equals:
+      'nav#child-navigation > button': 'Child action<svg class="bi icon--fluid"><use xlink:href="/nested-icons.svg#arrow-right"></use></svg>'

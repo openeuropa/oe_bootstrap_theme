@@ -1,0 +1,71 @@
+{#
+/**
+ * @file
+ * Offcanvas component.
+ */
+#}
+{% set _variant = variant|default('default') %}
+{% set _attributes = attributes|default(create_attribute()) %}
+{% set _offcanvas_id = offcanvas_id|default(_attributes.id|default('offcanvas'|clean_unique_id)) %}
+{% set _title_attributes = title_attributes|default(create_attribute()) %}
+{% set _title_link = title_link|default({}) %}
+{% if _title_link is not empty %}
+  {% set _title_link = _title_link|merge({
+    attributes: create_attribute(_title_link.attributes|default({})),
+  }) %}
+  {% if _title_link.icon is defined and _title_link.icon is not empty %}
+    {% set _title_link_icon = _title_link.icon is iterable ? _title_link.icon : { name: _title_link.icon } %}
+    {% set _title_link = _title_link|merge({
+      icon: _title_link_icon|merge({
+        path: _title_link_icon.path|default(bcl_icon_path()),
+        attributes: create_attribute(_title_link_icon.attributes|default({})),
+      }),
+    }) %}
+  {% endif %}
+{% endif %}
+
+{% set _extra_classes_body = extra_classes_body|default('') %}
+{% set _extra_classes_header = extra_classes_header|default('') %}
+{% set _extra_classes_close = extra_classes_close|default('') %}
+{% set _responsiveness = responsiveness|default('lg') %}
+{% if _responsiveness == 'none' %}
+  {% set _responsiveness = '' %}
+{% endif %}
+{% if _variant == 'search' %}
+  {% set _attributes = _attributes.addClass('bcl-offcanvas') %}
+  {% set _extra_classes_body = ('d-block ' ~ _extra_classes_body)|trim %}
+  {% if _responsiveness is not empty %}
+    {% set _title_attributes = _title_attributes.addClass('mb-' ~ _responsiveness ~ '-4') %}
+    {% set _extra_classes_body = ('p-' ~ _responsiveness ~ '-0 ' ~ _extra_classes_body)|trim %}
+    {% set _extra_classes_header = ('p-' ~ _responsiveness ~ '-0 d-' ~ _responsiveness ~ '-block ' ~ _extra_classes_header)|trim %}
+    {% set _extra_classes_close = ('d-' ~ _responsiveness ~ '-none ' ~ _extra_classes_close)|trim %}
+  {% endif %}
+{% endif %}
+
+{% include '@oe-bcl/offcanvas' with {
+  title: title,
+  title_tag: title_tag|default('h2'),
+  title_link: _title_link,
+  title_attributes: _title_attributes,
+  placement: placement,
+  id: _offcanvas_id,
+  body: body,
+  with_body_scroll: body_scroll ?? false,
+  with_backdrop: backdrop ?? false,
+  with_close: with_close ?? true,
+  close_aria_label: close_aria_label|default('Close'|t),
+  extra_classes_body: _extra_classes_body,
+  extra_classes_header: _extra_classes_header,
+  extra_classes_close: _extra_classes_close,
+  responsiveness: _responsiveness,
+  attributes: _attributes,
+} only %}
+
+{% if toggle is not empty %}
+  {% set _toggle_attributes = create_attribute(toggle.attributes|default({}))
+    .setAttribute('data-bs-toggle', 'offcanvas')
+    .setAttribute('data-bs-target', '#' ~ _offcanvas_id)
+    .setAttribute('aria-controls', _offcanvas_id) %}
+  {% set _toggle = toggle|merge({ attributes: _toggle_attributes }) %}
+  {% include 'oe_bootstrap_theme:button' with _toggle only %}
+{% endif %}

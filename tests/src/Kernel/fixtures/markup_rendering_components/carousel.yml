@@ -1,0 +1,193 @@
+carousel_default:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel
+    '#props':
+      carousel_id: carousel-default
+      slides:
+        - caption: 'First slide caption'
+          caption_title: 'First slide title'
+          interval: 0
+          image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        settings:
+          fade: false
+          show_controls: true
+          show_indicators: false
+          autoplay: true
+          disable_touch: false
+        items:
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
+            caption_title: 'First slide title'
+            caption: 'First slide caption'
+
+carousel_with_all_settings:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel
+    '#props':
+      title: 'Carousel title'
+      title_tag: 'h4'
+      carousel_id: carousel-all-settings
+      fade: true
+      show_controls: true
+      show_indicators: true
+      autoplay: false
+      disable_touch: true
+      slides:
+        - image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+          caption_title: 'First slide title'
+          caption: 'First slide caption'
+          caption_classes: 'caption_classes-1'
+          interval: 1
+          copyright: '© 2024 Example Organisation'
+          link:
+            label: First link
+            path: https://link.one
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        title: 'Carousel title'
+        title_tag: 'h4'
+        settings:
+          fade: true
+          show_controls: true
+          show_indicators: true
+          autoplay: false
+          disable_touch: true
+        items:
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
+            caption_title: 'First slide title'
+            caption: 'First slide caption'
+            caption_classes: 'caption_classes-1'
+            interval: 1
+            copyright: '© 2024 Example Organisation'
+            link:
+              label: First link
+              path: https://link.one
+carousel_settings_disabled:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel
+    '#props':
+      carousel_id: carousel-settings-disabled
+      fade: false
+      show_controls: false
+      show_indicators: false
+      autoplay: false
+      disable_touch: false
+      slides:
+        - image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
+      expected:
+        settings:
+          fade: false
+          show_controls: false
+          show_indicators: false
+          autoplay: false
+          disable_touch: false
+        items:
+          - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
+carousel_with_fallback_id:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel
+    '#props':
+      show_controls: true
+      show_indicators: true
+      slides:
+        - image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+  assertions:
+    count:
+      '.carousel[id^="carousel"]': 1
+      '.carousel-control-prev[data-bs-target^="#carousel"]': 1
+      '.carousel-control-next[data-bs-target^="#carousel"]': 1
+      '.carousel-indicators button[data-bs-target^="#carousel"]': 1
+carousel_with_user_id:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel
+    '#props':
+      carousel_id: custom-carousel-id
+      show_controls: true
+      show_indicators: true
+      slides:
+        - image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+        - image:
+            src: 'https://images.site.example2'
+            alt: 'alt image 2'
+  assertions:
+    count:
+      '.carousel#custom-carousel-id': 1
+      '.carousel-control-prev[data-bs-target="#custom-carousel-id"]': 1
+      '.carousel-control-next[data-bs-target="#custom-carousel-id"]': 1
+      '.carousel-indicators button[data-bs-target="#custom-carousel-id"]': 2
+carousel_dark_mode_with_active_item:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel
+    '#props':
+      carousel_id: carousel-dark-active
+      dark_mode: true
+      active_item: 2
+      show_indicators: true
+      slides:
+        - image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+        - image:
+            src: 'https://images.site.example2'
+            alt: 'alt image 2'
+  assertions:
+    count:
+      '.carousel.carousel-dark': 1
+      '.carousel-item': 2
+      '.carousel-item:nth-child(1).active': 0
+      '.carousel-item:nth-child(2).active': 1
+      '.carousel-indicators button:nth-child(2).active[aria-current]': 1
+carousel_with_image_attributes_and_link_icon:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel
+    '#props':
+      carousel_id: carousel-image-attributes
+      slides:
+        - image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+            title: 'Image title'
+            loading: lazy
+            width: '1000'
+            height: '500'
+            class:
+              - custom-image-class
+          caption_title: 'First slide title'
+          caption: 'First slide caption'
+          link:
+            label: First link
+            path: https://link.one
+            icon_position: after
+            icon:
+              name: chevron-right
+  assertions:
+    count:
+      '.carousel-item img[title="Image title"][loading="lazy"][width="1000"][height="500"].custom-image-class.d-block.w-100': 1
+      '.carousel-caption a svg.ms-2-5': 1
+    contains:
+      '.carousel-caption a svg': '#chevron-right'

@@ -1,0 +1,98 @@
+{% set slides = [
+  {
+    image: {
+      src: 'https://picsum.photos/seed/oe-carousel-sdc-1/1000/500',
+      alt: 'Modern building with glass facade'
+    },
+    caption_title: 'Research and innovation',
+    caption: 'Programmes and initiatives supporting sustainable growth across Europe.',
+    interval: 5000,
+    copyright: '© 2026 Example Organisation',
+    link: {
+      label: 'Read more',
+      path: 'https://example.com/research'
+    }
+  },
+  {
+    image: {
+      src: 'https://picsum.photos/seed/oe-carousel-sdc-2/1000/500',
+      alt: 'People walking through a public square'
+    },
+    caption_title: 'Digital services',
+    caption: 'Accessible public services designed around the needs of people and businesses.',
+    interval: 4000,
+    copyright: '© 2026 Example Organisation'
+  },
+  {
+    image: {
+      src: 'https://picsum.photos/seed/oe-carousel-sdc-3/1000/500',
+      alt: 'Coastal landscape at sunset'
+    },
+    caption_title: 'Climate action',
+    caption: 'Policies and projects that help communities adapt and reduce emissions.',
+    interval: 4000,
+    link: {
+      label: 'View priorities',
+      path: 'https://example.com/climate'
+    }
+  }
+] %}
+
+{% set rich_slides = [
+  {
+    image: {
+      src: 'https://picsum.photos/seed/oe-carousel-sdc-4/1000/500',
+      alt: 'Conference room with a large presentation screen',
+      title: 'Digital policy presentation',
+      loading: 'lazy',
+      width: '1000',
+      height: '500',
+      class: ['object-fit-cover']
+    },
+    caption_title: 'Interoperable services',
+    caption: 'Reusable building blocks that help administrations deliver reliable online services.',
+    interval: 3000,
+    link: {
+      label: 'Explore services',
+      path: 'https://example.com/services',
+      icon_position: 'after',
+      icon: {
+        name: 'chevron-right'
+      }
+    }
+  },
+  {
+    image: {
+      src: 'https://picsum.photos/seed/oe-carousel-sdc-5/1000/500',
+      alt: 'Solar panels in a green landscape'
+    },
+    caption_title: 'Sustainable investment',
+    caption: 'Funding opportunities for climate, infrastructure, and digital transformation.',
+    interval: 3000
+  }
+] %}
+
+<div class="vstack gap-4">
+  {% include 'oe_bootstrap_theme:carousel' with {
+    title: 'Featured priorities',
+    title_tag: 'h2',
+    carousel_id: 'carousel-sdc-preview',
+    fade: true,
+    show_controls: true,
+    show_indicators: true,
+    autoplay: false,
+    slides: slides,
+  } only %}
+
+  {% include 'oe_bootstrap_theme:carousel' with {
+    title: 'Dark carousel with active item',
+    title_tag: 'h2',
+    carousel_id: 'carousel-sdc-dark-preview',
+    show_controls: true,
+    show_indicators: true,
+    autoplay: false,
+    dark_mode: true,
+    active_item: 2,
+    slides: rich_slides,
+  } only %}
+</div>

@@ -1,0 +1,155 @@
+name: 'Card layout'
+description: 'Bootstrap card layout for rendering a series of cards as a group or grid layout.'
+props:
+  type: object
+  properties:
+    variant:
+      title: Variant
+      type: string
+      description: 'The card layout variant. Defaults to group.'
+      enum:
+        - group
+        - grid
+        - masonry
+      'meta:enum':
+        group: 'Group (default)'
+        grid: Grid
+        masonry: Masonry
+    items:
+      title: 'Card items'
+      type: array
+      description: 'An array of card pattern items.'
+      items:
+        type: object
+        properties:
+          title:
+            title: Title
+            type: [string, array, object]
+          title_tag:
+            title: 'Title tag'
+            type: string
+          subtitle:
+            title: Subtitle
+            type: [string, array, object]
+          text:
+            title: Text
+            type: [string, array, object]
+          image:
+            title: Image
+            type: object
+            properties:
+              src:
+                type: string
+              alt:
+                type: string
+              position:
+                type: string
+              classes:
+                type: string
+              rounded:
+                type: string
+          image_copyright:
+            title: 'Image copyright'
+            type: [string, array, object]
+          content:
+            title: Content
+            type: [string, array, object]
+          card_header:
+            title: 'Card header'
+            type: [string, array, object]
+          card_footer:
+            title: 'Card footer'
+            type: [string, array, object]
+          badges:
+            title: Badges
+            type: array
+            description: 'List of badges for the card.'
+            items:
+              type: [string, object]
+              properties:
+                label:
+                  type: [string, array, object]
+                background:
+                  type: string
+                url:
+                  type: string
+                title:
+                  type: string
+                dismissible:
+                  type: boolean
+                assistive_text:
+                  type: string
+                rounded_pill:
+                  type: boolean
+                outline:
+                  type: boolean
+                icon_path:
+                  type: string
+                attributes:
+                  type: object
+          attributes:
+            title: Attributes
+            type: object
+    grid_columns:
+      title: 'Grid columns'
+      type: integer
+      description: 'Number of grid columns. Defaults to 1.'
+      enum:
+        - 1
+        - 2
+        - 3
+      'meta:enum':
+        1: '1 (default)'
+        2: '2'
+        3: '3'
+    responsiveness:
+      title: Responsiveness
+      type: string
+      description: 'Breakpoint used for the responsive columns. Defaults to md.'
+      enum:
+        - sm
+        - md
+        - lg
+        - xl
+        - xxl
+      'meta:enum':
+        sm: sm
+        md: 'md (default)'
+        lg: lg
+        xl: xl
+        xxl: xxl
+    responsive_columns:
+      title: 'Responsive columns'
+      type: integer
+      description: 'Number of responsive columns.'
+      enum:
+        - 2
+        - 3
+      'meta:enum':
+        2: '2'
+        3: '3'
+    gutter:
+      title: Gutter
+      type: integer
+      description: 'Gutter between cards.'
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+      'meta:enum':
+        0: '0'
+        1: '1'
+        2: '2'
+        3: '3'
+        4: '4'
+        5: '5'
+    equal_height:
+      title: 'Equal height'
+      type: boolean
+      description: 'If true, all cards will have the same height. Defaults to false.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

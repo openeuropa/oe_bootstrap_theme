@@ -1,0 +1,152 @@
+{% set simple_items = [
+  {
+    title: 'Card title 1',
+    title_tag: 'h2',
+    text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
+    card_footer: 'Footer of card 1',
+  },
+  {
+    title: 'Card title 2',
+    text: 'This card has supporting text below as a natural lead-in to additional content.',
+    card_footer: 'Footer of card 2',
+  },
+  {
+    title: 'Card title 3',
+    text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
+    card_footer: 'Footer of card 3',
+  },
+] %}
+
+{% set masonry_items = simple_items|merge([
+  {
+    title: 'Card title 4',
+    text: 'A compact card with a short supporting sentence.',
+    card_footer: 'Footer of card 4',
+  },
+  {
+    title: 'Card title 5',
+    text: 'This card contains a medium amount of supporting text. Its different height helps demonstrate how cards are placed in the available vertical space.',
+    card_footer: 'Footer of card 5',
+  },
+  {
+    title: 'Card title 6',
+    text: 'Another short card.',
+    card_footer: 'Footer of card 6',
+  },
+]) %}
+
+{% set image_items = [
+  {
+    title: 'Title card 1',
+    subtitle: 'Subtitle card 1',
+    text: 'Text card with longer text which is supported 1',
+    image: {
+      src: 'https://picsum.photos/1000/500/',
+      alt: 'Alternative text for card image',
+    },
+    content: {
+      '#type': 'html_tag',
+      '#tag': 'button',
+      '#value': 'Custom action',
+      '#attributes': {
+        class: [
+          'btn',
+          'btn-primary',
+        ],
+      },
+    },
+    card_header: 'Header of card 1',
+    card_footer: 'Footer of card 1',
+  },
+  {
+    title: 'Title card 2',
+    subtitle: 'Subtitle card 2',
+    text: 'Text card with longer text which is supported 2',
+    image: {
+      src: 'https://picsum.photos/1000/500/',
+      alt: 'Alternative text for card image',
+    },
+    content: 'Custom test',
+    card_header: 'Header of card 2',
+    card_footer: 'Footer of card 2',
+  },
+  {
+    title: 'Title card 3',
+    subtitle: 'Subtitle card 3',
+    text: 'Text card with longer text which is supported 3',
+    image: {
+      src: 'https://picsum.photos/1000/500/',
+      alt: 'Alternative text for card image',
+    },
+    content: 'Some representative placeholder content for the first card.',
+    card_header: 'Header of card 3',
+    card_footer: 'Footer of card 3',
+  },
+] %}
+
+<div class="vstack gap-5">
+  <div>
+    <h3>Group</h3>
+    {% include 'oe_bootstrap_theme:card_layout' with {
+      variant: 'group',
+      items: simple_items,
+    } only %}
+  </div>
+
+  <div>
+    <h3>Grid</h3>
+    {% include 'oe_bootstrap_theme:card_layout' with {
+      variant: 'grid',
+      items: image_items,
+      grid_columns: 2,
+      responsiveness: 'md',
+      responsive_columns: 2,
+      gutter: 2,
+      equal_height: true,
+    } only %}
+  </div>
+
+  <div>
+    <h3>Masonry</h3>
+    {% include 'oe_bootstrap_theme:card_layout' with {
+      variant: 'masonry',
+      items: masonry_items,
+      grid_columns: 1,
+      responsiveness: 'md',
+      responsive_columns: 3,
+      gutter: 3,
+    } only %}
+    <p class="mt-3">
+      Masonry requires its JavaScript plugin to be added manually. See the
+      <a href="https://getbootstrap.com/docs/5.0/examples/masonry/">Bootstrap Masonry example</a>
+      for details.
+    </p>
+  </div>
+</div>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+  integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
+  crossorigin="anonymous"
+></script>
+<script>
+  (() => {
+    const layoutMasonry = () => {
+      document
+        .querySelectorAll('[data-component-id="oe_bootstrap_theme:card_layout"][data-masonry]')
+        .forEach((element) => {
+          const masonry = Masonry.data(element) || new Masonry(element, {
+            percentPosition: true,
+          });
+
+          requestAnimationFrame(() => masonry.layout());
+        });
+    };
+
+    if (document.readyState === 'complete') {
+      layoutMasonry();
+    } else {
+      window.addEventListener('load', layoutMasonry, { once: true });
+    }
+  })();
+</script>

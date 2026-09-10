@@ -1,0 +1,34 @@
+name: 'Breadcrumb'
+description: 'Indicate the current page location within a navigational hierarchy that automatically adds separators via CSS.'
+props:
+  type: object
+  properties:
+    items:
+      title: Items
+      type: array
+      description: 'List with the breadcrumb items.'
+      items:
+        type: object
+        properties:
+          label:
+            title: Label
+            type: [string, array, object]
+            description: 'Link label text or render array.'
+          path:
+            title: Path
+            type: [string, object]
+            description: 'Link URL string or URL object.'
+          id:
+            title: ID
+            type: string
+            description: 'Optional link ID.'
+          attributes:
+            title: Attributes
+            type: object
+    icon_path:
+      title: 'Icons path'
+      type: string
+      description: 'Path to icons.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

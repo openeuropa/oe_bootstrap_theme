@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Extension\ThemeExtensionList;
+use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
@@ -27,42 +29,13 @@ use Twig\TwigFunction;
  */
 class TwigExtension extends AbstractExtension {
 
-  /**
-   * The language manager.
-   *
-   * @var \Drupal\Core\Language\LanguageManagerInterface
-   */
-  protected $languageManager;
-
-  /**
-   * The renderer.
-   *
-   * @var \Drupal\Core\Render\RendererInterface
-   */
-  protected RendererInterface $renderer;
-
-  /**
-   * The Drupal Twig environment.
-   *
-   * @var \Drupal\Core\Template\TwigEnvironment
-   */
-  protected TwigEnvironment $twigEnvironment;
-
-  /**
-   * Constructs a new TwigExtension object.
-   *
-   * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
-   *   The language manager.
-   * @param \Drupal\Core\Template\TwigEnvironment $twigEnvironment
-   *   The Drupal Twig environment.
-   * @param \Drupal\Core\Render\RendererInterface $renderer
-   *   The renderer.
-   */
-  public function __construct(LanguageManagerInterface $languageManager, TwigEnvironment $twigEnvironment, RendererInterface $renderer) {
-    $this->languageManager = $languageManager;
-    $this->twigEnvironment = $twigEnvironment;
-    $this->renderer = $renderer;
-  }
+  public function __construct(
+    protected readonly LanguageManagerInterface $languageManager,
+    protected readonly TwigEnvironment $twigEnvironment,
+    protected readonly RendererInterface $renderer,
+    protected readonly ThemeExtensionList $themeList,
+    protected readonly ThemeManagerInterface $themeManager,
+  ) {}
 
   /**
    * {@inheritdoc}
@@ -70,6 +43,8 @@ class TwigExtension extends AbstractExtension {
   public function getFilters(): array {
     return [
       new TwigFilter('bcl_card_list', [$this, 'bclCardList']),
+      new TwigFilter('bcl_description_list_items', [$this, 'bclDescriptionListItems']),
+      new TwigFilter('bcl_navigation_items', [$this, 'bclNavigationItems']),
       new TwigFilter('format_size', 'Drupal\Core\StringTranslation\ByteSizeMarkup::create'),
       new TwigFilter('to_file_icon', [$this, 'toFileIcon']),
       new TwigFilter('to_native_language', [
@@ -93,6 +68,8 @@ class TwigExtension extends AbstractExtension {
         'needs_environment' => TRUE,
       ]),
       new TwigFunction('bcl_gallery_items', [$this, 'bclGalleryItems']),
+      new TwigFunction('bcl_icon_path', [$this, 'getBclIconPath']),
+      new TwigFunction('html_unique_id', [Html::class, 'getUniqueId']),
     ];
   }
 
@@ -115,6 +92,9 @@ class TwigExtension extends AbstractExtension {
     foreach ($items as $item) {
       // Copy most of the fields.
       $bcl_card = $item;
+      if (isset($item['attributes']) && is_array($item['attributes'])) {
+        $bcl_card['attributes'] = new Attribute($item['attributes']);
+      }
       // Some fields need to be rewritten.
       if (isset($item['title'])) {
         $title = $item['title'];
@@ -146,22 +126,152 @@ class TwigExtension extends AbstractExtension {
       }
       $bcl_card['badges'] = [];
       foreach ($item['badges'] ?? [] as $badge) {
-        $bcl_card['badges'][] = [
+        $bcl_badge = is_array($badge) ? $badge + ['background' => 'primary'] : [
           'label' => $badge,
           'background' => 'primary',
         ];
+        if (isset($bcl_badge['attributes']) && is_array($bcl_badge['attributes'])) {
+          $bcl_badge['attributes'] = new Attribute($bcl_badge['attributes']);
+        }
+        $bcl_card['badges'][] = $bcl_badge;
       }
       if (isset($item['image'])) {
-        $bcl_card['image'] = [
-          'path' => $item['image']->getSource(),
-          'alt' => $item['image']->getAlt(),
-        ];
+        if (is_array($item['image'])) {
+          $bcl_card['image'] = $item['image'] + [
+            'path' => $item['image']['src'] ?? '',
+            'alt' => '',
+          ];
+        }
+        else {
+          $bcl_card['image'] = [
+            'path' => $item['image']->getSource(),
+            'alt' => $item['image']->getAlt(),
+          ];
+        }
       }
 
       $bcl_cards[] = $bcl_card;
     }
 
     return $bcl_cards;
+  }
+
+  /**
+   * Processes items for the description list component.
+   *
+   * @param array $items
+   *   The description list items.
+   * @param string $icon_path
+   *   Path to the icons SVG file. Defaults to the BCL icon path.
+   *
+   * @return array
+   *   The processed items.
+   */
+  public function bclDescriptionListItems(array $items, ?string $icon_path = NULL): array {
+    if (!$icon_path) {
+      $icon_path = $this->getBclIconPath();
+    }
+
+    foreach ($items as &$item) {
+      if (empty($item['term']) || is_string($item['term'])) {
+        continue;
+      }
+      if (!is_array($item['term'])) {
+        throw new \InvalidArgumentException('Expected term to be a string or array.');
+      }
+      foreach ($item['term'] as &$term) {
+        if (!empty($term['icon'])) {
+          $term['icon'] += ['size' => 'xs', 'path' => $icon_path];
+        }
+      }
+      unset($term);
+    }
+    unset($item);
+
+    return $items;
+  }
+
+  /**
+   * Prepares recursive navigation items for BCL templates.
+   *
+   * @param array $items
+   *   The navigation items.
+   * @param string|null $icon_path
+   *   Path to the SVG icon file. Defaults to the BCL icon path.
+   *
+   * @return array
+   *   The processed navigation items.
+   */
+  public function bclNavigationItems(array $items, ?string $icon_path = NULL): array {
+    $icon_path = $icon_path ?: $this->getBclIconPath();
+
+    foreach ($items as &$item) {
+      $item = $this->prepareNavigationElement($item, $icon_path);
+
+      if (isset($item['trigger']) && is_array($item['trigger'])) {
+        $item['trigger'] = $this->prepareNavigationElement($item['trigger'], $icon_path);
+      }
+
+      if (isset($item['items']) && is_array($item['items'])) {
+        foreach ($item['items'] as &$dropdown_item) {
+          $dropdown_item = $this->prepareNavigationElement($dropdown_item, $icon_path);
+        }
+        unset($dropdown_item);
+      }
+
+      if (isset($item['navigation']) && is_array($item['navigation'])) {
+        $variant = $item['navigation']['variant'] ?? 'default';
+        $item['navigation']['pills'] = $variant === 'pills';
+        $item['navigation']['tabs'] = $variant === 'tabs';
+        $item['navigation']['nav'] = in_array($variant, ['pills', 'tabs'], TRUE);
+        $item['navigation']['navbar'] = $variant === 'navbar';
+        $item['navigation']['vertical'] = ($item['navigation']['orientation'] ?? 'horizontal') === 'vertical';
+        if (isset($item['navigation']['attributes']) && is_array($item['navigation']['attributes'])) {
+          $item['navigation']['attributes'] = new Attribute($item['navigation']['attributes']);
+        }
+        if (isset($item['navigation']['items']) && is_array($item['navigation']['items'])) {
+          $item['navigation']['items'] = $this->bclNavigationItems($item['navigation']['items'], $icon_path);
+        }
+      }
+    }
+    unset($item);
+
+    return $items;
+  }
+
+  /**
+   * Prepares attributes and icons for a BCL navigation element.
+   *
+   * @param array $item
+   *   A navigation, dropdown, link, or button item.
+   * @param string $icon_path
+   *   Path to the SVG icon file.
+   *
+   * @return array
+   *   The processed element.
+   */
+  protected function prepareNavigationElement(array $item, string $icon_path): array {
+    if (isset($item['attributes']) && is_array($item['attributes'])) {
+      $item['attributes'] = new Attribute($item['attributes']);
+    }
+
+    if (!empty($item['icon'])) {
+      $icon = is_array($item['icon']) ? $item['icon'] : ['name' => $item['icon']];
+      if (isset($icon['attributes']) && is_array($icon['attributes'])) {
+        $icon['attributes'] = new Attribute($icon['attributes']);
+      }
+      $item['icon'] = $icon + ['path' => $icon_path];
+    }
+
+    if (isset($item['spinner']['attributes']) && is_array($item['spinner']['attributes'])) {
+      $item['spinner']['attributes'] = new Attribute($item['spinner']['attributes']);
+    }
+
+    if (array_key_exists('dark_mode', $item)) {
+      $item['dark'] = $item['dark_mode'];
+    }
+
+    return $item;
   }
 
   /**
@@ -339,6 +449,17 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $items;
+  }
+
+  /**
+   * Returns the URL to the BCL default icons SVG file.
+   *
+   * @return string
+   *   The relative URL to the BCL icons SVG file.
+   */
+  public function getBclIconPath(): string {
+    $theme = $this->themeList->get('oe_bootstrap_theme');
+    return base_path() . $theme->getPath() . '/assets/icons/bcl-default-icons.svg';
   }
 
   /**

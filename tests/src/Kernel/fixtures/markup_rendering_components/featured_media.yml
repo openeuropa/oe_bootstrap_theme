@@ -1,0 +1,241 @@
+featured_media_image_without_text:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:featured_media
+    '#props':
+      image:
+        src: 'https://picsum.photos/1200/600/'
+        alt: 'Alternative text for featured image'
+        title: 'Featured image title'
+        loading: lazy
+        width: 1200
+        height: 600
+        class:
+          - custom-image
+      caption: 'Media description text goes here.'
+      copyright: '© 2026 Example Organisation'
+      attributes:
+        id: featured-media-image
+        class:
+          - custom-featured-media
+      media_attributes:
+        class:
+          - custom-media
+  assertions:
+    count:
+      'div[data-component-id="oe_bootstrap_theme:featured_media"]#featured-media-image.bcl-featured-media.custom-featured-media': 1
+      'div.bcl-featured-media > div.row': 1
+      'div.bcl-featured-media > div.row > div.col-12.col-md-4': 1
+      'div.bcl-featured-media > div.row > div.col-12.col-md-4 > figure.rounded.overflow-hidden.custom-media': 1
+      'figure > img.img-fluid.flex-end-100.custom-image[src="https://picsum.photos/1200/600/"][alt="Alternative text for featured image"][title="Featured image title"][loading="lazy"][width="1200"][height="600"]': 1
+      'figure > figcaption > div.bg-light.p-3': 1
+      'figure > figcaption > div.bcl-copyright': 1
+      'h2': 0
+      'a': 0
+      'iframe': 0
+      'video': 0
+    equals:
+      'figcaption > div.bg-light.p-3': 'Media description text goes here.'
+      '.bcl-copyright > span.visually-hidden': 'Image credit:'
+    contains:
+      '.bcl-copyright': '© 2026 Example Organisation'
+
+featured_media_image_with_text_and_link:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:featured_media
+    '#props':
+      image:
+        src: 'https://picsum.photos/1200/600/'
+        alt: 'Alternative text for featured image'
+        name: 'Image value object title'
+        responsive: false
+      title: 'Linked featured media title'
+      title_tag: h3
+      title_link:
+        label: 'Linked featured media title'
+        path: '/featured'
+        id: featured-title-link
+        disabled: true
+        icon:
+          name: link-45deg
+          transformation: flip-horizontal
+          attributes:
+            class:
+              - custom-title-icon
+        icon_position: before
+        icon_display: inline-flex
+        remove_icon_spacers: true
+        attributes:
+          class:
+            - custom-title-link
+      title_attributes:
+        id: featured-title
+        class:
+          - custom-title
+      subtitle: 'Featured media subtitle'
+      subtitle_tag: h4
+      subtitle_attributes:
+        id: featured-subtitle
+        class:
+          - custom-subtitle
+      text:
+        '#markup': '<p class="featured-description">Featured media description.</p>'
+      link:
+        label: 'Read more'
+        path: '/example'
+        variant: primary
+        id: featured-link
+        disabled: false
+        standalone: true
+        icon:
+          name: arrow-right
+          transformation: rotate-90
+          attributes:
+            class:
+              - custom-icon
+        icon_position: before
+        icon_display: inline-flex
+        remove_icon_spacers: false
+        attributes:
+          class:
+            - custom-link
+      caption: 'Custom caption.'
+      content_classes: 'custom-caption'
+      icon_path: '/custom-icons.svg'
+  assertions:
+    count:
+      'div.bcl-featured-media > h3#featured-title.bcl-heading.mb-4.custom-title': 1
+      'h3#featured-title > a#featured-title-link[href="/featured"][aria-disabled="true"][tabindex="-1"].disabled.standalone.custom-title-link': 1
+      'a#featured-title-link.gap-2-5': 0
+      'a#featured-title-link.d-inline-flex': 0
+      'a#featured-title-link > svg.custom-title-icon.icon--flip-horizontal': 1
+      'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-1': 1
+      'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-2': 1
+      'div.col-12.col-md-6.order-1 > h4#featured-subtitle.text-secondary.custom-subtitle': 1
+      'div.col-12.col-md-6.order-1 p.featured-description': 1
+      'a#featured-link[href="/example"].link-primary.standalone.d-inline-flex.gap-2-5.custom-link': 1
+      'a#featured-link svg.bi.icon--s.icon--rotate-90.custom-icon': 1
+      'figure > img.flex-end-100[title="Image value object title"]': 1
+      'figure > img.img-fluid': 0
+      'figure > figcaption > div.custom-caption': 1
+      'figure .bcl-copyright': 0
+    equals:
+      'h4#featured-subtitle': 'Featured media subtitle'
+      'p.featured-description': 'Featured media description.'
+      'figcaption > div.custom-caption': 'Custom caption.'
+    contains:
+      'h3#featured-title > a': 'Linked featured media title'
+      'a#featured-title-link svg': '/custom-icons.svg#link-45deg'
+      'a#featured-link': 'Read more'
+      'a#featured-link svg': '/custom-icons.svg#arrow-right'
+
+featured_media_embedded_right_custom_ratio:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:featured_media
+    '#props':
+      embedded_media:
+        '#type': html_tag
+        '#tag': iframe
+        '#attributes':
+          src: 'https://example.com/embed'
+          title: 'Embedded media'
+      ratio: 21x9
+      title: 'Embedded featured media'
+      subtitle: 'Supporting subtitle'
+      text: 'Text displayed on the right.'
+      text_position: right
+      caption: 'Embedded media caption.'
+      copyright: '© 2026 Example Organisation'
+      copyright_label: 'Media copyright:'
+  assertions:
+    count:
+      'div.bcl-featured-media > h2.bcl-heading.mb-4': 1
+      'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-1 > figure': 1
+      'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-2': 1
+      'div.col-12.col-md-6.order-2 > h3.text-secondary': 1
+      'figure > div.ratio.ratio-21x9 > iframe[src="https://example.com/embed"][title="Embedded media"]': 1
+      'figure > img': 0
+      'figure > video': 0
+    equals:
+      'h2.bcl-heading': 'Embedded featured media'
+      'h3.text-secondary': 'Supporting subtitle'
+      'figcaption > div.bg-light.p-3': 'Embedded media caption.'
+      '.bcl-copyright > span.visually-hidden': 'Media copyright:'
+    contains:
+      'div.col-12.col-md-6.order-2': 'Text displayed on the right.'
+      '.bcl-copyright': '© 2026 Example Organisation'
+
+featured_media_embedded_defaults_without_title:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:featured_media
+    '#props':
+      embedded_media:
+        '#type': html_tag
+        '#tag': iframe
+        '#attributes':
+          src: 'https://example.com/default-ratio'
+          title: 'Default ratio'
+      subtitle: 'Subtitle without a title'
+  assertions:
+    count:
+      'h2.bcl-heading': 0
+      'h2.text-secondary': 1
+      'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-1': 1
+      'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-2 > figure': 1
+      'figure > div.ratio.ratio-16x9 > iframe[src="https://example.com/default-ratio"]': 1
+      'figure > figcaption': 0
+      'a': 0
+    equals:
+      'h2.text-secondary': 'Subtitle without a title'
+
+featured_media_native_video:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:featured_media
+    '#props':
+      poster_image: 'https://picsum.photos/1200/675/'
+      sources:
+        - type: video/mp4
+          src: 'https://example.com/video.mp4'
+        - type: video/webm
+          src: 'https://example.com/video.webm'
+      tracks:
+        - kind: captions
+          label: English
+          src: 'https://example.com/captions-en.vtt'
+          src_lang: en
+        - kind: subtitles
+          label: Français
+          src: 'https://example.com/subtitles-fr.vtt'
+          src_lang: fr
+      caption: 'Native video caption.'
+  assertions:
+    count:
+      'div.bcl-featured-media > div.row > div.col-12.col-md-4 > figure': 1
+      'figure > video[controls][poster="https://picsum.photos/1200/675/"].w-100.d-block': 1
+      'video > source': 2
+      'video > source[type="video/mp4"][src="https://example.com/video.mp4"]': 1
+      'video > source[type="video/webm"][src="https://example.com/video.webm"]': 1
+      'video > track': 2
+      'video > track[kind="captions"][label="English"][src="https://example.com/captions-en.vtt"][srclang="en"]': 1
+      'video > track[kind="subtitles"][label="Français"][src="https://example.com/subtitles-fr.vtt"][srclang="fr"]': 1
+      'figure > img': 0
+      'figure iframe': 0
+    equals:
+      'figcaption > div.bg-light.p-3': 'Native video caption.'
+
+featured_media_image_as_markup:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:featured_media
+    '#props':
+      image:
+        '#markup': '<img src="https://example.com/pre-rendered.jpg" alt="Pre-rendered image">'
+  assertions:
+    count:
+      'figure > img[src="https://example.com/pre-rendered.jpg"][alt="Pre-rendered image"]': 1
+      'figure > img.img-fluid': 0
+      'figure > img.flex-end-100': 0

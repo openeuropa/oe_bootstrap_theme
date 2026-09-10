@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * List group component.
+ */
+#}
+{% set _icon_path = bcl_icon_path() %}
+{% set _items = [] %}
+
+{% for item in items|default([]) %}
+  {% set _item = item|merge({
+    attributes: create_attribute(item.attributes|default({})),
+  }) %}
+
+  {% if _item.badge is defined and _item.badge is not empty %}
+    {% set _badge = _item.badge|merge({
+      icon_path: _item.badge.icon_path|default(_icon_path),
+      attributes: create_attribute(_item.badge.attributes|default({})),
+    }) %}
+    {% set _item = _item|merge({ badge: _badge }) %}
+  {% endif %}
+
+  {% if _item.icon is defined and _item.icon is not empty %}
+    {% set _icon = _item.icon is iterable ? _item.icon : { name: _item.icon } %}
+    {% set _item = _item|merge({
+      icon: _icon|merge({
+        path: _icon.path|default(_icon_path),
+        attributes: create_attribute(_icon.attributes|default({})),
+      }),
+    }) %}
+  {% endif %}
+
+  {% if _item.spinner is defined and _item.spinner is not empty %}
+    {% set _item = _item|merge({
+      spinner: _item.spinner|merge({
+        attributes: create_attribute(_item.spinner.attributes|default({})),
+      }),
+    }) %}
+  {% endif %}
+
+  {% set _items = _items|merge([_item]) %}
+{% endfor %}
+
+{% include '@oe-bcl/list-group' with {
+  flush: flush,
+  horizontal: horizontal,
+  id: id,
+  type: type,
+  items: _items,
+  attributes: attributes,
+} only %}

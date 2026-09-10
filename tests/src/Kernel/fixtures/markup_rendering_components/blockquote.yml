@@ -1,0 +1,69 @@
+blockquote:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:blockquote
+    '#props':
+      title: 'The blockquote title'
+      title_tag: h4
+      alignment: left
+      quote: 'A well-known quote, contained in a blockquote element.'
+      attribution: 'Someone famous in'
+      cite: 'Source title'
+  assertions:
+    count:
+      '.bcl-heading': 1
+      'h4.bcl-heading': 1
+      'figure.text-left': 1
+      'blockquote.blockquote': 1
+      'figcaption.blockquote-footer': 1
+      'cite[title="Source title"]': 1
+    contains:
+      'figcaption.blockquote-footer': 'Someone famous in'
+    equals:
+      'h4.bcl-heading': 'The blockquote title'
+      'blockquote.blockquote p': 'A well-known quote, contained in a blockquote element.'
+      'figcaption.blockquote-footer': 'Someone famous in <cite title="Source title">Source title</cite>'
+      'cite[title="Source title"]': 'Source title'
+blockquote_right_alignment_no_title_tag:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:blockquote
+    '#props':
+      title: 'The blockquote title'
+      alignment: end
+      quote: 'A well-known quote, contained in a blockquote element.'
+      attribution: 'Someone famous in'
+      cite: 'Source title'
+  assertions:
+    count:
+      '.bcl-heading': 1
+      'h2.bcl-heading': 1
+      'figure.text-end': 1
+      'blockquote.blockquote': 1
+      'figcaption.blockquote-footer': 1
+      'cite[title="Source title"]': 1
+    contains:
+      'figcaption.blockquote-footer': 'Someone famous in'
+    equals:
+      'h2.bcl-heading': 'The blockquote title'
+      'blockquote.blockquote p': 'A well-known quote, contained in a blockquote element.'
+      'figcaption.blockquote-footer': 'Someone famous in <cite title="Source title">Source title</cite>'
+      'cite[title="Source title"]': 'Source title'
+blockquote_with_no_cite_no_alignment_no_title:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:blockquote
+    '#props':
+      quote: 'A well-known quote, contained in a blockquote element.'
+      attribution: 'Someone famous in'
+  assertions:
+    count:
+      '.bcl-heading': 0
+      'figure.text-left': 1
+      'blockquote.blockquote': 1
+      'figcaption.blockquote-footer': 1
+      'cite': 0
+    contains:
+      'figcaption.blockquote-footer': 'Someone famous in'
+    equals:
+      'blockquote.blockquote p': 'A well-known quote, contained in a blockquote element.'

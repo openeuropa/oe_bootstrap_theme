@@ -1,0 +1,67 @@
+{% set image = {
+  src: 'https://picsum.photos/1200/600/',
+  alt: 'A representative landscape',
+  title: 'Featured landscape',
+  loading: 'lazy',
+} %}
+
+<div class="vstack gap-5">
+  <div>
+    <h3>Image with caption</h3>
+    {% include 'oe_bootstrap_theme:featured_media' with {
+      image: image,
+      caption: 'Media description text goes here.',
+      copyright: '© 2026 Example Organisation',
+    } only %}
+  </div>
+
+  {% include 'oe_bootstrap_theme:featured_media' with {
+    image: image,
+    title: 'Featured image with text',
+    title_tag: 'h3',
+    title_link: {
+      path: '/example',
+    },
+    subtitle: 'Supporting subtitle',
+    text: 'This content appears to the left of the featured image and provides additional context.',
+    text_position: 'left',
+    link: {
+      label: 'Read more',
+      path: '/example',
+      standalone: true,
+      icon: 'arrow-right',
+    },
+    caption: 'Media description text goes here.',
+  } only %}
+
+  {% include 'oe_bootstrap_theme:featured_media' with {
+    embedded_media: {
+      '#type': 'html_tag',
+      '#tag': 'iframe',
+      '#attributes': {
+        src: 'https://www.youtube.com/embed/nWpgO1EPO_Y',
+        title: 'Featured video',
+      },
+    },
+    title: 'Embedded media with text',
+    subtitle: 'Media on the left',
+    text: 'This example uses a wider aspect ratio and positions its descriptive content on the right.',
+    text_position: 'right',
+    ratio: '21x9',
+    caption: 'Embedded media description.',
+  } only %}
+
+  <div>
+    <h3>Native video</h3>
+    {% include 'oe_bootstrap_theme:featured_media' with {
+      poster_image: 'https://picsum.photos/1200/675/',
+      sources: [
+        {
+          type: 'video/mp4',
+          src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+        },
+      ],
+      caption: 'Native video with a poster image.',
+    } only %}
+  </div>
+</div>

@@ -1,0 +1,276 @@
+name: Pagination
+description: 'Displays navigation for a series of related content split across multiple pages.'
+props:
+  type: object
+  properties:
+    variant:
+      title: Variant
+      type: string
+      description: 'Pagination presentation. Defaults to standard pagination.'
+      enum:
+        - default
+        - glossary
+      'meta:enum':
+        default: Default
+        glossary: Glossary
+    size:
+      title: Size
+      type: string
+      description: 'Optional pagination size.'
+      enum:
+        - sm
+        - lg
+      'meta:enum':
+        sm: Small
+        lg: Large
+    alignment:
+      title: Alignment
+      type: string
+      description: 'Optional pagination alignment.'
+      enum:
+        - center
+        - end
+      'meta:enum':
+        center: Center
+        end: End
+    enable_prev_next_icons:
+      title: 'Enable previous and next icons'
+      type: boolean
+      description: 'Replaces previous and next labels with icons. Defaults to false.'
+      default: false
+    enable_first_last_icons:
+      title: 'Enable first and last icons'
+      type: boolean
+      description: 'Replaces first and last labels with icons. Defaults to true.'
+      default: true
+    ellipsis_before:
+      title: 'Ellipsis before'
+      type: boolean
+      description: 'Adds an ellipsis before the numbered items. Defaults to false.'
+    ellipsis_after:
+      title: 'Ellipsis after'
+      type: boolean
+      description: 'Adds an ellipsis after the numbered items. Defaults to false.'
+    first:
+      title: 'First link'
+      type: object
+      properties:
+        path:
+          type: [string, object]
+        label:
+          type: [string, array, object]
+        disabled:
+          type: boolean
+        active:
+          type: boolean
+        icon:
+          type: [string, object]
+          properties:
+            name:
+              type: string
+            path:
+              type: string
+            size:
+              type: string
+              enum:
+                - 2xs
+                - xs
+                - s
+                - m
+                - l
+                - xl
+                - 2xl
+                - fluid
+            transformation:
+              type: string
+              enum:
+                - rotate-90
+                - rotate-180
+                - rotate-270
+                - flip-horizontal
+                - flip-vertical
+            attributes:
+              type: object
+        attributes:
+          type: object
+    prev:
+      title: 'Previous link'
+      type: object
+      properties:
+        path:
+          type: [string, object]
+        label:
+          type: [string, array, object]
+        disabled:
+          type: boolean
+        active:
+          type: boolean
+        icon:
+          type: [string, object]
+          properties:
+            name:
+              type: string
+            path:
+              type: string
+            size:
+              type: string
+              enum:
+                - 2xs
+                - xs
+                - s
+                - m
+                - l
+                - xl
+                - 2xl
+                - fluid
+            transformation:
+              type: string
+              enum:
+                - rotate-90
+                - rotate-180
+                - rotate-270
+                - flip-horizontal
+                - flip-vertical
+            attributes:
+              type: object
+        attributes:
+          type: object
+    next:
+      title: 'Next link'
+      type: object
+      properties:
+        path:
+          type: [string, object]
+        label:
+          type: [string, array, object]
+        disabled:
+          type: boolean
+        active:
+          type: boolean
+        icon:
+          type: [string, object]
+          properties:
+            name:
+              type: string
+            path:
+              type: string
+            size:
+              type: string
+              enum:
+                - 2xs
+                - xs
+                - s
+                - m
+                - l
+                - xl
+                - 2xl
+                - fluid
+            transformation:
+              type: string
+              enum:
+                - rotate-90
+                - rotate-180
+                - rotate-270
+                - flip-horizontal
+                - flip-vertical
+            attributes:
+              type: object
+        attributes:
+          type: object
+    last:
+      title: 'Last link'
+      type: object
+      properties:
+        path:
+          type: [string, object]
+        label:
+          type: [string, array, object]
+        disabled:
+          type: boolean
+        active:
+          type: boolean
+        icon:
+          type: [string, object]
+          properties:
+            name:
+              type: string
+            path:
+              type: string
+            size:
+              type: string
+              enum:
+                - 2xs
+                - xs
+                - s
+                - m
+                - l
+                - xl
+                - 2xl
+                - fluid
+            transformation:
+              type: string
+              enum:
+                - rotate-90
+                - rotate-180
+                - rotate-270
+                - flip-horizontal
+                - flip-vertical
+            attributes:
+              type: object
+        attributes:
+          type: object
+    items:
+      title: Items
+      type: array
+      description: 'Numbered or glossary pagination items.'
+      items:
+        type: object
+        properties:
+          path:
+            type: [string, object]
+          label:
+            type: [string, array, object]
+          disabled:
+            type: boolean
+          active:
+            type: boolean
+          icon:
+            type: [string, object]
+            properties:
+              name:
+                type: string
+              path:
+                type: string
+              size:
+                type: string
+                enum:
+                  - 2xs
+                  - xs
+                  - s
+                  - m
+                  - l
+                  - xl
+                  - 2xl
+                  - fluid
+              transformation:
+                type: string
+                enum:
+                  - rotate-90
+                  - rotate-180
+                  - rotate-270
+                  - flip-horizontal
+                  - flip-vertical
+              attributes:
+                type: object
+          attributes:
+            type: object
+    icon_path:
+      title: 'Icons path'
+      type: string
+      description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
+    list_attributes:
+      title: 'List attributes'
+      type: Drupal\Core\Template\Attribute
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

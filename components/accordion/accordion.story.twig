@@ -1,0 +1,24 @@
+{% set items = [
+  {
+    title: 'Jobs, Growth, Investment and Competitiveness with an additional quite long string',
+    content: 'Lorem fistrum eiusmod cillum elit papaar officia aliquip dolore velit. Pellentesque dolor sapien, mollis fringilla ultricies sed, lacinia vel nibh. Nulla auctor arcu risus, nec facilisis odio aliquet sed.',
+  },
+  {
+    title: 'Energy Union',
+    content: 'Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer.',
+  },
+] %}
+
+{% include 'oe_bootstrap_theme:accordion' with {
+  title: 'This is the title of this accordion.',
+  items: items,
+  open_item: 1,
+} only %}
+
+{% include 'oe_bootstrap_theme:accordion' with {
+  title: 'This is the title of this accordion with expand/collapse buttons.',
+  expand_button_label: 'Expand',
+  collapse_button_label: 'Collapse',
+  items: items,
+  open_item: 1,
+} only %}

@@ -1,0 +1,65 @@
+name: Timeline
+description: 'Timeline is a flexible and powerful component for displaying a series of content ordered in time.'
+props:
+  type: object
+  properties:
+    title:
+      title: Title
+      type: [string, array, object]
+      description: 'Title of the timeline block.'
+    title_link:
+      title: 'Title link'
+      type: object
+      description: 'Link applied to the timeline title.'
+      properties:
+        label:
+          type: [string, array, object]
+        path:
+          type: string
+    title_tag:
+      title: 'Title tag'
+      type: string
+      description: 'The tag to use for the title. Defaults to h2.'
+    title_attributes:
+      title: 'Title attributes'
+      type: Drupal\Core\Template\Attribute
+    expand_button_label:
+      title: 'Label expanded'
+      type: string
+      description: 'When all items are displayed, the label of the button to hide them.'
+    collapse_button_label:
+      title: 'Label collapsed'
+      type: string
+      description: 'When there are hidden items, the label of the button to expand them.'
+    hide_from:
+      title: 'Hide from'
+      type: integer
+      description: 'Indicate the number of items to display in the timeline, hide the others and add a toggle button to show them.'
+    hide_to:
+      title: 'Hide to'
+      type: integer
+      description: 'Indicate the number of bottom items to keep displayed when items are hidden. Defaults to 0.'
+    items:
+      title: Items
+      type: array
+      description: 'List of timeline items, with id, label, title and content.'
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          label:
+            type: [string, array, object]
+          title:
+            type: [string, array, object]
+          content:
+            type: [string, array, object]
+          attributes:
+            type: object
+    icon_path:
+      title: 'Icons path'
+      type: string
+      description: 'Path to icons.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

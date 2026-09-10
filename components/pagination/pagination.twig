@@ -1,0 +1,85 @@
+{#
+/**
+ * @file
+ * Pagination component.
+ */
+#}
+{% set _variant = variant|default('default') %}
+{% set _icon_path = icon_path|default(bcl_icon_path()) %}
+{% set _attributes = attributes|default(create_attribute()) %}
+{% set _list_attributes = list_attributes|default(create_attribute()).addClass('js-pager__items') %}
+
+{% if _variant == 'glossary' and not _attributes.hasAttribute('aria-label') and not _attributes.hasAttribute('aria-labelledby') %}
+  {% set _attributes = _attributes.setAttribute('aria-label', 'Glossary links'|t) %}
+{% endif %}
+
+{% set _controls = [
+  { item: first|default({}), label: 'First'|t },
+  { item: prev|default({}), label: 'Previous'|t },
+  { item: next|default({}), label: 'Next'|t },
+  { item: last|default({}), label: 'Last'|t },
+] %}
+{% set _processed_controls = [] %}
+{% for control in _controls %}
+  {% set _item = control.item %}
+  {% if _item is not empty %}
+    {% set _item_attributes = create_attribute(_item.attributes|default({})) %}
+    {% if not _item_attributes.hasAttribute('aria-label') %}
+      {% set _item_attributes = _item_attributes.setAttribute('aria-label', control.label) %}
+    {% endif %}
+    {% set _item = _item|merge({ attributes: _item_attributes }) %}
+    {% if _item.icon is defined and _item.icon is not empty %}
+      {% set _item_icon = _item.icon is iterable ? _item.icon : { name: _item.icon } %}
+      {% set _item_icon_path = _item_icon.path|default(_icon_path) %}
+      {% set _item = _item|merge({
+        icon_path: _item_icon_path,
+        icon: _item_icon|merge({
+          path: _item_icon_path,
+          size: _item_icon.size|default('fluid'),
+          attributes: create_attribute(_item_icon.attributes|default({})),
+        }),
+      }) %}
+    {% endif %}
+  {% endif %}
+  {% set _processed_controls = _processed_controls|merge([_item]) %}
+{% endfor %}
+
+{% set _items = [] %}
+{% for item in items|default([]) %}
+  {% set _item_attributes = create_attribute(item.attributes|default({})) %}
+  {% if not _item_attributes.hasAttribute('aria-label') and item.label is not empty %}
+    {% set _item_attributes = _item_attributes.setAttribute('aria-label', item.label) %}
+  {% endif %}
+  {% set _item = item|merge({ attributes: _item_attributes }) %}
+  {% if _item.icon is defined and _item.icon is not empty %}
+    {% set _item_icon = _item.icon is iterable ? _item.icon : { name: _item.icon } %}
+    {% set _item_icon_path = _item_icon.path|default(_icon_path) %}
+    {% set _item = _item|merge({
+      icon_path: _item_icon_path,
+      icon: _item_icon|merge({
+        path: _item_icon_path,
+        size: _item_icon.size|default('fluid'),
+        attributes: create_attribute(_item_icon.attributes|default({})),
+      }),
+    }) %}
+  {% endif %}
+  {% set _items = _items|merge([_item]) %}
+{% endfor %}
+
+{% include '@oe-bcl/pagination' with {
+  variant: _variant == 'default' ? '' : _variant,
+  size: size,
+  alignment: alignment,
+  enable_prev_next_icon: enable_prev_next_icons,
+  enable_first_last_icon: enable_first_last_icons,
+  ellipsis_before: ellipsis_before,
+  ellipsis_after: ellipsis_after,
+  first: _processed_controls[0],
+  prev: _processed_controls[1],
+  next: _processed_controls[2],
+  last: _processed_controls[3],
+  items: _items,
+  icon_path: _icon_path,
+  attributes: _attributes,
+  list_attributes: _list_attributes,
+} only %}
