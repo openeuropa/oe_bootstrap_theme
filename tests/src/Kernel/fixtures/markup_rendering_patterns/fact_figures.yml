@@ -4,6 +4,8 @@ fact_figures_default_1col:
     '#id': fact_figures
     '#fields':
       style: 'default'
+      settings:
+        alignment: 'center'
       columns: 1
       link:
         label: 'Read more'
@@ -38,6 +40,8 @@ fact_figures_default_1col:
   assertions:
     count:
       'div.bcl-fact-figures.bcl-fact-figures--default': 1
+      'div.row > div.col.text-center': 6
+      'div.row > div.col.text-center > p.text-start': 6
       'h3.bcl-heading': 1
       'div.row.row-cols-md-1': 1
       'svg.bi.icon--l': 6
@@ -101,6 +105,8 @@ fact_figures_default_2col:
   assertions:
     count:
       'div.bcl-fact-figures.bcl-fact-figures--default': 1
+      'div.row > div.col.text-center': 0
+      'div.row > div.col.text-center > p.text-start': 0
       'h2.bcl-heading': 1
       'div.row.row-cols-md-2': 1
       'svg.bi.icon--l': 6
