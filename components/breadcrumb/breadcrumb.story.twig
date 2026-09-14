@@ -1,0 +1,35 @@
+<h3>Last item as a link</h3>
+{% include 'oe_bootstrap_theme:breadcrumb' with {
+  items: [
+    {
+      label: 'Home',
+      path: '/index',
+    },
+    {
+      label: 'About the European Commission',
+      path: '/example',
+    },
+    {
+      label: 'Link title',
+      path: 'https://example.com',
+    },
+  ],
+} only %}
+
+<h3>Current page without link</h3>
+{% include 'oe_bootstrap_theme:breadcrumb' with {
+  attributes: create_attribute().addClass('mt-3'),
+  items: [
+    {
+      label: 'Home',
+      path: '/index',
+    },
+    {
+      label: 'About the European Commission',
+      path: '/example',
+    },
+    {
+      label: 'Current page',
+    },
+  ],
+} only %}

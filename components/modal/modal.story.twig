@@ -1,0 +1,109 @@
+{% set footer %}
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  <button type="button" class="btn btn-primary">Save changes</button>
+{% endset %}
+{% set messages %}
+  <div class="alert alert-info mb-0">Review the information before continuing.</div>
+{% endset %}
+
+<div class="vstack gap-4">
+  <div>
+    <h3>Default</h3>
+    {% include 'oe_bootstrap_theme:modal' with {
+      modal_id: 'modal-default',
+      title: 'Default modal',
+      show_close_button: true,
+      body: 'This modal uses the default width and behavior.',
+      footer: footer,
+      toggle: {
+        label: 'Open default modal',
+      },
+    } only %}
+  </div>
+
+  <div>
+    <h3>Small and scrollable</h3>
+    {% include 'oe_bootstrap_theme:modal' with {
+      modal_id: 'modal-small',
+      size: 'sm',
+      scrollable: true,
+      title: 'Small modal',
+      show_close_button: true,
+      body: 'A compact modal with an independently scrollable body.',
+      footer: footer,
+      toggle: {
+        label: 'Open small modal',
+        variant: 'secondary',
+      },
+    } only %}
+  </div>
+
+  <div>
+    <h3>Large and vertically centered</h3>
+    {% include 'oe_bootstrap_theme:modal' with {
+      modal_id: 'modal-large',
+      size: 'lg',
+      vertically_centered: true,
+      title: 'Large centered modal',
+      title_tag: 'h4',
+      title_attributes: create_attribute().addClass('modal-title'),
+      show_close_button: true,
+      body: 'This larger dialog is centered vertically in the viewport.',
+      footer: footer,
+      toggle: {
+        label: 'Open large modal',
+        variant: 'success',
+      },
+    } only %}
+  </div>
+
+  <div>
+    <h3>Extra large with static backdrop</h3>
+    {% include 'oe_bootstrap_theme:modal' with {
+      modal_id: 'modal-extra-large',
+      size: 'xl',
+      static_backdrop: true,
+      title: 'Extra large modal',
+      show_close_button: true,
+      messages: messages,
+      body: 'Selecting the backdrop does not close this modal.',
+      footer: footer,
+      toggle: {
+        label: 'Open extra large modal',
+        variant: 'info',
+      },
+    } only %}
+  </div>
+
+  <div>
+    <h3>Fullscreen</h3>
+    {% include 'oe_bootstrap_theme:modal' with {
+      modal_id: 'modal-fullscreen',
+      size: 'fullscreen',
+      title: 'Fullscreen modal',
+      show_close_button: true,
+      body: 'This modal occupies the complete viewport.',
+      footer: footer,
+      toggle: {
+        label: 'Open fullscreen modal',
+        variant: 'dark',
+      },
+    } only %}
+  </div>
+
+  <div>
+    <h3>Responsive fullscreen</h3>
+    {% include 'oe_bootstrap_theme:modal' with {
+      modal_id: 'modal-responsive',
+      fullscreen_responsive: 'md',
+      title: 'Responsive fullscreen modal',
+      show_close_button: true,
+      body: 'This modal becomes fullscreen below the medium breakpoint.',
+      footer: footer,
+      toggle: {
+        label: 'Open responsive modal',
+        outline: true,
+      },
+    } only %}
+  </div>
+</div>

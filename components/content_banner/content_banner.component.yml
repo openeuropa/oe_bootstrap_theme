@@ -1,0 +1,212 @@
+name: 'Content banner'
+description: 'Shows the content summary along with the title, image and badges.'
+props:
+  type: object
+  properties:
+    background:
+      title: Background
+      type: string
+      description: 'Sets a gray or white background. Defaults to white.'
+      default: white
+      enum:
+        - white
+        - gray
+      'meta:enum':
+        white: 'White (default)'
+        gray: Gray
+    image:
+      title: Image
+      type: object
+      description: 'Image displayed in the content banner.'
+      properties:
+        src:
+          type: string
+        alt:
+          type: string
+    copyright:
+      title: Copyright
+      type: [string, array, object]
+      description: 'Optional copyright text displayed below the image.'
+    copyright_label:
+      title: 'Copyright label'
+      type: string
+      description: 'Accessible label shown before the copyright. Defaults to Image credit:.'
+    image_size:
+      title: 'Image size'
+      type: string
+      description: 'The size of the image. Defaults to lg.'
+      default: lg
+      enum:
+        - md
+        - lg
+        - xl
+      'meta:enum':
+        md: Medium
+        lg: 'Large (default)'
+        xl: 'Extra large'
+    title:
+      title: Title
+      type: [string, array, object]
+      description: 'Title of the content banner.'
+    title_tag:
+      title: 'Title tag'
+      type: string
+      description: 'The tag to use for the title. Defaults to h1.'
+    title_link:
+      title: 'Title link'
+      type: object
+      description: 'Optional link object for the title.'
+      properties:
+        label:
+          type: [string, array, object]
+        path:
+          type: string
+        variant:
+          type: string
+        id:
+          type: string
+        disabled:
+          type: boolean
+        icon:
+          type: object
+          properties:
+            name:
+              type: string
+            size:
+              type: string
+            path:
+              type: string
+        icon_position:
+          type: string
+        icon_display:
+          type: string
+        remove_icon_spacers:
+          type: boolean
+        attributes:
+          type: object
+    title_attributes:
+      title: 'Title attributes'
+      type: Drupal\Core\Template\Attribute
+    action_bar:
+      title: 'Action bar'
+      type: [string, array, object]
+      description: 'Action bar region, for example action buttons.'
+    content:
+      title: Content
+      type: [string, array, object]
+      description: 'Text with the summary of the content.'
+    subtitle:
+      title: Subtitle
+      type: object
+      description: 'Optional card subtitle.'
+      properties:
+        content:
+          type: [string, array, object]
+        tag:
+          type: string
+        classes:
+          type: string
+    text:
+      title: Text
+      type: object
+      description: 'Optional card text.'
+      properties:
+        content:
+          type: [string, array, object]
+        tag:
+          type: string
+        classes:
+          type: string
+    meta:
+      title: Meta
+      type: array
+      description: 'Miscellaneous information such as date or author.'
+      items:
+        type: [string, array, object]
+    badges:
+      title: Badges
+      type: array
+      description: 'List of badges.'
+      items:
+        type: object
+        properties:
+          label:
+            type: [string, array, object]
+          background:
+            type: string
+          url:
+            type: string
+          title:
+            type: string
+          dismissible:
+            type: boolean
+          assistive_text:
+            type: string
+          rounded_pill:
+            type: boolean
+          outline:
+            type: boolean
+          icon_path:
+            type: string
+          attributes:
+            type: object
+    links:
+      title: Links
+      type: array
+      description: 'List of links.'
+      items:
+        type: object
+        properties:
+          label:
+            type: [string, array, object]
+          path:
+            type: string
+          variant:
+            type: string
+          id:
+            type: string
+          disabled:
+            type: boolean
+          icon:
+            type: object
+            properties:
+              name:
+                type: string
+              size:
+                type: string
+              path:
+                type: string
+          icon_position:
+            type: string
+          icon_display:
+            type: string
+          remove_icon_spacers:
+            type: boolean
+          attributes:
+            type: object
+    date:
+      title: 'Date block'
+      type: object
+      description: 'Date block displayed in place of an image.'
+      properties:
+        day:
+          type: [string, integer]
+        month:
+          type: string
+        date_time:
+          type: string
+        year:
+          type: [string, integer]
+        end_day:
+          type: [string, integer]
+        end_month:
+          type: string
+        end_year:
+          type: [string, integer]
+        icon_path:
+          type: string
+        attributes:
+          type: object
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Section component.
+ */
+#}
+{% set _tag = tag|default('section') %}
+{% set _heading_tag = heading_tag|default('h2') %}
+{% set _attributes = attributes|default(create_attribute()) %}
+{% set _heading_attributes = heading_attributes|default(create_attribute()) %}
+{% set _wrapper_attributes = wrapper_attributes|default(create_attribute()) %}
+
+<{{ _tag }}{{ _attributes.addClass(['section']) }}>
+  {% if heading is not empty %}
+    <{{ _heading_tag }}{{ _heading_attributes.addClass(['section__title']) }}>
+      {{ heading }}
+    </{{ _heading_tag }}>
+  {% endif %}
+  <div{{ _wrapper_attributes.addClass(['section__body']) }}>
+    {{ content }}
+  </div>
+</{{ _tag }}>
