@@ -1,0 +1,234 @@
+carousel_v2_default:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel_v2
+    '#props':
+      items:
+        - image:
+            src: 'https://images.site.example/1'
+            alt: 'alt image 1'
+          caption_title: 'First slide title'
+          caption: 'First slide caption'
+          copyright: '© 2026 Example Organisation'
+        - image:
+            src: 'https://images.site.example/2'
+            alt: 'alt image 2'
+          caption_title: 'Second slide title'
+          caption: 'Second slide caption'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
+      expected:
+        label: 'Featured content'
+        active_item: 1
+        slide_label: '1 of 2'
+        settings:
+          autoplay: false
+          interval: 5000
+          disable_touch: false
+        controls:
+          prev: 'Previous slide'
+          next: 'Next slide'
+          play: 'Play slides'
+          pause: 'Pause slides'
+        items:
+          - image_alt: 'alt image 1'
+            caption_title: 'First slide title'
+            caption: 'First slide caption'
+            copyright: '© 2026 Example Organisation'
+          - image_alt: 'alt image 2'
+            caption_title: 'Second slide title'
+            caption: 'Second slide caption'
+
+carousel_v2_full_width:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel_v2
+    '#props':
+      layout: full_width
+      items:
+        - image:
+            src: 'https://images.site.example/1'
+            alt: 'alt image 1'
+          caption_title: 'First slide title'
+        - image:
+            src: 'https://images.site.example/2'
+            alt: 'alt image 2'
+          caption_title: 'Second slide title'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
+      expected:
+        active_item: 1
+        items:
+          - image_alt: 'alt image 1'
+            caption_title: 'First slide title'
+          - image_alt: 'alt image 2'
+            caption_title: 'Second slide title'
+
+carousel_v2_all_settings:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel_v2
+    '#props':
+      carousel_id: custom-carousel-v2
+      label: 'Featured priorities'
+      layout: split
+      title_tag: h4
+      active_item: 2
+      autoplay: true
+      interval: 4000
+      disable_touch: true
+      prev_label: 'Anterior'
+      next_label: 'Următor'
+      play_label: 'Redă'
+      pause_label: 'Pauză'
+      slide_label: '%current% din %total%'
+      attributes:
+        class:
+          - custom-carousel-v2
+        data-carousel: custom-value
+      items:
+        - image:
+            src: 'https://images.site.example/1'
+            alt: 'alt image 1'
+            title: 'Image title'
+            loading: lazy
+            width: '1200'
+            height: '600'
+            class: 'object-fit-cover'
+          caption_title: 'First slide title'
+          caption: 'First slide caption'
+          interval: 3000
+          copyright: '© 2026 Example Organisation'
+          copyright_label: 'Custom credit:'
+          link:
+            label: 'First link'
+            path: 'https://link.one'
+        - image: '<picture><source srcset="large.webp" media="(min-width: 992px)"><img src="small.jpg" width="600" height="300" alt="Second slide image"></picture>'
+          caption_title: 'Second slide title'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
+      expected:
+        label: 'Featured priorities'
+        active_item: 2
+        slide_label: '2 din 2'
+        settings:
+          autoplay: true
+          interval: 4000
+          disable_touch: true
+        controls:
+          prev: 'Anterior'
+          next: 'Următor'
+          play: 'Redă'
+          pause: 'Pauză'
+        attributes:
+          id: custom-carousel-v2
+          class: 'custom-carousel-v2 bcl-carousel-v2 bcl-carousel-v2--split carousel slide'
+          data-carousel: custom-value
+        items:
+          - image_alt: 'alt image 1'
+            image_title: 'Image title'
+            image_loading: 'lazy'
+            image_width: '1200'
+            image_height: '600'
+            image_class: 'object-fit-cover'
+            caption_title: 'First slide title'
+            caption: 'First slide caption'
+            interval: 3000
+            copyright: '© 2026 Example Organisation'
+            copyright_label: 'Custom credit:'
+            link:
+              label: 'First link'
+              path: 'https://link.one'
+          - image_alt: 'Second slide image'
+            caption_title: 'Second slide title'
+
+carousel_v2_single_item:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel_v2
+    '#props':
+      items:
+        - image:
+            src: 'https://images.site.example/1'
+            alt: 'alt image 1'
+          caption_title: 'Only slide title'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
+      expected:
+        active_item: 1
+        controls: null
+        items:
+          - image_alt: 'alt image 1'
+            caption_title: 'Only slide title'
+
+carousel_v2_out_of_range_active_item_falls_back:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel_v2
+    '#props':
+      active_item: 99
+      items:
+        - image:
+            src: 'https://images.site.example/1'
+            alt: 'alt image 1'
+          caption_title: 'First slide title'
+        - image:
+            src: 'https://images.site.example/2'
+            alt: 'alt image 2'
+          caption_title: 'Second slide title'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
+      expected:
+        active_item: 1
+        items:
+          - image_alt: 'alt image 1'
+            caption_title: 'First slide title'
+          - image_alt: 'alt image 2'
+            caption_title: 'Second slide title'
+
+carousel_v2_zero_items_renders_nothing:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel_v2
+    '#props':
+      items: []
+  assertions:
+    count:
+      '.bcl-carousel-v2': 0
+
+carousel_v2_custom_icon_path:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel_v2
+    '#props':
+      icon_path: '/custom-icons.svg'
+      items:
+        - image:
+            src: 'https://images.site.example/1'
+            alt: 'alt image 1'
+          caption_title: 'First slide title'
+          link:
+            label: 'Read more'
+            path: 'https://link.one'
+        - image:
+            src: 'https://images.site.example/2'
+            alt: 'alt image 2'
+          caption_title: 'Second slide title'
+  assertions:
+    count:
+      '[data-bcl-play-icon] svg': 1
+      '[data-bcl-pause-icon] svg': 1
+      '[data-bs-slide="prev"] svg': 1
+      '[data-bs-slide="next"] svg': 1
+      '.bcl-carousel-v2__content a svg': 1
+    contains:
+      '[data-bcl-play-icon] svg': '/custom-icons.svg#play-fill'
+      '[data-bcl-pause-icon] svg': '/custom-icons.svg#pause-fill'
+      '[data-bs-slide="prev"] svg': '/custom-icons.svg#chevron-left'
+      '[data-bs-slide="next"] svg': '/custom-icons.svg#chevron-right'
+      '.bcl-carousel-v2__content a svg': '/custom-icons.svg#link'

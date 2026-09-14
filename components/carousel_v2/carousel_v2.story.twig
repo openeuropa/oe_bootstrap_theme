@@ -1,0 +1,65 @@
+{% set slides = [
+  {
+    image: {
+      src: 'https://picsum.photos/seed/oe-carousel-v2-1/1200/600',
+      alt: 'Green coastal cliffs with a winding path'
+    },
+    caption_title: 'Explore our coastlines',
+    caption: 'Discover the landscapes and communities shaping our shared environment.',
+    interval: 5000,
+    copyright: '© 2026 Example Organisation',
+    link: {
+      label: 'Discover more',
+      path: 'https://example.com/coastlines'
+    }
+  },
+  {
+    image: {
+      src: 'https://picsum.photos/seed/oe-carousel-v2-2/1200/600',
+      alt: 'River winding through a mountain valley'
+    },
+    caption_title: 'Protecting nature together',
+    caption: 'Learn how local projects help protect biodiversity for future generations.',
+    interval: 4000,
+    copyright: '© 2026 Example Organisation'
+  },
+  {
+    image: {
+      src: 'https://picsum.photos/seed/oe-carousel-v2-3/1200/600',
+      alt: 'Rugged mountains under a clear sky'
+    },
+    caption_title: 'A sustainable future',
+    caption: 'Find out how research supports more resilient communities.',
+    interval: 4000,
+    link: {
+      label: 'Read more',
+      path: 'https://example.com/research'
+    }
+  }
+] %}
+
+<div class="vstack gap-4">
+  <div>
+    <h2>Split layout</h2>
+    {% include 'oe_bootstrap_theme:carousel_v2' with {
+      carousel_id: 'carousel-v2-split-preview',
+      label: 'Featured priorities',
+      layout: 'split',
+      active_item: 1,
+      autoplay: false,
+      items: slides,
+    } only %}
+  </div>
+
+  <div>
+    <h2>Full width layout</h2>
+    {% include 'oe_bootstrap_theme:carousel_v2' with {
+      carousel_id: 'carousel-v2-full-width-preview',
+      label: 'Featured priorities, full width',
+      layout: 'full_width',
+      active_item: 1,
+      autoplay: false,
+      items: slides,
+    } only %}
+  </div>
+</div>

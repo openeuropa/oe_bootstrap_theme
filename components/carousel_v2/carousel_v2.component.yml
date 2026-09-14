@@ -1,0 +1,133 @@
+name: 'Carousel V2'
+description: 'A slideshow component for cycling through elements, with a shared set of navigation controls and a choice of image layouts: image beside the content ("split") or a full-width image ("full_width").'
+props:
+  type: object
+  properties:
+    carousel_id:
+      title: 'Carousel ID'
+      type: string
+      description: 'Unique ID for the carousel. Generated automatically when omitted.'
+    label:
+      title: Label
+      type: [string, array, object]
+      description: 'Accessible name for the carousel region. Defaults to "Featured content".'
+    layout:
+      title: Layout
+      type: string
+      description: 'Image layout. Defaults to split.'
+      enum:
+        - split
+        - full_width
+      'meta:enum':
+        split: 'Split: image beside the content'
+        full_width: 'Full width: image spans the carousel'
+    title_tag:
+      title: 'Title tag'
+      type: string
+      description: 'The tag used for each slide caption title. Defaults to h2.'
+    active_item:
+      title: 'Active item'
+      type: integer
+      description: 'The 1-based index of the initial slide. Defaults to 1.'
+    autoplay:
+      title: Autoplay
+      type: boolean
+      description: 'Whether to rotate slides automatically. Defaults to false. Reduced motion always starts paused.'
+    interval:
+      title: Interval
+      type: integer
+      description: 'Rotation interval in milliseconds. Defaults to 5000.'
+    disable_touch:
+      title: 'Disable touch'
+      type: boolean
+      description: 'Disable touch swiping.'
+    items:
+      title: Slides
+      type: array
+      description: 'Slides shown in the carousel.'
+      items:
+        type: object
+        properties:
+          image:
+            title: Image
+            type: [string, array, object]
+            description: 'Rendered image or picture markup, or an object containing image attributes.'
+            properties:
+              src:
+                type: string
+              alt:
+                type: string
+              title:
+                type: string
+              loading:
+                type: string
+              width:
+                type: string
+              height:
+                type: string
+              class:
+                type: [string, array, object]
+          caption_title:
+            title: 'Caption title'
+            type: [string, array, object]
+          caption:
+            title: Caption
+            type: [string, array, object]
+          interval:
+            title: Interval
+            type: integer
+            description: 'Per-slide rotation interval in milliseconds, overriding the default interval.'
+          copyright:
+            title: Copyright
+            type: [string, array, object]
+          copyright_label:
+            title: 'Copyright label'
+            type: [string, array, object]
+          link:
+            title: Link
+            type: object
+            properties:
+              label:
+                type: [string, array, object]
+              path:
+                type: string
+              icon_position:
+                type: string
+              icon:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  size:
+                    type: string
+                  path:
+                    type: string
+              attributes:
+                type: object
+    prev_label:
+      title: 'Previous label'
+      type: [string, array, object]
+      description: 'Translated label for the previous slide control. Defaults to "Previous slide".'
+    next_label:
+      title: 'Next label'
+      type: [string, array, object]
+      description: 'Translated label for the next slide control. Defaults to "Next slide".'
+    play_label:
+      title: 'Play label'
+      type: [string, array, object]
+      description: 'Translated label for the rotation control when paused. Defaults to "Play slides".'
+    pause_label:
+      title: 'Pause label'
+      type: [string, array, object]
+      description: 'Translated label for the rotation control when rotating. Defaults to "Pause slides".'
+    slide_label:
+      title: 'Slide label'
+      type: [string, array, object]
+      description: 'Translated template for the current/total slide counter, using %current% and %total% placeholders. Defaults to "%current% of %total%".'
+    icon_path:
+      title: 'Icons path'
+      type: string
+      description: 'Path to icons.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute
