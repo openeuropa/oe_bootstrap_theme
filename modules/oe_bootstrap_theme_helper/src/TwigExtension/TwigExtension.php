@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
@@ -15,6 +16,9 @@ use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
 use Drupal\Core\Url;
+use Drupal\image\Plugin\Field\FieldType\ImageItem;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
@@ -81,6 +85,7 @@ class TwigExtension extends AbstractExtension {
         'toInternalLanguageId',
       ]),
       new TwigFilter('element_children', [$this, 'elementChildren']),
+      new TwigFilter('image_value_obj', [$this, 'imageValueObject']),
     ];
   }
 
@@ -370,6 +375,68 @@ class TwigExtension extends AbstractExtension {
     $this->renderer->render($bubbleable);
 
     return $children;
+  }
+
+  /**
+   * Gets image value object(s) from a field render array.
+   *
+   * Idempotent: value objects passed in are returned unchanged.
+   *
+   * @param \Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface|array|null $element
+   *   A value object, an array of value objects, a field render array, or NULL.
+   *
+   * @return \Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface|\Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface[]|null
+   *   One value object, an array of them, or NULL if none.
+   *
+   * @throws \Drupal\Core\TypedData\Exception\MissingDataException
+   */
+  public function imageValueObject(ImageValueObjectInterface|array|null $element): ImageValueObjectInterface|array|null {
+    // Pass through an existing value object.
+    if ($element instanceof ImageValueObjectInterface) {
+      return $element;
+    }
+
+    if (empty($element)) {
+      return NULL;
+    }
+
+    $result = [];
+    foreach ($element as $key => $child) {
+      // Skip render array properties.
+      if (is_string($key) && isset($key[0]) && $key[0] === '#') {
+        continue;
+      }
+
+      // Pass through an existing value object.
+      if ($child instanceof ImageValueObjectInterface) {
+        $result[] = $child;
+        continue;
+      }
+
+      // Skip entries without a field item.
+      if (!is_array($child) || !isset($child['#item'])) {
+        continue;
+      }
+
+      $item = $child['#item'];
+      if ($item instanceof FieldItemListInterface) {
+        $item = $item->first();
+      }
+      // Skip non-image items.
+      if (!$item instanceof ImageItem) {
+        continue;
+      }
+
+      $result[] = !empty($child['#image_style'])
+        ? ImageValueObject::fromStyledImageItem($item, $child['#image_style'])
+        : ImageValueObject::fromImageItem($item);
+    }
+
+    if (empty($result)) {
+      return NULL;
+    }
+
+    return count($result) === 1 ? $result[0] : $result;
   }
 
 }
