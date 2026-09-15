@@ -9,8 +9,16 @@ use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Render\RenderContext;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
+use Drupal\Tests\TestFileCreationTrait;
+use Drupal\Tests\image\Kernel\ImageFieldCreationTrait;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
+use Drupal\entity_test\Entity\EntityTest;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\DomCrawler\Crawler;
 use Twig\Markup;
@@ -19,6 +27,29 @@ use Twig\Markup;
  * Test those Twig extensions that require Drupal to be bootstrapped.
  */
 class TwigExtensionTest extends AbstractKernelTestBase {
+
+  use TestFileCreationTrait;
+  use ImageFieldCreationTrait;
+
+  /**
+   * {@inheritdoc}
+   */
+  protected static $modules = [
+    'entity_test',
+    'field',
+    'file',
+  ];
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp(): void {
+    parent::setUp();
+
+    $this->installEntitySchema('file');
+    $this->installEntitySchema('entity_test');
+    $this->installSchema('file', ['file_usage']);
+  }
 
   /**
    * Test bcl_link function.
@@ -565,6 +596,384 @@ TWIG;
         ],
       ],
     ];
+  }
+
+  /**
+   * Tests image_value_obj returns NULL for empty input.
+   */
+  public function testImageValueObjEmptyInputReturnsNull(): void {
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $this->assertNull($extension->imageValueObject(NULL));
+    $this->assertNull($extension->imageValueObject([]));
+  }
+
+  /**
+   * Tests image_value_obj returns NULL when no image children exist.
+   */
+  public function testImageValueObjNoImageChildrenReturnsNull(): void {
+    FieldStorageConfig::create([
+      'entity_type' => 'entity_test',
+      'field_name' => 'field_text',
+      'type' => 'string',
+    ])->save();
+    FieldConfig::create([
+      'field_storage' => FieldStorageConfig::loadByName('entity_test', 'field_text'),
+      'bundle' => 'entity_test',
+    ])->save();
+
+    $entity = EntityTest::create([
+      'name' => 'no_image',
+      'field_text' => 'not an image',
+    ]);
+    $entity->save();
+
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+
+    $element = ['child' => ['#markup' => 'no item here']];
+    $this->assertNull($extension->imageValueObject($element));
+
+    $element = ['child' => ['#item' => $entity->get('field_text')->first()]];
+    $this->assertNull($extension->imageValueObject($element));
+  }
+
+  /**
+   * Tests image_value_obj returns a single object.
+   */
+  public function testImageValueObjSingleImageReturnsSingleObject(): void {
+    $this->createImageField('field_image', 'entity_test', 'entity_test');
+    $file = $this->createImageFileEntity();
+
+    $entity = EntityTest::create([
+      'name' => 'single',
+      'field_image' => [
+        'target_id' => $file->id(),
+        'alt' => 'Single alt',
+        'title' => 'Single title',
+      ],
+    ]);
+    $entity->save();
+
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $element = ['child' => ['#item' => $entity->get('field_image')->first()]];
+    $result = $extension->imageValueObject($element);
+    $this->assertInstanceOf(ImageValueObjectInterface::class, $result);
+    $this->assertEquals('Single title', $result->getName());
+    $this->assertEquals('Single alt', $result->getAlt());
+    $this->assertStringContainsString('/files/', $result->getSource());
+  }
+
+  /**
+   * Tests a field item list is reduced to its first item.
+   */
+  public function testImageValueObjFieldItemListIsReducedFirst(): void {
+    $this->createImageField('field_image', 'entity_test', 'entity_test');
+    $file = $this->createImageFileEntity();
+
+    $entity = EntityTest::create([
+      'name' => 'single',
+      'field_image' => [
+        'target_id' => $file->id(),
+        'alt' => 'Single alt',
+        'title' => 'Single title',
+      ],
+    ]);
+    $entity->save();
+
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    // Pass the whole item list rather than a single item.
+    $element = ['child' => ['#item' => $entity->get('field_image')]];
+    $result = $extension->imageValueObject($element);
+    $this->assertInstanceOf(ImageValueObjectInterface::class, $result);
+    $this->assertEquals('Single title', $result->getName());
+  }
+
+  /**
+   * Tests an image style produces a styled source URL.
+   */
+  public function testImageValueObjImageStyleProducesStyledSource(): void {
+    $this->createImageField('field_image', 'entity_test', 'entity_test');
+    $file = $this->createImageFileEntity();
+    ImageStyle::create(['name' => 'test_style'])->save();
+
+    $entity = EntityTest::create([
+      'name' => 'single',
+      'field_image' => [
+        'target_id' => $file->id(),
+        'alt' => 'Single alt',
+        'title' => 'Single title',
+      ],
+    ]);
+    $entity->save();
+
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $element = [
+      'child' => [
+        '#item' => $entity->get('field_image')->first(),
+        '#image_style' => 'test_style',
+      ],
+    ];
+    $result = $extension->imageValueObject($element);
+    $this->assertInstanceOf(ImageValueObjectInterface::class, $result);
+    $this->assertStringContainsString('/styles/test_style/', $result->getSource());
+  }
+
+  /**
+   * Tests multiple image children yield an array.
+   */
+  public function testImageValueObjMultipleImagesReturnArray(): void {
+    $this->createImageField('field_images', 'entity_test', 'entity_test', [
+      'cardinality' => FieldStorageConfig::CARDINALITY_UNLIMITED,
+    ]);
+    $file_one = $this->createImageFileEntity(0);
+    $file_two = $this->createImageFileEntity(1);
+
+    $entity = EntityTest::create([
+      'name' => 'multi',
+      'field_images' => [
+        [
+          'target_id' => $file_one->id(),
+          'alt' => 'First alt',
+          'title' => 'First title',
+        ],
+        [
+          'target_id' => $file_two->id(),
+          'alt' => 'Second alt',
+          'title' => 'Second title',
+        ],
+      ],
+    ]);
+    $entity->save();
+
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $items = $entity->get('field_images');
+    $element = [
+      'child_0' => ['#item' => $items->get(0)],
+      'child_1' => ['#item' => $items->get(1)],
+    ];
+    $result = $extension->imageValueObject($element);
+    $this->assertIsArray($result);
+    $this->assertCount(2, $result);
+    $this->assertContainsOnlyInstancesOf(ImageValueObjectInterface::class, $result);
+    $this->assertEquals('First title', $result[0]->getName());
+    $this->assertEquals('Second title', $result[1]->getName());
+  }
+
+  /**
+   * Tests invalid children are skipped while valid ones are collected.
+   */
+  public function testImageValueObjInvalidChildrenAreSkippedNotAborted(): void {
+    $this->createImageField('field_image', 'entity_test', 'entity_test');
+    FieldStorageConfig::create([
+      'entity_type' => 'entity_test',
+      'field_name' => 'field_text',
+      'type' => 'string',
+    ])->save();
+    FieldConfig::create([
+      'field_storage' => FieldStorageConfig::loadByName('entity_test', 'field_text'),
+      'bundle' => 'entity_test',
+    ])->save();
+    $file = $this->createImageFileEntity();
+
+    $entity = EntityTest::create([
+      'name' => 'mixed',
+      'field_image' => [
+        'target_id' => $file->id(),
+        'alt' => 'Single alt',
+        'title' => 'Single title',
+      ],
+      'field_text' => 'not an image',
+    ]);
+    $entity->save();
+
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $element = [
+      'invalid' => ['#item' => $entity->get('field_text')->first()],
+      'valid' => ['#item' => $entity->get('field_image')->first()],
+    ];
+    $result = $extension->imageValueObject($element);
+    $this->assertInstanceOf(ImageValueObjectInterface::class, $result);
+    $this->assertEquals('Single title', $result->getName());
+  }
+
+  /**
+   * Tests idempotency for a single value object.
+   */
+  public function testImageValueObjIdempotentSingleValueObject(): void {
+    $this->createImageField('field_image', 'entity_test', 'entity_test');
+    $file = $this->createImageFileEntity();
+
+    $entity = EntityTest::create([
+      'name' => 'single',
+      'field_image' => [
+        'target_id' => $file->id(),
+        'alt' => 'Single alt',
+        'title' => 'Single title',
+      ],
+    ]);
+    $entity->save();
+
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $first = $extension->imageValueObject([
+      'child' => ['#item' => $entity->get('field_image')->first()],
+    ]);
+    $this->assertInstanceOf(ImageValueObjectInterface::class, $first);
+
+    $second = $extension->imageValueObject($first);
+    $this->assertSame($first, $second);
+  }
+
+  /**
+   * Tests idempotency for an array of value objects.
+   */
+  public function testImageValueObjIdempotentArrayValueObjects(): void {
+    $this->createImageField('field_images', 'entity_test', 'entity_test', [
+      'cardinality' => FieldStorageConfig::CARDINALITY_UNLIMITED,
+    ]);
+    $file_one = $this->createImageFileEntity(0);
+    $file_two = $this->createImageFileEntity(1);
+
+    $entity = EntityTest::create([
+      'name' => 'multi',
+      'field_images' => [
+        ['target_id' => $file_one->id(), 'alt' => 'First alt', 'title' => 'First title'],
+        ['target_id' => $file_two->id(), 'alt' => 'Second alt', 'title' => 'Second title'],
+      ],
+    ]);
+    $entity->save();
+
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $items = $entity->get('field_images');
+    $first = $extension->imageValueObject([
+      'child_0' => ['#item' => $items->get(0)],
+      'child_1' => ['#item' => $items->get(1)],
+    ]);
+    $this->assertIsArray($first);
+    $this->assertCount(2, $first);
+
+    $second = $extension->imageValueObject($first);
+    $this->assertIsArray($second);
+    $this->assertCount(2, $second);
+    $this->assertSame($first[0], $second[0]);
+    $this->assertSame($first[1], $second[1]);
+  }
+
+  /**
+   * Tests a single-element value object array collapses to the object.
+   */
+  public function testImageValueObjSingleElementValueObjectArrayCollapses(): void {
+    $this->createImageField('field_image', 'entity_test', 'entity_test');
+    $file = $this->createImageFileEntity();
+
+    $entity = EntityTest::create([
+      'name' => 'single',
+      'field_image' => [
+        'target_id' => $file->id(),
+        'alt' => 'Single alt',
+        'title' => 'Single title',
+      ],
+    ]);
+    $entity->save();
+
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $single = $extension->imageValueObject([
+      'child' => ['#item' => $entity->get('field_image')->first()],
+    ]);
+    $this->assertInstanceOf(ImageValueObjectInterface::class, $single);
+
+    $result = $extension->imageValueObject([$single]);
+    $this->assertSame($single, $result);
+  }
+
+  /**
+   * Tests render array properties are skipped.
+   */
+  public function testImageValueObjRenderPropertiesAreSkipped(): void {
+    $this->createImageField('field_image', 'entity_test', 'entity_test');
+    $file = $this->createImageFileEntity();
+
+    $entity = EntityTest::create([
+      'name' => 'single',
+      'field_image' => [
+        'target_id' => $file->id(),
+        'alt' => 'Single alt',
+        'title' => 'Single title',
+      ],
+    ]);
+    $entity->save();
+
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $element = [
+      '#theme' => 'field',
+      '#cache' => ['tags' => ['foo']],
+      'child' => ['#item' => $entity->get('field_image')->first()],
+    ];
+    $result = $extension->imageValueObject($element);
+    $this->assertInstanceOf(ImageValueObjectInterface::class, $result);
+    $this->assertEquals('Single title', $result->getName());
+  }
+
+  /**
+   * Tests non-array children are skipped.
+   */
+  public function testImageValueObjScalarChildReturnsNull(): void {
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $element = ['child' => 'a string, not an array'];
+    $this->assertNull($extension->imageValueObject($element));
+  }
+
+  /**
+   * Tests a mixed array of a value object and a render child is combined.
+   */
+  public function testImageValueObjMixedValueObjectAndRenderChild(): void {
+    $this->createImageField('field_images', 'entity_test', 'entity_test', [
+      'cardinality' => FieldStorageConfig::CARDINALITY_UNLIMITED,
+    ]);
+    $file_one = $this->createImageFileEntity(0);
+    $file_two = $this->createImageFileEntity(1);
+
+    $entity = EntityTest::create([
+      'name' => 'multi',
+      'field_images' => [
+        ['target_id' => $file_one->id(), 'alt' => 'First alt', 'title' => 'First title'],
+        ['target_id' => $file_two->id(), 'alt' => 'Second alt', 'title' => 'Second title'],
+      ],
+    ]);
+    $entity->save();
+
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $existing = $extension->imageValueObject([
+      'child' => ['#item' => $entity->get('field_images')->get(0)],
+    ]);
+    $this->assertInstanceOf(ImageValueObjectInterface::class, $existing);
+
+    $element = [
+      'existing' => $existing,
+      'child' => ['#item' => $entity->get('field_images')->get(1)],
+    ];
+    $result = $extension->imageValueObject($element);
+    $this->assertIsArray($result);
+    $this->assertCount(2, $result);
+    $this->assertContainsOnlyInstancesOf(ImageValueObjectInterface::class, $result);
+    $this->assertSame($existing, $result[0]);
+    $this->assertEquals('Second title', $result[1]->getName());
+  }
+
+  /**
+   * Creates a permanent image file entity from a core test fixture.
+   *
+   * @param int $index
+   *   Index of the test image file to use.
+   *
+   * @return \Drupal\file\Entity\File
+   *   The saved file entity.
+   */
+  protected function createImageFileEntity(int $index = 0): File {
+    $file = File::create([
+      'uri' => $this->getTestFiles('image')[$index]->uri,
+    ]);
+    $file->save();
+
+    return $file;
   }
 
 }
