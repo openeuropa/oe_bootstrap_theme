@@ -2,18 +2,15 @@
  * @file
  * Attaches behaviors for accessible Bootstrap components.
  */
-(function (bootstrap, Drupal) {
-
-  const staticOffcanvasRoles = new WeakMap();
-  let offcanvasResizeListenerAttached = false;
+(function (bootstrap, Drupal, once) {
 
   /**
-   * Synchronizes the accessible name with the responsive title visibility.
+   * Adds or removes aria-labelledby based on the offcanvas title visibility.
    *
    * @param {HTMLElement} offcanvas
    *   The offcanvas element.
    */
-  function synchronizeOffcanvasLabel(offcanvas) {
+  function updateOffcanvasLabelledByAttribute(offcanvas) {
     const labelledBy = offcanvas.getAttribute(
       'data-offcanvas-aria-labelledby'
     );
@@ -32,15 +29,20 @@
   }
 
   /**
-   * Synchronizes labels for all responsive offcanvas elements.
+   * Updates aria-labelledby on all responsive offcanvas elements.
    */
-  function synchronizeResponsiveOffcanvasLabels() {
+  function updateResponsiveOffcanvasLabelledByAttributes() {
     document
       .querySelectorAll(
         '[class*="offcanvas-"][data-offcanvas-aria-labelledby]'
       )
-      .forEach(synchronizeOffcanvasLabel);
+      .forEach(updateOffcanvasLabelledByAttribute);
   }
+
+  window.addEventListener(
+    'resize',
+    updateResponsiveOffcanvasLabelledByAttributes
+  );
 
   /**
    * Attaches the accessible toggle behavior to Bootstrap components.
@@ -57,36 +59,38 @@
         { selector: '[data-bs-toggle="offcanvas"]', type: 'offcanvas' }
         // Additional components like collapse can be added here in the future.
       ]);
+    }
+  };
 
-      document
-        .querySelectorAll('[class*="offcanvas-"][data-offcanvas-static-role]')
+  /**
+   * Dynamically updates attributes on responsive offcanvas elements.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Initializes attribute switching for responsive offcanvas elements.
+   */
+  Drupal.behaviors.offcanvasAttributeSwitching = {
+    attach: function (context, settings) {
+      once(
+        'offcanvas-attribute-switching',
+        '[class*="offcanvas-"][data-offcanvas-static-role]',
+        context
+      )
         .forEach(function initializeStaticOffcanvasRole(offcanvas) {
-          if (staticOffcanvasRoles.has(offcanvas)) {
-            return;
-          }
-
-          staticOffcanvasRoles.set(
-            offcanvas,
-            offcanvas.getAttribute('data-offcanvas-static-role')
-          );
           // Bootstrap removes its dialog role when the offcanvas closes.
           offcanvas.addEventListener(
             'hidden.bs.offcanvas',
             function restoreStaticOffcanvasRole() {
-              offcanvas.setAttribute('role', staticOffcanvasRoles.get(offcanvas));
+              offcanvas.setAttribute(
+                'role',
+                offcanvas.getAttribute('data-offcanvas-static-role')
+              );
             }
           );
+          updateOffcanvasLabelledByAttribute(offcanvas);
         });
-
-      synchronizeResponsiveOffcanvasLabels();
-      if (!offcanvasResizeListenerAttached) {
-        window.addEventListener(
-          'resize',
-          synchronizeResponsiveOffcanvasLabels
-        );
-        offcanvasResizeListenerAttached = true;
-      }
     }
   };
 
-})(bootstrap, Drupal);
+})(bootstrap, Drupal, once);

@@ -81,11 +81,21 @@ class AccessibleToggleTest extends WebDriverTestBase {
         offcanvas.setAttribute('role', 'dialog');
         offcanvas.setAttribute('data-offcanvas-static-role', 'complementary');
         document.body.appendChild(offcanvas);
-        Drupal.behaviors.accessibleToggle.attach(document, drupalSettings);
+        Drupal.behaviors.offcanvasAttributeSwitching.attach(
+          document,
+          drupalSettings
+        );
+        Drupal.behaviors.offcanvasAttributeSwitching.attach(
+          document,
+          drupalSettings
+        );
         offcanvas.dispatchEvent(new Event('hidden.bs.offcanvas'));
       }());
     JS);
-    $assert->elementExists('css', '#late-offcanvas[role="complementary"]');
+    $assert->elementExists(
+      'css',
+      '#late-offcanvas[role="complementary"][data-once~="offcanvas-attribute-switching"]'
+    );
 
     $this->clickWhenInViewport($modalSelector);
     $assert->waitForElementVisible('css', '.modal.show');
