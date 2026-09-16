@@ -3,6 +3,9 @@ bcl:
     assets/js/oe-bcl-default.bundle.min.js: {}
     resources/js/accessible_toggle.js: {}
     resources/js/accordion_toggle.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
   css:
     theme:
       assets/css/oe-bcl-default.min.css: {}
