@@ -45,6 +45,24 @@ function oe_bootstrap_theme_form_system_theme_settings_alter(&$form, FormStateIn
     '#default_value' => DrupalCompatibility::themeGetSetting('bootstrap_tables.responsive') ?? '',
   ];
 
+  $form['facts_figures'] = [
+    '#type' => 'details',
+    '#title' => t('Facts and figures'),
+    '#open' => TRUE,
+    '#tree' => TRUE,
+  ];
+
+  $form['facts_figures']['icon_size'] = [
+    '#type' => 'select',
+    '#title' => t('Icon size'),
+    '#description' => t('The size of the icons displayed in the "Facts and figures" pattern.'),
+    '#options' => [
+      'l' => t('L'),
+      '3xl' => t('3XL'),
+    ],
+    '#default_value' => DrupalCompatibility::themeGetSetting('facts_figures.icon_size') ?? 'l',
+  ];
+
   $form['backward_compatibility'] = [
     '#type' => 'details',
     '#title' => t('Backward compatibility'),
