@@ -61,6 +61,10 @@ props:
       title: 'Icons path'
       type: string
       description: 'Path to icons.'
+    icon_size:
+      title: 'Icon size'
+      type: string
+      description: 'Size of the icons. Defaults to the "facts_figures.icon_size" theme setting, or "l" if unset.'
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute
