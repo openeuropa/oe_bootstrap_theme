@@ -37,6 +37,14 @@ class CarouselV2ComponentAssert extends BasePatternAssert {
         '.bcl-carousel-v2',
         'aria-label',
       ],
+      'carousel_role_label' => [
+        [$this, 'assertElementAttribute'],
+        '.bcl-carousel-v2',
+        'aria-roledescription',
+      ],
+      'slide_role_label' => [
+        [$this, 'assertSlideRoleLabel'],
+      ],
       'active_item' => [
         [$this, 'assertActiveItem'],
       ],
@@ -65,7 +73,6 @@ class CarouselV2ComponentAssert extends BasePatternAssert {
     $this->assertElementExists('.bcl-carousel-v2 .carousel-inner', $crawler);
     $this->assertElementExists('.bcl-carousel-v2.bcl-carousel-v2--' . $variant, $crawler);
     $this->assertElementAttribute('region', '.bcl-carousel-v2', 'role', $crawler);
-    $this->assertElementAttribute('carousel', '.bcl-carousel-v2', 'aria-roledescription', $crawler);
     // The V2 controller owns rotation; Bootstrap's own data-API must be off.
     $this->assertElementAttribute('false', '.bcl-carousel-v2', 'data-bs-ride', $crawler);
     $this->assertElementAttribute('false', '.bcl-carousel-v2', 'data-bs-pause', $crawler);
@@ -101,6 +108,21 @@ class CarouselV2ComponentAssert extends BasePatternAssert {
    */
   protected function assertSlideLabel(string $expected, Crawler $crawler): void {
     $this->assertElementAttribute($expected, '.carousel-item.active', 'aria-label', $crawler);
+  }
+
+  /**
+   * Asserts the aria-roledescription of every slide.
+   *
+   * @param string $expected
+   *   The expected aria-roledescription for each slide.
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   *   The crawler.
+   */
+  protected function assertSlideRoleLabel(string $expected, Crawler $crawler): void {
+    $items = $crawler->filter('.bcl-carousel-v2 .carousel-inner .carousel-item');
+    foreach ($items as $index => $item) {
+      self::assertSame($expected, $item->getAttribute('aria-roledescription'), sprintf('Unexpected slide role label for item %d.', $index + 1));
+    }
   }
 
   /**
