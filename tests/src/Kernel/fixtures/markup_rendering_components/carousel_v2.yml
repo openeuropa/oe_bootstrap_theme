@@ -22,6 +22,8 @@ carousel_v2_default:
         label: 'Featured content'
         active_item: 1
         slide_label: '1 of 2'
+        carousel_role_label: 'carousel'
+        slide_role_label: 'slide'
         settings:
           autoplay: false
           interval: 5000
@@ -84,6 +86,8 @@ carousel_v2_all_settings:
       play_label: 'Redă'
       pause_label: 'Pauză'
       slide_label: '%current% din %total%'
+      carousel_role_label: 'carusel'
+      slide_role_label: 'diapozitiv'
       attributes:
         class:
           - custom-carousel-v2
@@ -114,6 +118,8 @@ carousel_v2_all_settings:
         label: 'Featured priorities'
         active_item: 2
         slide_label: '2 din 2'
+        carousel_role_label: 'carusel'
+        slide_role_label: 'diapozitiv'
         settings:
           autoplay: true
           interval: 4000

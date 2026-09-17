@@ -124,6 +124,14 @@ props:
       title: 'Slide label'
       type: [string, array, object]
       description: 'Translated template for the current/total slide counter, using %current% and %total% placeholders. Defaults to "%current% of %total%".'
+    carousel_role_label:
+      title: 'Carousel role label'
+      type: [string, array, object]
+      description: 'Translated ARIA role description announced for the carousel region. Defaults to "carousel".'
+    slide_role_label:
+      title: 'Slide role label'
+      type: [string, array, object]
+      description: 'Translated ARIA role description announced for each slide. Defaults to "slide".'
     icon_path:
       title: 'Icons path'
       type: string
