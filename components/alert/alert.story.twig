@@ -1,0 +1,22 @@
+{% set variants = [
+  'primary',
+  'secondary',
+  'success',
+  'danger',
+  'warning',
+  'info',
+  'light',
+  'dark',
+  'link',
+] %}
+
+{% for variant in variants %}
+  {% include 'oe_bootstrap_theme:alert' with {
+    variant: variant,
+    dismissible: true,
+    animated_dismiss: true,
+    heading: variant|capitalize ~ ' alert',
+    message: 'A simple alert. Check it out!',
+    icon: 'lock',
+  } only %}
+{% endfor %}

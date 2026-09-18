@@ -1,0 +1,73 @@
+{% set sizes = ['2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', 'fluid'] %}
+{% set transformations = [
+  { value: 'rotate-90', label: 'Rotate 90 degrees' },
+  { value: 'rotate-180', label: 'Rotate 180 degrees' },
+  { value: 'rotate-270', label: 'Rotate 270 degrees' },
+  { value: 'flip-horizontal', label: 'Flip horizontally' },
+  { value: 'flip-vertical', label: 'Flip vertically' },
+] %}
+
+<style>
+  .icon-story__sample {
+    inline-size: 7rem;
+  }
+
+  .icon-story__preview {
+    inline-size: 5rem;
+    block-size: 5rem;
+  }
+</style>
+
+<div class="vstack gap-5">
+  <div>
+    <h3>Sizes</h3>
+    <div class="d-flex flex-wrap gap-4">
+      {% for size in sizes %}
+        <div class="icon-story__sample text-center">
+          <div class="icon-story__preview d-flex align-items-center justify-content-center mx-auto">
+            {% include 'oe_bootstrap_theme:icon' with {
+              name: 'eye',
+              size: size,
+              attributes: create_attribute().addClass('text-primary').setAttribute('aria-hidden', 'true'),
+            } only %}
+          </div>
+          <div class="small mt-2">{{ size }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div>
+    <h3>Transformations</h3>
+    <div class="d-flex flex-wrap gap-4">
+      {% for transformation in transformations %}
+        <div class="icon-story__sample text-center">
+          <div class="icon-story__preview d-flex align-items-center justify-content-center mx-auto">
+            {% include 'oe_bootstrap_theme:icon' with {
+              name: 'arrow-right',
+              size: 'xl',
+              transformation: transformation.value,
+              attributes: create_attribute().addClass('text-secondary').setAttribute('aria-hidden', 'true'),
+            } only %}
+          </div>
+          <div class="small mt-2">{{ transformation.label }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div>
+    <h3>Custom attributes and path</h3>
+    {% include 'oe_bootstrap_theme:icon' with {
+      name: 'award',
+      size: '2xl',
+      icon_path: bcl_icon_path(),
+      attributes: create_attribute({
+        id: 'custom-icon',
+        class: ['text-success', 'custom-icon-class'],
+        role: 'img',
+        'aria-label': 'Award',
+      }),
+    } only %}
+  </div>
+</div>

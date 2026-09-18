@@ -1,0 +1,67 @@
+{% set items = [
+  {
+    label: '13 September 2017',
+    title: 'State of the Union',
+    content: [
+      {
+        '#markup': '<a href="/example">President Juncker State of the Union speech</a>',
+      },
+    ],
+  },
+  {
+    label: '28-29 September 2017',
+    title: 'Digital Summit',
+    content: [
+      {
+        '#markup': '<a href="/example">Informal Digital Summit, Tallinn</a>',
+      },
+    ],
+  },
+  {
+    label: '14 November 2017',
+    content: 'Strengthening European identity through education and culture.',
+  },
+  {
+    label: '17 November 2017',
+    content: [
+      {
+        '#markup': '<a href="/example">Social Summit in Gothenburg, Sweden</a>',
+      },
+    ],
+  },
+  {
+    label: '6 December 2017',
+    content: [
+      {
+        '#markup': '<a href="/example">Economic and Monetary Union package of proposals</a>',
+      },
+    ],
+  },
+  {
+    label: '14-15 December 2017',
+    content: [
+      {
+        '#markup': '<a href="/example">EU Leaders meeting on migration, Brussels</a>',
+      },
+    ],
+  },
+] %}
+
+{% include 'oe_bootstrap_theme:timeline' with {
+  title: 'Timeline heading',
+  title_tag: 'h3',
+  hide_from: 3,
+  hide_to: 0,
+  collapse_button_label: 'Display %d more',
+  expand_button_label: 'Hide %d items',
+  items: items,
+} only %}
+
+{% include 'oe_bootstrap_theme:timeline' with {
+  title: 'Timeline with a linked title, no truncation',
+  title_tag: 'h3',
+  title_link: {
+    path: '/example',
+  },
+  items: items,
+} only %}

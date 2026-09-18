@@ -1,0 +1,54 @@
+{#
+/**
+ * @file
+ * Links block component.
+ */
+#}
+{% set _icon_path = icon_path|default(bcl_icon_path()) %}
+{% set _title_link = title_link|default({}) %}
+
+{% if _title_link is not empty %}
+  {% set _title_link = _title_link|merge({
+    attributes: create_attribute(_title_link.attributes|default({})),
+  }) %}
+  {% if _title_link.icon is defined and _title_link.icon is not empty %}
+    {% set _title_icon = _title_link.icon is iterable ? _title_link.icon : { name: _title_link.icon } %}
+    {% set _title_link = _title_link|merge({
+      icon: _title_icon|merge({
+        path: _title_icon.path|default(_icon_path),
+        attributes: create_attribute(_title_icon.attributes|default({})),
+      }),
+    }) %}
+  {% endif %}
+{% endif %}
+
+{% set _links = [] %}
+{% for link in links|default([]) %}
+  {% set _link = link|merge({
+    attributes: create_attribute(link.attributes|default({})),
+  }) %}
+  {% if _link.icon is defined and _link.icon is not empty %}
+    {% set _link_icon = _link.icon is iterable ? _link.icon : { name: _link.icon } %}
+    {% set _link = _link|merge({
+      icon: _link_icon|merge({
+        path: _link_icon.path|default(_icon_path),
+        attributes: create_attribute(_link_icon.attributes|default({})),
+      }),
+    }) %}
+    {% if _link.icon_display is not defined %}
+      {% set _link = _link|merge({ icon_display: 'flex' }) %}
+    {% endif %}
+  {% endif %}
+  {% set _links = _links|merge([_link]) %}
+{% endfor %}
+
+{% include '@oe-bcl/links-block' with {
+  title: title,
+  title_tag: title_tag,
+  title_link: _title_link,
+  title_attributes: title_attributes,
+  background: background,
+  variant: orientation,
+  links: _links,
+  attributes: attributes,
+} only %}
