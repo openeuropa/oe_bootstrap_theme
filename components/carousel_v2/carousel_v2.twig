@@ -1,0 +1,77 @@
+{#
+/**
+ * @file
+ * Carousel V2 component.
+ */
+#}
+{% set _icon_path = icon_path|default(bcl_icon_path()) %}
+{% set carousel_id = carousel_id|default('carousel-v2'|clean_unique_id) %}
+{% set _copyright_label = 'Image credit:'|t %}
+
+{% set _items = [] %}
+{% for slide in items|default([]) %}
+  {% set _image = slide.image|default('') %}
+  {% if _image is iterable %}
+    {% if _image.src is defined %}
+      {% set _image_attributes = create_attribute({
+        src: _image.src,
+        alt: _image.alt|default(''),
+      }) %}
+      {% if _image.class is defined %}
+        {% set _image_attributes = _image_attributes.addClass(_image.class) %}
+      {% endif %}
+      {% if _image.title is defined and _image.title is not empty %}
+        {% set _image_attributes = _image_attributes.setAttribute('title', _image.title) %}
+      {% endif %}
+      {% set _image_attributes = _image_attributes|copy_attributes(_image, ['loading', 'width', 'height']) %}
+      {% set _image %}
+        <img{{ _image_attributes }} />
+      {% endset %}
+    {% else %}
+      {# An image object without a "src" has nothing to render. #}
+      {% set _image = '' %}
+    {% endif %}
+  {% elseif _image is not empty %}
+    {# A string image is caller-rendered markup (e.g. a <picture> element). #}
+    {% set _image %}{{ _image|raw }}{% endset %}
+  {% endif %}
+
+  {% set _item = slide|merge({
+    image: _image,
+    copyright_label: slide.copyright_label|default(_copyright_label),
+  }) %}
+  {% if slide.link is defined and slide.link is not empty %}
+    {% set _item = _item|merge({
+      link: slide.link|merge({
+        icon_position: slide.link.icon_position|default('before'),
+        icon: slide.link.icon|default({})|merge({
+          name: slide.link.icon.name|default('link'),
+          path: slide.link.icon.path|default(_icon_path),
+        }),
+        attributes: create_attribute(slide.link.attributes|default({})),
+      }),
+    }) %}
+  {% endif %}
+  {% set _items = _items|merge([_item]) %}
+{% endfor %}
+
+{% include '@oe-bcl/bcl-carousel-v2/carousel.html.twig' with {
+  id: carousel_id,
+  label: label|default('Featured content'|t),
+  layout: layout|default('split'),
+  title_tag: title_tag|default('h2'),
+  active_item: active_item|default(1),
+  autoplay: autoplay ?? false,
+  interval: interval|default(5000),
+  disable_touch: disable_touch ?? false,
+  items: _items,
+  icon_path: _icon_path,
+  prev_label: prev_label|default('Previous slide'|t),
+  next_label: next_label|default('Next slide'|t),
+  play_label: play_label|default('Play slides'|t),
+  pause_label: pause_label|default('Pause slides'|t),
+  slide_label: slide_label|default('%current% of %total%'|t),
+  carousel_role_label: carousel_role_label|default('carousel'|t),
+  slide_role_label: slide_role_label|default('slide'|t),
+  attributes: attributes,
+} only %}

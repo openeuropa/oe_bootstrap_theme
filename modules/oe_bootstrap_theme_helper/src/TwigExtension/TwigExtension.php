@@ -57,6 +57,7 @@ class TwigExtension extends AbstractExtension {
         'toInternalLanguageId',
       ]),
       new TwigFilter('element_children', [$this, 'elementChildren']),
+      new TwigFilter('copy_attributes', [$this, 'copyAttributes']),
     ];
   }
 
@@ -462,6 +463,28 @@ class TwigExtension extends AbstractExtension {
   public function getBclIconPath(): string {
     $theme = $this->themeList->get('oe_bootstrap_theme');
     return base_path() . $theme->getPath() . '/assets/icons/bcl-default-icons.svg';
+  }
+
+  /**
+   * Copies whitelisted, non-empty keys from a source array onto attributes.
+   *
+   * @param \Drupal\Core\Template\Attribute $attributes
+   *   The attributes to extend.
+   * @param array $source
+   *   The source array to read values from.
+   * @param string[] $keys
+   *   The source keys to copy as attributes, when defined and not empty.
+   *
+   * @return \Drupal\Core\Template\Attribute
+   *   The extended attributes.
+   */
+  public function copyAttributes(Attribute $attributes, array $source, array $keys): Attribute {
+    foreach ($keys as $key) {
+      if (!empty($source[$key])) {
+        $attributes->setAttribute($key, $source[$key]);
+      }
+    }
+    return $attributes;
   }
 
   /**
