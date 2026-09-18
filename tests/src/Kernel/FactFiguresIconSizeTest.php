@@ -57,6 +57,40 @@ class FactFiguresIconSizeTest extends AbstractKernelTestBase {
   }
 
   /**
+   * Tests that an "icon_size" prop overrides the theme setting.
+   */
+  public function testIconSizePropOverridesThemeSetting(): void {
+    $build = [
+      '#type' => 'component',
+      '#component' => 'oe_bootstrap_theme:fact_figures',
+      '#props' => [
+        'icon_size' => 'xl',
+        'columns' => 3,
+        'title' => 'Fact and figures block',
+        'items' => [
+          [
+            'icon' => 'x-diamond-fill',
+            'subtitle' => 'Jira Tickets',
+            'title' => '1529 JIRA Ticket',
+            'description' => 'Nunc condimentum sapien ut nibh finibus suscipit.',
+          ],
+        ],
+      ],
+    ];
+
+    // The prop wins over the default theme setting.
+    $crawler = $this->renderBuild($build);
+    $this->assertCount(1, $crawler->filter('svg.bi.icon--xl'));
+    $this->assertCount(0, $crawler->filter('svg.bi.icon--3xl'));
+
+    // The prop still wins when the theme setting is set too.
+    $this->setIconSize('l');
+    $crawler = $this->renderBuild($build);
+    $this->assertCount(1, $crawler->filter('svg.bi.icon--xl'));
+    $this->assertCount(0, $crawler->filter('svg.bi.icon--l'));
+  }
+
+  /**
    * Data provider for ::testIconSize().
    *
    * @return array
