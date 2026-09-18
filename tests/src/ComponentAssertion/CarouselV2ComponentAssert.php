@@ -210,6 +210,9 @@ class CarouselV2ComponentAssert extends BasePatternAssert {
           $this->assertElementText($expected_item['link']['label'], '.bcl-carousel-v2__content a', $item);
           $this->assertElementAttribute($expected_item['link']['path'], '.bcl-carousel-v2__content a', 'href', $item);
           $this->assertElementExists('.bcl-carousel-v2__content a svg', $item);
+          if (isset($expected_item['link']['class'])) {
+            $this->assertElementAttribute($expected_item['link']['class'], '.bcl-carousel-v2__content a', 'class', $item);
+          }
         }
         else {
           $this->assertElementNotExists('.bcl-carousel-v2__content a', $item);
