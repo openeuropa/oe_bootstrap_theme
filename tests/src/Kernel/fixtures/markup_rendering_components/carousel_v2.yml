@@ -109,6 +109,8 @@ carousel_v2_all_settings:
           link:
             label: 'First link'
             path: 'https://link.one'
+            attributes:
+              class: custom-link-class
         - image: '<picture><source srcset="large.webp" media="(min-width: 992px)"><img src="small.jpg" width="600" height="300" alt="Second slide image"></picture>'
           caption_title: 'Second slide title'
   assertions:
@@ -148,6 +150,7 @@ carousel_v2_all_settings:
             link:
               label: 'First link'
               path: 'https://link.one'
+              class: 'custom-link-class btn btn-primary'
           - image_alt: 'Second slide image'
             caption_title: 'Second slide title'
 
