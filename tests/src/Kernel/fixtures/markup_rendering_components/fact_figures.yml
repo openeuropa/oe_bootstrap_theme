@@ -41,7 +41,7 @@ fact_figures_default_1col:
       'h3.bcl-heading': 1
       'div.row.row-cols-md-1': 1
       'div.row.row-cols-sm-2': 0
-      'svg.bi.icon--l': 6
+      'svg.bi.icon--3xl': 6
       'svg use': 6
     contains:
       'svg': '/custom-icons.svg#sticky'
@@ -99,7 +99,7 @@ fact_figures_default_2col:
       'h2.bcl-heading': 1
       'div.row.row-cols-md-2': 1
       'div.row.row-cols-sm-2': 0
-      'svg.bi.icon--l': 6
+      'svg.bi.icon--3xl': 6
       'div.border-top': 0
       'a': 0
     equals:
@@ -151,7 +151,7 @@ fact_figures_default_3col:
       'h2.bcl-heading': 1
       'div.row.row-cols-md-3': 1
       'div.row.row-cols-sm-2': 1
-      'svg.bi.icon--l': 6
+      'svg.bi.icon--3xl': 6
       'svg.custom-class.mb-2.icon--primary': 1
     contains:
       'div > div.col:nth-child(5) > svg': '#inbox'

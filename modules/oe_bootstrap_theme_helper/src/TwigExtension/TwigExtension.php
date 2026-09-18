@@ -17,6 +17,7 @@ use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
 use Drupal\Core\Url;
+use Drupal\oe_bootstrap_theme\DrupalCompatibility;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
@@ -70,6 +71,7 @@ class TwigExtension extends AbstractExtension {
       new TwigFunction('bcl_gallery_items', [$this, 'bclGalleryItems']),
       new TwigFunction('bcl_icon_path', [$this, 'getBclIconPath']),
       new TwigFunction('html_unique_id', [Html::class, 'getUniqueId']),
+      new TwigFunction('theme_setting', [DrupalCompatibility::class, 'themeGetSetting']),
     ];
   }
 
