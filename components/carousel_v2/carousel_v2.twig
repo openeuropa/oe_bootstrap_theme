@@ -10,25 +10,30 @@
 {% set _items = [] %}
 {% for slide in items|default([]) %}
   {% set _image = slide.image|default('') %}
-  {% if _image is not empty and _image.src is defined %}
-    {% set _image_attributes = create_attribute({
-      src: _image.src,
-      alt: _image.alt|default(''),
-    }) %}
-    {% if _image.class is defined %}
-      {% set _image_attributes = _image_attributes.addClass(_image.class) %}
-    {% endif %}
-    {% if _image.title is defined and _image.title is not empty %}
-      {% set _image_attributes = _image_attributes.setAttribute('title', _image.title) %}
-    {% endif %}
-    {% for attribute in ['loading', 'width', 'height'] %}
-      {% if attribute(_image, attribute) is defined and attribute(_image, attribute) is not empty %}
-        {% set _image_attributes = _image_attributes.setAttribute(attribute, attribute(_image, attribute)) %}
+  {% if _image is iterable %}
+    {% if _image.src is defined %}
+      {% set _image_attributes = create_attribute({
+        src: _image.src,
+        alt: _image.alt|default(''),
+      }) %}
+      {% if _image.class is defined %}
+        {% set _image_attributes = _image_attributes.addClass(_image.class) %}
       {% endif %}
-    {% endfor %}
-    {% set _image %}
-      <img{{ _image_attributes }} />
-    {% endset %}
+      {% if _image.title is defined and _image.title is not empty %}
+        {% set _image_attributes = _image_attributes.setAttribute('title', _image.title) %}
+      {% endif %}
+      {% for attribute in ['loading', 'width', 'height'] %}
+        {% if attribute(_image, attribute) is defined and attribute(_image, attribute) is not empty %}
+          {% set _image_attributes = _image_attributes.setAttribute(attribute, attribute(_image, attribute)) %}
+        {% endif %}
+      {% endfor %}
+      {% set _image %}
+        <img{{ _image_attributes }} />
+      {% endset %}
+    {% else %}
+      {# An image object without a "src" has nothing to render. #}
+      {% set _image = '' %}
+    {% endif %}
   {% elseif _image is not empty %}
     {# A string image is caller-rendered markup (e.g. a <picture> element). #}
     {% set _image %}{{ _image|raw }}{% endset %}
