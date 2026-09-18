@@ -6,6 +6,7 @@
 #}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set carousel_id = carousel_id|default('carousel-v2'|clean_unique_id) %}
+{% set _copyright_label = 'Image credit:'|t %}
 
 {% set _items = [] %}
 {% for slide in items|default([]) %}
@@ -37,7 +38,7 @@
 
   {% set _item = slide|merge({
     image: _image,
-    copyright_label: slide.copyright_label|default('Image credit:'|t),
+    copyright_label: slide.copyright_label|default(_copyright_label),
   }) %}
   {% if slide.link is defined and slide.link is not empty %}
     {% set _item = _item|merge({
