@@ -1,0 +1,15 @@
+uuid: 341e1b0b-7ff0-4c3c-9594-b66327c060f4
+langcode: en
+status: true
+dependencies: {  }
+name: oe_lg_1140
+label: 'OE LG 1140'
+effects:
+  8525271b-c1aa-4773-a31a-21bdad621b01:
+    uuid: 8525271b-c1aa-4773-a31a-21bdad621b01
+    id: image_scale
+    weight: 1
+    data:
+      width: 1140
+      height: null
+      upscale: false

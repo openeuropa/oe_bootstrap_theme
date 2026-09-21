@@ -1,0 +1,15 @@
+uuid: 0d804a37-e020-4c5f-bf8f-ad5657526927
+langcode: en
+status: true
+dependencies: {  }
+name: oe_xxl_1440
+label: 'OE XXL 1440'
+effects:
+  3c57bed1-cf16-4bb9-a16a-c71531a5c741:
+    uuid: 3c57bed1-cf16-4bb9-a16a-c71531a5c741
+    id: image_scale
+    weight: 1
+    data:
+      width: 1440
+      height: null
+      upscale: false

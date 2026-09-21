@@ -1,0 +1,10 @@
+name: oe_responsive_images
+description: 'Adds Bootstrap-aware image styles and a default responsive-image style.'
+
+install:
+  - breakpoint
+  - responsive_image
+  - oe_bootstrap_theme
+
+config:
+  strict: false
