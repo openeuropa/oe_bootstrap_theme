@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
@@ -15,6 +16,7 @@ use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
+use Drupal\Core\TypedData\Exception\MissingDataException;
 use Drupal\Core\Url;
 use Drupal\image\Plugin\Field\FieldType\ImageItem;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
@@ -387,12 +389,11 @@ class TwigExtension extends AbstractExtension {
    *
    * @return \Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface|\Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface[]|null
    *   One value object, an array of them, or NULL if none.
-   *
-   * @throws \Drupal\Core\TypedData\Exception\MissingDataException
    */
   public function imageValueObject(ImageValueObjectInterface|array|null $element): ImageValueObjectInterface|array|null {
     // Pass through an existing value object.
     if ($element instanceof ImageValueObjectInterface) {
+      $this->bubbleImageCacheability([$element]);
       return $element;
     }
 
@@ -427,16 +428,41 @@ class TwigExtension extends AbstractExtension {
         continue;
       }
 
-      $result[] = !empty($child['#image_style'])
-        ? ImageValueObject::fromStyledImageItem($item, $child['#image_style'])
-        : ImageValueObject::fromImageItem($item);
+      try {
+        $result[] = !empty($child['#image_style'])
+          ? ImageValueObject::fromStyledImageItem($item, $child['#image_style'])
+          : ImageValueObject::fromImageItem($item);
+      }
+      catch (MissingDataException) {
+        // The file entity may have been deleted after the field was saved.
+        continue;
+      }
     }
 
     if (empty($result)) {
       return NULL;
     }
 
+    $this->bubbleImageCacheability($result);
+
     return count($result) === 1 ? $result[0] : $result;
+  }
+
+  /**
+   * Bubbles cacheability metadata from image value objects.
+   *
+   * @param \Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface[] $images
+   *   Image value objects whose cacheability metadata should be bubbled.
+   */
+  private function bubbleImageCacheability(array $images): void {
+    $cacheability = new CacheableMetadata();
+    foreach ($images as $image) {
+      $cacheability->addCacheableDependency($image);
+    }
+
+    $build = [];
+    $cacheability->applyTo($build);
+    $this->renderer->render($build);
   }
 
 }

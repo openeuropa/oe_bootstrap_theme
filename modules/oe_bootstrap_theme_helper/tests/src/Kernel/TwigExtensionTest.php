@@ -603,8 +603,8 @@ TWIG;
    */
   public function testImageValueObjEmptyInputReturnsNull(): void {
     $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
-    $this->assertNull($extension->imageValueObject(NULL));
-    $this->assertNull($extension->imageValueObject([]));
+    $this->assertNull($this->imageValueObject(NULL));
+    $this->assertNull($this->imageValueObject([]));
   }
 
   /**
@@ -630,10 +630,10 @@ TWIG;
     $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
 
     $element = ['child' => ['#markup' => 'no item here']];
-    $this->assertNull($extension->imageValueObject($element));
+    $this->assertNull($this->imageValueObject($element));
 
     $element = ['child' => ['#item' => $entity->get('field_text')->first()]];
-    $this->assertNull($extension->imageValueObject($element));
+    $this->assertNull($this->imageValueObject($element));
   }
 
   /**
@@ -655,7 +655,7 @@ TWIG;
 
     $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
     $element = ['child' => ['#item' => $entity->get('field_image')->first()]];
-    $result = $extension->imageValueObject($element);
+    $result = $this->imageValueObject($element);
     $this->assertInstanceOf(ImageValueObjectInterface::class, $result);
     $this->assertEquals('Single title', $result->getName());
     $this->assertEquals('Single alt', $result->getAlt());
@@ -682,7 +682,7 @@ TWIG;
     $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
     // Pass the whole item list rather than a single item.
     $element = ['child' => ['#item' => $entity->get('field_image')]];
-    $result = $extension->imageValueObject($element);
+    $result = $this->imageValueObject($element);
     $this->assertInstanceOf(ImageValueObjectInterface::class, $result);
     $this->assertEquals('Single title', $result->getName());
   }
@@ -712,9 +712,77 @@ TWIG;
         '#image_style' => 'test_style',
       ],
     ];
-    $result = $extension->imageValueObject($element);
+    $result = $this->imageValueObject($element);
     $this->assertInstanceOf(ImageValueObjectInterface::class, $result);
     $this->assertStringContainsString('/styles/test_style/', $result->getSource());
+  }
+
+  /**
+   * Tests image_value_obj bubbles cacheability from its value object.
+   */
+  public function testImageValueObjBubblesCacheability(): void {
+    $this->createImageField('field_image', 'entity_test', 'entity_test');
+    $file = $this->createImageFileEntity();
+    $style = ImageStyle::create(['name' => 'test_style']);
+    $style->save();
+
+    $entity = EntityTest::create([
+      'name' => 'single',
+      'field_image' => [
+        'target_id' => $file->id(),
+        'alt' => 'Single alt',
+        'title' => 'Single title',
+      ],
+    ]);
+    $entity->save();
+
+    $build = [
+      '#type' => 'inline_template',
+      '#template' => '{% set image = image|image_value_obj %}',
+      '#context' => [
+        'image' => [
+          'child' => [
+            '#item' => $entity->get('field_image')->first(),
+            '#image_style' => 'test_style',
+          ],
+        ],
+      ],
+    ];
+    $renderer = $this->container->get('renderer');
+    $render_context = new RenderContext();
+    $renderer->executeInRenderContext($render_context, function () use ($renderer, $build) {
+      $renderer->render($build);
+    });
+
+    $bubbled_metadata = [];
+    $render_context->pop()->applyTo($bubbled_metadata);
+    $this->assertContains('file:' . $file->id(), $bubbled_metadata['#cache']['tags']);
+    $this->assertContains('config:image.style.' . $style->getName(), $bubbled_metadata['#cache']['tags']);
+  }
+
+  /**
+   * Tests image_value_obj skips an image whose file entity is missing.
+   */
+  public function testImageValueObjSkipsMissingImageFileEntity(): void {
+    $this->createImageField('field_image', 'entity_test', 'entity_test');
+    $file = File::create(['uri' => 'public://deleted-image.jpg']);
+    $file->save();
+    $entity = EntityTest::create([
+      'name' => 'missing',
+      'field_image' => [
+        'target_id' => $file->id(),
+        'alt' => 'Missing alt',
+        'title' => 'Missing title',
+      ],
+    ]);
+    $entity->save();
+
+    $file->delete();
+    $entity = EntityTest::load($entity->id());
+
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $element = ['child' => ['#item' => $entity->get('field_image')->first()]];
+    $this->assertNull($this->imageValueObject($element));
   }
 
   /**
@@ -750,7 +818,7 @@ TWIG;
       'child_0' => ['#item' => $items->get(0)],
       'child_1' => ['#item' => $items->get(1)],
     ];
-    $result = $extension->imageValueObject($element);
+    $result = $this->imageValueObject($element);
     $this->assertIsArray($result);
     $this->assertCount(2, $result);
     $this->assertContainsOnlyInstancesOf(ImageValueObjectInterface::class, $result);
@@ -790,7 +858,7 @@ TWIG;
       'invalid' => ['#item' => $entity->get('field_text')->first()],
       'valid' => ['#item' => $entity->get('field_image')->first()],
     ];
-    $result = $extension->imageValueObject($element);
+    $result = $this->imageValueObject($element);
     $this->assertInstanceOf(ImageValueObjectInterface::class, $result);
     $this->assertEquals('Single title', $result->getName());
   }
@@ -813,12 +881,12 @@ TWIG;
     $entity->save();
 
     $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
-    $first = $extension->imageValueObject([
+    $first = $this->imageValueObject([
       'child' => ['#item' => $entity->get('field_image')->first()],
     ]);
     $this->assertInstanceOf(ImageValueObjectInterface::class, $first);
 
-    $second = $extension->imageValueObject($first);
+    $second = $this->imageValueObject($first);
     $this->assertSame($first, $second);
   }
 
@@ -843,14 +911,14 @@ TWIG;
 
     $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
     $items = $entity->get('field_images');
-    $first = $extension->imageValueObject([
+    $first = $this->imageValueObject([
       'child_0' => ['#item' => $items->get(0)],
       'child_1' => ['#item' => $items->get(1)],
     ]);
     $this->assertIsArray($first);
     $this->assertCount(2, $first);
 
-    $second = $extension->imageValueObject($first);
+    $second = $this->imageValueObject($first);
     $this->assertIsArray($second);
     $this->assertCount(2, $second);
     $this->assertSame($first[0], $second[0]);
@@ -875,12 +943,12 @@ TWIG;
     $entity->save();
 
     $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
-    $single = $extension->imageValueObject([
+    $single = $this->imageValueObject([
       'child' => ['#item' => $entity->get('field_image')->first()],
     ]);
     $this->assertInstanceOf(ImageValueObjectInterface::class, $single);
 
-    $result = $extension->imageValueObject([$single]);
+    $result = $this->imageValueObject([$single]);
     $this->assertSame($single, $result);
   }
 
@@ -907,7 +975,7 @@ TWIG;
       '#cache' => ['tags' => ['foo']],
       'child' => ['#item' => $entity->get('field_image')->first()],
     ];
-    $result = $extension->imageValueObject($element);
+    $result = $this->imageValueObject($element);
     $this->assertInstanceOf(ImageValueObjectInterface::class, $result);
     $this->assertEquals('Single title', $result->getName());
   }
@@ -918,7 +986,7 @@ TWIG;
   public function testImageValueObjScalarChildReturnsNull(): void {
     $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
     $element = ['child' => 'a string, not an array'];
-    $this->assertNull($extension->imageValueObject($element));
+    $this->assertNull($this->imageValueObject($element));
   }
 
   /**
@@ -941,7 +1009,7 @@ TWIG;
     $entity->save();
 
     $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
-    $existing = $extension->imageValueObject([
+    $existing = $this->imageValueObject([
       'child' => ['#item' => $entity->get('field_images')->get(0)],
     ]);
     $this->assertInstanceOf(ImageValueObjectInterface::class, $existing);
@@ -950,7 +1018,7 @@ TWIG;
       'existing' => $existing,
       'child' => ['#item' => $entity->get('field_images')->get(1)],
     ];
-    $result = $extension->imageValueObject($element);
+    $result = $this->imageValueObject($element);
     $this->assertIsArray($result);
     $this->assertCount(2, $result);
     $this->assertContainsOnlyInstancesOf(ImageValueObjectInterface::class, $result);
@@ -974,6 +1042,25 @@ TWIG;
     $file->save();
 
     return $file;
+  }
+
+  /**
+   * Invokes the image_value_obj callback within a render context.
+   *
+   * @param \Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface|array|null $element
+   *   The value passed to the filter.
+   *
+   * @return \Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface|\Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface[]|null
+   *   The filter result.
+   */
+  protected function imageValueObject(ImageValueObjectInterface|array|null $element): ImageValueObjectInterface|array|null {
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $renderer = $this->container->get('renderer');
+    $render_context = new RenderContext();
+
+    return $renderer->executeInRenderContext($render_context, function () use ($extension, $element) {
+      return $extension->imageValueObject($element);
+    });
   }
 
 }
