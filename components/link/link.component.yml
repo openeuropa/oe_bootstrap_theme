@@ -25,6 +25,7 @@ props:
         - info
         - light
         - dark
+        - null
       'meta:enum':
         '': Default
         primary: Primary
@@ -67,6 +68,7 @@ props:
             - xl
             - 2xl
             - fluid
+            - null
         transformation:
           type: [string, 'null']
           enum:
@@ -75,6 +77,7 @@ props:
             - rotate-270
             - flip-horizontal
             - flip-vertical
+            - null
         attributes:
           type: [object, 'null']
     icon_position:
@@ -84,6 +87,7 @@ props:
       enum:
         - before
         - after
+        - null
       'meta:enum':
         before: Before
         after: 'After (default)'
@@ -94,6 +98,7 @@ props:
       enum:
         - flex
         - inline-flex
+        - null
       'meta:enum':
         flex: Flex
         inline-flex: 'Inline flex'

@@ -10,6 +10,7 @@ props:
       enum:
         - default
         - horizontal
+        - null
       'meta:enum':
         default: Default
         horizontal: Horizontal
@@ -21,6 +22,7 @@ props:
         - article
         - section
         - div
+        - null
       'meta:enum':
         article: '<article> (default)'
         section: '<section>'

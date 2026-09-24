@@ -11,6 +11,7 @@ props:
         - group
         - grid
         - masonry
+        - null
       'meta:enum':
         group: 'Group (default)'
         grid: Grid
@@ -98,6 +99,7 @@ props:
         - 1
         - 2
         - 3
+        - null
       'meta:enum':
         1: '1 (default)'
         2: '2'
@@ -112,6 +114,7 @@ props:
         - lg
         - xl
         - xxl
+        - null
       'meta:enum':
         sm: sm
         md: 'md (default)'
@@ -125,6 +128,7 @@ props:
       enum:
         - 2
         - 3
+        - null
       'meta:enum':
         2: '2'
         3: '3'
@@ -139,6 +143,7 @@ props:
         - 3
         - 4
         - 5
+        - null
       'meta:enum':
         0: '0'
         1: '1'

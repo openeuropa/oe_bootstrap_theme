@@ -16,6 +16,7 @@ props:
         - lg
         - xl
         - fullscreen
+        - null
       'meta:enum':
         sm: Small
         lg: Large
@@ -31,6 +32,7 @@ props:
         - lg
         - xl
         - xxl
+        - null
       'meta:enum':
         sm: Small
         md: Medium
@@ -95,18 +97,21 @@ props:
             - light
             - dark
             - link
+            - null
         size:
           type: [string, 'null']
           enum:
             - sm
             - md
             - lg
+            - null
         type:
           type: [string, 'null']
           enum:
             - button
             - submit
             - reset
+            - null
         outline:
           type: [boolean, 'null']
         disabled:
@@ -133,12 +138,14 @@ props:
           enum:
             - before
             - after
+            - null
         icon_spacing:
           type: [string, 'null']
           enum:
             - sm
             - md
             - lg
+            - null
         spinner:
           type: [object, 'null']
           properties:
