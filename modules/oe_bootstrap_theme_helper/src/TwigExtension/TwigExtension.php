@@ -163,7 +163,7 @@ class TwigExtension extends AbstractExtension {
    *
    * @param array $items
    *   The description list items.
-   * @param string $icon_path
+   * @param string|null $icon_path
    *   Path to the icons SVG file. Defaults to the BCL icon path.
    *
    * @return array
