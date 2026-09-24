@@ -5,11 +5,11 @@ props:
   properties:
     name:
       title: Name
-      type: string
+      type: [string, 'null']
       description: 'Name of the icon in the SVG sprite.'
     size:
       title: Size
-      type: string
+      type: [string, 'null']
       description: 'Size of the icon. Defaults to s.'
       enum:
         - 2xs
@@ -31,7 +31,7 @@ props:
         fluid: Fluid
     transformation:
       title: Transformation
-      type: string
+      type: [string, 'null']
       description: 'Optional rotation or flip transformation.'
       enum:
         - rotate-90
@@ -47,7 +47,7 @@ props:
         flip-vertical: 'Flip vertically'
     icon_path:
       title: 'Icon path'
-      type: string
+      type: [string, 'null']
       description: 'Path to the SVG sprite. Defaults to the BCL icon path.'
     attributes:
       title: Attributes

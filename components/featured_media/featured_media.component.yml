@@ -5,68 +5,68 @@ props:
   properties:
     caption:
       title: Caption
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Caption displayed below the media.'
     embedded_media:
       title: 'Embedded media'
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Embedded media markup or render array.'
     image:
       title: Image
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Rendered image or an object containing image attributes.'
       properties:
         src:
-          type: string
+          type: [string, 'null']
         alt:
-          type: string
+          type: [string, 'null']
         name:
-          type: string
+          type: [string, 'null']
         title:
-          type: string
+          type: [string, 'null']
         responsive:
-          type: boolean
+          type: [boolean, 'null']
         loading:
-          type: string
+          type: [string, 'null']
         width:
-          type: [string, integer]
+          type: [string, integer, 'null']
         height:
-          type: [string, integer]
+          type: [string, integer, 'null']
         class:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
     poster_image:
       title: 'Poster image'
-      type: string
+      type: [string, 'null']
       description: 'Poster image URL for native video.'
     sources:
       title: 'Video sources'
-      type: array
+      type: [array, 'null']
       description: 'Source files for native video.'
       items:
-        type: object
+        type: [object, 'null']
         properties:
           type:
-            type: string
+            type: [string, 'null']
           src:
-            type: string
+            type: [string, 'null']
     tracks:
       title: 'Video tracks'
-      type: array
+      type: [array, 'null']
       description: 'Caption or subtitle tracks for native video.'
       items:
-        type: object
+        type: [object, 'null']
         properties:
           kind:
-            type: string
+            type: [string, 'null']
           label:
-            type: string
+            type: [string, 'null']
           src:
-            type: string
+            type: [string, 'null']
           src_lang:
-            type: string
+            type: [string, 'null']
     ratio:
       title: Ratio
-      type: string
+      type: [string, 'null']
       description: 'Aspect ratio for embedded media. Defaults to 16x9.'
       enum:
         - 1x1
@@ -80,65 +80,65 @@ props:
         21x9: '21:9'
     title:
       title: Title
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Title displayed above the featured media.'
     title_tag:
       title: 'Title tag'
-      type: string
+      type: [string, 'null']
       description: 'Tag used for the title. Defaults to h2.'
     title_link:
       title: 'Title link'
-      type: object
+      type: [object, 'null']
       description: 'Link applied to the title.'
       properties:
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         id:
-          type: string
+          type: [string, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         icon:
-          type: [string, object]
+          type: [string, object, 'null']
           properties:
             name:
-              type: string
+              type: [string, 'null']
             path:
-              type: string
+              type: [string, 'null']
             transformation:
-              type: string
+              type: [string, 'null']
             attributes:
-              type: object
+              type: [object, 'null']
         icon_position:
-          type: string
+          type: [string, 'null']
           enum:
             - before
             - after
         icon_display:
-          type: string
+          type: [string, 'null']
           enum:
             - flex
             - inline-flex
         remove_icon_spacers:
-          type: boolean
+          type: [boolean, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     subtitle:
       title: Subtitle
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Subtitle displayed before the text.'
     subtitle_tag:
       title: 'Subtitle tag'
-      type: string
+      type: [string, 'null']
       description: 'Tag used for the subtitle. Defaults to h3 with a title and h2 without one.'
     text:
       title: Text
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Content displayed alongside the media.'
     text_position:
       title: 'Text position'
-      type: string
+      type: [string, 'null']
       description: 'Position of the text on medium and larger viewports. Defaults to left.'
       enum:
         - left
@@ -148,15 +148,15 @@ props:
         right: Right
     link:
       title: Link
-      type: object
+      type: [object, 'null']
       description: 'Optional link displayed after the text.'
       properties:
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         variant:
-          type: string
+          type: [string, 'null']
           enum:
             - primary
             - secondary
@@ -167,51 +167,51 @@ props:
             - light
             - dark
         id:
-          type: string
+          type: [string, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         standalone:
-          type: boolean
+          type: [boolean, 'null']
         icon:
-          type: [string, object]
+          type: [string, object, 'null']
           properties:
             name:
-              type: string
+              type: [string, 'null']
             path:
-              type: string
+              type: [string, 'null']
             transformation:
-              type: string
+              type: [string, 'null']
             attributes:
-              type: object
+              type: [object, 'null']
         icon_position:
-          type: string
+          type: [string, 'null']
           enum:
             - before
             - after
         icon_display:
-          type: string
+          type: [string, 'null']
           enum:
             - flex
             - inline-flex
         remove_icon_spacers:
-          type: boolean
+          type: [boolean, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     copyright:
       title: Copyright
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Optional copyright text displayed below the media.'
     copyright_label:
       title: 'Copyright label'
-      type: string
+      type: [string, 'null']
       description: 'Visually hidden label for copyright text.'
     content_classes:
       title: 'Caption classes'
-      type: string
+      type: [string, 'null']
       description: 'Classes applied to the caption. Defaults to bg-light p-3.'
     icon_path:
       title: 'Icons path'
-      type: string
+      type: [string, 'null']
       description: 'Path to icons used by links. Defaults to the BCL icon path.'
     title_attributes:
       title: 'Title attributes'

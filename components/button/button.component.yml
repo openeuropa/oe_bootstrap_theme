@@ -5,11 +5,11 @@ props:
   properties:
     label:
       title: Label
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'The button label.'
     variant:
       title: Variant
-      type: string
+      type: [string, 'null']
       description: 'The button variant. Defaults to primary.'
       enum:
         - primary
@@ -33,7 +33,7 @@ props:
         link: Link
     size:
       title: Size
-      type: string
+      type: [string, 'null']
       description: 'Size of the button. Defaults to md.'
       enum:
         - sm
@@ -45,7 +45,7 @@ props:
         lg: Large
     type:
       title: Type
-      type: string
+      type: [string, 'null']
       description: 'Sets the button behavior type. Defaults to button.'
       enum:
         - button
@@ -57,40 +57,40 @@ props:
         reset: Reset
     outline:
       title: Outline
-      type: boolean
+      type: [boolean, 'null']
       description: 'Lighter button style removing background color. Defaults to false.'
     disabled:
       title: Disabled
-      type: boolean
+      type: [boolean, 'null']
       description: 'If true, the button will not be enabled when clicking. Defaults to false.'
     text_nowrap:
       title: 'No text wrap'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Prevents the button label from wrapping.'
     assistive_text:
       title: 'Assistive text'
-      type: string
+      type: [string, 'null']
       description: 'Visually hidden text printed before the button label.'
     id:
       title: ID
-      type: string
+      type: [string, 'null']
       description: 'Button ID attribute.'
     icon:
       title: Icon
       description: 'Icon name as a string or an icon object.'
-      type: [string, object]
+      type: [string, object, 'null']
       properties:
         name:
-          type: string
+          type: [string, 'null']
         path:
-          type: string
+          type: [string, 'null']
         transformation:
-          type: string
+          type: [string, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     icon_position:
       title: 'Icon position'
-      type: string
+      type: [string, 'null']
       description: 'If button has an icon, it can be placed before or after text. Defaults to after.'
       enum:
         - before
@@ -100,7 +100,7 @@ props:
         after: 'After (default)'
     icon_spacing:
       title: 'Icon spacing'
-      type: string
+      type: [string, 'null']
       description: 'Spacing between icon and label.'
       enum:
         - sm
@@ -112,30 +112,30 @@ props:
         lg: Large
     spinner:
       title: Spinner
-      type: object
+      type: [object, 'null']
       description: 'Spinner object.'
       properties:
         type:
-          type: string
+          type: [string, 'null']
         variant:
-          type: string
+          type: [string, 'null']
         size:
-          type: string
+          type: [string, 'null']
         assistive_text:
-          type: string
+          type: [string, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     show_spinner:
       title: 'Show spinner'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Displays the spinner before the button label.'
     clean_class:
       title: 'Clean class'
-      type: boolean
+      type: [boolean, 'null']
       description: 'If true, BCL button classes are not added.'
     remove_icon_spacers:
       title: 'Remove icon spacers'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Removes the default spacing between icon and label.'
     attributes:
       title: Attributes

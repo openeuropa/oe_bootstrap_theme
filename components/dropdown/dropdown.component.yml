@@ -5,59 +5,59 @@ props:
   properties:
     button_label:
       title: 'Dropdown button label'
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Label used by the default dropdown toggle.'
     dropdown_id:
       title: 'Dropdown ID'
-      type: string
+      type: [string, 'null']
       description: 'ID connecting the toggle and menu. A unique ID is generated when omitted.'
     trigger:
       title: Trigger
-      type: object
+      type: [object, 'null']
       description: 'Optional BCL button or link configuration for the dropdown toggle.'
       properties:
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         variant:
-          type: string
+          type: [string, 'null']
         size:
-          type: string
+          type: [string, 'null']
         type:
-          type: string
+          type: [string, 'null']
         outline:
-          type: boolean
+          type: [boolean, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         assistive_text:
-          type: string
+          type: [string, 'null']
         standalone:
-          type: boolean
+          type: [boolean, 'null']
         icon:
           anyOf:
             - type: string
             - type: object
               properties:
                 name:
-                  type: string
+                  type: [string, 'null']
                 path:
-                  type: string
+                  type: [string, 'null']
                 transformation:
-                  type: string
+                  type: [string, 'null']
                 attributes:
-                  type: object
+                  type: [object, 'null']
         icon_position:
-          type: string
+          type: [string, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     link:
       title: 'Link trigger'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Render the dropdown toggle as a link instead of a button.'
     direction:
       title: Direction
-      type: string
+      type: [string, 'null']
       description: 'Direction in which the menu opens.'
       enum:
         - dropup
@@ -69,7 +69,7 @@ props:
         dropstart: Start
     alignment:
       title: Alignment
-      type: string
+      type: [string, 'null']
       description: 'Dropdown menu alignment.'
       enum:
         - dropdown-menu-end
@@ -99,69 +99,69 @@ props:
         dropdown-menu-xxl-start: 'Start from xxl'
     dark_mode:
       title: 'Dark mode'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Use the dark dropdown menu style.'
     remove_wrapper:
       title: 'Remove wrapper'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Do not render the dropdown wrapper element.'
     inside_navigation:
       title: 'Inside navigation'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Render menu accessibility attributes for use inside navigation.'
     items:
       title: 'Dropdown items'
-      type: array
+      type: [array, 'null']
       description: 'Links, buttons, and dividers displayed in the menu.'
       items:
-        type: object
+        type: [object, 'null']
         properties:
           label:
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           path:
-            type: [string, object]
+            type: [string, object, 'null']
           button:
-            type: boolean
+            type: [boolean, 'null']
           divider:
-            type: boolean
+            type: [boolean, 'null']
           active:
-            type: boolean
+            type: [boolean, 'null']
           disabled:
-            type: boolean
+            type: [boolean, 'null']
           id:
-            type: string
+            type: [string, 'null']
           title:
-            type: string
+            type: [string, 'null']
           type:
-            type: string
+            type: [string, 'null']
           variant:
-            type: string
+            type: [string, 'null']
           size:
-            type: string
+            type: [string, 'null']
           outline:
-            type: boolean
+            type: [boolean, 'null']
           standalone:
-            type: boolean
+            type: [boolean, 'null']
           icon:
             anyOf:
               - type: string
               - type: object
                 properties:
                   name:
-                    type: string
+                    type: [string, 'null']
                   path:
-                    type: string
+                    type: [string, 'null']
                   transformation:
-                    type: string
+                    type: [string, 'null']
                   attributes:
-                    type: object
+                    type: [object, 'null']
           icon_position:
-            type: string
+            type: [string, 'null']
           attributes:
-            type: object
+            type: [object, 'null']
     icon_path:
       title: 'Icons path'
-      type: string
+      type: [string, 'null']
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
     attributes:
       title: Attributes

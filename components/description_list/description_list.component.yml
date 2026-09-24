@@ -5,23 +5,23 @@ props:
   properties:
     title:
       title: Title
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Title of the description list.'
     title_tag:
       title: 'Title tag'
-      type: string
+      type: [string, 'null']
       description: 'The tag to use for the title. Defaults to h2.'
     title_link:
       title: 'Title link'
-      type: object
+      type: [object, 'null']
       description: 'Link applied to the title.'
       properties:
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         variant:
-          type: string
+          type: [string, 'null']
           enum:
             - primary
             - secondary
@@ -32,40 +32,40 @@ props:
             - light
             - dark
         id:
-          type: string
+          type: [string, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         icon:
-          type: [string, object]
+          type: [string, object, 'null']
           properties:
             name:
-              type: string
+              type: [string, 'null']
             path:
-              type: string
+              type: [string, 'null']
             transformation:
-              type: string
+              type: [string, 'null']
             attributes:
-              type: object
+              type: [object, 'null']
         icon_position:
-          type: string
+          type: [string, 'null']
           enum:
             - before
             - after
         icon_display:
-          type: string
+          type: [string, 'null']
           enum:
             - flex
             - inline-flex
         remove_icon_spacers:
-          type: boolean
+          type: [boolean, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     items:
       title: 'List items'
-      type: array
+      type: [array, 'null']
       description: 'Each item is composed by one or more terms and one or more definitions. Each term entry can have an icon.'
       items:
-        type: object
+        type: [object, 'null']
         properties:
           term:
             title: 'Terms'
@@ -74,21 +74,21 @@ props:
               - type: string
               - type: array
                 items:
-                  type: object
+                  type: [object, 'null']
                   properties:
                     label:
                       title: Label
-                      type: [string, array, object]
+                      type: [string, array, object, 'null']
                       description: 'Label text or render array.'
                     icon:
-                      type: object
+                      type: [object, 'null']
                       properties:
                         name:
-                          type: string
+                          type: [string, 'null']
                         size:
-                          type: string
+                          type: [string, 'null']
                         path:
-                          type: string
+                          type: [string, 'null']
           definition:
             title: 'Definition'
             description: 'A string or an array of definition objects.'
@@ -96,17 +96,17 @@ props:
               - type: string
               - type: array
                 items:
-                  type: object
+                  type: [object, 'null']
                   properties:
                     label:
-                      type: [string, array, object]
+                      type: [string, array, object, 'null']
     icon_path:
-      type: string
+      type: [string, 'null']
       title: "Icons path"
       description: "Path to icons"
     orientation:
       title: Orientation
-      type: string
+      type: [string, 'null']
       description: 'Orientation of the list.'
       enum:
         - default
@@ -116,11 +116,11 @@ props:
         horizontal: Horizontal
     bordered:
       title: Bordered
-      type: boolean
+      type: [boolean, 'null']
       description: 'Adds a border to the description list.'
     col_classes:
       title: 'Column classes'
-      type: string
+      type: [string, 'null']
       description: 'Classes for the columns.'
     title_attributes:
       title: 'Title attributes'
