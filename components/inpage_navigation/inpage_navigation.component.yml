@@ -31,6 +31,7 @@ props:
             - info
             - light
             - dark
+            - null
         id:
           type: [string, 'null']
         disabled:
@@ -53,6 +54,7 @@ props:
                 - xl
                 - 2xl
                 - fluid
+                - null
             transformation:
               type: [string, 'null']
               enum:
@@ -61,6 +63,7 @@ props:
                 - rotate-270
                 - flip-horizontal
                 - flip-vertical
+                - null
             attributes:
               type: [object, 'null']
         icon_position:
@@ -68,11 +71,13 @@ props:
           enum:
             - before
             - after
+            - null
         icon_display:
           type: [string, 'null']
           enum:
             - flex
             - inline-flex
+            - null
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
@@ -102,6 +107,7 @@ props:
               - info
               - light
               - dark
+              - null
           id:
             type: [string, 'null']
           disabled:
@@ -128,6 +134,7 @@ props:
                   - xl
                   - 2xl
                   - fluid
+                  - null
               transformation:
                 type: [string, 'null']
                 enum:
@@ -136,6 +143,7 @@ props:
                   - rotate-270
                   - flip-horizontal
                   - flip-vertical
+                  - null
               attributes:
                 type: [object, 'null']
           icon_position:
@@ -143,11 +151,13 @@ props:
             enum:
               - before
               - after
+              - null
           icon_display:
             type: [string, 'null']
             enum:
               - flex
               - inline-flex
+              - null
           remove_icon_spacers:
             type: [boolean, 'null']
           attributes:

@@ -15,6 +15,7 @@ props:
         - sm
         - md
         - lg
+        - null
       'meta:enum':
         sm: Small
         md: Medium
@@ -27,6 +28,7 @@ props:
       enum:
         - light
         - dark
+        - null
       'meta:enum':
         light: 'Light (default)'
         dark: Dark

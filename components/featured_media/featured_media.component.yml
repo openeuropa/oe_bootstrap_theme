@@ -73,6 +73,7 @@ props:
         - 4x3
         - 16x9
         - 21x9
+        - null
       'meta:enum':
         1x1: '1:1'
         4x3: '4:3'
@@ -115,11 +116,13 @@ props:
           enum:
             - before
             - after
+            - null
         icon_display:
           type: [string, 'null']
           enum:
             - flex
             - inline-flex
+            - null
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
@@ -143,6 +146,7 @@ props:
       enum:
         - left
         - right
+        - null
       'meta:enum':
         left: 'Left (default)'
         right: Right
@@ -166,6 +170,7 @@ props:
             - info
             - light
             - dark
+            - null
         id:
           type: [string, 'null']
         disabled:
@@ -188,11 +193,13 @@ props:
           enum:
             - before
             - after
+            - null
         icon_display:
           type: [string, 'null']
           enum:
             - flex
             - inline-flex
+            - null
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:

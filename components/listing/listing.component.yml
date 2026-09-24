@@ -10,6 +10,7 @@ props:
       enum:
         - default
         - highlight
+        - null
       'meta:enum':
         default: 'Default (default)'
         highlight: Highlight
@@ -21,6 +22,7 @@ props:
         - 1
         - 2
         - 3
+        - null
       'meta:enum':
         1: 'One (default)'
         2: Two
@@ -66,11 +68,13 @@ props:
           enum:
             - before
             - after
+            - null
         icon_display:
           type: [string, 'null']
           enum:
             - flex
             - inline-flex
+            - null
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
@@ -119,11 +123,13 @@ props:
                 enum:
                   - before
                   - after
+                  - null
               icon_display:
                 type: [string, 'null']
                 enum:
                   - flex
                   - inline-flex
+                  - null
               remove_icon_spacers:
                 type: [boolean, 'null']
               attributes:
@@ -148,6 +154,7 @@ props:
                   - top
                   - bottom
                   - background
+                  - null
               classes:
                 type: [string, 'null']
               rounded:
@@ -240,11 +247,13 @@ props:
           enum:
             - before
             - after
+            - null
         icon_display:
           type: [string, 'null']
           enum:
             - flex
             - inline-flex
+            - null
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
@@ -259,6 +268,7 @@ props:
         - center
         - baseline
         - stretch
+        - null
       'meta:enum':
         start: Start
         end: End
@@ -273,6 +283,7 @@ props:
         - small
         - large
         - extra-large
+        - null
       'meta:enum':
         small: Small
         large: Large

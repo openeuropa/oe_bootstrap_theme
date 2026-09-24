@@ -10,6 +10,7 @@ props:
       enum:
         - default
         - search
+        - null
       'meta:enum':
         default: Default
         search: Search
@@ -72,6 +73,7 @@ props:
         - end
         - top
         - bottom
+        - null
       'meta:enum':
         start: Start
         end: End
@@ -120,6 +122,7 @@ props:
         - lg
         - xl
         - xxl
+        - null
       'meta:enum':
         none: 'Always offcanvas'
         sm: Small

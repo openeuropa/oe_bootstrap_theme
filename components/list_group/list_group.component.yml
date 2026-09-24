@@ -18,6 +18,7 @@ props:
         - horizontal-lg
         - horizontal-xl
         - horizontal-xxl
+        - null
       'meta:enum':
         horizontal: 'All viewports'
         horizontal-sm: 'Small and larger'
@@ -37,6 +38,7 @@ props:
         - unordered
         - ordered
         - actionable
+        - null
       'meta:enum':
         unordered: 'Unordered (default)'
         ordered: Ordered
@@ -62,6 +64,7 @@ props:
               - info
               - light
               - dark
+              - null
           extra_classes:
             type: [string, 'null']
           badge:
@@ -80,6 +83,7 @@ props:
                   - info
                   - light
                   - dark
+                  - null
               url:
                 type: [string, 'null']
               title:
@@ -149,6 +153,7 @@ props:
               - info
               - light
               - dark
+              - null
           remove_wrapper:
             type: [boolean, 'null']
           path:
@@ -163,6 +168,7 @@ props:
               - button
               - submit
               - reset
+              - null
           text_nowrap:
             type: [boolean, 'null']
           assistive_text:
@@ -187,6 +193,7 @@ props:
                   - xl
                   - 2xl
                   - fluid
+                  - null
               transformation:
                 type: [string, 'null']
                 enum:
@@ -195,6 +202,7 @@ props:
                   - rotate-270
                   - flip-horizontal
                   - flip-vertical
+                  - null
               attributes:
                 type: [object, 'null']
           icon_position:
@@ -202,17 +210,20 @@ props:
             enum:
               - before
               - after
+              - null
           icon_display:
             type: [string, 'null']
             enum:
               - flex
               - inline-flex
+              - null
           icon_spacing:
             type: [string, 'null']
             enum:
               - sm
               - md
               - lg
+              - null
           remove_icon_spacers:
             type: [boolean, 'null']
           spinner:
@@ -223,6 +234,7 @@ props:
                 enum:
                   - border
                   - grow
+                  - null
               variant:
                 type: [string, 'null']
                 enum:
@@ -235,12 +247,14 @@ props:
                   - info
                   - light
                   - dark
+                  - null
               size:
                 type: [string, 'null']
                 enum:
                   - ''
                   - sm
                   - lg
+                  - null
               assistive_text:
                 type: [string, 'null']
               attributes:

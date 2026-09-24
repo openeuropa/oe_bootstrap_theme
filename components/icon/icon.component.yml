@@ -20,6 +20,7 @@ props:
         - xl
         - 2xl
         - fluid
+        - null
       'meta:enum':
         2xs: '2XS'
         xs: XS
@@ -39,6 +40,7 @@ props:
         - rotate-270
         - flip-horizontal
         - flip-vertical
+        - null
       'meta:enum':
         rotate-90: 'Rotate 90 degrees'
         rotate-180: 'Rotate 180 degrees'

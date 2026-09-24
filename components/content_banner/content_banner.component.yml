@@ -11,6 +11,7 @@ props:
       enum:
         - white
         - gray
+        - null
       'meta:enum':
         white: 'White (default)'
         gray: Gray
@@ -40,6 +41,7 @@ props:
         - md
         - lg
         - xl
+        - null
       'meta:enum':
         md: Medium
         lg: 'Large (default)'

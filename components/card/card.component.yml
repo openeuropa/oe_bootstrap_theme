@@ -10,6 +10,7 @@ props:
       enum:
         - default
         - search
+        - null
       'meta:enum':
         default: 'Default'
         search: Search
@@ -20,6 +21,7 @@ props:
       enum:
         - vertical
         - horizontal
+        - null
       'meta:enum':
         vertical: 'Vertical (default)'
         horizontal: Horizontal
