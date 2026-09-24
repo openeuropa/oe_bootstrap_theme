@@ -82,7 +82,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
           enum:
@@ -92,7 +92,7 @@ props:
         icon_path:
           type: [string, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     prev:
       title: 'Previous link'
       type: [object, 'null']
@@ -120,7 +120,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
           enum:
@@ -130,7 +130,7 @@ props:
         icon_path:
           type: [string, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     next:
       title: 'Next link'
       type: [object, 'null']
@@ -158,7 +158,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
           enum:
@@ -168,7 +168,7 @@ props:
         icon_path:
           type: [string, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     last:
       title: 'Last link'
       type: [object, 'null']
@@ -196,7 +196,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
           enum:
@@ -206,7 +206,7 @@ props:
         icon_path:
           type: [string, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     items:
       title: 'Pagination items'
       type: [array, 'null']
@@ -236,7 +236,7 @@ props:
               transformation:
                 type: [string, 'null']
               attributes:
-                type: [object, 'null']
+                type: [object, string, 'null']  # attributes
           icon_position:
             type: [string, 'null']
             enum:
@@ -246,7 +246,7 @@ props:
           icon_path:
             type: [string, 'null']
           attributes:
-            type: [object, 'null']
+            type: [object, string, 'null']  # attributes
     icon_path:
       title: 'Icons path'
       type: [string, 'null']
