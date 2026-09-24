@@ -26,6 +26,8 @@ props:
         horizontal-lg: 'Large and larger'
         horizontal-xl: 'Extra large and larger'
         horizontal-xxl: 'Extra extra large and larger'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     id:
       title: ID
       type: [string, 'null']
@@ -43,6 +45,8 @@ props:
         unordered: 'Unordered (default)'
         ordered: Ordered
         actionable: Actionable
+        # Value NULL becomes '' when used as array key.
+        '': Default
     items:
       title: Items
       type: [array, 'null']

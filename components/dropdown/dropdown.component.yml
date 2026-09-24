@@ -68,6 +68,8 @@ props:
         dropup: Up
         dropend: End
         dropstart: Start
+        # Value NULL becomes '' when used as array key.
+        '': Default
     alignment:
       title: Alignment
       type: [string, 'null']
@@ -99,6 +101,8 @@ props:
         dropdown-menu-lg-start: 'Start from lg'
         dropdown-menu-xl-start: 'Start from xl'
         dropdown-menu-xxl-start: 'Start from xxl'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     dark_mode:
       title: 'Dark mode'
       type: [boolean, 'null']

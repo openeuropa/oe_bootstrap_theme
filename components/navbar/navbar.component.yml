@@ -20,6 +20,8 @@ props:
         sm: Small
         md: Medium
         lg: 'Large (default)'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     color_scheme:
       title: 'Color scheme'
       type: [string, 'null']
@@ -32,6 +34,8 @@ props:
       'meta:enum':
         light: 'Light (default)'
         dark: Dark
+        # Value NULL becomes '' when used as array key.
+        '': Default
     background:
       title: Background
       type: [boolean, 'null']

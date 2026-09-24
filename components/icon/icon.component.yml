@@ -30,6 +30,8 @@ props:
         xl: XL
         2xl: '2XL'
         fluid: Fluid
+        # Value NULL becomes '' when used as array key.
+        '': Default
     transformation:
       title: Transformation
       type: [string, 'null']
@@ -47,6 +49,8 @@ props:
         rotate-270: 'Rotate 270 degrees'
         flip-horizontal: 'Flip horizontally'
         flip-vertical: 'Flip vertically'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     icon_path:
       title: 'Icon path'
       type: [string, 'null']

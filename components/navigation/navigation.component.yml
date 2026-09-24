@@ -19,6 +19,8 @@ props:
         tabs: Tabs
         pills: Pills
         navbar: Navbar
+        # Value NULL becomes '' when used as array key.
+        '': Default
     orientation:
       title: Orientation
       type: [string, 'null']
@@ -30,6 +32,8 @@ props:
       'meta:enum':
         horizontal: Horizontal
         vertical: Vertical
+        # Value NULL becomes '' when used as array key.
+        '': Default
     navigation_id:
       title: 'Navigation ID'
       type: [string, 'null']
@@ -51,6 +55,8 @@ props:
         start: Start
         center: Center
         end: End
+        # Value NULL becomes '' when used as array key.
+        '': Default
     tabs_content:
       title: 'Tab content'
       type: [boolean, 'null']

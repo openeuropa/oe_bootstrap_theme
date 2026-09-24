@@ -15,6 +15,8 @@ props:
       'meta:enum':
         white: 'White (default)'
         gray: Gray
+        # Value NULL becomes '' when used as array key.
+        '': Default
     image:
       title: Image
       type: [object, 'null']
@@ -46,6 +48,8 @@ props:
         md: Medium
         lg: 'Large (default)'
         xl: 'Extra large'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     title:
       title: Title
       type: [string, array, object, 'null']

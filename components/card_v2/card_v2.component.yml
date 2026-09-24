@@ -14,6 +14,8 @@ props:
       'meta:enum':
         default: Default
         horizontal: Horizontal
+        # Value NULL becomes '' when used as array key.
+        '': Default
     tag:
       title: 'HTML wrapper tag'
       type: [string, 'null']
@@ -27,6 +29,8 @@ props:
         article: '<article> (default)'
         section: '<section>'
         div: '<div>'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     title:
       title: Title
       type: [string, array, object, 'null']
