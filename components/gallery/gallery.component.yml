@@ -63,7 +63,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
           enum:
@@ -79,7 +79,7 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     title_attributes:
       title: 'Title attributes'
       type: Drupal\Core\Template\Attribute
@@ -187,7 +187,7 @@ props:
                   transformation:
                     type: [string, 'null']
                   attributes:
-                    type: [object, 'null']
+                    type: [object, string, 'null']  # attributes
               icon_position:
                 type: [string, 'null']
                 enum:
@@ -203,7 +203,7 @@ props:
               remove_icon_spacers:
                 type: [boolean, 'null']
               attributes:
-                type: [object, 'null']
+                type: [object, string, 'null']  # attributes
     icon_path:
       title: 'Icons path'
       type: [string, 'null']
