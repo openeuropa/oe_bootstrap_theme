@@ -74,6 +74,7 @@ props:
             title: 'Terms'
             description: 'A string or an array of term objects.'
             anyOf:
+              - type: 'null'
               - type: string
               - type: array
                 items:
@@ -96,6 +97,7 @@ props:
             title: 'Definition'
             description: 'A string or an array of definition objects.'
             anyOf:
+              - type: 'null'
               - type: string
               - type: array
                 items:

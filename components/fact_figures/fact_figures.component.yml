@@ -26,6 +26,7 @@ props:
             title: Icon
             description: 'Icon name or icon object.'
             anyOf:
+              - type: 'null'
               - type: string
               - type: object
                 properties:
