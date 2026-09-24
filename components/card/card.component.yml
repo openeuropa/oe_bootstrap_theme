@@ -5,159 +5,165 @@ props:
   properties:
     variant:
       title: Variant
-      type: string
+      type: [string, 'null']
       description: 'The card variant. Defaults to default.'
       enum:
         - default
         - search
+        - null
       'meta:enum':
         default: 'Default'
         search: Search
+        # Value NULL becomes '' when used as array key.
+        '': Default
     orientation:
       title: Orientation
-      type: string
+      type: [string, 'null']
       description: 'Can be set to horizontal or vertical. Defaults to vertical.'
       enum:
         - vertical
         - horizontal
+        - null
       'meta:enum':
         vertical: 'Vertical (default)'
         horizontal: Horizontal
+        # Value NULL becomes '' when used as array key.
+        '': Default
     title:
       title: Title
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Title of the card.'
     title_tag:
       title: 'Title tag'
-      type: string
+      type: [string, 'null']
       description: 'Title tag of the card. Defaults to div.'
     title_link:
       title: 'Title link'
-      type: object
+      type: [object, 'null']
       description: 'Optional link object for the title.'
       properties:
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         path:
-          type: string
+          type: [string, 'null']
         variant:
-          type: string
+          type: [string, 'null']
         id:
-          type: string
+          type: [string, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         icon:
-          type: object
+          type: [object, 'null']
           properties:
             name:
-              type: string
+              type: [string, 'null']
             size:
-              type: string
+              type: [string, 'null']
             path:
-              type: string
+              type: [string, 'null']
         icon_position:
-          type: string
+          type: [string, 'null']
         icon_display:
-          type: string
+          type: [string, 'null']
         remove_icon_spacers:
-          type: boolean
+          type: [boolean, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     subtitle:
       title: Subtitle
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Card subtitle.'
     text:
       title: Text
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Card text.'
     image:
       title: Image
-      type: object
+      type: [object, 'null']
       description: 'Image for the card. Optional.'
       properties:
         src:
-          type: string
+          type: [string, 'null']
         alt:
-          type: string
+          type: [string, 'null']
         position:
-          type: string
+          type: [string, 'null']
         classes:
-          type: string
+          type: [string, 'null']
         rounded:
-          type: string
+          type: [string, 'null']
     image_copyright:
       title: 'Image copyright'
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Optional copyright text displayed as an overlay.'
     date:
       title: 'Date block'
-      type: object
+      type: [object, 'null']
       description: 'If set, presents a date block that uses the same parameters as the BCL date-block template. Optional.'
       properties:
         day:
-          type: [string, integer]
+          type: [string, integer, 'null']
         month:
-          type: string
+          type: [string, 'null']
         date_time:
-          type: string
+          type: [string, 'null']
         year:
-          type: [string, integer]
+          type: [string, integer, 'null']
         end_day:
-          type: [string, integer]
+          type: [string, integer, 'null']
         end_month:
-          type: string
+          type: [string, 'null']
         end_year:
-          type: [string, integer]
+          type: [string, integer, 'null']
         icon_path:
-          type: string
+          type: [string, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     meta:
       title: 'Meta items'
-      type: array
+      type: [array, 'null']
       description: 'Date or other meta information.'
       items:
-        type: [string, array, object]
+        type: [string, array, object, 'null']
     content:
       title: Content
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Card content.'
     header:
       title: 'Card header'
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Card header content.'
     footer:
       title: 'Card footer'
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Card footer content.'
     badges:
       title: Badges
-      type: array
+      type: [array, 'null']
       description: 'List of badges for the card.'
       items:
-        type: [string, object]
+        type: [string, object, 'null']
         properties:
           label:
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           background:
-            type: string
+            type: [string, 'null']
           url:
-            type: string
+            type: [string, 'null']
           title:
-            type: string
+            type: [string, 'null']
           dismissible:
-            type: boolean
+            type: [boolean, 'null']
           assistive_text:
-            type: string
+            type: [string, 'null']
           rounded_pill:
-            type: boolean
+            type: [boolean, 'null']
           outline:
-            type: boolean
+            type: [boolean, 'null']
           icon_path:
-            type: string
+            type: [string, 'null']
           attributes:
-            type: object
+            type: [object, 'null']
     title_attributes:
       title: 'Title attributes'
       type: Drupal\Core\Template\Attribute

@@ -5,65 +5,66 @@ props:
   properties:
     title:
       title: Title
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Title of the facts and figures section.'
     title_tag:
       title: 'Title tag'
-      type: string
+      type: [string, 'null']
       description: 'The tag to use for the title. Defaults to h2.'
     columns:
       title: Columns
-      type: number
+      type: [number, 'null']
       description: 'One, two or three columns layout for responsive. Defaults to 3.'
     items:
       title: Items
-      type: array
+      type: [array, 'null']
       description: 'List of facts, with icon, title, subtitle and content.'
       items:
-        type: object
+        type: [object, 'null']
         properties:
           icon:
             title: Icon
             description: 'Icon name or icon object.'
             anyOf:
+              - type: 'null'
               - type: string
               - type: object
                 properties:
                   name:
-                    type: string
+                    type: [string, 'null']
                   size:
-                    type: string
+                    type: [string, 'null']
                   path:
-                    type: string
+                    type: [string, 'null']
                   attributes:
-                    type: object
+                    type: [object, 'null']
           title:
             title: Title
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           subtitle:
             title: Subtitle
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           description:
             title: Description
-            type: [string, array, object]
+            type: [string, array, object, 'null']
     link:
       title: Link
-      type: object
+      type: [object, 'null']
       description: 'Additional link to be displayed after facts.'
       properties:
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     icon_path:
       title: 'Icons path'
-      type: string
+      type: [string, 'null']
       description: 'Path to icons.'
     icon_size:
       title: 'Icon size'
-      type: string
+      type: [string, 'null']
       description: 'Size of the icons. Defaults to the "facts_figures.icon_size" theme setting, or "l" if unset.'
     attributes:
       title: Attributes

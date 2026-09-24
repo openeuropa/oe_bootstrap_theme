@@ -5,109 +5,109 @@ props:
   properties:
     title:
       title: Title
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Title of the carousel.'
     title_tag:
       title: 'Title tag'
-      type: string
+      type: [string, 'null']
       description: 'The tag to use for the title. Defaults to h2.'
     carousel_id:
       title: 'Carousel ID'
-      type: string
+      type: [string, 'null']
       description: 'Unique ID used to connect carousel controls and indicators.'
     slides:
       title: Slides
-      type: array
+      type: [array, 'null']
       description: 'Slides shown in the carousel.'
       items:
-        type: object
+        type: [object, 'null']
         properties:
           image:
             title: Image
-            type: object
+            type: [object, 'null']
             description: 'Image attributes used to build the slide image.'
             properties:
               src:
-                type: string
+                type: [string, 'null']
               alt:
-                type: string
+                type: [string, 'null']
               title:
-                type: string
+                type: [string, 'null']
               loading:
-                type: string
+                type: [string, 'null']
               width:
-                type: string
+                type: [string, 'null']
               height:
-                type: string
+                type: [string, 'null']
               class:
-                type: [string, array, object]
+                type: [string, array, object, 'null']
           caption_title:
             title: 'Caption title'
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           caption:
             title: Caption
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           caption_classes:
             title: 'Caption classes'
-            type: string
+            type: [string, 'null']
           interval:
             title: Interval
-            type: integer
+            type: [integer, 'null']
           copyright:
             title: Copyright
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           link:
             title: Link
-            type: object
+            type: [object, 'null']
             properties:
               label:
-                type: [string, array, object]
+                type: [string, array, object, 'null']
               path:
-                type: string
+                type: [string, 'null']
               icon_position:
-                type: string
+                type: [string, 'null']
               icon:
-                type: object
+                type: [object, 'null']
                 properties:
                   name:
-                    type: string
+                    type: [string, 'null']
                   size:
-                    type: string
+                    type: [string, 'null']
                   path:
-                    type: string
+                    type: [string, 'null']
               attributes:
-                type: object
+                type: [object, 'null']
     icon_path:
       title: 'Icons path'
-      type: string
+      type: [string, 'null']
       description: 'Path to icons.'
     active_item:
       title: 'Active item'
-      type: integer
+      type: [integer, 'null']
       description: 'The 1-based index of the active slide. Defaults to 1.'
     fade:
       title: Fade
-      type: boolean
+      type: [boolean, 'null']
       description: 'Animate slides with a fade transition.'
     show_controls:
       title: 'Show controls'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Show previous and next controls. Defaults to true.'
     show_indicators:
       title: 'Show indicators'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Show slide indicators. Defaults to false.'
     autoplay:
       title: Autoplay
-      type: boolean
+      type: [boolean, 'null']
       description: 'Whether to initialise and animate the carousel at page load. Defaults to true.'
     disable_touch:
       title: 'Disable touch'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Disable touch swiping.'
     dark_mode:
       title: 'Dark mode'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Use dark carousel controls and indicators.'
     attributes:
       title: Attributes

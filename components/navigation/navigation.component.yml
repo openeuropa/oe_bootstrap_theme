@@ -5,7 +5,7 @@ props:
   properties:
     variant:
       title: Variant
-      type: string
+      type: [string, 'null']
       description: 'Navigation presentation. Defaults to default.'
       default: default
       enum:
@@ -13,282 +13,299 @@ props:
         - tabs
         - pills
         - navbar
+        - null
       'meta:enum':
         default: Default
         tabs: Tabs
         pills: Pills
         navbar: Navbar
+        # Value NULL becomes '' when used as array key.
+        '': Default
     orientation:
       title: Orientation
-      type: string
+      type: [string, 'null']
       description: 'Navigation orientation. Defaults to horizontal.'
       enum:
         - horizontal
         - vertical
+        - null
       'meta:enum':
         horizontal: Horizontal
         vertical: Vertical
+        # Value NULL becomes '' when used as array key.
+        '': Default
     navigation_id:
       title: 'Navigation ID'
-      type: string
+      type: [string, 'null']
       description: 'ID added to the navigation wrapper.'
     full_width:
       title: 'Full width'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Distribute items across the available width.'
     alignment:
       title: Alignment
-      type: string
+      type: [string, 'null']
       description: 'Horizontal alignment of navigation items.'
       enum:
         - start
         - center
         - end
+        - null
       'meta:enum':
         start: Start
         center: Center
         end: End
+        # Value NULL becomes '' when used as array key.
+        '': Default
     tabs_content:
       title: 'Tab content'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Render tab panels from each item content value.'
     items:
       title: 'Navigation items'
-      type: array
+      type: [array, 'null']
       description: 'Links, buttons, dropdowns, and nested navigation items.'
       items:
-        type: object
+        type: [object, 'null']
         properties:
           label:
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           path:
-            type: [string, object]
+            type: [string, object, 'null']
           id:
-            type: string
+            type: [string, 'null']
           title:
-            type: string
+            type: [string, 'null']
           variant:
-            type: string
+            type: [string, 'null']
           active:
-            type: boolean
+            type: [boolean, 'null']
           disabled:
-            type: boolean
+            type: [boolean, 'null']
           standalone:
-            type: boolean
+            type: [boolean, 'null']
           button:
-            type: boolean
+            type: [boolean, 'null']
           type:
-            type: string
+            type: [string, 'null']
           text_nowrap:
-            type: boolean
+            type: [boolean, 'null']
           assistive_text:
-            type: string
+            type: [string, 'null']
           icon:
             anyOf:
+              - type: 'null'
               - type: string
               - type: object
                 properties:
                   name:
-                    type: string
+                    type: [string, 'null']
                   path:
-                    type: string
+                    type: [string, 'null']
                   transformation:
-                    type: string
+                    type: [string, 'null']
                   attributes:
-                    type: object
+                    type: [object, 'null']
           icon_position:
-            type: string
+            type: [string, 'null']
             enum:
               - before
               - after
+              - null
           icon_display:
-            type: string
+            type: [string, 'null']
             enum:
               - flex
               - inline-flex
+              - null
           icon_spacing:
-            type: string
+            type: [string, 'null']
           remove_icon_spacers:
-            type: boolean
+            type: [boolean, 'null']
           spinner:
-            type: object
+            type: [object, 'null']
             properties:
               type:
-                type: string
+                type: [string, 'null']
               variant:
-                type: string
+                type: [string, 'null']
               size:
-                type: string
+                type: [string, 'null']
               assistive_text:
-                type: string
+                type: [string, 'null']
               attributes:
-                type: object
+                type: [object, 'null']
           show_spinner:
-            type: boolean
+            type: [boolean, 'null']
           content:
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           target:
-            type: string
+            type: [string, 'null']
           dropdown:
-            type: boolean
+            type: [boolean, 'null']
           link:
-            type: boolean
+            type: [boolean, 'null']
           alignment:
-            type: string
+            type: [string, 'null']
           dark_mode:
-            type: boolean
+            type: [boolean, 'null']
           trigger:
-            type: object
+            type: [object, 'null']
             properties:
               label:
-                type: [string, array, object]
+                type: [string, array, object, 'null']
               path:
-                type: [string, object]
+                type: [string, object, 'null']
               variant:
-                type: string
+                type: [string, 'null']
               size:
-                type: string
+                type: [string, 'null']
               type:
-                type: string
+                type: [string, 'null']
               outline:
-                type: boolean
+                type: [boolean, 'null']
               disabled:
-                type: boolean
+                type: [boolean, 'null']
               assistive_text:
-                type: string
+                type: [string, 'null']
               standalone:
-                type: boolean
+                type: [boolean, 'null']
               icon:
                 anyOf:
+                  - type: 'null'
                   - type: string
                   - type: object
                     properties:
                       name:
-                        type: string
+                        type: [string, 'null']
                       path:
-                        type: string
+                        type: [string, 'null']
                       transformation:
-                        type: string
+                        type: [string, 'null']
                       attributes:
-                        type: object
+                        type: [object, 'null']
               icon_position:
-                type: string
+                type: [string, 'null']
               attributes:
-                type: object
+                type: [object, 'null']
           items:
-            type: array
+            type: [array, 'null']
             description: 'Items displayed in a dropdown navigation item.'
             items:
-              type: object
+              type: [object, 'null']
               properties:
                 label:
-                  type: [string, array, object]
+                  type: [string, array, object, 'null']
                 path:
-                  type: [string, object]
+                  type: [string, object, 'null']
                 button:
-                  type: boolean
+                  type: [boolean, 'null']
                 divider:
-                  type: boolean
+                  type: [boolean, 'null']
                 active:
-                  type: boolean
+                  type: [boolean, 'null']
                 disabled:
-                  type: boolean
+                  type: [boolean, 'null']
                 id:
-                  type: string
+                  type: [string, 'null']
                 title:
-                  type: string
+                  type: [string, 'null']
                 type:
-                  type: string
+                  type: [string, 'null']
                 variant:
-                  type: string
+                  type: [string, 'null']
                 size:
-                  type: string
+                  type: [string, 'null']
                 outline:
-                  type: boolean
+                  type: [boolean, 'null']
                 standalone:
-                  type: boolean
+                  type: [boolean, 'null']
                 icon:
                   anyOf:
+                    - type: 'null'
                     - type: string
                     - type: object
                       properties:
                         name:
-                          type: string
+                          type: [string, 'null']
                         path:
-                          type: string
+                          type: [string, 'null']
                         transformation:
-                          type: string
+                          type: [string, 'null']
                         attributes:
-                          type: object
+                          type: [object, 'null']
                 icon_position:
-                  type: string
+                  type: [string, 'null']
                 attributes:
-                  type: object
+                  type: [object, 'null']
           navigation:
-            type: object
+            type: [object, 'null']
             description: 'Nested BCL navigation configuration.'
             properties:
               id:
-                type: string
+                type: [string, 'null']
               variant:
-                type: string
+                type: [string, 'null']
                 enum:
                   - default
                   - tabs
                   - pills
                   - navbar
+                  - null
               orientation:
-                type: string
+                type: [string, 'null']
                 enum:
                   - horizontal
                   - vertical
+                  - null
               tabs_content:
-                type: boolean
+                type: [boolean, 'null']
               full_width:
-                type: boolean
+                type: [boolean, 'null']
               alignment:
-                type: string
+                type: [string, 'null']
               attributes:
-                type: object
+                type: [object, 'null']
               items:
-                type: array
+                type: [array, 'null']
                 items:
-                  type: object
+                  type: [object, 'null']
                   properties:
                     label:
-                      type: [string, array, object]
+                      type: [string, array, object, 'null']
                     path:
-                      type: [string, object]
+                      type: [string, object, 'null']
                     id:
-                      type: string
+                      type: [string, 'null']
                     active:
-                      type: boolean
+                      type: [boolean, 'null']
                     disabled:
-                      type: boolean
+                      type: [boolean, 'null']
                     button:
-                      type: boolean
+                      type: [boolean, 'null']
                     icon:
                       anyOf:
+                        - type: 'null'
                         - type: string
                         - type: object
                           properties:
                             name:
-                              type: string
+                              type: [string, 'null']
                             path:
-                              type: string
+                              type: [string, 'null']
                             transformation:
-                              type: string
+                              type: [string, 'null']
                             attributes:
-                              type: object
+                              type: [object, 'null']
                     icon_position:
-                      type: string
+                      type: [string, 'null']
                     attributes:
-                      type: object
+                      type: [object, 'null']
           attributes:
-            type: object
+            type: [object, 'null']
     icon_path:
       title: 'Icons path'
-      type: string
+      type: [string, 'null']
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
     attributes:
       title: Attributes

@@ -5,45 +5,51 @@ props:
   properties:
     variant:
       title: Variant
-      type: string
+      type: [string, 'null']
       description: 'The card variant.'
       enum:
         - default
         - horizontal
+        - null
       'meta:enum':
         default: Default
         horizontal: Horizontal
+        # Value NULL becomes '' when used as array key.
+        '': Default
     tag:
       title: 'HTML wrapper tag'
-      type: string
+      type: [string, 'null']
       description: 'Semantic element for the outer wrapper. Defaults to article.'
       enum:
         - article
         - section
         - div
+        - null
       'meta:enum':
         article: '<article> (default)'
         section: '<section>'
         div: '<div>'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     title:
       title: Title
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Card title. Supports markup, e.g. for links.'
     media:
       title: Media
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Optional. Accepts an image, video, icon, map thumbnail, or another component.'
     content:
       title: 'Body content'
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Card body content.'
     header:
       title: Header
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Optional meta information or category content.'
     footer:
       title: Footer
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Optional secondary actions or metadata.'
     attributes:
       title: 'Card attributes'

@@ -5,29 +5,29 @@ props:
   properties:
     items:
       title: Items
-      type: array
+      type: [array, 'null']
       description: 'List with the breadcrumb items.'
       items:
-        type: object
+        type: [object, 'null']
         properties:
           label:
             title: Label
-            type: [string, array, object]
+            type: [string, array, object, 'null']
             description: 'Link label text or render array.'
           path:
             title: Path
-            type: [string, object]
+            type: [string, object, 'null']
             description: 'Link URL string or URL object.'
           id:
             title: ID
-            type: string
+            type: [string, 'null']
             description: 'Optional link ID.'
           attributes:
             title: Attributes
-            type: object
+            type: [object, 'null']
     icon_path:
       title: 'Icons path'
-      type: string
+      type: [string, 'null']
       description: 'Path to icons.'
     attributes:
       title: Attributes
