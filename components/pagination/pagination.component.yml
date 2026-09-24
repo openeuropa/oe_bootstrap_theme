@@ -101,9 +101,9 @@ props:
                 - flip-vertical
                 - null
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     prev:
       title: 'Previous link'
       type: [object, 'null']
@@ -145,9 +145,9 @@ props:
                 - flip-vertical
                 - null
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     next:
       title: 'Next link'
       type: [object, 'null']
@@ -189,9 +189,9 @@ props:
                 - flip-vertical
                 - null
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     last:
       title: 'Last link'
       type: [object, 'null']
@@ -233,9 +233,9 @@ props:
                 - flip-vertical
                 - null
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     items:
       title: Items
       type: [array, 'null']
@@ -280,9 +280,9 @@ props:
                   - flip-vertical
                   - null
               attributes:
-                type: [object, 'null']
+                type: [object, string, 'null']  # attributes
           attributes:
-            type: [object, 'null']
+            type: [object, string, 'null']  # attributes
     icon_path:
       title: 'Icons path'
       type: [string, 'null']
