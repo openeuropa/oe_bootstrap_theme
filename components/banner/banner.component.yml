@@ -13,6 +13,7 @@ props:
         - primary
         - image
         - image_shade
+        - null
       'meta:enum':
         default: 'Default text banner'
         primary: 'Primary text banner'

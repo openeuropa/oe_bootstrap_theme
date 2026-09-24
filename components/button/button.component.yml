@@ -21,6 +21,7 @@ props:
         - light
         - dark
         - link
+        - null
       'meta:enum':
         primary: 'Primary (default)'
         secondary: Secondary
@@ -39,6 +40,7 @@ props:
         - sm
         - md
         - lg
+        - null
       'meta:enum':
         sm: Small
         md: 'Medium (default)'
@@ -51,6 +53,7 @@ props:
         - button
         - submit
         - reset
+        - null
       'meta:enum':
         button: 'Button (default)'
         submit: Submit
@@ -95,6 +98,7 @@ props:
       enum:
         - before
         - after
+        - null
       'meta:enum':
         before: Before
         after: 'After (default)'
@@ -106,6 +110,7 @@ props:
         - sm
         - md
         - lg
+        - null
       'meta:enum':
         sm: Small
         md: Medium

@@ -10,6 +10,7 @@ props:
       enum:
         - default
         - glossary
+        - null
       'meta:enum':
         default: Default
         glossary: Glossary
@@ -20,6 +21,7 @@ props:
       enum:
         - sm
         - lg
+        - null
       'meta:enum':
         sm: Small
         lg: Large
@@ -30,6 +32,7 @@ props:
       enum:
         - center
         - end
+        - null
       'meta:enum':
         center: Center
         end: End
@@ -81,6 +84,7 @@ props:
                 - xl
                 - 2xl
                 - fluid
+                - null
             transformation:
               type: [string, 'null']
               enum:
@@ -89,6 +93,7 @@ props:
                 - rotate-270
                 - flip-horizontal
                 - flip-vertical
+                - null
             attributes:
               type: [object, 'null']
         attributes:
@@ -123,6 +128,7 @@ props:
                 - xl
                 - 2xl
                 - fluid
+                - null
             transformation:
               type: [string, 'null']
               enum:
@@ -131,6 +137,7 @@ props:
                 - rotate-270
                 - flip-horizontal
                 - flip-vertical
+                - null
             attributes:
               type: [object, 'null']
         attributes:
@@ -165,6 +172,7 @@ props:
                 - xl
                 - 2xl
                 - fluid
+                - null
             transformation:
               type: [string, 'null']
               enum:
@@ -173,6 +181,7 @@ props:
                 - rotate-270
                 - flip-horizontal
                 - flip-vertical
+                - null
             attributes:
               type: [object, 'null']
         attributes:
@@ -207,6 +216,7 @@ props:
                 - xl
                 - 2xl
                 - fluid
+                - null
             transformation:
               type: [string, 'null']
               enum:
@@ -215,6 +225,7 @@ props:
                 - rotate-270
                 - flip-horizontal
                 - flip-vertical
+                - null
             attributes:
               type: [object, 'null']
         attributes:
@@ -252,6 +263,7 @@ props:
                   - xl
                   - 2xl
                   - fluid
+                  - null
               transformation:
                 type: [string, 'null']
                 enum:
@@ -260,6 +272,7 @@ props:
                   - rotate-270
                   - flip-horizontal
                   - flip-vertical
+                  - null
               attributes:
                 type: [object, 'null']
           attributes:

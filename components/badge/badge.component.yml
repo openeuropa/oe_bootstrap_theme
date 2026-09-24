@@ -32,6 +32,7 @@ props:
         - info
         - light
         - dark
+        - null
       'meta:enum':
         primary: 'Primary (default)'
         secondary: Secondary
