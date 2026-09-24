@@ -5,11 +5,11 @@ props:
   properties:
     flush:
       title: Flush
-      type: boolean
+      type: [boolean, 'null']
       description: 'Removes outer borders and rounded corners. Defaults to false.'
     horizontal:
       title: Horizontal
-      type: string
+      type: [string, 'null']
       description: 'Displays items horizontally, optionally from a responsive breakpoint.'
       enum:
         - horizontal
@@ -27,11 +27,11 @@ props:
         horizontal-xxl: 'Extra extra large and larger'
     id:
       title: ID
-      type: string
+      type: [string, 'null']
       description: 'List group ID attribute.'
     type:
       title: Type
-      type: string
+      type: [string, 'null']
       description: 'Type of list group. Defaults to unordered.'
       enum:
         - unordered
@@ -43,15 +43,15 @@ props:
         actionable: Actionable
     items:
       title: Items
-      type: array
+      type: [array, 'null']
       description: 'List content, form inputs, links, or buttons.'
       items:
-        type: object
+        type: [object, 'null']
         properties:
           html:
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           variant:
-            type: string
+            type: [string, 'null']
             enum:
               - ''
               - primary
@@ -63,14 +63,14 @@ props:
               - light
               - dark
           extra_classes:
-            type: string
+            type: [string, 'null']
           badge:
-            type: object
+            type: [object, 'null']
             properties:
               label:
-                type: [string, array, object]
+                type: [string, array, object, 'null']
               background:
-                type: string
+                type: [string, 'null']
                 enum:
                   - primary
                   - secondary
@@ -81,65 +81,65 @@ props:
                   - light
                   - dark
               url:
-                type: string
+                type: [string, 'null']
               title:
-                type: string
+                type: [string, 'null']
               dismissible:
-                type: boolean
+                type: [boolean, 'null']
               assistive_text:
-                type: string
+                type: [string, 'null']
               rounded_pill:
-                type: boolean
+                type: [boolean, 'null']
               outline:
-                type: boolean
+                type: [boolean, 'null']
               icon_path:
-                type: string
+                type: [string, 'null']
               attributes:
-                type: object
+                type: [object, 'null']
           input:
-            type: boolean
+            type: [boolean, 'null']
           input_type:
-            type: string
+            type: [string, 'null']
           label:
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           required:
-            type: boolean
+            type: [boolean, 'null']
           checked:
-            type: boolean
+            type: [boolean, 'null']
           hidden_label:
-            type: boolean
+            type: [boolean, 'null']
           disabled:
-            type: boolean
+            type: [boolean, 'null']
           readonly:
-            type: boolean
+            type: [boolean, 'null']
           invalid:
-            type: boolean
+            type: [boolean, 'null']
           valid:
-            type: boolean
+            type: [boolean, 'null']
           invalid_feedback:
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           valid_feedback:
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           floating:
-            type: boolean
+            type: [boolean, 'null']
           helper_text:
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           helper_text_id:
-            type: string
+            type: [string, 'null']
           placeholder:
-            type: string
+            type: [string, 'null']
           horizontal:
-            type: boolean
+            type: [boolean, 'null']
           horizontal_class:
-            type: string
+            type: [string, 'null']
           horizontal_label_class:
-            type: string
+            type: [string, 'null']
           switch:
-            type: boolean
+            type: [boolean, 'null']
           toggle:
-            type: boolean
+            type: [boolean, 'null']
           toggle_variant:
-            type: string
+            type: [string, 'null']
             enum:
               - primary
               - secondary
@@ -150,34 +150,34 @@ props:
               - light
               - dark
           remove_wrapper:
-            type: boolean
+            type: [boolean, 'null']
           path:
-            type: [string, object]
+            type: [string, object, 'null']
           button:
-            type: boolean
+            type: [boolean, 'null']
           id:
-            type: string
+            type: [string, 'null']
           type:
-            type: string
+            type: [string, 'null']
             enum:
               - button
               - submit
               - reset
           text_nowrap:
-            type: boolean
+            type: [boolean, 'null']
           assistive_text:
-            type: string
+            type: [string, 'null']
           standalone:
-            type: boolean
+            type: [boolean, 'null']
           icon:
-            type: [string, object]
+            type: [string, object, 'null']
             properties:
               name:
-                type: string
+                type: [string, 'null']
               path:
-                type: string
+                type: [string, 'null']
               size:
-                type: string
+                type: [string, 'null']
                 enum:
                   - 2xs
                   - xs
@@ -188,7 +188,7 @@ props:
                   - 2xl
                   - fluid
               transformation:
-                type: string
+                type: [string, 'null']
                 enum:
                   - rotate-90
                   - rotate-180
@@ -196,35 +196,35 @@ props:
                   - flip-horizontal
                   - flip-vertical
               attributes:
-                type: object
+                type: [object, 'null']
           icon_position:
-            type: string
+            type: [string, 'null']
             enum:
               - before
               - after
           icon_display:
-            type: string
+            type: [string, 'null']
             enum:
               - flex
               - inline-flex
           icon_spacing:
-            type: string
+            type: [string, 'null']
             enum:
               - sm
               - md
               - lg
           remove_icon_spacers:
-            type: boolean
+            type: [boolean, 'null']
           spinner:
-            type: object
+            type: [object, 'null']
             properties:
               type:
-                type: string
+                type: [string, 'null']
                 enum:
                   - border
                   - grow
               variant:
-                type: string
+                type: [string, 'null']
                 enum:
                   - ''
                   - primary
@@ -236,19 +236,19 @@ props:
                   - light
                   - dark
               size:
-                type: string
+                type: [string, 'null']
                 enum:
                   - ''
                   - sm
                   - lg
               assistive_text:
-                type: string
+                type: [string, 'null']
               attributes:
-                type: object
+                type: [object, 'null']
           show_spinner:
-            type: boolean
+            type: [boolean, 'null']
           attributes:
-            type: object
+            type: [object, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

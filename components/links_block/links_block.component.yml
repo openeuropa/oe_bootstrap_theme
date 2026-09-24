@@ -5,23 +5,23 @@ props:
   properties:
     title:
       title: Title
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Title of the links block.'
     title_tag:
       title: 'Title tag'
-      type: string
+      type: [string, 'null']
       description: 'HTML tag used for the title. Defaults to h2.'
     title_link:
       title: 'Title link'
-      type: object
+      type: [object, 'null']
       description: 'Optional link applied to the title.'
       properties:
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         variant:
-          type: string
+          type: [string, 'null']
           enum:
             - primary
             - secondary
@@ -32,18 +32,18 @@ props:
             - light
             - dark
         id:
-          type: string
+          type: [string, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         icon:
-          type: [string, object]
+          type: [string, object, 'null']
           properties:
             name:
-              type: string
+              type: [string, 'null']
             path:
-              type: string
+              type: [string, 'null']
             size:
-              type: string
+              type: [string, 'null']
               enum:
                 - 2xs
                 - xs
@@ -54,7 +54,7 @@ props:
                 - 2xl
                 - fluid
             transformation:
-              type: string
+              type: [string, 'null']
               enum:
                 - rotate-90
                 - rotate-180
@@ -62,27 +62,27 @@ props:
                 - flip-horizontal
                 - flip-vertical
             attributes:
-              type: object
+              type: [object, 'null']
         icon_position:
-          type: string
+          type: [string, 'null']
           enum:
             - before
             - after
         icon_display:
-          type: string
+          type: [string, 'null']
           enum:
             - flex
             - inline-flex
         remove_icon_spacers:
-          type: boolean
+          type: [boolean, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     title_attributes:
       title: 'Title attributes'
       type: Drupal\Core\Template\Attribute
     background:
       title: Background
-      type: string
+      type: [string, 'null']
       description: 'Background style of the block. Defaults to gray.'
       default: gray
       enum:
@@ -93,7 +93,7 @@ props:
         transparent: Transparent
     orientation:
       title: Orientation
-      type: string
+      type: [string, 'null']
       description: 'Direction in which links are displayed. Defaults to vertical.'
       default: vertical
       enum:
@@ -104,17 +104,17 @@ props:
         horizontal: Horizontal
     links:
       title: Links
-      type: array
+      type: [array, 'null']
       description: 'Links displayed in the block.'
       items:
-        type: object
+        type: [object, 'null']
         properties:
           label:
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           path:
-            type: [string, object]
+            type: [string, object, 'null']
           variant:
-            type: string
+            type: [string, 'null']
             enum:
               - primary
               - secondary
@@ -125,18 +125,18 @@ props:
               - light
               - dark
           id:
-            type: string
+            type: [string, 'null']
           disabled:
-            type: boolean
+            type: [boolean, 'null']
           icon:
-            type: [string, object]
+            type: [string, object, 'null']
             properties:
               name:
-                type: string
+                type: [string, 'null']
               path:
-                type: string
+                type: [string, 'null']
               size:
-                type: string
+                type: [string, 'null']
                 enum:
                   - 2xs
                   - xs
@@ -147,7 +147,7 @@ props:
                   - 2xl
                   - fluid
               transformation:
-                type: string
+                type: [string, 'null']
                 enum:
                   - rotate-90
                   - rotate-180
@@ -155,24 +155,24 @@ props:
                   - flip-horizontal
                   - flip-vertical
               attributes:
-                type: object
+                type: [object, 'null']
           icon_position:
-            type: string
+            type: [string, 'null']
             enum:
               - before
               - after
           icon_display:
-            type: string
+            type: [string, 'null']
             enum:
               - flex
               - inline-flex
           remove_icon_spacers:
-            type: boolean
+            type: [boolean, 'null']
           attributes:
-            type: object
+            type: [object, 'null']
     icon_path:
       title: 'Icons path'
-      type: string
+      type: [string, 'null']
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
     attributes:
       title: Attributes
