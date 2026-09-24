@@ -174,12 +174,16 @@ class TwigExtension extends AbstractExtension {
       $icon_path = $this->getBclIconPath();
     }
 
-    foreach ($items as &$item) {
+    foreach ($items as $i_item => &$item) {
       if (empty($item['term']) || is_string($item['term'])) {
         continue;
       }
       if (!is_array($item['term'])) {
-        throw new \InvalidArgumentException('Expected term to be a string or array.');
+        throw new \InvalidArgumentException(sprintf(
+          'Expected a string or array for %s, found %s.',
+          "items[$i_item].term",
+          get_debug_type($item['term']),
+        ));
       }
       foreach ($item['term'] as &$term) {
         if (!empty($term['icon'])) {
