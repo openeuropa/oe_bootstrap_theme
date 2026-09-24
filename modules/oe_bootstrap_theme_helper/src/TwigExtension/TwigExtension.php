@@ -195,6 +195,12 @@ class TwigExtension extends AbstractExtension {
           ));
         }
         if (!empty($term['icon'])) {
+          // If the icon is not an array, the icon name has been passed.
+          if (!is_array($term['icon'])) {
+            $term['icon'] = [
+              'name' => $term['icon'],
+            ];
+          }
           $term['icon'] += ['size' => 'xs', 'path' => $icon_path];
         }
       }
