@@ -14,6 +14,8 @@ props:
       'meta:enum':
         sm: Small
         lg: Large
+        # Value NULL becomes '' when used as array key.
+        '': Default
     alignment:
       title: Alignment
       type: [string, 'null']
@@ -27,6 +29,8 @@ props:
         start: Start
         center: Center
         end: End
+        # Value NULL becomes '' when used as array key.
+        '': Default
     aria_label:
       title: 'ARIA label'
       type: [string, 'null']

@@ -79,6 +79,8 @@ props:
         4x3: '4:3'
         16x9: '16:9 (default)'
         21x9: '21:9'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     title:
       title: Title
       type: [string, array, object, 'null']
@@ -150,6 +152,8 @@ props:
       'meta:enum':
         left: 'Left (default)'
         right: Right
+        # Value NULL becomes '' when used as array key.
+        '': Default
     link:
       title: Link
       type: [object, 'null']

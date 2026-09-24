@@ -16,6 +16,8 @@ props:
         group: 'Group (default)'
         grid: Grid
         masonry: Masonry
+        # Value NULL becomes '' when used as array key.
+        '': Default
     items:
       title: 'Card items'
       type: [array, 'null']
@@ -104,6 +106,8 @@ props:
         1: '1 (default)'
         2: '2'
         3: '3'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     responsiveness:
       title: Responsiveness
       type: [string, 'null']
@@ -121,6 +125,8 @@ props:
         lg: lg
         xl: xl
         xxl: xxl
+        # Value NULL becomes '' when used as array key.
+        '': Default
     responsive_columns:
       title: 'Responsive columns'
       type: [integer, 'null']
@@ -132,6 +138,8 @@ props:
       'meta:enum':
         2: '2'
         3: '3'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     gutter:
       title: Gutter
       type: [integer, 'null']
@@ -151,6 +159,8 @@ props:
         3: '3'
         4: '4'
         5: '5'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     equal_height:
       title: 'Equal height'
       type: [boolean, 'null']

@@ -28,6 +28,8 @@ props:
         light: Light
         dark: Dark
         link: Link
+        # Value NULL becomes '' when used as array key.
+        '': Default
     dismissible:
       title: Dismissible
       type: [boolean, 'null']

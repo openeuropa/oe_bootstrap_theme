@@ -36,6 +36,8 @@ props:
         left: 'left (default)'
         center: center
         end: end
+        # Value NULL becomes '' when used as array key.
+        '': Default
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

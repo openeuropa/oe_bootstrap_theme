@@ -32,6 +32,8 @@ props:
         light: Light
         dark: Dark
         link: Link
+        # Value NULL becomes '' when used as array key.
+        '': Default
     size:
       title: Size
       type: [string, 'null']
@@ -45,6 +47,8 @@ props:
         sm: Small
         md: 'Medium (default)'
         lg: Large
+        # Value NULL becomes '' when used as array key.
+        '': Default
     type:
       title: Type
       type: [string, 'null']
@@ -58,6 +62,8 @@ props:
         button: 'Button (default)'
         submit: Submit
         reset: Reset
+        # Value NULL becomes '' when used as array key.
+        '': Default
     outline:
       title: Outline
       type: [boolean, 'null']
@@ -102,6 +108,8 @@ props:
       'meta:enum':
         before: Before
         after: 'After (default)'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     icon_spacing:
       title: 'Icon spacing'
       type: [string, 'null']
@@ -115,6 +123,8 @@ props:
         sm: Small
         md: Medium
         lg: Large
+        # Value NULL becomes '' when used as array key.
+        '': Default
     spinner:
       title: Spinner
       type: [object, 'null']
