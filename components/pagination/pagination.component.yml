@@ -14,6 +14,8 @@ props:
       'meta:enum':
         default: Default
         glossary: Glossary
+        # Value NULL becomes '' when used as array key.
+        '': Default
     size:
       title: Size
       type: [string, 'null']
@@ -25,6 +27,8 @@ props:
       'meta:enum':
         sm: Small
         lg: Large
+        # Value NULL becomes '' when used as array key.
+        '': Default
     alignment:
       title: Alignment
       type: [string, 'null']
@@ -36,6 +40,8 @@ props:
       'meta:enum':
         center: Center
         end: End
+        # Value NULL becomes '' when used as array key.
+        '': Default
     enable_prev_next_icons:
       title: 'Enable previous and next icons'
       type: [boolean, 'null']

@@ -45,6 +45,8 @@ props:
             info: Info
             light: Light
             dark: Dark
+            # Value NULL becomes '' when used as array key.
+            '': Default
         id:
           type: [string, 'null']
         disabled:
@@ -165,6 +167,8 @@ props:
                   info: Info
                   light: Light
                   dark: Dark
+                  # Value NULL becomes '' when used as array key.
+                  '': Default
               id:
                 type: [string, 'null']
               disabled:

@@ -19,6 +19,8 @@ props:
         primary: 'Primary text banner'
         image: 'Image banner'
         image_shade: 'Image shade banner'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     hero:
       title: Hero
       type: [boolean, 'null']
