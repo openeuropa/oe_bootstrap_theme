@@ -94,6 +94,7 @@ props:
             type: [string, 'null']
           icon:
             anyOf:
+              - type: 'null'
               - type: string
               - type: object
                 properties:
@@ -171,6 +172,7 @@ props:
                 type: [boolean, 'null']
               icon:
                 anyOf:
+                  - type: 'null'
                   - type: string
                   - type: object
                     properties:
@@ -220,6 +222,7 @@ props:
                   type: [boolean, 'null']
                 icon:
                   anyOf:
+                    - type: 'null'
                     - type: string
                     - type: object
                       properties:
@@ -282,6 +285,7 @@ props:
                       type: [boolean, 'null']
                     icon:
                       anyOf:
+                        - type: 'null'
                         - type: string
                         - type: object
                           properties:
