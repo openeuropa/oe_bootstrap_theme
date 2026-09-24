@@ -76,7 +76,7 @@ props:
                   path:
                     type: [string, 'null']
               attributes:
-                type: [object, 'null']
+                type: [object, string, 'null']  # attributes
     icon_path:
       title: 'Icons path'
       type: [string, 'null']
