@@ -5,58 +5,58 @@ props:
   properties:
     title:
       title: Title
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Title displayed above the file.'
     title_tag:
       title: 'Title tag'
-      type: string
+      type: [string, 'null']
       description: 'Tag used for the title. Defaults to h2.'
     title_attributes:
       title: 'Title attributes'
       type: Drupal\Core\Template\Attribute
     link_label:
       title: 'Download link label'
-      type: string
+      type: [string, 'null']
       description: 'Label used for the download links. Defaults to Download.'
     file:
       title: File
-      type: object
+      type: [object, 'null']
       description: 'File presented for download.'
       properties:
         title:
-          type: string
+          type: [string, 'null']
         url:
-          type: string
+          type: [string, 'null']
         size:
-          type: [string, integer]
+          type: [string, integer, 'null']
         extension:
-          type: string
+          type: [string, 'null']
         language_code:
-          type: string
+          type: [string, 'null']
         meta:
-          type: string
+          type: [string, 'null']
     translations:
       title: Translations
-      type: array
+      type: [array, 'null']
       description: 'List of translations of the file.'
       items:
-        type: object
+        type: [object, 'null']
         properties:
           title:
-            type: string
+            type: [string, 'null']
           url:
-            type: string
+            type: [string, 'null']
           size:
-            type: [string, integer]
+            type: [string, integer, 'null']
           extension:
-            type: string
+            type: [string, 'null']
           language_code:
-            type: string
+            type: [string, 'null']
           meta:
-            type: string
+            type: [string, 'null']
     icon_path:
       title: 'Icons path'
-      type: string
+      type: [string, 'null']
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
     attributes:
       title: Attributes

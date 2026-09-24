@@ -5,7 +5,7 @@ props:
   properties:
     variant:
       title: Variant
-      type: string
+      type: [string, 'null']
       description: 'Pagination presentation. Defaults to standard pagination.'
       enum:
         - default
@@ -15,7 +15,7 @@ props:
         glossary: Glossary
     size:
       title: Size
-      type: string
+      type: [string, 'null']
       description: 'Optional pagination size.'
       enum:
         - sm
@@ -25,7 +25,7 @@ props:
         lg: Large
     alignment:
       title: Alignment
-      type: string
+      type: [string, 'null']
       description: 'Optional pagination alignment.'
       enum:
         - center
@@ -35,43 +35,43 @@ props:
         end: End
     enable_prev_next_icons:
       title: 'Enable previous and next icons'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Replaces previous and next labels with icons. Defaults to false.'
       default: false
     enable_first_last_icons:
       title: 'Enable first and last icons'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Replaces first and last labels with icons. Defaults to true.'
       default: true
     ellipsis_before:
       title: 'Ellipsis before'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Adds an ellipsis before the numbered items. Defaults to false.'
     ellipsis_after:
       title: 'Ellipsis after'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Adds an ellipsis after the numbered items. Defaults to false.'
     first:
       title: 'First link'
-      type: object
+      type: [object, 'null']
       properties:
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         active:
-          type: boolean
+          type: [boolean, 'null']
         icon:
-          type: [string, object]
+          type: [string, object, 'null']
           properties:
             name:
-              type: string
+              type: [string, 'null']
             path:
-              type: string
+              type: [string, 'null']
             size:
-              type: string
+              type: [string, 'null']
               enum:
                 - 2xs
                 - xs
@@ -82,7 +82,7 @@ props:
                 - 2xl
                 - fluid
             transformation:
-              type: string
+              type: [string, 'null']
               enum:
                 - rotate-90
                 - rotate-180
@@ -90,30 +90,30 @@ props:
                 - flip-horizontal
                 - flip-vertical
             attributes:
-              type: object
+              type: [object, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     prev:
       title: 'Previous link'
-      type: object
+      type: [object, 'null']
       properties:
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         active:
-          type: boolean
+          type: [boolean, 'null']
         icon:
-          type: [string, object]
+          type: [string, object, 'null']
           properties:
             name:
-              type: string
+              type: [string, 'null']
             path:
-              type: string
+              type: [string, 'null']
             size:
-              type: string
+              type: [string, 'null']
               enum:
                 - 2xs
                 - xs
@@ -124,7 +124,7 @@ props:
                 - 2xl
                 - fluid
             transformation:
-              type: string
+              type: [string, 'null']
               enum:
                 - rotate-90
                 - rotate-180
@@ -132,30 +132,30 @@ props:
                 - flip-horizontal
                 - flip-vertical
             attributes:
-              type: object
+              type: [object, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     next:
       title: 'Next link'
-      type: object
+      type: [object, 'null']
       properties:
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         active:
-          type: boolean
+          type: [boolean, 'null']
         icon:
-          type: [string, object]
+          type: [string, object, 'null']
           properties:
             name:
-              type: string
+              type: [string, 'null']
             path:
-              type: string
+              type: [string, 'null']
             size:
-              type: string
+              type: [string, 'null']
               enum:
                 - 2xs
                 - xs
@@ -166,7 +166,7 @@ props:
                 - 2xl
                 - fluid
             transformation:
-              type: string
+              type: [string, 'null']
               enum:
                 - rotate-90
                 - rotate-180
@@ -174,30 +174,30 @@ props:
                 - flip-horizontal
                 - flip-vertical
             attributes:
-              type: object
+              type: [object, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     last:
       title: 'Last link'
-      type: object
+      type: [object, 'null']
       properties:
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         active:
-          type: boolean
+          type: [boolean, 'null']
         icon:
-          type: [string, object]
+          type: [string, object, 'null']
           properties:
             name:
-              type: string
+              type: [string, 'null']
             path:
-              type: string
+              type: [string, 'null']
             size:
-              type: string
+              type: [string, 'null']
               enum:
                 - 2xs
                 - xs
@@ -208,7 +208,7 @@ props:
                 - 2xl
                 - fluid
             transformation:
-              type: string
+              type: [string, 'null']
               enum:
                 - rotate-90
                 - rotate-180
@@ -216,33 +216,33 @@ props:
                 - flip-horizontal
                 - flip-vertical
             attributes:
-              type: object
+              type: [object, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     items:
       title: Items
-      type: array
+      type: [array, 'null']
       description: 'Numbered or glossary pagination items.'
       items:
-        type: object
+        type: [object, 'null']
         properties:
           path:
-            type: [string, object]
+            type: [string, object, 'null']
           label:
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           disabled:
-            type: boolean
+            type: [boolean, 'null']
           active:
-            type: boolean
+            type: [boolean, 'null']
           icon:
-            type: [string, object]
+            type: [string, object, 'null']
             properties:
               name:
-                type: string
+                type: [string, 'null']
               path:
-                type: string
+                type: [string, 'null']
               size:
-                type: string
+                type: [string, 'null']
                 enum:
                   - 2xs
                   - xs
@@ -253,7 +253,7 @@ props:
                   - 2xl
                   - fluid
               transformation:
-                type: string
+                type: [string, 'null']
                 enum:
                   - rotate-90
                   - rotate-180
@@ -261,12 +261,12 @@ props:
                   - flip-horizontal
                   - flip-vertical
               attributes:
-                type: object
+                type: [object, 'null']
           attributes:
-            type: object
+            type: [object, 'null']
     icon_path:
       title: 'Icons path'
-      type: string
+      type: [string, 'null']
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
     list_attributes:
       title: 'List attributes'

@@ -5,35 +5,35 @@ props:
   properties:
     day:
       title: Day
-      type: [string, integer]
+      type: [string, integer, 'null']
       description: 'Day displayed in the date block.'
     month:
       title: Month
-      type: string
+      type: [string, 'null']
       description: 'Month displayed in the date block.'
     date_time:
       title: Datetime
-      type: string
+      type: [string, 'null']
       description: 'Machine-readable date added to the datetime attribute.'
     year:
       title: Year
-      type: [string, integer]
+      type: [string, integer, 'null']
       description: 'Year displayed in the date block.'
     end_day:
       title: 'End day'
-      type: [string, integer]
+      type: [string, integer, 'null']
       description: 'End day displayed for a date range.'
     end_month:
       title: 'End month'
-      type: string
+      type: [string, 'null']
       description: 'End month displayed for a date range.'
     end_year:
       title: 'End year'
-      type: [string, integer]
+      type: [string, integer, 'null']
       description: 'End year displayed for a date range.'
     icon_path:
       title: 'Icons path'
-      type: string
+      type: [string, 'null']
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
     attributes:
       title: Attributes

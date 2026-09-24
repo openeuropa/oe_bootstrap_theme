@@ -5,7 +5,7 @@ props:
   properties:
     size:
       title: Size
-      type: string
+      type: [string, 'null']
       description: 'Size of the pagination.'
       enum:
         - sm
@@ -15,7 +15,7 @@ props:
         lg: Large
     alignment:
       title: Alignment
-      type: string
+      type: [string, 'null']
       description: 'Alignment of the pagination on medium screens and above. Defaults to center.'
       enum:
         - start
@@ -27,218 +27,218 @@ props:
         end: End
     aria_label:
       title: 'ARIA label'
-      type: string
+      type: [string, 'null']
       description: 'Accessible label for the navigation wrapper.'
     enable_prev_next_icon:
       title: 'Previous and next icons'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Show icons instead of text for previous and next links. Defaults to true.'
     enable_first_last_icon:
       title: 'First and last icons'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Show icons instead of text for first and last links. Defaults to false.'
     ellipsis_before:
       title: 'Ellipsis before'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Add an ellipsis before the page items.'
     ellipsis_after:
       title: 'Ellipsis after'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Add an ellipsis after the page items.'
     current_mobile_label:
       title: 'Current mobile label'
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Replacement label for the active page on small screens.'
     first:
       title: 'First link'
-      type: object
+      type: [object, 'null']
       description: 'Link to the first page.'
       properties:
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         aria_label:
-          type: string
+          type: [string, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         active:
-          type: boolean
+          type: [boolean, 'null']
         icon:
-          type: object
+          type: [object, 'null']
           properties:
             name:
-              type: string
+              type: [string, 'null']
             size:
-              type: string
+              type: [string, 'null']
             path:
-              type: string
+              type: [string, 'null']
             transformation:
-              type: string
+              type: [string, 'null']
             attributes:
-              type: object
+              type: [object, 'null']
         icon_position:
-          type: string
+          type: [string, 'null']
           enum:
             - before
             - after
         icon_path:
-          type: string
+          type: [string, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     prev:
       title: 'Previous link'
-      type: object
+      type: [object, 'null']
       description: 'Link to the previous page.'
       properties:
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         aria_label:
-          type: string
+          type: [string, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         active:
-          type: boolean
+          type: [boolean, 'null']
         icon:
-          type: object
+          type: [object, 'null']
           properties:
             name:
-              type: string
+              type: [string, 'null']
             size:
-              type: string
+              type: [string, 'null']
             path:
-              type: string
+              type: [string, 'null']
             transformation:
-              type: string
+              type: [string, 'null']
             attributes:
-              type: object
+              type: [object, 'null']
         icon_position:
-          type: string
+          type: [string, 'null']
           enum:
             - before
             - after
         icon_path:
-          type: string
+          type: [string, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     next:
       title: 'Next link'
-      type: object
+      type: [object, 'null']
       description: 'Link to the next page.'
       properties:
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         aria_label:
-          type: string
+          type: [string, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         active:
-          type: boolean
+          type: [boolean, 'null']
         icon:
-          type: object
+          type: [object, 'null']
           properties:
             name:
-              type: string
+              type: [string, 'null']
             size:
-              type: string
+              type: [string, 'null']
             path:
-              type: string
+              type: [string, 'null']
             transformation:
-              type: string
+              type: [string, 'null']
             attributes:
-              type: object
+              type: [object, 'null']
         icon_position:
-          type: string
+          type: [string, 'null']
           enum:
             - before
             - after
         icon_path:
-          type: string
+          type: [string, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     last:
       title: 'Last link'
-      type: object
+      type: [object, 'null']
       description: 'Link to the last page.'
       properties:
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         aria_label:
-          type: string
+          type: [string, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         active:
-          type: boolean
+          type: [boolean, 'null']
         icon:
-          type: object
+          type: [object, 'null']
           properties:
             name:
-              type: string
+              type: [string, 'null']
             size:
-              type: string
+              type: [string, 'null']
             path:
-              type: string
+              type: [string, 'null']
             transformation:
-              type: string
+              type: [string, 'null']
             attributes:
-              type: object
+              type: [object, 'null']
         icon_position:
-          type: string
+          type: [string, 'null']
           enum:
             - before
             - after
         icon_path:
-          type: string
+          type: [string, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     items:
       title: 'Pagination items'
-      type: array
+      type: [array, 'null']
       description: 'Page links displayed by the pagination.'
       items:
-        type: object
+        type: [object, 'null']
         properties:
           path:
-            type: [string, object]
+            type: [string, object, 'null']
           label:
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           aria_label:
-            type: string
+            type: [string, 'null']
           disabled:
-            type: boolean
+            type: [boolean, 'null']
           active:
-            type: boolean
+            type: [boolean, 'null']
           icon:
-            type: object
+            type: [object, 'null']
             properties:
               name:
-                type: string
+                type: [string, 'null']
               size:
-                type: string
+                type: [string, 'null']
               path:
-                type: string
+                type: [string, 'null']
               transformation:
-                type: string
+                type: [string, 'null']
               attributes:
-                type: object
+                type: [object, 'null']
           icon_position:
-            type: string
+            type: [string, 'null']
             enum:
               - before
               - after
           icon_path:
-            type: string
+            type: [string, 'null']
           attributes:
-            type: object
+            type: [object, 'null']
     icon_path:
       title: 'Icons path'
-      type: string
+      type: [string, 'null']
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
     attributes:
       title: Attributes
