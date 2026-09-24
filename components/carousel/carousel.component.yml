@@ -63,7 +63,7 @@ props:
               label:
                 type: [string, array, object, 'null']
               path:
-                type: [string, 'null']
+                type: [object, string, 'null']  # Url|string
               icon_position:
                 type: [string, 'null']
               icon:
