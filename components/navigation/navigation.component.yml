@@ -13,6 +13,7 @@ props:
         - tabs
         - pills
         - navbar
+        - null
       'meta:enum':
         default: Default
         tabs: Tabs
@@ -25,6 +26,7 @@ props:
       enum:
         - horizontal
         - vertical
+        - null
       'meta:enum':
         horizontal: Horizontal
         vertical: Vertical
@@ -44,6 +46,7 @@ props:
         - start
         - center
         - end
+        - null
       'meta:enum':
         start: Start
         center: Center
@@ -101,11 +104,13 @@ props:
             enum:
               - before
               - after
+              - null
           icon_display:
             type: [string, 'null']
             enum:
               - flex
               - inline-flex
+              - null
           icon_spacing:
             type: [string, 'null']
           remove_icon_spacers:
@@ -237,11 +242,13 @@ props:
                   - tabs
                   - pills
                   - navbar
+                  - null
               orientation:
                 type: [string, 'null']
                 enum:
                   - horizontal
                   - vertical
+                  - null
               tabs_content:
                 type: [boolean, 'null']
               full_width:

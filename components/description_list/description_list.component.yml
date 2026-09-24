@@ -31,6 +31,7 @@ props:
             - info
             - light
             - dark
+            - null
         id:
           type: [string, 'null']
         disabled:
@@ -51,11 +52,13 @@ props:
           enum:
             - before
             - after
+            - null
         icon_display:
           type: [string, 'null']
           enum:
             - flex
             - inline-flex
+            - null
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
@@ -111,6 +114,7 @@ props:
       enum:
         - default
         - horizontal
+        - null
       'meta:enum':
         default: Default
         horizontal: Horizontal

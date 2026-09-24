@@ -63,6 +63,7 @@ props:
         - dropup
         - dropend
         - dropstart
+        - null
       'meta:enum':
         dropup: Up
         dropend: End
@@ -84,6 +85,7 @@ props:
         - dropdown-menu-lg-start
         - dropdown-menu-xl-start
         - dropdown-menu-xxl-start
+        - null
       'meta:enum':
         dropdown-menu-end: End
         dropdown-menu-sm-end: 'End from sm'
