@@ -5,7 +5,7 @@ props:
   properties:
     variant:
       title: Variant
-      type: string
+      type: [string, 'null']
       description: 'The card layout variant. Defaults to group.'
       enum:
         - group
@@ -17,82 +17,82 @@ props:
         masonry: Masonry
     items:
       title: 'Card items'
-      type: array
+      type: [array, 'null']
       description: 'An array of card pattern items.'
       items:
-        type: object
+        type: [object, 'null']
         properties:
           title:
             title: Title
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           title_tag:
             title: 'Title tag'
-            type: string
+            type: [string, 'null']
           subtitle:
             title: Subtitle
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           text:
             title: Text
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           image:
             title: Image
-            type: object
+            type: [object, 'null']
             properties:
               src:
-                type: string
+                type: [string, 'null']
               alt:
-                type: string
+                type: [string, 'null']
               position:
-                type: string
+                type: [string, 'null']
               classes:
-                type: string
+                type: [string, 'null']
               rounded:
-                type: string
+                type: [string, 'null']
           image_copyright:
             title: 'Image copyright'
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           content:
             title: Content
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           card_header:
             title: 'Card header'
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           card_footer:
             title: 'Card footer'
-            type: [string, array, object]
+            type: [string, array, object, 'null']
           badges:
             title: Badges
-            type: array
+            type: [array, 'null']
             description: 'List of badges for the card.'
             items:
-              type: [string, object]
+              type: [string, object, 'null']
               properties:
                 label:
-                  type: [string, array, object]
+                  type: [string, array, object, 'null']
                 background:
-                  type: string
+                  type: [string, 'null']
                 url:
-                  type: string
+                  type: [string, 'null']
                 title:
-                  type: string
+                  type: [string, 'null']
                 dismissible:
-                  type: boolean
+                  type: [boolean, 'null']
                 assistive_text:
-                  type: string
+                  type: [string, 'null']
                 rounded_pill:
-                  type: boolean
+                  type: [boolean, 'null']
                 outline:
-                  type: boolean
+                  type: [boolean, 'null']
                 icon_path:
-                  type: string
+                  type: [string, 'null']
                 attributes:
-                  type: object
+                  type: [object, 'null']
           attributes:
             title: Attributes
-            type: object
+            type: [object, 'null']
     grid_columns:
       title: 'Grid columns'
-      type: integer
+      type: [integer, 'null']
       description: 'Number of grid columns. Defaults to 1.'
       enum:
         - 1
@@ -104,7 +104,7 @@ props:
         3: '3'
     responsiveness:
       title: Responsiveness
-      type: string
+      type: [string, 'null']
       description: 'Breakpoint used for the responsive columns. Defaults to md.'
       enum:
         - sm
@@ -120,7 +120,7 @@ props:
         xxl: xxl
     responsive_columns:
       title: 'Responsive columns'
-      type: integer
+      type: [integer, 'null']
       description: 'Number of responsive columns.'
       enum:
         - 2
@@ -130,7 +130,7 @@ props:
         3: '3'
     gutter:
       title: Gutter
-      type: integer
+      type: [integer, 'null']
       description: 'Gutter between cards.'
       enum:
         - 0
@@ -148,7 +148,7 @@ props:
         5: '5'
     equal_height:
       title: 'Equal height'
-      type: boolean
+      type: [boolean, 'null']
       description: 'If true, all cards will have the same height. Defaults to false.'
     attributes:
       title: Attributes

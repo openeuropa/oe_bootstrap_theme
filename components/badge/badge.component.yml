@@ -5,23 +5,23 @@ props:
   properties:
     label:
       title: Label
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'The badge label.'
     url:
       title: 'Badge URL'
-      type: string
+      type: [string, 'null']
       description: 'Converts the badge in a link.'
     title:
       title: 'Link title'
-      type: string
+      type: [string, 'null']
       description: 'Title attribute if the badge is a link.'
     assistive_text:
       title: 'Assistive text'
-      type: string
+      type: [string, 'null']
       description: 'Text to visually hide before the badge label.'
     background:
       title: 'Badge background'
-      type: string
+      type: [string, 'null']
       description: 'Set the background color of the badge. Defaults to primary.'
       enum:
         - primary
@@ -43,19 +43,19 @@ props:
         dark: Dark
     rounded_pill:
       title: 'Pill badge'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Makes the badge a rounded pill. Defaults to false.'
     dismissible:
       title: 'Dismissible badge'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Adds a close icon at the end of the badge. Defaults to false.'
     outline:
       title: Outline
-      type: boolean
+      type: [boolean, 'null']
       description: 'Uses a border instead of a background. Defaults to false.'
     icon_path:
       title: 'Icons path'
-      type: string
+      type: [string, 'null']
       description: 'Path to icons.'
     attributes:
       title: Attributes

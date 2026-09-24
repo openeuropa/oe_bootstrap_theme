@@ -5,31 +5,31 @@ props:
   properties:
     label:
       title: Label
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Text before the progress bar.'
     progress:
       title: Progress
-      type: [integer, number]
+      type: [integer, number, 'null']
       description: 'The progress value for the bar.'
     min:
       title: Minimum
-      type: [integer, number, string]
+      type: [integer, number, string, 'null']
       description: 'Minimum value shown in the progress bar.'
     max:
       title: Maximum
-      type: [integer, number, string]
+      type: [integer, number, string, 'null']
       description: 'Maximum value shown in the progress bar.'
     text:
       title: Text
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Text inside the progress bar.'
     message:
       title: Message
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Optional description text below the progress bar.'
     style:
       title: 'Bar style'
-      type: string
+      type: [string, 'null']
       description: 'Set the bar style.'
       enum:
         - primary
@@ -51,15 +51,15 @@ props:
         dark: Dark
     striped:
       title: Striped
-      type: boolean
+      type: [boolean, 'null']
       description: 'Striped style for the progress bar. Defaults to false.'
     animated:
       title: Animated
-      type: boolean
+      type: [boolean, 'null']
       description: 'Animation on striped bar. Defaults to false.'
     hidden_label:
       title: 'Hidden label'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Hides the text inside the progress bar. Defaults to false.'
     attributes:
       title: Attributes
