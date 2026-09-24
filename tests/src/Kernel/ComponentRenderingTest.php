@@ -14,6 +14,7 @@ use Drupal\Core\Site\Settings;
 use Drupal\Core\Template\Attribute;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\OptionalPropsNullifier;
+use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -149,6 +150,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
           $candidate_key = $key . ($suffix ? sprintf(' (%s)', $suffix) : '');
           $suffix++;
         } while (isset($test_cases[$candidate_key]));
+        $test_case['render'] = PatternTestDataMassager::massageDataRecursive($test_case['render']);
         $test_cases[$candidate_key] = $test_case;
       }
     }

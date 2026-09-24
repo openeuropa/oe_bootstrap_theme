@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures;
 
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Symfony\Component\Yaml\Tag\TaggedValue;
@@ -38,6 +40,9 @@ final class PatternTestDataMassager {
       'Markup' => Markup::create($data->getValue()),
       'FileValueObject' => FileValueObject::fromArray($data->getValue()),
       'ImageValueObject' => ImageValueObject::fromArray($data->getValue()),
+      'Attribute' => new Attribute($data->getValue()),
+      'Url' => Url::fromUri($data->getValue()),
+      default => throw new \RuntimeException(sprintf('Unexpected tag %s.', $data->getTag()))
     };
   }
 

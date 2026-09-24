@@ -182,11 +182,11 @@ carousel_with_image_attributes_and_link_icon:
           caption: 'First slide caption'
           link:
             label: First link
-            path: https://link.one
+            path: !Url https://link.one
             icon_position: after
             icon:
               name: chevron-right
-            attributes:
+            attributes: !Attribute
               class:
                 - custom-link-class
   assertions:
