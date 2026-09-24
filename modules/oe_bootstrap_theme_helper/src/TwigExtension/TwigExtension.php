@@ -186,7 +186,14 @@ class TwigExtension extends AbstractExtension {
           get_debug_type($item['term']),
         ));
       }
-      foreach ($item['term'] as &$term) {
+      foreach ($item['term'] as $i_term => &$term) {
+        if (!is_array($term)) {
+          throw new \InvalidArgumentException(sprintf(
+            'Expected %s to be an array, found %s.',
+            "items[$i_item].term[$i_term]",
+            get_debug_type($item['term']),
+          ));
+        }
         if (!empty($term['icon'])) {
           $term['icon'] += ['size' => 'xs', 'path' => $icon_path];
         }
