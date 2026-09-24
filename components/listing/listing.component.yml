@@ -66,7 +66,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
           enum:
@@ -82,7 +82,7 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     title_attributes:
       title: 'Title attributes'
       type: Drupal\Core\Template\Attribute
@@ -121,7 +121,7 @@ props:
                   transformation:
                     type: [string, 'null']
                   attributes:
-                    type: [object, 'null']
+                    type: [object, string, 'null']  # attributes
               icon_position:
                 type: [string, 'null']
                 enum:
@@ -137,7 +137,7 @@ props:
               remove_icon_spacers:
                 type: [boolean, 'null']
               attributes:
-                type: [object, 'null']
+                type: [object, string, 'null']  # attributes
           url:
             type: [object, 'null']
             description: 'Drupal URL object optionally applied to the card title.'
@@ -188,7 +188,7 @@ props:
               icon_path:
                 type: [string, 'null']
               attributes:
-                type: [object, 'null']
+                type: [object, string, 'null']  # attributes
           content:
             type: [string, array, object, 'null']
           header:
@@ -219,7 +219,7 @@ props:
                 icon_path:
                   type: [string, 'null']
                 attributes:
-                  type: [object, 'null']
+                  type: [object, string, 'null']  # attributes
     link:
       title: Link
       type: [object, 'null']
@@ -245,7 +245,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
           enum:
@@ -261,7 +261,7 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     alignment:
       title: Alignment
       type: [string, 'null']
