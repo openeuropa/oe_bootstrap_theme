@@ -89,7 +89,7 @@ props:
                 icon_path:
                   type: [string, 'null']
                 attributes:
-                  type: [object, 'null']
+                  type: [object, string, 'null']  # attributes
           attributes:
             title: Attributes
             type: [object, 'null']

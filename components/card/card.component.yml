@@ -68,7 +68,7 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     subtitle:
       title: Subtitle
       type: [string, array, object, 'null']
@@ -118,7 +118,7 @@ props:
         icon_path:
           type: [string, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     meta:
       title: 'Meta items'
       type: [array, 'null']
@@ -163,7 +163,7 @@ props:
           icon_path:
             type: [string, 'null']
           attributes:
-            type: [object, 'null']
+            type: [object, string, 'null']  # attributes
     title_attributes:
       title: 'Title attributes'
       type: Drupal\Core\Template\Attribute
