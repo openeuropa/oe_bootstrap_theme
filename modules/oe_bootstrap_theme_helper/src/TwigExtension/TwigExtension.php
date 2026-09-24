@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
+use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Theme\ThemeManagerInterface;
@@ -175,12 +176,12 @@ class TwigExtension extends AbstractExtension {
     }
 
     foreach ($items as $i_item => &$item) {
-      if (empty($item['term']) || is_string($item['term'])) {
+      if (empty($item['term']) || is_string($item['term']) || $item['term'] instanceof MarkupInterface) {
         continue;
       }
       if (!is_array($item['term'])) {
         throw new \InvalidArgumentException(sprintf(
-          'Expected a string or array for %s, found %s.',
+          'Expected a string, array or markup for %s, found %s.',
           "items[$i_item].term",
           get_debug_type($item['term']),
         ));
