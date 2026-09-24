@@ -22,6 +22,8 @@ props:
         lg: Large
         xl: 'Extra large'
         fullscreen: Fullscreen
+        # Value NULL becomes '' when used as array key.
+        '': Default
     fullscreen_responsive:
       title: 'Responsive fullscreen'
       type: [string, 'null']
@@ -39,6 +41,8 @@ props:
         lg: Large
         xl: 'Extra large'
         xxl: 'Extra extra large'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     static_backdrop:
       title: 'Static backdrop'
       type: [boolean, 'null']

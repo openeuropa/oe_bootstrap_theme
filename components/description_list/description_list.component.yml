@@ -118,6 +118,8 @@ props:
       'meta:enum':
         default: Default
         horizontal: Horizontal
+        # Value NULL becomes '' when used as array key.
+        '': Default
     bordered:
       title: Bordered
       type: [boolean, 'null']

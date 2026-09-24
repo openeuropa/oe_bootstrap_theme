@@ -14,6 +14,8 @@ props:
       'meta:enum':
         default: Default
         search: Search
+        # Value NULL becomes '' when used as array key.
+        '': Default
     offcanvas_id:
       title: 'Offcanvas ID'
       type: [string, 'null']
@@ -79,6 +81,8 @@ props:
         end: End
         top: Top
         bottom: Bottom
+        # Value NULL becomes '' when used as array key.
+        '': Default
     body:
       title: Body
       type: [string, array, object, 'null']
@@ -130,6 +134,8 @@ props:
         lg: 'Large (default)'
         xl: 'Extra large'
         xxl: 'Extra extra large'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     toggle:
       title: 'Toggle button'
       type: [object, 'null']
