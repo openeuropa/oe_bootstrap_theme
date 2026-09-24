@@ -89,7 +89,7 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     title_attributes:
       title: 'Title attributes'
       type: Drupal\Core\Template\Attribute
@@ -155,7 +155,7 @@ props:
           icon_path:
             type: [string, 'null']
           attributes:
-            type: [object, 'null']
+            type: [object, string, 'null']  # attributes
     links:
       title: Links
       type: [array, 'null']
@@ -166,7 +166,7 @@ props:
           label:
             type: [string, array, object, 'null']
           path:
-            type: [string, 'null']
+            type: [object, string, 'null']  # Url|string
           variant:
             type: [string, 'null']
           id:
@@ -189,7 +189,7 @@ props:
           remove_icon_spacers:
             type: [boolean, 'null']
           attributes:
-            type: [object, 'null']
+            type: [object, string, 'null']  # attributes
     date:
       title: 'Date block'
       type: [object, 'null']
@@ -212,7 +212,7 @@ props:
         icon_path:
           type: [string, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

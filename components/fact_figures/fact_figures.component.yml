@@ -3,6 +3,14 @@ description: 'Fact and Figures pattern used for the paragraph of same type.'
 props:
   type: object
   properties:
+    alignment:
+      title: 'Alignment'
+      type: [string, 'null']
+      description: 'Align icons, values, and labels. Descriptions remain left-aligned.'
+      enum:
+        - left
+        - center
+        - null
     title:
       title: Title
       type: [string, array, object, 'null']
@@ -37,7 +45,7 @@ props:
                   path:
                     type: [string, 'null']
                   attributes:
-                    type: [object, 'null']
+                    type: [object, string, 'null']  # attributes
           title:
             title: Title
             type: [string, array, object, 'null']
@@ -57,7 +65,7 @@ props:
         path:
           type: [string, object, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

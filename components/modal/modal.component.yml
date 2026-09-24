@@ -136,7 +136,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
           enum:
@@ -162,7 +162,7 @@ props:
             assistive_text:
               type: [string, 'null']
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         show_spinner:
           type: [boolean, 'null']
         clean_class:
@@ -170,7 +170,7 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

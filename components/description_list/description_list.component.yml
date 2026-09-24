@@ -46,7 +46,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
           enum:
@@ -62,7 +62,7 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     items:
       title: 'List items'
       type: [array, 'null']
@@ -75,8 +75,8 @@ props:
             description: 'A string or an array of term objects.'
             anyOf:
               - type: 'null'
-              - type: string
-              - type: array
+              - type: [string, 'null']
+              - type: [array, 'null']
                 items:
                   type: [object, 'null']
                   properties:
@@ -85,21 +85,25 @@ props:
                       type: [string, array, object, 'null']
                       description: 'Label text or render array.'
                     icon:
-                      type: [object, 'null']
-                      properties:
-                        name:
-                          type: [string, 'null']
-                        size:
-                          type: [string, 'null']
-                        path:
-                          type: [string, 'null']
+                      title: 'Icon'
+                      anyOf:
+                        - type: 'null'
+                        - type: string
+                        - type: object
+                          properties:
+                            name:
+                              type: [string, 'null']
+                            size:
+                              type: [string, 'null']
+                            path:
+                              type: [string, 'null']
           definition:
             title: 'Definition'
             description: 'A string or an array of definition objects.'
             anyOf:
               - type: 'null'
-              - type: string
-              - type: array
+              - type: [string, 'null']
+              - type: [array, 'null']
                 items:
                   type: [object, 'null']
                   properties:
