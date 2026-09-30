@@ -72,6 +72,8 @@ class CarouselV2ComponentAssert extends BasePatternAssert {
 
     $this->assertElementExists('.bcl-carousel-v2 .carousel-inner', $crawler);
     $this->assertElementExists('.bcl-carousel-v2.bcl-carousel-v2--' . $variant, $crawler);
+    // Only Carousel image uses a fade; Carousel hero keeps sliding.
+    $this->assertCount($variant === 'split' ? 1 : 0, $crawler->filter('.bcl-carousel-v2.carousel-fade'));
     $this->assertElementAttribute('region', '.bcl-carousel-v2', 'role', $crawler);
     // The V2 controller owns rotation; Bootstrap's own data-API must be off.
     $this->assertElementAttribute('false', '.bcl-carousel-v2', 'data-bs-ride', $crawler);
