@@ -1,5 +1,5 @@
 name: 'Carousel V2'
-description: 'A slideshow component for cycling through elements, with a shared set of navigation controls and a choice of image layouts: image beside the content ("split") or a full-width image ("full_width").'
+description: 'A slideshow with shared navigation controls and two layouts: Carousel image ("split") or Carousel hero ("full_width").'
 props:
   type: object
   properties:
@@ -14,13 +14,13 @@ props:
     layout:
       title: Layout
       type: string
-      description: 'Image layout. Defaults to split.'
+      description: 'Carousel image fades between slides with content beside the image on desktop. Carousel hero slides between full-width images with overlaid desktop content. Both stack on mobile. Defaults to split.'
       enum:
         - split
         - full_width
       'meta:enum':
-        split: 'Split: image beside the content'
-        full_width: 'Full width: image spans the carousel'
+        split: 'Carousel image'
+        full_width: 'Carousel hero'
     title_tag:
       title: 'Title tag'
       type: string
@@ -123,7 +123,7 @@ props:
     slide_label:
       title: 'Slide label'
       type: [string, array, object]
-      description: 'Translated template for the current/total slide counter, using %current% and %total% placeholders. Defaults to "%current% of %total%".'
+      description: 'Translated position in the accessible slide name, using %current% and %total% placeholders. Appended to the slide title when present. Defaults to "%current% of %total%".'
     carousel_role_label:
       title: 'Carousel role label'
       type: [string, array, object]
