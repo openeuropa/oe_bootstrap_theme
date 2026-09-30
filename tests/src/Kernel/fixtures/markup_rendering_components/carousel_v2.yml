@@ -16,12 +16,14 @@ carousel_v2_default:
           caption_title: 'Second slide title'
           caption: 'Second slide caption'
   assertions:
+    count:
+      '.bcl-carousel-v2.carousel-fade': 1
     component:
       class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
       expected:
         label: 'Featured content'
         active_item: 1
-        slide_label: '1 of 2'
+        slide_label: 'First slide title — 1 of 2'
         carousel_role_label: 'carousel'
         slide_role_label: 'slide'
         settings:
@@ -58,6 +60,8 @@ carousel_v2_full_width:
             alt: 'alt image 2'
           caption_title: 'Second slide title'
   assertions:
+    count:
+      '.bcl-carousel-v2.carousel-fade': 0
     component:
       class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
       expected:
@@ -119,7 +123,7 @@ carousel_v2_all_settings:
       expected:
         label: 'Featured priorities'
         active_item: 2
-        slide_label: '2 din 2'
+        slide_label: 'Second slide title — 2 din 2'
         carousel_role_label: 'carusel'
         slide_role_label: 'diapozitiv'
         settings:
@@ -133,7 +137,7 @@ carousel_v2_all_settings:
           pause: 'Pauză'
         attributes:
           id: custom-carousel-v2
-          class: 'custom-carousel-v2 bcl-carousel-v2 bcl-carousel-v2--split carousel slide'
+          class: 'custom-carousel-v2 bcl-carousel-v2 bcl-carousel-v2--split carousel slide carousel-fade'
           data-carousel: custom-value
         items:
           - image_alt: 'alt image 1'
@@ -199,6 +203,37 @@ carousel_v2_out_of_range_active_item_falls_back:
             caption_title: 'First slide title'
           - image_alt: 'alt image 2'
             caption_title: 'Second slide title'
+
+carousel_v2_title_with_quotes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel_v2
+    '#props':
+      items:
+        - image:
+            src: 'https://images.site.example/1'
+            alt: 'Coastline'
+          caption_title: 'Nature & "wildlife"'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
+      expected:
+        slide_label: 'Nature & "wildlife" — 1 of 1'
+
+carousel_v2_no_title_uses_position:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel_v2
+    '#props':
+      items:
+        - image:
+            src: 'https://images.site.example/1'
+            alt: 'Coastline'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
+      expected:
+        slide_label: '1 of 1'
 
 carousel_v2_zero_items_renders_nothing:
   render:
