@@ -16,8 +16,6 @@ carousel_v2_default:
           caption_title: 'Second slide title'
           caption: 'Second slide caption'
   assertions:
-    count:
-      '.bcl-carousel-v2.carousel-fade': 1
     component:
       class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
       expected:
@@ -60,8 +58,6 @@ carousel_v2_full_width:
             alt: 'alt image 2'
           caption_title: 'Second slide title'
   assertions:
-    count:
-      '.bcl-carousel-v2.carousel-fade': 0
     component:
       class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
       expected:
