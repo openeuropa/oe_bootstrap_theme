@@ -43,9 +43,9 @@
   {% if slide.link is defined and slide.link is not empty %}
     {% set _item = _item|merge({
       link: slide.link|merge({
-        icon_position: slide.link.icon_position|default('before'),
+        icon_position: slide.link.icon_position|default('after'),
         icon: slide.link.icon|default({})|merge({
-          name: slide.link.icon.name|default('link'),
+          name: slide.link.icon.name|default('chevron-right'),
           path: slide.link.icon.path|default(_icon_path),
         }),
         attributes: create_attribute(slide.link.attributes|default({})),

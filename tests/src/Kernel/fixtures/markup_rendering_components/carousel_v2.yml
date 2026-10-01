@@ -271,4 +271,4 @@ carousel_v2_custom_icon_path:
       '[data-bcl-pause-icon] svg': '/custom-icons.svg#pause-fill'
       '[data-bs-slide="prev"] svg': '/custom-icons.svg#chevron-left'
       '[data-bs-slide="next"] svg': '/custom-icons.svg#chevron-right'
-      '.bcl-carousel-v2__content a svg': '/custom-icons.svg#link'
+      '.bcl-carousel-v2__content a svg': '/custom-icons.svg#chevron-right'
