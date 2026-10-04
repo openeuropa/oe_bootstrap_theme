@@ -1,0 +1,158 @@
+link_default:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:link
+    '#props': {}
+  assertions:
+    count:
+      'a[href="#"]': 1
+      'a.disabled': 0
+      'a.standalone': 0
+      'a[class*="link-"]': 0
+      'a svg': 0
+    equals:
+      'a': ''
+
+link_with_variant_id_and_render_array_label:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:link
+    '#props':
+      label:
+        '#markup': 'Read <strong>more</strong>'
+      path: 'https://example.com?type=link#details'
+      variant: warning
+      id: variant-link
+  assertions:
+    count:
+      'a#variant-link.link-warning[href="https://example.com?type=link#details"]': 1
+      'a#variant-link strong': 1
+    equals:
+      'a#variant-link strong': more
+
+link_disabled_standalone_with_custom_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:link
+    '#props':
+      label: 'Disabled standalone link'
+      path: '/example'
+      disabled: true
+      standalone: true
+      attributes:
+        class:
+          - custom-link-class
+        data-link-attribute: custom-value
+        title: 'Custom link title'
+  assertions:
+    count:
+      'a.disabled.standalone.custom-link-class[href="/example"][aria-disabled="true"][tabindex="-1"]': 1
+      'a[data-link-attribute="custom-value"][title="Custom link title"]': 1
+    equals:
+      'a': 'Disabled standalone link'
+
+link_with_string_icon_before:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:link
+    '#props':
+      label: 'Previous page'
+      path: '/previous'
+      icon: arrow-left
+      icon_position: before
+  assertions:
+    count:
+      'a[href="/previous"] > svg:first-child.bi.icon--s.me-2-5': 1
+      'a > svg.ms-2-5': 0
+    contains:
+      'a > svg': 'assets/icons/bcl-default-icons.svg#arrow-left'
+
+link_with_icon_object_after:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:link
+    '#props':
+      label: 'Custom icon'
+      path: '/custom-icon'
+      icon:
+        name: custom-symbol
+        path: '/custom/icons.svg'
+        size: xl
+        transformation: rotate-90
+        attributes:
+          class:
+            - custom-icon-class
+          data-icon-attribute: custom-value
+      icon_position: after
+  assertions:
+    count:
+      'a[href="/custom-icon"] > svg:last-child.bi.icon--xl.icon--rotate-90.ms-2-5.custom-icon-class[data-icon-attribute="custom-value"]': 1
+      'a > svg.me-2-5': 0
+    contains:
+      'a > svg': '/custom/icons.svg#custom-symbol'
+
+link_with_inline_flex_icon_display:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:link
+    '#props':
+      label: 'Inline flex link'
+      path: '/inline-flex'
+      icon: box-arrow-up-right
+      icon_display: inline-flex
+  assertions:
+    count:
+      'a.d-inline-flex.gap-2-5': 1
+      'a > svg:last-child': 1
+      'a > svg.ms-2-5': 0
+      'a > svg.me-2-5': 0
+
+link_with_flex_icon_display:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:link
+    '#props':
+      label: 'Flex link'
+      path: '/flex'
+      icon: download
+      icon_position: before
+      icon_display: flex
+  assertions:
+    count:
+      'a.d-flex.gap-2-5': 1
+      'a > svg.ms-2-5': 0
+      'a > svg.me-2-5': 0
+
+link_with_icon_only:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:link
+    '#props':
+      path: '/search'
+      icon: search
+      attributes:
+        aria-label: Search
+  assertions:
+    count:
+      'a[href="/search"][aria-label="Search"] > svg': 1
+      'a > svg.ms-2-5': 0
+      'a > svg.me-2-5': 0
+    contains:
+      'a > svg': 'assets/icons/bcl-default-icons.svg#search'
+
+link_without_icon_spacers:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:link
+    '#props':
+      label: 'Link without icon spacing'
+      path: '/no-spacing'
+      icon: arrow-right
+      icon_display: inline-flex
+      remove_icon_spacers: true
+  assertions:
+    count:
+      'a > svg': 1
+      'a.gap-2-5': 0
+      'a > svg.ms-2-5': 0
+      'a > svg.me-2-5': 0

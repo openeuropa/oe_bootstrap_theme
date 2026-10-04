@@ -1,0 +1,124 @@
+{#
+/**
+ * @file
+ * Featured media component.
+ */
+#}
+{% set _icon_path = icon_path|default(bcl_icon_path()) %}
+{% set _image = image|default('') %}
+{% set _link = link|default({}) %}
+{% set _title_link = title_link|default({}) %}
+
+{% if _image is not empty and _image.src is defined %}
+  {% set _image_attributes = create_attribute({
+    src: _image.src,
+    alt: _image.alt|default(''),
+  }).addClass('flex-end-100') %}
+  {% if _image.responsive ?? true %}
+    {% set _image_attributes = _image_attributes.addClass('img-fluid') %}
+  {% endif %}
+  {% if _image.class is defined %}
+    {% set _image_attributes = _image_attributes.addClass(_image.class) %}
+  {% endif %}
+  {% if _image.title|default(_image.name|default('')) is not empty %}
+    {% set _image_attributes = _image_attributes.setAttribute('title', _image.title|default(_image.name)) %}
+  {% endif %}
+  {% for attribute in ['loading', 'width', 'height'] %}
+    {% if attribute(_image, attribute) is defined and attribute(_image, attribute) is not empty %}
+      {% set _image_attributes = _image_attributes.setAttribute(attribute, attribute(_image, attribute)) %}
+    {% endif %}
+  {% endfor %}
+  {% set _image %}
+    <img{{ _image_attributes }} />
+  {% endset %}
+{% endif %}
+
+{% if _link is not empty %}
+  {% if _link.attributes is defined %}
+    {% set _link = _link|merge({attributes: create_attribute(_link.attributes)}) %}
+  {% endif %}
+  {% if _link.icon is defined and _link.icon is not empty %}
+    {% set _link_icon = _link.icon is iterable ? _link.icon : {name: _link.icon} %}
+    {% if _link_icon.attributes is defined %}
+      {% set _link_icon = _link_icon|merge({attributes: create_attribute(_link_icon.attributes)}) %}
+    {% endif %}
+    {% set _link = _link|merge({
+      icon: _link_icon|merge({
+        path: _link_icon.path|default(_icon_path),
+      }),
+    }) %}
+  {% endif %}
+{% endif %}
+
+{% if _title_link is not empty %}
+  {% if _title_link.attributes is defined %}
+    {% set _title_link = _title_link|merge({attributes: create_attribute(_title_link.attributes)}) %}
+  {% endif %}
+  {% if _title_link.icon is defined and _title_link.icon is not empty %}
+    {% set _title_link_icon = _title_link.icon is iterable ? _title_link.icon : {name: _title_link.icon} %}
+    {% if _title_link_icon.attributes is defined %}
+      {% set _title_link_icon = _title_link_icon|merge({attributes: create_attribute(_title_link_icon.attributes)}) %}
+    {% endif %}
+    {% set _title_link = _title_link|merge({
+      icon: _title_link_icon|merge({
+        path: _title_link_icon.path|default(_icon_path),
+      }),
+    }) %}
+  {% endif %}
+{% endif %}
+
+{% set _media %}
+  {% include '@oe-bcl/featured-media' with {
+    embedded_media: embedded_media,
+    image: _image,
+    poster_image: poster_image,
+    sources: sources,
+    tracks: tracks,
+    content: caption,
+    content_classes: content_classes|default('bg-light p-3'),
+    ratio: ratio|default('16x9'),
+    copyright: copyright,
+    copyright_label: copyright_label|default(_image is not empty ? 'Image credit:'|t : 'Copyright:'|t),
+    attributes: media_attributes,
+  } only %}
+{% endset %}
+
+{% set _has_text = subtitle is not empty or text is not empty or _link is not empty %}
+<div{{ attributes|default(create_attribute()).addClass('bcl-featured-media') }}>
+  {% if _has_text %}
+    {% set _text_order = text_position|default('left') == 'right' ? 'order-2' : 'order-1' %}
+    {% set _media_order = text_position|default('left') == 'right' ? 'order-1' : 'order-2' %}
+
+    {% if title is not empty %}
+      {% include '@oe-bcl/heading' with {
+        title: title,
+        title_tag: title_tag|default('h2'),
+        title_link: _title_link,
+        attributes: title_attributes|default(create_attribute()).addClass('mb-4'),
+      } only %}
+    {% endif %}
+    <div class="row">
+      <div class="col-12 col-md-6 {{ _text_order }}">
+        {% if subtitle is not empty %}
+          {% set _subtitle_tag = subtitle_tag|default(title is not empty ? 'h3' : 'h2') %}
+          <{{ _subtitle_tag }}{{ subtitle_attributes|default(create_attribute()).addClass('text-secondary') }}>
+            {{- subtitle -}}
+          </{{ _subtitle_tag }}>
+        {% endif %}
+        {{- text -}}
+        {% if _link is not empty %}
+          {% include '@oe-bcl/link' with _link only %}
+        {% endif %}
+      </div>
+      <div class="col-12 col-md-6 {{ _media_order }}">
+        {{- _media -}}
+      </div>
+    </div>
+  {% else %}
+    <div class="row">
+      <div class="col-12 col-md-4">
+        {{- _media -}}
+      </div>
+    </div>
+  {% endif %}
+</div>

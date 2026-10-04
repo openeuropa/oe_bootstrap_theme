@@ -459,6 +459,83 @@ TWIG;
   }
 
   /**
+   * Tests BCL navigation items filter.
+   */
+  public function testBclNavigationItems(): void {
+    $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $items = [
+      [
+        'label' => 'Dropdown',
+        'dark_mode' => TRUE,
+        'attributes' => ['class' => ['dropdown-class']],
+        'icon' => 'menu',
+        'spinner' => [
+          'attributes' => ['class' => ['spinner-class']],
+        ],
+        'trigger' => [
+          'label' => 'Open dropdown',
+          'attributes' => ['class' => ['trigger-class']],
+          'icon' => [
+            'name' => 'chevron-down',
+            'attributes' => ['class' => ['trigger-icon-class']],
+          ],
+        ],
+        'items' => [
+          [
+            'label' => 'Dropdown item',
+            'attributes' => ['class' => ['dropdown-item-class']],
+          ],
+        ],
+        'navigation' => [
+          'variant' => 'tabs',
+          'orientation' => 'vertical',
+          'attributes' => ['class' => ['navigation-class']],
+          'items' => [
+            [
+              'label' => 'Nested item',
+              'icon' => [
+                'name' => 'arrow-right',
+                'path' => '/existing-icons.svg',
+              ],
+            ],
+          ],
+        ],
+      ],
+    ];
+
+    $result = $extension->bclNavigationItems($items, '/custom-icons.svg');
+    $item = $result[0];
+
+    $this->assertInstanceOf(Attribute::class, $item['attributes']);
+    $this->assertSame('dropdown-class', (string) $item['attributes']['class']);
+    $this->assertSame([
+      'name' => 'menu',
+      'path' => '/custom-icons.svg',
+    ], $item['icon']);
+    $this->assertInstanceOf(Attribute::class, $item['spinner']['attributes']);
+    $this->assertSame('spinner-class', (string) $item['spinner']['attributes']['class']);
+    $this->assertTrue($item['dark']);
+
+    $this->assertInstanceOf(Attribute::class, $item['trigger']['attributes']);
+    $this->assertSame('trigger-class', (string) $item['trigger']['attributes']['class']);
+    $this->assertSame('/custom-icons.svg', $item['trigger']['icon']['path']);
+    $this->assertInstanceOf(Attribute::class, $item['trigger']['icon']['attributes']);
+    $this->assertSame('trigger-icon-class', (string) $item['trigger']['icon']['attributes']['class']);
+    $this->assertInstanceOf(Attribute::class, $item['items'][0]['attributes']);
+    $this->assertSame('dropdown-item-class', (string) $item['items'][0]['attributes']['class']);
+
+    $navigation = $item['navigation'];
+    $this->assertFalse($navigation['pills']);
+    $this->assertTrue($navigation['tabs']);
+    $this->assertTrue($navigation['nav']);
+    $this->assertFalse($navigation['navbar']);
+    $this->assertTrue($navigation['vertical']);
+    $this->assertInstanceOf(Attribute::class, $navigation['attributes']);
+    $this->assertSame('navigation-class', (string) $navigation['attributes']['class']);
+    $this->assertSame('/existing-icons.svg', $navigation['items'][0]['icon']['path']);
+  }
+
+  /**
    * Provides data for testBclCardList().
    *
    * @return array
@@ -489,6 +566,12 @@ TWIG;
           'badges' => [
             'meta 1',
             'meta 2',
+          ],
+        ],
+        [
+          'image' => [
+            'src' => 'https://picsum.photos/1000/500/',
+            'alt' => 'Alternative text for card image',
           ],
         ],
       ],
@@ -562,6 +645,17 @@ TWIG;
               'background' => 'primary',
             ],
           ],
+        ],
+        [
+          'title' => '',
+          'subtitle' => [],
+          'text' => [],
+          'image' => [
+            'src' => 'https://picsum.photos/1000/500/',
+            'alt' => 'Alternative text for card image',
+            'path' => 'https://picsum.photos/1000/500/',
+          ],
+          'badges' => [],
         ],
       ],
     ];

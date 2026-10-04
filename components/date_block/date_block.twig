@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Date block component.
+ */
+#}
+{% include '@oe-bcl/date-block' with {
+  day: day,
+  month: month,
+  date_time: date_time,
+  year: year,
+  end_day: end_day,
+  end_month: end_month,
+  end_year: end_year,
+  icon_path: icon_path|default(bcl_icon_path()),
+  attributes: attributes,
+} only %}

@@ -1,0 +1,225 @@
+list_group_default_props_omitted:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:list_group
+    '#props': {}
+  assertions:
+    count:
+      'ul[data-component-id="oe_bootstrap_theme:list_group"].list-group': 1
+      'ul.list-group-flush': 0
+      'ul.list-group-numbered': 0
+      'ul[class*="list-group-horizontal"]': 0
+      'ul > li': 0
+
+list_group_unordered_with_variants_and_badges:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:list_group
+    '#props':
+      items:
+        - html:
+            '#markup': 'Item with <strong>rendered markup</strong>'
+          variant: danger
+          extra_classes: custom-item-class
+        - html: 'Item with a badge'
+          variant: secondary
+          badge:
+            label: '10'
+            background: success
+            rounded_pill: true
+        - html: 'Item with a linked badge'
+          badge:
+            label:
+              '#markup': 'New <em>items</em>'
+            background: info
+            url: '/updates'
+            title: 'View updates'
+            dismissible: true
+            assistive_text: 'Unread: '
+            outline: true
+            attributes:
+              class:
+                - custom-badge-class
+              data-badge-attribute: custom-value
+  assertions:
+    count:
+      'ul.list-group > li.list-group-item': 3
+      'li.list-group-item-danger.custom-item-class strong': 1
+      'li.list-group-item-secondary span.badge.text-bg-success.rounded-pill': 1
+      'li:nth-child(3) a.badge.badge-outline-info.custom-badge-class[href="/updates"][title="View updates"][data-badge-attribute="custom-value"]': 1
+      'li:nth-child(3) a.badge span.visually-hidden': 1
+      'li:nth-child(3) a.badge svg.icon--xs': 1
+    equals:
+      'li.list-group-item-danger strong': 'rendered markup'
+      'li.list-group-item-secondary span.badge': '10'
+      'li:nth-child(3) a.badge span.visually-hidden': 'Unread:'
+    contains:
+      'li:nth-child(3) a.badge': 'New <em>items</em>'
+      'li:nth-child(3) a.badge svg': 'assets/icons/bcl-default-icons.svg#x-circle-fill'
+
+list_group_ordered_horizontal_flush_with_custom_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:list_group
+    '#props':
+      type: ordered
+      flush: true
+      horizontal: horizontal-md
+      id: ordered-list-group
+      attributes:
+        class:
+          - custom-list-group
+        data-list-group-attribute: custom-value
+      items:
+        - html: 'First step'
+        - html: 'Second step'
+        - html: 'Third step'
+  assertions:
+    count:
+      'ol#ordered-list-group.list-group.list-group-numbered.list-group-flush.list-group-horizontal-md.custom-list-group[data-list-group-attribute="custom-value"]': 1
+      'ol#ordered-list-group > li.list-group-item': 3
+      'ul.list-group': 0
+    equals:
+      'ol > li:nth-child(1)': 'First step'
+      'ol > li:nth-child(3)': 'Third step'
+
+list_group_actionable_links_and_buttons:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:list_group
+    '#props':
+      type: actionable
+      items:
+        - label:
+            '#markup': 'Linked <strong>item</strong>'
+          path: '/linked-item'
+          variant: warning
+          icon: arrow-right
+          icon_position: before
+          icon_display: inline-flex
+          attributes:
+            class:
+              - custom-action-link
+            data-action-attribute: link
+        - label: 'Disabled standalone link'
+          path: '/disabled-item'
+          disabled: true
+          standalone: true
+        - button: true
+          label: 'Submit item'
+          type: submit
+          disabled: true
+          text_nowrap: true
+          assistive_text: 'Action: '
+          icon:
+            name: check
+            transformation: rotate-90
+            attributes:
+              class:
+                - custom-button-icon
+          icon_position: after
+          icon_spacing: lg
+          show_spinner: true
+          spinner:
+            type: grow
+            variant: success
+            size: sm
+            assistive_text: Loading
+            attributes:
+              class:
+                - custom-spinner
+          attributes:
+            class:
+              - custom-action-button
+            data-action-attribute: button
+  assertions:
+    count:
+      'div.list-group[data-component-id="oe_bootstrap_theme:list_group"]': 1
+      'div.list-group > a.list-group-item.list-group-item-action.link-warning.custom-action-link[href="/linked-item"][data-action-attribute="link"]': 1
+      'a.custom-action-link.d-inline-flex.gap-2-5 > svg:first-child': 1
+      'a.custom-action-link strong': 1
+      'a[href="/disabled-item"].disabled.standalone[aria-disabled="true"][tabindex="-1"]': 1
+      'button.list-group-item.list-group-item-action.custom-action-button[type="submit"][disabled][aria-disabled="true"][data-action-attribute="button"]': 1
+      'button.text-nowrap.gap-lg-2-5': 1
+      'button > svg.icon--fluid.icon--rotate-90.custom-button-icon': 1
+      'button > div.spinner-grow.spinner-grow-sm.text-success.custom-spinner[role="status"]': 1
+      'button > div.spinner-grow span.visually-hidden': 1
+      'button > span.visually-hidden': 1
+      'button.btn': 0
+    equals:
+      'a.custom-action-link strong': item
+      'button > div.spinner-grow span.visually-hidden': Loading
+      'button > span.visually-hidden': 'Action:'
+    contains:
+      'a.custom-action-link svg': 'assets/icons/bcl-default-icons.svg#arrow-right'
+      'button > svg': 'assets/icons/bcl-default-icons.svg#check'
+
+list_group_with_form_inputs:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:list_group
+    '#props':
+      items:
+        - input: true
+          input_type: checkbox
+          id: list-group-checkbox
+          label: 'Checked switch'
+          required: true
+          checked: true
+          switch: true
+          attributes:
+            class:
+              - custom-checkbox
+            data-input-attribute: checkbox
+        - input: true
+          input_type: text
+          id: list-group-text
+          label: 'Horizontal text input'
+          hidden_label: true
+          disabled: true
+          readonly: true
+          valid: true
+          valid_feedback: 'The value is valid.'
+          helper_text: 'Supporting text.'
+          helper_text_id: list-group-text-help
+          placeholder: 'Enter a value'
+          horizontal: true
+          horizontal_class: col-sm-8
+          horizontal_label_class: col-sm-4
+        - input: true
+          input_type: text
+          id: list-group-invalid
+          label: 'Invalid floating input'
+          placeholder: 'Enter a value'
+          floating: true
+          invalid: true
+          invalid_feedback: 'Enter a valid value.'
+        - input: true
+          input_type: checkbox
+          id: list-group-toggle
+          label: 'Toggle input'
+          checked: true
+          toggle: true
+          toggle_variant: danger
+          remove_wrapper: true
+  assertions:
+    count:
+      'ul.list-group > li.list-group-item': 4
+      'input#list-group-checkbox.form-check-input.custom-checkbox[type="checkbox"][required][checked][data-input-attribute="checkbox"]': 1
+      'input#list-group-checkbox + label.form-check-label': 1
+      'input#list-group-text.form-control.is-valid[type="text"][disabled][readonly][placeholder="Enter a value"][aria-describedby="list-group-text-help"]': 1
+      'label[for="list-group-text"].col-form-label.col-sm-4.visually-hidden': 1
+      'li:nth-child(2) div.col-sm-8': 1
+      'li:nth-child(2) div.valid-feedback': 1
+      'li:nth-child(2) div.form-text#list-group-text-help': 1
+      'li:nth-child(3) div.form-floating': 1
+      'input#list-group-invalid.form-control.is-invalid': 1
+      'li:nth-child(3) div.invalid-feedback': 1
+      'input#list-group-toggle.btn-check[type="checkbox"][checked]': 1
+      'label[for="list-group-toggle"].btn.btn-danger': 1
+    equals:
+      'label[for="list-group-checkbox"]': 'Checked switch'
+      'li:nth-child(2) div.valid-feedback': 'The value is valid.'
+      'li:nth-child(2) div.form-text': 'Supporting text.'
+      'li:nth-child(3) div.invalid-feedback': 'Enter a valid value.'
+      'label[for="list-group-toggle"]': 'Toggle input'

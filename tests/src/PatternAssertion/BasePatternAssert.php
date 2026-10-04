@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\PatternAssertion;
 
+use Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\ComponentAssertInterface;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\Exception;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
- * Base class for asserting patterns.
+ * Base class for asserting patterns and SDC components.
  */
-abstract class BasePatternAssert extends Assert implements PatternAssertInterface {
+abstract class BasePatternAssert extends Assert implements PatternAssertInterface, ComponentAssertInterface {
 
   /**
    * Method that returns the assertions to be run by a particular pattern.
@@ -81,6 +82,13 @@ abstract class BasePatternAssert extends Assert implements PatternAssertInterfac
         call_user_func_array($callback, $assertion_map[$name]);
       }
     }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function assertComponent(array $expected, string $html): void {
+    $this->assertPattern($expected, $html);
   }
 
   /**

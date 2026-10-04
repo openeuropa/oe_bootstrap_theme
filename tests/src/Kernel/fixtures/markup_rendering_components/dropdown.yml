@@ -1,0 +1,123 @@
+dropdown_button_default:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:dropdown
+    '#props':
+      dropdown_id: bcl-dropdown
+      icon_path: /custom-icons.svg
+      trigger:
+        label: 'Dropdown toggle'
+        variant: secondary
+        attributes:
+          class:
+            - custom-trigger
+        icon:
+          name: list
+          attributes:
+            class:
+              - custom-trigger-icon
+      attributes:
+        class:
+          - custom-menu
+      items:
+        - label: 'A link'
+          path: '/example'
+          attributes:
+            class:
+              - custom-link
+          icon: link
+        - label: 'A button'
+          button: true
+          attributes:
+            class:
+              - custom-button
+        - divider: true
+        - label: 'A disabled button'
+          button: true
+          disabled: true
+        - label: 'An active button'
+          button: true
+          active: true
+  assertions:
+    count:
+      'div.dropdown': 1
+      'button#bcl-dropdown.btn-secondary.dropdown-toggle.custom-trigger[data-bs-toggle="dropdown"][autocomplete="off"]': 1
+      'button#bcl-dropdown[aria-expanded="false"]': 1
+      'ul.dropdown-menu.custom-menu[aria-labelledby="bcl-dropdown"]': 1
+      'ul.dropdown-menu-dark': 0
+      'li': 5
+      'hr.dropdown-divider': 1
+      'a.dropdown-item.custom-link[href="/example"]': 1
+      'button.dropdown-item.custom-button': 1
+      'button.dropdown-item.active': 1
+      'button.dropdown-item[disabled][aria-disabled="true"]': 1
+      'svg.custom-trigger-icon': 1
+    contains:
+      'button#bcl-dropdown svg': '/custom-icons.svg#list'
+      'a.dropdown-item': 'A link'
+      'a.dropdown-item svg': '/custom-icons.svg#link'
+    equals:
+      'button.dropdown-item.active': 'An active button'
+      'button.dropdown-item[disabled]': 'A disabled button'
+      'ul.dropdown-menu li:nth-child(2) button.dropdown-item': 'A button'
+dropdown_dark_aligned_dropup:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:dropdown
+    '#props':
+      dropdown_id: dark-dropdown
+      trigger:
+        label: 'Dark dropdown'
+        disabled: true
+      dark_mode: true
+      direction: dropup
+      alignment: dropdown-menu-lg-end
+      items:
+        - label: 'A link'
+          path: '/example'
+  assertions:
+    count:
+      'div.dropdown.dropup': 1
+      'button#dark-dropdown.dropdown-toggle[disabled][aria-disabled="true"]': 1
+      'ul.dropdown-menu.dropdown-menu-dark.dropdown-menu-lg-end': 1
+      'a.dropdown-item[href="/example"]': 1
+dropdown_link_without_wrapper:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:dropdown
+    '#props':
+      dropdown_id: link-dropdown
+      link: true
+      remove_wrapper: true
+      trigger:
+        label: 'Linked dropdown'
+        path: '/example'
+        attributes:
+          class:
+            - custom-link-trigger
+      items:
+        - label: 'A link'
+          path: '/target'
+  assertions:
+    count:
+      'div.dropdown': 0
+      'a#link-dropdown.dropdown-toggle.custom-link-trigger[href="/example"][role="button"]': 1
+      'a#link-dropdown[autocomplete]': 0
+      'ul.dropdown-menu[aria-labelledby="link-dropdown"]': 1
+      'a.dropdown-item[href="/target"]': 1
+dropdown_inside_navigation_with_fallback_id:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:dropdown
+    '#props':
+      button_label: 'Navigation dropdown'
+      inside_navigation: true
+      items:
+        - label: 'A link'
+          path: '/example'
+  assertions:
+    count:
+      'div.dropdown': 1
+      'button[id^="dropdown"].dropdown-toggle[data-bs-toggle="dropdown"]': 1
+      'button.dropdown-toggle[autocomplete]': 0
+      'ul.dropdown-menu[aria-labelledby^="dropdown"][aria-hidden="true"][role="presentation"]': 1

@@ -1,0 +1,115 @@
+{% set variants = [
+  'primary',
+  'secondary',
+  'success',
+  'danger',
+  'warning',
+  'info',
+  'light',
+  'dark',
+] %}
+
+<div class="vstack gap-4 align-items-start">
+  <div>
+    <h3>Variants</h3>
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      {% include 'oe_bootstrap_theme:link' with {
+        label: 'Default',
+        path: '/example',
+      } only %}
+
+      {% for variant in variants %}
+        <span{% if variant == 'light' %} class="bg-dark p-2"{% endif %}>
+          {% include 'oe_bootstrap_theme:link' with {
+            label: variant|capitalize,
+            path: '/example',
+            variant: variant,
+          } only %}
+        </span>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div>
+    <h3>Icons</h3>
+    <div class="vstack gap-3 align-items-start">
+      {% include 'oe_bootstrap_theme:link' with {
+        label: 'Icon before',
+        path: '/example',
+        icon: 'arrow-left',
+        icon_position: 'before',
+      } only %}
+
+      {% include 'oe_bootstrap_theme:link' with {
+        label: 'Icon after',
+        path: '/example',
+        icon: 'arrow-right',
+        icon_position: 'after',
+      } only %}
+
+      {% include 'oe_bootstrap_theme:link' with {
+        label: 'Inline flex',
+        path: '/example',
+        icon: 'box-arrow-up-right',
+        icon_display: 'inline-flex',
+      } only %}
+
+      {% include 'oe_bootstrap_theme:link' with {
+        label: 'Flex',
+        path: '/example',
+        icon: 'download',
+        icon_position: 'before',
+        icon_display: 'flex',
+      } only %}
+
+      {% include 'oe_bootstrap_theme:link' with {
+        label: 'No icon spacer',
+        path: '/example',
+        icon: 'arrow-right',
+        remove_icon_spacers: true,
+      } only %}
+
+      {% include 'oe_bootstrap_theme:link' with {
+        path: '/search',
+        icon: 'search',
+        attributes: create_attribute().setAttribute('aria-label', 'Search'),
+      } only %}
+
+      {% include 'oe_bootstrap_theme:link' with {
+        label: 'Transformed custom icon',
+        path: '/example',
+        icon: {
+          name: 'arrow-right',
+          path: bcl_icon_path(),
+          size: 'xl',
+          transformation: 'rotate-90',
+          attributes: {
+            class: ['text-success'],
+            'aria-hidden': 'true',
+          },
+        },
+      } only %}
+    </div>
+  </div>
+
+  <div>
+    <h3>States and attributes</h3>
+    <div class="d-flex flex-wrap gap-3">
+      {% include 'oe_bootstrap_theme:link' with {
+        label: 'Disabled standalone link',
+        path: '/example',
+        disabled: true,
+        standalone: true,
+      } only %}
+
+      {% include 'oe_bootstrap_theme:link' with {
+        label: [{ '#markup': 'Label with <strong>markup</strong>' }],
+        path: '/example',
+        id: 'custom-link',
+        attributes: create_attribute()
+          .addClass('custom-link-class')
+          .setAttribute('data-link-attribute', 'custom-value'),
+      } only %}
+    </div>
+  </div>
+</div>
