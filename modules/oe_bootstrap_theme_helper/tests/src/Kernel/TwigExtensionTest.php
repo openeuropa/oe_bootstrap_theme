@@ -243,8 +243,9 @@ class TwigExtensionTest extends AbstractKernelTestBase {
     $required_cache_contexts = $this->container->getParameter('renderer.config')['required_cache_contexts'];
     $renderer = $this->container->get('renderer');
 
+    $scenarios = $this->elementChildrenFilterDataProvider();
     try {
-      foreach ($this->elementChildrenFilterDataProvider() as $scenario => $data) {
+      foreach ($scenarios as $scenario => $data) {
         [$items, $expected_output] = $data;
         $expected_bubbled_metadata = [];
         BubbleableMetadata::createFromRenderArray($items)
