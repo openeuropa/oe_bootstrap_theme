@@ -1,21 +1,15 @@
 name: 'Card V2'
 description: 'Bootstrap 5 card component in its second iteration. Every zone is exposed as a render prop so plain markup, views, or other components can be placed inside.'
+variants:
+  default:
+    title: 'Default'
+    description: '16:9 media on top, content below. Ideal for news, search results, dashboards.'
+  horizontal:
+    title: 'Horizontal'
+    description: '1:1 media left, content right – compact lists, sidebars.'
 props:
   type: object
   properties:
-    variant:
-      title: Variant
-      type: [string, 'null']
-      description: 'The card variant.'
-      enum:
-        - default
-        - horizontal
-        - null
-      'meta:enum':
-        default: Default
-        horizontal: Horizontal
-        # Value NULL becomes '' when used as array key.
-        '': Default
     tag:
       title: 'HTML wrapper tag'
       type: [string, 'null']
