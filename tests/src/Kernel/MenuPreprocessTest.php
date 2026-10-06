@@ -13,9 +13,9 @@ use Drupal\oe_bootstrap_theme\MenuPreprocess;
 use Drupal\KernelTests\KernelTestBase;
 
 /**
- * @covers \Drupal\oe_bootstrap_theme\MenuPreprocess
- *
  * Tests the MenuPreprocess service logic.
+ *
+ * @covers \Drupal\oe_bootstrap_theme\MenuPreprocess
  */
 class MenuPreprocessTest extends KernelTestBase {
 
