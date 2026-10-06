@@ -1,21 +1,15 @@
 name: Card
 description: 'A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options.'
+variants:
+  default:
+    title: 'Default'
+    description: 'Standard bootstrap card.'
+  search:
+    title: 'Search'
+    description: 'Card with special behaviour for print search results items.'
 props:
   type: object
   properties:
-    variant:
-      title: Variant
-      type: [string, 'null']
-      description: 'The card variant. Defaults to default.'
-      enum:
-        - default
-        - search
-        - null
-      'meta:enum':
-        default: 'Default'
-        search: Search
-        # Value NULL becomes '' when used as array key.
-        '': Default
     orientation:
       title: Orientation
       type: [string, 'null']
