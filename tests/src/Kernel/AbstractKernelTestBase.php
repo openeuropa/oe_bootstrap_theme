@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
+use Drupal\Component\Serialization\Yaml;
 use Drupal\Core\Plugin\ContextAwarePluginInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\Traits\RenderTrait;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * Base class for theme's kernel tests.
@@ -83,7 +83,7 @@ abstract class AbstractKernelTestBase extends KernelTestBase {
    *   A set of test data.
    */
   protected function getFixtureContent(string $filepath): array {
-    return Yaml::parse(file_get_contents(__DIR__ . "/fixtures/{$filepath}"));
+    return Yaml::decode(file_get_contents(__DIR__ . "/fixtures/{$filepath}"));
   }
 
   /**
