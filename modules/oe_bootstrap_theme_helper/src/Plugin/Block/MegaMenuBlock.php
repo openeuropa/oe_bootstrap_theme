@@ -41,8 +41,8 @@ class MegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
     array $configuration,
     string $plugin_id,
     array $plugin_definition,
-    protected readonly BlockManagerInterface $blockManager,
-    protected readonly EntityTypeManagerInterface $entityTypeManager,
+    protected BlockManagerInterface $blockManager,
+    protected EntityTypeManagerInterface $entityTypeManager,
     TranslationInterface $translation,
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);

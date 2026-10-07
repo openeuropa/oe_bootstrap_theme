@@ -243,6 +243,7 @@ class TwigExtensionTest extends AbstractKernelTestBase {
     $required_cache_contexts = $this->container->getParameter('renderer.config')['required_cache_contexts'];
     $renderer = $this->container->get('renderer');
 
+    $scenario = '';
     try {
       foreach ($this->elementChildrenFilterDataProvider() as $scenario => $data) {
         [$items, $expected_output] = $data;
