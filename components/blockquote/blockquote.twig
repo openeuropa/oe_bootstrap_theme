@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Blockquote component.
+ */
+#}
+{% set attribution = attribution and cite ? attribution ~ ' ' : attribution %}
+
+{% include '@oe-bcl/blockquote' with {
+  title: title,
+  title_tag: title_tag,
+  quote: quote,
+  attribution: attribution,
+  cite: cite,
+  alignment: alignment,
+  attributes: attributes,
+} only %}

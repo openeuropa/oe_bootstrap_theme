@@ -1,0 +1,254 @@
+name: 'List group'
+description: 'Displays a flexible series of content as unordered, ordered, or actionable items.'
+props:
+  type: object
+  properties:
+    flush:
+      title: Flush
+      type: boolean
+      description: 'Removes outer borders and rounded corners. Defaults to false.'
+    horizontal:
+      title: Horizontal
+      type: string
+      description: 'Displays items horizontally, optionally from a responsive breakpoint.'
+      enum:
+        - horizontal
+        - horizontal-sm
+        - horizontal-md
+        - horizontal-lg
+        - horizontal-xl
+        - horizontal-xxl
+      'meta:enum':
+        horizontal: 'All viewports'
+        horizontal-sm: 'Small and larger'
+        horizontal-md: 'Medium and larger'
+        horizontal-lg: 'Large and larger'
+        horizontal-xl: 'Extra large and larger'
+        horizontal-xxl: 'Extra extra large and larger'
+    id:
+      title: ID
+      type: string
+      description: 'List group ID attribute.'
+    type:
+      title: Type
+      type: string
+      description: 'Type of list group. Defaults to unordered.'
+      enum:
+        - unordered
+        - ordered
+        - actionable
+      'meta:enum':
+        unordered: 'Unordered (default)'
+        ordered: Ordered
+        actionable: Actionable
+    items:
+      title: Items
+      type: array
+      description: 'List content, form inputs, links, or buttons.'
+      items:
+        type: object
+        properties:
+          html:
+            type: [string, array, object]
+          variant:
+            type: string
+            enum:
+              - ''
+              - primary
+              - secondary
+              - success
+              - danger
+              - warning
+              - info
+              - light
+              - dark
+          extra_classes:
+            type: string
+          badge:
+            type: object
+            properties:
+              label:
+                type: [string, array, object]
+              background:
+                type: string
+                enum:
+                  - primary
+                  - secondary
+                  - success
+                  - danger
+                  - warning
+                  - info
+                  - light
+                  - dark
+              url:
+                type: string
+              title:
+                type: string
+              dismissible:
+                type: boolean
+              assistive_text:
+                type: string
+              rounded_pill:
+                type: boolean
+              outline:
+                type: boolean
+              icon_path:
+                type: string
+              attributes:
+                type: object
+          input:
+            type: boolean
+          input_type:
+            type: string
+          label:
+            type: [string, array, object]
+          required:
+            type: boolean
+          checked:
+            type: boolean
+          hidden_label:
+            type: boolean
+          disabled:
+            type: boolean
+          readonly:
+            type: boolean
+          invalid:
+            type: boolean
+          valid:
+            type: boolean
+          invalid_feedback:
+            type: [string, array, object]
+          valid_feedback:
+            type: [string, array, object]
+          floating:
+            type: boolean
+          helper_text:
+            type: [string, array, object]
+          helper_text_id:
+            type: string
+          placeholder:
+            type: string
+          horizontal:
+            type: boolean
+          horizontal_class:
+            type: string
+          horizontal_label_class:
+            type: string
+          switch:
+            type: boolean
+          toggle:
+            type: boolean
+          toggle_variant:
+            type: string
+            enum:
+              - primary
+              - secondary
+              - success
+              - danger
+              - warning
+              - info
+              - light
+              - dark
+          remove_wrapper:
+            type: boolean
+          path:
+            type: [string, object]
+          button:
+            type: boolean
+          id:
+            type: string
+          type:
+            type: string
+            enum:
+              - button
+              - submit
+              - reset
+          text_nowrap:
+            type: boolean
+          assistive_text:
+            type: string
+          standalone:
+            type: boolean
+          icon:
+            type: [string, object]
+            properties:
+              name:
+                type: string
+              path:
+                type: string
+              size:
+                type: string
+                enum:
+                  - 2xs
+                  - xs
+                  - s
+                  - m
+                  - l
+                  - xl
+                  - 2xl
+                  - fluid
+              transformation:
+                type: string
+                enum:
+                  - rotate-90
+                  - rotate-180
+                  - rotate-270
+                  - flip-horizontal
+                  - flip-vertical
+              attributes:
+                type: object
+          icon_position:
+            type: string
+            enum:
+              - before
+              - after
+          icon_display:
+            type: string
+            enum:
+              - flex
+              - inline-flex
+          icon_spacing:
+            type: string
+            enum:
+              - sm
+              - md
+              - lg
+          remove_icon_spacers:
+            type: boolean
+          spinner:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                  - border
+                  - grow
+              variant:
+                type: string
+                enum:
+                  - ''
+                  - primary
+                  - secondary
+                  - success
+                  - danger
+                  - warning
+                  - info
+                  - light
+                  - dark
+              size:
+                type: string
+                enum:
+                  - ''
+                  - sm
+                  - lg
+              assistive_text:
+                type: string
+              attributes:
+                type: object
+          show_spinner:
+            type: boolean
+          attributes:
+            type: object
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

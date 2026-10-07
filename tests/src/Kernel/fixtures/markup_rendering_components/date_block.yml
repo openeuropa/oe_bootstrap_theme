@@ -1,0 +1,66 @@
+date_block_explicit_values_and_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:date_block
+    '#props':
+      day: 23
+      month: Jul
+      date_time: '2026-07-23'
+      year: 2026
+      attributes:
+        id: custom-date-block
+        class:
+          - custom-date-block-class
+        data-date-block: custom-value
+  assertions:
+    count:
+      'time#custom-date-block.bcl-date-block.custom-date-block-class': 1
+      'time[data-date-block="custom-value"]': 1
+      'time[datetime="2026-07-23"]': 1
+      'time svg': 0
+    equals:
+      'time .date-month': Jul
+      'time .date-day': '23'
+      'time .year-start': '2026'
+date_block_range_with_custom_icon_path:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:date_block
+    '#props':
+      day: 23
+      month: Jan
+      date_time: '2026-01-23'
+      year: 2026
+      end_day: 11
+      end_month: Feb
+      end_year: 2027
+      icon_path: '/custom/icons.svg'
+  assertions:
+    count:
+      'time[datetime="2026-01-23"]': 1
+      'time svg': 1
+      'time .year-end': 1
+    contains:
+      'time svg': '/custom/icons.svg#chevron-right'
+    equals:
+      'time > div > div > div:nth-of-type(1) .date-month': Jan
+      'time > div > div > div:nth-of-type(1) .date-day': '23'
+      'time > div > div > div:nth-of-type(3) .date-month': Feb
+      'time > div > div > div:nth-of-type(3) .date-day': '11'
+      'time .year-start': '2026'
+      'time .year-end': '2027'
+date_block_default_values:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:date_block
+    '#props': {}
+  assertions:
+    count:
+      'time.bcl-date-block': 1
+      'time[datetime]': 0
+      'time svg': 0
+      'time .year-end': 0
+    equals:
+      'time .date-month': ''
+      'time .date-day': ''
+      'time .year-start': ''

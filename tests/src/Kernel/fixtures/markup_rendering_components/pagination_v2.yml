@@ -1,0 +1,178 @@
+pagination_v2_defaults:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:pagination_v2
+    '#props':
+      prev:
+        path: '#previous'
+        label: Previous
+      next:
+        path: '#next'
+        label: Next
+      items:
+        - path: '#page-1'
+          label: '1'
+        - label: '2'
+          active: true
+        - path: '#page-3'
+          label: '3'
+  assertions:
+    count:
+      'nav[data-component-id="oe_bootstrap_theme:pagination_v2"].pager.pagination-v2': 1
+      'nav[aria-label]': 0
+      'nav > ul.pagination.pager__items.js-pager__items.justify-content-md-center': 1
+      'nav > ul.pagination-sm': 0
+      'nav > ul.pagination-lg': 0
+      'nav > ul > li.page-item': 5
+      'nav > ul > li.pager__item--prev > a.page-link[href="#previous"][aria-label="Previous"]': 1
+      'nav > ul > li.pager__item--next > a.page-link[href="#next"][aria-label="Next"]': 1
+      'nav > ul > li.pager__item--prev svg': 1
+      'nav > ul > li.pager__item--next svg': 1
+      'nav > ul > li.active > div.page-link[aria-label="2"][aria-current="page"][tabindex="0"]': 1
+    contains:
+      'li.pager__item--prev svg': '#chevron-left'
+      'li.pager__item--next svg': '#chevron-right'
+    equals:
+      'li.active > div.page-link': '<span class="d-inline-block">2</span>'
+
+pagination_v2_text_controls_and_custom_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:pagination_v2
+    '#props':
+      size: sm
+      alignment: end
+      aria_label: 'Search results pages'
+      enable_prev_next_icon: false
+      enable_first_last_icon: false
+      attributes:
+        id: custom-pagination
+        class:
+          - custom-pagination
+        data-pagination: custom-value
+      list_attributes:
+        id: custom-pagination-list
+        class:
+          - custom-pagination-list
+        data-pagination-list: custom-list-value
+      first:
+        path: '#first'
+        label: First
+        attributes:
+          id: first-page-link
+          class:
+            - custom-first-link
+      prev:
+        path: '#previous'
+        label: Previous
+        aria_label: 'Go to previous page'
+      next:
+        path: '#next'
+        label: Next
+      last:
+        path: '#last'
+        label: Last
+      items:
+        - path: '#page-1'
+          label: '1'
+          attributes:
+            class:
+              - custom-page-link
+            data-page: '1'
+        - path: '#page-2'
+          label: '2'
+          disabled: true
+        - label:
+            - '#type': html_tag
+              '#tag': strong
+              '#value': '3'
+          aria_label: 'Page 3'
+          active: true
+  assertions:
+    count:
+      'nav#custom-pagination.pager.pagination-v2.custom-pagination[data-pagination="custom-value"][aria-label="Search results pages"]': 1
+      'nav > ul#custom-pagination-list.pagination.pagination-sm.justify-content-md-end.custom-pagination-list[data-pagination-list="custom-list-value"]': 1
+      'nav > ul > li.page-item': 7
+      'nav svg': 0
+      'a#first-page-link.page-link.custom-first-link[href="#first"][aria-label="First"]': 1
+      'a.page-link[href="#previous"][aria-label="Go to previous page"]': 1
+      'a.page-link.custom-page-link[href="#page-1"][data-page="1"]': 1
+      'li.disabled > a.page-link[href="#page-2"][aria-disabled="true"]': 1
+      'li.active > div.page-link[aria-label="Page 3"] strong': 1
+    equals:
+      'a#first-page-link': First
+      'li.active > div.page-link strong': '3'
+
+pagination_v2_icons_ellipses_and_mobile_label:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:pagination_v2
+    '#props':
+      size: lg
+      alignment: start
+      icon_path: /custom-icons.svg
+      enable_prev_next_icon: true
+      enable_first_last_icon: true
+      ellipsis_before: true
+      ellipsis_after: true
+      current_mobile_label: 'Page 6 of 10'
+      first:
+        path: '#first'
+      prev:
+        path: '#previous'
+      next:
+        path: '#next'
+      last:
+        path: '#last'
+      items:
+        - path: '#page-4'
+          label: '4'
+        - path: '#page-5'
+          label: '5'
+        - label: '6'
+          active: true
+        - path: '#page-7'
+          label: '7'
+  assertions:
+    count:
+      'nav > ul.pagination-lg.justify-content-md-start': 1
+      'nav > ul > li.page-item': 10
+      'nav > ul > li.page-item svg': 4
+      'nav > ul > li.page-item > .page-link[aria-label="Ellipsis"]': 2
+      'li.active > div.page-link > span.d-none.d-md-inline-block': 1
+      'li.active > div.page-link > span.d-inline-block.d-md-none': 1
+    contains:
+      'li.pager__item--prev svg': '/custom-icons.svg#chevron-left'
+      'li.pager__item--next svg': '/custom-icons.svg#chevron-right'
+      'li.page-item:nth-child(2) svg': '/custom-icons.svg#chevron-double-left'
+      'li.page-item:nth-child(9) svg': '/custom-icons.svg#chevron-double-right'
+    equals:
+      'li.active > div.page-link > span.d-none.d-md-inline-block': '6'
+      'li.active > div.page-link > span.d-inline-block.d-md-none': 'Page 6 of 10'
+      'div.page-link[aria-label="Ellipsis"]': '<span class="d-inline-block"><span aria-hidden="true"> … </span></span>'
+
+pagination_v2_custom_item_icon:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:pagination_v2
+    '#props':
+      enable_prev_next_icon: false
+      items:
+        - path: '#custom-icon'
+          label: 'Continue'
+          aria_label: 'Continue to another page'
+          icon_position: before
+          icon:
+            name: arrow-right
+            path: /item-icons.svg
+            transformation: rotate-90
+            attributes:
+              class:
+                - custom-item-icon
+  assertions:
+    count:
+      'nav > ul > li.page-item': 1
+      'a.page-link[href="#custom-icon"][aria-label="Continue to another page"] svg.icon--rotate-90.custom-item-icon': 1
+    contains:
+      'a.page-link svg': '/item-icons.svg#arrow-right'
+      'a.page-link': Continue
