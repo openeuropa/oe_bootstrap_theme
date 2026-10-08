@@ -12,6 +12,7 @@ use Drupal\Core\Render\Element;
 use Drupal\Core\Site\Settings;
 use Drupal\Core\Template\Attribute;
 use Drupal\KernelTests\KernelTestBase;
+use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\OptionalPropsNullifier;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -128,6 +129,9 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     $test_cases = [];
 
     foreach (self::$componentList as $component) {
+      $definition_path = dirname(__DIR__, 3) . "/components/{$component}/{$component}.component.yml";
+      $schema = Yaml::decode(file_get_contents($definition_path))['props'] ?? [];
+      $null_case_added = FALSE;
       foreach (Yaml::decode(file_get_contents("{$components_path}/{$component}.yml")) as $key => $test_case) {
         // Ensure unique test case keys across components.
         $suffix = 0;
@@ -136,6 +140,12 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
           $suffix++;
         } while (isset($test_cases[$candidate_key]));
         $test_cases[$candidate_key] = $test_case;
+        if (!$null_case_added) {
+          $variant = $test_case;
+          $variant['render']['#props'] = OptionalPropsNullifier::populate($schema, $test_case['render']['#props'] ?? []);
+          $test_cases[$component . ' [NULL: all missing optional props]'] = $variant;
+          $null_case_added = TRUE;
+        }
       }
     }
 
