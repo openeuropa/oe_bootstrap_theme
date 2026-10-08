@@ -37,7 +37,7 @@
   {%- set _link = link|merge({
     attributes: create_attribute(link.attributes|default({})),
   }) -%}
-  {%- if _link.icon is defined and _link.icon is not empty and _link.icon.path is not defined -%}
+  {%- if _link.icon is defined and _link.icon is not empty and _link.icon.path is empty -%}
     {%- set _link = _link|merge({
       icon: _link.icon|merge({path: bcl_icon_path()}),
     }) -%}
@@ -50,7 +50,7 @@
   {%- set _title_link = _title_link|merge({
     attributes: create_attribute(_title_link.attributes|default({})),
   }) -%}
-  {%- if _title_link.icon is defined and _title_link.icon is not empty and _title_link.icon.path is not defined -%}
+  {%- if _title_link.icon is defined and _title_link.icon is not empty and _title_link.icon.path is empty -%}
     {%- set _title_link = _title_link|merge({
       icon: _title_link.icon|merge({path: bcl_icon_path()}),
     }) -%}
