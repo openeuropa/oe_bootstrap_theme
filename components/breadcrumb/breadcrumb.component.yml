@@ -8,7 +8,7 @@ props:
       type: [array, 'null']
       description: 'List with the breadcrumb items.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           label:
             title: Label

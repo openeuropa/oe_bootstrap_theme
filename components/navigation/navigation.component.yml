@@ -66,7 +66,7 @@ props:
       type: [array, 'null']
       description: 'Links, buttons, dropdowns, and nested navigation items.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           label:
             type: [string, array, object, 'null']
@@ -192,7 +192,7 @@ props:
             type: [array, 'null']
             description: 'Items displayed in a dropdown navigation item.'
             items:
-              type: [object, 'null']
+              type: object
               properties:
                 label:
                   type: [string, array, object, 'null']
@@ -269,7 +269,7 @@ props:
               items:
                 type: [array, 'null']
                 items:
-                  type: [object, 'null']
+                  type: object
                   properties:
                     label:
                       type: [string, array, object, 'null']

@@ -212,7 +212,7 @@ props:
       type: [array, 'null']
       description: 'Page links displayed by the pagination.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           path:
             type: [string, object, 'null']

@@ -241,7 +241,7 @@ props:
       type: [array, 'null']
       description: 'Numbered or glossary pagination items.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           path:
             type: [string, object, 'null']

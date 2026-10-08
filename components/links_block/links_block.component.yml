@@ -118,7 +118,7 @@ props:
       type: [array, 'null']
       description: 'Links displayed in the block.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           label:
             type: [string, array, object, 'null']

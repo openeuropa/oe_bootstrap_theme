@@ -128,13 +128,13 @@ props:
       type: [array, 'null']
       description: 'Miscellaneous information such as date or author.'
       items:
-        type: [string, array, object, 'null']
+        type: [string, array, object]
     badges:
       title: Badges
       type: [array, 'null']
       description: 'List of badges.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           label:
             type: [string, array, object, 'null']
@@ -161,7 +161,7 @@ props:
       type: [array, 'null']
       description: 'List of links.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           label:
             type: [string, array, object, 'null']

@@ -29,6 +29,11 @@ class OptionalPropsNullableTest extends UnitTestCase {
   protected const REPORT_OPTIONAL_NON_NULLABLE = 'optional props that do not allow NULL';
 
   /**
+   * Report key for array items that allow NULL.
+   */
+  protected const REPORT_NULLABLE_ITEMS = 'array items that allow NULL';
+
+  /**
    * Types known to json schema.
    *
    * Any other value in a 'type' key is a PHP class or interface name.
@@ -64,6 +69,24 @@ class OptionalPropsNullableTest extends UnitTestCase {
     else {
       $this->addToAssertionCount(1);
     }
+  }
+
+  /**
+   * Tests that array entries cannot accept NULL, including tuple entries.
+   */
+  public function testNullableArrayItemsAreReported(): void {
+    $item = [
+      'type' => ['object', 'null'],
+      'properties' => ['label' => ['type' => ['string', 'null']]],
+    ];
+    $this->assertSame([
+      'items[]' => self::REPORT_NULLABLE_ITEMS,
+    ], iterator_to_array($this->findNullabilityMismatches(['items' => $item], 'items')));
+    $this->assertSame([
+      'items[0]' => self::REPORT_NULLABLE_ITEMS,
+    ], iterator_to_array($this->findNullabilityMismatches(['items' => [$item]], 'items')));
+    $item['type'] = 'object';
+    $this->assertSame([], iterator_to_array($this->findNullabilityMismatches(['items' => $item], 'items')));
   }
 
   /**
@@ -123,11 +146,17 @@ class OptionalPropsNullableTest extends UnitTestCase {
       if (array_is_list($items)) {
         // A list of schemas describes the items by position.
         foreach ($items as $delta => $item_schema) {
+          if ($this->schemaAllowsNull($item_schema)) {
+            yield $path . '[' . $delta . ']' => self::REPORT_NULLABLE_ITEMS;
+          }
           yield from $this->findNullabilityMismatches($item_schema, $path . '[' . $delta . ']');
         }
       }
       else {
         // A single schema applies to all the items.
+        if ($this->schemaAllowsNull($items)) {
+          yield $path . '[]' => self::REPORT_NULLABLE_ITEMS;
+        }
         yield from $this->findNullabilityMismatches($items, $path . '[]');
       }
     }

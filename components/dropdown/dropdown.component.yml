@@ -121,7 +121,7 @@ props:
       type: [array, 'null']
       description: 'Links, buttons, and dividers displayed in the menu.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           label:
             type: [string, array, object, 'null']

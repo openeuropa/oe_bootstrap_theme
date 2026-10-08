@@ -124,7 +124,7 @@ props:
       type: [array, 'null']
       description: 'Date or other meta information.'
       items:
-        type: [string, array, object, 'null']
+        type: [string, array, object]
     content:
       title: Content
       type: [string, array, object, 'null']
@@ -142,7 +142,7 @@ props:
       type: [array, 'null']
       description: 'List of badges for the card.'
       items:
-        type: [string, object, 'null']
+        type: [string, object]
         properties:
           label:
             type: [string, array, object, 'null']

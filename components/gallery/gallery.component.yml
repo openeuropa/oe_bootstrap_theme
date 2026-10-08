@@ -112,7 +112,7 @@ props:
       type: [array, 'null']
       description: 'Images and playable media displayed in the gallery.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           thumbnail:
             title: Thumbnail

@@ -20,7 +20,7 @@ props:
       type: [array, 'null']
       description: 'Slides shown in the carousel.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           image:
             title: Image

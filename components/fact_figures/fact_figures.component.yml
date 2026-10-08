@@ -20,7 +20,7 @@ props:
       type: [array, 'null']
       description: 'List of facts, with icon, title, subtitle and content.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           icon:
             title: Icon

@@ -90,7 +90,7 @@ props:
       type: [array, 'null']
       description: 'Links to headings in the page content.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           label:
             type: [string, array, object, 'null']

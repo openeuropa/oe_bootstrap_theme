@@ -68,7 +68,7 @@ props:
       type: [array, 'null']
       description: 'Each item is composed by one or more terms and one or more definitions. Each term entry can have an icon.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           term:
             title: 'Terms'
@@ -78,7 +78,7 @@ props:
               - type: string
               - type: array
                 items:
-                  type: [object, 'null']
+                  type: object
                   properties:
                     label:
                       title: Label
@@ -101,7 +101,7 @@ props:
               - type: string
               - type: array
                 items:
-                  type: [object, 'null']
+                  type: object
                   properties:
                     label:
                       type: [string, array, object, 'null']

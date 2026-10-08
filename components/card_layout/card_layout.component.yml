@@ -23,7 +23,7 @@ props:
       type: [array, 'null']
       description: 'An array of card pattern items.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           title:
             title: Title
@@ -68,7 +68,7 @@ props:
             type: [array, 'null']
             description: 'List of badges for the card.'
             items:
-              type: [string, object, 'null']
+              type: [string, object]
               properties:
                 label:
                   type: [string, array, object, 'null']

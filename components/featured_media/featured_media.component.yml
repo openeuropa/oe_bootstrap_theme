@@ -43,7 +43,7 @@ props:
       type: [array, 'null']
       description: 'Source files for native video.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           type:
             type: [string, 'null']
@@ -54,7 +54,7 @@ props:
       type: [array, 'null']
       description: 'Caption or subtitle tracks for native video.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           kind:
             type: [string, 'null']

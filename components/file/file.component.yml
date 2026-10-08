@@ -40,7 +40,7 @@ props:
       type: [array, 'null']
       description: 'List of translations of the file.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           title:
             type: [string, 'null']

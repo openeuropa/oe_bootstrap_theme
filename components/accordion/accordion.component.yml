@@ -36,7 +36,7 @@ props:
       description: 'List of accordion items.'
       type: [array, 'null']
       items:
-        type: [object, 'null']
+        type: object
         properties:
           title:
             type: [string, array, object, 'null']

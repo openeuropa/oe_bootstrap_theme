@@ -52,7 +52,7 @@ props:
       type: [array, 'null']
       description: 'List content, form inputs, links, or buttons.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           html:
             type: [string, array, object, 'null']

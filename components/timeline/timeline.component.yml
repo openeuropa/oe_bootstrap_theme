@@ -87,7 +87,7 @@ props:
       type: [array, 'null']
       description: 'List of timeline items, with id, label, title and content.'
       items:
-        type: [object, 'null']
+        type: object
         properties:
           id:
             type: [string, 'null']
