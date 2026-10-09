@@ -119,6 +119,51 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
   }
 
   /**
+   * Tests nullable props passed to helpers that require arrays or strings.
+   *
+   * @dataProvider nullableHelperPropsProvider
+   */
+  public function testNullableHelperProps(string $component, array $props, array $assertions): void {
+    $this->testComponentRendering([
+      '#type' => 'component',
+      '#component' => 'oe_bootstrap_theme:' . $component,
+      '#props' => $props,
+    ], $assertions);
+  }
+
+  /**
+   * Provides regression cases for nullable props passed to typed helpers.
+   */
+  public static function nullableHelperPropsProvider(): array {
+    $link = [
+      'label' => 'Read more',
+      'path' => '/example',
+      'attributes' => NULL,
+      'icon' => ['name' => 'arrow-right', 'attributes' => NULL],
+    ];
+    return [
+      'featured media link and icon attributes' => [
+        'featured_media',
+        ['title' => 'Title', 'text' => 'Text', 'link' => $link, 'title_link' => $link],
+        [
+          'count' => ['a[href="/example"]' => 2, 'a > svg.bi.icon--s' => 2],
+          'contains' => ['h2.bcl-heading > a' => 'Read more'],
+        ],
+      ],
+      'description list items' => [
+        'description_list',
+        ['title' => 'Empty list', 'items' => NULL],
+        ['count' => ['dl' => 1], 'equals' => ['h2.bcl-heading' => 'Empty list']],
+      ],
+      'file extension' => [
+        'file',
+        ['file' => ['title' => 'Report', 'url' => '/report', 'extension' => NULL]],
+        ['count' => ['a[href="/report"]' => 1, 'svg.bi' => 2]],
+      ],
+    ];
+  }
+
+  /**
    * Data provider for component rendering tests.
    *
    * @return array
