@@ -110,6 +110,16 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
    * @dataProvider componentRenderingProvider
    */
   public function testComponentRendering(array $render, array $assertions): void {
+    $this->doTestComponentRendering($render, $assertions);
+    $schema = $this->container->get('plugin.manager.sdc')->find($render['#component'])->metadata->schema;
+    $render['#props'] = OptionalPropsNullifier::populate($schema, $render['#props'] ?? []);
+    $this->doTestComponentRendering($render, $assertions);
+  }
+
+  /**
+   * Renders a component and checks its markup using the fixture assertions.
+   */
+  protected function doTestComponentRendering(array $render, array $assertions): void {
     $form_state = new FormState();
     $form_state->addBuildInfo('args', [$render]);
     $form_state->setProgrammed();
@@ -129,9 +139,6 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     $test_cases = [];
 
     foreach (self::$componentList as $component) {
-      $definition_path = dirname(__DIR__, 3) . "/components/{$component}/{$component}.component.yml";
-      $schema = Yaml::decode(file_get_contents($definition_path))['props'] ?? [];
-      $null_case_added = FALSE;
       foreach (Yaml::decode(file_get_contents("{$components_path}/{$component}.yml")) as $key => $test_case) {
         // Ensure unique test case keys across components.
         $suffix = 0;
@@ -140,12 +147,6 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
           $suffix++;
         } while (isset($test_cases[$candidate_key]));
         $test_cases[$candidate_key] = $test_case;
-        if (!$null_case_added) {
-          $variant = $test_case;
-          $variant['render']['#props'] = OptionalPropsNullifier::populate($schema, $test_case['render']['#props'] ?? []);
-          $test_cases[$component . ' [NULL: all missing optional props]'] = $variant;
-          $null_case_added = TRUE;
-        }
       }
     }
 
