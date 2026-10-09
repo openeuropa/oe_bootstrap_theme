@@ -25,7 +25,7 @@
 {%- for badge in badges|default([]) -%}
   {%- set _badge = {
     outline: true,
-  }|merge(badge) -%}
+  }|merge(badge|filter(value => value is not null)) -%}
   {%- set _badge = _badge|merge({
     attributes: create_attribute(_badge.attributes|default({})),
   }) -%}

@@ -49,7 +49,7 @@
     {%- set _badges = _badges|merge([{
       outline: true,
       rounded_pill: true,
-    }|merge(_badge)]) -%}
+    }|merge(_badge|filter(value => value is not null))]) -%}
   {%- endfor -%}
 {%- endif -%}
 
