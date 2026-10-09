@@ -74,7 +74,7 @@ navigation_vertical_pills_dropdown_and_attributes:
       navigation_id: custom-navigation
       full_width: true
       alignment: end
-      attributes:
+      attributes: !Attribute
         class:
           - custom-navigation
         data-navigation: custom-value
@@ -89,19 +89,19 @@ navigation_vertical_pills_dropdown_and_attributes:
           id: navigation-dropdown
           alignment: dropdown-menu-end
           dark_mode: true
-          attributes:
+          attributes: !Attribute
             class:
               - custom-dropdown-menu
           trigger:
             label: More
-            path: '#more'
-            attributes:
+            path: !Url 'internal:#more'
+            attributes: !Attribute
               class:
                 - custom-dropdown-trigger
           items:
             - label: 'Dropdown link'
-              path: /dropdown-link
-              attributes:
+              path: !Url 'internal:/dropdown-link'
+              attributes: !Attribute
                 class:
                   - custom-dropdown-link
             - label: 'Dropdown button'
@@ -214,14 +214,14 @@ navigation_nested:
             id: child-navigation
             variant: pills
             orientation: vertical
-            attributes:
+            attributes: !Attribute
               class:
                 - custom-child-navigation
               data-level: child
             items:
               - label: 'Child link'
-                path: '#child-link'
-                attributes:
+                path: !Url 'internal:#child-link'
+                attributes: !Attribute
                   class:
                     - custom-child-link
               - label: 'Child action'

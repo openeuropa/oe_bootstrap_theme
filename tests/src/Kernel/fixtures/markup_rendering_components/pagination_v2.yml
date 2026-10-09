@@ -56,7 +56,7 @@ pagination_v2_text_controls_and_custom_attributes:
           - custom-pagination-list
         data-pagination-list: custom-list-value
       first:
-        path: '#first'
+        path: !Url 'internal:#first'
         label: First
         attributes: !Attribute
           id: first-page-link
@@ -73,7 +73,7 @@ pagination_v2_text_controls_and_custom_attributes:
         path: '#last'
         label: Last
       items:
-        - path: '#page-1'
+        - path: !Url 'internal:#page-1'
           label: '1'
           attributes: !Attribute
             class:
