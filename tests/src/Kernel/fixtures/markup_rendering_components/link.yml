@@ -36,10 +36,10 @@ link_disabled_standalone_with_custom_attributes:
     '#component': oe_bootstrap_theme:link
     '#props':
       label: 'Disabled standalone link'
-      path: '/example'
+      path: !Url 'internal:/example'
       disabled: true
       standalone: true
-      attributes:
+      attributes: !Attribute
         class:
           - custom-link-class
         data-link-attribute: custom-value

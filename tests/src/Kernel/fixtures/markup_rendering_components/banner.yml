@@ -184,7 +184,7 @@ banner_with_custom_attributes_and_content_classes:
     '#component': oe_bootstrap_theme:banner
     '#props':
       variant: default
-      attributes:
+      attributes: !Attribute
         class:
           - custom-banner-class
         id: banner-id

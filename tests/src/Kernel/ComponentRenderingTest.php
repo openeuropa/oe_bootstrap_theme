@@ -112,6 +112,8 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
    * @dataProvider componentRenderingProvider
    */
   public function testComponentRendering(array $render, array $assertions): void {
+    // Internal Url objects need Drupal services, unavailable in the provider.
+    $render = PatternTestDataMassager::massageDataRecursive($render);
     $this->doTestComponentRendering($render, $assertions);
     $schema = $this->container->get('plugin.manager.sdc')->find($render['#component'])->metadata->schema;
     $render['#props'] = OptionalPropsNullifier::populate($schema, $render['#props'] ?? []);
@@ -150,7 +152,6 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
           $candidate_key = $key . ($suffix ? sprintf(' (%s)', $suffix) : '');
           $suffix++;
         } while (isset($test_cases[$candidate_key]));
-        $test_case['render'] = PatternTestDataMassager::massageDataRecursive($test_case['render']);
         $test_cases[$candidate_key] = $test_case;
       }
     }
@@ -250,8 +251,8 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, ?array $render_array = NULL): array {
-    // Drupal 10.6 SDC validates Attribute props as objects, while YAML
-    // fixtures can only provide arrays. Normalize them for test rendering.
+    // Drupal 10.6 SDC validates Attribute props as objects. Normalize untagged
+    // arrays in YAML fixtures for test rendering.
     // @todo Remove this when Drupal 10.6 support is dropped.
     if (($render_array['#type'] ?? NULL) === 'component') {
       foreach ([

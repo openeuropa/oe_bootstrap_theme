@@ -10,8 +10,8 @@ navigation_default_with_mixed_items:
             - '#type': html_tag
               '#tag': strong
               '#value': Overview
-          path: /overview
-          attributes:
+          path: !Url 'internal:/overview'
+          attributes: !Attribute
             class:
               - custom-overview-link
             data-navigation-item: overview
@@ -23,21 +23,21 @@ navigation_default_with_mixed_items:
             type: border
             size: sm
             assistive_text: Loading
-            attributes:
+            attributes: !Attribute
               class:
                 - custom-navigation-spinner
-          attributes:
+          attributes: !Attribute
             class:
               - custom-action-button
         - label: 'Disabled link'
-          path: /disabled
+          path: !Url 'internal:/disabled'
           disabled: true
         - label: Calendar
-          path: /calendar
+          path: !Url 'internal:/calendar'
           icon:
             name: calendar-event
             transformation: rotate-90
-            attributes:
+            attributes: !Attribute
               class:
                 - custom-navigation-icon
           icon_position: before

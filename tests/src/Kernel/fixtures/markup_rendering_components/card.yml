@@ -139,10 +139,10 @@ card_title_link_with_custom_attributes:
       title: 'Title card'
       title_link:
         path: 'https://example.com'
-        attributes:
+        attributes: !Attribute
           class:
             - custom-link-class
-      title_attributes:
+      title_attributes: !Attribute
         id: custom-card-title
         class:
           - custom-title-class

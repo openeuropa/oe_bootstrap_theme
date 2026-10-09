@@ -92,17 +92,17 @@ list_group_actionable_links_and_buttons:
       items:
         - label:
             '#markup': 'Linked <strong>item</strong>'
-          path: '/linked-item'
+          path: !Url 'internal:/linked-item'
           variant: warning
           icon: arrow-right
           icon_position: before
           icon_display: inline-flex
-          attributes:
+          attributes: !Attribute
             class:
               - custom-action-link
             data-action-attribute: link
         - label: 'Disabled standalone link'
-          path: '/disabled-item'
+          path: !Url 'internal:/disabled-item'
           disabled: true
           standalone: true
         - button: true
@@ -114,7 +114,7 @@ list_group_actionable_links_and_buttons:
           icon:
             name: check
             transformation: rotate-90
-            attributes:
+            attributes: !Attribute
               class:
                 - custom-button-icon
           icon_position: after
@@ -125,10 +125,10 @@ list_group_actionable_links_and_buttons:
             variant: success
             size: sm
             assistive_text: Loading
-            attributes:
+            attributes: !Attribute
               class:
                 - custom-spinner
-          attributes:
+          attributes: !Attribute
             class:
               - custom-action-button
             data-action-attribute: button

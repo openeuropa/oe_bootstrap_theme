@@ -28,7 +28,7 @@ offcanvas_with_all_parameters:
         '#markup': '<em>Linked offcanvas title</em>'
       title_tag: h3
       title_link:
-        path: '/offcanvas-title'
+        path: !Url 'internal:/offcanvas-title'
         variant: success
         id: custom-title-link-id
         disabled: true
@@ -36,18 +36,18 @@ offcanvas_with_all_parameters:
           name: link
           path: /title-icons.svg
           transformation: flip-horizontal
-          attributes:
+          attributes: !Attribute
             class:
               - custom-title-icon
         icon_position: before
         icon_display: inline-flex
-        attributes:
+        attributes: !Attribute
           class:
             - custom-title-link
           title: 'Title link tooltip'
           target: _blank
           data-title-link: custom-value
-      title_attributes:
+      title_attributes: !Attribute
         class:
           - custom-title
         data-title: custom-value
@@ -77,17 +77,17 @@ offcanvas_with_all_parameters:
           name: filter
           path: /custom-icons.svg
           transformation: rotate-90
-          attributes:
+          attributes: !Attribute
             class:
               - custom-toggle-icon
             data-icon: custom-value
         icon_position: before
         icon_spacing: lg
-        attributes:
+        attributes: !Attribute
           class:
             - custom-toggle
           data-toggle: custom-value
-      attributes:
+      attributes: !Attribute
         class:
           - custom-offcanvas
         aria-label: 'Detailed offcanvas'
