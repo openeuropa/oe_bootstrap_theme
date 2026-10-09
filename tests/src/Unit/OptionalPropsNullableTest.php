@@ -72,7 +72,10 @@ class OptionalPropsNullableTest extends UnitTestCase {
   }
 
   /**
-   * Tests that array entries cannot accept NULL, including tuple entries.
+   * Verifies the checker detects nullable array items in synthetic schemas.
+   *
+   * Covers homogeneous and tuple items; component definitions are checked by
+   * testPropsNullability().
    */
   public function testNullableArrayItemsAreReported(): void {
     $item = [
