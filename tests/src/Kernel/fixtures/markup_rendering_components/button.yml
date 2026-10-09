@@ -115,7 +115,7 @@ button_with_assistive_text_and_spinner:
       spinner:
         size: sm
         assistive_text: 'Loading'
-        attributes:
+        attributes: !Attribute
           class:
             - custom-spinner-class
   assertions:

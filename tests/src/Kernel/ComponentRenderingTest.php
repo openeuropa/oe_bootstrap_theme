@@ -14,6 +14,7 @@ use Drupal\Core\Site\Settings;
 use Drupal\Core\Template\Attribute;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\OptionalPropsNullifier;
+use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -111,6 +112,8 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
    * @dataProvider componentRenderingProvider
    */
   public function testComponentRendering(array $render, array $assertions): void {
+    // Internal Url objects need Drupal services, unavailable in the provider.
+    $render = PatternTestDataMassager::massageDataRecursive($render);
     $this->doTestComponentRendering($render, $assertions);
     $schema = $this->container->get('plugin.manager.sdc')->find($render['#component'])->metadata->schema;
     $render['#props'] = OptionalPropsNullifier::populate($schema, $render['#props'] ?? []);
@@ -248,8 +251,8 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, ?array $render_array = NULL): array {
-    // Drupal 10.6 SDC validates Attribute props as objects, while YAML
-    // fixtures can only provide arrays. Normalize them for test rendering.
+    // Drupal 10.6 SDC validates Attribute props as objects. Normalize untagged
+    // arrays in YAML fixtures for test rendering.
     // @todo Remove this when Drupal 10.6 support is dropped.
     if (($render_array['#type'] ?? NULL) === 'component') {
       foreach ([

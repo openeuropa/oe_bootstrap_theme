@@ -8,27 +8,27 @@ dropdown_button_default:
       trigger:
         label: 'Dropdown toggle'
         variant: secondary
-        attributes:
+        attributes: !Attribute
           class:
             - custom-trigger
         icon:
           name: list
-          attributes:
+          attributes: !Attribute
             class:
               - custom-trigger-icon
-      attributes:
+      attributes: !Attribute
         class:
           - custom-menu
       items:
         - label: 'A link'
-          path: '/example'
-          attributes:
+          path: !Url 'internal:/example'
+          attributes: !Attribute
             class:
               - custom-link
           icon: link
         - label: 'A button'
           button: true
-          attributes:
+          attributes: !Attribute
             class:
               - custom-button
         - divider: true

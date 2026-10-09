@@ -108,7 +108,7 @@ accordion_with_actionable_buttons:
       collapse_button_label: 'Collapse'
       open_item: 1
       bare_layout: false
-      attributes:
+      attributes: !Attribute
         class:
           - custom-accordion-class
         data-accordion: custom-value

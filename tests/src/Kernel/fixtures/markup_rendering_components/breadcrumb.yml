@@ -4,15 +4,15 @@ breadcrumb:
     '#component': oe_bootstrap_theme:breadcrumb
     '#props':
       items:
-        - path: '/index'
+        - path: !Url 'internal:/index'
           label: 'Home'
           id: breadcrumb-home-link
-          attributes:
+          attributes: !Attribute
             class:
               - custom-class
-        - path: '/example'
+        - path: !Url 'internal:/example'
           label: 'About the European Commission'
-        - path: 'https://example.com'
+        - path: !Url 'https://example.com'
           label: 'Link title'
       icon_path: '/custom-icons.svg'
   assertions:

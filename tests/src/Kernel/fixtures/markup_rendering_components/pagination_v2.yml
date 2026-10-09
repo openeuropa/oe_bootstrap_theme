@@ -45,20 +45,20 @@ pagination_v2_text_controls_and_custom_attributes:
       aria_label: 'Search results pages'
       enable_prev_next_icon: false
       enable_first_last_icon: false
-      attributes:
+      attributes: !Attribute
         id: custom-pagination
         class:
           - custom-pagination
         data-pagination: custom-value
-      list_attributes:
+      list_attributes: !Attribute
         id: custom-pagination-list
         class:
           - custom-pagination-list
         data-pagination-list: custom-list-value
       first:
-        path: '#first'
+        path: !Url 'internal:#first'
         label: First
-        attributes:
+        attributes: !Attribute
           id: first-page-link
           class:
             - custom-first-link
@@ -73,9 +73,9 @@ pagination_v2_text_controls_and_custom_attributes:
         path: '#last'
         label: Last
       items:
-        - path: '#page-1'
+        - path: !Url 'internal:#page-1'
           label: '1'
-          attributes:
+          attributes: !Attribute
             class:
               - custom-page-link
             data-page: '1'

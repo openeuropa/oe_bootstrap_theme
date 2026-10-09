@@ -24,41 +24,41 @@ pagination_text_controls_and_custom_attributes:
       alignment: center
       enable_first_last_icons: false
       first:
-        path: '/pages/first'
+        path: !Url 'internal:/pages/first'
         label: First
-        attributes:
+        attributes: !Attribute
           aria-label: 'Go to the first page'
           class:
             - custom-first-link
       prev:
-        path: '/pages/previous'
+        path: !Url 'internal:/pages/previous'
         label: Previous
       next:
-        path: '/pages/next'
+        path: !Url 'internal:/pages/next'
         label: Next
         disabled: true
       last:
-        path: '/pages/last'
+        path: !Url 'internal:/pages/last'
         label: Last
       items:
-        - path: '/pages/1'
+        - path: !Url 'internal:/pages/1'
           label:
             '#markup': '<strong>1</strong>'
           active: true
-          attributes:
+          attributes: !Attribute
             aria-label: 'Page 1'
             class:
               - custom-page-link
             data-page-attribute: custom-value
-        - path: '/pages/2'
+        - path: !Url 'internal:/pages/2'
           label: '2'
           disabled: true
-      list_attributes:
+      list_attributes: !Attribute
         id: custom-pagination-list
         class:
           - custom-pagination-list
         data-list-attribute: custom-value
-      attributes:
+      attributes: !Attribute
         id: custom-pagination
         class:
           - custom-pagination
