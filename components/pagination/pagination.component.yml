@@ -1,21 +1,15 @@
 name: Pagination
 description: 'Displays navigation for a series of related content split across multiple pages.'
+variants:
+  default:
+    title: 'Default'
+    description: 'The default pagination style.'
+  glossary:
+    title: 'Glossary'
+    description: 'Glossary style.'
 props:
   type: object
   properties:
-    variant:
-      title: Variant
-      type: [string, 'null']
-      description: 'Pagination presentation. Defaults to standard pagination.'
-      enum:
-        - default
-        - glossary
-        - null
-      'meta:enum':
-        default: Default
-        glossary: Glossary
-        # Value NULL becomes '' when used as array key.
-        '': Default
     size:
       title: Size
       type: [string, 'null']
