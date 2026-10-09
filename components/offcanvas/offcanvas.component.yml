@@ -5,113 +5,120 @@ props:
   properties:
     variant:
       title: Variant
-      type: string
+      type: [string, 'null']
       description: 'The offcanvas presentation. Defaults to default.'
       enum:
         - default
         - search
+        - null
       'meta:enum':
         default: Default
         search: Search
+        # Value NULL becomes '' when used as array key.
+        '': Default
     offcanvas_id:
       title: 'Offcanvas ID'
-      type: string
+      type: [string, 'null']
       description: 'ID connecting the panel, close button, and toggle. A unique ID is generated when omitted.'
     title:
       title: Title
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Offcanvas title.'
     title_tag:
       title: 'Title tag'
-      type: string
+      type: [string, 'null']
       description: 'HTML tag used for the title. Defaults to h2.'
     title_link:
       title: 'Title link'
-      type: object
+      type: [object, 'null']
       properties:
         path:
-          type: [string, object]
+          type: [string, object, 'null']
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         variant:
-          type: string
+          type: [string, 'null']
         id:
-          type: string
+          type: [string, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         icon:
           anyOf:
+            - type: 'null'
             - type: string
             - type: object
               properties:
                 name:
-                  type: string
+                  type: [string, 'null']
                 path:
-                  type: string
+                  type: [string, 'null']
                 transformation:
-                  type: string
+                  type: [string, 'null']
                 attributes:
-                  type: object
+                  type: [object, 'null']
         icon_position:
-          type: string
+          type: [string, 'null']
         icon_display:
-          type: string
+          type: [string, 'null']
         remove_icon_spacers:
-          type: boolean
+          type: [boolean, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     title_attributes:
       title: 'Title attributes'
       type: Drupal\Core\Template\Attribute
     placement:
       title: Placement
-      type: string
+      type: [string, 'null']
       description: 'Side from which the offcanvas opens.'
       enum:
         - start
         - end
         - top
         - bottom
+        - null
       'meta:enum':
         start: Start
         end: End
         top: Top
         bottom: Bottom
+        # Value NULL becomes '' when used as array key.
+        '': Default
     body:
       title: Body
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Offcanvas body content.'
     body_scroll:
       title: 'Body scroll'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Allows the page body to scroll while the offcanvas is open. Defaults to false.'
     backdrop:
       title: Backdrop
-      type: boolean
+      type: [boolean, 'null']
       description: 'Displays a backdrop while the offcanvas is open. Defaults to false.'
     with_close:
       title: 'Close button'
-      type: boolean
+      type: [boolean, 'null']
       description: 'Displays the close button. Defaults to true.'
     close_aria_label:
       title: 'Close button accessible label'
-      type: string
+      type: [string, 'null']
       description: 'Accessible label for the close button. Defaults to Close.'
     extra_classes_body:
       title: 'Body classes'
-      type: string
+      type: [string, 'null']
       description: 'Additional classes for the offcanvas body.'
     extra_classes_header:
       title: 'Header classes'
-      type: string
+      type: [string, 'null']
       description: 'Additional classes for the offcanvas header.'
     extra_classes_close:
       title: 'Close button classes'
-      type: string
+      type: [string, 'null']
       description: 'Additional classes for the close button.'
     responsiveness:
       title: Responsiveness
-      type: string
+      type: [string, 'null']
       description: 'Breakpoint at which the offcanvas becomes static. Defaults to lg.'
       enum:
         - none
@@ -120,6 +127,7 @@ props:
         - lg
         - xl
         - xxl
+        - null
       'meta:enum':
         none: 'Always offcanvas'
         sm: Small
@@ -127,52 +135,55 @@ props:
         lg: 'Large (default)'
         xl: 'Extra large'
         xxl: 'Extra extra large'
+        # Value NULL becomes '' when used as array key.
+        '': Default
     toggle:
       title: 'Toggle button'
-      type: object
+      type: [object, 'null']
       description: 'Optional button that opens the offcanvas.'
       properties:
         label:
-          type: [string, array, object]
+          type: [string, array, object, 'null']
         variant:
-          type: string
+          type: [string, 'null']
         size:
-          type: string
+          type: [string, 'null']
         type:
-          type: string
+          type: [string, 'null']
         outline:
-          type: boolean
+          type: [boolean, 'null']
         disabled:
-          type: boolean
+          type: [boolean, 'null']
         text_nowrap:
-          type: boolean
+          type: [boolean, 'null']
         assistive_text:
-          type: string
+          type: [string, 'null']
         id:
-          type: string
+          type: [string, 'null']
         icon:
           anyOf:
+            - type: 'null'
             - type: string
             - type: object
               properties:
                 name:
-                  type: string
+                  type: [string, 'null']
                 path:
-                  type: string
+                  type: [string, 'null']
                 transformation:
-                  type: string
+                  type: [string, 'null']
                 attributes:
-                  type: object
+                  type: [object, 'null']
         icon_position:
-          type: string
+          type: [string, 'null']
         icon_spacing:
-          type: string
+          type: [string, 'null']
         clean_class:
-          type: boolean
+          type: [boolean, 'null']
         remove_icon_spacers:
-          type: boolean
+          type: [boolean, 'null']
         attributes:
-          type: object
+          type: [object, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

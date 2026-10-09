@@ -23,7 +23,7 @@
 
 {% set _items = [] %}
 {% for item in items|default([]) %}
-  {% set _item = item|merge({
+  {% set _item = item|filter(value => value is not null)|merge({
     attributes: create_attribute(item.attributes|default({})),
   }) %}
 

@@ -183,7 +183,8 @@ class TwigExtension extends AbstractExtension {
       }
       foreach ($item['term'] as &$term) {
         if (!empty($term['icon'])) {
-          $term['icon'] += ['size' => 'xs', 'path' => $icon_path];
+          $term['icon']['size'] ??= 'xs';
+          $term['icon']['path'] ??= $icon_path;
         }
       }
       unset($term);
@@ -254,6 +255,8 @@ class TwigExtension extends AbstractExtension {
    *   The processed element.
    */
   protected function prepareNavigationElement(array $item, string $icon_path): array {
+    // BCL selects element types by key presence, so NULL means omitted.
+    $item = array_filter($item, static fn ($value) => $value !== NULL);
     $attributes = $item['attributes'] ?? [];
     $item['attributes'] = new Attribute(is_array($attributes) ? $attributes : []);
 
@@ -262,7 +265,8 @@ class TwigExtension extends AbstractExtension {
       if (isset($icon['attributes']) && is_array($icon['attributes'])) {
         $icon['attributes'] = new Attribute($icon['attributes']);
       }
-      $item['icon'] = $icon + ['path' => $icon_path];
+      $icon['path'] ??= $icon_path;
+      $item['icon'] = $icon;
     }
 
     if (isset($item['spinner']['attributes']) && is_array($item['spinner']['attributes'])) {
@@ -428,6 +432,10 @@ class TwigExtension extends AbstractExtension {
    */
   public function bclGalleryItems(array $items): array {
     foreach ($items as &$item) {
+      // Let the carousel use its default interval when none is provided.
+      if (($item['interval'] ?? NULL) === NULL) {
+        unset($item['interval']);
+      }
       // Use inline templates to take care of all possible types at once, and to
       // receive a Markup class as output.
       $rendered = $this->twigEnvironment->renderInline('{{ value }}', [
