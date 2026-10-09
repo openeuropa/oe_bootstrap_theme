@@ -152,6 +152,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
           $candidate_key = $key . ($suffix ? sprintf(' (%s)', $suffix) : '');
           $suffix++;
         } while (isset($test_cases[$candidate_key]));
+        $test_case['render'] = PatternTestDataMassager::massageDataRecursive($test_case['render']);
         $test_cases[$candidate_key] = $test_case;
       }
     }
