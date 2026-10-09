@@ -8,13 +8,11 @@ use Drupal\Component\Serialization\Yaml;
 use Drupal\Tests\UnitTestCase;
 
 /**
- * Tests that the nullability of component props matches their requiredness.
+ * Ensures optional component props accept NULL, while list items do not.
  *
- * A prop that is not listed in the 'required' key of its parent schema can be
- * omitted, but a caller that passes NULL explicitly - e.g. a Twig variable that
- * happens to be empty - will trigger a validation error, unless the schema
- * allows NULL. The other way around, a prop that is required has to be passed,
- * so allowing NULL only lets callers bypass the requirement.
+ * Calling templates may pass NULL instead of omitting optional props. Required
+ * props and list items must not accept NULL. Checking all component definitions
+ * keeps these rules covered when new components or props are added.
  */
 class OptionalPropsNullableTest extends UnitTestCase {
 
