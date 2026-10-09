@@ -7,12 +7,12 @@ listing_default_complete:
       columns: 1
       title: 'Latest publications'
       title_tag: h3
-      title_attributes:
+      title_attributes: !Attribute
         class:
           - custom-listing-title
         data-title-attribute: custom-value
       title_link:
-        path: '/publications'
+        path: !Url 'internal:/publications'
         variant: info
         id: listing-title-link
         icon:
@@ -20,12 +20,12 @@ listing_default_complete:
           size: xs
         icon_position: after
         icon_display: inline-flex
-        attributes:
+        attributes: !Attribute
           data-title-link: custom-value
       alignment: center
       image_size: large
       icon_path: '/custom/icons.svg'
-      attributes:
+      attributes: !Attribute
         id: custom-listing
         class:
           - custom-listing-class
@@ -34,7 +34,7 @@ listing_default_complete:
         - title: 'First publication'
           title_tag: h4
           title_link:
-            path: '/publication/first'
+            path: !Url 'internal:/publication/first'
             variant: danger
             id: first-publication-link
             icon:
@@ -42,7 +42,7 @@ listing_default_complete:
               size: sm
             icon_position: before
             remove_icon_spacers: true
-            attributes:
+            attributes: !Attribute
               class:
                 - custom-card-link
           subtitle: 'Research report'
@@ -71,7 +71,7 @@ listing_default_complete:
               assistive_text: 'Data type:'
               rounded_pill: true
               outline: true
-              attributes:
+              attributes: !Attribute
                 class:
                   - custom-badge-class
         - title:
@@ -85,13 +85,13 @@ listing_default_complete:
             end_month: Sep
             end_year: 2026
             date_time: '2026-09-12'
-            attributes:
+            attributes: !Attribute
               id: consultation-date
               class:
                 - custom-date-class
       link:
         label: 'View all publications'
-        path: '/publications/all'
+        path: !Url 'internal:/publications/all'
         variant: success
         id: listing-cta
         disabled: true
@@ -101,10 +101,10 @@ listing_default_complete:
         remove_icon_spacers: true
         icon:
           transformation: rotate-90
-          attributes:
+          attributes: !Attribute
             class:
               - custom-cta-icon
-        attributes:
+        attributes: !Attribute
           class:
             - custom-cta-class
           data-cta: custom-value

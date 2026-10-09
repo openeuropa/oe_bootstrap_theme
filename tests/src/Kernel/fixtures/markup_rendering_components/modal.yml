@@ -37,7 +37,7 @@ modal_with_all_content_and_attributes:
       title:
         - '#markup': 'Custom <em>modal</em>'
       title_tag: h4
-      title_attributes:
+      title_attributes: !Attribute
         class:
           - custom-modal-title
         data-modal-title: custom-value
@@ -57,19 +57,19 @@ modal_with_all_content_and_attributes:
               - btn-secondary
             data-bs-dismiss: modal
           '#value': Cancel
-      attributes:
+      attributes: !Attribute
         class:
           - custom-modal
         data-modal: custom-value
-      header_attributes:
+      header_attributes: !Attribute
         id: custom-modal-header
         class:
           - custom-modal-header
-      body_attributes:
+      body_attributes: !Attribute
         id: custom-modal-body
         class:
           - custom-modal-body
-      footer_attributes:
+      footer_attributes: !Attribute
         id: custom-modal-footer
         class:
           - custom-modal-footer
@@ -83,11 +83,11 @@ modal_with_all_content_and_attributes:
         icon:
           name: box-arrow-up-right
           path: /custom-icons.svg
-          attributes:
+          attributes: !Attribute
             class:
               - custom-toggle-icon
         icon_position: before
-        attributes:
+        attributes: !Attribute
           class:
             - custom-toggle
           data-toggle: custom-value

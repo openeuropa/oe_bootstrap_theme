@@ -261,13 +261,13 @@ content_banner_badge_and_link_with_custom_attributes:
       title: 'Content banner title'
       badges:
         - label: 'Custom badge'
-          attributes:
+          attributes: !Attribute
             class:
               - custom-badge-class
       links:
         - label: 'Custom link'
-          path: 'https://example.com'
-          attributes:
+          path: !Url 'https://example.com'
+          attributes: !Attribute
             class:
               - custom-link-class
   assertions:

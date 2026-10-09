@@ -54,28 +54,28 @@ featured_media_image_with_text_and_link:
       title_tag: h3
       title_link:
         label: 'Linked featured media title'
-        path: '/featured'
+        path: !Url 'internal:/featured'
         id: featured-title-link
         disabled: true
         icon:
           name: link-45deg
           transformation: flip-horizontal
-          attributes:
+          attributes: !Attribute
             class:
               - custom-title-icon
         icon_position: before
         icon_display: inline-flex
         remove_icon_spacers: true
-        attributes:
+        attributes: !Attribute
           class:
             - custom-title-link
-      title_attributes:
+      title_attributes: !Attribute
         id: featured-title
         class:
           - custom-title
       subtitle: 'Featured media subtitle'
       subtitle_tag: h4
-      subtitle_attributes:
+      subtitle_attributes: !Attribute
         id: featured-subtitle
         class:
           - custom-subtitle
@@ -83,7 +83,7 @@ featured_media_image_with_text_and_link:
         '#markup': '<p class="featured-description">Featured media description.</p>'
       link:
         label: 'Read more'
-        path: '/example'
+        path: !Url 'internal:/example'
         variant: primary
         id: featured-link
         disabled: false
@@ -91,13 +91,13 @@ featured_media_image_with_text_and_link:
         icon:
           name: arrow-right
           transformation: rotate-90
-          attributes:
+          attributes: !Attribute
             class:
               - custom-icon
         icon_position: before
         icon_display: inline-flex
         remove_icon_spacers: false
-        attributes:
+        attributes: !Attribute
           class:
             - custom-link
       caption: 'Custom caption.'

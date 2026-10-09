@@ -50,7 +50,7 @@ carousel_with_all_settings:
           copyright: '© 2024 Example Organisation'
           link:
             label: First link
-            path: https://link.one
+            path: !Url https://link.one
   assertions:
     component:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselPatternAssert
