@@ -1,0 +1,15 @@
+uuid: 88b728d8-c56c-4fe1-ba44-29d5aa776533
+langcode: en
+status: true
+dependencies: {  }
+name: oe_xl_1320
+label: 'OE XL 1320'
+effects:
+  7dbc6e10-6f0a-43ca-a836-689547740067:
+    uuid: 7dbc6e10-6f0a-43ca-a836-689547740067
+    id: image_scale
+    weight: 1
+    data:
+      width: 1320
+      height: null
+      upscale: false

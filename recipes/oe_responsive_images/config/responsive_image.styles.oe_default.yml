@@ -1,0 +1,48 @@
+uuid: d629c864-a71f-456e-a2fa-6106e01c902d
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.oe_lg_1140
+    - image.style.oe_md_960
+    - image.style.oe_sm_720
+    - image.style.oe_xl_1320
+    - image.style.oe_xs_540
+    - image.style.oe_xxl_1440
+  theme:
+    - oe_bootstrap_theme
+id: oe_default
+label: 'OE Default (Bootstrap breakpoints)'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: oe_xxl_1440
+    breakpoint_id: default.xxl
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: oe_xl_1320
+    breakpoint_id: default.xl
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: oe_lg_1140
+    breakpoint_id: default.lg
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: oe_md_960
+    breakpoint_id: default.md
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: oe_sm_720
+    breakpoint_id: default.sm
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: oe_xs_540
+    breakpoint_id: default.xs
+    multiplier: 1x
+breakpoint_group: default
+fallback_image_style: oe_md_960
