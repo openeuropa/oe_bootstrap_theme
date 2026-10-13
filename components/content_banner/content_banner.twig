@@ -22,78 +22,29 @@
   {%- endif -%}
 {%- endset -%}
 
-{%- set _badges = [] -%}
-{%- for badge in badges|default([]) -%}
-  {%- set _badge = {
-    outline: true,
-  }|merge(badge|filter(value => value is not null)) -%}
-  {%- set _badge = _badge|merge({
-    attributes: create_attribute(_badge.attributes|default({})),
-  }) -%}
-  {%- set _badges = _badges|merge([_badge]) -%}
-{%- endfor -%}
-
-{%- set _links = [] -%}
-{%- for link in links|default([]) -%}
-  {%- set _link = link|merge({
-    attributes: create_attribute(link.attributes|default({})),
-  }) -%}
-  {%- if _link.icon is defined and _link.icon is not empty and _link.icon.path is empty -%}
-    {%- set _link = _link|merge({
-      icon: _link.icon|merge({path: bcl_icon_path()}),
-    }) -%}
-  {%- endif -%}
-  {%- set _links = _links|merge([_link]) -%}
-{%- endfor -%}
-
-{%- set _title_link = title_link|default({}) -%}
-{%- if _title_link is not empty -%}
-  {%- set _title_link = _title_link|merge({
-    attributes: create_attribute(_title_link.attributes|default({})),
-  }) -%}
-  {%- if _title_link.icon is defined and _title_link.icon is not empty and _title_link.icon.path is empty -%}
-    {%- set _title_link = _title_link|merge({
-      icon: _title_link.icon|merge({path: bcl_icon_path()}),
-    }) -%}
-  {%- endif -%}
-{%- endif -%}
-
-{%- set _image = {} -%}
-{%- if image is not empty -%}
-  {%- set _image = image|merge({
-    path: image.src|default(''),
-    alt: image.alt|default(''),
-  }) -%}
-{%- endif -%}
-
-{%- set _date = date|default({}) -%}
-{%- if _date is not empty -%}
-  {%- set _date = _date|merge({
-    attributes: create_attribute(_date.attributes|default({})),
-  }) -%}
-  {%- if _date.icon_path is not defined or _date.icon_path is empty -%}
-    {%- set _date = _date|merge({
-      icon_path: bcl_icon_path(),
-    }) -%}
-  {%- endif -%}
-{%- endif -%}
-
 {%- include '@oe-bcl/bcl-content-banner/bcl-content-banner.html.twig' with {
   background: background|default('white'),
   title: title,
   title_tag: title_tag|default('h1'),
-  title_link: _title_link,
+  title_link: title_link|bcl_expand_attributes|bcl_expand_icon,
   title_attributes: _title_attributes,
   subtitle: subtitle,
   text: text,
   content: _content,
-  image: _image,
-  date: _date,
+  image: image ? image|merge({
+    path: image.src ?? '',
+    alt: image.alt ?? '',
+  }) : {},
+  date: date ? date|bcl_expand_attributes|merge({
+    icon_path: date.icon_path ?: bcl_icon_path(),
+  }) : {},
   copyright: copyright,
   copyright_label: copyright_label|default('Image credit:'|t),
   image_size: image_size|default('lg'),
-  badges: _badges,
-  links: _links,
+  badges: (badges ?? [])|map(badge => badge|bcl_expand_attributes|merge({
+    outline: badge.outline ?? true,
+  })|bcl_expand_attributes),
+  links: (links ?? [])|map(link => link|bcl_expand_attributes|bcl_expand_icon),
   action_bar: action_bar,
   attributes: attributes,
 } only -%}
