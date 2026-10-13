@@ -6,31 +6,19 @@
 #}
 {% set icon_path = icon_path|default(bcl_icon_path()) %}
 {% set carousel_id = carousel_id|default('bcl-carousel'|clean_unique_id) %}
-{% set items = [] %}
 
-{% for slide in slides|default([]) %}
-  {% set image %}
-    {% if slide.image is defined and slide.image is not empty %}
-      <img{{ create_attribute(slide.image).addClass(['d-block', 'w-100']) }} />
-    {% endif %}
-  {% endset %}
+{% macro slide_image(attributes) %}
+  <img{{ attributes.addClass(['d-block', 'w-100']) }} />
+{% endmacro %}
 
-  {% set item = slide|filter(value => value is not null)|merge({ image: image }) %}
-  {% if slide.link is defined and slide.link is not empty %}
-    {% set item = item|merge({
-      link: slide.link|merge({
-        icon_position: slide.link.icon_position|default('before'),
-        icon: slide.link.icon|default({})|merge({
-          name: slide.link.icon.name|default('link'),
-          path: slide.link.icon.path|default(icon_path),
-        }),
-        attributes: create_attribute(slide.link.attributes|default({})),
-      }),
-    }) %}
-  {% endif %}
-
-  {% set items = items|merge([item]) %}
-{% endfor %}
+{% set items = (slides ?? [])|map(slide => slide|without_nulls|merge({
+  image: slide.image ? _self.slide_image(create_attribute(slide.image)) : '',
+  link: slide.link ? slide.link|merge({
+    icon_position: slide.link.icon_position ?? 'before',
+    icon: slide.link.icon|bcl_icon(name: 'link', path: icon_path ?? null),
+    attributes: create_attribute(slide.link.attributes ?? {}),
+  }) : null,
+}|without_nulls)) %}
 
 {% include '@oe-bcl/carousel' with {
   copyright_label: 'Image credit:'|t,
