@@ -20,16 +20,6 @@
   {% set _attributes = _attributes.addClass(['text-center']) %}
 {% endif %}
 
-{% set _call_to_action = call_to_action|default({}) %}
-{% if _call_to_action and _call_to_action.link_style is defined %}
-  {% set _call_to_action = _call_to_action|merge({variant: _call_to_action.link_style}) %}
-{% endif %}
-{% if _call_to_action.icon is defined and _call_to_action.icon is not empty and _call_to_action.icon.path is empty %}
-  {% set _call_to_action = _call_to_action|merge({
-    icon: _call_to_action.icon|merge({path: bcl_icon_path()})
-  }) %}
-{% endif %}
-
 {% include '@oe-bcl/banner' with {
   shade: _shade,
   hero: hero,
@@ -38,7 +28,9 @@
   title: title,
   title_tag: title_tag,
   description: description,
-  link: _call_to_action,
+  link: call_to_action ? call_to_action|bcl_expand_icon|merge({
+    variant: call_to_action.link_style ?: null,
+  }|without_nulls) : {},
   copyright: _variant in ['image', 'image_shade'] ? copyright : '',
   copyright_label: _variant in ['image', 'image_shade'] ? 'Image credit:'|t : '',
   image: _variant in ['image', 'image_shade'] ? image : '',
