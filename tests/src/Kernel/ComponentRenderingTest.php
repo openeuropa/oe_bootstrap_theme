@@ -112,9 +112,11 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
    */
   public function testComponentRendering(array $render, array $assertions): void {
     // Internal Url objects need Drupal services, unavailable in the provider.
-    $render = PatternTestDataMassager::massageDataRecursive($render);
-    $this->doTestComponentRendering($render, $assertions);
-    $schema = $this->container->get('plugin.manager.sdc')->find($render['#component'])->metadata->schema;
+    $object_render = PatternTestDataMassager::massageDataRecursive($render);
+    $this->doTestComponentRendering($object_render, $assertions);
+    $schema = $this->container->get('plugin.manager.sdc')->find($object_render['#component'])->metadata->schema;
+    // Cover plain values in the same pass as explicit NULL props.
+    $render = PatternTestDataMassager::massageDataRecursive($render, FALSE);
     $render['#props'] = OptionalPropsNullifier::populate($schema, $render['#props'] ?? []);
     // Each render represents a separate page with its own generated IDs.
     Html::resetSeenIds();
