@@ -4,6 +4,7 @@
  * Card component.
  */
 #}
+{% set title_attributes = create_attribute(title_attributes|default({})) %}
 {%- set _variant = variant|default('default') -%}
 {%- set _orientation = orientation|default('vertical') -%}
 {%- set _attributes = attributes|default(create_attribute()) -%}

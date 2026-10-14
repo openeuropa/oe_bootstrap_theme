@@ -226,13 +226,13 @@ props:
       description: 'Path to icons used by links. Defaults to the BCL icon path.'
     title_attributes:
       title: 'Title attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     subtitle_attributes:
       title: 'Subtitle attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     media_attributes:
       title: 'Media attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

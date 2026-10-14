@@ -132,7 +132,7 @@ props:
       description: 'Classes for the columns.'
     title_attributes:
       title: 'Title attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

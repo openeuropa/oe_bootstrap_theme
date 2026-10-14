@@ -289,7 +289,7 @@ props:
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
     list_attributes:
       title: 'List attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

@@ -256,4 +256,4 @@ props:
       type: Drupal\Core\Template\Attribute
     list_attributes:
       title: 'List attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes

@@ -84,7 +84,7 @@ props:
           type: [object, string, 'null']  # attributes
     title_attributes:
       title: 'Title attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     background:
       title: Background
       type: [string, 'null']
