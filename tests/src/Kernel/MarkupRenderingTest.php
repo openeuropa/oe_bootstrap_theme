@@ -139,7 +139,8 @@ class MarkupRenderingTest extends KernelTestBase {
    */
   public static function allCasesProvider(): array {
     return [
-      'patterns' => ['patterns'],
+      'patterns, objects' => ['patterns'],
+      'patterns, raw values' => ['patterns', FALSE],
       'other' => ['other'],
     ];
   }
@@ -150,10 +151,13 @@ class MarkupRenderingTest extends KernelTestBase {
    * @param 'patterns'|'other' $mode
    *   Pass 'patterns' to test all cases with patterns.
    *   Pass 'other' to test all cases which don't use a pattern.
+   * @param bool $use_objects
+   *   TRUE to use objects like Attribute, ImageValueObject etc.
+   *   FALSE to use string or array representations instead.
    *
-   * @dataProvider allCasesProvider()
+   * @dataProvider allCasesProvider
    */
-  public function testAllCases(string $mode): void {
+  public function testAllCases(string $mode, bool $use_objects = TRUE): void {
     $cases = static::markupRenderingProvider();
     $n = count($cases);
     foreach (array_keys($cases) as $i => $case_name) {
@@ -161,7 +165,7 @@ class MarkupRenderingTest extends KernelTestBase {
       try {
         $case = $cases[$case_name];
         $render = $case['render'];
-        $render = PatternTestDataMassager::massageDataRecursive($render);
+        $render = PatternTestDataMassager::massageDataRecursive($render, $use_objects);
         $assertions = $case['assertions'];
         $backward_compatibility = $case['backward_compatibility'] ?? [];
         if (!empty($backward_compatibility)) {
