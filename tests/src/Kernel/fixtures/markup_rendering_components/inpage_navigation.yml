@@ -31,7 +31,7 @@ inpage_navigation_with_content_and_links:
             '#markup': 'Heading <strong>one</strong>'
           path: '#heading-1'
           active: true
-          attributes:
+          attributes: !Attribute
             class:
               - custom-navigation-link
             data-link-attribute: first

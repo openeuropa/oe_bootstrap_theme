@@ -143,7 +143,7 @@ navigation_tabs_with_content:
           active: true
           content:
             - '#markup': '<p class="overview-content">Overview content</p>'
-          attributes:
+          attributes: !Attribute
             data-tab: overview
         - id: details-tab
           label: Details
@@ -183,7 +183,7 @@ navigation_navbar_with_attribute_id:
     '#props':
       variant: navbar
       alignment: center
-      attributes:
+      attributes: !Attribute
         id: navbar-navigation
         class:
           - custom-navbar-navigation

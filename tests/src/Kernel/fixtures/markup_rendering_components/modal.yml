@@ -124,7 +124,7 @@ modal_attribute_id_takes_precedence:
       size: fullscreen
       title: 'Fullscreen modal'
       body: 'Fullscreen modal body.'
-      attributes:
+      attributes: !Attribute
         id: attribute-modal-id
       toggle:
         label: 'Open fullscreen modal'

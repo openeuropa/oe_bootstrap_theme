@@ -166,7 +166,7 @@ pagination_v2_custom_item_icon:
             name: arrow-right
             path: /item-icons.svg
             transformation: rotate-90
-            attributes:
+            attributes: !Attribute
               class:
                 - custom-item-icon
   assertions:

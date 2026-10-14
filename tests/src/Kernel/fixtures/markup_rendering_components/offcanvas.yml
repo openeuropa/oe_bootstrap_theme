@@ -164,7 +164,7 @@ offcanvas_search_variant:
       extra_classes_body: custom-search-body
       extra_classes_header: custom-search-header
       extra_classes_close: custom-search-close
-      title_attributes:
+      title_attributes: !Attribute
         class:
           - custom-search-title
   assertions:
@@ -185,7 +185,7 @@ offcanvas_id_from_attributes:
     '#props':
       variant: default
       placement: start
-      attributes:
+      attributes: !Attribute
         id: attribute-offcanvas-id
       toggle:
         label: 'Open attribute ID panel'

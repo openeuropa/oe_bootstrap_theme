@@ -11,7 +11,6 @@ use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Site\Settings;
-use Drupal\Core\Template\Attribute;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\OptionalPropsNullifier;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
@@ -251,30 +250,6 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, ?array $render_array = NULL): array {
-    // Drupal 10.6 SDC validates Attribute props as objects. Normalize untagged
-    // arrays in YAML fixtures for test rendering.
-    // @todo Remove this when Drupal 10.6 support is dropped.
-    if (($render_array['#type'] ?? NULL) === 'component') {
-      foreach ([
-        'attributes',
-        'title_attributes',
-        'subtitle_attributes',
-        'media_attributes',
-        'list_attributes',
-        'content_attributes',
-        'header_attributes',
-        'body_attributes',
-        'footer_attributes',
-        'list_attributes',
-        'wrapper_attributes',
-        'heading_attributes',
-      ] as $attribute_prop) {
-        if (is_array($render_array['#props'][$attribute_prop] ?? NULL)) {
-          $render_array['#props'][$attribute_prop] = new Attribute($render_array['#props'][$attribute_prop]);
-        }
-      }
-    }
-
     $form['test'] = $render_array;
     return $form;
   }

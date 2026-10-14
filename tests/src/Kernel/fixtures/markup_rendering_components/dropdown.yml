@@ -92,7 +92,7 @@ dropdown_link_without_wrapper:
       trigger:
         label: 'Linked dropdown'
         path: '/example'
-        attributes:
+        attributes: !Attribute
           class:
             - custom-link-trigger
       items:

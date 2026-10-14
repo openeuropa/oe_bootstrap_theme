@@ -14,11 +14,11 @@ featured_media_image_without_text:
           - custom-image
       caption: 'Media description text goes here.'
       copyright: '© 2026 Example Organisation'
-      attributes:
+      attributes: !Attribute
         id: featured-media-image
         class:
           - custom-featured-media
-      media_attributes:
+      media_attributes: !Attribute
         class:
           - custom-media
   assertions:

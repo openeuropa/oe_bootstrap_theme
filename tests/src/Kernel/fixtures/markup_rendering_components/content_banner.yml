@@ -225,7 +225,7 @@ content_banner_custom_attributes_title_link_and_date:
     '#type': component
     '#component': oe_bootstrap_theme:content_banner
     '#props':
-      attributes:
+      attributes: !Attribute
         id: custom-content-banner
         class:
           - custom-content-banner-class
@@ -233,7 +233,7 @@ content_banner_custom_attributes_title_link_and_date:
       title: 'Linked content banner title'
       title_link:
         path: 'https://example.com'
-      title_attributes:
+      title_attributes: !Attribute
         class:
           - custom-title-class
       date:

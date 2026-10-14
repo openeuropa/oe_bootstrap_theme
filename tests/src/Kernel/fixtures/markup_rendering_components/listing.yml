@@ -272,7 +272,7 @@ listing_title_label_and_custom_attributes:
       title_link:
         label: 'Browse the archive'
         path: '/archive-overview'
-      attributes:
+      attributes: !Attribute
         class:
           - custom-listing-attributes
   assertions:
