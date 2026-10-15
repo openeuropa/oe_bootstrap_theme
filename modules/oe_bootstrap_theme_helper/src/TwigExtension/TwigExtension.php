@@ -21,6 +21,7 @@ use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme\DrupalCompatibility;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
+use Drupal\oe_bootstrap_theme_helper\Value\NamedParametersOnly;
 use PHPUnit\Framework\Assert;
 use Symfony\Component\Yaml\Tag\TaggedValue;
 use Twig\Attribute\AsTwigFilter;
@@ -564,10 +565,12 @@ class TwigExtension extends AbstractExtension {
   #[AsTwigFilter('bcl_icon')]
   public function bclIcon(
     mixed $argument,
+    mixed $_ = NamedParametersOnly::SENTINEL,
     ?string $name = NULL,
     ?string $path = NULL,
     ?string $size = NULL
   ): ?array {
+    NamedParametersOnly::checkForTwig($_);
     if ($argument === NULL || $argument === [] || $argument === '') {
       if ($name === NULL) {
         return NULL;
@@ -605,13 +608,15 @@ class TwigExtension extends AbstractExtension {
   #[AsTwigFilter('bcl_expand_icon')]
   public function bclExpandIcon(
     ?array $argument,
+    mixed $_ = NamedParametersOnly::SENTINEL,
     string $key = 'icon',
     ?string $name = NULL,
     ?string $path = NULL,
     ?string $size = NULL,
   ): ?array {
+    NamedParametersOnly::checkForTwig($_);
     if (isset($argument[$key])) {
-      $argument[$key] = $this->bclIcon($argument[$key], $name, $path, $size);
+      $argument[$key] = $this->bclIcon($argument[$key], name: $name, path: $path, size: $size);
     }
     if (($argument[$key] ?? NULL) === NULL) {
       unset($argument[$key]);
@@ -620,7 +625,13 @@ class TwigExtension extends AbstractExtension {
   }
 
   #[AsTwigFilter('bcl_expand_attributes')]
-  public function expandAttributes(?array $argument, string $key = 'attributes', array $defaults = []): ?array {
+  public function bclExpandAttributes(
+    ?array $argument,
+    mixed $_ = NamedParametersOnly::SENTINEL,
+    string $key = 'attributes',
+    array $defaults = [],
+  ): ?array {
+    NamedParametersOnly::checkForTwig($_);
     // Don't add attributes on an empty structure.
     if (!$argument) {
       return $argument;
