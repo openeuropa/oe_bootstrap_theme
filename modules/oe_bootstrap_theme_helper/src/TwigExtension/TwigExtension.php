@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
-use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Language\LanguageManagerInterface;
@@ -51,7 +50,6 @@ class TwigExtension extends AbstractExtension {
   public function getFilters(): array {
     $filters = [
       new TwigFilter('bcl_card_list', [$this, 'bclCardList']),
-      new TwigFilter('bcl_description_list_items', [$this, 'bclDescriptionListItems']),
       new TwigFilter('bcl_navigation_items', [$this, 'bclNavigationItems']),
       new TwigFilter('format_size', 'Drupal\Core\StringTranslation\ByteSizeMarkup::create'),
       new TwigFilter('to_file_icon', [$this, 'toFileIcon']),
@@ -194,59 +192,6 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $bcl_cards;
-  }
-
-  /**
-   * Processes items for the description list component.
-   *
-   * @param array $items
-   *   The description list items.
-   * @param string|null $icon_path
-   *   Path to the icons SVG file. Defaults to the BCL icon path.
-   *
-   * @return array
-   *   The processed items.
-   */
-  public function bclDescriptionListItems(array $items, ?string $icon_path = NULL): array {
-    if (!$icon_path) {
-      $icon_path = $this->getBclIconPath();
-    }
-
-    foreach ($items as $i_item => &$item) {
-      if (empty($item['term']) || is_string($item['term']) || $item['term'] instanceof MarkupInterface) {
-        continue;
-      }
-      if (!is_array($item['term'])) {
-        throw new RuntimeError(sprintf(
-          'Expected a string, array or markup for %s, found %s.',
-          "items[$i_item].term",
-          get_debug_type($item['term']),
-        ));
-      }
-      foreach ($item['term'] as $i_term => &$term) {
-        if (!is_array($term)) {
-          throw new RuntimeError(sprintf(
-            'Expected %s to be an array, found %s.',
-            "items[$i_item].term[$i_term]",
-            get_debug_type($term),
-          ));
-        }
-        if (!empty($term['icon'])) {
-          // If the icon is not an array, the icon name has been passed.
-          if (!is_array($term['icon'])) {
-            $term['icon'] = [
-              'name' => $term['icon'],
-            ];
-          }
-          $term['icon']['size'] ??= 'xs';
-          $term['icon']['path'] ??= $icon_path;
-        }
-      }
-      unset($term);
-    }
-    unset($item);
-
-    return $items;
   }
 
   /**
