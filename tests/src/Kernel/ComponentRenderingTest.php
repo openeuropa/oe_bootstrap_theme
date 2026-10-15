@@ -10,6 +10,7 @@ use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Site\Settings;
 use Drupal\Core\Template\Attribute;
 use Drupal\KernelTests\KernelTestBase;
@@ -139,11 +140,19 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
    */
   protected function doTestComponentRendering(array $render, array $assertions): void {
     $form_state = new FormState();
-    $form_state->addBuildInfo('args', [$render]);
+    $separator = '<!-- CUT -->';
+    /* @see self::buildForm() */
+    $form_state->addBuildInfo('args', [$render, $separator]);
     $form_state->setProgrammed();
 
     $form = $this->container->get('form_builder')->buildForm($this, $form_state);
-    $this->assertComponentRendering($assertions, (string) $this->container->get('renderer')->renderRoot($form));
+    $markup = (string) $this->container->get('renderer')->renderRoot($form);
+    // Extract the part of the form that we want. Discard the form wrapper.
+    $parts = explode($separator, $markup);
+    $this->assertGreaterThanOrEqual(3, count($parts));
+    $inner_parts = array_slice($parts, 1, -1);
+    $markup = implode($separator, $inner_parts);
+    $this->assertComponentRendering($assertions, $markup);
   }
 
   /**
@@ -252,7 +261,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     ]));
 
     $crawler = new Crawler($html);
-    $component_html = $crawler->filter('body > form')->html();
+    $component_html = $crawler->filter('body')->html();
 
     /** @var \Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\ComponentAssertInterface $component_assert */
     $component_assert = new $assertions['class']();
@@ -262,8 +271,10 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, ?array $render_array = NULL): array {
+  public function buildForm(array $form, FormStateInterface $form_state, ?array $render_array = NULL, string $separator = NULL): array {
+    $form['before']['#markup'] = Markup::create($separator);
     $form['test'] = $render_array;
+    $form['after']['#markup'] = Markup::create($separator);
     return $form;
   }
 
