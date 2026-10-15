@@ -11,6 +11,7 @@ use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Site\Settings;
+use Drupal\Core\Template\Attribute;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\OptionalPropsNullifier;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
@@ -118,6 +119,10 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     $metadata = $this->container->get('plugin.manager.sdc')->find($render['#component'])->metadata;
     // Cover plain values in the same pass as explicit NULL props.
     $render = PatternTestDataMassager::massageDataRecursive($fixture_render, FALSE);
+    // Before Drupal 11.3, core requires an Attribute object for this prop.
+    if (version_compare(\Drupal::VERSION, '11.3.0', '<') && is_array($render['#props']['attributes'] ?? NULL)) {
+      $render['#props']['attributes'] = new Attribute($render['#props']['attributes']);
+    }
     $render['#props'] = OptionalPropsNullifier::populate($metadata->schema, $render['#props'] ?? []);
     // Cover native variants in this pass where core supports them.
     if (!empty($metadata->variants) && array_key_exists('variant', $render['#props'])) {
