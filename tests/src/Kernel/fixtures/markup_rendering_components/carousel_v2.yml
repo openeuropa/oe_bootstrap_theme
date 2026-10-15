@@ -19,14 +19,16 @@ carousel_v2_default:
     component:
       class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
       expected:
+        title_tag: p
+        full_bleed: false
         label: 'Featured content'
         active_item: 1
         slide_label: 'First slide title — 1 of 2'
         carousel_role_label: 'carousel'
         slide_role_label: 'slide'
         settings:
-          autoplay: false
-          interval: 5000
+          autoplay: true
+          interval: 10000
           disable_touch: false
         controls:
           prev: 'Previous slide'
@@ -61,6 +63,8 @@ carousel_v2_full_width:
     component:
       class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
       expected:
+        full_bleed: false
+        title_tag: p
         active_item: 1
         items:
           - image_alt: 'alt image 1'
@@ -79,7 +83,7 @@ carousel_v2_all_settings:
       title_tag: h4
       active_item: 2
       autoplay: true
-      interval: 4000
+      interval: 12000
       disable_touch: true
       prev_label: 'Anterior'
       next_label: 'Următor'
@@ -103,7 +107,7 @@ carousel_v2_all_settings:
             class: 'object-fit-cover'
           caption_title: 'First slide title'
           caption: 'First slide caption'
-          interval: 3000
+          interval: 16000
           copyright: '© 2026 Example Organisation'
           copyright_label: 'Custom credit:'
           link:
@@ -117,6 +121,8 @@ carousel_v2_all_settings:
     component:
       class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
       expected:
+        title_tag: h4
+        full_bleed: false
         label: 'Featured priorities'
         active_item: 2
         slide_label: 'Second slide title — 2 din 2'
@@ -124,7 +130,7 @@ carousel_v2_all_settings:
         slide_role_label: 'diapozitiv'
         settings:
           autoplay: true
-          interval: 4000
+          interval: 12000
           disable_touch: true
         controls:
           prev: 'Anterior'
@@ -144,7 +150,7 @@ carousel_v2_all_settings:
             image_class: 'object-fit-cover'
             caption_title: 'First slide title'
             caption: 'First slide caption'
-            interval: 3000
+            interval: 16000
             copyright: '© 2026 Example Organisation'
             copyright_label: 'Custom credit:'
             link:
@@ -272,3 +278,49 @@ carousel_v2_custom_icon_path:
       '[data-bs-slide="prev"] svg': '/custom-icons.svg#chevron-left'
       '[data-bs-slide="next"] svg': '/custom-icons.svg#chevron-right'
       '.bcl-carousel-v2__content a svg': '/custom-icons.svg#chevron-right'
+
+carousel_v2_split_full_bleed:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel_v2
+    '#props':
+      layout: split
+      full_bleed: true
+      autoplay: false
+      items:
+        - caption_title: 'Split spans the page'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
+      expected:
+        variant: split
+        full_bleed: true
+        title_tag: p
+        settings:
+          autoplay: false
+          interval: 10000
+        items:
+          - caption_title: 'Split spans the page'
+
+carousel_v2_hero_full_bleed:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:carousel_v2
+    '#props':
+      layout: full_width
+      full_bleed: true
+      title_tag: h3
+      items:
+        - caption_title: 'Hero spans the page'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\CarouselV2ComponentAssert
+      expected:
+        variant: full_width
+        full_bleed: true
+        title_tag: h3
+        settings:
+          autoplay: true
+          interval: 10000
+        items:
+          - caption_title: 'Hero spans the page'

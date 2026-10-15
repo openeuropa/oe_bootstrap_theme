@@ -29,6 +29,12 @@ class CarouselV2ComponentAssert extends BasePatternAssert {
    */
   protected function getAssertions(string $variant): array {
     return [
+      'full_bleed' => [
+        [$this, 'assertFullBleed'],
+      ],
+      'title_tag' => [
+        [$this, 'assertTitleTag'],
+      ],
       'items' => [
         [$this, 'assertItems'],
       ],
@@ -78,6 +84,25 @@ class CarouselV2ComponentAssert extends BasePatternAssert {
     // The V2 controller owns rotation; Bootstrap's own data-API must be off.
     $this->assertElementAttribute('false', '.bcl-carousel-v2', 'data-bs-ride', $crawler);
     $this->assertElementAttribute('false', '.bcl-carousel-v2', 'data-bs-pause', $crawler);
+    $this->assertElementAttribute('false', '.bcl-carousel-v2', 'data-bcl-pause-on-hover', $crawler);
+    $this->assertCount($crawler->filter('.carousel-item')->count(), $crawler->filter('.bcl-carousel-v2__image > .bcl-carousel-v2__progress[aria-hidden="true"][hidden]'));
+    $this->assertElementNotExists('.bcl-carousel-v2__progress[role], .bcl-carousel-v2__progress[tabindex]', $crawler);
+  }
+
+  /**
+   * Asserts whether the carousel spans the page width.
+   */
+  protected function assertFullBleed(bool $expected, Crawler $crawler): void {
+    $this->assertCount($expected ? 1 : 0, $crawler->filter('.bcl-carousel-v2--full-bleed'));
+  }
+
+  /**
+   * Asserts that every slide title uses the selected heading level.
+   */
+  protected function assertTitleTag(string $expected, Crawler $crawler): void {
+    foreach ($crawler->filter('.bcl-carousel-v2__title') as $title) {
+      self::assertSame($expected, $title->nodeName);
+    }
   }
 
   /**
@@ -200,11 +225,7 @@ class CarouselV2ComponentAssert extends BasePatternAssert {
         else {
           $this->assertElementNotExists('.bcl-carousel-v2__image img', $item);
         }
-        $heading_selector = implode(', ', array_map(
-          fn (string $tag) => '.bcl-carousel-v2__content > ' . $tag,
-          ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-        ));
-        $this->assertElementText($expected_item['caption_title'] ?? NULL, $heading_selector, $item);
+        $this->assertElementText($expected_item['caption_title'] ?? NULL, '.bcl-carousel-v2__title', $item);
         if (isset($expected_item['caption'])) {
           $this->assertElementTextContains($expected_item['caption'], '.bcl-carousel-v2__description', $item);
         }

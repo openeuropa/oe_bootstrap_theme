@@ -96,6 +96,23 @@ We started to ship in version 1.x patterns that already embrace this new approac
 We will do the best to avoid any breaking changes to these patterns during the 1.x lifecycle. But it might be that some changes will be still
 needed. We will communicate such changes together with the release.
 
+### Carousel V2
+
+The `oe_bootstrap_theme:carousel_v2` component supports two independent choices:
+`layout` selects Carousel image (`split`) or Carousel hero (`full_width`), while
+`full_bleed: true` makes either layout span the page from inside a centered
+`.container`. The “Span page width” option defaults to false.
+
+Set `title_tag` from the page hierarchy, for example `h4` under an `h3` section.
+It defaults to `p`; the title keeps its h1-sized display style at every level.
+Autoplay defaults to true. The default interval is 10000ms, with an 8000ms
+minimum; BCL extends longer slides using `3000 + 400 × word count` milliseconds.
+Mouse hover and keyboard focus do not pause rotation. Pause preserves the
+remaining countdown and freezes the visible 3px progress bar; Play resumes both.
+Reduced motion starts paused and hides the progress animation. Keep
+`data-bs-pause="false"` and `data-bcl-pause-on-hover="false"` to prevent competing
+hover handlers. Runtime behavior comes from BCL's Carousel V2 controller.
+
 ### Media copyright text
 
 Patterns that render media accept a `copyright` parameter to display copyright

@@ -21,10 +21,30 @@ props:
       'meta:enum':
         split: 'Carousel image'
         full_width: 'Carousel hero'
+    full_bleed:
+      title: 'Span page width'
+      type: boolean
+      default: false
+      description: 'Span the page width from inside a centered .container. Works with either layout. Defaults to false.'
     title_tag:
-      title: 'Title tag'
+      title: 'Heading level'
       type: string
-      description: 'The tag used for each slide caption title. Defaults to h2.'
+      description: 'Choose the heading level to match the page hierarchy (for example h4 under h3). Defaults to p. The visual title style stays h1-sized.'
+      default: p
+      enum:
+        - p
+        - h2
+        - h3
+        - h4
+        - h5
+        - h6
+      'meta:enum':
+        p: 'Paragraph (default)'
+        h2: 'Heading 2'
+        h3: 'Heading 3'
+        h4: 'Heading 4'
+        h5: 'Heading 5'
+        h6: 'Heading 6'
     active_item:
       title: 'Active item'
       type: integer
@@ -32,11 +52,14 @@ props:
     autoplay:
       title: Autoplay
       type: boolean
-      description: 'Whether to rotate slides automatically. Defaults to false. Reduced motion always starts paused.'
+      default: true
+      description: 'Whether to rotate slides automatically. Defaults to true. Reduced motion always starts paused. Hover and focus do not pause rotation.'
     interval:
       title: Interval
       type: integer
-      description: 'Rotation interval in milliseconds. Defaults to 5000.'
+      default: 10000
+      minimum: 8000
+      description: 'Rotation interval in milliseconds. Defaults to 10000, minimum 8000. BCL extends slides to at least 3000 + 400 per word. Pause preserves remaining time and the visible progress bar.'
     disable_touch:
       title: 'Disable touch'
       type: boolean
@@ -76,7 +99,8 @@ props:
           interval:
             title: Interval
             type: integer
-            description: 'Per-slide rotation interval in milliseconds, overriding the default interval.'
+            minimum: 8000
+            description: 'Per-slide rotation interval in milliseconds, overriding the default interval. Minimum 8000; longer text can extend it using the reading-time rule.'
           copyright:
             title: Copyright
             type: [string, array, object]
