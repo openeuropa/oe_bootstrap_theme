@@ -114,20 +114,28 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
   public function testComponentRendering(array $render, array $assertions): void {
     // Internal Url objects need Drupal services, unavailable in the provider.
     $object_render = PatternTestDataMassager::massageDataRecursive($render);
-    $this->doTestComponentRendering($object_render, $assertions);
+    $markup = $this->renderInFormContext($render);
+    $this->assertComponentRendering($assertions, $markup);
     $schema = $this->container->get('plugin.manager.sdc')->find($object_render['#component'])->metadata->schema;
     // Cover plain values in the same pass as explicit NULL props.
     $render = PatternTestDataMassager::massageDataRecursive($render, FALSE);
     $render['#props'] = OptionalPropsNullifier::populate($schema, $render['#props'] ?? []);
     // Each render represents a separate page with its own generated IDs.
     Html::resetSeenIds();
-    $this->doTestComponentRendering($render, $assertions);
+    $markup = $this->renderInFormContext($render);
+    $this->assertComponentRendering($assertions, $markup);
   }
 
   /**
-   * Renders a component and checks its markup using the fixture assertions.
+   * Renders a render array as part of a form.
+   *
+   * @param array $render
+   *   A render element.
+   *
+   * @return string
+   *   The rendered markup.
    */
-  protected function doTestComponentRendering(array $render, array $assertions): void {
+  protected function renderInFormContext(array $render): string {
     $form_state = new FormState();
     $separator = '<!-- CUT -->';
     /* @see self::buildForm() */
@@ -140,8 +148,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     $parts = explode($separator, $markup);
     $this->assertGreaterThanOrEqual(3, count($parts));
     $inner_parts = array_slice($parts, 1, -1);
-    $markup = implode($separator, $inner_parts);
-    $this->assertComponentRendering($assertions, $markup);
+    return implode($separator, $inner_parts);
   }
 
   /**
