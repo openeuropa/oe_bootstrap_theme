@@ -13,6 +13,9 @@ use Drupal\Core\Render\Element;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
+use Drupal\Tests\oe_bootstrap_theme\Helper\MarkupExporter;
+use Drupal\Tests\oe_bootstrap_theme\Helper\MultiTagYaml;
+use Drupal\Tests\oe_bootstrap_theme\Helper\YamlDataComparator;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\OptionalPropsNullifier;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
 use Symfony\Component\DomCrawler\Crawler;
@@ -114,8 +117,20 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
   public function testComponentRendering(array $render, array $assertions): void {
     // Internal Url objects need Drupal services, unavailable in the provider.
     $object_render = PatternTestDataMassager::massageDataRecursive($render);
+    $exporter = new MarkupExporter();
+    $reference_markup = $this->renderAsFormContent($render);
+    $reference_tree = $exporter->export($reference_markup);
+    $stabilize_and_export_to_yaml = function (string $html) use ($reference_tree, $exporter) {
+      $tree = $exporter->export($html);
+      $comparator = new YamlDataComparator();
+      $noisy = $comparator->detectNoise($reference_tree, $tree);
+      return MultiTagYaml::encode($noisy);
+    };
+    Html::resetSeenIds();
     $markup = $this->renderInFormContext($render);
     $this->assertComponentRendering($assertions, $markup);
+    $reference_yaml = $stabilize_and_export_to_yaml($markup);
+
     $schema = $this->container->get('plugin.manager.sdc')->find($object_render['#component'])->metadata->schema;
     // Cover plain values in the same pass as explicit NULL props.
     $render = PatternTestDataMassager::massageDataRecursive($render, FALSE);
@@ -124,6 +139,9 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     Html::resetSeenIds();
     $markup = $this->renderInFormContext($render);
     $this->assertComponentRendering($assertions, $markup);
+
+    $yaml = $stabilize_and_export_to_yaml($markup);
+    $this->assertSame($reference_yaml, $yaml);
   }
 
   /**
