@@ -115,7 +115,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
    *
    * @dataProvider componentRenderingProvider
    */
-  public function testComponentRendering(array $render, array $assertions): void {
+  public function testComponentRendering(array $render, array $assertions, string $name): void {
     $fixture_render = $render;
     // Internal Url objects need Drupal services, unavailable in the provider.
     $render = PatternTestDataMassager::massageDataRecursive($fixture_render);
@@ -198,6 +198,8 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
           $candidate_key = $key . ($suffix ? sprintf(' (%s)', $suffix) : '');
           $suffix++;
         } while (isset($test_cases[$candidate_key]));
+        static::assertSame(['render', 'assertions'], array_keys($test_case));
+        $test_case['name'] = $candidate_key;
         $test_cases[$candidate_key] = $test_case;
       }
     }
