@@ -24,39 +24,8 @@
   }) %}
 {% endif %}
 
-{% if _link is not empty %}
-  {% if _link.attributes is defined %}
-    {% set _link = _link|merge({attributes: create_attribute(_link.attributes|default({}))}) %}
-  {% endif %}
-  {% if _link.icon is defined and _link.icon is not empty %}
-    {% set _link_icon = _link.icon is iterable ? _link.icon : {name: _link.icon} %}
-    {% if _link_icon.attributes is defined %}
-      {% set _link_icon = _link_icon|merge({attributes: create_attribute(_link_icon.attributes|default({}))}) %}
-    {% endif %}
-    {% set _link = _link|merge({
-      icon: _link_icon|merge({
-        path: _link_icon.path|default(_icon_path),
-      }),
-    }) %}
-  {% endif %}
-{% endif %}
-
-{% if _title_link is not empty %}
-  {% if _title_link.attributes is defined %}
-    {% set _title_link = _title_link|merge({attributes: create_attribute(_title_link.attributes|default({}))}) %}
-  {% endif %}
-  {% if _title_link.icon is defined and _title_link.icon is not empty %}
-    {% set _title_link_icon = _title_link.icon is iterable ? _title_link.icon : {name: _title_link.icon} %}
-    {% if _title_link_icon.attributes is defined %}
-      {% set _title_link_icon = _title_link_icon|merge({attributes: create_attribute(_title_link_icon.attributes|default({}))}) %}
-    {% endif %}
-    {% set _title_link = _title_link|merge({
-      icon: _title_link_icon|merge({
-        path: _title_link_icon.path|default(_icon_path),
-      }),
-    }) %}
-  {% endif %}
-{% endif %}
+{% set _link = _link ? _link|bcl_expand_attributes|bcl_expand_icon(path: _icon_path) : {} %}
+{% set _title_link = _title_link ? _title_link|bcl_expand_attributes|bcl_expand_icon(path: _icon_path) : {} %}
 
 {% set _media %}
   {% include '@oe-bcl/featured-media' with {
