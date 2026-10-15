@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
 use Drupal\Component\Render\MarkupInterface;
+use Drupal\Component\Serialization\Yaml;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Extension\ThemeExtensionList;
-use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
@@ -17,10 +17,16 @@ use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
+use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme\DrupalCompatibility;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
+use PHPUnit\Framework\Assert;
+use Symfony\Component\Yaml\Tag\TaggedValue;
+use Twig\Attribute\AsTwigFilter;
+use Twig\Attribute\AsTwigFunction;
 use Twig\Environment;
+use Twig\Error\RuntimeError;
 use Twig\Extension\AbstractExtension;
 use Twig\Markup as TwigMarkup;
 use Twig\TwigFilter;
@@ -43,7 +49,7 @@ class TwigExtension extends AbstractExtension {
    * {@inheritdoc}
    */
   public function getFilters(): array {
-    return [
+    $filters = [
       new TwigFilter('bcl_card_list', [$this, 'bclCardList']),
       new TwigFilter('bcl_description_list_items', [$this, 'bclDescriptionListItems']),
       new TwigFilter('bcl_navigation_items', [$this, 'bclNavigationItems']),
@@ -59,13 +65,25 @@ class TwigExtension extends AbstractExtension {
       ]),
       new TwigFilter('element_children', [$this, 'elementChildren']),
     ];
+    $reflection = new \ReflectionClass($this);
+    foreach ($reflection->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
+      if ($method->isAbstract() || $method->isStatic()) {
+        continue;
+      }
+      foreach ($method->getAttributes(AsTwigFilter::class) as $reflection_attribute) {
+        $attribute = $reflection_attribute->newInstance();
+        assert($attribute instanceof AsTwigFilter);
+        $filters[] = new TwigFilter($attribute->name, [$this, $method->name]);
+      }
+    }
+    return $filters;
   }
 
   /**
    * {@inheritdoc}
    */
   public function getFunctions(): array {
-    return [
+    $functions = [
       new TwigFunction('bcl_link', [$this, 'bclLink'], [
         'needs_environment' => TRUE,
       ]),
@@ -74,6 +92,26 @@ class TwigExtension extends AbstractExtension {
       new TwigFunction('html_unique_id', [Html::class, 'getUniqueId']),
       new TwigFunction('theme_setting', [DrupalCompatibility::class, 'themeGetSetting']),
     ];
+    // Use attributes for newly added twig functions.
+    $reflection = new \ReflectionClass($this);
+    foreach ($reflection->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
+      if ($method->isAbstract() || $method->isStatic()) {
+        continue;
+      }
+      foreach ($method->getAttributes(AsTwigFunction::class) as $reflection_attribute) {
+        $attribute = $reflection_attribute->newInstance();
+        assert($attribute instanceof AsTwigFunction);
+        $functions[] = new TwigFunction($attribute->name, [$this, $method->name]);
+      }
+    }
+    return $functions;
+  }
+
+  public function createClosure(callable $callback, int $offset, array $args): \Closure {
+    return fn (mixed ...$closure_args) => $callback(
+      ...array_pad(array_slice($closure_args, 0, $offset), $offset, NULL),
+      ...$args,
+    );
   }
 
   /**
@@ -521,6 +559,128 @@ class TwigExtension extends AbstractExtension {
     $this->renderer->render($bubbleable);
 
     return $children;
+  }
+
+  #[AsTwigFilter('bcl_icon')]
+  public function bclIcon(
+    mixed $argument,
+    ?string $name = NULL,
+    ?string $path = NULL,
+    ?string $size = NULL
+  ): ?array {
+    if ($argument === NULL || $argument === [] || $argument === '') {
+      if ($name === NULL) {
+        return NULL;
+      }
+      $icon = ['name' => $name];
+    }
+    elseif (is_string($argument)) {
+      $icon = ['name' => $argument];
+    }
+    elseif (is_array($argument)) {
+      if (!isset($argument['name'])) {
+        if ($name === NULL) {
+          throw new \InvalidArgumentException('Missing icon name in non-empty icon array.');
+        }
+        $argument['name'] = $name;
+      }
+      $icon = $argument;
+    }
+    else {
+      throw new \InvalidArgumentException(sprintf('Expected an array, string or NULL, found %s', get_debug_type($argument)));
+    }
+    if (!empty($icon['attributes'])) {
+      $icon['attributes'] = $this->toAttribute($icon['attributes']);
+    }
+    else {
+      unset($icon['attributes']);
+    }
+    $icon['path'] ??= $path ?? $this->getBclIconPath();
+    if ($size !== NULL) {
+      $icon['size'] ??= $size;
+    }
+    return $icon;
+  }
+
+  #[AsTwigFilter('bcl_expand_icon')]
+  public function bclExpandIcon(
+    ?array $argument,
+    string $key = 'icon',
+    ?string $name = NULL,
+    ?string $path = NULL,
+    ?string $size = NULL,
+  ): ?array {
+    if (isset($argument[$key])) {
+      $argument[$key] = $this->bclIcon($argument[$key], $name, $path, $size);
+    }
+    if (($argument[$key] ?? NULL) === NULL) {
+      unset($argument[$key]);
+    }
+    return $argument;
+  }
+
+  #[AsTwigFilter('bcl_expand_attributes')]
+  public function expandAttributes(?array $argument, string $key = 'attributes', array $defaults = []): ?array {
+    // Don't add attributes on an empty structure.
+    if (!$argument) {
+      return $argument;
+    }
+    if (is_array($argument[$key] ?? [])) {
+      $argument[$key] = new Attribute($argument[$key] ?? []);
+    }
+    if (!$argument[$key] instanceof Attribute) {
+      throw new RuntimeError(sprintf(
+        "Expected an array, an Attribute object, or NULL at '$key'. Found %s.",
+        get_debug_type($argument[$key]),
+      ));
+    }
+    foreach ($defaults as $name => $value) {
+      if ($value === NULL) {
+        continue;
+      }
+      if ($name === 'class') {
+        $argument[$key]->addClass($value);
+      }
+      elseif (!$argument[$key]->hasAttribute($name)) {
+        $argument[$key]->setAttribute($name, $value);
+      }
+    }
+    return $argument;
+  }
+
+  #[AsTwigFilter('without_nulls')]
+  public function withoutNulls(array $argument): array {
+    return array_filter($argument, fn ($value) => $value !== NULL);
+  }
+
+  #[AsTwigFilter('to_attribute')]
+  public function toAttribute(mixed $argument): Attribute {
+    if ($argument instanceof Attribute) {
+      return $argument;
+    }
+    if ($argument === NULL) {
+      return new Attribute();
+    }
+    if (is_array($argument)) {
+      return new Attribute($argument);
+    }
+    throw new \InvalidArgumentException(sprintf('Expected an array, an Argument object, or NULL. Found %s.', get_debug_type($argument)));
+  }
+
+  #[AsTwigFilter('arrow')]
+  public function arrow(mixed $argument, callable $callback): mixed {
+    return $callback($argument);
+  }
+
+  #[AsTwigFilter('match')]
+  public function match(string|int $argument, array $branches, mixed $default = NULL, string|int $default_key = 'default'): mixed {
+    if (array_key_exists($argument, $branches)) {
+      return $branches[$argument];
+    }
+    if ($default === NULL && array_key_exists($default_key, $branches)) {
+      return $branches[$default_key];
+    }
+    return $default;
   }
 
 }
