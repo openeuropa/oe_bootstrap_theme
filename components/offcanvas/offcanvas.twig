@@ -4,6 +4,7 @@
  * Offcanvas component.
  */
 #}
+{% set title_attributes = create_attribute(title_attributes|default({})) %}
 {% set _variant = variant|default('default') %}
 {% set _attributes = attributes|default(create_attribute()) %}
 {% set _offcanvas_id = offcanvas_id|default(_attributes.id|default('offcanvas'|clean_unique_id)) %}

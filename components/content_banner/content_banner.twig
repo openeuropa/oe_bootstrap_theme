@@ -4,6 +4,7 @@
  * Content banner component.
  */
 #}
+{% set title_attributes = create_attribute(title_attributes|default({})) %}
 {%- set _content -%}
   {%- set content_attributes = create_attribute().addClass(['mt-4', 'card-content']) -%}
   {%- if meta is not empty -%}

@@ -4,6 +4,7 @@
  * File component.
  */
 #}
+{% set title_attributes = create_attribute(title_attributes|default({})) %}
 {%- set _icon_path = icon_path|default(bcl_icon_path()) -%}
 {%- set _link_label = link_label|default('Download'|t) -%}
 

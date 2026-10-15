@@ -4,6 +4,8 @@
  * Section component.
  */
 #}
+{% set heading_attributes = create_attribute(heading_attributes|default({})) %}
+{% set wrapper_attributes = create_attribute(wrapper_attributes|default({})) %}
 {% set _tag = tag|default('section') %}
 {% set _heading_tag = heading_tag|default('h2') %}
 {% set _attributes = attributes|default(create_attribute()) %}

@@ -18,17 +18,17 @@ section_with_custom_attributes:
     '#type': component
     '#component': oe_bootstrap_theme:section
     '#props':
-      attributes:
+      attributes: !Attribute
         class:
           - content-wrapper
         id: section-id
         data-attribute: some-value
-      wrapper_attributes:
+      wrapper_attributes: !Attribute
         class:
           - content-body
         id: wrapper-id
         data-wrapper-attribute: wrapper-value
-      heading_attributes:
+      heading_attributes: !Attribute
         class:
           - content-heading
         id: heading-id

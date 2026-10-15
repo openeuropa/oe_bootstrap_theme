@@ -53,7 +53,7 @@ alert_not_dismissible:
       message: 'A simple alert. Check it out!'
       icon: search
       icon_path: '/custom-icons.svg'
-      attributes:
+      attributes: !Attribute
         id: custom-alert
         class:
           - custom-alert-class
