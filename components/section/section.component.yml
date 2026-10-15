@@ -21,10 +21,10 @@ props:
       description: 'Tag of the wrapper. Defaults to section.'
     heading_attributes:
       title: 'Heading attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     wrapper_attributes:
       title: 'Wrapper attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     attributes:
       title: 'Section attributes'
       type: Drupal\Core\Template\Attribute

@@ -46,7 +46,7 @@ links_block_horizontal_transparent_with_optional_parameters:
         '#markup': 'Related <em>information</em>'
       title_tag: h3
       title_link:
-        path: '/resources'
+        path: !Url 'internal:/resources'
         variant: success
         id: resources-title-link
         disabled: true
@@ -54,16 +54,16 @@ links_block_horizontal_transparent_with_optional_parameters:
           name: arrow-right
           size: l
           transformation: rotate-90
-          attributes:
+          attributes: !Attribute
             class:
               - custom-title-icon
         icon_position: after
         icon_display: inline-flex
-        attributes:
+        attributes: !Attribute
           class:
             - custom-title-link
           data-title-link-attribute: custom-value
-      title_attributes:
+      title_attributes: !Attribute
         class:
           - custom-title
         data-title-attribute: custom-value
@@ -72,35 +72,35 @@ links_block_horizontal_transparent_with_optional_parameters:
       links:
         - label:
             '#markup': 'Disabled <strong>link</strong>'
-          path: '/disabled'
+          path: !Url 'internal:/disabled'
           variant: warning
           id: disabled-link
           disabled: true
           icon: lock
           icon_position: before
-          attributes:
+          attributes: !Attribute
             class:
               - custom-link
             data-link-attribute: custom-value
         - label: 'Custom icon'
-          path: '/custom-icon'
+          path: !Url 'internal:/custom-icon'
           icon:
             name: custom-symbol
             path: '/other/icons.svg'
             size: xl
             transformation: flip-vertical
-            attributes:
+            attributes: !Attribute
               class:
                 - custom-link-icon
           icon_position: after
           icon_display: inline-flex
         - label: 'No icon spacing'
-          path: '/no-spacing'
+          path: !Url 'internal:/no-spacing'
           icon: arrow-right
           icon_display: inline-flex
           remove_icon_spacers: true
       icon_path: '/custom/icons.svg'
-      attributes:
+      attributes: !Attribute
         id: custom-links-block
         class:
           - custom-links-block

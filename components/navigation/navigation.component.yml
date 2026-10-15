@@ -105,7 +105,7 @@ props:
                   transformation:
                     type: [string, 'null']
                   attributes:
-                    type: [object, 'null']
+                    type: [object, string, 'null']  # attributes
           icon_position:
             type: [string, 'null']
             enum:
@@ -134,7 +134,7 @@ props:
               assistive_text:
                 type: [string, 'null']
               attributes:
-                type: [object, 'null']
+                type: [object, string, 'null']  # attributes
           show_spinner:
             type: [boolean, 'null']
           content:
@@ -183,11 +183,11 @@ props:
                       transformation:
                         type: [string, 'null']
                       attributes:
-                        type: [object, 'null']
+                        type: [object, string, 'null']  # attributes
               icon_position:
                 type: [string, 'null']
               attributes:
-                type: [object, 'null']
+                type: [object, string, 'null']  # attributes
           items:
             type: [array, 'null']
             description: 'Items displayed in a dropdown navigation item.'
@@ -233,11 +233,11 @@ props:
                         transformation:
                           type: [string, 'null']
                         attributes:
-                          type: [object, 'null']
+                          type: [object, string, 'null']  # attributes
                 icon_position:
                   type: [string, 'null']
                 attributes:
-                  type: [object, 'null']
+                  type: [object, string, 'null']  # attributes
           navigation:
             type: [object, 'null']
             description: 'Nested BCL navigation configuration.'
@@ -265,7 +265,7 @@ props:
               alignment:
                 type: [string, 'null']
               attributes:
-                type: [object, 'null']
+                type: [object, string, 'null']  # attributes
               items:
                 type: [array, 'null']
                 items:
@@ -296,13 +296,13 @@ props:
                             transformation:
                               type: [string, 'null']
                             attributes:
-                              type: [object, 'null']
+                              type: [object, string, 'null']  # attributes
                     icon_position:
                       type: [string, 'null']
                     attributes:
-                      type: [object, 'null']
+                      type: [object, string, 'null']  # attributes
           attributes:
-            type: [object, 'null']
+            type: [object, string, 'null']  # attributes
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

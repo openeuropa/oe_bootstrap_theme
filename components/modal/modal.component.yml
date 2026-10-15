@@ -65,7 +65,7 @@ props:
       description: 'The tag to use for the title. Defaults to h5.'
     title_attributes:
       title: 'Title attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     show_close_button:
       title: 'Show close button'
       type: [boolean, 'null']
@@ -136,7 +136,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
           enum:
@@ -162,7 +162,7 @@ props:
             assistive_text:
               type: [string, 'null']
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         show_spinner:
           type: [boolean, 'null']
         clean_class:
@@ -170,16 +170,16 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute
     header_attributes:
       title: 'Header attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     body_attributes:
       title: 'Body attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     footer_attributes:
       title: 'Footer attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes

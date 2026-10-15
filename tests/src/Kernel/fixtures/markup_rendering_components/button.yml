@@ -115,7 +115,7 @@ button_with_assistive_text_and_spinner:
       spinner:
         size: sm
         assistive_text: 'Loading'
-        attributes:
+        attributes: !Attribute
           class:
             - custom-spinner-class
   assertions:
@@ -152,7 +152,7 @@ button_disabled_via_attributes:
       variant: primary
       type: button
       label: 'Button label'
-      attributes:
+      attributes: !Attribute
         disabled: true
   assertions:
     count:
@@ -184,7 +184,7 @@ button_with_icon_transformation:
       icon:
         name: arrow-right
         transformation: rotate-90
-        attributes:
+        attributes: !Attribute
           class:
             - custom-icon-class
   assertions:

@@ -98,7 +98,7 @@ badge_with_custom_attributes:
     '#props':
       label: 'A simple badge!'
       background: info
-      attributes:
+      attributes: !Attribute
         id: custom-badge
         class:
           - custom-badge-class

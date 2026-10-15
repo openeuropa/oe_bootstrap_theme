@@ -4,6 +4,7 @@
  * Description list component.
  */
 #}
+{% set title_attributes = create_attribute(title_attributes|default({})) %}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set _title_link = title_link|default({}) %}
 {% if _title_link is not empty %}
