@@ -36,10 +36,10 @@ link_disabled_standalone_with_custom_attributes:
     '#component': oe_bootstrap_theme:link
     '#props':
       label: 'Disabled standalone link'
-      path: '/example'
+      path: !Url 'internal:/example'
       disabled: true
       standalone: true
-      attributes:
+      attributes: !Attribute
         class:
           - custom-link-class
         data-link-attribute: custom-value
@@ -79,7 +79,7 @@ link_with_icon_object_after:
         path: '/custom/icons.svg'
         size: xl
         transformation: rotate-90
-        attributes:
+        attributes: !Attribute
           class:
             - custom-icon-class
           data-icon-attribute: custom-value
@@ -130,7 +130,7 @@ link_with_icon_only:
     '#props':
       path: '/search'
       icon: search
-      attributes:
+      attributes: !Attribute
         aria-label: Search
   assertions:
     count:

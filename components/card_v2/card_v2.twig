@@ -6,10 +6,10 @@
 #}
 {% set _tag = tag|default('article') %}
 {% set _attributes = attributes|default(create_attribute()) %}
-{% set _media_attributes = media_attributes|default(create_attribute()) %}
-{% set _content_attributes = content_attributes|default(create_attribute()) %}
-{% set _header_attributes = header_attributes|default(create_attribute()) %}
-{% set _footer_attributes = footer_attributes|default(create_attribute()) %}
+{% set _media_attributes = create_attribute(media_attributes ?? {}) %}
+{% set _content_attributes = create_attribute(content_attributes ?? {}) %}
+{% set _header_attributes = create_attribute(header_attributes ?? {}) %}
+{% set _footer_attributes = create_attribute(footer_attributes ?? {}) %}
 {% set _classes = ['card', 'v2'] %}
 
 {% if variant|default('default') == 'horizontal' %}

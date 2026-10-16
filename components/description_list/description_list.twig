@@ -4,6 +4,7 @@
  * Description list component.
  */
 #}
+{% set _title_attributes = create_attribute(title_attributes ?? {}) %}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set _title_link = title_link|default({}) %}
 {% if _title_link is not empty %}
@@ -27,7 +28,7 @@
   title: title,
   title_link: _title_link,
   title_tag: title_tag|default('h2'),
-  title_attributes: title_attributes,
+  title_attributes: _title_attributes,
   items: items|default([])|bcl_description_list_items(_icon_path),
   variant: orientation,
   bordered: bordered,

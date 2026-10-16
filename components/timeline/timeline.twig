@@ -4,6 +4,7 @@
  * Timeline component.
  */
 #}
+{% set _title_attributes = create_attribute(title_attributes ?? {}) %}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set _items = [] %}
 {% for item in items|default([]) %}
@@ -41,5 +42,5 @@
   title: title,
   title_link: _title_link,
   title_tag: title_tag,
-  title_attributes: title_attributes,
+  title_attributes: _title_attributes,
 } only %}

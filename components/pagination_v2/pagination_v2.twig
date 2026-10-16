@@ -4,6 +4,7 @@
  * Pagination v2 component.
  */
 #}
+{% set _list_attributes = create_attribute(list_attributes ?? {}) %}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set _attributes = attributes|default(create_attribute()) %}
 
@@ -83,5 +84,5 @@
   items: _items,
   icon_path: _icon_path,
   attributes: _attributes,
-  list_attributes: list_attributes|default(create_attribute()),
+  list_attributes: _list_attributes,
 } only %}
