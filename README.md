@@ -102,6 +102,21 @@ Patterns that render media accept a `copyright` parameter to display copyright
 text under the media. See the pattern documentation for usage details. The
 field and recipe setup for media entities is documented in `oe_whitelabel`.
 
+### Fences support
+
+The `oe_bootstrap_theme_fences` module renders fields with the HTML tags and
+classes set by the [Fences](https://www.drupal.org/project/fences) module in
+the field formatter settings.
+
+It replaces the `field` and `field--bare` templates of the theme. Fields
+without Fences settings keep the default theme markup. Templates from a
+sub-theme are not replaced.
+
+```bash
+composer require drupal/fences
+./vendor/bin/drush en oe_bootstrap_theme_fences
+```
+
 ## Development setup
 
 ### Using LAMP stack or similar

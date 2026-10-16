@@ -1,0 +1,11 @@
+{#
+/**
+ * @file
+ * Field template: uses the Fences tags when set, else the base theme template.
+ */
+#}
+{% if field_tag is defined %}
+{% include '@oe_bootstrap_theme_fences/field-fences.html.twig' %}
+{% else %}
+{% include '@oe_bootstrap_theme/overrides/field/field.html.twig' %}
+{% endif %}
