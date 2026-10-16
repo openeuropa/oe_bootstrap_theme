@@ -3,6 +3,7 @@
 declare(strict_types=1);
 namespace Drupal\Tests\oe_bootstrap_theme\Helper;
 
+use PHPUnit\Framework\Assert;
 use Symfony\Component\Yaml\Tag\TaggedValue;
 
 class YamlDataComparator {
@@ -12,11 +13,41 @@ class YamlDataComparator {
     return $this->compare(
       $expected,
       $actual,
-      function (mixed $exp, mixed $act, array $path) {
+      function (mixed $exp, mixed $act, array $path): mixed {
         if (get_debug_type($exp) === get_debug_type($act)) {
+          if ($exp instanceof TaggedValue) {
+            Assert::assertSame(
+              MultiTagYaml::encode($exp),
+              MultiTagYaml::encode($act),
+              json_encode($path),
+            );
+          }
           return new TaggedValue('noise', get_debug_type($exp));
         }
+        Assert::assertSame(
+          MultiTagYaml::encode($exp),
+          MultiTagYaml::encode($act),
+          json_encode($path),
+        );
         return $act;
+      },
+      $missing,
+      [],
+    );
+  }
+
+  public function align(mixed $reference, mixed $actual): mixed {
+    $missing = new \stdClass();
+    return $this->compare(
+      $reference,
+      $actual,
+      function (mixed $exp, mixed $act, array $path): mixed {
+        if ($exp instanceof TaggedValue && $exp->getTag() === 'noise') {
+          if ($exp->getValue() === get_debug_type($act)) {
+            return $act;
+          }
+        }
+        return $exp;
       },
       $missing,
       [],

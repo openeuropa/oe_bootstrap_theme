@@ -6,6 +6,7 @@ namespace Drupal\Tests\oe_bootstrap_theme\Helper;
 
 use Drupal\Component\Serialization\SerializationInterface;
 use Drupal\Component\Serialization\Yaml;
+use PHPUnit\Framework\Assert;
 use Symfony\Component\Yaml\Tag\TaggedValue;
 
 /**
@@ -16,6 +17,14 @@ use Symfony\Component\Yaml\Tag\TaggedValue;
  * @see \Drupal\Component\Serialization\Yaml
  */
 class MultiTagYaml implements SerializationInterface {
+
+  public static function assertSame(mixed $expected, mixed $actual, string $message = ''): void {
+    Assert::assertSame(
+      self::encode($expected),
+      self::encode($actual),
+      $message,
+    );
+  }
 
   /**
    * {@inheritdoc}

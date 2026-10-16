@@ -19,6 +19,7 @@ use Drupal\Tests\oe_bootstrap_theme\Helper\MultiTagYaml;
 use Drupal\Tests\oe_bootstrap_theme\Helper\YamlDataComparator;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\OptionalPropsNullifier;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
+use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -35,6 +36,9 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     'filter',
     'oe_bootstrap_theme_helper',
     'system',
+    'ui_patterns',
+    'ui_patterns_library',
+    'ui_patterns_settings',
   ];
 
   /**
@@ -121,19 +125,28 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     $render = PatternTestDataMassager::massageDataRecursive($fixture_render);
     $exporter = new MarkupExporter();
     $reference_markup = $this->renderInFormContext($render);
+    $this->assertComponentRendering($assertions, $reference_markup);
     $reference_tree = $exporter->export($reference_markup);
-    $stabilize_and_export_to_yaml = function (string $html) use ($reference_tree, $exporter) {
-      $tree = $exporter->export($html);
-      $comparator = new YamlDataComparator();
-      $noisy = $comparator->detectNoise($reference_tree, $tree);
-      return MultiTagYaml::encode($noisy);
-    };
     Html::resetSeenIds();
     $markup = $this->renderInFormContext($render);
-    $this->assertComponentRendering($assertions, $markup);
-    $reference_yaml = $stabilize_and_export_to_yaml($markup);
+    # $this->assertComponentRendering($assertions, $markup);
 
-    $metadata = $this->container->get('plugin.manager.sdc')->find($render['#component'])->metadata;
+    # $reference_yaml = $stabilize_and_export_to_yaml($markup);
+    $tree = $exporter->export($markup);
+    $comparator = new YamlDataComparator();
+    $noisy = $comparator->detectNoise($reference_tree, $tree);
+
+    $do_test = function (array $render) use ($noisy, $assertions, $exporter): void {
+      Html::resetSeenIds();
+      $markup = $this->renderInFormContext($render);
+      $tree = $exporter->export($markup);
+      $comparator = new YamlDataComparator();
+      $reference = $comparator->align($noisy, $tree);
+      MultiTagYaml::assertSame($reference, $tree);
+      $this->assertComponentRendering($assertions, $markup);
+    };
+
+    # $metadata = $this->container->get('plugin.manager.sdc')->find($render['#component'])->metadata;
     // Cover plain values in the same pass as explicit NULL props.
     $render = PatternTestDataMassager::massageDataRecursive($fixture_render, FALSE);
     // Before Drupal 11.3, core requires an Attribute object for this prop.
@@ -150,9 +163,23 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     Html::resetSeenIds();
     $markup = $this->renderInFormContext($render);
     $this->assertComponentRendering($assertions, $markup);
+    # $render = PatternTestDataMassager::massageDataRecursive($fixture_render, FALSE);
 
-    $yaml = $stabilize_and_export_to_yaml($markup);
-    $this->assertSame($reference_yaml, $yaml);
+    $render = $this->replacePatternsWithComponents($render);
+
+    $do_test($render);
+  }
+
+  protected function replacePatternsWithComponents(array $render): array {
+    if (($render['#type'] ?? NULL) === 'pattern') {
+      $render['#type'] = 'component';
+      $render['#component'] = 'oe_bootstrap_theme:' . $render['#id'];
+      $render['#props'] = $render['#fields'] ?? [];
+    }
+    foreach (Element::children($render) as $key) {
+      $render[$key] = $this->replacePatternsWithComponents($render[$key]);
+    }
+    return $render;
   }
 
   /**
@@ -201,6 +228,40 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
         static::assertSame(['render', 'assertions'], array_keys($test_case));
         $test_case['name'] = $candidate_key;
         $test_cases[$candidate_key] = $test_case;
+      }
+    }
+
+    $patterns_path = __DIR__ . '/fixtures/markup_rendering_patterns';
+    $pattern_filenames = preg_grep('#^\w+\.yml$#', scandir($patterns_path));
+    foreach ($pattern_filenames as $pattern_filename) {
+      #$test_name = 'patty.' . substr($pattern_filename, 0, -4);
+      $yaml = file_get_contents("$patterns_path/$pattern_filename");
+      $cases = Yaml::decode($yaml);
+      foreach ($cases as $case_name => $case) {
+        // Ensure unique test case keys across components.
+        $case_key = 'patty.' . $case_name;
+        for ($suffix = 0; isset($test_cases[$case_key]); ++$suffix) {
+          $case_key = 'patty.' . $case_name . ' (' . $suffix . ')';
+        }
+        try {
+          static::assertSame(
+            ['render', 'assertions', 'backward_compatibility'],
+            array_keys($case + ['backward_compatibility' => NULL]),
+            $case_key,
+          );
+        }
+        catch (ExpectationFailedException $e) {
+          print get_class($e)
+            . "\n\n:  " . $e->getComparisonFailure()?->getDiff()
+            . "\n\n:  " . $e->getPrevious()?->getMessage()
+            . "\n\n:  " . $e->getMessage()
+            . "\n\n" . __FILE__ . ':' . __LINE__
+            . "\n\n" . (new \Exception)->getTraceAsString()
+            . "\n\n";
+          throw $e;
+        }
+        $case['name'] = $case_key;
+        $test_cases[$case_key] = $case;
       }
     }
 
