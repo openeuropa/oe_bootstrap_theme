@@ -9,7 +9,7 @@ props:
       description: 'Text before the progress bar.'
     progress:
       title: Progress
-      type: [integer, number, 'null']
+      type: [integer, number, string, 'null']
       description: 'The progress value for the bar.'
     min:
       title: Minimum
