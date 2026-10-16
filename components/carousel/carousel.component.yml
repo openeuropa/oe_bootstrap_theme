@@ -52,7 +52,7 @@ props:
             type: [string, 'null']
           interval:
             title: Interval
-            type: [integer, 'null']
+            type: [string, integer, 'null']
           copyright:
             title: Copyright
             type: [string, array, object, 'null']
@@ -83,7 +83,7 @@ props:
       description: 'Path to icons.'
     active_item:
       title: 'Active item'
-      type: [integer, 'null']
+      type: [string, integer, 'null']
       description: 'The 1-based index of the active slide. Defaults to 1.'
     fade:
       title: Fade
