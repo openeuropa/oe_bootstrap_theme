@@ -16,7 +16,7 @@
 {% if title is not empty or show_close_button ?? false %}
   {% set _header %}
     {% if title is not empty %}
-      <{{ _title_tag }}{{ title_attributes|default(create_attribute()) }}>{{ title }}</{{ _title_tag }}>
+      <{{ _title_tag }}{{ title_attributes }}>{{ title }}</{{ _title_tag }}>
     {% endif %}
     {% if show_close_button ?? false %}
       {% include 'oe_bootstrap_theme:button' with {
@@ -42,9 +42,9 @@
   body: body,
   footer: footer,
   attributes: _attributes,
-  header_attributes: header_attributes|default(create_attribute()),
-  body_attributes: body_attributes|default(create_attribute()),
-  footer_attributes: footer_attributes|default(create_attribute()),
+  header_attributes: header_attributes,
+  body_attributes: body_attributes,
+  footer_attributes: footer_attributes,
 } only %}
 
 {% if toggle is not empty %}
