@@ -37,7 +37,12 @@ class MarkupExporter {
     // Convert attributes to tagged values.
     $attribute_names = [];
     foreach ($element->attributes as $attribute) {
-      $children[] = new TaggedValue('attr:' . $attribute->name . ':', $attribute->value);
+      $attr_value = $attribute->value;
+      if ($attribute->name === 'class') {
+        $attr_value = explode(' ', $attribute->value);
+        sort($attr_value);
+      }
+      $children[] = new TaggedValue('attr:' . $attribute->name . ':', $attr_value);
       $attribute_names[] = $attribute->name;
     }
     array_multisort($attribute_names, $children);
