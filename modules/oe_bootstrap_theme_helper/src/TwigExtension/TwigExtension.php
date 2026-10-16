@@ -230,8 +230,8 @@ class TwigExtension extends AbstractExtension {
         $item['navigation']['nav'] = in_array($variant, ['pills', 'tabs'], TRUE);
         $item['navigation']['navbar'] = $variant === 'navbar';
         $item['navigation']['vertical'] = ($item['navigation']['orientation'] ?? 'horizontal') === 'vertical';
-        if (isset($item['navigation']['attributes']) && is_array($item['navigation']['attributes'])) {
-          $item['navigation']['attributes'] = new Attribute($item['navigation']['attributes']);
+        if (isset($item['navigation']['attributes'])) {
+          $item['navigation']['attributes'] = $this->copyAttributes($item['navigation']['attributes']);
         }
         if (isset($item['navigation']['items']) && is_array($item['navigation']['items'])) {
           $item['navigation']['items'] = $this->bclNavigationItems($item['navigation']['items'], $icon_path);
@@ -257,23 +257,20 @@ class TwigExtension extends AbstractExtension {
   protected function prepareNavigationElement(array $item, string $icon_path): array {
     // BCL selects element types by key presence, so NULL means omitted.
     $item = array_filter($item, static fn ($value) => $value !== NULL);
-    $attributes = $item['attributes'] ?? [];
-    // Templates alter the attributes, so the caller's object is not reused.
-    $item['attributes'] = $attributes instanceof Attribute
-      ? clone $attributes
-      : new Attribute(is_array($attributes) ? $attributes : []);
+    $attributes = $this->copyAttributes($item['attributes'] ?? []);
+    $item['attributes'] = $attributes instanceof Attribute ? $attributes : new Attribute();
 
     if (!empty($item['icon'])) {
       $icon = is_array($item['icon']) ? $item['icon'] : ['name' => $item['icon']];
-      if (isset($icon['attributes']) && is_array($icon['attributes'])) {
-        $icon['attributes'] = new Attribute($icon['attributes']);
+      if (isset($icon['attributes'])) {
+        $icon['attributes'] = $this->copyAttributes($icon['attributes']);
       }
       $icon['path'] ??= $icon_path;
       $item['icon'] = $icon;
     }
 
-    if (isset($item['spinner']['attributes']) && is_array($item['spinner']['attributes'])) {
-      $item['spinner']['attributes'] = new Attribute($item['spinner']['attributes']);
+    if (isset($item['spinner']['attributes'])) {
+      $item['spinner']['attributes'] = $this->copyAttributes($item['spinner']['attributes']);
     }
 
     if (array_key_exists('dark_mode', $item)) {
@@ -281,6 +278,28 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $item;
+  }
+
+  /**
+   * Prepares attributes for a BCL template, without altering the input.
+   *
+   * BCL templates alter the Attribute objects they receive, e.g. with
+   * addClass(). An Attribute object is cloned, so that the caller's object,
+   * which may be shared between items, does not change. An array is converted
+   * to an Attribute object, and other values are returned as is.
+   *
+   * @param mixed $attributes
+   *   An Attribute object, an array, or another value.
+   *
+   * @return mixed
+   *   A new Attribute object for an Attribute object or an array, or the given
+   *   value otherwise.
+   */
+  protected function copyAttributes(mixed $attributes): mixed {
+    if ($attributes instanceof Attribute) {
+      return clone $attributes;
+    }
+    return is_array($attributes) ? new Attribute($attributes) : $attributes;
   }
 
   /**
