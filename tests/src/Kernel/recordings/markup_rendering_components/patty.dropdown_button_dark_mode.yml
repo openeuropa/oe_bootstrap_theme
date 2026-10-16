@@ -18,6 +18,7 @@
     - !attr:class:
       - dropdown-menu
       - dropdown-menu-dark
+    - !attr:data-drupal-selector: dropdown
     - !tag:li/
       - !tag:a/
         - !attr:class:

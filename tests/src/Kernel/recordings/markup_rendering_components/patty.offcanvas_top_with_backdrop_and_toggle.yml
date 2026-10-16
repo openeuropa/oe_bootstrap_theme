@@ -1,13 +1,10 @@
 - !tag:div/
-  - !attr:aria-labelledby: bcl-offcanvas-title
+  - !attr:aria-labelledby: offcanvas-title
   - !attr:class:
     - offcanvas-lg
     - offcanvas-top
   - !attr:data-drupal-selector: offcanvas
-  - !attr:data-offcanvas-aria-labelledby: bcl-offcanvas-title
-  - !attr:data-offcanvas-static-role: region
-  - !attr:id: bcl-offcanvas
-  - !attr:role: region
+  - !attr:id: offcanvas
   - !attr:tabindex: '-1'
   - !tag:div/
     - !attr:class:
@@ -16,28 +13,28 @@
       - !attr:class:
         - bcl-heading
         - offcanvas-title
-      - !attr:id: bcl-offcanvas-title
+      - !attr:id: offcanvas-title
       - 'Offcanvas title'
     - !tag:button/
-      - !attr:aria-controls: bcl-offcanvas
+      - !attr:aria-controls: offcanvas
       - !attr:aria-label: Close
       - !attr:class:
         - btn-close
         - text-reset
       - !attr:data-bs-dismiss: offcanvas
-      - !attr:data-bs-target: '#bcl-offcanvas'
+      - !attr:data-bs-target: '#offcanvas'
       - !attr:type: button
   - !tag:div/
     - !attr:class:
       - offcanvas-body
     - 'This is the offcanvas body content.'
 - !tag:button/
-  - !attr:aria-controls: bcl-offcanvas
+  - !attr:aria-controls: offcanvas
   - !attr:class:
     - btn
     - btn-md
     - btn-primary
-  - !attr:data-bs-target: '#bcl-offcanvas'
+  - !attr:data-bs-target: '#offcanvas'
   - !attr:data-bs-toggle: offcanvas
   - !attr:type: button
   - 'Toggle offcanvas'

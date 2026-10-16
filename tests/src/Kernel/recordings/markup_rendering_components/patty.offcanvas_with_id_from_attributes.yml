@@ -4,8 +4,6 @@
     - offcanvas-bottom
     - offcanvas-lg
   - !attr:data-drupal-selector: offcanvas
-  - !attr:data-offcanvas-aria-labelledby: custom-id-title
-  - !attr:data-offcanvas-static-role: complementary
   - !attr:id: custom-id
   - !attr:role: complementary
   - !attr:tabindex: '-1'

@@ -5,7 +5,6 @@
   - !tag:article/
     - !attr:class:
       - card
-      - h-100
     - !tag:div/
       - !attr:class:
         - card-body
@@ -27,7 +26,6 @@
   - !tag:article/
     - !attr:class:
       - card
-      - h-100
     - !tag:div/
       - !attr:class:
         - card-body
@@ -49,7 +47,6 @@
   - !tag:article/
     - !attr:class:
       - card
-      - h-100
     - !tag:div/
       - !attr:class:
         - card-body
@@ -71,7 +68,6 @@
   - !tag:article/
     - !attr:class:
       - card
-      - h-100
     - !tag:div/
       - !attr:class:
         - card-body

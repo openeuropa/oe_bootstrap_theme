@@ -4,6 +4,7 @@
   - !attr:class:
     - fade
     - modal
+  - !attr:data-drupal-selector: modal
   - !attr:id: custom-modal
   - !attr:tabindex: '-1'
   - !tag:div/

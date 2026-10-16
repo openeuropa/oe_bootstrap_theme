@@ -17,6 +17,7 @@
     - !attr:aria-labelledby: bcl-dropdown
     - !attr:class:
       - dropdown-menu
+    - !attr:data-drupal-selector: dropdown
     - !tag:li/
       - !tag:a/
         - !attr:class:

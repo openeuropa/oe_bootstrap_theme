@@ -2,20 +2,21 @@
   - !attr:class:
     - offcanvas-lg
     - offcanvas-start
+  - !attr:data-bs-backdrop: 'false'
   - !attr:data-drupal-selector: offcanvas
-  - !attr:id: bcl-offcanvas
+  - !attr:id: offcanvas
   - !attr:tabindex: '-1'
   - !tag:div/
     - !attr:class:
       - offcanvas-header
     - !tag:button/
-      - !attr:aria-controls: bcl-offcanvas
+      - !attr:aria-controls: offcanvas
       - !attr:aria-label: Close
       - !attr:class:
         - btn-close
         - text-reset
       - !attr:data-bs-dismiss: offcanvas
-      - !attr:data-bs-target: '#bcl-offcanvas'
+      - !attr:data-bs-target: '#offcanvas'
       - !attr:type: button
   - !tag:div/
     - !attr:class:

@@ -10,6 +10,7 @@
       - !attr:class:
         - bcl-inpage-navigation
         - position-sticky
+      - !attr:data-drupal-selector: inpage-navigation
       - !attr:id: custom-id
       - !tag:button/
         - !attr:aria-expanded: 'false'

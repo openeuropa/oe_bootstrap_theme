@@ -1,10 +1,11 @@
 - !tag:div/
   - !attr:aria-hidden: 'true'
-  - !attr:aria-label: bcl-modalLabel
+  - !attr:aria-label: modalLabel
   - !attr:class:
     - fade
     - modal
-  - !attr:id: bcl-modal
+  - !attr:data-drupal-selector: modal
+  - !attr:id: modal
   - !attr:tabindex: '-1'
   - !tag:div/
     - !attr:class:
@@ -33,12 +34,12 @@
           - modal-footer
         - 'Footer text'
 - !tag:button/
-  - !attr:aria-controls: bcl-modal
+  - !attr:aria-controls: modal
   - !attr:class:
     - btn
     - btn-md
     - btn-secondary
-  - !attr:data-bs-target: '#bcl-modal'
+  - !attr:data-bs-target: '#modal'
   - !attr:data-bs-toggle: modal
   - !attr:type: button
   - 'Open Modal'
