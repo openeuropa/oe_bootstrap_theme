@@ -258,8 +258,9 @@ class TwigExtension extends AbstractExtension {
     // BCL selects element types by key presence, so NULL means omitted.
     $item = array_filter($item, static fn ($value) => $value !== NULL);
     $attributes = $item['attributes'] ?? [];
+    // Templates alter the attributes, so the caller's object is not reused.
     $item['attributes'] = $attributes instanceof Attribute
-      ? $attributes
+      ? clone $attributes
       : new Attribute(is_array($attributes) ? $attributes : []);
 
     if (!empty($item['icon'])) {

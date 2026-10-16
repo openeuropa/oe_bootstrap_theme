@@ -537,6 +537,44 @@ TWIG;
   }
 
   /**
+   * Tests that navigation items don't alter Attribute objects from the caller.
+   */
+  public function testBclNavigationItemsSharedAttributes(): void {
+    $attributes = new Attribute(['data-shared' => 'value']);
+    $build = [
+      '#type' => 'component',
+      '#component' => 'oe_bootstrap_theme:navigation',
+      '#props' => [
+        'variant' => 'default',
+        'items' => [
+          [
+            'label' => 'Active',
+            'path' => '/active',
+            'active' => TRUE,
+            'attributes' => $attributes,
+          ],
+          [
+            'label' => 'Disabled',
+            'path' => '/disabled',
+            'disabled' => TRUE,
+            'attributes' => $attributes,
+          ],
+        ],
+      ],
+    ];
+
+    $links = (new Crawler($this->renderRoot($build)))->filter('a');
+    $this->assertCount(2, $links);
+    $this->assertSame('value', $links->eq(0)->attr('data-shared'));
+    $this->assertSame('nav-link active', $links->eq(0)->attr('class'));
+    $this->assertNull($links->eq(0)->attr('aria-disabled'));
+    $this->assertSame('value', $links->eq(1)->attr('data-shared'));
+    $this->assertSame('nav-link disabled', $links->eq(1)->attr('class'));
+    $this->assertSame('/disabled', $links->eq(1)->attr('href'));
+    $this->assertSame(['data-shared' => 'value'], $attributes->toArray());
+  }
+
+  /**
    * Provides data for testBclCardList().
    *
    * @return array
