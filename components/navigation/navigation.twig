@@ -6,9 +6,32 @@
 #}
 {% set _variant = variant|default('default') %}
 
+{% set fn_prepare_navigation_element = item => item
+  |without_nulls
+  |bcl_expand_attributes
+  |bcl_expand_icon(path: icon_path)
+  |merge({
+    spinner: item.spinner ? item.spinner|bcl_expand_attributes : null,
+    dark: item.dark_mode ?? null,
+  }|without_nulls)
+%}
+
 {% include '@oe-bcl/navigation' with {
   id: navigation_id,
-  items: items|default([])|bcl_navigation_items(icon_path),
+  items: (items ?? [])|map(item => item
+    |arrow(fn_prepare_navigation_element)
+    |merge({
+      spinner: item.spinner ? item.spinner|bcl_expand_attributes : null,
+      dark: item.dark_mode ?? null,
+      trigger: (item.dropdown or item.trigger)
+        ? (item.trigger ?? {})|arrow(fn_prepare_navigation_element)
+        : null,
+      items: item.items ? item.items|map(fn_prepare_navigation_element) : null,
+    }|without_nulls)
+  ),
+  items: items|map(_item => _item|merge({
+    icon_path: bcl_icon_path,
+  })),
   pills: _variant == 'pills',
   tabs: _variant == 'tabs',
   tabs_content: tabs_content ?? false,
