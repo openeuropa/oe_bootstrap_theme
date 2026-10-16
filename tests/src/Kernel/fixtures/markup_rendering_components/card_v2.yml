@@ -3,6 +3,11 @@ card_v2_default:
     '#type': component
     '#component': oe_bootstrap_theme:card_v2
     '#props':
+      attributes: !Attribute {}
+      media_attributes: !Attribute {}
+      content_attributes: !Attribute {}
+      header_attributes: !Attribute {}
+      footer_attributes: !Attribute {}
       variant: default
       title:
         '#markup': 'New title with <b>markup</b>'
