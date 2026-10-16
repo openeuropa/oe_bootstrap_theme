@@ -1,0 +1,56 @@
+- !tag:div/
+  - !attr:class:
+    - bcl-content-banner
+    - bg-lighter
+    - pb-4
+    - pb-md-4-75
+    - pt-4
+    - pt-md-4-75
+  - !attr:data-drupal-selector: content-banner
+  - !tag:div/
+    - !attr:class:
+      - container
+    - !tag:article/
+      - !attr:class:
+        - bg-transparent
+        - border-0
+        - card
+      - !tag:div/
+        - !attr:class:
+          - row
+        - !tag:div/
+          - !attr:class:
+            - bcl-card-start-col
+            - bcl-size-extra-large
+          - !tag:figure/
+            - !attr:class:
+              - bcl-card__image-wrapper
+              - m-0
+            - !tag:img/
+              - !attr:alt: 'Alternative text for content banner image'
+              - !attr:class:
+                - card-img-top
+                - rounded-1
+              - !attr:src: 'https://picsum.photos/1200/600/'
+        - !tag:div/
+          - !attr:class:
+            - col-lg
+          - !tag:div/
+            - !attr:class:
+              - card-body
+              - pb-0
+              - pt-4
+              - pt-lg-0
+              - px-0
+              - px-lg-1-5
+            - !tag:h1/
+              - !attr:class:
+                - bcl-heading
+                - card-title
+                - fs-1
+              - 'This is the title of this page'
+            - !tag:div/
+              - !attr:class:
+                - card-content
+                - mt-4
+              - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'

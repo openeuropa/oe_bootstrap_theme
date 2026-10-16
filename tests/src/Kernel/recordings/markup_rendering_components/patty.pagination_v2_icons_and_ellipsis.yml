@@ -1,0 +1,179 @@
+- !tag:nav/
+  - !attr:class:
+    - pager
+    - pagination-v2
+  - !attr:data-drupal-selector: pagination-v2
+  - !tag:ul/
+    - !attr:class:
+      - d-flex
+      - flex-row
+      - js-pager__items
+      - justify-content-between
+      - justify-content-md-center
+      - pager__items
+      - pagination
+    - !tag:li/
+      - !attr:class:
+        - d-inline-block
+        - page-item
+        - pager__item
+        - pager__item--prev
+      - !tag:a/
+        - !attr:aria-hidden: 'false'
+        - !attr:aria-label: Previous
+        - !attr:class:
+          - page-link
+        - !attr:href: '#prev'
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--fluid
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-left'
+    - !tag:li/
+      - !attr:class:
+        - d-md-inline-block
+        - d-none
+        - page-item
+        - pager__item
+      - !tag:a/
+        - !attr:aria-hidden: 'false'
+        - !attr:aria-label: First
+        - !attr:class:
+          - page-link
+        - !attr:href: '#first'
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--fluid
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-double-left'
+    - !tag:li/
+      - !attr:class:
+        - d-md-inline-block
+        - d-none
+        - page-item
+        - pager__item
+      - !tag:div/
+        - !attr:aria-label: Ellipsis
+        - !attr:class:
+          - page-link
+        - !tag:span/
+          - !attr:class:
+            - d-inline-block
+          - !tag:span/
+            - !attr:aria-hidden: 'true'
+            - ' … '
+    - !tag:li/
+      - !attr:class:
+        - d-md-inline-block
+        - d-none
+        - page-item
+        - pager__item
+      - !tag:a/
+        - !attr:aria-hidden: 'false'
+        - !attr:aria-label: '4'
+        - !attr:class:
+          - page-link
+        - !attr:href: '#4'
+        - '4'
+    - !tag:li/
+      - !attr:class:
+        - d-md-inline-block
+        - d-none
+        - page-item
+        - pager__item
+      - !tag:a/
+        - !attr:aria-hidden: 'false'
+        - !attr:aria-label: '5'
+        - !attr:class:
+          - page-link
+        - !attr:href: '#5'
+        - '5'
+    - !tag:li/
+      - !attr:class:
+        - active
+        - d-inline-block
+        - page-item
+        - pager__item
+      - !tag:div/
+        - !attr:aria-current: page
+        - !attr:aria-label: '6'
+        - !attr:class:
+          - page-link
+        - !attr:tabindex: '0'
+        - !tag:span/
+          - !attr:class:
+            - d-md-inline-block
+            - d-none
+          - '6'
+        - !tag:span/
+          - !attr:class:
+            - d-inline-block
+            - d-md-none
+          - 'Page 6 of 10'
+    - !tag:li/
+      - !attr:class:
+        - d-md-inline-block
+        - d-none
+        - page-item
+        - pager__item
+      - !tag:a/
+        - !attr:aria-hidden: 'false'
+        - !attr:aria-label: '7'
+        - !attr:class:
+          - page-link
+        - !attr:href: '#7'
+        - '7'
+    - !tag:li/
+      - !attr:class:
+        - d-md-inline-block
+        - d-none
+        - page-item
+        - pager__item
+      - !tag:div/
+        - !attr:aria-label: Ellipsis
+        - !attr:class:
+          - page-link
+        - !tag:span/
+          - !attr:class:
+            - d-inline-block
+          - !tag:span/
+            - !attr:aria-hidden: 'true'
+            - ' … '
+    - !tag:li/
+      - !attr:class:
+        - d-md-inline-block
+        - d-none
+        - page-item
+        - pager__item
+      - !tag:a/
+        - !attr:aria-hidden: 'false'
+        - !attr:aria-label: Last
+        - !attr:class:
+          - page-link
+        - !attr:href: '#last'
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--fluid
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-double-right'
+    - !tag:li/
+      - !attr:class:
+        - d-inline-block
+        - page-item
+        - pager__item
+        - pager__item--next
+      - !tag:a/
+        - !attr:aria-hidden: 'false'
+        - !attr:aria-label: Next
+        - !attr:class:
+          - page-link
+        - !attr:href: '#next'
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--fluid
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-right'

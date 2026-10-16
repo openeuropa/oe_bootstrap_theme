@@ -1,0 +1,8 @@
+- !tag:button/
+  - !attr:class:
+    - btn
+    - btn-md
+    - btn-secondary
+  - !attr:data-drupal-selector: button
+  - !attr:type: button
+  - 'Button label'

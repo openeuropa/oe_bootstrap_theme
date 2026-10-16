@@ -1,0 +1,29 @@
+- !tag:h2/
+  - !attr:class:
+    - bcl-heading
+    - mb-4
+  - 'The blockquote title'
+- !tag:figure/
+  - !attr:class:
+    - bg-lighter
+    - border-4
+    - border-end
+    - border-secondary
+    - p-2
+    - px-2-5
+    - text-end
+  - !attr:data-drupal-selector: blockquote
+  - !tag:blockquote/
+    - !attr:class:
+      - blockquote
+      - mb-2
+    - !tag:p/
+      - 'A well-known quote, contained in a blockquote element.'
+  - !tag:figcaption/
+    - !attr:class:
+      - blockquote-footer
+      - m-0
+    - 'Someone famous in'
+    - !tag:cite/
+      - !attr:title: 'Source title'
+      - 'Source title'

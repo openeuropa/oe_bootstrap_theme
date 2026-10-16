@@ -1,0 +1,50 @@
+- !tag:div/
+  - !attr:aria-labelledby: bcl-offcanvas-title
+  - !attr:class:
+    - offcanvas-lg
+    - offcanvas-top
+  - !attr:data-drupal-selector: offcanvas
+  - !attr:data-offcanvas-aria-labelledby: bcl-offcanvas-title
+  - !attr:data-offcanvas-static-role: region
+  - !attr:id: bcl-offcanvas
+  - !attr:role: region
+  - !attr:tabindex: '-1'
+  - !tag:div/
+    - !attr:class:
+      - offcanvas-header
+    - !tag:h2/
+      - !attr:class:
+        - bcl-heading
+        - offcanvas-title
+      - !attr:id: bcl-offcanvas-title
+      - 'Offcanvas title'
+    - !tag:button/
+      - !attr:aria-controls: bcl-offcanvas
+      - !attr:aria-label: Close
+      - !attr:class:
+        - btn-close
+        - text-reset
+      - !attr:data-bs-dismiss: offcanvas
+      - !attr:data-bs-target: '#bcl-offcanvas'
+      - !attr:type: button
+  - !tag:div/
+    - !attr:class:
+      - offcanvas-body
+    - 'This is the offcanvas body content.'
+- !tag:button/
+  - !attr:aria-controls: bcl-offcanvas
+  - !attr:class:
+    - btn
+    - btn-md
+    - btn-primary
+    - gap-2-5
+  - !attr:data-bs-target: '#bcl-offcanvas'
+  - !attr:data-bs-toggle: offcanvas
+  - !attr:type: button
+  - 'Toggle offcanvas'
+  - !tag:svg/
+    - !attr:class:
+      - bi
+      - icon--fluid
+    - !tag:use/
+      - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#filter'

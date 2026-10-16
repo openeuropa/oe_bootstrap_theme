@@ -1,0 +1,41 @@
+- !tag:h2/
+  - !attr:class:
+    - bcl-heading
+    - mb-4
+  - 'Carousel title'
+- !tag:div/
+  - !attr:class:
+    - carousel
+    - slide
+  - !attr:data-bs-ride: carousel
+  - !attr:data-drupal-selector: carousel
+  - !attr:id: bcl-carousel
+  - !tag:div/
+    - !attr:class:
+      - carousel-inner
+  - !tag:button/
+    - !attr:class:
+      - carousel-control-prev
+    - !attr:data-bs-slide: prev
+    - !attr:data-bs-target: '#bcl-carousel'
+    - !attr:type: button
+    - !tag:span/
+      - !attr:class:
+        - carousel-control-prev-icon
+    - !tag:span/
+      - !attr:class:
+        - visually-hidden
+      - Previous
+  - !tag:button/
+    - !attr:class:
+      - carousel-control-next
+    - !attr:data-bs-slide: next
+    - !attr:data-bs-target: '#bcl-carousel'
+    - !attr:type: button
+    - !tag:span/
+      - !attr:class:
+        - carousel-control-next-icon
+    - !tag:span/
+      - !attr:class:
+        - visually-hidden
+      - Next

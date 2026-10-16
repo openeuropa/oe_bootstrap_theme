@@ -1,0 +1,15 @@
+- !tag:button/
+  - !attr:class:
+    - btn
+    - btn-dark
+    - btn-md
+    - gap-2-5
+  - !attr:data-drupal-selector: button
+  - !attr:type: reset
+  - !tag:svg/
+    - !attr:class:
+      - bi
+      - icon--fluid
+    - !tag:use/
+      - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#arrow-right'
+  - 'Button label'

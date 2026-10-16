@@ -1,0 +1,24 @@
+- !tag:div/
+  - !attr:class:
+    - bcl-banner
+    - bg-lighter
+    - shade
+  - !attr:data-drupal-selector: banner
+  - !tag:div/
+    - !attr:class:
+      - bcl-banner__image
+    - !attr:style: 'background-image:url(https://picsum.photos/1000/500/)'
+  - !tag:div/
+    - !attr:class:
+      - container
+    - !tag:div/
+      - !attr:class:
+        - bcl-banner__content
+      - !tag:div/
+        - !attr:class:
+          - bcl-heading
+          - display-6
+          - mb-3
+        - 'EU Budget for the future'
+      - !tag:p/
+        - 'Innovation, economy, environment and geopolitics'

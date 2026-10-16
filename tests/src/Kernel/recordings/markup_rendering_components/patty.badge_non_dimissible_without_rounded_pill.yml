@@ -1,0 +1,6 @@
+- !tag:span/
+  - !attr:class:
+    - badge
+    - text-bg-danger
+  - !attr:data-drupal-selector: badge
+  - 'A simple badge!'

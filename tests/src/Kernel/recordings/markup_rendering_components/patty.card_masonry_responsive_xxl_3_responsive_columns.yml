@@ -1,0 +1,104 @@
+- !tag:div/
+  - !attr:class:
+    - g-0
+    - row
+    - row-cols-1
+    - row-cols-xxl-3
+  - !attr:data-drupal-selector: card-layout
+  - !attr:data-masonry: '{"percentPosition": true }'
+  - !tag:div/
+    - !attr:class:
+      - col
+    - !tag:article/
+      - !attr:class:
+        - card
+      - !tag:div/
+        - !attr:class:
+          - card-body
+        - !tag:div/
+          - !attr:class:
+            - bcl-heading
+            - card-title
+            - h4
+          - 'Card title 1'
+        - !tag:div/
+          - !attr:class:
+            - card-text
+            - mb-2
+          - 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      - !tag:div/
+        - !attr:class:
+          - card-footer
+        - 'Footer of card 1'
+  - !tag:div/
+    - !attr:class:
+      - col
+    - !tag:article/
+      - !attr:class:
+        - card
+      - !tag:div/
+        - !attr:class:
+          - card-body
+        - !tag:div/
+          - !attr:class:
+            - bcl-heading
+            - card-title
+            - h4
+          - 'Card title 2'
+        - !tag:div/
+          - !attr:class:
+            - card-text
+            - mb-2
+          - 'This card has supporting text below as a natural lead-in to additional content.'
+      - !tag:div/
+        - !attr:class:
+          - card-footer
+        - 'Footer of card 2'
+  - !tag:div/
+    - !attr:class:
+      - col
+    - !tag:article/
+      - !attr:class:
+        - card
+      - !tag:div/
+        - !attr:class:
+          - card-body
+        - !tag:div/
+          - !attr:class:
+            - bcl-heading
+            - card-title
+            - h4
+          - 'Card title 3'
+        - !tag:div/
+          - !attr:class:
+            - card-text
+            - mb-2
+          - 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      - !tag:div/
+        - !attr:class:
+          - card-footer
+        - 'Footer of card 3'
+  - !tag:div/
+    - !attr:class:
+      - col
+    - !tag:article/
+      - !attr:class:
+        - card
+      - !tag:div/
+        - !attr:class:
+          - card-body
+        - !tag:div/
+          - !attr:class:
+            - bcl-heading
+            - card-title
+            - h4
+          - 'Card title 4'
+        - !tag:div/
+          - !attr:class:
+            - card-text
+            - mb-2
+          - 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
+      - !tag:div/
+        - !attr:class:
+          - card-footer
+        - 'Footer of card 4'

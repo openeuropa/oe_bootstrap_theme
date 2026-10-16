@@ -1,0 +1,50 @@
+- !tag:article/
+  - !attr:class:
+    - card
+  - !attr:data-drupal-selector: card
+  - !tag:div/
+    - !attr:class:
+      - card-header
+    - 'Header of card'
+  - !tag:figure/
+    - !attr:class:
+      - bcl-card__image-wrapper
+      - m-0
+    - !tag:img/
+      - !attr:alt: 'Alternative text for card image'
+      - !attr:class:
+        - card-img-top
+        - rounded-0
+      - !attr:src: 'https://picsum.photos/1000/500/'
+  - !tag:div/
+    - !attr:class:
+      - card-body
+    - !tag:div/
+      - !attr:class:
+        - bcl-heading
+        - card-title
+        - h4
+      - 'Title card'
+    - !tag:h6/
+      - !attr:class:
+        - card-subtitle
+      - 'Subtitle card'
+    - !tag:div/
+      - !attr:class:
+        - card-text
+        - mt-2
+      - 'Text card with longer text which is supported'
+    - !tag:div/
+      - !attr:class:
+        - mt-3
+      - !tag:button/
+        - !attr:class:
+          - btn
+          - btn-md
+          - btn-primary
+        - !attr:type: button
+        - 'Custom action'
+  - !tag:div/
+    - !attr:class:
+      - card-footer
+    - 'Footer of card'

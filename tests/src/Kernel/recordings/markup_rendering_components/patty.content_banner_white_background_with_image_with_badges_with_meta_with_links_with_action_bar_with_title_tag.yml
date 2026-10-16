@@ -1,0 +1,128 @@
+- !tag:div/
+  - !attr:class:
+    - bcl-content-banner
+    - bg-white
+    - pt-4
+    - pt-md-4-75
+  - !attr:data-drupal-selector: content-banner
+  - !tag:div/
+    - !attr:class:
+      - container
+    - !tag:article/
+      - !attr:class:
+        - bg-transparent
+        - border-0
+        - card
+      - !tag:div/
+        - !attr:class:
+          - row
+        - !tag:div/
+          - !attr:class:
+            - bcl-card-start-col
+            - bcl-size-large
+          - !tag:figure/
+            - !attr:class:
+              - bcl-card__image-wrapper
+              - m-0
+            - !tag:img/
+              - !attr:alt: 'Alternative text for content banner image'
+              - !attr:class:
+                - card-img-top
+                - rounded-1
+              - !attr:src: 'https://picsum.photos/1200/600/'
+        - !tag:div/
+          - !attr:class:
+            - col-md
+            - col-xl-9
+            - col-xxl-8
+          - !tag:div/
+            - !attr:class:
+              - card-body
+              - pb-0
+              - pt-4
+              - pt-md-0
+              - px-0
+              - px-md-1-5
+            - !tag:h2/
+              - !attr:class:
+                - bcl-heading
+                - card-title
+                - fs-1
+              - 'This is the title of this page'
+            - !tag:div/
+              - !attr:class:
+                - my-4
+              - !tag:span/
+                - !attr:class:
+                  - me-3
+                  - text-muted
+                - '26 May 2020'
+              - !tag:span/
+                - !attr:class:
+                  - me-3
+                  - text-muted
+                - '1 comment'
+            - !tag:div/
+              - !attr:class:
+                - card-content
+              - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat ultricies massa, a dapibus libero porta nec.'
+            - !tag:div/
+              - !attr:class:
+                - mt-2-5
+              - !tag:span/
+                - !attr:class:
+                  - badge
+                  - mb-2
+                  - me-2
+                  - rounded-pill
+                  - text-bg-primary
+                - 'Primary badge'
+              - !tag:span/
+                - !attr:class:
+                  - badge
+                  - badge-outline-primary
+                  - mb-2
+                  - rounded-pill
+                - 'Secondary badge'
+            - !tag:div/
+              - !attr:class:
+                - mb-2
+                - mt-2-5
+              - !tag:div/
+                - !attr:class:
+                  - d-block
+                  - d-md-inline-block
+                  - mb-3
+                  - mb-md-0
+                  - me-md-4-5
+                - !tag:a/
+                  - !attr:href: 'https://example-1.com'
+                  - 'Link 1'
+              - !tag:div/
+                - !attr:class:
+                  - d-block
+                  - d-md-inline-block
+                  - mb-3
+                  - mb-md-0
+                  - me-md-4-5
+                - !tag:a/
+                  - !attr:href: 'https://example-2.com'
+                  - 'Link 2'
+    - !tag:div/
+      - !attr:class:
+        - position-relative
+        - z-1
+      - !tag:div/
+        - !attr:class:
+          - action-bar
+          - align-items-center
+          - col-lg-11
+          - d-flex
+          - justify-content-end
+          - mt-2
+        - !tag:a/
+          - !attr:class:
+            - standalone
+          - !attr:href: '#'
+          - !attr:type: button
+          - Submit

@@ -1,0 +1,4 @@
+- !tag:a/
+  - !attr:data-drupal-selector: link
+  - !attr:href: 'https://example.com?x=baz#bar'
+  - 'Link to link_pattern_with_external_url_and_fragment'

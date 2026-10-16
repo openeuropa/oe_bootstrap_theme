@@ -1,0 +1,4 @@
+- !tag:a/
+  - !attr:data-drupal-selector: link
+  - !attr:href: /some-path
+  - 'Link to link_pattern_with_internal_url'

@@ -1,0 +1,49 @@
+- !tag:div/
+  - !attr:aria-labelledby: custom-id-title
+  - !attr:class:
+    - offcanvas-bottom
+    - offcanvas-lg
+  - !attr:data-offcanvas-aria-labelledby: custom-id-title
+  - !attr:data-offcanvas-static-role: complementary
+  - !attr:id: custom-id
+  - !attr:role: complementary
+  - !attr:tabindex: '-1'
+  - !tag:div/
+    - !attr:class:
+      - offcanvas-header
+    - !tag:h2/
+      - !attr:class:
+        - bcl-heading
+        - offcanvas-title
+      - !attr:id: custom-id-title
+      - 'Offcanvas title'
+    - !tag:button/
+      - !attr:aria-controls: custom-id
+      - !attr:aria-label: Close
+      - !attr:class:
+        - btn-close
+        - text-reset
+      - !attr:data-bs-dismiss: offcanvas
+      - !attr:data-bs-target: '#custom-id'
+      - !attr:type: button
+  - !tag:div/
+    - !attr:class:
+      - offcanvas-body
+    - 'This is the offcanvas body content.'
+- !tag:button/
+  - !attr:aria-controls: custom-id
+  - !attr:class:
+    - btn
+    - btn-md
+    - btn-primary
+    - gap-2-5
+  - !attr:data-bs-target: '#custom-id'
+  - !attr:data-bs-toggle: offcanvas
+  - !attr:type: button
+  - 'Toggle offcanvas'
+  - !tag:svg/
+    - !attr:class:
+      - bi
+      - icon--fluid
+    - !tag:use/
+      - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#filter'

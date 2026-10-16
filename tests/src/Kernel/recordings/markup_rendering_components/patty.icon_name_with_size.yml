@@ -1,0 +1,7 @@
+- !tag:svg/
+  - !attr:class:
+    - bi
+    - icon--2xs
+  - !attr:data-drupal-selector: icon
+  - !tag:use/
+    - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#eye'

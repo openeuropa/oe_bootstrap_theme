@@ -1,0 +1,51 @@
+- !tag:div/
+  - !attr:class:
+    - row
+  - !tag:div/
+    - !attr:class:
+      - bcl-sidebar
+      - col-md-3
+    - !tag:nav/
+      - !attr:aria-labelledby: bcl-inpage-navigation-dropdown
+      - !attr:class:
+        - bcl-inpage-navigation
+        - position-sticky
+      - !attr:id: bcl-inpage-navigation
+      - !tag:button/
+        - !attr:aria-expanded: 'false'
+        - !attr:class:
+          - d-md-none
+          - dropdown-toggle
+          - h2
+        - !attr:data-bs-toggle: dropdown
+        - !attr:id: bcl-inpage-navigation-dropdown
+        - !attr:type: button
+        - 'Page content'
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--s
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-down'
+      - !tag:h2/
+        - !attr:class:
+          - bcl-heading
+          - d-md-block
+          - d-none
+          - mb-0
+        - 'Page content'
+      - !tag:div/
+        - !attr:class:
+          - dropdown-menu
+        - !tag:ul/
+          - !attr:class:
+            - flex-column
+            - nav
+            - nav-pills
+  - !tag:div/
+    - !attr:class:
+      - col-md-9
+    - !tag:div/
+      - !attr:class:
+        - content_example
+      - 'The content is rendering but there are no links'

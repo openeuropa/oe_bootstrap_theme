@@ -1,0 +1,76 @@
+- !tag:nav/
+  - !attr:aria-label: 'Glossary links'
+  - !attr:class:
+    - bcl-glossary
+  - !attr:data-drupal-selector: pagination
+  - !attr:role: navigation
+  - !tag:ul/
+    - !attr:class:
+      - js-pager__items
+      - pagination
+      - pagination--glossary
+    - !tag:li/
+      - !attr:class:
+        - active
+        - page-item
+      - !tag:a/
+        - !attr:aria-current: page
+        - !attr:aria-label: A
+        - !attr:class:
+          - page-link
+        - !attr:href: '#1'
+        - A
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: B
+        - !attr:class:
+          - page-link
+        - !attr:href: 'https://www.example.com/b-letter'
+        - B
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: C
+        - !attr:class:
+          - page-link
+        - !attr:href: '#2'
+        - C
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: D
+        - !attr:class:
+          - page-link
+        - !attr:href: '#3'
+        - D
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: E
+        - !attr:class:
+          - page-link
+        - !attr:href: '#4'
+        - E
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: F
+        - !attr:class:
+          - page-link
+        - !attr:href: '#5'
+        - F
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: 0-9
+        - !attr:class:
+          - page-link
+        - !attr:href: '#6'
+        - 0-9

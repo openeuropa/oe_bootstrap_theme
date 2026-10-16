@@ -1,0 +1,12 @@
+- !tag:article/
+  - !attr:class:
+    - section
+  - !attr:data-drupal-selector: section
+  - !tag:h3/
+    - !attr:class:
+      - section__title
+    - 'This is the heading of the section'
+  - !tag:div/
+    - !attr:class:
+      - section__body
+    - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'

@@ -1,0 +1,143 @@
+- !tag:div/
+  - !attr:class:
+    - g-2
+    - row
+    - row-cols-2
+    - row-cols-md-2
+  - !attr:data-drupal-selector: card-layout
+  - !tag:div/
+    - !attr:class:
+      - col
+    - !tag:article/
+      - !attr:class:
+        - card
+        - h-100
+      - !tag:div/
+        - !attr:class:
+          - card-header
+        - 'Header of card 1'
+      - !tag:figure/
+        - !attr:class:
+          - bcl-card__image-wrapper
+          - m-0
+        - !tag:img/
+          - !attr:alt: 'Alternative text for card image'
+          - !attr:class:
+            - card-img-top
+            - rounded-0
+          - !attr:src: 'https://picsum.photos/1000/500/arch'
+      - !tag:div/
+        - !attr:class:
+          - card-body
+        - !tag:div/
+          - !attr:class:
+            - bcl-heading
+            - card-title
+            - h4
+          - 'Title card 1'
+        - !tag:h6/
+          - !attr:class:
+            - card-subtitle
+            - mb-2
+          - 'Subtitle card 1'
+        - !tag:div/
+          - !attr:class:
+            - card-text
+            - mb-2
+          - 'Text card with longer text which is supported 1'
+        - !tag:button/
+          {  }
+      - !tag:div/
+        - !attr:class:
+          - card-footer
+        - 'Footer of card 1'
+  - !tag:div/
+    - !attr:class:
+      - col
+    - !tag:article/
+      - !attr:class:
+        - card
+        - h-100
+      - !tag:div/
+        - !attr:class:
+          - card-header
+        - 'Header of card 2'
+      - !tag:figure/
+        - !attr:class:
+          - bcl-card__image-wrapper
+          - m-0
+        - !tag:img/
+          - !attr:alt: 'Alternative text for card image'
+          - !attr:class:
+            - card-img-top
+            - rounded-0
+          - !attr:src: 'https://picsum.photos/1000/500/'
+      - !tag:div/
+        - !attr:class:
+          - card-body
+        - !tag:div/
+          - !attr:class:
+            - bcl-heading
+            - card-title
+            - h4
+          - 'Title card 2'
+        - !tag:h6/
+          - !attr:class:
+            - card-subtitle
+            - mb-2
+          - 'Subtitle card 2'
+        - !tag:div/
+          - !attr:class:
+            - card-text
+            - mb-2
+          - 'Text card with longer text which is supported 2'
+        - 'Custom test'
+      - !tag:div/
+        - !attr:class:
+          - card-footer
+        - 'Footer of card 2'
+  - !tag:div/
+    - !attr:class:
+      - col
+    - !tag:article/
+      - !attr:class:
+        - card
+        - h-100
+      - !tag:div/
+        - !attr:class:
+          - card-header
+        - 'Header of card 3'
+      - !tag:figure/
+        - !attr:class:
+          - bcl-card__image-wrapper
+          - m-0
+        - !tag:img/
+          - !attr:alt: 'Alternative text for card image'
+          - !attr:class:
+            - card-img-top
+            - rounded-0
+          - !attr:src: 'https://picsum.photos/1000/500/'
+      - !tag:div/
+        - !attr:class:
+          - card-body
+        - !tag:div/
+          - !attr:class:
+            - bcl-heading
+            - card-title
+            - h4
+          - 'Title card 3'
+        - !tag:h6/
+          - !attr:class:
+            - card-subtitle
+            - mb-2
+          - 'Subtitle card 3'
+        - !tag:div/
+          - !attr:class:
+            - card-text
+            - mb-2
+          - 'Text card with longer text which is supported 3'
+        - 'Some representative placeholder content for the first card.'
+      - !tag:div/
+        - !attr:class:
+          - card-footer
+        - 'Footer of card 3'

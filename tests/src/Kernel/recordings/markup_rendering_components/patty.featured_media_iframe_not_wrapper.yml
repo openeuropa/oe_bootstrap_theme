@@ -1,0 +1,27 @@
+- !tag:div/
+  - !attr:class:
+    - bcl-featured-media
+  - !attr:data-drupal-selector: featured-media
+  - !tag:div/
+    - !attr:class:
+      - row
+    - !tag:div/
+      - !attr:class:
+        - col-12
+        - col-md-4
+      - !tag:figure/
+        - !attr:class:
+          - overflow-hidden
+          - rounded
+        - !tag:div/
+          - !attr:class:
+            - ratio
+            - ratio-16x9
+          - !tag:iframe/
+            - !attr:src: 'https://www.youtube.com/watch?v=nWpgO1EPO_Y'
+        - !tag:figcaption/
+          - !tag:div/
+            - !attr:class:
+              - bg-light
+              - p-3
+            - 'Media description text goes here.'

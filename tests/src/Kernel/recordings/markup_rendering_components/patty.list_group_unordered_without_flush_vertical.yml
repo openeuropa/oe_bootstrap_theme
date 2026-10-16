@@ -1,0 +1,25 @@
+- !tag:ul/
+  - !attr:class:
+    - list-group
+  - !attr:data-drupal-selector: list-group
+  - !tag:li/
+    - !attr:class:
+      - list-group-item
+      - list-group-item-danger
+    - 'Label 1'
+  - !tag:li/
+    - !attr:class:
+      - list-group-item
+      - list-group-item-primary
+    - 'Label 2'
+  - !tag:li/
+    - !attr:class:
+      - list-group-item
+      - list-group-item-secondary
+    - 'Label 3'
+    - !tag:span/
+      - !attr:class:
+        - badge
+        - rounded-pill
+        - text-bg-primary
+      - '10'

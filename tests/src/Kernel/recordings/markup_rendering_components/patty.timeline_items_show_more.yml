@@ -1,0 +1,127 @@
+- !tag:ol/
+  - !attr:class:
+    - bcl-timeline
+  - !attr:data-drupal-selector: timeline
+  - !tag:li/
+    - !tag:p/
+      - !attr:class:
+        - fs-5
+        - fw-medium
+        - mb-1
+    - !tag:p/
+      - !attr:class:
+        - fs-6
+        - fw-medium
+        - mb-1
+      - 'Item 1'
+    - !tag:div/
+      - 'Lorem Ipsum 1'
+  - !tag:li/
+    - !tag:p/
+      - !attr:class:
+        - fs-5
+        - fw-medium
+        - mb-1
+    - !tag:p/
+      - !attr:class:
+        - fs-6
+        - fw-medium
+        - mb-1
+      - 'Item 2'
+    - !tag:div/
+      - 'Lorem Ipsum 2'
+  - !tag:li/
+    - !attr:class:
+      - collapse
+      - !noise string
+    - !tag:p/
+      - !attr:class:
+        - fs-5
+        - fw-medium
+        - mb-1
+    - !tag:p/
+      - !attr:class:
+        - fs-6
+        - fw-medium
+        - mb-1
+      - 'Item 3'
+    - !tag:div/
+      - 'Lorem Ipsum 3'
+  - !tag:li/
+    - !attr:class:
+      - collapse
+      - !noise string
+    - !tag:p/
+      - !attr:class:
+        - fs-5
+        - fw-medium
+        - mb-1
+    - !tag:p/
+      - !attr:class:
+        - fs-6
+        - fw-medium
+        - mb-1
+      - 'Item 4'
+    - !tag:div/
+      - 'Lorem Ipsum 4'
+  - !tag:li/
+    - !attr:class:
+      - collapse
+      - !noise string
+    - !tag:p/
+      - !attr:class:
+        - fs-5
+        - fw-medium
+        - mb-1
+    - !tag:p/
+      - !attr:class:
+        - fs-6
+        - fw-medium
+        - mb-1
+      - 'Item 5'
+    - !tag:div/
+      - 'Lorem Ipsum 5'
+  - !tag:li/
+    - !attr:class:
+      - collapse
+      - !noise string
+    - !tag:p/
+      - !attr:class:
+        - fs-5
+        - fw-medium
+        - mb-1
+    - !tag:p/
+      - !attr:class:
+        - fs-6
+        - fw-medium
+        - mb-1
+      - 'Item 6'
+    - !tag:div/
+      - 'Lorem Ipsum 6'
+  - !tag:li/
+    - !attr:class:
+      - bcl-timeline__item--toggle
+    - !tag:button/
+      - !attr:aria-expanded: 'false'
+      - !attr:class:
+        - btn
+        - btn-light
+        - btn-md
+      - !attr:data-bs-target:!noise string
+      - !attr:data-bs-toggle: collapse
+      - !attr:type: button
+      - !tag:span/
+        - !attr:class:
+          - label-collapsed
+        - 'Display 4 more'
+      - !tag:span/
+        - !attr:class:
+          - label-expanded
+        - 'Stash 4 items'
+      - !tag:svg/
+        - !attr:class:
+          - bi
+          - icon--fluid
+          - ms-2-5
+        - !tag:use/
+          - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-down'

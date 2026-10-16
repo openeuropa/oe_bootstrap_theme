@@ -1,0 +1,41 @@
+- !tag:nav/
+  - !attr:aria-label: breadcrumb
+  - !attr:class:
+    - mt-3
+  - !tag:ol/
+    - !attr:class:
+      - breadcrumb
+    - !tag:li/
+      - !attr:class:
+        - breadcrumb-item
+        - d-md-block
+        - d-none
+      - !tag:a/
+        - !attr:href: /index
+        - Home
+    - !tag:li/
+      - !attr:class:
+        - breadcrumb-item
+      - !tag:a/
+        - !attr:href: /example
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - d-md-none
+            - icon--s
+            - me-2
+            - me-2-5
+            - ms-0
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#arrow-left'
+        - 'About the European Commission'
+    - !tag:li/
+      - !attr:aria-current: page
+      - !attr:class:
+        - active
+        - breadcrumb-item
+        - d-md-block
+        - d-none
+      - !tag:a/
+        - !attr:href: 'https://example.com'
+        - 'Link title'

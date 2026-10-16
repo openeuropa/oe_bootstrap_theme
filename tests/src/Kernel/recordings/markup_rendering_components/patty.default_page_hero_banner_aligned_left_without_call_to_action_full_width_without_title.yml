@@ -1,0 +1,16 @@
+- !tag:div/
+  - !attr:class:
+    - bcl-banner
+    - bg-lighter
+    - full-width
+    - hero
+    - text-dark
+  - !attr:data-drupal-selector: banner
+  - !tag:div/
+    - !attr:class:
+      - container
+    - !tag:div/
+      - !attr:class:
+        - bcl-banner__content
+      - !tag:p/
+        - 'Innovation, economy, environment and geopolitics'

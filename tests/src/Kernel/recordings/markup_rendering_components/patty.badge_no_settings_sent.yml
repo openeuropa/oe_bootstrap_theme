@@ -1,0 +1,8 @@
+- !tag:a/
+  - !attr:class:
+    - badge
+    - text-bg-primary
+  - !attr:data-drupal-selector: badge
+  - !attr:href: 'https://example.com'
+  - !attr:title: 'The badge title'
+  - 'A simple badge!'

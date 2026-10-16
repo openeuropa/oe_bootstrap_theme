@@ -1,0 +1,13 @@
+- !tag:a/
+  - !attr:class:
+    - d-inline-flex
+    - gap-2-5
+  - !attr:data-drupal-selector: link
+  - !attr:href: 'https://example.com'
+  - !tag:svg/
+    - !attr:class:
+      - bi
+      - icon--s
+    - !tag:use/
+      - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#lock'
+  - 'Link with icon display'

@@ -1,0 +1,11 @@
+- !tag:a/
+  - !attr:data-drupal-selector: link
+  - !attr:href: 'https://example.com'
+  - !tag:svg/
+    - !attr:class:
+      - bi
+      - icon--s
+      - me-2-5
+    - !tag:use/
+      - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#lock'
+  - 'Link to example'

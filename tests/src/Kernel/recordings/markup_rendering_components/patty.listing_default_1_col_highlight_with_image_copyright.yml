@@ -1,0 +1,61 @@
+- !tag:div/
+  - !attr:class:
+    - bcl-listing
+    - bcl-listing--highlight-1-col
+    - text-break
+  - !attr:data-drupal-selector: listing
+  - !tag:h2/
+    - !attr:class:
+      - bcl-heading
+      - mb-4
+    - 'Listing item block title'
+  - !tag:div/
+    - !attr:class:
+      - g-4
+      - row
+      - row-cols-1
+    - !tag:div/
+      - !attr:class:
+        - col
+        - mt-4-5
+      - !tag:article/
+        - !attr:class:
+          - bg-lighter
+          - border-0
+          - card
+          - listing-item--highlight
+        - !tag:figure/
+          - !attr:class:
+            - bcl-card__image-wrapper
+            - m-0
+          - !tag:img/
+            - !attr:alt: 'alt img'
+            - !attr:class:
+              - card-img-top
+            - !attr:src: 'https://picsum.photos/600/400/'
+          - !tag:figcaption/
+            - !attr:class:
+              - bcl-card__image-footer
+            - !tag:div/
+              - !attr:class:
+                - bcl-copyright
+              - !tag:span/
+                - !attr:class:
+                  - visually-hidden
+                - 'Image credit: '
+              - '© 2024 Example Organisation'
+        - !tag:div/
+          - !attr:class:
+            - card-body
+            - pt-3
+          - !tag:div/
+            - !attr:class:
+              - bcl-heading
+              - card-title
+              - h5
+            - 'Card title 1'
+          - !tag:div/
+            - !attr:class:
+              - card-text
+              - mb-2
+            - 'Lorem ipsum dolor sit amet.'

@@ -1,0 +1,137 @@
+- !tag:div/
+  - !attr:class:
+    - bcl-gallery
+  - !attr:data-drupal-selector: gallery
+  - !tag:div/
+    - !attr:class:
+      - align-items-sm-center
+      - d-sm-flex
+      - flex-sm-row
+    - !tag:div/
+      - !attr:class:
+        - flex-sm-grow-1
+      - !tag:h6/
+        - !attr:class:
+          - bcl-heading
+          - mb-4
+        - 'Gallery title'
+  - !tag:div/
+    - !attr:class:
+      - bcl-gallery__thumbnails
+    - !tag:ul/
+      - !attr:class:
+        - bcl-gallery__grid
+      - !tag:li/
+        - !tag:a/
+          - !attr:class:
+            - bcl-gallery__item
+            - d-block
+            - img-fluid
+            - w-100
+          - !attr:data-bs-slide-to: '0'
+          - !attr:data-bs-target: '#carouselBcl-gallery'
+          - !attr:tabindex: '0'
+          - !tag:div/
+            - !attr:class:
+              - bcl-gallery__item-overlay
+            - !attr:data-bs-target: '#modalBcl-gallery'
+            - !attr:data-bs-toggle: modal
+          - !tag:img/
+            - !attr:alt: 'Cat thumbnail alt'
+            - !attr:src: 'https://picsum.photos/id/10/400/300/'
+  - !tag:div/
+    - !attr:aria-hidden: 'true'
+    - !attr:aria-labelledby: modalBcl-gallery
+    - !attr:class:
+      - modal
+    - !attr:data-bs-backdrop: 'false'
+    - !attr:id: modalBcl-gallery
+    - !attr:tabindex: '-1'
+    - !tag:div/
+      - !attr:class:
+        - modal-dialog
+        - modal-dialog-centered
+        - modal-fullscreen
+      - !tag:div/
+        - !attr:class:
+          - modal-content
+        - !tag:div/
+          - !attr:class:
+            - border-0
+            - justify-content-between
+            - modal-header
+          - !tag:div/
+            - !attr:class:
+              - modal-title
+            - !tag:h3/
+              - !attr:class:
+                - bcl-heading
+                - d-none
+                - d-sm-block
+              - 'Gallery title'
+          - !tag:div/
+            - !attr:class:
+              - carousel-pager
+            - !tag:span/
+              - '1'
+            - ' / 1'
+          - !tag:div/
+            - !attr:class:
+              - modal-close
+            - !tag:button/
+              - !attr:aria-label: Close
+              - !attr:class:
+                - btn-close
+              - !attr:data-bs-dismiss: modal
+              - !attr:type: button
+        - !tag:div/
+          - !attr:class:
+            - align-items-center
+            - d-flex
+            - justify-content-center
+            - modal-body
+          - !tag:div/
+            - !attr:class:
+              - carousel
+              - slide
+            - !attr:id: carouselBcl-gallery
+            - !tag:div/
+              - !attr:class:
+                - carousel-inner
+              - !tag:div/
+                - !attr:class:
+                  - active
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Cat media image alt'
+                    - !attr:data-src: 'https://picsum.photos/id/10/800/600/'
+            - !tag:button/
+              - !attr:class:
+                - carousel-control-prev
+              - !attr:data-bs-slide: prev
+              - !attr:data-bs-target: '#carouselBcl-gallery'
+              - !attr:type: button
+              - !tag:span/
+                - !attr:class:
+                  - carousel-control-prev-icon
+              - !tag:span/
+                - !attr:class:
+                  - visually-hidden
+                - Previous
+            - !tag:button/
+              - !attr:class:
+                - carousel-control-next
+              - !attr:data-bs-slide: next
+              - !attr:data-bs-target: '#carouselBcl-gallery'
+              - !attr:type: button
+              - !tag:span/
+                - !attr:class:
+                  - carousel-control-next-icon
+              - !tag:span/
+                - !attr:class:
+                  - visually-hidden
+                - Next

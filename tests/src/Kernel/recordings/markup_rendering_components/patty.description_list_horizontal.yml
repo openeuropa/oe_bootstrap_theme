@@ -1,0 +1,93 @@
+- !tag:h2/
+  - !attr:class:
+    - bcl-heading
+    - mb-4
+  - 'The description list title'
+- !tag:div/
+  - !attr:class:
+    - bcl-description-list
+  - !attr:data-drupal-selector: description-list
+  - !tag:dl/
+    - !attr:class:
+      - mb-3
+      - row
+    - !tag:div/
+      - !attr:class:
+        - col-md-3
+      - !tag:dt/
+        - !tag:div/
+          - !attr:class:
+            - d-flex
+          - !tag:svg/
+            - !attr:class:
+              - align-self-center
+              - bi
+              - flex-shrink-0
+              - icon--xs
+              - me-2
+            - !tag:use/
+              - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#geo-alt-fill'
+          - !tag:div/
+            - 'Single label with icon'
+    - !tag:div/
+      - !attr:class:
+        - col
+      - !tag:dd/
+        - !tag:div/
+          - 'Description of first term text goes here.'
+  - !tag:dl/
+    - !attr:class:
+      - mb-3
+      - row
+    - !tag:div/
+      - !attr:class:
+        - col-md-3
+      - !tag:dt/
+        - !tag:div/
+          - !attr:class:
+            - d-flex
+          - !tag:div/
+            - 'First label without icon'
+      - !tag:dt/
+        - !tag:div/
+          - !attr:class:
+            - d-flex
+          - !tag:svg/
+            - !attr:class:
+              - align-self-center
+              - bi
+              - flex-shrink-0
+              - icon--xs
+              - me-2
+            - !tag:use/
+              - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#calendar-event'
+          - !tag:div/
+            - 'Second label with icon'
+    - !tag:div/
+      - !attr:class:
+        - col
+      - !tag:dd/
+        - !tag:div/
+          - 'Description of second term text goes here.'
+  - !tag:dl/
+    - !attr:class:
+      - mb-3
+      - row
+    - !tag:div/
+      - !attr:class:
+        - col-md-3
+      - !tag:dt/
+        - !tag:div/
+          - !attr:class:
+            - d-flex
+          - !tag:div/
+            - 'A single term without icon.'
+    - !tag:div/
+      - !attr:class:
+        - col
+      - !tag:dd/
+        - !tag:div/
+          - 'First definition for third term.'
+      - !tag:dd/
+        - !tag:div/
+          - 'Second definition for third term.'

@@ -1,0 +1,451 @@
+- !tag:div/
+  - !attr:class:
+    - bcl-gallery
+  - !attr:data-drupal-selector: gallery
+  - !tag:div/
+    - !attr:class:
+      - bcl-gallery__thumbnails
+    - !tag:ul/
+      - !attr:class:
+        - bcl-gallery__grid
+      - !tag:li/
+        - !tag:a/
+          - !attr:class:
+            - bcl-gallery__item
+            - d-block
+            - img-fluid
+            - w-100
+          - !attr:data-bs-slide-to: '0'
+          - !attr:data-bs-target: '#carouselBcl-gallery'
+          - !attr:tabindex: '0'
+          - !tag:div/
+            - !attr:class:
+              - bcl-gallery__item-overlay
+            - !attr:data-bs-target: '#modalBcl-gallery'
+            - !attr:data-bs-toggle: modal
+            - !tag:span/
+              - !attr:class:
+                - bcl-gallery__item-play-icon
+              - !tag:svg/
+                - !attr:class:
+                  - bi
+                  - icon--s
+                - !tag:use/
+                  - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#play-fill'
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-caption
+              - !tag:div/
+                - !attr:class:
+                  - fs-5
+                - 'Bio-defence preparedness programme'
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-description
+                - 'Caption first item'
+          - !tag:img/
+            - !attr:alt: 'Example alt text'
+            - !attr:src: 'https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg'
+      - !tag:li/
+        - !tag:a/
+          - !attr:class:
+            - bcl-gallery__item
+            - d-block
+            - img-fluid
+            - w-100
+          - !attr:data-bs-slide-to: '1'
+          - !attr:data-bs-target: '#carouselBcl-gallery'
+          - !attr:tabindex: '0'
+          - !tag:div/
+            - !attr:class:
+              - bcl-gallery__item-overlay
+            - !attr:data-bs-target: '#modalBcl-gallery'
+            - !attr:data-bs-toggle: modal
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-caption
+              - !tag:div/
+                - !attr:class:
+                  - fs-5
+                - 'A picture of a cat'
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-description
+                - 'Cat image caption.'
+          - !tag:img/
+            - !attr:alt: 'Cat thumbnail alt'
+            - !attr:src: 'https://picsum.photos/id/10/400/300/'
+      - !tag:li/
+        - !tag:a/
+          - !attr:class:
+            - bcl-gallery__item
+            - d-block
+            - img-fluid
+            - w-100
+          - !attr:data-bs-slide-to: '2'
+          - !attr:data-bs-target: '#carouselBcl-gallery'
+          - !attr:tabindex: '0'
+          - !tag:div/
+            - !attr:class:
+              - bcl-gallery__item-overlay
+            - !attr:data-bs-target: '#modalBcl-gallery'
+            - !attr:data-bs-toggle: modal
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-caption
+              - !tag:div/
+                - !attr:class:
+                  - fs-5
+                - 'An image of a dog.'
+          - !tag:img/
+            - !attr:alt: 'Dog thumbnail alt'
+            - !attr:src: 'https://picsum.photos/id/11/400/300/'
+      - !tag:li/
+        - !tag:a/
+          - !attr:class:
+            - bcl-gallery__item
+            - d-block
+            - img-fluid
+            - w-100
+          - !attr:data-bs-slide-to: '3'
+          - !attr:data-bs-target: '#carouselBcl-gallery'
+          - !attr:tabindex: '0'
+          - !tag:div/
+            - !attr:class:
+              - bcl-gallery__item-overlay
+            - !attr:data-bs-target: '#modalBcl-gallery'
+            - !attr:data-bs-toggle: modal
+            - !tag:span/
+              - !attr:class:
+                - bcl-gallery__item-play-icon
+              - !tag:svg/
+                - !attr:class:
+                  - bi
+                  - icon--s
+                - !tag:use/
+                  - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#play-fill'
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-caption
+              - !tag:div/
+                - !attr:class:
+                  - fs-5
+                - 'Safer electric vehicles - through harmonised test procedures for battery technology'
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-description
+                - 'Iframe caption.'
+          - !tag:img/
+            - !attr:alt: 'YouTube thumbnail alt'
+            - !attr:src: 'https://picsum.photos/400/300'
+      - !tag:li/
+        - !tag:a/
+          - !attr:class:
+            - bcl-gallery__item
+            - d-block
+            - img-fluid
+            - w-100
+          - !attr:data-bs-slide-to: '4'
+          - !attr:data-bs-target: '#carouselBcl-gallery'
+          - !attr:tabindex: '0'
+          - !tag:div/
+            - !attr:class:
+              - bcl-gallery__item-overlay
+            - !attr:data-bs-target: '#modalBcl-gallery'
+            - !attr:data-bs-toggle: modal
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-caption
+              - !tag:div/
+                - !attr:class:
+                  - fs-5
+                - 'A picture of an elephant'
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-description
+                - 'Elephant caption.'
+          - !tag:img/
+            - !attr:alt: 'Elephant thumbnail alt'
+            - !attr:src: 'https://picsum.photos/id/12/400/300/'
+    - !tag:div/
+      - !attr:class:
+        - bcl-gallery__thumbnails-collaspe
+        - collapse
+      - !attr:id: collapseBcl-gallery
+      - !tag:ul/
+        - !attr:class:
+          - bcl-gallery__grid
+        - !tag:li/
+          - !tag:a/
+            - !attr:class:
+              - bcl-gallery__item
+              - d-block
+              - img-fluid
+              - w-100
+            - !attr:data-bs-slide-to: '5'
+            - !attr:data-bs-target: '#carouselBcl-gallery'
+            - !attr:tabindex: '0'
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-overlay
+              - !attr:data-bs-target: '#modalBcl-gallery'
+              - !attr:data-bs-toggle: modal
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-caption
+                - !tag:div/
+                  - !attr:class:
+                    - fs-5
+                  - 'A picture of a sheep'
+                - !tag:div/
+                  - !attr:class:
+                    - bcl-gallery__item-description
+                  - 'Sheep caption.'
+            - !tag:img/
+              - !attr:alt: 'Sheep thumbnail alt'
+              - !attr:src: 'https://picsum.photos/id/13/400/300/'
+    - !tag:div/
+      - !attr:class:
+        - bg-lighter
+        - mt-2
+        - px-4
+        - py-3
+        - rounded
+        - text-center
+      - !tag:a/
+        - !attr:aria-controls: collapseBcl-gallery
+        - !attr:aria-expanded: 'false'
+        - !attr:class:
+          - bcl-gallery__collapse
+          - d-none
+          - d-sm-inline-block
+          - standalone
+        - !attr:data-bs-toggle: collapse
+        - !attr:href: '#collapseBcl-gallery'
+        - !attr:role: button
+        - !tag:span/
+          - !attr:class:
+            - label-collapsed
+          - 'View the full gallery (6)'
+        - !tag:span/
+          - !attr:class:
+            - label-expanded
+          - 'View less'
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--2xs
+            - ms-2-5
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#caret-down-fill'
+      - !tag:a/
+        - !attr:class:
+          - bcl-gallery__mobile-view-more
+          - d-inline-block
+          - d-sm-none
+          - standalone
+        - !attr:data-bs-slide-to: '4'
+        - !attr:data-bs-target: '#carouselBcl-gallery'
+        - !attr:href: '#'
+        - !attr:role: button
+        - !tag:span/
+          - !attr:data-bs-target: '#modalBcl-gallery'
+          - !attr:data-bs-toggle: modal
+          - !tag:span/
+            - !attr:class:
+              - label-collapsed
+            - 'View the full gallery (6)'
+          - !tag:svg/
+            - !attr:class:
+              - bi
+              - icon--2xs
+              - ms-2-5
+            - !tag:use/
+              - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#caret-down-fill'
+          - !tag:span/
+            {  }
+  - !tag:div/
+    - !attr:aria-hidden: 'true'
+    - !attr:aria-labelledby: modalBcl-gallery
+    - !attr:class:
+      - modal
+    - !attr:data-bs-backdrop: 'false'
+    - !attr:id: modalBcl-gallery
+    - !attr:tabindex: '-1'
+    - !tag:div/
+      - !attr:class:
+        - modal-dialog
+        - modal-dialog-centered
+        - modal-fullscreen
+      - !tag:div/
+        - !attr:class:
+          - modal-content
+        - !tag:div/
+          - !attr:class:
+            - border-0
+            - justify-content-between
+            - modal-header
+          - !tag:div/
+            - !attr:class:
+              - carousel-pager
+            - !tag:span/
+              - '1'
+            - ' / 6'
+          - !tag:div/
+            - !attr:class:
+              - modal-close
+            - !tag:button/
+              - !attr:aria-label: Close
+              - !attr:class:
+                - btn-close
+              - !attr:data-bs-dismiss: modal
+              - !attr:type: button
+        - !tag:div/
+          - !attr:class:
+            - align-items-center
+            - d-flex
+            - justify-content-center
+            - modal-body
+          - !tag:div/
+            - !attr:class:
+              - carousel
+              - slide
+            - !attr:id: carouselBcl-gallery
+            - !tag:div/
+              - !attr:class:
+                - carousel-inner
+              - !tag:div/
+                - !attr:class:
+                  - active
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:video/
+                    - !attr:controls: ''
+                    - !attr:poster: 'https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg'
+                    - !tag:source/
+                      - !attr:src: 'https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4'
+                      - !attr:type: video/mp4
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Cat media image alt'
+                    - !attr:data-src: 'https://picsum.photos/id/10/800/600/'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - 'A picture of a cat'
+                    - 'Cat image caption.'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Dog image media alt'
+                    - !attr:class:
+                      - img-fluid
+                    - !attr:data-src: 'https://picsum.photos/id/11/800/600/'
+                    - !attr:title: 'Dog image media title'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - 'An image of a dog.'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:iframe/
+                    - !attr:allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                    - !attr:allowfullscreen: ''
+                    - !attr:caption_title: 'YouTube video player'
+                    - !attr:data-src: 'https://www.youtube.com/embed/Ty5axPlgMuk'
+                    - !attr:frameborder: '0'
+                    - !attr:height: '315'
+                    - !attr:width: '560'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Elephant media image alt'
+                    - !attr:data-src: 'https://picsum.photos/id/12/800/600/'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - 'A picture of an elephant'
+                    - 'Elephant caption.'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Sheep media image alt'
+                    - !attr:data-src: 'https://picsum.photos/id/13/800/600/'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - 'A picture of a sheep'
+                    - 'Sheep caption.'
+            - !tag:button/
+              - !attr:class:
+                - carousel-control-prev
+              - !attr:data-bs-slide: prev
+              - !attr:data-bs-target: '#carouselBcl-gallery'
+              - !attr:type: button
+              - !tag:span/
+                - !attr:class:
+                  - carousel-control-prev-icon
+              - !tag:span/
+                - !attr:class:
+                  - visually-hidden
+                - Previous
+            - !tag:button/
+              - !attr:class:
+                - carousel-control-next
+              - !attr:data-bs-slide: next
+              - !attr:data-bs-target: '#carouselBcl-gallery'
+              - !attr:type: button
+              - !tag:span/
+                - !attr:class:
+                  - carousel-control-next-icon
+              - !tag:span/
+                - !attr:class:
+                  - visually-hidden
+                - Next

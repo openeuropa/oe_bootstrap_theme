@@ -1,0 +1,89 @@
+- !tag:nav/
+  - !attr:data-drupal-selector: pagination
+  - !attr:role: navigation
+  - !tag:ul/
+    - !attr:class:
+      - js-pager__items
+      - justify-content-end
+      - pagination
+      - pagination-lg
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: First
+        - !attr:class:
+          - page-link
+        - !attr:href: '#first'
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--fluid
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-double-left'
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: Previous
+        - !attr:class:
+          - page-link
+        - !attr:href: '#prev'
+        - !tag:span/
+          - !attr:aria-hidden: 'true'
+          - '&lsaquo;'
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--fluid
+            - ms-2-5
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#arrow-left'
+    - !tag:li/
+      - !attr:class:
+        - active
+        - page-item
+      - !tag:a/
+        - !attr:aria-current: page
+        - !attr:aria-label: '1'
+        - !attr:class:
+          - page-link
+        - !attr:href: '#1'
+        - '1'
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: '2'
+        - !attr:class:
+          - page-link
+        - !attr:href: '#2'
+        - '2'
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: Next
+        - !attr:class:
+          - page-link
+        - !attr:href: '#next'
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--fluid
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-right'
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: Last
+        - !attr:class:
+          - page-link
+        - !attr:href: '#last'
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--fluid
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-double-right'

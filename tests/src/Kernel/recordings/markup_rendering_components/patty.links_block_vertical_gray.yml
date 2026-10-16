@@ -1,0 +1,51 @@
+- !tag:div/
+  - !attr:class:
+    - bcl-links-block
+    - bg-light
+    - px-4
+    - py-3
+    - rounded-2
+  - !attr:data-drupal-selector: links-block
+  - !tag:h3/
+    - !attr:class:
+      - bcl-heading
+      - border-bottom
+      - mb-3
+      - pb-3
+    - 'Title Link Block'
+  - !tag:ul/
+    - !attr:class:
+      - mb-0
+      - ps-0
+    - !tag:li/
+      - !attr:class:
+        - list-unstyled
+        - me-4-5
+      - !tag:a/
+        - !attr:class:
+          - d-inline-block
+          - mb-3
+          - standalone
+        - !attr:href: 'https://example.com'
+        - 'Link number one'
+    - !tag:li/
+      - !attr:class:
+        - list-unstyled
+        - me-4-5
+      - !tag:a/
+        - !attr:class:
+          - d-inline-block
+          - mb-3
+          - standalone
+        - !attr:href: 'https://google.com'
+        - 'Link number two'
+    - !tag:li/
+      - !attr:class:
+        - list-unstyled
+      - !tag:a/
+        - !attr:class:
+          - d-inline-block
+          - mb-3
+          - standalone
+        - !attr:href: 'https://europa.eu'
+        - 'More channels'

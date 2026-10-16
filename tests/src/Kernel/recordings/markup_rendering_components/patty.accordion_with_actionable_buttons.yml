@@ -1,0 +1,127 @@
+- !tag:div/
+  - !attr:class:
+    - accordion
+  - !attr:data-drupal-selector: accordion
+  - !attr:id: accordion-bcl-accordion
+  - !tag:h2/
+    - !attr:class:
+      - bcl-heading
+      - mb-4
+    - 'The accordion title'
+  - !tag:div/
+    - !attr:class:
+      - d-flex
+      - gap-3
+      - justify-content-end
+      - mb-3
+    - !tag:button/
+      - !attr:class:
+        - btn
+        - btn-md
+        - btn-primary
+      - !attr:data-action: expand
+      - !attr:data-target: accordion-bcl-accordion
+      - !attr:type: button
+      - Expand
+    - !tag:button/
+      - !attr:class:
+        - btn
+        - btn-md
+        - btn-secondary
+      - !attr:data-action: collapse
+      - !attr:data-target: accordion-bcl-accordion
+      - !attr:type: button
+      - Collapse
+  - !tag:div/
+    - !attr:class:
+      - accordion-items-wrapper
+    - !tag:div/
+      - !attr:class:
+        - accordion-item
+      - !tag:h2/
+        - !attr:class:
+          - accordion-header
+        - !attr:id: heading-bcl-accordion-1
+        - !tag:button/
+          - !attr:aria-controls: collapse-bcl-accordion-1
+          - !attr:aria-expanded: 'false'
+          - !attr:autocomplete: 'off'
+          - !attr:class:
+            - accordion-button
+          - !attr:data-bs-target: '#collapse-bcl-accordion-1'
+          - !attr:data-bs-toggle: collapse
+          - !attr:type: button
+          - !tag:span/
+            - 'Accordion Item #1'
+      - !tag:div/
+        - !attr:aria-labelledby: heading-bcl-accordion-1
+        - !attr:class:
+          - accordion-collapse
+          - collapse
+          - show
+        - !attr:id: collapse-bcl-accordion-1
+        - !attr:role: region
+        - !tag:div/
+          - !attr:class:
+            - accordion-body
+          - 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
+    - !tag:div/
+      - !attr:class:
+        - accordion-item
+      - !tag:h2/
+        - !attr:class:
+          - accordion-header
+        - !attr:id: heading-bcl-accordion-2
+        - !tag:button/
+          - !attr:aria-controls: collapse-bcl-accordion-2
+          - !attr:aria-expanded: 'false'
+          - !attr:autocomplete: 'off'
+          - !attr:class:
+            - accordion-button
+            - collapsed
+          - !attr:data-bs-target: '#collapse-bcl-accordion-2'
+          - !attr:data-bs-toggle: collapse
+          - !attr:type: button
+          - !tag:span/
+            - 'Accordion Item #2'
+      - !tag:div/
+        - !attr:aria-labelledby: heading-bcl-accordion-2
+        - !attr:class:
+          - accordion-collapse
+          - collapse
+        - !attr:id: collapse-bcl-accordion-2
+        - !attr:role: region
+        - !tag:div/
+          - !attr:class:
+            - accordion-body
+          - 'Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer.'
+    - !tag:div/
+      - !attr:class:
+        - accordion-item
+      - !tag:h2/
+        - !attr:class:
+          - accordion-header
+        - !attr:id: heading-bcl-accordion-3
+        - !tag:button/
+          - !attr:aria-controls: collapse-bcl-accordion-3
+          - !attr:aria-expanded: 'false'
+          - !attr:autocomplete: 'off'
+          - !attr:class:
+            - accordion-button
+            - collapsed
+          - !attr:data-bs-target: '#collapse-bcl-accordion-3'
+          - !attr:data-bs-toggle: collapse
+          - !attr:type: button
+          - !tag:span/
+            - 'Accordion Item #3'
+      - !tag:div/
+        - !attr:aria-labelledby: heading-bcl-accordion-3
+        - !attr:class:
+          - accordion-collapse
+          - collapse
+        - !attr:id: collapse-bcl-accordion-3
+        - !attr:role: region
+        - !tag:div/
+          - !attr:class:
+            - accordion-body
+          - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'

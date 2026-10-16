@@ -1,0 +1,63 @@
+- !tag:nav/
+  - !attr:data-drupal-selector: pagination
+  - !attr:role: navigation
+  - !tag:ul/
+    - !attr:class:
+      - js-pager__items
+      - pagination
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: 'First item'
+        - !attr:class:
+          - page-link
+        - !attr:href: '#first'
+        - First
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: 'Previous item'
+        - !attr:class:
+          - page-link
+        - !attr:href: '#prev'
+        - Previous
+    - !tag:li/
+      - !attr:class:
+        - active
+        - page-item
+      - !tag:a/
+        - !attr:aria-current: page
+        - !attr:aria-label: 'First page'
+        - !attr:class:
+          - page-link
+        - !attr:href: '#1'
+        - '1'
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: '2'
+        - !attr:class:
+          - page-link
+        - !attr:href: '#2'
+        - '2'
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: 'Next item'
+        - !attr:class:
+          - page-link
+        - !attr:href: '#next'
+        - Next
+    - !tag:li/
+      - !attr:class:
+        - page-item
+      - !tag:a/
+        - !attr:aria-label: 'Last item'
+        - !attr:class:
+          - page-link
+        - !attr:href: '#last'
+        - Last

@@ -1,0 +1,24 @@
+- !tag:div/
+  - !attr:class:
+    - list-group
+  - !attr:data-drupal-selector: list-group
+  - !tag:a/
+    - !attr:class:
+      - list-group-item
+      - list-group-item-action
+    - !attr:href: '#'
+    - 'Label 1'
+  - ' '
+  - !tag:a/
+    - !attr:class:
+      - list-group-item
+      - list-group-item-action
+    - !attr:href: '#'
+    - 'Label 2'
+  - ' '
+  - !tag:a/
+    - !attr:class:
+      - list-group-item
+      - list-group-item-action
+    - !attr:href: '#'
+    - 'Label 3'

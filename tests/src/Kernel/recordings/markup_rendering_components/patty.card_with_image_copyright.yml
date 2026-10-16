@@ -1,0 +1,38 @@
+- !tag:article/
+  - !attr:class:
+    - card
+  - !attr:data-drupal-selector: card
+  - !tag:figure/
+    - !attr:class:
+      - bcl-card__image-wrapper
+      - m-0
+    - !tag:img/
+      - !attr:alt: 'Alternative text for card image'
+      - !attr:class:
+        - card-img-top
+      - !attr:src: 'https://picsum.photos/1000/500/'
+    - !tag:figcaption/
+      - !attr:class:
+        - bcl-card__image-footer
+      - !tag:div/
+        - !attr:class:
+          - bcl-copyright
+        - !tag:span/
+          - !attr:class:
+            - visually-hidden
+          - 'Image credit: '
+        - '© 2024 Example Organisation'
+  - !tag:div/
+    - !attr:class:
+      - card-body
+    - !tag:div/
+      - !attr:class:
+        - bcl-heading
+        - card-title
+        - h4
+      - 'Title card'
+    - !tag:div/
+      - !attr:class:
+        - card-text
+        - mt-2
+      - 'Text card with longer text which is supported'

@@ -1,0 +1,50 @@
+- !tag:div/
+  - !attr:class:
+    - dropdown
+  - !tag:button/
+    - !attr:aria-expanded: 'false'
+    - !attr:autocomplete: 'off'
+    - !attr:class:
+      - btn
+      - btn-md
+      - btn-primary
+      - dropdown-toggle
+    - !attr:data-bs-toggle: dropdown
+    - !attr:id: bcl-dropdown
+    - !attr:type: button
+    - 'Dropdown toggle'
+  - !tag:ul/
+    - !attr:aria-labelledby: bcl-dropdown
+    - !attr:class:
+      - dropdown-menu
+    - !tag:li/
+      - !tag:a/
+        - !attr:class:
+          - dropdown-item
+        - !attr:href: '#'
+        - 'A link'
+    - !tag:li/
+      - !tag:button/
+        - !attr:class:
+          - dropdown-item
+        - !attr:type: button
+        - 'A button'
+    - !tag:li/
+      - !tag:hr/
+        - !attr:class:
+          - dropdown-divider
+    - !tag:li/
+      - !tag:button/
+        - !attr:aria-disabled: 'true'
+        - !attr:class:
+          - dropdown-item
+        - !attr:disabled: disabled
+        - !attr:type: button
+        - 'A disabled button'
+    - !tag:li/
+      - !tag:button/
+        - !attr:class:
+          - active
+          - dropdown-item
+        - !attr:type: button
+        - 'An active button'

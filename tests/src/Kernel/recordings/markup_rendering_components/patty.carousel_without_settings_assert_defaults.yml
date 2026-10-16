@@ -1,0 +1,61 @@
+- !tag:div/
+  - !attr:class:
+    - carousel
+    - slide
+  - !attr:data-bs-ride: carousel
+  - !attr:data-drupal-selector: carousel
+  - !attr:id: bcl-carousel
+  - !tag:div/
+    - !attr:class:
+      - carousel-inner
+    - !tag:div/
+      - !attr:class:
+        - active
+        - carousel-item
+      - !attr:data-bs-interval: '0'
+      - !tag:figure/
+        - !attr:class:
+          - h-100
+          - m-0
+        - !tag:img/
+          - !attr:alt: 'alt image 1'
+          - !attr:class:
+            - d-block
+            - w-100
+          - !attr:src: 'https://images.site.example1'
+        - !tag:div/
+          - !attr:class:
+            - carousel-caption
+            - d-md-block
+            - d-none
+          - !tag:div/
+            - !attr:class:
+              - fs-5
+            - 'First slide title'
+          - 'First slide caption'
+  - !tag:button/
+    - !attr:class:
+      - carousel-control-prev
+    - !attr:data-bs-slide: prev
+    - !attr:data-bs-target: '#bcl-carousel'
+    - !attr:type: button
+    - !tag:span/
+      - !attr:class:
+        - carousel-control-prev-icon
+    - !tag:span/
+      - !attr:class:
+        - visually-hidden
+      - Previous
+  - !tag:button/
+    - !attr:class:
+      - carousel-control-next
+    - !attr:data-bs-slide: next
+    - !attr:data-bs-target: '#bcl-carousel'
+    - !attr:type: button
+    - !tag:span/
+      - !attr:class:
+        - carousel-control-next-icon
+    - !tag:span/
+      - !attr:class:
+        - visually-hidden
+      - Next

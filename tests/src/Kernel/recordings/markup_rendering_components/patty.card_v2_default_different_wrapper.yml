@@ -1,0 +1,32 @@
+- !tag:aside/
+  - !attr:class:
+    - card
+    - v2
+  - !attr:data-drupal-selector: card-v2
+  - !tag:div/
+    - !attr:class:
+      - card-media
+    - !tag:img/
+      - !attr:alt: 'Alternative text for card image'
+      - !attr:src: 'https://picsum.photos/1000/500/'
+  - !tag:div/
+    - !attr:class:
+      - card-header
+    - !tag:p/
+      - 'Header content card'
+  - !tag:div/
+    - !attr:class:
+      - card-body
+    - !tag:div/
+      - !attr:class:
+        - card-title
+      - 'New title with '
+      - !tag:b/
+        - markup
+    - !tag:p/
+      - 'Body content card'
+  - !tag:div/
+    - !attr:class:
+      - card-footer
+    - !tag:p/
+      - 'Footer content card'

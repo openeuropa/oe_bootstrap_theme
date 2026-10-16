@@ -1,0 +1,9 @@
+- !tag:article/
+  - !attr:class:
+    - card
+    - v2
+  - !attr:data-drupal-selector: card-v2
+  - !tag:div/
+    - !attr:class:
+      - card-body
+    - 'Just a simple content.'

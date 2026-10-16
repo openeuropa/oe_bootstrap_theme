@@ -1,0 +1,15 @@
+- !tag:a/
+  - !attr:aria-disabled: 'true'
+  - !attr:class:
+    - disabled
+    - standalone
+  - !attr:data-drupal-selector: link
+  - !attr:href: 'https://example.com'
+  - !attr:tabindex: '-1'
+  - !tag:svg/
+    - !attr:class:
+      - bi
+      - icon--s
+    - !tag:use/
+      - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#lock'
+  - 'Link to link_pattern_with_all_settings_true'

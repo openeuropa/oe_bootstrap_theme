@@ -1,0 +1,44 @@
+- !tag:div/
+  - !attr:aria-hidden: 'true'
+  - !attr:aria-label: bcl-modalLabel
+  - !attr:class:
+    - fade
+    - modal
+  - !attr:id: bcl-modal
+  - !attr:tabindex: '-1'
+  - !tag:div/
+    - !attr:class:
+      - modal-dialog
+      - modal-fullscreen
+    - !tag:div/
+      - !attr:class:
+        - modal-content
+      - !tag:div/
+        - !attr:class:
+          - modal-header
+        - !tag:h5/
+          - 'Header text'
+        - !tag:button/
+          - !attr:aria-label: Close
+          - !attr:class:
+            - btn-close
+          - !attr:data-bs-dismiss: modal
+          - !attr:type: button
+      - !tag:div/
+        - !attr:class:
+          - modal-body
+        - 'Lorem Ipsum dolor sit amet'
+      - !tag:div/
+        - !attr:class:
+          - modal-footer
+        - 'Footer text'
+- !tag:button/
+  - !attr:aria-controls: bcl-modal
+  - !attr:class:
+    - btn
+    - btn-dark
+    - btn-md
+  - !attr:data-bs-target: '#bcl-modal'
+  - !attr:data-bs-toggle: modal
+  - !attr:type: button
+  - 'Open Modal'

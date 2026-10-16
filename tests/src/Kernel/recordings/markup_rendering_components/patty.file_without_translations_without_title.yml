@@ -1,0 +1,70 @@
+- !tag:div/
+  - !attr:class:
+    - bcl-file-container
+    - mt-4
+  - !tag:div/
+    - !attr:class:
+      - bcl-file
+      - border
+      - rounded
+    - !attr:data-drupal-selector: file
+    - !tag:div/
+      - !attr:class:
+        - px-3-5
+        - py-3
+      - !tag:div/
+        - !attr:class:
+          - d-md-flex
+        - !tag:div/
+          - !attr:class:
+            - pb-2
+            - pe-2
+          - !tag:svg/
+            - !attr:class:
+              - bi
+              - icon--2xl
+              - icon--file
+              - mt-1
+            - !tag:use/
+              - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#file-excel-fill'
+        - !tag:div/
+          - !attr:class:
+            - d-md-flex
+            - flex-grow-1
+          - !tag:div/
+            - !attr:class:
+              - flex-grow-1
+            - !tag:p/
+              - !attr:class:
+                - fs-5
+                - fw-medium
+                - m-0
+              - 'Foglio di calcolo'
+            - !tag:small/
+              - !attr:class:
+                - fw-medium
+                - m-0
+              - italiano
+              - !tag:span/
+                - !attr:class:
+                  - fw-normal
+                - ' (38.45 MB - XLS)'
+          - !tag:a/
+            - !attr:class:
+              - align-self-center
+              - d-inline-block
+              - flex-shrink-0
+              - mt-1
+              - mt-md-0
+              - standalone
+            - !attr:download: ''
+            - !attr:href: 'https://example.com/document.pdf'
+            - !attr:target: _blank
+            - Scarica
+            - !tag:svg/
+              - !attr:class:
+                - bi
+                - icon--fluid
+                - ms-2-5
+              - !tag:use/
+                - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#download'

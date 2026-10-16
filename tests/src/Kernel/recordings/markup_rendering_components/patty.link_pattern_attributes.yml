@@ -1,0 +1,8 @@
+- !tag:a/
+  - !attr:class:
+    - first
+    - second
+  - !attr:data-attribute: some-value
+  - !attr:href: 'https://example.com'
+  - !attr:id: link-id
+  - 'Link to example'

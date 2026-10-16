@@ -1,0 +1,29 @@
+- !tag:div/
+  - !attr:class:
+    - columns
+  - !attr:data-drupal-selector: columns
+  - !attr:style: '--columns-grid--column-count: 4;'
+  - !tag:div/
+    - !attr:class:
+      - columns__item
+    - 'Column 1'
+  - !tag:div/
+    - !attr:class:
+      - columns__item
+    - 'Column 2'
+  - !tag:div/
+    - !attr:class:
+      - columns__item
+    - 'Column 3'
+  - !tag:div/
+    - !attr:class:
+      - columns__item
+    - 'Column 4'
+  - !tag:div/
+    - !attr:class:
+      - columns__item
+    - 'Column 5'
+  - !tag:div/
+    - !attr:class:
+      - columns__item
+    - 'Column 6'

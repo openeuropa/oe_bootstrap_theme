@@ -1,0 +1,82 @@
+- !tag:h3/
+  - !attr:class:
+    - bcl-heading
+    - mb-4
+  - 'Title example'
+- !tag:ol/
+  - !attr:class:
+    - bcl-timeline
+  - !attr:data-drupal-selector: timeline
+  - !tag:li/
+    - !tag:p/
+      - !attr:class:
+        - fs-5
+        - fw-medium
+        - mb-1
+      - '13 September 2017'
+    - !tag:p/
+      - !attr:class:
+        - fs-6
+        - fw-medium
+        - mb-1
+      - 'Item 1'
+    - !tag:div/
+      - !tag:a/
+        - !attr:class:
+          - ecl-link
+        - !attr:href: /example
+        - 'Economic and Monetary Union package of proposals'
+  - !tag:li/
+    - !tag:p/
+      - !attr:class:
+        - fs-5
+        - fw-medium
+        - mb-1
+      - '28-29 September 2017'
+    - !tag:p/
+      - !attr:class:
+        - fs-6
+        - fw-medium
+        - mb-1
+      - 'Item 2'
+    - !tag:div/
+      - 'Lorem Ipsum 2'
+  - !tag:li/
+    - !tag:p/
+      - !attr:class:
+        - fs-5
+        - fw-medium
+        - mb-1
+    - !tag:div/
+      - 'Lorem Ipsum 3'
+  - !tag:li/
+    - !tag:p/
+      - !attr:class:
+        - fs-5
+        - fw-medium
+        - mb-1
+    - !tag:div/
+      - 'Lorem Ipsum 4'
+  - !tag:li/
+    - !tag:p/
+      - !attr:class:
+        - fs-5
+        - fw-medium
+        - mb-1
+    - !tag:div/
+      - 'Lorem Ipsum 5'
+  - !tag:li/
+    - !tag:p/
+      - !attr:class:
+        - fs-5
+        - fw-medium
+        - mb-1
+      - '6 February 2018'
+    - !tag:p/
+      - !attr:class:
+        - fs-6
+        - fw-medium
+        - mb-1
+      - 'Item 6'
+    - !tag:div/
+      - 'Lorem Ipsum 6'

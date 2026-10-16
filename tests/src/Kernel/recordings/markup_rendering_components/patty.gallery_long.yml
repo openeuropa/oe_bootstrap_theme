@@ -1,0 +1,849 @@
+- !tag:div/
+  - !attr:class:
+    - bcl-gallery
+  - !attr:data-drupal-selector: gallery
+  - !tag:div/
+    - !attr:class:
+      - bcl-gallery__thumbnails
+    - !tag:ul/
+      - !attr:class:
+        - bcl-gallery__grid
+      - !tag:li/
+        - !tag:a/
+          - !attr:class:
+            - bcl-gallery__item
+            - d-block
+            - img-fluid
+            - w-100
+          - !attr:data-bs-slide-to: '0'
+          - !attr:data-bs-target: '#carouselBcl-gallery'
+          - !attr:tabindex: '0'
+          - !tag:div/
+            - !attr:class:
+              - bcl-gallery__item-overlay
+            - !attr:data-bs-target: '#modalBcl-gallery'
+            - !attr:data-bs-toggle: modal
+            - !tag:span/
+              - !attr:class:
+                - bcl-gallery__item-play-icon
+              - !tag:svg/
+                - !attr:class:
+                  - bi
+                  - icon--s
+                - !tag:use/
+                  - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#play-fill'
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-caption
+              - !tag:div/
+                - !attr:class:
+                  - fs-5
+                - 'Bio-defence preparedness programme'
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-description
+                - 'Caption first item'
+          - !tag:img/
+            - !attr:alt: 'Example alt text'
+            - !attr:src: 'https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg'
+      - !tag:li/
+        - !tag:a/
+          - !attr:class:
+            - bcl-gallery__item
+            - d-block
+            - img-fluid
+            - w-100
+          - !attr:data-bs-slide-to: '1'
+          - !attr:data-bs-target: '#carouselBcl-gallery'
+          - !attr:tabindex: '0'
+          - !tag:div/
+            - !attr:class:
+              - bcl-gallery__item-overlay
+            - !attr:data-bs-target: '#modalBcl-gallery'
+            - !attr:data-bs-toggle: modal
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-caption
+              - !tag:div/
+                - !attr:class:
+                  - fs-5
+                - 'A picture of a cat'
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-description
+                - 'Cat image caption.'
+          - !tag:img/
+            - !attr:alt: 'Cat thumbnail alt'
+            - !attr:src: 'https://picsum.photos/id/10/400/300/'
+      - !tag:li/
+        - !tag:a/
+          - !attr:class:
+            - bcl-gallery__item
+            - d-block
+            - img-fluid
+            - w-100
+          - !attr:data-bs-slide-to: '2'
+          - !attr:data-bs-target: '#carouselBcl-gallery'
+          - !attr:tabindex: '0'
+          - !tag:div/
+            - !attr:class:
+              - bcl-gallery__item-overlay
+            - !attr:data-bs-target: '#modalBcl-gallery'
+            - !attr:data-bs-toggle: modal
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-caption
+              - !tag:div/
+                - !attr:class:
+                  - fs-5
+                - Lisbon
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-description
+                - 'Meanwhile in Lisbon, the capital of Portugal'
+          - !tag:img/
+            - !attr:alt: 'Lisbon thumbnail alt'
+            - !attr:src: 'https://picsum.photos/id/15/400/300/'
+      - !tag:li/
+        - !tag:a/
+          - !attr:class:
+            - bcl-gallery__item
+            - d-block
+            - img-fluid
+            - w-100
+          - !attr:data-bs-slide-to: '3'
+          - !attr:data-bs-target: '#carouselBcl-gallery'
+          - !attr:tabindex: '0'
+          - !tag:div/
+            - !attr:class:
+              - bcl-gallery__item-overlay
+            - !attr:data-bs-target: '#modalBcl-gallery'
+            - !attr:data-bs-toggle: modal
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-caption
+              - !tag:div/
+                - !attr:class:
+                  - fs-5
+                - Kiev
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-description
+                - 'Meanwhile in Kiev, the capital of Ukraine'
+          - !tag:img/
+            - !attr:alt: 'Kiev thumbnail alt'
+            - !attr:src: 'https://picsum.photos/id/16/400/300/'
+      - !tag:li/
+        - !tag:a/
+          - !attr:class:
+            - bcl-gallery__item
+            - d-block
+            - img-fluid
+            - w-100
+          - !attr:data-bs-slide-to: '4'
+          - !attr:data-bs-target: '#carouselBcl-gallery'
+          - !attr:tabindex: '0'
+          - !tag:div/
+            - !attr:class:
+              - bcl-gallery__item-overlay
+            - !attr:data-bs-target: '#modalBcl-gallery'
+            - !attr:data-bs-toggle: modal
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-caption
+              - !tag:div/
+                - !attr:class:
+                  - fs-5
+                - Paris
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-description
+                - 'Meanwhile in Paris, the capital of France'
+          - !tag:img/
+            - !attr:alt: 'Paris thumbnail alt'
+            - !attr:src: 'https://picsum.photos/id/17/400/300/'
+    - !tag:div/
+      - !attr:class:
+        - bcl-gallery__thumbnails-collaspe
+        - collapse
+      - !attr:id: collapseBcl-gallery
+      - !tag:ul/
+        - !attr:class:
+          - bcl-gallery__grid
+        - !tag:li/
+          - !tag:a/
+            - !attr:class:
+              - bcl-gallery__item
+              - d-block
+              - img-fluid
+              - w-100
+            - !attr:data-bs-slide-to: '5'
+            - !attr:data-bs-target: '#carouselBcl-gallery'
+            - !attr:tabindex: '0'
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-overlay
+              - !attr:data-bs-target: '#modalBcl-gallery'
+              - !attr:data-bs-toggle: modal
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-caption
+                - !tag:div/
+                  - !attr:class:
+                    - fs-5
+                  - Rome
+                - !tag:div/
+                  - !attr:class:
+                    - bcl-gallery__item-description
+                  - 'Meanwhile in Rome, the capital of Italy'
+            - !tag:img/
+              - !attr:alt: 'Rome thumbnail alt'
+              - !attr:src: 'https://picsum.photos/id/18/400/300/'
+        - !tag:li/
+          - !tag:a/
+            - !attr:class:
+              - bcl-gallery__item
+              - d-block
+              - img-fluid
+              - w-100
+            - !attr:data-bs-slide-to: '6'
+            - !attr:data-bs-target: '#carouselBcl-gallery'
+            - !attr:tabindex: '0'
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-overlay
+              - !attr:data-bs-target: '#modalBcl-gallery'
+              - !attr:data-bs-toggle: modal
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-caption
+                - !tag:div/
+                  - !attr:class:
+                    - fs-5
+                  - Spain
+                - !tag:div/
+                  - !attr:class:
+                    - bcl-gallery__item-description
+                  - 'Meanwhile in Madrid, the capital of Spain'
+            - !tag:img/
+              - !attr:alt: 'Madrid thumbnail alt'
+              - !attr:src: 'https://picsum.photos/id/19/400/300/'
+        - !tag:li/
+          - !tag:a/
+            - !attr:class:
+              - bcl-gallery__item
+              - d-block
+              - img-fluid
+              - w-100
+            - !attr:data-bs-slide-to: '7'
+            - !attr:data-bs-target: '#carouselBcl-gallery'
+            - !attr:tabindex: '0'
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-overlay
+              - !attr:data-bs-target: '#modalBcl-gallery'
+              - !attr:data-bs-toggle: modal
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-caption
+                - !tag:div/
+                  - !attr:class:
+                    - fs-5
+                  - Brussels
+                - !tag:div/
+                  - !attr:class:
+                    - bcl-gallery__item-description
+                  - 'Meanwhile in Brussels, the capital of Belgium'
+            - !tag:img/
+              - !attr:alt: 'Brussels thumbnail alt'
+              - !attr:src: 'https://picsum.photos/id/20/400/300/'
+        - !tag:li/
+          - !tag:a/
+            - !attr:class:
+              - bcl-gallery__item
+              - d-block
+              - img-fluid
+              - w-100
+            - !attr:data-bs-slide-to: '8'
+            - !attr:data-bs-target: '#carouselBcl-gallery'
+            - !attr:tabindex: '0'
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-overlay
+              - !attr:data-bs-target: '#modalBcl-gallery'
+              - !attr:data-bs-toggle: modal
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-caption
+                - !tag:div/
+                  - !attr:class:
+                    - fs-5
+                  - Budapest
+                - !tag:div/
+                  - !attr:class:
+                    - bcl-gallery__item-description
+                  - 'Meanwhile in Budapest, the capital of Hungary'
+            - !tag:img/
+              - !attr:alt: 'Budapest thumbnail alt'
+              - !attr:src: 'https://picsum.photos/id/21/400/300/'
+        - !tag:li/
+          - !tag:a/
+            - !attr:class:
+              - bcl-gallery__item
+              - d-block
+              - img-fluid
+              - w-100
+            - !attr:data-bs-slide-to: '9'
+            - !attr:data-bs-target: '#carouselBcl-gallery'
+            - !attr:tabindex: '0'
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-overlay
+              - !attr:data-bs-target: '#modalBcl-gallery'
+              - !attr:data-bs-toggle: modal
+              - !tag:span/
+                - !attr:class:
+                  - bcl-gallery__item-play-icon
+                - !tag:svg/
+                  - !attr:class:
+                    - bi
+                    - icon--s
+                  - !tag:use/
+                    - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#play-fill'
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-caption
+                - !tag:div/
+                  - !attr:class:
+                    - fs-5
+                  - 'Safer electric vehicles - through harmonised test procedures for battery technology'
+            - !tag:img/
+              - !attr:alt: 'YouTube thumbnail alt'
+              - !attr:src: 'https://picsum.photos/400/300'
+      - !tag:ul/
+        - !attr:class:
+          - bcl-gallery__grid
+        - !tag:li/
+          - !tag:a/
+            - !attr:class:
+              - bcl-gallery__item
+              - d-block
+              - img-fluid
+              - w-100
+            - !attr:data-bs-slide-to: '10'
+            - !attr:data-bs-target: '#carouselBcl-gallery'
+            - !attr:tabindex: '0'
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-overlay
+              - !attr:data-bs-target: '#modalBcl-gallery'
+              - !attr:data-bs-toggle: modal
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-caption
+                - !tag:div/
+                  - !attr:class:
+                    - fs-5
+                  - Stockholm
+                - !tag:div/
+                  - !attr:class:
+                    - bcl-gallery__item-description
+                  - 'Meanwhile in Stockholm, the capital of Sweden'
+            - !tag:img/
+              - !attr:alt: 'Stockholm thumbnail alt'
+              - !attr:src: 'https://picsum.photos/id/22/400/300/'
+        - !tag:li/
+          - !tag:a/
+            - !attr:class:
+              - bcl-gallery__item
+              - d-block
+              - img-fluid
+              - w-100
+            - !attr:data-bs-slide-to: '11'
+            - !attr:data-bs-target: '#carouselBcl-gallery'
+            - !attr:tabindex: '0'
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-overlay
+              - !attr:data-bs-target: '#modalBcl-gallery'
+              - !attr:data-bs-toggle: modal
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-caption
+                - !tag:div/
+                  - !attr:class:
+                    - fs-5
+                  - Helsinki
+                - !tag:div/
+                  - !attr:class:
+                    - bcl-gallery__item-description
+                  - 'Meanwhile in Helsinki, the capital of Finland'
+            - !tag:img/
+              - !attr:alt: 'Helsinki thumbnail alt'
+              - !attr:src: 'https://picsum.photos/id/23/400/300/'
+        - !tag:li/
+          - !tag:a/
+            - !attr:class:
+              - bcl-gallery__item
+              - d-block
+              - img-fluid
+              - w-100
+            - !attr:data-bs-slide-to: '12'
+            - !attr:data-bs-target: '#carouselBcl-gallery'
+            - !attr:tabindex: '0'
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-overlay
+              - !attr:data-bs-target: '#modalBcl-gallery'
+              - !attr:data-bs-toggle: modal
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-caption
+                - !tag:div/
+                  - !attr:class:
+                    - fs-5
+                  - Tallinn
+                - !tag:div/
+                  - !attr:class:
+                    - bcl-gallery__item-description
+                  - 'Meanwhile in Tallinn, the capital of Estonia'
+            - !tag:img/
+              - !attr:alt: 'Tallinn thumbnail alt'
+              - !attr:src: 'https://picsum.photos/id/24/400/300/'
+        - !tag:li/
+          - !tag:a/
+            - !attr:class:
+              - bcl-gallery__item
+              - d-block
+              - img-fluid
+              - w-100
+            - !attr:data-bs-slide-to: '13'
+            - !attr:data-bs-target: '#carouselBcl-gallery'
+            - !attr:tabindex: '0'
+            - !tag:div/
+              - !attr:class:
+                - bcl-gallery__item-overlay
+              - !attr:data-bs-target: '#modalBcl-gallery'
+              - !attr:data-bs-toggle: modal
+              - !tag:div/
+                - !attr:class:
+                  - bcl-gallery__item-caption
+                - !tag:div/
+                  - !attr:class:
+                    - fs-5
+                  - Vilnius
+                - !tag:div/
+                  - !attr:class:
+                    - bcl-gallery__item-description
+                  - 'Meanwhile in Vilnius, the capital of Lithuania'
+            - !tag:img/
+              - !attr:alt: 'Vilnius thumbnail alt'
+              - !attr:src: 'https://picsum.photos/id/25/400/300/'
+    - !tag:div/
+      - !attr:class:
+        - bg-lighter
+        - mt-2
+        - px-4
+        - py-3
+        - rounded
+        - text-center
+      - !tag:a/
+        - !attr:aria-controls: collapseBcl-gallery
+        - !attr:aria-expanded: 'false'
+        - !attr:class:
+          - bcl-gallery__collapse
+          - d-none
+          - d-sm-inline-block
+          - standalone
+        - !attr:data-bs-toggle: collapse
+        - !attr:href: '#collapseBcl-gallery'
+        - !attr:role: button
+        - !tag:span/
+          - !attr:class:
+            - label-collapsed
+          - 'View the full gallery (14)'
+        - !tag:span/
+          - !attr:class:
+            - label-expanded
+          - 'View less'
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--2xs
+            - ms-2-5
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#caret-down-fill'
+      - !tag:a/
+        - !attr:class:
+          - bcl-gallery__mobile-view-more
+          - d-inline-block
+          - d-sm-none
+          - standalone
+        - !attr:data-bs-slide-to: '4'
+        - !attr:data-bs-target: '#carouselBcl-gallery'
+        - !attr:href: '#'
+        - !attr:role: button
+        - !tag:span/
+          - !attr:data-bs-target: '#modalBcl-gallery'
+          - !attr:data-bs-toggle: modal
+          - !tag:span/
+            - !attr:class:
+              - label-collapsed
+            - 'View the full gallery (14)'
+          - !tag:svg/
+            - !attr:class:
+              - bi
+              - icon--2xs
+              - ms-2-5
+            - !tag:use/
+              - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#caret-down-fill'
+          - !tag:span/
+            {  }
+  - !tag:div/
+    - !attr:aria-hidden: 'true'
+    - !attr:aria-labelledby: modalBcl-gallery
+    - !attr:class:
+      - modal
+    - !attr:data-bs-backdrop: 'false'
+    - !attr:id: modalBcl-gallery
+    - !attr:tabindex: '-1'
+    - !tag:div/
+      - !attr:class:
+        - modal-dialog
+        - modal-dialog-centered
+        - modal-fullscreen
+      - !tag:div/
+        - !attr:class:
+          - modal-content
+        - !tag:div/
+          - !attr:class:
+            - border-0
+            - justify-content-between
+            - modal-header
+          - !tag:div/
+            - !attr:class:
+              - carousel-pager
+            - !tag:span/
+              - '1'
+            - ' / 14'
+          - !tag:div/
+            - !attr:class:
+              - modal-close
+            - !tag:button/
+              - !attr:aria-label: Close
+              - !attr:class:
+                - btn-close
+              - !attr:data-bs-dismiss: modal
+              - !attr:type: button
+        - !tag:div/
+          - !attr:class:
+            - align-items-center
+            - d-flex
+            - justify-content-center
+            - modal-body
+          - !tag:div/
+            - !attr:class:
+              - carousel
+              - slide
+            - !attr:id: carouselBcl-gallery
+            - !tag:div/
+              - !attr:class:
+                - carousel-inner
+              - !tag:div/
+                - !attr:class:
+                  - active
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:video/
+                    - !attr:controls: ''
+                    - !attr:poster: 'https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg'
+                    - !tag:source/
+                      - !attr:src: 'https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4'
+                      - !attr:type: video/mp4
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Cat media image alt'
+                    - !attr:data-src: 'https://picsum.photos/id/10/800/600/'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - 'A picture of a cat'
+                    - 'Cat image caption.'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Lisbon image media alt'
+                    - !attr:data-src: 'https://picsum.photos/id/15/800/600/'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - Lisbon
+                    - 'Meanwhile in Lisbon, the capital of Portugal'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Kiev image media alt'
+                    - !attr:class:
+                      - img-fluid
+                    - !attr:data-src: 'https://picsum.photos/id/16/800/600/'
+                    - !attr:title: 'Kiev image media title'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - Kiev
+                    - 'Meanwhile in Kiev, the capital of Ukraine'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Paris image media alt'
+                    - !attr:data-src: 'https://picsum.photos/id/17/800/600/'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - Paris
+                    - 'Meanwhile in Paris, the capital of France'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Rome image media alt'
+                    - !attr:data-src: 'https://picsum.photos/id/18/800/600/'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - Rome
+                    - 'Meanwhile in Rome, the capital of Italy'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Madrid image media alt'
+                    - !attr:data-src: 'https://picsum.photos/id/19/800/600/'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - Spain
+                    - 'Meanwhile in Madrid, the capital of Spain'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Brussels image media alt'
+                    - !attr:data-src: 'https://picsum.photos/id/20/800/600/'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - Brussels
+                    - 'Meanwhile in Brussels, the capital of Belgium'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Budapest image media alt'
+                    - !attr:data-src: 'https://picsum.photos/id/21/800/600/'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - Budapest
+                    - 'Meanwhile in Budapest, the capital of Hungary'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:iframe/
+                    - !attr:allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                    - !attr:allowfullscreen: ''
+                    - !attr:caption_title: 'YouTube video player'
+                    - !attr:data-src: 'https://www.youtube.com/embed/Ty5axPlgMuk'
+                    - !attr:frameborder: '0'
+                    - !attr:height: '315'
+                    - !attr:width: '560'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Stockholm image media alt'
+                    - !attr:data-src: 'https://picsum.photos/id/22/800/600/'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - Stockholm
+                    - 'Meanwhile in Stockholm, the capital of Sweden'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Helsinki image media alt'
+                    - !attr:data-src: 'https://picsum.photos/id/23/800/600/'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - Helsinki
+                    - 'Meanwhile in Helsinki, the capital of Finland'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Tallinn image media alt'
+                    - !attr:data-src: 'https://picsum.photos/id/24/800/600/'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - Tallinn
+                    - 'Meanwhile in Tallinn, the capital of Estonia'
+              - !tag:div/
+                - !attr:class:
+                  - carousel-item
+                - !tag:figure/
+                  - !attr:class:
+                    - h-100
+                    - m-0
+                  - !tag:img/
+                    - !attr:alt: 'Vilnius image media alt'
+                    - !attr:data-src: 'https://picsum.photos/id/25/800/600/'
+                  - !tag:div/
+                    - !attr:class:
+                      - carousel-caption
+                      - d-md-block
+                      - d-none
+                    - !tag:div/
+                      - !attr:class:
+                        - fs-5
+                      - Vilnius
+                    - 'Meanwhile in Vilnius, the capital of Lithuania'
+            - !tag:button/
+              - !attr:class:
+                - carousel-control-prev
+              - !attr:data-bs-slide: prev
+              - !attr:data-bs-target: '#carouselBcl-gallery'
+              - !attr:type: button
+              - !tag:span/
+                - !attr:class:
+                  - carousel-control-prev-icon
+              - !tag:span/
+                - !attr:class:
+                  - visually-hidden
+                - Previous
+            - !tag:button/
+              - !attr:class:
+                - carousel-control-next
+              - !attr:data-bs-slide: next
+              - !attr:data-bs-target: '#carouselBcl-gallery'
+              - !attr:type: button
+              - !tag:span/
+                - !attr:class:
+                  - carousel-control-next-icon
+              - !tag:span/
+                - !attr:class:
+                  - visually-hidden
+                - Next

@@ -1,0 +1,25 @@
+- !tag:label/
+  - !attr:class:
+    - progress-bar-label
+  - 'Progress label'
+- !tag:div/
+  - !attr:class:
+    - progress
+  - !attr:data-drupal-selector: progress
+  - !tag:div/
+    - !attr:aria-label: '60'
+    - !attr:aria-valuemax: '90'
+    - !attr:aria-valuemin: '10'
+    - !attr:aria-valuenow: '60'
+    - !attr:class:
+      - progress-bar
+      - text-bg-light
+    - !attr:role: progressbar
+    - !attr:style: 'width: 60%'
+    - 'Bar label'
+- !tag:small/
+  - !attr:class:
+    - form-text
+    - progress-bar-message
+    - text-muted
+  - 'Progress bar description'

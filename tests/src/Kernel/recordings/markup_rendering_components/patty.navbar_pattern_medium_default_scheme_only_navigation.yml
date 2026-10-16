@@ -1,0 +1,32 @@
+- !tag:nav/
+  - !attr:class:
+    - bg-light
+    - navbar
+    - navbar-expand-lg
+    - navbar-light
+  - !attr:data-drupal-selector: navbar
+  - !tag:div/
+    - !attr:class:
+      - container
+    - !tag:button/
+      - !attr:aria-controls: bcl-navbar
+      - !attr:aria-expanded: 'false'
+      - !attr:aria-label: 'Toggle navigation'
+      - !attr:class:
+        - navbar-toggler
+      - !attr:data-bs-target: '#bcl-navbar'
+      - !attr:data-bs-toggle: collapse
+      - !attr:type: button
+      - !tag:span/
+        - !attr:class:
+          - navbar-toggler-icon
+    - !tag:div/
+      - !attr:class:
+        - collapse
+        - navbar-collapse
+      - !attr:id: bcl-navbar
+      - !tag:a/
+        - !attr:class:
+          - nav-link
+        - !attr:href: '#first'
+        - "I'm a link"

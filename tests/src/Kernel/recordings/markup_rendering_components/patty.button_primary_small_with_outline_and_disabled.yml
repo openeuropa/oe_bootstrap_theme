@@ -1,0 +1,10 @@
+- !tag:button/
+  - !attr:aria-disabled: 'true'
+  - !attr:class:
+    - btn
+    - btn-outline-primary
+    - btn-sm
+  - !attr:data-drupal-selector: button
+  - !attr:disabled: disabled
+  - !attr:type: button
+  - 'Button label'

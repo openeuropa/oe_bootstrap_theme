@@ -1,0 +1,25 @@
+- !tag:div/
+  - !attr:class:
+    - bcl-featured-media
+  - !attr:data-drupal-selector: featured-media
+  - !tag:div/
+    - !attr:class:
+      - row
+    - !tag:div/
+      - !attr:class:
+        - col-12
+        - col-md-6
+        - order-1
+      - !tag:h2/
+        - !attr:class:
+          - text-secondary
+        - 'Subtitle Here'
+    - !tag:div/
+      - !attr:class:
+        - col-12
+        - col-md-6
+        - order-2
+      - !tag:figure/
+        - !attr:class:
+          - overflow-hidden
+          - rounded

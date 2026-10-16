@@ -1,0 +1,18 @@
+- !tag:a/
+  - !attr:class:
+    - badge
+    - rounded-pill
+    - text-bg-secondary
+  - !attr:data-drupal-selector: badge
+  - !attr:href: 'https://example.com'
+  - 'A simple badge!'
+  - !tag:span/
+    - !attr:aria-hidden: 'true'
+    - !attr:class:
+      - icon--close
+    - !tag:svg/
+      - !attr:class:
+        - bi
+        - icon--xs
+      - !tag:use/
+        - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#x-circle-fill'

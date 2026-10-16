@@ -1,0 +1,111 @@
+- !tag:h4/
+  - !attr:class:
+    - bcl-heading
+    - mb-4
+  - 'The description list title'
+- !tag:dl/
+  - !attr:class:
+    - bcl-description-list
+  - !attr:data-drupal-selector: description-list
+  - !tag:div/
+    - !attr:class:
+      - mb-3
+    - !tag:dt/
+      - !tag:div/
+        - !attr:class:
+          - d-flex
+        - !tag:svg/
+          - !attr:class:
+            - align-self-center
+            - bi
+            - flex-shrink-0
+            - icon--xs
+            - me-2
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#geo-alt-fill'
+        - !tag:div/
+          - 'Single label with icon'
+    - !tag:dd/
+      - !tag:div/
+        - 'Description of first term text goes here.'
+  - !tag:div/
+    - !attr:class:
+      - mb-3
+    - !tag:dt/
+      - !tag:div/
+        - !attr:class:
+          - d-flex
+        - !tag:div/
+          - 'First label without icon'
+    - !tag:dt/
+      - !tag:div/
+        - !attr:class:
+          - d-flex
+        - !tag:svg/
+          - !attr:class:
+            - align-self-center
+            - bi
+            - flex-shrink-0
+            - icon--xs
+            - me-2
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#calendar-event'
+        - !tag:div/
+          - 'Second label with icon'
+    - !tag:dd/
+      - !tag:div/
+        - 'Description of second term text goes here.'
+  - !tag:div/
+    - !attr:class:
+      - mb-3
+    - !tag:dt/
+      - !tag:div/
+        - !attr:class:
+          - d-flex
+        - !tag:div/
+          - 'A label with '
+          - !tag:em/
+            - some
+          - ' markup.'
+    - !tag:dd/
+      - !tag:div/
+        - !tag:p/
+          - !attr:class:
+            - mb-2
+          - 'First line description of third term text goes here.'
+    - !tag:dd/
+      - !tag:div/
+        - 'Second line description of third term text goes here.'
+  - !tag:div/
+    - !attr:class:
+      - mb-3
+    - !tag:dt/
+      - !tag:div/
+        - !attr:class:
+          - d-flex
+        - !tag:svg/
+          - !attr:class:
+            - align-self-center
+            - bi
+            - flex-shrink-0
+            - icon--xl
+            - me-2
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#bicycle'
+        - !tag:div/
+          - 'Custom icon size'
+    - !tag:dd/
+      - !tag:div/
+        - 'This is a bigger icon.'
+  - !tag:div/
+    - !attr:class:
+      - mb-3
+    - !tag:dt/
+      - !tag:div/
+        - !attr:class:
+          - d-flex
+        - !tag:div/
+          - 'A single term without icon.'
+    - !tag:dd/
+      - !tag:div/
+        - 'Yet another definition text.'

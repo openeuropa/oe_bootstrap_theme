@@ -1,0 +1,48 @@
+- !tag:div/
+  - !attr:class:
+    - card
+    - card-class
+    - horizontal
+    - v2
+  - !attr:data-card-attribute: card-attr-value
+  - !attr:data-drupal-selector: card-v2
+  - !attr:id: card-id
+  - !tag:div/
+    - !attr:class:
+      - card-media
+      - media-class
+    - !attr:data-media-attribute: media-attr-value
+    - !attr:id: media-id
+    - !tag:img/
+      - !attr:alt: 'Alternative text for card image'
+      - !attr:src: 'https://picsum.photos/1000/500/'
+  - !tag:div/
+    - !attr:class:
+      - card-header
+      - header-class
+    - !attr:data-header-attribute: header-attr-value
+    - !attr:id: header-id
+    - !tag:p/
+      - 'Header content card'
+  - !tag:div/
+    - !attr:class:
+      - card-body
+      - content-class
+    - !attr:data-content-attribute: content-attr-value
+    - !attr:id: content-id
+    - !tag:div/
+      - !attr:class:
+        - card-title
+      - 'New title with '
+      - !tag:b/
+        - markup
+    - !tag:p/
+      - 'Body content card'
+  - !tag:div/
+    - !attr:class:
+      - card-footer
+      - footer-class
+    - !attr:data-footer-attribute: footer-attr-value
+    - !attr:id: footer-id
+    - !tag:p/
+      - 'Footer content card'

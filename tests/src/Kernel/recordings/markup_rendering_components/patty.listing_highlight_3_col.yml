@@ -1,0 +1,373 @@
+- !tag:div/
+  - !attr:class:
+    - bcl-listing
+    - bcl-listing--highlight-3-col
+    - text-break
+  - !attr:data-drupal-selector: listing
+  - !tag:h2/
+    - !attr:class:
+      - bcl-heading
+      - mb-4
+    - 'Listing item block title'
+  - !tag:div/
+    - !attr:class:
+      - g-4
+      - row
+      - row-cols-1
+      - row-cols-md-3
+    - !tag:div/
+      - !attr:class:
+        - col
+      - !tag:article/
+        - !attr:class:
+          - bg-lighter
+          - border-0
+          - card
+          - h-100
+          - listing-item--highlight
+          - rounded-2
+        - !tag:figure/
+          - !attr:class:
+            - bcl-card__image-wrapper
+            - m-0
+          - !tag:img/
+            - !attr:alt: 'alt img'
+            - !attr:class:
+              - card-img-top
+              - mb-3
+            - !attr:src: 'https://picsum.photos/600/400/people'
+        - !tag:div/
+          - !attr:class:
+            - card-body
+            - pt-0
+          - !tag:div/
+            - !attr:class:
+              - bcl-heading
+              - card-title
+              - h5
+            - !tag:a/
+              - !attr:class:
+                - standalone
+              - !attr:href: /example1
+              - 'Card title 1'
+          - !tag:div/
+            - !attr:class:
+              - card-text
+              - mb-2
+            - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut ex tristique, dignissim sem ac, bibendum est. Sed vehicula lorem non nunc tincidunt hendrerit. Nunc tristique ante et fringilla fermentum.'
+          - !tag:div/
+            - !tag:span/
+              - !attr:class:
+                - d-block
+                - d-md-inline
+                - mb-2
+                - mb-md-0
+                - me-4
+                - text-muted
+              - Article
+            - ' '
+            - !tag:span/
+              - !attr:class:
+                - d-block
+                - d-md-inline
+                - mb-2
+                - mb-md-0
+                - text-muted
+              - '17 October 2019'
+    - !tag:div/
+      - !attr:class:
+        - col
+      - !tag:article/
+        - !attr:class:
+          - bg-lighter
+          - border-0
+          - card
+          - h-100
+          - listing-item--highlight
+          - rounded-2
+        - !tag:div/
+          - !attr:class:
+            - card-body
+          - !tag:div/
+            - !attr:class:
+              - bcl-heading
+              - card-title
+              - h5
+            - !tag:a/
+              - !attr:class:
+                - standalone
+              - !attr:href: /example2
+              - 'Card title 2'
+          - !tag:div/
+            - !attr:class:
+              - card-text
+              - mb-2
+            - 'Pellentesque ut tristique purus, quis viverra erat. Mauris tincidunt placerat nisl eget consectetur. Morbi malesuada augue nisl, in faucibus odio ultricies elementum. Fusce eu tempor diam, sollicitudin pretium libero.'
+          - !tag:div/
+            - !tag:span/
+              - !attr:class:
+                - d-block
+                - d-md-inline
+                - mb-2
+                - mb-md-0
+                - me-4
+                - text-muted
+              - Article
+            - ' '
+            - !tag:span/
+              - !attr:class:
+                - d-block
+                - d-md-inline
+                - mb-2
+                - mb-md-0
+                - text-muted
+              - '21 October 2019'
+    - !tag:div/
+      - !attr:class:
+        - col
+      - !tag:article/
+        - !attr:class:
+          - bg-lighter
+          - border-0
+          - card
+          - h-100
+          - listing-item--highlight
+          - rounded-2
+        - !tag:figure/
+          - !attr:class:
+            - bcl-card__image-wrapper
+            - m-0
+          - !tag:img/
+            - !attr:alt: 'alt img'
+            - !attr:class:
+              - card-img-top
+              - mb-3
+            - !attr:src: 'https://picsum.photos/600/400/nature/sepia'
+        - !tag:div/
+          - !attr:class:
+            - card-body
+            - pt-0
+          - !tag:div/
+            - !attr:class:
+              - bcl-heading
+              - card-title
+              - h5
+            - !tag:a/
+              - !attr:class:
+                - standalone
+              - !attr:href: /example3
+              - 'Card title 3'
+          - !tag:div/
+            - !attr:class:
+              - card-text
+              - mb-2
+            - 'Phasellus mi nulla, lobortis tempus sem ac, sodales hendrerit mi. Cras mauris dui, aliquet non tellus vel, dignissim suscipit ligula. Donec posuere eu neque nec venenatis.'
+          - !tag:div/
+            - !tag:span/
+              - !attr:class:
+                - d-block
+                - d-md-inline
+                - mb-2
+                - mb-md-0
+                - me-4
+                - text-muted
+              - Article
+            - ' '
+            - !tag:span/
+              - !attr:class:
+                - d-block
+                - d-md-inline
+                - mb-2
+                - mb-md-0
+                - text-muted
+              - '22 October 2019'
+    - !tag:div/
+      - !attr:class:
+        - col
+      - !tag:article/
+        - !attr:class:
+          - bg-lighter
+          - border-0
+          - card
+          - h-100
+          - listing-item--highlight
+          - rounded-2
+        - !tag:figure/
+          - !attr:class:
+            - bcl-card__image-wrapper
+            - m-0
+          - !tag:img/
+            - !attr:alt: 'alt img'
+            - !attr:class:
+              - card-img-top
+              - mb-3
+            - !attr:src: 'https://picsum.photos/600/400/nature'
+        - !tag:div/
+          - !attr:class:
+            - card-body
+            - pt-0
+          - !tag:div/
+            - !attr:class:
+              - bcl-heading
+              - card-title
+              - h5
+            - !tag:a/
+              - !attr:class:
+                - standalone
+              - !attr:href: /example4
+              - 'Card title 4'
+          - !tag:div/
+            - !attr:class:
+              - card-text
+              - mb-2
+            - 'Proin vitae diam efficitur, suscipit enim vehicula, malesuada massa. Aenean hendrerit lectus quis ex vestibulum, quis tempor urna congue. Phasellus luctus felis dui, eu eleifend nisl viverra vel.'
+          - !tag:div/
+            - !tag:span/
+              - !attr:class:
+                - d-block
+                - d-md-inline
+                - mb-2
+                - mb-md-0
+                - me-4
+                - text-muted
+              - Article
+            - ' '
+            - !tag:span/
+              - !attr:class:
+                - d-block
+                - d-md-inline
+                - mb-2
+                - mb-md-0
+                - text-muted
+              - '1 November 2019'
+    - !tag:div/
+      - !attr:class:
+        - col
+      - !tag:article/
+        - !attr:class:
+          - bg-lighter
+          - border-0
+          - card
+          - h-100
+          - listing-item--highlight
+          - rounded-2
+        - !tag:figure/
+          - !attr:class:
+            - bcl-card__image-wrapper
+            - m-0
+          - !tag:img/
+            - !attr:alt: 'alt img'
+            - !attr:class:
+              - card-img-top
+              - mb-3
+            - !attr:src: 'https://picsum.photos/600/400/people/sepia'
+        - !tag:div/
+          - !attr:class:
+            - card-body
+            - pt-0
+          - !tag:div/
+            - !attr:class:
+              - bcl-heading
+              - card-title
+              - h5
+            - !tag:a/
+              - !attr:class:
+                - standalone
+              - !attr:href: /example5
+              - 'Card title 5'
+          - !tag:div/
+            - !attr:class:
+              - card-text
+              - mb-2
+            - 'Mauris hendrerit erat eget arcu aliquet tincidunt. Aliquam et massa egestas, mollis sapien at, euismod risus. Vivamus lacinia lacus sapien, ut imperdiet purus vehicula quis.'
+          - !tag:div/
+            - !tag:span/
+              - !attr:class:
+                - d-block
+                - d-md-inline
+                - mb-2
+                - mb-md-0
+                - me-4
+                - text-muted
+              - Article
+            - ' '
+            - !tag:span/
+              - !attr:class:
+                - d-block
+                - d-md-inline
+                - mb-2
+                - mb-md-0
+                - text-muted
+              - '17 November 2019'
+    - !tag:div/
+      - !attr:class:
+        - col
+      - !tag:article/
+        - !attr:class:
+          - bg-lighter
+          - border-0
+          - card
+          - h-100
+          - listing-item--highlight
+          - rounded-2
+        - !tag:figure/
+          - !attr:class:
+            - bcl-card__image-wrapper
+            - m-0
+          - !tag:img/
+            - !attr:alt: 'alt img'
+            - !attr:class:
+              - card-img-top
+              - mb-3
+            - !attr:src: 'https://picsum.photos/600/400/animals'
+        - !tag:div/
+          - !attr:class:
+            - card-body
+            - pt-0
+          - !tag:div/
+            - !attr:class:
+              - bcl-heading
+              - card-title
+              - h5
+            - !tag:a/
+              - !attr:class:
+                - standalone
+              - !attr:href: /example6
+              - 'Card title 6'
+          - !tag:div/
+            - !attr:class:
+              - card-text
+              - mb-2
+            - 'Aliquam pulvinar vel dui sed luctus. Vestibulum non nulla sit amet odio ultricies blandit. Nunc vehicula eros nunc, ut commodo diam pretium id.'
+          - !tag:div/
+            - !tag:span/
+              - !attr:class:
+                - d-block
+                - d-md-inline
+                - mb-2
+                - mb-md-0
+                - me-4
+                - text-muted
+              - Article
+            - ' '
+            - !tag:span/
+              - !attr:class:
+                - d-block
+                - d-md-inline
+                - mb-2
+                - mb-md-0
+                - text-muted
+              - '18 November 2019'
+  - !tag:a/
+    - !attr:class:
+      - d-inline-block
+      - mt-3-5
+    - !attr:href: 'http://link-1.com'
+    - 'European Commission'
+    - !tag:svg/
+      - !attr:class:
+        - bi
+        - icon--xs
+        - ms-2-5
+      - !tag:use/
+        - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-right'

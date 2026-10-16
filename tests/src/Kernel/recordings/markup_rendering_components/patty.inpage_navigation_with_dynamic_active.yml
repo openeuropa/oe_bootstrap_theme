@@ -1,0 +1,85 @@
+- !tag:div/
+  - !attr:class:
+    - row
+  - !tag:div/
+    - !attr:class:
+      - bcl-sidebar
+      - col-md-3
+    - !tag:nav/
+      - !attr:aria-labelledby: bcl-inpage-navigation-dropdown
+      - !attr:class:
+        - bcl-inpage-navigation
+        - dynamic-active
+        - position-sticky
+      - !attr:id: bcl-inpage-navigation
+      - !tag:button/
+        - !attr:aria-expanded: 'false'
+        - !attr:class:
+          - d-md-none
+          - dropdown-toggle
+          - h2
+        - !attr:data-bs-toggle: dropdown
+        - !attr:id: bcl-inpage-navigation-dropdown
+        - !attr:type: button
+        - 'Page content'
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--s
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-down'
+      - !tag:h2/
+        - !attr:class:
+          - bcl-heading
+          - d-md-block
+          - d-none
+          - mb-0
+        - 'Page content'
+      - !tag:div/
+        - !attr:class:
+          - dropdown-menu
+        - !tag:ul/
+          - !attr:class:
+            - flex-column
+            - nav
+            - nav-pills
+          - !tag:li/
+            - !attr:class:
+              - nav-item
+            - !tag:a/
+              - !attr:class:
+                - nav-link
+              - !attr:href: '#item-1'
+              - 'Heading 1'
+          - !tag:li/
+            - !attr:class:
+              - nav-item
+            - !tag:a/
+              - !attr:class:
+                - nav-link
+              - !attr:href: '#item-2'
+              - 'Heading 2 with a long title going on several lines'
+          - !tag:li/
+            - !attr:class:
+              - nav-item
+            - !tag:a/
+              - !attr:class:
+                - nav-link
+              - !attr:href: '#item-3'
+              - 'Heading 3'
+          - !tag:li/
+            - !attr:class:
+              - nav-item
+            - !tag:a/
+              - !attr:class:
+                - nav-link
+              - !attr:href: '#item-4'
+              - 'Heading 4'
+  - !tag:div/
+    - !attr:class:
+      - col-md-9
+    - !tag:h2/
+      - !attr:id: item-1
+      - 'Heading 1'
+    - !tag:p/
+      - ...

@@ -1,0 +1,112 @@
+- !tag:h4/
+  - !attr:class:
+    - bcl-heading
+    - mb-4
+  - 'Carousel title'
+- !tag:div/
+  - !attr:class:
+    - carousel
+    - slide
+  - !attr:data-bs-ride: carousel
+  - !attr:data-drupal-selector: carousel
+  - !attr:id: bcl-carousel
+  - !tag:div/
+    - !attr:class:
+      - carousel-inner
+    - !tag:div/
+      - !attr:class:
+        - active
+        - carousel-item
+      - !attr:data-bs-interval: '1'
+      - !tag:figure/
+        - !attr:class:
+          - h-100
+          - m-0
+        - !tag:img/
+          - !attr:alt: 'alt image 1'
+          - !attr:class:
+            - d-block
+            - w-100
+          - !attr:src: 'https://images.site.example1'
+        - !tag:div/
+          - !attr:class:
+            - carousel-caption
+          - !tag:div/
+            - !attr:class:
+              - caption_classes-1
+            - !tag:div/
+              - !attr:class:
+                - fs-5
+              - 'First slide title'
+            - 'First slide caption'
+          - !tag:a/
+            - !attr:href: 'https://link.one'
+            - !tag:svg/
+              - !attr:class:
+                - bi
+                - icon--s
+                - me-2-5
+              - !tag:use/
+                - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#link'
+            - 'First link'
+    - !tag:div/
+      - !attr:class:
+        - carousel-item
+      - !attr:data-bs-interval: '2'
+      - !tag:figure/
+        - !attr:class:
+          - h-100
+          - m-0
+        - !tag:img/
+          - !attr:alt: 'alt image 2'
+          - !attr:class:
+            - d-block
+            - w-100
+          - !attr:src: 'https://images.site.example2'
+        - !tag:div/
+          - !attr:class:
+            - carousel-caption
+          - !tag:div/
+            - !attr:class:
+              - caption_classes-2
+            - !tag:div/
+              - !attr:class:
+                - fs-5
+              - 'Second slide title'
+            - 'Second slide caption'
+          - !tag:a/
+            - !attr:href: 'https://link.two'
+            - !tag:svg/
+              - !attr:class:
+                - bi
+                - icon--s
+                - me-2-5
+              - !tag:use/
+                - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#link'
+            - 'Second link'
+  - !tag:button/
+    - !attr:class:
+      - carousel-control-prev
+    - !attr:data-bs-slide: prev
+    - !attr:data-bs-target: '#bcl-carousel'
+    - !attr:type: button
+    - !tag:span/
+      - !attr:class:
+        - carousel-control-prev-icon
+    - !tag:span/
+      - !attr:class:
+        - visually-hidden
+      - Previous
+  - !tag:button/
+    - !attr:class:
+      - carousel-control-next
+    - !attr:data-bs-slide: next
+    - !attr:data-bs-target: '#bcl-carousel'
+    - !attr:type: button
+    - !tag:span/
+      - !attr:class:
+        - carousel-control-next-icon
+    - !tag:span/
+      - !attr:class:
+        - visually-hidden
+      - Next

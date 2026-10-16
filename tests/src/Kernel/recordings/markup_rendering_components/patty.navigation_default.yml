@@ -1,0 +1,87 @@
+- !tag:ul/
+  - !attr:class:
+    - nav
+  - !attr:data-drupal-selector: navigation
+  - !tag:li/
+    - !attr:class:
+      - nav-item
+    - !tag:a/
+      - !attr:class:
+        - nav-link
+      - !attr:href: '#first'
+      - 'I am a link'
+  - !tag:li/
+    - !attr:class:
+      - nav-item
+    - !tag:button/
+      - !attr:class:
+        - nav-link
+      - !attr:type: button
+      - 'I am a button'
+  - !tag:li/
+    - !attr:class:
+      - nav-item
+    - !tag:button/
+      - !attr:aria-disabled: 'true'
+      - !attr:class:
+        - nav-link
+      - !attr:disabled: disabled
+      - !attr:type: button
+      - 'I am a disabled button'
+  - !tag:li/
+    - !attr:class:
+      - nav-item
+    - !tag:button/
+      - !attr:class:
+        - active
+        - nav-link
+      - !attr:type: button
+      - 'I am an active button'
+  - !tag:li/
+    - !attr:class:
+      - dropdown
+      - nav-item
+    - !tag:a/
+      - !attr:aria-expanded: 'false'
+      - !attr:class:
+        - dropdown-toggle
+      - !attr:data-bs-toggle: dropdown
+      - !attr:href: '#'
+      - !attr:id: dropdown-1
+      - !attr:role: button
+      - 'Dropdown Toggle'
+    - !tag:ul/
+      - !attr:aria-labelledby: dropdown-1
+      - !attr:class:
+        - dropdown-menu
+      - !tag:li/
+        - !tag:a/
+          - !attr:class:
+            - dropdown-item
+          - !attr:href: /example.html
+          - 'I am a dropdown link'
+      - !tag:li/
+        - !tag:button/
+          - !attr:class:
+            - dropdown-item
+          - !attr:type: button
+          - 'I am a dropdown button'
+      - !tag:li/
+        - !tag:hr/
+          - !attr:class:
+            - dropdown-divider
+      - !tag:li/
+        - !tag:button/
+          - !attr:aria-disabled: 'true'
+          - !attr:class:
+            - dropdown-item
+          - !attr:disabled: disabled
+          - !attr:type: button
+          - 'I am a dropdown disabled button'
+      - !tag:li/
+        - !tag:button/
+          - !attr:class:
+            - active
+            - dropdown-item
+          - !attr:type: button
+          - 'I am a dropdown active button'

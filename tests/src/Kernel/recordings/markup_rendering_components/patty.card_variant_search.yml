@@ -1,0 +1,68 @@
+- !tag:article/
+  - !attr:class:
+    - border-0
+    - border-bottom
+    - border-md-0
+    - card
+    - listing-item
+    - mb-3
+    - text-dark
+  - !attr:data-drupal-selector: card
+  - !tag:div/
+    - !attr:class:
+      - row
+    - !tag:div/
+      - !attr:class:
+        - bcl-card-start-col
+        - bcl-size-small
+        - mb-3
+        - mb-lg-0
+      - !tag:figure/
+        - !attr:class:
+          - bcl-card__image-wrapper
+          - m-0
+        - !tag:img/
+          - !attr:alt: ''
+          - !attr:class:
+            - card-img-top
+            - rounded-1
+          - !attr:src: 'https://picsum.photos/1000/500/'
+    - !tag:div/
+      - !attr:class:
+        - col-12
+        - col-md
+      - !tag:div/
+        - !attr:class:
+          - card-body
+          - p-0
+          - pb-3
+          - pb-md-0
+        - !tag:h3/
+          - !attr:class:
+            - bcl-heading
+            - card-title
+            - h4
+          - 'Title card'
+        - !tag:div/
+          - !attr:class:
+            - card-text
+            - mt-2
+          - 'Text card with longer text which is supported'
+        - !tag:div/
+          - !attr:class:
+            - mt-2-5
+          - !tag:span/
+            - !attr:class:
+              - badge
+              - badge-outline-primary
+              - mb-2
+              - me-2
+              - rounded-pill
+            - 'Category 1'
+          - !tag:span/
+            - !attr:class:
+              - badge
+              - badge-outline-primary
+              - mb-2
+              - rounded-pill
+            - 'Category 2'

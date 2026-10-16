@@ -1,0 +1,172 @@
+- !tag:div/
+  - !attr:class:
+    - bcl-fact-figures
+    - bcl-fact-figures--default
+  - !attr:data-drupal-selector: fact-figures
+  - !tag:h2/
+    - !attr:class:
+      - bcl-heading
+      - mb-4
+    - 'Fact and figures block'
+  - !tag:div/
+    - !tag:div/
+      - !attr:class:
+        - g-4
+        - mt-3
+        - row
+        - row-cols-1
+        - row-cols-md-3
+        - row-cols-sm-2
+      - !tag:div/
+        - !attr:class:
+          - col
+          - h-100
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--3xl
+            - icon--primary
+            - mb-2
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#x-diamond-fill'
+        - !tag:div/
+          - !attr:class:
+            - fs-4
+            - fw-medium
+          - '1529 JIRA Ticket'
+        - !tag:div/
+          - !attr:class:
+            - fs-5
+            - fw-medium
+          - 'Jira Tickets'
+        - !tag:p/
+          - 'Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum liber'
+      - !tag:div/
+        - !attr:class:
+          - col
+          - h-100
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--3xl
+            - icon--primary
+            - mb-2
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#ui-checks'
+        - !tag:div/
+          - !attr:class:
+            - fs-4
+            - fw-medium
+          - '337 Features'
+        - !tag:div/
+          - !attr:class:
+            - fs-5
+            - fw-medium
+          - 'Feature tickets'
+        - !tag:p/
+          - 'Turpis varius congue venenatis, erat dui feugiat felis.'
+      - !tag:div/
+        - !attr:class:
+          - col
+          - h-100
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--3xl
+            - icon--primary
+            - mb-2
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#wallet-fill'
+        - !tag:div/
+          - !attr:class:
+            - fs-4
+            - fw-medium
+          - '107 Tests'
+        - !tag:div/
+          - !attr:class:
+            - fs-5
+            - fw-medium
+          - 'Test tickets'
+        - !tag:p/
+          - 'Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem.'
+      - !tag:div/
+        - !attr:class:
+          - col
+          - h-100
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--3xl
+            - icon--primary
+            - mb-2
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#file-code-fill'
+        - !tag:div/
+          - !attr:class:
+            - fs-4
+            - fw-medium
+          - '5670 Variants'
+        - !tag:div/
+          - !attr:class:
+            - fs-5
+            - fw-medium
+          - 'Test variants'
+        - !tag:p/
+          - 'Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum.'
+      - !tag:div/
+        - !attr:class:
+          - col
+          - h-100
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--3xl
+            - icon--primary
+            - mb-2
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#puzzle-fill'
+        - !tag:div/
+          - !attr:class:
+            - fs-4
+            - fw-medium
+          - '345 Dev Ticket'
+        - !tag:div/
+          - !attr:class:
+            - fs-5
+            - fw-medium
+          - 'Jira ticket'
+        - !tag:p/
+          - 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor.'
+      - !tag:div/
+        - !attr:class:
+          - col
+          - h-100
+        - !tag:svg/
+          - !attr:class:
+            - bi
+            - icon--3xl
+            - icon--primary
+            - mb-2
+          - !tag:use/
+            - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#eye-fill'
+        - !tag:div/
+          - !attr:class:
+            - fs-4
+            - fw-medium
+          - '43 Components'
+        - !tag:div/
+          - !attr:class:
+            - fs-5
+            - fw-medium
+          - 'Figma components'
+        - !tag:p/
+          - 'Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur.'
+    - !tag:div/
+      - !attr:class:
+        - border-top
+        - d-block
+        - mt-3
+        - pt-3
+      - !tag:a/
+        - !attr:href: /example
+        - 'Read more'

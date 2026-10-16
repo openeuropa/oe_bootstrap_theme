@@ -1,0 +1,78 @@
+- !tag:nav/
+  - !attr:class:
+    - nav
+    - nav-tabs
+  - !attr:data-drupal-selector: navigation
+  - !attr:role: tablist
+  - !tag:a/
+    - !attr:class:
+      - nav-link
+    - !attr:href: '#first'
+    - !attr:role: tab
+    - 'I am a link'
+  - !tag:button/
+    - !attr:class:
+      - nav-link
+    - !attr:role: tab
+    - !attr:type: button
+    - 'I am a button'
+  - !tag:button/
+    - !attr:aria-disabled: 'true'
+    - !attr:class:
+      - nav-link
+    - !attr:disabled: disabled
+    - !attr:role: tab
+    - !attr:type: button
+    - 'I am a disabled button'
+  - !tag:button/
+    - !attr:class:
+      - active
+      - nav-link
+    - !attr:role: tab
+    - !attr:type: button
+    - 'I am an active button'
+  - !tag:a/
+    - !attr:aria-expanded: 'false'
+    - !attr:class:
+      - dropdown-toggle
+    - !attr:data-bs-toggle: dropdown
+    - !attr:href: '#'
+    - !attr:id: dropdown-1
+    - 'Dropdown Toggle'
+  - !tag:ul/
+    - !attr:aria-hidden: 'true'
+    - !attr:aria-labelledby: dropdown-1
+    - !attr:class:
+      - dropdown-menu
+    - !attr:role: presentation
+    - !tag:li/
+      - !tag:a/
+        - !attr:class:
+          - dropdown-item
+        - !attr:href: /example.html
+        - 'I am a dropdown link'
+    - !tag:li/
+      - !tag:button/
+        - !attr:class:
+          - dropdown-item
+        - !attr:type: button
+        - 'I am a dropdown button'
+    - !tag:li/
+      - !tag:hr/
+        - !attr:class:
+          - dropdown-divider
+    - !tag:li/
+      - !tag:button/
+        - !attr:aria-disabled: 'true'
+        - !attr:class:
+          - dropdown-item
+        - !attr:disabled: disabled
+        - !attr:type: button
+        - 'I am a dropdown disabled button'
+    - !tag:li/
+      - !tag:button/
+        - !attr:class:
+          - active
+          - dropdown-item
+        - !attr:type: button
+        - 'I am a dropdown active button'
