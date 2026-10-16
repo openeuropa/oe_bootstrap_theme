@@ -778,6 +778,22 @@ class TwigExtension extends AbstractExtension {
   }
 
   /**
+   * Performs a recursive call to an arrow function.
+   *
+   * @param mixed $argument
+   *   The filter argument which will be passed to the arrow function.
+   * @param callable $callback
+   *   The arrow function.
+   *
+   * @return mixed
+   *   The return value.
+   */
+  #[AsTwigFilter('recursive')]
+  public function recursive(mixed $argument, callable $callback): mixed {
+    return $callback($argument, $callback);
+  }
+
+  /**
    * Does an array lookup using the filter argument as key.
    *
    * @param string|int $argument
