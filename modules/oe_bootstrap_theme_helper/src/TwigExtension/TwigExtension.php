@@ -628,6 +628,11 @@ class TwigExtension extends AbstractExtension {
     return $callback($argument);
   }
 
+  #[AsTwigFilter('recursive')]
+  public function recursive(mixed $argument, callable $callback): mixed {
+    return $callback($argument, $callback);
+  }
+
   #[AsTwigFilter('match')]
   public function match(string|int $argument, array $branches, mixed $default = NULL, string|int $default_key = 'default'): mixed {
     if (array_key_exists($argument, $branches)) {
