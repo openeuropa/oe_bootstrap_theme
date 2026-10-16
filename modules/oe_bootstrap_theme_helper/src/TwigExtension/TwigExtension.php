@@ -20,6 +20,7 @@ use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme\DrupalCompatibility;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
 use Twig\Environment;
+use Twig\Error\RuntimeError;
 use Twig\Extension\AbstractExtension;
 use Twig\Markup as TwigMarkup;
 use Twig\TwigFilter;
@@ -286,20 +287,24 @@ class TwigExtension extends AbstractExtension {
    * BCL templates alter the Attribute objects they receive, e.g. with
    * addClass(). An Attribute object is cloned, so that the caller's object,
    * which may be shared between items, does not change. An array is converted
-   * to an Attribute object, and other values are returned as is.
+   * to an Attribute object, and NULL is preserved.
    *
    * @param mixed $attributes
-   *   An Attribute object, an array, or another value.
+   *   An Attribute object, an array, or NULL.
    *
-   * @return mixed
-   *   A new Attribute object for an Attribute object or an array, or the given
-   *   value otherwise.
+   * @return \Drupal\Core\Template\Attribute|null
+   *   A copy of the attributes, or NULL.
+   *
+   * @throws \Twig\Error\RuntimeError
+   *   If the value is not an Attribute object, an array, or NULL.
    */
-  protected function copyAttributes(mixed $attributes): mixed {
-    if ($attributes instanceof Attribute) {
-      return clone $attributes;
-    }
-    return is_array($attributes) ? new Attribute($attributes) : $attributes;
+  protected function copyAttributes(mixed $attributes): ?Attribute {
+    return match (TRUE) {
+      $attributes instanceof Attribute => clone $attributes,
+      is_array($attributes) => new Attribute($attributes),
+      $attributes === NULL => NULL,
+      default => throw new RuntimeError(sprintf('Expected attribute object, array or null, found %s.', get_debug_type($attributes))),
+    };
   }
 
   /**

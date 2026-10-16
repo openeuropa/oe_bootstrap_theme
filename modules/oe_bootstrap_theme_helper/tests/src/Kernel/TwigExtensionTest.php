@@ -13,6 +13,7 @@ use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\DomCrawler\Crawler;
+use Twig\Error\RuntimeError;
 use Twig\Markup;
 
 /**
@@ -563,6 +564,31 @@ TWIG;
     $this->assertSame('custom-icon', (string) $icon_attributes['class']);
     $this->assertSame('custom-spinner', (string) $spinner_attributes['class']);
     $this->assertSame('custom-navigation', (string) $navigation_attributes['class']);
+  }
+
+  /**
+   * Tests that invalid navigation attributes retain Twig error context.
+   */
+  public function testInvalidNavigationAttributes(): void {
+    $template = $this->container->get('twig')->createTemplate("{# Navigation attributes #}\n{% set prepared = items|bcl_navigation_items('/icons.svg') %}", 'invalid-navigation-attributes');
+    foreach (['invalid', FALSE, 0, new \stdClass()] as $value) {
+      foreach ([
+        ['attributes' => $value],
+        ['icon' => ['name' => 'house', 'attributes' => $value]],
+        ['spinner' => ['attributes' => $value]],
+        ['navigation' => ['attributes' => $value]],
+      ] as $item) {
+        try {
+          $template->render(['items' => [$item]]);
+          $this->fail('Invalid attributes must produce a Twig runtime error.');
+        }
+        catch (RuntimeError $exception) {
+          $this->assertSame(sprintf('Expected attribute object, array or null, found %s.', get_debug_type($value)), $exception->getRawMessage());
+          $this->assertSame(2, $exception->getTemplateLine());
+          $this->assertStringStartsWith('invalid-navigation-attributes', $exception->getSourceContext()->getName());
+        }
+      }
+    }
   }
 
   /**
