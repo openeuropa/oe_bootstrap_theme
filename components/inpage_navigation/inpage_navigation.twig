@@ -4,7 +4,7 @@
  * Inpage navigation component.
  */
 #}
-{% set title_attributes = create_attribute(title_attributes|default({})) %}
+{% set title_attributes = create_attribute(title_attributes ?? {}) %}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set _attributes = attributes|default(create_attribute()) %}
 {% set _id = id|default(_attributes.id|default('bcl-inpage-navigation'|clean_unique_id)) %}

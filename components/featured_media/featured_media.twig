@@ -4,9 +4,9 @@
  * Featured media component.
  */
 #}
-{% set title_attributes = create_attribute(title_attributes|default({})) %}
-{% set subtitle_attributes = create_attribute(subtitle_attributes|default({})) %}
-{% set media_attributes = create_attribute(media_attributes|default({})) %}
+{% set title_attributes = create_attribute(title_attributes ?? {}) %}
+{% set subtitle_attributes = create_attribute(subtitle_attributes ?? {}) %}
+{% set media_attributes = create_attribute(media_attributes ?? {}) %}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set _image = image|default('') %}
 {% set _link = link|default({}) %}
