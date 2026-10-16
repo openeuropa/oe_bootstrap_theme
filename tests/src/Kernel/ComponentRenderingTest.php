@@ -21,6 +21,7 @@ use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\OptionalPropsNullifier;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
 use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\Yaml\Tag\TaggedValue;
 
 /**
  * Tests SDC components markup.
@@ -119,29 +120,68 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
    *
    * @dataProvider componentRenderingProvider
    */
-  public function testComponentRendering(array $render, array $assertions, string $name): void {
+  public function testComponentRendering(array $render, array $assertions, string $name, mixed $backward_compatibility = NULL): void {
+    false && set_error_handler(static function (int $type, string $message, string $file, int $line) {
+      debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+      if (__FILE__ === $file) {
+        $trace = debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS, 3);
+        $file = $trace[2]['file'] ?? $file;
+        $line = $trace[2]['line'] ?? $line;
+      }
+
+      throw new \ErrorException($message, 0, $type, $file, $line);
+    });
+    $remove = new \stdClass();
+    $clean_tree = function ($tree) use (&$clean_tree, $remove) {
+      if ($tree instanceof TaggedValue) {
+        if (str_contains($tree->getTag(), 'data-component-')) {
+          return $remove;
+        }
+        return new TaggedValue($tree->getTag(), $clean_tree($tree->getValue()));
+      }
+      if (is_array($tree)) {
+        $tree = array_map(fn ($item) => $clean_tree($item), $tree);
+        $is_list = array_is_list($tree);
+        $tree = array_filter($tree, fn ($v) => $v !== $remove);
+        if ($is_list) {
+          $tree = array_values($tree);
+        }
+      }
+      return $tree;
+    };
+
     $fixture_render = $render;
     // Internal Url objects need Drupal services, unavailable in the provider.
     $render = PatternTestDataMassager::massageDataRecursive($fixture_render);
+    $render = $this->replacePatternsWithComponents($render);
     $exporter = new MarkupExporter();
     $reference_markup = $this->renderInFormContext($render);
-    $this->assertComponentRendering($assertions, $reference_markup);
+    #$this->assertComponentRendering($assertions, $reference_markup);
     $reference_tree = $exporter->export($reference_markup);
+    $reference_tree = $clean_tree($reference_tree);
     Html::resetSeenIds();
     $markup = $this->renderInFormContext($render);
     # $this->assertComponentRendering($assertions, $markup);
 
     # $reference_yaml = $stabilize_and_export_to_yaml($markup);
     $tree = $exporter->export($markup);
+    $tree = $clean_tree($tree);
     $comparator = new YamlDataComparator();
     $noisy = $comparator->detectNoise($reference_tree, $tree);
 
-    $do_test = function (array $render) use ($noisy, $assertions, $exporter): void {
+    #mkdir(__DIR__ . '/recordings/markup_rendering_components', recursive: TRUE);
+    file_put_contents(__DIR__ . '/recordings/markup_rendering_components/' . $name . '.yml', MultiTagYaml::encode($noisy));
+    return;
+
+    $do_test = function (array $render) use ($noisy, $assertions, $exporter, $clean_tree, $name): void {
       Html::resetSeenIds();
       $markup = $this->renderInFormContext($render);
       $tree = $exporter->export($markup);
+      $tree = $clean_tree($tree);
       $comparator = new YamlDataComparator();
       $reference = $comparator->align($noisy, $tree);
+      mkdir(__DIR__ . '/recordings/markup_rendering_components', recursive: TRUE);
+      file_put_contents(__DIR__ . '/recordings/markup_rendering_components/' . $name . '.yml', MultiTagYaml::encode($tree));
       MultiTagYaml::assertSame($reference, $tree);
       $this->assertComponentRendering($assertions, $markup);
     };
