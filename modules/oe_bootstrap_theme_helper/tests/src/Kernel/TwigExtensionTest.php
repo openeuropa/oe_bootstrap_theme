@@ -464,6 +464,10 @@ TWIG;
    */
   public function testBclNavigationItems(): void {
     $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $item_attributes = new Attribute(['class' => ['custom-item']]);
+    $icon_attributes = new Attribute(['class' => ['custom-icon']]);
+    $spinner_attributes = new Attribute(['class' => ['custom-spinner']]);
+    $navigation_attributes = new Attribute(['class' => ['custom-navigation']]);
     $items = [
       [
         'label' => 'Dropdown',
@@ -502,6 +506,13 @@ TWIG;
           ],
         ],
       ],
+      [
+        'label' => 'Item with Attribute objects',
+        'attributes' => $item_attributes,
+        'icon' => ['name' => 'house', 'attributes' => $icon_attributes],
+        'spinner' => ['attributes' => $spinner_attributes],
+        'navigation' => ['attributes' => $navigation_attributes],
+      ],
     ];
 
     $result = $extension->bclNavigationItems($items, '/custom-icons.svg');
@@ -534,44 +545,24 @@ TWIG;
     $this->assertInstanceOf(Attribute::class, $navigation['attributes']);
     $this->assertSame('navigation-class', (string) $navigation['attributes']['class']);
     $this->assertSame('/existing-icons.svg', $navigation['items'][0]['icon']['path']);
-  }
 
-  /**
-   * Tests that navigation items don't alter Attribute objects from the caller.
-   */
-  public function testBclNavigationItemsSharedAttributes(): void {
-    $attributes = new Attribute(['data-shared' => 'value']);
-    $build = [
-      '#type' => 'component',
-      '#component' => 'oe_bootstrap_theme:navigation',
-      '#props' => [
-        'variant' => 'default',
-        'items' => [
-          [
-            'label' => 'Active',
-            'path' => '/active',
-            'active' => TRUE,
-            'attributes' => $attributes,
-          ],
-          [
-            'label' => 'Disabled',
-            'path' => '/disabled',
-            'disabled' => TRUE,
-            'attributes' => $attributes,
-          ],
-        ],
-      ],
-    ];
+    // Attribute objects are copied, so altering them, as the templates do,
+    // doesn't change the caller's objects.
+    $item = $result[1];
+    $item['attributes']->addClass('altered');
+    $item['icon']['attributes']->addClass('altered');
+    $item['spinner']['attributes']->addClass('altered');
+    $item['navigation']['attributes']->addClass('altered');
 
-    $links = (new Crawler($this->renderRoot($build)))->filter('a');
-    $this->assertCount(2, $links);
-    $this->assertSame('value', $links->eq(0)->attr('data-shared'));
-    $this->assertSame('nav-link active', $links->eq(0)->attr('class'));
-    $this->assertNull($links->eq(0)->attr('aria-disabled'));
-    $this->assertSame('value', $links->eq(1)->attr('data-shared'));
-    $this->assertSame('nav-link disabled', $links->eq(1)->attr('class'));
-    $this->assertSame('/disabled', $links->eq(1)->attr('href'));
-    $this->assertSame(['data-shared' => 'value'], $attributes->toArray());
+    $this->assertSame('custom-item altered', (string) $item['attributes']['class']);
+    $this->assertSame('custom-icon altered', (string) $item['icon']['attributes']['class']);
+    $this->assertSame('custom-spinner altered', (string) $item['spinner']['attributes']['class']);
+    $this->assertSame('custom-navigation altered', (string) $item['navigation']['attributes']['class']);
+
+    $this->assertSame('custom-item', (string) $item_attributes['class']);
+    $this->assertSame('custom-icon', (string) $icon_attributes['class']);
+    $this->assertSame('custom-spinner', (string) $spinner_attributes['class']);
+    $this->assertSame('custom-navigation', (string) $navigation_attributes['class']);
   }
 
   /**
