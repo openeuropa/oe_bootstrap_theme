@@ -1,0 +1,7 @@
+name: OpenEuropa Bootstrap Theme Fences
+type: module
+description: Renders fields with the Fences module tags in OpenEuropa Bootstrap Theme.
+package: OpenEuropa Bootstrap Theme
+core_version_requirement: ^10.3 || ^11
+dependencies:
+  - fences:fences

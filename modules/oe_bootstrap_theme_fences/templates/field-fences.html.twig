@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Field markup with the Fences tags, included by the field templates.
+ *
+ * @see ./modules/contrib/fences/templates/field.html.twig
+ */
+#}
+{%
+  set classes = [
+  bundle|clean_class ~ '__' ~ field_name_clean|clean_class,
+  label_display == 'inline' ? 'd-flex',
+]
+%}
+{%
+  set title_classes = [
+  'field__label',
+  'fw-bold',
+  label_display == 'visually_hidden' ? 'visually-hidden',
+]
+%}
+{% if display_field_tag %}<{{ field_tag }}{{ attributes.addClass(classes) }}>{% endif %}
+{% if not label_hidden %}
+  {% if display_label_tag %}<{{ label_tag }}{{ title_attributes.addClass(title_classes) }}>{% endif %}
+    {{ label }}{% if label_display == 'inline' %}<span class="me-1">:</span>{% endif %}
+  {% if display_label_tag %}</{{ label_tag }}>{% endif %}
+{% endif %}
+{% if display_items_wrapper_tag %}<{{ field_items_wrapper_tag }}{{ field_items_wrapper_attributes.addClass('field__items') }}>{% endif %}
+  {% for item in items %}
+    {% if display_item_tag %}<{{ field_item_tag }}{{ item.attributes.addClass('field__item') }}>{% endif %}{{ item.content }}{% if display_item_tag %}</{{ field_item_tag }}>{% endif %}
+  {% endfor %}
+{% if display_items_wrapper_tag %}</{{ field_items_wrapper_tag }}>{% endif %}
+{% if display_field_tag %}</{{ field_tag }}>{% endif %}
