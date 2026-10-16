@@ -232,7 +232,7 @@ content_banner_custom_attributes_title_link_and_date:
         data-content-banner: custom-value
       title: 'Linked content banner title'
       title_link:
-        path: 'https://example.com'
+        path: !Url 'https://example.com'
       title_attributes: !Attribute
         class:
           - custom-title-class

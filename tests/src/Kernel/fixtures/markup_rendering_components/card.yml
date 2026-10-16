@@ -52,7 +52,7 @@ card_vertical_with_title_link:
       orientation: vertical
       title: 'Title card'
       title_link:
-        path: 'https://example.com'
+        path: !Url 'https://example.com'
       subtitle: 'Subtitle card'
       text: 'Text card with longer text which is supported'
       image:

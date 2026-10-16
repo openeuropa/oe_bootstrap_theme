@@ -12,7 +12,7 @@ banner_default_centered_with_call_to_action_full_width:
       description: 'Innovation, economy, environment and geopolitics'
       call_to_action:
         label: Subscribe
-        path: 'https://example.com'
+        path: !Url 'https://example.com'
   assertions:
     count:
       '.bcl-banner__content h4.bcl-heading': 1
