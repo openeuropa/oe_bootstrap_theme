@@ -1,21 +1,13 @@
 name: Listing
 description: 'Displays cards in default or highlighted one-, two-, or three-column listings.'
+variants:
+  default:
+    title: 'Default'
+  highlight:
+    title: 'Highlight'
 props:
   type: object
   properties:
-    variant:
-      title: Variant
-      type: [string, 'null']
-      description: 'Visual style of the listing. Defaults to default.'
-      enum:
-        - default
-        - highlight
-        - null
-      'meta:enum':
-        default: 'Default (default)'
-        highlight: Highlight
-        # Value NULL becomes '' when used as array key.
-        '': Default
     columns:
       title: Columns
       type: [integer, 'null']
