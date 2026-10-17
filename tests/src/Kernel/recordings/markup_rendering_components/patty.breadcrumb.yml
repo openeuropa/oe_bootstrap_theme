@@ -2,6 +2,7 @@
   - !attr:aria-label: breadcrumb
   - !attr:class:
     - mt-3
+  - !attr:data-drupal-selector: breadcrumb
   - !tag:ol/
     - !attr:class:
       - breadcrumb

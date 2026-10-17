@@ -3,6 +3,7 @@
     - first
     - second
   - !attr:data-attribute: some-value
+  - !attr:data-drupal-selector: link
   - !attr:href: 'https://example.com'
   - !attr:id: link-id
   - 'Link to example'

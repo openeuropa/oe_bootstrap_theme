@@ -3,6 +3,7 @@
     - bi
     - icon--s
   - !attr:data-attribute: some-value
+  - !attr:data-drupal-selector: icon
   - !attr:id: icon-id
   - !tag:use/
     - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#eye'

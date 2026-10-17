@@ -3,6 +3,7 @@
     - content-wrapper
     - section
   - !attr:data-attribute: some-value
+  - !attr:data-drupal-selector: section
   - !attr:id: section-id
   - !tag:h2/
     - !attr:class:
