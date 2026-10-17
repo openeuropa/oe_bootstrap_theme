@@ -75,7 +75,9 @@ class MarkupExporter {
       }
       elseif ($child instanceof \DOMText) {
         $text = $child->textContent;
-        $text = preg_replace('/\s+/u', ' ', $text) ?? Assert::fail();
+        if ($element->tagName !== 'pre') {
+          $text = preg_replace('/\s+/u', ' ', $text) ?? Assert::fail();
+        }
         if (!($inline_child ?? $inline_parent)) {
           $text = ltrim($text, "\n ");
         }
