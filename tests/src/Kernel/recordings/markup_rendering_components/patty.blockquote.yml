@@ -23,7 +23,7 @@
     - !attr:class:
       - blockquote-footer
       - m-0
-    - 'Someone famous in'
+    - 'Someone famous in '
     - !tag:cite/
       - !attr:title: 'Source title'
       - 'Source title'
