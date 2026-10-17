@@ -214,7 +214,25 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     if (($render['#type'] ?? NULL) === 'pattern') {
       $render['#type'] = 'component';
       $render['#component'] = 'oe_bootstrap_theme:' . $render['#id'];
-      $render['#props'] = $render['#fields'] ?? [];
+      $render['#props'] = [
+        ...$render['#fields']['settings'] ?? [],
+        ...$render['#settings'] ?? [],
+        ...$render['#fields'] ?? [],
+      ];
+      unset($render['#props']['settings']);
+      foreach (preg_grep('#^([a-z]+_|)attributes$#', array_keys($render['#props'])) as $key) {
+        $value = $render['#props'][$key] ?? NULL;
+        if (is_string($value)) {
+          $parse_html = '<div ' . $value . '></div>';
+          $attributes = [];
+          foreach (Html::load($parse_html)->getElementsByTagName('div') as $div) {
+            foreach ($div->attributes as $attr) {
+              $attributes[$attr->nodeName] = $attr->nodeValue;
+            }
+          }
+          $render['#props'][$key] = new Attribute($attributes);
+        }
+      }
     }
     foreach (Element::children($render) as $key) {
       $render[$key] = $this->replacePatternsWithComponents($render[$key]);
