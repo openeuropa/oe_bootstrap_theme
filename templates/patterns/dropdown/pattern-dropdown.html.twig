@@ -10,6 +10,8 @@
   },
   'link': false,
   'dark': dark_mode,
-  'id': dropdown_id,
-  'items': items
+  'id': 'bcl-dropdown'|clean_unique_id,
+  'items': (items ?? [])|map(item => item|bcl_expand_attributes({
+    class: 'dropdown-item',
+  }))
 } only %}
