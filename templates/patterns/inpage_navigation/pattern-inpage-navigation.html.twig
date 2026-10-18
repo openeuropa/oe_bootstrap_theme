@@ -13,8 +13,8 @@
       'title': title,
       'links': links,
       'icon_path': bcl_icon_path,
-      'id': inpage_navigation_id,
-      'dropdown_id': inpage_navigation_dropdown_id,
+      'id': (attributes.id ?? 'bcl-inpage-navigation')|clean_unique_id,
+      'dropdown_id': ((attributes.id ?? 'bcl-inpage-navigation') ~ '-dropdown')|clean_unique_id,
       'dynamic_active': dynamic_active,
     } only %}
   </div>
