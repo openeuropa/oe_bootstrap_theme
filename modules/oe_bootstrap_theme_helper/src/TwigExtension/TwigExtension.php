@@ -16,8 +16,11 @@ use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
 use Drupal\Core\Url;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
 use Twig\Environment;
+use Twig\Error\RuntimeError;
 use Twig\Extension\AbstractExtension;
 use Twig\Markup as TwigMarkup;
 use Twig\TwigFilter;
@@ -52,6 +55,7 @@ class TwigExtension extends AbstractExtension {
         'toInternalLanguageId',
       ]),
       new TwigFilter('element_children', [$this, 'elementChildren']),
+      new TwigFilter('to_image_value_object', [$this, 'toImageValueObject']),
     ];
   }
 
@@ -353,6 +357,37 @@ class TwigExtension extends AbstractExtension {
     $this->renderer->render($bubbleable);
 
     return $children;
+  }
+
+  /**
+   * Converts an array to an ImageValueObject instance.
+   *
+   * @param mixed $argument
+   *   The argument, which should be an array or ImageValueObjectInterface.
+   *
+   * @return \Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject
+   *   The ImageValueObject instance.
+   *   If the value was already an ImageValueObjectInterface object, it will be
+   *   copied as an ImageValueObject.
+   */
+  public function toImageValueObject(mixed $argument): ImageValueObject {
+    if (is_array($argument)) {
+      if ($argument === []) {
+        throw new RuntimeError("The image array is empty..");
+      }
+      elseif (!isset($argument['src'])) {
+        throw new RuntimeError("Missing array key 'src'.");
+      }
+      return ImageValueObject::fromArray($argument);
+    }
+    // Convert other implementations of the interface.
+    if ($argument instanceof ImageValueObjectInterface) {
+      return ImageValueObject::fromArray($argument->getArray());
+    }
+    throw new RuntimeError(sprintf(
+      'Expected ImageValueObjectInterface|array, found %s',
+      get_debug_type($argument),
+    ));
   }
 
 }
