@@ -62,7 +62,7 @@ class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterf
   /**
    * {@inheritdoc}
    */
-  public static function fromArray(array $values = []): ValueObjectInterface {
+  public static function fromArray(array $values = []): static {
     $values += ['alt' => '', 'name' => '', 'responsive' => TRUE];
 
     return new static(
