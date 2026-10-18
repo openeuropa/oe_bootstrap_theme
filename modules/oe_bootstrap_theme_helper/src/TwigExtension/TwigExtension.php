@@ -801,7 +801,12 @@ class TwigExtension extends AbstractExtension {
    *   The new attributes object.
    */
   #[AsTwigFilter('to_attribute')]
-  public function toAttribute(mixed $argument): Attribute {
+  public function toAttribute(mixed $argument, mixed $more_attributes = NULL): Attribute {
+    if ($more_attributes !== NULL) {
+      $attribute = $this->toAttribute($argument);
+      $more_attributes = $this->toAttribute($more_attributes);
+      return $attribute->merge($more_attributes);
+    }
     if ($argument instanceof Attribute) {
       return $argument;
     }
