@@ -34,13 +34,6 @@ function oe_bootstrap_theme_preprocess_page(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK().
- */
-function oe_bootstrap_theme_preprocess_pattern_navbar(array &$variables): void {
-  $variables['collapse_id'] = Html::getUniqueId('bcl-navbar');
-}
-
-/**
  * Implements hook_preprocess_HOOK() for featured media pattern.
  */
 function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
