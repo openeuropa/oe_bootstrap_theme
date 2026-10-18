@@ -36,13 +36,6 @@ function oe_bootstrap_theme_preprocess_page(&$variables) {
 /**
  * Implements hook_preprocess_HOOK().
  */
-function oe_bootstrap_theme_preprocess_pattern_modal(array &$variables): void {
-  $variables['modal_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl-modal');
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
 function oe_bootstrap_theme_preprocess_pattern_link(array &$variables): void {
   if (!isset($variables['icon'])) {
     return;
