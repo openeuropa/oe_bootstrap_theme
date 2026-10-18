@@ -5,9 +5,12 @@
  */
 #}
 {% macro featured_media(embedded_media, image, caption, ratio, copyright) %}
+  {# Support 'image' both as array and as ImageValueObject, to support the preview value. #}
   {% include '@oe-bcl/featured-media' with {
     'embedded_media': embedded_media,
-    'image': image,
+    'image': image ? image|to_image_value_object|bcl_image_render({
+      class: ['flex-end-100'],
+    }),
     'content': caption,
     'content_classes': 'bg-light p-3',
     'ratio': ratio,

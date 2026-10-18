@@ -39,34 +39,6 @@ function oe_bootstrap_theme_preprocess_page(&$variables) {
 function oe_bootstrap_theme_preprocess_pattern_featured_media(&$variables) {
   $variables['featured_media_subtitle_tag_h5'] = BackwardCompatibility::getSetting('featured_media_subtitle_tag_h5');
   $variables['featured_media_mobile_text_top'] = BackwardCompatibility::getSetting('featured_media_mobile_text_top');
-
-  if (!isset($variables['image'])) {
-    return;
-  }
-
-  // This conversion is needed only to run markup rendering tests, as they
-  // are reading from a yaml file where we cannot specify objects.
-  // Do not ever rely on this for your patterns.
-  // @todo Remove this! Code duplication below is intentional, these lines are
-  //   to be removed, do not refactor unless to delete them.
-  if (is_array($variables['image']) && !empty($variables['image'])) {
-    $variables['image'] = ImageValueObject::fromArray($variables['image']);
-  }
-
-  if ($variables['image'] instanceof ImageValueObjectInterface) {
-    // Transform an object implementing ImageValueObjectInterface to our own
-    // implementation, so that we can use the specific method.
-    $variables['image'] = ImageValueObject::fromArray($variables['image']->getArray())
-      ->toRenderArray();
-  }
-
-  // Add the 'flex-end-100' class to the image.
-  if (isset($variables['image']['#attributes']['class'])) {
-    $variables['image']['#attributes']['class'][] = 'flex-end-100';
-  }
-  else {
-    $variables['image']['#attributes']['class'] = ['flex-end-100'];
-  }
 }
 
 /**
