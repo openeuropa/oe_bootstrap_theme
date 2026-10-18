@@ -59,7 +59,7 @@
               - bi
               - icon--xs
             - !tag:use/
-              - !attr:xlink:href: '#chevron-right'
+              - !attr:xlink:href: '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#chevron-right'
         - !tag:div/
           - !attr:class:
             - align-item-center
