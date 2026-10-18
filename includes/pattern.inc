@@ -112,29 +112,6 @@ function oe_bootstrap_theme_preprocess_pattern_listing__preview(array &$variable
 }
 
 /**
- * Implements hook_preprocess_HOOK() for the pagination pattern.
- */
-function oe_bootstrap_theme_preprocess_pattern_pagination(array &$variables): void {
-  // Adds default values for custom icons.
-  foreach (['first', 'prev', 'next', 'last'] as $key) {
-    if (empty($variables[$key]['icon']['name'])) {
-      continue;
-    }
-    $variables[$key]['icon'] += [
-      'path' => $variables['bcl_icon_path'],
-      'size' => 'fluid',
-    ];
-  }
-
-  // Add aria label for Glossary pagination.
-  if ($variables['variant'] !== 'glossary') {
-    return;
-  }
-
-  $variables['attributes']['aria-label'] = t('Glossary links');
-}
-
-/**
  * Implements hook_preprocess_HOOK() for pagination pattern preview.
  */
 function oe_bootstrap_theme_preprocess_pattern_pagination__preview(array &$variables): void {
