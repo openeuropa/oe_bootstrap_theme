@@ -34,19 +34,6 @@ function oe_bootstrap_theme_preprocess_page(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for dropdown pattern.
- */
-function oe_bootstrap_theme_preprocess_pattern_dropdown(array &$variables) {
-  if (array_key_exists('items', $variables) && is_array($variables['items'])) {
-    foreach ($variables['items'] as &$item) {
-      $item['#attributes']['class'][] = 'dropdown-item';
-    }
-  }
-
-  $variables['dropdown_id'] = Html::getUniqueId('bcl-dropdown');
-}
-
-/**
  * Implements hook_preprocess_HOOK() for carousel patterns.
  */
 function oe_bootstrap_theme_preprocess_pattern_carousel(array &$variables) {
