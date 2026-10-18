@@ -6,7 +6,9 @@
 #}
 {% include '@oe-bcl/listing' with {
   'variant': variant|default('default') ~ '-' ~ columns|default('1') ~ '-col',
-  'items': items|bcl_card_list,
+  'items': items|map(item => item|merge({
+    image_copyright_label: item.image_copyright ? 'Image credit:'|t : null,
+  }|without_nulls))|bcl_card_list,
   'link': link ? {
     'path': link.path,
     'label': link.label,
