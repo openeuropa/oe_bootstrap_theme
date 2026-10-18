@@ -36,26 +36,6 @@ function oe_bootstrap_theme_preprocess_page(&$variables) {
 /**
  * Implements hook_preprocess_HOOK().
  */
-function oe_bootstrap_theme_preprocess_pattern_link(array &$variables): void {
-  if (!isset($variables['icon'])) {
-    return;
-  }
-
-  // Convert to array when only the icon name has been passed.
-  if (!is_array($variables['icon'])) {
-    $variables['icon'] = [
-      'name' => $variables['icon'],
-    ];
-  }
-
-  $variables['icon'] += [
-    'path' => $variables['bcl_icon_path'],
-  ];
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
 function oe_bootstrap_theme_preprocess_pattern_navbar(array &$variables): void {
   $variables['collapse_id'] = Html::getUniqueId('bcl-navbar');
 }
