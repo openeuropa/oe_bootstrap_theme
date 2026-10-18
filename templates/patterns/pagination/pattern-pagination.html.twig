@@ -5,6 +5,10 @@
  */
 #}
 
+{% if variant == 'glossary' %}
+  {% set attributes = attributes.setAttribute('aria-label', 'Glossary links'|t) %}
+{% endif %}
+
 {% set internal_items = (items ?? [])|map(item => item|merge({
   'attributes': create_attribute({'aria-label': item.label}).merge(create_attribute(item.attributes ?? {})),
 })) %}
@@ -21,6 +25,13 @@
     'aria-label': _control.item.aria_label|default(_control.label),
   }).merge(create_attribute(_control.item.attributes ?? {})),
 })) %}
+{% set _control_items = _control_items|map(_item => _item|merge(_item.icon.name ? {
+  'icon': {
+    'path': bcl_icon_path(),
+    'size': 'fluid',
+    ..._item.icon,
+  },
+} : {})) %}
 
 {% include '@oe-bcl/pagination' with {
   'variant': variant,
