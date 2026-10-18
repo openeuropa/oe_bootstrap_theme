@@ -4,6 +4,7 @@
  * Offcanvas pattern.
  */
 #}
+{% set offcanvas_id = attributes.id ?? ('bcl-offcanvas'|clean_unique_id) %}
 {% set _offcanvas_attributes = attributes %}
 {# Bootstrap replaces this static role with dialog while the panel is open. #}
 {% if not _offcanvas_attributes.hasAttribute('role') and title is not empty %}
