@@ -8,7 +8,12 @@
   'label': label,
   'path': path,
   'disabled': disabled,
-  'icon': icon,
+  ...(icon ? {icon: {
+    path: bcl_icon_path(),
+    ...(icon is iterable) ? icon : {
+      name: icon,
+    },
+  }} : {}),
   'icon_position': icon_position,
   'icon_display': icon_display,
   'remove_icon_spacers': remove_icon_spacers,
