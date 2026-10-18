@@ -7,12 +7,12 @@
 {% include '@oe-bcl/bcl-fact-figures/fact-figures.html.twig' with {
   'title': title,
   'title_tag': title_tag,
-  'items': items,
+  'items': (items ?? [])|map(item => item|bcl_expand_icon),
   'alignment': alignment,
   'responsive_columns': columns,
   'equal_height': true,
   'icon_path': bcl_icon_path,
-  'icon_size': icon_size,
+  'icon_size': theme_setting('facts_figures.icon_size') ?: 'l',
   'link_more': link,
   'attributes': attributes,
 } only %}
