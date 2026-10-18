@@ -161,17 +161,6 @@ function oe_bootstrap_theme_preprocess_pattern_card(array &$variables): void {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for listing pattern.
- */
-function oe_bootstrap_theme_preprocess_pattern_listing(array &$variables): void {
-  foreach ($variables['items'] as &$item) {
-    if (!empty($item['image_copyright'])) {
-      $item['image_copyright_label'] = t('Image credit:');
-    }
-  }
-}
-
-/**
  * Implements hook_preprocess_HOOK() for Carousel V2 patterns.
  */
 function oe_bootstrap_theme_preprocess_pattern_carousel_v2(array &$variables): void {
