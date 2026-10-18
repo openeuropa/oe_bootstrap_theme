@@ -34,13 +34,6 @@ function oe_bootstrap_theme_preprocess_page(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for carousel patterns.
- */
-function oe_bootstrap_theme_preprocess_pattern_carousel(array &$variables) {
-  $variables['carousel_id'] = Html::getUniqueId('bcl-carousel');
-}
-
-/**
  * Implements hook_preprocess_HOOK().
  */
 function oe_bootstrap_theme_preprocess_pattern_offcanvas(array &$variables): void {
