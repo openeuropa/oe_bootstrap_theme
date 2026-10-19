@@ -109,6 +109,19 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     $system_site_config->set('page.front', '/')->save();
   }
 
+  public function testAllFixturesCovered(): void {
+    $dir = __DIR__ . '/fixtures/markup_rendering_patterns';
+    $candidates = preg_grep('#^\w+.yml$#', scandir($dir));
+    $expected = array_map(fn ($name) => $name . '.yml', static::$patternList);
+    sort($candidates);
+    sort($expected);
+    $this->assertSame(Yaml::encode($expected), Yaml::encode($candidates));
+  }
+
+  public function testMarkupAsRecorded(): void {
+    $cases = self::markupRenderingProvider();
+  }
+
   /**
    * Tests rendering of elements.
    *
