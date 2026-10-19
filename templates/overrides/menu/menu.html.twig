@@ -3,7 +3,7 @@
  * Template for a menu.
  */
 #}
-{% include 'oe_bootstrap_theme:navigation' with {
+{{ pattern('navigation', {
   'variant': 'pills',
   'items': items,
-} only %}
+}) }}
