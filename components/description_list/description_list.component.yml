@@ -86,17 +86,14 @@ props:
                       description: 'Label text or render array.'
                     icon:
                       title: 'Icon'
-                      anyOf:
-                        - type: 'null'
-                        - type: string
-                        - type: object
-                          properties:
-                            name:
-                              type: [string, 'null']
-                            size:
-                              type: [string, 'null']
-                            path:
-                              type: [string, 'null']
+                      type: [string, object, 'null']
+                      properties:
+                        name:
+                          type: [string, 'null']
+                        size:
+                          type: [string, 'null']
+                        path:
+                          type: [string, 'null']
           definition:
             title: 'Definition'
             description: 'A string or an array of definition objects.'
