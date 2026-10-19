@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
+use Drupal\Component\Serialization\Yaml;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Language\LanguageManagerInterface;
@@ -12,6 +13,7 @@ use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
@@ -23,6 +25,8 @@ use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
 use Drupal\oe_bootstrap_theme_helper\Value\NamedParametersOnly;
+use PHPUnit\Framework\Assert;
+use Symfony\Component\Yaml\Tag\TaggedValue;
 use Twig\Attribute\AsTwigFilter;
 use Twig\Attribute\AsTwigFunction;
 use Twig\Environment;
@@ -109,6 +113,13 @@ class TwigExtension extends AbstractExtension {
       }
     }
     return $functions;
+  }
+
+  public function createClosure(callable $callback, int $offset, array $args): \Closure {
+    return fn (mixed ...$closure_args) => $callback(
+      ...array_pad(array_slice($closure_args, 0, $offset), $offset, NULL),
+      ...$args,
+    );
   }
 
   /**
@@ -529,6 +540,21 @@ class TwigExtension extends AbstractExtension {
     return $children;
   }
 
+  #[AsTwigFunction('break')]
+  public function break(mixed $arg = NULL) {
+    return '';
+  }
+
+  #[AsTwigFunction('debug')]
+  public function debug(mixed $data) {
+    $data = $this->yamlTagObjects($data);
+    return Markup::create(
+      "<pre>" .
+      Html::escape(Yaml::encode($data)) .
+      "</pre>"
+    );
+  }
+
   /**
    * Prepares parameters for the 'bcl-icon' template.
    *
@@ -671,6 +697,7 @@ class TwigExtension extends AbstractExtension {
    *     - The unmodified array, if both $argument[$key] and $defaults are NULL
    *       or not provided.
    */
+  #[AsTwigFunction('bcl_expand_attributes')]
   #[AsTwigFilter('bcl_expand_attributes')]
   public function bclExpandAttributes(
     ?array $argument,
@@ -713,6 +740,37 @@ class TwigExtension extends AbstractExtension {
     return $argument;
   }
 
+  #[AsTwigFunction('assert_same')]
+  public function assertSame($expected, $actual): void {
+    [$expected_yaml, $actual_yaml] = array_map(
+      fn ($arg) => Yaml::encode($this->yamlTagObjects($arg)),
+      [$expected, $actual],
+    );
+    Assert::assertSame($expected_yaml, $actual_yaml);
+    if ($expected_yaml !== $actual_yaml) {
+      throw new \Exception("Expected:\n$expected_yaml\n\nActual:$actual_yaml\n");
+    }
+  }
+
+  protected function yamlTagObjects(mixed $value): mixed {
+    if (is_array($value)) {
+      if (!array_is_list($value)) {
+        ksort($value);
+      }
+      return array_map($this->yamlTagObjects(...), $value);
+    }
+    if (is_object($value)) {
+      if ($value instanceof Attribute) {
+        return new TaggedValue('Attribute', $value->toArray());
+      }
+      if ($value instanceof TranslatableMarkup) {
+        return new TaggedValue('t', $value->getUntranslatedString());
+      }
+      return new TaggedValue('object', get_class($value));
+    }
+    return $value;
+  }
+
   /**
    * Removes NULL values from an array.
    *
@@ -736,15 +794,14 @@ class TwigExtension extends AbstractExtension {
   /**
    * Creates an Attribute object from input.
    *
-   * For now this is used internally and not exposed as a twig filter.
-   *
    * @param mixed $argument
    *   The filter argument.
    *
    * @return \Drupal\Core\Template\Attribute
    *   The new attributes object.
    */
-  protected function toAttribute(mixed $argument): Attribute {
+  #[AsTwigFilter('to_attribute')]
+  public function toAttribute(mixed $argument): Attribute {
     if ($argument instanceof Attribute) {
       return $argument;
     }
@@ -754,7 +811,50 @@ class TwigExtension extends AbstractExtension {
     if (is_array($argument)) {
       return new Attribute($argument);
     }
-    throw new \InvalidArgumentException(sprintf('Expected an array, an Argument object, or NULL. Found %s.', get_debug_type($argument)));
+    if (!is_string($argument)) {
+      throw new \InvalidArgumentException(sprintf('Expected a string, array, an Argument object, or NULL. Found %s.', get_debug_type($argument)));
+    }
+    $html = '<div ' . $argument . '></div>';
+    $attributes = [];
+    try {
+      foreach (Html::load($html)->getElementsByTagName('div') as $div) {
+        foreach ($div->attributes as $attr) {
+          $attributes[$attr->nodeName] = $attr->nodeValue;
+        }
+      }
+    }
+    catch (\Throwable $e) {
+      throw new \InvalidArgumentException(sprintf('Invalid attributes string: %s.', $argument), previous: $e);
+    }
+    return new Attribute($attributes);
+  }
+
+  #[AsTwigFilter('to_assoc')]
+  public function toAssoc(mixed $argument, string $key): array {
+    if ($argument === '' || $argument === [] || $argument === NULL) {
+      return [];
+    }
+    if (is_array($argument)) {
+      return $argument;
+    }
+    if (is_string($argument)) {
+      return [$key => $argument];
+    }
+    throw new \InvalidArgumentException(sprintf('Expected an array, string or NULL, found %s', get_debug_type($argument)));
+  }
+
+  #[AsTwigFilter('to_assoc_or_null')]
+  public function toAssocOrNull(mixed $argument, string $key): ?array {
+    if ($argument === '' || $argument === [] || $argument === NULL) {
+      return NULL;
+    }
+    if (is_array($argument)) {
+      return $argument;
+    }
+    if (is_string($argument)) {
+      return [$key => $argument];
+    }
+    throw new \InvalidArgumentException(sprintf('Expected an array, string or NULL, found %s', get_debug_type($argument)));
   }
 
   /**
@@ -772,6 +872,7 @@ class TwigExtension extends AbstractExtension {
    *
    * @see \Twig\Extension\CoreExtension::invoke()
    */
+  #[AsTwigFunction('arrow')]
   #[AsTwigFilter('arrow')]
   public function arrow(mixed $argument, callable $callback): mixed {
     return $callback($argument);
@@ -849,6 +950,52 @@ class TwigExtension extends AbstractExtension {
       'Expected ImageValueObjectInterface|array, found %s',
       get_debug_type($argument),
     ));
+  }
+
+  #[AsTwigFunction('arrow_if_not_empty')]
+  public function arrowOrNull(mixed $argument, callable $callback): mixed {
+    if ($argument === NULL || $argument === [] || $argument === '') {
+      return NULL;
+    }
+    return $callback($argument);
+  }
+
+  #[AsTwigFunction('map_assoc')]
+  #[AsTwigFilter('map_assoc')]
+  public function mapAssoc(array $assoc, array $callbacks): array {
+    $remove = new \stdClass();
+    foreach ($callbacks as $key => $callback) {
+      assert(is_callable($callback));
+      if (!array_key_exists($key, $assoc)) {
+        continue;
+      }
+      $current_value = $assoc[$key];
+      $new_value = $callback($current_value, $remove);
+      if ($new_value === $remove) {
+        unset($assoc[$key]);
+      }
+      else {
+        $assoc[$key] = $new_value;
+      }
+    }
+    return $assoc;
+  }
+
+  #[AsTwigFunction('expand_assoc')]
+  #[AsTwigFilter('expand_assoc')]
+  public function expandAssoc(array $assoc, array $callbacks): array {
+    $remove = new \stdClass();
+    foreach ($callbacks as $key => $callback) {
+      assert(is_callable($callback));
+      $new_value = $callback($remove);
+      if ($new_value === $remove) {
+        unset($assoc[$key]);
+      }
+      else {
+        $assoc[$key] = $new_value;
+      }
+    }
+    return $assoc;
   }
 
 }
