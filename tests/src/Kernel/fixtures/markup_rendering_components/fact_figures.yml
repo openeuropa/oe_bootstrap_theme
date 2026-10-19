@@ -70,6 +70,7 @@ fact_figures_default_1col:
       'div > div.col:nth-child(4) > div.fs-5': 'Test variants'
       'div > div.col:nth-child(5) > div.fs-5': 'Jira ticket'
       'div > div.col:nth-child(6) > div.fs-5': 'Figma components'
+      'div > div.col.h-100:nth-child(3) > svg': '<use xlink:href="/custom-icons.svg#shield-check"></use>'
       'a[href="/example"]': 'Read more'
 fact_figures_default_2col:
   render:
