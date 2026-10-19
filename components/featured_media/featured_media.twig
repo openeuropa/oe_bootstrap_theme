@@ -12,20 +12,16 @@
 {% set _link = link|default({}) %}
 {% set _title_link = title_link|default({}) %}
 
+{# The image can be passed as markup, render array, or as ImageValueObject. #}
 {% if _image is not empty and _image.src is defined %}
-  {% set _image_attributes = create_attribute({
-    src: _image.src,
-    alt: _image.alt|default(''),
-  }).addClass('flex-end-100') %}
-  {% if _image.responsive ?? true %}
-    {% set _image_attributes = _image_attributes.addClass('img-fluid') %}
-  {% endif %}
-  {% if _image.name is not empty %}
-    {% set _image_attributes = _image_attributes.setAttribute('title', _image.name) %}
-  {% endif %}
-  {% set _image %}
-    <img{{ _image_attributes }} />
-  {% endset %}
+  {% set _image = _image.toRenderArray()|merge({
+    '#attributes': {
+      class: [
+        'flex-end-100',
+        ...(_image.responsive ?? true) ? ['img-fluid'] : [],
+      ],
+    },
+  }) %}
 {% endif %}
 
 {% if _link is not empty %}
