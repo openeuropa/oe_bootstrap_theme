@@ -4,6 +4,11 @@
  * Blockquote pattern.
  */
 #}
+{% if attribution and cite %}
+  {#- Append a space between attribution and cite. #}
+  {#- @todo This should be fixed in BCL eventually. #}
+  {%- set attribution %}{{ attribution }} {% endset %}
+{% endif %}
 {% include '@oe-bcl/blockquote' with {
   'title': title,
   'title_tag': title_tag,
