@@ -14,16 +14,7 @@ props:
     image:
       title: Image
       type: [string, array, object, 'null']
-      description: 'Rendered image or an object containing image attributes.'
-      properties:
-        src:
-          type: [string, 'null']
-        alt:
-          type: [string, 'null']
-        name:
-          type: [string, 'null']
-        responsive:
-          type: [boolean, 'null']
+      description: 'A markup object, a render array, or an ImageValueObject instance.'
     poster_image:
       title: 'Poster image'
       type: [string, 'null']
