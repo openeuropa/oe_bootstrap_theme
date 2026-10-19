@@ -1,26 +1,21 @@
 name: 'Banner'
 description: 'Banner or heroes with text and/or background image and/or with call to action.'
+variants:
+  default:
+    title: 'Default text banner'
+    description: 'Gray text banner.'
+  primary:
+    title: 'Primary text banner'
+    description: 'Text banner with a primary style.'
+  image:
+    title: 'Image banner'
+    description: 'Banner with text and an image.'
+  image_shade:
+    title: 'Image shade banner'
+    description: 'Banner with text and a shade image.'
 props:
   type: object
   properties:
-    variant:
-      title: Variant
-      type: [string, 'null']
-      description: 'The banner variant. Defaults to default.'
-      default: default
-      enum:
-        - default
-        - primary
-        - image
-        - image_shade
-        - null
-      'meta:enum':
-        default: 'Default text banner'
-        primary: 'Primary text banner'
-        image: 'Image banner'
-        image_shade: 'Image shade banner'
-        # Value NULL becomes '' when used as array key.
-        '': Default
     hero:
       title: Hero
       type: [boolean, 'null']
