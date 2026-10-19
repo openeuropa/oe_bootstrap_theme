@@ -137,13 +137,6 @@ function oe_bootstrap_theme_preprocess_pattern_pagination__preview(array &$varia
 }
 
 /**
- * Implements hook_preprocess_HOOK() for gallery pattern.
- */
-function oe_bootstrap_theme_preprocess_pattern_gallery(array &$variables): void {
-  $variables['id'] = Html::getUniqueId('bcl-gallery');
-}
-
-/**
  * Implements hook_preprocess_HOOK() for gallery pattern preview.
  */
 function oe_bootstrap_theme_preprocess_pattern_gallery__preview(array &$variables): void {
