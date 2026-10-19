@@ -7,7 +7,6 @@
 
 declare(strict_types=1);
 
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Markup;
 use Drupal\oe_bootstrap_theme\BackwardCompatibility;
 use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
@@ -133,13 +132,6 @@ function oe_bootstrap_theme_preprocess_pattern_pagination__preview(array &$varia
 
   // Mark the letter F as active.
   $variables['items'][5]['active'] = TRUE;
-}
-
-/**
- * Implements hook_preprocess_HOOK() for gallery pattern.
- */
-function oe_bootstrap_theme_preprocess_pattern_gallery(array &$variables): void {
-  $variables['id'] = Html::getUniqueId('bcl-gallery');
 }
 
 /**
