@@ -22,18 +22,8 @@ props:
           type: [string, 'null']
         name:
           type: [string, 'null']
-        title:
-          type: [string, 'null']
         responsive:
           type: [boolean, 'null']
-        loading:
-          type: [string, 'null']
-        width:
-          type: [string, integer, 'null']
-        height:
-          type: [string, integer, 'null']
-        class:
-          type: [string, array, object, 'null']
     poster_image:
       title: 'Poster image'
       type: [string, 'null']
