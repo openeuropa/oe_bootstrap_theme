@@ -77,4 +77,18 @@
       },
     } only %}
   </div>
+
+  <div>
+    <h3>Three columns, align center</h3>
+    {% include 'oe_bootstrap_theme:fact_figures' with {
+      title: 'Fact and figures block',
+      columns: 3,
+      alignment: 'center',
+      items: items,
+      link: {
+        label: 'Read more',
+        path: '/example',
+      },
+    } only %}
+  </div>
 </div>
