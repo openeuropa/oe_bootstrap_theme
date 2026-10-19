@@ -181,7 +181,7 @@ class TwigExtension extends AbstractExtension {
         continue;
       }
       if (!is_array($item['term'])) {
-        throw new \InvalidArgumentException(sprintf(
+        throw new RuntimeError(sprintf(
           'Expected a string, array or markup for %s, found %s.',
           "items[$i_item].term",
           get_debug_type($item['term']),
@@ -189,7 +189,7 @@ class TwigExtension extends AbstractExtension {
       }
       foreach ($item['term'] as $i_term => &$term) {
         if (!is_array($term)) {
-          throw new \InvalidArgumentException(sprintf(
+          throw new RuntimeError(sprintf(
             'Expected %s to be an array, found %s.',
             "items[$i_item].term[$i_term]",
             get_debug_type($item['term']),
