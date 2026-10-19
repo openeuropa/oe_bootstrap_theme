@@ -3,7 +3,7 @@ featured_media_image_without_text:
     '#type': component
     '#component': oe_bootstrap_theme:featured_media
     '#props':
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1200/600/'
         alt: 'Alternative text for featured image'
         name: 'Featured image title'
@@ -40,7 +40,7 @@ featured_media_image_with_text_and_link:
     '#type': component
     '#component': oe_bootstrap_theme:featured_media
     '#props':
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1200/600/'
         alt: 'Alternative text for featured image'
         name: 'Image value object title'
