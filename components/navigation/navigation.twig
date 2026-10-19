@@ -29,7 +29,7 @@
       items: item.items ? item.items|map(fn_prepare_navigation_element) : null,
     }|without_nulls)
   ),
-  items: items|map(_item => _item|merge({
+  items_: items|map(_item => _item|merge({
     icon_path: bcl_icon_path,
   })),
   pills: _variant == 'pills',
