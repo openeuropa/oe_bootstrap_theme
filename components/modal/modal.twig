@@ -9,7 +9,7 @@
 {% set _body_attributes = create_attribute(body_attributes ?? {}) %}
 {% set _footer_attributes = create_attribute(footer_attributes ?? {}) %}
 {% set _attributes = attributes|default(create_attribute()) %}
-{% set _id = _attributes.id|default(modal_id|default('modal'|clean_unique_id)) %}
+{% set _id = _attributes.id|default(modal_id|default('bcl-modal'|clean_unique_id)) %}
 {% set _header = '' %}
 {% set _title_tag = title_tag|default('h5') %}
 

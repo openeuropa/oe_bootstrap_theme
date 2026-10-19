@@ -209,8 +209,8 @@ offcanvas_with_generated_id_and_no_header_or_body:
         label: 'Open generated ID panel'
   assertions:
     count:
-      'div[id^="offcanvas"].offcanvas-xxl': 1
+      'div[id^="bcl-offcanvas"].offcanvas-xxl': 1
       'div.offcanvas-header': 0
       'div.offcanvas-body': 0
-      'button[data-bs-toggle="offcanvas"][data-bs-target^="#offcanvas"][aria-controls^="offcanvas"]': 1
+      'button[data-bs-toggle="offcanvas"][data-bs-target^="#bcl-offcanvas"][aria-controls^="bcl-offcanvas"]': 1
       'button.btn-close': 0
