@@ -192,7 +192,7 @@ class TwigExtension extends AbstractExtension {
           throw new RuntimeError(sprintf(
             'Expected %s to be an array, found %s.',
             "items[$i_item].term[$i_term]",
-            get_debug_type($item['term']),
+            get_debug_type($term),
           ));
         }
         if (!empty($term['icon'])) {
