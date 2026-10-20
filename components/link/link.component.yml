@@ -90,6 +90,7 @@ props:
       type: [string, 'null']
       description: 'Uses flexbox gap spacing between the icon and label.'
       enum:
+        - ''
         - flex
         - inline-flex
         - null

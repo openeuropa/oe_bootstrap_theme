@@ -172,6 +172,24 @@ class ComponentPatternParityTest extends KernelTestBase {
       ];
       $cases['gallery_thumbnail_' . $fit] = [$gallery];
     }
+    foreach ([
+      'badge_link_background' => ['badge', [
+        'label' => 'Badge',
+        'background' => 'link',
+      ], ['count' => ['span.text-bg-link' => 1]],
+      ],
+      'link_empty_icon_display' => ['link', [
+        'label' => 'Link',
+        'icon_display' => '',
+      ], ['count' => ['a' => 1, 'a.d-flex, a.d-inline-flex' => 0]],
+      ],
+    ] as $key => [$id, $fields, $assertions]) {
+      $cases[$key] = [[
+        'render' => ['#type' => 'pattern', '#id' => $id, '#fields' => $fields],
+        'assertions' => $assertions,
+      ],
+      ];
+    }
     return $cases;
   }
 
