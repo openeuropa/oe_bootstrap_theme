@@ -8,7 +8,7 @@
 {% set _subtitle_attributes = create_attribute(subtitle_attributes ?? {}) %}
 {% set _media_attributes = create_attribute(media_attributes ?? {}) %}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
-{% set _image = image|default('') %}
+{% set _image = image|default('')|bcl_featured_media_image %}
 {% set _link = link|default({}) %}
 {% set _title_link = title_link|default({}) %}
 

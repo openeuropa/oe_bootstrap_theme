@@ -7,6 +7,7 @@ namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 use Drupal\Component\Serialization\Yaml;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Site\Settings;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
 use Drupal\Tests\oe_bootstrap_theme\Traits\BackwardCompatibilityTrait;
@@ -149,6 +150,10 @@ class ComponentPatternParityTest extends KernelTestBase {
       }
     }
 
+    $image = $cases['featured_media_image_not_wrapper'];
+    $fields = $image[0]['render']['#fields'];
+    $image[0]['render']['#fields']['image'] = ImageValueObject::fromArray($fields['image']);
+    $cases['featured_media_image_value_object'] = $image;
     $date = $cases['date_block_default'];
     $date[0]['render']['#fields']['date'] = new \DateTimeImmutable('2021-05-26');
     $cases['date_block_datetime'] = $date;

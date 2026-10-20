@@ -19,6 +19,8 @@ use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme\DrupalCompatibility;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
 use Twig\Environment;
 use Twig\Error\RuntimeError;
@@ -46,6 +48,7 @@ class TwigExtension extends AbstractExtension {
   public function getFilters(): array {
     return [
       new TwigFilter('bcl_card_list', [$this, 'bclCardList']),
+      new TwigFilter('bcl_featured_media_image', [$this, 'bclFeaturedMediaImage']),
       new TwigFilter('bcl_description_list_items', [$this, 'bclDescriptionListItems']),
       new TwigFilter('bcl_navigation_items', [$this, 'bclNavigationItems']),
       new TwigFilter('format_size', 'Drupal\Core\StringTranslation\ByteSizeMarkup::create'),
@@ -158,6 +161,25 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $bcl_cards;
+  }
+
+  /**
+   * Applies pattern image processing to featured media images.
+   *
+   * @param mixed $image
+   *   An image value object, render array, plain definition or markup.
+   *
+   * @return mixed
+   *   The image with the same rendering and classes as the pattern.
+   */
+  public function bclFeaturedMediaImage(mixed $image): mixed {
+    if ($image instanceof ImageValueObjectInterface) {
+      $image = ImageValueObject::fromArray($image->getArray())->toRenderArray();
+    }
+    if (is_array($image) && $image !== [] && Element::isRenderArray($image)) {
+      $image['#attributes']['class'][] = 'flex-end-100';
+    }
+    return $image;
   }
 
   /**
