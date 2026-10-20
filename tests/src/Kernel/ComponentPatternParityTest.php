@@ -9,6 +9,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
+use Drupal\Tests\oe_bootstrap_theme\Traits\BackwardCompatibilityTrait;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -17,6 +18,8 @@ use Symfony\Component\DomCrawler\Crawler;
  * @group oe_bootstrap_theme
  */
 class ComponentPatternParityTest extends KernelTestBase {
+
+  use BackwardCompatibilityTrait;
 
   /**
    * {@inheritdoc}
@@ -50,6 +53,9 @@ class ComponentPatternParityTest extends KernelTestBase {
    * @dataProvider patternProvider
    */
   public function testPatternParity(array $fixture): void {
+    foreach ($fixture['backward_compatibility'] ?? [] as $name => $value) {
+      $this->setBackwardCompatibilitySetting($name, $value);
+    }
     $pattern = $fixture['render'];
     $props = $pattern['#fields'] ?? [];
     $settings = $props['settings'] ?? [];
@@ -66,13 +72,20 @@ class ComponentPatternParityTest extends KernelTestBase {
     foreach ([$pattern, $component] as $render) {
       Html::resetSeenIds();
       $render = PatternTestDataMassager::massageDataRecursive($render);
-      $crawler = new Crawler((string) $this->container->get('renderer')->renderInIsolation($render));
+      $type = $render['#type'];
+      $html = (string) $this->container->get('renderer')->renderInIsolation($render);
+      $html = preg_replace('/ data-component-id="[^"]+"/', '', $html);
+      $crawler = new Crawler($html);
+      if (isset($fixture['assertions']['pattern'])) {
+        $assertion = $fixture['assertions']['pattern'];
+        (new $assertion['class']())->assertPattern($assertion['expected'], $html);
+      }
       foreach ($fixture['assertions']['count'] ?? [] as $selector => $count) {
         // UI Patterns and SDC add different discovery metadata to the wrapper.
         if (str_contains($selector, 'data-drupal-selector')) {
           continue;
         }
-        $this->assertCount($count, $crawler->filter($selector), $selector);
+        $this->assertCount($count, $crawler->filter($selector), $type . ": $selector\n$html");
       }
       foreach (['equals', 'contains'] as $kind) {
         foreach ($fixture['assertions'][$kind] ?? [] as $selector => $expected) {
@@ -95,15 +108,12 @@ class ComponentPatternParityTest extends KernelTestBase {
   public static function patternProvider(): array {
     $cases = [];
     $components = [
-      'accordion', 'banner', 'blockquote', 'button', 'date_block',
-      'fact_figures', 'listing', 'modal', 'offcanvas',
+      'accordion', 'banner', 'blockquote', 'button', 'card', 'date_block',
+      'fact_figures', 'featured_media', 'listing', 'modal', 'offcanvas',
     ];
     foreach ($components as $name) {
       foreach (Yaml::decode(file_get_contents(__DIR__ . "/fixtures/markup_rendering_patterns/$name.yml")) as $key => $fixture) {
-        // Complex component assertions are covered by the existing suites.
-        if (!isset($fixture['assertions']['pattern'])) {
-          $cases[$key] = [$fixture];
-        }
+        $cases[$key] = [$fixture];
       }
     }
     foreach ($cases as $key => $case) {
@@ -128,6 +138,17 @@ class ComponentPatternParityTest extends KernelTestBase {
         $cases[$key . '_numeric_string'] = $case;
       }
     }
+    foreach ([FALSE, TRUE] as $grid) {
+      foreach ([FALSE, TRUE] as $hidden) {
+        $card = $cases['card_variant_search'];
+        $card[0]['backward_compatibility'] = [
+          'card_search_use_grid_classes' => $grid,
+          'card_search_image_hide_on_mobile' => $hidden,
+        ];
+        $cases['card_variant_search_legacy_' . (int) $grid . (int) $hidden] = $card;
+      }
+    }
+
     $date = $cases['date_block_default'];
     $date[0]['render']['#fields']['date'] = new \DateTimeImmutable('2021-05-26');
     $cases['date_block_datetime'] = $date;

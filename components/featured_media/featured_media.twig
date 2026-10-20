@@ -86,11 +86,20 @@
   } only %}
 {% endset %}
 
+{% set _mobile_text_top = theme_setting('backward_compatibility.featured_media_mobile_text_top') %}
+{% set _mobile_text_top = _mobile_text_top ?? true %}
+{% set _legacy_subtitle = theme_setting('backward_compatibility.featured_media_subtitle_tag_h5') %}
+{% set _legacy_subtitle = _legacy_subtitle ?? true %}
 {% set _has_text = subtitle is not empty or text is not empty or _link is not empty %}
 <div{{ attributes|default(create_attribute()).addClass('bcl-featured-media') }}>
   {% if _has_text %}
     {% set _text_order = text_position|default('left') == 'right' ? 'order-2' : 'order-1' %}
     {% set _media_order = text_position|default('left') == 'right' ? 'order-1' : 'order-2' %}
+
+    {% if _mobile_text_top %}
+      {% set _text_order = text_position|default('left') == 'right' ? 'order-md-2' : 'order-md-1' %}
+      {% set _media_order = text_position|default('left') == 'right' ? 'order-md-1' : 'order-md-2' %}
+    {% endif %}
 
     {% if title is not empty %}
       {% include '@oe-bcl/heading' with {
@@ -103,7 +112,7 @@
     <div class="row">
       <div class="col-12 col-md-6 {{ _text_order }}">
         {% if subtitle is not empty %}
-          {% set _subtitle_tag = subtitle_tag|default(title is not empty ? 'h3' : 'h2') %}
+          {% set _subtitle_tag = subtitle_tag|default(_legacy_subtitle ? 'h5' : (title is not empty ? 'h3' : 'h2')) %}
           <{{ _subtitle_tag }}{{ _subtitle_attributes.addClass('text-secondary') }}>
             {{- subtitle -}}
           </{{ _subtitle_tag }}>
