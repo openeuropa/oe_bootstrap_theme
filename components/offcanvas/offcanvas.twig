@@ -42,6 +42,18 @@
   {% endif %}
 {% endif %}
 
+{% set _offcanvas_attributes = attributes %}
+{# Bootstrap replaces this static role with dialog while the panel is open. #}
+{% if not _offcanvas_attributes.hasAttribute('role') and title is not empty %}
+  {% set _offcanvas_attributes = _offcanvas_attributes.setAttribute('role', 'region') %}
+{% endif %}
+{% if _attributes.hasAttribute('role') %}
+  {% set _attributes = _attributes.setAttribute('data-offcanvas-static-role', _attributes['role']) %}
+{% endif %}
+{% if title is not empty %}
+  {% set _attributes = _attributes.setAttribute('data-offcanvas-aria-labelledby', offcanvas_id ~ '-title') %}
+{% endif %}
+
 {% include '@oe-bcl/offcanvas' with {
   title: title,
   title_tag: title_tag|default('h2'),
