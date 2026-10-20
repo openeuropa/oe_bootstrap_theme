@@ -7,6 +7,11 @@ timeline:
       label: 'Hide from'
       description: 'Indicate the number of items to display in the timeline, hide the others and add a toggle button to show them.'
       preview: 5
+    hide_to:
+      type: number
+      label: 'Hide to'
+      description: 'Indicate the number of bottom items to keep displayed when items are hidden. Defaults to 0.'
+      preview: 5
   fields:
     title:
       type: text

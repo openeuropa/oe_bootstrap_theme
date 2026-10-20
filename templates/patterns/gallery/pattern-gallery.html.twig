@@ -6,6 +6,7 @@
 #}
 {% extends '@oe-bcl/gallery' %}
 
+{% set id = 'bcl-gallery'|clean_unique_id %}
 {% set toggle_collapsed = 'View the full gallery (%d)'|t %}
 {% set toggle_expanded = 'View less'|t %}
 {% set items = bcl_gallery_items(items|default([])) %}
