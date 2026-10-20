@@ -117,7 +117,7 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
     $render = PatternTestDataMassager::massageDataRecursive($fixture_render);
     $this->doTestComponentRendering($render, $assertions);
     $metadata = $this->container->get('plugin.manager.sdc')->find($render['#component'])->metadata;
-    // Cover plain values in the same pass as explicit NULL props.
+    // Cover plain values and NULL top-level props, preserving nested inputs.
     $render = PatternTestDataMassager::massageDataRecursive($fixture_render, FALSE);
     // Before Drupal 11.3, core requires an Attribute object for this prop.
     if (version_compare(\Drupal::VERSION, '11.3.0', '<') && is_array($render['#props']['attributes'] ?? NULL)) {
