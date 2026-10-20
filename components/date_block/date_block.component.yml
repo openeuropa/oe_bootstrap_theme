@@ -2,23 +2,13 @@ name: 'Date block'
 description: 'Date block allows to present a date that can be placed in other components.'
 props:
   type: object
+  required:
+    - date
   properties:
-    day:
-      title: Day
-      type: [string, integer, 'null']
-      description: 'Day displayed in the date block.'
-    month:
-      title: Month
-      type: [string, 'null']
-      description: 'Month displayed in the date block.'
-    date_time:
-      title: Datetime
-      type: [string, 'null']
-      description: 'Machine-readable date added to the datetime attribute.'
-    year:
-      title: Year
-      type: [string, integer, 'null']
-      description: 'Year displayed in the date block.'
+    date:
+      title: 'Date'
+      type: DateTimeInterface  # DateTime, required.
+      description: 'A DateTime object. This is required.'
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

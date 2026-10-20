@@ -5,9 +5,9 @@
  */
 #}
 {% include '@oe-bcl/date-block' with {
-  day: day,
-  month: month,
-  date_time: date_time,
-  year: year,
+  day: date|date('d'),
+  month: date|date('M'),
+  year: date|date('Y'),
+  date_time: date|date('Y-m-d'),
   attributes: attributes,
 } only %}
