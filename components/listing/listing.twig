@@ -80,10 +80,7 @@
   }) %}
 {% endif %}
 
-{% set _attributes = attributes|default(create_attribute()) %}
-{% if _attributes.class is empty %}
-  {% set _attributes = _attributes.addClass('text-break') %}
-{% endif %}
+{% set _attributes = attributes|default(create_attribute()).addClass('text-break') %}
 
 {% include '@oe-bcl/listing' with {
   title: title,

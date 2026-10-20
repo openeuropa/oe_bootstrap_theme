@@ -5,7 +5,7 @@
  */
 #}
 {% set _variant = variant|default('default') %}
-{% set _shade = shade ?? _variant == 'image_shade' %}
+{% set _shade = _variant == 'image_shade' ? true : shade %}
 {% set _attributes = attributes|default(create_attribute()) %}
 
 {% if _variant == 'primary' %}

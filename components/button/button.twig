@@ -33,7 +33,7 @@
   size: size|default('md'),
   type: type|default('button'),
   outline: outline,
-  disabled: disabled ?? _attributes.disabled ?? false,
+  disabled: disabled|default(_attributes.disabled),
   text_nowrap: text_nowrap,
   assistive_text: assistive_text,
   id: id,
