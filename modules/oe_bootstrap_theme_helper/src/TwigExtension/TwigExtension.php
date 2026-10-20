@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
-use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Extension\ThemeExtensionList;
-use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
@@ -17,9 +15,15 @@ use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
+use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme\DrupalCompatibility;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
+use Drupal\oe_bootstrap_theme_helper\Value\NamedParametersOnly;
+use Twig\Attribute\AsTwigFilter;
+use Twig\Attribute\AsTwigFunction;
 use Twig\Environment;
 use Twig\Error\RuntimeError;
 use Twig\Extension\AbstractExtension;
@@ -44,9 +48,8 @@ class TwigExtension extends AbstractExtension {
    * {@inheritdoc}
    */
   public function getFilters(): array {
-    return [
+    $filters = [
       new TwigFilter('bcl_card_list', [$this, 'bclCardList']),
-      new TwigFilter('bcl_description_list_items', [$this, 'bclDescriptionListItems']),
       new TwigFilter('bcl_navigation_items', [$this, 'bclNavigationItems']),
       new TwigFilter('format_size', 'Drupal\Core\StringTranslation\ByteSizeMarkup::create'),
       new TwigFilter('to_file_icon', [$this, 'toFileIcon']),
@@ -60,13 +63,28 @@ class TwigExtension extends AbstractExtension {
       ]),
       new TwigFilter('element_children', [$this, 'elementChildren']),
     ];
+    // Use attributes for newly added twig filters.
+    // @todo This likely needs to be updated once Drupal natively supports these
+    //   Twig attributes.
+    $reflection = new \ReflectionClass($this);
+    foreach ($reflection->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
+      if ($method->isAbstract() || $method->isStatic()) {
+        continue;
+      }
+      foreach ($method->getAttributes(AsTwigFilter::class) as $reflection_attribute) {
+        $attribute = $reflection_attribute->newInstance();
+        assert($attribute instanceof AsTwigFilter);
+        $filters[] = new TwigFilter($attribute->name, [$this, $method->name]);
+      }
+    }
+    return $filters;
   }
 
   /**
    * {@inheritdoc}
    */
   public function getFunctions(): array {
-    return [
+    $functions = [
       new TwigFunction('bcl_link', [$this, 'bclLink'], [
         'needs_environment' => TRUE,
       ]),
@@ -75,6 +93,21 @@ class TwigExtension extends AbstractExtension {
       new TwigFunction('html_unique_id', [Html::class, 'getUniqueId']),
       new TwigFunction('theme_setting', [DrupalCompatibility::class, 'themeGetSetting']),
     ];
+    // Use attributes for newly added twig functions.
+    // @todo This likely needs to be updated once Drupal natively supports these
+    //   Twig attributes.
+    $reflection = new \ReflectionClass($this);
+    foreach ($reflection->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
+      if ($method->isAbstract() || $method->isStatic()) {
+        continue;
+      }
+      foreach ($method->getAttributes(AsTwigFunction::class) as $reflection_attribute) {
+        $attribute = $reflection_attribute->newInstance();
+        assert($attribute instanceof AsTwigFunction);
+        $functions[] = new TwigFunction($attribute->name, [$this, $method->name]);
+      }
+    }
+    return $functions;
   }
 
   /**
@@ -158,59 +191,6 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $bcl_cards;
-  }
-
-  /**
-   * Processes items for the description list component.
-   *
-   * @param array $items
-   *   The description list items.
-   * @param string|null $icon_path
-   *   Path to the icons SVG file. Defaults to the BCL icon path.
-   *
-   * @return array
-   *   The processed items.
-   */
-  public function bclDescriptionListItems(array $items, ?string $icon_path = NULL): array {
-    if (!$icon_path) {
-      $icon_path = $this->getBclIconPath();
-    }
-
-    foreach ($items as $i_item => &$item) {
-      if (empty($item['term']) || is_string($item['term']) || $item['term'] instanceof MarkupInterface) {
-        continue;
-      }
-      if (!is_array($item['term'])) {
-        throw new RuntimeError(sprintf(
-          'Expected a string, array or markup for %s, found %s.',
-          "items[$i_item].term",
-          get_debug_type($item['term']),
-        ));
-      }
-      foreach ($item['term'] as $i_term => &$term) {
-        if (!is_array($term)) {
-          throw new RuntimeError(sprintf(
-            'Expected %s to be an array, found %s.',
-            "items[$i_item].term[$i_term]",
-            get_debug_type($term),
-          ));
-        }
-        if (!empty($term['icon'])) {
-          // If the icon is not an array, the icon name has been passed.
-          if (!is_array($term['icon'])) {
-            $term['icon'] = [
-              'name' => $term['icon'],
-            ];
-          }
-          $term['icon']['size'] ??= 'xs';
-          $term['icon']['path'] ??= $icon_path;
-        }
-      }
-      unset($term);
-    }
-    unset($item);
-
-    return $items;
   }
 
   /**
@@ -546,6 +526,313 @@ class TwigExtension extends AbstractExtension {
     $this->renderer->render($bubbleable);
 
     return $children;
+  }
+
+  /**
+   * Prepares parameters for the 'bcl-icon' template.
+   *
+   * @param mixed $argument
+   *   The input, which should be one of:
+   *     - The icon name, as a string.
+   *     - An array with icon name, and optionally path and size.
+   *     - NULL or empty array.
+   * @param mixed $_
+   *   A placeholder parameter to begin named parameters.
+   *   This parameter should never be passed, and all subsequent parameters
+   *   should be passed by name only.
+   * @param string|null $name
+   *   A fallback/default for the icon name, identifying the icon within an svg
+   *   file.
+   * @param string|null $path
+   *   A fallback/default for the path to the icons svg file.
+   * @param string|null $size
+   *   A fallback/default for the icon size.
+   *   Example values are '2xs', 'xs', 'm', 'l', 'xl' etc.
+   *
+   * @return array{name: string, path?: string, size?: string}|null
+   *   Arguments suitable for 'bcl-icon', or NULL for no icon.
+   */
+  #[AsTwigFilter('bcl_icon')]
+  public function bclIcon(
+    mixed $argument,
+    mixed $_ = NamedParametersOnly::SENTINEL,
+    ?string $name = NULL,
+    ?string $path = NULL,
+    ?string $size = NULL,
+  ): ?array {
+    NamedParametersOnly::checkForTwig($_);
+    if ($argument === NULL || $argument === [] || $argument === '') {
+      if ($name === NULL) {
+        return NULL;
+      }
+      $icon = ['name' => $name];
+    }
+    elseif (is_string($argument)) {
+      $icon = ['name' => $argument];
+    }
+    elseif (is_array($argument)) {
+      if (!isset($argument['name'])) {
+        if ($name === NULL) {
+          throw new RuntimeError('Missing icon name in non-empty icon array.');
+        }
+        $argument['name'] = $name;
+      }
+      $icon = $argument;
+    }
+    else {
+      throw new RuntimeError(sprintf('Expected an array, string or NULL, found %s', get_debug_type($argument)));
+    }
+    if (!empty($icon['attributes'])) {
+      $icon['attributes'] = $this->toAttribute($icon['attributes']);
+    }
+    else {
+      unset($icon['attributes']);
+    }
+    $icon['path'] ??= $path ?? $this->getBclIconPath();
+    if ($size !== NULL) {
+      $icon['size'] ??= $size;
+    }
+    return $icon;
+  }
+
+  /**
+   * Populates the 'icon' array key for use in the 'bcl-icon' template.
+   *
+   * @param array|null $argument
+   *   An associative array which may or may not have a [$key] key.
+   *   If $argument[$key] is present, it should be either a string holding the
+   *   icon name, or an array where ['name'] holds the icon name.
+   * @param mixed $_
+   *   Internal parameter used for named parameters validation.
+   *   Must not be explicitly provided.
+   * @param string $key
+   *   The array key in the input array which holds the icon information.
+   * @param string|null $name
+   *   A fallback/default for the icon name, identifying the icon within an svg
+   *   file.
+   * @param string|null $path
+   *   A fallback/default for the path to the icons svg file.
+   *   If this is not provided, and the original array does not have a path, the
+   *   default icon path from oe_bootstrap_theme is used.
+   * @param string|null $size
+   *   A fallback/default for the icon size.
+   *   Example values are '2xs', 'xs', 'm', 'l', 'xl' etc.
+   *
+   * @return array|null
+   *   One of:
+   *     - The (modified) array, where the [$key] key is populated with icon
+   *       data, if an icon name was provided either in $argument[$key] or
+   *       $argument[$key]['icon'], or in the $name argument.
+   *     - The (modified) array, where the [$key] key was removed, if no icon
+   *       name was provided.
+   */
+  #[AsTwigFilter('bcl_expand_icon')]
+  public function bclExpandIcon(
+    ?array $argument,
+    mixed $_ = NamedParametersOnly::SENTINEL,
+    string $key = 'icon',
+    ?string $name = NULL,
+    ?string $path = NULL,
+    ?string $size = NULL,
+  ): ?array {
+    NamedParametersOnly::checkForTwig($_);
+    if (isset($argument[$key])) {
+      $argument[$key] = $this->bclIcon($argument[$key], name: $name, path: $path, size: $size);
+    }
+    if (($argument[$key] ?? NULL) === NULL) {
+      unset($argument[$key]);
+    }
+    return $argument;
+  }
+
+  /**
+   * Populates the 'attributes' key with an Attribute object.
+   *
+   * @param array|null $argument
+   *   An array which may have a [$key] key.
+   *   If $argument[$key] is present, it should hold an arguments array, or an
+   *   Argument object, or NULL.
+   * @param array|null $defaults
+   *   Default argument values to merge, or NULL to ignore.
+   *   If this is an empty array, an empty Attribute object will always be
+   *   created.
+   *   If this is NULL, and $argument[$key] is NULL, nothing will be set.
+   * @param mixed $_
+   *   Internal parameter used for named parameters validation.
+   *   Must not be explicitly provided.
+   * @param string $key
+   *   The array key under which the attributes are found.
+   *
+   * @return array|null
+   *   One of:
+   *     - The modified array, with [$key] populated.
+   *     - NULL, if the original argument was NULL.
+   *     - The unmodified array, if both $argument[$key] and $defaults are NULL
+   *       or not provided.
+   */
+  #[AsTwigFilter('bcl_expand_attributes')]
+  public function bclExpandAttributes(
+    ?array $argument,
+    ?array $defaults = NULL,
+    mixed $_ = NamedParametersOnly::SENTINEL,
+    string $key = 'attributes',
+  ): ?array {
+    NamedParametersOnly::checkForTwig($_);
+    // Don't add attributes on an empty structure.
+    if ($argument === NULL) {
+      return NULL;
+    }
+    if (!isset($argument[$key]) && $defaults === NULL) {
+      return $argument;
+    }
+    if (($argument[$key] ?? []) === []) {
+      $argument[$key] = new Attribute($defaults ?? []);
+      return $argument;
+    }
+    if (is_array($argument[$key] ?? [])) {
+      $argument[$key] = new Attribute($argument[$key] ?? []);
+    }
+    if (!$argument[$key] instanceof Attribute) {
+      throw new RuntimeError(sprintf(
+        "Expected an array, an Attribute object, or NULL at '$key'. Found %s.",
+        get_debug_type($argument[$key]),
+      ));
+    }
+    foreach ($defaults ?? [] as $name => $value) {
+      if ($value === NULL) {
+        continue;
+      }
+      if ($name === 'class') {
+        $argument[$key]->addClass($value);
+      }
+      elseif (!$argument[$key]->hasAttribute($name)) {
+        $argument[$key]->setAttribute($name, $value);
+      }
+    }
+    return $argument;
+  }
+
+  /**
+   * Removes NULL values from an array.
+   *
+   * @param array $argument
+   *   An array which may contain NULL values.
+   * @param bool $preserve_list
+   *   TRUE to re-normalize list keys, FALSE to preserve all keys.
+   *
+   * @return array
+   *   The array without NULL values.
+   */
+  #[AsTwigFilter('without_nulls')]
+  public function withoutNulls(array $argument, bool $preserve_list = TRUE): array {
+    $result = array_filter($argument, fn ($value) => $value !== NULL);
+    if ($preserve_list && array_is_list($argument)) {
+      $result = array_values($result);
+    }
+    return $result;
+  }
+
+  /**
+   * Creates an Attribute object from input.
+   *
+   * For now this is used internally and not exposed as a twig filter.
+   *
+   * @param mixed $argument
+   *   The filter argument.
+   *
+   * @return \Drupal\Core\Template\Attribute
+   *   The new attributes object.
+   */
+  protected function toAttribute(mixed $argument): Attribute {
+    if ($argument instanceof Attribute) {
+      return $argument;
+    }
+    if ($argument === NULL) {
+      return new Attribute();
+    }
+    if (is_array($argument)) {
+      return new Attribute($argument);
+    }
+    throw new \InvalidArgumentException(sprintf('Expected an array, an Argument object, or NULL. Found %s.', get_debug_type($argument)));
+  }
+
+  /**
+   * Applies an arrow function to the value.
+   *
+   * This is similar to `|invoke()`, but with swapped parameters.
+   *
+   * @param mixed $argument
+   *   The value the filter applies to.
+   * @param callable $callback
+   *   The arrow function.
+   *
+   * @return mixed
+   *   The result of the callback.
+   *
+   * @see \Twig\Extension\CoreExtension::invoke()
+   */
+  #[AsTwigFilter('arrow')]
+  public function arrow(mixed $argument, callable $callback): mixed {
+    return $callback($argument);
+  }
+
+  /**
+   * Does an array lookup using the filter argument as key.
+   *
+   * @param string|int $argument
+   *   The filter argument.
+   * @param array $branches
+   *   The match branches.
+   *   By default, the array key 'default' holds the fallback/default value.
+   * @param mixed|null $default
+   *   A default value, if $branches[$argument] does not exist.
+   * @param string|int $default_key
+   *   An array key that holds the default value.
+   *
+   * @return mixed
+   *   Either $branches[$argument], or $branches[$default_key], or $default.
+   */
+  #[AsTwigFilter('match')]
+  public function match(string|int $argument, array $branches, mixed $default = NULL, string|int $default_key = 'default'): mixed {
+    if (array_key_exists($argument, $branches)) {
+      return $branches[$argument];
+    }
+    if ($default === NULL && array_key_exists($default_key, $branches)) {
+      return $branches[$default_key];
+    }
+    return $default;
+  }
+
+  /**
+   * Converts an array to an ImageValueObject instance.
+   *
+   * @param mixed $argument
+   *   The argument, which should be an array or ImageValueObjectInterface.
+   *
+   * @return \Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject
+   *   The ImageValueObject instance.
+   *   If the value was already an ImageValueObjectInterface object, it will be
+   *   copied as an ImageValueObject.
+   */
+  #[AsTwigFilter('to_image_value_object')]
+  public function toImageValueObject(mixed $argument): ImageValueObject {
+    if (is_array($argument)) {
+      if ($argument === []) {
+        throw new RuntimeError("The image array is empty..");
+      }
+      elseif (!isset($argument['src'])) {
+        throw new RuntimeError("Missing array key 'src'.");
+      }
+      return ImageValueObject::fromArray($argument);
+    }
+    // Convert other implementations of the interface.
+    if ($argument instanceof ImageValueObjectInterface) {
+      return ImageValueObject::fromArray($argument->getArray());
+    }
+    throw new RuntimeError(sprintf(
+      'Expected ImageValueObjectInterface|array, found %s',
+      get_debug_type($argument),
+    ));
   }
 
 }
