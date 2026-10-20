@@ -7,7 +7,6 @@ namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Extension\ThemeExtensionList;
-use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
@@ -39,7 +38,6 @@ class TwigExtension extends AbstractExtension {
     protected readonly TwigEnvironment $twigEnvironment,
     protected readonly RendererInterface $renderer,
     protected readonly ThemeExtensionList $themeList,
-    protected readonly ThemeManagerInterface $themeManager,
   ) {}
 
   /**
