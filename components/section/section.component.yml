@@ -27,4 +27,4 @@ props:
       type: [object, string, 'null']  # attributes
     attributes:
       title: 'Section attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes

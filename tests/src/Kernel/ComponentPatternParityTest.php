@@ -59,7 +59,7 @@ class ComponentPatternParityTest extends KernelTestBase {
     }
     $pattern = $fixture['render'];
     $props = $pattern['#fields'] ?? [];
-    $settings = $props['settings'] ?? [];
+    $settings = ($pattern['#settings'] ?? []) + ($props['settings'] ?? []);
     unset($props['settings']);
     $component = [
       '#type' => 'component',
@@ -109,8 +109,10 @@ class ComponentPatternParityTest extends KernelTestBase {
   public static function patternProvider(): array {
     $cases = [];
     $components = [
-      'accordion', 'banner', 'blockquote', 'button', 'card', 'date_block',
+      'accordion', 'banner', 'blockquote', 'button', 'card', 'card_v2', 'carousel',
+      'date_block',
       'fact_figures', 'featured_media', 'listing', 'modal', 'offcanvas',
+      'pagination', 'pagination_v2', 'section',
     ];
     foreach ($components as $name) {
       foreach (Yaml::decode(file_get_contents(__DIR__ . "/fixtures/markup_rendering_patterns/$name.yml")) as $key => $fixture) {

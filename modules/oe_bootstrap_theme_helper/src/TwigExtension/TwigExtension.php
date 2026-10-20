@@ -48,6 +48,7 @@ class TwigExtension extends AbstractExtension {
   public function getFilters(): array {
     return [
       new TwigFilter('bcl_card_list', [$this, 'bclCardList']),
+      new TwigFilter('bcl_attributes', [$this, 'bclAttributes']),
       new TwigFilter('bcl_featured_media_image', [$this, 'bclFeaturedMediaImage']),
       new TwigFilter('bcl_description_list_items', [$this, 'bclDescriptionListItems']),
       new TwigFilter('bcl_navigation_items', [$this, 'bclNavigationItems']),
@@ -161,6 +162,28 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $bcl_cards;
+  }
+
+  /**
+   * Converts pattern attribute settings and component attributes to objects.
+   *
+   * @param array|\Drupal\Core\Template\Attribute|string|null $value
+   *   Attribute data, including HTML strings accepted by pattern settings.
+   *
+   * @return \Drupal\Core\Template\Attribute
+   *   Attributes ready for the BCL templates.
+   */
+  public function bclAttributes(array|Attribute|string|null $value): Attribute {
+    if (is_string($value)) {
+      $attributes = [];
+      foreach (Html::load('<div ' . $value . '></div>')->getElementsByTagName('div') as $div) {
+        foreach ($div->attributes as $attribute) {
+          $attributes[$attribute->nodeName] = $attribute->nodeValue;
+        }
+      }
+      return new Attribute($attributes);
+    }
+    return $value instanceof Attribute ? clone $value : new Attribute($value ?? []);
   }
 
   /**
