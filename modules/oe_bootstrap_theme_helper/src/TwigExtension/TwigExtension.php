@@ -27,42 +27,11 @@ use Twig\TwigFunction;
  */
 class TwigExtension extends AbstractExtension {
 
-  /**
-   * The language manager.
-   *
-   * @var \Drupal\Core\Language\LanguageManagerInterface
-   */
-  protected $languageManager;
-
-  /**
-   * The renderer.
-   *
-   * @var \Drupal\Core\Render\RendererInterface
-   */
-  protected RendererInterface $renderer;
-
-  /**
-   * The Drupal Twig environment.
-   *
-   * @var \Drupal\Core\Template\TwigEnvironment
-   */
-  protected TwigEnvironment $twigEnvironment;
-
-  /**
-   * Constructs a new TwigExtension object.
-   *
-   * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
-   *   The language manager.
-   * @param \Drupal\Core\Template\TwigEnvironment $twigEnvironment
-   *   The Drupal Twig environment.
-   * @param \Drupal\Core\Render\RendererInterface $renderer
-   *   The renderer.
-   */
-  public function __construct(LanguageManagerInterface $languageManager, TwigEnvironment $twigEnvironment, RendererInterface $renderer) {
-    $this->languageManager = $languageManager;
-    $this->twigEnvironment = $twigEnvironment;
-    $this->renderer = $renderer;
-  }
+  public function __construct(
+    protected readonly LanguageManagerInterface $languageManager,
+    protected readonly TwigEnvironment $twigEnvironment,
+    protected readonly RendererInterface $renderer,
+  ) {}
 
   /**
    * {@inheritdoc}
