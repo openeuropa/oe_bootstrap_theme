@@ -23,7 +23,7 @@ card_group:
   assertions:
     count:
       'div.card-group': 1
-      'article.card': 4
+      'article.card.h-100': 4
       'div.card-title': 3
       'h2.card-title': 1
       'div.card-text': 4
