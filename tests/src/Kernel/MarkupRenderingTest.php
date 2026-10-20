@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
 use Drupal\Component\Serialization\Yaml;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
@@ -139,6 +141,50 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
 
     $form = $this->container->get('form_builder')->buildForm($this, $form_state);
     $this->assertMarkupRendering($assertions, (string) $this->container->get('renderer')->renderRoot($form));
+  }
+
+  /**
+   * Tests all components in a single pass.
+   */
+  public function testAllCases(): void {
+    $renderer = $this->container->get(RendererInterface::class);
+    $cases = static::markupRenderingProvider();
+    $n = count($cases);
+    foreach (array_keys($cases) as $i => $case_name) {
+      $case = $cases[$case_name];
+      $render = $case['render'];
+      $assertions = $case['assertions'];
+      $backward_compatibility = $case['backward_compatibility'] ?? [];
+      $restore_callbacks = [];
+      if (!empty($backward_compatibility)) {
+        foreach ($backward_compatibility as $bc_name => $bc_value) {
+          $restore_callbacks[] = $this->setBackwardCompatibilitySetting($bc_name, $bc_value);
+        }
+      }
+
+      Html::resetSeenIds();
+
+      // Wrap all the test structure inside a form. This will allow proper
+      // processing of form elements and invocation of form alter hooks. Even if
+      // the elements being tested are not form related, the form can host them
+      // without causing any issues.
+      $form_state = new FormState();
+      $form_state->addBuildInfo('args', [$render]);
+      $form_state->setProgrammed();
+
+      try {
+        $form = $this->container->get('form_builder')->buildForm($this, $form_state);
+        $html = (string) $renderer->renderRoot($form);
+        $this->assertMarkupRendering($assertions, $html);
+      }
+      catch (\Throwable $e) {
+        throw new \Exception("Failure in '$case_name' ($i of $n).", previous: $e);
+      }
+
+      foreach ($restore_callbacks as $restore_callback) {
+        $restore_callback();
+      }
+    }
   }
 
   /**
