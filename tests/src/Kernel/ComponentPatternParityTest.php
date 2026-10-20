@@ -152,6 +152,10 @@ class ComponentPatternParityTest extends KernelTestBase {
       }
     }
 
+    $range = $cases['card_with_date_range'];
+    $range[0]['assertions']['contains'] = ['time svg' => 'xlink:href="#chevron-right"'];
+    $cases['card_with_date_range_icon_path'] = $range;
+
     $image = $cases['featured_media_image_not_wrapper'];
     $fields = $image[0]['render']['#fields'];
     $image[0]['render']['#fields']['image'] = ImageValueObject::fromArray($fields['image']);

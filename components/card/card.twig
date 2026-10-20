@@ -68,11 +68,11 @@
 
 {%- set _date = date|default({}) -%}
 {%- if _date is not empty -%}
-  {%- if _date.icon_path is not defined or _date.icon_path is empty -%}
-  {%- set _date = _date|merge({
-    icon_path: bcl_icon_path(),
-  }) -%}
-{%- endif -%}
+  {%- if _variant == 'search' -%}
+    {%- set _date = _date|merge({
+      icon_path: bcl_icon_path(),
+    }) -%}
+  {%- endif -%}
   {%- set _date = _date|merge({
     attributes: create_attribute(_date.attributes|default({})),
   }) -%}
