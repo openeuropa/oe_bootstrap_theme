@@ -322,6 +322,29 @@ class ComponentPatternParityTest extends KernelTestBase {
         'contains' => ['svg' => 'xlink:href="#check"'],
       ],
       ],
+      'banner_cta_legacy_variant' => ['banner', [
+        'call_to_action' => ['label' => 'Link', 'path' => '#link', 'variant' => 'danger'],
+      ], ['count' => ['a.bcl-banner__link' => 1, 'a.link-danger' => 0]],
+      ],
+      'banner_cta_icon_without_path' => ['banner', [
+        'call_to_action' => ['label' => 'Link', 'path' => '#link', 'icon' => ['name' => 'check']],
+      ], ['contains' => ['svg' => 'xlink:href="#check"']],
+      ],
+      'featured_media_link_legacy_options' => ['featured_media', [
+        'text' => 'Text',
+        'link' => [
+          'label' => 'Link',
+          'path' => '#link',
+          'disabled' => TRUE,
+          'variant' => 'danger',
+          'attributes' => ['class' => ['custom-link']],
+        ],
+      ], ['count' => ['a[href="#link"]' => 1, 'a[aria-disabled], a.link-danger, a.custom-link' => 0]],
+      ],
+      'featured_media_link_empty_icon_path' => ['featured_media', [
+        'link' => ['label' => 'Link', 'path' => '#link', 'icon' => ['name' => 'check', 'path' => '']],
+      ], ['contains' => ['a svg' => 'xlink:href="#check"']],
+      ],
     ] as $key => [$id, $fields, $assertions]) {
       $cases[$key] = [[
         'render' => ['#type' => 'pattern', '#id' => $id, '#fields' => $fields],

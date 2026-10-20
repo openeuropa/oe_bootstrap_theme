@@ -9,7 +9,7 @@
 {% set _media_attributes = create_attribute(media_attributes ?? {}) %}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set _image = image|default('')|bcl_featured_media_image %}
-{% set _link = link|default({}) %}
+{% set _link = link is not empty ? {label: link.label, path: link.path, icon: link.icon} : {} %}
 {% set _title_link = title_link|default({}) %}
 
 {% if _image is not empty and _image.src is defined %}
@@ -37,9 +37,6 @@
 {% endif %}
 
 {% if _link is not empty %}
-  {% if _link.attributes is defined %}
-    {% set _link = _link|merge({attributes: create_attribute(_link.attributes|default({}))}) %}
-  {% endif %}
   {% if _link.icon is defined and _link.icon is not empty %}
     {% set _link_icon = _link.icon is iterable ? _link.icon : {name: _link.icon} %}
     {% if _link_icon.attributes is defined %}
@@ -47,7 +44,7 @@
     {% endif %}
     {% set _link = _link|merge({
       icon: _link_icon|merge({
-        path: _link_icon.path|default(_icon_path),
+        path: _link_icon.path is defined ? _link_icon.path : _icon_path,
       }),
     }) %}
   {% endif %}
