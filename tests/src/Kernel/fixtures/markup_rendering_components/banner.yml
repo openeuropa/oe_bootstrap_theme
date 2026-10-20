@@ -172,8 +172,8 @@ banner_image_shade_with_shade_disabled:
     count:
       'div.bcl-banner.bg-lighter': 1
       'div.bcl-banner.bg-lighter.text-dark': 0
-      'div.overlay': 1
-      'div.shade': 0
+      'div.overlay': 0
+      'div.shade': 1
       'div.bcl-banner__image[style="background-image:url(https://picsum.photos/1000/500/)"]': 1
     contains:
       '.bcl-banner__content div': 'EU Budget for the future'
