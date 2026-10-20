@@ -171,11 +171,26 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
       $form_state->addBuildInfo('args', [$render]);
       $form_state->setProgrammed();
 
+      $html = NULL;
       try {
         $form = $this->container->get('form_builder')->buildForm($this, $form_state);
-        $this->assertMarkupRendering($assertions, (string) $renderer->renderRoot($form));
+        $html = (string) $renderer->renderRoot($form);
+        $this->assertMarkupRendering($assertions, $html);
       }
       catch (\Throwable $e) {
+        file_put_contents(
+          $report_file = __DIR__ . '/test.html',
+          implode("\n", [
+            $case_name,
+            date('Y-m-d H:i:s'),
+            implode("\n<form", explode('<form', $e->getMessage(), 2)),
+            ...match (TRUE) {
+              str_contains($e->getMessage(), '<form'),
+              !isset($html) => [],
+              default => [implode("\n<form", explode('<form', $html, 2))],
+            },
+          ]),
+        );
         throw new \Exception("Failure in '$case_name' ($i of $n).", previous: $e);
       }
 
