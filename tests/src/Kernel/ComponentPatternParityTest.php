@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
-use Drupal\Core\Template\Attribute;
 use Drupal\Component\Serialization\Yaml;
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Site\Settings;
+use Drupal\Core\Template\Attribute;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
@@ -310,6 +311,17 @@ class ComponentPatternParityTest extends KernelTestBase {
         ],
       ],
       ],
+      'description_list_null_icon_defaults' => ['description_list', [
+        'items' => [[
+          'term' => [['label' => 'Term', 'icon' => ['name' => 'check', 'path' => NULL, 'size' => NULL]]],
+          'definition' => 'Definition',
+        ],
+        ],
+      ], [
+        'count' => ['svg.icon--s' => 1],
+        'contains' => ['svg' => 'xlink:href="#check"'],
+      ],
+      ],
     ] as $key => [$id, $fields, $assertions]) {
       $cases[$key] = [[
         'render' => ['#type' => 'pattern', '#id' => $id, '#fields' => $fields],
@@ -329,6 +341,30 @@ class ComponentPatternParityTest extends KernelTestBase {
         ],
         ];
       }
+    }
+    foreach ([
+      'number' => [123, '123'],
+      'decimal' => [1.5, '1.5'],
+      'zero' => [0, '0'],
+      'false' => [FALSE, ''],
+      'true' => [TRUE, '1'],
+      'empty' => ['', ''],
+      'null' => [NULL, ''],
+      'markup' => [Markup::create('A <em>term</em>'), 'A <em>term</em>'],
+      'numeric_label' => [[['label' => 123]], '123'],
+    ] as $name => [$term, $label]) {
+      $cases['description_list_term_' . $name] = [[
+        'render' => [
+          '#type' => 'pattern',
+          '#id' => 'description_list',
+          '#fields' => ['items' => [['term' => $term, 'definition' => 'Definition']]],
+        ],
+        'assertions' => [
+          'count' => ['dt' => 1],
+          'equals' => ['dt .d-flex > div' => $label],
+        ],
+      ],
+      ];
     }
     return $cases;
   }

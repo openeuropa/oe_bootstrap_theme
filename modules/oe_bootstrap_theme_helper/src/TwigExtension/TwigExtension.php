@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
-use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Theme\ThemeManagerInterface;
@@ -221,34 +220,18 @@ class TwigExtension extends AbstractExtension {
       $icon_path = $this->getBclIconPath();
     }
 
-    foreach ($items as $i_item => &$item) {
-      if (empty($item['term']) || is_string($item['term']) || $item['term'] instanceof MarkupInterface) {
+    foreach ($items as &$item) {
+      if (!is_array($item['term'])) {
+        $item['term'] = [['label' => $item['term']]];
         continue;
       }
-      if (!is_array($item['term'])) {
-        throw new RuntimeError(sprintf(
-          'Expected a string, array or markup for %s, found %s.',
-          "items[$i_item].term",
-          get_debug_type($item['term']),
-        ));
-      }
-      foreach ($item['term'] as $i_term => &$term) {
-        if (!is_array($term)) {
-          throw new RuntimeError(sprintf(
-            'Expected %s to be an array, found %s.',
-            "items[$i_item].term[$i_term]",
-            get_debug_type($term),
-          ));
-        }
-        if (!empty($term['icon'])) {
+      foreach ($item['term'] as &$term) {
+        if (is_array($term) && !empty($term['icon'])) {
           // If the icon is not an array, the icon name has been passed.
           if (!is_array($term['icon'])) {
-            $term['icon'] = [
-              'name' => $term['icon'],
-            ];
+            $term['icon'] = ['name' => $term['icon']];
           }
-          $term['icon']['size'] ??= 'xs';
-          $term['icon']['path'] ??= $icon_path;
+          $term['icon'] += ['size' => 'xs', 'path' => $icon_path];
         }
       }
       unset($term);
