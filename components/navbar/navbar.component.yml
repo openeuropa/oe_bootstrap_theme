@@ -1,0 +1,21 @@
+name: Navbar
+description: 'Powerful, responsive navigation bar. Includes support for branding, navigation, and more, including support for our collapse plugin. For more information: https://v5.getbootstrap.com/docs/5.0/components/navbar/'
+slots:
+  expanded_breakpoint:
+    title: 'Expanded breakpoint'
+    description: 'The breakpoint at which the menu will be shown as expanded. For earlier breakpoints, it will be shown after clicking a toggle button. Must be a valid breakpoint class (sm, md, lg). Defaults to lg. If not present, then will not collapse.'
+  color_scheme:
+    title: 'Color scheme'
+    description: 'The color scheme to use. Can be either light or dark.'
+  background:
+    title: Background
+    description: 'Adds a background color that depends on the color scheme. Enabled by default.'
+  branding:
+    title: 'Branding region'
+    description: 'Navbar branding region. E.g. for text and/or logo.'
+  navigation:
+    title: 'Navigation region'
+    description: 'Navbar navigation region. Usually contains navigation items.'
+  right:
+    title: 'Right region'
+    description: 'Navbar right region. Sticks at the right of the navbar. Usually contains a search form.'

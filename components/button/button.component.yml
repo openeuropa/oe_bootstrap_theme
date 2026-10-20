@@ -1,0 +1,73 @@
+name: Button
+description: 'For actions in forms, dialogs, and more with support for multiple sizes, states, and more. For more information: https://v5.getbootstrap.com/docs/5.0/components/buttons/'
+variants:
+  primary:
+    title: 'Primary (default)'
+  secondary:
+    title: Secondary
+  success:
+    title: Success
+  danger:
+    title: Danger
+  warning:
+    title: Warning
+  info:
+    title: Info
+  light:
+    title: Light
+  dark:
+    title: Dark
+  link:
+    title: Link
+slots:
+  label:
+    title: 'Button label'
+    description: 'The button label.'
+  icon:
+    title: 'Icon name'
+    description: 'Add an icon to the button. Optional.'
+props:
+  type: object
+  properties:
+    outline:
+      title: 'Button outline'
+      description: 'Lighter button style removing background color. Defaults to false.'
+      type: boolean
+    size:
+      title: 'Button size'
+      description: 'Size of the button:'
+      type: string
+      enum:
+        - sm
+        - md
+        - lg
+      'meta:enum':
+        sm: small
+        md: 'medium (default)'
+        lg: large
+    type:
+      title: 'Button type'
+      description: 'Sets the button behavior type:'
+      type: string
+      enum:
+        - button
+        - submit
+        - reset
+      'meta:enum':
+        button: 'button (default)'
+        submit: submit
+        reset: reset
+    disabled:
+      title: Disabled
+      description: 'If true, the button will not be enabled when clicking. Defaults to false.'
+      type: boolean
+    icon_position:
+      title: 'Icon position'
+      description: 'If button has an icon, it can be placed before or after text:'
+      type: string
+      enum:
+        - before
+        - after
+      'meta:enum':
+        before: before
+        after: 'after (default)'

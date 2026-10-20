@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * Pagination V2 pattern.
+ */
+#}
+
+{% set _attributes = attributes|default(create_attribute()) %}
+{% if aria_label is not empty %}
+  {% set _attributes = _attributes.setAttribute('aria-label', aria_label) %}
+{% endif %}
+
+{% set _items = [] %}
+{% if ellipsis_before %}
+  {% set _items = _items|merge([{
+    'item_type': 'ellipsis',
+    'aria_label': 'Ellipsis'|t,
+  }]) %}
+{% endif %}
+{% for item in items|default([]) %}
+  {% set _aria_label = item.aria_label|default(item.label) %}
+  {% if _aria_label is not empty %}
+    {% set item = item|merge({
+      'aria_label': _aria_label,
+    }) %}
+  {% endif %}
+  {% set _items = _items|merge([item]) %}
+{% endfor %}
+{% if ellipsis_after %}
+  {% set _items = _items|merge([{
+    'item_type': 'ellipsis',
+    'aria_label': 'Ellipsis'|t,
+  }]) %}
+{% endif %}
+
+{% include '@oe-bcl/bcl-pagination-v2/pagination.html.twig' with {
+  'size': size,
+  'alignment': alignment,
+  'enable_prev_next_icon': enable_prev_next_icon,
+  'enable_first_last_icon': enable_first_last_icon,
+  'current_mobile_label': current_mobile_label,
+  'first': first ? first|merge({
+    'aria_label': first.aria_label|default('First'|t),
+  }),
+  'prev': prev ? prev|merge({
+    'aria_label': prev.aria_label|default('Previous'|t),
+  }),
+  'next': next ? next|merge({
+    'aria_label': next.aria_label|default('Next'|t),
+  }),
+  'last': last ? last|merge({
+    'aria_label': last.aria_label|default('Last'|t),
+  }),
+  'items': _items,
+  'attributes': _attributes,
+  'list_attributes': list_attributes,
+  'icon_path': bcl_icon_path,
+} only %}

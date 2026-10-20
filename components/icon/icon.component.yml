@@ -1,0 +1,9 @@
+name: Icon
+description: 'A component to show an icon. For more information visit: https://icons.getbootstrap.com/.'
+slots:
+  name:
+    title: 'Name of icon'
+    description: 'A list of icon names (Empty by default). It can be a set or a subset of icon names that are present in the svg file:'
+  size:
+    title: 'Size of icon'
+    description: 'A list of icon sizes.'

@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Button pattern.
+ */
+#}
+{% if icon %}
+  {% set icon_data = icon is iterable ? icon : { name: icon } %}
+  {% set _icon = { path: bcl_icon_path }|merge(icon_data) %}
+{% endif %}
+{% include '@oe-bcl/button' with {
+  'label': label,
+  'variant': variant,
+  'size': size,
+  'type': type,
+  'outline': outline,
+  'disabled': disabled|default(attributes.disabled),
+  'icon': _icon,
+  'icon_position': icon_position,
+  'attributes': attributes,
+} only %}

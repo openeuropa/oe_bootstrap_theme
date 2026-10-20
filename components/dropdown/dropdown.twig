@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Dropdown pattern.
+ */
+#}
+{% include '@oe-bcl/dropdown' with {
+  'trigger': {
+    label: button_label
+  },
+  'link': false,
+  'dark': dark_mode,
+  'id': 'bcl-dropdown'|clean_unique_id,
+  'items': (items ?? [])|map(item => item|bcl_expand_attributes({
+    class: 'dropdown-item',
+  }))
+} only %}

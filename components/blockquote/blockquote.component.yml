@@ -1,0 +1,33 @@
+name: Blockquote
+description: 'For quoting blocks of content from another source within your document. For more information: https://v5.getbootstrap.com/docs/5.0/content/typography/#blockquotes'
+slots:
+  title:
+    title: Title
+    description: 'Title of the blockquote.'
+  title_tag:
+    title: 'Title tag'
+    description: 'The tag to use for the title. Defaults to h2.'
+  quote:
+    title: Quote
+    description: 'The quote text.'
+  attribution:
+    title: Attribution
+    description: 'The name of the quoted person or entity.'
+  cite:
+    title: Citation
+    description: 'The creative work in which the referenced quote was published. Optional.'
+props:
+  type: object
+  properties:
+    alignment:
+      title: 'Text alignment'
+      description: 'Align the quote in the page.'
+      type: string
+      enum:
+        - left
+        - center
+        - end
+      'meta:enum':
+        left: 'left (default)'
+        center: center
+        end: end

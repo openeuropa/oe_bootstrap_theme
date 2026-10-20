@@ -1,0 +1,62 @@
+name: 'Card V2'
+description: 'Bootstrap 5 card pattern in its second iteration. Every zone (header, media, body, footer) is exposed as a render field so you can drop in plain markup, views, or other UI Patterns. See https://getbootstrap.com/docs/5.3/components/card'
+group: 'Version 2.x'
+variants:
+  default:
+    title: Default
+    description: '16:9 media on top, content below. Ideal for news, search results, dashboards.'
+  horizontal:
+    title: Horizontal
+    description: '1:1 media left, content right – compact lists, sidebars.'
+slots:
+  title:
+    title: Title
+    description: 'Card title. Supports markup, e.g. for links.'
+  media:
+    title: Media
+    description: 'Optional. Accepts an image, video, icon, map thumbnail, or another pattern such as date_block.'
+  content:
+    title: 'Body content'
+    description: 'Rich text, badges, buttons… whatever you need.'
+  header:
+    title: Header
+    description: 'Optional – meta information, category pill, etc.'
+  footer:
+    title: Footer
+    description: 'Optional – secondary actions, updated timestamps, share links.'
+props:
+  type: object
+  properties:
+    tag:
+      title: 'HTML wrapper tag'
+      description: 'Semantic element for the outer wrapper. Defaults to <article>.'
+      type: string
+      enum:
+        - article
+        - section
+        - div
+      'meta:enum':
+        article: '<article>'
+        section: '<section>'
+        div: '<div>'
+      default: article
+    attributes:
+      title: 'Card attributes'
+      description: 'Utility classes or data-* attributes for the outer wrapper.'
+      $ref: 'ui-patterns://attributes'
+    media_attributes:
+      title: 'Media attributes'
+      description: 'Alt text, loading="lazy", ratio utilities like ratio-16x9, or placeholder-glow.'
+      $ref: 'ui-patterns://attributes'
+    content_attributes:
+      title: 'Body attributes'
+      description: 'Padding tweaks (p-4), text alignment (text-center), etc.'
+      $ref: 'ui-patterns://attributes'
+    header_attributes:
+      title: 'Header attributes'
+      description: 'Extra attributes for the card header, e.g. .bg-light for contrast.'
+      $ref: 'ui-patterns://attributes'
+    footer_attributes:
+      title: 'Footer attributes'
+      description: 'Extra attributes for the card footer, e.g. .border-0 pt-0 for a seamless footer.'
+      $ref: 'ui-patterns://attributes'

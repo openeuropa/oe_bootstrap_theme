@@ -1,0 +1,33 @@
+name: Section
+description: 'Renders content and heading inside section.'
+group: 'Version 2.x'
+slots:
+  content:
+    title: Content
+    description: 'Content of the section.'
+  heading:
+    title: Heading
+    description: 'Heading of the section.'
+props:
+  type: object
+  properties:
+    heading_attributes:
+      title: 'Heading attributes'
+      description: 'Extra attributes for the heading'
+      $ref: 'ui-patterns://attributes'
+    wrapper_attributes:
+      title: 'Wrapper attributes'
+      description: 'Extra attributes for the wrapper'
+      $ref: 'ui-patterns://attributes'
+    attributes:
+      title: 'Section attributes'
+      description: 'Extra attributes for the section'
+      $ref: 'ui-patterns://attributes'
+    heading_tag:
+      title: 'Heading tag'
+      description: 'Tag of the heading. Default to h2.'
+      type: string
+    tag:
+      title: 'Wrapper tag'
+      description: 'Tag of the wrapper. Defaults to section.'
+      type: string

@@ -1,0 +1,77 @@
+{% if variant == "search" %}
+{#
+/**
+ * @file
+ * Offcanvas pattern search variant.
+ */
+#}
+{% extends 'pattern-offcanvas.html.twig' %}
+{% block offcanvas %}
+  {% include '@oe-bcl/offcanvas' with {
+    'title': title,
+    'title_attributes': create_attribute().addClass('mb-lg-4'),
+    'placement': placement,
+    'id': offcanvas_id,
+    'body': body,
+    'close_aria_label': 'Close'|t,
+    'with_body_scroll': body_scroll,
+    'with_backdrop': backdrop,
+    'extra_classes_body': 'p-lg-0 d-block',
+    'extra_classes_close': "d-lg-none",
+    'extra_classes_header': "p-lg-0 d-lg-block",
+    'attributes': _offcanvas_attributes.addClass('bcl-offcanvas'),
+    'responsiveness': 'lg'
+  } only %}
+{% endblock %}
+{% block toggle_button %}
+  {{ parent() }}
+{% endblock %}
+{% else %}
+{#
+/**
+ * @file
+ * Offcanvas pattern.
+ */
+#}
+{% set offcanvas_id = attributes.id ?? ('bcl-offcanvas'|clean_unique_id) %}
+{% set _offcanvas_attributes = attributes %}
+{# Bootstrap replaces this static role with dialog while the panel is open. #}
+{% if not _offcanvas_attributes.hasAttribute('role') and title is not empty %}
+  {% set _offcanvas_attributes = _offcanvas_attributes.setAttribute('role', 'region') %}
+{% endif %}
+{% if _offcanvas_attributes.hasAttribute('role') %}
+  {% set _offcanvas_attributes = _offcanvas_attributes.setAttribute('data-offcanvas-static-role', _offcanvas_attributes['role']) %}
+{% endif %}
+{% if title is not empty %}
+  {% set _offcanvas_attributes = _offcanvas_attributes.setAttribute('data-offcanvas-aria-labelledby', offcanvas_id ~ '-title') %}
+{% endif %}
+
+{% block offcanvas %}
+{% include '@oe-bcl/offcanvas' with {
+  'title': title,
+  'placement': placement,
+  'id': offcanvas_id,
+  'body': body,
+  'with_body_scroll': body_scroll,
+  'with_backdrop': backdrop,
+  'close_aria_label': 'Close'|t,
+  'attributes': _offcanvas_attributes,
+  'responsiveness': 'lg'
+} only %}
+{% endblock %}
+
+{% block toggle_button %}
+{% if toggle is not empty %}
+  {% set _toggle_attributes = toggle.attributes|default({}) %}
+  {% set _toggle_attributes = _toggle_attributes|merge({
+    'data-bs-toggle': 'offcanvas',
+    'data-bs-target': '#' ~  offcanvas_id,
+    'aria-controls': offcanvas_id
+  }) %}
+  {% set _toggle = toggle|merge({
+    attributes: _toggle_attributes
+  }) %}
+  {{ pattern('button', _toggle) }}
+{% endif %}
+{% endblock %}
+{% endif %}

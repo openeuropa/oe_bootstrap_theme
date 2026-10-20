@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Description list pattern.
+ */
+#}
+{% include '@oe-bcl/description-list' with {
+  'title': title,
+  'title_tag': title_tag,
+  'items': (items ?? [])|map(item => item|merge({
+    term: (item.term and item.term is iterable)
+      ? item.term|map(term => term|bcl_expand_icon(size: 'xs'))
+      : item.term
+  })),
+  'variant': orientation,
+  'attributes': attributes,
+} only %}

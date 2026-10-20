@@ -1,0 +1,3 @@
+name: Preview
+props:
+  tag: article

@@ -1,0 +1,6 @@
+name: Preview
+slots:
+  title: 'This is the title of this blockquote.'
+  quote: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.'
+  attribution: 'Cicero in '
+  cite: 'de Finibus Bonorum et Malorum'

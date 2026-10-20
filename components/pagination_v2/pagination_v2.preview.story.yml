@@ -1,0 +1,31 @@
+name: Preview
+slots:
+  aria_label: Pagination
+  enable_prev_next_icon: true
+  current_mobile_label: 'Page 2 of 8'
+  first:
+    path: '#'
+    label: First
+  prev:
+    path: '#'
+    label: Previous
+  next:
+    path: '#'
+    label: Next
+  last:
+    path: '#'
+    label: Last
+  items:
+    -
+      path: '#'
+      label: '1'
+    -
+      path: '#'
+      label: '2'
+      active: true
+    -
+      path: '#'
+      label: '3'
+props:
+  size: sm
+  alignment: center

@@ -1,0 +1,24 @@
+name: 'Description list'
+description: 'Description lists are used to display and organise content that belongs to a category with a descriptions. Common use cases include glossary type lists or a list of speakers with their biographies..'
+slots:
+  title:
+    title: Title
+    description: 'Title of the description list.'
+  title_tag:
+    title: 'Title tag'
+    description: 'The tag to use for the title. Defaults to h2.'
+  items:
+    title: 'List items'
+    description: 'Each item is composed by one or more terms and one or more definitions. Each term entry can have an icon.'
+props:
+  type: object
+  properties:
+    orientation:
+      title: Orientation
+      type: string
+      enum:
+        - default
+        - horizontal
+      'meta:enum':
+        default: Default
+        horizontal: Horizontal

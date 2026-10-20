@@ -1,0 +1,37 @@
+name: Offcanvas
+description: 'Hidden sidebar with activation. For more information visit: https://getbootstrap.com/docs/5.0/components/offcanvas/'
+variants:
+  default:
+    title: Default
+  search:
+    title: Search
+slots:
+  title:
+    title: Title
+    description: 'Offcanvas title.'
+  body:
+    title: Body
+    description: 'Offcanvas body content.'
+  toggle:
+    title: 'Toggle button'
+    description: 'An optional button pattern definition that will allow to show/hide the offcanvas.'
+props:
+  type: object
+  properties:
+    placement:
+      title: Offcanvas
+      description: 'Select the placement of the offcanvas:'
+      type: string
+      enum:
+        - start
+        - end
+        - top
+        - bottom
+    body_scroll:
+      title: Scroll
+      description: 'If true, enable body scrolling when offcanvas is displayed. Defaults to false.'
+      type: boolean
+    backdrop:
+      title: Backdrop
+      description: 'If true, enable backdrop behind offcanvas. Defaults to false.'
+      type: boolean

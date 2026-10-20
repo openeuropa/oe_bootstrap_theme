@@ -1,0 +1,21 @@
+name: Preview
+slots:
+  items:
+    -
+      label: "I'm a link 1"
+      path: '#first'
+    -
+      label: "I'm a link 2"
+      path: '#second'
+    -
+      label: "I'm a link 3"
+      id: third-tab
+      path: '#third'
+    -
+      label: "I'm a link active"
+      active: true
+      path: '#fourth'
+    -
+      label: "I'm a link disabled"
+      disabled: true
+      path: '#'

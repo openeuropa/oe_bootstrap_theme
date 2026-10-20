@@ -1,0 +1,26 @@
+name: Preview
+slots:
+  enable_first_last_icons: true
+  first:
+    path: '#'
+    label: First
+  prev:
+    path: '#'
+    label: Previous
+  next:
+    path: '#'
+    label: Next
+  last:
+    path: '#'
+    label: Last
+  items:
+    -
+      path: '#'
+      label: '1'
+      active: true
+    -
+      path: '#'
+      label: '2'
+props:
+  size: sm
+  alignment: center

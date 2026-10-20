@@ -1,0 +1,19 @@
+name: 'Inpage navigation'
+description: 'Inpage navigation adds a navigation element and content element so when scrolling the active element is indicated in the nav part.'
+slots:
+  title:
+    title: Title
+    description: 'Title of the inpage navigation element.'
+  links:
+    title: Links
+    description: 'Array of links used in the navigation part.'
+  content:
+    title: Content
+    description: 'Content part of the inpage navigation.'
+props:
+  type: object
+  properties:
+    dynamic_active:
+      title: 'Dynamic Active'
+      description: 'Automated behaviour for the active item in mobile.'
+      type: boolean

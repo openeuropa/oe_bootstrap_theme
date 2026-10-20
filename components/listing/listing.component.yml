@@ -1,0 +1,23 @@
+name: Listing
+description: 'Listing of cards.'
+variants:
+  default:
+    title: Default
+  highlight:
+    title: Highlight
+slots:
+  columns:
+    title: Columns
+    description: 'Number of columns, 1, 2 or 3. Defaults to 1.'
+  title:
+    title: Title
+    description: 'Title of the listing block.'
+  title_tag:
+    title: 'Title tag'
+    description: 'The tag to use for the title. Defaults to h2.'
+  link:
+    title: Link
+    description: 'Call to action link with icon. A link pattern definition must be passed.'
+  items:
+    title: Items
+    description: 'List of card items.'

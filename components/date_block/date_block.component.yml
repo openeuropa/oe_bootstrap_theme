@@ -1,0 +1,6 @@
+name: 'Date block'
+description: 'Date block allows to present a block that can be placed in other components.'
+slots:
+  date:
+    title: Date
+    description: 'A DateTime object.'

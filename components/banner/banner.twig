@@ -1,0 +1,78 @@
+{% if variant == "primary" %}
+{#
+/**
+ * @file
+ * Banner pattern variant primary.
+ */
+#}
+{% extends 'pattern-banner.html.twig' %}
+{% block attributes %}
+  {% set attributes = attributes.addClass([
+    'bg-primary',
+    'text-white',
+  ])
+  %}
+{% endblock %}
+{% elseif variant == "image" %}
+{#
+/**
+ * @file
+ * Banner pattern variant image.
+ */
+#}
+{% extends 'pattern-banner.html.twig' %}
+{% block attributes %}
+  {{ parent() }}
+{% endblock %}
+{% elseif variant == "image_shade" %}
+{#
+/**
+ * @file
+ * Banner pattern variant image shade.
+ */
+#}
+{% extends 'pattern-banner.html.twig' %}
+{% block attributes %}
+  {% set attributes = attributes.addClass([
+    'bg-lighter',
+  ])
+  %}
+{% endblock %}
+{% else %}
+{#
+/**
+ * @file
+ * Banner pattern.
+ */
+#}
+{% block attributes %}
+  {% set attributes = attributes.addClass([
+      'bg-lighter',
+      'text-dark',
+    ])
+  %}
+{% endblock %}
+{% if centered  %}
+  {% set attributes = attributes.addClass(['text-center'])%}
+{% endif %}
+{% if call_to_action %}
+  {% set call_to_action = call_to_action|merge(
+    {'variant': call_to_action.link_style}
+  ) %}
+{% endif %}
+{% include '@oe-bcl/banner' with {
+  shade: variant == 'image_shade' ? true : shade,
+  hero: hero,
+  full_width: full_width,
+  centered: centered,
+  title: title,
+  title_tag: title_tag,
+  description: description,
+  link: call_to_action,
+  copyright: (variant == 'image' or variant == 'image_shade') ? copyright : '',
+  copyright_label: (variant == 'image' or variant == 'image_shade') ? 'Image credit:'|t : '',
+  image: variant == 'image' or variant == 'image_shade' ? image : '' ,
+  content_classes: content_classes,
+  attributes: attributes,
+} only %}
+{% endif %}

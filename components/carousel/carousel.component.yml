@@ -1,0 +1,43 @@
+name: Carousel
+description: 'A slideshow component for cycling through elements, like a carousel. For more information: https://v5.getbootstrap.com/docs/5.0/components/carousel/'
+slots:
+  title:
+    title: Title
+    description: 'Title of the carousel.'
+  title_tag:
+    title: 'Title tag'
+    description: 'The tag to use for the title. Defaults to h2.'
+  slides:
+    title: Slides
+    description: 'Each slide is an image, a caption and interval of slide movement.'
+props:
+  type: object
+  properties:
+    fade:
+      title: Fade
+      description: 'Animate slides with a fade transition instead of a slide. Defaults to false.'
+      type: boolean
+    show_controls:
+      title: 'Show controls'
+      description: 'Enable the controls (prev and next buttons). Defaults to false.'
+      type: boolean
+    show_indicators:
+      title: 'Show indicators'
+      description: 'With indicators (default: false).'
+      type: boolean
+    autoplay:
+      title: 'Disable autoplay'
+      description: 'Whether to initialise and animate the carousel at page load. Defaults to true. If false, the carousel will need to be instantiated explicitly via JavaScript.'
+      type: boolean
+    autoinit:
+      title: 'initialize the carousel'
+      description: 'DEPRECATED in favour of autoplay. Whether to initialise and animate the carousel at page load. Its value will be used only if autoplay is not present.'
+      type: boolean
+    disable_touch:
+      title: 'Disable touch'
+      description: 'Allow the carousel to swipe on touch. Defaults to false.'
+      type: boolean
+    dark_mode:
+      title: 'Dark mode'
+      description: 'Enable the dark mode. Defaults to false.'
+      type: boolean
