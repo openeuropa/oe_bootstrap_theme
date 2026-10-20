@@ -288,12 +288,16 @@ class TwigExtension extends AbstractExtension {
       }
 
       if (isset($item['navigation']) && is_array($item['navigation'])) {
-        $variant = $item['navigation']['variant'] ?? 'default';
-        $item['navigation']['pills'] = $variant === 'pills';
-        $item['navigation']['tabs'] = $variant === 'tabs';
-        $item['navigation']['nav'] = in_array($variant, ['pills', 'tabs'], TRUE);
-        $item['navigation']['navbar'] = $variant === 'navbar';
-        $item['navigation']['vertical'] = ($item['navigation']['orientation'] ?? 'horizontal') === 'vertical';
+        if (isset($item['navigation']['variant'])) {
+          $variant = $item['navigation']['variant'];
+          $item['navigation']['pills'] = $variant === 'pills';
+          $item['navigation']['tabs'] = $variant === 'tabs';
+          $item['navigation']['nav'] = in_array($variant, ['pills', 'tabs'], TRUE);
+          $item['navigation']['navbar'] = $variant === 'navbar';
+        }
+        if (isset($item['navigation']['orientation'])) {
+          $item['navigation']['vertical'] = $item['navigation']['orientation'] === 'vertical';
+        }
         if (isset($item['navigation']['attributes'])) {
           $item['navigation']['attributes'] = $this->copyAttributes($item['navigation']['attributes']);
         }
@@ -319,8 +323,6 @@ class TwigExtension extends AbstractExtension {
    *   The processed element.
    */
   protected function prepareNavigationElement(array $item, string $icon_path): array {
-    // BCL selects element types by key presence, so NULL means omitted.
-    $item = array_filter($item, static fn ($value) => $value !== NULL);
     $attributes = $this->copyAttributes($item['attributes'] ?? []);
     $item['attributes'] = $attributes instanceof Attribute ? $attributes : new Attribute();
 

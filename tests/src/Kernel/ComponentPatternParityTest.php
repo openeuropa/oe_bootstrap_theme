@@ -183,6 +183,38 @@ class ComponentPatternParityTest extends KernelTestBase {
         'icon_display' => '',
       ], ['count' => ['a' => 1, 'a.d-flex, a.d-inline-flex' => 0]],
       ],
+      'navigation_nested_flags' => ['navigation', [
+        'items' => [[
+          'label' => 'Parent',
+          'navigation' => [
+            'pills' => TRUE,
+            'nav' => TRUE,
+            'vertical' => TRUE,
+            'items' => [['label' => 'Child']],
+          ],
+        ],
+        ],
+      ], ['count' => ['nav.nav-pills.flex-column' => 1]],
+      ],
+      'dropdown_null_button' => ['dropdown', [
+        'button_label' => 'Toggle',
+        'items' => [['label' => 'Button', 'button' => NULL]],
+      ], ['count' => ['button.dropdown-item' => 1, 'a.dropdown-item' => 0]],
+      ],
+      'dropdown_null_divider' => ['dropdown', [
+        'button_label' => 'Toggle',
+        'items' => [['divider' => NULL]],
+      ], ['count' => ['hr.dropdown-divider' => 1]],
+      ],
+      'list_group_null_button' => ['list_group', [
+        'type' => 'actionable',
+        'items' => [['label' => 'Button', 'button' => NULL]],
+      ], ['count' => ['button.list-group-item' => 1, 'a.list-group-item' => 0]],
+      ],
+      'navigation_null_button' => ['navigation', [
+        'items' => [['label' => 'Button', 'button' => NULL]],
+      ], ['count' => ['button.nav-link' => 1, 'a.nav-link' => 0]],
+      ],
     ] as $key => [$id, $fields, $assertions]) {
       $cases[$key] = [[
         'render' => ['#type' => 'pattern', '#id' => $id, '#fields' => $fields],
