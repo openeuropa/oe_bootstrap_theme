@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
@@ -31,6 +32,7 @@ class TwigExtension extends AbstractExtension {
     protected readonly LanguageManagerInterface $languageManager,
     protected readonly TwigEnvironment $twigEnvironment,
     protected readonly RendererInterface $renderer,
+    protected readonly ThemeExtensionList $themeList,
   ) {}
 
   /**
@@ -62,6 +64,7 @@ class TwigExtension extends AbstractExtension {
         'needs_environment' => TRUE,
       ]),
       new TwigFunction('bcl_gallery_items', [$this, 'bclGalleryItems']),
+      new TwigFunction('bcl_icon_path', [$this, 'getBclIconPath']),
     ];
   }
 
@@ -308,6 +311,17 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $items;
+  }
+
+  /**
+   * Returns the URL to the BCL default icons SVG file.
+   *
+   * @return string
+   *   The relative URL to the BCL icons SVG file.
+   */
+  public function getBclIconPath(): string {
+    $theme = $this->themeList->get('oe_bootstrap_theme');
+    return base_path() . $theme->getPath() . '/assets/icons/bcl-default-icons.svg';
   }
 
   /**
