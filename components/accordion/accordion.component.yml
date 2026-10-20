@@ -5,7 +5,7 @@ props:
   properties:
     accordion_id:
       title: 'Accordion ID'
-      description: 'Unique ID for the accordion. Defaults to a random number.'
+      description: 'Unique ID for the accordion. A unique ID is generated when omitted.'
       type: [string, 'null']
     bare_layout:
       title: 'Bare layout'
@@ -14,7 +14,7 @@ props:
     open_item:
       title: 'Accordion item opened by default'
       description: 'Index value of the item to open (starting from 1), all closed by default (0).'
-      type: [number, 'null']
+      type: [number, string, 'null']
     title:
       title: Title
       type: [string, array, object, 'null']

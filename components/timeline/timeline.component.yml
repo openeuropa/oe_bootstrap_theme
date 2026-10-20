@@ -78,10 +78,6 @@ props:
       title: 'Hide from'
       type: [string, integer, 'null']
       description: 'Indicate the number of items to display in the timeline, hide the others and add a toggle button to show them.'
-    hide_to:
-      title: 'Hide to'
-      type: [string, integer, 'null']
-      description: 'Indicate the number of bottom items to keep displayed when items are hidden. Defaults to 0.'
     items:
       title: Items
       type: [array, 'null']

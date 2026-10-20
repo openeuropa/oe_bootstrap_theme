@@ -6,9 +6,9 @@
 #}
 {% set _tag = tag|default('section') %}
 {% set _heading_tag = heading_tag|default('h2') %}
-{% set _attributes = attributes|default(create_attribute()) %}
-{% set _heading_attributes = create_attribute(heading_attributes ?? {}) %}
-{% set _wrapper_attributes = create_attribute(wrapper_attributes ?? {}) %}
+{% set _attributes = attributes|bcl_attributes %}
+{% set _heading_attributes = (heading_attributes ?? {})|bcl_attributes %}
+{% set _wrapper_attributes = (wrapper_attributes ?? {})|bcl_attributes %}
 
 <{{ _tag }}{{ _attributes.addClass(['section']) }}>
   {% if heading is not empty %}

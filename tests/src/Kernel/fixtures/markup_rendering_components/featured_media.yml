@@ -114,8 +114,14 @@ featured_media_image_with_text_and_link:
       'div.bcl-featured-media > div.row > div.col-12.col-md-6.order-2': 1
       'div.col-12.col-md-6.order-1 > h4#featured-subtitle.text-secondary.custom-subtitle': 1
       'div.col-12.col-md-6.order-1 p.featured-description': 1
-      'a#featured-link[href="/example"].link-primary.standalone.d-inline-flex.gap-2-5.custom-link': 1
-      'a#featured-link svg.bi.icon--s.icon--rotate-90.custom-icon': 1
+      'a[href="/example"]': 1
+      'a#featured-link': 0
+      'a[href="/example"].link-primary': 0
+      'a[href="/example"].standalone': 0
+      'a[href="/example"].d-inline-flex': 0
+      'a[href="/example"].gap-2-5': 0
+      'a[href="/example"].custom-link': 0
+      'a[href="/example"] svg.bi.icon--s.icon--rotate-90.custom-icon.ms-2-5': 1
       'figure > img.flex-end-100[title="Image value object title"]': 1
       'figure > img.img-fluid': 0
       'figure > figcaption > div.custom-caption': 1
@@ -127,8 +133,8 @@ featured_media_image_with_text_and_link:
     contains:
       'h3#featured-title > a': 'Linked featured media title'
       'a#featured-title-link svg': '/custom-icons.svg#link-45deg'
-      'a#featured-link': 'Read more'
-      'a#featured-link svg': '/custom-icons.svg#arrow-right'
+      'a[href="/example"]': 'Read more'
+      'a[href="/example"] svg': '/custom-icons.svg#arrow-right'
 
 featured_media_embedded_right_custom_ratio:
   render:

@@ -7,9 +7,9 @@
 {% set _variant = variant|default('default') %}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set _attributes = attributes|default(create_attribute()) %}
-{% set _list_attributes = create_attribute(list_attributes ?? {}).addClass('js-pager__items') %}
+{% set _list_attributes = ((list_attributes ?? {})|bcl_attributes).addClass('js-pager__items') %}
 
-{% if _variant == 'glossary' and not _attributes.hasAttribute('aria-label') and not _attributes.hasAttribute('aria-labelledby') %}
+{% if _variant == 'glossary' %}
   {% set _attributes = _attributes.setAttribute('aria-label', 'Glossary links'|t) %}
 {% endif %}
 
@@ -23,19 +23,20 @@
 {% for control in _controls %}
   {% set _item = control.item %}
   {% if _item is not empty %}
-    {% set _item_attributes = create_attribute(_item.attributes|default({})) %}
+    {# Preserve the pattern's legacy use of first.attributes for the last control. #}
+    {% set _control_attributes = loop.last ? first.attributes|default({}) : _item.attributes|default({}) %}
+    {% set _item_attributes = _control_attributes|bcl_attributes %}
     {% if not _item_attributes.hasAttribute('aria-label') %}
       {% set _item_attributes = _item_attributes.setAttribute('aria-label', control.label) %}
     {% endif %}
     {% set _item = _item|merge({ attributes: _item_attributes }) %}
     {% if _item.icon is defined and _item.icon is not empty %}
       {% set _item_icon = _item.icon is iterable ? _item.icon : { name: _item.icon } %}
-      {% set _item_icon_path = _item_icon.path|default(_icon_path) %}
+      {% if _item_icon.name is not empty and _item_icon.size is not defined %}
+        {% set _item_icon = _item_icon|merge({size: 'fluid'}) %}
+      {% endif %}
       {% set _item = _item|merge({
-        icon_path: _item_icon_path,
         icon: _item_icon|merge({
-          path: _item_icon_path,
-          size: _item_icon.size|default('fluid'),
           attributes: create_attribute(_item_icon.attributes|default({})),
         }),
       }) %}
@@ -46,19 +47,15 @@
 
 {% set _items = [] %}
 {% for item in items|default([]) %}
-  {% set _item_attributes = create_attribute(item.attributes|default({})) %}
+  {% set _item_attributes = (item.attributes|default({}))|bcl_attributes %}
   {% if not _item_attributes.hasAttribute('aria-label') and item.label is not empty %}
     {% set _item_attributes = _item_attributes.setAttribute('aria-label', item.label) %}
   {% endif %}
   {% set _item = item|merge({ attributes: _item_attributes }) %}
   {% if _item.icon is defined and _item.icon is not empty %}
     {% set _item_icon = _item.icon is iterable ? _item.icon : { name: _item.icon } %}
-    {% set _item_icon_path = _item_icon.path|default(_icon_path) %}
     {% set _item = _item|merge({
-      icon_path: _item_icon_path,
       icon: _item_icon|merge({
-        path: _item_icon_path,
-        size: _item_icon.size|default('fluid'),
         attributes: create_attribute(_item_icon.attributes|default({})),
       }),
     }) %}

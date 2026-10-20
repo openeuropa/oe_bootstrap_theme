@@ -185,10 +185,10 @@ card_with_date_range:
         date_time: '2021-01-23'
   assertions:
     count:
-      '.row .bcl-card-start-col': 1
-      '.row .col': 1
-      '.row .col-4': 0
-      '.row .col-8': 0
+      '.row .bcl-card-start-col': 0
+      '.row .col': 0
+      '.row .col-4': 1
+      '.row .col-8': 1
       'time[datetime="2021-01-23"]': 1
     equals:
       'article.card .card-title': 'Title card'
@@ -255,8 +255,8 @@ card_with_image_position_bottom:
         classes: 'custom-bottom-class'
   assertions:
     count:
-      'article.card img.card-img-bottom.custom-bottom-class': 1
-      'article.card img.card-img-top': 0
+      'article.card img.card-img-bottom, article.card img.custom-bottom-class': 0
+      'article.card img.card-img-top': 1
 card_with_image_rounded:
   render:
     '#type': component
@@ -272,4 +272,5 @@ card_with_image_rounded:
   assertions:
     count:
       'article.card > div.row.g-0': 1
-      'article.card img.card-img-top.rounded-circle': 1
+      'article.card img.card-img-top.rounded-0.rounded-start': 1
+      'article.card img.rounded-circle': 0

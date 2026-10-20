@@ -72,17 +72,16 @@ props:
         properties:
           term:
             title: 'Terms'
-            description: 'A string or an array of term objects.'
+            description: 'A scalar or markup term, or an array of term objects.'
             anyOf:
-              - type: 'null'
-              - type: [string, 'null']
+              - type: [string, number, boolean, object, 'null']
               - type: [array, 'null']
                 items:
                   type: object
                   properties:
                     label:
                       title: Label
-                      type: [string, array, object, 'null']
+                      type: [string, number, boolean, array, object, 'null']
                       description: 'Label text or render array.'
                     icon:
                       title: 'Icon'

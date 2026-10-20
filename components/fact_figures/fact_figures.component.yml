@@ -21,7 +21,7 @@ props:
       description: 'The tag to use for the title. Defaults to h2.'
     columns:
       title: Columns
-      type: [number, 'null']
+      type: [number, string, 'null']
       description: 'One, two or three columns layout for responsive. Defaults to 3.'
     items:
       title: Items

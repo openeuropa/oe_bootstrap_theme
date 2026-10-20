@@ -6,6 +6,10 @@
 #}
 {% set _title_attributes = create_attribute(title_attributes ?? {}) %}
 {%- set _variant = variant|default('default') -%}
+{%- set bc_card_search_image_hide_on_mobile = theme_setting('backward_compatibility.card_search_image_hide_on_mobile') -%}
+{% set bc_card_search_image_hide_on_mobile = bc_card_search_image_hide_on_mobile ?? true %}
+{%- set bc_card_search_use_grid_classes = theme_setting('backward_compatibility.card_search_use_grid_classes') -%}
+{% set bc_card_search_use_grid_classes = bc_card_search_use_grid_classes ?? true %}
 {%- set _orientation = orientation|default('vertical') -%}
 {%- set _attributes = attributes|default(create_attribute()) -%}
 
@@ -64,11 +68,11 @@
 
 {%- set _date = date|default({}) -%}
 {%- if _date is not empty -%}
-  {%- if _date.icon_path is not defined or _date.icon_path is empty -%}
-  {%- set _date = _date|merge({
-    icon_path: bcl_icon_path(),
-  }) -%}
-{%- endif -%}
+  {%- if _variant == 'search' -%}
+    {%- set _date = _date|merge({
+      icon_path: bcl_icon_path(),
+    }) -%}
+  {%- endif -%}
   {%- set _date = _date|merge({
     attributes: create_attribute(_date.attributes|default({})),
   }) -%}
@@ -80,13 +84,6 @@
     right_col_classes: 'col-8',
     gutter: 0,
   } -%}
-  {%- if _date is not empty and _image is empty -%}
-    {%- set _horizontal_grid = {
-      left_col_classes: 'bcl-card-start-col',
-      right_col_classes: 'col',
-      gutter: 0,
-    } -%}
-  {%- endif -%}
 {%- endif -%}
 
 {%- if _variant == 'search' -%}
@@ -103,11 +100,6 @@
   {%- if bc_card_search_use_grid_classes -%}
     {%- set _left_col_classes = 'col-md-3 col-lg-4 col-xl-2 rounded mw-listing-img mb-md-0 mb-3' -%}
     {%- set _right_col_classes = 'col-md-9 col-lg-8 col-xl-10' -%}
-  {%- endif -%}
-  {%- if _image.classes is not empty and _image_classes is not empty -%}
-    {%- set _image_classes = _image.classes ~ ' ' ~ _image_classes -%}
-  {%- elseif _image.classes is not empty -%}
-    {%- set _image_classes = _image.classes -%}
   {%- endif -%}
 
   {%- include '@oe-bcl/card' with {
@@ -137,7 +129,7 @@
     ]),
     text_color: 'dark',
     image: (_image is not empty) ? _image|merge({
-      position: _image.position|default('top'),
+      position: 'top',
       classes: _image_classes,
     }) : {},
     date: _date,
@@ -162,7 +154,10 @@
       tag: 'div',
     } : {},
     content: _content,
-    image: _image,
+    image: _image is not empty ? {
+      path: _image.path,
+      alt: _image.alt,
+    } : {},
     date: _date,
     card_header: header,
     card_footer: footer,

@@ -192,6 +192,6 @@ carousel_with_image_attributes_and_link_icon:
   assertions:
     count:
       '.carousel-item img[title="Image title"][loading="lazy"][width="1000"][height="500"].custom-image-class.d-block.w-100': 1
-      '.carousel-caption a.custom-link-class svg.ms-2-5': 1
+      '.carousel-caption a.custom-link-class svg.me-2-5': 1
     contains:
-      '.carousel-caption a svg': '/custom-icons.svg#chevron-right'
+      '.carousel-caption a svg': '/custom-icons.svg#link'

@@ -4,9 +4,9 @@
  * Pagination v2 component.
  */
 #}
-{% set _list_attributes = create_attribute(list_attributes ?? {}) %}
+{% set _list_attributes = (list_attributes ?? {})|bcl_attributes %}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
-{% set _attributes = attributes|default(create_attribute()) %}
+{% set _attributes = attributes|bcl_attributes %}
 
 {% if aria_label is not empty %}
   {% set _attributes = _attributes.setAttribute('aria-label', aria_label) %}

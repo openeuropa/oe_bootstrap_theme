@@ -3,6 +3,18 @@ description: 'A collection of images and videos displayed as thumbnails and in a
 props:
   type: object
   properties:
+    thumbnail_fit:
+      title: 'Thumbnail fit'
+      type: [string, 'null']
+      description: 'Controls whether thumbnails keep their original aspect ratio or cover their grid cells.'
+      enum:
+        - original
+        - cover
+        - null
+      'meta:enum':
+        original: 'Original aspect ratio (default)'
+        cover: Cover
+        '': Default
     gallery_id:
       title: 'Gallery ID'
       type: [string, 'null']

@@ -3,6 +3,10 @@ description: 'Date block allows to present a date that can be placed in other co
 props:
   type: object
   properties:
+    date:
+      title: Date
+      type: [string, object, 'null']
+      description: 'Date string or DateTime object, formatted as in the date block pattern.'
     day:
       title: Day
       type: [string, integer, 'null']

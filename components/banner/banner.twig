@@ -5,7 +5,7 @@
  */
 #}
 {% set _variant = variant|default('default') %}
-{% set _shade = shade ?? _variant == 'image_shade' %}
+{% set _shade = _variant == 'image_shade' ? true : shade %}
 {% set _attributes = attributes|default(create_attribute()) %}
 
 {% if _variant == 'primary' %}
@@ -21,15 +21,9 @@
 {% endif %}
 
 {% set _call_to_action = call_to_action|default({}) %}
-{% if _call_to_action and _call_to_action.link_style is defined %}
+{% if _call_to_action %}
   {% set _call_to_action = _call_to_action|merge({variant: _call_to_action.link_style}) %}
 {% endif %}
-{% if _call_to_action.icon is defined and _call_to_action.icon is not empty and _call_to_action.icon.path is empty %}
-  {% set _call_to_action = _call_to_action|merge({
-    icon: _call_to_action.icon|merge({path: bcl_icon_path()})
-  }) %}
-{% endif %}
-
 {% include '@oe-bcl/banner' with {
   shade: _shade,
   hero: hero,

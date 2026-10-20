@@ -111,7 +111,7 @@ listing_default_complete:
   assertions:
     count:
       'div#custom-listing[data-component-id="oe_bootstrap_theme:listing"].bcl-listing.bcl-listing--default-1-col.custom-listing-class[data-listing="custom-value"]': 1
-      'div#custom-listing.text-break': 0
+      'div#custom-listing.text-break': 1
       'h3.bcl-heading': 1
       'h3 > a#listing-title-link.link-info.standalone.d-inline-flex.gap-2-5[href="/publications"][data-title-link="custom-value"]': 1
       'h3 > a#listing-title-link svg.icon--xs': 1
@@ -278,7 +278,7 @@ listing_title_label_and_custom_attributes:
   assertions:
     count:
       '.bcl-listing.bcl-listing--default-1-col.custom-listing-attributes': 1
-      '.bcl-listing.text-break': 0
+      '.bcl-listing.text-break': 1
       '.bcl-listing h2 > a[href="/archive-overview"]': 1
       '.bcl-listing > a': 0
     equals:

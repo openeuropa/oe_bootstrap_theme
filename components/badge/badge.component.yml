@@ -32,6 +32,7 @@ props:
         - info
         - light
         - dark
+        - link
         - null
       'meta:enum':
         primary: 'Primary (default)'
@@ -42,6 +43,7 @@ props:
         info: Info
         light: Light
         dark: Dark
+        link: Link
         # Value NULL becomes '' when used as array key.
         '': Default
     rounded_pill:
