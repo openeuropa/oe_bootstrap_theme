@@ -7,8 +7,8 @@
 {% set _title_attributes = create_attribute(title_attributes ?? {}) %}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set _attributes = attributes|default(create_attribute()) %}
-{% set _id = id|default(_attributes.id|default('bcl-inpage-navigation'|clean_unique_id)) %}
-{% set _dropdown_id = dropdown_id|default(_id ~ '-dropdown') %}
+{% set _dropdown_id = dropdown_id is not empty ? dropdown_id : html_unique_id((id is not empty ? id : (_attributes.id ?? 'bcl-inpage-navigation')) ~ '-dropdown') %}
+{% set _id = id is not empty ? id : (_attributes.id ?? html_unique_id('bcl-inpage-navigation')) %}
 {% set _title_link = title_link|default({}) %}
 
 {% if _title_link is not empty %}

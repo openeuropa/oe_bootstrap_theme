@@ -104,6 +104,64 @@ class ComponentPatternParityTest extends KernelTestBase {
   }
 
   /**
+   * Checks generated IDs across multiple renders and existing page IDs.
+   *
+   * @dataProvider generatedIdProvider
+   */
+  public function testGeneratedIds(string $id, array $fields, array $expected_ids, array $reserved_ids = []): void {
+    foreach (['pattern', 'component'] as $type) {
+      Html::resetSeenIds();
+      foreach ($reserved_ids as $reserved_id) {
+        Html::getUniqueId($reserved_id);
+      }
+      $html = '';
+      foreach ($fields as $values) {
+        $render = $type === 'pattern'
+          ? ['#type' => 'pattern', '#id' => $id, '#fields' => $values]
+          : ['#type' => 'component', '#component' => 'oe_bootstrap_theme:' . $id, '#props' => $values];
+        $html = (string) $this->container->get('renderer')->renderInIsolation($render);
+      }
+      $crawler = new Crawler($html);
+      foreach ($expected_ids as $expected_id) {
+        $this->assertCount(1, $crawler->filter('[id="' . $expected_id . '"]'), $type);
+      }
+      if ($id === 'inpage_navigation') {
+        $this->assertSame($expected_ids[1], $crawler->filter('nav')->attr('aria-labelledby'), $type);
+      }
+    }
+  }
+
+  /**
+   * Provides ID sequences which must remain stable when switching to SDC.
+   */
+  public static function generatedIdProvider(): array {
+    $cases = [];
+    foreach (['modal', 'offcanvas', 'inpage_navigation'] as $id) {
+      $expected = ['bcl-' . str_replace('_', '-', $id)];
+      if ($id === 'inpage_navigation') {
+        $expected[] = 'bcl-inpage-navigation-dropdown';
+      }
+      $cases[$id . '_after_custom_id'] = [
+        $id,
+        [['attributes' => ['id' => 'custom']], []],
+        $expected,
+      ];
+    }
+    $cases['inpage_navigation_existing_dropdown_id'] = [
+      'inpage_navigation',
+      [['attributes' => ['id' => 'custom']]],
+      ['custom', 'custom-dropdown--2'],
+      ['custom-dropdown'],
+    ];
+    $cases['inpage_navigation_repeated'] = [
+      'inpage_navigation',
+      [[], []],
+      ['bcl-inpage-navigation--2', 'bcl-inpage-navigation-dropdown--2'],
+    ];
+    return $cases;
+  }
+
+  /**
    * Reuses pattern fixtures without maintaining separate SDC expectations.
    */
   public static function patternProvider(): array {

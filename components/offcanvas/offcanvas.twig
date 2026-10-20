@@ -6,7 +6,7 @@
 #}
 {% set _variant = variant|default('default') %}
 {% set _attributes = attributes|default(create_attribute()) %}
-{% set _offcanvas_id = _attributes.id|default(offcanvas_id|default('bcl-offcanvas'|clean_unique_id)) %}
+{% set _offcanvas_id = _attributes.id ?? (offcanvas_id is not empty ? offcanvas_id : html_unique_id('bcl-offcanvas')) %}
 {% if not _attributes.hasAttribute('role') and title is not empty %}
   {% set _attributes = _attributes.setAttribute('role', 'region') %}
 {% endif %}
