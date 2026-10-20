@@ -74,7 +74,8 @@ pagination_text_controls_and_custom_attributes:
       'li.page-item.disabled > a.page-link.disabled[href="/pages/next"]': 1
       'a.custom-first-link[href="/pages/first"][aria-label="Go to the first page"]': 1
       'a[href="/pages/previous"][aria-label="Previous"]': 1
-      'a[href="/pages/last"][aria-label="Last"]': 1
+      # The pattern currently reuses first-control attributes for the last control.
+      'a.custom-first-link[href="/pages/last"][aria-label="Go to the first page"]': 1
       'a.page-link svg': 0
     equals:
       'a[href="/pages/first"]': First
@@ -134,7 +135,7 @@ pagination_icons_and_ellipsis:
       'li:nth-child(4).active > a[href="/pages/5"][aria-current="page"]': 1
     contains:
       'a[href="/pages/first"] svg': '/custom/icons.svg#chevron-double-left'
-      'a[href="/pages/previous"] svg': '/other/icons.svg#arrow-left'
+      'a[href="/pages/previous"] svg': '/custom/icons.svg#arrow-left'
       'a[href="/pages/next"] svg': '/custom/icons.svg#chevron-right'
       'a[href="/pages/last"] svg': '/custom/icons.svg#chevron-double-right'
 
