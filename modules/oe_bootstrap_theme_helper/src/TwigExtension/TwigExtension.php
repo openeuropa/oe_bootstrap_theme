@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
@@ -14,6 +15,7 @@ use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
+use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
 use Twig\Environment;
@@ -31,7 +33,16 @@ class TwigExtension extends AbstractExtension {
     protected readonly LanguageManagerInterface $languageManager,
     protected readonly TwigEnvironment $twigEnvironment,
     protected readonly RendererInterface $renderer,
+    protected readonly ThemeExtensionList $themeList,
+    protected readonly ThemeManagerInterface $themeManager,
   ) {}
+
+  /**
+   * BCL icon paths, keyed by active theme name.
+   *
+   * @var array<string, string>
+   */
+  protected array $bclIconPathsByThemeName = [];
 
   /**
    * {@inheritdoc}
@@ -62,6 +73,7 @@ class TwigExtension extends AbstractExtension {
         'needs_environment' => TRUE,
       ]),
       new TwigFunction('bcl_gallery_items', [$this, 'bclGalleryItems']),
+      new TwigFunction('bcl_icon_path', [$this, 'getBclIconPath']),
     ];
   }
 
@@ -308,6 +320,39 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $items;
+  }
+
+  /**
+   * Returns the URL to the BCL icons SVG file for the active theme.
+   *
+   * The active theme or one of its base themes can override the path with
+   * 'openeuropa.bootstrap_component_library.icon_path' in its info file.
+   * The closest theme in the chain wins.
+   *
+   * This mirrors the logic for the 'bcl_icon_path' variable in
+   * oe_bootstrap_theme_preprocess().
+   *
+   * @return string
+   *   The relative URL to the BCL icons SVG file.
+   *
+   * @see oe_bootstrap_theme_preprocess()
+   */
+  public function getBclIconPath(): string {
+    $active_theme = $this->themeManager->getActiveTheme();
+    return $this->bclIconPathsByThemeName[$active_theme->getName()] ??= (function () use ($active_theme): string {
+      $extensions = [
+        $active_theme->getExtension(),
+        ...array_values($active_theme->getBaseThemeExtensions()),
+      ];
+      foreach ($extensions as $extension) {
+        $icon_path = $extension->info['openeuropa']['bootstrap_component_library']['icon_path'] ?? NULL;
+        if ($icon_path) {
+          return base_path() . $extension->getPath() . '/' . $icon_path;
+        }
+      }
+      $theme = $this->themeList->get('oe_bootstrap_theme');
+      return base_path() . $theme->getPath() . '/assets/icons/bcl-default-icons.svg';
+    })();
   }
 
   /**
