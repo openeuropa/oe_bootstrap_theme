@@ -76,6 +76,7 @@ props:
             size:
               type: [string, 'null']
               enum:
+                - ''
                 - 2xs
                 - xs
                 - s
@@ -120,6 +121,7 @@ props:
             size:
               type: [string, 'null']
               enum:
+                - ''
                 - 2xs
                 - xs
                 - s
@@ -164,6 +166,7 @@ props:
             size:
               type: [string, 'null']
               enum:
+                - ''
                 - 2xs
                 - xs
                 - s
@@ -208,6 +211,7 @@ props:
             size:
               type: [string, 'null']
               enum:
+                - ''
                 - 2xs
                 - xs
                 - s
@@ -255,6 +259,7 @@ props:
               size:
                 type: [string, 'null']
                 enum:
+                  - ''
                   - 2xs
                   - xs
                   - s

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
+use Drupal\Core\Template\Attribute;
 use Drupal\Component\Serialization\Yaml;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Site\Settings;
@@ -272,6 +273,42 @@ class ComponentPatternParityTest extends KernelTestBase {
       'navigation_null_button' => ['navigation', [
         'items' => [['label' => 'Button', 'button' => NULL]],
       ], ['count' => ['button.nav-link' => 1, 'a.nav-link' => 0]],
+      ],
+      'pagination_control_custom_icon_path' => ['pagination', [
+        'first' => ['path' => '#first', 'icon' => ['name' => 'check', 'path' => '/custom.svg']],
+      ], ['contains' => ['svg' => 'bcl-default-icons.svg#check']],
+      ],
+      'pagination_item_custom_icon_path' => ['pagination', [
+        'items' => [['label' => 'Item', 'path' => '#item', 'icon' => ['name' => 'check', 'path' => '/custom.svg']]],
+      ], [
+        'contains' => ['svg' => 'bcl-default-icons.svg#check'],
+        'count' => ['svg.icon--s' => 1],
+      ],
+      ],
+      'pagination_control_empty_icon_size' => ['pagination', [
+        'first' => ['path' => '#first', 'icon' => ['name' => 'check', 'size' => '']],
+      ], ['count' => ['svg.icon--s' => 1]],
+      ],
+      'pagination_control_root_icon_path' => ['pagination', [
+        'first' => [
+          'path' => '#first',
+          'icon_path' => '/root.svg',
+          'icon' => ['name' => 'check', 'path' => '/nested.svg'],
+        ],
+      ], ['contains' => ['svg' => '/root.svg#check']],
+      ],
+      'pagination_legacy_last_attributes' => ['pagination', [
+        'first' => [
+          'path' => '#first',
+          'attributes' => new Attribute(['class' => ['first-control']]),
+        ],
+        'last' => ['path' => '#last', 'attributes' => ['class' => ['last-control']]],
+      ], [
+        'count' => [
+          'a[href="#last"].first-control[aria-label="Last"]' => 1,
+          'a.last-control' => 0,
+        ],
+      ],
       ],
     ] as $key => [$id, $fields, $assertions]) {
       $cases[$key] = [[
