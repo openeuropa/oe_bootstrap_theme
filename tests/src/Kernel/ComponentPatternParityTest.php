@@ -280,6 +280,19 @@ class ComponentPatternParityTest extends KernelTestBase {
       ],
       ];
     }
+    foreach (['button', 'link'] as $id) {
+      foreach (['empty' => '', 'null' => NULL, 'custom' => '/custom.svg'] as $name => $path) {
+        $cases[$id . '_icon_path_' . $name] = [[
+          'render' => [
+            '#type' => 'pattern',
+            '#id' => $id,
+            '#fields' => ['label' => 'Label', 'icon' => ['name' => 'check', 'path' => $path]],
+          ],
+          'assertions' => ['contains' => ['svg' => 'xlink:href="' . $path . '#check"']],
+        ],
+        ];
+      }
+    }
     return $cases;
   }
 
