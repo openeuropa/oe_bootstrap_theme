@@ -38,6 +38,7 @@ final class PatternTestDataMassager {
       'Markup' => Markup::create($data->getValue()),
       'FileValueObject' => FileValueObject::fromArray($data->getValue()),
       'ImageValueObject' => ImageValueObject::fromArray($data->getValue()),
+      'DateTime' => new \DateTimeImmutable($data->getValue()),
     };
   }
 
