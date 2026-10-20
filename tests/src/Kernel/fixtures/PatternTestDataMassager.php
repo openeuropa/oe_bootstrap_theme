@@ -44,6 +44,7 @@ final class PatternTestDataMassager {
       'ImageValueObject' => ImageValueObject::fromArray($data->getValue()),
       'Attribute' => $use_objects ? new Attribute($data->getValue()) : $data->getValue(),
       'Url' => $use_objects ? Url::fromUri($data->getValue()) : Url::fromUri($data->getValue())->toString(),
+      'DateTime' => new \DateTimeImmutable($data->getValue()),
       default => throw new \RuntimeException(sprintf('Unexpected tag %s.', $data->getTag()))
     };
   }
