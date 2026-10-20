@@ -439,7 +439,7 @@ class TwigExtension extends AbstractExtension {
    *   The link text for the anchor tag as a translated string.
    * @param \Drupal\Core\Url|string $path
    *   The URL object or string used for the link.
-   * @param array|\Drupal\Core\Template\Attribute $attributes
+   * @param \Drupal\Core\Template\Attribute $attributes
    *   An optional array or Attribute object of link attributes.
    *
    * @return array
