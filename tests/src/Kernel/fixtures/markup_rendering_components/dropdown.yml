@@ -118,6 +118,6 @@ dropdown_inside_navigation_with_fallback_id:
   assertions:
     count:
       'div.dropdown': 1
-      'button[id^="dropdown"].dropdown-toggle[data-bs-toggle="dropdown"]': 1
+      'button[id^="bcl-dropdown"].dropdown-toggle[data-bs-toggle="dropdown"]': 1
       'button.dropdown-toggle[autocomplete]': 0
-      'ul.dropdown-menu[aria-labelledby^="dropdown"][aria-hidden="true"][role="presentation"]': 1
+      'ul.dropdown-menu[aria-labelledby^="bcl-dropdown"][aria-hidden="true"][role="presentation"]': 1

@@ -7,7 +7,9 @@ offcanvas_default:
       offcanvas_id: default-offcanvas
   assertions:
     count:
-      'div[data-component-id="oe_bootstrap_theme:offcanvas"]#default-offcanvas.offcanvas-lg[tabindex="-1"][data-bs-backdrop="false"]': 1
+      'div[data-component-id="oe_bootstrap_theme:offcanvas"]#default-offcanvas.offcanvas-lg[tabindex="-1"]': 1
+      # In bcl-offcanvas, `with_backdrop` is true by default.
+      '[data-bs-backdrop]': 0
       'div.offcanvas-start': 0
       'div.offcanvas-end': 0
       'div.offcanvas-top': 0
@@ -16,6 +18,17 @@ offcanvas_default:
       'div.offcanvas-body': 0
       'button.btn-close[data-bs-dismiss="offcanvas"][data-bs-target="#default-offcanvas"][aria-controls="default-offcanvas"][aria-label="Close"]': 1
       'button[data-bs-toggle="offcanvas"]': 0
+
+offcanvas_without_backdrop:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:offcanvas
+    '#props':
+      variant: default
+      backdrop: false
+  assertions:
+    count:
+      'div[data-component-id="oe_bootstrap_theme:offcanvas"]#bcl-offcanvas[data-bs-backdrop="false"]': 1
 
 offcanvas_with_all_parameters:
   render:
@@ -57,6 +70,8 @@ offcanvas_with_all_parameters:
         '#tag': strong
         '#value': 'Rendered body content'
       body_scroll: true
+      # Setting backdrop true is the same as omitting it, it is already the
+      # default in BCL.
       backdrop: true
       close_aria_label: 'Close detailed panel'
       extra_classes_body: custom-body
@@ -209,8 +224,8 @@ offcanvas_with_generated_id_and_no_header_or_body:
         label: 'Open generated ID panel'
   assertions:
     count:
-      'div[id^="offcanvas"].offcanvas-xxl': 1
+      'div[id^="bcl-offcanvas"].offcanvas-xxl': 1
       'div.offcanvas-header': 0
       'div.offcanvas-body': 0
-      'button[data-bs-toggle="offcanvas"][data-bs-target^="#offcanvas"][aria-controls^="offcanvas"]': 1
+      'button[data-bs-toggle="offcanvas"][data-bs-target^="#bcl-offcanvas"][aria-controls^="bcl-offcanvas"]': 1
       'button.btn-close': 0

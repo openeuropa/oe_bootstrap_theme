@@ -105,7 +105,7 @@ props:
       description: 'Accessible label for the next carousel control. Defaults to Next.'
     max_visible_thumbnails:
       title: 'Maximum visible thumbnails'
-      type: [integer, 'null']
+      type: [string, integer, 'null']
       description: 'Number of thumbnails visible before the gallery is collapsed. Defaults to 5.'
     items:
       title: Items
@@ -137,7 +137,7 @@ props:
             type: [string, 'null']
           interval:
             title: Interval
-            type: [integer, 'null']
+            type: [string, integer, 'null']
           link:
             title: Link
             type: [object, 'null']
