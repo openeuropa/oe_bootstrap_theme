@@ -4,6 +4,12 @@
  * Date block component.
  */
 #}
+{% if date is not empty %}
+  {% set day = date|date('d') %}
+  {% set month = date|date('M') %}
+  {% set year = date|date('Y') %}
+  {% set date_time = date|date('Y-m-d') %}
+{% endif %}
 {% include '@oe-bcl/date-block' with {
   day: day,
   month: month,

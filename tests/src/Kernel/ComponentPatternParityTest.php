@@ -94,13 +94,54 @@ class ComponentPatternParityTest extends KernelTestBase {
    */
   public static function patternProvider(): array {
     $cases = [];
-    foreach (['banner', 'blockquote', 'button', 'listing', 'modal', 'offcanvas'] as $name) {
+    $components = [
+      'accordion', 'banner', 'blockquote', 'button', 'date_block',
+      'fact_figures', 'listing', 'modal', 'offcanvas',
+    ];
+    foreach ($components as $name) {
       foreach (Yaml::decode(file_get_contents(__DIR__ . "/fixtures/markup_rendering_patterns/$name.yml")) as $key => $fixture) {
         // Complex component assertions are covered by the existing suites.
         if (!isset($fixture['assertions']['pattern'])) {
           $cases[$key] = [$fixture];
         }
       }
+    }
+    foreach ($cases as $key => $case) {
+      $name = $case[0]['render']['#id'];
+      $field = match ($name) {
+        'accordion' => 'open_item',
+        'fact_figures' => 'columns',
+        default => NULL,
+      };
+      if ($field !== NULL) {
+        $fields = $case[0]['render']['#fields'];
+        if (isset($fields[$field])) {
+          $fields[$field] = (string) $fields[$field];
+        }
+        elseif (isset($fields['settings'][$field])) {
+          $fields['settings'][$field] = (string) $fields['settings'][$field];
+        }
+        else {
+          continue;
+        }
+        $case[0]['render']['#fields'] = $fields;
+        $cases[$key . '_numeric_string'] = $case;
+      }
+    }
+    $date = $cases['date_block_default'];
+    $date[0]['render']['#fields']['date'] = new \DateTimeImmutable('2021-05-26');
+    $cases['date_block_datetime'] = $date;
+
+    $gallery = Yaml::decode(file_get_contents(__DIR__ . '/fixtures/markup_rendering_patterns/gallery.yml'))['gallery_default'];
+    foreach (['original', 'cover'] as $fit) {
+      $gallery['render']['#fields']['settings']['thumbnail_fit'] = $fit;
+      $gallery['assertions'] = [
+        'count' => [
+          '.bcl-gallery' => 1,
+          '.bcl-gallery--thumbnail-cover' => (int) ($fit === 'cover'),
+        ],
+      ];
+      $cases['gallery_thumbnail_' . $fit] = [$gallery];
     }
     return $cases;
   }
