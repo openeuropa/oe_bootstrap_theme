@@ -19,22 +19,6 @@ props:
       title: Year
       type: [string, integer, 'null']
       description: 'Year displayed in the date block.'
-    end_day:
-      title: 'End day'
-      type: [string, integer, 'null']
-      description: 'End day displayed for a date range.'
-    end_month:
-      title: 'End month'
-      type: [string, 'null']
-      description: 'End month displayed for a date range.'
-    end_year:
-      title: 'End year'
-      type: [string, integer, 'null']
-      description: 'End year displayed for a date range.'
-    icon_path:
-      title: 'Icons path'
-      type: [string, 'null']
-      description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute
