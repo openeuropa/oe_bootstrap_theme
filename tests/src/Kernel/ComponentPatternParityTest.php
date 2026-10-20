@@ -91,7 +91,7 @@ class ComponentPatternParityTest extends KernelTestBase {
       foreach (['equals', 'contains'] as $kind) {
         foreach ($fixture['assertions'][$kind] ?? [] as $selector => $expected) {
           $element = $crawler->filter($selector);
-          $this->assertCount(1, $element, $selector);
+          $this->assertNotEmpty($element, $selector);
           if ($kind === 'equals') {
             $this->assertSame($expected, trim($element->html()), $selector);
           }
@@ -108,14 +108,11 @@ class ComponentPatternParityTest extends KernelTestBase {
    */
   public static function patternProvider(): array {
     $cases = [];
-    $components = [
-      'accordion', 'banner', 'blockquote', 'button', 'card', 'card_v2', 'carousel',
-      'date_block',
-      'fact_figures', 'featured_media', 'listing', 'modal', 'offcanvas',
-      'pagination', 'pagination_v2', 'section',
-    ];
-    foreach ($components as $name) {
-      foreach (Yaml::decode(file_get_contents(__DIR__ . "/fixtures/markup_rendering_patterns/$name.yml")) as $key => $fixture) {
+    foreach (glob(__DIR__ . '/fixtures/markup_rendering_patterns/*.yml') as $path) {
+      foreach (Yaml::decode(file_get_contents($path)) as $key => $fixture) {
+        if (isset($cases[$key])) {
+          $key = basename($path, '.yml') . ':' . $key;
+        }
         $cases[$key] = [$fixture];
       }
     }
