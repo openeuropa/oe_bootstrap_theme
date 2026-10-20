@@ -91,7 +91,7 @@ class ComponentPatternParityTest extends KernelTestBase {
       foreach (['equals', 'contains'] as $kind) {
         foreach ($fixture['assertions'][$kind] ?? [] as $selector => $expected) {
           $element = $crawler->filter($selector);
-          $this->assertNotEmpty($element, $selector);
+          $this->assertNotEmpty($element, $type . ": $selector\n$html");
           if ($kind === 'equals') {
             $this->assertSame($expected, trim($element->html()), $selector);
           }
