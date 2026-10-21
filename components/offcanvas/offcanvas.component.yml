@@ -23,42 +23,6 @@ props:
     title_link:
       title: 'Title link'
       type: [object, 'null']
-      properties:
-        path:
-          type: [string, object, 'null']
-        label:
-          type: [string, array, object, 'null']
-        variant:
-          type: [string, 'null']
-        id:
-          type: [string, 'null']
-        disabled:
-          type: [boolean, 'null']
-        icon:
-          anyOf:
-            -
-              type: 'null'
-            -
-              type: string
-            -
-              type: object
-              properties:
-                name:
-                  type: [string, 'null']
-                path:
-                  type: [string, 'null']
-                transformation:
-                  type: [string, 'null']
-                attributes:
-                  type: [object, string, 'null']
-        icon_position:
-          type: [string, 'null']
-        icon_display:
-          type: [string, 'null']
-        remove_icon_spacers:
-          type: [boolean, 'null']
-        attributes:
-          type: [object, string, 'null']
     title_attributes:
       title: 'Title attributes'
       type: [object, string, 'null']
@@ -134,52 +98,6 @@ props:
       title: 'Toggle button'
       type: [object, 'null']
       description: 'Optional button that opens the offcanvas.'
-      properties:
-        label:
-          type: [string, array, object, 'null']
-        variant:
-          type: [string, 'null']
-        size:
-          type: [string, 'null']
-        type:
-          type: [string, 'null']
-        outline:
-          type: [boolean, 'null']
-        disabled:
-          type: [boolean, 'null']
-        text_nowrap:
-          type: [boolean, 'null']
-        assistive_text:
-          type: [string, 'null']
-        id:
-          type: [string, 'null']
-        icon:
-          anyOf:
-            -
-              type: 'null'
-            -
-              type: string
-            -
-              type: object
-              properties:
-                name:
-                  type: [string, 'null']
-                path:
-                  type: [string, 'null']
-                transformation:
-                  type: [string, 'null']
-                attributes:
-                  type: [object, string, 'null']
-        icon_position:
-          type: [string, 'null']
-        icon_spacing:
-          type: [string, 'null']
-        clean_class:
-          type: [boolean, 'null']
-        remove_icon_spacers:
-          type: [boolean, 'null']
-        attributes:
-          type: [object, string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

@@ -35,13 +35,6 @@ props:
       title: 'Accordion items'
       description: 'List of accordion items.'
       type: [array, 'null']
-      items:
-        type: object
-        properties:
-          title:
-            type: [string, array, object, 'null']
-          content:
-            type: [string, array, object, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

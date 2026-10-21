@@ -20,11 +20,6 @@ props:
       title: Image
       type: [object, 'null']
       description: 'Image displayed in the content banner.'
-      properties:
-        src:
-          type: [string, 'null']
-        alt:
-          type: [string, 'null']
     copyright:
       title: Copyright
       type: [string, array, object, 'null']
@@ -60,34 +55,6 @@ props:
       title: 'Title link'
       type: [object, 'null']
       description: 'Optional link object for the title.'
-      properties:
-        label:
-          type: [string, array, object, 'null']
-        path:
-          type: [object, string, 'null']
-        variant:
-          type: [string, 'null']
-        id:
-          type: [string, 'null']
-        disabled:
-          type: [boolean, 'null']
-        icon:
-          type: [object, 'null']
-          properties:
-            name:
-              type: [string, 'null']
-            size:
-              type: [string, 'null']
-            path:
-              type: [string, 'null']
-        icon_position:
-          type: [string, 'null']
-        icon_display:
-          type: [string, 'null']
-        remove_icon_spacers:
-          type: [boolean, 'null']
-        attributes:
-          type: [object, string, 'null']
     title_attributes:
       title: 'Title attributes'
       type: [object, string, 'null']
@@ -103,117 +70,26 @@ props:
       title: Subtitle
       type: [object, 'null']
       description: 'Optional card subtitle.'
-      properties:
-        content:
-          type: [string, array, object, 'null']
-        tag:
-          type: [string, 'null']
-        classes:
-          type: [string, 'null']
     text:
       title: Text
       type: [object, 'null']
       description: 'Optional card text.'
-      properties:
-        content:
-          type: [string, array, object, 'null']
-        tag:
-          type: [string, 'null']
-        classes:
-          type: [string, 'null']
     meta:
       title: Meta
       type: [array, 'null']
       description: 'Miscellaneous information such as date or author.'
-      items:
-        type:
-          - string
-          - array
-          - object
     badges:
       title: Badges
       type: [array, 'null']
       description: 'List of badges.'
-      items:
-        type: object
-        properties:
-          label:
-            type: [string, array, object, 'null']
-          background:
-            type: [string, 'null']
-          url:
-            type: [string, 'null']
-          title:
-            type: [string, 'null']
-          dismissible:
-            type: [boolean, 'null']
-          assistive_text:
-            type: [string, 'null']
-          rounded_pill:
-            type: [boolean, 'null']
-          outline:
-            type: [boolean, 'null']
-          icon_path:
-            type: [string, 'null']
-          attributes:
-            type: [object, string, 'null']
     links:
       title: Links
       type: [array, 'null']
       description: 'List of links.'
-      items:
-        type: object
-        properties:
-          label:
-            type: [string, array, object, 'null']
-          path:
-            type: [object, string, 'null']
-          variant:
-            type: [string, 'null']
-          id:
-            type: [string, 'null']
-          disabled:
-            type: [boolean, 'null']
-          icon:
-            type: [object, 'null']
-            properties:
-              name:
-                type: [string, 'null']
-              size:
-                type: [string, 'null']
-              path:
-                type: [string, 'null']
-          icon_position:
-            type: [string, 'null']
-          icon_display:
-            type: [string, 'null']
-          remove_icon_spacers:
-            type: [boolean, 'null']
-          attributes:
-            type: [object, string, 'null']
     date:
       title: 'Date block'
       type: [object, 'null']
       description: 'Date block displayed in place of an image.'
-      properties:
-        day:
-          type: [string, integer, 'null']
-        month:
-          type: [string, 'null']
-        date_time:
-          type: [string, 'null']
-        year:
-          type: [string, integer, 'null']
-        end_day:
-          type: [string, integer, 'null']
-        end_month:
-          type: [string, 'null']
-        end_year:
-          type: [string, integer, 'null']
-        icon_path:
-          type: [string, 'null']
-        attributes:
-          type: [object, string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

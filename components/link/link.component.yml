@@ -44,34 +44,6 @@ props:
       title: Icon
       type: [string, object, 'null']
       description: 'Icon name as a string or an icon object.'
-      properties:
-        name:
-          type: [string, 'null']
-        path:
-          type: [string, 'null']
-        size:
-          type: [string, 'null']
-          enum:
-            - 2xs
-            - xs
-            - s
-            - m
-            - l
-            - xl
-            - 2xl
-            - fluid
-            - null
-        transformation:
-          type: [string, 'null']
-          enum:
-            - rotate-90
-            - rotate-180
-            - rotate-270
-            - flip-horizontal
-            - flip-vertical
-            - null
-        attributes:
-          type: [object, string, 'null']
     icon_position:
       title: 'Icon position'
       type: [string, 'null']

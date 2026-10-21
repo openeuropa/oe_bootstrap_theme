@@ -19,64 +19,6 @@ props:
       title: Slides
       type: [array, 'null']
       description: 'Slides shown in the carousel.'
-      items:
-        type: object
-        properties:
-          image:
-            title: Image
-            type: [object, 'null']
-            description: 'Image attributes used to build the slide image.'
-            properties:
-              src:
-                type: [string, 'null']
-              alt:
-                type: [string, 'null']
-              title:
-                type: [string, 'null']
-              loading:
-                type: [string, 'null']
-              width:
-                type: [string, 'null']
-              height:
-                type: [string, 'null']
-              class:
-                type: [string, array, object, 'null']
-          caption_title:
-            title: 'Caption title'
-            type: [string, array, object, 'null']
-          caption:
-            title: Caption
-            type: [string, array, object, 'null']
-          caption_classes:
-            title: 'Caption classes'
-            type: [string, 'null']
-          interval:
-            title: Interval
-            type: [string, integer, 'null']
-          copyright:
-            title: Copyright
-            type: [string, array, object, 'null']
-          link:
-            title: Link
-            type: [object, 'null']
-            properties:
-              label:
-                type: [string, array, object, 'null']
-              path:
-                type: [object, string, 'null']
-              icon_position:
-                type: [string, 'null']
-              icon:
-                type: [object, 'null']
-                properties:
-                  name:
-                    type: [string, 'null']
-                  size:
-                    type: [string, 'null']
-                  path:
-                    type: [string, 'null']
-              attributes:
-                type: [object, string, 'null']
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

@@ -7,24 +7,6 @@ props:
       title: Items
       type: [array, 'null']
       description: 'List with the breadcrumb items.'
-      items:
-        type: object
-        properties:
-          label:
-            title: Label
-            type: [string, array, object, 'null']
-            description: 'Link label text or render array.'
-          path:
-            title: Path
-            type: [string, object, 'null']
-            description: 'Link URL string or URL object.'
-          id:
-            title: ID
-            type: [string, 'null']
-            description: 'Optional link ID.'
-          attributes:
-            title: Attributes
-            type: [object, string, 'null']
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

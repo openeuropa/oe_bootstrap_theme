@@ -23,28 +23,10 @@ props:
       title: 'Video sources'
       type: [array, 'null']
       description: 'Source files for native video.'
-      items:
-        type: object
-        properties:
-          type:
-            type: [string, 'null']
-          src:
-            type: [string, 'null']
     tracks:
       title: 'Video tracks'
       type: [array, 'null']
       description: 'Caption or subtitle tracks for native video.'
-      items:
-        type: object
-        properties:
-          kind:
-            type: [string, 'null']
-          label:
-            type: [string, 'null']
-          src:
-            type: [string, 'null']
-          src_lang:
-            type: [string, 'null']
     ratio:
       title: Ratio
       type: [string, 'null']
@@ -73,42 +55,6 @@ props:
       title: 'Title link'
       type: [object, 'null']
       description: 'Link applied to the title.'
-      properties:
-        label:
-          type: [string, array, object, 'null']
-        path:
-          type: [string, object, 'null']
-        id:
-          type: [string, 'null']
-        disabled:
-          type: [boolean, 'null']
-        icon:
-          type: [string, object, 'null']
-          properties:
-            name:
-              type: [string, 'null']
-            path:
-              type: [string, 'null']
-            transformation:
-              type: [string, 'null']
-            attributes:
-              type: [object, string, 'null']
-        icon_position:
-          type: [string, 'null']
-          enum:
-            - before
-            - after
-            - null
-        icon_display:
-          type: [string, 'null']
-          enum:
-            - flex
-            - inline-flex
-            - null
-        remove_icon_spacers:
-          type: [boolean, 'null']
-        attributes:
-          type: [object, string, 'null']
     subtitle:
       title: Subtitle
       type: [string, array, object, 'null']
@@ -137,56 +83,6 @@ props:
       title: Link
       type: [object, 'null']
       description: 'Optional link displayed after the text.'
-      properties:
-        label:
-          type: [string, array, object, 'null']
-        path:
-          type: [string, object, 'null']
-        variant:
-          type: [string, 'null']
-          enum:
-            - primary
-            - secondary
-            - success
-            - danger
-            - warning
-            - info
-            - light
-            - dark
-            - null
-        id:
-          type: [string, 'null']
-        disabled:
-          type: [boolean, 'null']
-        standalone:
-          type: [boolean, 'null']
-        icon:
-          type: [string, object, 'null']
-          properties:
-            name:
-              type: [string, 'null']
-            path:
-              type: [string, 'null']
-            transformation:
-              type: [string, 'null']
-            attributes:
-              type: [object, string, 'null']
-        icon_position:
-          type: [string, 'null']
-          enum:
-            - before
-            - after
-            - null
-        icon_display:
-          type: [string, 'null']
-          enum:
-            - flex
-            - inline-flex
-            - null
-        remove_icon_spacers:
-          type: [boolean, 'null']
-        attributes:
-          type: [object, string, 'null']
     copyright:
       title: Copyright
       type: [string, array, object, 'null']

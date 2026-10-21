@@ -22,38 +22,10 @@ props:
       title: File
       type: [object, 'null']
       description: 'File presented for download.'
-      properties:
-        title:
-          type: [string, 'null']
-        url:
-          type: [string, 'null']
-        size:
-          type: [string, integer, 'null']
-        extension:
-          type: [string, 'null']
-        language_code:
-          type: [string, 'null']
-        meta:
-          type: [string, 'null']
     translations:
       title: Translations
       type: [array, 'null']
       description: 'List of translations of the file.'
-      items:
-        type: object
-        properties:
-          title:
-            type: [string, 'null']
-          url:
-            type: [string, 'null']
-          size:
-            type: [string, integer, 'null']
-          extension:
-            type: [string, 'null']
-          language_code:
-            type: [string, 'null']
-          meta:
-            type: [string, 'null']
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

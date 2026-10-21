@@ -15,46 +15,6 @@ props:
       title: Trigger
       type: [object, 'null']
       description: 'Optional BCL button or link configuration for the dropdown toggle.'
-      properties:
-        label:
-          type: [string, array, object, 'null']
-        path:
-          type: [string, object, 'null']
-        variant:
-          type: [string, 'null']
-        size:
-          type: [string, 'null']
-        type:
-          type: [string, 'null']
-        outline:
-          type: [boolean, 'null']
-        disabled:
-          type: [boolean, 'null']
-        assistive_text:
-          type: [string, 'null']
-        standalone:
-          type: [boolean, 'null']
-        icon:
-          anyOf:
-            -
-              type: 'null'
-            -
-              type: string
-            -
-              type: object
-              properties:
-                name:
-                  type: [string, 'null']
-                path:
-                  type: [string, 'null']
-                transformation:
-                  type: [string, 'null']
-                attributes:
-                  type: [object, string, 'null']
-        icon_position:
-          type: [string, 'null']
-        attributes:
-          type: [object, string, 'null']
     link:
       title: 'Link trigger'
       type: [boolean, 'null']
@@ -121,56 +81,6 @@ props:
       title: 'Dropdown items'
       type: [array, 'null']
       description: 'Links, buttons, and dividers displayed in the menu.'
-      items:
-        type: object
-        properties:
-          label:
-            type: [string, array, object, 'null']
-          path:
-            type: [string, object, 'null']
-          button:
-            type: [boolean, 'null']
-          divider:
-            type: [boolean, 'null']
-          active:
-            type: [boolean, 'null']
-          disabled:
-            type: [boolean, 'null']
-          id:
-            type: [string, 'null']
-          title:
-            type: [string, 'null']
-          type:
-            type: [string, 'null']
-          variant:
-            type: [string, 'null']
-          size:
-            type: [string, 'null']
-          outline:
-            type: [boolean, 'null']
-          standalone:
-            type: [boolean, 'null']
-          icon:
-            anyOf:
-              -
-                type: 'null'
-              -
-                type: string
-              -
-                type: object
-                properties:
-                  name:
-                    type: [string, 'null']
-                  path:
-                    type: [string, 'null']
-                  transformation:
-                    type: [string, 'null']
-                  attributes:
-                    type: [object, string, 'null']
-          icon_position:
-            type: [string, 'null']
-          attributes:
-            type: [object, string, 'null']
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

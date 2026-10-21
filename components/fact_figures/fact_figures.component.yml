@@ -27,48 +27,10 @@ props:
       title: Items
       type: [array, 'null']
       description: 'List of facts, with icon, title, subtitle and content.'
-      items:
-        type: object
-        properties:
-          icon:
-            title: Icon
-            description: 'Icon name or icon object.'
-            anyOf:
-              -
-                type: 'null'
-              -
-                type: string
-              -
-                type: object
-                properties:
-                  name:
-                    type: [string, 'null']
-                  size:
-                    type: [string, 'null']
-                  path:
-                    type: [string, 'null']
-                  attributes:
-                    type: [object, string, 'null']
-          title:
-            title: Title
-            type: [string, array, object, 'null']
-          subtitle:
-            title: Subtitle
-            type: [string, array, object, 'null']
-          description:
-            title: Description
-            type: [string, array, object, 'null']
     link:
       title: Link
       type: [object, 'null']
       description: 'Additional link to be displayed after facts.'
-      properties:
-        label:
-          type: [string, array, object, 'null']
-        path:
-          type: [string, object, 'null']
-        attributes:
-          type: [object, string, 'null']
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

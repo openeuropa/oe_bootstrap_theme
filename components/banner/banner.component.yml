@@ -48,24 +48,6 @@ props:
       title: 'Call to action'
       type: [object, 'null']
       description: 'Link to print a CTA button.'
-      properties:
-        label:
-          type: [string, array, object, 'null']
-        path:
-          type: [object, string, 'null']
-        link_style:
-          type: [string, 'null']
-        icon_position:
-          type: [string, 'null']
-        icon:
-          type: [object, 'null']
-          properties:
-            name:
-              type: [string, 'null']
-            size:
-              type: [string, 'null']
-            path:
-              type: [string, 'null']
     image:
       title: Image
       type: [string, 'null']

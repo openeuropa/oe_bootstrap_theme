@@ -11,54 +11,6 @@ props:
       title: 'Title link'
       type: [object, 'null']
       description: 'Link applied to the timeline title.'
-      properties:
-        label:
-          type: [string, array, object, 'null']
-        path:
-          type: [string, object, 'null']
-        variant:
-          type: [string, 'null']
-          enum:
-            - primary
-            - secondary
-            - success
-            - danger
-            - warning
-            - info
-            - light
-            - dark
-            - null
-        id:
-          type: [string, 'null']
-        disabled:
-          type: [boolean, 'null']
-        icon:
-          type: [string, object, 'null']
-          properties:
-            name:
-              type: [string, 'null']
-            path:
-              type: [string, 'null']
-            transformation:
-              type: [string, 'null']
-            attributes:
-              type: [object, string, 'null']
-        icon_position:
-          type: [string, 'null']
-          enum:
-            - before
-            - after
-            - null
-        icon_display:
-          type: [string, 'null']
-          enum:
-            - flex
-            - inline-flex
-            - null
-        remove_icon_spacers:
-          type: [boolean, 'null']
-        attributes:
-          type: [object, string, 'null']
     title_tag:
       title: 'Title tag'
       type: [string, 'null']
@@ -86,19 +38,6 @@ props:
       title: Items
       type: [array, 'null']
       description: 'List of timeline items, with id, label, title and content.'
-      items:
-        type: object
-        properties:
-          id:
-            type: [string, 'null']
-          label:
-            type: [string, array, object, 'null']
-          title:
-            type: [string, array, object, 'null']
-          content:
-            type: [string, array, object, 'null']
-          attributes:
-            type: [object, string, 'null']
     icon_path:
       title: 'Icons path'
       type: [string, 'null']
