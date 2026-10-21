@@ -52,7 +52,7 @@
 {% set _date = date|default({}) %}
 {% if _date is not empty %}
   {% set _date = _date|merge({
-    icon_path: bcl_icon_path
+    icon_path: bcl_icon_path()
   })%}
 {% endif %}
 

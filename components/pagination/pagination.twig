@@ -27,6 +27,6 @@
     => variant == 'glossary' and not attr.hasAttribute('aria-label') and not attr.hasAttribute('aria-labelledby')
     ? attr.setAttribute('aria-label', 'Glossary links'|t)
     : attr),
-  'icon_path': bcl_icon_path,
+  'icon_path': bcl_icon_path(),
   'list_attributes': list_attributes.addClass('js-pager__items'),
 } only %}

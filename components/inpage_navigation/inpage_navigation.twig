@@ -12,7 +12,7 @@
     {% include '@oe-bcl/inpage-navigation' with {
       'title': title,
       'links': links,
-      'icon_path': bcl_icon_path,
+      'icon_path': bcl_icon_path(),
       'id': (attributes.id ?? 'bcl-inpage-navigation')|clean_unique_id,
       'dropdown_id': ((attributes.id ?? 'bcl-inpage-navigation') ~ '-dropdown')|clean_unique_id,
       'dynamic_active': dynamic_active,

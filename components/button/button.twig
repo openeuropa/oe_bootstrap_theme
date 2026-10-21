@@ -6,7 +6,7 @@
 #}
 {% if icon %}
   {% set icon_data = icon is iterable ? icon : { name: icon } %}
-  {% set _icon = { path: bcl_icon_path }|merge(icon_data) %}
+  {% set _icon = { path: bcl_icon_path() }|merge(icon_data) %}
 {% endif %}
 {% include '@oe-bcl/button' with {
   'label': label,

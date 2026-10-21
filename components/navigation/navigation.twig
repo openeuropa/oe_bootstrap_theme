@@ -6,7 +6,7 @@
 #}
 {% include '@oe-bcl/navigation' with {
   'items': items|map(_item => _item|merge({
-    icon_path: bcl_icon_path,
+    icon_path: bcl_icon_path(),
   })),
   'pills': variant == 'pills',
   'vertical': orientation == 'vertical',
