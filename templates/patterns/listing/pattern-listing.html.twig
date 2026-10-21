@@ -12,9 +12,9 @@
   'link': link ? {
     'path': link.path,
     'label': link.label,
-    'icon': bcl_icon_path ? {
-      'path': bcl_icon_path,
-    } : null,
+    'icon': {
+      'path': bcl_icon_path(),
+    },
   } : null,
   'title': title,
   'title_tag': title_tag,
