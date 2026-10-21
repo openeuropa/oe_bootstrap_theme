@@ -13,10 +13,14 @@ variants:
   navbar:
     title: Navbar
     description: 'When the navigation is part of a navbar element.'
-slots:
-  orientation:
-    title: Orientation
-    description: 'Can be set to horizontal or vertical. Defaults to horizontal.'
-  items:
-    title: 'Navigation items'
-    description: 'Array of navigation items'
+props:
+  type: object
+  properties:
+    orientation:
+      title: Orientation
+      description: 'Can be set to horizontal or vertical. Defaults to horizontal.'
+      type: string
+    items:
+      title: 'Navigation items'
+      description: 'Array of navigation items'
+      type: array

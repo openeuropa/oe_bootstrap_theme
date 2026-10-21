@@ -23,9 +23,6 @@ slots:
   description:
     title: Description
     description: 'Sub-heading of the banner.'
-  call_to_action:
-    title: 'Call to action'
-    description: 'Link to print a CTA button. Optional.'
   image:
     title: Image
     description: 'URL of the image. Optional.'
@@ -51,3 +48,7 @@ props:
       title: Centered
       description: 'Whether the content of the banner is centered or not. Defaults to false.'
       type: boolean
+    call_to_action:
+      title: 'Call to action'
+      description: 'Link to print a CTA button. Optional.'
+      type: array

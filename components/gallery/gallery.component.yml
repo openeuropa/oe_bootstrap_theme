@@ -7,9 +7,6 @@ slots:
   title_tag:
     title: 'Title tag'
     description: 'The tag to use for the title. Defaults to h2.'
-  items:
-    title: Items
-    description: 'A list of '
 props:
   type: object
   properties:
@@ -24,3 +21,7 @@ props:
         original: 'Original aspect ratio (default)'
         cover: Cover
       default: original
+    items:
+      title: Items
+      description: 'A list of '
+      type: array

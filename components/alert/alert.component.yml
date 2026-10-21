@@ -26,9 +26,6 @@ slots:
   message:
     title: Message
     description: 'The alert message.'
-  icon:
-    title: 'Icon name'
-    description: 'Add an icon to the alert. Optional.'
 props:
   type: object
   properties:
@@ -40,3 +37,7 @@ props:
       title: 'Animated dismiss'
       description: 'Add fade animation to the dismissible alert. Defaults to true.'
       type: boolean
+    icon:
+      title: 'Icon name'
+      description: 'Add an icon to the alert. Optional.'
+      type: object

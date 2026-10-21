@@ -10,10 +10,6 @@ variants:
   masonry:
     title: Masonry
     description: 'It works by placing elements in optimal position based on available vertical space.'
-slots:
-  items:
-    title: 'Card items'
-    description: 'An array of card pattern items.'
 props:
   type: object
   properties:
@@ -61,3 +57,7 @@ props:
       title: 'Equal height'
       description: 'If true, all cards will have the same height. Defaults to false.'
       type: boolean
+    items:
+      title: 'Card items'
+      description: 'An array of card pattern items.'
+      type: array

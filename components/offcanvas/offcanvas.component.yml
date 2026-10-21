@@ -12,9 +12,6 @@ slots:
   body:
     title: Body
     description: 'Offcanvas body content.'
-  toggle:
-    title: 'Toggle button'
-    description: 'An optional button pattern definition that will allow to show/hide the offcanvas.'
 props:
   type: object
   properties:
@@ -35,3 +32,7 @@ props:
       title: Backdrop
       description: 'If true, enable backdrop behind offcanvas. Defaults to false.'
       type: boolean
+    toggle:
+      title: 'Toggle button'
+      description: 'An optional button pattern definition that will allow to show/hide the offcanvas.'
+      type: array

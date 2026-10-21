@@ -13,9 +13,6 @@ slots:
   collapse_button_label:
     title: 'Collapse button'
     description: 'Label of the collapse button.'
-  items:
-    title: 'Accordion items'
-    description: 'List of accordion items.'
 props:
   type: object
   properties:
@@ -27,3 +24,7 @@ props:
       title: 'Accordion item opened by default'
       description: 'Index value of the item to open (starting from 1), all closed by default (0).'
       type: number
+    items:
+      title: 'Accordion items'
+      description: 'List of accordion items.'
+      type: array

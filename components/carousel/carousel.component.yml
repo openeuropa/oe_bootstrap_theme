@@ -7,9 +7,6 @@ slots:
   title_tag:
     title: 'Title tag'
     description: 'The tag to use for the title. Defaults to h2.'
-  slides:
-    title: Slides
-    description: 'Each slide is an image, a caption and interval of slide movement.'
 props:
   type: object
   properties:
@@ -41,3 +38,7 @@ props:
       title: 'Dark mode'
       description: 'Enable the dark mode. Defaults to false.'
       type: boolean
+    slides:
+      title: Slides
+      description: 'Each slide is an image, a caption and interval of slide movement.'
+      type: array

@@ -4,9 +4,6 @@ slots:
   label:
     title: Label
     description: 'Text before the progress bar.'
-  progress:
-    title: Progress
-    description: 'The progress value for the bar.'
   min:
     title: Minimum
     description: 'Minimum value shown in the progress bar.'
@@ -43,3 +40,7 @@ props:
       title: Animated
       description: 'Animation on striped bar. Defaults to false.'
       type: boolean
+    progress:
+      title: Progress
+      description: 'The progress value for the bar.'
+      type: number

@@ -7,9 +7,6 @@ slots:
   path:
     title: URL
     description: 'The button URL (optional).'
-  icon:
-    title: Icon
-    description: 'An icon name or an icon array definition (optional).'
 props:
   type: object
   properties:
@@ -47,3 +44,9 @@ props:
       title: 'Remove icon spacers'
       description: 'When enabled, prevents margins to be added to the icon. Defaults to false.'
       type: boolean
+    icon:
+      title: Icon
+      description: 'An icon name or an icon array definition (optional).'
+      type:
+        - array
+        - string

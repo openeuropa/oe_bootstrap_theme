@@ -8,9 +8,6 @@ variants:
     title: Search
     description: 'Card with special behaviour for print search results items.'
 slots:
-  orientation:
-    title: Orientation
-    description: 'Can be set to horizontal or vertical. Defaults to vertical.'
   title:
     title: Title
     description: 'Title of the card.'
@@ -23,18 +20,9 @@ slots:
   text:
     title: Text
     description: 'Card text.'
-  image:
-    title: Image
-    description: 'Image for the card. Optional.'
   image_copyright:
     title: 'Image Copyright'
     description: 'Optional copyright text displayed as an overlay.'
-  date:
-    title: 'Date block'
-    description: 'If set, presents a date block that uses the same parameters as the bcl date-block pattern. Optional.'
-  meta:
-    title: 'Meta items'
-    description: 'Date or other meta information.'
   content:
     title: Content
     description: 'Card content.'
@@ -44,6 +32,26 @@ slots:
   footer:
     title: 'Card footer'
     description: 'Card footer content.'
-  badges:
-    title: Badges
-    description: 'List of badges for the card.'
+props:
+  type: object
+  properties:
+    orientation:
+      title: Orientation
+      description: 'Can be set to horizontal or vertical. Defaults to vertical.'
+      type: string
+    image:
+      title: Image
+      description: 'Image for the card. Optional.'
+      type: Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface
+    date:
+      title: 'Date block'
+      description: 'If set, presents a date block that uses the same parameters as the bcl date-block pattern. Optional.'
+      type: array
+    meta:
+      title: 'Meta items'
+      description: 'Date or other meta information.'
+      type: array
+    badges:
+      title: Badges
+      description: 'List of badges for the card.'
+      type: array

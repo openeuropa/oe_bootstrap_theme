@@ -10,9 +10,14 @@ slots:
   link_label:
     title: 'Download link label'
     description: 'The label to use for the download links. Defaults to "Download".'
-  file:
-    title: File
-    description: 'A FileValueObject instance.'
-  translations:
-    title: Translations
-    description: 'A list of FileValueObject instances pointing to translations of the file. Optional.'
+props:
+  type: object
+  properties:
+    file:
+      title: File
+      description: 'A FileValueObject instance.'
+      type: Drupal\oe_bootstrap_theme\ValueObject\FileValueObject
+    translations:
+      title: Translations
+      description: 'A list of FileValueObject instances pointing to translations of the file. Optional.'
+      type: array

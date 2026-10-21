@@ -1,12 +1,6 @@
 name: 'Content banner'
 description: 'Shows the content summary along with the title, image and badges.'
 slots:
-  background:
-    title: Background
-    description: 'Set a gray or white background at the content banner. Defaults to white.'
-  image:
-    title: Image
-    description: 'Image of the content.'
   copyright:
     title: Copyright
     description: 'Optional copyright text displayed below the banner.'
@@ -25,12 +19,26 @@ slots:
   content:
     title: Content
     description: 'Text with the summary of the content.'
-  meta:
-    title: Meta
-    description: 'Miscellaneous information as date, author, etc.'
-  badges:
-    title: Badges
-    description: 'List of badges.'
-  links:
-    title: Links
-    description: 'List of links.'
+props:
+  type: object
+  properties:
+    background:
+      title: Background
+      description: 'Set a gray or white background at the content banner. Defaults to white.'
+      type: string
+    image:
+      title: Image
+      description: 'Image of the content.'
+      type: Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface
+    meta:
+      title: Meta
+      description: 'Miscellaneous information as date, author, etc.'
+      type: array
+    badges:
+      title: Badges
+      description: 'List of badges.'
+      type: array
+    links:
+      title: Links
+      description: 'List of links.'
+      type: array
