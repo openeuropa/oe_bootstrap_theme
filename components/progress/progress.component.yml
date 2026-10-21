@@ -35,11 +35,11 @@ props:
     min:
       title: Minimum
       description: 'Minimum value shown in the progress bar.'
-      type: [string, array, object, 'null']
+      type: [number, string, 'null']
     max:
       title: Maximum
       description: 'Maximum value shown in the progress bar.'
-      type: [string, array, object, 'null']
+      type: [number, string, 'null']
     text:
       title: Text
       description: 'Text inside the progress bar.'
