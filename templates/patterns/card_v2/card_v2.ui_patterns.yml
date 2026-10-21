@@ -35,7 +35,6 @@ card_v2:
       type: select
       label: 'HTML wrapper tag'
       description: 'Semantic element for the outer wrapper. Defaults to <article>.'
-      default_value: 'article'
       options:
         article: '<article>'
         section: '<section>'
