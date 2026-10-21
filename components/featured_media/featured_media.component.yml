@@ -5,32 +5,32 @@ props:
   properties:
     caption:
       title: Caption
-      type: [string, array, object, 'null']
       description: 'Caption displayed below the media.'
+      type: [string, array, object, 'null']
     embedded_media:
       title: 'Embedded media'
-      type: [string, array, object, 'null']
       description: 'Embedded media markup or render array.'
+      type: [string, array, object, 'null']
     image:
       title: Image
-      type: [string, array, object, 'null']
       description: 'A markup object, a render array, or an ImageValueObject instance.'
+      type: [string, array, object, 'null']
     poster_image:
       title: 'Poster image'
-      type: [string, 'null']
       description: 'Poster image URL for native video.'
+      type: [string, 'null']
     sources:
       title: 'Video sources'
-      type: [array, 'null']
       description: 'Source files for native video.'
+      type: [array, 'null']
     tracks:
       title: 'Video tracks'
-      type: [array, 'null']
       description: 'Caption or subtitle tracks for native video.'
+      type: [array, 'null']
     ratio:
       title: Ratio
-      type: [string, 'null']
       description: 'Aspect ratio for embedded media. Defaults to 16x9.'
+      type: [string, 'null']
       enum:
         - 1x1
         - 4x3
@@ -45,32 +45,32 @@ props:
         '': Default
     title:
       title: Title
-      type: [string, array, object, 'null']
       description: 'Title displayed above the featured media.'
+      type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
-      type: [string, 'null']
       description: 'Tag used for the title. Defaults to h2.'
+      type: [string, 'null']
     title_link:
       title: 'Title link'
-      type: [object, 'null']
       description: 'Link applied to the title.'
+      type: [object, 'null']
     subtitle:
       title: Subtitle
-      type: [string, array, object, 'null']
       description: 'Subtitle displayed before the text.'
+      type: [string, array, object, 'null']
     subtitle_tag:
       title: 'Subtitle tag'
-      type: [string, 'null']
       description: 'Tag used for the subtitle. Defaults to h3 with a title and h2 without one.'
+      type: [string, 'null']
     text:
       title: Text
-      type: [string, array, object, 'null']
       description: 'Content displayed alongside the media.'
+      type: [string, array, object, 'null']
     text_position:
       title: 'Text position'
-      type: [string, 'null']
       description: 'Position of the text on medium and larger viewports. Defaults to left.'
+      type: [string, 'null']
       enum:
         - left
         - right
@@ -81,24 +81,24 @@ props:
         '': Default
     link:
       title: Link
-      type: [object, 'null']
       description: 'Optional link displayed after the text.'
+      type: [object, 'null']
     copyright:
       title: Copyright
-      type: [string, array, object, 'null']
       description: 'Optional copyright text displayed below the media.'
+      type: [string, array, object, 'null']
     copyright_label:
       title: 'Copyright label'
-      type: [string, 'null']
       description: 'Visually hidden label for copyright text.'
+      type: [string, 'null']
     content_classes:
       title: 'Caption classes'
-      type: [string, 'null']
       description: 'Classes applied to the caption. Defaults to bg-light p-3.'
+      type: [string, 'null']
     icon_path:
       title: 'Icons path'
-      type: [string, 'null']
       description: 'Path to icons used by links. Defaults to the BCL icon path.'
+      type: [string, 'null']
     title_attributes:
       title: 'Title attributes'
       type: [object, string, 'null']

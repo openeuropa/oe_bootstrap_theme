@@ -5,12 +5,12 @@ props:
   properties:
     items:
       title: Items
-      type: [array, 'null']
       description: 'List with the breadcrumb items.'
+      type: [array, 'null']
     icon_path:
       title: 'Icons path'
-      type: [string, 'null']
       description: 'Path to icons.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

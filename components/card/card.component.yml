@@ -12,8 +12,8 @@ props:
   properties:
     orientation:
       title: Orientation
-      type: [string, 'null']
       description: 'Can be set to horizontal or vertical. Defaults to vertical.'
+      type: [string, 'null']
       enum:
         - vertical
         - horizontal
@@ -24,56 +24,56 @@ props:
         '': Default
     title:
       title: Title
-      type: [string, array, object, 'null']
       description: 'Title of the card.'
+      type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
-      type: [string, 'null']
       description: 'Title tag of the card. Defaults to div.'
+      type: [string, 'null']
     title_link:
       title: 'Title link'
-      type: [object, 'null']
       description: 'Optional link object for the title.'
+      type: [object, 'null']
     subtitle:
       title: Subtitle
-      type: [string, array, object, 'null']
       description: 'Card subtitle.'
+      type: [string, array, object, 'null']
     text:
       title: Text
-      type: [string, array, object, 'null']
       description: 'Card text.'
+      type: [string, array, object, 'null']
     image:
       title: Image
-      type: [object, 'null']
       description: 'Image for the card. Optional.'
+      type: [object, 'null']
     image_copyright:
       title: 'Image copyright'
-      type: [string, array, object, 'null']
       description: 'Optional copyright text displayed as an overlay.'
+      type: [string, array, object, 'null']
     date:
       title: 'Date block'
-      type: [object, 'null']
       description: 'If set, presents a date block that uses the same parameters as the BCL date-block template. Optional.'
+      type: [object, 'null']
     meta:
       title: 'Meta items'
-      type: [array, 'null']
       description: 'Date or other meta information.'
+      type: [array, 'null']
     content:
       title: Content
-      type: [string, array, object, 'null']
       description: 'Card content.'
+      type: [string, array, object, 'null']
     header:
       title: 'Card header'
-      type: [string, array, object, 'null']
       description: 'Card header content.'
+      type: [string, array, object, 'null']
     footer:
       title: 'Card footer'
-      type: [string, array, object, 'null']
       description: 'Card footer content.'
+      type: [string, array, object, 'null']
     badges:
       title: Badges
-      type: [array, 'null']
       description: 'List of badges for the card.'
+      type: [array, 'null']
     title_attributes:
       title: 'Title attributes'
       type: [object, string, 'null']

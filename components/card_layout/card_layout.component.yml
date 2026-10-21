@@ -15,12 +15,12 @@ props:
   properties:
     items:
       title: 'Card items'
-      type: [array, 'null']
       description: 'An array of card pattern items.'
+      type: [array, 'null']
     grid_columns:
       title: 'Grid columns'
-      type: [string, integer, 'null']
       description: 'Number of grid columns. Defaults to 1.'
+      type: [string, integer, 'null']
       enum:
         - 1
         - 2
@@ -33,8 +33,8 @@ props:
         '': Default
     responsiveness:
       title: Responsiveness
-      type: [string, 'null']
       description: 'Breakpoint used for the responsive columns. Defaults to md.'
+      type: [string, 'null']
       enum:
         - sm
         - md
@@ -51,8 +51,8 @@ props:
         '': Default
     responsive_columns:
       title: 'Responsive columns'
-      type: [string, integer, 'null']
       description: 'Number of responsive columns.'
+      type: [string, integer, 'null']
       enum:
         - 2
         - 3
@@ -63,8 +63,8 @@ props:
         '': Default
     gutter:
       title: Gutter
-      type: [string, integer, 'null']
       description: 'Gutter between cards.'
+      type: [string, integer, 'null']
       enum:
         - 0
         - 1
@@ -83,8 +83,8 @@ props:
         '': Default
     equal_height:
       title: 'Equal height'
-      type: [boolean, 'null']
       description: 'If true, all cards will have the same height. Defaults to false.'
+      type: [boolean, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

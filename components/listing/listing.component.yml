@@ -10,8 +10,8 @@ props:
   properties:
     columns:
       title: Columns
-      type: [string, integer, 'null']
       description: 'Number of columns. Defaults to 1.'
+      type: [string, integer, 'null']
       enum:
         - 1
         - 2
@@ -24,31 +24,31 @@ props:
         '': Default
     title:
       title: Title
-      type: [string, array, object, 'null']
       description: 'Title of the listing.'
+      type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
-      type: [string, 'null']
       description: 'The tag to use for the title. Defaults to h2.'
+      type: [string, 'null']
     title_link:
       title: 'Title link'
-      type: [object, 'null']
       description: 'Optional link applied to the listing title. The title prop is used as its label.'
+      type: [object, 'null']
     title_attributes:
       title: 'Title attributes'
       type: [object, string, 'null']
     items:
       title: Items
-      type: [array, 'null']
       description: 'Cards displayed in the listing.'
+      type: [array, 'null']
     link:
       title: Link
-      type: [object, 'null']
       description: 'Optional call-to-action link displayed below the cards.'
+      type: [object, 'null']
     alignment:
       title: Alignment
-      type: [string, 'null']
       description: 'Vertical alignment of card media and content.'
+      type: [string, 'null']
       enum:
         - start
         - end
@@ -65,8 +65,8 @@ props:
         '': Default
     image_size:
       title: 'Image size'
-      type: [string, 'null']
       description: 'Width of card media in horizontal listings.'
+      type: [string, 'null']
       enum:
         - small
         - large
@@ -79,8 +79,8 @@ props:
         '': Default
     icon_path:
       title: 'Icons path'
-      type: [string, 'null']
       description: 'Path to the icons SVG file. Defaults to the BCL icon path.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

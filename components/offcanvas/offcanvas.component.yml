@@ -10,16 +10,16 @@ props:
   properties:
     offcanvas_id:
       title: 'Offcanvas ID'
-      type: [string, 'null']
       description: 'ID connecting the panel, close button, and toggle. A unique ID is generated when omitted.'
+      type: [string, 'null']
     title:
       title: Title
-      type: [string, array, object, 'null']
       description: 'Offcanvas title.'
+      type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
-      type: [string, 'null']
       description: 'HTML tag used for the title. Defaults to h2.'
+      type: [string, 'null']
     title_link:
       title: 'Title link'
       type: [object, 'null']
@@ -28,8 +28,8 @@ props:
       type: [object, string, 'null']
     placement:
       title: Placement
-      type: [string, 'null']
       description: 'Side from which the offcanvas opens.'
+      type: [string, 'null']
       enum:
         - start
         - end
@@ -44,40 +44,40 @@ props:
         '': Default
     body:
       title: Body
-      type: [string, array, object, 'null']
       description: 'Offcanvas body content.'
+      type: [string, array, object, 'null']
     body_scroll:
       title: 'Body scroll'
-      type: [boolean, 'null']
       description: 'Allows the page body to scroll while the offcanvas is open. Defaults to false.'
+      type: [boolean, 'null']
     backdrop:
       title: Backdrop
-      type: [boolean, 'null']
       description: 'Displays a backdrop while the offcanvas is open. Defaults to false.'
+      type: [boolean, 'null']
     with_close:
       title: 'Close button'
-      type: [boolean, 'null']
       description: 'Displays the close button. Defaults to true.'
+      type: [boolean, 'null']
     close_aria_label:
       title: 'Close button accessible label'
-      type: [string, 'null']
       description: 'Accessible label for the close button. Defaults to Close.'
+      type: [string, 'null']
     extra_classes_body:
       title: 'Body classes'
-      type: [string, 'null']
       description: 'Additional classes for the offcanvas body.'
+      type: [string, 'null']
     extra_classes_header:
       title: 'Header classes'
-      type: [string, 'null']
       description: 'Additional classes for the offcanvas header.'
+      type: [string, 'null']
     extra_classes_close:
       title: 'Close button classes'
-      type: [string, 'null']
       description: 'Additional classes for the close button.'
+      type: [string, 'null']
     responsiveness:
       title: Responsiveness
-      type: [string, 'null']
       description: 'Breakpoint at which the offcanvas becomes static. Defaults to lg.'
+      type: [string, 'null']
       enum:
         - none
         - sm
@@ -96,8 +96,8 @@ props:
         '': Default
     toggle:
       title: 'Toggle button'
-      type: [object, 'null']
       description: 'Optional button that opens the offcanvas.'
+      type: [object, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

@@ -5,24 +5,24 @@ props:
   properties:
     button_label:
       title: 'Dropdown button label'
-      type: [string, array, object, 'null']
       description: 'Label used by the default dropdown toggle.'
+      type: [string, array, object, 'null']
     dropdown_id:
       title: 'Dropdown ID'
-      type: [string, 'null']
       description: 'ID connecting the toggle and menu. A unique ID is generated when omitted.'
+      type: [string, 'null']
     trigger:
       title: Trigger
-      type: [object, 'null']
       description: 'Optional BCL button or link configuration for the dropdown toggle.'
+      type: [object, 'null']
     link:
       title: 'Link trigger'
-      type: [boolean, 'null']
       description: 'Render the dropdown toggle as a link instead of a button.'
+      type: [boolean, 'null']
     direction:
       title: Direction
-      type: [string, 'null']
       description: 'Direction in which the menu opens.'
+      type: [string, 'null']
       enum:
         - dropup
         - dropend
@@ -35,8 +35,8 @@ props:
         '': Default
     alignment:
       title: Alignment
-      type: [string, 'null']
       description: 'Dropdown menu alignment.'
+      type: [string, 'null']
       enum:
         - dropdown-menu-end
         - dropdown-menu-sm-end
@@ -67,24 +67,24 @@ props:
         '': Default
     dark_mode:
       title: 'Dark mode'
-      type: [boolean, 'null']
       description: 'Use the dark dropdown menu style.'
+      type: [boolean, 'null']
     remove_wrapper:
       title: 'Remove wrapper'
-      type: [boolean, 'null']
       description: 'Do not render the dropdown wrapper element.'
+      type: [boolean, 'null']
     inside_navigation:
       title: 'Inside navigation'
-      type: [boolean, 'null']
       description: 'Render menu accessibility attributes for use inside navigation.'
+      type: [boolean, 'null']
     items:
       title: 'Dropdown items'
-      type: [array, 'null']
       description: 'Links, buttons, and dividers displayed in the menu.'
+      type: [array, 'null']
     icon_path:
       title: 'Icons path'
-      type: [string, 'null']
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

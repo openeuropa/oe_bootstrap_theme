@@ -22,32 +22,32 @@ props:
   properties:
     label:
       title: Label
-      type: [string, array, object, 'null']
       description: 'Link label text or render array.'
+      type: [string, array, object, 'null']
     path:
       title: Path
-      type: [string, object, 'null']
       description: 'Link URL string or URL object. Defaults to #.'
+      type: [string, object, 'null']
     id:
       title: ID
-      type: [string, 'null']
       description: 'Link ID attribute.'
+      type: [string, 'null']
     disabled:
       title: Disabled
-      type: [boolean, 'null']
       description: 'Disables keyboard and pointer interaction. Defaults to false.'
+      type: [boolean, 'null']
     standalone:
       title: Standalone
-      type: [boolean, 'null']
       description: 'Applies standalone link styling. Defaults to false.'
+      type: [boolean, 'null']
     icon:
       title: Icon
-      type: [string, object, 'null']
       description: 'Icon name as a string or an icon object.'
+      type: [string, object, 'null']
     icon_position:
       title: 'Icon position'
-      type: [string, 'null']
       description: 'Position of the icon relative to the label. Defaults to after.'
+      type: [string, 'null']
       enum:
         - before
         - after
@@ -58,8 +58,8 @@ props:
         '': Default
     icon_display:
       title: 'Icon display'
-      type: [string, 'null']
       description: 'Uses flexbox gap spacing between the icon and label.'
+      type: [string, 'null']
       enum:
         - flex
         - inline-flex
@@ -70,8 +70,8 @@ props:
         '': Default
     remove_icon_spacers:
       title: 'Remove icon spacers'
-      type: [boolean, 'null']
       description: 'Removes spacing between the icon and label. Defaults to false.'
+      type: [boolean, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

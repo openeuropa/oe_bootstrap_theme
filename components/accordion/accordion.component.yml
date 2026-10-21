@@ -17,8 +17,8 @@ props:
       type: [number, 'null']
     title:
       title: Title
-      type: [string, array, object, 'null']
       description: 'Title of the accordion.'
+      type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
       description: 'The tag to use for the title. Defaults to h2.'

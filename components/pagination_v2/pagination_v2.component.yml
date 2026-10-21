@@ -5,8 +5,8 @@ props:
   properties:
     size:
       title: Size
-      type: [string, 'null']
       description: 'Size of the pagination.'
+      type: [string, 'null']
       enum:
         - sm
         - lg
@@ -17,8 +17,8 @@ props:
         '': Default
     alignment:
       title: Alignment
-      type: [string, 'null']
       description: 'Alignment of the pagination on medium screens and above. Defaults to center.'
+      type: [string, 'null']
       enum:
         - start
         - center
@@ -31,52 +31,52 @@ props:
         '': Default
     aria_label:
       title: 'ARIA label'
-      type: [string, 'null']
       description: 'Accessible label for the navigation wrapper.'
+      type: [string, 'null']
     enable_prev_next_icon:
       title: 'Previous and next icons'
-      type: [boolean, 'null']
       description: 'Show icons instead of text for previous and next links. Defaults to true.'
+      type: [boolean, 'null']
     enable_first_last_icon:
       title: 'First and last icons'
-      type: [boolean, 'null']
       description: 'Show icons instead of text for first and last links. Defaults to false.'
+      type: [boolean, 'null']
     ellipsis_before:
       title: 'Ellipsis before'
-      type: [boolean, 'null']
       description: 'Add an ellipsis before the page items.'
+      type: [boolean, 'null']
     ellipsis_after:
       title: 'Ellipsis after'
-      type: [boolean, 'null']
       description: 'Add an ellipsis after the page items.'
+      type: [boolean, 'null']
     current_mobile_label:
       title: 'Current mobile label'
-      type: [string, array, object, 'null']
       description: 'Replacement label for the active page on small screens.'
+      type: [string, array, object, 'null']
     first:
       title: 'First link'
-      type: [object, 'null']
       description: 'Link to the first page.'
+      type: [object, 'null']
     prev:
       title: 'Previous link'
-      type: [object, 'null']
       description: 'Link to the previous page.'
+      type: [object, 'null']
     next:
       title: 'Next link'
-      type: [object, 'null']
       description: 'Link to the next page.'
+      type: [object, 'null']
     last:
       title: 'Last link'
-      type: [object, 'null']
       description: 'Link to the last page.'
+      type: [object, 'null']
     items:
       title: 'Pagination items'
-      type: [array, 'null']
       description: 'Page links displayed by the pagination.'
+      type: [array, 'null']
     icon_path:
       title: 'Icons path'
-      type: [string, 'null']
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

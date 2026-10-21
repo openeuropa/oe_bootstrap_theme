@@ -18,8 +18,8 @@ props:
   properties:
     orientation:
       title: Orientation
-      type: [string, 'null']
       description: 'Navigation orientation. Defaults to horizontal.'
+      type: [string, 'null']
       enum:
         - horizontal
         - vertical
@@ -30,16 +30,16 @@ props:
         '': Default
     navigation_id:
       title: 'Navigation ID'
-      type: [string, 'null']
       description: 'ID added to the navigation wrapper.'
+      type: [string, 'null']
     full_width:
       title: 'Full width'
-      type: [boolean, 'null']
       description: 'Distribute items across the available width.'
+      type: [boolean, 'null']
     alignment:
       title: Alignment
-      type: [string, 'null']
       description: 'Horizontal alignment of navigation items.'
+      type: [string, 'null']
       enum:
         - start
         - center
@@ -52,16 +52,16 @@ props:
         '': Default
     tabs_content:
       title: 'Tab content'
-      type: [boolean, 'null']
       description: 'Render tab panels from each item content value.'
+      type: [boolean, 'null']
     items:
       title: 'Navigation items'
-      type: [array, 'null']
       description: 'Links, buttons, dropdowns, and nested navigation items.'
+      type: [array, 'null']
     icon_path:
       title: 'Icons path'
-      type: [string, 'null']
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

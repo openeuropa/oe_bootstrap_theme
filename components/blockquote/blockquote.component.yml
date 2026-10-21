@@ -5,28 +5,28 @@ props:
   properties:
     title:
       title: Title
-      type: [string, array, object, 'null']
       description: 'Title of the blockquote.'
+      type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
-      type: [string, 'null']
       description: 'The tag to use for the title. Defaults to h2.'
+      type: [string, 'null']
     quote:
       title: Quote
-      type: [string, array, object, 'null']
       description: 'The quote text.'
+      type: [string, array, object, 'null']
     attribution:
       title: Attribution
-      type: [string, array, object, 'null']
       description: 'The name of the quoted person or entity.'
+      type: [string, array, object, 'null']
     cite:
       title: Citation
-      type: [string, array, object, 'null']
       description: 'The creative work in which the referenced quote was published.'
+      type: [string, array, object, 'null']
     alignment:
       title: 'Text alignment'
-      type: [string, 'null']
       description: 'Aligns the quote in the page.'
+      type: [string, 'null']
       enum:
         - left
         - center

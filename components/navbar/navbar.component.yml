@@ -5,12 +5,12 @@ props:
   properties:
     collapse_id:
       title: 'Collapse ID'
-      type: [string, 'null']
       description: 'ID connecting the responsive toggle and collapsible content. A unique ID is generated when omitted.'
+      type: [string, 'null']
     expanded_breakpoint:
       title: 'Expanded breakpoint'
-      type: [string, 'null']
       description: 'Breakpoint at which the navbar is expanded. Defaults to lg.'
+      type: [string, 'null']
       enum:
         - sm
         - md
@@ -23,8 +23,8 @@ props:
         '': Default
     color_scheme:
       title: 'Color scheme'
-      type: [string, 'null']
       description: 'Color scheme used by the navbar. Defaults to light.'
+      type: [string, 'null']
       default: light
       enum:
         - light
@@ -36,25 +36,25 @@ props:
         '': Default
     background:
       title: Background
-      type: [boolean, 'null']
       description: 'Adds a background matching the color scheme. Defaults to true.'
+      type: [boolean, 'null']
       default: true
     disable_collapse:
       title: 'Disable collapse'
-      type: [boolean, 'null']
       description: 'Keeps all navbar content visible and removes the responsive toggle. Defaults to true when no expanded breakpoint is provided.'
+      type: [boolean, 'null']
     branding:
       title: 'Branding region'
-      type: [string, array, object, 'null']
       description: 'Branding content, such as a linked site name or logo.'
+      type: [string, array, object, 'null']
     navigation:
       title: 'Navigation region'
-      type: [string, array, object, 'null']
       description: 'Primary navigation content.'
+      type: [string, array, object, 'null']
     right:
       title: 'Right region'
-      type: [string, array, object, 'null']
       description: 'Content aligned to the end of the navbar, such as search or account actions.'
+      type: [string, array, object, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

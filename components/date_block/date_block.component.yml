@@ -7,8 +7,8 @@ props:
   properties:
     date:
       title: Date
-      type: DateTimeInterface
       description: 'A DateTime object. This is required.'
+      type: DateTimeInterface
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

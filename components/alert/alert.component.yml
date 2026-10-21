@@ -24,28 +24,28 @@ props:
   properties:
     dismissible:
       title: Dismissible
-      type: [boolean, 'null']
       description: 'Adds close button to dismiss the alert inline. Defaults to true.'
+      type: [boolean, 'null']
     animated_dismiss:
       title: 'Animated dismiss'
-      type: [boolean, 'null']
       description: 'Adds fade animation to the dismissible alert. Defaults to true.'
+      type: [boolean, 'null']
     heading:
       title: Heading
-      type: [string, array, object, 'null']
       description: 'The alert heading.'
+      type: [string, array, object, 'null']
     message:
       title: Message
-      type: [string, array, object, 'null']
       description: 'The alert message.'
+      type: [string, array, object, 'null']
     icon:
       title: 'Icon name'
-      type: [string, 'null']
       description: 'Icon name to display in the alert.'
+      type: [string, 'null']
     icon_path:
       title: 'Icons path'
-      type: [string, 'null']
       description: 'Path to icons.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

@@ -5,23 +5,23 @@ props:
   properties:
     title:
       title: Title
-      type: [string, array, object, 'null']
       description: 'Title of the links block.'
+      type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
-      type: [string, 'null']
       description: 'HTML tag used for the title. Defaults to h2.'
+      type: [string, 'null']
     title_link:
       title: 'Title link'
-      type: [object, 'null']
       description: 'Optional link applied to the title.'
+      type: [object, 'null']
     title_attributes:
       title: 'Title attributes'
       type: [object, string, 'null']
     background:
       title: Background
-      type: [string, 'null']
       description: 'Background style of the block. Defaults to gray.'
+      type: [string, 'null']
       default: gray
       enum:
         - gray
@@ -33,8 +33,8 @@ props:
         '': Default
     orientation:
       title: Orientation
-      type: [string, 'null']
       description: 'Direction in which links are displayed. Defaults to vertical.'
+      type: [string, 'null']
       default: vertical
       enum:
         - vertical
@@ -46,12 +46,12 @@ props:
         '': Default
     links:
       title: Links
-      type: [array, 'null']
       description: 'Links displayed in the block.'
+      type: [array, 'null']
     icon_path:
       title: 'Icons path'
-      type: [string, 'null']
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

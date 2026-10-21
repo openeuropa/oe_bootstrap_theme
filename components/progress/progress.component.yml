@@ -5,32 +5,32 @@ props:
   properties:
     label:
       title: Label
-      type: [string, array, object, 'null']
       description: 'Text before the progress bar.'
+      type: [string, array, object, 'null']
     progress:
       title: Progress
-      type: [integer, number, string, 'null']
       description: 'The progress value for the bar.'
+      type: [integer, number, string, 'null']
     min:
       title: Minimum
-      type: [integer, number, string, 'null']
       description: 'Minimum value shown in the progress bar.'
+      type: [integer, number, string, 'null']
     max:
       title: Maximum
-      type: [integer, number, string, 'null']
       description: 'Maximum value shown in the progress bar.'
+      type: [integer, number, string, 'null']
     text:
       title: Text
-      type: [string, array, object, 'null']
       description: 'Text inside the progress bar.'
+      type: [string, array, object, 'null']
     message:
       title: Message
-      type: [string, array, object, 'null']
       description: 'Optional description text below the progress bar.'
+      type: [string, array, object, 'null']
     style:
       title: 'Bar style'
-      type: [string, 'null']
       description: 'Set the bar style.'
+      type: [string, 'null']
       enum:
         - primary
         - secondary
@@ -53,16 +53,16 @@ props:
         '': Default
     striped:
       title: Striped
-      type: [boolean, 'null']
       description: 'Striped style for the progress bar. Defaults to false.'
+      type: [boolean, 'null']
     animated:
       title: Animated
-      type: [boolean, 'null']
       description: 'Animation on striped bar. Defaults to false.'
+      type: [boolean, 'null']
     hidden_label:
       title: 'Hidden label'
-      type: [boolean, 'null']
       description: 'Hides the text inside the progress bar. Defaults to false.'
+      type: [boolean, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

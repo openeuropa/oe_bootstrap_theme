@@ -5,12 +5,12 @@ props:
   properties:
     name:
       title: Name
-      type: [string, 'null']
       description: 'Name of the icon in the SVG sprite.'
+      type: [string, 'null']
     size:
       title: Size
-      type: [string, 'null']
       description: 'Size of the icon. Defaults to s.'
+      type: [string, 'null']
       enum:
         - 2xs
         - xs
@@ -33,8 +33,8 @@ props:
         '': Default
     transformation:
       title: Transformation
-      type: [string, 'null']
       description: 'Optional rotation or flip transformation.'
+      type: [string, 'null']
       enum:
         - rotate-90
         - rotate-180
@@ -51,8 +51,8 @@ props:
         '': Default
     icon_path:
       title: 'Icon path'
-      type: [string, 'null']
       description: 'Path to the SVG sprite. Defaults to the BCL icon path.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

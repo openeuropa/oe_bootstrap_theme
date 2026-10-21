@@ -5,8 +5,8 @@ props:
   properties:
     background:
       title: Background
-      type: [string, 'null']
       description: 'Sets a gray or white background. Defaults to white.'
+      type: [string, 'null']
       default: white
       enum:
         - white
@@ -18,20 +18,20 @@ props:
         '': Default
     image:
       title: Image
-      type: [object, 'null']
       description: 'Image displayed in the content banner.'
+      type: [object, 'null']
     copyright:
       title: Copyright
-      type: [string, array, object, 'null']
       description: 'Optional copyright text displayed below the image.'
+      type: [string, array, object, 'null']
     copyright_label:
       title: 'Copyright label'
-      type: [string, 'null']
       description: 'Accessible label shown before the copyright. Defaults to Image credit:.'
+      type: [string, 'null']
     image_size:
       title: 'Image size'
-      type: [string, 'null']
       description: 'The size of the image. Defaults to lg.'
+      type: [string, 'null']
       default: lg
       enum:
         - md
@@ -45,51 +45,51 @@ props:
         '': Default
     title:
       title: Title
-      type: [string, array, object, 'null']
       description: 'Title of the content banner.'
+      type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
-      type: [string, 'null']
       description: 'The tag to use for the title. Defaults to h1.'
+      type: [string, 'null']
     title_link:
       title: 'Title link'
-      type: [object, 'null']
       description: 'Optional link object for the title.'
+      type: [object, 'null']
     title_attributes:
       title: 'Title attributes'
       type: [object, string, 'null']
     action_bar:
       title: 'Action bar'
-      type: [string, array, object, 'null']
       description: 'Action bar region, for example action buttons.'
+      type: [string, array, object, 'null']
     content:
       title: Content
-      type: [string, array, object, 'null']
       description: 'Text with the summary of the content.'
+      type: [string, array, object, 'null']
     subtitle:
       title: Subtitle
-      type: [object, 'null']
       description: 'Optional card subtitle.'
+      type: [object, 'null']
     text:
       title: Text
-      type: [object, 'null']
       description: 'Optional card text.'
+      type: [object, 'null']
     meta:
       title: Meta
-      type: [array, 'null']
       description: 'Miscellaneous information such as date or author.'
+      type: [array, 'null']
     badges:
       title: Badges
-      type: [array, 'null']
       description: 'List of badges.'
+      type: [array, 'null']
     links:
       title: Links
-      type: [array, 'null']
       description: 'List of links.'
+      type: [array, 'null']
     date:
       title: 'Date block'
-      type: [object, 'null']
       description: 'Date block displayed in place of an image.'
+      type: [object, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

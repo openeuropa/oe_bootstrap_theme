@@ -5,12 +5,12 @@ props:
   properties:
     flush:
       title: Flush
-      type: [boolean, 'null']
       description: 'Removes outer borders and rounded corners. Defaults to false.'
+      type: [boolean, 'null']
     horizontal:
       title: Horizontal
-      type: [string, 'null']
       description: 'Displays items horizontally, optionally from a responsive breakpoint.'
+      type: [string, 'null']
       enum:
         - horizontal
         - horizontal-sm
@@ -29,12 +29,12 @@ props:
         '': Default
     id:
       title: ID
-      type: [string, 'null']
       description: 'List group ID attribute.'
+      type: [string, 'null']
     type:
       title: Type
-      type: [string, 'null']
       description: 'Type of list group. Defaults to unordered.'
+      type: [string, 'null']
       enum:
         - unordered
         - ordered
@@ -47,8 +47,8 @@ props:
         '': Default
     items:
       title: Items
-      type: [array, 'null']
       description: 'List content, form inputs, links, or buttons.'
+      type: [array, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

@@ -5,43 +5,43 @@ props:
   properties:
     title:
       title: Title
-      type: [string, array, object, 'null']
       description: 'Title of the navigation.'
+      type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
-      type: [string, 'null']
       description: 'HTML tag used for the title. Defaults to h2.'
+      type: [string, 'null']
     title_link:
       title: 'Title link'
-      type: [object, 'null']
       description: 'Optional link applied to the title.'
+      type: [object, 'null']
     title_attributes:
       title: 'Title attributes'
       type: [object, string, 'null']
     links:
       title: Links
-      type: [array, 'null']
       description: 'Links to headings in the page content.'
+      type: [array, 'null']
     content:
       title: Content
-      type: [string, array, object, 'null']
       description: 'Page content displayed alongside the navigation.'
+      type: [string, array, object, 'null']
     id:
       title: ID
-      type: [string, 'null']
       description: 'Navigation ID. A unique ID is generated when omitted.'
+      type: [string, 'null']
     dropdown_id:
       title: 'Dropdown ID'
-      type: [string, 'null']
       description: 'Mobile dropdown trigger ID. Defaults to the navigation ID followed by -dropdown.'
+      type: [string, 'null']
     dynamic_active:
       title: 'Dynamic active'
-      type: [boolean, 'null']
       description: 'Automatically controls the active item on mobile. Defaults to false.'
+      type: [boolean, 'null']
     icon_path:
       title: 'Icons path'
-      type: [string, 'null']
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
+      type: [string, 'null']
     attributes:
       title: 'Navigation attributes'
       type: Drupal\Core\Template\Attribute

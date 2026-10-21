@@ -5,40 +5,40 @@ props:
   properties:
     alignment:
       title: Alignment
-      type: [string, 'null']
       description: 'Align icons, values, and labels. Descriptions remain left-aligned.'
+      type: [string, 'null']
       enum:
         - left
         - center
         - null
     title:
       title: Title
-      type: [string, array, object, 'null']
       description: 'Title of the facts and figures section.'
+      type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
-      type: [string, 'null']
       description: 'The tag to use for the title. Defaults to h2.'
+      type: [string, 'null']
     columns:
       title: Columns
-      type: [number, 'null']
       description: 'One, two or three columns layout for responsive. Defaults to 3.'
+      type: [number, 'null']
     items:
       title: Items
-      type: [array, 'null']
       description: 'List of facts, with icon, title, subtitle and content.'
+      type: [array, 'null']
     link:
       title: Link
-      type: [object, 'null']
       description: 'Additional link to be displayed after facts.'
+      type: [object, 'null']
     icon_path:
       title: 'Icons path'
-      type: [string, 'null']
       description: 'Path to icons.'
+      type: [string, 'null']
     icon_size:
       title: 'Icon size'
-      type: [string, 'null']
       description: 'Size of the icons. Defaults to the "facts_figures.icon_size" theme setting, or "l" if unset.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

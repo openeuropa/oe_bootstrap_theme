@@ -12,8 +12,8 @@ props:
   properties:
     tag:
       title: 'HTML wrapper tag'
-      type: [string, 'null']
       description: 'Semantic element for the outer wrapper. Defaults to article.'
+      type: [string, 'null']
       enum:
         - article
         - section
@@ -28,24 +28,24 @@ props:
         '': Default
     title:
       title: Title
-      type: [string, array, object, 'null']
       description: 'Card title. Supports markup, e.g. for links.'
+      type: [string, array, object, 'null']
     media:
       title: Media
-      type: [string, array, object, 'null']
       description: 'Optional. Accepts an image, video, icon, map thumbnail, or another component.'
+      type: [string, array, object, 'null']
     content:
       title: 'Body content'
-      type: [string, array, object, 'null']
       description: 'Card body content.'
+      type: [string, array, object, 'null']
     header:
       title: Header
-      type: [string, array, object, 'null']
       description: 'Optional meta information or category content.'
+      type: [string, array, object, 'null']
     footer:
       title: Footer
-      type: [string, array, object, 'null']
       description: 'Optional secondary actions or metadata.'
+      type: [string, array, object, 'null']
     attributes:
       title: 'Card attributes'
       type: Drupal\Core\Template\Attribute

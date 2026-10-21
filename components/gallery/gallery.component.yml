@@ -5,55 +5,55 @@ props:
   properties:
     gallery_id:
       title: 'Gallery ID'
-      type: [string, 'null']
       description: 'Unique ID used to connect the gallery, modal and carousel.'
+      type: [string, 'null']
     title:
       title: Title
-      type: [string, array, object, 'null']
       description: 'Title of the gallery.'
+      type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
-      type: [string, 'null']
       description: 'The tag to use for the title. Defaults to h2.'
+      type: [string, 'null']
     title_link:
       title: 'Title link'
-      type: [object, 'null']
       description: 'Optional link applied to the gallery title.'
+      type: [object, 'null']
     title_attributes:
       title: 'Title attributes'
       type: [object, string, 'null']
     counter:
       title: Counter
-      type: [string, 'null']
       description: 'Counter label. The %d placeholder is replaced by the number of items.'
+      type: [string, 'null']
     collapse_button_label:
       title: 'Collapsed label'
-      type: [string, 'null']
       description: 'Label used to reveal hidden thumbnails. Defaults to View the full gallery (%d).'
+      type: [string, 'null']
     expand_button_label:
       title: 'Expanded label'
-      type: [string, 'null']
       description: 'Label used to hide expanded thumbnails. Defaults to View less.'
+      type: [string, 'null']
     previous_label:
       title: 'Previous label'
-      type: [string, 'null']
       description: 'Accessible label for the previous carousel control. Defaults to Previous.'
+      type: [string, 'null']
     next_label:
       title: 'Next label'
-      type: [string, 'null']
       description: 'Accessible label for the next carousel control. Defaults to Next.'
+      type: [string, 'null']
     max_visible_thumbnails:
       title: 'Maximum visible thumbnails'
-      type: [string, integer, 'null']
       description: 'Number of thumbnails visible before the gallery is collapsed. Defaults to 5.'
+      type: [string, integer, 'null']
     items:
       title: Items
-      type: [array, 'null']
       description: 'Images and playable media displayed in the gallery.'
+      type: [array, 'null']
     icon_path:
       title: 'Icons path'
-      type: [string, 'null']
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

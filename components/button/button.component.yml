@@ -24,12 +24,12 @@ props:
   properties:
     label:
       title: Label
-      type: [string, array, object, 'null']
       description: 'The button label.'
+      type: [string, array, object, 'null']
     size:
       title: Size
-      type: [string, 'null']
       description: 'Size of the button. Defaults to md.'
+      type: [string, 'null']
       enum:
         - sm
         - md
@@ -42,8 +42,8 @@ props:
         '': Default
     type:
       title: Type
-      type: [string, 'null']
       description: 'Sets the button behavior type. Defaults to button.'
+      type: [string, 'null']
       enum:
         - button
         - submit
@@ -56,32 +56,32 @@ props:
         '': Default
     outline:
       title: Outline
-      type: [boolean, 'null']
       description: 'Lighter button style removing background color. Defaults to false.'
+      type: [boolean, 'null']
     disabled:
       title: Disabled
-      type: [boolean, 'null']
       description: 'If true, the button will not be enabled when clicking. Defaults to false.'
+      type: [boolean, 'null']
     text_nowrap:
       title: 'No text wrap'
-      type: [boolean, 'null']
       description: 'Prevents the button label from wrapping.'
+      type: [boolean, 'null']
     assistive_text:
       title: 'Assistive text'
-      type: [string, 'null']
       description: 'Visually hidden text printed before the button label.'
+      type: [string, 'null']
     id:
       title: ID
-      type: [string, 'null']
       description: 'Button ID attribute.'
+      type: [string, 'null']
     icon:
       title: Icon
       description: 'Icon name as a string or an icon object.'
       type: [string, object, 'null']
     icon_position:
       title: 'Icon position'
-      type: [string, 'null']
       description: 'If button has an icon, it can be placed before or after text. Defaults to after.'
+      type: [string, 'null']
       enum:
         - before
         - after
@@ -92,8 +92,8 @@ props:
         '': Default
     icon_spacing:
       title: 'Icon spacing'
-      type: [string, 'null']
       description: 'Spacing between icon and label.'
+      type: [string, 'null']
       enum:
         - sm
         - md
@@ -106,20 +106,20 @@ props:
         '': Default
     spinner:
       title: Spinner
-      type: [object, 'null']
       description: 'Spinner object.'
+      type: [object, 'null']
     show_spinner:
       title: 'Show spinner'
-      type: [boolean, 'null']
       description: 'Displays the spinner before the button label.'
+      type: [boolean, 'null']
     clean_class:
       title: 'Clean class'
-      type: [boolean, 'null']
       description: 'If true, BCL button classes are not added.'
+      type: [boolean, 'null']
     remove_icon_spacers:
       title: 'Remove icon spacers'
-      type: [boolean, 'null']
       description: 'Removes the default spacing between icon and label.'
+      type: [boolean, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

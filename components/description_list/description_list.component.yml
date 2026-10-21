@@ -5,28 +5,28 @@ props:
   properties:
     title:
       title: Title
-      type: [string, array, object, 'null']
       description: 'Title of the description list.'
+      type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
-      type: [string, 'null']
       description: 'The tag to use for the title. Defaults to h2.'
+      type: [string, 'null']
     title_link:
       title: 'Title link'
-      type: [object, 'null']
       description: 'Link applied to the title.'
+      type: [object, 'null']
     items:
       title: 'List items'
-      type: [array, 'null']
       description: 'Each item is composed by one or more terms and one or more definitions. Each term entry can have an icon.'
+      type: [array, 'null']
     icon_path:
-      type: [string, 'null']
       title: 'Icons path'
       description: 'Path to icons'
+      type: [string, 'null']
     orientation:
       title: Orientation
-      type: [string, 'null']
       description: 'Orientation of the list.'
+      type: [string, 'null']
       enum:
         - default
         - horizontal
@@ -37,12 +37,12 @@ props:
         '': Default
     bordered:
       title: Bordered
-      type: [boolean, 'null']
       description: 'Adds a border to the description list.'
+      type: [boolean, 'null']
     col_classes:
       title: 'Column classes'
-      type: [string, 'null']
       description: 'Classes for the columns.'
+      type: [string, 'null']
     title_attributes:
       title: 'Title attributes'
       type: [object, string, 'null']

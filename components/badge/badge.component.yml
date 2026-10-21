@@ -5,24 +5,24 @@ props:
   properties:
     label:
       title: Label
-      type: [string, array, object, 'null']
       description: 'The badge label.'
+      type: [string, array, object, 'null']
     url:
       title: 'Badge URL'
-      type: [string, 'null']
       description: 'Converts the badge in a link.'
+      type: [string, 'null']
     title:
       title: 'Link title'
-      type: [string, 'null']
       description: 'Title attribute if the badge is a link.'
+      type: [string, 'null']
     assistive_text:
       title: 'Assistive text'
-      type: [string, 'null']
       description: 'Text to visually hide before the badge label.'
+      type: [string, 'null']
     background:
       title: 'Badge background'
-      type: [string, 'null']
       description: 'Set the background color of the badge. Defaults to primary.'
+      type: [string, 'null']
       enum:
         - primary
         - secondary
@@ -45,20 +45,20 @@ props:
         '': Default
     rounded_pill:
       title: 'Pill badge'
-      type: [boolean, 'null']
       description: 'Makes the badge a rounded pill. Defaults to false.'
+      type: [boolean, 'null']
     dismissible:
       title: 'Dismissible badge'
-      type: [boolean, 'null']
       description: 'Adds a close icon at the end of the badge. Defaults to false.'
+      type: [boolean, 'null']
     outline:
       title: Outline
-      type: [boolean, 'null']
       description: 'Uses a border instead of a background. Defaults to false.'
+      type: [boolean, 'null']
     icon_path:
       title: 'Icons path'
-      type: [string, 'null']
       description: 'Path to icons.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute
