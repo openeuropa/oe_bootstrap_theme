@@ -3,22 +3,6 @@ description: 'A small count and labeling component. Badges scale to match the si
 props:
   type: object
   properties:
-    label:
-      title: Label
-      description: 'The badge label.'
-      type: [string, array, object, 'null']
-    url:
-      title: 'Badge URL'
-      description: 'Converts the badge in a link.'
-      type: [string, 'null']
-    title:
-      title: 'Link title'
-      description: 'Title attribute if the badge is a link.'
-      type: [string, 'null']
-    assistive_text:
-      title: 'Assistive text'
-      description: 'Text to visually hide before the badge label.'
-      type: [string, 'null']
     background:
       title: 'Badge background'
       description: 'Set the background color of the badge. Defaults to primary.'
@@ -55,6 +39,22 @@ props:
       title: Outline
       description: 'Uses a border instead of a background. Defaults to false.'
       type: [boolean, 'null']
+    label:
+      title: Label
+      description: 'The badge label.'
+      type: [string, array, object, 'null']
+    url:
+      title: 'Badge URL'
+      description: 'Converts the badge in a link.'
+      type: [string, 'null']
+    title:
+      title: 'Link title'
+      description: 'Title attribute if the badge is a link.'
+      type: [string, 'null']
+    assistive_text:
+      title: 'Assistive text'
+      description: 'Text to visually hide before the badge label.'
+      type: [string, 'null']
     icon_path:
       title: 'Icons path'
       description: 'Path to icons.'

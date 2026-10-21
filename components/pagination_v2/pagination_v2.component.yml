@@ -29,6 +29,12 @@ props:
         center: Center
         end: End
         '': Default
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute
+    list_attributes:
+      title: 'List attributes'
+      type: [object, string, 'null']
     aria_label:
       title: 'ARIA label'
       description: 'Accessible label for the navigation wrapper.'
@@ -77,9 +83,3 @@ props:
       title: 'Icons path'
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
       type: [string, 'null']
-    attributes:
-      title: Attributes
-      type: Drupal\Core\Template\Attribute
-    list_attributes:
-      title: 'List attributes'
-      type: [object, string, 'null']

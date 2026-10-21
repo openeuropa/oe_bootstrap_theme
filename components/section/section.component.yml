@@ -3,22 +3,6 @@ description: 'Renders content and heading inside section.'
 props:
   type: object
   properties:
-    content:
-      title: Content
-      description: 'Content of the section.'
-      type: [string, array, object, 'null']
-    heading:
-      title: Heading
-      description: 'Heading of the section.'
-      type: [string, array, object, 'null']
-    heading_tag:
-      title: 'Heading tag'
-      description: 'Tag of the heading. Defaults to h2.'
-      type: [string, 'null']
-    tag:
-      title: 'Wrapper tag'
-      description: 'Tag of the wrapper. Defaults to section.'
-      type: [string, 'null']
     heading_attributes:
       title: 'Heading attributes'
       type: [object, string, 'null']
@@ -28,3 +12,19 @@ props:
     attributes:
       title: 'Section attributes'
       type: Drupal\Core\Template\Attribute
+    heading_tag:
+      title: 'Heading tag'
+      description: 'Tag of the heading. Defaults to h2.'
+      type: [string, 'null']
+    tag:
+      title: 'Wrapper tag'
+      description: 'Tag of the wrapper. Defaults to section.'
+      type: [string, 'null']
+    content:
+      title: Content
+      description: 'Content of the section.'
+      type: [string, array, object, 'null']
+    heading:
+      title: Heading
+      description: 'Heading of the section.'
+      type: [string, array, object, 'null']

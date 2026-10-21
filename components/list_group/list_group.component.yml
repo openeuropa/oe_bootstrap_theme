@@ -3,10 +3,28 @@ description: 'Displays a flexible series of content as unordered, ordered, or ac
 props:
   type: object
   properties:
+    type:
+      title: Type
+      description: 'Type of list group. Defaults to unordered.'
+      type: [string, 'null']
+      enum:
+        - unordered
+        - ordered
+        - actionable
+        - null
+      'meta:enum':
+        unordered: 'Unordered (default)'
+        ordered: Ordered
+        actionable: Actionable
+        '': Default
     flush:
       title: Flush
       description: 'Removes outer borders and rounded corners. Defaults to false.'
       type: [boolean, 'null']
+    items:
+      title: Items
+      description: 'List content, form inputs, links, or buttons.'
+      type: [array, 'null']
     horizontal:
       title: Horizontal
       description: 'Displays items horizontally, optionally from a responsive breakpoint.'
@@ -31,24 +49,6 @@ props:
       title: ID
       description: 'List group ID attribute.'
       type: [string, 'null']
-    type:
-      title: Type
-      description: 'Type of list group. Defaults to unordered.'
-      type: [string, 'null']
-      enum:
-        - unordered
-        - ordered
-        - actionable
-        - null
-      'meta:enum':
-        unordered: 'Unordered (default)'
-        ordered: Ordered
-        actionable: Actionable
-        '': Default
-    items:
-      title: Items
-      description: 'List content, form inputs, links, or buttons.'
-      type: [array, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

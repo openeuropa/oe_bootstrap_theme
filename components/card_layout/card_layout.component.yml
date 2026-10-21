@@ -13,10 +13,6 @@ variants:
 props:
   type: object
   properties:
-    items:
-      title: 'Card items'
-      description: 'An array of card pattern items.'
-      type: [array, 'null']
     grid_columns:
       title: 'Grid columns'
       description: 'Number of grid columns. Defaults to 1.'
@@ -85,6 +81,10 @@ props:
       title: 'Equal height'
       description: 'If true, all cards will have the same height. Defaults to false.'
       type: [boolean, 'null']
+    items:
+      title: 'Card items'
+      description: 'An array of card pattern items.'
+      type: [array, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

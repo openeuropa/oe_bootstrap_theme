@@ -3,10 +3,6 @@ description: 'Displays a responsive navigation bar with branding, navigation, an
 props:
   type: object
   properties:
-    collapse_id:
-      title: 'Collapse ID'
-      description: 'ID connecting the responsive toggle and collapsible content. A unique ID is generated when omitted.'
-      type: [string, 'null']
     expanded_breakpoint:
       title: 'Expanded breakpoint'
       description: 'Breakpoint at which the navbar is expanded. Defaults to lg.'
@@ -39,10 +35,6 @@ props:
       description: 'Adds a background matching the color scheme. Defaults to true.'
       type: [boolean, 'null']
       default: true
-    disable_collapse:
-      title: 'Disable collapse'
-      description: 'Keeps all navbar content visible and removes the responsive toggle. Defaults to true when no expanded breakpoint is provided.'
-      type: [boolean, 'null']
     branding:
       title: 'Branding region'
       description: 'Branding content, such as a linked site name or logo.'
@@ -55,6 +47,14 @@ props:
       title: 'Right region'
       description: 'Content aligned to the end of the navbar, such as search or account actions.'
       type: [string, array, object, 'null']
+    collapse_id:
+      title: 'Collapse ID'
+      description: 'ID connecting the responsive toggle and collapsible content. A unique ID is generated when omitted.'
+      type: [string, 'null']
+    disable_collapse:
+      title: 'Disable collapse'
+      description: 'Keeps all navbar content visible and removes the responsive toggle. Defaults to true when no expanded breakpoint is provided.'
+      type: [boolean, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

@@ -30,10 +30,6 @@ props:
       title: 'Title tag'
       description: 'Title tag of the card. Defaults to div.'
       type: [string, 'null']
-    title_link:
-      title: 'Title link'
-      description: 'Optional link object for the title.'
-      type: [object, 'null']
     subtitle:
       title: Subtitle
       description: 'Card subtitle.'
@@ -74,6 +70,10 @@ props:
       title: Badges
       description: 'List of badges for the card.'
       type: [array, 'null']
+    title_link:
+      title: 'Title link'
+      description: 'Optional link object for the title.'
+      type: [object, 'null']
     title_attributes:
       title: 'Title attributes'
       type: [object, string, 'null']

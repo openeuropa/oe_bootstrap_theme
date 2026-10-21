@@ -16,13 +16,13 @@ variants:
 props:
   type: object
   properties:
-    hero:
-      title: Hero
-      description: 'Displays as hero banner. Defaults to false.'
-      type: [boolean, 'null']
     shade:
       title: Shade
       description: 'Enables the shadow effect to the image. Defaults to true for the image shade variant and false otherwise.'
+      type: [boolean, 'null']
+    hero:
+      title: Hero
+      description: 'Displays as hero banner. Defaults to false.'
       type: [boolean, 'null']
     full_width:
       title: 'Full width'

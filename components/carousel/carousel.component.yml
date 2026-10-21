@@ -3,30 +3,6 @@ description: 'A slideshow component for cycling through elements, like images or
 props:
   type: object
   properties:
-    title:
-      title: Title
-      description: 'Title of the carousel.'
-      type: [string, array, object, 'null']
-    title_tag:
-      title: 'Title tag'
-      description: 'The tag to use for the title. Defaults to h2.'
-      type: [string, 'null']
-    carousel_id:
-      title: 'Carousel ID'
-      description: 'Unique ID used to connect carousel controls and indicators.'
-      type: [string, 'null']
-    slides:
-      title: Slides
-      description: 'Slides shown in the carousel.'
-      type: [array, 'null']
-    icon_path:
-      title: 'Icons path'
-      description: 'Path to icons.'
-      type: [string, 'null']
-    active_item:
-      title: 'Active item'
-      description: 'The 1-based index of the active slide. Defaults to 1.'
-      type: [string, integer, 'null']
     fade:
       title: Fade
       description: 'Animate slides with a fade transition.'
@@ -51,6 +27,30 @@ props:
       title: 'Dark mode'
       description: 'Use dark carousel controls and indicators.'
       type: [boolean, 'null']
+    title:
+      title: Title
+      description: 'Title of the carousel.'
+      type: [string, array, object, 'null']
+    title_tag:
+      title: 'Title tag'
+      description: 'The tag to use for the title. Defaults to h2.'
+      type: [string, 'null']
+    slides:
+      title: Slides
+      description: 'Slides shown in the carousel.'
+      type: [array, 'null']
+    carousel_id:
+      title: 'Carousel ID'
+      description: 'Unique ID used to connect carousel controls and indicators.'
+      type: [string, 'null']
+    icon_path:
+      title: 'Icons path'
+      description: 'Path to icons.'
+      type: [string, 'null']
+    active_item:
+      title: 'Active item'
+      description: 'The 1-based index of the active slide. Defaults to 1.'
+      type: [string, integer, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

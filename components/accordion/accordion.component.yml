@@ -3,10 +3,6 @@ description: 'List of items that can be clicked to hide or reveal additional con
 props:
   type: object
   properties:
-    accordion_id:
-      title: 'Accordion ID'
-      description: 'Unique ID for the accordion. Defaults to a random number.'
-      type: [string, 'null']
     bare_layout:
       title: 'Bare layout'
       description: 'Enable to remove the default background-color, some borders, and some rounded corners printing the accordion edge-to-edge with their parent container. Defaults to false.'
@@ -35,6 +31,10 @@ props:
       title: 'Accordion items'
       description: 'List of accordion items.'
       type: [array, 'null']
+    accordion_id:
+      title: 'Accordion ID'
+      description: 'Unique ID for the accordion. Defaults to a random number.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

@@ -22,10 +22,10 @@ variants:
 props:
   type: object
   properties:
-    label:
-      title: Label
-      description: 'The button label.'
-      type: [string, array, object, 'null']
+    outline:
+      title: Outline
+      description: 'Lighter button style removing background color. Defaults to false.'
+      type: [boolean, 'null']
     size:
       title: Size
       description: 'Size of the button. Defaults to md.'
@@ -54,30 +54,10 @@ props:
         submit: Submit
         reset: Reset
         '': Default
-    outline:
-      title: Outline
-      description: 'Lighter button style removing background color. Defaults to false.'
-      type: [boolean, 'null']
     disabled:
       title: Disabled
       description: 'If true, the button will not be enabled when clicking. Defaults to false.'
       type: [boolean, 'null']
-    text_nowrap:
-      title: 'No text wrap'
-      description: 'Prevents the button label from wrapping.'
-      type: [boolean, 'null']
-    assistive_text:
-      title: 'Assistive text'
-      description: 'Visually hidden text printed before the button label.'
-      type: [string, 'null']
-    id:
-      title: ID
-      description: 'Button ID attribute.'
-      type: [string, 'null']
-    icon:
-      title: Icon
-      description: 'Icon name as a string or an icon object.'
-      type: [string, object, 'null']
     icon_position:
       title: 'Icon position'
       description: 'If button has an icon, it can be placed before or after text. Defaults to after.'
@@ -90,6 +70,26 @@ props:
         before: Before
         after: 'After (default)'
         '': Default
+    label:
+      title: Label
+      description: 'The button label.'
+      type: [string, array, object, 'null']
+    icon:
+      title: Icon
+      description: 'Icon name as a string or an icon object.'
+      type: [string, object, 'null']
+    text_nowrap:
+      title: 'No text wrap'
+      description: 'Prevents the button label from wrapping.'
+      type: [boolean, 'null']
+    assistive_text:
+      title: 'Assistive text'
+      description: 'Visually hidden text printed before the button label.'
+      type: [string, 'null']
+    id:
+      title: ID
+      description: 'Button ID attribute.'
+      type: [string, 'null']
     icon_spacing:
       title: 'Icon spacing'
       description: 'Spacing between icon and label.'

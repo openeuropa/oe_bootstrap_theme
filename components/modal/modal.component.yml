@@ -3,10 +3,6 @@ description: 'Displays content in a dialog layered over the page, with an option
 props:
   type: object
   properties:
-    modal_id:
-      title: 'Modal ID'
-      description: 'Unique ID connecting the modal and its trigger. A unique ID is generated when omitted.'
-      type: [string, 'null']
     size:
       title: Size
       description: 'Size of the modal.'
@@ -23,6 +19,30 @@ props:
         xl: 'Extra large'
         fullscreen: Fullscreen
         '': Default
+    title:
+      title: Title
+      description: 'Title displayed in the modal header.'
+      type: [string, array, object, 'null']
+    show_close_button:
+      title: 'Show close button'
+      description: 'Display a close button in the modal header. Defaults to false.'
+      type: [boolean, 'null']
+    body:
+      title: Body
+      description: 'Main modal content.'
+      type: [string, array, object, 'null']
+    footer:
+      title: Footer
+      description: 'Optional modal footer content.'
+      type: [string, array, object, 'null']
+    toggle:
+      title: 'Toggle button'
+      description: 'Optional button that opens the modal.'
+      type: [object, 'null']
+    modal_id:
+      title: 'Modal ID'
+      description: 'Unique ID connecting the modal and its trigger. A unique ID is generated when omitted.'
+      type: [string, 'null']
     fullscreen_responsive:
       title: 'Responsive fullscreen'
       description: 'Display the modal fullscreen below the selected breakpoint.'
@@ -53,10 +73,6 @@ props:
       title: Scrollable
       description: 'Allow the modal body to scroll independently.'
       type: [boolean, 'null']
-    title:
-      title: Title
-      description: 'Title displayed in the modal header.'
-      type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
       description: 'The tag to use for the title. Defaults to h5.'
@@ -64,26 +80,10 @@ props:
     title_attributes:
       title: 'Title attributes'
       type: [object, string, 'null']
-    show_close_button:
-      title: 'Show close button'
-      description: 'Display a close button in the modal header. Defaults to false.'
-      type: [boolean, 'null']
     messages:
       title: Messages
       description: 'Content displayed between the modal header and body.'
       type: [string, array, object, 'null']
-    body:
-      title: Body
-      description: 'Main modal content.'
-      type: [string, array, object, 'null']
-    footer:
-      title: Footer
-      description: 'Optional modal footer content.'
-      type: [string, array, object, 'null']
-    toggle:
-      title: 'Toggle button'
-      description: 'Optional button that opens the modal.'
-      type: [object, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

@@ -28,6 +28,10 @@ props:
         horizontal: Horizontal
         vertical: Vertical
         '': Default
+    items:
+      title: 'Navigation items'
+      description: 'Links, buttons, dropdowns, and nested navigation items.'
+      type: [array, 'null']
     navigation_id:
       title: 'Navigation ID'
       description: 'ID added to the navigation wrapper.'
@@ -54,10 +58,6 @@ props:
       title: 'Tab content'
       description: 'Render tab panels from each item content value.'
       type: [boolean, 'null']
-    items:
-      title: 'Navigation items'
-      description: 'Links, buttons, dropdowns, and nested navigation items.'
-      type: [array, 'null']
     icon_path:
       title: 'Icons path'
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'

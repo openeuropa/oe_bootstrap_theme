@@ -30,6 +30,14 @@ props:
       title: 'Title tag'
       description: 'The tag to use for the title. Defaults to h2.'
       type: [string, 'null']
+    link:
+      title: Link
+      description: 'Optional call-to-action link displayed below the cards.'
+      type: [object, 'null']
+    items:
+      title: Items
+      description: 'Cards displayed in the listing.'
+      type: [array, 'null']
     title_link:
       title: 'Title link'
       description: 'Optional link applied to the listing title. The title prop is used as its label.'
@@ -37,14 +45,6 @@ props:
     title_attributes:
       title: 'Title attributes'
       type: [object, string, 'null']
-    items:
-      title: Items
-      description: 'Cards displayed in the listing.'
-      type: [array, 'null']
-    link:
-      title: Link
-      description: 'Optional call-to-action link displayed below the cards.'
-      type: [object, 'null']
     alignment:
       title: Alignment
       description: 'Vertical alignment of card media and content.'

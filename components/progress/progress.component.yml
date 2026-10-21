@@ -3,30 +3,6 @@ description: 'Indicate the progress as a bar.'
 props:
   type: object
   properties:
-    label:
-      title: Label
-      description: 'Text before the progress bar.'
-      type: [string, array, object, 'null']
-    progress:
-      title: Progress
-      description: 'The progress value for the bar.'
-      type: [integer, number, string, 'null']
-    min:
-      title: Minimum
-      description: 'Minimum value shown in the progress bar.'
-      type: [integer, number, string, 'null']
-    max:
-      title: Maximum
-      description: 'Maximum value shown in the progress bar.'
-      type: [integer, number, string, 'null']
-    text:
-      title: Text
-      description: 'Text inside the progress bar.'
-      type: [string, array, object, 'null']
-    message:
-      title: Message
-      description: 'Optional description text below the progress bar.'
-      type: [string, array, object, 'null']
     style:
       title: 'Bar style'
       description: 'Set the bar style.'
@@ -59,6 +35,30 @@ props:
       title: Animated
       description: 'Animation on striped bar. Defaults to false.'
       type: [boolean, 'null']
+    label:
+      title: Label
+      description: 'Text before the progress bar.'
+      type: [string, array, object, 'null']
+    progress:
+      title: Progress
+      description: 'The progress value for the bar.'
+      type: [integer, number, string, 'null']
+    min:
+      title: Minimum
+      description: 'Minimum value shown in the progress bar.'
+      type: [integer, number, string, 'null']
+    max:
+      title: Maximum
+      description: 'Maximum value shown in the progress bar.'
+      type: [integer, number, string, 'null']
+    text:
+      title: Text
+      description: 'Text inside the progress bar.'
+      type: [string, array, object, 'null']
+    message:
+      title: Message
+      description: 'Optional description text below the progress bar.'
+      type: [string, array, object, 'null']
     hidden_label:
       title: 'Hidden label'
       description: 'Hides the text inside the progress bar. Defaults to false.'

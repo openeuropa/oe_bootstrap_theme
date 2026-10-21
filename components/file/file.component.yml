@@ -11,9 +11,6 @@ props:
       title: 'Title tag'
       description: 'Tag used for the title. Defaults to h2.'
       type: [string, 'null']
-    title_attributes:
-      title: 'Title attributes'
-      type: [object, string, 'null']
     link_label:
       title: 'Download link label'
       description: 'Label used for the download links. Defaults to Download.'
@@ -26,6 +23,9 @@ props:
       title: Translations
       description: 'List of translations of the file.'
       type: [array, 'null']
+    title_attributes:
+      title: 'Title attributes'
+      type: [object, string, 'null']
     icon_path:
       title: 'Icons path'
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'

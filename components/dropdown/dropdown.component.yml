@@ -3,10 +3,18 @@ description: 'Toggle contextual overlays for displaying lists of links and actio
 props:
   type: object
   properties:
+    dark_mode:
+      title: 'Dark mode'
+      description: 'Use the dark dropdown menu style.'
+      type: [boolean, 'null']
     button_label:
       title: 'Dropdown button label'
       description: 'Label used by the default dropdown toggle.'
       type: [string, array, object, 'null']
+    items:
+      title: 'Dropdown items'
+      description: 'Links, buttons, and dividers displayed in the menu.'
+      type: [array, 'null']
     dropdown_id:
       title: 'Dropdown ID'
       description: 'ID connecting the toggle and menu. A unique ID is generated when omitted.'
@@ -65,10 +73,6 @@ props:
         dropdown-menu-xl-start: 'Start from xl'
         dropdown-menu-xxl-start: 'Start from xxl'
         '': Default
-    dark_mode:
-      title: 'Dark mode'
-      description: 'Use the dark dropdown menu style.'
-      type: [boolean, 'null']
     remove_wrapper:
       title: 'Remove wrapper'
       description: 'Do not render the dropdown wrapper element.'
@@ -77,10 +81,6 @@ props:
       title: 'Inside navigation'
       description: 'Render menu accessibility attributes for use inside navigation.'
       type: [boolean, 'null']
-    items:
-      title: 'Dropdown items'
-      description: 'Links, buttons, and dividers displayed in the menu.'
-      type: [array, 'null']
     icon_path:
       title: 'Icons path'
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'

@@ -20,18 +20,6 @@ variants:
 props:
   type: object
   properties:
-    label:
-      title: Label
-      description: 'Link label text or render array.'
-      type: [string, array, object, 'null']
-    path:
-      title: Path
-      description: 'Link URL string or URL object. Defaults to #.'
-      type: [string, object, 'null']
-    id:
-      title: ID
-      description: 'Link ID attribute.'
-      type: [string, 'null']
     disabled:
       title: Disabled
       description: 'Disables keyboard and pointer interaction. Defaults to false.'
@@ -40,10 +28,6 @@ props:
       title: Standalone
       description: 'Applies standalone link styling. Defaults to false.'
       type: [boolean, 'null']
-    icon:
-      title: Icon
-      description: 'Icon name as a string or an icon object.'
-      type: [string, object, 'null']
     icon_position:
       title: 'Icon position'
       description: 'Position of the icon relative to the label. Defaults to after.'
@@ -72,6 +56,22 @@ props:
       title: 'Remove icon spacers'
       description: 'Removes spacing between the icon and label. Defaults to false.'
       type: [boolean, 'null']
+    label:
+      title: Label
+      description: 'Link label text or render array.'
+      type: [string, array, object, 'null']
+    path:
+      title: Path
+      description: 'Link URL string or URL object. Defaults to #.'
+      type: [string, object, 'null']
+    icon:
+      title: Icon
+      description: 'Icon name as a string or an icon object.'
+      type: [string, object, 'null']
+    id:
+      title: ID
+      description: 'Link ID attribute.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

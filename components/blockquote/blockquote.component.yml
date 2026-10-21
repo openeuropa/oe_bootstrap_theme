@@ -3,6 +3,20 @@ description: 'For quoting blocks of content from another source within your docu
 props:
   type: object
   properties:
+    alignment:
+      title: 'Text alignment'
+      description: 'Aligns the quote in the page.'
+      type: [string, 'null']
+      enum:
+        - left
+        - center
+        - end
+        - null
+      'meta:enum':
+        left: 'left (default)'
+        center: center
+        end: end
+        '': Default
     title:
       title: Title
       description: 'Title of the blockquote.'
@@ -23,20 +37,6 @@ props:
       title: Citation
       description: 'The creative work in which the referenced quote was published.'
       type: [string, array, object, 'null']
-    alignment:
-      title: 'Text alignment'
-      description: 'Aligns the quote in the page.'
-      type: [string, 'null']
-      enum:
-        - left
-        - center
-        - end
-        - null
-      'meta:enum':
-        left: 'left (default)'
-        center: center
-        end: end
-        '': Default
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

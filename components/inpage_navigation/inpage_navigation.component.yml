@@ -3,9 +3,21 @@ description: 'Provides a sticky table of contents alongside page content and upd
 props:
   type: object
   properties:
+    dynamic_active:
+      title: 'Dynamic active'
+      description: 'Automatically controls the active item on mobile. Defaults to false.'
+      type: [boolean, 'null']
     title:
       title: Title
       description: 'Title of the navigation.'
+      type: [string, array, object, 'null']
+    links:
+      title: Links
+      description: 'Links to headings in the page content.'
+      type: [array, 'null']
+    content:
+      title: Content
+      description: 'Page content displayed alongside the navigation.'
       type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
@@ -18,14 +30,6 @@ props:
     title_attributes:
       title: 'Title attributes'
       type: [object, string, 'null']
-    links:
-      title: Links
-      description: 'Links to headings in the page content.'
-      type: [array, 'null']
-    content:
-      title: Content
-      description: 'Page content displayed alongside the navigation.'
-      type: [string, array, object, 'null']
     id:
       title: ID
       description: 'Navigation ID. A unique ID is generated when omitted.'
@@ -34,10 +38,6 @@ props:
       title: 'Dropdown ID'
       description: 'Mobile dropdown trigger ID. Defaults to the navigation ID followed by -dropdown.'
       type: [string, 'null']
-    dynamic_active:
-      title: 'Dynamic active'
-      description: 'Automatically controls the active item on mobile. Defaults to false.'
-      type: [boolean, 'null']
     icon_path:
       title: 'Icons path'
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'

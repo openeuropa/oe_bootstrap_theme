@@ -3,21 +3,6 @@ description: 'Displays a list of links with an optional title.'
 props:
   type: object
   properties:
-    title:
-      title: Title
-      description: 'Title of the links block.'
-      type: [string, array, object, 'null']
-    title_tag:
-      title: 'Title tag'
-      description: 'HTML tag used for the title. Defaults to h2.'
-      type: [string, 'null']
-    title_link:
-      title: 'Title link'
-      description: 'Optional link applied to the title.'
-      type: [object, 'null']
-    title_attributes:
-      title: 'Title attributes'
-      type: [object, string, 'null']
     background:
       title: Background
       description: 'Background style of the block. Defaults to gray.'
@@ -44,10 +29,25 @@ props:
         vertical: 'Vertical (default)'
         horizontal: Horizontal
         '': Default
+    title:
+      title: Title
+      description: 'Title of the links block.'
+      type: [string, array, object, 'null']
+    title_tag:
+      title: 'Title tag'
+      description: 'HTML tag used for the title. Defaults to h2.'
+      type: [string, 'null']
     links:
       title: Links
       description: 'Links displayed in the block.'
       type: [array, 'null']
+    title_link:
+      title: 'Title link'
+      description: 'Optional link applied to the title.'
+      type: [object, 'null']
+    title_attributes:
+      title: 'Title attributes'
+      type: [object, string, 'null']
     icon_path:
       title: 'Icons path'
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'

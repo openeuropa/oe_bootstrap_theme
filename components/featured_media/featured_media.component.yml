@@ -15,18 +15,6 @@ props:
       title: Image
       description: 'A markup object, a render array, or an ImageValueObject instance.'
       type: [string, array, object, 'null']
-    poster_image:
-      title: 'Poster image'
-      description: 'Poster image URL for native video.'
-      type: [string, 'null']
-    sources:
-      title: 'Video sources'
-      description: 'Source files for native video.'
-      type: [array, 'null']
-    tracks:
-      title: 'Video tracks'
-      description: 'Caption or subtitle tracks for native video.'
-      type: [array, 'null']
     ratio:
       title: Ratio
       description: 'Aspect ratio for embedded media. Defaults to 16x9.'
@@ -43,6 +31,10 @@ props:
         16x9: '16:9 (default)'
         21x9: '21:9'
         '': Default
+    link:
+      title: Link
+      description: 'Optional link displayed after the text.'
+      type: [object, 'null']
     title:
       title: Title
       description: 'Title displayed above the featured media.'
@@ -51,18 +43,14 @@ props:
       title: 'Title tag'
       description: 'Tag used for the title. Defaults to h2.'
       type: [string, 'null']
-    title_link:
-      title: 'Title link'
-      description: 'Link applied to the title.'
-      type: [object, 'null']
-    subtitle:
-      title: Subtitle
-      description: 'Subtitle displayed before the text.'
-      type: [string, array, object, 'null']
     subtitle_tag:
       title: 'Subtitle tag'
       description: 'Tag used for the subtitle. Defaults to h3 with a title and h2 without one.'
       type: [string, 'null']
+    subtitle:
+      title: Subtitle
+      description: 'Subtitle displayed before the text.'
+      type: [string, array, object, 'null']
     text:
       title: Text
       description: 'Content displayed alongside the media.'
@@ -79,14 +67,26 @@ props:
         left: 'Left (default)'
         right: Right
         '': Default
-    link:
-      title: Link
-      description: 'Optional link displayed after the text.'
-      type: [object, 'null']
     copyright:
       title: Copyright
       description: 'Optional copyright text displayed below the media.'
       type: [string, array, object, 'null']
+    poster_image:
+      title: 'Poster image'
+      description: 'Poster image URL for native video.'
+      type: [string, 'null']
+    sources:
+      title: 'Video sources'
+      description: 'Source files for native video.'
+      type: [array, 'null']
+    tracks:
+      title: 'Video tracks'
+      description: 'Caption or subtitle tracks for native video.'
+      type: [array, 'null']
+    title_link:
+      title: 'Title link'
+      description: 'Link applied to the title.'
+      type: [object, 'null']
     copyright_label:
       title: 'Copyright label'
       description: 'Visually hidden label for copyright text.'

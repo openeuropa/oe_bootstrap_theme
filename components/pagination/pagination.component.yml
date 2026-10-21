@@ -34,6 +34,9 @@ props:
         center: Center
         end: End
         '': Default
+    list_attributes:
+      title: 'List attributes'
+      type: [object, string, 'null']
     enable_prev_next_icons:
       title: 'Enable previous and next icons'
       description: 'Replaces previous and next labels with icons. Defaults to false.'
@@ -44,14 +47,6 @@ props:
       description: 'Replaces first and last labels with icons. Defaults to true.'
       type: [boolean, 'null']
       default: true
-    ellipsis_before:
-      title: 'Ellipsis before'
-      description: 'Adds an ellipsis before the numbered items. Defaults to false.'
-      type: [boolean, 'null']
-    ellipsis_after:
-      title: 'Ellipsis after'
-      description: 'Adds an ellipsis after the numbered items. Defaults to false.'
-      type: [boolean, 'null']
     first:
       title: 'First link'
       type: [object, 'null']
@@ -68,13 +63,18 @@ props:
       title: Items
       description: 'Numbered or glossary pagination items.'
       type: [array, 'null']
+    ellipsis_before:
+      title: 'Ellipsis before'
+      description: 'Adds an ellipsis before the numbered items. Defaults to false.'
+      type: [boolean, 'null']
+    ellipsis_after:
+      title: 'Ellipsis after'
+      description: 'Adds an ellipsis after the numbered items. Defaults to false.'
+      type: [boolean, 'null']
     icon_path:
       title: 'Icons path'
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
       type: [string, 'null']
-    list_attributes:
-      title: 'List attributes'
-      type: [object, string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

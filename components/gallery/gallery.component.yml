@@ -3,10 +3,6 @@ description: 'A collection of images and videos displayed as thumbnails and in a
 props:
   type: object
   properties:
-    gallery_id:
-      title: 'Gallery ID'
-      description: 'Unique ID used to connect the gallery, modal and carousel.'
-      type: [string, 'null']
     title:
       title: Title
       description: 'Title of the gallery.'
@@ -14,6 +10,14 @@ props:
     title_tag:
       title: 'Title tag'
       description: 'The tag to use for the title. Defaults to h2.'
+      type: [string, 'null']
+    items:
+      title: Items
+      description: 'Images and playable media displayed in the gallery.'
+      type: [array, 'null']
+    gallery_id:
+      title: 'Gallery ID'
+      description: 'Unique ID used to connect the gallery, modal and carousel.'
       type: [string, 'null']
     title_link:
       title: 'Title link'
@@ -46,10 +50,6 @@ props:
       title: 'Maximum visible thumbnails'
       description: 'Number of thumbnails visible before the gallery is collapsed. Defaults to 5.'
       type: [string, integer, 'null']
-    items:
-      title: Items
-      description: 'Images and playable media displayed in the gallery.'
-      type: [array, 'null']
     icon_path:
       title: 'Icons path'
       description: 'Path to the SVG icon file. Defaults to the BCL icon path.'

@@ -26,6 +26,21 @@ props:
         aside: '<aside>'
         div: '<div>'
         '': Default
+    attributes:
+      title: 'Card attributes'
+      type: Drupal\Core\Template\Attribute
+    media_attributes:
+      title: 'Media attributes'
+      type: [object, string, 'null']
+    content_attributes:
+      title: 'Body attributes'
+      type: [object, string, 'null']
+    header_attributes:
+      title: 'Header attributes'
+      type: [object, string, 'null']
+    footer_attributes:
+      title: 'Footer attributes'
+      type: [object, string, 'null']
     title:
       title: Title
       description: 'Card title. Supports markup, e.g. for links.'
@@ -46,18 +61,3 @@ props:
       title: Footer
       description: 'Optional secondary actions or metadata.'
       type: [string, array, object, 'null']
-    attributes:
-      title: 'Card attributes'
-      type: Drupal\Core\Template\Attribute
-    media_attributes:
-      title: 'Media attributes'
-      type: [object, string, 'null']
-    content_attributes:
-      title: 'Body attributes'
-      type: [object, string, 'null']
-    header_attributes:
-      title: 'Header attributes'
-      type: [object, string, 'null']
-    footer_attributes:
-      title: 'Footer attributes'
-      type: [object, string, 'null']

@@ -8,24 +8,6 @@ variants:
 props:
   type: object
   properties:
-    offcanvas_id:
-      title: 'Offcanvas ID'
-      description: 'ID connecting the panel, close button, and toggle. A unique ID is generated when omitted.'
-      type: [string, 'null']
-    title:
-      title: Title
-      description: 'Offcanvas title.'
-      type: [string, array, object, 'null']
-    title_tag:
-      title: 'Title tag'
-      description: 'HTML tag used for the title. Defaults to h2.'
-      type: [string, 'null']
-    title_link:
-      title: 'Title link'
-      type: [object, 'null']
-    title_attributes:
-      title: 'Title attributes'
-      type: [object, string, 'null']
     placement:
       title: Placement
       description: 'Side from which the offcanvas opens.'
@@ -42,10 +24,6 @@ props:
         top: Top
         bottom: Bottom
         '': Default
-    body:
-      title: Body
-      description: 'Offcanvas body content.'
-      type: [string, array, object, 'null']
     body_scroll:
       title: 'Body scroll'
       description: 'Allows the page body to scroll while the offcanvas is open. Defaults to false.'
@@ -54,6 +32,32 @@ props:
       title: Backdrop
       description: 'Displays a backdrop while the offcanvas is open. Defaults to false.'
       type: [boolean, 'null']
+    title:
+      title: Title
+      description: 'Offcanvas title.'
+      type: [string, array, object, 'null']
+    body:
+      title: Body
+      description: 'Offcanvas body content.'
+      type: [string, array, object, 'null']
+    toggle:
+      title: 'Toggle button'
+      description: 'Optional button that opens the offcanvas.'
+      type: [object, 'null']
+    offcanvas_id:
+      title: 'Offcanvas ID'
+      description: 'ID connecting the panel, close button, and toggle. A unique ID is generated when omitted.'
+      type: [string, 'null']
+    title_tag:
+      title: 'Title tag'
+      description: 'HTML tag used for the title. Defaults to h2.'
+      type: [string, 'null']
+    title_link:
+      title: 'Title link'
+      type: [object, 'null']
+    title_attributes:
+      title: 'Title attributes'
+      type: [object, string, 'null']
     with_close:
       title: 'Close button'
       description: 'Displays the close button. Defaults to true.'
@@ -94,10 +98,6 @@ props:
         xl: 'Extra large'
         xxl: 'Extra extra large'
         '': Default
-    toggle:
-      title: 'Toggle button'
-      description: 'Optional button that opens the offcanvas.'
-      type: [object, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

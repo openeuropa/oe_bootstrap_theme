@@ -24,10 +24,6 @@ props:
       title: Copyright
       description: 'Optional copyright text displayed below the image.'
       type: [string, array, object, 'null']
-    copyright_label:
-      title: 'Copyright label'
-      description: 'Accessible label shown before the copyright. Defaults to Image credit:.'
-      type: [string, 'null']
     image_size:
       title: 'Image size'
       description: 'The size of the image. Defaults to lg.'
@@ -51,13 +47,6 @@ props:
       title: 'Title tag'
       description: 'The tag to use for the title. Defaults to h1.'
       type: [string, 'null']
-    title_link:
-      title: 'Title link'
-      description: 'Optional link object for the title.'
-      type: [object, 'null']
-    title_attributes:
-      title: 'Title attributes'
-      type: [object, string, 'null']
     action_bar:
       title: 'Action bar'
       description: 'Action bar region, for example action buttons.'
@@ -66,14 +55,6 @@ props:
       title: Content
       description: 'Text with the summary of the content.'
       type: [string, array, object, 'null']
-    subtitle:
-      title: Subtitle
-      description: 'Optional card subtitle.'
-      type: [object, 'null']
-    text:
-      title: Text
-      description: 'Optional card text.'
-      type: [object, 'null']
     meta:
       title: Meta
       description: 'Miscellaneous information such as date or author.'
@@ -86,6 +67,25 @@ props:
       title: Links
       description: 'List of links.'
       type: [array, 'null']
+    copyright_label:
+      title: 'Copyright label'
+      description: 'Accessible label shown before the copyright. Defaults to Image credit:.'
+      type: [string, 'null']
+    title_link:
+      title: 'Title link'
+      description: 'Optional link object for the title.'
+      type: [object, 'null']
+    title_attributes:
+      title: 'Title attributes'
+      type: [object, string, 'null']
+    subtitle:
+      title: Subtitle
+      description: 'Optional card subtitle.'
+      type: [object, 'null']
+    text:
+      title: Text
+      description: 'Optional card text.'
+      type: [object, 'null']
     date:
       title: 'Date block'
       description: 'Date block displayed in place of an image.'
