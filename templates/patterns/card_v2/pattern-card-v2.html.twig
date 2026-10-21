@@ -13,6 +13,8 @@
   {% set _classes = _classes|merge(['horizontal']) %}
 {% endif %}
 
+{% set tag = tag|default('article') %}
+
 <{{ tag }}{{ attributes.addClass(_classes) }}>
   {% if media is not empty %}
     <div{{ media_attributes.addClass(['card-media']) }}>
