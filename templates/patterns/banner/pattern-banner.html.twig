@@ -4,13 +4,21 @@
  * Banner pattern.
  */
 #}
-{% block attributes %}
+{% if variant == 'primary' %}
   {% set attributes = attributes.addClass([
-      'bg-lighter',
-      'text-dark',
-    ])
-  %}
-{% endblock %}
+    'bg-primary',
+    'text-white',
+  ]) %}
+{% elseif variant == 'image_shade' %}
+  {% set attributes = attributes.addClass([
+    'bg-lighter',
+  ]) %}
+{% else %}
+  {% set attributes = attributes.addClass([
+    'bg-lighter',
+    'text-dark',
+  ]) %}
+{% endif %}
 {% if centered  %}
   {% set attributes = attributes.addClass(['text-center'])%}
 {% endif %}
