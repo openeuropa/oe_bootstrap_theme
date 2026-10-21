@@ -161,63 +161,64 @@ class MarkupRenderingTest extends KernelTestBase {
     $cases = static::markupRenderingProvider();
     $n = count($cases);
     foreach (array_keys($cases) as $i => $case_name) {
-      $case = $cases[$case_name];
-      $render = $case['render'];
-      $render = PatternTestDataMassager::massageDataRecursive($render, $use_objects);
-      $assertions = $case['assertions'];
-      $backward_compatibility = $case['backward_compatibility'] ?? [];
       $restore_callbacks = [];
-      if (!empty($backward_compatibility)) {
-        if ($mode === 'components') {
-          // No support for BC with components.
-          continue;
-        }
-        foreach ($backward_compatibility as $bc_name => $bc_value) {
-          $restore_callbacks[] = $this->setBackwardCompatibilitySetting($bc_name, $bc_value);
-        }
-      }
-
-      if ($mode === 'other' xor ($render['#type'] ?? NULL) !== 'pattern') {
-        continue;
-      }
-
-      if ($mode === 'components') {
-        if (($render['#type'] ?? NULL) !== 'pattern') {
-          continue;
-        }
-        $render = $this->replacePatternsWithComponents($render, $use_objects);
-      }
-
-      if ($fill_nulls) {
-        $render = $this->fillNulls($render);
-      }
-
-      Html::resetSeenIds();
-
-      $html = NULL;
       try {
+        $case = $cases[$case_name];
+        $render = $case['render'];
+        $render = PatternTestDataMassager::massageDataRecursive($render, $use_objects);
+        $assertions = $case['assertions'];
+        $backward_compatibility = $case['backward_compatibility'] ?? [];
+        if (!empty($backward_compatibility)) {
+          if ($mode === 'components') {
+            // No support for BC with components.
+            continue;
+          }
+          foreach ($backward_compatibility as $bc_name => $bc_value) {
+            $restore_callbacks[] = $this->setBackwardCompatibilitySetting($bc_name, $bc_value);
+          }
+        }
+
+        if ($mode === 'other' xor ($render['#type'] ?? NULL) !== 'pattern') {
+          continue;
+        }
+
+        if ($mode === 'components') {
+          if (($render['#type'] ?? NULL) !== 'pattern') {
+            continue;
+          }
+          $render = $this->replacePatternsWithComponents($render, $use_objects);
+        }
+
+        if ($fill_nulls) {
+          $render = $this->fillNulls($render);
+        }
+
+        Html::resetSeenIds();
+
         $html = RenderWrapperForm::renderInFormContext($render, $this->container);
-        $this->assertMarkupRendering($assertions, $html);
+        try {
+          $this->assertMarkupRendering($assertions, $html);
+        }
+        catch (\Throwable $e) {
+          file_put_contents(
+            __DIR__ . '/test.html',
+            implode("\n", [
+              $case_name,
+              date('Y-m-d H:i:s'),
+              implode("\n<form", explode('<form', $e->getMessage(), 2)),
+              ...str_contains($e->getMessage(), $html) ? [] : [$html],
+            ]),
+          );
+          throw $e;
+        }
       }
       catch (\Throwable $e) {
-        file_put_contents(
-          $report_file = __DIR__ . '/test.html',
-          implode("\n", [
-            $case_name,
-            date('Y-m-d H:i:s'),
-            implode("\n<form", explode('<form', $e->getMessage(), 2)),
-            ...match (TRUE) {
-              str_contains($e->getMessage(), '<form'),
-              !isset($html) => [],
-              default => [implode("\n<form", explode('<form', $html, 2))],
-            },
-          ]),
-        );
         throw new \Exception("Failure in '$case_name' ($i of $n).", previous: $e);
       }
-
-      foreach ($restore_callbacks as $restore_callback) {
-        $restore_callback();
+      finally {
+        foreach ($restore_callbacks as $restore_callback) {
+          $restore_callback();
+        }
       }
     }
   }
