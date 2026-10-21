@@ -40,6 +40,7 @@ card_v2:
         article: '<article>'
         section: '<section>'
         div: '<div>'
+        aside: '<aside>'
     attributes:
       type: attributes
       label: 'Card attributes'
