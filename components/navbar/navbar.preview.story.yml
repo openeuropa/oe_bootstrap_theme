@@ -17,7 +17,7 @@ slots:
       attributes:
         class: nav-link
       component: 'oe_bootstrap_theme:link'
-      slots:
+      props:
         label: 'I am a link'
         path: '#first'
     -
@@ -25,7 +25,7 @@ slots:
       attributes:
         class: nav-link
       component: 'oe_bootstrap_theme:link'
-      slots:
+      props:
         label: 'I am a link 2'
         path: '#second'
     -
@@ -33,7 +33,7 @@ slots:
       attributes:
         class: nav-link
       component: 'oe_bootstrap_theme:link'
-      slots:
+      props:
         label: 'I am a link 3'
         path: '#third'
     -

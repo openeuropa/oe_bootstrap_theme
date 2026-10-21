@@ -70,7 +70,7 @@ props:
       type: [string, array, object, 'null']
     icon:
       title: 'Icon name'
-      description: 'Add an icon to the button. Optional.'
+      description: 'Adds an icon to the button. Optional.'
       type: [string, array, object, 'null']
     attributes:
       title: Attributes

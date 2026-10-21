@@ -23,7 +23,7 @@ props:
         after: 'after (default)'
     icon_display:
       title: 'Icon display'
-      description: 'Enable flex gap spacing for icon and label. Use inline-flex for inline links.'
+      description: 'Enables flex gap spacing for icon and label. Use inline-flex for inline links.'
       type: [string, 'null']
       enum:
         - ''

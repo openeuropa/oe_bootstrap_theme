@@ -24,11 +24,11 @@ props:
   properties:
     dismissible:
       title: Dismissible
-      description: 'Add close button to dismiss the alert inline. Defaults to true.'
+      description: 'Adds close button to dismiss the alert inline. Defaults to true.'
       type: [boolean, 'null']
     animated_dismiss:
       title: 'Animated dismiss'
-      description: 'Add fade animation to the dismissible alert. Defaults to true.'
+      description: 'Adds fade animation to the dismissible alert. Defaults to true.'
       type: [boolean, 'null']
     heading:
       title: Heading
@@ -40,7 +40,7 @@ props:
       type: [string, array, object, 'null']
     icon:
       title: 'Icon name'
-      description: 'Add an icon to the alert. Optional.'
+      description: 'Adds an icon to the alert. Optional.'
       type: [object, 'null']
     attributes:
       title: Attributes

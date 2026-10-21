@@ -40,11 +40,11 @@ props:
       type: [boolean, 'null']
     ellipsis_before:
       title: 'Ellipsis before items'
-      description: 'Add an ellipsis item before the main page items.'
+      description: 'Adds an ellipsis item before the main page items.'
       type: [boolean, 'null']
     ellipsis_after:
       title: 'Ellipsis after items'
-      description: 'Add an ellipsis item after the main page items.'
+      description: 'Adds an ellipsis item after the main page items.'
       type: [boolean, 'null']
     current_mobile_label:
       title: 'Current mobile label'

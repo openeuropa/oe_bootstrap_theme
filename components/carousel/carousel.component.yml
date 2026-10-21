@@ -9,7 +9,7 @@ props:
       type: [boolean, 'null']
     show_controls:
       title: 'Show controls'
-      description: 'Enable the controls (prev and next buttons). Defaults to false.'
+      description: 'Enables the controls (prev and next buttons). Defaults to false.'
       type: [boolean, 'null']
     show_indicators:
       title: 'Show indicators'
@@ -29,7 +29,7 @@ props:
       type: [boolean, 'null']
     dark_mode:
       title: 'Dark mode'
-      description: 'Enable the dark mode. Defaults to false.'
+      description: 'Enables the dark mode. Defaults to false.'
       type: [boolean, 'null']
     title:
       title: Title

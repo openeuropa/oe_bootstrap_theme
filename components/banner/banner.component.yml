@@ -18,11 +18,11 @@ props:
   properties:
     shade:
       title: Shade
-      description: 'Enable the shadow effect to the image. Defaults to false.'
+      description: 'Enables the shadow effect to the image. Defaults to false.'
       type: [boolean, 'null']
     hero:
       title: Hero
-      description: 'Display as hero banner. Defaults to false.'
+      description: 'Displays as hero banner. Defaults to false.'
       type: [boolean, 'null']
     full_width:
       title: 'Full width'
@@ -46,7 +46,7 @@ props:
       type: [string, array, object, 'null']
     call_to_action:
       title: 'Call to action'
-      description: 'Link to print a CTA button. Optional.'
+      description: 'Links to print a CTA button. Optional.'
       type: [array, 'null']
     image:
       title: Image
