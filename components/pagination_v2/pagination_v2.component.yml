@@ -29,10 +29,6 @@ props:
         - start
         - center
         - end
-    attributes:
-      title: 'Pager attributes'
-      description: 'Extra attributes for the navigation wrapper.'
-      type: Drupal\Core\Template\Attribute
     list_attributes:
       title: 'List attributes'
       description: 'Extra attributes for the list container.'
@@ -73,3 +69,7 @@ props:
       title: 'Pagination items'
       description: 'List of items with path, label, disabled, active and aria_label.'
       type: [array, 'null']
+    attributes:
+      title: 'Pager attributes'
+      description: 'Extra attributes for the navigation wrapper.'
+      type: Drupal\Core\Template\Attribute

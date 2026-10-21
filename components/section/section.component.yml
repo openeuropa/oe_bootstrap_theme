@@ -19,10 +19,6 @@ props:
       title: 'Wrapper attributes'
       description: 'Extra attributes for the wrapper'
       type: Drupal\Core\Template\Attribute
-    attributes:
-      title: 'Section attributes'
-      description: 'Extra attributes for the section'
-      type: Drupal\Core\Template\Attribute
     heading_tag:
       title: 'Heading tag'
       description: 'Tag of the heading. Default to h2.'
@@ -31,3 +27,7 @@ props:
       title: 'Wrapper tag'
       description: 'Tag of the wrapper. Defaults to section.'
       type: [string, 'null']
+    attributes:
+      title: 'Section attributes'
+      description: 'Extra attributes for the section'
+      type: Drupal\Core\Template\Attribute

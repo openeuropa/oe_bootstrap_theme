@@ -40,10 +40,6 @@ props:
         section: '<section>'
         div: '<div>'
       default: article
-    attributes:
-      title: 'Card attributes'
-      description: 'Utility classes or data-* attributes for the outer wrapper.'
-      type: Drupal\Core\Template\Attribute
     media_attributes:
       title: 'Media attributes'
       description: 'Alt text, loading="lazy", ratio utilities like ratio-16x9, or placeholder-glow.'
@@ -59,4 +55,8 @@ props:
     footer_attributes:
       title: 'Footer attributes'
       description: 'Extra attributes for the card footer, e.g. .border-0 pt-0 for a seamless footer.'
+      type: Drupal\Core\Template\Attribute
+    attributes:
+      title: 'Card attributes'
+      description: 'Utility classes or data-* attributes for the outer wrapper.'
       type: Drupal\Core\Template\Attribute
