@@ -8,7 +8,7 @@ accordion:
       description: 'Enable to remove the default background-color, some borders, and some rounded corners printing the accordion edge-to-edge with their parent container. Defaults to false.'
       preview: false
     open_item:
-      type: number
+      type: integer
       label: 'Accordion item opened by default'
       description: 'Index value of the item to open (starting from 1), all closed by default (0).'
       preview: 1
