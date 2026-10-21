@@ -18,15 +18,15 @@ props:
         - dark
         - link
       'meta:enum':
-        primary: 'primary (default)'
-        secondary: secondary
-        success: success
-        danger: danger
-        warning: warning
-        info: info
-        light: light
-        dark: dark
-        link: link
+        primary: 'Primary (default)'
+        secondary: Secondary
+        success: Success
+        danger: Danger
+        warning: Warning
+        info: Info
+        light: Light
+        dark: Dark
+        link: Link
     rounded_pill:
       title: 'Pill badge'
       description: 'Makes the badge a rounded pill. Defaults to false.'

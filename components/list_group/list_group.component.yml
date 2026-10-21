@@ -12,9 +12,9 @@ props:
         - ordered
         - actionable
       'meta:enum':
-        unordered: 'unordered (default)'
-        ordered: ordered
-        actionable: actionable
+        unordered: 'Unordered (default)'
+        ordered: Ordered
+        actionable: Actionable
     flush:
       title: Flush
       description: 'When enabled, adds flush to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards). Defaults to false.'

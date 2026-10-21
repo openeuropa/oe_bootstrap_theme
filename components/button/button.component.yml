@@ -35,9 +35,9 @@ props:
         - md
         - lg
       'meta:enum':
-        sm: small
-        md: 'medium (default)'
-        lg: large
+        sm: Small
+        md: 'Medium (default)'
+        lg: Large
     type:
       title: 'Button type'
       description: 'Sets the button behavior type:'
@@ -47,9 +47,9 @@ props:
         - submit
         - reset
       'meta:enum':
-        button: 'button (default)'
-        submit: submit
-        reset: reset
+        button: 'Button (default)'
+        submit: Submit
+        reset: Reset
     disabled:
       title: Disabled
       description: 'If true, the button will not be enabled when clicking. Defaults to false.'
@@ -62,8 +62,8 @@ props:
         - before
         - after
       'meta:enum':
-        before: before
-        after: 'after (default)'
+        before: Before
+        after: 'After (default)'
     label:
       title: 'Button label'
       description: 'The button label.'
