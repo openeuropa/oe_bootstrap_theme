@@ -27,13 +27,13 @@
   {% endfor %}
   {% set _translations = {
     label: {
-      path: bcl_icon_path,
+      path: bcl_icon_path(),
       label: 'Other languages (@count)'|t({'@count': _items|length}),
       icon_position: 'after',
       icon: {
         name: 'caret-down-fill',
         size: '2xs',
-        path: bcl_icon_path,
+        path: bcl_icon_path(),
       }
     },
     items: _items,
@@ -51,12 +51,12 @@
     {% include '@oe-bcl/file' with {
       'title': title,
       'title_tag': title_tag,
-      'icon_path': bcl_icon_path,
+      'icon_path': bcl_icon_path(),
       'item_title': file.title,
       'language': file.language_code|to_native_language,
       'meta': _meta,
       'icon': {
-        'path': bcl_icon_path,
+        'path': bcl_icon_path(),
         'name': file.extension|to_file_icon,
         'size': '2xl',
       },
@@ -64,7 +64,7 @@
         'label': link_label|default('Download'|t),
         'path': file.url,
         'icon': {
-          'path': bcl_icon_path,
+          'path': bcl_icon_path(),
           'name': 'download',
           'size': 'fluid',
         },

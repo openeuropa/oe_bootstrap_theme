@@ -57,7 +57,7 @@
     'alt': image.alt,
   },
   'date': date ? date|merge({
-    icon_path: date.icon_path ?? bcl_icon_path,
+    icon_path: date.icon_path ?? bcl_icon_path(),
   }) : {},
   'card_header': header,
   'card_footer': footer,
