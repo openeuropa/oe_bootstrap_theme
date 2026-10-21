@@ -1,57 +1,24 @@
-{% if variant == "primary" %}
-{#
-/**
- * @file
- * Banner pattern variant primary.
- */
-#}
-{% extends 'pattern-banner.html.twig' %}
-{% block attributes %}
-  {% set attributes = attributes.addClass([
-    'bg-primary',
-    'text-white',
-  ])
-  %}
-{% endblock %}
-{% elseif variant == "image" %}
-{#
-/**
- * @file
- * Banner pattern variant image.
- */
-#}
-{% extends 'pattern-banner.html.twig' %}
-{% block attributes %}
-  {{ parent() }}
-{% endblock %}
-{% elseif variant == "image_shade" %}
-{#
-/**
- * @file
- * Banner pattern variant image shade.
- */
-#}
-{% extends 'pattern-banner.html.twig' %}
-{% block attributes %}
-  {% set attributes = attributes.addClass([
-    'bg-lighter',
-  ])
-  %}
-{% endblock %}
-{% else %}
 {#
 /**
  * @file
  * Banner pattern.
  */
 #}
-{% block attributes %}
+{% if variant == 'primary' %}
   {% set attributes = attributes.addClass([
-      'bg-lighter',
-      'text-dark',
-    ])
-  %}
-{% endblock %}
+    'bg-primary',
+    'text-white',
+  ]) %}
+{% elseif variant == 'image_shade' %}
+  {% set attributes = attributes.addClass([
+    'bg-lighter',
+  ]) %}
+{% else %}
+  {% set attributes = attributes.addClass([
+    'bg-lighter',
+    'text-dark',
+  ]) %}
+{% endif %}
 {% if centered  %}
   {% set attributes = attributes.addClass(['text-center'])%}
 {% endif %}
@@ -75,4 +42,3 @@
   content_classes: content_classes,
   attributes: attributes,
 } only %}
-{% endif %}
