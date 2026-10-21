@@ -38,12 +38,12 @@ progress:
       description: 'The progress value for the bar.'
       preview: 50
     min:
-      type: text
+      type: number
       label: 'Minimum'
       description: 'Minimum value shown in the progress bar.'
       preview: 0
     max:
-      type: 'text'
+      type: number
       label: 'Maximum'
       description: 'Maximum value shown in the progress bar.'
       preview: 100
