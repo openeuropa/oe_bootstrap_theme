@@ -3,7 +3,7 @@ timeline:
   description: 'Timeline is a flexible and powerful component for displaying a series of content ordered in time.'
   settings:
     hide_from:
-      type: integer
+      type: number
       label: 'Hide from'
       description: 'Indicate the number of items to display in the timeline, hide the others and add a toggle button to show them.'
       preview: 5
