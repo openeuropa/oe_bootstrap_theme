@@ -138,30 +138,36 @@ class MarkupRenderingTest extends KernelTestBase {
     $cases = static::markupRenderingProvider();
     $n = count($cases);
     foreach (array_keys($cases) as $i => $case_name) {
-      $case = $cases[$case_name];
-      $render = $case['render'];
-      $render = PatternTestDataMassager::massageDataRecursive($render);
-      $assertions = $case['assertions'];
-      $backward_compatibility = $case['backward_compatibility'] ?? [];
       $restore_callbacks = [];
-      if (!empty($backward_compatibility)) {
-        foreach ($backward_compatibility as $bc_name => $bc_value) {
-          $restore_callbacks[] = $this->setBackwardCompatibilitySetting($bc_name, $bc_value);
-        }
-      }
-
-      Html::resetSeenIds();
-
       try {
+        $case = $cases[$case_name];
+        $render = $case['render'];
+        $render = PatternTestDataMassager::massageDataRecursive($render);
+        $assertions = $case['assertions'];
+        $backward_compatibility = $case['backward_compatibility'] ?? [];
+        if (!empty($backward_compatibility)) {
+          foreach ($backward_compatibility as $bc_name => $bc_value) {
+            $restore_callbacks[] = $this->setBackwardCompatibilitySetting($bc_name, $bc_value);
+          }
+        }
+
+        Html::resetSeenIds();
+
         $html = RenderWrapperForm::renderInFormContext($render, $this->container);
-        $this->assertMarkupRendering($assertions, $html);
+        try {
+          $this->assertMarkupRendering($assertions, $html);
+        }
+        catch (\Throwable $e) {
+          throw $e;
+        }
       }
       catch (\Throwable $e) {
         throw new \Exception("Failure in '$case_name' ($i of $n).", previous: $e);
       }
-
-      foreach ($restore_callbacks as $restore_callback) {
-        $restore_callback();
+      finally {
+        foreach ($restore_callbacks as $restore_callback) {
+          $restore_callback();
+        }
       }
     }
   }
