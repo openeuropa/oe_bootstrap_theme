@@ -31,7 +31,7 @@ props:
     progress:
       title: Progress
       description: 'The progress value for the bar.'
-      type: [number, 'null']
+      type: [number, string, 'null']
     min:
       title: Minimum
       description: 'Minimum value shown in the progress bar.'

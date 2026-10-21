@@ -10,7 +10,7 @@ props:
     open_item:
       title: 'Accordion item opened by default'
       description: 'Index value of the item to open (starting from 1), all closed by default (0).'
-      type: [number, 'null']
+      type: [number, string, 'null']
     title:
       title: Title
       description: 'Title of the accordion.'

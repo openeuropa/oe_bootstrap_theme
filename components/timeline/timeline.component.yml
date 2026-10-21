@@ -6,7 +6,7 @@ props:
     hide_from:
       title: 'Hide from'
       description: 'Indicate the number of items to display in the timeline, hide the others and add a toggle button to show them.'
-      type: [number, 'null']
+      type: [number, string, 'null']
     title:
       title: Title
       description: 'Title of the timeline block.'

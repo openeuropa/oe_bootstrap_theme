@@ -16,7 +16,7 @@ props:
     grid_columns:
       title: 'Grid columns'
       description: 'Number of grid columns:'
-      type: [integer, 'null']
+      type: [integer, string, 'null']
       enum:
         - 1
         - 2
@@ -38,14 +38,14 @@ props:
     responsive_columns:
       title: 'Responsive columns'
       description: 'Number of responsive columns:'
-      type: [integer, 'null']
+      type: [integer, string, 'null']
       enum:
         - 2
         - 3
     gutter:
       title: Gutter
       description: 'Select the gutter between cards:'
-      type: [integer, 'null']
+      type: [integer, string, 'null']
       enum:
         - 0
         - 1

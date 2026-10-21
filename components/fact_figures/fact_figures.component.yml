@@ -24,7 +24,7 @@ props:
     columns:
       title: Columns
       description: 'One, two or three columns layout for responsive. Defaults to 3.'
-      type: [number, 'null']
+      type: [number, string, 'null']
     items:
       title: Items
       description: 'List of facts, with icon, title, subtitle and content.'
