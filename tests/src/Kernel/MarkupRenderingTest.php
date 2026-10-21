@@ -126,6 +126,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * @dataProvider markupRenderingProvider
    */
   public function testMarkupRendering(array $render, array $assertions, array $backward_compatibility = []): void {
+    $render = PatternTestDataMassager::massageDataRecursive($render);
     if (!empty($backward_compatibility)) {
       foreach ($backward_compatibility as $name => $value) {
         $this->setBackwardCompatibilitySetting($name, $value);
@@ -157,6 +158,7 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     foreach (array_keys($cases) as $i => $case_name) {
       $case = $cases[$case_name];
       $render = $case['render'];
+      $render = PatternTestDataMassager::massageDataRecursive($render);
       $assertions = $case['assertions'];
       $backward_compatibility = $case['backward_compatibility'] ?? [];
       $restore_callbacks = [];
@@ -282,7 +284,6 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
           $suffix++;
         } while (isset($test_cases[$candidate_key]));
         $key = $candidate_key;
-        $test_case['render'] = PatternTestDataMassager::massageDataRecursive($test_case['render']);
         $test_cases[$key] = $test_case;
       }
     }
