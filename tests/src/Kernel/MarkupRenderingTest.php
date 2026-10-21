@@ -185,7 +185,7 @@ class MarkupRenderingTest extends KernelTestBase {
         if (($render['#type'] ?? NULL) !== 'pattern') {
           continue;
         }
-        $render = $this->replacePatternsWithComponents($render);
+        $render = $this->replacePatternsWithComponents($render, $use_objects);
       }
 
       if ($fill_nulls) {
@@ -227,11 +227,14 @@ class MarkupRenderingTest extends KernelTestBase {
    *
    * @param array $render
    *   Original render array with pattern.
+   * @param bool $use_objects
+   *   TRUE, to pass attributes as Attribute object.
+   *   FALSE, to pass attributes as array.
    *
    * @return array
    *   Modified render array.
    */
-  protected function replacePatternsWithComponents(array $render): array {
+  protected function replacePatternsWithComponents(array $render, bool $use_objects): array {
     if (($render['#type'] ?? NULL) === 'pattern') {
       $render['#type'] = 'component';
       $render['#component'] = 'oe_bootstrap_theme:' . $render['#id'];
@@ -252,12 +255,19 @@ class MarkupRenderingTest extends KernelTestBase {
               $attributes[$attr->nodeName] = $attr->nodeValue;
             }
           }
-          $render['#props'][$key] = new Attribute($attributes);
+          $attributes_object = new Attribute($attributes);
+          $render['#props'][$key] = $use_objects ? $attributes_object : $attributes_object->toArray();
+        }
+        elseif (is_array($value) && $use_objects) {
+          $render['#props'][$key] = new Attribute($value);
+        }
+        elseif ($value instanceof Attribute && !$use_objects) {
+          $render['#props'][$key] = $value->toArray();
         }
       }
     }
     foreach (Element::children($render) as $key) {
-      $render[$key] = $this->replacePatternsWithComponents($render[$key]);
+      $render[$key] = $this->replacePatternsWithComponents($render[$key], $use_objects);
     }
     return $render;
   }
