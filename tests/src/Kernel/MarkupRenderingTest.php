@@ -8,6 +8,8 @@ use Drupal\Component\Serialization\Yaml;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Site\Settings;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Theme\ComponentPluginManager;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
 use Drupal\Tests\oe_bootstrap_theme\Traits\BackwardCompatibilityTrait;
@@ -144,6 +146,9 @@ class MarkupRenderingTest extends KernelTestBase {
       'patterns, objects' => ['patterns'],
       'patterns, raw values' => ['patterns', FALSE],
       'patterns, fill nulls' => ['patterns', 'fill_nulls' => TRUE],
+      'components, objects' => ['components'],
+      'components, raw values' => ['components', FALSE],
+      'components, fill nulls' => ['components', 'fill_nulls' => TRUE],
       'other' => ['other'],
     ];
   }
@@ -151,8 +156,10 @@ class MarkupRenderingTest extends KernelTestBase {
   /**
    * Tests all components in a single pass.
    *
-   * @param 'patterns'|'other' $mode
+   * @param 'patterns'|'components'|'other' $mode
    *   Pass 'patterns' to test all cases with patterns.
+   *   Pass 'components' to test all pattern cases, but with the pattern
+   *   converted to a component.
    *   Pass 'other' to test all cases which don't use a pattern.
    * @param bool $use_objects
    *   TRUE to use objects like Attribute, ImageValueObject etc.
@@ -175,6 +182,10 @@ class MarkupRenderingTest extends KernelTestBase {
         $assertions = $case['assertions'];
         $backward_compatibility = $case['backward_compatibility'] ?? [];
         if (!empty($backward_compatibility)) {
+          if ($mode === 'components') {
+            // No support for BC with components.
+            continue;
+          }
           foreach ($backward_compatibility as $bc_name => $bc_value) {
             $restore_callbacks[] = $this->setBackwardCompatibilitySetting($bc_name, $bc_value);
           }
@@ -184,6 +195,14 @@ class MarkupRenderingTest extends KernelTestBase {
         // Skip non-pattern case when not in 'other' mode.
         if ($mode === 'other' xor ($render['#type'] ?? NULL) !== 'pattern') {
           continue;
+        }
+
+        if ($mode === 'components') {
+          if (($render['#type'] ?? NULL) !== 'pattern') {
+            continue;
+          }
+          $render = $this->replacePatternsWithComponents($render);
+          $assertions = $this->replacePatternAssertionsWithComponentAssertions($assertions);
         }
 
         if ($fill_nulls) {
@@ -212,10 +231,78 @@ class MarkupRenderingTest extends KernelTestBase {
   }
 
   /**
-   * Populates optional pattern parameters with NULL.
+   * Replaces patterns with components in a render array.
    *
    * @param array $render
-   *   A render element which may contain pattern elements.
+   *   Original render array with pattern.
+   *
+   * @return array
+   *   Modified render array.
+   */
+  protected function replacePatternsWithComponents(array $render): array {
+    if (($render['#type'] ?? NULL) === 'pattern') {
+      $render['#type'] = 'component';
+      $render['#component'] = 'oe_bootstrap_theme:' . $render['#id'];
+      $render['#props'] = [
+        ...$render['#fields']['settings'] ?? [],
+        ...$render['#settings'] ?? [],
+        ...$render['#fields'] ?? [],
+      ];
+      unset($render['#id']);
+      unset($render['#props']['settings']);
+      // Support string attributes in fixtures.
+      foreach (preg_grep('#^([a-z]+_|)attributes$#', array_keys($render['#props'])) as $key) {
+        $value = $render['#props'][$key] ?? NULL;
+        if (is_string($value)) {
+          $parse_html = '<div ' . $value . '></div>';
+          $attributes = [];
+          foreach (Html::load($parse_html)->getElementsByTagName('div') as $div) {
+            foreach ($div->attributes as $attr) {
+              $attributes[$attr->nodeName] = $attr->nodeValue;
+            }
+          }
+          $render['#props'][$key] = new Attribute($attributes);
+        }
+      }
+    }
+    foreach (Element::children($render) as $key) {
+      $render[$key] = $this->replacePatternsWithComponents($render[$key]);
+    }
+    return $render;
+  }
+
+  /**
+   * Replaces assertions that were built for patterns, to work for components.
+   *
+   * @param array $assertions
+   *   Original assertions from a test fixture.
+   *
+   * @return array
+   *   Processed assertions.
+   */
+  protected function replacePatternAssertionsWithComponentAssertions(array $assertions): array {
+    foreach ($assertions as $type => $type_assertions) {
+      if ($type === 'pattern') {
+        continue;
+      }
+      $selectors = array_keys($type_assertions);
+      // Use the array form of preg_replace_callback(), which applies the
+      // transformation to every array value.
+      $selectors = preg_replace_callback(
+        '#\[data-drupal-selector\="?([\w\-]+)"?\]#',
+        fn (array $match) => '[data-component-id="oe_bootstrap_theme:' . str_replace('-', '_', $match[1]) . '"]',
+        $selectors,
+      );
+      $assertions[$type] = array_combine($selectors, $type_assertions);
+    }
+    return $assertions;
+  }
+
+  /**
+   * Populates optional pattern and component parameters with NULL.
+   *
+   * @param array $render
+   *   A render element which may contain component or pattern elements.
    *
    * @return array
    *   A processed render element.
@@ -231,6 +318,17 @@ class MarkupRenderingTest extends KernelTestBase {
       $render['#settings'] ??= [];
       $render['#fields'] += $fn_fill_nulls($pattern_definition->getFields());
       $render['#settings'] += $fn_fill_nulls($pattern_definition['settings'] ?? []);
+    }
+    elseif (($render['#type'] ?? NULL) === 'component') {
+      $manager = $this->container->get(ComponentPluginManager::class);
+      $component_definition = $manager->getDefinition($render['#component']);
+      assert(is_array($component_definition));
+      $render += [
+        '#slots' => [],
+        '#props' => [],
+      ];
+      $render['#slots'] += $fn_fill_nulls($component_definition['slots'] ?? []);
+      $render['#props'] += $fn_fill_nulls($component_definition['props']['properties'] ?? []);
     }
     foreach (Element::children($render) as $key) {
       $render[$key] = $this->fillNulls($render[$key]);
