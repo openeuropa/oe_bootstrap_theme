@@ -71,7 +71,7 @@ props:
     icon:
       title: 'Icon name'
       description: 'Adds an icon to the button. Optional.'
-      type: [string, array, object, 'null']
+      type: [object, string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

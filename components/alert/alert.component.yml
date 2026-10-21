@@ -41,7 +41,7 @@ props:
     icon:
       title: 'Icon name'
       description: 'Adds an icon to the alert. Optional.'
-      type: [object, 'null']
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute
