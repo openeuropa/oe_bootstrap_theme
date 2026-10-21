@@ -33,4 +33,4 @@ props:
       type: [array, 'null']
     attributes:
       title: Attributes
-      type: Drupal\Core\Template\Attribute
+      type: [object, array, string, 'null']

@@ -49,4 +49,4 @@ props:
         '': Default
     attributes:
       title: Attributes
-      type: Drupal\Core\Template\Attribute
+      type: [object, array, string, 'null']

@@ -28,7 +28,7 @@ props:
     list_attributes:
       title: 'List attributes'
       description: 'Extra attributes for the list container.'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']
     aria_label:
       title: 'Aria label'
       description: 'Aria label for the navigation wrapper.'
@@ -76,4 +76,4 @@ props:
     attributes:
       title: 'Pager attributes'
       description: 'Extra attributes for the navigation wrapper.'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']

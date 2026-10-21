@@ -7,11 +7,11 @@ props:
     heading_attributes:
       title: 'Heading attributes'
       description: 'Extra attributes for the heading'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']
     wrapper_attributes:
       title: 'Wrapper attributes'
       description: 'Extra attributes for the wrapper'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']
     heading_tag:
       title: 'Heading tag'
       description: 'Tag of the heading. Default to h2.'
@@ -31,4 +31,4 @@ props:
     attributes:
       title: 'Section attributes'
       description: 'Extra attributes for the section'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']

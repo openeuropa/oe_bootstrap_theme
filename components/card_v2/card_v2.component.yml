@@ -30,19 +30,19 @@ props:
     media_attributes:
       title: 'Media attributes'
       description: 'Alt text, loading="lazy", ratio utilities like ratio-16x9, or placeholder-glow.'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']
     content_attributes:
       title: 'Body attributes'
       description: 'Padding tweaks (p-4), text alignment (text-center), etc.'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']
     header_attributes:
       title: 'Header attributes'
       description: 'Extra attributes for the card header, e.g. .bg-light for contrast.'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']
     footer_attributes:
       title: 'Footer attributes'
       description: 'Extra attributes for the card footer, e.g. .border-0 pt-0 for a seamless footer.'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']
     title:
       title: Title
       description: 'Card title. Supports markup, e.g. for links.'
@@ -66,4 +66,4 @@ props:
     attributes:
       title: 'Card attributes'
       description: 'Utility classes or data-* attributes for the outer wrapper.'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']

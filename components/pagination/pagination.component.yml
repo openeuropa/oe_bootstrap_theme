@@ -33,7 +33,7 @@ props:
     list_attributes:
       title: 'List attributes'
       description: 'Extra attributes for the list container'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']
     enable_prev_next_icons:
       title: 'Enable previous/next icons'
       description: 'Show icons instead of texts in links to previous and next page. Defaults to false.'
@@ -64,4 +64,4 @@ props:
       type: [array, 'null']
     attributes:
       title: Attributes
-      type: Drupal\Core\Template\Attribute
+      type: [object, array, string, 'null']
