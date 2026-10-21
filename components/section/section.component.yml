@@ -1,13 +1,6 @@
 name: Section
 description: 'Renders content and heading inside section.'
 group: 'Version 2.x'
-slots:
-  content:
-    title: Content
-    description: 'Content of the section.'
-  heading:
-    title: Heading
-    description: 'Heading of the section.'
 props:
   type: object
   properties:
@@ -27,6 +20,14 @@ props:
       title: 'Wrapper tag'
       description: 'Tag of the wrapper. Defaults to section.'
       type: [string, 'null']
+    content:
+      title: Content
+      description: 'Content of the section.'
+      type: [string, array, object, 'null']
+    heading:
+      title: Heading
+      description: 'Heading of the section.'
+      type: [string, array, object, 'null']
     attributes:
       title: 'Section attributes'
       description: 'Extra attributes for the section'

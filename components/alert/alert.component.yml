@@ -19,13 +19,6 @@ variants:
     title: Dark
   link:
     title: Link
-slots:
-  heading:
-    title: Heading
-    description: 'The alert heading. Optional.'
-  message:
-    title: Message
-    description: 'The alert message.'
 props:
   type: object
   properties:
@@ -37,6 +30,14 @@ props:
       title: 'Animated dismiss'
       description: 'Add fade animation to the dismissible alert. Defaults to true.'
       type: [boolean, 'null']
+    heading:
+      title: Heading
+      description: 'The alert heading. Optional.'
+      type: [string, array, object, 'null']
+    message:
+      title: Message
+      description: 'The alert message.'
+      type: [string, array, object, 'null']
     icon:
       title: 'Icon name'
       description: 'Add an icon to the alert. Optional.'

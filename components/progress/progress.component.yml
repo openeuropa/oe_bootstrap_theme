@@ -1,21 +1,5 @@
 name: Progress
 description: 'Indicate the progress as a bar. For more information visit: https://getbootstrap.com/docs/5.0/components/progress/'
-slots:
-  label:
-    title: Label
-    description: 'Text before the progress bar.'
-  min:
-    title: Minimum
-    description: 'Minimum value shown in the progress bar.'
-  max:
-    title: Maximum
-    description: 'Maximum value shown in the progress bar.'
-  text:
-    title: Text
-    description: 'Text inside the progress bar.'
-  message:
-    title: Message
-    description: 'Optional description text below the progress bar.'
 props:
   type: object
   properties:
@@ -40,10 +24,30 @@ props:
       title: Animated
       description: 'Animation on striped bar. Defaults to false.'
       type: [boolean, 'null']
+    label:
+      title: Label
+      description: 'Text before the progress bar.'
+      type: [string, array, object, 'null']
     progress:
       title: Progress
       description: 'The progress value for the bar.'
       type: [number, 'null']
+    min:
+      title: Minimum
+      description: 'Minimum value shown in the progress bar.'
+      type: [string, array, object, 'null']
+    max:
+      title: Maximum
+      description: 'Maximum value shown in the progress bar.'
+      type: [string, array, object, 'null']
+    text:
+      title: Text
+      description: 'Text inside the progress bar.'
+      type: [string, array, object, 'null']
+    message:
+      title: Message
+      description: 'Optional description text below the progress bar.'
+      type: [string, array, object, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

@@ -1,33 +1,16 @@
 name: 'Featured Media'
 description: 'Pattern used for the presentation of Featured media paragraph. Media types can be iframe, video, image or featured item (media + text).'
-slots:
-  caption:
-    title: Caption
-    description: 'Description of the featured media.'
-  embedded_media:
-    title: 'Embedded media'
-    description: 'The embedded media.'
-  title:
-    title: Title
-    description: 'Title of the featured media.'
-  title_tag:
-    title: 'Title tag'
-    description: 'Title tag of the featured media. Defaults to h2'
-  subtitle_tag:
-    title: 'Subtitle tag'
-    description: 'Subtitle tag of the featured media. Defaults to h3'
-  subtitle:
-    title: Subtitle
-    description: 'The title, displayed below the title but before the text.'
-  text:
-    title: 'Full text'
-    description: 'The full rich text.'
-  copyright:
-    title: Copyright
-    description: 'Optional copyright text displayed as an overlay.'
 props:
   type: object
   properties:
+    caption:
+      title: Caption
+      description: 'Description of the featured media.'
+      type: [string, array, object, 'null']
+    embedded_media:
+      title: 'Embedded media'
+      description: 'The embedded media.'
+      type: [string, array, object, 'null']
     image:
       title: Image
       description: 'The image for the image variant.'
@@ -40,10 +23,34 @@ props:
       title: Link
       description: 'Call to action link with icon. A link pattern definition must be passed.'
       type: [array, 'null']
+    title:
+      title: Title
+      description: 'Title of the featured media.'
+      type: [string, array, object, 'null']
+    title_tag:
+      title: 'Title tag'
+      description: 'Title tag of the featured media. Defaults to h2'
+      type: [string, 'null']
+    subtitle_tag:
+      title: 'Subtitle tag'
+      description: 'Subtitle tag of the featured media. Defaults to h3'
+      type: [string, 'null']
+    subtitle:
+      title: Subtitle
+      description: 'The title, displayed below the title but before the text.'
+      type: [string, array, object, 'null']
+    text:
+      title: 'Full text'
+      description: 'The full rich text.'
+      type: [string, array, object, 'null']
     text_position:
       title: 'Text position'
       description: 'The position of the text when present. Either left or right. Defaults to left.'
       type: [string, 'null']
+    copyright:
+      title: Copyright
+      description: 'Optional copyright text displayed as an overlay.'
+      type: [string, array, object, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

@@ -8,22 +8,6 @@ variants:
   horizontal:
     title: Horizontal
     description: '1:1 media left, content right – compact lists, sidebars.'
-slots:
-  title:
-    title: Title
-    description: 'Card title. Supports markup, e.g. for links.'
-  media:
-    title: Media
-    description: 'Optional. Accepts an image, video, icon, map thumbnail, or another pattern such as date_block.'
-  content:
-    title: 'Body content'
-    description: 'Rich text, badges, buttons… whatever you need.'
-  header:
-    title: Header
-    description: 'Optional – meta information, category pill, etc.'
-  footer:
-    title: Footer
-    description: 'Optional – secondary actions, updated timestamps, share links.'
 props:
   type: object
   properties:
@@ -56,6 +40,26 @@ props:
       title: 'Footer attributes'
       description: 'Extra attributes for the card footer, e.g. .border-0 pt-0 for a seamless footer.'
       type: Drupal\Core\Template\Attribute
+    title:
+      title: Title
+      description: 'Card title. Supports markup, e.g. for links.'
+      type: [string, array, object, 'null']
+    media:
+      title: Media
+      description: 'Optional. Accepts an image, video, icon, map thumbnail, or another pattern such as date_block.'
+      type: [string, array, object, 'null']
+    content:
+      title: 'Body content'
+      description: 'Rich text, badges, buttons… whatever you need.'
+      type: [string, array, object, 'null']
+    header:
+      title: Header
+      description: 'Optional – meta information, category pill, etc.'
+      type: [string, array, object, 'null']
+    footer:
+      title: Footer
+      description: 'Optional – secondary actions, updated timestamps, share links.'
+      type: [string, array, object, 'null']
     attributes:
       title: 'Card attributes'
       description: 'Utility classes or data-* attributes for the outer wrapper.'

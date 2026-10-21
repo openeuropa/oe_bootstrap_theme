@@ -1,12 +1,5 @@
 name: Link
 description: 'A simple link.'
-slots:
-  label:
-    title: Label
-    description: 'The button label'
-  path:
-    title: URL
-    description: 'The button URL (optional).'
 props:
   type: object
   properties:
@@ -44,6 +37,14 @@ props:
       title: 'Remove icon spacers'
       description: 'When enabled, prevents margins to be added to the icon. Defaults to false.'
       type: [boolean, 'null']
+    label:
+      title: Label
+      description: 'The button label'
+      type: [string, array, object, 'null']
+    path:
+      title: URL
+      description: 'The button URL (optional).'
+      type: [string, array, object, 'null']
     icon:
       title: Icon
       description: 'An icon name or an icon array definition (optional).'

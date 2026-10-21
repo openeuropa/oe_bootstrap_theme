@@ -1,12 +1,5 @@
 name: 'Links block'
 description: 'List of links with an optional title.'
-slots:
-  title:
-    title: Title
-    description: 'Title of the links block.'
-  title_tag:
-    title: 'Title tag'
-    description: 'The tag to use for the title. Defaults to h2.'
 props:
   type: object
   properties:
@@ -30,6 +23,14 @@ props:
       'meta:enum':
         vertical: 'vertical (default)'
         horizontal: horizontal
+    title:
+      title: Title
+      description: 'Title of the links block.'
+      type: [string, array, object, 'null']
+    title_tag:
+      title: 'Title tag'
+      description: 'The tag to use for the title. Defaults to h2.'
+      type: [string, 'null']
     links:
       title: Links
       description: 'Array of links.'

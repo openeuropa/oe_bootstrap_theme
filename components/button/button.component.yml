@@ -19,13 +19,6 @@ variants:
     title: Dark
   link:
     title: Link
-slots:
-  label:
-    title: 'Button label'
-    description: 'The button label.'
-  icon:
-    title: 'Icon name'
-    description: 'Add an icon to the button. Optional.'
 props:
   type: object
   properties:
@@ -71,6 +64,14 @@ props:
       'meta:enum':
         before: before
         after: 'after (default)'
+    label:
+      title: 'Button label'
+      description: 'The button label.'
+      type: [string, array, object, 'null']
+    icon:
+      title: 'Icon name'
+      description: 'Add an icon to the button. Optional.'
+      type: [string, array, object, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

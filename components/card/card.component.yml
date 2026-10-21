@@ -7,31 +7,6 @@ variants:
   search:
     title: Search
     description: 'Card with special behaviour for print search results items.'
-slots:
-  title:
-    title: Title
-    description: 'Title of the card.'
-  title_tag:
-    title: 'Title tag'
-    description: 'Title tag of the card. Defaults to h1.'
-  subtitle:
-    title: Subtitle
-    description: 'Card subtitle.'
-  text:
-    title: Text
-    description: 'Card text.'
-  image_copyright:
-    title: 'Image Copyright'
-    description: 'Optional copyright text displayed as an overlay.'
-  content:
-    title: Content
-    description: 'Card content.'
-  header:
-    title: 'Card header'
-    description: 'Card header content.'
-  footer:
-    title: 'Card footer'
-    description: 'Card footer content.'
 props:
   type: object
   properties:
@@ -39,10 +14,30 @@ props:
       title: Orientation
       description: 'Can be set to horizontal or vertical. Defaults to vertical.'
       type: [string, 'null']
+    title:
+      title: Title
+      description: 'Title of the card.'
+      type: [string, array, object, 'null']
+    title_tag:
+      title: 'Title tag'
+      description: 'Title tag of the card. Defaults to h1.'
+      type: [string, 'null']
+    subtitle:
+      title: Subtitle
+      description: 'Card subtitle.'
+      type: [string, array, object, 'null']
+    text:
+      title: Text
+      description: 'Card text.'
+      type: [string, array, object, 'null']
     image:
       title: Image
       description: 'Image for the card. Optional.'
       type: Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface
+    image_copyright:
+      title: 'Image Copyright'
+      description: 'Optional copyright text displayed as an overlay.'
+      type: [string, array, object, 'null']
     date:
       title: 'Date block'
       description: 'If set, presents a date block that uses the same parameters as the bcl date-block pattern. Optional.'
@@ -51,6 +46,18 @@ props:
       title: 'Meta items'
       description: 'Date or other meta information.'
       type: [array, 'null']
+    content:
+      title: Content
+      description: 'Card content.'
+      type: [string, array, object, 'null']
+    header:
+      title: 'Card header'
+      description: 'Card header content.'
+      type: [string, array, object, 'null']
+    footer:
+      title: 'Card footer'
+      description: 'Card footer content.'
+      type: [string, array, object, 'null']
     badges:
       title: Badges
       description: 'List of badges for the card.'

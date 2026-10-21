@@ -1,13 +1,6 @@
 name: 'Pagination V2'
 description: 'Bootstrap 5 pagination pattern in the Version 2.x API. Uses the Pagination V2 BCL markup, including ellipsis items and mobile current-page labels.'
 group: 'Version 2.x'
-slots:
-  aria_label:
-    title: 'Aria label'
-    description: 'Aria label for the navigation wrapper.'
-  current_mobile_label:
-    title: 'Current mobile label'
-    description: 'Replacement label for the active item on mobile.'
 props:
   type: object
   properties:
@@ -33,6 +26,10 @@ props:
       title: 'List attributes'
       description: 'Extra attributes for the list container.'
       type: Drupal\Core\Template\Attribute
+    aria_label:
+      title: 'Aria label'
+      description: 'Aria label for the navigation wrapper.'
+      type: [string, array, object, 'null']
     enable_prev_next_icon:
       title: 'Enable previous/next icons'
       description: 'Show icons instead of text for previous and next links. Defaults to true.'
@@ -49,6 +46,10 @@ props:
       title: 'Ellipsis after items'
       description: 'Add an ellipsis item after the main page items.'
       type: [boolean, 'null']
+    current_mobile_label:
+      title: 'Current mobile label'
+      description: 'Replacement label for the active item on mobile.'
+      type: [string, array, object, 'null']
     first:
       title: 'First link'
       description: 'Pagination first link with path, label or icon.'

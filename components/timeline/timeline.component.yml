@@ -1,12 +1,5 @@
 name: Timeline
 description: 'Timeline is a flexible and powerful component for displaying a series of content ordered in time.'
-slots:
-  title:
-    title: Title
-    description: 'Title of the timeline block.'
-  title_tag:
-    title: 'Title tag'
-    description: 'The tag to use for the title. Defaults to h2.'
 props:
   type: object
   properties:
@@ -14,6 +7,14 @@ props:
       title: 'Hide from'
       description: 'Indicate the number of items to display in the timeline, hide the others and add a toggle button to show them.'
       type: [number, 'null']
+    title:
+      title: Title
+      description: 'Title of the timeline block.'
+      type: [string, array, object, 'null']
+    title_tag:
+      title: 'Title tag'
+      description: 'The tag to use for the title. Defaults to h2.'
+      type: [string, 'null']
     expand_button_label:
       title: 'Label expanded'
       description: 'When all items are displayed, the label of the button to hide them.'

@@ -5,13 +5,6 @@ variants:
     title: Default
   search:
     title: Search
-slots:
-  title:
-    title: Title
-    description: 'Offcanvas title.'
-  body:
-    title: Body
-    description: 'Offcanvas body content.'
 props:
   type: object
   properties:
@@ -32,6 +25,14 @@ props:
       title: Backdrop
       description: 'If true, enable backdrop behind offcanvas. Defaults to false.'
       type: [boolean, 'null']
+    title:
+      title: Title
+      description: 'Offcanvas title.'
+      type: [string, array, object, 'null']
+    body:
+      title: Body
+      description: 'Offcanvas body content.'
+      type: [string, array, object, 'null']
     toggle:
       title: 'Toggle button'
       description: 'An optional button pattern definition that will allow to show/hide the offcanvas.'

@@ -1,12 +1,5 @@
 name: Carousel
 description: 'A slideshow component for cycling through elements, like a carousel. For more information: https://v5.getbootstrap.com/docs/5.0/components/carousel/'
-slots:
-  title:
-    title: Title
-    description: 'Title of the carousel.'
-  title_tag:
-    title: 'Title tag'
-    description: 'The tag to use for the title. Defaults to h2.'
 props:
   type: object
   properties:
@@ -38,6 +31,14 @@ props:
       title: 'Dark mode'
       description: 'Enable the dark mode. Defaults to false.'
       type: [boolean, 'null']
+    title:
+      title: Title
+      description: 'Title of the carousel.'
+      type: [string, array, object, 'null']
+    title_tag:
+      title: 'Title tag'
+      description: 'The tag to use for the title. Defaults to h2.'
+      type: [string, 'null']
     slides:
       title: Slides
       description: 'Each slide is an image, a caption and interval of slide movement.'

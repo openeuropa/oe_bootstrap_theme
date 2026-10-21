@@ -1,12 +1,5 @@
 name: 'Inpage navigation'
 description: 'Inpage navigation adds a navigation element and content element so when scrolling the active element is indicated in the nav part.'
-slots:
-  title:
-    title: Title
-    description: 'Title of the inpage navigation element.'
-  content:
-    title: Content
-    description: 'Content part of the inpage navigation.'
 props:
   type: object
   properties:
@@ -14,10 +7,18 @@ props:
       title: 'Dynamic Active'
       description: 'Automated behaviour for the active item in mobile.'
       type: [boolean, 'null']
+    title:
+      title: Title
+      description: 'Title of the inpage navigation element.'
+      type: [string, array, object, 'null']
     links:
       title: Links
       description: 'Array of links used in the navigation part.'
       type: [array, 'null']
+    content:
+      title: Content
+      description: 'Content part of the inpage navigation.'
+      type: [string, array, object, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute
