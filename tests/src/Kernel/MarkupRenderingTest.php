@@ -12,9 +12,11 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Site\Settings;
+use Drupal\Core\Template\Attribute;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
 use Drupal\Tests\oe_bootstrap_theme\Traits\BackwardCompatibilityTrait;
+use PHPUnit\Framework\Attributes\TestWith;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -145,7 +147,10 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
   /**
    * Tests all components in a single pass.
    */
-  public function testOnePass(): void {
+  #[TestWith(['patterns as patterns'], 'patterns as patterns')]
+  #[TestWith(['patterns as components'], 'patterns as components')]
+  #[TestWith(['other'], 'other')]
+  public function testOnePass(string $mode): void {
     $renderer = $this->container->get(RendererInterface::class);
     $cases = static::markupRenderingProvider();
     $n = count($cases);
@@ -156,9 +161,24 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
       $backward_compatibility = $case['backward_compatibility'] ?? [];
       $restore_callbacks = [];
       if (!empty($backward_compatibility)) {
+        if ($mode === 'patterns as components') {
+          // No support for BC with components.
+          continue;
+        }
         foreach ($backward_compatibility as $bc_name => $bc_value) {
           $restore_callbacks[] = $this->setBackwardCompatibilitySetting($bc_name, $bc_value);
         }
+      }
+
+      if ($mode === 'other' xor ($render['#type'] ?? NULL) !== 'pattern') {
+        continue;
+      }
+
+      if ($mode === 'patterns as components') {
+        if (($render['#type'] ?? NULL) !== 'pattern') {
+          continue;
+        }
+        $render = $this->replacePatternsWithComponents($render);
       }
 
       Html::resetSeenIds();
@@ -198,6 +218,46 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
         $restore_callback();
       }
     }
+  }
+
+  /**
+   * Replaces patterns with components in a render array.
+   *
+   * @param array $render
+   *   Original render array with pattern.
+   *
+   * @return array
+   *   Modified render array.
+   */
+  protected function replacePatternsWithComponents(array $render): array {
+    if (($render['#type'] ?? NULL) === 'pattern') {
+      $render['#type'] = 'component';
+      $render['#component'] = 'oe_bootstrap_theme:' . $render['#id'];
+      $render['#props'] = [
+        ...$render['#fields']['settings'] ?? [],
+        ...$render['#settings'] ?? [],
+        ...$render['#fields'] ?? [],
+      ];
+      unset($render['#props']['settings']);
+      // Support string attributes in fixtures.
+      foreach (preg_grep('#^([a-z]+_|)attributes$#', array_keys($render['#props'])) as $key) {
+        $value = $render['#props'][$key] ?? NULL;
+        if (is_string($value)) {
+          $parse_html = '<div ' . $value . '></div>';
+          $attributes = [];
+          foreach (Html::load($parse_html)->getElementsByTagName('div') as $div) {
+            foreach ($div->attributes as $attr) {
+              $attributes[$attr->nodeName] = $attr->nodeValue;
+            }
+          }
+          $render['#props'][$key] = new Attribute($attributes);
+        }
+      }
+    }
+    foreach (Element::children($render) as $key) {
+      $render[$key] = $this->replacePatternsWithComponents($render[$key]);
+    }
+    return $render;
   }
 
   /**
