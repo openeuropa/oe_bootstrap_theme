@@ -42,7 +42,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, string, 'null']  # attributes
+              type: [object, string, 'null']
         icon_position:
           type: [string, 'null']
           enum:
@@ -58,14 +58,14 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     title_tag:
       title: 'Title tag'
       type: [string, 'null']
       description: 'The tag to use for the title. Defaults to h2.'
     title_attributes:
       title: 'Title attributes'
-      type: [object, string, 'null']  # attributes
+      type: [object, string, 'null']
     expand_button_label:
       title: 'Label expanded'
       type: [string, 'null']
@@ -98,7 +98,7 @@ props:
           content:
             type: [string, array, object, 'null']
           attributes:
-            type: [object, string, 'null']  # attributes
+            type: [object, string, 'null']
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

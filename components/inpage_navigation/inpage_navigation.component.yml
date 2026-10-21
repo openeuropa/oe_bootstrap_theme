@@ -65,7 +65,7 @@ props:
                 - flip-vertical
                 - null
             attributes:
-              type: [object, string, 'null']  # attributes
+              type: [object, string, 'null']
         icon_position:
           type: [string, 'null']
           enum:
@@ -81,10 +81,10 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     title_attributes:
       title: 'Title attributes'
-      type: [object, string, 'null']  # attributes
+      type: [object, string, 'null']
     links:
       title: Links
       type: [array, 'null']
@@ -145,7 +145,7 @@ props:
                   - flip-vertical
                   - null
               attributes:
-                type: [object, string, 'null']  # attributes
+                type: [object, string, 'null']
           icon_position:
             type: [string, 'null']
             enum:
@@ -161,7 +161,7 @@ props:
           remove_icon_spacers:
             type: [boolean, 'null']
           attributes:
-            type: [object, string, 'null']  # attributes
+            type: [object, string, 'null']
     content:
       title: Content
       type: [string, array, object, 'null']

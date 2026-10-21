@@ -1,24 +1,24 @@
-name: 'Alert'
+name: Alert
 description: 'Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.'
 variants:
   primary:
     title: 'Primary (default)'
   secondary:
-    title: 'Secondary'
+    title: Secondary
   success:
-    title: 'Success'
+    title: Success
   danger:
-    title: 'Danger'
+    title: Danger
   warning:
-    title: 'Warning'
+    title: Warning
   info:
-    title: 'Info'
+    title: Info
   light:
-    title: 'Light'
+    title: Light
   dark:
-    title: 'Dark'
+    title: Dark
   link:
-    title: 'Link'
+    title: Link
 props:
   type: object
   properties:

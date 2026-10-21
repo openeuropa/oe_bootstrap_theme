@@ -2,13 +2,13 @@ name: 'Card layout'
 description: 'Bootstrap card layout for rendering a series of cards as a group or grid layout.'
 variants:
   group:
-    title: 'Group'
+    title: Group
     description: 'Use card groups to render cards as a single, attached element with equal width and height columns.'
   grid:
-    title: 'Grid'
+    title: Grid
     description: 'Use the Bootstrap grid system and its classes to control how many grid columns (wrapped around your cards) are shown per row.'
   masonry:
-    title: 'Masonry'
+    title: Masonry
     description: 'It works by placing elements in optimal position based on available vertical space.'
 props:
   type: object
@@ -63,7 +63,9 @@ props:
             type: [array, 'null']
             description: 'List of badges for the card.'
             items:
-              type: [string, object]
+              type:
+                - string
+                - object
               properties:
                 label:
                   type: [string, array, object, 'null']
@@ -84,10 +86,10 @@ props:
                 icon_path:
                   type: [string, 'null']
                 attributes:
-                  type: [object, string, 'null']  # attributes
+                  type: [object, string, 'null']
           attributes:
             title: Attributes
-            type: [object, string, 'null']  # attributes
+            type: [object, string, 'null']
     grid_columns:
       title: 'Grid columns'
       type: [string, integer, 'null']
@@ -101,7 +103,6 @@ props:
         1: '1 (default)'
         2: '2'
         3: '3'
-        # Value NULL becomes '' when used as array key.
         '': Default
     responsiveness:
       title: Responsiveness
@@ -120,7 +121,6 @@ props:
         lg: lg
         xl: xl
         xxl: xxl
-        # Value NULL becomes '' when used as array key.
         '': Default
     responsive_columns:
       title: 'Responsive columns'
@@ -133,7 +133,6 @@ props:
       'meta:enum':
         2: '2'
         3: '3'
-        # Value NULL becomes '' when used as array key.
         '': Default
     gutter:
       title: Gutter
@@ -154,7 +153,6 @@ props:
         3: '3'
         4: '4'
         5: '5'
-        # Value NULL becomes '' when used as array key.
         '': Default
     equal_height:
       title: 'Equal height'

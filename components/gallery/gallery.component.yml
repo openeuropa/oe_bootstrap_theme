@@ -45,7 +45,6 @@ props:
             info: Info
             light: Light
             dark: Dark
-            # Value NULL becomes '' when used as array key.
             '': Default
         id:
           type: [string, 'null']
@@ -63,7 +62,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, string, 'null']  # attributes
+              type: [object, string, 'null']
         icon_position:
           type: [string, 'null']
           enum:
@@ -79,10 +78,10 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     title_attributes:
       title: 'Title attributes'
-      type: [object, string, 'null']  # attributes
+      type: [object, string, 'null']
     counter:
       title: Counter
       type: [string, 'null']
@@ -167,7 +166,6 @@ props:
                   info: Info
                   light: Light
                   dark: Dark
-                  # Value NULL becomes '' when used as array key.
                   '': Default
               id:
                 type: [string, 'null']
@@ -187,7 +185,7 @@ props:
                   transformation:
                     type: [string, 'null']
                   attributes:
-                    type: [object, string, 'null']  # attributes
+                    type: [object, string, 'null']
               icon_position:
                 type: [string, 'null']
                 enum:
@@ -203,7 +201,7 @@ props:
               remove_icon_spacers:
                 type: [boolean, 'null']
               attributes:
-                type: [object, string, 'null']  # attributes
+                type: [object, string, 'null']
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

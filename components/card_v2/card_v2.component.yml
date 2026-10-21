@@ -2,10 +2,10 @@ name: 'Card V2'
 description: 'Bootstrap 5 card component in its second iteration. Every zone is exposed as a render prop so plain markup, views, or other components can be placed inside.'
 variants:
   default:
-    title: 'Default'
+    title: Default
     description: '16:9 media on top, content below. Ideal for news, search results, dashboards.'
   horizontal:
-    title: 'Horizontal'
+    title: Horizontal
     description: '1:1 media left, content right – compact lists, sidebars.'
 props:
   type: object
@@ -25,7 +25,6 @@ props:
         section: '<section>'
         aside: '<aside>'
         div: '<div>'
-        # Value NULL becomes '' when used as array key.
         '': Default
     title:
       title: Title
@@ -52,13 +51,13 @@ props:
       type: Drupal\Core\Template\Attribute
     media_attributes:
       title: 'Media attributes'
-      type: [object, string, 'null']  # attributes
+      type: [object, string, 'null']
     content_attributes:
       title: 'Body attributes'
-      type: [object, string, 'null']  # attributes
+      type: [object, string, 'null']
     header_attributes:
       title: 'Header attributes'
-      type: [object, string, 'null']  # attributes
+      type: [object, string, 'null']
     footer_attributes:
       title: 'Footer attributes'
-      type: [object, string, 'null']  # attributes
+      type: [object, string, 'null']

@@ -46,7 +46,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, string, 'null']  # attributes
+              type: [object, string, 'null']
         icon_position:
           type: [string, 'null']
           enum:
@@ -62,7 +62,7 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     items:
       title: 'List items'
       type: [array, 'null']
@@ -71,12 +71,19 @@ props:
         type: object
         properties:
           term:
-            title: 'Terms'
+            title: Terms
             description: 'A string or an array of term objects.'
             anyOf:
-              - type: 'null'
-              - type: [string, 'null']
-              - type: [array, 'null']
+              -
+                type: 'null'
+              -
+                type:
+                  - string
+                  - 'null'
+              -
+                type:
+                  - array
+                  - 'null'
                 items:
                   type: object
                   properties:
@@ -85,7 +92,7 @@ props:
                       type: [string, array, object, 'null']
                       description: 'Label text or render array.'
                     icon:
-                      title: 'Icon'
+                      title: Icon
                       type: [string, object, 'null']
                       properties:
                         name:
@@ -95,12 +102,19 @@ props:
                         path:
                           type: [string, 'null']
           definition:
-            title: 'Definition'
+            title: Definition
             description: 'A string or an array of definition objects.'
             anyOf:
-              - type: 'null'
-              - type: [string, 'null']
-              - type: [array, 'null']
+              -
+                type: 'null'
+              -
+                type:
+                  - string
+                  - 'null'
+              -
+                type:
+                  - array
+                  - 'null'
                 items:
                   type: object
                   properties:
@@ -108,8 +122,8 @@ props:
                       type: [string, array, object, 'null']
     icon_path:
       type: [string, 'null']
-      title: "Icons path"
-      description: "Path to icons"
+      title: 'Icons path'
+      description: 'Path to icons'
     orientation:
       title: Orientation
       type: [string, 'null']
@@ -121,7 +135,6 @@ props:
       'meta:enum':
         default: Default
         horizontal: Horizontal
-        # Value NULL becomes '' when used as array key.
         '': Default
     bordered:
       title: Bordered
@@ -133,7 +146,7 @@ props:
       description: 'Classes for the columns.'
     title_attributes:
       title: 'Title attributes'
-      type: [object, string, 'null']  # attributes
+      type: [object, string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

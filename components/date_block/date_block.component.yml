@@ -6,8 +6,8 @@ props:
     - date
   properties:
     date:
-      title: 'Date'
-      type: DateTimeInterface  # DateTime, required.
+      title: Date
+      type: DateTimeInterface
       description: 'A DateTime object. This is required.'
     attributes:
       title: Attributes

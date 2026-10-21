@@ -65,7 +65,7 @@ props:
                 - flip-vertical
                 - null
             attributes:
-              type: [object, string, 'null']  # attributes
+              type: [object, string, 'null']
         icon_position:
           type: [string, 'null']
           enum:
@@ -81,10 +81,10 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     title_attributes:
       title: 'Title attributes'
-      type: [object, string, 'null']  # attributes
+      type: [object, string, 'null']
     background:
       title: Background
       type: [string, 'null']
@@ -97,7 +97,6 @@ props:
       'meta:enum':
         gray: 'Gray (default)'
         transparent: Transparent
-        # Value NULL becomes '' when used as array key.
         '': Default
     orientation:
       title: Orientation
@@ -111,7 +110,6 @@ props:
       'meta:enum':
         vertical: 'Vertical (default)'
         horizontal: Horizontal
-        # Value NULL becomes '' when used as array key.
         '': Default
     links:
       title: Links
@@ -169,7 +167,7 @@ props:
                   - flip-vertical
                   - null
               attributes:
-                type: [object, string, 'null']  # attributes
+                type: [object, string, 'null']
           icon_position:
             type: [string, 'null']
             enum:
@@ -185,7 +183,7 @@ props:
           remove_icon_spacers:
             type: [boolean, 'null']
           attributes:
-            type: [object, string, 'null']  # attributes
+            type: [object, string, 'null']
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

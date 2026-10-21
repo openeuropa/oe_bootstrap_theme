@@ -1,4 +1,4 @@
-name: 'Blockquote'
+name: Blockquote
 description: 'For quoting blocks of content from another source within your document.'
 props:
   type: object
@@ -36,7 +36,6 @@ props:
         left: 'left (default)'
         center: center
         end: end
-        # Value NULL becomes '' when used as array key.
         '': Default
     attributes:
       title: Attributes

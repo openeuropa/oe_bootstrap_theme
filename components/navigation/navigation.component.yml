@@ -2,16 +2,16 @@ name: Navigation
 description: 'Renders links, buttons, dropdowns, and nested navigation in several Bootstrap navigation styles.'
 variants:
   default:
-    title: 'Default'
+    title: Default
     description: 'Default navigation style.'
   tabs:
-    title: 'Tabs'
+    title: Tabs
     description: 'Shows the items styled as tabs.'
   pills:
-    title: 'Pills'
+    title: Pills
     description: 'Shows the items styled as pills.'
   navbar:
-    title: 'Navbar'
+    title: Navbar
     description: 'When the navigation is part of a navbar element.'
 props:
   type: object
@@ -27,7 +27,6 @@ props:
       'meta:enum':
         horizontal: Horizontal
         vertical: Vertical
-        # Value NULL becomes '' when used as array key.
         '': Default
     navigation_id:
       title: 'Navigation ID'
@@ -50,7 +49,6 @@ props:
         start: Start
         center: Center
         end: End
-        # Value NULL becomes '' when used as array key.
         '': Default
     tabs_content:
       title: 'Tab content'
@@ -89,9 +87,12 @@ props:
             type: [string, 'null']
           icon:
             anyOf:
-              - type: 'null'
-              - type: string
-              - type: object
+              -
+                type: 'null'
+              -
+                type: string
+              -
+                type: object
                 properties:
                   name:
                     type: [string, 'null']
@@ -100,7 +101,7 @@ props:
                   transformation:
                     type: [string, 'null']
                   attributes:
-                    type: [object, string, 'null']  # attributes
+                    type: [object, string, 'null']
           icon_position:
             type: [string, 'null']
             enum:
@@ -129,7 +130,7 @@ props:
               assistive_text:
                 type: [string, 'null']
               attributes:
-                type: [object, string, 'null']  # attributes
+                type: [object, string, 'null']
           show_spinner:
             type: [boolean, 'null']
           content:
@@ -167,9 +168,12 @@ props:
                 type: [boolean, 'null']
               icon:
                 anyOf:
-                  - type: 'null'
-                  - type: string
-                  - type: object
+                  -
+                    type: 'null'
+                  -
+                    type: string
+                  -
+                    type: object
                     properties:
                       name:
                         type: [string, 'null']
@@ -178,11 +182,11 @@ props:
                       transformation:
                         type: [string, 'null']
                       attributes:
-                        type: [object, string, 'null']  # attributes
+                        type: [object, string, 'null']
               icon_position:
                 type: [string, 'null']
               attributes:
-                type: [object, string, 'null']  # attributes
+                type: [object, string, 'null']
           items:
             type: [array, 'null']
             description: 'Items displayed in a dropdown navigation item.'
@@ -217,9 +221,12 @@ props:
                   type: [boolean, 'null']
                 icon:
                   anyOf:
-                    - type: 'null'
-                    - type: string
-                    - type: object
+                    -
+                      type: 'null'
+                    -
+                      type: string
+                    -
+                      type: object
                       properties:
                         name:
                           type: [string, 'null']
@@ -228,11 +235,11 @@ props:
                         transformation:
                           type: [string, 'null']
                         attributes:
-                          type: [object, string, 'null']  # attributes
+                          type: [object, string, 'null']
                 icon_position:
                   type: [string, 'null']
                 attributes:
-                  type: [object, string, 'null']  # attributes
+                  type: [object, string, 'null']
           navigation:
             type: [object, 'null']
             description: 'Nested BCL navigation configuration.'
@@ -260,7 +267,7 @@ props:
               alignment:
                 type: [string, 'null']
               attributes:
-                type: [object, string, 'null']  # attributes
+                type: [object, string, 'null']
               items:
                 type: [array, 'null']
                 items:
@@ -280,9 +287,12 @@ props:
                       type: [boolean, 'null']
                     icon:
                       anyOf:
-                        - type: 'null'
-                        - type: string
-                        - type: object
+                        -
+                          type: 'null'
+                        -
+                          type: string
+                        -
+                          type: object
                           properties:
                             name:
                               type: [string, 'null']
@@ -291,13 +301,13 @@ props:
                             transformation:
                               type: [string, 'null']
                             attributes:
-                              type: [object, string, 'null']  # attributes
+                              type: [object, string, 'null']
                     icon_position:
                       type: [string, 'null']
                     attributes:
-                      type: [object, string, 'null']  # attributes
+                      type: [object, string, 'null']
           attributes:
-            type: [object, string, 'null']  # attributes
+            type: [object, string, 'null']
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

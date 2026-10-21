@@ -71,7 +71,7 @@ props:
             - flip-vertical
             - null
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     icon_position:
       title: 'Icon position'
       type: [string, 'null']
@@ -83,7 +83,6 @@ props:
       'meta:enum':
         before: Before
         after: 'After (default)'
-        # Value NULL becomes '' when used as array key.
         '': Default
     icon_display:
       title: 'Icon display'
@@ -96,7 +95,6 @@ props:
       'meta:enum':
         flex: Flex
         inline-flex: 'Inline flex'
-        # Value NULL becomes '' when used as array key.
         '': Default
     remove_icon_spacers:
       title: 'Remove icon spacers'

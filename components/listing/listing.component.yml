@@ -2,9 +2,9 @@ name: Listing
 description: 'Displays cards in default or highlighted one-, two-, or three-column listings.'
 variants:
   default:
-    title: 'Default'
+    title: Default
   highlight:
-    title: 'Highlight'
+    title: Highlight
 props:
   type: object
   properties:
@@ -21,7 +21,6 @@ props:
         1: 'One (default)'
         2: Two
         3: Three
-        # Value NULL becomes '' when used as array key.
         '': Default
     title:
       title: Title
@@ -58,7 +57,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, string, 'null']  # attributes
+              type: [object, string, 'null']
         icon_position:
           type: [string, 'null']
           enum:
@@ -74,10 +73,10 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     title_attributes:
       title: 'Title attributes'
-      type: [object, string, 'null']  # attributes
+      type: [object, string, 'null']
     items:
       title: Items
       type: [array, 'null']
@@ -113,7 +112,7 @@ props:
                   transformation:
                     type: [string, 'null']
                   attributes:
-                    type: [object, string, 'null']  # attributes
+                    type: [object, string, 'null']
               icon_position:
                 type: [string, 'null']
                 enum:
@@ -129,7 +128,7 @@ props:
               remove_icon_spacers:
                 type: [boolean, 'null']
               attributes:
-                type: [object, string, 'null']  # attributes
+                type: [object, string, 'null']
           url:
             type: [object, 'null']
             description: 'Drupal URL object optionally applied to the card title.'
@@ -180,7 +179,7 @@ props:
               icon_path:
                 type: [string, 'null']
               attributes:
-                type: [object, string, 'null']  # attributes
+                type: [object, string, 'null']
           content:
             type: [string, array, object, 'null']
           header:
@@ -190,7 +189,9 @@ props:
           badges:
             type: [array, 'null']
             items:
-              type: [string, object]
+              type:
+                - string
+                - object
               properties:
                 label:
                   type: [string, array, object, 'null']
@@ -211,7 +212,7 @@ props:
                 icon_path:
                   type: [string, 'null']
                 attributes:
-                  type: [object, string, 'null']  # attributes
+                  type: [object, string, 'null']
     link:
       title: Link
       type: [object, 'null']
@@ -237,7 +238,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, string, 'null']  # attributes
+              type: [object, string, 'null']
         icon_position:
           type: [string, 'null']
           enum:
@@ -253,7 +254,7 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     alignment:
       title: Alignment
       type: [string, 'null']
@@ -271,7 +272,6 @@ props:
         center: Center
         baseline: Baseline
         stretch: Stretch
-        # Value NULL becomes '' when used as array key.
         '': Default
     image_size:
       title: 'Image size'
@@ -286,7 +286,6 @@ props:
         small: Small
         large: Large
         extra-large: 'Extra large'
-        # Value NULL becomes '' when used as array key.
         '': Default
     icon_path:
       title: 'Icons path'

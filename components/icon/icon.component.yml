@@ -22,15 +22,14 @@ props:
         - fluid
         - null
       'meta:enum':
-        2xs: '2XS'
+        2xs: 2XS
         xs: XS
         s: 'S (default)'
         m: M
         l: L
         xl: XL
-        2xl: '2XL'
+        2xl: 2XL
         fluid: Fluid
-        # Value NULL becomes '' when used as array key.
         '': Default
     transformation:
       title: Transformation
@@ -49,7 +48,6 @@ props:
         rotate-270: 'Rotate 270 degrees'
         flip-horizontal: 'Flip horizontally'
         flip-vertical: 'Flip vertically'
-        # Value NULL becomes '' when used as array key.
         '': Default
     icon_path:
       title: 'Icon path'

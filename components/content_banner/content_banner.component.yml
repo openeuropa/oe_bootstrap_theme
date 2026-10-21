@@ -15,7 +15,6 @@ props:
       'meta:enum':
         white: 'White (default)'
         gray: Gray
-        # Value NULL becomes '' when used as array key.
         '': Default
     image:
       title: Image
@@ -48,7 +47,6 @@ props:
         md: Medium
         lg: 'Large (default)'
         xl: 'Extra large'
-        # Value NULL becomes '' when used as array key.
         '': Default
     title:
       title: Title
@@ -66,7 +64,7 @@ props:
         label:
           type: [string, array, object, 'null']
         path:
-          type: [object, string, 'null']  # Url|string
+          type: [object, string, 'null']
         variant:
           type: [string, 'null']
         id:
@@ -89,10 +87,10 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     title_attributes:
       title: 'Title attributes'
-      type: [object, string, 'null']  # attributes
+      type: [object, string, 'null']
     action_bar:
       title: 'Action bar'
       type: [string, array, object, 'null']
@@ -128,7 +126,10 @@ props:
       type: [array, 'null']
       description: 'Miscellaneous information such as date or author.'
       items:
-        type: [string, array, object]
+        type:
+          - string
+          - array
+          - object
     badges:
       title: Badges
       type: [array, 'null']
@@ -155,7 +156,7 @@ props:
           icon_path:
             type: [string, 'null']
           attributes:
-            type: [object, string, 'null']  # attributes
+            type: [object, string, 'null']
     links:
       title: Links
       type: [array, 'null']
@@ -166,7 +167,7 @@ props:
           label:
             type: [string, array, object, 'null']
           path:
-            type: [object, string, 'null']  # Url|string
+            type: [object, string, 'null']
           variant:
             type: [string, 'null']
           id:
@@ -189,7 +190,7 @@ props:
           remove_icon_spacers:
             type: [boolean, 'null']
           attributes:
-            type: [object, string, 'null']  # attributes
+            type: [object, string, 'null']
     date:
       title: 'Date block'
       type: [object, 'null']
@@ -212,7 +213,7 @@ props:
         icon_path:
           type: [string, 'null']
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

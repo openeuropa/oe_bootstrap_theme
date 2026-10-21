@@ -2,10 +2,10 @@ name: Card
 description: 'A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options.'
 variants:
   default:
-    title: 'Default'
+    title: Default
     description: 'Standard bootstrap card.'
   search:
-    title: 'Search'
+    title: Search
     description: 'Card with special behaviour for print search results items.'
 props:
   type: object
@@ -21,7 +21,6 @@ props:
       'meta:enum':
         vertical: 'Vertical (default)'
         horizontal: Horizontal
-        # Value NULL becomes '' when used as array key.
         '': Default
     title:
       title: Title
@@ -39,7 +38,7 @@ props:
         label:
           type: [string, array, object, 'null']
         path:
-          type: [object, string, 'null']  # Url|string
+          type: [object, string, 'null']
         variant:
           type: [string, 'null']
         id:
@@ -62,7 +61,7 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     subtitle:
       title: Subtitle
       type: [string, array, object, 'null']
@@ -112,13 +111,16 @@ props:
         icon_path:
           type: [string, 'null']
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     meta:
       title: 'Meta items'
       type: [array, 'null']
       description: 'Date or other meta information.'
       items:
-        type: [string, array, object]
+        type:
+          - string
+          - array
+          - object
     content:
       title: Content
       type: [string, array, object, 'null']
@@ -136,7 +138,9 @@ props:
       type: [array, 'null']
       description: 'List of badges for the card.'
       items:
-        type: [string, object]
+        type:
+          - string
+          - object
         properties:
           label:
             type: [string, array, object, 'null']
@@ -157,10 +161,10 @@ props:
           icon_path:
             type: [string, 'null']
           attributes:
-            type: [object, string, 'null']  # attributes
+            type: [object, string, 'null']
     title_attributes:
       title: 'Title attributes'
-      type: [object, string, 'null']  # attributes
+      type: [object, string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

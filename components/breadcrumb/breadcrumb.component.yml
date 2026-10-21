@@ -1,4 +1,4 @@
-name: 'Breadcrumb'
+name: Breadcrumb
 description: 'Indicate the current page location within a navigational hierarchy that automatically adds separators via CSS.'
 props:
   type: object
@@ -24,7 +24,7 @@ props:
             description: 'Optional link ID.'
           attributes:
             title: Attributes
-            type: [object, string, 'null']  # attributes
+            type: [object, string, 'null']
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

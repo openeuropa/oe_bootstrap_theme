@@ -36,9 +36,12 @@ props:
           type: [boolean, 'null']
         icon:
           anyOf:
-            - type: 'null'
-            - type: string
-            - type: object
+            -
+              type: 'null'
+            -
+              type: string
+            -
+              type: object
               properties:
                 name:
                   type: [string, 'null']
@@ -47,11 +50,11 @@ props:
                 transformation:
                   type: [string, 'null']
                 attributes:
-                  type: [object, string, 'null']  # attributes
+                  type: [object, string, 'null']
         icon_position:
           type: [string, 'null']
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     link:
       title: 'Link trigger'
       type: [boolean, 'null']
@@ -69,7 +72,6 @@ props:
         dropup: Up
         dropend: End
         dropstart: Start
-        # Value NULL becomes '' when used as array key.
         '': Default
     alignment:
       title: Alignment
@@ -102,7 +104,6 @@ props:
         dropdown-menu-lg-start: 'Start from lg'
         dropdown-menu-xl-start: 'Start from xl'
         dropdown-menu-xxl-start: 'Start from xxl'
-        # Value NULL becomes '' when used as array key.
         '': Default
     dark_mode:
       title: 'Dark mode'
@@ -151,9 +152,12 @@ props:
             type: [boolean, 'null']
           icon:
             anyOf:
-              - type: 'null'
-              - type: string
-              - type: object
+              -
+                type: 'null'
+              -
+                type: string
+              -
+                type: object
                 properties:
                   name:
                     type: [string, 'null']
@@ -162,11 +166,11 @@ props:
                   transformation:
                     type: [string, 'null']
                   attributes:
-                    type: [object, string, 'null']  # attributes
+                    type: [object, string, 'null']
           icon_position:
             type: [string, 'null']
           attributes:
-            type: [object, string, 'null']  # attributes
+            type: [object, string, 'null']
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

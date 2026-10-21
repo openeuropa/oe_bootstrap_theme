@@ -2,9 +2,9 @@ name: Offcanvas
 description: 'Displays content in a responsive panel with an optional button to show and hide it.'
 variants:
   default:
-    title: 'Default'
+    title: Default
   search:
-    title: 'Search'
+    title: Search
 props:
   type: object
   properties:
@@ -36,9 +36,12 @@ props:
           type: [boolean, 'null']
         icon:
           anyOf:
-            - type: 'null'
-            - type: string
-            - type: object
+            -
+              type: 'null'
+            -
+              type: string
+            -
+              type: object
               properties:
                 name:
                   type: [string, 'null']
@@ -47,7 +50,7 @@ props:
                 transformation:
                   type: [string, 'null']
                 attributes:
-                  type: [object, string, 'null']  # attributes
+                  type: [object, string, 'null']
         icon_position:
           type: [string, 'null']
         icon_display:
@@ -55,10 +58,10 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     title_attributes:
       title: 'Title attributes'
-      type: [object, string, 'null']  # attributes
+      type: [object, string, 'null']
     placement:
       title: Placement
       type: [string, 'null']
@@ -74,7 +77,6 @@ props:
         end: End
         top: Top
         bottom: Bottom
-        # Value NULL becomes '' when used as array key.
         '': Default
     body:
       title: Body
@@ -127,7 +129,6 @@ props:
         lg: 'Large (default)'
         xl: 'Extra large'
         xxl: 'Extra extra large'
-        # Value NULL becomes '' when used as array key.
         '': Default
     toggle:
       title: 'Toggle button'
@@ -154,9 +155,12 @@ props:
           type: [string, 'null']
         icon:
           anyOf:
-            - type: 'null'
-            - type: string
-            - type: object
+            -
+              type: 'null'
+            -
+              type: string
+            -
+              type: object
               properties:
                 name:
                   type: [string, 'null']
@@ -165,7 +169,7 @@ props:
                 transformation:
                   type: [string, 'null']
                 attributes:
-                  type: [object, string, 'null']  # attributes
+                  type: [object, string, 'null']
         icon_position:
           type: [string, 'null']
         icon_spacing:
@@ -175,7 +179,7 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, string, 'null']  # attributes
+          type: [object, string, 'null']
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute
