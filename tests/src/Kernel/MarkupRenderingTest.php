@@ -6,6 +6,7 @@ namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
 use Drupal\Component\Serialization\Yaml;
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
@@ -14,6 +15,7 @@ use Drupal\Tests\oe_bootstrap_theme\Helper\HtmlSnapshotNormalizer;
 use Drupal\Tests\oe_bootstrap_theme\Helper\HtmlSnapshotStabilizer;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
 use Drupal\Tests\oe_bootstrap_theme\Traits\BackwardCompatibilityTrait;
+use Drupal\ui_patterns\UiPatternsManagerInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -243,6 +245,7 @@ class MarkupRenderingTest extends KernelTestBase {
     return [
       'patterns, objects' => ['patterns'],
       'patterns, raw values' => ['patterns', FALSE],
+      'patterns, fill nulls' => ['patterns', 'fill_nulls' => TRUE],
       'other' => ['other'],
     ];
   }
@@ -256,10 +259,13 @@ class MarkupRenderingTest extends KernelTestBase {
    * @param bool $use_objects
    *   TRUE to use objects like Attribute, ImageValueObject etc.
    *   FALSE to use string or array representations instead.
+   * @param bool $fill_nulls
+   *   TRUE to fill all remaining optional parameters with NULL.
+   *   FALSE to leave them empty (not passing them).
    *
    * @dataProvider allCasesProvider
    */
-  public function testAllCases(string $mode, bool $use_objects = TRUE): void {
+  public function testAllCases(string $mode, bool $use_objects = TRUE, bool $fill_nulls = FALSE): void {
     $cases = static::markupRenderingProvider();
     $n = count($cases);
     foreach (array_keys($cases) as $i => $case_name) {
@@ -280,6 +286,10 @@ class MarkupRenderingTest extends KernelTestBase {
         // Skip non-pattern case when not in 'other' mode.
         if ($mode === 'other' xor ($render['#type'] ?? NULL) !== 'pattern') {
           continue;
+        }
+
+        if ($fill_nulls) {
+          $render = $this->fillNulls($render);
         }
 
         Html::resetSeenIds();
@@ -304,6 +314,33 @@ class MarkupRenderingTest extends KernelTestBase {
         }
       }
     }
+  }
+
+  /**
+   * Populates optional pattern parameters with NULL.
+   *
+   * @param array $render
+   *   A render element which may contain pattern elements.
+   *
+   * @return array
+   *   A processed render element.
+   */
+  protected function fillNulls(array $render): array {
+    $fn_fill_nulls = fn (array $array) => array_map(fn () => NULL, $array);
+    if (($render['#type'] ?? NULL) === 'pattern') {
+      $manager = $this->container->get('plugin.manager.ui_patterns');
+      assert($manager instanceof UiPatternsManagerInterface);
+      $pattern_definition = $manager->getDefinition($render['#id']);
+      assert($pattern_definition !== NULL);
+      $render['#fields'] ??= [];
+      $render['#settings'] ??= [];
+      $render['#fields'] += $fn_fill_nulls($pattern_definition->getFields());
+      $render['#settings'] += $fn_fill_nulls($pattern_definition['settings'] ?? []);
+    }
+    foreach (Element::children($render) as $key) {
+      $render[$key] = $this->fillNulls($render[$key]);
+    }
+    return $render;
   }
 
   /**
