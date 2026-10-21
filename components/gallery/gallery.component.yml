@@ -13,7 +13,6 @@ props:
       'meta:enum':
         original: 'Original aspect ratio (default)'
         cover: Cover
-      default: original
     title:
       title: Title
       description: 'Title of the gallery.'

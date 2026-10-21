@@ -23,7 +23,6 @@ props:
         article: '<article>'
         section: '<section>'
         div: '<div>'
-      default: article
     media_attributes:
       title: 'Media attributes'
       description: 'Alt text, loading="lazy", ratio utilities like ratio-16x9, or placeholder-glow.'
