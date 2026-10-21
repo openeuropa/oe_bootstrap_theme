@@ -1,0 +1,18 @@
+services:
+  _defaults:
+    autowire: true
+
+  Drupal\ui_patterns_to_sdc\ComponentDiscovery: ~
+  ui_patterns_to_sdc.discovery: '@Drupal\ui_patterns_to_sdc\ComponentDiscovery'
+
+  Drupal\ui_patterns_to_sdc\RenderableConverter: ~
+  ui_patterns_to_sdc.renderable_converter: '@Drupal\ui_patterns_to_sdc\RenderableConverter'
+
+  Drupal\ui_patterns_to_sdc\ComponentConverter: ~
+  ui_patterns_to_sdc.component_converter: '@Drupal\ui_patterns_to_sdc\ComponentConverter'
+
+  Drupal\ui_patterns_to_sdc\ComponentWriter: ~
+  ui_patterns_to_sdc.component_writer: '@Drupal\ui_patterns_to_sdc\ComponentWriter'
+
+  Drupal\ui_patterns_to_sdc\StoryExtractor: ~
+  ui_patterns_to_sdc.story_extractor: '@Drupal\ui_patterns_to_sdc\StoryExtractor'
