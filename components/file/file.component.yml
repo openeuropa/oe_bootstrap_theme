@@ -20,4 +20,4 @@ props:
     translations:
       title: Translations
       description: 'A list of FileValueObject instances pointing to translations of the file. Optional.'
-      type: array
+      type: [array, 'null']

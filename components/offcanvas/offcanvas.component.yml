@@ -18,7 +18,7 @@ props:
     placement:
       title: Offcanvas
       description: 'Select the placement of the offcanvas:'
-      type: string
+      type: [string, 'null']
       enum:
         - start
         - end
@@ -27,12 +27,12 @@ props:
     body_scroll:
       title: Scroll
       description: 'If true, enable body scrolling when offcanvas is displayed. Defaults to false.'
-      type: boolean
+      type: [boolean, 'null']
     backdrop:
       title: Backdrop
       description: 'If true, enable backdrop behind offcanvas. Defaults to false.'
-      type: boolean
+      type: [boolean, 'null']
     toggle:
       title: 'Toggle button'
       description: 'An optional button pattern definition that will allow to show/hide the offcanvas.'
-      type: array
+      type: [array, 'null']

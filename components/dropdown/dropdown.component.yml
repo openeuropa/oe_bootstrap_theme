@@ -6,12 +6,12 @@ props:
     dark_mode:
       title: 'Dark mode'
       description: 'When enabled, sets dark mode. Defaults to false.'
-      type: boolean
+      type: [boolean, 'null']
     button_label:
       title: 'Dropdown button label'
       description: 'The label to show in the toggle button.'
-      type: string
+      type: [string, 'null']
     items:
       title: 'Dropdown items'
       description: 'An array of dropdown items.'
-      type: array
+      type: [array, 'null']

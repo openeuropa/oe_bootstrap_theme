@@ -38,7 +38,7 @@ props:
     orientation:
       title: Orientation
       description: 'Can be set to horizontal or vertical. Defaults to vertical.'
-      type: string
+      type: [string, 'null']
     image:
       title: Image
       description: 'Image for the card. Optional.'
@@ -46,12 +46,12 @@ props:
     date:
       title: 'Date block'
       description: 'If set, presents a date block that uses the same parameters as the bcl date-block pattern. Optional.'
-      type: array
+      type: [array, 'null']
     meta:
       title: 'Meta items'
       description: 'Date or other meta information.'
-      type: array
+      type: [array, 'null']
     badges:
       title: Badges
       description: 'List of badges for the card.'
-      type: array
+      type: [array, 'null']

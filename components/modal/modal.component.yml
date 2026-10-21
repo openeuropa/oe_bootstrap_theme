@@ -16,7 +16,7 @@ props:
     size:
       title: 'Modal size'
       description: 'The size that the modal will have:'
-      type: string
+      type: [string, 'null']
       enum:
         - sm
         - lg
@@ -25,8 +25,8 @@ props:
     show_close_button:
       title: 'Show close button'
       description: 'Sets the visibility of the close button at the header. Defaults to false.'
-      type: boolean
+      type: [boolean, 'null']
     toggle:
       title: 'Toggle button'
       description: 'An optional button pattern definition that will allow to show/hide the modal.'
-      type: array
+      type: [array, 'null']

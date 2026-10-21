@@ -18,12 +18,12 @@ props:
     columns:
       title: Columns
       description: 'Number of columns, 1, 2 or 3. Defaults to 1.'
-      type: number
+      type: [number, 'null']
     link:
       title: Link
       description: 'Call to action link with icon. A link pattern definition must be passed.'
-      type: array
+      type: [array, 'null']
     items:
       title: Items
       description: 'List of card items.'
-      type: array
+      type: [array, 'null']

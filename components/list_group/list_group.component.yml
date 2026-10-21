@@ -6,7 +6,7 @@ props:
     type:
       title: Type
       description: 'The list of possible list types is:'
-      type: string
+      type: [string, 'null']
       enum:
         - unordered
         - ordered
@@ -18,8 +18,8 @@ props:
     flush:
       title: Flush
       description: 'When enabled, adds flush to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards). Defaults to false.'
-      type: boolean
+      type: [boolean, 'null']
     items:
       title: 'List group items'
       description: 'Array of objects: List item object or Button and Link component object if type is actionable.'
-      type: array
+      type: [array, 'null']

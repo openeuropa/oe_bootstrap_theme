@@ -16,7 +16,7 @@ props:
     grid_columns:
       title: 'Grid columns'
       description: 'Number of grid columns:'
-      type: integer
+      type: [integer, 'null']
       enum:
         - 1
         - 2
@@ -28,7 +28,7 @@ props:
     responsiveness:
       title: Responsiveness
       description: 'Pick a maximum breakpoint with which to have a responsive layout up to by using:'
-      type: string
+      type: [string, 'null']
       enum:
         - sm
         - md
@@ -38,14 +38,14 @@ props:
     responsive_columns:
       title: 'Responsive columns'
       description: 'Number of responsive columns:'
-      type: integer
+      type: [integer, 'null']
       enum:
         - 2
         - 3
     gutter:
       title: Gutter
       description: 'Select the gutter between cards:'
-      type: integer
+      type: [integer, 'null']
       enum:
         - 0
         - 1
@@ -56,8 +56,8 @@ props:
     equal_height:
       title: 'Equal height'
       description: 'If true, all cards will have the same height. Defaults to false.'
-      type: boolean
+      type: [boolean, 'null']
     items:
       title: 'Card items'
       description: 'An array of card pattern items.'
-      type: array
+      type: [array, 'null']

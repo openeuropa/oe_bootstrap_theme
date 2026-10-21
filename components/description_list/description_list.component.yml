@@ -12,7 +12,7 @@ props:
   properties:
     orientation:
       title: Orientation
-      type: string
+      type: [string, 'null']
       enum:
         - default
         - horizontal
@@ -22,4 +22,4 @@ props:
     items:
       title: 'List items'
       description: 'Each item is composed by one or more terms and one or more definitions. Each term entry can have an icon.'
-      type: array
+      type: [array, 'null']

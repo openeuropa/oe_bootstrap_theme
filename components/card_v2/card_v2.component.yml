@@ -30,7 +30,7 @@ props:
     tag:
       title: 'HTML wrapper tag'
       description: 'Semantic element for the outer wrapper. Defaults to <article>.'
-      type: string
+      type: [string, 'null']
       enum:
         - article
         - section

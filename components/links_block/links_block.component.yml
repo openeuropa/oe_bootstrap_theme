@@ -13,7 +13,7 @@ props:
     background:
       title: Background
       description: 'Determines the background of the block:'
-      type: string
+      type: [string, 'null']
       enum:
         - gray
         - transparent
@@ -23,7 +23,7 @@ props:
     orientation:
       title: Orientation
       description: 'Determines if the list of links is shown vertically or horizontally:'
-      type: string
+      type: [string, 'null']
       enum:
         - vertical
         - horizontal
@@ -33,4 +33,4 @@ props:
     links:
       title: Links
       description: 'Array of links.'
-      type: array
+      type: [array, 'null']

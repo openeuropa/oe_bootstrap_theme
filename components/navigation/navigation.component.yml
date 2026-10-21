@@ -19,8 +19,8 @@ props:
     orientation:
       title: Orientation
       description: 'Can be set to horizontal or vertical. Defaults to horizontal.'
-      type: string
+      type: [string, 'null']
     items:
       title: 'Navigation items'
       description: 'Array of navigation items'
-      type: array
+      type: [array, 'null']

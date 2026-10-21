@@ -16,7 +16,7 @@ props:
     background:
       title: 'Badge background'
       description: 'Set the background color of the badge. Defaults to "primary".'
-      type: string
+      type: [string, 'null']
       enum:
         - primary
         - secondary
@@ -40,12 +40,12 @@ props:
     rounded_pill:
       title: 'Pill badge.'
       description: 'Make the badge a rounded pill. Defaults to false.'
-      type: boolean
+      type: [boolean, 'null']
     dismissible:
       title: 'Dismissible badge. Optional'
       description: 'Add a close icon at the end of the badge. Defaults to false.'
-      type: boolean
+      type: [boolean, 'null']
     outline:
       title: Outline.
       description: 'Use a border instead of a background. Defaults to false.'
-      type: boolean
+      type: [boolean, 'null']

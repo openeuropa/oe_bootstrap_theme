@@ -26,8 +26,8 @@ props:
     heading_tag:
       title: 'Heading tag'
       description: 'Tag of the heading. Default to h2.'
-      type: string
+      type: [string, 'null']
     tag:
       title: 'Wrapper tag'
       description: 'Tag of the wrapper. Defaults to section.'
-      type: string
+      type: [string, 'null']

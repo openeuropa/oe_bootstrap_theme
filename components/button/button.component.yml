@@ -32,11 +32,11 @@ props:
     outline:
       title: 'Button outline'
       description: 'Lighter button style removing background color. Defaults to false.'
-      type: boolean
+      type: [boolean, 'null']
     size:
       title: 'Button size'
       description: 'Size of the button:'
-      type: string
+      type: [string, 'null']
       enum:
         - sm
         - md
@@ -48,7 +48,7 @@ props:
     type:
       title: 'Button type'
       description: 'Sets the button behavior type:'
-      type: string
+      type: [string, 'null']
       enum:
         - button
         - submit
@@ -60,11 +60,11 @@ props:
     disabled:
       title: Disabled
       description: 'If true, the button will not be enabled when clicking. Defaults to false.'
-      type: boolean
+      type: [boolean, 'null']
     icon_position:
       title: 'Icon position'
       description: 'If button has an icon, it can be placed before or after text:'
-      type: string
+      type: [string, 'null']
       enum:
         - before
         - after

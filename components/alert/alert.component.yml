@@ -32,12 +32,12 @@ props:
     dismissible:
       title: Dismissible
       description: 'Add close button to dismiss the alert inline. Defaults to true.'
-      type: boolean
+      type: [boolean, 'null']
     animated_dismiss:
       title: 'Animated dismiss'
       description: 'Add fade animation to the dismissible alert. Defaults to true.'
-      type: boolean
+      type: [boolean, 'null']
     icon:
       title: 'Icon name'
       description: 'Add an icon to the alert. Optional.'
-      type: object
+      type: [object, 'null']

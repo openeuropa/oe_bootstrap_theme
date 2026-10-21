@@ -25,7 +25,7 @@ props:
     background:
       title: Background
       description: 'Set a gray or white background at the content banner. Defaults to white.'
-      type: string
+      type: [string, 'null']
     image:
       title: Image
       description: 'Image of the content.'
@@ -33,12 +33,12 @@ props:
     meta:
       title: Meta
       description: 'Miscellaneous information as date, author, etc.'
-      type: array
+      type: [array, 'null']
     badges:
       title: Badges
       description: 'List of badges.'
-      type: array
+      type: [array, 'null']
     links:
       title: Links
       description: 'List of links.'
-      type: array
+      type: [array, 'null']

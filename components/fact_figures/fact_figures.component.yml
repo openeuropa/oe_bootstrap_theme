@@ -13,7 +13,7 @@ props:
     alignment:
       title: Alignment
       description: 'Align icons, values, and labels. Descriptions remain left-aligned.'
-      type: string
+      type: [string, 'null']
       enum:
         - left
         - center
@@ -23,12 +23,12 @@ props:
     columns:
       title: Columns
       description: 'One, two or three columns layout for responsive. Defaults to 3.'
-      type: number
+      type: [number, 'null']
     items:
       title: Items
       description: 'List of facts, with icon, title, subtitle and content.'
-      type: array
+      type: [array, 'null']
     link:
       title: Link
       description: 'Additional link to be displayed after facts. A link pattern definition must be passed.'
-      type: array
+      type: [array, 'null']

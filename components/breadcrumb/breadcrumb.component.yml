@@ -6,4 +6,4 @@ props:
     items:
       title: Items
       description: 'List with the breadcrumbs items.'
-      type: array
+      type: [array, 'null']

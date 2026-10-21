@@ -22,7 +22,7 @@ props:
     style:
       title: 'Bar style'
       description: 'Set the bar style:'
-      type: string
+      type: [string, 'null']
       enum:
         - primary
         - secondary
@@ -35,12 +35,12 @@ props:
     striped:
       title: Striped
       description: 'Stripped style for the progress bar. Defaults to false.'
-      type: boolean
+      type: [boolean, 'null']
     animated:
       title: Animated
       description: 'Animation on striped bar. Defaults to false.'
-      type: boolean
+      type: [boolean, 'null']
     progress:
       title: Progress
       description: 'The progress value for the bar.'
-      type: number
+      type: [number, 'null']

@@ -13,7 +13,7 @@ props:
     thumbnail_fit:
       title: 'Thumbnail fit'
       description: 'Controls how thumbnails fit their grid cells. Cover fills the available space and may crop images.'
-      type: string
+      type: [string, 'null']
       enum:
         - original
         - cover
@@ -24,4 +24,4 @@ props:
     items:
       title: Items
       description: 'A list of '
-      type: array
+      type: [array, 'null']

@@ -22,7 +22,7 @@ props:
     alignment:
       title: 'Text alignment'
       description: 'Align the quote in the page.'
-      type: string
+      type: [string, 'null']
       enum:
         - left
         - center

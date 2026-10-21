@@ -13,8 +13,8 @@ props:
     dynamic_active:
       title: 'Dynamic Active'
       description: 'Automated behaviour for the active item in mobile.'
-      type: boolean
+      type: [boolean, 'null']
     links:
       title: Links
       description: 'Array of links used in the navigation part.'
-      type: array
+      type: [array, 'null']

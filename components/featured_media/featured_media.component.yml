@@ -35,12 +35,12 @@ props:
     ratio:
       title: Ratio
       description: 'The embedded media aspect ratio. One of 1x1, 4x3, 16x9 or 21x9.'
-      type: string
+      type: [string, 'null']
     link:
       title: Link
       description: 'Call to action link with icon. A link pattern definition must be passed.'
-      type: array
+      type: [array, 'null']
     text_position:
       title: 'Text position'
       description: 'The position of the text when present. Either left or right. Defaults to left.'
-      type: string
+      type: [string, 'null']
