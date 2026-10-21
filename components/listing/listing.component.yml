@@ -27,3 +27,6 @@ props:
       title: Items
       description: 'List of card items.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

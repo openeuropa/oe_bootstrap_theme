@@ -7,3 +7,6 @@ props:
       title: Items
       description: 'List with the breadcrumbs items.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

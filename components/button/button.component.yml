@@ -71,3 +71,6 @@ props:
       'meta:enum':
         before: before
         after: 'after (default)'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

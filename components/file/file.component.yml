@@ -21,3 +21,6 @@ props:
       title: Translations
       description: 'A list of FileValueObject instances pointing to translations of the file. Optional.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

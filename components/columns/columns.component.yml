@@ -16,3 +16,6 @@ props:
       title: Items
       description: 'The items to organize in columns. Accepts any render array.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

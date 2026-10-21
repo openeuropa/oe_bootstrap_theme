@@ -34,3 +34,6 @@ props:
       title: Links
       description: 'Array of links.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

@@ -44,3 +44,6 @@ props:
       title: 'Text position'
       description: 'The position of the text when present. Either left or right. Defaults to left.'
       type: [string, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

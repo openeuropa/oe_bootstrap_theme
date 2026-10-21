@@ -7,3 +7,6 @@ props:
       title: Date
       description: 'A DateTime object.'
       type: DateTimeInterface
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

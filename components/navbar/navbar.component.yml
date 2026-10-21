@@ -25,3 +25,6 @@ props:
       title: Background
       description: 'Adds a background color that depends on the color scheme. Enabled by default.'
       type: [boolean, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

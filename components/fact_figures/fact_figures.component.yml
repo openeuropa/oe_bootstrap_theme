@@ -32,3 +32,6 @@ props:
       title: Link
       description: 'Additional link to be displayed after facts. A link pattern definition must be passed.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

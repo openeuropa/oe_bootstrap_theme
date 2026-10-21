@@ -43,3 +43,6 @@ props:
         xl: xl
         2xl: 2xl
         fluid: fluid
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

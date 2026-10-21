@@ -52,3 +52,6 @@ props:
       title: 'Call to action'
       description: 'Link to print a CTA button. Optional.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

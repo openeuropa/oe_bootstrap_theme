@@ -26,3 +26,6 @@ props:
       title: Items
       description: 'List of timeline items, with id, label, title and content.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

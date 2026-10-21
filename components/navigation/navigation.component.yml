@@ -24,3 +24,6 @@ props:
       title: 'Navigation items'
       description: 'Array of navigation items'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

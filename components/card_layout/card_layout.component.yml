@@ -61,3 +61,6 @@ props:
       title: 'Card items'
       description: 'An array of card pattern items.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

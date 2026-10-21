@@ -31,3 +31,6 @@ props:
         left: 'left (default)'
         center: center
         end: end
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

@@ -23,3 +23,6 @@ props:
       title: 'List items'
       description: 'Each item is composed by one or more terms and one or more definitions. Each term entry can have an icon.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

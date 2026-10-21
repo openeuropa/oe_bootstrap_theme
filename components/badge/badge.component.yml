@@ -49,3 +49,6 @@ props:
       title: Outline.
       description: 'Use a border instead of a background. Defaults to false.'
       type: [boolean, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

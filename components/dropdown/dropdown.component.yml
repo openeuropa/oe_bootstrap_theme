@@ -15,3 +15,6 @@ props:
       title: 'Dropdown items'
       description: 'An array of dropdown items.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

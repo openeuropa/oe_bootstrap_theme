@@ -48,3 +48,6 @@ props:
       title: Icon
       description: 'An icon name or an icon array definition (optional).'
       type: [array, string, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

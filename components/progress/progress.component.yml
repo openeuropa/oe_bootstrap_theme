@@ -44,3 +44,6 @@ props:
       title: Progress
       description: 'The progress value for the bar.'
       type: [number, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

@@ -28,3 +28,6 @@ props:
       title: 'Accordion items'
       description: 'List of accordion items.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

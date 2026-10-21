@@ -25,3 +25,6 @@ props:
       title: Items
       description: 'A list of '
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

@@ -36,3 +36,6 @@ props:
       title: 'Toggle button'
       description: 'An optional button pattern definition that will allow to show/hide the offcanvas.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

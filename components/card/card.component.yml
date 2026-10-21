@@ -55,3 +55,6 @@ props:
       title: Badges
       description: 'List of badges for the card.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

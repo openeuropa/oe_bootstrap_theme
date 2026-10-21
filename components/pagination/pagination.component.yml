@@ -59,3 +59,6 @@ props:
       title: 'Pagination items'
       description: 'List of items with path, label, disabled and active to build the pagination.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

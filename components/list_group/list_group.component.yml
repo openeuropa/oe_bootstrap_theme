@@ -23,3 +23,6 @@ props:
       title: 'List group items'
       description: 'Array of objects: List item object or Button and Link component object if type is actionable.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

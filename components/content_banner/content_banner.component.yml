@@ -42,3 +42,6 @@ props:
       title: Links
       description: 'List of links.'
       type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute
