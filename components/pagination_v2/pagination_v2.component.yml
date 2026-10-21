@@ -11,9 +11,11 @@ props:
       enum:
         - sm
         - lg
+        - null
       'meta:enum':
         sm: Small
         lg: Large
+        '': Default
     alignment:
       title: Alignment
       description: 'Align the pagination on medium screens and above.'
@@ -22,6 +24,7 @@ props:
         - start
         - center
         - end
+        - null
     list_attributes:
       title: 'List attributes'
       description: 'Extra attributes for the list container.'

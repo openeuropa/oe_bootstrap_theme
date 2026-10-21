@@ -16,6 +16,7 @@ props:
         - info
         - light
         - dark
+        - null
     striped:
       title: Striped
       description: 'Stripped style for the progress bar. Defaults to false.'

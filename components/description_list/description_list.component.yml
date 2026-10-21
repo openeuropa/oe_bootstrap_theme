@@ -9,9 +9,11 @@ props:
       enum:
         - default
         - horizontal
+        - null
       'meta:enum':
         default: Default
         horizontal: Horizontal
+        '': Default
     title:
       title: Title
       description: 'Title of the description list.'

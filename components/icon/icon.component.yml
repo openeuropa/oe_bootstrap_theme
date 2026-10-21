@@ -14,6 +14,7 @@ props:
         - envelope
         - eye
         - hand-index
+        - null
       'meta:enum':
         award: Award
         box-arrow-up: Box-arrow-up
@@ -21,6 +22,7 @@ props:
         envelope: Envelope
         eye: Eye
         hand-index: Info
+        '': Default
     size:
       title: 'Size of icon'
       description: 'A list of icon sizes.'
@@ -34,6 +36,7 @@ props:
         - xl
         - 2xl
         - fluid
+        - null
       'meta:enum':
         2xs: 2xs
         xs: Xs
@@ -43,6 +46,7 @@ props:
         xl: Xl
         2xl: 2xl
         fluid: Fluid
+        '': Default
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

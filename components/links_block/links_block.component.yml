@@ -10,9 +10,11 @@ props:
       enum:
         - gray
         - transparent
+        - null
       'meta:enum':
         gray: 'Gray (default)'
         transparent: Transparent
+        '': Default
     orientation:
       title: Orientation
       description: 'Determines if the list of links is shown vertically or horizontally:'
@@ -20,9 +22,11 @@ props:
       enum:
         - vertical
         - horizontal
+        - null
       'meta:enum':
         vertical: 'Vertical (default)'
         horizontal: Horizontal
+        '': Default
     title:
       title: Title
       description: 'Title of the links block.'

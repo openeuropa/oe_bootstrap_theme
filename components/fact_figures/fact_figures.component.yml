@@ -10,9 +10,11 @@ props:
       enum:
         - left
         - center
+        - null
       'meta:enum':
         left: 'Left (default)'
         center: Center
+        '': Default
     title:
       title: Title
       description: 'Title of the facts & figures section.'

@@ -11,10 +11,12 @@ props:
         - left
         - center
         - end
+        - null
       'meta:enum':
         left: 'Left (default)'
         center: Center
         end: End
+        '': Default
     title:
       title: Title
       description: 'Title of the blockquote.'

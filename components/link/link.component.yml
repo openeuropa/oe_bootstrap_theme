@@ -18,9 +18,11 @@ props:
       enum:
         - before
         - after
+        - null
       'meta:enum':
         before: Before
         after: 'After (default)'
+        '': Default
     icon_display:
       title: 'Icon display'
       description: 'Enables flex gap spacing for icon and label. Use inline-flex for inline links.'
@@ -29,6 +31,7 @@ props:
         - ''
         - flex
         - inline-flex
+        - null
       'meta:enum':
         '': 'Default (no flex)'
         flex: Flex

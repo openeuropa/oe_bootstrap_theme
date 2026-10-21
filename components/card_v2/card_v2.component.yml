@@ -20,11 +20,13 @@ props:
         - section
         - div
         - aside
+        - null
       'meta:enum':
         article: '<article>'
         section: '<section>'
         div: '<div>'
         aside: '<aside>'
+        '': Default
     media_attributes:
       title: 'Media attributes'
       description: 'Alt text, loading="lazy", ratio utilities like ratio-16x9, or placeholder-glow.'

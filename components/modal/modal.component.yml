@@ -12,6 +12,7 @@ props:
         - lg
         - xl
         - fullscreen
+        - null
     title:
       title: Title
       description: 'Title of the modal.'

@@ -17,6 +17,7 @@ props:
         - end
         - top
         - bottom
+        - null
     body_scroll:
       title: Scroll
       description: 'If true, enable body scrolling when offcanvas is displayed. Defaults to false.'
