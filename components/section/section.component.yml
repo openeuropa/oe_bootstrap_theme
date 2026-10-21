@@ -14,15 +14,15 @@ props:
     heading_attributes:
       title: 'Heading attributes'
       description: 'Extra attributes for the heading'
-      $ref: 'ui-patterns://attributes'
+      type: Drupal\Core\Template\Attribute
     wrapper_attributes:
       title: 'Wrapper attributes'
       description: 'Extra attributes for the wrapper'
-      $ref: 'ui-patterns://attributes'
+      type: Drupal\Core\Template\Attribute
     attributes:
       title: 'Section attributes'
       description: 'Extra attributes for the section'
-      $ref: 'ui-patterns://attributes'
+      type: Drupal\Core\Template\Attribute
     heading_tag:
       title: 'Heading tag'
       description: 'Tag of the heading. Default to h2.'

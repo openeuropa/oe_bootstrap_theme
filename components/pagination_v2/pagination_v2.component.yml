@@ -59,8 +59,8 @@ props:
     attributes:
       title: 'Pager attributes'
       description: 'Extra attributes for the navigation wrapper.'
-      $ref: 'ui-patterns://attributes'
+      type: Drupal\Core\Template\Attribute
     list_attributes:
       title: 'List attributes'
       description: 'Extra attributes for the list container.'
-      $ref: 'ui-patterns://attributes'
+      type: Drupal\Core\Template\Attribute

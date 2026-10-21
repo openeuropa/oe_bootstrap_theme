@@ -43,20 +43,20 @@ props:
     attributes:
       title: 'Card attributes'
       description: 'Utility classes or data-* attributes for the outer wrapper.'
-      $ref: 'ui-patterns://attributes'
+      type: Drupal\Core\Template\Attribute
     media_attributes:
       title: 'Media attributes'
       description: 'Alt text, loading="lazy", ratio utilities like ratio-16x9, or placeholder-glow.'
-      $ref: 'ui-patterns://attributes'
+      type: Drupal\Core\Template\Attribute
     content_attributes:
       title: 'Body attributes'
       description: 'Padding tweaks (p-4), text alignment (text-center), etc.'
-      $ref: 'ui-patterns://attributes'
+      type: Drupal\Core\Template\Attribute
     header_attributes:
       title: 'Header attributes'
       description: 'Extra attributes for the card header, e.g. .bg-light for contrast.'
-      $ref: 'ui-patterns://attributes'
+      type: Drupal\Core\Template\Attribute
     footer_attributes:
       title: 'Footer attributes'
       description: 'Extra attributes for the card footer, e.g. .border-0 pt-0 for a seamless footer.'
-      $ref: 'ui-patterns://attributes'
+      type: Drupal\Core\Template\Attribute
