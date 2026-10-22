@@ -14,7 +14,7 @@ props:
     image:
       title: Image
       description: 'The image for the image variant.'
-      type: Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface
+      type: [object, 'null']
     ratio:
       title: Ratio
       description: 'The embedded media aspect ratio. One of 1x1, 4x3, 16x9 or 21x9.'

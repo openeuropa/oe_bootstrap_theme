@@ -33,7 +33,7 @@ props:
     image:
       title: Image
       description: 'Image for the card. Optional.'
-      type: Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface
+      type: [object, 'null']
     image_copyright:
       title: 'Image Copyright'
       description: 'Optional copyright text displayed as an overlay.'

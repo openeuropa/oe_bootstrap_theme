@@ -6,7 +6,7 @@ props:
     date:
       title: Date
       description: 'A DateTime object.'
-      type: DateTimeInterface
+      type: [object, 'null']
     attributes:
       title: Attributes
       type: [object, array, string, 'null']

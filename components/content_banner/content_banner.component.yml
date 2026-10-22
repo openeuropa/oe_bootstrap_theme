@@ -10,7 +10,7 @@ props:
     image:
       title: Image
       description: 'Image of the content.'
-      type: Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface
+      type: [object, 'null']
     copyright:
       title: Copyright
       description: 'Optional copyright text displayed below the banner.'
