@@ -33,6 +33,8 @@
   },
 } : {})) %}
 
+{% set _list_attributes = create_attribute(list_attributes ?? {}) %}
+
 {% include '@oe-bcl/pagination' with {
   'variant': variant,
   'size': size,
@@ -44,5 +46,5 @@
   'items': internal_items,
   'attributes': attributes,
   'icon_path': bcl_icon_path(),
-  'list_attributes': list_attributes.addClass('js-pager__items'),
+  'list_attributes': _list_attributes.addClass('js-pager__items'),
 } only %}
