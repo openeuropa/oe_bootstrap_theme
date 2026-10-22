@@ -146,9 +146,11 @@ class MarkupRenderingTest extends KernelTestBase {
       'patterns, objects' => ['patterns'],
       'patterns, raw values' => ['patterns', FALSE],
       'patterns, fill nulls' => ['patterns', 'fill_nulls' => TRUE],
-      'components, objects' => ['components'],
-      'components, raw values' => ['components', FALSE],
-      'components, fill nulls' => ['components', 'fill_nulls' => TRUE],
+      ...version_compare(\Drupal::VERSION, '11.3.0', '>=') ? [
+        'components, objects' => ['components'],
+        'components, raw values' => ['components', FALSE],
+        'components, fill nulls' => ['components', 'fill_nulls' => TRUE],
+      ] : [],
       'other' => ['other'],
     ];
   }
