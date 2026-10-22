@@ -143,11 +143,13 @@ class MarkupRenderingTest extends KernelTestBase {
   public static function onePassProvider(): array {
     return [
       'patterns, objects' => ['patterns'],
-      'components, objects' => ['components'],
       'patterns, raw values' => ['patterns', FALSE],
-      'components, raw values' => ['components', FALSE],
       'patterns, fill nulls' => ['patterns', 'fill_nulls' => TRUE],
-      'components, fill nulls' => ['components', 'fill_nulls' => TRUE],
+      ...version_compare(\Drupal::VERSION, '11.3.0', '>=') ? [
+        'components, objects' => ['components'],
+        'components, raw values' => ['components', FALSE],
+        'components, fill nulls' => ['components', 'fill_nulls' => TRUE],
+      ] : [],
       'other' => ['other'],
     ];
   }
