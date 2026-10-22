@@ -34,4 +34,24 @@ class ComponentWriterDecorator extends ComponentWriter {
     \file_put_contents($path . $filename, $yaml);
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function copyTemplates(string $component_path, array $legacy_definition): void {
+    parent::copyTemplates($component_path, $legacy_definition);
+    $component_id = $legacy_definition['id'];
+    $target = \realpath('.') . '/' . $component_path . '/' . $component_id . '.twig';
+    if (!is_file($target)) {
+      return;
+    }
+    $twig = file_get_contents($target);
+
+    // Replace 'pattern' with 'component' in strategic places.
+    $twig = preg_replace('#' . sprintf(preg_quote('%s/**
+ * @file
+ * %s pattern.
+'), '(', '.*)') . '#', "\$1 component.\n", $twig);
+    file_put_contents($target, $twig);
+  }
+
 }
