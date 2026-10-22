@@ -1,0 +1,15 @@
+name: Preview
+slots:
+  items:
+    -
+      '#plain_text': 'Item 1'
+    -
+      '#plain_text': 'Item 2'
+    -
+      '#plain_text': 'Item 3'
+    -
+      '#plain_text': 'Item 4'
+    -
+      '#plain_text': 'Item 5'
+    -
+      '#plain_text': 'Item 6'

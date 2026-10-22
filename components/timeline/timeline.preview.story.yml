@@ -1,0 +1,42 @@
+name: Preview
+slots:
+  title: 'This is the timeline title'
+  items:
+    -
+      label: '13 September 2017'
+      title: 'Item title'
+      content:
+        '#markup': '<a href="/example">President Junckers State of the Union speech</a>'
+    -
+      label: '28-29 September 2017'
+      content:
+        '#markup': '<a href="/example">Informal Digital Summit, Tallinn</a>'
+    -
+      label: '14 November 2017'
+      content: 'Strengthening European identity through education and culture: European Commissions contribution to the Leaders meeting.'
+    -
+      label: '17 November 2017'
+      content:
+        '#markup': '<a href="/example">Social Summit in Gothenburg, Sweden</a>'
+    -
+      label: '6 December 2017'
+      content:
+        '#markup': '<a href="/example">Economic and Monetary Union package of proposals</a>'
+    -
+      label: '14-15 December 2017'
+      content:
+        '#markup': '<a href="/example">EU Leaders meeting on migration, Brussels</a>'
+    -
+      label: '15 December 2017'
+      content:
+        '#markup': '<a href="/example">Euro Summit</a>'
+    -
+      label: '6 February 2018'
+      content:
+        '#markup': '<a href="/example">EU-Western Balkans Strategy</a>'
+    -
+      label: '14 February 2018'
+      content:
+        '#markup': '<a href="/example">Multiannual Financial Framework</a> and <a href="/example">institutional issues</a> - enhancing efficiency at the helm of the European Union'
+props:
+  hide_from: 5

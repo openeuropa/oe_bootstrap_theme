@@ -16,6 +16,11 @@
 
 {% set tag = tag|default('section') %}
 {% set heading_tag = heading_tag|default('h2') %}
+
+{% set attributes = create_attribute(attributes ?? {}) %}
+{% set heading_attributes = create_attribute(heading_attributes ?? {}) %}
+{% set wrapper_attributes = create_attribute(wrapper_attributes ?? {}) %}
+
 {%
   set section_classes = [
     'section',

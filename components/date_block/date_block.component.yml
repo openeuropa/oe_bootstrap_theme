@@ -1,0 +1,12 @@
+name: 'Date block'
+description: 'Date block allows to present a block that can be placed in other components.'
+props:
+  type: object
+  properties:
+    date:
+      title: Date
+      description: 'A DateTime object.'
+      type: [object, 'null']
+    attributes:
+      title: Attributes
+      type: [object, array, string, 'null']

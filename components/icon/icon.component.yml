@@ -1,0 +1,52 @@
+name: Icon
+description: 'A component to show an icon. For more information visit: https://icons.getbootstrap.com/.'
+props:
+  type: object
+  properties:
+    name:
+      title: 'Name of icon'
+      description: 'A list of icon names (Empty by default). It can be a set or a subset of icon names that are present in the svg file:'
+      type: [string, 'null']
+      enum:
+        - award
+        - box-arrow-up
+        - check
+        - envelope
+        - eye
+        - hand-index
+        - null
+      'meta:enum':
+        award: Award
+        box-arrow-up: Box-arrow-up
+        check: Check
+        envelope: Envelope
+        eye: Eye
+        hand-index: Info
+        '': Default
+    size:
+      title: 'Size of icon'
+      description: 'A list of icon sizes.'
+      type: [string, 'null']
+      enum:
+        - 2xs
+        - xs
+        - s
+        - m
+        - l
+        - xl
+        - 2xl
+        - fluid
+        - null
+      'meta:enum':
+        2xs: 2xs
+        xs: Xs
+        s: 'S (default)'
+        m: M
+        l: L
+        xl: Xl
+        2xl: 2xl
+        fluid: Fluid
+        '': Default
+    attributes:
+      title: Attributes
+      type: [object, array, string, 'null']

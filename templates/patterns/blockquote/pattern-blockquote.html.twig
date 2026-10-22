@@ -4,6 +4,8 @@
  * Blockquote pattern.
  */
 #}
+{% set attribution = attribution and cite ? attribution ~ ' ' : attribution %}
+
 {% include '@oe-bcl/blockquote' with {
   'title': title,
   'title_tag': title_tag,

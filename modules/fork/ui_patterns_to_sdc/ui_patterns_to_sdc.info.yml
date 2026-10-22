@@ -1,0 +1,5 @@
+name: "UI Patterns Legacy"
+type: module
+description: "Helper to port ui patterns to sdc."
+core_version_requirement: ^10.6 || ^11.3 || ^12
+package: "User interface"

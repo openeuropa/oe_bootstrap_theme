@@ -1,0 +1,20 @@
+name: Preview
+slots:
+  button_label: 'Dropdown toggle'
+  items:
+    -
+      label: 'I am a link'
+      path: '#'
+    -
+      label: 'I am a button'
+      button: true
+    -
+      divider: true
+    -
+      label: 'I am a disabled button'
+      button: true
+      disabled: true
+    -
+      label: 'I am an active button'
+      button: true
+      active: true

@@ -1,0 +1,16 @@
+name: Preview
+slots:
+  title: 'This is the title of this links block element.'
+  links:
+    -
+      label: 'European Commission'
+      url: 'http://link-1.com'
+    -
+      label: Priorities
+      url: 'http://link-2.com'
+    -
+      label: 'Jobs, Growth and Investment'
+      url: 'http://link-3.com'
+    -
+      label: 'More channels...'
+      url: 'http://link-4.com'
