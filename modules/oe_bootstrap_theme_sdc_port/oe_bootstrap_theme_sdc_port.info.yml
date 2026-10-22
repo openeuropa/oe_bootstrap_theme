@@ -1,0 +1,8 @@
+name: OpenEuropa Bootstrap Theme SDC Port
+type: module
+description: Helps with porting patterns to SDC.
+package: OpenEuropa Bootstrap Theme
+core_version_requirement: ^11
+dependencies:
+  - ui_patterns:ui_patterns
+  - ui_patterns:ui_patterns_to_sdc
