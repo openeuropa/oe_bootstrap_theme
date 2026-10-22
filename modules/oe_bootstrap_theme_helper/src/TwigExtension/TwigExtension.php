@@ -700,4 +700,30 @@ class TwigExtension extends AbstractExtension {
     ));
   }
 
+  /**
+   * Gets a render array from an ImageValueObject.
+   *
+   * @param mixed $argument
+   *   An ImageValueObjectInterface instance.
+   * @param array|\Drupal\Core\Template\Attribute $attributes
+   *   Attributes to merge into the render array.
+   *
+   * @return array
+   *   A render array with attributes merged in.
+   */
+  #[AsTwigFilter('bcl_image_render')]
+  public function bclImageRender(mixed $argument, array|Attribute $attributes): array {
+    if (!$argument instanceof ImageValueObjectInterface) {
+      throw new RuntimeError(sprintf(
+        "Expected a render array or ImageValueObjectInterface instance. Found %s",
+        get_debug_type($argument),
+      ));
+    }
+    // Convert other implementations.
+    $object = ImageValueObject::fromArray($argument->getArray());
+    $render = $object->toRenderArray();
+    $render['#attributes'] = $attributes;
+    return $render;
+  }
+
 }
