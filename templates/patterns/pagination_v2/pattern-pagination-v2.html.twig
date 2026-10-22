@@ -10,6 +10,8 @@
   {% set _attributes = _attributes.setAttribute('aria-label', aria_label) %}
 {% endif %}
 
+{% set _list_attributes = create_attribute(list_attributes ?? {}) %}
+
 {% set _items = [] %}
 {% if ellipsis_before %}
   {% set _items = _items|merge([{
@@ -53,6 +55,6 @@
   }),
   'items': _items,
   'attributes': _attributes,
-  'list_attributes': list_attributes,
+  'list_attributes': _list_attributes,
   'icon_path': bcl_icon_path(),
 } only %}
