@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Drupal\oe_bootstrap_theme_sdc_port;
 
-use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
-use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use Drupal\ui_patterns_to_sdc\ComponentConverter;
 
 /**
@@ -247,12 +245,13 @@ class ComponentConverterDecorator extends ComponentConverter {
         'text',
         'markup',
         'render' => ['string', 'array', 'object'],
-        'object' => 'object',
         'array' => 'array',
         'string' => 'string',
-        'ImageValueObject' => ImageValueObjectInterface::class,
-        'DateTime' => \DateTimeInterface::class,
-        'FileValueObject' => FileValueObject::class,
+        // Object types.
+        'object',
+        'ImageValueObject',
+        'DateTime',
+        'FileValueObject' => 'object',
         'number' => 'integer',
         'mixed' => NULL,
         NULL => throw new \Exception("Missing type in '$name' setting or field in '$id' pattern."),
