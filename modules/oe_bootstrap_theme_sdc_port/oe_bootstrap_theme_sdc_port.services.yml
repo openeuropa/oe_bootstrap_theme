@@ -1,0 +1,7 @@
+services:
+  Drupal\oe_bootstrap_theme_sdc_port\ComponentConverterDecorator:
+    autowire: true
+    decorates: Drupal\ui_patterns_to_sdc\ComponentConverter
+  Drupal\oe_bootstrap_theme_sdc_port\ComponentWriterDecorator:
+    autowire: true
+    decorates: Drupal\ui_patterns_to_sdc\ComponentWriter
