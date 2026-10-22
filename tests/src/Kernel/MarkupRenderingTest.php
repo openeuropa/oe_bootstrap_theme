@@ -14,7 +14,6 @@ use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
 use Drupal\Tests\oe_bootstrap_theme\Traits\BackwardCompatibilityTrait;
 use Drupal\ui_patterns\UiPatternsManagerInterface;
-use PHPUnit\Framework\Attributes\TestWith;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -136,6 +135,24 @@ class MarkupRenderingTest extends KernelTestBase {
   }
 
   /**
+   * Provies test data.
+   *
+   * @return array<string, array>
+   *   Argument combos for the test method.
+   */
+  public static function onePassProvider(): array {
+    return [
+      'patterns, objects' => ['patterns'],
+      'components, objects' => ['components'],
+      'patterns, raw values' => ['patterns', FALSE],
+      'components, raw values' => ['components', FALSE],
+      'patterns, fill nulls' => ['patterns', 'fill_nulls' => TRUE],
+      'components, fill nulls' => ['components', 'fill_nulls' => TRUE],
+      'other' => ['other'],
+    ];
+  }
+
+  /**
    * Tests all components in a single pass.
    *
    * @param 'patterns'|'components'|'other' $mode
@@ -149,14 +166,9 @@ class MarkupRenderingTest extends KernelTestBase {
    * @param bool $fill_nulls
    *   TRUE to fill all remaining optional parameters with NULL.
    *   FALSE to leave them empty (not passing them).
+   *
+   * @dataProvider onePassProvider
    */
-  #[TestWith(['patterns'], 'patterns, objects')]
-  #[TestWith(['components'], 'components, objects')]
-  #[TestWith(['patterns', FALSE], 'patterns, raw values')]
-  #[TestWith(['components', FALSE], 'components, raw values')]
-  #[TestWith(['patterns', 'fill_nulls' => TRUE], 'patterns, fill nulls')]
-  #[TestWith(['components', 'fill_nulls' => TRUE], 'components, fill nulls')]
-  #[TestWith(['other'], 'other')]
   public function testOnePass(string $mode, bool $use_objects = TRUE, bool $fill_nulls = FALSE): void {
     $cases = static::markupRenderingProvider();
     $n = count($cases);
