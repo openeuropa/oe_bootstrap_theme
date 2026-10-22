@@ -7,13 +7,10 @@
 
 declare(strict_types=1);
 
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Markup;
 use Drupal\oe_bootstrap_theme\BackwardCompatibility;
-use Drupal\oe_bootstrap_theme\DrupalCompatibility;
 use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
-use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 
 /**
  * Implements hook_preprocess_HOOK() for badge_preview patterns.
