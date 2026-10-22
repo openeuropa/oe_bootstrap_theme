@@ -11,6 +11,8 @@
   |arrow(item => item|merge({icon_path: item.icon.path ?: null}|without_nulls))
 %}
 
+{% set _list_attributes = create_attribute(list_attributes ?? {}) %}
+
 {% include '@oe-bcl/pagination' with {
   'variant': variant ?? 'default',
   'size': size,
@@ -28,5 +30,5 @@
     ? attr.setAttribute('aria-label', 'Glossary links'|t)
     : attr),
   'icon_path': bcl_icon_path(),
-  'list_attributes': list_attributes.addClass('js-pager__items'),
+  'list_attributes': _list_attributes.addClass('js-pager__items'),
 } only %}
