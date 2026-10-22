@@ -21,23 +21,23 @@
 {% if variant == 'search' %}
   {% set _offcanvas_attributes = _offcanvas_attributes.addClass('bcl-offcanvas') %}
   {% set _variant_arguments = {
-    'title_attributes': create_attribute().addClass('mb-lg-4'),
-    'extra_classes_body': 'p-lg-0 d-block',
-    'extra_classes_close': "d-lg-none",
-    'extra_classes_header': "p-lg-0 d-lg-block",
+    title_attributes: create_attribute().addClass('mb-lg-4'),
+    extra_classes_body: 'p-lg-0 d-block',
+    extra_classes_close: "d-lg-none",
+    extra_classes_header: "p-lg-0 d-lg-block",
   } %}
 {% endif %}
 
 {% include '@oe-bcl/offcanvas' with {
-  'title': title,
-  'placement': placement,
-  'id': offcanvas_id,
-  'body': body,
-  'with_body_scroll': body_scroll,
-  'with_backdrop': backdrop,
-  'close_aria_label': 'Close'|t,
-  'attributes': _offcanvas_attributes,
-  'responsiveness': 'lg',
+  title: title,
+  placement: placement,
+  id: offcanvas_id,
+  body: body,
+  with_body_scroll: body_scroll,
+  with_backdrop: backdrop,
+  close_aria_label: 'Close'|t,
+  attributes: _offcanvas_attributes,
+  responsiveness: 'lg',
   ..._variant_arguments,
 } only %}
 

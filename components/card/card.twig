@@ -126,36 +126,36 @@
   {% endfor %}
 {% endif %}
 {% include '@oe-bcl/card' with {
-  'horizontal': orientation == 'horizontal',
-  'horizontal_grid': (orientation == 'horizontal') ? {
+  horizontal: orientation == 'horizontal',
+  horizontal_grid: (orientation == 'horizontal') ? {
     left_col_classes: 'col-4',
     right_col_classes: 'col-8',
     gutter: 0,
   } : {},
-  'title': title,
-  'title_tag': title_tag,
-  'image_copyright': image_copyright,
-  'image_copyright_label': 'Image credit:'|t,
-  'subtitle': (subtitle is not empty) ? {
-    'content': subtitle,
+  title: title,
+  title_tag: title_tag,
+  image_copyright: image_copyright,
+  image_copyright_label: 'Image credit:'|t,
+  subtitle: (subtitle is not empty) ? {
+    content: subtitle,
   } : {},
-  'text': (text is not empty) ? {
-    'content': text,
-    'classes': 'mt-2',
-    'tag': 'div',
+  text: (text is not empty) ? {
+    content: text,
+    classes: 'mt-2',
+    tag: 'div',
   } : {},
-  'content': _content,
-  'image': image ? {
-    'path': image.src,
-    'alt': image.alt,
+  content: _content,
+  image: image ? {
+    path: image.src,
+    alt: image.alt,
   },
-  'date': date ? date|merge({
+  date: date ? date|merge({
     icon_path: bcl_icon_path(),
   }) : {},
-  'card_header': header,
-  'card_footer': footer,
-  'badges': _badges,
-  'attributes': attributes,
+  card_header: header,
+  card_footer: footer,
+  badges: _badges,
+  attributes: attributes,
 } only %}
 
 {% endapply %}

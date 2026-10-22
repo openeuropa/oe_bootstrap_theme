@@ -52,6 +52,23 @@ class ComponentWriterDecorator extends ComponentWriter {
  * %s pattern.
 '), '(', '.*)') . '#', "\$1 component.\n", $twig);
     file_put_contents($target, $twig);
+
+    // Use twig-cs-fixer to format the twig file.
+    exec(
+      sprintf(
+        'cd %s && ./vendor/bin/twig-cs-fixer fix %s',
+        escapeshellarg(dirname(__DIR__, 3)),
+        escapeshellarg($target),
+      ),
+      $output,
+      $exit_code,
+    );
+
+    if ($exit_code !== 0) {
+      throw new \RuntimeException(
+        "Twig CS Fixer failed:\n" . implode("\n", $output)
+      );
+    }
   }
 
 }

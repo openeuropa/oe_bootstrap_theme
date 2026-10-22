@@ -14,21 +14,21 @@
 {% set _list_attributes = create_attribute(list_attributes ?? {}) %}
 
 {% include '@oe-bcl/pagination' with {
-  'variant': variant ?? 'default',
-  'size': size,
-  'alignment': alignment,
-  'aria_label': aria_label,
-  'enable_prev_next_icon': enable_prev_next_icons,
-  'enable_first_last_icon': enable_first_last_icons,
-  'first': first ? fn_process_item_with_label|invoke(first, first.aria_label ?? 'First'|t),
-  'prev': prev ? fn_process_item_with_label|invoke(prev, prev.aria_label ?? 'Previous'|t),
-  'next': next ? fn_process_item_with_label|invoke(next, next.aria_label ?? 'Next'|t),
-  'last': last ? fn_process_item_with_label|invoke(last, last.aria_label ?? 'Last'|t),
-  'items': items|map(item => fn_process_item_with_label|invoke(item, item.label)),
-  'attributes': create_attribute(attributes)|arrow(attr
+  variant: variant ?? 'default',
+  size: size,
+  alignment: alignment,
+  aria_label: aria_label,
+  enable_prev_next_icon: enable_prev_next_icons,
+  enable_first_last_icon: enable_first_last_icons,
+  first: first ? fn_process_item_with_label|invoke(first, first.aria_label ?? 'First'|t),
+  prev: prev ? fn_process_item_with_label|invoke(prev, prev.aria_label ?? 'Previous'|t),
+  next: next ? fn_process_item_with_label|invoke(next, next.aria_label ?? 'Next'|t),
+  last: last ? fn_process_item_with_label|invoke(last, last.aria_label ?? 'Last'|t),
+  items: items|map(item => fn_process_item_with_label|invoke(item, item.label)),
+  attributes: create_attribute(attributes)|arrow(attr
     => variant == 'glossary' and not attr.hasAttribute('aria-label') and not attr.hasAttribute('aria-labelledby')
     ? attr.setAttribute('aria-label', 'Glossary links'|t)
     : attr),
-  'icon_path': bcl_icon_path(),
-  'list_attributes': _list_attributes.addClass('js-pager__items'),
+  icon_path: bcl_icon_path(),
+  list_attributes: _list_attributes.addClass('js-pager__items'),
 } only %}

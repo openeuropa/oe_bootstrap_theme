@@ -24,7 +24,7 @@
 {% endif %}
 {% if call_to_action %}
   {% set call_to_action = call_to_action|merge(
-    {'variant': call_to_action.link_style}
+    {variant: call_to_action.link_style}
   ) %}
 {% endif %}
 {% include '@oe-bcl/banner' with {

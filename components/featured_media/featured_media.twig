@@ -6,15 +6,15 @@
 #}
 {% macro featured_media(embedded_media, image, caption, ratio, copyright) %}
   {% include '@oe-bcl/featured-media' with {
-    'embedded_media': embedded_media,
-    'image': image ? (image|to_image_value_object).toRenderArray|merge({
+    embedded_media: embedded_media,
+    image: image ? (image|to_image_value_object).toRenderArray|merge({
       '#attributes': {class: ['flex-end-100']},
     }),
-    'content': caption,
-    'content_classes': 'bg-light p-3',
-    'ratio': ratio,
-    'copyright': copyright,
-    'copyright_label': image is not empty ? 'Image credit:'|t : 'Copyright:'|t,
+    content: caption,
+    content_classes: 'bg-light p-3',
+    ratio: ratio,
+    copyright: copyright,
+    copyright_label: image is not empty ? 'Image credit:'|t : 'Copyright:'|t,
   } only %}
 {% endmacro %}
 
