@@ -1,0 +1,325 @@
+carousel_v2_default:
+  render:
+    '#type': pattern
+    '#id': carousel_v2
+    '#fields':
+      items:
+      - image:
+          src: https://images.site.example/1
+          alt: alt image 1
+        caption_title: First slide title
+        caption: First slide caption
+        copyright: © 2026 Example Organisation
+      - image:
+          src: https://images.site.example/2
+          alt: alt image 2
+        caption_title: Second slide title
+        caption: Second slide caption
+    '#settings': {}
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselV2PatternAssert
+      expected:
+        title_tag: p
+        full_bleed: false
+        label: Featured content
+        active_item: 1
+        slide_label: First slide title — 1 of 2
+        carousel_role_label: carousel
+        slide_role_label: slide
+        settings:
+          autoplay: true
+          interval: 10000
+          disable_touch: false
+        controls:
+          prev: Previous slide
+          next: Next slide
+          play: Play slides
+          pause: Pause slides
+        items:
+        - image_alt: alt image 1
+          caption_title: First slide title
+          caption: First slide caption
+          copyright: © 2026 Example Organisation
+        - image_alt: alt image 2
+          caption_title: Second slide title
+          caption: Second slide caption
+carousel_v2_full_width:
+  render:
+    '#type': pattern
+    '#id': carousel_v2
+    '#fields':
+      items:
+      - image:
+          src: https://images.site.example/1
+          alt: alt image 1
+        caption_title: First slide title
+      - image:
+          src: https://images.site.example/2
+          alt: alt image 2
+        caption_title: Second slide title
+    '#settings':
+      layout: full_width
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselV2PatternAssert
+      expected:
+        full_bleed: false
+        title_tag: p
+        active_item: 1
+        items:
+        - image_alt: alt image 1
+          caption_title: First slide title
+        - image_alt: alt image 2
+          caption_title: Second slide title
+carousel_v2_all_settings:
+  render:
+    '#type': pattern
+    '#id': carousel_v2
+    '#fields':
+      label: Featured priorities
+      items:
+      - image:
+          src: https://images.site.example/1
+          alt: alt image 1
+          title: Image title
+          loading: lazy
+          width: '1200'
+          height: '600'
+          class: object-fit-cover
+        caption_title: First slide title
+        caption: First slide caption
+        interval: 16000
+        copyright: © 2026 Example Organisation
+        copyright_label: 'Custom credit:'
+        link:
+          label: First link
+          path: https://link.one
+          attributes:
+            class: custom-link-class
+      - image: '<picture><source srcset="large.webp" media="(min-width: 992px)"><img
+          src="small.jpg" width="600" height="300" alt="Second slide image"></picture>'
+        caption_title: Second slide title
+    '#settings':
+      layout: split
+      title_tag: h4
+      active_item: 2
+      autoplay: true
+      interval: 12000
+      disable_touch: true
+      prev_label: Anterior
+      next_label: Următor
+      play_label: Redă
+      pause_label: Pauză
+      slide_label: '%current% din %total%'
+      carousel_role_label: carusel
+      slide_role_label: diapozitiv
+      attributes: class="custom-carousel-v2" data-carousel="custom-value" id="custom-carousel-v2"
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselV2PatternAssert
+      expected:
+        title_tag: h4
+        full_bleed: false
+        label: Featured priorities
+        active_item: 2
+        slide_label: Second slide title — 2 din 2
+        carousel_role_label: carusel
+        slide_role_label: diapozitiv
+        settings:
+          autoplay: true
+          interval: 12000
+          disable_touch: true
+        controls:
+          prev: Anterior
+          next: Următor
+          play: Redă
+          pause: Pauză
+        attributes:
+          id: custom-carousel-v2
+          class: custom-carousel-v2 bcl-carousel-v2 bcl-carousel-v2--split carousel
+            slide carousel-fade
+          data-carousel: custom-value
+        items:
+        - image_alt: alt image 1
+          image_title: Image title
+          image_loading: lazy
+          image_width: '1200'
+          image_height: '600'
+          image_class: object-fit-cover
+          caption_title: First slide title
+          caption: First slide caption
+          interval: 16000
+          copyright: © 2026 Example Organisation
+          copyright_label: 'Custom credit:'
+          link:
+            label: First link
+            path: https://link.one
+            class: custom-link-class btn btn-primary
+        - image_alt: Second slide image
+          caption_title: Second slide title
+carousel_v2_single_item:
+  render:
+    '#type': pattern
+    '#id': carousel_v2
+    '#fields':
+      items:
+      - image:
+          src: https://images.site.example/1
+          alt: alt image 1
+        caption_title: Only slide title
+    '#settings': {}
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselV2PatternAssert
+      expected:
+        active_item: 1
+        controls: null
+        items:
+        - image_alt: alt image 1
+          caption_title: Only slide title
+carousel_v2_out_of_range_active_item_falls_back:
+  render:
+    '#type': pattern
+    '#id': carousel_v2
+    '#fields':
+      items:
+      - image:
+          src: https://images.site.example/1
+          alt: alt image 1
+        caption_title: First slide title
+      - image:
+          src: https://images.site.example/2
+          alt: alt image 2
+        caption_title: Second slide title
+    '#settings':
+      active_item: 99
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselV2PatternAssert
+      expected:
+        active_item: 1
+        items:
+        - image_alt: alt image 1
+          caption_title: First slide title
+        - image_alt: alt image 2
+          caption_title: Second slide title
+carousel_v2_title_with_quotes:
+  render:
+    '#type': pattern
+    '#id': carousel_v2
+    '#fields':
+      items:
+      - image:
+          src: https://images.site.example/1
+          alt: Coastline
+        caption_title: Nature & "wildlife"
+    '#settings': {}
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselV2PatternAssert
+      expected:
+        slide_label: Nature & "wildlife" — 1 of 1
+carousel_v2_no_title_uses_position:
+  render:
+    '#type': pattern
+    '#id': carousel_v2
+    '#fields':
+      items:
+      - image:
+          src: https://images.site.example/1
+          alt: Coastline
+    '#settings': {}
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselV2PatternAssert
+      expected:
+        slide_label: 1 of 1
+carousel_v2_zero_items_renders_nothing:
+  render:
+    '#type': pattern
+    '#id': carousel_v2
+    '#fields':
+      items: []
+    '#settings': {}
+  assertions:
+    count:
+      .bcl-carousel-v2: 0
+carousel_v2_custom_icon_path:
+  render:
+    '#type': pattern
+    '#id': carousel_v2
+    '#fields':
+      items:
+      - image:
+          src: https://images.site.example/1
+          alt: alt image 1
+        caption_title: First slide title
+        link:
+          label: Read more
+          path: https://link.one
+      - image:
+          src: https://images.site.example/2
+          alt: alt image 2
+        caption_title: Second slide title
+    '#settings':
+      icon_path: /custom-icons.svg
+  assertions:
+    count:
+      '[data-bcl-play-icon] svg': 1
+      '[data-bcl-pause-icon] svg': 1
+      '[data-bs-slide="prev"] svg': 1
+      '[data-bs-slide="next"] svg': 1
+      .bcl-carousel-v2__content a svg: 1
+    contains:
+      '[data-bcl-play-icon] svg': /custom-icons.svg#play-fill
+      '[data-bcl-pause-icon] svg': /custom-icons.svg#pause-fill
+      '[data-bs-slide="prev"] svg': /custom-icons.svg#chevron-left
+      '[data-bs-slide="next"] svg': /custom-icons.svg#chevron-right
+      .bcl-carousel-v2__content a svg: /custom-icons.svg#chevron-right
+carousel_v2_split_full_bleed:
+  render:
+    '#type': pattern
+    '#id': carousel_v2
+    '#fields':
+      items:
+      - caption_title: Split spans the page
+    '#settings':
+      layout: split
+      full_bleed: true
+      autoplay: false
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselV2PatternAssert
+      expected:
+        variant: split
+        full_bleed: true
+        title_tag: p
+        settings:
+          autoplay: false
+          interval: 10000
+        items:
+        - caption_title: Split spans the page
+carousel_v2_hero_full_bleed:
+  render:
+    '#type': pattern
+    '#id': carousel_v2
+    '#fields':
+      items:
+      - caption_title: Hero spans the page
+    '#settings':
+      layout: full_width
+      full_bleed: true
+      title_tag: h3
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\CarouselV2PatternAssert
+      expected:
+        variant: full_width
+        full_bleed: true
+        title_tag: h3
+        settings:
+          autoplay: true
+          interval: 10000
+        items:
+        - caption_title: Hero spans the page

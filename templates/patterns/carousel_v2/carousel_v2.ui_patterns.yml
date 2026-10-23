@@ -1,0 +1,136 @@
+carousel_v2:
+  label: Carousel V2
+  description: 'A slideshow with shared navigation controls and two layouts: Carousel
+    image ("split") or Carousel hero ("full_width").'
+  category: Version 2.x
+  settings:
+    layout:
+      type: select
+      label: Layout
+      description: Carousel image fades between slides with content beside the image
+        on desktop. Carousel hero slides between full-width images with overlaid desktop
+        content. Both stack on mobile. Defaults to split.
+      options:
+        split: Carousel image
+        full_width: Carousel hero
+      preview: split
+    full_bleed:
+      type: boolean
+      label: Full width
+      description: Extend the carousel to the page edges. Independent of carousel
+        type; false by default.
+      preview: false
+    title_tag:
+      type: select
+      label: Heading level
+      description: Choose the heading level to match the page hierarchy (for example
+        h4 under h3). Defaults to p. The visual title style stays h1-sized.
+      options:
+        p: Paragraph (default)
+        h2: Heading 2
+        h3: Heading 3
+        h4: Heading 4
+        h5: Heading 5
+        h6: Heading 6
+      preview: p
+    active_item:
+      type: number
+      label: Active item
+      description: The 1-based index of the initial slide. Defaults to 1.
+    autoplay:
+      type: boolean
+      label: Autoplay
+      description: Whether to rotate slides automatically. Defaults to true. Reduced
+        motion always starts paused. Hover and focus do not pause rotation.
+      preview: true
+    interval:
+      type: number
+      label: Interval
+      description: Rotation interval in milliseconds. Defaults to 10000, minimum 8000.
+        BCL extends slides to at least 3000 + 400 per word. Pause preserves remaining
+        time and the visible progress bar.
+      preview: 10000
+    disable_touch:
+      type: boolean
+      label: Disable touch
+      description: Disable touch swiping.
+    prev_label:
+      type: textfield
+      label: Previous label
+      description: Translated label for the previous slide control. Defaults to "Previous
+        slide".
+    next_label:
+      type: textfield
+      label: Next label
+      description: Translated label for the next slide control. Defaults to "Next
+        slide".
+    play_label:
+      type: textfield
+      label: Play label
+      description: Translated label for the rotation control when paused. Defaults
+        to "Play slides".
+    pause_label:
+      type: textfield
+      label: Pause label
+      description: Translated label for the rotation control when rotating. Defaults
+        to "Pause slides".
+    slide_label:
+      type: textfield
+      label: Slide label
+      description: Translated position in the accessible slide name, using %current%
+        and %total% placeholders. Appended to the slide title when present. Defaults
+        to "%current% of %total%".
+    carousel_role_label:
+      type: textfield
+      label: Carousel role label
+      description: Translated ARIA role description announced for the carousel region.
+        Defaults to "carousel".
+    slide_role_label:
+      type: textfield
+      label: Slide role label
+      description: Translated ARIA role description announced for each slide. Defaults
+        to "slide".
+    icon_path:
+      type: textfield
+      label: Icons path
+      description: Path to icons.
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    label:
+      type: text
+      label: Label
+      description: Accessible name for the carousel region. Defaults to "Featured
+        content".
+    items:
+      type: array
+      label: Slides
+      description: Slides shown in the carousel.
+      preview:
+      - caption: First slide caption
+        caption_title: First slide title
+        interval: 0
+        image:
+          src: https://picsum.photos/seed/oe-carousel-1/1000/500
+          alt: Alt image 1
+        copyright: © 2024 Example Organisation
+        link:
+          label: First link
+          path: https://link.one
+      - caption: Second slide caption
+        caption_title: Second slide title
+        interval: 0
+        image:
+          src: https://picsum.photos/seed/oe-carousel-2/1000/500
+          alt: Alt image 2
+        link:
+          label: Second link
+          path: https://link.two
+      - caption: Third slide caption
+        caption_title: Third slide title
+        interval: 0
+        image:
+          src: https://picsum.photos/seed/oe-carousel-3/1000/500
+          alt: Alt image 3
+        copyright: © 2024 Example Organisation
