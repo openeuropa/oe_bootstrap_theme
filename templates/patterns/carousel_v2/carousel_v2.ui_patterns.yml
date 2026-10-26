@@ -97,6 +97,7 @@ carousel_v2:
     attributes:
       type: attributes
       label: Attributes
+      allow_token: true
   fields:
     label:
       type: text
@@ -110,7 +111,6 @@ carousel_v2:
       preview:
       - caption: First slide caption
         caption_title: First slide title
-        interval: 0
         image:
           src: https://picsum.photos/seed/oe-carousel-1/1000/500
           alt: Alt image 1
@@ -120,7 +120,6 @@ carousel_v2:
           path: https://link.one
       - caption: Second slide caption
         caption_title: Second slide title
-        interval: 0
         image:
           src: https://picsum.photos/seed/oe-carousel-2/1000/500
           alt: Alt image 2
@@ -129,7 +128,6 @@ carousel_v2:
           path: https://link.two
       - caption: Third slide caption
         caption_title: Third slide title
-        interval: 0
         image:
           src: https://picsum.photos/seed/oe-carousel-3/1000/500
           alt: Alt image 3
