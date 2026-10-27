@@ -325,3 +325,10 @@ function oe_bootstrap_theme_preprocess_pattern_listing(array &$variables): void 
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for Carousel V2 patterns.
+ */
+function oe_bootstrap_theme_preprocess_pattern_carousel_v2(array &$variables): void {
+  $variables['carousel_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl-carousel-v2');
+}
