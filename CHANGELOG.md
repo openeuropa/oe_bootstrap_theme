@@ -24,9 +24,9 @@
 - OEL-4967: Pass alignment to facts and figures. [\#623](https://github.com/openeuropa/oe_bootstrap_theme/pull/623) ([tibi2303](https://github.com/tibi2303))
 - OEL-4981: Accessible semantics for offcanvas. [\#622](https://github.com/openeuropa/oe_bootstrap_theme/pull/622) ([tibi2303](https://github.com/tibi2303))
 
-## [1.39.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.39.0) (2026-09-02)
+## [1.38.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.38.0) (2026-09-02)
 
-[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.37.1...1.39.0)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.37.1...1.38.0)
 
 **Merged pull requests:**
 
