@@ -17,6 +17,7 @@ use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme\DrupalCompatibility;
+use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
@@ -60,6 +61,7 @@ class TwigExtension extends AbstractExtension {
       ]),
       new TwigFilter('element_children', [$this, 'elementChildren']),
       new TwigFilter('to_image_value_object', [$this, 'toImageValueObject']),
+      new TwigFilter('to_file_value_object', [$this, 'toFileValueObject']),
     ];
     // Use attributes for newly added twig filters.
     // @todo This likely needs to be updated once Drupal natively supports these
@@ -696,6 +698,39 @@ class TwigExtension extends AbstractExtension {
     }
     throw new RuntimeError(sprintf(
       'Expected ImageValueObjectInterface|array, found %s',
+      get_debug_type($argument),
+    ));
+  }
+
+  /**
+   * Converts an array to a FileValueObject instance.
+   *
+   * @param mixed $argument
+   *   The argument, which should be an array or FileValueObjectInterface.
+   *
+   * @return \Drupal\oe_bootstrap_theme\ValueObject\FileValueObject
+   *   The FileValueObject instance.
+   *   If the value was already an FileValueObjectInterface object, it will be
+   *   copied as an FileValueObject.
+   */
+  public function toFileValueObject(mixed $argument): FileValueObject {
+    if (is_array($argument)) {
+      if ($argument === []) {
+        throw new RuntimeError("The file array is empty..");
+      }
+      foreach (['name', 'url', 'mime', 'size'] as $key) {
+        if (!isset($argument[$key])) {
+          throw new RuntimeError("Missing array key '$key'.");
+        }
+      }
+      return FileValueObject::fromArray($argument);
+    }
+    // Convert other implementations of the interface.
+    if ($argument instanceof FileValueObject) {
+      return clone $argument;
+    }
+    throw new RuntimeError(sprintf(
+      'Expected FileValueObject|array, found %s',
       get_debug_type($argument),
     ));
   }
