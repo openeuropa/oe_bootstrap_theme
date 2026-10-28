@@ -106,7 +106,7 @@ class FileValueObject extends ValueObjectBase {
   /**
    * {@inheritdoc}
    */
-  public static function fromArray(array $values = []): ValueObjectInterface {
+  public static function fromArray(array $values = []): static {
     $file = new static(
       $values['name'],
       $values['url'],
