@@ -1,8 +1,16 @@
 # Change Log
 
+## [1.40.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.40.0) (2026-10-28)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.39.0...1.40.0)
+**Merged pull requests:**
+
+- OEL-4962: Add Carousel V2 UI Pattern. [\#661](https://github.com/openeuropa/oe_bootstrap_theme/pull/661) ([tibi2303](https://github.com/tibi2303))
+- OEL-5087: Fix PHPStan issues [\#646](https://github.com/openeuropa/oe_bootstrap_theme/pull/646) ([piotrsmykaj](https://github.com/piotrsmykaj))
+
 ## [1.39.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.39.0) (2026-10-01)
 
-[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.39.0...1.39.0)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.38.0...1.39.0)
 
 **Closed issues:**
 
@@ -10,14 +18,15 @@
 
 **Merged pull requests:**
 
+- Prepare release 1.39.0. [\#637](https://github.com/openeuropa/oe_bootstrap_theme/pull/637) ([tibi2303](https://github.com/tibi2303))
 - OEL-4961: Increase icon size for Facts and figures [\#628](https://github.com/openeuropa/oe_bootstrap_theme/pull/628) ([piotrsmykaj](https://github.com/piotrsmykaj))
 - OEL-4534: Parameter for thumbnail fit on gallery. [\#625](https://github.com/openeuropa/oe_bootstrap_theme/pull/625) ([tibi2303](https://github.com/tibi2303))
 - OEL-4967: Pass alignment to facts and figures. [\#623](https://github.com/openeuropa/oe_bootstrap_theme/pull/623) ([tibi2303](https://github.com/tibi2303))
 - OEL-4981: Accessible semantics for offcanvas. [\#622](https://github.com/openeuropa/oe_bootstrap_theme/pull/622) ([tibi2303](https://github.com/tibi2303))
 
-## [1.39.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.39.0) (2026-09-02)
+## [1.38.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.38.0) (2026-09-02)
 
-[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.37.1...1.39.0)
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.37.1...1.38.0)
 
 **Merged pull requests:**
 
