@@ -1,26 +1,21 @@
 name: Navigation
 description: 'Renders links, buttons, dropdowns, and nested navigation in several Bootstrap navigation styles.'
+variants:
+  default:
+    title: 'Default'
+    description: 'Default navigation style.'
+  tabs:
+    title: 'Tabs'
+    description: 'Shows the items styled as tabs.'
+  pills:
+    title: 'Pills'
+    description: 'Shows the items styled as pills.'
+  navbar:
+    title: 'Navbar'
+    description: 'When the navigation is part of a navbar element.'
 props:
   type: object
   properties:
-    variant:
-      title: Variant
-      type: [string, 'null']
-      description: 'Navigation presentation. Defaults to default.'
-      default: default
-      enum:
-        - default
-        - tabs
-        - pills
-        - navbar
-        - null
-      'meta:enum':
-        default: Default
-        tabs: Tabs
-        pills: Pills
-        navbar: Navbar
-        # Value NULL becomes '' when used as array key.
-        '': Default
     orientation:
       title: Orientation
       type: [string, 'null']

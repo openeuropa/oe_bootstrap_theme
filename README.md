@@ -102,6 +102,14 @@ Patterns that render media accept a `copyright` parameter to display copyright
 text under the media. See the pattern documentation for usage details. The
 field and recipe setup for media entities is documented in `oe_whitelabel`.
 
+### SDC variants
+
+See Drupal's [SDC variants change record](https://www.drupal.org/node/3517062)
+for component definitions and usage. For render arrays on Drupal 11.2 or later,
+use `#variant`; passing `variant` inside `#props` also works and is required on
+older supported Drupal versions. Omit the link variant or pass an empty value
+for the standard link style.
+
 ## Development setup
 
 ### Using LAMP stack or similar

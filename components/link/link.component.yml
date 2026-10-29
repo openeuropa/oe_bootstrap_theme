@@ -1,5 +1,22 @@
 name: Link
 description: 'A link with optional color, icon, disabled and standalone styles.'
+variants:
+  primary:
+    title: Primary
+  secondary:
+    title: Secondary
+  success:
+    title: Success
+  danger:
+    title: Danger
+  warning:
+    title: Warning
+  info:
+    title: Info
+  light:
+    title: Light
+  dark:
+    title: Dark
 props:
   type: object
   properties:
@@ -11,31 +28,6 @@ props:
       title: Path
       type: [string, object, 'null']
       description: 'Link URL string or URL object. Defaults to #.'
-    variant:
-      title: Variant
-      type: [string, 'null']
-      description: 'Link color variant. Defaults to the standard link style.'
-      enum:
-        - ''
-        - primary
-        - secondary
-        - success
-        - danger
-        - warning
-        - info
-        - light
-        - dark
-        - null
-      'meta:enum':
-        '': Default
-        primary: Primary
-        secondary: Secondary
-        success: Success
-        danger: Danger
-        warning: Warning
-        info: Info
-        light: Light
-        dark: Dark
     id:
       title: ID
       type: [string, 'null']

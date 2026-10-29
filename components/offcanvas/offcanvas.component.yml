@@ -1,21 +1,13 @@
 name: Offcanvas
 description: 'Displays content in a responsive panel with an optional button to show and hide it.'
+variants:
+  default:
+    title: 'Default'
+  search:
+    title: 'Search'
 props:
   type: object
   properties:
-    variant:
-      title: Variant
-      type: [string, 'null']
-      description: 'The offcanvas presentation. Defaults to default.'
-      enum:
-        - default
-        - search
-        - null
-      'meta:enum':
-        default: Default
-        search: Search
-        # Value NULL becomes '' when used as array key.
-        '': Default
     offcanvas_id:
       title: 'Offcanvas ID'
       type: [string, 'null']

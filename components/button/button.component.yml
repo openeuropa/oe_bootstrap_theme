@@ -1,5 +1,24 @@
 name: 'Button'
 description: 'For actions in forms, dialogs, and more with support for multiple sizes, states, and icons.'
+variants:
+  primary:
+    title: 'Primary (default)'
+  secondary:
+    title: 'Secondary'
+  success:
+    title: 'Success'
+  danger:
+    title: 'Danger'
+  warning:
+    title: 'Warning'
+  info:
+    title: 'Info'
+  light:
+    title: 'Light'
+  dark:
+    title: 'Dark'
+  link:
+    title: 'Link'
 props:
   type: object
   properties:
@@ -7,33 +26,6 @@ props:
       title: Label
       type: [string, array, object, 'null']
       description: 'The button label.'
-    variant:
-      title: Variant
-      type: [string, 'null']
-      description: 'The button variant. Defaults to primary.'
-      enum:
-        - primary
-        - secondary
-        - success
-        - danger
-        - warning
-        - info
-        - light
-        - dark
-        - link
-        - null
-      'meta:enum':
-        primary: 'Primary (default)'
-        secondary: Secondary
-        success: Success
-        danger: Danger
-        warning: Warning
-        info: Info
-        light: Light
-        dark: Dark
-        link: Link
-        # Value NULL becomes '' when used as array key.
-        '': Default
     size:
       title: Size
       type: [string, 'null']
