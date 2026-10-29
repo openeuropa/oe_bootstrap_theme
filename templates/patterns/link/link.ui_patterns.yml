@@ -10,7 +10,7 @@ link:
       type: boolean
       label: 'Standalone'
       description: 'When enabled, adds extra class to underline the link item when hover. Defaults to false.'
-      preview: 'true'
+      preview: true
     icon_position:
       type: select
       label: 'Icon position'
