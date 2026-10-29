@@ -55,7 +55,7 @@ props:
                 transformation:
                   type: [string, 'null']
                 attributes:
-                  type: [object, 'null']
+                  type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
         icon_display:
@@ -63,10 +63,10 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     title_attributes:
       title: 'Title attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     placement:
       title: Placement
       type: [string, 'null']
@@ -173,7 +173,7 @@ props:
                 transformation:
                   type: [string, 'null']
                 attributes:
-                  type: [object, 'null']
+                  type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
         icon_spacing:
@@ -183,7 +183,7 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

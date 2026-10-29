@@ -100,7 +100,7 @@ gallery_with_all_parameters:
       title: 'Linked gallery title'
       title_tag: h4
       title_link:
-        path: 'https://example.com/gallery'
+        path: !Url 'https://example.com/gallery'
         variant: danger
         id: custom-gallery-title-link
         disabled: true
@@ -108,16 +108,16 @@ gallery_with_all_parameters:
           name: images
           size: l
           transformation: flip-horizontal
-          attributes:
+          attributes: !Attribute
             class:
               - custom-title-icon
         icon_position: before
         icon_display: inline-flex
         remove_icon_spacers: true
-        attributes:
+        attributes: !Attribute
           class:
             - custom-title-link
-      title_attributes:
+      title_attributes: !Attribute
         id: custom-gallery-title
         class:
           - custom-title-class
@@ -128,7 +128,7 @@ gallery_with_all_parameters:
       next_label: 'Next media'
       max_visible_thumbnails: 2
       icon_path: '/custom-icons.svg'
-      attributes:
+      attributes: !Attribute
         id: custom-gallery-wrapper
         class:
           - custom-gallery-class
@@ -161,7 +161,7 @@ gallery_with_all_parameters:
           interval: 3000
           link:
             label: 'Read more'
-            path: 'https://example.com/read-more'
+            path: !Url 'https://example.com/read-more'
             variant: primary
             id: custom-gallery-link
             disabled: true
@@ -170,13 +170,13 @@ gallery_with_all_parameters:
               name: chevron-right
               size: xs
               transformation: rotate-90
-              attributes:
+              attributes: !Attribute
                 class:
                   - custom-link-icon
             icon_position: after
             icon_display: flex
             remove_icon_spacers: false
-            attributes:
+            attributes: !Attribute
               class:
                 - custom-gallery-link
   assertions:

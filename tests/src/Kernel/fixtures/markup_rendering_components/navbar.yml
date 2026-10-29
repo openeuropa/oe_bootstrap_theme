@@ -91,7 +91,7 @@ navbar_dark_with_custom_id_and_attributes:
             - btn
             - btn-light
           type: button
-      attributes:
+      attributes: !Attribute
         id: custom-navbar
         class:
           - custom-navbar

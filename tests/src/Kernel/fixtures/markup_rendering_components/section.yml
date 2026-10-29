@@ -3,6 +3,9 @@ section_default:
     '#type': component
     '#component': oe_bootstrap_theme:section
     '#props':
+      attributes: !Attribute {}
+      wrapper_attributes: !Attribute {}
+      heading_attributes: !Attribute {}
       heading: 'This is the heading of the section'
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
   assertions:
@@ -18,17 +21,17 @@ section_with_custom_attributes:
     '#type': component
     '#component': oe_bootstrap_theme:section
     '#props':
-      attributes:
+      attributes: !Attribute
         class:
           - content-wrapper
         id: section-id
         data-attribute: some-value
-      wrapper_attributes:
+      wrapper_attributes: !Attribute
         class:
           - content-body
         id: wrapper-id
         data-wrapper-attribute: wrapper-value
-      heading_attributes:
+      heading_attributes: !Attribute
         class:
           - content-heading
         id: heading-id

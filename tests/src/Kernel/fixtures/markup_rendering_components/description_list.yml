@@ -69,17 +69,17 @@ description_list_title_link:
     '#props':
       title: 'Linked list title'
       title_link:
-        path: '/list'
+        path: !Url 'internal:/list'
         variant: warning
-        attributes:
+        attributes: !Attribute
           class:
             - custom-title-link-class
         icon:
           name: arrow-right
-          attributes:
+          attributes: !Attribute
             class:
               - custom-title-link-icon
-      title_attributes:
+      title_attributes: !Attribute
         id: custom-list-title
         class:
           - custom-title-class

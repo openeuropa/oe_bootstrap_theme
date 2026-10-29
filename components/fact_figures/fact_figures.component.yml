@@ -37,7 +37,7 @@ props:
                   path:
                     type: [string, 'null']
                   attributes:
-                    type: [object, 'null']
+                    type: [object, string, 'null']  # attributes
           title:
             title: Title
             type: [string, array, object, 'null']
@@ -57,7 +57,7 @@ props:
         path:
           type: [string, object, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

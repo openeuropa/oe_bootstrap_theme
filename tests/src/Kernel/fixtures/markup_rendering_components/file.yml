@@ -74,10 +74,10 @@ file_custom_attributes_and_icon_path:
     '#props':
       title: 'Custom attrs file'
       title_tag: 'h3'
-      title_attributes:
+      title_attributes: !Attribute
         class:
           - custom-title-class
-      attributes:
+      attributes: !Attribute
         id: custom-file
         class:
           - custom-file-class

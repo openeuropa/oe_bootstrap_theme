@@ -8,17 +8,17 @@ timeline_items_hide:
       title: 'Title example'
       title_tag: 'h3'
       title_link:
-        path: '/timeline'
+        path: !Url 'internal:/timeline'
         variant: warning
-        attributes:
+        attributes: !Attribute
           class:
             - custom-title-link-class
         icon:
           name: arrow-right
-          attributes:
+          attributes: !Attribute
             class:
               - custom-title-link-icon
-      title_attributes:
+      title_attributes: !Attribute
         class:
           - custom-title-class
       items:
@@ -27,7 +27,7 @@ timeline_items_hide:
           title: 'Item 1'
           content:
             '#markup': '<a href="/example" class="ecl-link">Economic and Monetary Union package of proposals</a>'
-          attributes:
+          attributes: !Attribute
             class:
               - custom-class
         - label: '28-29 September 2017'

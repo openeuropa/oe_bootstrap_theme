@@ -4,6 +4,7 @@
  * File component.
  */
 #}
+{% set _title_attributes = create_attribute(title_attributes ?? {}) %}
 {%- set _icon_path = icon_path|default(bcl_icon_path()) -%}
 {%- set _link_label = link_label|default('Download'|t) -%}
 
@@ -55,7 +56,7 @@
     {%- include '@oe-bcl/file' with {
       title: title,
       title_tag: title_tag|default('h2'),
-      title_attributes: title_attributes,
+      title_attributes: _title_attributes,
       item_title: file.title,
       language: file.language_code is not empty ? file.language_code|to_native_language : '',
       meta: _meta,

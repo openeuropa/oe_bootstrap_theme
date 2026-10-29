@@ -10,6 +10,19 @@ declare(strict_types=1);
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\WidgetInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\oe_bootstrap_theme_helper\Render\ComponentAttributesPreRender;
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function oe_bootstrap_theme_helper_element_info_alter(array &$info): void {
+  // It must run before ComponentElement::preRenderComponent(), which copies
+  // the props into the template context.
+  // @todo Remove when support for Drupal < 11.3 is dropped.
+  if (isset($info['component']) && ComponentAttributesPreRender::isNeeded()) {
+    array_unshift($info['component']['#pre_render'], [ComponentAttributesPreRender::class, 'preRender']);
+  }
+}
 
 /**
  * Implements hook_field_widget_third_party_settings_form().

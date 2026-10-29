@@ -7,6 +7,7 @@ card_group:
       equal_height: true
       items:
         - title: 'Card title 1'
+          attributes: !Attribute {}
           title_tag: 'h2'
           text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
           card_footer: 'Footer of card 1'
@@ -54,7 +55,7 @@ card_grid_responsive_xxl_3_responsive_columns:
         - title: 'Card title 1'
           text: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
           card_footer: 'Footer of card 1'
-          attributes:
+          attributes: !Attribute
             class:
               - custom-card-class
         - title: 'Card title 2'
@@ -124,7 +125,7 @@ card_grid_responsive_columns_2_md_equal_height:
                 - btn-primary
           card_header: 'Header of card 1'
           card_footer: 'Footer of card 1'
-          attributes:
+          attributes: !Attribute
             class:
               - custom-class
         - title: 'Title card 2'

@@ -7,7 +7,7 @@
 {% set _variant = variant|default('default') %}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set _attributes = attributes|default(create_attribute()) %}
-{% set _list_attributes = list_attributes|default(create_attribute()).addClass('js-pager__items') %}
+{% set _list_attributes = create_attribute(list_attributes ?? {}).addClass('js-pager__items') %}
 
 {% if _variant == 'glossary' and not _attributes.hasAttribute('aria-label') and not _attributes.hasAttribute('aria-labelledby') %}
   {% set _attributes = _attributes.setAttribute('aria-label', 'Glossary links'|t) %}

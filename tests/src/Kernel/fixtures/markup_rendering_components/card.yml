@@ -52,7 +52,7 @@ card_vertical_with_title_link:
       orientation: vertical
       title: 'Title card'
       title_link:
-        path: 'https://example.com'
+        path: !Url 'https://example.com'
       subtitle: 'Subtitle card'
       text: 'Text card with longer text which is supported'
       image:
@@ -124,7 +124,7 @@ card_badge_with_custom_attributes:
       title: 'Title card'
       badges:
         - label: 'Custom badge'
-          attributes:
+          attributes: !Attribute
             class:
               - custom-badge-class
   assertions:
@@ -139,10 +139,10 @@ card_title_link_with_custom_attributes:
       title: 'Title card'
       title_link:
         path: 'https://example.com'
-        attributes:
+        attributes: !Attribute
           class:
             - custom-link-class
-      title_attributes:
+      title_attributes: !Attribute
         id: custom-card-title
         class:
           - custom-title-class
@@ -161,7 +161,7 @@ card_date_with_custom_attributes:
         year: '2021'
         month: 'Jan'
         day: '23'
-        attributes:
+        attributes: !Attribute
           class:
             - custom-date-class
   assertions:

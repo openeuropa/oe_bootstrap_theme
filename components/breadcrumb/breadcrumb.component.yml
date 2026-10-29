@@ -24,7 +24,7 @@ props:
             description: 'Optional link ID.'
           attributes:
             title: Attributes
-            type: [object, 'null']
+            type: [object, string, 'null']  # attributes
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

@@ -12,7 +12,7 @@ progress_primary_striped_animated:
       label: 'Progress label'
       text: 'Bar label'
       message: 'Progress bar description'
-      attributes:
+      attributes: !Attribute
         id: custom-progress
         class:
           - custom-progress-class
