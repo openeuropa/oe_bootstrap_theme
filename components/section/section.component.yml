@@ -5,19 +5,19 @@ props:
   properties:
     content:
       title: Content
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Content of the section.'
     heading:
       title: Heading
-      type: [string, array, object]
+      type: [string, array, object, 'null']
       description: 'Heading of the section.'
     heading_tag:
       title: 'Heading tag'
-      type: string
+      type: [string, 'null']
       description: 'Tag of the heading. Defaults to h2.'
     tag:
       title: 'Wrapper tag'
-      type: string
+      type: [string, 'null']
       description: 'Tag of the wrapper. Defaults to section.'
     heading_attributes:
       title: 'Heading attributes'

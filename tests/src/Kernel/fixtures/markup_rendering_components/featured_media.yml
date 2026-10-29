@@ -239,3 +239,31 @@ featured_media_image_as_markup:
       'figure > img[src="https://example.com/pre-rendered.jpg"][alt="Pre-rendered image"]': 1
       'figure > img.img-fluid': 0
       'figure > img.flex-end-100': 0
+
+featured_media_null_link_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:featured_media
+    '#props':
+      title: 'Title'
+      text: 'Text'
+      link:
+        label: 'Read more'
+        path: '/example'
+        attributes: null
+        icon:
+          name: arrow-right
+          attributes: null
+      title_link:
+        label: 'Read more'
+        path: '/example'
+        attributes: null
+        icon:
+          name: arrow-right
+          attributes: null
+  assertions:
+    count:
+      'a[href="/example"]': 2
+      'a > svg.bi.icon--s': 2
+    contains:
+      'h2.bcl-heading > a': 'Read more'

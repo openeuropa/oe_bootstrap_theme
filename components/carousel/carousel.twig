@@ -15,7 +15,7 @@
     {% endif %}
   {% endset %}
 
-  {% set item = slide|merge({ image: image }) %}
+  {% set item = slide|filter(value => value is not null)|merge({ image: image }) %}
   {% if slide.link is defined and slide.link is not empty %}
     {% set item = item|merge({
       link: slide.link|merge({
