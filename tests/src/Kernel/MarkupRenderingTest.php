@@ -176,21 +176,14 @@ class MarkupRenderingTest extends KernelTestBase {
     $cases = static::markupRenderingProvider();
     $n = count($cases);
     foreach (array_keys($cases) as $i => $case_name) {
-      $restore_callbacks = [];
       try {
         $case = $cases[$case_name];
         $render = $case['render'];
         $render = PatternTestDataMassager::massageDataRecursive($render, $use_objects);
         $assertions = $case['assertions'];
-        $backward_compatibility = $case['backward_compatibility'] ?? [];
-        if (!empty($backward_compatibility)) {
-          if ($mode === 'components') {
-            // No support for BC with components.
-            continue;
-          }
-          foreach ($backward_compatibility as $bc_name => $bc_value) {
-            $restore_callbacks[] = $this->setBackwardCompatibilitySetting($bc_name, $bc_value);
-          }
+        // No support for BC in 'components' mode.
+        if (!empty($case['backward_compatibility']) && $mode === 'components') {
+          continue;
         }
 
         // Skip pattern case when in 'other' mode.
@@ -200,9 +193,6 @@ class MarkupRenderingTest extends KernelTestBase {
         }
 
         if ($mode === 'components') {
-          if (($render['#type'] ?? NULL) !== 'pattern') {
-            continue;
-          }
           $render = $this->replacePatternsWithComponents($render, $use_objects);
           $assertions = $this->replacePatternAssertionsWithComponentAssertions($assertions);
         }
@@ -211,9 +201,19 @@ class MarkupRenderingTest extends KernelTestBase {
           $render = $this->fillNulls($render);
         }
 
-        Html::resetSeenIds();
+        $do_render = function () use ($render): string {
+          Html::resetSeenIds();
+          return RenderWrapperForm::renderInFormContext($render, $this->container);
+        };
 
-        $html = RenderWrapperForm::renderInFormContext($render, $this->container);
+        if (!empty($case['backward_compatibility'])) {
+          $do_render = fn () => $this->withBackwardCompatibilitySettings(
+            $case['backward_compatibility'] ?? [],
+            $do_render,
+          );
+        }
+        $html = $do_render();
+
         try {
           $this->assertMarkupRendering($assertions, $html);
         }
@@ -223,11 +223,6 @@ class MarkupRenderingTest extends KernelTestBase {
       }
       catch (\Throwable $e) {
         throw new \Exception("Failure in '$case_name' ($i of $n).", previous: $e);
-      }
-      finally {
-        foreach ($restore_callbacks as $restore_callback) {
-          $restore_callback();
-        }
       }
     }
   }
