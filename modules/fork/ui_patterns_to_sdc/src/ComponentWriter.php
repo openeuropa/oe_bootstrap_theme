@@ -89,7 +89,7 @@ class ComponentWriter {
   public function checkOtherTemplates(string $component_path, array $legacy_definition): void {
     $component_id = $legacy_definition['id'];
     $target = \realpath('.') . '/' . $component_path . '/' . $component_id . '.twig';
-    $path = \realpath('.') . '/' . $legacy_definition['base path'] . '/pattern-' . $component_id . '--preview.html.twig';
+    $path = \realpath('.') . '/' . $legacy_definition['base path'] . '/pattern-' . str_replace('_', '-', $component_id) . '--preview.html.twig';
     if (\file_exists($path)) {
       print '⚠️ ' . $component_id . " has a preview template which will not be converted. Use the new stories system instead.\n";
     }
