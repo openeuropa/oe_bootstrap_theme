@@ -177,53 +177,88 @@ class MarkupRenderingTest extends KernelTestBase {
     $n = count($cases);
     foreach (array_keys($cases) as $i => $case_name) {
       try {
-        $case = $cases[$case_name];
-        $render = $case['render'];
-        $render = PatternTestDataMassager::massageDataRecursive($render, $use_objects);
-        $assertions = $case['assertions'];
-        // No support for BC in 'components' mode.
-        if (!empty($case['backward_compatibility']) && $mode === 'components') {
-          continue;
-        }
-
-        // Skip pattern case when in 'other' mode.
-        // Skip non-pattern case when not in 'other' mode.
-        if ($mode === 'other' xor ($render['#type'] ?? NULL) !== 'pattern') {
-          continue;
-        }
-
-        if ($mode === 'components') {
-          $render = $this->replacePatternsWithComponents($render, $use_objects);
-          $assertions = $this->replacePatternAssertionsWithComponentAssertions($assertions);
-        }
-
-        if ($fill_nulls) {
-          $render = $this->fillNulls($render);
-        }
-
-        $do_render = function () use ($render): string {
-          Html::resetSeenIds();
-          return RenderWrapperForm::renderInFormContext($render, $this->container);
-        };
-
-        if (!empty($case['backward_compatibility'])) {
-          $do_render = fn () => $this->withBackwardCompatibilitySettings(
-            $case['backward_compatibility'] ?? [],
-            $do_render,
-          );
-        }
-        $html = $do_render();
-
-        try {
-          $this->assertMarkupRendering($assertions, $html);
-        }
-        catch (\Throwable $e) {
-          throw $e;
-        }
+        $this->doTestOneCase(
+          $cases[$case_name],
+          $case_name,
+          $mode,
+          $use_objects,
+          $fill_nulls,
+        );
       }
       catch (\Throwable $e) {
         throw new \Exception("Failure in '$case_name' ($i of $n).", previous: $e);
       }
+    }
+  }
+
+  /**
+   * Tests a single case.
+   *
+   * @param array $case
+   *   The test case.
+   * @param string $case_name
+   *   The test case name.
+   * @param 'patterns'|'components'|'other' $mode
+   *   Pass 'patterns' to test all test cases with patterns.
+   *   Pass 'components' to test all pattern cases, but with the pattern
+   *   converted to a component.
+   *   Pass 'other' to test all cases which don't use a pattern.
+   * @param bool $use_objects
+   *   TRUE to use objects like Attribute, ImageValueObject etc.
+   *   FALSE to use string or array representations instead.
+   * @param bool $fill_nulls
+   *   TRUE to fill all remaining optional parameters with NULL.
+   *   FALSE to leave them empty (not passing them).
+   */
+  protected function doTestOneCase(
+    array $case,
+    string $case_name,
+    string $mode,
+    bool $use_objects = TRUE,
+    bool $fill_nulls = FALSE,
+  ): void {
+    $render = $case['render'];
+    $render = PatternTestDataMassager::massageDataRecursive($render, $use_objects);
+    $assertions = $case['assertions'];
+    // No support for BC in 'components' mode.
+    if (!empty($case['backward_compatibility']) && $mode === 'components') {
+      return;
+    }
+
+    // Skip pattern case when in 'other' mode.
+    // Skip non-pattern case when not in 'other' mode.
+    if ($mode === 'other' xor ($render['#type'] ?? NULL) !== 'pattern') {
+      return;
+    }
+
+    if ($mode === 'components') {
+      $render = $this->replacePatternsWithComponents($render, $use_objects);
+      $assertions = $this->replacePatternAssertionsWithComponentAssertions($assertions);
+    }
+
+    if ($fill_nulls) {
+      $render = $this->fillNulls($render);
+    }
+
+    $do_render = function () use ($render): string {
+      Html::resetSeenIds();
+      return RenderWrapperForm::renderInFormContext($render, $this->container);
+    };
+
+    if (!empty($case['backward_compatibility'])) {
+      $do_render = fn () => $this->withBackwardCompatibilitySettings(
+        $case['backward_compatibility'] ?? [],
+        $do_render,
+      );
+    }
+
+    $html = $do_render();
+
+    try {
+      $this->assertMarkupRendering($assertions, $html);
+    }
+    catch (\Throwable $e) {
+      throw $e;
     }
   }
 
