@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Card V2 component.
+ */
+#}
+{% set _tag = tag|default('article') %}
+{% set _attributes = attributes|default(create_attribute()) %}
+{% set _media_attributes = media_attributes|default(create_attribute()) %}
+{% set _content_attributes = content_attributes|default(create_attribute()) %}
+{% set _header_attributes = header_attributes|default(create_attribute()) %}
+{% set _footer_attributes = footer_attributes|default(create_attribute()) %}
+{% set _classes = ['card', 'v2'] %}
+
+{% if variant|default('default') == 'horizontal' %}
+  {% set _classes = _classes|merge(['horizontal']) %}
+{% endif %}
+
+<{{ _tag }}{{ _attributes.addClass(_classes) }}>
+  {% if media is not empty %}
+    <div{{ _media_attributes.addClass(['card-media']) }}>
+      {{ media }}
+    </div>
+  {% endif %}
+  {% if header is not empty %}
+    <div{{ _header_attributes.addClass(['card-header']) }}>
+      {{ header }}
+    </div>
+  {% endif %}
+  <div{{ _content_attributes.addClass(['card-body']) }}>
+    {% if title is not empty %}
+      <div class="card-title">
+        {{ title }}
+      </div>
+    {% endif %}
+    {{ content }}
+  </div>
+  {% if footer is not empty %}
+    <div{{ _footer_attributes.addClass(['card-footer']) }}>
+      {{ footer }}
+    </div>
+  {% endif %}
+</{{ _tag }}>

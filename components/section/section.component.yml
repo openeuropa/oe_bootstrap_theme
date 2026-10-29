@@ -1,0 +1,30 @@
+name: Section
+description: 'Renders content and heading inside section.'
+props:
+  type: object
+  properties:
+    content:
+      title: Content
+      type: [string, array, object]
+      description: 'Content of the section.'
+    heading:
+      title: Heading
+      type: [string, array, object]
+      description: 'Heading of the section.'
+    heading_tag:
+      title: 'Heading tag'
+      type: string
+      description: 'Tag of the heading. Defaults to h2.'
+    tag:
+      title: 'Wrapper tag'
+      type: string
+      description: 'Tag of the wrapper. Defaults to section.'
+    heading_attributes:
+      title: 'Heading attributes'
+      type: Drupal\Core\Template\Attribute
+    wrapper_attributes:
+      title: 'Wrapper attributes'
+      type: Drupal\Core\Template\Attribute
+    attributes:
+      title: 'Section attributes'
+      type: Drupal\Core\Template\Attribute

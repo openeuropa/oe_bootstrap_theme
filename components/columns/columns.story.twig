@@ -1,0 +1,47 @@
+{% set items = [
+  { '#plain_text': 'Column 1' },
+  { '#plain_text': 'Column 2' },
+  { '#plain_text': 'Column 3' },
+  { '#plain_text': 'Column 4' },
+  { '#plain_text': 'Column 5' },
+  { '#plain_text': 'Column 6' },
+] %}
+
+<style>
+  .columns-story .columns {
+    grid-template-columns: repeat(var(--columns-grid--column-count), minmax(0, 1fr));
+  }
+
+  .columns-story .columns__item {
+    padding: 1rem;
+    background-color: var(--bs-white);
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+  }
+</style>
+
+<div class="columns-story vstack gap-4">
+  <div>
+    <h3>Default columns</h3>
+    {% include 'oe_bootstrap_theme:columns' with {
+      items: items,
+    } only %}
+  </div>
+
+  <div>
+    <h3>Three columns</h3>
+    {% include 'oe_bootstrap_theme:columns' with {
+      items: items,
+      columns: 3,
+    } only %}
+  </div>
+
+  <div>
+    <h3>Section wrapper</h3>
+    {% include 'oe_bootstrap_theme:columns' with {
+      items: items,
+      columns: 6,
+      tag: 'section',
+    } only %}
+  </div>
+</div>

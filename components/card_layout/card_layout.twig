@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Card layout component.
+ */
+#}
+{% include '@oe-bcl/card-layout' with {
+  type: variant|default('group'),
+  items: items|default([])|bcl_card_list,
+  grid_columns: grid_columns,
+  responsive_columns: responsive_columns,
+  responsiveness: responsiveness,
+  gutter: gutter,
+  equal_height: variant|default('group') == 'group' ? false : equal_height,
+  attributes: attributes,
+} only %}

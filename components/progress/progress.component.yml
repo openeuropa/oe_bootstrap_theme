@@ -1,0 +1,66 @@
+name: Progress
+description: 'Indicate the progress as a bar.'
+props:
+  type: object
+  properties:
+    label:
+      title: Label
+      type: [string, array, object]
+      description: 'Text before the progress bar.'
+    progress:
+      title: Progress
+      type: [integer, number]
+      description: 'The progress value for the bar.'
+    min:
+      title: Minimum
+      type: [integer, number, string]
+      description: 'Minimum value shown in the progress bar.'
+    max:
+      title: Maximum
+      type: [integer, number, string]
+      description: 'Maximum value shown in the progress bar.'
+    text:
+      title: Text
+      type: [string, array, object]
+      description: 'Text inside the progress bar.'
+    message:
+      title: Message
+      type: [string, array, object]
+      description: 'Optional description text below the progress bar.'
+    style:
+      title: 'Bar style'
+      type: string
+      description: 'Set the bar style.'
+      enum:
+        - primary
+        - secondary
+        - success
+        - danger
+        - warning
+        - info
+        - light
+        - dark
+      'meta:enum':
+        primary: Primary
+        secondary: Secondary
+        success: Success
+        danger: Danger
+        warning: Warning
+        info: Info
+        light: Light
+        dark: Dark
+    striped:
+      title: Striped
+      type: boolean
+      description: 'Striped style for the progress bar. Defaults to false.'
+    animated:
+      title: Animated
+      type: boolean
+      description: 'Animation on striped bar. Defaults to false.'
+    hidden_label:
+      title: 'Hidden label'
+      type: boolean
+      description: 'Hides the text inside the progress bar. Defaults to false.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

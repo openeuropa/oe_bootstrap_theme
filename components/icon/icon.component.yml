@@ -1,0 +1,54 @@
+name: Icon
+description: 'Displays an icon from an SVG sprite.'
+props:
+  type: object
+  properties:
+    name:
+      title: Name
+      type: string
+      description: 'Name of the icon in the SVG sprite.'
+    size:
+      title: Size
+      type: string
+      description: 'Size of the icon. Defaults to s.'
+      enum:
+        - 2xs
+        - xs
+        - s
+        - m
+        - l
+        - xl
+        - 2xl
+        - fluid
+      'meta:enum':
+        2xs: '2XS'
+        xs: XS
+        s: 'S (default)'
+        m: M
+        l: L
+        xl: XL
+        2xl: '2XL'
+        fluid: Fluid
+    transformation:
+      title: Transformation
+      type: string
+      description: 'Optional rotation or flip transformation.'
+      enum:
+        - rotate-90
+        - rotate-180
+        - rotate-270
+        - flip-horizontal
+        - flip-vertical
+      'meta:enum':
+        rotate-90: 'Rotate 90 degrees'
+        rotate-180: 'Rotate 180 degrees'
+        rotate-270: 'Rotate 270 degrees'
+        flip-horizontal: 'Flip horizontally'
+        flip-vertical: 'Flip vertically'
+    icon_path:
+      title: 'Icon path'
+      type: string
+      description: 'Path to the SVG sprite. Defaults to the BCL icon path.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

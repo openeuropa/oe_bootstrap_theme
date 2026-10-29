@@ -1,0 +1,168 @@
+name: Dropdown
+description: 'Toggle contextual overlays for displaying lists of links and actions.'
+props:
+  type: object
+  properties:
+    button_label:
+      title: 'Dropdown button label'
+      type: [string, array, object]
+      description: 'Label used by the default dropdown toggle.'
+    dropdown_id:
+      title: 'Dropdown ID'
+      type: string
+      description: 'ID connecting the toggle and menu. A unique ID is generated when omitted.'
+    trigger:
+      title: Trigger
+      type: object
+      description: 'Optional BCL button or link configuration for the dropdown toggle.'
+      properties:
+        label:
+          type: [string, array, object]
+        path:
+          type: [string, object]
+        variant:
+          type: string
+        size:
+          type: string
+        type:
+          type: string
+        outline:
+          type: boolean
+        disabled:
+          type: boolean
+        assistive_text:
+          type: string
+        standalone:
+          type: boolean
+        icon:
+          anyOf:
+            - type: string
+            - type: object
+              properties:
+                name:
+                  type: string
+                path:
+                  type: string
+                transformation:
+                  type: string
+                attributes:
+                  type: object
+        icon_position:
+          type: string
+        attributes:
+          type: object
+    link:
+      title: 'Link trigger'
+      type: boolean
+      description: 'Render the dropdown toggle as a link instead of a button.'
+    direction:
+      title: Direction
+      type: string
+      description: 'Direction in which the menu opens.'
+      enum:
+        - dropup
+        - dropend
+        - dropstart
+      'meta:enum':
+        dropup: Up
+        dropend: End
+        dropstart: Start
+    alignment:
+      title: Alignment
+      type: string
+      description: 'Dropdown menu alignment.'
+      enum:
+        - dropdown-menu-end
+        - dropdown-menu-sm-end
+        - dropdown-menu-md-end
+        - dropdown-menu-lg-end
+        - dropdown-menu-xl-end
+        - dropdown-menu-xxl-end
+        - dropdown-menu-start
+        - dropdown-menu-sm-start
+        - dropdown-menu-md-start
+        - dropdown-menu-lg-start
+        - dropdown-menu-xl-start
+        - dropdown-menu-xxl-start
+      'meta:enum':
+        dropdown-menu-end: End
+        dropdown-menu-sm-end: 'End from sm'
+        dropdown-menu-md-end: 'End from md'
+        dropdown-menu-lg-end: 'End from lg'
+        dropdown-menu-xl-end: 'End from xl'
+        dropdown-menu-xxl-end: 'End from xxl'
+        dropdown-menu-start: Start
+        dropdown-menu-sm-start: 'Start from sm'
+        dropdown-menu-md-start: 'Start from md'
+        dropdown-menu-lg-start: 'Start from lg'
+        dropdown-menu-xl-start: 'Start from xl'
+        dropdown-menu-xxl-start: 'Start from xxl'
+    dark_mode:
+      title: 'Dark mode'
+      type: boolean
+      description: 'Use the dark dropdown menu style.'
+    remove_wrapper:
+      title: 'Remove wrapper'
+      type: boolean
+      description: 'Do not render the dropdown wrapper element.'
+    inside_navigation:
+      title: 'Inside navigation'
+      type: boolean
+      description: 'Render menu accessibility attributes for use inside navigation.'
+    items:
+      title: 'Dropdown items'
+      type: array
+      description: 'Links, buttons, and dividers displayed in the menu.'
+      items:
+        type: object
+        properties:
+          label:
+            type: [string, array, object]
+          path:
+            type: [string, object]
+          button:
+            type: boolean
+          divider:
+            type: boolean
+          active:
+            type: boolean
+          disabled:
+            type: boolean
+          id:
+            type: string
+          title:
+            type: string
+          type:
+            type: string
+          variant:
+            type: string
+          size:
+            type: string
+          outline:
+            type: boolean
+          standalone:
+            type: boolean
+          icon:
+            anyOf:
+              - type: string
+              - type: object
+                properties:
+                  name:
+                    type: string
+                  path:
+                    type: string
+                  transformation:
+                    type: string
+                  attributes:
+                    type: object
+          icon_position:
+            type: string
+          attributes:
+            type: object
+    icon_path:
+      title: 'Icons path'
+      type: string
+      description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

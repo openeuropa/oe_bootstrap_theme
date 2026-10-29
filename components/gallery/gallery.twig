@@ -1,0 +1,69 @@
+{#
+/**
+ * @file
+ * Gallery component.
+ */
+#}
+{% extends '@oe-bcl/gallery' %}
+
+{% set id = gallery_id|default('gallery'|clean_unique_id) %}
+{% set title_tag = title_tag|default('h2') %}
+{% set toggle_collapsed = collapse_button_label|default('View the full gallery (%d)'|t) %}
+{% set toggle_expanded = expand_button_label|default('View less'|t) %}
+{% set next_label = next_label|default('Next'|t) %}
+{% set prev_label = previous_label|default('Previous'|t) %}
+{% set max_visible_thumbnails = max_visible_thumbnails|default(5) %}
+{% set icon_path = icon_path|default(bcl_icon_path()) %}
+
+{% set _title_link = title_link|default({}) %}
+{% if _title_link is not empty %}
+  {% set _title_link = _title_link|merge({
+    attributes: create_attribute(_title_link.attributes|default({})),
+  }) %}
+  {% if _title_link.icon is defined and _title_link.icon is not empty %}
+    {% set _title_link_icon = _title_link.icon|merge({
+      path: _title_link.icon.path|default(icon_path),
+      attributes: create_attribute(_title_link.icon.attributes|default({})),
+    }) %}
+    {% set _title_link = _title_link|merge({icon: _title_link_icon}) %}
+  {% endif %}
+{% endif %}
+{% set title_link = _title_link %}
+
+{% set _gallery_items = [] %}
+{% for item in items|default([]) %}
+  {% set _item = item %}
+  {% if _item.link is defined and _item.link is not empty %}
+    {% set _item_link = _item.link|merge({
+      attributes: create_attribute(_item.link.attributes|default({})),
+    }) %}
+    {% if _item_link.icon is defined and _item_link.icon is not empty %}
+      {% set _item_link_icon = _item_link.icon|merge({
+        path: _item_link.icon.path|default(icon_path),
+        attributes: create_attribute(_item_link.icon.attributes|default({})),
+      }) %}
+      {% set _item_link = _item_link|merge({icon: _item_link_icon}) %}
+    {% endif %}
+    {% set _item = _item|merge({link: _item_link}) %}
+  {% endif %}
+  {% set _gallery_items = _gallery_items|merge([_item]) %}
+{% endfor %}
+{% set items = bcl_gallery_items(_gallery_items) %}
+
+{% block carousel %}
+  {# Captions are not rendered for playable media in the carousel. #}
+  {% include '@oe-bcl/carousel' with {
+    id: _carousel_id,
+    with_controls: true,
+    with_indicators: false,
+    prev_label: _prev_label,
+    next_label: _next_label,
+    autoplay: false,
+    items: items|map(_item => _item|merge({
+      caption: _item.is_playable ? '' : _item.caption,
+      caption_title: _item.is_playable ? '' : _item.caption_title,
+      link: _item.is_playable ? {} : _item.link,
+      copyright_label: _item.copyright_label|default(_item.is_playable ? 'Copyright:'|t : 'Image credit:'|t),
+    })),
+  } only %}
+{% endblock %}

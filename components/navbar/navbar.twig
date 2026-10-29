@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Navbar component.
+ */
+#}
+{% extends '@oe-bcl/navbar' %}
+
+{% set color_set = color_scheme|default('light') %}
+{% set background = (background ?? true) ? color_set : '' %}
+{% set disable_collapse = disable_collapse ?? (expanded_breakpoint is empty) %}
+{% set expand = expanded_breakpoint|default('lg') %}
+{% set collapse_id = collapse_id|default('bcl-navbar'|clean_unique_id) %}
+
+{% block branding %}
+  {{- branding -}}
+{% endblock %}
+
+{% block navigation %}
+  {{- navigation -}}
+{% endblock %}
+
+{% block right %}
+  {{- right -}}
+{% endblock %}

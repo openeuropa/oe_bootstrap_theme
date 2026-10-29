@@ -1,0 +1,177 @@
+name: 'Inpage navigation'
+description: 'Provides a sticky table of contents alongside page content and updates the active item while scrolling.'
+props:
+  type: object
+  properties:
+    title:
+      title: Title
+      type: [string, array, object]
+      description: 'Title of the navigation.'
+    title_tag:
+      title: 'Title tag'
+      type: string
+      description: 'HTML tag used for the title. Defaults to h2.'
+    title_link:
+      title: 'Title link'
+      type: object
+      description: 'Optional link applied to the title.'
+      properties:
+        label:
+          type: [string, array, object]
+        path:
+          type: [string, object]
+        variant:
+          type: string
+          enum:
+            - primary
+            - secondary
+            - success
+            - danger
+            - warning
+            - info
+            - light
+            - dark
+        id:
+          type: string
+        disabled:
+          type: boolean
+        icon:
+          type: [string, object]
+          properties:
+            name:
+              type: string
+            path:
+              type: string
+            size:
+              type: string
+              enum:
+                - 2xs
+                - xs
+                - s
+                - m
+                - l
+                - xl
+                - 2xl
+                - fluid
+            transformation:
+              type: string
+              enum:
+                - rotate-90
+                - rotate-180
+                - rotate-270
+                - flip-horizontal
+                - flip-vertical
+            attributes:
+              type: object
+        icon_position:
+          type: string
+          enum:
+            - before
+            - after
+        icon_display:
+          type: string
+          enum:
+            - flex
+            - inline-flex
+        remove_icon_spacers:
+          type: boolean
+        attributes:
+          type: object
+    title_attributes:
+      title: 'Title attributes'
+      type: Drupal\Core\Template\Attribute
+    links:
+      title: Links
+      type: array
+      description: 'Links to headings in the page content.'
+      items:
+        type: object
+        properties:
+          label:
+            type: [string, array, object]
+          path:
+            type: [string, object]
+          variant:
+            type: string
+            enum:
+              - primary
+              - secondary
+              - success
+              - danger
+              - warning
+              - info
+              - light
+              - dark
+          id:
+            type: string
+          disabled:
+            type: boolean
+          standalone:
+            type: boolean
+          active:
+            type: boolean
+          icon:
+            type: [string, object]
+            properties:
+              name:
+                type: string
+              path:
+                type: string
+              size:
+                type: string
+                enum:
+                  - 2xs
+                  - xs
+                  - s
+                  - m
+                  - l
+                  - xl
+                  - 2xl
+                  - fluid
+              transformation:
+                type: string
+                enum:
+                  - rotate-90
+                  - rotate-180
+                  - rotate-270
+                  - flip-horizontal
+                  - flip-vertical
+              attributes:
+                type: object
+          icon_position:
+            type: string
+            enum:
+              - before
+              - after
+          icon_display:
+            type: string
+            enum:
+              - flex
+              - inline-flex
+          remove_icon_spacers:
+            type: boolean
+          attributes:
+            type: object
+    content:
+      title: Content
+      type: [string, array, object]
+      description: 'Page content displayed alongside the navigation.'
+    id:
+      title: ID
+      type: string
+      description: 'Navigation ID. A unique ID is generated when omitted.'
+    dropdown_id:
+      title: 'Dropdown ID'
+      type: string
+      description: 'Mobile dropdown trigger ID. Defaults to the navigation ID followed by -dropdown.'
+    dynamic_active:
+      title: 'Dynamic active'
+      type: boolean
+      description: 'Automatically controls the active item on mobile. Defaults to false.'
+    icon_path:
+      title: 'Icons path'
+      type: string
+      description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
+    attributes:
+      title: 'Navigation attributes'
+      type: Drupal\Core\Template\Attribute

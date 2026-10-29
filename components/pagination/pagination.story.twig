@@ -1,0 +1,55 @@
+{% set page_items = [
+  { path: '/example?page=0', label: '1' },
+  { path: '/example?page=1', label: '2', active: true },
+  { path: '/example?page=2', label: '3' },
+] %}
+
+<div class="vstack gap-5">
+  <div>
+    <h3 class="h5 mb-3">Default pagination</h3>
+    {% include 'oe_bootstrap_theme:pagination' with {
+      size: 'sm',
+      alignment: 'center',
+      enable_first_last_icons: false,
+      first: { path: '/example?page=0', label: 'First' },
+      prev: { path: '/example?page=0', label: 'Previous' },
+      next: { path: '/example?page=2', label: 'Next' },
+      last: { path: '/example?page=7', label: 'Last' },
+      items: page_items,
+      attributes: create_attribute().setAttribute('aria-label', 'Pagination'),
+    } only %}
+  </div>
+
+  <div>
+    <h3 class="h5 mb-3">Icons and ellipsis</h3>
+    {% include 'oe_bootstrap_theme:pagination' with {
+      alignment: 'end',
+      enable_prev_next_icons: true,
+      ellipsis_before: true,
+      ellipsis_after: true,
+      first: { path: '/example?page=0', label: 'First' },
+      prev: { path: '/example?page=3', label: 'Previous' },
+      next: { path: '/example?page=5', label: 'Next' },
+      last: { path: '/example?page=9', label: 'Last' },
+      items: [
+        { path: '/example?page=4', label: '5', active: true },
+      ],
+      attributes: create_attribute().setAttribute('aria-label', 'Pagination with skipped pages'),
+    } only %}
+  </div>
+
+  <div>
+    <h3 class="h5 mb-3">Glossary pagination</h3>
+    {% include 'oe_bootstrap_theme:pagination' with {
+      variant: 'glossary',
+      items: [
+        { path: '#a', label: 'A' },
+        { path: '#b', label: 'B', active: true },
+        { path: '#c', label: 'C' },
+        { path: '#d', label: 'D' },
+        { path: '#e', label: 'E' },
+        { path: '#numbers', label: '0-9' },
+      ],
+    } only %}
+  </div>
+</div>

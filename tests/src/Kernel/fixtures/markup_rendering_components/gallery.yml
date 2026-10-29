@@ -1,0 +1,237 @@
+gallery_mixed_media:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:gallery
+    '#props':
+      items:
+        - media:
+            '#markup': '<img src="https://example.com/media-1.jpg" alt="First media image">'
+          thumbnail:
+            '#markup': '<img src="https://example.com/thumbnail-1.jpg" alt="First thumbnail">'
+          caption_title: 'First image'
+          caption: 'First image caption.'
+        - media:
+            '#markup': '<video poster="https://example.com/video-poster.jpg" controls><source src="https://example.com/video.mp4" type="video/mp4"></video>'
+            '#allowed_tags':
+              - video
+              - source
+          thumbnail:
+            '#markup': '<img src="https://example.com/video-thumbnail.jpg" alt="Video thumbnail">'
+          caption_title: 'Featured video'
+          caption: 'Video caption.'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\GalleryPatternAssert
+      expected:
+        title: ~
+        items:
+          - thumbnail:
+              rendered: '<img src="https://example.com/thumbnail-1.jpg" alt="First thumbnail">'
+              caption_title: 'First image'
+              caption: 'First image caption.'
+            media:
+              rendered: '<img data-src="https://example.com/media-1.jpg" alt="First media image">'
+              caption_title: 'First image'
+              caption: 'First image caption.'
+          - thumbnail:
+              rendered: '<img src="https://example.com/video-thumbnail.jpg" alt="Video thumbnail">'
+              caption_title: 'Featured video'
+              caption: 'Video caption.'
+              play_icon: true
+            media:
+              rendered: '<video poster="https://example.com/video-poster.jpg" controls><source src="https://example.com/video.mp4" type="video/mp4"></source></video>'
+              caption_title: ~
+              caption: ~
+
+gallery_default_labels_and_limit:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:gallery
+    '#props':
+      title: 'Default gallery title'
+      counter: '%d items'
+      items:
+        - media:
+            '#markup': '<img src="https://example.com/media-1.jpg" alt="Media 1">'
+          thumbnail:
+            '#markup': '<img src="https://example.com/thumbnail-1.jpg" alt="Thumbnail 1">'
+        - media:
+            '#markup': '<img src="https://example.com/media-2.jpg" alt="Media 2">'
+          thumbnail:
+            '#markup': '<img src="https://example.com/thumbnail-2.jpg" alt="Thumbnail 2">'
+        - media:
+            '#markup': '<img src="https://example.com/media-3.jpg" alt="Media 3">'
+          thumbnail:
+            '#markup': '<img src="https://example.com/thumbnail-3.jpg" alt="Thumbnail 3">'
+        - media:
+            '#markup': '<img src="https://example.com/media-4.jpg" alt="Media 4">'
+          thumbnail:
+            '#markup': '<img src="https://example.com/thumbnail-4.jpg" alt="Thumbnail 4">'
+        - media:
+            '#markup': '<img src="https://example.com/media-5.jpg" alt="Media 5">'
+          thumbnail:
+            '#markup': '<img src="https://example.com/thumbnail-5.jpg" alt="Thumbnail 5">'
+        - media:
+            '#markup': '<img src="https://example.com/media-6.jpg" alt="Media 6">'
+          thumbnail:
+            '#markup': '<img src="https://example.com/thumbnail-6.jpg" alt="Thumbnail 6">'
+  assertions:
+    count:
+      '.bcl-gallery': 1
+      '.bcl-gallery > .d-sm-flex h2.bcl-heading': 1
+      '.bcl-gallery__thumbnails > ul.bcl-gallery__grid > li': 5
+      '.bcl-gallery__thumbnails-collaspe > ul.bcl-gallery__grid > li': 1
+      '.bcl-gallery__collapse': 1
+      '.bcl-gallery__mobile-view-more': 1
+      '.modal .carousel-item': 6
+    equals:
+      '.bcl-gallery > .d-sm-flex .fw-bold': '6 items'
+      '.bcl-gallery__collapse .label-collapsed': 'View the full gallery (6)'
+      '.bcl-gallery__collapse .label-expanded': 'View less'
+      '.modal .carousel-control-prev .visually-hidden': 'Previous'
+      '.modal .carousel-control-next .visually-hidden': 'Next'
+
+gallery_with_all_parameters:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:gallery
+    '#props':
+      gallery_id: custom-gallery
+      title: 'Linked gallery title'
+      title_tag: h4
+      title_link:
+        path: 'https://example.com/gallery'
+        variant: danger
+        id: custom-gallery-title-link
+        disabled: true
+        icon:
+          name: images
+          size: l
+          transformation: flip-horizontal
+          attributes:
+            class:
+              - custom-title-icon
+        icon_position: before
+        icon_display: inline-flex
+        remove_icon_spacers: true
+        attributes:
+          class:
+            - custom-title-link
+      title_attributes:
+        id: custom-gallery-title
+        class:
+          - custom-title-class
+      counter: 'Media count: %d'
+      collapse_button_label: 'Show all %d media items'
+      expand_button_label: 'Show fewer media items'
+      previous_label: 'Previous media'
+      next_label: 'Next media'
+      max_visible_thumbnails: 2
+      icon_path: '/custom-icons.svg'
+      attributes:
+        id: custom-gallery-wrapper
+        class:
+          - custom-gallery-class
+        data-gallery-attribute: custom-value
+      items:
+        - media:
+            '#markup': '<img src="https://example.com/custom-media-1.jpg" alt="Custom media 1">'
+          thumbnail:
+            '#markup': '<img src="https://example.com/custom-thumbnail-1.jpg" alt="Custom thumbnail 1">'
+          caption_title: 'Custom image'
+          caption: 'Custom image caption.'
+          copyright: '© 2026 Example Organisation'
+          copyright_label: 'Custom credit:'
+        - media:
+            '#markup': '<iframe src="https://example.com/embed" title="Embedded media"></iframe>'
+            '#allowed_tags':
+              - iframe
+          thumbnail:
+            '#markup': '<img src="https://example.com/custom-thumbnail-2.jpg" alt="Embedded media thumbnail">'
+          caption_title: 'Embedded media'
+          caption: 'Embedded media caption.'
+          copyright: '© 2026 Video Organisation'
+        - media:
+            '#markup': '<img src="https://example.com/custom-media-3.jpg" alt="Custom media 3">'
+          thumbnail:
+            '#markup': '<img src="https://example.com/custom-thumbnail-3.jpg" alt="Custom thumbnail 3">'
+          caption_title: 'Linked image'
+          caption: 'Linked image caption.'
+          caption_classes: custom-caption-class
+          interval: 3000
+          link:
+            label: 'Read more'
+            path: 'https://example.com/read-more'
+            variant: primary
+            id: custom-gallery-link
+            disabled: true
+            standalone: true
+            icon:
+              name: chevron-right
+              size: xs
+              transformation: rotate-90
+              attributes:
+                class:
+                  - custom-link-icon
+            icon_position: after
+            icon_display: flex
+            remove_icon_spacers: false
+            attributes:
+              class:
+                - custom-gallery-link
+  assertions:
+    count:
+      '#custom-gallery-wrapper.bcl-gallery.custom-gallery-class[data-gallery-attribute="custom-value"]': 1
+      'h4#custom-gallery-title.bcl-heading.custom-title-class': 1
+      'h4#custom-gallery-title > a#custom-gallery-title-link.custom-title-link.link-danger.disabled.standalone[href="https://example.com/gallery"][aria-disabled="true"][tabindex="-1"]': 1
+      '#custom-gallery-title-link.d-inline-flex': 0
+      '#custom-gallery-title-link.gap-2-5': 0
+      'h4#custom-gallery-title svg.custom-title-icon.icon--l.icon--flip-horizontal': 1
+      '.bcl-gallery__thumbnails > ul.bcl-gallery__grid > li': 2
+      '.bcl-gallery__thumbnails-collaspe > ul.bcl-gallery__grid > li': 1
+      '#modalCustom-gallery.modal': 1
+      '#carouselCustom-gallery.carousel': 1
+      '#carouselCustom-gallery .carousel-item': 3
+      '#carouselCustom-gallery .carousel-item:nth-child(2) .carousel-caption': 0
+      '#carouselCustom-gallery .carousel-item:nth-child(3)[data-bs-interval="3000"]': 1
+      '#custom-gallery-link.custom-gallery-link.link-primary.disabled.standalone.d-flex.gap-2-5[href="https://example.com/read-more"][aria-disabled="true"][tabindex="-1"]': 1
+      '#custom-gallery-link svg.custom-link-icon.icon--xs.icon--rotate-90': 1
+    equals:
+      '.bcl-gallery > .d-sm-flex .fw-bold': 'Media count: 3'
+      '.bcl-gallery__collapse .label-collapsed': 'Show all 3 media items'
+      '.bcl-gallery__collapse .label-expanded': 'Show fewer media items'
+      '#carouselCustom-gallery .carousel-control-prev .visually-hidden': 'Previous media'
+      '#carouselCustom-gallery .carousel-control-next .visually-hidden': 'Next media'
+      '#carouselCustom-gallery .carousel-item:nth-child(1) .bcl-copyright': '<span class="visually-hidden">Custom credit: </span>© 2026 Example Organisation'
+      '#carouselCustom-gallery .carousel-item:nth-child(2) .bcl-copyright': '<span class="visually-hidden">Copyright: </span>© 2026 Video Organisation'
+    contains:
+      '#custom-gallery-title > a': 'Linked gallery title'
+      'h4#custom-gallery-title svg': '/custom-icons.svg#images'
+      '.bcl-gallery__item-play-icon svg': '/custom-icons.svg#play-fill'
+      '#custom-gallery-link svg': '/custom-icons.svg#chevron-right'
+
+gallery_with_fallback_id:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:gallery
+    '#props':
+      items:
+        - media:
+            '#markup': '<img src="https://example.com/media.jpg" alt="Media">'
+          thumbnail:
+            '#markup': '<img src="https://example.com/thumbnail.jpg" alt="Thumbnail">'
+  assertions:
+    count:
+      '.bcl-gallery .modal[id^="modalGallery"]': 1
+      '.bcl-gallery .carousel[id^="carouselGallery"]': 1
+      '.bcl-gallery__item[data-bs-target^="#carouselGallery"]': 1
+      '.bcl-gallery__item-overlay[data-bs-target^="#modalGallery"]': 1
+
+gallery_without_items:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:gallery
+    '#props': {}
+  assertions:
+    count:
+      '.bcl-gallery': 0
