@@ -17,11 +17,13 @@ props:
       enum:
         - article
         - section
+        - aside
         - div
         - null
       'meta:enum':
         article: '<article> (default)'
         section: '<section>'
+        aside: '<aside>'
         div: '<div>'
         # Value NULL becomes '' when used as array key.
         '': Default

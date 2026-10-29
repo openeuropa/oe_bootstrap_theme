@@ -7,7 +7,7 @@
 {% set title_attributes = create_attribute(title_attributes ?? {}) %}
 {% extends '@oe-bcl/gallery' %}
 
-{% set id = gallery_id|default('gallery'|clean_unique_id) %}
+{% set id = gallery_id ?? 'bcl-gallery'|clean_unique_id %}
 {% set title_tag = title_tag|default('h2') %}
 {% set toggle_collapsed = collapse_button_label|default('View the full gallery (%d)'|t) %}
 {% set toggle_expanded = expand_button_label|default('View less'|t) %}

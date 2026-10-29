@@ -90,7 +90,7 @@ props:
             type: [object, string, 'null']  # attributes
     grid_columns:
       title: 'Grid columns'
-      type: [integer, 'null']
+      type: [string, integer, 'null']
       description: 'Number of grid columns. Defaults to 1.'
       enum:
         - 1
@@ -124,7 +124,7 @@ props:
         '': Default
     responsive_columns:
       title: 'Responsive columns'
-      type: [integer, 'null']
+      type: [string, integer, 'null']
       description: 'Number of responsive columns.'
       enum:
         - 2
@@ -137,7 +137,7 @@ props:
         '': Default
     gutter:
       title: Gutter
-      type: [integer, 'null']
+      type: [string, integer, 'null']
       description: 'Gutter between cards.'
       enum:
         - 0
