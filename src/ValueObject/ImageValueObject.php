@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\oe_bootstrap_theme\ValueObject;
 
 use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Template\Attribute\TwigAllowed;
 use Drupal\image\Plugin\Field\FieldType\ImageItem;
 
 /**
@@ -62,7 +63,7 @@ class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterf
   /**
    * {@inheritdoc}
    */
-  public static function fromArray(array $values = []): ValueObjectInterface {
+  public static function fromArray(array $values = []): static {
     $values += ['alt' => '', 'name' => '', 'responsive' => TRUE];
 
     return new static(
@@ -177,6 +178,7 @@ class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterf
    * @return array
    *   An image render array.
    */
+  #[TwigAllowed]
   public function toRenderArray(): array {
     $build = [
       '#theme' => 'image',
