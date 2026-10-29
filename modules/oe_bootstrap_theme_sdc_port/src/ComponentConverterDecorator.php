@@ -259,8 +259,8 @@ class ComponentConverterDecorator extends ComponentConverter {
         // Object types.
         'object',
         'ImageValueObject',
-        'DateTime',
         'FileValueObject' => 'object',
+        'DateTime' => ['object', 'string'],
         'number' => 'integer',
         'mixed' => NULL,
         NULL => throw new \Exception("Missing type in '$name' setting or field in '$id' pattern."),
