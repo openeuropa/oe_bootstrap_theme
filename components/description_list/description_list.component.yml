@@ -85,7 +85,8 @@ props:
                       type: [string, array, object, 'null']
                       description: 'Label text or render array.'
                     icon:
-                      type: [object, 'null']
+                      title: 'Icon'
+                      type: [string, object, 'null']
                       properties:
                         name:
                           type: [string, 'null']
