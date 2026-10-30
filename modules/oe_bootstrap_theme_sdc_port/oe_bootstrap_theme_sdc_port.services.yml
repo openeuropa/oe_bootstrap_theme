@@ -5,3 +5,5 @@ services:
     decorates: Drupal\ui_patterns_to_sdc\ComponentConverter
   Drupal\oe_bootstrap_theme_sdc_port\ComponentWriterDecorator:
     decorates: Drupal\ui_patterns_to_sdc\ComponentWriter
+  Drupal\oe_bootstrap_theme_sdc_port\TwigStoryWriter: {}
+  Drupal\oe_bootstrap_theme_sdc_port\Twig\TwigGenerator: {}
