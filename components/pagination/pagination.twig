@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Pagination component.
+ */
+#}
+
+{% set attributes = create_attribute(attributes ?? {}) %}
+
+{% if variant == 'glossary' %}
+  {% set attributes = attributes.setAttribute('aria-label', 'Glossary links'|t) %}
+{% endif %}
+
+{% set internal_items = (items ?? [])|map(item => item|bcl_expand_attributes({
+  'aria-label': item.label,
+})) %}
+
+{% set _controls = {
+  first: { item: first, label: 'First'|t },
+  prev: { item: prev, label: 'Previous'|t },
+  next: { item: next, label: 'Next'|t },
+  last: { item: last, label: 'Last'|t },
+} %}
+{% set _controls = _controls|filter(_control => _control.item) %}
+{% set _control_items = _controls|map(_control => _control.item|bcl_expand_attributes({
+  'aria-label': _control.item.aria_label|default(_control.label),
+})|bcl_expand_icon(size: 'fluid')) %}
+
+{% set _list_attributes = create_attribute(list_attributes ?? {}) %}
+
+{% include '@oe-bcl/pagination' with {
+  variant: variant,
+  size: size,
+  alignment: alignment,
+  aria_label: aria_label,
+  enable_prev_next_icon: enable_prev_next_icons,
+  enable_first_last_icon: enable_first_last_icons,
+  ..._control_items,
+  items: internal_items,
+  attributes: attributes,
+  icon_path: bcl_icon_path(),
+  list_attributes: _list_attributes.addClass('js-pager__items'),
+} only %}

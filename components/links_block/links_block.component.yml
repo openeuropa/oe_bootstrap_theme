@@ -1,0 +1,44 @@
+name: 'Links block'
+description: 'List of links with an optional title.'
+props:
+  type: object
+  properties:
+    background:
+      title: Background
+      description: 'Determines the background of the block:'
+      type: [string, 'null']
+      enum:
+        - gray
+        - transparent
+        - null
+      'meta:enum':
+        gray: 'Gray (default)'
+        transparent: Transparent
+        '': Default
+    orientation:
+      title: Orientation
+      description: 'Determines if the list of links is shown vertically or horizontally:'
+      type: [string, 'null']
+      enum:
+        - vertical
+        - horizontal
+        - null
+      'meta:enum':
+        vertical: 'Vertical (default)'
+        horizontal: Horizontal
+        '': Default
+    title:
+      title: Title
+      description: 'Title of the links block.'
+      type: [string, array, object, 'null']
+    title_tag:
+      title: 'Title tag'
+      description: 'The tag to use for the title. Defaults to h2.'
+      type: [string, 'null']
+    links:
+      title: Links
+      description: 'Array of links.'
+      type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: [object, array, string, 'null']
