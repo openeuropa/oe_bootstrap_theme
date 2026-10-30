@@ -159,10 +159,3 @@ function oe_bootstrap_theme_preprocess_pattern_card(array &$variables): void {
   $variables['bc_card_search_image_hide_on_mobile'] = BackwardCompatibility::getSetting('card_search_image_hide_on_mobile');
   $variables['bc_card_search_use_grid_classes'] = BackwardCompatibility::getSetting('card_search_use_grid_classes');
 }
-
-/**
- * Implements hook_preprocess_HOOK() for Carousel V2 patterns.
- */
-function oe_bootstrap_theme_preprocess_pattern_carousel_v2(array &$variables): void {
-  $variables['carousel_id'] = $variables['attributes']['id'] ?? Html::getUniqueId('bcl-carousel-v2');
-}
