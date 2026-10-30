@@ -1,0 +1,52 @@
+name: 'Content banner'
+description: 'Shows the content summary along with the title, image and badges.'
+props:
+  type: object
+  properties:
+    background:
+      title: Background
+      description: 'Set a gray or white background at the content banner. Defaults to white.'
+      type: [string, 'null']
+    image:
+      title: Image
+      description: 'Image of the content.'
+      type: [object, 'null']
+    copyright:
+      title: Copyright
+      description: 'Optional copyright text displayed below the banner.'
+      type: [string, array, object, 'null']
+    image_size:
+      title: 'Image size'
+      description: 'The size of the images. Allowed values: md, lg, xl. Defaults to lg.'
+      type: [string, array, object, 'null']
+    title:
+      title: Title
+      description: 'Title of the content banner.'
+      type: [string, array, object, 'null']
+    title_tag:
+      title: 'Title tag'
+      description: 'The tag to use for the title. Defaults to h1.'
+      type: [string, 'null']
+    action_bar:
+      title: 'Action bar region'
+      description: 'Action bar region. E.g. for action buttons.'
+      type: [string, array, object, 'null']
+    content:
+      title: Content
+      description: 'Text with the summary of the content.'
+      type: [string, array, object, 'null']
+    meta:
+      title: Meta
+      description: 'Miscellaneous information as date, author, etc.'
+      type: [array, 'null']
+    badges:
+      title: Badges
+      description: 'List of badges.'
+      type: [array, 'null']
+    links:
+      title: Links
+      description: 'List of links.'
+      type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: [object, array, string, 'null']

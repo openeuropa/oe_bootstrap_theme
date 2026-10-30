@@ -1,0 +1,101 @@
+name: 'Carousel V2'
+description: 'A slideshow with shared navigation controls and two layouts: Carousel image ("split") or Carousel hero ("full_width").'
+group: 'Version 2.x'
+props:
+  type: object
+  properties:
+    layout:
+      title: Layout
+      description: 'Carousel image fades between slides with content beside the image on desktop. Carousel hero slides between full-width images with overlaid desktop content. Both stack on mobile. Defaults to split.'
+      type: [string, 'null']
+      enum:
+        - split
+        - full_width
+        - null
+      'meta:enum':
+        split: 'Carousel image'
+        full_width: 'Carousel hero'
+        '': Default
+    full_bleed:
+      title: 'Full width'
+      description: 'Extend the carousel to the page edges. Independent of carousel type; false by default.'
+      type: [boolean, 'null']
+    title_tag:
+      title: 'Heading level'
+      description: 'Choose the heading level to match the page hierarchy (for example h4 under h3). Defaults to p. The visual title style stays h1-sized.'
+      type: [string, 'null']
+      enum:
+        - p
+        - h2
+        - h3
+        - h4
+        - h5
+        - h6
+        - null
+      'meta:enum':
+        p: 'Paragraph (default)'
+        h2: 'Heading 2'
+        h3: 'Heading 3'
+        h4: 'Heading 4'
+        h5: 'Heading 5'
+        h6: 'Heading 6'
+        '': Default
+    active_item:
+      title: 'Active item'
+      description: 'The 1-based index of the initial slide. Defaults to 1.'
+      type: [integer, string, 'null']
+    autoplay:
+      title: Autoplay
+      description: 'Whether to rotate slides automatically. Defaults to true. Reduced motion always starts paused. Hover and focus do not pause rotation.'
+      type: [boolean, 'null']
+    interval:
+      title: Interval
+      description: 'Rotation interval in milliseconds. Defaults to 10000, minimum 8000. BCL extends slides to at least 3000 + 400 per word. Pause preserves remaining time and the visible progress bar.'
+      type: [integer, string, 'null']
+    disable_touch:
+      title: 'Disable touch'
+      description: 'Disable touch swiping.'
+      type: [boolean, 'null']
+    prev_label:
+      title: 'Previous label'
+      description: 'Translated label for the previous slide control. Defaults to "Previous slide".'
+      type: [string, 'null']
+    next_label:
+      title: 'Next label'
+      description: 'Translated label for the next slide control. Defaults to "Next slide".'
+      type: [string, 'null']
+    play_label:
+      title: 'Play label'
+      description: 'Translated label for the rotation control when paused. Defaults to "Play slides".'
+      type: [string, 'null']
+    pause_label:
+      title: 'Pause label'
+      description: 'Translated label for the rotation control when rotating. Defaults to "Pause slides".'
+      type: [string, 'null']
+    slide_label:
+      title: 'Slide label'
+      description: 'Translated position in the accessible slide name, using %current% and %total% placeholders. Appended to the slide title when present. Defaults to "%current% of %total%".'
+      type: [string, 'null']
+    carousel_role_label:
+      title: 'Carousel role label'
+      description: 'Translated ARIA role description announced for the carousel region. Defaults to "carousel".'
+      type: [string, 'null']
+    slide_role_label:
+      title: 'Slide role label'
+      description: 'Translated ARIA role description announced for each slide. Defaults to "slide".'
+      type: [string, 'null']
+    icon_path:
+      title: 'Icons path'
+      description: 'Path to icons.'
+      type: [string, 'null']
+    label:
+      title: Label
+      description: 'Accessible name for the carousel region. Defaults to "Featured content".'
+      type: [string, array, object, 'null']
+    items:
+      title: Slides
+      description: 'Slides shown in the carousel.'
+      type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: [object, string, 'null']
