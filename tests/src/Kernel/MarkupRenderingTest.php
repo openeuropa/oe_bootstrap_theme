@@ -132,9 +132,28 @@ class MarkupRenderingTest extends KernelTestBase {
   }
 
   /**
-   * Tests all components in a single pass.
+   * Provides test data for testAllCases().
+   *
+   * @return array<string, array>
+   *   Argument combinations for the test method.
    */
-  public function testAllCases(): void {
+  public static function allCasesProvider(): array {
+    return [
+      'patterns' => ['patterns'],
+      'other' => ['other'],
+    ];
+  }
+
+  /**
+   * Tests all components in a single pass.
+   *
+   * @param 'patterns'|'other' $mode
+   *   Pass 'patterns' to test all cases with patterns.
+   *   Pass 'other' to test all cases which don't use a pattern.
+   *
+   * @dataProvider allCasesProvider()
+   */
+  public function testAllCases(string $mode): void {
     $cases = static::markupRenderingProvider();
     $n = count($cases);
     foreach (array_keys($cases) as $i => $case_name) {
@@ -149,6 +168,12 @@ class MarkupRenderingTest extends KernelTestBase {
           foreach ($backward_compatibility as $bc_name => $bc_value) {
             $restore_callbacks[] = $this->setBackwardCompatibilitySetting($bc_name, $bc_value);
           }
+        }
+
+        // Skip pattern case when in 'other' mode.
+        // Skip non-pattern case when not in 'other' mode.
+        if ($mode === 'other' xor ($render['#type'] ?? NULL) !== 'pattern') {
+          continue;
         }
 
         Html::resetSeenIds();
