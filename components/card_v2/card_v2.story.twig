@@ -1,0 +1,171 @@
+{% for variant, variant_title in {
+  default: 'Default',
+  horizontal: 'Horizontal',
+} %}
+  <section class="my-4">
+    <h3 class="my-3">{{ variant_title }} (<code>{{ variant }}</code>)</h3>
+    {#
+    /**
+     * @file
+     * Template override for preview mode of "Card V2" pattern.
+     */
+    #}
+
+    {% set _title %}
+      <h2>Simple title</h2>
+    {% endset %}
+
+    {# Shared media #}
+    {% set _media %}
+      <img src="https://picsum.photos/1000/500/" alt="Alternative text for card image">
+    {% endset %}
+    {% set _media_horizontal %}
+      <img src="https://picsum.photos/400/800/" alt="Alternative text for card image">
+    {% endset %}
+
+    {# 1. Full Card Demo #}
+    {% set _title %}
+      <h4><a href="https://example.com/">Title card</a></h4>
+    {% endset %}
+    {% set _content %}
+      <h6 class="card-subtitle mb-2">Subtitle card</h6>
+      <div class="card-text mb-2">
+        Text card with longer text which is supported. An example of a <a href="https://www.example.com/1">link</a> in the text.
+        <a href="#" class="d-block">Link example</a>
+      </div>
+      <div class="my-3 me-n3">
+        <span class="text-muted me-3">Organisation</span><span class="text-muted me-3">Position</span>
+      </div>
+      <div>
+        <button class="btn btn-primary">Custom action</button>
+      </div>
+      <div class="mt-2-5">
+        <a href="#" class="mb-2 me-2 badge rounded-pill badge-outline-primary">A link badge</a>
+        <span class="mb-2 me-2 badge badge-outline-primary">A non-rounded badge</span>
+        <span class="mb-2 badge rounded-pill text-bg-primary">A solid badge</span>
+      </div>
+    {% endset %}
+    {% set _header %}
+      Header of <span class="fw-bold">card</span>
+    {% endset %}
+    {% set _footer %}
+      Footer of <span class="fw-bold">card</span>
+    {% endset %}
+
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="mb-5">
+          <h2 class="mb-2">Full card</h2>
+          {{ include_only('oe_bootstrap_theme:card_v2', {
+            variant: variant,
+            title: _title,
+            media: variant == 'default' ? _media : _media_horizontal,
+            content: _content,
+            header: variant == 'default' ? _header : '',
+            footer: variant == 'default' ? _footer : '',
+          }) }}
+        </div>
+      </div>
+    </div>
+
+    {# 2. Simple Card Demo #}
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="mb-5">
+          <h2 class="mb-2">Simple card</h2>
+          {{ include_only('oe_bootstrap_theme:card_v2', {
+            variant: variant,
+            title: _title,
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel mauris vitae ipsum blandit condimentum ut eget quam. Nunc eget nisi aliquam, accumsan sapien eu, blandit turpis...',
+          }) }}
+        </div>
+      </div>
+    </div>
+
+    {# 3. Card with Date Media #}
+    <div class="row mb-5">
+      <div class="col-12 col-md-8">
+        <h2 class="mb-2">Card with date</h2>
+        {{ include_only('oe_bootstrap_theme:card_v2', {
+          variant: variant,
+          title: _title,
+          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel mauris vitae ipsum blandit condimentum ut eget quam. Nunc eget nisi aliquam, accumsan sapien eu, blandit turpis...',
+          media: include_only('oe_bootstrap_theme:date_block', {
+            date: '2021-05-26',
+          })
+        }) }}
+      </div>
+    </div>
+
+    {# 4. Clickable Wrapper Card via <a> tag #}
+    {% set _clickable_title %}
+      <a href="https://example.com/" class="stretched-link"><h2 class="h5 mb-2">Card wrapped in anchor</h2></a>
+    {% endset %}
+    {% set _clickable_content %}
+      <p class="card-text">
+        This entire card is rendered as a <code>&lt;a&gt;</code> tag. To avoid invalid HTML nesting, embedded links and buttons should be styled as text or pseudo-interactive elements. However, links that do not conflict with native semantics may still work.
+      </p>
+      <ul class="mb-3">
+        <li><a href="https://example.com/alt" class="text-decoration-underline">Safe inline link</a></li>
+      </ul>
+      <div class="mt-2">
+        <span class="badge bg-secondary me-2">Static badge</span>
+        <a href="https://example.com/tag" class="badge rounded-pill bg-primary text-white text-decoration-none me-2">Clickable badge</a>
+        <a href="https://example.com/another-tag" class="badge badge-outline-primary rounded-pill text-decoration-none">Another badge</a>
+      </div>
+    {% endset %}
+
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="mb-5">
+          <h2 class="mb-2">Clickable wrapper card</h2>
+          {{ include_only('oe_bootstrap_theme:card_v2', {
+            variant: variant,
+            attributes: create_attribute({
+              href: 'https://example.com',
+              class: ['position-relative', 'text-decoration-none']
+            }),
+            title: _clickable_title,
+            media: variant == 'default' ? _media : _media_horizontal,
+            content: _clickable_content,
+            footer: variant == 'default' ? _footer : ''
+          }) }}
+        </div>
+      </div>
+    </div>
+
+    {# 5. Card with Badges Demo #}
+    {% set _badges_title %}
+      <h2 class="h5 mb-2">Card with badges</h2>
+    {% endset %}
+    {% set _badges_content %}
+      <p class="card-text">
+        This card contains various badges that can represent categories, filters, tags, or actions.
+      </p>
+      <div class="mt-3">
+        <a href="#" class="badge rounded-pill text-bg-primary me-2 mb-2">Solid badge</a>
+        <span class="badge rounded-pill badge-outline-primary me-2 mb-2">Outlined badge</span>
+        <a href="#" class="badge rounded-pill bg-success text-white me-2 mb-2">Clickable success</a>
+        <span class="badge bg-warning text-dark me-2 mb-2">Static warning</span>
+        <a href="#" class="badge bg-info-subtle text-info-emphasis me-2 mb-2">Info tag</a>
+        <a href="#" class="badge bg-secondary-subtle text-secondary-emphasis me-2 mb-2">Another tag</a>
+      </div>
+    {% endset %}
+
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="mb-5">
+          <h2 class="mb-2">Card with badges</h2>
+          {{ include_only('oe_bootstrap_theme:card_v2', {
+            variant: variant,
+            tag: 'article',
+            attributes: create_attribute().addClass(['position-relative']),
+            title: _badges_title,
+            media: variant == 'default' ? _media : _media_horizontal,
+            content: _badges_content
+          }) }}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endfor %}

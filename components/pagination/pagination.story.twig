@@ -1,0 +1,42 @@
+{% for variant, variant_title in {
+  default: 'Default',
+  glossary: 'Glossary',
+} %}
+  <section class="my-4">
+    <h3 class="my-3">{{ variant_title }} (<code>{{ variant }}</code>)</h3>
+    {{ include_only('oe_bootstrap_theme:pagination', {
+      variant: variant,
+      size: 'sm',
+      alignment: 'center',
+      enable_prev_next_icons: false,
+      enable_first_last_icons: true,
+      first: {
+        path: '#',
+        label: 'First',
+      },
+      prev: {
+        path: '#',
+        label: 'Previous',
+      },
+      next: {
+        path: '#',
+        label: 'Next',
+      },
+      last: {
+        path: '#',
+        label: 'Last',
+      },
+      items: [
+        {
+          path: '#',
+          label: '1',
+          active: true,
+        },
+        {
+          path: '#',
+          label: '2',
+        },
+      ],
+    }) }}
+  </section>
+{% endfor %}

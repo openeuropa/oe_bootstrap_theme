@@ -1,0 +1,41 @@
+{{ include_only('oe_bootstrap_theme:file', {
+  title: 'This is the title of this file.',
+  file: {
+    title: 'Example document',
+    name: 'document.pdf',
+    url: 'https://example.com/document.pdf',
+    size: '4444',
+    mime: 'application/pdf',
+    extension: 'pdf',
+    language_code: 'en',
+  }|to_file_value_object,
+  translations: [
+    {
+      title: 'translation_bg.docx',
+      name: 'translation_bg.docx',
+      url: '/translation_bg.docx',
+      size: '40391',
+      mime: 'application/msword',
+      extension: 'doc',
+      language_code: 'bg',
+    }|to_file_value_object,
+    {
+      title: 'translation_es.pdf',
+      name: 'translation_es.pdf',
+      url: '/translation_es.html',
+      size: '425',
+      mime: 'application/pdf',
+      extension: 'pdf',
+      language_code: 'es',
+    }|to_file_value_object,
+    {
+      title: 'translation_fr.pdf',
+      name: 'translation_fr.pdf',
+      url: 'https://example.com/translation_fr.html',
+      size: '121',
+      mime: 'application/pdf',
+      extension: 'pdf',
+      language_code: 'fr',
+    }|to_file_value_object,
+  ],
+}) }}

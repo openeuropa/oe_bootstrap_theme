@@ -1,0 +1,21 @@
+{% for variant, variant_title in {
+  primary: 'Primary (default)',
+  secondary: 'Secondary',
+  success: 'Success',
+  danger: 'Danger',
+  warning: 'Warning',
+  info: 'Info',
+  light: 'Light',
+  dark: 'Dark',
+  link: 'Link',
+} %}
+  <section class="my-4">
+    <h3 class="my-3">{{ variant_title }} (<code>{{ variant }}</code>)</h3>
+    {{ include_only('oe_bootstrap_theme:alert', {
+      variant: variant,
+      heading: 'Well done!',
+      message: 'A simple alert—check it out!',
+      icon: 'info-circle',
+    }) }}
+  </section>
+{% endfor %}
