@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Description list component.
+ *
+ * @todo Fail if an item has a missing, empty or malformed term.
+ */
+#}
+{% include '@oe-bcl/description-list' with {
+  title: title,
+  title_tag: title_tag,
+  items: (items ?? [])|map(item => item|merge({
+    term: (item.term is iterable)
+      ? item.term|map(term => (term is iterable) ? term|bcl_expand_icon(size: 'xs') : term)
+      : [{
+        label: item.term,
+      }],
+  })),
+  variant: orientation,
+  attributes: create_attribute(attributes ?? {}),
+} only %}

@@ -1,0 +1,58 @@
+name: Badge
+description: 'A small count and labeling component. Badges scale to match the size of the immediate parent element by using relative font sizing and em units. For more information: https://v5.getbootstrap.com/docs/5.0/components/badge/'
+props:
+  type: object
+  properties:
+    background:
+      title: 'Badge background'
+      description: 'Set the background color of the badge. Defaults to "primary".'
+      type: [string, 'null']
+      enum:
+        - primary
+        - secondary
+        - success
+        - danger
+        - warning
+        - info
+        - light
+        - dark
+        - link
+        - null
+      'meta:enum':
+        primary: 'Primary (default)'
+        secondary: Secondary
+        success: Success
+        danger: Danger
+        warning: Warning
+        info: Info
+        light: Light
+        dark: Dark
+        link: Link
+        '': Default
+    rounded_pill:
+      title: 'Pill badge'
+      description: 'Makes the badge a rounded pill. Defaults to false.'
+      type: [boolean, 'null']
+    dismissible:
+      title: 'Dismissible badge'
+      description: 'Adds a close icon at the end of the badge. Defaults to false.'
+      type: [boolean, 'null']
+    outline:
+      title: Outline
+      description: 'Uses a border instead of a background. Defaults to false.'
+      type: [boolean, 'null']
+    label:
+      title: Label
+      description: 'The badge label.'
+      type: [string, array, object, 'null']
+    url:
+      title: 'Badge URL'
+      description: 'Converts the badge in a link. Optional.'
+      type: [string, array, object, 'null']
+    title:
+      title: 'Link title'
+      description: 'Title attribute if the badge is a link. Optional.'
+      type: [string, array, object, 'null']
+    attributes:
+      title: Attributes
+      type: [object, array, string, 'null']

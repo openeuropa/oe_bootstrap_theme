@@ -1,0 +1,38 @@
+name: Modal
+description: 'Use Bootstrap’s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content. For more information vitis https://v5.getbootstrap.com/docs/5.0/components/modal/'
+props:
+  type: object
+  properties:
+    size:
+      title: 'Modal size'
+      description: 'The size that the modal will have:'
+      type: [string, 'null']
+      enum:
+        - sm
+        - lg
+        - xl
+        - fullscreen
+        - null
+    title:
+      title: Title
+      description: 'Title of the modal.'
+      type: [string, array, object, 'null']
+    show_close_button:
+      title: 'Show close button'
+      description: 'Sets the visibility of the close button at the header. Defaults to false.'
+      type: [boolean, 'null']
+    body:
+      title: Body
+      description: 'The modal’s body content.'
+      type: [string, array, object, 'null']
+    footer:
+      title: Footer
+      description: 'The modal’s footer.'
+      type: [string, array, object, 'null']
+    toggle:
+      title: 'Toggle button'
+      description: 'An optional button pattern definition that will allow to show/hide the modal.'
+      type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: [object, array, string, 'null']

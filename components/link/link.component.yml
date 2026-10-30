@@ -1,0 +1,57 @@
+name: Link
+description: 'A simple link.'
+props:
+  type: object
+  properties:
+    disabled:
+      title: Disabled
+      description: 'When enabled, sets the link as disabled. Defaults to false.'
+      type: [boolean, 'null']
+    standalone:
+      title: Standalone
+      description: 'When enabled, adds extra class to underline the link item when hover. Defaults to false.'
+      type: [boolean, 'null']
+    icon_position:
+      title: 'Icon position'
+      description: 'The position of the icon in relation to the text of the link:'
+      type: [string, 'null']
+      enum:
+        - before
+        - after
+        - null
+      'meta:enum':
+        before: Before
+        after: 'After (default)'
+        '': Default
+    icon_display:
+      title: 'Icon display'
+      description: 'Enables flex gap spacing for icon and label. Use inline-flex for inline links.'
+      type: [string, 'null']
+      enum:
+        - ''
+        - flex
+        - inline-flex
+        - null
+      'meta:enum':
+        '': 'Default (no flex)'
+        flex: Flex
+        inline-flex: Inline-flex
+    remove_icon_spacers:
+      title: 'Remove icon spacers'
+      description: 'When enabled, prevents margins to be added to the icon. Defaults to false.'
+      type: [boolean, 'null']
+    label:
+      title: Label
+      description: 'The button label'
+      type: [string, array, object, 'null']
+    path:
+      title: URL
+      description: 'The button URL (optional).'
+      type: [string, array, object, 'null']
+    icon:
+      title: Icon
+      description: 'An icon name or an icon array definition (optional).'
+      type: [object, string, 'null']
+    attributes:
+      title: Attributes
+      type: [object, array, string, 'null']
