@@ -8,9 +8,37 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\oe_bootstrap_theme\BackwardCompatibility;
 
 /**
- * Contains method that handle backward compatibility.
+ * Contains methods that handle backward compatibility.
  */
 trait BackwardCompatibilityTrait {
+
+  /**
+   * Invokes a callback with backwards compatibility settings.
+   *
+   * @param array<string, mixed> $settings
+   *   The setting values by name.
+   * @param callable(): T $callback
+   *   A callback to invoke while the settings are active.
+   *
+   * @return T
+   *   The return value from the callback.
+   *
+   * @template T
+   */
+  protected function withBackwardCompatibilitySettings(array $settings, callable $callback): mixed {
+    $restore_callbacks = [];
+    try {
+      foreach ($settings as $name => $value) {
+        $restore_callbacks[] = $this->setBackwardCompatibilitySetting($name, $value);
+      }
+      return $callback();
+    }
+    finally {
+      foreach (array_reverse($restore_callbacks) as $callback) {
+        $callback();
+      }
+    }
+  }
 
   /**
    * Sets a backward compatibility setting.

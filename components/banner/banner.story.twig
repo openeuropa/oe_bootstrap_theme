@@ -1,0 +1,27 @@
+{% for variant, variant_title in {
+  default: 'Default text banner',
+  primary: 'Primary text banner',
+  image: 'Image banner',
+  image_shade: 'Image shade banner',
+} %}
+  <section class="my-4">
+    <h3 class="my-3">{{ variant_title }} (<code>{{ variant }}</code>)</h3>
+    {{ include_only('oe_bootstrap_theme:banner', {
+      variant: variant,
+      centered: true,
+      title: 'EU Budget for the future',
+      description: 'Innovation, economy, environment and geopolitics',
+      call_to_action: {
+        label: 'Subscribe',
+        path: 'https://example.com',
+        link_style: 'warning',
+        icon_position: 'after',
+        icon: {
+          name: 'chevron-right',
+        },
+      },
+      image: 'https://picsum.photos/1000/500',
+      copyright: '© 2024 Example Organisation',
+    }) }}
+  </section>
+{% endfor %}

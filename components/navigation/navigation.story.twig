@@ -1,0 +1,38 @@
+{% for variant, variant_title in {
+  default: 'Default',
+  tabs: 'Tabs',
+  pills: 'Pills',
+  navbar: 'Navbar',
+} %}
+  <section class="my-4">
+    <h3 class="my-3">{{ variant_title }} (<code>{{ variant }}</code>)</h3>
+    {{ include_only('oe_bootstrap_theme:navigation', {
+      variant: variant,
+      items: [
+        {
+          label: 'I\'m a link 1',
+          path: '#first',
+        },
+        {
+          label: 'I\'m a link 2',
+          path: '#second',
+        },
+        {
+          label: 'I\'m a link 3',
+          id: 'third-tab',
+          path: '#third',
+        },
+        {
+          label: 'I\'m a link active',
+          active: true,
+          path: '#fourth',
+        },
+        {
+          label: 'I\'m a link disabled',
+          disabled: true,
+          path: '#',
+        },
+      ],
+    }) }}
+  </section>
+{% endfor %}

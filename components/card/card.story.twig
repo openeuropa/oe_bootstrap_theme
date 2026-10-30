@@ -1,0 +1,41 @@
+{% for variant, variant_title in {
+  default: 'Default',
+  search: 'Search',
+} %}
+  <section class="my-4">
+    <h3 class="my-3">{{ variant_title }} (<code>{{ variant }}</code>)</h3>
+    {{ include_only('oe_bootstrap_theme:card', {
+      variant: variant,
+      title: 'This is the title of this card.',
+      subtitle: 'Subtitle card',
+      text: 'Text card with longer text which is supported',
+      image: {
+        src: 'https://picsum.photos/1000/500/',
+        alt: 'Alternative text for card image',
+      }|to_image_value_object,
+      image_copyright: '© 2024 Example Organisation',
+      meta: [
+        'Organisation',
+        'Position',
+      ],
+      content: {
+        '#markup': '<button class="btn btn-primary">Custom action</button>',
+      },
+      header: 'Header of card',
+      footer: 'Footer of card',
+      badges: [
+        {
+          label: 'A badge',
+        },
+        {
+          label: 'A non-rounded badge',
+          rounded_pill: false,
+        },
+        {
+          label: 'A solid badge',
+          outline: false,
+        },
+      ],
+    }) }}
+  </section>
+{% endfor %}

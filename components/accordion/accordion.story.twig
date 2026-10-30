@@ -1,0 +1,63 @@
+{% set bare_layout = false %}
+{% set open_item = 1 %}
+{% set title = 'This is the title of this accordion.' %}
+{% set items = [
+  {
+    title: 'Jobs, Growth, Investment and Competitiveness with an additional quite long string',
+    content: 'Lorem fistrum eiusmod cillum elit papaar officia aliquip dolore velit. Pellentesque dolor sapien, mollis fringilla ultricies sed, lacinia vel nibh. Nulla auctor arcu risus, nec facilisis odio aliquet sed.',
+  },
+  {
+    title: 'Energy Union',
+    content: 'Advice on living, working or travelling in the EU, on visas and immigration for non-EU citizens, European culture. Plus some extra text to make it a little bit longer.',
+  },
+] %}
+
+{#
+/**
+ * @file
+ * Template override for preview mode of "Accordion" pattern.
+ */
+#}
+<div class="mb-5">
+  {{ include_only('oe_bootstrap_theme:accordion', {
+    'title': title,
+    'title_tag': title_tag,
+    'accordion_id': 'bcl-accordion'|clean_unique_id,
+    'bare_layout': bare_layout,
+    'items': items,
+    'open_item': open_item,
+    'attributes': attributes,
+  }) }}
+</div>
+
+<div class="mt-5">
+  {% set expand_button_label = "Expand" %}
+  {% set collapse_button_label = "Collapse" %}
+
+  {{ include_only('oe_bootstrap_theme:accordion', {
+    'title': title,
+    'title_tag': title_tag,
+    'accordion_id': accordion_id,
+    'bare_layout': bare_layout,
+    'items': items,
+    'open_item': open_item,
+    'expand_button_label': expand_button_label,
+    'collapse_button_label': collapse_button_label,
+    'attributes': attributes,
+  }) }}
+</div>
+
+<div class="mt-4">
+  <h2 class="mb-4">Adding Expand/Collapse Button Labels</h2>
+  <ul>
+    <li>To enable or disable the feature as needed, implement a preprocess function where the pattern is used.</li>
+    <pre>
+      <code>
+        function YOURMODULE_preprocess_paragraph__oe_accordion(array &$variables): void {
+          $variables['expand_button_label'] = t('Expand');
+          $variables['collapse_button_label'] = t('Collapse');
+        }
+      </code>
+    </pre>
+  </ul>
+</div>
