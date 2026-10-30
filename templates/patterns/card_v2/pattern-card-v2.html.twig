@@ -13,6 +13,13 @@
   {% set _classes = _classes|merge(['horizontal']) %}
 {% endif %}
 
+{% set tag = tag|default('article') %}
+{% set attributes = create_attribute(attributes ?? {}) %}
+{% set media_attributes = create_attribute(media_attributes ?? {}) %}
+{% set header_attributes = create_attribute(header_attributes ?? {}) %}
+{% set content_attributes = create_attribute(content_attributes ?? {}) %}
+{% set footer_attributes = create_attribute(footer_attributes ?? {}) %}
+
 <{{ tag }}{{ attributes.addClass(_classes) }}>
   {% if media is not empty %}
     <div{{ media_attributes.addClass(['card-media']) }}>

@@ -3,6 +3,7 @@
  * @file
  * Timeline pattern.
  *
+ * @todo Fix the 'hide.to' setting.
  */
 #}
 {% include '@oe-bcl/timeline' with {
@@ -10,10 +11,10 @@
   'toggle_expanded': expand_button_label|default('Hide %d items'|t),
   'hide': {
     'from': hide_from,
-    'to': hide_to|default(0),
+    'to': 0,
   },
   'items': items,
-  'icon_path': bcl_icon_path,
+  'icon_path': bcl_icon_path(),
   'attributes': attributes,
   'title': title,
   'title_tag': title_tag,
