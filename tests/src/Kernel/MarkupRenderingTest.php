@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
 use Drupal\Component\Serialization\Yaml;
-use Drupal\Core\Form\FormInterface;
-use Drupal\Core\Form\FormState;
-use Drupal\Core\Form\FormStateInterface;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
 use Drupal\Tests\oe_bootstrap_theme\Traits\BackwardCompatibilityTrait;
+use Drupal\ui_patterns\UiPatternsManagerInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -25,7 +24,7 @@ use Symfony\Component\DomCrawler\Crawler;
  *
  * @group oe_bootstrap_theme
  */
-class MarkupRenderingTest extends KernelTestBase implements FormInterface {
+class MarkupRenderingTest extends KernelTestBase {
 
   use BackwardCompatibilityTrait;
 
@@ -123,22 +122,120 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * @dataProvider markupRenderingProvider
    */
   public function testMarkupRendering(array $render, array $assertions, array $backward_compatibility = []): void {
+    $render = PatternTestDataMassager::massageDataRecursive($render);
     if (!empty($backward_compatibility)) {
       foreach ($backward_compatibility as $name => $value) {
         $this->setBackwardCompatibilitySetting($name, $value);
       }
     }
 
-    // Wrap all the test structure inside a form. This will allow proper
-    // processing of form elements and invocation of form alter hooks. Even if
-    // the elements being tested are not form related, the form can host them
-    // without causing any issues.
-    $form_state = new FormState();
-    $form_state->addBuildInfo('args', [$render]);
-    $form_state->setProgrammed();
+    $html = RenderWrapperForm::renderInFormContext($render, $this->container);
+    $this->assertMarkupRendering($assertions, $html);
+  }
 
-    $form = $this->container->get('form_builder')->buildForm($this, $form_state);
-    $this->assertMarkupRendering($assertions, (string) $this->container->get('renderer')->renderRoot($form));
+  /**
+   * Provides test data for testAllCases().
+   *
+   * @return array<string, array>
+   *   Argument combinations for the test method.
+   */
+  public static function allCasesProvider(): array {
+    return [
+      'patterns, objects' => ['patterns'],
+      'patterns, raw values' => ['patterns', FALSE],
+      'patterns, fill nulls' => ['patterns', 'fill_nulls' => TRUE],
+      'other' => ['other'],
+    ];
+  }
+
+  /**
+   * Tests all components in a single pass.
+   *
+   * @param 'patterns'|'other' $mode
+   *   Pass 'patterns' to test all cases with patterns.
+   *   Pass 'other' to test all cases which don't use a pattern.
+   * @param bool $use_objects
+   *   TRUE to use objects like Attribute, ImageValueObject etc.
+   *   FALSE to use string or array representations instead.
+   * @param bool $fill_nulls
+   *   TRUE to fill all remaining optional parameters with NULL.
+   *   FALSE to leave them empty (not passing them).
+   *
+   * @dataProvider allCasesProvider
+   */
+  public function testAllCases(string $mode, bool $use_objects = TRUE, bool $fill_nulls = FALSE): void {
+    $cases = static::markupRenderingProvider();
+    $n = count($cases);
+    foreach (array_keys($cases) as $i => $case_name) {
+      $restore_callbacks = [];
+      try {
+        $case = $cases[$case_name];
+        $render = $case['render'];
+        $render = PatternTestDataMassager::massageDataRecursive($render, $use_objects);
+        $assertions = $case['assertions'];
+        $backward_compatibility = $case['backward_compatibility'] ?? [];
+        if (!empty($backward_compatibility)) {
+          foreach ($backward_compatibility as $bc_name => $bc_value) {
+            $restore_callbacks[] = $this->setBackwardCompatibilitySetting($bc_name, $bc_value);
+          }
+        }
+
+        // Skip pattern case when in 'other' mode.
+        // Skip non-pattern case when not in 'other' mode.
+        if ($mode === 'other' xor ($render['#type'] ?? NULL) !== 'pattern') {
+          continue;
+        }
+
+        if ($fill_nulls) {
+          $render = $this->fillNulls($render);
+        }
+
+        Html::resetSeenIds();
+
+        $html = RenderWrapperForm::renderInFormContext($render, $this->container);
+        try {
+          $this->assertMarkupRendering($assertions, $html);
+        }
+        catch (\Throwable $e) {
+          throw $e;
+        }
+      }
+      catch (\Throwable $e) {
+        throw new \Exception("Failure in '$case_name' ($i of $n).", previous: $e);
+      }
+      finally {
+        foreach ($restore_callbacks as $restore_callback) {
+          $restore_callback();
+        }
+      }
+    }
+  }
+
+  /**
+   * Populates optional pattern parameters with NULL.
+   *
+   * @param array $render
+   *   A render element which may contain pattern elements.
+   *
+   * @return array
+   *   A processed render element.
+   */
+  protected function fillNulls(array $render): array {
+    $fn_fill_nulls = fn (array $array) => array_map(fn () => NULL, $array);
+    if (($render['#type'] ?? NULL) === 'pattern') {
+      $manager = $this->container->get('plugin.manager.ui_patterns');
+      assert($manager instanceof UiPatternsManagerInterface);
+      $pattern_definition = $manager->getDefinition($render['#id']);
+      assert($pattern_definition !== NULL);
+      $render['#fields'] ??= [];
+      $render['#settings'] ??= [];
+      $render['#fields'] += $fn_fill_nulls($pattern_definition->getFields());
+      $render['#settings'] += $fn_fill_nulls($pattern_definition['settings'] ?? []);
+    }
+    foreach (Element::children($render) as $key) {
+      $render[$key] = $this->fillNulls($render[$key]);
+    }
+    return $render;
   }
 
   /**
@@ -163,7 +260,6 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
           $suffix++;
         } while (isset($test_cases[$candidate_key]));
         $key = $candidate_key;
-        $test_case['render'] = PatternTestDataMassager::massageDataRecursive($test_case['render']);
         $test_cases[$key] = $test_case;
       }
     }
@@ -263,60 +359,6 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     /** @var \Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PatternAssertInterface $pattern_assert */
     $pattern_assert = new $assertions['class']();
     $pattern_assert->assertPattern($assertions['expected'], $pattern_html);
-  }
-
-  /**
-   * Builds the form.
-   *
-   * @param array $form
-   *   An associative array containing the structure of the form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *   The current state of the form.
-   * @param array|null $render_array
-   *   The element render array.
-   *
-   * @return array
-   *   The form render array.
-   */
-  public function buildForm(array $form, FormStateInterface $form_state, ?array $render_array = NULL): array {
-    $form['test'] = $render_array;
-    return $form;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function validateForm(array &$form, FormStateInterface $form_state): void {
-    // Recurse through all the form elements and check if they have a property
-    // "#set_validation_error". If they have, set a generic error on the
-    // element.
-    $add_errors = function (array $element) use (&$add_errors, $form_state): void {
-      if (!empty($element['#set_validation_error'])) {
-        // When the title is not present for a form element, fallback to its
-        // path in the form.
-        $label = !empty($element['#title']) ? $element['#title'] : implode('][', $element['#array_parents']);
-        $form_state->setError($element, t('Validation error on @label', ['@label' => $label]));
-      }
-
-      foreach (Element::children($element) as $key) {
-        // Recursively call this closure on all the children elements.
-        $add_errors($element[$key]);
-      }
-    };
-
-    $add_errors($form['test']);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function submitForm(array &$form, FormStateInterface $form_state): void {}
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getFormId(): string {
-    return 'oe_bootstrap_theme_markup_rendering_test_form';
   }
 
 }
