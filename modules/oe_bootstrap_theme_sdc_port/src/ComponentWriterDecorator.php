@@ -71,4 +71,11 @@ class ComponentWriterDecorator extends ComponentWriter {
     }
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function writeStory(string $component_id, array $story, string $component_path): void {
+    // Do not write the story.
+  }
+
 }
