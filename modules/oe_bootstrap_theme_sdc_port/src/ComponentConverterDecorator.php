@@ -4,12 +4,20 @@ declare(strict_types=1);
 
 namespace Drupal\oe_bootstrap_theme_sdc_port;
 
+use Drupal\Core\Render\RendererInterface;
 use Drupal\ui_patterns_to_sdc\ComponentConverter;
 
 /**
  * Service override for the component converter.
  */
 class ComponentConverterDecorator extends ComponentConverter {
+
+  public function __construct(
+    RendererInterface $renderer,
+    private readonly TwigStoryWriter $twigStoryWriter,
+  ) {
+    parent::__construct($renderer);
+  }
 
   /**
    * {@inheritdoc}
@@ -18,6 +26,7 @@ class ComponentConverterDecorator extends ComponentConverter {
     $source = $this->processSource($source);
     $target = parent::convert($source);
     $target = $this->processTarget($target, $source, $source['id']);
+    $this->twigStoryWriter->createAndSaveStory($target, $source);
     return $target;
   }
 
