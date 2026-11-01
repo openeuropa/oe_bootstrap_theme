@@ -69,6 +69,7 @@ class TwigExtension extends AbstractExtension {
       new TwigFilter('element_children', [$this, 'elementChildren']),
       new TwigFilter('bcl_icon', [$this, 'bclIcon']),
       new TwigFilter('bcl_expand_icon', [$this, 'bclExpandIcon']),
+      new TwigFilter('bcl_expand_attributes', [$this, 'bclExpandAttributes']),
       new TwigFilter('oe_bt__to_image_value_object', [$this, 'toImageValueObject']),
       new TwigFilter('oe_bt__to_render_array', [$this, 'toRenderArray']),
     ];
@@ -488,6 +489,68 @@ class TwigExtension extends AbstractExtension {
     if (($argument['icon'] ?? NULL) === NULL) {
       unset($argument['icon']);
     }
+    return $argument;
+  }
+
+  /**
+   * Populates the 'attributes' key with an Attribute object.
+   *
+   * @param array $argument
+   *   An array which may have an 'attributes' key.
+   *   If $argument['attributes'] is present, it should hold an attributes
+   *   array, or an Attribute object, or NULL.
+   *   An Attribute object passed in is not modified. A copy is used instead.
+   * @param array|null $defaults
+   *   Default attribute values to merge, or NULL to ignore.
+   *   Classes are added to existing classes. Other attributes are only set if
+   *   they don't exist yet. Values that are NULL are ignored.
+   *   If this is an empty array, an empty Attribute object will always be
+   *   created.
+   *   If this is NULL, and $argument['attributes'] is NULL, nothing will be
+   *   set.
+   *
+   * @return array|null
+   *   One of:
+   *     - The modified array, with 'attributes' populated.
+   *     - NULL, if the original argument was NULL.
+   *     - The unmodified array, if both $argument['attributes'] and $defaults
+   *       are NULL or not provided.
+   */
+  public function bclExpandAttributes(array $argument, ?array $defaults = NULL): ?array {
+    $attributes = $argument['attributes'] ?? NULL;
+    if ($attributes === NULL && $defaults === NULL) {
+      return $argument;
+    }
+    if ($attributes === NULL || $attributes === []) {
+      $argument['attributes'] = new Attribute($defaults ?? []);
+      return $argument;
+    }
+    if (is_array($attributes)) {
+      $attributes = new Attribute($attributes);
+    }
+    elseif ($attributes instanceof Attribute) {
+      // Don't modify the object that was passed in. It might be shared with
+      // other elements, e.g. other items in a list.
+      $attributes = clone $attributes;
+    }
+    else {
+      throw new RuntimeError(sprintf(
+        "Expected an array, an Attribute object, or NULL at 'attributes'. Found %s.",
+        get_debug_type($attributes),
+      ));
+    }
+    foreach ($defaults ?? [] as $name => $value) {
+      if ($value === NULL) {
+        continue;
+      }
+      if ($name === 'class') {
+        $attributes->addClass($value);
+      }
+      elseif (!$attributes->hasAttribute($name)) {
+        $attributes->setAttribute($name, $value);
+      }
+    }
+    $argument['attributes'] = $attributes;
     return $argument;
   }
 
