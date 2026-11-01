@@ -9,6 +9,9 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
+use Drupal\Tests\oe_bootstrap_theme\Helper\HtmlSnapshotFormatter;
+use Drupal\Tests\oe_bootstrap_theme\Helper\HtmlSnapshotNormalizer;
+use Drupal\Tests\oe_bootstrap_theme\Helper\HtmlSnapshotStabilizer;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
 use Drupal\Tests\oe_bootstrap_theme\Traits\BackwardCompatibilityTrait;
 use Symfony\Component\DomCrawler\Crawler;
@@ -279,6 +282,11 @@ class MarkupRenderingTest extends KernelTestBase {
 
         $html = RenderWrapperForm::renderInFormContext($render, $this->container);
         $this->assertMarkupRendering($assertions, $html);
+
+        Html::resetSeenIds();
+        $variation_html = RenderWrapperForm::renderInFormContext($render, $this->container);
+
+        $this->assertHtmlSnapshot($case_name, $html, $variation_html);
       }
       catch (\Throwable $e) {
         throw new \Exception("Failure in '$case_name' ($i of $n).", previous: $e);
@@ -412,6 +420,82 @@ class MarkupRenderingTest extends KernelTestBase {
     /** @var \Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PatternAssertInterface $pattern_assert */
     $pattern_assert = new $assertions['class']();
     $pattern_assert->assertPattern($assertions['expected'], $pattern_html);
+  }
+
+  /**
+   * Asserts or saves a html snapshot.
+   *
+   * @param string $case_name
+   *   The case name, identifying a snapshot file.
+   * @param string $html
+   *   The html to export.
+   * @param string $variation_html
+   *   A variation of the html from the same test case, for noise removal.
+   *   Any differences between the two pieces of html are assumed to be random
+   *   noise, e.g. a dynamic id suffix, or the current date/time.
+   */
+  protected function assertHtmlSnapshot(string $case_name, string $html, string $variation_html) {
+    $stabilized_html = $this->stabilizeHtml($html, $variation_html);
+    $formatted_html = (new HtmlSnapshotFormatter())->format($stabilized_html);
+    $file = __DIR__ . '/snapshots/markup_rendering/' . $case_name . '.snapshot.html';
+    if (getenv('UPDATE_TESTS')) {
+      if (!is_dir(dirname($file))) {
+        mkdir(dirname($file), recursive: TRUE);
+      }
+      file_put_contents($file, $formatted_html);
+    }
+    else {
+      $this->assertFileExists($file);
+      $expected_formatted_html = file_get_contents($file);
+      $this->assertSame($expected_formatted_html, $formatted_html);
+    }
+  }
+
+  /**
+   * Stabilizes and normalizes html.
+   *
+   * @param string $html
+   *   Original html.
+   * @param string $variation_html
+   *   Alternative version of the same html, which differs in "noisy" parts.
+   *
+   * @return string
+   *   Stabilized html.
+   */
+  protected function stabilizeHtml(string $html, string $variation_html): string {
+    $normalized_html = $this->normalizeHtml($html);
+    $normalized_variation_html = $this->normalizeHtml($variation_html);
+    $stabilized_html = (new HtmlSnapshotStabilizer())->stabilize($normalized_html, $normalized_variation_html);
+    return $stabilized_html;
+  }
+
+  /**
+   * Normalizes html between pattern and component.
+   *
+   * @param string $html
+   *   The html to normalize.
+   *
+   * @return string
+   *   The normalized html.
+   */
+  protected function normalizeHtml(string $html): string {
+    $relevant_html = RenderWrapperForm::extractRenderedFormContent($html);
+    $normalized_html = (new HtmlSnapshotNormalizer())
+      ->withElementCallback(function (\DOMElement $element): void {
+        // Remove attributes where pattern and component are different.
+        $element->removeAttribute('data-component-id');
+        $element->removeAttribute('data-component-variant');
+        $element->removeAttribute('data-drupal-selector');
+        // Remove a class which is not added in Drupal 10.
+        if ($element->tagName === 'textarea') {
+          $element->setAttribute('class', implode(' ', array_diff(
+            explode(' ', $element->getAttribute('class')),
+            ['resize-vertical'],
+          )));
+        }
+      })
+      ->normalize($relevant_html);
+    return $normalized_html;
   }
 
 }
