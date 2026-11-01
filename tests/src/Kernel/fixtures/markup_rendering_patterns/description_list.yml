@@ -40,7 +40,7 @@ description_list_default:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\DescriptionListAssert
       expected:
         items:
-          - term: 
+          - term:
               - label: 'Single label with icon'
                 icon: 'geo-alt-fill'
             definition: 'Description of first term text goes here.'
