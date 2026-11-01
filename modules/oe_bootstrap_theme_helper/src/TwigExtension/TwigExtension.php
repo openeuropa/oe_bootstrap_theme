@@ -18,6 +18,7 @@ use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
 use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Url;
+use Drupal\oe_bootstrap_theme\DrupalCompatibility;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
@@ -80,6 +81,7 @@ class TwigExtension extends AbstractExtension {
       ]),
       new TwigFunction('bcl_gallery_items', [$this, 'bclGalleryItems']),
       new TwigFunction('bcl_icon_path', [$this, 'getBclIconPath']),
+      new TwigFunction('oe_bt__theme_setting', [DrupalCompatibility::class, 'themeGetSetting']),
     ];
   }
 
