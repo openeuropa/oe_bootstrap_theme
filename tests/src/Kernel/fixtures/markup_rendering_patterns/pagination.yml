@@ -35,23 +35,23 @@ pagination:
         links:
           - url: '#first'
             label: First
-            aria-label: 'First'
+            aria_label: 'First'
           - url: '#prev'
             label: Previous
-            aria-label: 'Previous'
+            aria_label: 'Previous'
           - url: '#1'
             label: '1'
-            aria-label: '1'
+            aria_label: '1'
             active: true
           - url: '#2'
             label: '2'
-            aria-label: '2'
+            aria_label: '2'
           - url: '#next'
             label: Next
-            aria-label: 'Next'
+            aria_label: 'Next'
           - url: '#last'
             label: Last
-            aria-label: 'Last'
+            aria_label: 'Last'
 pagination_with_icon:
   render:
     '#type': pattern
@@ -182,23 +182,23 @@ pagination_with_aria:
         links:
           - url: '#first'
             label: First
-            aria-label: 'First item'
+            aria_label: 'First item'
           - url: '#prev'
             label: Previous
-            aria-label: 'Previous item'
+            aria_label: 'Previous item'
           - url: '#1'
             label: '1'
-            aria-label: 'First page'
+            aria_label: 'First page'
             active: true
           - url: '#2'
             label: '2'
-            aria-label: '2'
+            aria_label: '2'
           - url: '#next'
             label: Next
-            aria-label: 'Next item'
+            aria_label: 'Next item'
           - url: '#last'
             label: Last
-            aria-label: 'Last item'
+            aria_label: 'Last item'
 pagination_with_list_parent_attributes:
   render:
     '#type': pattern
@@ -237,23 +237,23 @@ pagination_with_list_parent_attributes:
         links:
           - url: '#first'
             label: First
-            aria-label: 'First'
+            aria_label: 'First'
           - url: '#prev'
             label: Previous
-            aria-label: 'Previous'
+            aria_label: 'Previous'
           - url: '#1'
             label: '1'
-            aria-label: '1'
+            aria_label: '1'
             active: true
           - url: '#2'
             label: '2'
-            aria-label: '2'
+            aria_label: '2'
           - url: '#next'
             label: Next
-            aria-label: 'Next'
+            aria_label: 'Next'
           - url: '#last'
             label: Last
-            aria-label: 'Last'
+            aria_label: 'Last'
         list_attributes:
           class: 'list-class js-pager__items pagination pagination-sm justify-content-center'
           id: 'list-id'
