@@ -19,6 +19,7 @@ use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
 use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme\DrupalCompatibility;
+use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
@@ -71,6 +72,7 @@ class TwigExtension extends AbstractExtension {
       new TwigFilter('bcl_expand_icon', [$this, 'bclExpandIcon']),
       new TwigFilter('bcl_expand_attributes', [$this, 'bclExpandAttributes']),
       new TwigFilter('oe_bt__to_image_value_object', [$this, 'toImageValueObject']),
+      new TwigFilter('oe_bt__to_file_value_object', [$this, 'toFileValueObject']),
       new TwigFilter('oe_bt__to_render_array', [$this, 'toRenderArray']),
     ];
   }
@@ -607,6 +609,37 @@ class TwigExtension extends AbstractExtension {
     }
     throw new RuntimeError(sprintf(
       'Expected ImageValueObjectInterface|array, found %s',
+      get_debug_type($argument),
+    ));
+  }
+
+  /**
+   * Converts an array to a FileValueObject instance.
+   *
+   * @param mixed $argument
+   *   The argument, which should be an array or a FileValueObject.
+   *
+   * @return \Drupal\oe_bootstrap_theme\ValueObject\FileValueObject
+   *   The FileValueObject instance.
+   *   If the value was already a FileValueObject, a clone is returned.
+   */
+  public function toFileValueObject(mixed $argument): FileValueObject {
+    if (is_array($argument)) {
+      if ($argument === []) {
+        throw new RuntimeError("The file array is empty.");
+      }
+      foreach (['name', 'url', 'mime', 'size'] as $key) {
+        if (!isset($argument[$key])) {
+          throw new RuntimeError("Missing array key '$key'.");
+        }
+      }
+      return FileValueObject::fromArray($argument);
+    }
+    if ($argument instanceof FileValueObject) {
+      return clone $argument;
+    }
+    throw new RuntimeError(sprintf(
+      'Expected FileValueObject|array, found %s',
       get_debug_type($argument),
     ));
   }
