@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Render\RendererInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -16,6 +17,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * A form that is only used to give form context to render elements.
  */
 class RenderWrapperForm implements FormInterface {
+
+  public const FORM_CONTENT_SEPARATOR = '<!-- FORM_CONTENT_SEPARATOR -->';
 
   /**
    * Renders a render element in a form context.
@@ -46,6 +49,24 @@ class RenderWrapperForm implements FormInterface {
   }
 
   /**
+   * Extracts rendered form content without the <form> wrapper element.
+   *
+   * @param string $html
+   *   The original html which contains '<form>' wrapper.
+   *
+   * @return string
+   *   The inner content that is relevant for the test.
+   */
+  public static function extractRenderedFormContent(string $html): string {
+    $parts = explode(self::FORM_CONTENT_SEPARATOR, $html);
+    if (count($parts) < 3) {
+      return $html;
+    }
+    $inner_parts = array_slice($parts, 1, -1);
+    return implode(self::FORM_CONTENT_SEPARATOR, $inner_parts);
+  }
+
+  /**
    * Builds the form.
    *
    * @param array $form
@@ -59,7 +80,9 @@ class RenderWrapperForm implements FormInterface {
    *   The form render array.
    */
   public function buildForm(array $form, FormStateInterface $form_state, ?array $render_array = NULL): array {
+    $form['before'] = ['#markup' => Markup::create(self::FORM_CONTENT_SEPARATOR)];
     $form['test'] = $render_array;
+    $form['after'] = ['#markup' => Markup::create(self::FORM_CONTENT_SEPARATOR)];
     return $form;
   }
 
