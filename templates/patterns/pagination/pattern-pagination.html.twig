@@ -27,13 +27,7 @@
     'aria-label': _control.item.aria_label|default(_control.label),
   }).merge(create_attribute(_control.item.attributes ?? {})),
 })) %}
-{% set _control_items = _control_items|map(_item => _item|merge(_item.icon.name ? {
-  'icon': {
-    'path': bcl_icon_path(),
-    'size': 'fluid',
-    ..._item.icon,
-  },
-} : {})) %}
+{% set _control_items = _control_items|map(_item => _item|bcl_expand_icon(size: 'fluid')) %}
 
 {% set _list_attributes = create_attribute(list_attributes ?? {}) %}
 
