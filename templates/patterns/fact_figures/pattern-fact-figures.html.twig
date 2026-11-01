@@ -7,9 +7,7 @@
 {% include '@oe-bcl/bcl-fact-figures/fact-figures.html.twig' with {
   'title': title,
   'title_tag': title_tag,
-  'items': (items ?? [])|map(item => item|merge(item.icon is not iterable ? {
-    icon: {name: item.icon},
-  } : {})),
+  'items': (items ?? [])|map(item => item|bcl_expand_icon),
   'alignment': alignment,
   'responsive_columns': columns,
   'equal_height': true,
