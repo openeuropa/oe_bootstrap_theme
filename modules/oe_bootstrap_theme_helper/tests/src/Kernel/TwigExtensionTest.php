@@ -600,6 +600,12 @@ TWIG;
         [],
         '<svg class="bi icon--xs"><use xlink:href="' . $icon_path . '#house"/></svg>',
       ],
+      '|bcl_expand_icon with BCL icon template' => [
+        "{% set item = {icon: {name: 'house', attributes: {id: 'x'}}}|bcl_expand_icon(size: 'xs') %}"
+        . "{% include '@oe-bcl/icon' with item.icon only %}",
+        [],
+        '<svg id="x" class="bi icon--xs"><use xlink:href="' . $icon_path . '#house"/></svg>',
+      ],
       '|oe_bt__to_image_value_object|oe_bt__to_render_array|add_class' => [
         "{{ image|oe_bt__to_image_value_object|oe_bt__to_render_array|add_class('x') }}",
         ['image' => ['src' => 'https://example.com/image.png', 'alt' => 'Alt text']],

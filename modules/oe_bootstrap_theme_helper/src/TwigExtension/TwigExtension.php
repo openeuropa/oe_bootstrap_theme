@@ -68,6 +68,7 @@ class TwigExtension extends AbstractExtension {
       ]),
       new TwigFilter('element_children', [$this, 'elementChildren']),
       new TwigFilter('bcl_icon', [$this, 'bclIcon']),
+      new TwigFilter('bcl_expand_icon', [$this, 'bclExpandIcon']),
       new TwigFilter('oe_bt__to_image_value_object', [$this, 'toImageValueObject']),
       new TwigFilter('oe_bt__to_render_array', [$this, 'toRenderArray']),
     ];
@@ -452,6 +453,42 @@ class TwigExtension extends AbstractExtension {
       $icon['size'] ??= $size;
     }
     return $icon;
+  }
+
+  /**
+   * Populates the 'icon' array key for use in the 'bcl-icon' template.
+   *
+   * @param array $argument
+   *   An associative array which may or may not have an 'icon' key.
+   *   If $argument['icon'] is present, it should be either a string holding the
+   *   icon name, or an array where ['name'] holds the icon name.
+   * @param mixed $_
+   *   Internal parameter used for named parameters validation.
+   *   Must not be explicitly provided.
+   * @param string|null $size
+   *   A fallback/default for the icon size.
+   *   Example values are '2xs', 'xs', 'm', 'l', 'xl' etc.
+   *
+   * @return array|null
+   *   One of:
+   *     - The (modified) array, where the 'icon' key is populated with icon
+   *       data, if an icon name was provided in $argument['icon'].
+   *     - The (modified) array, where the 'icon' key was removed, if no icon
+   *       name was provided.
+   */
+  public function bclExpandIcon(
+    array $argument,
+    mixed $_ = NamedParametersOnly::SENTINEL,
+    ?string $size = NULL,
+  ): ?array {
+    NamedParametersOnly::checkForTwig($_);
+    if (isset($argument['icon'])) {
+      $argument['icon'] = $this->bclIcon($argument['icon'], size: $size);
+    }
+    if (($argument['icon'] ?? NULL) === NULL) {
+      unset($argument['icon']);
+    }
+    return $argument;
   }
 
   /**

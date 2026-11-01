@@ -119,6 +119,37 @@ class TwigExtensionFiltersTest extends UnitTestCase {
       'bcl_icon: NULL' => ['null|bcl_icon', [], NULL],
       'bcl_icon: empty string' => ["''|bcl_icon", [], NULL],
       'bcl_icon: empty array' => ['[]|bcl_icon', [], NULL],
+      // Filter '|bcl_expand_icon'.
+      'bcl_expand_icon: icon name' => [
+        "{icon: 'home', other: 1}|bcl_expand_icon",
+        [],
+        ['icon' => ['name' => 'home', 'path' => $path], 'other' => 1],
+      ],
+      'bcl_expand_icon: icon name, with size' => [
+        "{icon: 'home'}|bcl_expand_icon(size: 'xs')",
+        [],
+        ['icon' => ['name' => 'home', 'path' => $path, 'size' => 'xs']],
+      ],
+      'bcl_expand_icon: icon array' => [
+        "{icon: {name: 'home', size: 'l'}}|bcl_expand_icon(size: 'xs')",
+        [],
+        ['icon' => ['name' => 'home', 'size' => 'l', 'path' => $path]],
+      ],
+      'bcl_expand_icon: icon NULL is removed' => [
+        "{icon: null, other: 1}|bcl_expand_icon",
+        [],
+        ['other' => 1],
+      ],
+      'bcl_expand_icon: empty icon is removed' => [
+        "{icon: '', other: 1}|bcl_expand_icon",
+        [],
+        ['other' => 1],
+      ],
+      'bcl_expand_icon: no icon key' => [
+        '{other: 1}|bcl_expand_icon',
+        [],
+        ['other' => 1],
+      ],
       // Filter '|oe_bt__to_image_value_object'.
       'oe_bt__to_image_value_object: array' => [
         'image|oe_bt__to_image_value_object',
@@ -214,6 +245,19 @@ class TwigExtensionFiltersTest extends UnitTestCase {
         [],
         RuntimeError::class,
         'Expected an array, an Attribute object, or NULL. Found string.',
+      ],
+      // Filter '|bcl_expand_icon'.
+      'bcl_expand_icon: size as positional argument' => [
+        "{icon: 'home'}|bcl_expand_icon('xs')",
+        [],
+        RuntimeError::class,
+        $named_only,
+      ],
+      'bcl_expand_icon: icon array without name' => [
+        "{icon: {size: 'xs'}}|bcl_expand_icon",
+        [],
+        RuntimeError::class,
+        'Missing icon name in non-empty icon array.',
       ],
       // Filter '|oe_bt__to_image_value_object'.
       'oe_bt__to_image_value_object: empty array' => [
