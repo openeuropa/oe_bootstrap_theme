@@ -606,6 +606,11 @@ TWIG;
         [],
         '<svg id="x" class="bi icon--xs"><use xlink:href="' . $icon_path . '#house"/></svg>',
       ],
+      '|bcl_expand_attributes' => [
+        "<a{{ (item|bcl_expand_attributes({class: 'b', title: 'Default', id: 'x'})).attributes }}></a>",
+        ['item' => ['attributes' => new Attribute(['class' => ['a'], 'title' => 'T'])]],
+        '<a class="a b" title="T" id="x"></a>',
+      ],
       '|oe_bt__to_image_value_object|oe_bt__to_render_array|add_class' => [
         "{{ image|oe_bt__to_image_value_object|oe_bt__to_render_array|add_class('x') }}",
         ['image' => ['src' => 'https://example.com/image.png', 'alt' => 'Alt text']],
