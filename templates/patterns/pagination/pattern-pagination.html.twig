@@ -5,13 +5,10 @@
  */
 #}
 
-{% set internal_items = [] %}
-{% for item in items %}
-  {% set internal_items = internal_items|merge([item|merge({
-      'attributes': create_attribute({'aria-label': item.label}).merge(create_attribute(item.attributes ?? {})),
-    })])
-  %}
-{% endfor %}
+{% set internal_items = (items ?? [])|map(item => item|merge({
+  'attributes': create_attribute({'aria-label': item.label}).merge(create_attribute(item.attributes ?? {})),
+})) %}
+
 {% include '@oe-bcl/pagination' with {
   'variant': variant,
   'size': size,
