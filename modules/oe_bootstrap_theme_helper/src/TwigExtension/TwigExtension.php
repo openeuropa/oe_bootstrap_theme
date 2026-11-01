@@ -22,6 +22,7 @@ use Drupal\oe_bootstrap_theme\DrupalCompatibility;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
+use Drupal\oe_bootstrap_theme_helper\Value\NamedParametersOnly;
 use Twig\Environment;
 use Twig\Error\RuntimeError;
 use Twig\Extension\AbstractExtension;
@@ -66,6 +67,7 @@ class TwigExtension extends AbstractExtension {
         'toInternalLanguageId',
       ]),
       new TwigFilter('element_children', [$this, 'elementChildren']),
+      new TwigFilter('bcl_icon', [$this, 'bclIcon']),
       new TwigFilter('oe_bt__to_image_value_object', [$this, 'toImageValueObject']),
       new TwigFilter('oe_bt__to_render_array', [$this, 'toRenderArray']),
     ];
@@ -392,6 +394,88 @@ class TwigExtension extends AbstractExtension {
     $this->renderer->render($bubbleable);
 
     return $children;
+  }
+
+  /**
+   * Prepares parameters for the 'bcl-icon' template.
+   *
+   * @param mixed $argument
+   *   The input, which should be one of:
+   *     - The icon name, as a string.
+   *     - An array with icon name, and optionally path, size and attributes.
+   *     - NULL, empty string or empty array, for no icon.
+   * @param mixed $_
+   *   A placeholder parameter to begin named parameters.
+   *   This parameter should never be passed, and all subsequent parameters
+   *   should be passed by name only.
+   * @param string|null $size
+   *   A fallback/default for the icon size.
+   *   Example values are '2xs', 'xs', 'm', 'l', 'xl' etc.
+   *   This argument must be passed by name, so that it will be distinguishable
+   *   from other arguments added in the future.
+   *
+   * @return array|null
+   *   Arguments suitable for 'bcl-icon', or NULL for no icon.
+   *   The array always has 'name' and 'path'. It has 'size' if a size was
+   *   provided, and 'attributes' as an Attribute object if attributes were
+   *   provided. Other keys from an input array are kept as they are.
+   */
+  public function bclIcon(
+    mixed $argument,
+    mixed $_ = NamedParametersOnly::SENTINEL,
+    ?string $size = NULL,
+  ): ?array {
+    NamedParametersOnly::checkForTwig($_);
+    if ($argument === NULL || $argument === [] || $argument === '') {
+      return NULL;
+    }
+    if (is_string($argument)) {
+      $icon = ['name' => $argument];
+    }
+    elseif (is_array($argument)) {
+      if (!isset($argument['name'])) {
+        throw new RuntimeError('Missing icon name in non-empty icon array.');
+      }
+      $icon = $argument;
+    }
+    else {
+      throw new RuntimeError(sprintf('Expected an array, string or NULL, found %s', get_debug_type($argument)));
+    }
+    if (!empty($icon['attributes'])) {
+      $icon['attributes'] = $this->toAttribute($icon['attributes']);
+    }
+    else {
+      unset($icon['attributes']);
+    }
+    $icon['path'] ??= $this->getBclIconPath();
+    if ($size !== NULL) {
+      $icon['size'] ??= $size;
+    }
+    return $icon;
+  }
+
+  /**
+   * Creates an Attribute object from input.
+   *
+   * For now this is used internally and not exposed as a twig filter.
+   *
+   * @param mixed $argument
+   *   The filter argument.
+   *
+   * @return \Drupal\Core\Template\Attribute
+   *   The new attributes object.
+   */
+  protected function toAttribute(mixed $argument): Attribute {
+    if ($argument instanceof Attribute) {
+      return $argument;
+    }
+    if ($argument === NULL) {
+      return new Attribute();
+    }
+    if (is_array($argument)) {
+      return new Attribute($argument);
+    }
+    throw new RuntimeError(sprintf('Expected an array, an Attribute object, or NULL. Found %s.', get_debug_type($argument)));
   }
 
   /**

@@ -595,6 +595,11 @@ TWIG;
         [],
         '3xl',
       ],
+      '|bcl_icon with BCL icon template' => [
+        "{% include '@oe-bcl/icon' with 'house'|bcl_icon(size: 'xs') only %}",
+        [],
+        '<svg class="bi icon--xs"><use xlink:href="' . $icon_path . '#house"/></svg>',
+      ],
       '|oe_bt__to_image_value_object|oe_bt__to_render_array|add_class' => [
         "{{ image|oe_bt__to_image_value_object|oe_bt__to_render_array|add_class('x') }}",
         ['image' => ['src' => 'https://example.com/image.png', 'alt' => 'Alt text']],
