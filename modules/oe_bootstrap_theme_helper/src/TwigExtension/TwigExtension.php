@@ -11,6 +11,7 @@ use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Render\RenderableInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigEnvironment;
@@ -65,6 +66,7 @@ class TwigExtension extends AbstractExtension {
       ]),
       new TwigFilter('element_children', [$this, 'elementChildren']),
       new TwigFilter('oe_bt__to_image_value_object', [$this, 'toImageValueObject']),
+      new TwigFilter('oe_bt__to_render_array', [$this, 'toRenderArray']),
     ];
   }
 
@@ -421,6 +423,32 @@ class TwigExtension extends AbstractExtension {
       'Expected ImageValueObjectInterface|array, found %s',
       get_debug_type($argument),
     ));
+  }
+
+  /**
+   * Gets a render array from a RenderableInterface object.
+   *
+   * This allows using twig filters like `|add_class` from Drupal core, which
+   * operate on render arrays.
+   *
+   * @param mixed $argument
+   *   A RenderableInterface object.
+   *
+   * @return array
+   *   A render array.
+   *
+   * @see \Drupal\Core\Template\TwigExtension::addClass()
+   * @see \Drupal\Core\Template\TwigExtension::setAttribute()
+   */
+  public function toRenderArray(mixed $argument): array {
+    // Validate in a way that will report the line number in the template.
+    if (!$argument instanceof RenderableInterface) {
+      throw new RuntimeError(sprintf(
+        "Expected a RenderableInterface instance. Found %s",
+        get_debug_type($argument),
+      ));
+    }
+    return $argument->toRenderable();
   }
 
 }
