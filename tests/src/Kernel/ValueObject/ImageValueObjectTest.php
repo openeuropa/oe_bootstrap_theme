@@ -201,6 +201,9 @@ class ImageValueObjectTest extends AbstractKernelTestBase {
     foreach ($expected_values as $key => $expected_value) {
       $this->assertSame($expected_value, $object[$key]);
     }
+    // This assertion method is called every time, so it is a good place to
+    // verify that the two render array methods have the same result.
+    $this->assertSame($object->toRenderArray(), $object->toRenderable());
   }
 
   /**
