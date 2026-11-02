@@ -145,8 +145,7 @@ class ImageValueObjectTest extends AbstractKernelTestBase {
       '#cache' => [
         'contexts' => [],
         'tags' => [],
-        // @todo The max-age should be -1.
-        'max-age' => 0,
+        'max-age' => -1,
       ],
     ], $object->toRenderArray());
 
@@ -174,7 +173,11 @@ class ImageValueObjectTest extends AbstractKernelTestBase {
     $this->assertCacheMetadata(['user'], ['example-cache-tag'], 999, $object);
     $this->assertSame([
       ...$expected_render,
-      // @todo The cache metadata should not be empty.
+      '#cache' => [
+        'contexts' => ['user'],
+        'tags' => ['example-cache-tag'],
+        'max-age' => 999,
+      ],
     ], $object->toRenderArray());
   }
 

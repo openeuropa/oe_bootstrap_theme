@@ -187,7 +187,7 @@ class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterf
       '#title' => $this->getName(),
       '#alt' => $this->getAlt(),
     ];
-    CacheableMetadata::createFromObject($build)->applyTo($build);
+    CacheableMetadata::createFromObject($this)->applyTo($build);
 
     return $build;
   }
