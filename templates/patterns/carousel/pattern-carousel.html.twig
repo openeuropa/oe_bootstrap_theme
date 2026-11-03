@@ -18,10 +18,7 @@
     {% set _item = _item|merge({
       'link': slide.link|merge({
         'icon_position': 'before',
-        'icon': {
-          'name': 'link',
-          'path': bcl_icon_path(),
-        },
+        'icon': 'link'|bcl_icon,
       }),
     }) %}
   {% endif %}
