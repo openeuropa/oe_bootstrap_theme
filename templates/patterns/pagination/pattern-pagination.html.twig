@@ -24,8 +24,7 @@
 {% set _controls = _controls|filter(_control => _control.item) %}
 {% set _control_items = _controls|map(_control => _control.item|bcl_expand_attributes({
   'aria-label': _control.item.aria_label|default(_control.label),
-})) %}
-{% set _control_items = _control_items|map(_item => _item|bcl_expand_icon(size: 'fluid')) %}
+})|bcl_expand_icon(size: 'fluid')) %}
 
 {% set _list_attributes = create_attribute(list_attributes ?? {}) %}
 
