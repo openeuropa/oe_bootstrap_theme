@@ -8,11 +8,14 @@ use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Render\RenderContext;
 use Drupal\Core\Template\Attribute;
+use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Drupal\oe_bootstrap_theme_helper\TwigExtension\TwigExtension;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\DomCrawler\Crawler;
+use Twig\Extension\ExtensionInterface;
 use Twig\Markup;
 
 /**
@@ -641,6 +644,55 @@ TWIG;
       $theme_manager->setActiveTheme($theme_initialization->initTheme($theme));
       $this->assertSame($expected_path, (string) $twig->renderInline('{{ bcl_icon_path() }}'), $theme);
     }
+  }
+
+  /**
+   * Tests that no other Twig extension provides the same names.
+   *
+   * Twig filters, functions and tests are registered globally. If two
+   * extensions register the same name, the one registered last silently
+   * replaces the other, also in templates of Drupal core and other themes.
+   *
+   * This only covers Twig itself, Drupal core and the modules enabled in this
+   * test.
+   */
+  public function testNoNameClashes(): void {
+    $twig = $this->container->get(TwigEnvironment::class);
+    $own_extension = $twig->getExtension(TwigExtension::class);
+    $own_names = $this->getTwigCallableNames($own_extension);
+    $clashes = [];
+    foreach ($twig->getExtensions() as $class => $extension) {
+      if ($extension === $own_extension) {
+        continue;
+      }
+      foreach (array_intersect($own_names, $this->getTwigCallableNames($extension)) as $name) {
+        $clashes[] = $name . ' (' . $class . ')';
+      }
+    }
+    $this->assertSame([], $clashes);
+  }
+
+  /**
+   * Gets the names of filters, functions and tests of a Twig extension.
+   *
+   * @param \Twig\Extension\ExtensionInterface $extension
+   *   The Twig extension.
+   *
+   * @return list<string>
+   *   Names prefixed with the type, e.g. 'filter:bcl_icon'.
+   */
+  protected function getTwigCallableNames(ExtensionInterface $extension): array {
+    $names = [];
+    foreach ($extension->getFilters() as $filter) {
+      $names[] = 'filter:' . $filter->getName();
+    }
+    foreach ($extension->getFunctions() as $function) {
+      $names[] = 'function:' . $function->getName();
+    }
+    foreach ($extension->getTests() as $test) {
+      $names[] = 'test:' . $test->getName();
+    }
+    return $names;
   }
 
 }
