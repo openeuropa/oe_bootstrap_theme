@@ -26,7 +26,12 @@
       {% set video_alignment_class = 'order-1' %}
     {% endif %}
 
-    {# Backward compatibily setting: Text always on top in mobile viewports. #}
+    {#
+      Backward compatibility setting: Text always on top in mobile viewports.
+      @todo In components, this variable is never set, so they always get the
+        new behavior. Twig is not in strict mode, so this causes no error. Decide
+        later whether components need backward compatibility settings.
+    #}
     {% if featured_media_mobile_text_top %}
       {% set text_alignment_class = 'order-md-1' %}
       {% set video_alignment_class = 'order-md-2' %}
@@ -48,7 +53,12 @@
         {% if subtitle %}
           {% if subtitle_tag is not empty %}
             {% set _subtitle_tag = subtitle_tag %}
-          {% elseif featured_media_subtitle_tag_h5 %}
+          {% elseif featured_media_subtitle_tag_h5 %}{#
+            Backward compatibility setting: Subtitle tag is h5.
+            @todo In components, this variable is never set, so they always get the
+              new behavior. Twig is not in strict mode, so this causes no error. Decide
+              later whether components need backward compatibility settings.
+          #}
             {% set _subtitle_tag = 'h5' %}
           {% else %}
             {% set _subtitle_tag = title is not empty ? 'h3' : 'h2' %}
