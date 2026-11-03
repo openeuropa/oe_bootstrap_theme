@@ -61,6 +61,9 @@ class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterf
 
   /**
    * {@inheritdoc}
+   *
+   * @param array{src: string, alt?: string, name?: string, responsive?: bool} $values
+   *   A map of values.
    */
   public static function fromArray(array $values = []): static {
     $values += ['alt' => '', 'name' => '', 'responsive' => TRUE];
