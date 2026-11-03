@@ -568,4 +568,79 @@ TWIG;
     ];
   }
 
+  /**
+   * Tests new filters and functions in templates rendered by Drupal.
+   *
+   * The detailed behavior is covered by the unit test. This checks that the
+   * filters and functions work in Drupal's Twig environment, together with
+   * Drupal's filters and the BCL templates.
+   *
+   * Several cases share one test method, to avoid repeated Drupal bootstrap.
+   *
+   * @see \Drupal\Tests\oe_bootstrap_theme_helper\Unit\TwigExtensionFiltersTest
+   */
+  public function testNewFiltersAndFunctions(): void {
+    $icon_path = '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg';
+    $cases = [
+      'bcl_icon_path()' => [
+        '{{ bcl_icon_path() }}',
+        [],
+        $icon_path,
+      ],
+      'oe_bt__theme_setting()' => [
+        "{{ oe_bt__theme_setting('facts_figures.icon_size') }}",
+        [],
+        '3xl',
+      ],
+      '|oe_bt__to_image_value_object|oe_bt__to_render_array|add_class' => [
+        "{{ image|oe_bt__to_image_value_object|oe_bt__to_render_array|add_class('x') }}",
+        ['image' => ['src' => 'https://example.com/image.png', 'alt' => 'Alt text']],
+        // The theme's 'image.html.twig' adds the 'img-fluid' class.
+        '<img class="x img-fluid" src="https://example.com/image.png" alt="Alt text" title="" />',
+      ],
+    ];
+    foreach ($cases as $name => [$template, $context, $expected]) {
+      $elements = [
+        '#type' => 'inline_template',
+        '#template' => $template,
+        '#context' => $context,
+      ];
+      $output = $this->renderRoot($elements);
+      // Remove the whitespace that the BCL icon template produces.
+      $output = trim(preg_replace(['/\s+/', '/\s*>\s*/'], [' ', '>'], $output));
+      $this->assertSame($expected, $output, $name);
+    }
+  }
+
+  /**
+   * Tests the 'bcl_icon_path()' function with different active themes.
+   *
+   * A theme or one of its base themes can override the icon path in its info
+   * file.
+   *
+   * @see \Drupal\Tests\oe_bootstrap_theme\Kernel\BclIconPathOverrideTest
+   */
+  public function testBclIconPathInSubThemes(): void {
+    $test_themes_path = '/themes/custom/oe_bootstrap_theme/modules/oe_bootstrap_theme_helper/tests/themes';
+    $default_path = '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg';
+    $custom_path = $test_themes_path . '/oe_bootstrap_theme_test_subtheme1/assets/icons/bcl-default-icons-test.svg';
+    $expected_paths = [
+      // Sub-theme with icon path override.
+      'oe_bootstrap_theme_test_subtheme1' => $custom_path,
+      // Sub-theme of a sub-theme with icon path override.
+      'oe_bootstrap_theme_test_subtheme2' => $custom_path,
+      // Sub-theme without icon path override.
+      'oe_bootstrap_theme_test_subtheme3' => $default_path,
+      'oe_bootstrap_theme' => $default_path,
+    ];
+    $this->container->get('theme_installer')->install(array_keys($expected_paths));
+    $theme_manager = $this->container->get('theme.manager');
+    $theme_initialization = $this->container->get('theme.initialization');
+    $twig = $this->container->get('twig');
+    foreach ($expected_paths as $theme => $expected_path) {
+      $theme_manager->setActiveTheme($theme_initialization->initTheme($theme));
+      $this->assertSame($expected_path, (string) $twig->renderInline('{{ bcl_icon_path() }}'), $theme);
+    }
+  }
+
 }
