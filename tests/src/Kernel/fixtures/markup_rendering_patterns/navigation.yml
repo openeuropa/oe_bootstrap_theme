@@ -262,6 +262,35 @@ navigation_tabs:
       '.nav-link:nth-child(2)': 'I am a button'
       '.nav-link:nth-child(3)': 'I am a disabled button'
       '.nav-link:nth-child(4)': 'I am an active button'
+navigation_tabs_with_content:
+  render:
+    '#type': pattern
+    '#id': 'navigation'
+    '#variant': 'tabs'
+    '#fields':
+      tabs_content: true
+      items:
+        - label: 'First tab'
+          id: 'first-tab'
+          path: '#first-panel'
+          target: 'first-panel'
+          active: true
+          content: 'First tab content'
+        - label: 'Second tab'
+          id: 'second-tab'
+          path: '#second-panel'
+          target: 'second-panel'
+          content: 'Second tab content'
+  assertions:
+    count:
+      'nav.nav-tabs[role="tablist"]': 1
+      '.tab-content .tab-pane': 2
+      '#first-panel.tab-pane.fade.show.active[role="tabpanel"][aria-labelledby="first-tab"]': 1
+      '#second-panel.tab-pane.fade[role="tabpanel"][aria-labelledby="second-tab"]': 1
+      '#second-panel.active': 0
+    equals:
+      '#first-panel': 'First tab content'
+      '#second-panel': 'Second tab content'
 navigation_navbar:
   render:
     '#type': pattern

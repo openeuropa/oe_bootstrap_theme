@@ -15,6 +15,10 @@ navigation:
       label: 'Navbar'
       description: 'When the navigation is part of a navbar element.'
   fields:
+    tabs_content:
+      type: boolean
+      label: 'Tabs content'
+      description: 'Render the content of each tab. Defaults to false.'
     orientation:
       type: string
       label: 'Orientation'
