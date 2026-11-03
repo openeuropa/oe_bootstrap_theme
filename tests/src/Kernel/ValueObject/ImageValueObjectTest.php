@@ -120,4 +120,102 @@ class ImageValueObjectTest extends AbstractKernelTestBase {
     ], $object->getCacheTags());
   }
 
+  /**
+   * Tests other methods.
+   */
+  public function testOtherMethods(): void {
+    // Test with default values.
+    $input_values = [
+      // The 'src' is considered required.
+      'src' => 'https://example.com/image.png',
+    ];
+    $object = ImageValueObject::fromArray($input_values);
+    $this->assertGetters([
+      'src' => 'https://example.com/image.png',
+      'alt' => '',
+      'name' => '',
+      'responsive' => TRUE,
+    ], $object);
+    $this->assertCacheMetadata([], [], -1, $object);
+    $this->assertSame($expected_render = [
+      '#theme' => 'image',
+      '#uri' => 'https://example.com/image.png',
+      '#title' => '',
+      '#alt' => '',
+      '#cache' => [
+        'contexts' => [],
+        'tags' => [],
+        // @todo The max-age should be -1.
+        'max-age' => 0,
+      ],
+    ], $object->toRenderArray());
+
+    // Test with custom values.
+    $input_values = [
+      ...$input_values,
+      'alt' => 'Example alt text',
+      'name' => 'Example name',
+      'responsive' => FALSE,
+    ];
+    $object = ImageValueObject::fromArray($input_values);
+    $this->assertGetters($input_values, $object);
+    $this->assertCacheMetadata([], [], -1, $object);
+    $this->assertSame($expected_render = [
+      ...$expected_render,
+      '#title' => 'Example name',
+      '#alt' => 'Example alt text',
+    ], $object->toRenderArray());
+
+    // Test with cache metadata.
+    $object->addCacheContexts(['user']);
+    $object->addCacheTags(['example-cache-tag']);
+    $object->mergeCacheMaxAge(999);
+    $this->assertGetters($input_values, $object);
+    $this->assertCacheMetadata(['user'], ['example-cache-tag'], 999, $object);
+    $this->assertSame([
+      ...$expected_render,
+      // @todo The cache metadata should not be empty.
+    ], $object->toRenderArray());
+  }
+
+  /**
+   * Asserts values from getters and other methods.
+   *
+   * @param array{src: string, alt: string, name: string, responsive: bool} $expected_values
+   *   Expected getter values.
+   * @param \Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject $object
+   *   The object to test.
+   */
+  protected function assertGetters(array $expected_values, ImageValueObject $object): void {
+    $this->assertSame($expected_values, [
+      'src' => $object->getSource(),
+      'alt' => $object->getAlt(),
+      'name' => $object->getName(),
+      'responsive' => $object->isResponsive(),
+    ]);
+    $this->assertEqualsCanonicalizing($expected_values, $object->getArray());
+    $this->assertEqualsCanonicalizing($expected_values, iterator_to_array($object->getIterator()));
+    foreach ($expected_values as $key => $expected_value) {
+      $this->assertSame($expected_value, $object[$key]);
+    }
+  }
+
+  /**
+   * Asserts cache metadata methods.
+   *
+   * @param list<string> $cache_contexts
+   *   The expected cache contexts.
+   * @param list<string> $cache_tags
+   *   The expected cache tags.
+   * @param int $cache_max_age
+   *   The expected max-age.
+   * @param \Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject $object
+   *   The object to test.
+   */
+  protected function assertCacheMetadata(array $cache_contexts, array $cache_tags, int $cache_max_age, ImageValueObject $object): void {
+    $this->assertEqualsCanonicalizing($cache_contexts, $object->getCacheContexts());
+    $this->assertEqualsCanonicalizing($cache_tags, $object->getCacheTags());
+    $this->assertEqualsCanonicalizing($cache_max_age, $object->getCacheMaxAge());
+  }
+
 }
