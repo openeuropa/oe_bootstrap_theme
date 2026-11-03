@@ -257,6 +257,7 @@ navigation_tabs:
       '.nav-link.active': 1
       'a#dropdown-1[data-bs-toggle="dropdown"]': 1
       'button.nav-link[disabled]': 1
+      '.tab-content': 0
     equals:
       '.nav-link:nth-child(1)': 'I am a link'
       '.nav-link:nth-child(2)': 'I am a button'
@@ -281,10 +282,16 @@ navigation_tabs_with_content:
           path: '#second-panel'
           target: 'second-panel'
           content: 'Second tab content'
+        - label: 'Tab without content'
+          id: 'third-tab'
+          path: '#third-panel'
+          target: 'third-panel'
   assertions:
     count:
       'nav.nav-tabs[role="tablist"]': 1
+      '.nav-link': 3
       '.tab-content .tab-pane': 2
+      '#third-panel': 0
       '#first-panel.tab-pane.fade.show.active[role="tabpanel"][aria-labelledby="first-tab"]': 1
       '#second-panel.tab-pane.fade[role="tabpanel"][aria-labelledby="second-tab"]': 1
       '#second-panel.active': 0
