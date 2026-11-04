@@ -17,7 +17,7 @@
   } only %}
 {% endmacro %}
 
-<div{{ attributes.addClass('bcl-featured-media') }}>
+<div{{ create_attribute(attributes ?? {}).addClass('bcl-featured-media') }}>
   {% if subtitle or text or link %}
     {% set text_alignment_class = 'order-1' %}
     {% set video_alignment_class = 'order-2' %}

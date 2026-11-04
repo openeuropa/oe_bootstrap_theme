@@ -8,6 +8,7 @@
   {% set icon_data = icon is iterable ? icon : { name: icon } %}
   {% set _icon = { path: bcl_icon_path() }|merge(icon_data) %}
 {% endif %}
+{% set attributes = create_attribute(attributes ?? {}) %}
 {% include '@oe-bcl/button' with {
   'label': label,
   'variant': variant,

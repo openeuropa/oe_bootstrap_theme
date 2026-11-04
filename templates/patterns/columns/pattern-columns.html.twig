@@ -23,7 +23,7 @@
   ]
 %}
 
-<{{ tag }}{{ attributes.addClass(wrapper_classes).setAttribute('style', responsive_grid_styles|join()) }}>
+<{{ tag }}{{ create_attribute(attributes ?? {}).addClass(wrapper_classes).setAttribute('style', responsive_grid_styles|join()) }}>
   {% for item in items|element_children %}
     <div class="columns__item">
       {{- item -}}

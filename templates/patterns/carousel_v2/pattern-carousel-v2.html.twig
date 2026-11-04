@@ -6,6 +6,7 @@
 #}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set _copyright_label = 'Image credit:'|t %}
+{% set attributes = create_attribute(attributes ?? {}) %}
 
 {% set _items = [] %}
 {% for slide in items|default([]) %}

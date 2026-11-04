@@ -19,7 +19,7 @@
 {% set content_attributes = create_attribute(content_attributes ?? {}) %}
 {% set footer_attributes = create_attribute(footer_attributes ?? {}) %}
 
-<{{ tag }}{{ attributes.addClass(_classes) }}>
+<{{ tag }}{{ create_attribute(attributes ?? {}).addClass(_classes) }}>
   {% if media is not empty %}
     <div{{ media_attributes.addClass(['card-media']) }}>
       {{ media }}
