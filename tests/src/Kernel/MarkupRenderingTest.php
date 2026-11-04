@@ -118,8 +118,14 @@ class MarkupRenderingTest extends KernelTestBase {
 
   /**
    * Tests whether attributes are applied to patterns or components.
+   *
+   * @param 'components'|'patterns' $mode
+   *   Whether to render patterns or components.
+   *
+   * @testWith ["components"]
+   *           ["patterns"]
    */
-  public function testPatternAttributes(): void {
+  public function testPatternAttributes(string $mode): void {
     // Some patterns currently don't pass attributes to the BCL template.
     $known_non_attributes_passing_patterns = [
       'dropdown',
@@ -158,7 +164,10 @@ class MarkupRenderingTest extends KernelTestBase {
       };
       $render = [
         '#type' => 'inline_template',
-        '#template' => "{{ pattern('$pattern_name', values) }}",
+        '#template' => match ($mode) {
+          'components' => "{{ include_only('oe_bootstrap_theme:$pattern_name', values) }}",
+          'patterns' => "{{ pattern('$pattern_name', values) }}"
+        },
         '#context' => [
           'values' => [
             ...$values,
