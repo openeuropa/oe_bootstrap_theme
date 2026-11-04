@@ -8,7 +8,7 @@
 {% set internal_items = [] %}
 {% for item in items %}
   {% set internal_items = internal_items|merge([item|merge({
-      'attributes': create_attribute({'aria-label': item.label}).merge(create_attribute(item.attributes|default({}))),
+      'attributes': create_attribute({'aria-label': item.label}).merge(create_attribute(item.attributes ?? {})),
     })])
   %}
 {% endfor %}
@@ -20,16 +20,16 @@
   'enable_prev_next_icon': enable_prev_next_icons,
   'enable_first_last_icon': enable_first_last_icons,
   'first': first ? first|merge({
-    'attributes': create_attribute({'aria-label': first.aria_label|default('First'|t)}).merge(create_attribute(first.attributes|default({}))),
+    'attributes': create_attribute({'aria-label': first.aria_label|default('First'|t)}).merge(create_attribute(first.attributes ?? {})),
   }),
   'prev': prev ? prev|merge({
-    'attributes': create_attribute({'aria-label': prev.aria_label|default('Previous'|t)}).merge(create_attribute(prev.attributes|default({}))),
+    'attributes': create_attribute({'aria-label': prev.aria_label|default('Previous'|t)}).merge(create_attribute(prev.attributes ?? {})),
   }),
   'next': next ? next|merge({
-    'attributes': create_attribute({'aria-label': next.aria_label|default('Next'|t)}).merge(create_attribute(next.attributes|default({}))),
+    'attributes': create_attribute({'aria-label': next.aria_label|default('Next'|t)}).merge(create_attribute(next.attributes ?? {})),
   }),
   'last': last ? last|merge({
-    'attributes': create_attribute({'aria-label': last.aria_label|default('Last'|t)}).merge(create_attribute(last.attributes|default({}))),
+    'attributes': create_attribute({'aria-label': last.aria_label|default('Last'|t)}).merge(create_attribute(last.attributes ?? {})),
   }),
   'items': internal_items,
   'attributes': attributes,
