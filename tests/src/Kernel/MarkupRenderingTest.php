@@ -389,32 +389,51 @@ class MarkupRenderingTest extends KernelTestBase {
       ];
       unset($render['#id']);
       unset($render['#props']['settings']);
-      // Support string attributes in fixtures.
-      foreach (preg_grep('#^([a-z]+_|)attributes$#', array_keys($render['#props'])) as $key) {
-        $value = $render['#props'][$key] ?? NULL;
-        if (is_string($value)) {
-          $parse_html = '<div ' . $value . '></div>';
-          $attributes = [];
-          foreach (Html::load($parse_html)->getElementsByTagName('div') as $div) {
-            foreach ($div->attributes as $attr) {
-              $attributes[$attr->nodeName] = $attr->nodeValue;
-            }
-          }
-          $attributes_object = new Attribute($attributes);
-          $render['#props'][$key] = $use_objects ? $attributes_object : $attributes_object->toArray();
-        }
-        elseif (is_array($value) && $use_objects) {
-          $render['#props'][$key] = new Attribute($value);
-        }
-        elseif ($value instanceof Attribute && !$use_objects) {
-          $render['#props'][$key] = $value->toArray();
-        }
-      }
+      // Convert attribute-like props to Attribute object or array.
+      $render['#props'] = $this->convertFixtureAttributes($render['#props'], $use_objects);
     }
     foreach (Element::children($render) as $key) {
       $render[$key] = $this->replacePatternsWithComponents($render[$key], $use_objects);
     }
     return $render;
+  }
+
+  /**
+   * Converts different attribute values from fixtures to object or array.
+   *
+   * @param array $values
+   *   Arguments for a pattern or component, which may contain '(*_)attributes'
+   *   keys. Each attributes property could be a string, array or Attribute
+   *   object.
+   * @param bool $use_objects
+   *   TRUE to convert to Attribute object, FALSE to convert to array.
+   *
+   * @return array
+   *   Modified arguments, with attributes replaced.
+   */
+  protected function convertFixtureAttributes(array $values, bool $use_objects): array {
+    // Support string attributes in fixtures.
+    foreach (preg_grep('#^([a-z]+_|)attributes$#', array_keys($values)) as $key) {
+      $value = $values[$key];
+      if (is_string($value)) {
+        $parse_html = '<div ' . $value . '></div>';
+        $attributes = [];
+        foreach (Html::load($parse_html)->getElementsByTagName('div') as $div) {
+          foreach ($div->attributes as $attr) {
+            $attributes[$attr->nodeName] = $attr->nodeValue;
+          }
+        }
+        $attributes_object = new Attribute($attributes);
+        $values[$key] = $use_objects ? $attributes_object : $attributes_object->toArray();
+      }
+      elseif (is_array($value) && $use_objects) {
+        $values[$key] = new Attribute($value);
+      }
+      elseif ($value instanceof Attribute && !$use_objects) {
+        $values[$key] = $value->toArray();
+      }
+    }
+    return $values;
   }
 
   /**
