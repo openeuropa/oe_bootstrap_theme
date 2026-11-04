@@ -14,5 +14,5 @@
   'nav': (variant == 'pills' or variant == 'tabs'),
   'tabs_content': tabs_content|default(false),
   'navbar': variant == 'navbar',
-  'attributes': attributes,
+  'attributes': create_attribute(attributes ?? {}),
 } only %}

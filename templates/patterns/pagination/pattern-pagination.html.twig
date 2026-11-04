@@ -5,6 +5,8 @@
  */
 #}
 
+{% set attributes = create_attribute(attributes ?? {}) %}
+
 {% if variant == 'glossary' %}
   {% set attributes = attributes.setAttribute('aria-label', 'Glossary links'|t) %}
 {% endif %}

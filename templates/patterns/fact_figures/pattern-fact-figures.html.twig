@@ -16,5 +16,5 @@
   'icon_path': bcl_icon_path(),
   'icon_size': oe_bt__theme_setting('facts_figures.icon_size') ?: 'l',
   'link_more': link,
-  'attributes': attributes,
+  'attributes': create_attribute(attributes ?? {}),
 } only %}

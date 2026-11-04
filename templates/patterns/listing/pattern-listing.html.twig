@@ -18,5 +18,5 @@
   } : null,
   'title': title,
   'title_tag': title_tag,
-  'attributes': attributes.addClass('text-break'),
+  'attributes': create_attribute(attributes ?? {}).addClass('text-break'),
 } only %}

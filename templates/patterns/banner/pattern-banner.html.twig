@@ -4,7 +4,7 @@
  * Banner pattern.
  */
 #}
-{% set attributes = attributes.addClass([
+{% set attributes = create_attribute(attributes ?? {}).addClass([
   ...({
     primary: ['bg-primary', 'text-white'],
     image_shade: ['bg-lighter'],

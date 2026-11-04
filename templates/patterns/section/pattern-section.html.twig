@@ -36,7 +36,7 @@
   ]
 %}
 
-<{{ tag }}{{ attributes.addClass(section_classes) }}>
+<{{ tag }}{{ create_attribute(attributes ?? {}).addClass(section_classes) }}>
   {% if heading is not empty %}
     <{{ heading_tag }}{{ heading_attributes.addClass(heading_classes) }}>
       {{ heading }}
