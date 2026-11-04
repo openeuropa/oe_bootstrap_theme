@@ -19,6 +19,10 @@ variants:
     title: Dark
   link:
     title: Link
+slots:
+  label:
+    title: 'Button label'
+    description: 'The button label.'
 props:
   type: object
   properties:
@@ -70,10 +74,6 @@ props:
         before: Before
         after: 'After (default)'
         '': Default
-    label:
-      title: 'Button label'
-      description: 'The button label.'
-      type: [string, array, object, 'null']
     icon:
       title: 'Icon name'
       description: 'Adds an icon to the button. Optional.'

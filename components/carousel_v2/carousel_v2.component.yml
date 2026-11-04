@@ -1,6 +1,10 @@
 name: 'Carousel V2'
 description: 'A slideshow with shared navigation controls and two layouts: Carousel image ("split") or Carousel hero ("full_width").'
 group: 'Version 2.x'
+slots:
+  label:
+    title: Label
+    description: 'Accessible name for the carousel region. Defaults to "Featured content".'
 props:
   type: object
   properties:
@@ -88,10 +92,6 @@ props:
       title: 'Icons path'
       description: 'Path to icons.'
       type: [string, 'null']
-    label:
-      title: Label
-      description: 'Accessible name for the carousel region. Defaults to "Featured content".'
-      type: [string, array, object, 'null']
     items:
       title: Slides
       description: 'Slides shown in the carousel.'
