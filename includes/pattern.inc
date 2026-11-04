@@ -42,9 +42,11 @@ function oe_bootstrap_theme_preprocess_pattern_description_list(&$variables) {
   foreach ($variables['items'] as &$item) {
     // Allow to pass a single term, without forcing users to pass an array with
     // the "label" key in it. This covers for a bug in the BCL pattern.
-    if (!is_array($item['term'])) {
+    // @todo Handle missing or empty term, either with an error or with a
+    //   fallback behavior.
+    if (!is_array($item['term'] ?? NULL)) {
       $item['term'] = [
-        ['label' => $item['term']],
+        ['label' => $item['term'] ?? NULL],
       ];
       continue;
     }
