@@ -63,6 +63,39 @@ description_list_default:
             definition: 'This is a bigger icon.'
           - term: 'A single term without icon.'
             definition: 'Yet another definition text.'
+description_list_incomplete:
+  render:
+    '#type': pattern
+    '#id': description_list
+    '#fields':
+      title: 'The description list title'
+      title_tag: 'h4'
+      settings:
+        orientation: default
+      items:
+        # An item without a term is not officially supported.
+        # The test just covers the current behavior, which can result in empty
+        # tags.
+        # @todo Implement a proper error or fallback behavior.
+        - term: {}
+          description: 'An item with empty array as term.'
+        - term: ''
+          description: 'An item with empty string as term.'
+        - definition: 'An item without a term.'
+        - term: 'An item without a definition.'
+        # An item that is completely empty.
+        - {}
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\DescriptionListAssert
+      expected:
+        items:
+          - {}
+          - term: ''
+          - term: ''
+            definition: 'An item without a term.'
+          - term: 'An item without a definition.'
+          - term: ''
 description_list_horizontal:
   render:
     '#type': pattern
