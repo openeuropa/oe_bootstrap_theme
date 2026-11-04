@@ -6,6 +6,7 @@ namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
 use Drupal\Component\Serialization\Yaml;
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
@@ -105,6 +106,104 @@ class MarkupRenderingTest extends KernelTestBase {
     // Prevent NotFoundHttpException in PathProcessorFront.
     $system_site_config = \Drupal::configFactory()->getEditable('system.site');
     $system_site_config->set('page.front', '/')->save();
+  }
+
+  /**
+   * Tests whether attributes are applied to patterns or components.
+   */
+  public function testPatternAttributes(): void {
+    // Some patterns currently don't pass attributes to the BCL template.
+    $known_non_attributes_passing_patterns = [
+      'dropdown',
+      'inpage_navigation',
+      'modal',
+    ];
+    $problems = [];
+    foreach (static::$patternList as $pattern_name) {
+      // Set minimal required parameters per pattern, so that the output won't
+      // be empty and no errors occur.
+      $values = match ($pattern_name) {
+        // Some patterns are ok with an empty list of items.
+        'dropdown',
+        'card_layout',
+        'description_list',
+        'fact_figures',
+        'columns' => ['items' => []],
+        // Some patterns need at least one item, but it can be empty.
+        'accordion',
+        'carousel_v2',
+        'breadcrumb' => ['items' => [[]]],
+        // Some patterns need at least one item, with minimum data.
+        'listing',
+        'navigation' => ['items' => [['title' => 'Item title']]],
+        'gallery' => ['items' => [['media' => 'The media']]],
+        // Some patterns have different required parameters.
+        'links_block' => ['links' => [[]]],
+        'file' => [
+          'file' => [
+            'url' => 'https://example.com/download.pdf',
+            'language_code' => 'en',
+            'extension' => 'pdf',
+          ],
+        ],
+        default => [],
+      };
+      $render = [
+        '#type' => 'inline_template',
+        '#template' => "{{ pattern('$pattern_name', values) }}",
+        '#context' => [
+          'values' => [
+            ...$values,
+            'attributes' => ['class' => ['custom-class-abc']],
+          ],
+        ],
+      ];
+      Html::resetSeenIds();
+      set_error_handler(static function (int $type, string $message, string $file, int $line) {
+        if ($type === E_USER_DEPRECATED || !(error_reporting() & $type)) {
+          return;
+        }
+        throw new \ErrorException($type . ': ' . $message, 0, $type, $file, $line);
+      });
+      try {
+        $html = (string) $this->container->get(RendererInterface::class)->renderRoot($render);
+      }
+      catch (\ErrorException $e) {
+        $problems['error'][$pattern_name] = $e->getSeverity() . ': ' . $e->getMessage();
+        continue;
+      }
+      catch (\Throwable $e) {
+        $problems['exception'][$pattern_name] = get_class($e) . ': ' . $e->getMessage();
+        continue;
+      }
+      finally {
+        restore_error_handler();
+      }
+      if (trim($html) === '') {
+        $problems['Output is empty'][] = $pattern_name;
+        continue;
+      }
+      $crawler = new Crawler($html);
+      $count = $crawler->filter('.custom-class-abc')->count();
+      if ($count === 1) {
+        if (in_array($pattern_name, $known_non_attributes_passing_patterns)) {
+          $problems['Attributes were applied unexpectedly'][] = $pattern_name;
+        }
+      }
+      elseif ($count === 0) {
+        if (!in_array($pattern_name, $known_non_attributes_passing_patterns)) {
+          $problems["Attributes were not applied."][] = $pattern_name;
+        }
+      }
+      else {
+        $problems["Attributes were applied more than once"][$pattern_name] = $count;
+      }
+    }
+    ksort($problems);
+    if ($problems) {
+      $this->fail(Yaml::encode($problems));
+    }
+    $this->addToAssertionCount(1);
   }
 
   /**
