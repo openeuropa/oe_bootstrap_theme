@@ -41,28 +41,12 @@ class ComponentConverterDecorator extends ComponentConverter {
    */
   private function processSource(array $source) {
     foreach ($source['fields'] ?? [] as $field_name => $field_definition) {
-      $use_slot = $this->fieldShouldBeSlot($field_definition);
-      if (!$use_slot) {
-        $source['settings'][$field_name] = $field_definition;
-        unset($source['fields'][$field_name]);
-      }
+      // Make everything a setting, so that it will be converted to props.
+      // Later, check the prop type to determine if it should become a slot.
+      $source['settings'][$field_name] = $field_definition;
+      unset($source['fields'][$field_name]);
     }
     return $source;
-  }
-
-  /**
-   * Determines if a field should be a slot.
-   *
-   * @param array $field_definition
-   *   The pattern field definition.
-   *
-   * @return bool
-   *   TRUE for slot, FALSE for prop.
-   */
-  protected function fieldShouldBeSlot(array $field_definition): bool {
-    // For now, everything is a slot, nothing is a prop.
-    // @todo Rethink for 'render', 'text', 'markup' types.
-    return FALSE;
   }
 
   /**
@@ -79,15 +63,24 @@ class ComponentConverterDecorator extends ComponentConverter {
    *   The altered component definition.
    */
   private function processTarget(array $target, array $source, string $id) {
-    if (empty($target['slots'])) {
-      unset($target['slots']);
-    }
     if (isset($target['props']['properties'])) {
       $target['props']['properties'] = $this->processProps(
         $target['props']['properties'],
         $source['settings'] ?? [],
         $id,
       );
+    }
+    foreach ($target['props']['properties'] as $prop_name => $prop) {
+      if (in_array('SLOT', (array) $prop['type'])) {
+        $target['slots'][$prop_name] = [
+          'title' => $prop['title'],
+          'description' => $prop['description'],
+        ];
+        unset($target['props']['properties'][$prop_name]);
+      }
+    }
+    if (empty($target['slots'])) {
+      unset($target['slots']);
     }
     return $target;
   }
@@ -239,9 +232,10 @@ class ComponentConverterDecorator extends ComponentConverter {
         NULL => NULL,
       };
       yield match ($setting['type'] ?? NULL) {
+        // Convert these props to slot later.
         'text',
         'markup',
-        'render' => ['string', 'array', 'object'],
+        'render' => 'SLOT',
         'array' => 'array',
         'string' => 'string',
         // Object types.

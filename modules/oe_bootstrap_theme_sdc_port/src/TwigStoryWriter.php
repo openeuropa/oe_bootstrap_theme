@@ -58,12 +58,12 @@ class TwigStoryWriter {
   protected function collectPreviewValues(array $target, array $source): array {
     $component_id = $source['id'];
     $preview_values = [];
-    foreach ($target['props']['properties'] ?? [] as $prop_name => $prop) {
-      $prop_preview_value = $source['settings'][$prop_name]['preview'] ?? NULL;
+    foreach ($source['settings'] as $prop_name => $setting) {
+      $prop_preview_value = $setting['preview'] ?? NULL;
       if ($prop_preview_value === NULL) {
         continue;
       }
-      if (($source['settings'][$prop_name]['escape'] ?? TRUE) && $prop_preview_value !== '') {
+      if (($setting['escape'] ?? TRUE) && $prop_preview_value !== '') {
         if (is_string($prop_preview_value)) {
           if (Html::escape($prop_preview_value) !== $prop_preview_value) {
             $prop_preview_value = Markup::create($prop_preview_value);
@@ -75,9 +75,6 @@ class TwigStoryWriter {
         }
       }
       $preview_values[$prop_name] = $prop_preview_value;
-    }
-    foreach ($target['slots'] ?? [] as $slot_name => $slot) {
-      $preview_values[$slot_name] = $source['fields'][$slot_name]['preview'] ?? NULL;
     }
     require_once dirname(__DIR__, 3) . '/includes/pattern.inc';
     $preprocess_function = 'oe_bootstrap_theme_preprocess_pattern_' . $component_id . '__preview';
