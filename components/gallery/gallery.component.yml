@@ -1,5 +1,9 @@
 name: Gallery
 description: 'A collection of images and videos.'
+slots:
+  title:
+    title: Title
+    description: 'Title of the gallery.'
 props:
   type: object
   properties:
@@ -15,10 +19,6 @@ props:
         original: 'Original aspect ratio (default)'
         cover: Cover
         '': Default
-    title:
-      title: Title
-      description: 'Title of the gallery.'
-      type: [string, array, object, 'null']
     title_tag:
       title: 'Title tag'
       description: 'The tag to use for the title. Defaults to h2.'
