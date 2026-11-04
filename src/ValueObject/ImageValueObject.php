@@ -61,8 +61,11 @@ class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterf
 
   /**
    * {@inheritdoc}
+   *
+   * @param array{src: string, alt?: string, name?: string, responsive?: bool} $values
+   *   A map of values.
    */
-  public static function fromArray(array $values = []): ValueObjectInterface {
+  public static function fromArray(array $values = []): static {
     $values += ['alt' => '', 'name' => '', 'responsive' => TRUE];
 
     return new static(
@@ -184,7 +187,7 @@ class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterf
       '#title' => $this->getName(),
       '#alt' => $this->getAlt(),
     ];
-    CacheableMetadata::createFromObject($build)->applyTo($build);
+    CacheableMetadata::createFromObject($this)->applyTo($build);
 
     return $build;
   }
