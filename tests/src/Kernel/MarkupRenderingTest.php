@@ -281,7 +281,10 @@ class MarkupRenderingTest extends KernelTestBase {
         Html::resetSeenIds();
 
         $html = RenderWrapperForm::renderInFormContext($render, $this->container);
-        $this->assertMarkupRendering($assertions, $html);
+        // Use UPDATE_TESTS=2 to skip assertions and only generate snapshots.
+        if ((string) getenv('UPDATE_TESTS') !== '2') {
+          $this->assertMarkupRendering($assertions, $html);
+        }
 
         Html::resetSeenIds();
         $variation_html = RenderWrapperForm::renderInFormContext($render, $this->container);
