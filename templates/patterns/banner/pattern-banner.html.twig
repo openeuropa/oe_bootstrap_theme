@@ -9,7 +9,7 @@
 {% set description = description|render %}
 {% set copyright = copyright|render %}
 {% block attributes %}
-  {% set attributes = attributes.addClass([
+  {% set attributes = create_attribute(attributes ?? {}).addClass([
     'bg-lighter',
     'text-dark',
   ]) %}

@@ -5,6 +5,8 @@
  */
 #}
 
+{% set attributes = create_attribute(attributes ?? {}) %}
+
 {% set internal_items = (items ?? [])|map(item => item|merge({
   'attributes': create_attribute({'aria-label': item.label}).merge(create_attribute(item.attributes ?? {})),
 })) %}

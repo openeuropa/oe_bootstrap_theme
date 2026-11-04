@@ -28,7 +28,7 @@
 {% set copyright = copyright|render %}
 {% set embedded_media = embedded_media|render %}
 
-<div{{ attributes.addClass('bcl-featured-media') }}>
+<div{{ create_attribute(attributes ?? {}).addClass('bcl-featured-media') }}>
   {% if subtitle or text or link %}
     {% set text_alignment_class = 'order-1' %}
     {% set video_alignment_class = 'order-2' %}
