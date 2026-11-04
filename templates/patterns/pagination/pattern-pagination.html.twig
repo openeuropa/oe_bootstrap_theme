@@ -6,7 +6,7 @@
 #}
 
 {% set internal_items = (items ?? [])|map(item => item|merge({
-  'attributes': create_attribute({'aria-label': item.label}).merge(create_attribute(item.attributes|default({}))),
+  'attributes': create_attribute({'aria-label': item.label}).merge(create_attribute(item.attributes ?? {})),
 })) %}
 
 {% set _controls = {
@@ -19,7 +19,7 @@
 {% set _control_items = _controls|map(_control => _control.item|merge({
   'attributes': create_attribute({
     'aria-label': _control.item.aria_label|default(_control.label),
-  }).merge(create_attribute(_control.item.attributes|default({}))),
+  }).merge(create_attribute(_control.item.attributes ?? {})),
 })) %}
 
 {% include '@oe-bcl/pagination' with {
