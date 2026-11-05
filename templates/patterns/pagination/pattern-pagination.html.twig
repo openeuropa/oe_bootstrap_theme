@@ -13,7 +13,7 @@
   %}
 {% endfor %}
 {% include '@oe-bcl/pagination' with {
-  'variant': variant ?? 'default',
+  'variant': variant,
   'size': size,
   'alignment': alignment,
   'aria_label': aria_label,
@@ -29,7 +29,7 @@
     'attributes': create_attribute({'aria-label': next.aria_label|default('Next'|t)}).merge(next.attributes|default(create_attribute())),
   }),
   'last': last ? last|merge({
-    'attributes': create_attribute({'aria-label': last.aria_label|default('Last'|t)}).merge(first.attributes|default(create_attribute())),
+    'attributes': create_attribute({'aria-label': last.aria_label|default('Last'|t)}).merge(last.attributes|default(create_attribute())),
   }),
   'items': internal_items,
   'attributes': attributes,
