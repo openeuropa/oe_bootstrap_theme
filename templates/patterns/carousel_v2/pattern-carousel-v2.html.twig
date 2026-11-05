@@ -4,8 +4,9 @@
  * Carousel V2 pattern.
  */
 #}
-{% set _icon_path = icon_path|default(bcl_icon_path) %}
+{% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set _copyright_label = 'Image credit:'|t %}
+{% set attributes = create_attribute(attributes ?? {}) %}
 
 {% set _items = [] %}
 {% for slide in items|default([]) %}
@@ -59,7 +60,7 @@
 {% endfor %}
 
 {% include '@oe-bcl/bcl-carousel-v2/carousel.html.twig' with {
-  id: carousel_id,
+  id: attributes.id|default('bcl-carousel-v2'|clean_unique_id),
   label: label|default('Featured content'|t),
   layout: layout|default('split'),
   full_bleed: full_bleed ?? false,

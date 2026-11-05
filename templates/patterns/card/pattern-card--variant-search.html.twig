@@ -37,12 +37,22 @@
 {% set _right_col_classes = 'col-12 col-md' %}
 {% set _image_classes = '' %}
 
-{# Backward compatibily setting: image is hidden in mobile viewports. #}
+{#
+  Backward compatibility setting: image is hidden in mobile viewports.
+  @todo In components, this variable is never set, so they always get the
+    new behavior. Twig is not in strict mode, so this causes no error. Decide
+    later whether components need backward compatibility settings.
+#}
 {% if bc_card_search_image_hide_on_mobile %}
   {% set _image_classes = 'd-none d-md-block' %}
 {% endif %}
 
-{# Backward compatibility setting: card uses grid classes. #}
+{#
+  Backward compatibility setting: card uses grid classes.
+  @todo In components, this variable is never set, so they always get the
+    new behavior. Twig is not in strict mode, so this causes no error. Decide
+    later whether components need backward compatibility settings.
+#}
 {% if bc_card_search_use_grid_classes %}
   {% set _left_col_classes = 'col-md-3 col-lg-4 col-xl-2 rounded mw-listing-img mb-md-0 mb-3' %}
   {% set _right_col_classes = 'col-md-9 col-lg-8 col-xl-10' %}
@@ -51,7 +61,7 @@
 {% set _date = date|default({}) %}
 {% if _date is not empty %}
   {% set _date = _date|merge({
-    icon_path: bcl_icon_path
+    icon_path: bcl_icon_path()
   })%}
 {% endif %}
 
