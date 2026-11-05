@@ -32,14 +32,10 @@ card_v2:
       description: 'Optional – secondary actions, updated timestamps, share links.'
   settings:
     tag:
-      type: select
+      type: textfield
       label: 'HTML wrapper tag'
       description: 'Semantic element for the outer wrapper. Defaults to <article>.'
-      options:
-        article: '<article>'
-        section: '<section>'
-        div: '<div>'
-        aside: '<aside>'
+      allow_token: true
     attributes:
       type: attributes
       label: 'Card attributes'
