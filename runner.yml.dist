@@ -70,6 +70,8 @@ release:
     - oe_bootstrap_theme.info.yml
   tasks:
     - { task: "copy", from: "assets", to: "_release_/assets" }
+    # Don't include snapshots in a release.
+    - { task: "remove", file: "_release_/tests/src/Kernel/snapshots" }
 
 toolkit:
   build:
