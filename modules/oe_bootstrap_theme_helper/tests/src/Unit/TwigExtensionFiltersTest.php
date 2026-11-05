@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\Tests\oe_bootstrap_theme_helper\Unit;
 
 use Drupal\Core\Cache\Context\CacheContextsManager;
+use Drupal\Core\Template\Attribute;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use Drupal\oe_bootstrap_theme_helper\TwigExtension\TwigExtension;
@@ -14,6 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Twig\Environment;
 use Twig\Error\Error;
 use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 use Twig\Loader\ArrayLoader;
 use Twig\TwigFunction;
 
@@ -66,8 +68,148 @@ class TwigExtensionFiltersTest extends UnitTestCase {
    *   Test cases.
    */
   public static function filterProvider(): array {
+    $path = static::ICON_PATH;
     $image = ['src' => 'https://example.com/image.png', 'alt' => 'Alt text'];
     return [
+      // Filter '|bcl_icon'.
+      'bcl_icon: string' => [
+        "'home'|bcl_icon",
+        [],
+        ['name' => 'home', 'path' => $path],
+      ],
+      'bcl_icon: string, with size' => [
+        "'home'|bcl_icon(size: 'xs')",
+        [],
+        ['name' => 'home', 'path' => $path, 'size' => 'xs'],
+      ],
+      'bcl_icon: array with name only' => [
+        "{name: 'home'}|bcl_icon",
+        [],
+        ['name' => 'home', 'path' => $path],
+      ],
+      'bcl_icon: array with own path and size' => [
+        "{name: 'home', path: '/other.svg', size: 'l'}|bcl_icon(size: 'xs')",
+        [],
+        ['name' => 'home', 'path' => '/other.svg', 'size' => 'l'],
+      ],
+      'bcl_icon: array with path NULL gets default path' => [
+        "{name: 'home', path: null}|bcl_icon",
+        [],
+        ['name' => 'home', 'path' => $path],
+      ],
+      'bcl_icon: other keys are kept' => [
+        "{name: 'home', transformation: 'rotate-90'}|bcl_icon",
+        [],
+        ['name' => 'home', 'transformation' => 'rotate-90', 'path' => $path],
+      ],
+      'bcl_icon: attributes array becomes Attribute object' => [
+        "{name: 'home', attributes: {class: ['a']}}|bcl_icon",
+        [],
+        [
+          'name' => 'home',
+          'attributes' => new Attribute(['class' => ['a']]),
+          'path' => $path,
+        ],
+      ],
+      'bcl_icon: empty attributes are removed' => [
+        "{name: 'home', attributes: []}|bcl_icon",
+        [],
+        ['name' => 'home', 'path' => $path],
+      ],
+      'bcl_icon: NULL' => ['null|bcl_icon', [], NULL],
+      'bcl_icon: empty string' => ["''|bcl_icon", [], NULL],
+      'bcl_icon: empty array' => ['[]|bcl_icon', [], NULL],
+      // Filter '|bcl_expand_icon'.
+      'bcl_expand_icon: icon name' => [
+        "{icon: 'home', other: 1}|bcl_expand_icon",
+        [],
+        ['icon' => ['name' => 'home', 'path' => $path], 'other' => 1],
+      ],
+      'bcl_expand_icon: icon name, with size' => [
+        "{icon: 'home'}|bcl_expand_icon(size: 'xs')",
+        [],
+        ['icon' => ['name' => 'home', 'path' => $path, 'size' => 'xs']],
+      ],
+      'bcl_expand_icon: icon array' => [
+        "{icon: {name: 'home', size: 'l'}}|bcl_expand_icon(size: 'xs')",
+        [],
+        ['icon' => ['name' => 'home', 'size' => 'l', 'path' => $path]],
+      ],
+      'bcl_expand_icon: icon NULL is removed' => [
+        "{icon: null, other: 1}|bcl_expand_icon",
+        [],
+        ['other' => 1],
+      ],
+      'bcl_expand_icon: empty icon is removed' => [
+        "{icon: '', other: 1}|bcl_expand_icon",
+        [],
+        ['other' => 1],
+      ],
+      'bcl_expand_icon: no icon key' => [
+        '{other: 1}|bcl_expand_icon',
+        [],
+        ['other' => 1],
+      ],
+      // Filter '|bcl_expand_attributes'.
+      'bcl_expand_attributes: no attributes, no defaults' => [
+        '{other: 1}|bcl_expand_attributes',
+        [],
+        ['other' => 1],
+      ],
+      'bcl_expand_attributes: no attributes, empty defaults' => [
+        '{other: 1}|bcl_expand_attributes({})',
+        [],
+        ['other' => 1, 'attributes' => new Attribute()],
+      ],
+      'bcl_expand_attributes: no attributes, with defaults' => [
+        "{other: 1}|bcl_expand_attributes({class: ['a'], title: 'T'})",
+        [],
+        [
+          'other' => 1,
+          'attributes' => new Attribute(['class' => ['a'], 'title' => 'T']),
+        ],
+      ],
+      'bcl_expand_attributes: attributes NULL, no defaults' => [
+        '{attributes: null}|bcl_expand_attributes',
+        [],
+        ['attributes' => NULL],
+      ],
+      'bcl_expand_attributes: empty attributes, no defaults' => [
+        '{attributes: []}|bcl_expand_attributes',
+        [],
+        ['attributes' => new Attribute()],
+      ],
+      'bcl_expand_attributes: attributes array, no defaults' => [
+        "{attributes: {title: 'T'}}|bcl_expand_attributes",
+        [],
+        ['attributes' => new Attribute(['title' => 'T'])],
+      ],
+      'bcl_expand_attributes: merge defaults into attributes array' => [
+        "{attributes: {class: ['a'], title: 'T'}}|bcl_expand_attributes({class: 'b', title: 'Default', id: 'x', role: null})",
+        [],
+        [
+          'attributes' => new Attribute([
+            'class' => ['a', 'b'],
+            'title' => 'T',
+            'id' => 'x',
+          ]),
+        ],
+      ],
+      'bcl_expand_attributes: merge defaults into Attribute object' => [
+        "item|bcl_expand_attributes({class: 'b', title: 'Default', id: 'x'})",
+        [
+          'item' => [
+            'attributes' => new Attribute(['class' => ['a'], 'title' => 'T']),
+          ],
+        ],
+        [
+          'attributes' => new Attribute([
+            'class' => ['a', 'b'],
+            'title' => 'T',
+            'id' => 'x',
+          ]),
+        ],
+      ],
       // Filter '|oe_bt__to_image_value_object'.
       'oe_bt__to_image_value_object: array' => [
         'image|oe_bt__to_image_value_object',
@@ -131,7 +273,59 @@ class TwigExtensionFiltersTest extends UnitTestCase {
    *   Test cases.
    */
   public static function filterErrorProvider(): array {
+    $named_only = 'Expected only named parameters from here on, found string.';
     return [
+      // Filter '|bcl_icon'.
+      'bcl_icon: size as positional argument' => [
+        "'home'|bcl_icon('xs')",
+        [],
+        RuntimeError::class,
+        $named_only,
+      ],
+      'bcl_icon: unknown named argument' => [
+        "'home'|bcl_icon(color: 'red')",
+        [],
+        SyntaxError::class,
+        'Unknown argument "color" for filter "bcl_icon(_, size)".',
+      ],
+      'bcl_icon: array without name' => [
+        "{size: 'xs'}|bcl_icon",
+        [],
+        RuntimeError::class,
+        'Missing icon name in non-empty icon array.',
+      ],
+      'bcl_icon: integer' => [
+        '5|bcl_icon',
+        [],
+        RuntimeError::class,
+        'Expected an array, string or NULL, found int',
+      ],
+      'bcl_icon: attributes string' => [
+        "{name: 'home', attributes: 'x'}|bcl_icon",
+        [],
+        RuntimeError::class,
+        'Expected an array, an Attribute object, or NULL. Found string.',
+      ],
+      // Filter '|bcl_expand_icon'.
+      'bcl_expand_icon: size as positional argument' => [
+        "{icon: 'home'}|bcl_expand_icon('xs')",
+        [],
+        RuntimeError::class,
+        $named_only,
+      ],
+      'bcl_expand_icon: icon array without name' => [
+        "{icon: {size: 'xs'}}|bcl_expand_icon",
+        [],
+        RuntimeError::class,
+        'Missing icon name in non-empty icon array.',
+      ],
+      // Filter '|bcl_expand_attributes'.
+      'bcl_expand_attributes: attributes string' => [
+        "{attributes: 'x'}|bcl_expand_attributes({})",
+        [],
+        RuntimeError::class,
+        "Expected an array, an Attribute object, or NULL at 'attributes'. Found string.",
+      ],
       // Filter '|oe_bt__to_image_value_object'.
       'oe_bt__to_image_value_object: empty array' => [
         '[]|oe_bt__to_image_value_object',
@@ -159,6 +353,22 @@ class TwigExtensionFiltersTest extends UnitTestCase {
         'Expected a RenderableInterface instance. Found array',
       ],
     ];
+  }
+
+  /**
+   * Tests that '|bcl_expand_attributes' does not modify the object passed in.
+   */
+  public function testBclExpandAttributesDoesNotModifyInput(): void {
+    $shared = new Attribute(['class' => ['a']]);
+    $result = $this->evaluate(
+      "[item, item]|map((x, i) => x|bcl_expand_attributes({'aria-label': 'Item ' ~ i}))",
+      ['item' => ['attributes' => $shared]],
+    );
+    $this->assertEquals([
+      ['attributes' => new Attribute(['class' => ['a'], 'aria-label' => 'Item 0'])],
+      ['attributes' => new Attribute(['class' => ['a'], 'aria-label' => 'Item 1'])],
+    ], $result);
+    $this->assertEquals(new Attribute(['class' => ['a']]), $shared);
   }
 
   /**
@@ -202,7 +412,8 @@ class TwigExtensionFiltersTest extends UnitTestCase {
    */
   protected function evaluate(string $expression, array $context): mixed {
     $this->setMockContainer();
-    $extension = $this->createMock(TwigExtension::class);
+    $extension = $this->createPartialMock(TwigExtension::class, ['getBclIconPath']);
+    $extension->method('getBclIconPath')->willReturn(static::ICON_PATH);
     $twig = new Environment(
       new ArrayLoader(['test.html.twig' => '{{ capture(' . $expression . ') }}']),
       ['strict_variables' => TRUE, 'cache' => FALSE],
