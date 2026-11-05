@@ -7,6 +7,13 @@
 {% if icon %}
   {% set icon_data = icon is iterable ? icon : { name: icon } %}
   {% set _icon = { path: bcl_icon_path }|merge(icon_data) %}
+  {% if label is empty and _icon.attributes['aria-label'] is not empty %}
+    {% set _icon = _icon|merge({
+      attributes: _icon.attributes
+        .setAttribute('aria-hidden', 'true')
+        .setAttribute('focusable', 'false')
+    }) %}
+  {% endif %}
 {% endif %}
 {% include '@oe-bcl/button' with {
   'label': label,
