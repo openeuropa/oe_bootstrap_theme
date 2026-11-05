@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Drupal\oe_bootstrap_theme\ValueObject;
 
 use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Render\RenderableInterface;
 use Drupal\image\Plugin\Field\FieldType\ImageItem;
 
 /**
  * Handle information about an image, such as source, alt, name and responsive.
  */
-class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterface {
+class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterface, RenderableInterface {
 
   /**
    * Image Source.
@@ -190,6 +191,13 @@ class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterf
     CacheableMetadata::createFromObject($this)->applyTo($build);
 
     return $build;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function toRenderable(): array {
+    return $this->toRenderArray();
   }
 
 }
