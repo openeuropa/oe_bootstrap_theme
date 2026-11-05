@@ -7,7 +7,7 @@ content_banner_white_background_with_image_with_badges_with_meta_with_links_with
       meta:
         - '26 May 2020'
         - '1 comment'
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1200/600/'
         alt: 'Alternative text for content banner image'
       title: 'This is the title of this page'
@@ -58,7 +58,7 @@ content_banner_white_background_with_image_and_copyright:
     '#id': 'content_banner'
     '#fields':
       background: 'white'
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1200/600/'
         alt: 'Alternative text for content banner image'
       title: 'This is the title of this page'
@@ -106,7 +106,7 @@ content_banner_gray_background_with_image_without_badges_without_meta_without_li
     '#id': 'content_banner'
     '#fields':
       background: 'gray'
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1200/600/'
         alt: 'Alternative text for content banner image'
       image_size: 'xl'
