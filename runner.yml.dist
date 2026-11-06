@@ -86,11 +86,8 @@ toolkit:
   ci:
     PHP:
       - 8.2
-      - 8.3
     DRUPAL:
       - ~10.6.0
-      - ~11.3.0
-      - ~11.4.0
     PUBLISH: false
     BEHAT: false
     PHPUNIT: true
