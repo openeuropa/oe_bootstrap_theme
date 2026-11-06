@@ -85,6 +85,7 @@ toolkit:
     phpunit: {}
   ci:
     PHP:
+      - 8.2
       - 8.3
     DRUPAL:
       - ~10.6.0
