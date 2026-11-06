@@ -162,6 +162,23 @@ card_with_date_range:
           end_year: "2022"
           end_month: "Feb"
           end_day: "11"
+card_with_date_range_and_custom_icon_path:
+  render:
+    '#type': pattern
+    '#id': 'card'
+    '#fields':
+      title: 'Title card'
+      date:
+        icon_path: /custom/icon.svg
+        year: "2021"
+        month: "Jan"
+        day: "23"
+        end_year: "2022"
+        end_month: "Feb"
+        end_day: "11"
+  assertions:
+    contains:
+      '.bcl-date-block svg': /custom/icon.svg#chevron-right
 card_with_image_copyright:
   render:
     '#type': pattern

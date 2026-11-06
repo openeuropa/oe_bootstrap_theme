@@ -1,0 +1,147 @@
+<div
+  class="bcl-gallery"
+>
+  <div
+    class="align-items-sm-center d-sm-flex flex-sm-row"
+  >
+    <div
+      class="flex-sm-grow-1"
+    >
+      <h6
+        class="bcl-heading mb-4"
+      >
+        Gallery title
+      </h6>
+    </div>
+  </div>
+  <div
+    class="bcl-gallery__thumbnails"
+  >
+    <ul
+      class="bcl-gallery__grid"
+    >
+      <li>
+        <a
+          class="bcl-gallery__item d-block img-fluid w-100"
+          data-bs-slide-to="0"
+          data-bs-target="#carouselBcl-gallery"
+          tabindex="0"
+        >
+          <div
+            class="bcl-gallery__item-overlay"
+            data-bs-target="#modalBcl-gallery"
+            data-bs-toggle="modal"
+          ></div>
+          <img
+            alt="Cat thumbnail alt"
+            src="https://picsum.photos/id/10/400/300/"
+          />
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div
+    aria-hidden="true"
+    aria-labelledby="modalBcl-gallery"
+    class="modal"
+    data-bs-backdrop="false"
+    id="modalBcl-gallery"
+    tabindex="-1"
+  >
+    <div
+      class="modal-dialog modal-dialog-centered modal-fullscreen"
+    >
+      <div
+        class="modal-content"
+      >
+        <div
+          class="border-0 justify-content-between modal-header"
+        >
+          <div
+            class="modal-title"
+          >
+            <h3
+              class="bcl-heading d-none d-sm-block"
+            >
+              Gallery title
+            </h3>
+          </div>
+          <div
+            class="carousel-pager"
+          >
+            <span>
+              1
+            </span>
+
+            / 1
+          </div>
+          <div
+            class="modal-close"
+          >
+            <button
+              aria-label="Close"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              type="button"
+            ></button>
+          </div>
+        </div>
+        <div
+          class="align-items-center d-flex justify-content-center modal-body"
+        >
+          <div
+            class="carousel slide"
+            id="carouselBcl-gallery"
+          >
+            <div
+              class="carousel-inner"
+            >
+              <div
+                class="active carousel-item"
+              >
+                <figure
+                  class="h-100 m-0"
+                >
+                  <img
+                    alt="Cat media image alt"
+                    data-src="https://picsum.photos/id/10/800/600/"
+                  />
+                </figure>
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              data-bs-slide="prev"
+              data-bs-target="#carouselBcl-gallery"
+              type="button"
+            >
+              <span
+                class="carousel-control-prev-icon"
+              ></span>
+              <span
+                class="visually-hidden"
+              >
+                Previous
+              </span>
+            </button>
+            <button
+              class="carousel-control-next"
+              data-bs-slide="next"
+              data-bs-target="#carouselBcl-gallery"
+              type="button"
+            >
+              <span
+                class="carousel-control-next-icon"
+              ></span>
+              <span
+                class="visually-hidden"
+              >
+                Next
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

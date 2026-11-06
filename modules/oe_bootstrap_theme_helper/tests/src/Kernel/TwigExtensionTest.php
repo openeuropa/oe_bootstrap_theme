@@ -8,11 +8,14 @@ use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Render\RenderContext;
 use Drupal\Core\Template\Attribute;
+use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Url;
-use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Drupal\oe_bootstrap_theme_helper\TwigExtension\TwigExtension;
+use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\DomCrawler\Crawler;
+use Twig\Extension\ExtensionInterface;
 use Twig\Markup;
 
 /**
@@ -566,6 +569,158 @@ TWIG;
         ],
       ],
     ];
+  }
+
+  /**
+   * Tests new filters and functions in templates rendered by Drupal.
+   *
+   * The detailed behavior is covered by the unit test. This checks that the
+   * filters and functions work in Drupal's Twig environment, together with
+   * Drupal's filters and the BCL templates.
+   *
+   * Several cases share one test method, to avoid repeated Drupal bootstrap.
+   *
+   * @see \Drupal\Tests\oe_bootstrap_theme_helper\Unit\TwigExtensionFiltersTest
+   */
+  public function testNewFiltersAndFunctions(): void {
+    $icon_path = '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg';
+    $cases = [
+      'bcl_icon_path()' => [
+        '{{ bcl_icon_path() }}',
+        [],
+        $icon_path,
+      ],
+      'oe_bt__theme_setting()' => [
+        "{{ oe_bt__theme_setting('facts_figures.icon_size') }}",
+        [],
+        '3xl',
+      ],
+      '|bcl_icon with BCL icon template' => [
+        "{% include '@oe-bcl/icon' with 'house'|bcl_icon(size: 'xs') only %}",
+        [],
+        '<svg class="bi icon--xs"><use xlink:href="' . $icon_path . '#house"/></svg>',
+      ],
+      '|bcl_expand_icon with BCL icon template' => [
+        "{% set item = {icon: {name: 'house', attributes: {id: 'x'}}}|bcl_expand_icon(size: 'xs') %}"
+        . "{% include '@oe-bcl/icon' with item.icon only %}",
+        [],
+        '<svg id="x" class="bi icon--xs"><use xlink:href="' . $icon_path . '#house"/></svg>',
+      ],
+      '|bcl_expand_attributes' => [
+        "<a{{ (item|bcl_expand_attributes({class: 'b', title: 'Default', id: 'x'})).attributes }}></a>",
+        ['item' => ['attributes' => new Attribute(['class' => ['a'], 'title' => 'T'])]],
+        '<a class="a b" title="T" id="x"></a>',
+      ],
+      '|oe_bt__to_image_value_object|oe_bt__to_render_array|add_class' => [
+        "{{ image|oe_bt__to_image_value_object|oe_bt__to_render_array|add_class('x') }}",
+        ['image' => ['src' => 'https://example.com/image.png', 'alt' => 'Alt text']],
+        // The theme's 'image.html.twig' adds the 'img-fluid' class.
+        '<img class="x img-fluid" src="https://example.com/image.png" alt="Alt text" title="" />',
+      ],
+      '|oe_bt__to_file_value_object' => [
+        '{% set file = file|oe_bt__to_file_value_object %}{{ file.name }} {{ file.extension }}',
+        [
+          'file' => [
+            'name' => 'document.pdf',
+            'url' => 'https://example.com/document.pdf',
+            'mime' => 'application/pdf',
+            'size' => '1024',
+          ],
+        ],
+        'document.pdf pdf',
+      ],
+    ];
+    foreach ($cases as $name => [$template, $context, $expected]) {
+      $elements = [
+        '#type' => 'inline_template',
+        '#template' => $template,
+        '#context' => $context,
+      ];
+      $output = $this->renderRoot($elements);
+      // Remove the whitespace that the BCL icon template produces.
+      $output = trim(preg_replace(['/\s+/', '/\s*>\s*/'], [' ', '>'], $output));
+      $this->assertSame($expected, $output, $name);
+    }
+  }
+
+  /**
+   * Tests the 'bcl_icon_path()' function with different active themes.
+   *
+   * A theme or one of its base themes can override the icon path in its info
+   * file.
+   *
+   * @see \Drupal\Tests\oe_bootstrap_theme\Kernel\BclIconPathOverrideTest
+   */
+  public function testBclIconPathInSubThemes(): void {
+    $test_themes_path = '/themes/custom/oe_bootstrap_theme/modules/oe_bootstrap_theme_helper/tests/themes';
+    $default_path = '/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg';
+    $custom_path = $test_themes_path . '/oe_bootstrap_theme_test_subtheme1/assets/icons/bcl-default-icons-test.svg';
+    $expected_paths = [
+      // Sub-theme with icon path override.
+      'oe_bootstrap_theme_test_subtheme1' => $custom_path,
+      // Sub-theme of a sub-theme with icon path override.
+      'oe_bootstrap_theme_test_subtheme2' => $custom_path,
+      // Sub-theme without icon path override.
+      'oe_bootstrap_theme_test_subtheme3' => $default_path,
+      'oe_bootstrap_theme' => $default_path,
+    ];
+    $this->container->get('theme_installer')->install(array_keys($expected_paths));
+    $theme_manager = $this->container->get('theme.manager');
+    $theme_initialization = $this->container->get('theme.initialization');
+    $twig = $this->container->get('twig');
+    foreach ($expected_paths as $theme => $expected_path) {
+      $theme_manager->setActiveTheme($theme_initialization->initTheme($theme));
+      $this->assertSame($expected_path, (string) $twig->renderInline('{{ bcl_icon_path() }}'), $theme);
+    }
+  }
+
+  /**
+   * Tests that no other Twig extension provides the same names.
+   *
+   * Twig filters, functions and tests are registered globally. If two
+   * extensions register the same name, the one registered last silently
+   * replaces the other, also in templates of Drupal core and other themes.
+   *
+   * This only covers Twig itself, Drupal core and the modules enabled in this
+   * test.
+   */
+  public function testNoNameClashes(): void {
+    $twig = $this->container->get(TwigEnvironment::class);
+    $own_extension = $twig->getExtension(TwigExtension::class);
+    $own_names = $this->getTwigCallableNames($own_extension);
+    $clashes = [];
+    foreach ($twig->getExtensions() as $class => $extension) {
+      if ($extension === $own_extension) {
+        continue;
+      }
+      foreach (array_intersect($own_names, $this->getTwigCallableNames($extension)) as $name) {
+        $clashes[] = $name . ' (' . $class . ')';
+      }
+    }
+    $this->assertSame([], $clashes);
+  }
+
+  /**
+   * Gets the names of filters, functions and tests of a Twig extension.
+   *
+   * @param \Twig\Extension\ExtensionInterface $extension
+   *   The Twig extension.
+   *
+   * @return list<string>
+   *   Names prefixed with the type, e.g. 'filter:bcl_icon'.
+   */
+  protected function getTwigCallableNames(ExtensionInterface $extension): array {
+    $names = [];
+    foreach ($extension->getFilters() as $filter) {
+      $names[] = 'filter:' . $filter->getName();
+    }
+    foreach ($extension->getFunctions() as $function) {
+      $names[] = 'function:' . $function->getName();
+    }
+    foreach ($extension->getTests() as $test) {
+      $names[] = 'test:' . $test->getName();
+    }
+    return $names;
   }
 
 }

@@ -4,16 +4,13 @@
  * Banner pattern.
  */
 #}
-{% block attributes %}
-  {% set attributes = attributes.addClass([
-      'bg-lighter',
-      'text-dark',
-    ])
-  %}
-{% endblock %}
-{% if centered  %}
-  {% set attributes = attributes.addClass(['text-center'])%}
-{% endif %}
+{% set attributes = create_attribute(attributes ?? {}).addClass([
+  ...({
+    primary: ['bg-primary', 'text-white'],
+    image_shade: ['bg-lighter'],
+  }[variant] ?? ['bg-lighter', 'text-dark']),
+  ...centered ? ['text-center'] : [],
+]) %}
 {% if call_to_action %}
   {% set call_to_action = call_to_action|merge(
     {'variant': call_to_action.link_style}
@@ -28,9 +25,11 @@
   title_tag: title_tag,
   description: description,
   link: call_to_action,
-  copyright: (variant == 'image' or variant == 'image_shade') ? copyright : '',
-  copyright_label: (variant == 'image' or variant == 'image_shade') ? 'Image credit:'|t : '',
-  image: variant == 'image' or variant == 'image_shade' ? image : '' ,
+  ...(variant in ['image', 'image_shade'] ? {
+    copyright: copyright,
+    copyright_label: 'Image credit:'|t,
+    image: image,
+  } : {}),
   content_classes: content_classes,
   attributes: attributes,
 } only %}
