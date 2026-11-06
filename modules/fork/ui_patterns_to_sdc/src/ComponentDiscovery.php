@@ -20,7 +20,7 @@ class ComponentDiscovery {
    *
    * @var array
    */
-  public const array FILE_EXTENSIONS = [
+  public const FILE_EXTENSIONS = [
     '.ui_patterns.yml',
     '.patterns.yml',
     '.pattern.yml',

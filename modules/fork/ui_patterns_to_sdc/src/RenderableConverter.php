@@ -16,7 +16,7 @@ class RenderableConverter {
    */
   public string $extension = '';
 
-  public const array COMMON_RENDER_PROPERTIES = [
+  public const COMMON_RENDER_PROPERTIES = [
     'type',
     'id',
     'settings',
