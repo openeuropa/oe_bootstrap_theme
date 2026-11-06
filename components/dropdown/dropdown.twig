@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Dropdown component.
+ */
+#}
+{% include '@oe-bcl/dropdown' with {
+  trigger: {
+    label: button_label
+  },
+  link: false,
+  dark: dark_mode,
+  id: 'bcl-dropdown'|clean_unique_id,
+  items: items,
+} only %}

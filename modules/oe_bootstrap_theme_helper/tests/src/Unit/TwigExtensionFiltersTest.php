@@ -6,6 +6,7 @@ namespace Drupal\Tests\oe_bootstrap_theme_helper\Unit;
 
 use Drupal\Core\Cache\Context\CacheContextsManager;
 use Drupal\Core\Template\Attribute;
+use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use Drupal\oe_bootstrap_theme_helper\TwigExtension\TwigExtension;
@@ -70,6 +71,12 @@ class TwigExtensionFiltersTest extends UnitTestCase {
   public static function filterProvider(): array {
     $path = static::ICON_PATH;
     $image = ['src' => 'https://example.com/image.png', 'alt' => 'Alt text'];
+    $file = [
+      'name' => 'document.pdf',
+      'url' => 'https://example.com/document.pdf',
+      'mime' => 'application/pdf',
+      'size' => '1024',
+    ];
     return [
       // Filter '|bcl_icon'.
       'bcl_icon: string' => [
@@ -216,6 +223,12 @@ class TwigExtensionFiltersTest extends UnitTestCase {
         ['image' => $image],
         ImageValueObject::fromArray($image),
       ],
+      // Filter '|oe_bt__to_file_value_object'.
+      'oe_bt__to_file_value_object: array' => [
+        'file|oe_bt__to_file_value_object',
+        ['file' => $file],
+        FileValueObject::fromArray($file),
+      ],
       // Filter '|oe_bt__to_render_array'.
       'oe_bt__to_render_array: image' => [
         'image|oe_bt__to_image_value_object|oe_bt__to_render_array',
@@ -345,6 +358,25 @@ class TwigExtensionFiltersTest extends UnitTestCase {
         RuntimeError::class,
         'Expected ImageValueObjectInterface|array, found string',
       ],
+      // Filter '|oe_bt__to_file_value_object'.
+      'oe_bt__to_file_value_object: empty array' => [
+        '[]|oe_bt__to_file_value_object',
+        [],
+        RuntimeError::class,
+        'The file array is empty.',
+      ],
+      'oe_bt__to_file_value_object: array without mime' => [
+        "{name: 'a.pdf', url: '/a.pdf', size: 1}|oe_bt__to_file_value_object",
+        [],
+        RuntimeError::class,
+        "Missing array key 'mime'.",
+      ],
+      'oe_bt__to_file_value_object: string' => [
+        "'a.pdf'|oe_bt__to_file_value_object",
+        [],
+        RuntimeError::class,
+        'Expected FileValueObject|array, found string',
+      ],
       // Filter '|oe_bt__to_render_array'.
       'oe_bt__to_render_array: array' => [
         "{src: 'image.png'}|oe_bt__to_render_array",
@@ -395,6 +427,23 @@ class TwigExtensionFiltersTest extends UnitTestCase {
     $this->assertSame(['file:1'], $result->getCacheTags());
     $this->assertSame(['example-cache-context'], $result->getCacheContexts());
     $this->assertSame(60, $result->getCacheMaxAge());
+  }
+
+  /**
+   * Tests '|oe_bt__to_file_value_object' with an object.
+   */
+  public function testToFileValueObjectWithObject(): void {
+    $original = FileValueObject::fromArray([
+      'name' => 'document.pdf',
+      'url' => 'https://example.com/document.pdf',
+      'mime' => 'application/pdf',
+      'size' => '1024',
+    ]);
+
+    $result = $this->evaluate('file|oe_bt__to_file_value_object', ['file' => $original]);
+
+    $this->assertNotSame($original, $result);
+    $this->assertEquals($original, $result);
   }
 
   /**
