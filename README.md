@@ -125,6 +125,10 @@ regardless of your local host configuration.
   the pnpm version pinned in `package.json`. If Corepack is unavailable, install
   pnpm directly using the linked instructions. The release workflow uses the tools
   already included in its CI image.
+- [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage)
+
+
+> __Important__: Git LFS is required for development. Builds may fail or assets may be missing if Git LFS is not installed and initialized before cloning the repository.
 
 #### Override docker settings
 
@@ -226,6 +230,7 @@ BackstopJS lives under `tests/vrt/`. The scenario builder and Playwright helper 
 
 - A running Drupal site reachable at `http://localhost:8080/build`. Override the target with the `VRT_BASE_URL` environment variable if needed.
 - Valid credentials. The default `admin` / `admin` values can be overridden with `DRUPAL_USER` and `DRUPAL_PASS`.
+- Playwright: `docker compose exec web npx playwright install-deps`
 
 ### Available commands
 
