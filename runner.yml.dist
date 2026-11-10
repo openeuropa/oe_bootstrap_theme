@@ -13,6 +13,7 @@ drupal:
   post_install:
     # Prepare the instance.
     - { task: "exec", command: "./vendor/bin/drush en oe_bootstrap_theme_helper styleguide -y" }
+    - { task: "exec", command: "./vendor/bin/drush en sdc_component_library -y" }
     - { task: "exec", command: "./vendor/bin/drush en field_ui -y" }
     - { task: "exec", command: "./vendor/bin/drush en toolbar -y" }
     - { task: "exec", command: "./vendor/bin/drush theme:enable oe_bootstrap_theme -y" }
