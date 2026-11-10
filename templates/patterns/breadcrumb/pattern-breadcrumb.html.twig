@@ -6,6 +6,6 @@
 #}
 {% include '@oe-bcl/breadcrumb' with {
   'links': items,
-  'icon_path': bcl_icon_path,
-  'attributes': attributes,
+  'icon_path': bcl_icon_path(),
+  'attributes': create_attribute(attributes ?? {}),
 } only %}
