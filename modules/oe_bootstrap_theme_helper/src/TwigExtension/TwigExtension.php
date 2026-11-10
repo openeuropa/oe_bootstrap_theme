@@ -22,6 +22,7 @@ use Drupal\oe_bootstrap_theme\DrupalCompatibility;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
+use Drupal\oe_bootstrap_theme_helper\Value\NamedParametersOnly;
 use Twig\Environment;
 use Twig\Error\RuntimeError;
 use Twig\Extension\AbstractExtension;
@@ -66,6 +67,9 @@ class TwigExtension extends AbstractExtension {
         'toInternalLanguageId',
       ]),
       new TwigFilter('element_children', [$this, 'elementChildren']),
+      new TwigFilter('bcl_icon', [$this, 'bclIcon']),
+      new TwigFilter('bcl_expand_icon', [$this, 'bclExpandIcon']),
+      new TwigFilter('bcl_expand_attributes', [$this, 'bclExpandAttributes']),
       new TwigFilter('oe_bt__to_image_value_object', [$this, 'toImageValueObject']),
       new TwigFilter('oe_bt__to_render_array', [$this, 'toRenderArray']),
     ];
@@ -392,6 +396,186 @@ class TwigExtension extends AbstractExtension {
     $this->renderer->render($bubbleable);
 
     return $children;
+  }
+
+  /**
+   * Prepares parameters for the 'bcl-icon' template.
+   *
+   * @param mixed $argument
+   *   The input, which should be one of:
+   *     - The icon name, as a string.
+   *     - An array with icon name, and optionally path, size and attributes.
+   *     - NULL, empty string or empty array, for no icon.
+   * @param mixed $_
+   *   A placeholder parameter to begin named parameters.
+   *   This parameter should never be passed, and all subsequent parameters
+   *   should be passed by name only.
+   * @param string|null $size
+   *   A fallback/default for the icon size.
+   *   Example values are '2xs', 'xs', 'm', 'l', 'xl' etc.
+   *   This argument must be passed by name, so that it will be distinguishable
+   *   from other arguments added in the future.
+   *
+   * @return array|null
+   *   Arguments suitable for 'bcl-icon', or NULL for no icon.
+   *   The array always has 'name' and 'path'. It has 'size' if a size was
+   *   provided, and 'attributes' as an Attribute object if attributes were
+   *   provided. Other keys from an input array are kept as they are.
+   */
+  public function bclIcon(
+    mixed $argument,
+    mixed $_ = NamedParametersOnly::SENTINEL,
+    ?string $size = NULL,
+  ): ?array {
+    NamedParametersOnly::checkForTwig($_);
+    if ($argument === NULL || $argument === [] || $argument === '') {
+      return NULL;
+    }
+    if (is_string($argument)) {
+      $icon = ['name' => $argument];
+    }
+    elseif (is_array($argument)) {
+      if (!isset($argument['name'])) {
+        throw new RuntimeError('Missing icon name in non-empty icon array.');
+      }
+      $icon = $argument;
+    }
+    else {
+      throw new RuntimeError(sprintf('Expected an array, string or NULL, found %s', get_debug_type($argument)));
+    }
+    if (!empty($icon['attributes'])) {
+      $icon['attributes'] = $this->toAttribute($icon['attributes']);
+    }
+    else {
+      unset($icon['attributes']);
+    }
+    $icon['path'] ??= $this->getBclIconPath();
+    if ($size !== NULL) {
+      $icon['size'] ??= $size;
+    }
+    return $icon;
+  }
+
+  /**
+   * Populates the 'icon' array key for use in the 'bcl-icon' template.
+   *
+   * @param array $argument
+   *   An associative array which may or may not have an 'icon' key.
+   *   If $argument['icon'] is present, it should be either a string holding the
+   *   icon name, or an array where ['name'] holds the icon name.
+   * @param mixed $_
+   *   Internal parameter used for named parameters validation.
+   *   Must not be explicitly provided.
+   * @param string|null $size
+   *   A fallback/default for the icon size.
+   *   Example values are '2xs', 'xs', 'm', 'l', 'xl' etc.
+   *
+   * @return array|null
+   *   One of:
+   *     - The (modified) array, where the 'icon' key is populated with icon
+   *       data, if an icon name was provided in $argument['icon'].
+   *     - The (modified) array, where the 'icon' key was removed, if no icon
+   *       name was provided.
+   */
+  public function bclExpandIcon(
+    array $argument,
+    mixed $_ = NamedParametersOnly::SENTINEL,
+    ?string $size = NULL,
+  ): ?array {
+    NamedParametersOnly::checkForTwig($_);
+    if (isset($argument['icon'])) {
+      $argument['icon'] = $this->bclIcon($argument['icon'], size: $size);
+    }
+    if (($argument['icon'] ?? NULL) === NULL) {
+      unset($argument['icon']);
+    }
+    return $argument;
+  }
+
+  /**
+   * Populates the 'attributes' key with an Attribute object.
+   *
+   * @param array $argument
+   *   An array which may have an 'attributes' key.
+   *   If $argument['attributes'] is present, it should hold an attributes
+   *   array, or an Attribute object, or NULL.
+   *   An Attribute object passed in is not modified. A copy is used instead.
+   * @param array|null $defaults
+   *   Default attribute values to merge, or NULL to ignore.
+   *   Classes are added to existing classes. Other attributes are only set if
+   *   they don't exist yet. Values that are NULL are ignored.
+   *   If this is an empty array, an empty Attribute object will always be
+   *   created.
+   *   If this is NULL, and $argument['attributes'] is NULL, nothing will be
+   *   set.
+   *
+   * @return array|null
+   *   One of:
+   *     - The modified array, with 'attributes' populated.
+   *     - NULL, if the original argument was NULL.
+   *     - The unmodified array, if both $argument['attributes'] and $defaults
+   *       are NULL or not provided.
+   */
+  public function bclExpandAttributes(array $argument, ?array $defaults = NULL): ?array {
+    $attributes = $argument['attributes'] ?? NULL;
+    if ($attributes === NULL && $defaults === NULL) {
+      return $argument;
+    }
+    if ($attributes === NULL || $attributes === []) {
+      $argument['attributes'] = new Attribute($defaults ?? []);
+      return $argument;
+    }
+    if (is_array($attributes)) {
+      $attributes = new Attribute($attributes);
+    }
+    elseif ($attributes instanceof Attribute) {
+      // Don't modify the object that was passed in. It might be shared with
+      // other elements, e.g. other items in a list.
+      $attributes = clone $attributes;
+    }
+    else {
+      throw new RuntimeError(sprintf(
+        "Expected an array, an Attribute object, or NULL at 'attributes'. Found %s.",
+        get_debug_type($attributes),
+      ));
+    }
+    foreach ($defaults ?? [] as $name => $value) {
+      if ($value === NULL) {
+        continue;
+      }
+      if ($name === 'class') {
+        $attributes->addClass($value);
+      }
+      elseif (!$attributes->hasAttribute($name)) {
+        $attributes->setAttribute($name, $value);
+      }
+    }
+    $argument['attributes'] = $attributes;
+    return $argument;
+  }
+
+  /**
+   * Creates an Attribute object from input.
+   *
+   * For now this is used internally and not exposed as a twig filter.
+   *
+   * @param mixed $argument
+   *   The filter argument.
+   *
+   * @return \Drupal\Core\Template\Attribute
+   *   The new attributes object.
+   */
+  protected function toAttribute(mixed $argument): Attribute {
+    if ($argument instanceof Attribute) {
+      return $argument;
+    }
+    if ($argument === NULL) {
+      return new Attribute();
+    }
+    if (is_array($argument)) {
+      return new Attribute($argument);
+    }
+    throw new RuntimeError(sprintf('Expected an array, an Attribute object, or NULL. Found %s.', get_debug_type($argument)));
   }
 
   /**

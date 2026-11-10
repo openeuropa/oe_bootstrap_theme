@@ -11,8 +11,8 @@
   {% set attributes = attributes.setAttribute('aria-label', 'Glossary links'|t) %}
 {% endif %}
 
-{% set internal_items = (items ?? [])|map(item => item|merge({
-  'attributes': create_attribute({'aria-label': item.label}).merge(create_attribute(item.attributes ?? {})),
+{% set internal_items = (items ?? [])|map(item => item|bcl_expand_attributes({
+  'aria-label': item.label,
 })) %}
 
 {% set _controls = {
@@ -22,18 +22,9 @@
   last: { item: last, label: 'Last'|t },
 } %}
 {% set _controls = _controls|filter(_control => _control.item) %}
-{% set _control_items = _controls|map(_control => _control.item|merge({
-  'attributes': create_attribute({
-    'aria-label': _control.item.aria_label|default(_control.label),
-  }).merge(create_attribute(_control.item.attributes ?? {})),
-})) %}
-{% set _control_items = _control_items|map(_item => _item|merge(_item.icon.name ? {
-  'icon': {
-    'path': bcl_icon_path(),
-    'size': 'fluid',
-    ..._item.icon,
-  },
-} : {})) %}
+{% set _control_items = _controls|map(_control => _control.item|bcl_expand_attributes({
+  'aria-label': _control.item.aria_label|default(_control.label),
+})|bcl_expand_icon(size: 'fluid')) %}
 
 {% set _list_attributes = create_attribute(list_attributes ?? {}) %}
 
