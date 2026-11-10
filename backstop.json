@@ -1,0 +1,45 @@
+{
+  "id": "oe_bootstrap_theme",
+  "viewports": [
+    {
+      "label": "mobile",
+      "width": 375,
+      "height": 667
+    },
+    {
+      "label": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "label": "desktop",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "label": "wide",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "onBeforeScript": "playwright/onBefore.js",
+  "onReadyScript": "playwright/onReady.js",
+  "paths": {
+    "bitmaps_reference": "tests/vrt/bitmaps_reference",
+    "bitmaps_test": "tests/vrt/bitmaps_test",
+    "engine_scripts": "tests/vrt/engine_scripts",
+    "html_report": "tests/vrt/html_report",
+    "ci_report": "tests/vrt/ci_report"
+  },
+  "report": [
+    "browser"
+  ],
+  "engine": "playwright",
+  "engineOptions": {
+    "browser": "chromium"
+  },
+  "asyncCaptureLimit": 5,
+  "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": false
+}
