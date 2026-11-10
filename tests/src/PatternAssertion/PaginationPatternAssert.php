@@ -104,6 +104,17 @@ class PaginationPatternAssert extends BasePatternAssert {
       else {
         $this->assertNotEmpty($link->attr('aria-label'));
       }
+      if (isset($expected_item['class'])) {
+        if (is_string($expected_item['class'])) {
+          $this->assertSame($expected_item['class'], $link->attr('class'));
+        }
+        else {
+          $actual_item_classes = explode(' ', $link->attr('class') ?? '');
+          foreach ($expected_item['class'] as $expected_item_class) {
+            $this->assertContains($expected_item_class, $actual_item_classes);
+          }
+        }
+      }
       $this->assertCount(!empty($expected_item['active']) ? 1 : 0, $li->filter('.active'));
     }
   }
