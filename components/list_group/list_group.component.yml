@@ -1,0 +1,30 @@
+name: 'List Group'
+description: 'List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within. For more information visit https://v5.getbootstrap.com/docs/5.0/components/list-group/'
+props:
+  type: object
+  properties:
+    type:
+      title: Type
+      description: 'The list of possible list types is:'
+      type: [string, 'null']
+      enum:
+        - unordered
+        - ordered
+        - actionable
+        - null
+      'meta:enum':
+        unordered: 'Unordered (default)'
+        ordered: Ordered
+        actionable: Actionable
+        '': Default
+    flush:
+      title: Flush
+      description: 'When enabled, adds flush to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards). Defaults to false.'
+      type: [boolean, 'null']
+    items:
+      title: 'List group items'
+      description: 'Array of objects: List item object or Button and Link component object if type is actionable.'
+      type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: [object, array, string, 'null']
