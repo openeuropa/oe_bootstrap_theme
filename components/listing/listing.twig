@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Listing component.
+ */
+#}
+{% include '@oe-bcl/listing' with {
+  variant: variant|default('default') ~ '-' ~ columns|default('1') ~ '-col',
+  items: items|map(item => item.image_copyright ? item|merge({
+    image_copyright_label: 'Image credit:'|t,
+  }) : item)|bcl_card_list,
+  link: link ? {
+    path: link.path,
+    label: link.label,
+    icon: {
+      path: bcl_icon_path(),
+    },
+  } : null,
+  title: title,
+  title_tag: title_tag,
+  attributes: create_attribute(attributes ?? {}).addClass('text-break'),
+} only %}

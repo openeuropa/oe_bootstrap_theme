@@ -1,0 +1,21 @@
+name: Columns
+description: 'Renders content organised in columns of equal width.'
+group: 'Version 2.x'
+props:
+  type: object
+  properties:
+    columns:
+      title: Columns
+      description: 'The number of columns. Defaults to 4.'
+      type: [integer, string, 'null']
+    tag:
+      title: Tag
+      description: 'HTML tag to use for the wrapper. Defaults to "div".'
+      type: [string, 'null']
+    items:
+      title: Items
+      description: 'The items to organize in columns. Accepts any render array.'
+      type: [array, 'null']
+    attributes:
+      title: Attributes
+      type: [object, array, string, 'null']

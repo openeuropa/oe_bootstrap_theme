@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Drupal\oe_bootstrap_theme\ValueObject;
 
 use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Render\RenderableInterface;
 use Drupal\image\Plugin\Field\FieldType\ImageItem;
 
 /**
  * Handle information about an image, such as source, alt, name and responsive.
  */
-class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterface {
+class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterface, RenderableInterface {
 
   /**
    * Image Source.
@@ -61,8 +62,11 @@ class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterf
 
   /**
    * {@inheritdoc}
+   *
+   * @param array{src: string, alt?: string, name?: string, responsive?: bool} $values
+   *   A map of values.
    */
-  public static function fromArray(array $values = []): ValueObjectInterface {
+  public static function fromArray(array $values = []): static {
     $values += ['alt' => '', 'name' => '', 'responsive' => TRUE];
 
     return new static(
@@ -184,9 +188,16 @@ class ImageValueObject extends ValueObjectBase implements ImageValueObjectInterf
       '#title' => $this->getName(),
       '#alt' => $this->getAlt(),
     ];
-    CacheableMetadata::createFromObject($build)->applyTo($build);
+    CacheableMetadata::createFromObject($this)->applyTo($build);
 
     return $build;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function toRenderable(): array {
+    return $this->toRenderArray();
   }
 
 }

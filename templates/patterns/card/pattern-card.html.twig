@@ -56,10 +56,12 @@
     'path': image.src,
     'alt': image.alt,
   },
-  'date': date|default({}),
+  'date': date ? date|merge({
+    icon_path: date.icon_path ?? bcl_icon_path(),
+  }) : {},
   'card_header': header,
   'card_footer': footer,
   'badges': _badges,
-  'attributes': attributes,
+  'attributes': create_attribute(attributes ?? {}),
 } only %}
 {% endapply %}

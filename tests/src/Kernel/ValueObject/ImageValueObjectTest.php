@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel\ValueObject;
 
-use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 use Drupal\entity_test\Entity\EntityTest;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 
 /**
  * Test image value object with image field type. Extracted from oe_theme.
@@ -118,6 +118,110 @@ class ImageValueObjectTest extends AbstractKernelTestBase {
     $this->assertEqualsCanonicalizing([
       'file:1',
     ], $object->getCacheTags());
+  }
+
+  /**
+   * Tests other methods.
+   */
+  public function testOtherMethods(): void {
+    // Test with default values.
+    $input_values = [
+      // The 'src' is considered required.
+      'src' => 'https://example.com/image.png',
+    ];
+    $object = ImageValueObject::fromArray($input_values);
+    $this->assertGetters([
+      'src' => 'https://example.com/image.png',
+      'alt' => '',
+      'name' => '',
+      'responsive' => TRUE,
+    ], $object);
+    $this->assertCacheMetadata([], [], -1, $object);
+    $this->assertSame($expected_render = [
+      '#theme' => 'image',
+      '#uri' => 'https://example.com/image.png',
+      '#title' => '',
+      '#alt' => '',
+      '#cache' => [
+        'contexts' => [],
+        'tags' => [],
+        'max-age' => -1,
+      ],
+    ], $object->toRenderArray());
+
+    // Test with custom values.
+    $input_values = [
+      ...$input_values,
+      'alt' => 'Example alt text',
+      'name' => 'Example name',
+      'responsive' => FALSE,
+    ];
+    $object = ImageValueObject::fromArray($input_values);
+    $this->assertGetters($input_values, $object);
+    $this->assertCacheMetadata([], [], -1, $object);
+    $this->assertSame($expected_render = [
+      ...$expected_render,
+      '#title' => 'Example name',
+      '#alt' => 'Example alt text',
+    ], $object->toRenderArray());
+
+    // Test with cache metadata.
+    $object->addCacheContexts(['user']);
+    $object->addCacheTags(['example-cache-tag']);
+    $object->mergeCacheMaxAge(999);
+    $this->assertGetters($input_values, $object);
+    $this->assertCacheMetadata(['user'], ['example-cache-tag'], 999, $object);
+    $this->assertSame([
+      ...$expected_render,
+      '#cache' => [
+        'contexts' => ['user'],
+        'tags' => ['example-cache-tag'],
+        'max-age' => 999,
+      ],
+    ], $object->toRenderArray());
+  }
+
+  /**
+   * Asserts values from getters and other methods.
+   *
+   * @param array{src: string, alt: string, name: string, responsive: bool} $expected_values
+   *   Expected getter values.
+   * @param \Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject $object
+   *   The object to test.
+   */
+  protected function assertGetters(array $expected_values, ImageValueObject $object): void {
+    $this->assertSame($expected_values, [
+      'src' => $object->getSource(),
+      'alt' => $object->getAlt(),
+      'name' => $object->getName(),
+      'responsive' => $object->isResponsive(),
+    ]);
+    $this->assertEqualsCanonicalizing($expected_values, $object->getArray());
+    $this->assertEqualsCanonicalizing($expected_values, iterator_to_array($object->getIterator()));
+    foreach ($expected_values as $key => $expected_value) {
+      $this->assertSame($expected_value, $object[$key]);
+    }
+    // This assertion method is called every time, so it is a good place to
+    // verify that the two render array methods have the same result.
+    $this->assertSame($object->toRenderArray(), $object->toRenderable());
+  }
+
+  /**
+   * Asserts cache metadata methods.
+   *
+   * @param list<string> $cache_contexts
+   *   The expected cache contexts.
+   * @param list<string> $cache_tags
+   *   The expected cache tags.
+   * @param int $cache_max_age
+   *   The expected max-age.
+   * @param \Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject $object
+   *   The object to test.
+   */
+  protected function assertCacheMetadata(array $cache_contexts, array $cache_tags, int $cache_max_age, ImageValueObject $object): void {
+    $this->assertEqualsCanonicalizing($cache_contexts, $object->getCacheContexts());
+    $this->assertEqualsCanonicalizing($cache_tags, $object->getCacheTags());
+    $this->assertEqualsCanonicalizing($cache_max_age, $object->getCacheMaxAge());
   }
 
 }
