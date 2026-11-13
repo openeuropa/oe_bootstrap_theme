@@ -4,6 +4,9 @@
  * Featured media component.
  */
 #}
+{% set _title_attributes = create_attribute(title_attributes ?? {}) %}
+{% set _subtitle_attributes = create_attribute(subtitle_attributes ?? {}) %}
+{% set _media_attributes = create_attribute(media_attributes ?? {}) %}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set _image = image|default('') %}
 {% set _link = link|default({}) %}
@@ -79,7 +82,7 @@
     ratio: ratio|default('16x9'),
     copyright: copyright,
     copyright_label: copyright_label|default(_image is not empty ? 'Image credit:'|t : 'Copyright:'|t),
-    attributes: media_attributes,
+    attributes: _media_attributes,
   } only %}
 {% endset %}
 
@@ -94,14 +97,14 @@
         title: title,
         title_tag: title_tag|default('h2'),
         title_link: _title_link,
-        attributes: title_attributes|default(create_attribute()).addClass('mb-4'),
+        attributes: _title_attributes.addClass('mb-4'),
       } only %}
     {% endif %}
     <div class="row">
       <div class="col-12 col-md-6 {{ _text_order }}">
         {% if subtitle is not empty %}
           {% set _subtitle_tag = subtitle_tag|default(title is not empty ? 'h3' : 'h2') %}
-          <{{ _subtitle_tag }}{{ subtitle_attributes|default(create_attribute()).addClass('text-secondary') }}>
+          <{{ _subtitle_tag }}{{ _subtitle_attributes.addClass('text-secondary') }}>
             {{- subtitle -}}
           </{{ _subtitle_tag }}>
         {% endif %}

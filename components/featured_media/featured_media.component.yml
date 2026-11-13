@@ -112,7 +112,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
           enum:
@@ -128,7 +128,7 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     subtitle:
       title: Subtitle
       type: [string, array, object, 'null']
@@ -191,7 +191,7 @@ props:
             transformation:
               type: [string, 'null']
             attributes:
-              type: [object, 'null']
+              type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
           enum:
@@ -207,7 +207,7 @@ props:
         remove_icon_spacers:
           type: [boolean, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     copyright:
       title: Copyright
       type: [string, array, object, 'null']
@@ -226,13 +226,13 @@ props:
       description: 'Path to icons used by links. Defaults to the BCL icon path.'
     title_attributes:
       title: 'Title attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     subtitle_attributes:
       title: 'Subtitle attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     media_attributes:
       title: 'Media attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     attributes:
       title: Attributes
       type: Drupal\Core\Template\Attribute

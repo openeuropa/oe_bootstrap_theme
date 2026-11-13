@@ -225,15 +225,15 @@ content_banner_custom_attributes_title_link_and_date:
     '#type': component
     '#component': oe_bootstrap_theme:content_banner
     '#props':
-      attributes:
+      attributes: !Attribute
         id: custom-content-banner
         class:
           - custom-content-banner-class
         data-content-banner: custom-value
       title: 'Linked content banner title'
       title_link:
-        path: 'https://example.com'
-      title_attributes:
+        path: !Url 'https://example.com'
+      title_attributes: !Attribute
         class:
           - custom-title-class
       date:
@@ -261,13 +261,13 @@ content_banner_badge_and_link_with_custom_attributes:
       title: 'Content banner title'
       badges:
         - label: 'Custom badge'
-          attributes:
+          attributes: !Attribute
             class:
               - custom-badge-class
       links:
         - label: 'Custom link'
-          path: 'https://example.com'
-          attributes:
+          path: !Url 'https://example.com'
+          attributes: !Attribute
             class:
               - custom-link-class
   assertions:

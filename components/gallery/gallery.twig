@@ -4,6 +4,7 @@
  * Gallery component.
  */
 #}
+{% set title_attributes = create_attribute(title_attributes ?? {}) %}
 {% extends '@oe-bcl/gallery' %}
 
 {% set id = gallery_id|default('gallery'|clean_unique_id) %}

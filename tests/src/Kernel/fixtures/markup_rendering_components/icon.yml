@@ -59,7 +59,7 @@ icon_with_transformation_and_attributes:
       name: arrow-right
       size: xl
       transformation: rotate-90
-      attributes:
+      attributes: !Attribute
         id: custom-icon
         class:
           - custom-icon-class

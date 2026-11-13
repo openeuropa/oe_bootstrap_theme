@@ -114,7 +114,7 @@ fact_figures_default_3col:
       columns: 3
       link:
         label: 'Read more'
-        path: '/example'
+        path: !Url 'internal:/example'
       title: 'Fact and figures block'
       items:
         - icon: 'sticky'
@@ -135,7 +135,7 @@ fact_figures_default_3col:
           description: 'Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum.'
         - icon:
             name: 'inbox'
-            attributes:
+            attributes: !Attribute
               class:
                 - custom-class
           subtitle: 'Jira ticket'

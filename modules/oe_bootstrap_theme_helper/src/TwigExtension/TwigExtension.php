@@ -20,6 +20,7 @@ use Drupal\Core\Url;
 use Drupal\oe_bootstrap_theme\DrupalCompatibility;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
 use Twig\Environment;
+use Twig\Error\RuntimeError;
 use Twig\Extension\AbstractExtension;
 use Twig\Markup as TwigMarkup;
 use Twig\TwigFilter;
@@ -230,8 +231,8 @@ class TwigExtension extends AbstractExtension {
         $item['navigation']['nav'] = in_array($variant, ['pills', 'tabs'], TRUE);
         $item['navigation']['navbar'] = $variant === 'navbar';
         $item['navigation']['vertical'] = ($item['navigation']['orientation'] ?? 'horizontal') === 'vertical';
-        if (isset($item['navigation']['attributes']) && is_array($item['navigation']['attributes'])) {
-          $item['navigation']['attributes'] = new Attribute($item['navigation']['attributes']);
+        if (isset($item['navigation']['attributes'])) {
+          $item['navigation']['attributes'] = $this->copyAttributes($item['navigation']['attributes']);
         }
         if (isset($item['navigation']['items']) && is_array($item['navigation']['items'])) {
           $item['navigation']['items'] = $this->bclNavigationItems($item['navigation']['items'], $icon_path);
@@ -257,20 +258,20 @@ class TwigExtension extends AbstractExtension {
   protected function prepareNavigationElement(array $item, string $icon_path): array {
     // BCL selects element types by key presence, so NULL means omitted.
     $item = array_filter($item, static fn ($value) => $value !== NULL);
-    $attributes = $item['attributes'] ?? [];
-    $item['attributes'] = new Attribute(is_array($attributes) ? $attributes : []);
+    $attributes = $this->copyAttributes($item['attributes'] ?? []);
+    $item['attributes'] = $attributes instanceof Attribute ? $attributes : new Attribute();
 
     if (!empty($item['icon'])) {
       $icon = is_array($item['icon']) ? $item['icon'] : ['name' => $item['icon']];
-      if (isset($icon['attributes']) && is_array($icon['attributes'])) {
-        $icon['attributes'] = new Attribute($icon['attributes']);
+      if (isset($icon['attributes'])) {
+        $icon['attributes'] = $this->copyAttributes($icon['attributes']);
       }
       $icon['path'] ??= $icon_path;
       $item['icon'] = $icon;
     }
 
-    if (isset($item['spinner']['attributes']) && is_array($item['spinner']['attributes'])) {
-      $item['spinner']['attributes'] = new Attribute($item['spinner']['attributes']);
+    if (isset($item['spinner']['attributes'])) {
+      $item['spinner']['attributes'] = $this->copyAttributes($item['spinner']['attributes']);
     }
 
     if (array_key_exists('dark_mode', $item)) {
@@ -278,6 +279,32 @@ class TwigExtension extends AbstractExtension {
     }
 
     return $item;
+  }
+
+  /**
+   * Prepares attributes for a BCL template, without altering the input.
+   *
+   * BCL templates alter the Attribute objects they receive, e.g. with
+   * addClass(). An Attribute object is cloned, so that the caller's object,
+   * which may be shared between items, does not change. An array is converted
+   * to an Attribute object, and NULL is preserved.
+   *
+   * @param mixed $attributes
+   *   An Attribute object, an array, or NULL.
+   *
+   * @return \Drupal\Core\Template\Attribute|null
+   *   A copy of the attributes, or NULL.
+   *
+   * @throws \Twig\Error\RuntimeError
+   *   If the value is not an Attribute object, an array, or NULL.
+   */
+  protected function copyAttributes(mixed $attributes): ?Attribute {
+    return match (TRUE) {
+      $attributes instanceof Attribute => clone $attributes,
+      is_array($attributes) => new Attribute($attributes),
+      $attributes === NULL => NULL,
+      default => throw new RuntimeError(sprintf('Expected attribute object, array or null, found %s.', get_debug_type($attributes))),
+    };
   }
 
   /**

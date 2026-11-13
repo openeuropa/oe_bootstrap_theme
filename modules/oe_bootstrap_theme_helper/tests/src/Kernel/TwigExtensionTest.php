@@ -13,6 +13,7 @@ use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
 use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\DomCrawler\Crawler;
+use Twig\Error\RuntimeError;
 use Twig\Markup;
 
 /**
@@ -464,6 +465,10 @@ TWIG;
    */
   public function testBclNavigationItems(): void {
     $extension = $this->container->get('oe_bootstrap_theme_helper.twig_extension');
+    $item_attributes = new Attribute(['class' => ['custom-item']]);
+    $icon_attributes = new Attribute(['class' => ['custom-icon']]);
+    $spinner_attributes = new Attribute(['class' => ['custom-spinner']]);
+    $navigation_attributes = new Attribute(['class' => ['custom-navigation']]);
     $items = [
       [
         'label' => 'Dropdown',
@@ -502,6 +507,13 @@ TWIG;
           ],
         ],
       ],
+      [
+        'label' => 'Item with Attribute objects',
+        'attributes' => $item_attributes,
+        'icon' => ['name' => 'house', 'attributes' => $icon_attributes],
+        'spinner' => ['attributes' => $spinner_attributes],
+        'navigation' => ['attributes' => $navigation_attributes],
+      ],
     ];
 
     $result = $extension->bclNavigationItems($items, '/custom-icons.svg');
@@ -534,6 +546,49 @@ TWIG;
     $this->assertInstanceOf(Attribute::class, $navigation['attributes']);
     $this->assertSame('navigation-class', (string) $navigation['attributes']['class']);
     $this->assertSame('/existing-icons.svg', $navigation['items'][0]['icon']['path']);
+
+    // Attribute objects are copied, so altering them, as the templates do,
+    // doesn't change the caller's objects.
+    $item = $result[1];
+    $item['attributes']->addClass('altered');
+    $item['icon']['attributes']->addClass('altered');
+    $item['spinner']['attributes']->addClass('altered');
+    $item['navigation']['attributes']->addClass('altered');
+
+    $this->assertSame('custom-item altered', (string) $item['attributes']['class']);
+    $this->assertSame('custom-icon altered', (string) $item['icon']['attributes']['class']);
+    $this->assertSame('custom-spinner altered', (string) $item['spinner']['attributes']['class']);
+    $this->assertSame('custom-navigation altered', (string) $item['navigation']['attributes']['class']);
+
+    $this->assertSame('custom-item', (string) $item_attributes['class']);
+    $this->assertSame('custom-icon', (string) $icon_attributes['class']);
+    $this->assertSame('custom-spinner', (string) $spinner_attributes['class']);
+    $this->assertSame('custom-navigation', (string) $navigation_attributes['class']);
+  }
+
+  /**
+   * Tests that invalid navigation attributes retain Twig error context.
+   */
+  public function testInvalidNavigationAttributes(): void {
+    $template = $this->container->get('twig')->createTemplate("{# Navigation attributes #}\n{% set prepared = items|bcl_navigation_items('/icons.svg') %}", 'invalid-navigation-attributes');
+    foreach (['invalid', FALSE, 0, new \stdClass()] as $value) {
+      foreach ([
+        ['attributes' => $value],
+        ['icon' => ['name' => 'house', 'attributes' => $value]],
+        ['spinner' => ['attributes' => $value]],
+        ['navigation' => ['attributes' => $value]],
+      ] as $item) {
+        try {
+          $template->render(['items' => [$item]]);
+          $this->fail('Invalid attributes must produce a Twig runtime error.');
+        }
+        catch (RuntimeError $exception) {
+          $this->assertSame(sprintf('Expected attribute object, array or null, found %s.', get_debug_type($value)), $exception->getRawMessage());
+          $this->assertSame(2, $exception->getTemplateLine());
+          $this->assertStringStartsWith('invalid-navigation-attributes', $exception->getSourceContext()->getName());
+        }
+      }
+    }
   }
 
   /**

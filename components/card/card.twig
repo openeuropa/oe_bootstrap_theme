@@ -4,6 +4,7 @@
  * Card component.
  */
 #}
+{% set _title_attributes = create_attribute(title_attributes ?? {}) %}
 {%- set _variant = variant|default('default') -%}
 {%- set _orientation = orientation|default('vertical') -%}
 {%- set _attributes = attributes|default(create_attribute()) -%}
@@ -120,7 +121,7 @@
     title: title,
     title_tag: title_tag,
     title_link: _title_link,
-    title_attributes: title_attributes,
+    title_attributes: _title_attributes,
     image_copyright: image_copyright,
     text: (text is not empty) ? {
       content: text,
@@ -149,7 +150,7 @@
     title: title,
     title_link: _title_link,
     title_tag: title_tag,
-    title_attributes: title_attributes,
+    title_attributes: _title_attributes,
     image_copyright: image_copyright,
     image_copyright_label: 'Image credit:'|t,
     subtitle: (subtitle is not empty) ? {

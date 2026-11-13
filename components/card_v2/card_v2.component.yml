@@ -56,13 +56,13 @@ props:
       type: Drupal\Core\Template\Attribute
     media_attributes:
       title: 'Media attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     content_attributes:
       title: 'Body attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     header_attributes:
       title: 'Header attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes
     footer_attributes:
       title: 'Footer attributes'
-      type: Drupal\Core\Template\Attribute
+      type: [object, string, 'null']  # attributes

@@ -79,7 +79,7 @@ props:
             - flip-vertical
             - null
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     icon_position:
       title: 'Icon position'
       type: [string, 'null']

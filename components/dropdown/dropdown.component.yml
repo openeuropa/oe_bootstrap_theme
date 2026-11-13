@@ -47,11 +47,11 @@ props:
                 transformation:
                   type: [string, 'null']
                 attributes:
-                  type: [object, 'null']
+                  type: [object, string, 'null']  # attributes
         icon_position:
           type: [string, 'null']
         attributes:
-          type: [object, 'null']
+          type: [object, string, 'null']  # attributes
     link:
       title: 'Link trigger'
       type: [boolean, 'null']
@@ -162,11 +162,11 @@ props:
                   transformation:
                     type: [string, 'null']
                   attributes:
-                    type: [object, 'null']
+                    type: [object, string, 'null']  # attributes
           icon_position:
             type: [string, 'null']
           attributes:
-            type: [object, 'null']
+            type: [object, string, 'null']  # attributes
     icon_path:
       title: 'Icons path'
       type: [string, 'null']

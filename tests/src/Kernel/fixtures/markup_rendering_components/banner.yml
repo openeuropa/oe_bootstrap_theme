@@ -12,7 +12,7 @@ banner_default_centered_with_call_to_action_full_width:
       description: 'Innovation, economy, environment and geopolitics'
       call_to_action:
         label: Subscribe
-        path: 'https://example.com'
+        path: !Url 'https://example.com'
   assertions:
     count:
       '.bcl-banner__content h4.bcl-heading': 1
@@ -184,7 +184,7 @@ banner_with_custom_attributes_and_content_classes:
     '#component': oe_bootstrap_theme:banner
     '#props':
       variant: default
-      attributes:
+      attributes: !Attribute
         class:
           - custom-banner-class
         id: banner-id

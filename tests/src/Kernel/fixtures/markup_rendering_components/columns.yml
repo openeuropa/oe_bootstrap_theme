@@ -65,7 +65,7 @@ columns_with_custom_attributes:
     '#type': component
     '#component': oe_bootstrap_theme:columns
     '#props':
-      attributes:
+      attributes: !Attribute
         class:
           - custom-columns-class
         id: columns-id

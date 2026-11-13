@@ -4,6 +4,7 @@
  * Links block component.
  */
 #}
+{% set _title_attributes = create_attribute(title_attributes ?? {}) %}
 {% set _icon_path = icon_path|default(bcl_icon_path()) %}
 {% set _title_link = title_link|default({}) %}
 
@@ -46,7 +47,7 @@
   title: title,
   title_tag: title_tag,
   title_link: _title_link,
-  title_attributes: title_attributes,
+  title_attributes: _title_attributes,
   background: background,
   variant: orientation,
   links: _links,

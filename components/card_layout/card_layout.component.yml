@@ -89,10 +89,10 @@ props:
                 icon_path:
                   type: [string, 'null']
                 attributes:
-                  type: [object, 'null']
+                  type: [object, string, 'null']  # attributes
           attributes:
             title: Attributes
-            type: [object, 'null']
+            type: [object, string, 'null']  # attributes
     grid_columns:
       title: 'Grid columns'
       type: [integer, 'null']
