@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Columns component.
+ */
+#}
+{% set tag = tag|default('div') %}
+{% set columns = columns|default(4) %}
+{% set attributes = attributes|default(create_attribute()) %}
+{%
+  set wrapper_classes = [
+    'columns',
+  ]
+%}
+{%
+  set responsive_grid_styles = [
+    '--columns-grid--column-count: ' ~ columns ~ ';',
+  ]
+%}
+
+<{{ tag }}{{ attributes.addClass(wrapper_classes).setAttribute('style', responsive_grid_styles|join()) }}>
+  {% for item in items|default([])|element_children %}
+    <div class="columns__item">
+      {{- item -}}
+    </div>
+  {% endfor %}
+</{{ tag }}>

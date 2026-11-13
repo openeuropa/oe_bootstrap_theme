@@ -1,0 +1,157 @@
+modal_default_with_fallback_id:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:modal
+    '#props':
+      body: 'Default modal body.'
+      toggle:
+        label: 'Open modal'
+  assertions:
+    count:
+      'div[data-component-id="oe_bootstrap_theme:modal"]#modal.modal.fade[tabindex="-1"][aria-hidden="true"]': 1
+      'div#modal > div.modal-dialog': 1
+      'div#modal > div.modal-dialog.modal-sm': 0
+      'div#modal > div.modal-dialog.modal-lg': 0
+      'div#modal > div.modal-dialog.modal-xl': 0
+      'div#modal > div.modal-dialog.modal-fullscreen': 0
+      'div#modal > div.modal-dialog.modal-dialog-centered': 0
+      'div#modal > div.modal-dialog.modal-dialog-scrollable': 0
+      'div#modal[data-bs-backdrop]': 0
+      'div#modal .modal-header': 0
+      'div#modal .modal-footer': 0
+      'button.btn-primary[data-bs-toggle="modal"][data-bs-target="#modal"][aria-controls="modal"]': 1
+    equals:
+      'div#modal .modal-body': 'Default modal body.'
+      'button[data-bs-toggle="modal"]': 'Open modal'
+
+modal_with_all_content_and_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:modal
+    '#props':
+      modal_id: custom-modal
+      size: sm
+      static_backdrop: true
+      vertically_centered: true
+      scrollable: true
+      title:
+        - '#markup': 'Custom <em>modal</em>'
+      title_tag: h4
+      title_attributes:
+        class:
+          - custom-modal-title
+        data-modal-title: custom-value
+      show_close_button: true
+      messages:
+        - '#markup': '<div class="alert alert-info">Status message</div>'
+      body:
+        - '#type': html_tag
+          '#tag': p
+          '#value': 'Custom modal body.'
+      footer:
+        - '#type': html_tag
+          '#tag': button
+          '#attributes':
+            class:
+              - btn
+              - btn-secondary
+            data-bs-dismiss: modal
+          '#value': Cancel
+      attributes:
+        class:
+          - custom-modal
+        data-modal: custom-value
+      header_attributes:
+        id: custom-modal-header
+        class:
+          - custom-modal-header
+      body_attributes:
+        id: custom-modal-body
+        class:
+          - custom-modal-body
+      footer_attributes:
+        id: custom-modal-footer
+        class:
+          - custom-modal-footer
+      toggle:
+        id: custom-modal-toggle
+        label: 'Open custom modal'
+        variant: danger
+        size: lg
+        outline: true
+        assistive_text: 'Dialog:'
+        icon:
+          name: box-arrow-up-right
+          path: /custom-icons.svg
+          attributes:
+            class:
+              - custom-toggle-icon
+        icon_position: before
+        attributes:
+          class:
+            - custom-toggle
+          data-toggle: custom-value
+  assertions:
+    count:
+      'div#custom-modal.modal.fade.custom-modal[data-modal="custom-value"][data-bs-backdrop="static"]': 1
+      'div#custom-modal > div.modal-dialog.modal-sm.modal-dialog-centered.modal-dialog-scrollable': 1
+      'div#custom-modal .modal-header#custom-modal-header.custom-modal-header': 1
+      'div#custom-modal .modal-header h4.custom-modal-title[data-modal-title="custom-value"] em': 1
+      'div#custom-modal .modal-header h5': 0
+      'div#custom-modal .modal-header button.btn-close[data-bs-dismiss="modal"][aria-label="Close"]': 1
+      'div#custom-modal .alert.alert-info': 1
+      'div#custom-modal .modal-body#custom-modal-body.custom-modal-body > p': 1
+      'div#custom-modal .modal-footer#custom-modal-footer.custom-modal-footer > button[data-bs-dismiss="modal"]': 1
+      'button#custom-modal-toggle.btn-lg.btn-outline-danger.custom-toggle[data-toggle="custom-value"]': 1
+      'button#custom-modal-toggle[data-bs-toggle="modal"][data-bs-target="#custom-modal"][aria-controls="custom-modal"]': 1
+      'button#custom-modal-toggle svg.custom-toggle-icon': 1
+      'button#custom-modal-toggle > span.visually-hidden': 1
+    contains:
+      'button#custom-modal-toggle svg': '/custom-icons.svg#box-arrow-up-right'
+    equals:
+      'div#custom-modal .modal-header h4': 'Custom <em>modal</em>'
+      'div#custom-modal .alert': 'Status message'
+      'div#custom-modal .modal-body p': 'Custom modal body.'
+      'div#custom-modal .modal-footer button': Cancel
+      'button#custom-modal-toggle > span.visually-hidden': 'Dialog:'
+
+modal_attribute_id_takes_precedence:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:modal
+    '#props':
+      modal_id: ignored-modal-id
+      size: fullscreen
+      title: 'Fullscreen modal'
+      body: 'Fullscreen modal body.'
+      attributes:
+        id: attribute-modal-id
+      toggle:
+        label: 'Open fullscreen modal'
+        disabled: true
+  assertions:
+    count:
+      'div#attribute-modal-id.modal': 1
+      'div#ignored-modal-id': 0
+      'div#attribute-modal-id > div.modal-dialog.modal-fullscreen': 1
+      'div#attribute-modal-id .modal-header h5': 1
+      'div#attribute-modal-id .modal-header .btn-close': 0
+      'button[data-bs-target="#attribute-modal-id"][aria-controls="attribute-modal-id"][disabled][aria-disabled="true"]': 1
+
+modal_responsive_fullscreen_without_optional_regions:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:modal
+    '#props':
+      modal_id: responsive-modal
+      fullscreen_responsive: md
+      body: 'Responsive modal body.'
+  assertions:
+    count:
+      'div#responsive-modal > div.modal-dialog.modal-fullscreen-md-down': 1
+      'div#responsive-modal .modal-header': 0
+      'div#responsive-modal .modal-body': 1
+      'div#responsive-modal .modal-footer': 0
+      'button[data-bs-toggle="modal"]': 0
+    equals:
+      'div#responsive-modal .modal-body': 'Responsive modal body.'

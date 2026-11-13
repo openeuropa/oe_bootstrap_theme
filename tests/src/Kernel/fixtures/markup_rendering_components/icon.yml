@@ -1,0 +1,89 @@
+icon_default:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:icon
+    '#props': {}
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\IconPatternAssert
+      expected:
+        name: ''
+        size: s
+
+icon_with_name_and_default_size:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:icon
+    '#props':
+      name: envelope
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\IconPatternAssert
+      expected:
+        name: envelope
+        size: s
+
+icon_with_smallest_size:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:icon
+    '#props':
+      name: eye
+      size: 2xs
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\IconPatternAssert
+      expected:
+        name: eye
+        size: 2xs
+
+icon_with_fluid_size:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:icon
+    '#props':
+      name: eye
+      size: fluid
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\IconPatternAssert
+      expected:
+        name: eye
+        size: fluid
+
+icon_with_transformation_and_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:icon
+    '#props':
+      name: arrow-right
+      size: xl
+      transformation: rotate-90
+      attributes:
+        id: custom-icon
+        class:
+          - custom-icon-class
+        data-icon-attribute: custom-value
+        role: img
+        aria-label: 'Next item'
+  assertions:
+    count:
+      'svg#custom-icon.bi.icon--xl.icon--rotate-90.custom-icon-class[data-icon-attribute="custom-value"][role="img"][aria-label="Next item"]': 1
+      'svg.icon--rotate-180': 0
+    contains:
+      'svg#custom-icon': 'assets/icons/bcl-default-icons.svg#arrow-right'
+
+icon_with_custom_path:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:icon
+    '#props':
+      name: custom-symbol
+      size: m
+      transformation: flip-vertical
+      icon_path: '/custom/icons.svg'
+  assertions:
+    count:
+      'svg.bi.icon--m.icon--flip-vertical': 1
+    contains:
+      'svg': '/custom/icons.svg#custom-symbol'

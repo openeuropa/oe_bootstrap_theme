@@ -1,0 +1,57 @@
+<div class="date-block-story vstack gap-4">
+  <div>
+    <h3 class="h5">Explicit date values</h3>
+    <div class="date-block-story__preview">
+      {% include 'oe_bootstrap_theme:date_block' with {
+        day: 23,
+        month: 'Jul',
+        year: 2026,
+        date_time: '2026-07-23',
+        attributes: create_attribute().addClass('custom-date-block'),
+      } only %}
+    </div>
+  </div>
+
+  <div>
+    <h3 class="h5">Same-month date range</h3>
+    <div class="date-block-story__preview">
+      {% include 'oe_bootstrap_theme:date_block' with {
+        day: 23,
+        month: 'Jan',
+        year: 2026,
+        date_time: '2026-01-23',
+        end_day: 30,
+      } only %}
+    </div>
+  </div>
+
+  <div>
+    <h3 class="h5">Same-year date range</h3>
+    <div class="date-block-story__preview">
+      {% include 'oe_bootstrap_theme:date_block' with {
+        day: 23,
+        month: 'Jan',
+        year: 2026,
+        date_time: '2026-01-23',
+        end_day: 11,
+        end_month: 'Feb',
+      } only %}
+    </div>
+  </div>
+
+  <div>
+    <h3 class="h5">Cross-year date range</h3>
+    <div class="date-block-story__preview">
+      {% include 'oe_bootstrap_theme:date_block' with {
+        day: 23,
+        month: 'Jan',
+        year: 2026,
+        date_time: '2026-01-23',
+        end_day: 11,
+        end_month: 'Feb',
+        end_year: 2027,
+        icon_path: bcl_icon_path(),
+      } only %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+badge_with_all_values:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:badge
+    '#props':
+      background: danger
+      rounded_pill: true
+      dismissible: true
+      outline: true
+      label: 'A simple badge!'
+      assistive_text: 'Unread status'
+      url: 'https://example.com'
+      title: 'The badge title'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\BadgeComponentAssert
+      expected:
+        background: danger
+        rounded_pill: true
+        dismissible: true
+        outline: true
+        label: 'A simple badge!'
+        assistive_text: 'Unread status'
+        url: 'https://example.com'
+        title: 'The badge title'
+badge_no_settings_sent:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:badge
+    '#props':
+      label: 'A simple badge!'
+      url: 'https://example.com'
+      title: 'The badge title'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\BadgeComponentAssert
+      expected:
+        background: primary
+        rounded_pill: false
+        dismissible: false
+        outline: false
+        label: 'A simple badge!'
+        url: 'https://example.com'
+        title: 'The badge title'
+badge_dismissible_with_rounded_pill:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:badge
+    '#props':
+      dismissible: true
+      rounded_pill: true
+      background: secondary
+      label: 'A simple badge!'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\BadgeComponentAssert
+      expected:
+        dismissible: true
+        rounded_pill: true
+        background: secondary
+        label: 'A simple badge!'
+badge_non_dismissible_without_rounded_pill:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:badge
+    '#props':
+      dismissible: false
+      rounded_pill: false
+      background: danger
+      label: 'A simple badge!'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\BadgeComponentAssert
+      expected:
+        dismissible: false
+        rounded_pill: false
+        background: danger
+        label: 'A simple badge!'
+badge_with_icon_path:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:badge
+    '#props':
+      label: 'A simple badge!'
+      dismissible: true
+      icon_path: '/custom-icons.svg'
+  assertions:
+    count:
+      'span.badge .icon--close svg': 1
+    contains:
+      'span.badge .icon--close svg': '/custom-icons.svg#x-circle-fill'
+    equals:
+      'span.badge': 'A simple badge!<span class="icon--close" aria-hidden="true"><svg class="bi icon--xs"><use xlink:href="/custom-icons.svg#x-circle-fill"></use></svg></span>'
+badge_with_custom_attributes:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:badge
+    '#props':
+      label: 'A simple badge!'
+      background: info
+      attributes:
+        id: custom-badge
+        class:
+          - custom-badge-class
+        data-badge: custom-value
+  assertions:
+    count:
+      'span#custom-badge.badge.text-bg-info.custom-badge-class[data-badge="custom-value"]': 1
+badge_with_url:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:badge
+    '#props':
+      dismissible: true
+      rounded_pill: true
+      background: secondary
+      label: 'A simple badge!'
+      url: 'https://example.com'
+  assertions:
+    component:
+      class: Drupal\Tests\oe_bootstrap_theme\ComponentAssertion\BadgeComponentAssert
+      expected:
+        dismissible: true
+        rounded_pill: true
+        background: secondary
+        label: 'A simple badge!'
+        url: 'https://example.com'

@@ -1,0 +1,25 @@
+{% set content %}
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p>Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.</p>
+{% endset %}
+
+<div class="vstack gap-4">
+  {% include 'oe_bootstrap_theme:section' with {
+    heading: 'This is the title of the section',
+    content: content,
+  } only %}
+
+  {% include 'oe_bootstrap_theme:section' with {
+    tag: 'article',
+    heading_tag: 'h3',
+    heading: 'Section with custom tags',
+    content: content,
+    attributes: create_attribute().addClass(['content-wrapper']).setAttribute('id', 'section-id'),
+    heading_attributes: create_attribute().addClass(['content-heading']),
+    wrapper_attributes: create_attribute().addClass(['content-body']),
+  } only %}
+
+  {% include 'oe_bootstrap_theme:section' with {
+    content: content,
+  } only %}
+</div>

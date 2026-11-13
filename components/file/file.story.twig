@@ -1,0 +1,49 @@
+{% set file = {
+  title: 'Example document',
+  url: 'https://example.com/document.pdf',
+  size: 4444,
+  extension: 'pdf',
+  language_code: 'en',
+} %}
+
+<div class="vstack gap-5">
+  <div>
+    <h3>Default</h3>
+    {% include 'oe_bootstrap_theme:file' with {
+      title: 'Download the document',
+      file: file,
+    } only %}
+  </div>
+
+  <div>
+    <h3>With translations</h3>
+    {% include 'oe_bootstrap_theme:file' with {
+      title: 'Download the document',
+      file: file,
+      translations: [
+        {
+          title: 'Exemple de document',
+          url: 'https://example.com/document-fr.pdf',
+          size: 4321,
+          extension: 'pdf',
+          language_code: 'fr',
+        },
+        {
+          title: 'Пример документ',
+          url: 'https://example.com/document-bg.docx',
+          size: 40391,
+          extension: 'docx',
+          language_code: 'bg',
+        },
+      ],
+    } only %}
+  </div>
+
+  <div>
+    <h3>Custom link label, without title</h3>
+    {% include 'oe_bootstrap_theme:file' with {
+      link_label: 'Get the file',
+      file: file,
+    } only %}
+  </div>
+</div>

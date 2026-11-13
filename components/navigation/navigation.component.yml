@@ -1,0 +1,295 @@
+name: Navigation
+description: 'Renders links, buttons, dropdowns, and nested navigation in several Bootstrap navigation styles.'
+props:
+  type: object
+  properties:
+    variant:
+      title: Variant
+      type: string
+      description: 'Navigation presentation. Defaults to default.'
+      default: default
+      enum:
+        - default
+        - tabs
+        - pills
+        - navbar
+      'meta:enum':
+        default: Default
+        tabs: Tabs
+        pills: Pills
+        navbar: Navbar
+    orientation:
+      title: Orientation
+      type: string
+      description: 'Navigation orientation. Defaults to horizontal.'
+      enum:
+        - horizontal
+        - vertical
+      'meta:enum':
+        horizontal: Horizontal
+        vertical: Vertical
+    navigation_id:
+      title: 'Navigation ID'
+      type: string
+      description: 'ID added to the navigation wrapper.'
+    full_width:
+      title: 'Full width'
+      type: boolean
+      description: 'Distribute items across the available width.'
+    alignment:
+      title: Alignment
+      type: string
+      description: 'Horizontal alignment of navigation items.'
+      enum:
+        - start
+        - center
+        - end
+      'meta:enum':
+        start: Start
+        center: Center
+        end: End
+    tabs_content:
+      title: 'Tab content'
+      type: boolean
+      description: 'Render tab panels from each item content value.'
+    items:
+      title: 'Navigation items'
+      type: array
+      description: 'Links, buttons, dropdowns, and nested navigation items.'
+      items:
+        type: object
+        properties:
+          label:
+            type: [string, array, object]
+          path:
+            type: [string, object]
+          id:
+            type: string
+          title:
+            type: string
+          variant:
+            type: string
+          active:
+            type: boolean
+          disabled:
+            type: boolean
+          standalone:
+            type: boolean
+          button:
+            type: boolean
+          type:
+            type: string
+          text_nowrap:
+            type: boolean
+          assistive_text:
+            type: string
+          icon:
+            anyOf:
+              - type: string
+              - type: object
+                properties:
+                  name:
+                    type: string
+                  path:
+                    type: string
+                  transformation:
+                    type: string
+                  attributes:
+                    type: object
+          icon_position:
+            type: string
+            enum:
+              - before
+              - after
+          icon_display:
+            type: string
+            enum:
+              - flex
+              - inline-flex
+          icon_spacing:
+            type: string
+          remove_icon_spacers:
+            type: boolean
+          spinner:
+            type: object
+            properties:
+              type:
+                type: string
+              variant:
+                type: string
+              size:
+                type: string
+              assistive_text:
+                type: string
+              attributes:
+                type: object
+          show_spinner:
+            type: boolean
+          content:
+            type: [string, array, object]
+          target:
+            type: string
+          dropdown:
+            type: boolean
+          link:
+            type: boolean
+          alignment:
+            type: string
+          dark_mode:
+            type: boolean
+          trigger:
+            type: object
+            properties:
+              label:
+                type: [string, array, object]
+              path:
+                type: [string, object]
+              variant:
+                type: string
+              size:
+                type: string
+              type:
+                type: string
+              outline:
+                type: boolean
+              disabled:
+                type: boolean
+              assistive_text:
+                type: string
+              standalone:
+                type: boolean
+              icon:
+                anyOf:
+                  - type: string
+                  - type: object
+                    properties:
+                      name:
+                        type: string
+                      path:
+                        type: string
+                      transformation:
+                        type: string
+                      attributes:
+                        type: object
+              icon_position:
+                type: string
+              attributes:
+                type: object
+          items:
+            type: array
+            description: 'Items displayed in a dropdown navigation item.'
+            items:
+              type: object
+              properties:
+                label:
+                  type: [string, array, object]
+                path:
+                  type: [string, object]
+                button:
+                  type: boolean
+                divider:
+                  type: boolean
+                active:
+                  type: boolean
+                disabled:
+                  type: boolean
+                id:
+                  type: string
+                title:
+                  type: string
+                type:
+                  type: string
+                variant:
+                  type: string
+                size:
+                  type: string
+                outline:
+                  type: boolean
+                standalone:
+                  type: boolean
+                icon:
+                  anyOf:
+                    - type: string
+                    - type: object
+                      properties:
+                        name:
+                          type: string
+                        path:
+                          type: string
+                        transformation:
+                          type: string
+                        attributes:
+                          type: object
+                icon_position:
+                  type: string
+                attributes:
+                  type: object
+          navigation:
+            type: object
+            description: 'Nested BCL navigation configuration.'
+            properties:
+              id:
+                type: string
+              variant:
+                type: string
+                enum:
+                  - default
+                  - tabs
+                  - pills
+                  - navbar
+              orientation:
+                type: string
+                enum:
+                  - horizontal
+                  - vertical
+              tabs_content:
+                type: boolean
+              full_width:
+                type: boolean
+              alignment:
+                type: string
+              attributes:
+                type: object
+              items:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    label:
+                      type: [string, array, object]
+                    path:
+                      type: [string, object]
+                    id:
+                      type: string
+                    active:
+                      type: boolean
+                    disabled:
+                      type: boolean
+                    button:
+                      type: boolean
+                    icon:
+                      anyOf:
+                        - type: string
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                            path:
+                              type: string
+                            transformation:
+                              type: string
+                            attributes:
+                              type: object
+                    icon_position:
+                      type: string
+                    attributes:
+                      type: object
+          attributes:
+            type: object
+    icon_path:
+      title: 'Icons path'
+      type: string
+      description: 'Path to the SVG icon file. Defaults to the BCL icon path.'
+    attributes:
+      title: Attributes
+      type: Drupal\Core\Template\Attribute

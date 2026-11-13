@@ -1,0 +1,62 @@
+name: 'Card V2'
+description: 'Bootstrap 5 card component in its second iteration. Every zone is exposed as a render prop so plain markup, views, or other components can be placed inside.'
+props:
+  type: object
+  properties:
+    variant:
+      title: Variant
+      type: string
+      description: 'The card variant.'
+      enum:
+        - default
+        - horizontal
+      'meta:enum':
+        default: Default
+        horizontal: Horizontal
+    tag:
+      title: 'HTML wrapper tag'
+      type: string
+      description: 'Semantic element for the outer wrapper. Defaults to article.'
+      enum:
+        - article
+        - section
+        - div
+      'meta:enum':
+        article: '<article> (default)'
+        section: '<section>'
+        div: '<div>'
+    title:
+      title: Title
+      type: [string, array, object]
+      description: 'Card title. Supports markup, e.g. for links.'
+    media:
+      title: Media
+      type: [string, array, object]
+      description: 'Optional. Accepts an image, video, icon, map thumbnail, or another component.'
+    content:
+      title: 'Body content'
+      type: [string, array, object]
+      description: 'Card body content.'
+    header:
+      title: Header
+      type: [string, array, object]
+      description: 'Optional meta information or category content.'
+    footer:
+      title: Footer
+      type: [string, array, object]
+      description: 'Optional secondary actions or metadata.'
+    attributes:
+      title: 'Card attributes'
+      type: Drupal\Core\Template\Attribute
+    media_attributes:
+      title: 'Media attributes'
+      type: Drupal\Core\Template\Attribute
+    content_attributes:
+      title: 'Body attributes'
+      type: Drupal\Core\Template\Attribute
+    header_attributes:
+      title: 'Header attributes'
+      type: Drupal\Core\Template\Attribute
+    footer_attributes:
+      title: 'Footer attributes'
+      type: Drupal\Core\Template\Attribute

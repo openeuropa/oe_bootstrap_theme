@@ -1,0 +1,87 @@
+{#
+/**
+ * @file
+ * Pagination v2 component.
+ */
+#}
+{% set _icon_path = icon_path|default(bcl_icon_path()) %}
+{% set _attributes = attributes|default(create_attribute()) %}
+
+{% if aria_label is not empty %}
+  {% set _attributes = _attributes.setAttribute('aria-label', aria_label) %}
+{% endif %}
+
+{% set _controls = [] %}
+{% for entry in [
+  { item: first|default({}), aria_label: 'First'|t },
+  { item: prev|default({}), aria_label: 'Previous'|t },
+  { item: next|default({}), aria_label: 'Next'|t },
+  { item: last|default({}), aria_label: 'Last'|t },
+] %}
+  {% set _control = entry.item %}
+  {% if _control is not empty %}
+    {% set _control = _control|merge({
+      aria_label: _control.aria_label|default(entry.aria_label),
+      attributes: create_attribute(_control.attributes|default({})),
+    }) %}
+
+    {% if _control.icon is defined and _control.icon is not empty %}
+      {% set _control = _control|merge({
+        icon: _control.icon|merge({
+          attributes: create_attribute(_control.icon.attributes|default({})),
+        }),
+        icon_path: _control.icon_path|default(_control.icon.path|default(_icon_path)),
+      }) %}
+    {% endif %}
+  {% endif %}
+  {% set _controls = _controls|merge([_control]) %}
+{% endfor %}
+
+{% set _items = [] %}
+{% if ellipsis_before ?? false %}
+  {% set _items = _items|merge([{
+    item_type: 'ellipsis',
+    aria_label: 'Ellipsis'|t,
+  }]) %}
+{% endif %}
+
+{% for item in items|default([]) %}
+  {% set _item = item|merge({
+    aria_label: item.aria_label|default(item.label|default('')),
+    attributes: create_attribute(item.attributes|default({})),
+  }) %}
+
+  {% if _item.icon is defined and _item.icon is not empty %}
+    {% set _item = _item|merge({
+      icon: _item.icon|merge({
+        attributes: create_attribute(_item.icon.attributes|default({})),
+      }),
+      icon_path: _item.icon_path|default(_item.icon.path|default(_icon_path)),
+    }) %}
+  {% endif %}
+
+  {% set _items = _items|merge([_item]) %}
+{% endfor %}
+
+{% if ellipsis_after ?? false %}
+  {% set _items = _items|merge([{
+    item_type: 'ellipsis',
+    aria_label: 'Ellipsis'|t,
+  }]) %}
+{% endif %}
+
+{% include '@oe-bcl/bcl-pagination-v2/pagination.html.twig' with {
+  size: size,
+  alignment: alignment|default('center'),
+  enable_prev_next_icon: enable_prev_next_icon ?? true,
+  enable_first_last_icon: enable_first_last_icon ?? false,
+  current_mobile_label: current_mobile_label,
+  first: _controls[0],
+  prev: _controls[1],
+  next: _controls[2],
+  last: _controls[3],
+  items: _items,
+  icon_path: _icon_path,
+  attributes: _attributes,
+  list_attributes: list_attributes|default(create_attribute()),
+} only %}

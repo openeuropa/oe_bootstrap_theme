@@ -1,0 +1,119 @@
+<div class="vstack gap-4">
+  {% include 'oe_bootstrap_theme:card' with {
+    variant: 'default',
+    orientation: 'vertical',
+    title: 'Vertical card',
+    title_tag: 'h2',
+    subtitle: 'Subtitle card',
+    text: 'This card includes a longer description to show how body text wraps across multiple lines in the component preview.',
+    image: {
+      src: 'https://picsum.photos/1000/500/',
+      alt: 'Alternative text for card image',
+    },
+    image_copyright: '© 2026 Example Organisation',
+    content: {
+      '#type': 'html_tag',
+      '#tag': 'button',
+      '#value': 'Custom action',
+      '#attributes': {
+        class: ['btn', 'btn-primary'],
+      },
+    },
+    header: 'Header of card',
+    footer: 'Footer of card',
+  } only %}
+
+  {% include 'oe_bootstrap_theme:card' with {
+    variant: 'default',
+    orientation: 'horizontal',
+    title: 'Horizontal card',
+    title_tag: 'h2',
+    subtitle: 'Subtitle card',
+    text: 'This card includes a longer description to show how body text wraps across multiple lines in the component preview.',
+    image: {
+      src: 'https://picsum.photos/1000/500/',
+      alt: 'Alternative text for card image',
+    },
+    image_copyright: '© 2026 Example Organisation',
+    meta: [
+      'DIGIT',
+      'Developer',
+    ],
+    badges: [
+      { label: 'A badge' },
+      { label: 'A non-rounded badge', rounded_pill: false },
+      { label: 'A solid badge', outline: false },
+    ],
+  } only %}
+
+  {% include 'oe_bootstrap_theme:card' with {
+    variant: 'search',
+    title: 'Search result card',
+    title_tag: 'h3',
+    text: 'This card includes a longer description to show how body text wraps across multiple lines in the component preview.',
+    image: {
+      src: 'https://picsum.photos/1000/500/',
+      alt: 'Alternative text for card image',
+    },
+    badges: [
+      { label: 'Category 1' },
+      { label: 'Category 2' },
+    ],
+  } only %}
+
+  {% include 'oe_bootstrap_theme:card' with {
+    variant: 'search',
+    title: 'Search result with date',
+    text: 'This card includes a longer description to show how body text wraps across multiple lines in the component preview.',
+    date: {
+      year: '2021',
+      month: 'Jan',
+      day: '23',
+      date_time: '2021-01-23',
+    },
+    badges: [
+      { label: 'Category 1' },
+      { label: 'Category 2' },
+    ],
+  } only %}
+
+  {% include 'oe_bootstrap_theme:card' with {
+    variant: 'default',
+    orientation: 'horizontal',
+    title: 'Card with date range',
+    text: 'This card includes a longer description to show how body text wraps across multiple lines in the component preview.',
+    date: {
+      year: '2021',
+      month: 'Jan',
+      day: '23',
+      end_year: '2022',
+      end_month: 'Feb',
+      end_day: '11',
+    },
+  } only %}
+
+  {% include 'oe_bootstrap_theme:card' with {
+    variant: 'default',
+    title: 'Card with a linked title',
+    title_link: {
+      path: 'https://example.com',
+      variant: 'warning',
+      icon: {
+        name: 'arrow-right',
+      },
+    },
+    text: 'This card includes a longer description to show how body text wraps across multiple lines in the component preview.',
+  } only %}
+
+  {% include 'oe_bootstrap_theme:card' with {
+    variant: 'default',
+    orientation: 'horizontal',
+    title: 'Card with a rounded image',
+    text: 'This card includes a longer description to show how body text wraps across multiple lines in the component preview.',
+    image: {
+      src: 'https://picsum.photos/500/500/',
+      alt: 'Alternative text for card image',
+      rounded: 'circle',
+    },
+  } only %}
+</div>
