@@ -3,15 +3,10 @@ featured_media_image_without_text:
     '#type': component
     '#component': oe_bootstrap_theme:featured_media
     '#props':
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1200/600/'
         alt: 'Alternative text for featured image'
-        title: 'Featured image title'
-        loading: lazy
-        width: 1200
-        height: 600
-        class:
-          - custom-image
+        name: 'Featured image title'
       caption: 'Media description text goes here.'
       copyright: '© 2026 Example Organisation'
       attributes: !Attribute
@@ -27,7 +22,7 @@ featured_media_image_without_text:
       'div.bcl-featured-media > div.row': 1
       'div.bcl-featured-media > div.row > div.col-12.col-md-4': 1
       'div.bcl-featured-media > div.row > div.col-12.col-md-4 > figure.rounded.overflow-hidden.custom-media': 1
-      'figure > img.img-fluid.flex-end-100.custom-image[src="https://picsum.photos/1200/600/"][alt="Alternative text for featured image"][title="Featured image title"][loading="lazy"][width="1200"][height="600"]': 1
+      'figure > img.img-fluid.flex-end-100[src="https://picsum.photos/1200/600/"][alt="Alternative text for featured image"][title="Featured image title"]': 1
       'figure > figcaption > div.bg-light.p-3': 1
       'figure > figcaption > div.bcl-copyright': 1
       'h2': 0
@@ -45,7 +40,7 @@ featured_media_image_with_text_and_link:
     '#type': component
     '#component': oe_bootstrap_theme:featured_media
     '#props':
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1200/600/'
         alt: 'Alternative text for featured image'
         name: 'Image value object title'
