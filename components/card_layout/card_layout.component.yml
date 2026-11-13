@@ -1,23 +1,18 @@
 name: 'Card layout'
 description: 'Bootstrap card layout for rendering a series of cards as a group or grid layout.'
+variants:
+  group:
+    title: 'Group'
+    description: 'Use card groups to render cards as a single, attached element with equal width and height columns.'
+  grid:
+    title: 'Grid'
+    description: 'Use the Bootstrap grid system and its classes to control how many grid columns (wrapped around your cards) are shown per row.'
+  masonry:
+    title: 'Masonry'
+    description: 'It works by placing elements in optimal position based on available vertical space.'
 props:
   type: object
   properties:
-    variant:
-      title: Variant
-      type: [string, 'null']
-      description: 'The card layout variant. Defaults to group.'
-      enum:
-        - group
-        - grid
-        - masonry
-        - null
-      'meta:enum':
-        group: 'Group (default)'
-        grid: Grid
-        masonry: Masonry
-        # Value NULL becomes '' when used as array key.
-        '': Default
     items:
       title: 'Card items'
       type: [array, 'null']
