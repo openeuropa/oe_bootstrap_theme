@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel\ValueObject;
 
+use Drupal\Core\TypedData\Exception\MissingDataException;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\AbstractKernelTestBase;
 use Drupal\entity_test\Entity\EntityTest;
 use Drupal\field\Entity\FieldConfig;
@@ -118,6 +119,27 @@ class ImageValueObjectTest extends AbstractKernelTestBase {
     $this->assertEqualsCanonicalizing([
       'file:1',
     ], $object->getCacheTags());
+  }
+
+  /**
+   * Tests a deleted file entity throws a typed-data exception.
+   */
+  public function testMissingFileEntity(): void {
+    $file = $this->entity->get('field_image')->entity;
+    $file->delete();
+    $entity = EntityTest::load($this->entity->id());
+    $image_item = $entity->get('field_image')->first();
+
+    try {
+      ImageValueObject::fromImageItem($image_item);
+      $this->fail('Expected a missing file entity exception.');
+    }
+    catch (MissingDataException) {
+      // The factory translates a dangling file reference into typed-data API.
+    }
+
+    $this->expectException(MissingDataException::class);
+    ImageValueObject::fromStyledImageItem($image_item, 'unused');
   }
 
 }
