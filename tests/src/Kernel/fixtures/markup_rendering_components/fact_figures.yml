@@ -3,6 +3,7 @@ fact_figures_default_1col:
     '#type': component
     '#component': oe_bootstrap_theme:fact_figures
     '#props':
+      alignment: 'center'
       columns: 1
       link:
         label: 'Read more'
@@ -43,6 +44,15 @@ fact_figures_default_1col:
       'div.row.row-cols-sm-2': 0
       'svg.bi.icon--3xl': 6
       'svg use': 6
+      # Establish baseline element counts.
+      '.row > .col': 6
+      '.row > .col > p': 6
+      # The 'h-100' class is always added, because equal_height is always true.
+      '.row > .col.h-100': 6
+      # The 'text-center' and 'text-start' classes are added when alignment is
+      # set to 'center'.
+      '.row > .col.text-center': 6
+      '.row > .col > p.text-start': 6
     contains:
       'svg': '/custom-icons.svg#sticky'
       'a[href="/example"]': 'Read more'
@@ -60,6 +70,7 @@ fact_figures_default_1col:
       'div > div.col:nth-child(4) > div.fs-5': 'Test variants'
       'div > div.col:nth-child(5) > div.fs-5': 'Jira ticket'
       'div > div.col:nth-child(6) > div.fs-5': 'Figma components'
+      'div > div.col.h-100:nth-child(3) > svg': '<use xlink:href="/custom-icons.svg#shield-check"></use>'
       'a[href="/example"]': 'Read more'
 fact_figures_default_2col:
   render:
@@ -153,6 +164,16 @@ fact_figures_default_3col:
       'div.row.row-cols-sm-2': 1
       'svg.bi.icon--3xl': 6
       'svg.custom-class.mb-2.icon--primary': 1
+      # Establish baseline element counts.
+      '.row': 1
+      '.row > .col': 6
+      '.row > .col > p': 6
+      # The 'h-100' class is always added, because equal_height is always true.
+      '.row > .col.h-100': 6
+      # The 'text-center' and 'text-start' classes are onöy added when alignment
+      # is set to 'center', which is not the case here.
+      '.row > .col.text-center': 0
+      '.row > .col > p.text-start': 0
     contains:
       'div > div.col:nth-child(5) > svg': '#inbox'
       'a[href="/example"]': 'Read more'
