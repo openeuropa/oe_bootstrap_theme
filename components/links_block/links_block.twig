@@ -35,7 +35,7 @@
         attributes: create_attribute(_link_icon.attributes|default({})),
       }),
     }) %}
-    {% if _link.icon_display is not defined %}
+    {% if _link.icon_display is not defined or _link.icon_display is null %}
       {% set _link = _link|merge({ icon_display: 'flex' }) %}
     {% endif %}
   {% endif %}

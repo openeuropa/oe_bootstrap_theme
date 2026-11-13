@@ -61,7 +61,7 @@
       meta: _meta,
       icon: {
         path: _icon_path,
-        name: file.extension|to_file_icon,
+        name: file.extension|default('')|to_file_icon,
         size: '2xl',
       },
       download: {

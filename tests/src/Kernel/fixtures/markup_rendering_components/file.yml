@@ -131,3 +131,17 @@ file_without_file_renders_nothing:
       'h2': 0
       '.bcl-file-container': 0
       '.bcl-file': 0
+
+file_null_extension:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:file
+    '#props':
+      file:
+        title: 'Report'
+        url: '/report'
+        extension: null
+  assertions:
+    count:
+      'a[href="/report"]': 1
+      'svg.bi': 2

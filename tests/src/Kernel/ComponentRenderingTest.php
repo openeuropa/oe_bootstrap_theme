@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
 use Drupal\Component\Serialization\Yaml;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
@@ -12,6 +13,7 @@ use Drupal\Core\Render\Element;
 use Drupal\Core\Site\Settings;
 use Drupal\Core\Template\Attribute;
 use Drupal\KernelTests\KernelTestBase;
+use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\OptionalPropsNullifier;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -109,6 +111,18 @@ class ComponentRenderingTest extends KernelTestBase implements FormInterface {
    * @dataProvider componentRenderingProvider
    */
   public function testComponentRendering(array $render, array $assertions): void {
+    $this->doTestComponentRendering($render, $assertions);
+    $schema = $this->container->get('plugin.manager.sdc')->find($render['#component'])->metadata->schema;
+    $render['#props'] = OptionalPropsNullifier::populate($schema, $render['#props'] ?? []);
+    // Each render represents a separate page with its own generated IDs.
+    Html::resetSeenIds();
+    $this->doTestComponentRendering($render, $assertions);
+  }
+
+  /**
+   * Renders a component and checks its markup using the fixture assertions.
+   */
+  protected function doTestComponentRendering(array $render, array $assertions): void {
     $form_state = new FormState();
     $form_state->addBuildInfo('args', [$render]);
     $form_state->setProgrammed();

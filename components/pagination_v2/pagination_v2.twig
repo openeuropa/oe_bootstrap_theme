@@ -18,7 +18,7 @@
   { item: next|default({}), aria_label: 'Next'|t },
   { item: last|default({}), aria_label: 'Last'|t },
 ] %}
-  {% set _control = entry.item %}
+  {% set _control = entry.item|filter(value => value is not null) %}
   {% if _control is not empty %}
     {% set _control = _control|merge({
       aria_label: _control.aria_label|default(entry.aria_label),
@@ -46,7 +46,7 @@
 {% endif %}
 
 {% for item in items|default([]) %}
-  {% set _item = item|merge({
+  {% set _item = item|filter(value => value is not null)|merge({
     aria_label: item.aria_label|default(item.label|default('')),
     attributes: create_attribute(item.attributes|default({})),
   }) %}

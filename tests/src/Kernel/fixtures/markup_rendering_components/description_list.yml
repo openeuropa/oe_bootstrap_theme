@@ -146,3 +146,16 @@ description_list_horizontal:
             definition:
               - label: 'First definition for third term.'
               - label: 'Second definition for third term.'
+
+description_list_null_items:
+  render:
+    '#type': component
+    '#component': oe_bootstrap_theme:description_list
+    '#props':
+      title: 'Empty list'
+      items: null
+  assertions:
+    count:
+      'dl': 1
+    equals:
+      'h2.bcl-heading': 'Empty list'
