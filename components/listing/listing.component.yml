@@ -10,7 +10,7 @@ props:
   properties:
     columns:
       title: Columns
-      type: [integer, 'null']
+      type: [string, integer, 'null']
       description: 'Number of columns. Defaults to 1.'
       enum:
         - 1

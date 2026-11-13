@@ -8,20 +8,20 @@ modal_default_with_fallback_id:
         label: 'Open modal'
   assertions:
     count:
-      'div[data-component-id="oe_bootstrap_theme:modal"]#modal.modal.fade[tabindex="-1"][aria-hidden="true"]': 1
-      'div#modal > div.modal-dialog': 1
-      'div#modal > div.modal-dialog.modal-sm': 0
-      'div#modal > div.modal-dialog.modal-lg': 0
-      'div#modal > div.modal-dialog.modal-xl': 0
-      'div#modal > div.modal-dialog.modal-fullscreen': 0
-      'div#modal > div.modal-dialog.modal-dialog-centered': 0
-      'div#modal > div.modal-dialog.modal-dialog-scrollable': 0
-      'div#modal[data-bs-backdrop]': 0
-      'div#modal .modal-header': 0
-      'div#modal .modal-footer': 0
-      'button.btn-primary[data-bs-toggle="modal"][data-bs-target="#modal"][aria-controls="modal"]': 1
+      'div[data-component-id="oe_bootstrap_theme:modal"]#bcl-modal.modal.fade[tabindex="-1"][aria-hidden="true"]': 1
+      'div#bcl-modal > div.modal-dialog': 1
+      'div#bcl-modal > div.modal-dialog.modal-sm': 0
+      'div#bcl-modal > div.modal-dialog.modal-lg': 0
+      'div#bcl-modal > div.modal-dialog.modal-xl': 0
+      'div#bcl-modal > div.modal-dialog.modal-fullscreen': 0
+      'div#bcl-modal > div.modal-dialog.modal-dialog-centered': 0
+      'div#bcl-modal > div.modal-dialog.modal-dialog-scrollable': 0
+      'div#bcl-modal[data-bs-backdrop]': 0
+      'div#bcl-modal .modal-header': 0
+      'div#bcl-modal .modal-footer': 0
+      'button.btn-primary[data-bs-toggle="modal"][data-bs-target="#bcl-modal"][aria-controls="bcl-modal"]': 1
     equals:
-      'div#modal .modal-body': 'Default modal body.'
+      'div#bcl-modal .modal-body': 'Default modal body.'
       'button[data-bs-toggle="modal"]': 'Open modal'
 
 modal_with_all_content_and_attributes:

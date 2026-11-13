@@ -113,10 +113,10 @@ carousel_with_fallback_id:
             alt: 'alt image 1'
   assertions:
     count:
-      '.carousel[id^="carousel"]': 1
-      '.carousel-control-prev[data-bs-target^="#carousel"]': 1
-      '.carousel-control-next[data-bs-target^="#carousel"]': 1
-      '.carousel-indicators button[data-bs-target^="#carousel"]': 1
+      '.carousel[id^="bcl-carousel"]': 1
+      '.carousel-control-prev[data-bs-target^="#bcl-carousel"]': 1
+      '.carousel-control-next[data-bs-target^="#bcl-carousel"]': 1
+      '.carousel-indicators button[data-bs-target^="#bcl-carousel"]': 1
 carousel_with_user_id:
   render:
     '#type': component

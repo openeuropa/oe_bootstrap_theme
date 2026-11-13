@@ -41,7 +41,7 @@
 {% endfor %}
 
 {% include '@oe-bcl/dropdown' with {
-  id: dropdown_id|default('dropdown'|clean_unique_id),
+  id: dropdown_id|default('bcl-dropdown'|clean_unique_id),
   trigger: _trigger,
   link: link ?? false,
   direction: direction,

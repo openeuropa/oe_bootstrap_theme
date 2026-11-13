@@ -222,10 +222,10 @@ gallery_with_fallback_id:
             '#markup': '<img src="https://example.com/thumbnail.jpg" alt="Thumbnail">'
   assertions:
     count:
-      '.bcl-gallery .modal[id^="modalGallery"]': 1
-      '.bcl-gallery .carousel[id^="carouselGallery"]': 1
-      '.bcl-gallery__item[data-bs-target^="#carouselGallery"]': 1
-      '.bcl-gallery__item-overlay[data-bs-target^="#modalGallery"]': 1
+      '.bcl-gallery .modal[id^="modalBcl-gallery"]': 1
+      '.bcl-gallery .carousel[id^="carouselBcl-gallery"]': 1
+      '.bcl-gallery__item[data-bs-target^="#carouselBcl-gallery"]': 1
+      '.bcl-gallery__item-overlay[data-bs-target^="#modalBcl-gallery"]': 1
 
 gallery_without_items:
   render:
