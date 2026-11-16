@@ -4,7 +4,8 @@
   items: [
     {
       media: {
-        '#markup': '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></video>',
+        '#type': 'inline_template',
+        '#template': '<video poster="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" controls><source src="https://inno-ecl.s3.amazonaws.com/media/videos/big_buck_bunny.mp4" type="video/mp4"></video>',
       },
       thumbnail: {
         '#markup': '<img src="https://inno-ecl.s3.amazonaws.com/media/examples/example-external-video.jpg" alt="Example alt text" />',
@@ -17,7 +18,8 @@
         '#markup': '<img src="https://picsum.photos/id/40/800/600/" alt="Cat media image alt" />',
       },
       thumbnail: {
-        '#markup': '<img src="https://picsum.photos/id/40/400/300/" alt="Cat thumbnail alt" /',
+        '#type': 'inline_template',
+        '#template': '<img src="https://picsum.photos/id/40/400/300/" alt="Cat thumbnail alt" /',
       },
       caption_title: 'A picture of a cat',
       copyright: '© 2024 Example Organisation',
@@ -98,7 +100,8 @@
     },
     {
       media: {
-        '#markup': '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+        '#type': 'inline_template',
+        '#template': '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ty5axPlgMuk" caption_title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
       },
       thumbnail: {
         '#markup': '<img src="https://picsum.photos/400/300" alt="YouTube thumbnail alt" />',

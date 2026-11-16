@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\oe_bootstrap_theme_sdc_port\Twig;
 
+use Drupal\Component\Utility\Xss;
 use Drupal\Core\Render\Markup;
 use Drupal\oe_bootstrap_theme\ValueObject\FileValueObject;
 use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
@@ -62,7 +63,21 @@ class TwigGenerator {
         return $expression . '|oe_bt__to_file_value_object';
 
       case $value instanceof Markup:
-        return $this->toTwigExpression(['#markup' => $value->__toString()], $level);
+        $markup = (string) $value;
+        // A '#markup' string is passed through Xss::filterAdmin() on render.
+        // @see \Drupal\Core\Render\Renderer::ensureMarkupIsSafe()
+        if (Xss::filterAdmin($markup) === $markup) {
+          return $this->toTwigExpression(['#markup' => $markup], $level);
+        }
+        // Otherwise, use an inline template to preserve the html tags.
+        // A '|raw' filter would only work when printing, not in arguments.
+        if (preg_match('@\{[{%#]@', $markup)) {
+          throw new \InvalidArgumentException('Markup contains twig syntax, cannot be used as inline template.');
+        }
+        return $this->toTwigExpression([
+          '#type' => 'inline_template',
+          '#template' => $markup,
+        ], $level);
 
       case $value === NULL:
         return 'null';
