@@ -1,15 +1,15 @@
 // Layout
 // -----------------------------------------------------------------------------
-@import "layout/page.header";
-@import "layout/page.content";
-@import "layout/page.footer";
+@use "layout/page.header" as page-header;
+@use "layout/page.content" as page-content;
+@use "layout/page.footer" as page-footer;
 
 // Component
 // -----------------------------------------------------------------------------
-@import "components/my.component";
+@use "components/my.component" as my-component;
 
 // Other
 // -----------------------------------------------------------------------------
-@import "block/block";
-@import "content/node.page";
-@import "content/node.article";
+@use "block/block";
+@use "content/node.page" as node-page;
+@use "content/node.article" as node-article;

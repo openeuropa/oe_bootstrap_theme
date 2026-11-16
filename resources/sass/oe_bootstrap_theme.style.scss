@@ -1,10 +1,9 @@
-@import "variables/all";
-@import "variables/mixin";
+@use "variables/all" as variables;
 
 // Drupal overrides (shared with sub themes)
 // -----------------------------------------------------------------------------
-@import "overrides/all";
+@use "overrides/all" as overrides;
 
 // Custom component (shared with sub themes)
 // -----------------------------------------------------------------------------
-@import "components/all";
+@use "components/all" as components;

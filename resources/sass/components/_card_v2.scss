@@ -1,3 +1,5 @@
+@use "../variables/mixin";
+
 // Custom style for Card v2.
 // -----------------------------------------------------------------------------
 .card.v2 {
@@ -35,7 +37,7 @@
     a {
       color: var(--bs-body-color);
       text-decoration: none;
-      @include clickable-parent;
+      @include mixin.clickable-parent;
 
       &:focus {
         text-decoration: underline;

@@ -1,9 +1,9 @@
-// Import custom components that will be shared with the sub themes
+// Load custom components that will be shared with the sub themes
 // -----------------------------------------------------------------------------
-@import 'blockquote';
-@import 'card_v2';
-@import 'navbar';
-@import 'form';
-@import 'listing';
-@import 'columns';
-@import 'patterns-preview';
+@use 'blockquote';
+@use 'card_v2';
+@use 'navbar';
+@use 'form';
+@use 'listing';
+@use 'columns';
+@use 'patterns-preview';

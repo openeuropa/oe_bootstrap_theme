@@ -1,9 +1,9 @@
-// Import drupal overrides that will be shared with the sub themes
+// Load drupal overrides that will be shared with the sub themes
 // -----------------------------------------------------------------------------
-@import 'toolbar';
-@import 'table';
-@import 'inpage_navigation';
-@import 'js_throbbler';
+@use 'toolbar';
+@use 'table';
+@use 'inpage_navigation';
+@use 'js_throbbler';
 
 button.link {
   display: inline;
