@@ -120,6 +120,9 @@ regardless of your local host configuration.
 
 - [Docker](https://www.docker.com/get-docker)
 - [Docker Compose](https://docs.docker.com/compose/)
+- Node.js 22 or 24 and pnpm 10.34.9 available inside the `web` container. With
+  Corepack installed, run `corepack enable` to use the pnpm version pinned in
+  `package.json`. The release workflow provisions these tools automatically.
 
 #### Override docker settings
 
@@ -165,7 +168,7 @@ docker-compose exec web rm -rf build/
 Install dependencies, build artifacts, and install Drupal.
 
 ```bash
-# This will trigger npm commands to build assets.
+# This will trigger pnpm commands to build assets.
 docker-compose exec web composer install
 docker-compose exec web ./vendor/bin/run drupal:site-install
 ```
@@ -200,32 +203,38 @@ docker-compose exec web ./vendor/bin/run toolkit:test-phpunit --junit
 
 ## Rebuild assets during development
 
-To rebuild assets with npm during development, without having to run `composer install` or `composer update`:
+To rebuild assets with pnpm during development, without having to run `composer install` or `composer update`:
 
 ```bash
-docker-compose exec web npm ci --ignore-scripts
-docker-compose exec web npm run apply-patches
-docker-compose exec web npm run build
+docker-compose exec web pnpm install --frozen-lockfile --ignore-scripts
+docker-compose exec web pnpm run build
 # or, for continuous updates:
-docker-compose exec web npm run watch
+docker-compose exec web pnpm run watch
 ```
 
 ## Patch BCL components
 
-BCL components can be patched by using the [`patch-package`](https://www.npmjs.com/package/patch-package) npm project.
+BCL components use [pnpm's native patches](https://pnpm.io/cli/patch), which are
+applied during installation even when lifecycle scripts are disabled.
 
-To patch a component:
-
-1. Modify its source files directly in `./node_modules/@openeuropa/bcl-theme-default`
-2. Run:
+Extract the installed package for editing:
 
 ```bash
-docker-compose exec web npm exec -- patch-package @openeuropa/bcl-theme-default --patch-dir=patches/npm
+docker-compose exec web pnpm patch @openeuropa/bcl-theme-default@1.17.1
 ```
 
-Patches will be generated in `./patches/npm`. Install-time lifecycle scripts are
-disabled, so run `npm run apply-patches` explicitly before building assets.\
-**Note:** generate patches **only** inside the Docker container to use the same version of npm.
+Edit the files in the directory printed by pnpm, then save the patch using that
+directory's path:
+
+```bash
+docker-compose exec web pnpm patch-commit <edit-directory>
+docker-compose exec web pnpm run build
+```
+
+Commit the patch in `patches/`, its `patchedDependencies` entry in
+`pnpm-workspace.yaml`, and the updated `pnpm-lock.yaml`. To patch a different BCL
+version after upgrading, replace the old patch entry with one for the installed
+version.
 
 ## Contribute
 

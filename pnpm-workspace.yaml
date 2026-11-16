@@ -1,0 +1,9 @@
+ignoreScripts: true
+minimumReleaseAge: 10080
+minimumReleaseAgeExclude:
+  - '@openeuropa/bcl-builder'
+  - '@openeuropa/bcl-theme-default'
+blockExoticSubdeps: true
+
+patchedDependencies:
+  '@openeuropa/bcl-theme-default@1.17.1': patches/@openeuropa__bcl-theme-default@1.17.1.patch

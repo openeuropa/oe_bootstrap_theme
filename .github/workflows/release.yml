@@ -67,6 +67,32 @@ jobs:
           docker compose exec -T web apt-get update -y
           docker compose exec -T web apt-get install zip -y
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Set up pnpm
+        id: pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Install Node.js and pnpm in web container
+        # Composer's site-setup hook builds assets inside this container.
+        env:
+          PNPM_DIST: ${{ steps.pnpm.outputs.dest }}
+        run: |
+          node_dist="$(dirname "$(dirname "$(command -v node)")")"
+          docker compose cp "${node_dist}/." web:/opt/node
+          docker compose cp "${PNPM_DIST}/." web:/opt/pnpm
+          docker compose exec -T web sh -ec '
+            ln -sf /opt/node/bin/node /usr/local/bin/node
+            ln -sf /opt/pnpm/node_modules/.bin/pnpm /usr/local/bin/pnpm
+            node --version
+            pnpm --version
+          '
+
       - name: composer self-update
         run: docker compose exec -T web composer self-update --2
 
@@ -77,13 +103,10 @@ jobs:
         run: docker compose exec -T web ./vendor/bin/grumphp run
 
       - name: Install dependencies
-        run: docker compose exec -T web npx --yes --package=npm@12.0.2 npm ci --ignore-scripts
-
-      - name: Apply npm dependency patches
-        run: docker compose exec -T web npm run apply-patches
+        run: docker compose exec -T web pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Build production assets
-        run: docker compose exec -T -e NODE_ENV=production web npm run production
+        run: docker compose exec -T -e NODE_ENV=production web pnpm run production
 
       - name: release:create-archive
         # There are different ways to get the current tag.

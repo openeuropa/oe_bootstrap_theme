@@ -1,0 +1,6 @@
+ignoreScripts: true
+minimumReleaseAge: 10080
+minimumReleaseAgeExclude:
+  - '@openeuropa/bcl-builder'
+  - '@openeuropa/bcl-theme-default'
+blockExoticSubdeps: true
