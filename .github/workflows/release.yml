@@ -67,33 +67,6 @@ jobs:
           docker compose exec -T web apt-get update -y
           docker compose exec -T web apt-get install zip -y
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-
-      - name: Set up pnpm
-        id: pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          run_install: false
-
-      - name: Install Node.js and pnpm in web container
-        # Composer's site-setup hook builds assets inside this container.
-        env:
-          PNPM_DIST: ${{ steps.pnpm.outputs.dest }}
-        run: |
-          node_dist="$(dirname "$(dirname "$(command -v node)")")"
-          docker compose cp "${node_dist}/." web:/opt/node
-          docker compose cp "${PNPM_DIST}/." web:/opt/pnpm
-          docker compose exec -T web sh -ec '
-            ln -sf /opt/node/bin/node /usr/local/bin/node
-            # The .bin shell shim resolves paths relative to its launch location.
-            ln -sf /opt/pnpm/node_modules/pnpm/bin/pnpm.cjs /usr/local/bin/pnpm
-            node --version
-            /usr/local/bin/pnpm --version
-          '
-
       - name: composer self-update
         run: docker compose exec -T web composer self-update --2
 

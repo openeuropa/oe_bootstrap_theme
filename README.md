@@ -120,9 +120,9 @@ regardless of your local host configuration.
 
 - [Docker](https://www.docker.com/get-docker)
 - [Docker Compose](https://docs.docker.com/compose/)
-- Node.js 22 or 24 and pnpm 10.34.9 available inside the `web` container. With
+- Node.js 22 or newer and pnpm 10.34.9 available inside the `web` container. With
   Corepack installed, run `corepack enable` to use the pnpm version pinned in
-  `package.json`. The release workflow provisions these tools automatically.
+  `package.json`. The release workflow uses the tools already included in its CI image.
 
 #### Override docker settings
 
