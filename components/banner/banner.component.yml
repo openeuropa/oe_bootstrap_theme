@@ -20,9 +20,6 @@ slots:
   description:
     title: Description
     description: 'Sub-heading of the banner.'
-  image:
-    title: Image
-    description: 'URL of the image. Optional.'
   copyright:
     title: Copyright
     description: 'Optional copyright text displayed below the banner.'
@@ -53,6 +50,10 @@ props:
       title: 'Call to action'
       description: 'Links to print a CTA button. Optional.'
       type: [array, 'null']
+    image:
+      title: Image
+      description: 'URL of the image. Optional.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: [object, array, string, 'null']

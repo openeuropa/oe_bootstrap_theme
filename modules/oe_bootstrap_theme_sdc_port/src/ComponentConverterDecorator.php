@@ -212,7 +212,28 @@ class ComponentConverterDecorator extends ComponentConverter {
       throw new \Exception("Unable to find a component type for '$name' in '$id'.");
     };
     return $first_not_null((function () use ($prop, $setting, $name, $id): \Iterator {
-      // First, check if the parent converter class already set a prop type.
+      // Some hard-coded prop types for specific known fields.
+      yield match ("$id.$name") {
+        // Prevent some fields from becoming slots.
+        // Some props hold urls.
+        'badge.url',
+        'banner.image',
+        'link.path',
+        // Some props are passed as attribute values.
+        'badge.title',
+        'blockquote.cite',
+        'carousel_v2.label',
+        'pagination_v2.aria_label',
+        // Short UI labels work better as props.
+        'accordion.expand_button_label',
+        'accordion.collapse_button_label',
+        'file.link_label',
+        'pagination_v2.current_mobile_label',
+        // Some props hold enum-like values.
+        'content_banner.image_size' => 'string',
+        default => NULL,
+      };
+      // Now, check if the parent converter class already set a prop type.
       // If so, keep it, unless it is a number.
       yield match ($prop['type'] ?? NULL) {
         'number' => match ($id) {

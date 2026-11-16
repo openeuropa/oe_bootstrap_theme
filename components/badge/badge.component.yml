@@ -4,12 +4,6 @@ slots:
   label:
     title: Label
     description: 'The badge label.'
-  url:
-    title: 'Badge URL'
-    description: 'Converts the badge in a link. Optional.'
-  title:
-    title: 'Link title'
-    description: 'Title attribute if the badge is a link. Optional.'
 props:
   type: object
   properties:
@@ -51,6 +45,14 @@ props:
       title: Outline
       description: 'Uses a border instead of a background. Defaults to false.'
       type: [boolean, 'null']
+    url:
+      title: 'Badge URL'
+      description: 'Converts the badge in a link. Optional.'
+      type: [string, 'null']
+    title:
+      title: 'Link title'
+      description: 'Title attribute if the badge is a link. Optional.'
+      type: [string, 'null']
     attributes:
       title: Attributes
       type: [object, array, string, 'null']

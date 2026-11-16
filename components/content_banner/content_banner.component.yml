@@ -4,9 +4,6 @@ slots:
   copyright:
     title: Copyright
     description: 'Optional copyright text displayed below the banner.'
-  image_size:
-    title: 'Image size'
-    description: 'The size of the images. Allowed values: md, lg, xl. Defaults to lg.'
   title:
     title: Title
     description: 'Title of the content banner.'
@@ -27,6 +24,10 @@ props:
       title: Image
       description: 'Image of the content.'
       type: [object, 'null']
+    image_size:
+      title: 'Image size'
+      description: 'The size of the images. Allowed values: md, lg, xl. Defaults to lg.'
+      type: [string, 'null']
     title_tag:
       title: 'Title tag'
       description: 'The tag to use for the title. Defaults to h1.'
