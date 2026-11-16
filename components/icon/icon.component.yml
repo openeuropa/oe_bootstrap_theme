@@ -19,6 +19,7 @@ props:
         - l
         - xl
         - 2xl
+        - 3xl
         - fluid
         - null
       'meta:enum':
@@ -29,6 +30,7 @@ props:
         l: L
         xl: Xl
         2xl: 2xl
+        3xl: 3xl
         fluid: Fluid
         '': Default
     attributes:
