@@ -3,10 +3,9 @@ description_list_default:
     '#type': pattern
     '#id': description_list
     '#fields':
+      # Do not pass orientation, to test the default value.
       title: 'The description list title'
       title_tag: 'h4'
-      settings:
-        orientation: default
       items:
         - term:
             - label: 'Single label with icon'
@@ -71,7 +70,8 @@ description_list_incomplete:
       title: 'The description list title'
       title_tag: 'h4'
       settings:
-        orientation: default
+        # Pass 'vertical', which is the default.
+        orientation: vertical
       items:
         # An item without a term is not officially supported.
         # The test just covers the current behavior, which can result in empty

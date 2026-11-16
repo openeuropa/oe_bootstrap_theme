@@ -36,6 +36,14 @@ props:
       title: Orientation
       description: 'Can be set to horizontal or vertical. Defaults to vertical.'
       type: [string, 'null']
+      enum:
+        - vertical
+        - horizontal
+        - null
+      'meta:enum':
+        vertical: Vertical
+        horizontal: Horizontal
+        '': 'Default (vertical)'
     title_tag:
       title: 'Title tag'
       description: 'Title tag of the card. Defaults to h1.'
