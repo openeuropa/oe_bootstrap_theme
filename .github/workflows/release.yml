@@ -88,9 +88,10 @@ jobs:
           docker compose cp "${PNPM_DIST}/." web:/opt/pnpm
           docker compose exec -T web sh -ec '
             ln -sf /opt/node/bin/node /usr/local/bin/node
-            ln -sf /opt/pnpm/node_modules/.bin/pnpm /usr/local/bin/pnpm
+            # The .bin shell shim resolves paths relative to its launch location.
+            ln -sf /opt/pnpm/node_modules/pnpm/bin/pnpm.cjs /usr/local/bin/pnpm
             node --version
-            pnpm --version
+            /usr/local/bin/pnpm --version
           '
 
       - name: composer self-update
