@@ -19,6 +19,7 @@ use Drupal\Tests\oe_bootstrap_theme\Helper\HtmlSnapshotStabilizer;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
 use Drupal\Tests\oe_bootstrap_theme\Traits\BackwardCompatibilityTrait;
 use Drupal\ui_patterns\UiPatternsManagerInterface;
+use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -303,6 +304,16 @@ class MarkupRenderingTest extends KernelTestBase {
           $use_objects,
           $fill_nulls,
           $use_template_include,
+        );
+      }
+      catch (ExpectationFailedException $e) {
+        // Keep the comparison failure, so that PHPUnit prints the diff.
+        // The original message and trace are printed for the previous
+        // exception.
+        throw new ExpectationFailedException(
+          "Failure in '$case_name' ($i of $n).",
+          $e->getComparisonFailure(),
+          $e,
         );
       }
       catch (\Throwable $e) {
