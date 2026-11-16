@@ -135,6 +135,17 @@ file_with_translations_and_custom_link_label:
           language_code: 'bg'
           meta: 'Draft'
   assertions: {}
+# The file has no language code and no size.
+file_without_language_code_or_size:
+  render:
+    '#type': 'pattern'
+    '#id': 'file'
+    '#fields':
+      file:
+        title: 'No language file'
+        url: 'https://example.com/no-lang.txt'
+        extension: 'txt'
+  assertions: {}
 # Without a file, nothing is rendered, even with a title.
 file_without_file_renders_nothing:
   render:
