@@ -203,6 +203,7 @@ class ComponentConverterDecorator extends ComponentConverter {
    *   A prop type was not found.
    */
   protected function findPropType(array $prop, array $setting, string $name, string $id): string|array {
+    // The first non-NULL 'yield' value becomes the prop type.
     $first_not_null = function (iterable $it) use ($name, $id): mixed {
       foreach ($it as $value) {
         if ($value !== NULL) {
@@ -212,6 +213,8 @@ class ComponentConverterDecorator extends ComponentConverter {
       throw new \Exception("Unable to find a component type for '$name' in '$id'.");
     };
     return $first_not_null((function () use ($prop, $setting, $name, $id): \Iterator {
+      // First, check if the parent converter class already set a prop type.
+      // If so, keep it, unless it is a number.
       yield match ($prop['type'] ?? NULL) {
         'number' => match ($id) {
           'progress' => 'number',
@@ -219,15 +222,14 @@ class ComponentConverterDecorator extends ComponentConverter {
         },
         default => $prop['type'] ?? NULL,
       };
+      // Some hard-coded prop types for specific known prop names.
       yield match ($name) {
         'title_tag',
         'heading_tag',
         'subtitle_tag' => match ($setting['type'] ?? NULL) {
           'textfield',
           'text' => 'string',
-          default => (function () {
-            return NULL;
-          })(),
+          default => NULL,
         },
         'icon' => match ($id) {
           'alert' => 'string',
@@ -235,6 +237,7 @@ class ComponentConverterDecorator extends ComponentConverter {
         },
         default => NULL,
       };
+      // Check if the parent converter class has set a '$ref'.
       yield match ($prop['$ref'] ?? NULL) {
         // Unfortunately, a class like `Attribute::class` cannot be combined
         // with other types like an associative array or null.
@@ -242,6 +245,7 @@ class ComponentConverterDecorator extends ComponentConverter {
         'ui-patterns://attributes' => ['object', 'string'],
         NULL => NULL,
       };
+      // Check the original type of the setting in the pattern.
       yield match ($setting['type'] ?? NULL) {
         // Convert these props to slot later.
         'text',
@@ -258,9 +262,6 @@ class ComponentConverterDecorator extends ComponentConverter {
         'mixed' => NULL,
         NULL => throw new \Exception("Missing type in '$name' setting or field in '$id' pattern."),
         default => throw new \Exception("Unexpected type '$setting[type]' in '$name' setting or field in '$id' pattern."),
-      };
-      yield match ($name) {
-        'icon' => ['array', 'string'],
       };
     })());
   }
