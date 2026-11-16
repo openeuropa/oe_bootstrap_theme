@@ -110,3 +110,13 @@ file_with_title_tag:
           icon: 'file-pdf-fill'
         translations: ~
         link_label: 'Download'
+file_without_language_code_or_size:
+  render:
+    '#type': 'pattern'
+    '#id': 'file'
+    '#fields':
+      file:
+        title: 'No language file'
+        url: 'https://example.com/no-lang.txt'
+        extension: 'txt'
+  assertions: {}
