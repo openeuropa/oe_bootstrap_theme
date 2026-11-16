@@ -141,6 +141,16 @@ class ComponentConverterDecorator extends ComponentConverter {
    */
   protected function processProp(array $prop, array $source_setting, string $name, string $id): array {
     $prop['type'] = $this->findPropType($prop, $source_setting, $name, $id);
+    if ($name === 'orientation') {
+      $prop['type'] = 'string';
+      $prop['enum'] = ['vertical', 'horizontal'];
+      $default = $id === 'navigation' ? 'horizontal' : 'vertical';
+      $prop['meta:enum'] = [
+        'vertical' => 'Vertical',
+        'horizontal' => 'Horizontal',
+        '' => "Default ($default)",
+      ];
+    }
     // Allow string representation of numbers.
     if (array_intersect(['integer', 'number'], (array) $prop['type'])) {
       $prop['type'] = array_unique([...(array) $prop['type'], 'string']);
