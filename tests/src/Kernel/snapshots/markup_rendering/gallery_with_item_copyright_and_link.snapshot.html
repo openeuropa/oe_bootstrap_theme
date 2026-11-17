@@ -1,0 +1,328 @@
+<div
+  class="bcl-gallery custom-gallery-class"
+  data-gallery-attribute="custom-value"
+  id="custom-gallery-wrapper"
+>
+  <div
+    class="align-items-sm-center d-sm-flex flex-sm-row"
+  >
+    <div
+      class="flex-sm-grow-1"
+    >
+      <h4
+        class="bcl-heading mb-4"
+      >
+        Linked gallery title
+      </h4>
+    </div>
+  </div>
+  <div
+    class="bcl-gallery__thumbnails"
+  >
+    <ul
+      class="bcl-gallery__grid"
+    >
+      <li>
+        <a
+          class="bcl-gallery__item d-block img-fluid w-100"
+          data-bs-slide-to="0"
+          data-bs-target="#carouselBcl-gallery"
+          tabindex="0"
+        >
+          <div
+            class="bcl-gallery__item-overlay"
+            data-bs-target="#modalBcl-gallery"
+            data-bs-toggle="modal"
+          >
+            <div
+              class="bcl-gallery__item-caption"
+            >
+              <div
+                class="fs-5"
+              >
+                Custom image
+              </div>
+              <div
+                class="bcl-gallery__item-description"
+              >
+                Custom image caption.
+              </div>
+            </div>
+          </div>
+          <img
+            alt="Custom thumbnail 1"
+            src="https://example.com/custom-thumbnail-1.jpg"
+          />
+        </a>
+      </li>
+      <li>
+        <a
+          class="bcl-gallery__item d-block img-fluid w-100"
+          data-bs-slide-to="1"
+          data-bs-target="#carouselBcl-gallery"
+          tabindex="0"
+        >
+          <div
+            class="bcl-gallery__item-overlay"
+            data-bs-target="#modalBcl-gallery"
+            data-bs-toggle="modal"
+          >
+            <span
+              class="bcl-gallery__item-play-icon"
+            >
+              <svg
+                class="bi icon--s"
+              >
+                <use
+                  xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#play-fill"
+                ></use>
+              </svg>
+            </span>
+            <div
+              class="bcl-gallery__item-caption"
+            >
+              <div
+                class="fs-5"
+              >
+                Embedded media
+              </div>
+              <div
+                class="bcl-gallery__item-description"
+              >
+                Embedded media caption.
+              </div>
+            </div>
+          </div>
+          <img
+            alt="Embedded media thumbnail"
+            src="https://example.com/custom-thumbnail-2.jpg"
+          />
+        </a>
+      </li>
+      <li>
+        <a
+          class="bcl-gallery__item d-block img-fluid w-100"
+          data-bs-slide-to="2"
+          data-bs-target="#carouselBcl-gallery"
+          tabindex="0"
+        >
+          <div
+            class="bcl-gallery__item-overlay"
+            data-bs-target="#modalBcl-gallery"
+            data-bs-toggle="modal"
+          >
+            <div
+              class="bcl-gallery__item-caption"
+            >
+              <div
+                class="fs-5"
+              >
+                Linked image
+              </div>
+              <div
+                class="bcl-gallery__item-description"
+              >
+                Linked image caption.
+              </div>
+            </div>
+          </div>
+          <img
+            alt="Custom thumbnail 3"
+            src="https://example.com/custom-thumbnail-3.jpg"
+          />
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div
+    aria-hidden="true"
+    aria-labelledby="modalBcl-gallery"
+    class="modal"
+    data-bs-backdrop="false"
+    id="modalBcl-gallery"
+    tabindex="-1"
+  >
+    <div
+      class="modal-dialog modal-dialog-centered modal-fullscreen"
+    >
+      <div
+        class="modal-content"
+      >
+        <div
+          class="border-0 justify-content-between modal-header"
+        >
+          <div
+            class="modal-title"
+          >
+            <h3
+              class="bcl-heading d-none d-sm-block"
+            >
+              Linked gallery title
+            </h3>
+          </div>
+          <div
+            class="carousel-pager"
+          >
+            <span>
+              1
+            </span>
+
+            / 3
+          </div>
+          <div
+            class="modal-close"
+          >
+            <button
+              aria-label="Close"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              type="button"
+            ></button>
+          </div>
+        </div>
+        <div
+          class="align-items-center d-flex justify-content-center modal-body"
+        >
+          <div
+            class="carousel slide"
+            id="carouselBcl-gallery"
+          >
+            <div
+              class="carousel-inner"
+            >
+              <div
+                class="active carousel-item"
+              >
+                <figure
+                  class="h-100 m-0"
+                >
+                  <img
+                    alt="Custom media 1"
+                    data-src="https://example.com/custom-media-1.jpg"
+                  />
+                  <div
+                    class="carousel-caption d-md-block d-none"
+                  >
+                    <div
+                      class="fs-5"
+                    >
+                      Custom image
+                    </div>
+                    Custom image caption.
+                  </div>
+                  <figcaption
+                    class="bcl-copyright"
+                  >
+                    <span
+                      class="visually-hidden"
+                    >
+                      Image credit:
+
+                    </span>
+                    © 2026 Example Organisation
+                  </figcaption>
+                </figure>
+              </div>
+              <div
+                class="carousel-item"
+              >
+                <figure
+                  class="h-100 m-0"
+                >
+                  <iframe
+                    data-src="https://example.com/embed"
+                    title="Embedded media"
+                  ></iframe>
+                  <figcaption
+                    class="bcl-copyright"
+                  >
+                    <span
+                      class="visually-hidden"
+                    >
+                      Copyright:
+
+                    </span>
+                    © 2026 Video Organisation
+                  </figcaption>
+                </figure>
+              </div>
+              <div
+                class="carousel-item"
+                data-bs-interval="3000"
+              >
+                <figure
+                  class="h-100 m-0"
+                >
+                  <img
+                    alt="Custom media 3"
+                    data-src="https://example.com/custom-media-3.jpg"
+                  />
+                  <div
+                    class="carousel-caption"
+                  >
+                    <div
+                      class="custom-caption-class"
+                    >
+                      <div
+                        class="fs-5"
+                      >
+                        Linked image
+                      </div>
+                      Linked image caption.
+                    </div>
+                    <a
+                      aria-disabled="true"
+                      class="custom-gallery-link d-flex disabled gap-2-5 link-primary standalone"
+                      href="https://example.com/read-more"
+                      id="custom-gallery-link"
+                      tabindex="-1"
+                    >
+                      Read more
+                      <svg
+                        class="bi custom-link-icon icon--rotate-90 icon--xs"
+                      >
+                        <use
+                          xlink:href="#chevron-right"
+                        ></use>
+                      </svg>
+                    </a>
+                  </div>
+                </figure>
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              data-bs-slide="prev"
+              data-bs-target="#carouselBcl-gallery"
+              type="button"
+            >
+              <span
+                class="carousel-control-prev-icon"
+              ></span>
+              <span
+                class="visually-hidden"
+              >
+                Previous
+              </span>
+            </button>
+            <button
+              class="carousel-control-next"
+              data-bs-slide="next"
+              data-bs-target="#carouselBcl-gallery"
+              type="button"
+            >
+              <span
+                class="carousel-control-next-icon"
+              ></span>
+              <span
+                class="visually-hidden"
+              >
+                Next
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

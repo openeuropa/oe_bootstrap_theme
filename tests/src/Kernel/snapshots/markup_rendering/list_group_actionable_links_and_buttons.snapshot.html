@@ -1,0 +1,64 @@
+<div
+  class="list-group"
+>
+  <a
+    class="custom-action-link d-inline-flex gap-2-5 link-warning list-group-item list-group-item-action"
+    data-action-attribute="link"
+    href="/linked-item"
+  >
+    <svg
+      class="bi icon--s"
+    >
+      <use
+        xlink:href="#arrow-right"
+      ></use>
+    </svg>
+    Linked
+
+    <strong>
+      item
+    </strong>
+  </a>
+
+  <a
+    aria-disabled="true"
+    class="disabled list-group-item list-group-item-action standalone"
+    href="/disabled-item"
+    tabindex="-1"
+  >
+    Disabled standalone link
+  </a>
+
+  <button
+    aria-disabled="true"
+    class="custom-action-button gap-lg-2-5 list-group-item list-group-item-action text-nowrap"
+    data-action-attribute="button"
+    disabled
+    type="submit"
+  >
+    <div
+      class="custom-spinner spinner-grow spinner-grow-sm text-success"
+      role="status"
+    >
+      <span
+        class="visually-hidden"
+      >
+        Loading
+      </span>
+    </div>
+    <span
+      class="visually-hidden"
+    >
+      Action:
+
+    </span>
+    Submit item
+    <svg
+      class="bi custom-button-icon icon--fluid icon--rotate-90"
+    >
+      <use
+        xlink:href="#check"
+      ></use>
+    </svg>
+  </button>
+</div>

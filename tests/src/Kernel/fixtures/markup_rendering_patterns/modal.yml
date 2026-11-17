@@ -78,3 +78,60 @@ modal_with_id:
       'div#custom-modal': 1
       '.modal-sm': 1
       '.btn-secondary': 1
+# No title, close button or footer, so the header is empty.
+modal_default_with_fallback_id:
+  render:
+    '#type': 'pattern'
+    '#id': 'modal'
+    '#fields':
+      body: 'Default modal body.'
+      toggle:
+        label: 'Open modal'
+  assertions: {}
+# The toggle has its own attributes, which are merged with the attributes
+# added by the pattern. Title, body and footer as render arrays.
+modal_with_render_arrays_and_toggle_options:
+  render:
+    '#type': 'pattern'
+    '#id': 'modal'
+    '#fields':
+      settings:
+        size: 'sm'
+      title:
+        - '#markup': 'Custom <em>modal</em>'
+      show_close_button: true
+      body:
+        - '#type': 'html_tag'
+          '#tag': 'p'
+          '#value': 'Custom modal body.'
+      footer:
+        - '#type': 'html_tag'
+          '#tag': 'button'
+          '#attributes':
+            class:
+              - 'btn'
+              - 'btn-secondary'
+            data-bs-dismiss: 'modal'
+          '#value': 'Cancel'
+      attributes: !AttributeOrArray
+        class:
+          - 'custom-modal'
+        data-modal: 'custom-value'
+      toggle:
+        label: 'Open custom modal'
+        variant: 'danger'
+        size: 'lg'
+        outline: true
+        assistive_text: 'Dialog:'
+        icon:
+          name: 'box-arrow-up-right'
+          path: '/custom-icons.svg'
+          attributes: !Attribute
+            class:
+              - 'custom-toggle-icon'
+        icon_position: 'before'
+        attributes: !Attribute
+          class:
+            - 'custom-toggle'
+          data-toggle: 'custom-value'
+  assertions: {}

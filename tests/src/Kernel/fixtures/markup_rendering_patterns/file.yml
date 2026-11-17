@@ -110,3 +110,49 @@ file_with_title_tag:
           icon: 'file-pdf-fill'
         translations: ~
         link_label: 'Download'
+# Custom link label with translations. The first translation has no size.
+file_with_translations_and_custom_link_label:
+  render:
+    '#type': 'pattern'
+    '#id': 'file'
+    '#fields':
+      link_label: 'Get the file'
+      file:
+        title: 'Example document'
+        url: 'https://example.com/document.pdf'
+        extension: 'pdf'
+        language_code: 'en'
+      translations:
+        - title: 'Exemple de document'
+          url: 'https://example.com/document-fr.pdf'
+          size: 4321
+          extension: 'pdf'
+          language_code: 'fr'
+        - title: 'Пример документ'
+          url: 'https://example.com/document-bg.docx'
+          size: 40391
+          extension: 'docx'
+          language_code: 'bg'
+          meta: 'Draft'
+  assertions: {}
+# Without a file, nothing is rendered, even with a title.
+file_without_file_renders_nothing:
+  render:
+    '#type': 'pattern'
+    '#id': 'file'
+    '#fields':
+      title: 'Should not render body'
+  assertions: {}
+# Empty extension, as returned by FileValueObject::getExtension() if no
+# extension can be determined.
+file_empty_extension:
+  render:
+    '#type': 'pattern'
+    '#id': 'file'
+    '#fields':
+      file:
+        title: 'Report'
+        url: '/report'
+        extension: ''
+        language_code: 'en'
+  assertions: {}

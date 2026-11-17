@@ -52,3 +52,124 @@ list_group_actionable_without_flush_vertical:
       'div.list-group': 1
       'a.list-group-item-action': 3
       '.list-group-flush': 0
+# The 'ordered' type with 'flush'.
+list_group_ordered_flush_with_custom_attributes:
+  render:
+    '#type': 'pattern'
+    '#id': 'list_group'
+    '#fields':
+      settings:
+        type: 'ordered'
+        flush: true
+      attributes: !AttributeOrArray
+        class:
+          - 'custom-list-group'
+        data-list-group-attribute: 'custom-value'
+      items:
+        - html: 'First step'
+        - html: 'Second step'
+        - html: 'Third step'
+  assertions: {}
+# Actionable items as links and as buttons.
+list_group_actionable_links_and_buttons:
+  render:
+    '#type': 'pattern'
+    '#id': 'list_group'
+    '#fields':
+      settings:
+        type: 'actionable'
+      items:
+        - label:
+            '#markup': 'Linked <strong>item</strong>'
+          path: '/linked-item'
+          variant: 'warning'
+          icon:
+            name: 'arrow-right'
+          icon_position: 'before'
+          icon_display: 'inline-flex'
+          attributes: !Attribute
+            class:
+              - 'custom-action-link'
+            data-action-attribute: 'link'
+        - label: 'Disabled standalone link'
+          path: '/disabled-item'
+          disabled: true
+          standalone: true
+        - button: true
+          label: 'Submit item'
+          type: 'submit'
+          disabled: true
+          text_nowrap: true
+          assistive_text: 'Action: '
+          icon:
+            name: 'check'
+            transformation: 'rotate-90'
+            attributes: !Attribute
+              class:
+                - 'custom-button-icon'
+          icon_position: 'after'
+          icon_spacing: 'lg'
+          show_spinner: true
+          spinner:
+            type: 'grow'
+            variant: 'success'
+            size: 'sm'
+            assistive_text: 'Loading'
+            attributes: !Attribute
+              class:
+                - 'custom-spinner'
+          attributes: !Attribute
+            class:
+              - 'custom-action-button'
+            data-action-attribute: 'button'
+  assertions: {}
+# Items as form inputs.
+list_group_with_form_inputs:
+  render:
+    '#type': 'pattern'
+    '#id': 'list_group'
+    '#fields':
+      items:
+        - input: true
+          input_type: 'checkbox'
+          id: 'list-group-checkbox'
+          label: 'Checked switch'
+          required: true
+          checked: true
+          switch: true
+          attributes: !Attribute
+            class:
+              - 'custom-checkbox'
+            data-input-attribute: 'checkbox'
+        - input: true
+          input_type: 'text'
+          id: 'list-group-text'
+          label: 'Horizontal text input'
+          hidden_label: true
+          disabled: true
+          readonly: true
+          valid: true
+          valid_feedback: 'The value is valid.'
+          helper_text: 'Supporting text.'
+          helper_text_id: 'list-group-text-help'
+          placeholder: 'Enter a value'
+          horizontal: true
+          horizontal_class: 'col-sm-8'
+          horizontal_label_class: 'col-sm-4'
+        - input: true
+          input_type: 'text'
+          id: 'list-group-invalid'
+          label: 'Invalid floating input'
+          placeholder: 'Enter a value'
+          floating: true
+          invalid: true
+          invalid_feedback: 'Enter a valid value.'
+        - input: true
+          input_type: 'checkbox'
+          id: 'list-group-toggle'
+          label: 'Toggle input'
+          checked: true
+          toggle: true
+          toggle_variant: 'danger'
+          remove_wrapper: true
+  assertions: {}
