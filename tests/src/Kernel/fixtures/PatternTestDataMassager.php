@@ -26,7 +26,11 @@ final class PatternTestDataMassager {
    *   The data from yaml, which does not contain any objects besides
    *   TaggedValue.
    * @param bool $use_objects
-   *   Whether Attribute and Url tags produce objects or plain values.
+   *   TRUE, to return objects for `!AttributeOrArray`, `!DateTime` and `!Url`
+   *   tags in the yaml.
+   *   FALSE to return the plain values (array or string).
+   *   Note that `!Attribute` tags are not impacted, they always return the
+   *   Attribute object.
    *
    * @return mixed
    *   The massaged data, with values based on the TaggedValue items.
@@ -46,7 +50,8 @@ final class PatternTestDataMassager {
       'FileValueObject' => FileValueObject::fromArray($data->getValue()),
       'ImageValueObject' => ImageValueObject::fromArray($data->getValue()),
       'DateTime' => $use_objects ? new \DateTimeImmutable($data->getValue()) : $data->getValue(),
-      'Attribute' => $use_objects ? new Attribute($data->getValue()) : $data->getValue(),
+      'Attribute' => new Attribute($data->getValue()),
+      'AttributeOrArray' => $use_objects ? new Attribute($data->getValue()) : $data->getValue(),
       'Url' => $use_objects ? Url::fromUri($data->getValue()) : Url::fromUri($data->getValue())->toString(),
       default => throw new \RuntimeException(sprintf('Unexpected tag %s.', $data->getTag()))
     };

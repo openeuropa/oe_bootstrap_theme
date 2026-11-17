@@ -270,37 +270,37 @@ pagination_with_item_attributes:
       first:
         path: '#first'
         label: 'First'
-        attributes: !Attribute
+        attributes: !AttributeOrArray
           class: [c-first]
           aria-label: 'Aria first (attr)'
       prev:
         path: '#prev'
         label: 'Previous'
         aria_label: 'Aria prev (item)'
-        attributes: !Attribute
+        attributes: !AttributeOrArray
           class: [c-prev]
       next:
         path: '#next'
         label: 'Next'
         aria_label: 'Aria next (item)'
-        attributes: !Attribute
+        attributes: !AttributeOrArray
           class: [c-next]
       last:
         path: '#last'
         label: 'Last'
         aria_label: 'Aria last (item)'
-        attributes: !Attribute
+        attributes: !AttributeOrArray
           class: [c-last]
       items:
         - path: '#1'
           label: '1'
           active: true
-          attributes: !Attribute
+          attributes: !AttributeOrArray
             class: [ c-1 ]
             aria-label: 'Aria 1 (attr)'
         - path: '#2'
           label: '2'
-          attributes: !Attribute
+          attributes: !AttributeOrArray
             class: [ c-2 ]
   assertions:
     pattern:
