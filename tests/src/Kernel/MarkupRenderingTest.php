@@ -482,6 +482,7 @@ class MarkupRenderingTest extends KernelTestBase {
     $props = $this->convertFixtureAttributes($props, $use_objects);
     return [
       ...array_diff_key($pattern_element, array_flip(['#id', '#fields', '#settings'])),
+      // phpcs:ignore Squiz.Arrays.ArrayDeclaration.KeySpecified
       '#type' => 'component',
       '#component' => $component_id,
       '#props' => $props,
