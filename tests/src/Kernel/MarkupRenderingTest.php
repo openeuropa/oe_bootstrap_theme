@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
 use Drupal\Component\Serialization\Yaml;
+use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Render\RendererInterface;
@@ -405,7 +406,7 @@ class MarkupRenderingTest extends KernelTestBase {
   }
 
   /**
-   * Replaces patterns with components in a render array.
+   * Replaces patterns with components in a render array, recursively.
    *
    * @param array $render
    *   Original render array with pattern.
@@ -418,22 +419,74 @@ class MarkupRenderingTest extends KernelTestBase {
    */
   protected function replacePatternsWithComponents(array $render, bool $use_objects): array {
     if (($render['#type'] ?? NULL) === 'pattern') {
-      $render['#type'] = 'component';
-      $render['#component'] = 'oe_bootstrap_theme:' . $render['#id'];
-      $render['#props'] = [
-        ...$render['#fields']['settings'] ?? [],
-        ...$render['#settings'] ?? [],
-        ...$render['#fields'] ?? [],
-      ];
-      unset($render['#id']);
-      unset($render['#props']['settings']);
-      // Convert attribute-like props to Attribute object or array.
-      $render['#props'] = $this->convertFixtureAttributes($render['#props'], $use_objects);
+      $render = $this->convertPatternToComponent($render, $use_objects);
     }
     foreach (Element::children($render) as $key) {
       $render[$key] = $this->replacePatternsWithComponents($render[$key], $use_objects);
     }
     return $render;
+  }
+
+  /**
+   * Converts a pattern render element to a component render element.
+   *
+   * @param array $pattern_element
+   *   Render element with '#type' => 'pattern'.
+   * @param bool $use_objects
+   *   TRUE, to pass attributes as Attribute object.
+   *   FALSE, to pass attributes as array.
+   *
+   * @return array
+   *   Render element with '#type' => 'component'.
+   */
+  protected function convertPatternToComponent(array $pattern_element, bool $use_objects): array {
+    $component_id = 'oe_bootstrap_theme:' . $pattern_element['#id'];
+    $arguments = [
+      ...$pattern_element['#fields']['settings'] ?? [],
+      ...$pattern_element['#settings'] ?? [],
+      ...$pattern_element['#fields'] ?? [],
+    ];
+    unset($arguments['settings']);
+    // Pass slot values in '#slots', as e.g. ui_patterns 2.x or Canvas would.
+    // The render element treats these differently from '#props', so this
+    // reveals values that should not be slots.
+    $slot_definitions = $this->container->get(ComponentPluginManager::class)
+      ->getDefinition($component_id)['slots'] ?? [];
+    $slots = array_intersect_key($arguments, $slot_definitions);
+    // The render element does not accept NULL or [] for '#slots'.
+    // Calling code needs to omit these in '#slots'.
+    $slots = array_filter(
+      $slots,
+      static fn (mixed $value): bool => $value !== NULL && $value !== [],
+    );
+    foreach ($slots as $slot_name => $value) {
+      if ($value instanceof MarkupInterface) {
+        // The render element only accepts render arrays or scalars.
+        $slots[$slot_name] = ['#markup' => $value];
+        continue;
+      }
+      $this->assertTrue(
+        // Booleans would be accepted by the render element, but a boolean
+        // value indicates that this should be a prop.
+        is_string($value) || is_int($value) || is_float($value) || Element::isRenderArray($value),
+        sprintf(
+          "Value for slot '%s' in '%s' is not a string, number or render array: %s",
+          $slot_name,
+          $component_id,
+          get_debug_type($value),
+        ),
+      );
+    }
+    $props = array_diff_key($arguments, $slot_definitions);
+    // Convert attribute-like props to Attribute object or array.
+    $props = $this->convertFixtureAttributes($props, $use_objects);
+    return [
+      ...array_diff_key($pattern_element, array_flip(['#id', '#fields', '#settings'])),
+      '#type' => 'component',
+      '#component' => $component_id,
+      '#props' => $props,
+      '#slots' => $slots,
+    ];
   }
 
   /**
