@@ -70,6 +70,7 @@ class ComponentConverterDecorator extends ComponentConverter {
         $id,
       );
     }
+    // Convert some props back into slots.
     foreach ($target['props']['properties'] as $prop_name => $prop) {
       if (in_array('SLOT', (array) $prop['type'])) {
         $target['slots'][$prop_name] = [
