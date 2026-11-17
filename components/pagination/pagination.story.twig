@@ -1,42 +1,194 @@
-{% for variant, variant_title in {
-  default: 'Default',
-  glossary: 'Glossary',
-} %}
-  <section class="my-4">
-    <h3 class="my-3">{{ variant_title }} (<code>{{ variant }}</code>)</h3>
-    {{ include_only('oe_bootstrap_theme:pagination', {
-      variant: variant,
-      size: 'sm',
-      alignment: 'center',
-      enable_prev_next_icons: false,
-      enable_first_last_icons: true,
-      first: {
+<section class="my-4">
+  <h3 class="my-3">Default (<code>default</code>)</h3>
+  {{ include_only('oe_bootstrap_theme:pagination', {
+    variant: 'default',
+    size: 'sm',
+    alignment: 'center',
+    enable_prev_next_icons: false,
+    enable_first_last_icons: true,
+    first: {
+      path: '#',
+      label: 'First',
+    },
+    prev: {
+      path: '#',
+      label: 'Previous',
+    },
+    next: {
+      path: '#',
+      label: 'Next',
+    },
+    last: {
+      path: '#',
+      label: 'Last',
+    },
+    items: [
+      {
         path: '#',
-        label: 'First',
+        label: '1',
+        active: true,
       },
-      prev: {
+      {
         path: '#',
-        label: 'Previous',
+        label: '2',
       },
-      next: {
+    ],
+  }) }}
+</section>
+<section class="my-4">
+  <h3 class="my-3">Glossary (<code>glossary</code>)</h3>
+  {{ include_only('oe_bootstrap_theme:pagination', {
+    variant: 'glossary',
+    size: 'sm',
+    alignment: 'center',
+    enable_prev_next_icons: false,
+    enable_first_last_icons: true,
+    items: [
+      {
         path: '#',
-        label: 'Next',
+        label: 'A',
       },
-      last: {
+      {
         path: '#',
-        label: 'Last',
+        label: 'B',
       },
-      items: [
-        {
-          path: '#',
-          label: '1',
-          active: true,
-        },
-        {
-          path: '#',
-          label: '2',
-        },
-      ],
-    }) }}
-  </section>
-{% endfor %}
+      {
+        path: '#',
+        label: 'C',
+      },
+      {
+        path: '#',
+        label: 'D',
+      },
+      {
+        path: '#',
+        label: 'E',
+      },
+      {
+        path: '#',
+        label: 'F',
+        active: true,
+      },
+      {
+        path: '#',
+        label: 'G',
+      },
+      {
+        path: '#',
+        label: 'H',
+      },
+      {
+        path: '#',
+        label: 'I',
+      },
+      {
+        path: '#',
+        label: 'J',
+      },
+      {
+        path: '#',
+        label: 'K',
+      },
+      {
+        path: '#',
+        label: 'L',
+      },
+      {
+        path: '#',
+        label: 'M',
+      },
+      {
+        path: '#',
+        label: 'N',
+      },
+      {
+        path: '#',
+        label: 'O',
+      },
+      {
+        path: '#',
+        label: 'P',
+      },
+      {
+        path: '#',
+        label: 'Q',
+      },
+      {
+        path: '#',
+        label: 'R',
+      },
+      {
+        path: '#',
+        label: 'S',
+      },
+      {
+        path: '#',
+        label: 'T',
+      },
+      {
+        path: '#',
+        label: 'U',
+      },
+      {
+        path: '#',
+        label: 'V',
+      },
+      {
+        path: '#',
+        label: 'W',
+      },
+      {
+        path: '#',
+        label: 'X',
+      },
+      {
+        path: '#',
+        label: 'Y',
+      },
+      {
+        path: '#',
+        label: 'Z',
+      },
+      {
+        path: '#',
+        label: '0',
+      },
+      {
+        path: '#',
+        label: '1',
+      },
+      {
+        path: '#',
+        label: '2',
+      },
+      {
+        path: '#',
+        label: '3',
+      },
+      {
+        path: '#',
+        label: '4',
+      },
+      {
+        path: '#',
+        label: '5',
+      },
+      {
+        path: '#',
+        label: '6',
+      },
+      {
+        path: '#',
+        label: '7',
+      },
+      {
+        path: '#',
+        label: '8',
+      },
+      {
+        path: '#',
+        label: '9',
+      },
+    ],
+  }) }}
+</section>

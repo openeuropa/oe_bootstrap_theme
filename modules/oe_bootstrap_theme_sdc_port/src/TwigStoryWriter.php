@@ -38,25 +38,84 @@ class TwigStoryWriter {
    */
   public function createAndSaveStory(array $target, array $source): void {
     $component_id = $source['id'];
-    $preview_values = $this->collectPreviewValues($target, $source);
-    $twig_or_null = $this->buildTwigStoryFromPreviewTemplate($target, $source, $preview_values);
-    $twig_or_null ??= $this->buildTwigStoryFromPreviewValues($component_id, $target, $preview_values);
+    $preview_values_by_variant = $this->collectPreviewValuesByVariant($source);
+    $preview_values = $this->getPreviewValuesIfAllEqual($preview_values_by_variant);
+    if ($preview_values !== NULL) {
+      $twig_or_null = $this->buildTwigStoryFromPreviewTemplate($target, $source, $preview_values);
+      $twig_or_null ??= $this->buildTwigStoryFromPreviewValues($component_id, $target, $preview_values);
+    }
+    else {
+      $twig_or_null = $this->buildTwigStoryFromVariantPreviewValues($component_id, $target, $preview_values_by_variant);
+    }
     $this->saveOrDeleteStory($component_id, $twig_or_null);
+  }
+
+  /**
+   * Collects preview values for each variant.
+   *
+   * Some patterns have a preview preprocess function that alters the preview
+   * values depending on the variant. This is why the values are collected
+   * separately for each variant.
+   *
+   * @param array $source
+   *   A processed pattern definition.
+   *
+   * @return array<string, array<string, mixed>>
+   *   The preview values for slots and props, by variant name.
+   *   If the pattern has no variants, the only key is ''.
+   */
+  protected function collectPreviewValuesByVariant(array $source): array {
+    $component_id = $source['id'];
+    $preview_values = $this->collectPreviewValuesFromDefinition($source);
+    require_once dirname(__DIR__, 3) . '/includes/pattern.inc';
+    $preprocess_function = 'oe_bootstrap_theme_preprocess_pattern_' . $component_id . '__preview';
+    if (!function_exists($preprocess_function)) {
+      return ['' => $preview_values];
+    }
+    $variant_names = array_keys($source['variants'] ?? []) ?: [''];
+    $preview_values_by_variant = [];
+    foreach ($variant_names as $variant_name) {
+      $variant_preview_values = $preview_values + ['variant' => (string) $variant_name];
+      $preprocess_function($variant_preview_values);
+      unset($variant_preview_values['variant']);
+      $preview_values_by_variant[$variant_name] = $variant_preview_values;
+    }
+    return $preview_values_by_variant;
+  }
+
+  /**
+   * Gets the preview values, if they are the same for all variants.
+   *
+   * @param array<string, array<string, mixed>> $preview_values_by_variant
+   *   Preview values by variant name.
+   *
+   * @return array<string, mixed>|null
+   *   The common preview values, or NULL if they differ between variants.
+   */
+  protected function getPreviewValuesIfAllEqual(array $preview_values_by_variant): ?array {
+    // Compare the generated twig expressions instead of the raw values.
+    // This way, object instances with the same data are treated as equal, but
+    // e.g. '123' and 123 are treated as different.
+    $expressions = array_map(
+      fn (array $values) => $this->twigGenerator->toTwigExpression($values),
+      $preview_values_by_variant,
+    );
+    if (count(array_unique($expressions)) > 1) {
+      return NULL;
+    }
+    return reset($preview_values_by_variant);
   }
 
   /**
    * Collects preview values from a pattern definition.
    *
-   * @param array $target
-   *   A generated component definition.
    * @param array $source
    *   A processed pattern definition.
    *
    * @return array<string, mixed>
    *   The preview values for slots and props.
    */
-  protected function collectPreviewValues(array $target, array $source): array {
-    $component_id = $source['id'];
+  protected function collectPreviewValuesFromDefinition(array $source): array {
     $preview_values = [];
     foreach ($source['settings'] as $prop_name => $setting) {
       $prop_preview_value = $setting['preview'] ?? NULL;
@@ -75,13 +134,6 @@ class TwigStoryWriter {
         }
       }
       $preview_values[$prop_name] = $prop_preview_value;
-    }
-    require_once dirname(__DIR__, 3) . '/includes/pattern.inc';
-    $preprocess_function = 'oe_bootstrap_theme_preprocess_pattern_' . $component_id . '__preview';
-    if (function_exists($preprocess_function)) {
-      $preview_values += ['variant' => ''];
-      $preprocess_function($preview_values);
-      unset($preview_values['variant']);
     }
     return $preview_values;
   }
@@ -181,6 +233,48 @@ class TwigStoryWriter {
       $twig = $this->twigVariantsLoop($twig, $target['variants']);
     }
 
+    return $twig;
+  }
+
+  /**
+   * Builds a story with separate preview values for each variant.
+   *
+   * This is used when a preview preprocess function produces different
+   * preview values depending on the variant.
+   *
+   * @param string $component_id
+   *   The component id without the 'oe_bootstrap_theme:' prefix.
+   * @param array $target
+   *   The component definition.
+   * @param array<string, array<string, mixed>> $preview_values_by_variant
+   *   Preview values by variant name.
+   *
+   * @return string
+   *   The twig code.
+   */
+  protected function buildTwigStoryFromVariantPreviewValues(string $component_id, array $target, array $preview_values_by_variant): string {
+    if ($this->loadPatternPreviewTemplate($component_id) !== NULL) {
+      throw new \LogicException(sprintf(
+        "Pattern '%s' has a preview template, and preview values that depend on the variant. This combination is not supported.",
+        $component_id,
+      ));
+    }
+    $twig = '';
+    foreach ($target['variants'] as $variant_name => $variant) {
+      $preview_values = ['variant' => (string) $variant_name] + $preview_values_by_variant[$variant_name];
+      $component_arguments_expression = $this->twigGenerator->toTwigExpression($preview_values);
+      $include_twig = "{{ include_only('oe_bootstrap_theme:$component_id', $component_arguments_expression) }}";
+      $indented_twig = preg_replace('#^(.+)$#m', '  $1', $include_twig);
+      $title = Html::escape((string) $variant['title']);
+      $name = Html::escape((string) $variant_name);
+      $twig .= <<<TWIG
+<section class="my-4">
+  <h3 class="my-3">$title (<code>$name</code>)</h3>
+$indented_twig
+</section>
+
+TWIG;
+    }
     return $twig;
   }
 
