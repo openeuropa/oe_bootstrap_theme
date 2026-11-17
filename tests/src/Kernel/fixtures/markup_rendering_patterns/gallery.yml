@@ -372,3 +372,87 @@ gallery_long:
               rendered: '<img data-src="https://picsum.photos/id/25/800/600/" alt="Vilnius image media alt">'
               caption_title: 'Vilnius'
               caption: 'Meanwhile in Vilnius, the capital of Lithuania'
+# Media and thumbnails as render arrays, instead of strings or markup objects.
+gallery_mixed_media:
+  render:
+    '#type': 'pattern'
+    '#id': 'gallery'
+    '#fields':
+      items:
+        - media:
+            '#markup': '<img src="https://example.com/media-1.jpg" alt="First media image">'
+          thumbnail:
+            '#markup': '<img src="https://example.com/thumbnail-1.jpg" alt="First thumbnail">'
+          caption_title: 'First image'
+          caption: 'First image caption.'
+        - media:
+            '#markup': '<video poster="https://example.com/video-poster.jpg" controls><source src="https://example.com/video.mp4" type="video/mp4"></video>'
+            '#allowed_tags':
+              - 'video'
+              - 'source'
+          thumbnail:
+            '#markup': '<img src="https://example.com/video-thumbnail.jpg" alt="Video thumbnail">'
+          caption_title: 'Featured video'
+          caption: 'Video caption.'
+  assertions: {}
+# Items with copyright, caption classes and link. For playable media, the
+# caption and link are removed, and the copyright label is different.
+gallery_with_item_copyright_and_link:
+  render:
+    '#type': 'pattern'
+    '#id': 'gallery'
+    '#fields':
+      title: 'Linked gallery title'
+      title_tag: 'h4'
+      attributes: !AttributeOrArray
+        id: 'custom-gallery-wrapper'
+        class:
+          - 'custom-gallery-class'
+        data-gallery-attribute: 'custom-value'
+      items:
+        - media:
+            '#markup': '<img src="https://example.com/custom-media-1.jpg" alt="Custom media 1">'
+          thumbnail:
+            '#markup': '<img src="https://example.com/custom-thumbnail-1.jpg" alt="Custom thumbnail 1">'
+          caption_title: 'Custom image'
+          caption: 'Custom image caption.'
+          copyright: '© 2026 Example Organisation'
+          copyright_label: 'Custom credit:'
+        - media:
+            '#markup': '<iframe src="https://example.com/embed" title="Embedded media"></iframe>'
+            '#allowed_tags':
+              - 'iframe'
+          thumbnail:
+            '#markup': '<img src="https://example.com/custom-thumbnail-2.jpg" alt="Embedded media thumbnail">'
+          caption_title: 'Embedded media'
+          caption: 'Embedded media caption.'
+          copyright: '© 2026 Video Organisation'
+        - media:
+            '#markup': '<img src="https://example.com/custom-media-3.jpg" alt="Custom media 3">'
+          thumbnail:
+            '#markup': '<img src="https://example.com/custom-thumbnail-3.jpg" alt="Custom thumbnail 3">'
+          caption_title: 'Linked image'
+          caption: 'Linked image caption.'
+          caption_classes: 'custom-caption-class'
+          interval: 3000
+          link:
+            label: 'Read more'
+            path: 'https://example.com/read-more'
+            variant: 'primary'
+            id: 'custom-gallery-link'
+            disabled: true
+            standalone: true
+            icon:
+              name: 'chevron-right'
+              size: 'xs'
+              transformation: 'rotate-90'
+              attributes: !Attribute
+                class:
+                  - 'custom-link-icon'
+            icon_position: 'after'
+            icon_display: 'flex'
+            remove_icon_spacers: false
+            attributes: !Attribute
+              class:
+                - 'custom-gallery-link'
+  assertions: {}

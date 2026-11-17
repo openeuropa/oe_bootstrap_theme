@@ -29,3 +29,16 @@ breadcrumb:
       'li.breadcrumb-item:nth-child(3) a': 'Link title'
     contains:
       'svg': '/icons/bcl-default-icons.svg#arrow-left'
+# The last item has no path.
+breadcrumb_current_page_without_link:
+  render:
+    '#type': 'pattern'
+    '#id': 'breadcrumb'
+    '#fields':
+      items:
+        - path: '/index'
+          label: 'Home'
+        - path: '/example'
+          label: 'Library'
+        - label: 'Current page'
+  assertions: {}

@@ -1,0 +1,67 @@
+<div
+  aria-hidden="true"
+  aria-label="bcl-modalLabel"
+  class="fade modal"
+  id="bcl-modal"
+  tabindex="-1"
+>
+  <div
+    class="modal-dialog modal-sm"
+  >
+    <div
+      class="modal-content"
+    >
+      <div
+        class="modal-header"
+      >
+        <h5>
+          Custom
+
+          <em>
+            modal
+          </em>
+        </h5>
+        <button
+          aria-label="Close"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          type="button"
+        ></button>
+      </div>
+      <div
+        class="modal-body"
+      >
+        <p>
+          Custom modal body.
+        </p>
+      </div>
+      <div
+        class="modal-footer"
+      >
+        <button
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<button
+  aria-controls="bcl-modal"
+  class="btn btn-lg btn-outline-danger custom-toggle gap-2-5"
+  data-bs-target="#bcl-modal"
+  data-bs-toggle="modal"
+  data-toggle="custom-value"
+  type="button"
+>
+  <svg
+    class="bi custom-toggle-icon icon--fluid"
+  >
+    <use
+      xlink:href="/custom-icons.svg#box-arrow-up-right"
+    ></use>
+  </svg>
+  Open custom modal
+</button>

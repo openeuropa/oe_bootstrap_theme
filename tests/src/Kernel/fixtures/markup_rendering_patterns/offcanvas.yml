@@ -157,3 +157,50 @@ offcanvas_search_variant:
       '.offcanvas-title': 'Offcanvas title'
       'div.offcanvas-body': 'This is the offcanvas body content.'
       'button[data-bs-toggle="offcanvas"]': 'Toggle offcanvas<svg class="bi icon--fluid"><use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#filter"></use></svg>'
+# The 'end' placement. The toggle has its own attributes, which are merged
+# with the attributes added by the pattern. Title and body as render arrays.
+offcanvas_end_with_render_arrays_and_toggle_options:
+  render:
+    '#type': 'pattern'
+    '#id': 'offcanvas'
+    '#variant': 'default'
+    '#fields':
+      settings:
+        placement: 'end'
+        body_scroll: true
+        backdrop: true
+      title:
+        '#markup': '<em>Linked offcanvas title</em>'
+      body:
+        '#type': 'html_tag'
+        '#tag': 'strong'
+        '#value': 'Rendered body content'
+      toggle:
+        label: 'Open detailed panel'
+        variant: 'secondary'
+        size: 'lg'
+        type: 'button'
+        outline: true
+        disabled: true
+        text_nowrap: true
+        assistive_text: 'Panel action'
+        icon:
+          name: 'filter'
+          path: '/custom-icons.svg'
+          transformation: 'rotate-90'
+          attributes: !Attribute
+            class:
+              - 'custom-toggle-icon'
+            data-icon: 'custom-value'
+        icon_position: 'before'
+        icon_spacing: 'lg'
+        attributes: !Attribute
+          class:
+            - 'custom-toggle'
+          data-toggle: 'custom-value'
+      attributes: !AttributeOrArray
+        class:
+          - 'custom-offcanvas'
+        aria-label: 'Detailed offcanvas'
+        data-offcanvas: 'custom-value'
+  assertions: {}

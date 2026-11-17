@@ -350,3 +350,77 @@ navigation_navbar:
       'li.nav-item:nth-child(2) > button': 'I am a button'
       'li.nav-item:nth-child(3) > button': 'I am a disabled button'
       'li.nav-item:nth-child(4) > button': 'I am an active button'
+# Items with render array label, spinner and icon.
+navigation_default_with_mixed_items:
+  render:
+    '#type': 'pattern'
+    '#id': 'navigation'
+    '#variant': 'default'
+    '#fields':
+      items:
+        - label:
+            - '#type': 'html_tag'
+              '#tag': 'strong'
+              '#value': 'Overview'
+          path: '/overview'
+          attributes: !Attribute
+            class:
+              - 'custom-overview-link'
+            data-navigation-item: 'overview'
+        - label: 'Action button'
+          button: true
+          active: true
+          show_spinner: true
+          spinner:
+            type: 'border'
+            size: 'sm'
+            assistive_text: 'Loading'
+            attributes: !Attribute
+              class:
+                - 'custom-navigation-spinner'
+          attributes: !Attribute
+            class:
+              - 'custom-action-button'
+        - label: 'Disabled link'
+          path: '/disabled'
+          disabled: true
+        - label: 'Calendar'
+          path: '/calendar'
+          icon:
+            name: 'calendar-event'
+            transformation: 'rotate-90'
+            attributes: !Attribute
+              class:
+                - 'custom-navigation-icon'
+          icon_position: 'before'
+  assertions: {}
+# An item with a nested navigation.
+navigation_nested:
+  render:
+    '#type': 'pattern'
+    '#id': 'navigation'
+    '#variant': 'default'
+    '#fields':
+      items:
+        - label: 'Parent section'
+          path: '#parent'
+          navigation:
+            id: 'child-navigation'
+            variant: 'pills'
+            orientation: 'vertical'
+            attributes: !Attribute
+              class:
+                - 'custom-child-navigation'
+              data-level: 'child'
+            items:
+              - label: 'Child link'
+                path: '#child-link'
+                attributes: !Attribute
+                  class:
+                    - 'custom-child-link'
+              - label: 'Child action'
+                button: true
+                icon:
+                  name: 'arrow-right'
+                icon_position: 'after'
+  assertions: {}

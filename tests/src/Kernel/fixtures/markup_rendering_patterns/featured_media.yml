@@ -399,3 +399,39 @@ featured_media_with_bc_featured_media_mobile_text_top_left:
       '.col-12.col-md-6.order-md-1': 'Text text'
   backward_compatibility:
     featured_media_mobile_text_top: true
+# Copyright with embedded media instead of an image uses a different label.
+featured_media_embedded_right_custom_ratio:
+  render:
+    '#type': 'pattern'
+    '#id': 'featured_media'
+    '#fields':
+      embedded_media:
+        '#type': 'html_tag'
+        '#tag': 'iframe'
+        '#attributes':
+          src: 'https://example.com/embed'
+          title: 'Embedded media'
+      ratio: '21x9'
+      title: 'Embedded featured media'
+      subtitle: 'Supporting subtitle'
+      text: 'Text displayed on the right.'
+      text_position: 'right'
+      caption: 'Embedded media caption.'
+      copyright: '© 2026 Example Organisation'
+  assertions: {}
+# The link has an icon, and NULL attributes.
+featured_media_with_link_icon:
+  render:
+    '#type': 'pattern'
+    '#id': 'featured_media'
+    '#fields':
+      title: 'Title'
+      text: 'Text'
+      link:
+        label: 'Read more'
+        path: '/example'
+        attributes: null
+        icon:
+          name: 'arrow-right'
+          attributes: null
+  assertions: {}
