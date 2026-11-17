@@ -13,7 +13,8 @@
         "drupal/sdc_component_library": "^1.0",
         "drupal/ui_patterns": "^1.10",
         "drupal/ui_patterns_settings": "^2.3",
-        "openeuropa/ecl-twig-loader": "^4.0"
+        "openeuropa/ecl-twig-loader": "^4.0",
+        "twig/twig": "^3.29"
     },
     "require-dev": {
         "ext-dom": "*",
