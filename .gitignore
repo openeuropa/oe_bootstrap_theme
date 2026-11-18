@@ -4,7 +4,9 @@
 /vendor/
 /node_modules/
 /build/
-/pnpm-debug.log
+# pnpm creates its package store here when run in the web container, because the
+# project is a bind mount on a different filesystem than the home directory.
+/.pnpm-store/
 /grumphp.yml
 /composer.lock
 /yarn.lock
