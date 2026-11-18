@@ -17,6 +17,7 @@
     "require-dev": {
         "ext-dom": "*",
         "composer/installers": "^1.12",
+        "consolidation/robo": "<5.2.1 || ^5.2.4",
         "drupal/config_devel": "^1.12",
         "drupal/core-composer-scaffold": "^10.6 || ^11",
         "drupal/core-dev": "^10.6 || ^11",

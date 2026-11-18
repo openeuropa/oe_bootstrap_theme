@@ -4,16 +4,13 @@
   "description": "OpenEuropa Bootstrap base theme for Drupal.",
   "private": true,
   "scripts": {
-    "apply-patches": "patch-package --patch-dir=patches/npm",
-    "build": "npm-run-all build:*",
+    "build": "pnpm run build:styles && pnpm run build:copy && pnpm run build:rename",
     "build:styles": "cross-env bcl-builder styles",
     "build:copy": "cross-env bcl-builder copy",
     "build:rename": "cross-env bcl-builder rename",
-    "watch:styles": "chokidar \"./resources/sass/**/*.scss\" -i \"/node_modules/\" -c \"npm run build:styles\"",
-    "watch": "npm-run-all --parallel watch:* -ln",
-    "postinstall": "npm run apply-patches",
-    "prepare": "npm-run-all build:*",
-    "production": "npm-run-all build:*"
+    "watch:styles": "chokidar \"./resources/sass/**/*.scss\" -i \"/node_modules/\" -c \"pnpm run build:styles\"",
+    "watch": "pnpm run watch:styles",
+    "production": "pnpm run build"
   },
   "devDependencies": {
     "@openeuropa/bcl-builder": "^1.17",
@@ -22,8 +19,10 @@
     "chokidar-cli": "^3.0.0",
     "copyfiles": "2.4.1",
     "cross-env": "7.0.3",
-    "glob": "10.0.0",
-    "npm-run-all": "4.1.5",
-    "patch-package": "^6.4.7"
+    "glob": "10.0.0"
+  },
+  "packageManager": "pnpm@10.34.9",
+  "engines": {
+    "node": ">=22.0.0"
   }
 }

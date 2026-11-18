@@ -4,7 +4,6 @@
 /vendor/
 /node_modules/
 /build/
-/npm-debug.log
 /grumphp.yml
 /runner.yml
 /.idea/
