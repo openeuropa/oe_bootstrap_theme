@@ -19,7 +19,7 @@ carousel:
       preview: true
     autoplay:
       type: boolean
-      label: 'Disable autoplay'
+      label: 'Autoplay'
       description: 'Whether to initialise and animate the carousel at page load. Defaults to true. If false, the carousel will need to be instantiated explicitly via JavaScript.'
       preview: true
     autoinit:
