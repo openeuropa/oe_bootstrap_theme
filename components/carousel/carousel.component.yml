@@ -23,10 +23,6 @@ props:
       title: Autoplay
       description: 'Whether to initialise and animate the carousel at page load. Defaults to true. If false, the carousel will need to be instantiated explicitly via JavaScript.'
       type: [boolean, 'null']
-    autoinit:
-      title: 'initialize the carousel'
-      description: 'DEPRECATED in favour of autoplay. Whether to initialise and animate the carousel at page load. Its value will be used only if autoplay is not present.'
-      type: [boolean, 'null']
     disable_touch:
       title: 'Disable touch'
       description: 'Allow the carousel to swipe on touch. Defaults to false.'
