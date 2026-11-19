@@ -272,7 +272,7 @@ class ComponentConverterDecorator extends ComponentConverter {
         'text',
         'markup',
         'render' => 'SLOT',
-        'array' => 'array',
+        'array' => array_is_list($setting['preview'] ?? ['a' => 'A']) ? 'array' : 'object',
         'string' => 'string',
         // Object types.
         'object',

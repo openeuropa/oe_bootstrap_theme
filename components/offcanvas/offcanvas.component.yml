@@ -36,7 +36,7 @@ props:
     toggle:
       title: 'Toggle button'
       description: 'An optional button pattern definition that will allow to show/hide the offcanvas.'
-      type: [array, 'null']
+      type: [object, 'null']
     attributes:
       title: Attributes
       type: [object, array, string, 'null']
