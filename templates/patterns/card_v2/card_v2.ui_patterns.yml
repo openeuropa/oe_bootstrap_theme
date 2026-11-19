@@ -35,6 +35,7 @@ card_v2:
       type: textfield
       label: 'HTML wrapper tag'
       description: 'Semantic element for the outer wrapper. Defaults to <article>.'
+      examples: ['article', 'section', 'aside', 'div']
       allow_token: true
     attributes:
       type: attributes

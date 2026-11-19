@@ -156,6 +156,10 @@ class ComponentConverterDecorator extends ComponentConverter {
       $prop['type'] = array_unique([...(array) $prop['type'], 'string']);
     }
     unset($prop['$ref']);
+    // Suggested values for props that are not restricted to an enum.
+    if (isset($source_setting['examples'])) {
+      $prop['examples'] = $source_setting['examples'];
+    }
     // For now, all props are optional, so we allow NULL.
     if (!is_string($prop['type']) ||
       (!str_contains($prop['type'], '\\') && !class_exists($prop['type']) && !interface_exists($prop['type']))
