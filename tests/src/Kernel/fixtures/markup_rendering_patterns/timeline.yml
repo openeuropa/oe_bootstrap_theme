@@ -185,3 +185,17 @@ Timeline_heading:
       '.bcl-timeline li:nth-child(3) div': 'Lorem Ipsum 3'
       '.bcl-timeline li:nth-child(4) div': 'Lorem Ipsum 4'
       '.bcl-timeline li:nth-child(6) div': 'Lorem Ipsum 6'
+# 'hide_from' is 0, which is set but falsy.
+timeline_items_hide_from_zero:
+  render:
+    '#type': 'pattern'
+    '#id': 'timeline'
+    '#fields':
+      settings:
+        hide_from: 0
+      items:
+        - title: 'Item 1'
+          content: 'Lorem Ipsum 1'
+        - title: 'Item 2'
+          content: 'Lorem Ipsum 2'
+  assertions: {}

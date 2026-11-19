@@ -3,10 +3,9 @@ description_list_default:
     '#type': pattern
     '#id': description_list
     '#fields':
+      # Do not pass orientation, to test the default value.
       title: 'The description list title'
       title_tag: 'h4'
-      settings:
-        orientation: default
       items:
         - term:
             - label: 'Single label with icon'
@@ -71,7 +70,8 @@ description_list_incomplete:
       title: 'The description list title'
       title_tag: 'h4'
       settings:
-        orientation: default
+        # Pass 'vertical', which is the default.
+        orientation: vertical
       items:
         # An item without a term is not officially supported.
         # The test just covers the current behavior, which can result in empty
@@ -136,3 +136,28 @@ description_list_horizontal:
             definition:
               - label: 'First definition for third term.'
               - label: 'Second definition for third term.'
+# 'items' is NULL.
+description_list_null_items:
+  render:
+    '#type': 'pattern'
+    '#id': 'description_list'
+    '#fields':
+      title: 'Empty list'
+      items: null
+  assertions: {}
+# A term icon is an array instead of an icon name.
+description_list_horizontal_with_term_icon_array:
+  render:
+    '#type': 'pattern'
+    '#id': 'description_list'
+    '#fields':
+      settings:
+        orientation: 'horizontal'
+      title: 'Linked list title'
+      items:
+        - term:
+            - label: 'A term with icon'
+              icon:
+                name: 'geo-alt-fill'
+          definition: 'A definition.'
+  assertions: {}

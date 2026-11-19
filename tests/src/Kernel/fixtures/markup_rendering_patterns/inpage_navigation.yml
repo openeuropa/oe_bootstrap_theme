@@ -147,3 +147,48 @@ inpage_navigation_with_dynamic_active:
             href: '#item-4'
         id: 'bcl-inpage-navigation'
         dropdown_id: 'bcl-inpage-navigation-dropdown'
+# Title as render array. Links with icons as arrays.
+inpage_navigation_with_markup_title_and_link_icons:
+  render:
+    '#type': 'pattern'
+    '#id': 'inpage_navigation'
+    '#fields':
+      settings:
+        dynamic_active: true
+      title:
+        '#markup': 'Related <em>information</em>'
+      links:
+        - label: 'Active section'
+          path: '#active-section'
+          active: true
+          icon:
+            name: 'bookmark'
+            attributes: !Attribute
+              class:
+                - 'custom-link-icon'
+          icon_position: 'before'
+          icon_display: 'inline-flex'
+          attributes: !Attribute
+            class:
+              - 'custom-link'
+        - label: 'Custom sprite section'
+          path: '#custom-section'
+          variant: 'danger'
+          icon:
+            name: 'custom-symbol'
+            path: '/other/icons.svg'
+            size: 'xl'
+            transformation: 'flip-vertical'
+            attributes: !Attribute
+              class:
+                - 'custom-sprite-icon'
+          remove_icon_spacers: true
+      content:
+        '#markup': '<h2 id="active-section">Active section</h2><p>Active content.</p><h2 id="custom-section">Custom section</h2><p>Custom content.</p>'
+      attributes: !AttributeOrArray
+        id: 'attributes-navigation'
+        class:
+          - 'custom-navigation'
+        aria-label: 'Related information'
+        data-navigation-attribute: 'custom-value'
+  assertions: {}

@@ -181,3 +181,23 @@ pagination_v2_icons_and_ellipsis:
             item_classes:
               - 'pager__item--next'
               - 'd-inline-block'
+# Without 'first' and 'last' controls, size and alignment.
+pagination_v2_defaults:
+  render:
+    '#type': 'pattern'
+    '#id': 'pagination_v2'
+    '#fields':
+      prev:
+        path: '#previous'
+        label: 'Previous'
+      next:
+        path: '#next'
+        label: 'Next'
+      items:
+        - path: '#page-1'
+          label: '1'
+        - label: '2'
+          active: true
+        - path: '#page-3'
+          label: '3'
+  assertions: {}

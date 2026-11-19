@@ -617,6 +617,18 @@ TWIG;
         // The theme's 'image.html.twig' adds the 'img-fluid' class.
         '<img class="x img-fluid" src="https://example.com/image.png" alt="Alt text" title="" />',
       ],
+      '|oe_bt__to_file_value_object' => [
+        '{% set file = file|oe_bt__to_file_value_object %}{{ file.name }} {{ file.extension }}',
+        [
+          'file' => [
+            'name' => 'document.pdf',
+            'url' => 'https://example.com/document.pdf',
+            'mime' => 'application/pdf',
+            'size' => '1024',
+          ],
+        ],
+        'document.pdf pdf',
+      ],
     ];
     foreach ($cases as $name => [$template, $context, $expected]) {
       $elements = [

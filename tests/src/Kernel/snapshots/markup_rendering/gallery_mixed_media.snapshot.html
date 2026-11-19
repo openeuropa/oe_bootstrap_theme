@@ -1,0 +1,211 @@
+<div
+  class="bcl-gallery"
+>
+  <div
+    class="bcl-gallery__thumbnails"
+  >
+    <ul
+      class="bcl-gallery__grid"
+    >
+      <li>
+        <a
+          class="bcl-gallery__item d-block img-fluid w-100"
+          data-bs-slide-to="0"
+          data-bs-target="#carouselBcl-gallery"
+          tabindex="0"
+        >
+          <div
+            class="bcl-gallery__item-overlay"
+            data-bs-target="#modalBcl-gallery"
+            data-bs-toggle="modal"
+          >
+            <div
+              class="bcl-gallery__item-caption"
+            >
+              <div
+                class="fs-5"
+              >
+                First image
+              </div>
+              <div
+                class="bcl-gallery__item-description"
+              >
+                First image caption.
+              </div>
+            </div>
+          </div>
+          <img
+            alt="First thumbnail"
+            src="https://example.com/thumbnail-1.jpg"
+          />
+        </a>
+      </li>
+      <li>
+        <a
+          class="bcl-gallery__item d-block img-fluid w-100"
+          data-bs-slide-to="1"
+          data-bs-target="#carouselBcl-gallery"
+          tabindex="0"
+        >
+          <div
+            class="bcl-gallery__item-overlay"
+            data-bs-target="#modalBcl-gallery"
+            data-bs-toggle="modal"
+          >
+            <span
+              class="bcl-gallery__item-play-icon"
+            >
+              <svg
+                class="bi icon--s"
+              >
+                <use
+                  xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#play-fill"
+                ></use>
+              </svg>
+            </span>
+            <div
+              class="bcl-gallery__item-caption"
+            >
+              <div
+                class="fs-5"
+              >
+                Featured video
+              </div>
+              <div
+                class="bcl-gallery__item-description"
+              >
+                Video caption.
+              </div>
+            </div>
+          </div>
+          <img
+            alt="Video thumbnail"
+            src="https://example.com/video-thumbnail.jpg"
+          />
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div
+    aria-hidden="true"
+    aria-labelledby="modalBcl-gallery"
+    class="modal"
+    data-bs-backdrop="false"
+    id="modalBcl-gallery"
+    tabindex="-1"
+  >
+    <div
+      class="modal-dialog modal-dialog-centered modal-fullscreen"
+    >
+      <div
+        class="modal-content"
+      >
+        <div
+          class="border-0 justify-content-between modal-header"
+        >
+          <div
+            class="carousel-pager"
+          >
+            <span>
+              1
+            </span>
+
+            / 2
+          </div>
+          <div
+            class="modal-close"
+          >
+            <button
+              aria-label="Close"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              type="button"
+            ></button>
+          </div>
+        </div>
+        <div
+          class="align-items-center d-flex justify-content-center modal-body"
+        >
+          <div
+            class="carousel slide"
+            id="carouselBcl-gallery"
+          >
+            <div
+              class="carousel-inner"
+            >
+              <div
+                class="active carousel-item"
+              >
+                <figure
+                  class="h-100 m-0"
+                >
+                  <img
+                    alt="First media image"
+                    data-src="https://example.com/media-1.jpg"
+                  />
+                  <div
+                    class="carousel-caption d-md-block d-none"
+                  >
+                    <div
+                      class="fs-5"
+                    >
+                      First image
+                    </div>
+                    First image caption.
+                  </div>
+                </figure>
+              </div>
+              <div
+                class="carousel-item"
+              >
+                <figure
+                  class="h-100 m-0"
+                >
+                  <video
+                    controls
+                    poster="https://example.com/video-poster.jpg"
+                  >
+                    <source
+                      src="https://example.com/video.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </figure>
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              data-bs-slide="prev"
+              data-bs-target="#carouselBcl-gallery"
+              type="button"
+            >
+              <span
+                class="carousel-control-prev-icon"
+              ></span>
+              <span
+                class="visually-hidden"
+              >
+                Previous
+              </span>
+            </button>
+            <button
+              class="carousel-control-next"
+              data-bs-slide="next"
+              data-bs-target="#carouselBcl-gallery"
+              type="button"
+            >
+              <span
+                class="carousel-control-next-icon"
+              ></span>
+              <span
+                class="visually-hidden"
+              >
+                Next
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

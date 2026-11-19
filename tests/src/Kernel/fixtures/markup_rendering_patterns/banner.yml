@@ -494,3 +494,53 @@ image_shade_hero_banner_centered_with_call_to_action:
       '.bcl-banner__content p': 'Innovation, economy, environment and geopolitics'
     equals:
       '.bcl-banner__content a[href="https://example.com"]': 'Subscribe'
+# The call to action has 'link_style' and an icon.
+banner_image_shade_centered_with_call_to_action_full_width:
+  render:
+    '#type': 'pattern'
+    '#id': 'banner'
+    '#variant': 'image_shade'
+    '#fields':
+      settings:
+        hero: false
+        full_width: true
+        centered: true
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      call_to_action:
+        label: 'Subscribe'
+        path: 'https://example.com'
+        link_style: 'warning'
+        icon:
+          name: 'chevron-right'
+      image: 'https://picsum.photos/1000/500/'
+  assertions: {}
+# The 'image_shade' variant enables 'shade', even if it is set to false.
+banner_image_shade_with_shade_disabled:
+  render:
+    '#type': 'pattern'
+    '#id': 'banner'
+    '#variant': 'image_shade'
+    '#fields':
+      settings:
+        shade: false
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      image: 'https://picsum.photos/1000/500/'
+  assertions: {}
+# 'content_classes' is not declared in the pattern, but the template supports it.
+banner_with_custom_attributes_and_content_classes:
+  render:
+    '#type': 'pattern'
+    '#id': 'banner'
+    '#variant': 'default'
+    '#fields':
+      attributes: !AttributeOrArray
+        class:
+          - 'custom-banner-class'
+        id: 'banner-id'
+        data-banner-attribute: 'banner-attr-value'
+      title: 'EU Budget for the future'
+      description: 'Innovation, economy, environment and geopolitics'
+      content_classes: 'custom-content-class another-content-class'
+  assertions: {}

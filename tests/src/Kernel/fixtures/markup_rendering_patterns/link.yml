@@ -200,3 +200,33 @@ link_pattern_attributes:
           class: 'first second'
           id: 'link-id'
           data-attribute: 'some-value'
+# The label is a render array.
+link_with_render_array_label:
+  render:
+    '#type': 'pattern'
+    '#id': 'link'
+    '#fields':
+      label:
+        '#markup': 'Read <strong>more</strong>'
+      path: 'https://example.com?type=link#details'
+  assertions: {}
+# The icon is an array with custom path, size, transformation and attributes.
+link_with_icon_object_after:
+  render:
+    '#type': 'pattern'
+    '#id': 'link'
+    '#fields':
+      settings:
+        icon_position: 'after'
+      label: 'Custom icon'
+      path: '/custom-icon'
+      icon:
+        name: 'custom-symbol'
+        path: '/custom/icons.svg'
+        size: 'xl'
+        transformation: 'rotate-90'
+        attributes: !Attribute
+          class:
+            - 'custom-icon-class'
+          data-icon-attribute: 'custom-value'
+  assertions: {}
