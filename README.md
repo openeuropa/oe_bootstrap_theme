@@ -96,6 +96,23 @@ We started to ship in version 1.x patterns that already embrace this new approac
 We will do the best to avoid any breaking changes to these patterns during the 1.x lifecycle. But it might be that some changes will be still
 needed. We will communicate such changes together with the release.
 
+### Strict component validation
+
+The optional `oe_bootstrap_theme_strict_sdc_validation` module validates
+component props against their schema exactly as declared in
+`*.component.yml`. Core is more lenient: it accepts an object or a render
+array in any top-level prop.
+
+This applies to components of extensions that opt in with this key in their
+`*.info.yml`. The theme itself opts in:
+
+```yaml
+oe_bootstrap_theme_strict_sdc_validation: true
+```
+
+Like core component validation, it only runs with PHP assertions enabled.
+Enable it in development and CI, not in production.
+
 ### Media copyright text
 
 Patterns that render media accept a `copyright` parameter to display copyright

@@ -1,0 +1,6 @@
+# Not in tests/modules/, so that sites can enable it in development and CI.
+name: OpenEuropa Bootstrap Theme Strict SDC Validation
+type: module
+description: 'Validates component props against their schema as declared, for extensions that opt in. Meant for development and CI, with PHP assertions enabled.'
+package: OpenEuropa Bootstrap Theme
+core_version_requirement: ^10.3 || ^11
