@@ -31,6 +31,11 @@ props:
       title: 'HTML wrapper tag'
       description: 'Semantic element for the outer wrapper. Defaults to <article>.'
       type: [string, 'null']
+      examples:
+        - article
+        - section
+        - aside
+        - div
     media_attributes:
       title: 'Media attributes'
       description: 'Alt text, loading="lazy", ratio utilities like ratio-16x9, or placeholder-glow.'
