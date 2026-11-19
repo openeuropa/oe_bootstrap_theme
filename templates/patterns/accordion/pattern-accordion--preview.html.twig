@@ -8,7 +8,7 @@
   {{ pattern('accordion', {
     'title': title,
     'title_tag': title_tag,
-    'accordion_id': accordion_id,
+    'accordion_id': 'bcl-accordion'|clean_unique_id,
     'bare_layout': bare_layout,
     'items': items,
     'open_item': open_item,

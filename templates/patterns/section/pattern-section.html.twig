@@ -16,6 +16,10 @@
 
 {% set tag = tag|default('section') %}
 {% set heading_tag = heading_tag|default('h2') %}
+
+{% set heading_attributes = create_attribute(heading_attributes ?? {}) %}
+{% set wrapper_attributes = create_attribute(wrapper_attributes ?? {}) %}
+
 {%
   set section_classes = [
     'section',
@@ -32,7 +36,7 @@
   ]
 %}
 
-<{{ tag }}{{ attributes.addClass(section_classes) }}>
+<{{ tag }}{{ create_attribute(attributes ?? {}).addClass(section_classes) }}>
   {% if heading is not empty %}
     <{{ heading_tag }}{{ heading_attributes.addClass(heading_classes) }}>
       {{ heading }}

@@ -4,12 +4,12 @@
  * Banner pattern.
  */
 #}
-{% block attributes %}
-  {% set attributes = attributes.addClass([
-    'bg-lighter',
-    'text-dark',
-  ]) %}
-{% endblock %}
+{% set attributes = create_attribute(attributes ?? {}).addClass([
+  ...({
+    primary: ['bg-primary', 'text-white'],
+    image_shade: ['bg-lighter'],
+  }[variant] ?? ['bg-lighter', 'text-dark']),
+]) %}
 {% if centered  %}
   {% set attributes = attributes.addClass(['text-center'])%}
 {% endif %}
