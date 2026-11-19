@@ -231,9 +231,7 @@ class ComponentConverterDecorator extends ComponentConverter {
         'accordion.expand_button_label',
         'accordion.collapse_button_label',
         'file.link_label',
-        'pagination_v2.current_mobile_label',
-        // Some props hold enum-like values.
-        'content_banner.image_size' => 'string',
+        'pagination_v2.current_mobile_label' => 'string',
         default => NULL,
       };
       // Now, check if the parent converter class already set a prop type.

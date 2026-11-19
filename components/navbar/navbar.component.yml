@@ -21,6 +21,14 @@ props:
       title: 'Color scheme'
       description: 'The color scheme to use. Can be either light or dark.'
       type: [string, 'null']
+      enum:
+        - light
+        - dark
+        - null
+      'meta:enum':
+        light: 'Light (default)'
+        dark: Dark
+        '': Default
     background:
       title: Background
       description: 'Adds a background color that depends on the color scheme. Enabled by default.'
