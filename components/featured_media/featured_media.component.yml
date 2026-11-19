@@ -33,7 +33,7 @@ props:
     link:
       title: Link
       description: 'Call to action link with icon. A link pattern definition must be passed.'
-      type: [array, 'null']
+      type: [object, 'null']
     title_tag:
       title: 'Title tag'
       description: 'Title tag of the featured media. Defaults to h2'
