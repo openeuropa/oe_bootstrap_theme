@@ -216,10 +216,12 @@ class ComponentConverterDecorator extends ComponentConverter {
       // Some hard-coded prop types for specific known fields.
       yield match ("$id.$name") {
         // Prevent some fields from becoming slots.
-        // Some props hold urls.
+        // Some props hold urls that end up in bcl_link(), which also accepts
+        // Url objects.
         'badge.url',
+        'link.path' => ['string', 'object'],
+        // Some props hold urls that are printed as strings.
         'banner.image',
-        'link.path',
         // Some props are passed as attribute values.
         'badge.title',
         'blockquote.cite',
