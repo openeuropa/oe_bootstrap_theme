@@ -11,13 +11,7 @@
   'title_tag': title_tag,
   'items': (items ?? [])|map(item => item|merge({
     term: (item.term is iterable)
-      ? (item.term|map(term => (term is iterable and term.icon) ? term|merge({
-        icon: {
-          size: 'xs',
-          path: bcl_icon_path,
-          ...(term.icon is iterable ? term.icon : {name: term.icon}),
-        },
-      }) : term))
+      ? item.term|map(term => (term is iterable) ? term|bcl_expand_icon(size: 'xs') : term)
       : [{
         label: item.term,
       }],
