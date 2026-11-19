@@ -23,6 +23,7 @@ featured_media:
       type: string
       label: 'Ratio'
       description: 'The embedded media aspect ratio. One of 1x1, 4x3, 16x9 or 21x9.'
+      examples: ['1x1', '4x3', '16x9', '21x9']
     link:
       type: array
       label: 'Link'
