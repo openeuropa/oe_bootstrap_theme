@@ -20,6 +20,14 @@ props:
       title: Background
       description: 'Set a gray or white background at the content banner. Defaults to white.'
       type: [string, 'null']
+      enum:
+        - white
+        - gray
+        - null
+      'meta:enum':
+        white: 'White (default)'
+        gray: Gray
+        '': Default
     image:
       title: Image
       description: 'Image of the content.'
@@ -28,6 +36,16 @@ props:
       title: 'Image size'
       description: 'The size of the images. Allowed values: md, lg, xl. Defaults to lg.'
       type: [string, 'null']
+      enum:
+        - md
+        - lg
+        - xl
+        - null
+      'meta:enum':
+        md: Medium
+        lg: 'Large (default)'
+        xl: 'Extra large'
+        '': Default
     title_tag:
       title: 'Title tag'
       description: 'The tag to use for the title. Defaults to h1.'

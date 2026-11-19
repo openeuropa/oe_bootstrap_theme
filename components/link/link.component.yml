@@ -47,7 +47,7 @@ props:
     path:
       title: URL
       description: 'The button URL (optional).'
-      type: [string, 'null']
+      type: [string, object, 'null']
     icon:
       title: Icon
       description: 'An icon name or an icon array definition (optional).'

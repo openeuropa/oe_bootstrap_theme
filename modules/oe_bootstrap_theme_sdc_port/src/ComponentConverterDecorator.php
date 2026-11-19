@@ -156,6 +156,10 @@ class ComponentConverterDecorator extends ComponentConverter {
       $prop['type'] = array_unique([...(array) $prop['type'], 'string']);
     }
     unset($prop['$ref']);
+    // Suggested values for props that are not restricted to an enum.
+    if (isset($source_setting['examples'])) {
+      $prop['examples'] = $source_setting['examples'];
+    }
     // For now, all props are optional, so we allow NULL.
     if (!is_string($prop['type']) ||
       (!str_contains($prop['type'], '\\') && !class_exists($prop['type']) && !interface_exists($prop['type']))
@@ -216,10 +220,12 @@ class ComponentConverterDecorator extends ComponentConverter {
       // Some hard-coded prop types for specific known fields.
       yield match ("$id.$name") {
         // Prevent some fields from becoming slots.
-        // Some props hold urls.
+        // Some props hold urls that end up in bcl_link(), which also accepts
+        // Url objects.
         'badge.url',
+        'link.path' => ['string', 'object'],
+        // Some props hold urls that are printed as strings.
         'banner.image',
-        'link.path',
         // Some props are passed as attribute values.
         'badge.title',
         'blockquote.cite',
@@ -229,9 +235,7 @@ class ComponentConverterDecorator extends ComponentConverter {
         'accordion.expand_button_label',
         'accordion.collapse_button_label',
         'file.link_label',
-        'pagination_v2.current_mobile_label',
-        // Some props hold enum-like values.
-        'content_banner.image_size' => 'string',
+        'pagination_v2.current_mobile_label' => 'string',
         default => NULL,
       };
       // Now, check if the parent converter class already set a prop type.
@@ -272,7 +276,7 @@ class ComponentConverterDecorator extends ComponentConverter {
         'text',
         'markup',
         'render' => 'SLOT',
-        'array' => 'array',
+        'array' => array_is_list($setting['preview'] ?? ['a' => 'A']) ? 'array' : 'object',
         'string' => 'string',
         // Object types.
         'object',

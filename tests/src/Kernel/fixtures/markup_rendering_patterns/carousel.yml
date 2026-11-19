@@ -8,7 +8,7 @@ carousel_with_all_settings:
         show_controls: true
         show_indicators: true
         autoplay: true
-        # Deprecated autoinit value will be ignored since autplay is set.
+        # Removed setting 'autoinit' must be ignored, if passed anyway.
         autoinit: false
         disable_touch: true
       slides:
@@ -250,6 +250,7 @@ carousel_title_present_no_caption_no_link:
         items:
           - image: '<img src="https://images.site.example1" alt="alt image 1" class="d-block w-100">'
             caption_title: 'Slide title'
+# The 'autoinit' setting was removed. A value passed anyway must be ignored.
 carousel_with_deprecated_autoinit_ignored:
   render:
     '#type': pattern

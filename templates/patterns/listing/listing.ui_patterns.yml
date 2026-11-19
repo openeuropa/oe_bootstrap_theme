@@ -8,9 +8,13 @@ listing:
       label: 'Highlight'
   fields:
     columns:
-      type: number
+      type: select
       label: 'Columns'
       description: 'Number of columns, 1, 2 or 3. Defaults to 1.'
+      options:
+        1: '1 (default)'
+        2: '2'
+        3: '3'
     title:
       type: text
       label: 'Title'

@@ -49,7 +49,7 @@ props:
     call_to_action:
       title: 'Call to action'
       description: 'Links to print a CTA button. Optional.'
-      type: [array, 'null']
+      type: [object, 'null']
     image:
       title: Image
       description: 'URL of the image. Optional.'

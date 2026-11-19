@@ -3,7 +3,10 @@ content_banner:
   description: 'Shows the content summary along with the title, image and badges.'
   fields:
     background:
-      type: string
+      type: select
+      options:
+        white: 'white (default)'
+        gray: 'gray'
       label: 'Background'
       description: 'Set a gray or white background at the content banner. Defaults to white.'
       escape: false
@@ -21,9 +24,13 @@ content_banner:
       description: 'Optional copyright text displayed below the banner.'
       preview: '© 2024 Example Organisation'
     image_size:
-      type: text
+      type: select
       label: 'Image size'
       description: 'The size of the images. Allowed values: md, lg, xl. Defaults to lg.'
+      options:
+        md: 'medium'
+        lg: 'large (default)'
+        xl: 'extra large'
     title:
       type: text
       label: 'Title'

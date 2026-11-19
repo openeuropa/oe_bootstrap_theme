@@ -20,7 +20,6 @@ props:
         - info
         - light
         - dark
-        - link
         - null
       'meta:enum':
         primary: 'Primary (default)'
@@ -31,7 +30,6 @@ props:
         info: Info
         light: Light
         dark: Dark
-        link: Link
         '': Default
     rounded_pill:
       title: 'Pill badge'
@@ -48,7 +46,7 @@ props:
     url:
       title: 'Badge URL'
       description: 'Converts the badge in a link. Optional.'
-      type: [string, 'null']
+      type: [string, object, 'null']
     title:
       title: 'Link title'
       description: 'Title attribute if the badge is a link. Optional.'

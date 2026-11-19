@@ -56,19 +56,19 @@ props:
     first:
       title: 'First link'
       description: 'Pagination first link with path, label or icon.'
-      type: [array, 'null']
+      type: [object, 'null']
     prev:
       title: 'Previous link'
       description: 'Pagination previous link with path, label or icon.'
-      type: [array, 'null']
+      type: [object, 'null']
     next:
       title: 'Next link'
       description: 'Pagination next link with path, label or icon.'
-      type: [array, 'null']
+      type: [object, 'null']
     last:
       title: 'Last link'
       description: 'Pagination last link with path, label or icon.'
-      type: [array, 'null']
+      type: [object, 'null']
     items:
       title: 'Pagination items'
       description: 'List of items with path, label, disabled, active and aria_label.'

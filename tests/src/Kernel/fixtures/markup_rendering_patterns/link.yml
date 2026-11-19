@@ -52,7 +52,7 @@ link_pattern_with_external_url_and_fragment:
     '#id': 'link'
     '#fields':
       label: 'Link to link_pattern_with_external_url_and_fragment'
-      path: 'https://example.com?x=baz#bar'
+      path: !Url 'https://example.com?x=baz#bar'
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\LinkPatternAssert
@@ -65,7 +65,7 @@ link_pattern_with_internal_url:
     '#id': 'link'
     '#fields':
       label: 'Link to link_pattern_with_internal_url'
-      path: '/some-path'
+      path: !Url 'internal:/some-path'
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\LinkPatternAssert
@@ -208,7 +208,7 @@ link_with_render_array_label:
     '#fields':
       label:
         '#markup': 'Read <strong>more</strong>'
-      path: 'https://example.com?type=link#details'
+      path: !Url 'https://example.com?type=link#details'
   assertions: {}
 # The icon is an array with custom path, size, transformation and attributes.
 link_with_icon_object_after:

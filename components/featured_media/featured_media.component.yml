@@ -30,10 +30,15 @@ props:
       title: Ratio
       description: 'The embedded media aspect ratio. One of 1x1, 4x3, 16x9 or 21x9.'
       type: [string, 'null']
+      examples:
+        - 1x1
+        - 4x3
+        - 16x9
+        - 21x9
     link:
       title: Link
       description: 'Call to action link with icon. A link pattern definition must be passed.'
-      type: [array, 'null']
+      type: [object, 'null']
     title_tag:
       title: 'Title tag'
       description: 'Title tag of the featured media. Defaults to h2'
@@ -46,6 +51,14 @@ props:
       title: 'Text position'
       description: 'The position of the text when present. Either left or right. Defaults to left.'
       type: [string, 'null']
+      enum:
+        - left
+        - right
+        - null
+      'meta:enum':
+        left: 'Left (default)'
+        right: Right
+        '': Default
     attributes:
       title: Attributes
       type: [object, array, string, 'null']

@@ -9,7 +9,7 @@ offcanvas:
   settings:
     placement:
       type: select
-      label: 'Offcanvas'
+      label: 'Placement'
       description: 'Select the placement of the offcanvas:'
       options:
         start: 'start'
@@ -19,7 +19,7 @@ offcanvas:
       preview: 'start'
     body_scroll:
       type: boolean
-      label: 'Scroll'
+      label: 'Body scroll'
       description: 'If true, enable body scrolling when offcanvas is displayed. Defaults to false.'
     backdrop:
       type: boolean
