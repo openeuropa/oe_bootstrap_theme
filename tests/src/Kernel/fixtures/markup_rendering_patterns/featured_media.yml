@@ -3,7 +3,7 @@ featured_media_image_not_wrapper:
     '#type': pattern
     '#id': featured_media
     '#fields':
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1200/600/'
         alt: 'Alternative text for paragraph image'
         name: 'Example'
@@ -33,7 +33,7 @@ featured_media_image_with_copyright_overlay:
     '#type': pattern
     '#id': featured_media
     '#fields':
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1200/600/'
         alt: 'Alternative text for paragraph image'
         name: 'Example'
@@ -51,7 +51,7 @@ featured_media_image_with_title_tag:
     '#type': pattern
     '#id': featured_media
     '#fields':
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1200/600/'
         alt: 'Alternative text for paragraph image'
         name: 'Example'
@@ -89,7 +89,7 @@ featured_media_image_with_text_aligned_left:
     '#type': pattern
     '#id': featured_media
     '#fields':
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1200/600/'
         alt: 'Alternative text for paragraph image'
         name: 'Example'
@@ -127,7 +127,7 @@ featured_media_image_with_text_aligned_right:
     '#type': pattern
     '#id': featured_media
     '#fields':
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1200/600/'
         alt: 'Alternative text for paragraph image'
         name: 'Example'
@@ -360,7 +360,7 @@ featured_media_with_bc_featured_media_mobile_text_top_right:
     '#type': pattern
     '#id': featured_media
     '#fields':
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1200/600/'
         alt: 'Alternative text for paragraph image'
         name: 'Example'
@@ -382,7 +382,7 @@ featured_media_with_bc_featured_media_mobile_text_top_left:
     '#type': pattern
     '#id': featured_media
     '#fields':
-      image:
+      image: !ImageValueObject
         src: 'https://picsum.photos/1200/600/'
         alt: 'Alternative text for paragraph image'
         name: 'Example'
