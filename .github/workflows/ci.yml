@@ -1,0 +1,11 @@
+name: ci
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - 1.x
+
+jobs:
+  automated-tests:
+    uses: openeuropa/github-ci/.github/workflows/drupal-ci.yml@main
