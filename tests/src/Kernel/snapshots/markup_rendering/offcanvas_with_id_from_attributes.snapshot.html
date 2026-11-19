@@ -1,0 +1,49 @@
+<div
+  aria-labelledby="custom-id-title"
+  class="offcanvas-bottom offcanvas-lg"
+  data-offcanvas-aria-labelledby="custom-id-title"
+  data-offcanvas-static-role="complementary"
+  id="custom-id"
+  role="complementary"
+  tabindex="-1"
+>
+  <div
+    class="offcanvas-header"
+  >
+    <h2
+      class="bcl-heading offcanvas-title"
+      id="custom-id-title"
+    >
+      Offcanvas title
+    </h2>
+    <button
+      aria-controls="custom-id"
+      aria-label="Close"
+      class="btn-close text-reset"
+      data-bs-dismiss="offcanvas"
+      data-bs-target="#custom-id"
+      type="button"
+    ></button>
+  </div>
+  <div
+    class="offcanvas-body"
+  >
+    This is the offcanvas body content.
+  </div>
+</div>
+<button
+  aria-controls="custom-id"
+  class="btn btn-md btn-primary gap-2-5"
+  data-bs-target="#custom-id"
+  data-bs-toggle="offcanvas"
+  type="button"
+>
+  Toggle offcanvas
+  <svg
+    class="bi icon--fluid"
+  >
+    <use
+      xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#filter"
+    ></use>
+  </svg>
+</button>

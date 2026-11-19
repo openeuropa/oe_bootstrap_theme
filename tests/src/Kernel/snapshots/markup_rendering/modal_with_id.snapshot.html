@@ -1,0 +1,48 @@
+<div
+  aria-hidden="true"
+  aria-label="custom-modalLabel"
+  class="fade modal"
+  id="custom-modal"
+  tabindex="-1"
+>
+  <div
+    class="modal-dialog modal-sm"
+  >
+    <div
+      class="modal-content"
+    >
+      <div
+        class="modal-header"
+      >
+        <h5>
+          Header text
+        </h5>
+        <button
+          aria-label="Close"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          type="button"
+        ></button>
+      </div>
+      <div
+        class="modal-body"
+      >
+        Lorem Ipsum dolor sit amet
+      </div>
+      <div
+        class="modal-footer"
+      >
+        Footer text
+      </div>
+    </div>
+  </div>
+</div>
+<button
+  aria-controls="custom-modal"
+  class="btn btn-md btn-secondary"
+  data-bs-target="#custom-modal"
+  data-bs-toggle="modal"
+  type="button"
+>
+  Open Modal
+</button>
