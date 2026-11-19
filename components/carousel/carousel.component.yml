@@ -20,7 +20,7 @@ props:
       description: 'With indicators (default: false).'
       type: [boolean, 'null']
     autoplay:
-      title: 'Disable autoplay'
+      title: Autoplay
       description: 'Whether to initialise and animate the carousel at page load. Defaults to true. If false, the carousel will need to be instantiated explicitly via JavaScript.'
       type: [boolean, 'null']
     autoinit:
