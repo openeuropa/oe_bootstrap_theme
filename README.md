@@ -125,6 +125,10 @@ regardless of your local host configuration.
   the pnpm version pinned in `package.json`. If Corepack is unavailable, install
   pnpm directly using the linked instructions. The release workflow uses the tools
   already included in its CI image.
+- [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage)
+
+
+> __Important__: Git LFS is required for development. Builds may fail or assets may be missing if Git LFS is not installed and initialized before cloning the repository.
 
 #### Override docker settings
 
@@ -217,6 +221,23 @@ docker-compose exec web pnpm run watch
 `blockExoticSubdeps` in `pnpm-workspace.yaml` blocks transitive Git and URL
 dependencies. Direct Git or URL dependencies remain allowed and must be explicitly
 reviewed when changing `package.json`.
+
+## Visual regression testing (BackstopJS)
+
+BackstopJS lives under `tests/vrt/`. The scenario builder and Playwright helper scripts in this directory generate `tests/vrt/scenarios/patterns.json` and `tests/vrt/backstop.generated.json`, which Backstop consumes for visual checks.
+
+### Prerequisites
+
+- A running Drupal site reachable at `http://localhost:8080/build`. Override the target with the `VRT_BASE_URL` environment variable if needed.
+- Valid credentials. The default `admin` / `admin` values can be overridden with `DRUPAL_USER` and `DRUPAL_PASS`.
+- Playwright: `docker compose exec web npx playwright install-deps`
+
+### Available commands
+
+- `docker compose exec web npm run vrt:build` – scrapes the UI Patterns catalog and generates `tests/vrt/scenarios/patterns.json` plus `tests/vrt/backstop.generated.json`.
+- `docker compose exec web npm run vrt:reference` – captures fresh reference screenshots into `tests/vrt/bitmaps_reference`.
+- `docker compose exec web npm run vrt:test` – compares the current UI against the references, writing results to `tests/vrt/bitmaps_test` and `tests/vrt/html_report`.
+- `docker compose exec web npm run vrt:approve` – promotes the latest passing screenshots to the reference set.
 
 ## Patch BCL components
 

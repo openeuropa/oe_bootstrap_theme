@@ -1,0 +1,71 @@
+name: BackstopJS VRT
+
+on:
+  pull_request:
+
+jobs:
+  backstop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+
+      - name: Install dependencies
+        run: |
+          npm install
+          npx playwright install --with-deps
+
+      - name: Start Drupal stack
+        run: docker compose up -d mysql web
+
+      - name: Install Drupal
+        run: |
+          docker compose exec -T web composer install
+          docker compose exec -T web ./vendor/bin/run drupal:site-install
+
+      - name: Build Backstop config
+        run: npm run vrt:build
+
+      - name: Run BackstopJS
+        id: backstop
+        run: |
+          npm run vrt:test
+        # Keep artifact uploads running even when Backstop finds visual diffs.
+        continue-on-error: true
+
+      - name: Check Backstop report exists
+        if: always()
+        run: |
+          if [ ! -f tests/vrt/html_report/index.html ]; then
+            echo "Backstop HTML report was not generated"
+            exit 1
+          fi
+
+      - name: Upload Backstop results
+        id: upload_report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          # Preserve the HTML report together with test and reference screenshots.
+          name: backstop-results-${{ github.sha }}
+          path: |
+            tests/vrt/html_report
+            tests/vrt/bitmaps_test
+            tests/vrt/bitmaps_reference
+          if-no-files-found: warn
+
+      - name: Fail if Backstop failed
+        if: always() && steps.backstop.outcome != 'success'
+        run: |
+          echo "::error title=Run BackstopJS failed::Check the 'Run BackstopJS' step above."
+          exit 1
+
+      - name: Stop Drupal stack
+        if: always()
+        run: docker compose down
