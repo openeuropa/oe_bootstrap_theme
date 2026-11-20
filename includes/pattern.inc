@@ -58,6 +58,10 @@ function oe_bootstrap_theme_preprocess_pattern_offcanvas(array &$variables): voi
  * Implements hook_preprocess_HOOK() for description list pattern.
  */
 function oe_bootstrap_theme_preprocess_pattern_description_list(&$variables) {
+  // Return early, if `$variables['items']` is NULL or empty.
+  if (empty($variables['items'])) {
+    return;
+  }
   // Multiple terms can be passed for each item. Process all the entries to
   // add path and size to icons, if not yet specified.
   foreach ($variables['items'] as &$item) {
