@@ -1,3 +1,2 @@
-# Git LFS: visual regression reference images.
-*.png filter=lfs diff=lfs merge=lfs -text
-tests/vrt/bitmaps_reference/**/*.png filter=lfs diff=lfs merge=lfs -text
+# Git LFS: visual regression reference screenshots.
+tests/vrt/screenshots/**/*.png filter=lfs diff=lfs merge=lfs -text

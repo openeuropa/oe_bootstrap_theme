@@ -222,22 +222,27 @@ docker-compose exec web pnpm run watch
 dependencies. Direct Git or URL dependencies remain allowed and must be explicitly
 reviewed when changing `package.json`.
 
-## Visual regression testing (BackstopJS)
+## Visual regression testing (Playwright)
 
-BackstopJS lives under `tests/vrt/`. The scenario builder and Playwright helper scripts in this directory generate `tests/vrt/scenarios/patterns.json` and `tests/vrt/backstop.generated.json`, which Backstop consumes for visual checks.
+The tests live under `tests/vrt/`. They take a screenshot of every variant of every pattern in
+`templates/patterns/`, at four viewports, and compare it with the reference screenshots in
+`tests/vrt/screenshots/` (stored with Git LFS). A new pattern or variant is picked up automatically.
+
+Run the commands inside the `web` container: the references are generated there, and the CI uses the
+same container.
 
 ### Prerequisites
 
-- A running Drupal site reachable at `http://localhost:8080/build`. Override the target with the `VRT_BASE_URL` environment variable if needed.
+- An installed site (see above), reachable at `http://localhost:8080/build`. Override the target with the `VRT_BASE_URL` environment variable if needed.
 - Valid credentials. The default `admin` / `admin` values can be overridden with `DRUPAL_USER` and `DRUPAL_PASS`.
-- Playwright: `docker compose exec web pnpm exec playwright install --with-deps --only-shell chromium`
+- Reference screenshots pulled with Git LFS: `git lfs pull`.
+- The Playwright browser: `docker compose exec web pnpm run vrt:install`
 
 ### Available commands
 
-- `docker compose exec web pnpm run vrt:build` – scrapes the UI Patterns catalog and generates `tests/vrt/scenarios/patterns.json` plus `tests/vrt/backstop.generated.json`.
-- `docker compose exec web pnpm run vrt:reference` – captures fresh reference screenshots into `tests/vrt/bitmaps_reference`.
-- `docker compose exec web pnpm run vrt:test` – compares the current UI against the references, writing results to `tests/vrt/bitmaps_test` and `tests/vrt/html_report`.
-- `docker compose exec web pnpm run vrt:approve` – promotes the latest passing screenshots to the reference set.
+- `docker compose exec web pnpm run vrt:test` – compares the current UI against the references. Open `tests/vrt/html_report/index.html` to see the differences.
+- `docker compose exec web pnpm run vrt:update` – updates the references that changed. Review the report first, then commit the updated screenshots with your change.
+- To run only some patterns, add a filter, for example: `docker compose exec web pnpm run vrt:test -g button`.
 
 ## Patch BCL components
 
