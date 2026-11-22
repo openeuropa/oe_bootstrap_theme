@@ -230,14 +230,14 @@ BackstopJS lives under `tests/vrt/`. The scenario builder and Playwright helper 
 
 - A running Drupal site reachable at `http://localhost:8080/build`. Override the target with the `VRT_BASE_URL` environment variable if needed.
 - Valid credentials. The default `admin` / `admin` values can be overridden with `DRUPAL_USER` and `DRUPAL_PASS`.
-- Playwright: `docker compose exec web npx playwright install-deps`
+- Playwright: `docker compose exec web pnpm exec playwright install --with-deps --only-shell chromium`
 
 ### Available commands
 
-- `docker compose exec web npm run vrt:build` – scrapes the UI Patterns catalog and generates `tests/vrt/scenarios/patterns.json` plus `tests/vrt/backstop.generated.json`.
-- `docker compose exec web npm run vrt:reference` – captures fresh reference screenshots into `tests/vrt/bitmaps_reference`.
-- `docker compose exec web npm run vrt:test` – compares the current UI against the references, writing results to `tests/vrt/bitmaps_test` and `tests/vrt/html_report`.
-- `docker compose exec web npm run vrt:approve` – promotes the latest passing screenshots to the reference set.
+- `docker compose exec web pnpm run vrt:build` – scrapes the UI Patterns catalog and generates `tests/vrt/scenarios/patterns.json` plus `tests/vrt/backstop.generated.json`.
+- `docker compose exec web pnpm run vrt:reference` – captures fresh reference screenshots into `tests/vrt/bitmaps_reference`.
+- `docker compose exec web pnpm run vrt:test` – compares the current UI against the references, writing results to `tests/vrt/bitmaps_test` and `tests/vrt/html_report`.
+- `docker compose exec web pnpm run vrt:approve` – promotes the latest passing screenshots to the reference set.
 
 ## Patch BCL components
 

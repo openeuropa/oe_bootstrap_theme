@@ -13,14 +13,6 @@ jobs:
         with:
           lfs: true
 
-      - name: Setup Node
-        uses: actions/setup-node@v6
-
-      - name: Install dependencies
-        run: |
-          npm install
-          npx playwright install --with-deps
-
       - name: Start Drupal stack
         run: docker compose up -d mysql web
 
@@ -29,13 +21,16 @@ jobs:
           docker compose exec -T web composer install
           docker compose exec -T web ./vendor/bin/run drupal:site-install
 
+      - name: Install Playwright browser and OS dependencies
+        run: docker compose exec -T web pnpm exec playwright install --with-deps --only-shell chromium
+
       - name: Build Backstop config
-        run: npm run vrt:build
+        run: docker compose exec -T web pnpm run vrt:build
 
       - name: Run BackstopJS
         id: backstop
         run: |
-          npm run vrt:test
+          docker compose exec -T web pnpm run vrt:test
         # Keep artifact uploads running even when Backstop finds visual diffs.
         continue-on-error: true
 
