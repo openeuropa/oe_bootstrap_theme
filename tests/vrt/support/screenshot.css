@@ -1,0 +1,12 @@
+/* Applied only while taking screenshots. */
+
+/* Hide the Drupal admin toolbar: it is not part of the theme, and its tray
+   (open or closed, remembered by the browser) can overlap the components. */
+#toolbar-administration {
+  display: none !important;
+}
+
+body {
+  margin-left: 0 !important;
+  padding-top: 0 !important;
+}
