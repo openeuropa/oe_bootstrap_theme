@@ -46,6 +46,19 @@ class ComponentConverterDecorator extends ComponentConverter {
       $source['settings'][$field_name] = $field_definition;
       unset($source['fields'][$field_name]);
     }
+    // Mark some settings as required, so that the parent converter adds them
+    // to the required props. Only do this where omitting the value already
+    // broke the pattern, so that no previously working usage is broken.
+    $required_setting_names = match ($source['id']) {
+      'columns', 'listing', 'navigation' => ['items'],
+      default => [],
+    };
+    foreach ($required_setting_names as $name) {
+      if (!isset($source['settings'][$name])) {
+        throw new \Exception("Required setting '$name' not found in '$source[id]'.");
+      }
+      $source['settings'][$name]['required'] = TRUE;
+    }
     return $source;
   }
 
@@ -83,6 +96,23 @@ class ComponentConverterDecorator extends ComponentConverter {
     if (empty($target['slots'])) {
       unset($target['slots']);
     }
+    // Required settings should not be converted to slots.
+    $required_slot_names = array_diff(
+      $target['props']['required'] ?? [],
+      array_keys($target['props']['properties']),
+    );
+    if ($required_slot_names !== []) {
+      throw new \Exception(sprintf(
+        "Required props converted to slots in '%s': %s.",
+        $id,
+        implode(', ', $required_slot_names),
+      ));
+    }
+    // In any case, make sure 'properties' is the last key.
+    $target['props'] = [
+      ...array_diff_key($target['props'], ['properties' => NULL]),
+      ...$target['props'],
+    ];
     return $target;
   }
 
@@ -160,11 +190,13 @@ class ComponentConverterDecorator extends ComponentConverter {
     if (isset($source_setting['examples'])) {
       $prop['examples'] = $source_setting['examples'];
     }
-    // For now, all props are optional, so we allow NULL.
-    if (!is_string($prop['type']) ||
-      (!str_contains($prop['type'], '\\') && !class_exists($prop['type']) && !interface_exists($prop['type']))
-    ) {
-      $prop['type'] = array_unique([...(array) $prop['type'], 'null']);
+    // Allow NULL for optional props.
+    if (empty($source_setting['required'])) {
+      if (!is_string($prop['type']) ||
+        (!str_contains($prop['type'], '\\') && !class_exists($prop['type']) && !interface_exists($prop['type']))
+      ) {
+        $prop['type'] = array_unique([...(array) $prop['type'], 'null']);
+      }
     }
     // Change verb form in prop description.
     if (preg_match('#^(Add|Make|Enable|Display|Link|Use)( .*)#', $prop['description'] ?? '?', $matches)) {
@@ -178,8 +210,8 @@ class ComponentConverterDecorator extends ComponentConverter {
     foreach ($prop['meta:enum'] ?? [] as $enum_value => $enum_label) {
       $prop['meta:enum'][$enum_value] = ucfirst($enum_label);
     }
-    // Add null enum option.
-    if (isset($prop['enum']) && !in_array(NULL, $prop['enum'], TRUE)) {
+    // Add null enum option for optional props.
+    if (empty($source_setting['required']) && isset($prop['enum']) && !in_array(NULL, $prop['enum'], TRUE)) {
       $prop['enum'][] = NULL;
       if (isset($prop['meta:enum'])) {
         $prop['meta:enum'][''] ??= 'Default';

@@ -3,6 +3,8 @@ description: 'Renders content organised in columns of equal width.'
 group: 'Version 2.x'
 props:
   type: object
+  required:
+    - items
   properties:
     columns:
       title: Columns
@@ -15,7 +17,7 @@ props:
     items:
       title: Items
       description: 'The items to organize in columns. Accepts any render array.'
-      type: [array, 'null']
+      type: array
     attributes:
       title: Attributes
       type: [object, array, string, 'null']

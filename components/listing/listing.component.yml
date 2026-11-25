@@ -11,6 +11,8 @@ slots:
     description: 'Title of the listing block.'
 props:
   type: object
+  required:
+    - items
   properties:
     columns:
       title: Columns
@@ -27,7 +29,7 @@ props:
     items:
       title: Items
       description: 'List of card items.'
-      type: [array, 'null']
+      type: array
     attributes:
       title: Attributes
       type: [object, array, string, 'null']
