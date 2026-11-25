@@ -63,6 +63,39 @@ description_list_default:
             definition: 'This is a bigger icon.'
           - term: 'A single term without icon.'
             definition: 'Yet another definition text.'
+description_list_incomplete:
+  render:
+    '#type': pattern
+    '#id': description_list
+    '#fields':
+      title: 'The description list title'
+      title_tag: 'h4'
+      settings:
+        orientation: default
+      items:
+        # An item without a term is not officially supported.
+        # The test just covers the current behavior, which can result in empty
+        # tags.
+        # @todo Implement a proper error or fallback behavior.
+        - term: {}
+          description: 'An item with empty array as term.'
+        - term: ''
+          description: 'An item with empty string as term.'
+        - definition: 'An item without a term.'
+        - term: 'An item without a definition.'
+        # An item that is completely empty.
+        - {}
+  assertions:
+    pattern:
+      class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\DescriptionListAssert
+      expected:
+        items:
+          - {}
+          - term: ''
+          - term: ''
+            definition: 'An item without a term.'
+          - term: 'An item without a definition.'
+          - term: ''
 description_list_horizontal:
   render:
     '#type': pattern
@@ -127,4 +160,40 @@ description_list_horizontal_with_term_icon_array:
               icon:
                 name: 'geo-alt-fill'
           definition: 'A definition.'
+  assertions: {}
+# Same as 'description_list_default', but with empty slots.
+description_list_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': description_list
+    '#fields':
+      title:
+        '#markup': ''
+      title_tag: h4
+      items:
+        - term:
+            - label: 'Single label with icon'
+              icon: geo-alt-fill
+          definition: 'Description of first term text goes here.'
+        - term:
+            - label: 'First label without icon'
+            - label: 'Second label with icon'
+              icon: calendar-event
+          definition: 'Description of second term text goes here.'
+        - term:
+            - label:
+                - '#markup': 'A label with <em>some</em> markup.'
+          definition:
+            - label:
+                - '#markup': '<p class="mb-2">First line description of third term text goes here.</p>'
+            - label:
+                - '#markup': 'Second line description of third term text goes here.'
+        - term:
+            - label: 'Custom icon size'
+              icon:
+                name: bicycle
+                size: xl
+          definition: 'This is a bigger icon.'
+        - term: 'A single term without icon.'
+          definition: 'Yet another definition text.'
   assertions: {}

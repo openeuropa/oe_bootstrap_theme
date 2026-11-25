@@ -615,3 +615,21 @@ listing_default_2_col_highlight_with_image_copyright:
       'article.listing-item--highlight .card-body.pt-3': 1
     equals:
       'article.listing-item--highlight .bcl-copyright': '<span class="visually-hidden">Image credit: </span>© 2024 Example Organisation'
+# Same as 'listing_default_1_col_with_image_copyright', but with empty slots.
+listing_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': listing
+    '#variant': default
+    '#fields':
+      columns: '1'
+      title:
+        '#markup': ''
+      items:
+        - title: 'Card title 1'
+          text: 'Lorem ipsum dolor sit amet.'
+          image: !ImageValueObject
+            src: 'https://picsum.photos/600/400/'
+            alt: 'alt img'
+          image_copyright: '© 2024 Example Organisation'
+  assertions: {}

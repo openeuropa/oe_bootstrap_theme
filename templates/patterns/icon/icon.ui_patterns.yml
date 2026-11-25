@@ -26,5 +26,6 @@ icon:
         l: 'l'
         xl: 'xl'
         2xl: '2xl'
+        3xl: '3xl'
         fluid: 'fluid'
       preview: 'xl'

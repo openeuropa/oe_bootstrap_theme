@@ -64,3 +64,22 @@ progress_light_non_stripped_non_animated:
       'label.progress-bar-label': 'Progress label'
       'div.progress': 'Bar label'
       'small.progress-bar-message': 'Progress bar description'
+# Same as 'progress_primary_stripped_animated', but with empty slots.
+progress_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': progress
+    '#fields':
+      settings:
+        style: primary
+        striped: true
+        animated: true
+      progress: 60
+      min: 10
+      max: 90
+      label:
+        '#markup': ''
+      text:
+        '#plain_text': ''
+      message: ''
+  assertions: {}

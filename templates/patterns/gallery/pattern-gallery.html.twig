@@ -5,6 +5,8 @@
  */
 #}
 {% extends '@oe-bcl/gallery' %}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set title = title|render %}
 
 {% set toggle_collapsed = 'View the full gallery (%d)'|t %}
 {% set toggle_expanded = 'View less'|t %}

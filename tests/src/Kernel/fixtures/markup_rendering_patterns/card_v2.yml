@@ -246,3 +246,26 @@ card_v2_horizontal:
           class: 'footer-class card-footer'
           id: 'footer-id'
           data-footer-attribute: 'footer-attr-value'
+# Same as 'card_v2_default', but with empty slots.
+card_v2_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': card_v2
+    '#fields':
+      title: ''
+      content:
+        '#markup': '<p>Body content card</p>'
+      footer:
+        - '#markup': ''
+        - '#plain_text': ''
+      header:
+        '#plain_text': ''
+      media:
+        '#markup': ''
+    '#settings':
+      attributes: 'class="card-class" id="card-id" data-card-attribute="card-attr-value"'
+      media_attributes: 'class="media-class" id="media-id" data-media-attribute="media-attr-value"'
+      content_attributes: 'class="content-class" id="content-id" data-content-attribute="content-attr-value"'
+      header_attributes: 'class="header-class" id="header-id" data-header-attribute="header-attr-value"'
+      footer_attributes: 'class="footer-class" id="footer-id" data-footer-attribute="footer-attr-value"'
+  assertions: {}

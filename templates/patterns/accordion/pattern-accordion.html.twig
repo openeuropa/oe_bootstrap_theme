@@ -4,6 +4,8 @@
  * Accordion pattern.
  */
 #}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set title = title|render %}
 {% include '@oe-bcl/accordion' with {
   'title': title,
   'title_tag': title_tag,

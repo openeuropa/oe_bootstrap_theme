@@ -126,3 +126,17 @@ button_with_icon_transformation:
           class:
             - 'custom-icon-class'
   assertions: {}
+# Same as 'button_dark_with_icon_after', but with empty slots.
+button_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': button
+    '#variant': dark
+    '#fields':
+      settings:
+        icon_position: after
+      type: button
+      label:
+        '#markup': ''
+      icon: arrow-right
+  assertions: {}

@@ -4,6 +4,8 @@
  * Alert component.
  */
 #}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set heading = heading|render %}
 {% include '@oe-bcl/alert' with {
   'heading': heading,
   'message': message,

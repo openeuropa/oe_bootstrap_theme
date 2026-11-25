@@ -135,6 +135,17 @@ file_with_translations_and_custom_link_label:
           language_code: 'bg'
           meta: 'Draft'
   assertions: {}
+# The file has no language code and no size.
+file_without_language_code_or_size:
+  render:
+    '#type': 'pattern'
+    '#id': 'file'
+    '#fields':
+      file:
+        title: 'No language file'
+        url: 'https://example.com/no-lang.txt'
+        extension: 'txt'
+  assertions: {}
 # Without a file, nothing is rendered, even with a title.
 file_without_file_renders_nothing:
   render:
@@ -155,4 +166,21 @@ file_empty_extension:
         url: '/report'
         extension: ''
         language_code: 'en'
+  assertions: {}
+# Same as 'file_with_title_tag', but with empty slots.
+file_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': file
+    '#fields':
+      title:
+        '#markup': ''
+      title_tag: h4
+      file: !FileValueObject
+        title: 'Icon PDF specs'
+        name: druplicon.pdf
+        url: 'https://example.com/document.pdf'
+        mime: application/pdf
+        size: '23423'
+        language_code: en
   assertions: {}

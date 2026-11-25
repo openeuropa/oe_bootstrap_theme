@@ -230,3 +230,16 @@ link_with_icon_object_after:
             - 'custom-icon-class'
           data-icon-attribute: 'custom-value'
   assertions: {}
+# Same as 'link_pattern_with_icon_before', but with empty slots.
+link_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': link
+    '#fields':
+      settings:
+        icon_position: before
+      label:
+        '#markup': ''
+      path: 'https://example.com'
+      icon: lock
+  assertions: {}

@@ -4,6 +4,8 @@
  * Button pattern.
  */
 #}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set label = label|render %}
 {% if icon %}
   {% set icon_data = icon is iterable ? icon : { name: icon } %}
   {% set _icon = { path: bcl_icon_path }|merge(icon_data) %}

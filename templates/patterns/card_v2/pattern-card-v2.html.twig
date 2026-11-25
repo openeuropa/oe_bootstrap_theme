@@ -6,6 +6,11 @@
  * For available variables, refer to the pattern declaration.
  */
 #}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set media = media|render %}
+{% set header = header|render %}
+{% set title = title|render %}
+{% set footer = footer|render %}
 
 {% set _classes = ['card', 'v2'] %}
 

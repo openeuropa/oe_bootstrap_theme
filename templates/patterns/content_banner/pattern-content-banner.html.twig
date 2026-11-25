@@ -4,6 +4,10 @@
  * Content banner pattern.
  */
 #}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set title = title|render %}
+{% set content = content|render %}
+{% set copyright = copyright|render %}
 {% apply spaceless %}
 {# Render the 'meta' items into the content variable. #}
 {% set _content %}

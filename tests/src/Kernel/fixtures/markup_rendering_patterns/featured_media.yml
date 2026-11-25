@@ -315,6 +315,41 @@ featured_media_with_subtitle_empty_title:
     count:
       'h2.text-secondary': 1
       'h2.bcl-heading': 0
+# A render array with empty output counts as empty, like ''.
+featured_media_with_subtitle_empty_render_array_title:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      title:
+        '#markup': ''
+        '#cache':
+          tags: ['example_tag']
+      subtitle: 'Subtitle Here'
+  assertions: {}
+# All text slots render empty, so the layout without text column is used.
+featured_media_with_empty_render_array_slots:
+  render:
+    '#type': pattern
+    '#id': featured_media
+    '#fields':
+      image: !ImageValueObject
+        src: 'https://picsum.photos/1200/600/'
+        alt: 'Alternative text for paragraph image'
+        name: 'Example'
+      title:
+        '#plain_text': ''
+      subtitle:
+        '#markup': 'Subtitle without access'
+        '#access': false
+      text:
+        - '#markup': ''
+        - '#plain_text': ''
+      caption:
+        '#markup': ''
+      copyright:
+        '#plain_text': ''
+  assertions: {}
 featured_media_with_bc_on_subtitle_and_subtitle_tag:
   render:
     '#type': pattern

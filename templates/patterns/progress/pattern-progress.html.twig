@@ -4,6 +4,10 @@
  * Progress pattern.
  */
 #}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set label = label|render %}
+{% set text = text|render %}
+{% set message = message|render %}
 {% include '@oe-bcl/progress' with {
   'progress': progress,
   'min': min,
