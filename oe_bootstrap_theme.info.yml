@@ -5,6 +5,11 @@ type: theme
 base theme: false
 core_version_requirement: ^10.3 || ^11
 
+# Validate component props against the schema as declared, when the
+# 'oe_bootstrap_theme_strict_sdc_validation' module is enabled.
+# @see \Drupal\oe_bootstrap_theme_strict_sdc_validation\StrictPropsComponentValidator
+oe_bootstrap_theme_strict_sdc_validation: true
+
 libraries:
   - oe_bootstrap_theme/bcl
   - oe_bootstrap_theme/style

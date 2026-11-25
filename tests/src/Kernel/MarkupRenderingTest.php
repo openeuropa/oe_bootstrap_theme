@@ -43,6 +43,7 @@ class MarkupRenderingTest extends KernelTestBase {
   protected static $modules = [
     'filter',
     'oe_bootstrap_theme_helper',
+    'oe_bootstrap_theme_strict_sdc_validation',
     'system',
     'ui_patterns',
     'ui_patterns_library',
