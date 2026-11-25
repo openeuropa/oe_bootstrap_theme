@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
 use Drupal\Component\Serialization\Yaml;
-use Drupal\Core\Form\FormInterface;
-use Drupal\Core\Form\FormState;
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Element;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Kernel\fixtures\PatternTestDataMassager;
@@ -25,7 +23,7 @@ use Symfony\Component\DomCrawler\Crawler;
  *
  * @group oe_bootstrap_theme
  */
-class MarkupRenderingTest extends KernelTestBase implements FormInterface {
+class MarkupRenderingTest extends KernelTestBase {
 
   use BackwardCompatibilityTrait;
 
@@ -111,6 +109,104 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
   }
 
   /**
+   * Tests whether attributes are applied to patterns or components.
+   */
+  public function testPatternAttributes(): void {
+    // Some patterns currently don't pass attributes to the BCL template.
+    $known_non_attributes_passing_patterns = [
+      'dropdown',
+      'inpage_navigation',
+      'modal',
+    ];
+    $problems = [];
+    foreach (static::$patternList as $pattern_name) {
+      // Set minimal required parameters per pattern, so that the output won't
+      // be empty and no errors occur.
+      $values = match ($pattern_name) {
+        // Some patterns are ok with an empty list of items.
+        'dropdown',
+        'card_layout',
+        'description_list',
+        'fact_figures',
+        'columns' => ['items' => []],
+        // Some patterns need at least one item, but it can be empty.
+        'accordion',
+        'carousel_v2',
+        'breadcrumb' => ['items' => [[]]],
+        // Some patterns need at least one item, with minimum data.
+        'listing',
+        'navigation' => ['items' => [['title' => 'Item title']]],
+        'gallery' => ['items' => [['media' => 'The media']]],
+        // Some patterns have different required parameters.
+        'links_block' => ['links' => [[]]],
+        'file' => [
+          'file' => [
+            'url' => 'https://example.com/download.pdf',
+            'language_code' => 'en',
+            'extension' => 'pdf',
+          ],
+        ],
+        default => [],
+      };
+      $render = [
+        '#type' => 'inline_template',
+        '#template' => "{{ pattern('$pattern_name', values) }}",
+        '#context' => [
+          'values' => [
+            ...$values,
+            'attributes' => ['class' => ['custom-class-abc']],
+          ],
+        ],
+      ];
+      Html::resetSeenIds();
+      set_error_handler(static function (int $type, string $message, string $file, int $line) {
+        if ($type === E_USER_DEPRECATED || !(error_reporting() & $type)) {
+          return;
+        }
+        throw new \ErrorException($type . ': ' . $message, 0, $type, $file, $line);
+      });
+      try {
+        $html = (string) $this->container->get(RendererInterface::class)->renderRoot($render);
+      }
+      catch (\ErrorException $e) {
+        $problems['error'][$pattern_name] = $e->getSeverity() . ': ' . $e->getMessage();
+        continue;
+      }
+      catch (\Throwable $e) {
+        $problems['exception'][$pattern_name] = get_class($e) . ': ' . $e->getMessage();
+        continue;
+      }
+      finally {
+        restore_error_handler();
+      }
+      if (trim($html) === '') {
+        $problems['Output is empty'][] = $pattern_name;
+        continue;
+      }
+      $crawler = new Crawler($html);
+      $count = $crawler->filter('.custom-class-abc')->count();
+      if ($count === 1) {
+        if (in_array($pattern_name, $known_non_attributes_passing_patterns)) {
+          $problems['Attributes were applied unexpectedly'][] = $pattern_name;
+        }
+      }
+      elseif ($count === 0) {
+        if (!in_array($pattern_name, $known_non_attributes_passing_patterns)) {
+          $problems["Attributes were not applied."][] = $pattern_name;
+        }
+      }
+      else {
+        $problems["Attributes were applied more than once"][$pattern_name] = $count;
+      }
+    }
+    ksort($problems);
+    if ($problems) {
+      $this->fail(Yaml::encode($problems));
+    }
+    $this->addToAssertionCount(1);
+  }
+
+  /**
    * Tests rendering of elements.
    *
    * @param array $render
@@ -123,22 +219,76 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
    * @dataProvider markupRenderingProvider
    */
   public function testMarkupRendering(array $render, array $assertions, array $backward_compatibility = []): void {
+    $render = PatternTestDataMassager::massageDataRecursive($render);
     if (!empty($backward_compatibility)) {
       foreach ($backward_compatibility as $name => $value) {
         $this->setBackwardCompatibilitySetting($name, $value);
       }
     }
 
-    // Wrap all the test structure inside a form. This will allow proper
-    // processing of form elements and invocation of form alter hooks. Even if
-    // the elements being tested are not form related, the form can host them
-    // without causing any issues.
-    $form_state = new FormState();
-    $form_state->addBuildInfo('args', [$render]);
-    $form_state->setProgrammed();
+    $html = RenderWrapperForm::renderInFormContext($render, $this->container);
+    $this->assertMarkupRendering($assertions, $html);
+  }
 
-    $form = $this->container->get('form_builder')->buildForm($this, $form_state);
-    $this->assertMarkupRendering($assertions, (string) $this->container->get('renderer')->renderRoot($form));
+  /**
+   * Provides test data for testAllCases().
+   *
+   * @return array<string, array>
+   *   Argument combinations for the test method.
+   */
+  public static function allCasesProvider(): array {
+    return [
+      'patterns' => ['patterns'],
+      'other' => ['other'],
+    ];
+  }
+
+  /**
+   * Tests all components in a single pass.
+   *
+   * @param 'patterns'|'other' $mode
+   *   Pass 'patterns' to test all cases with patterns.
+   *   Pass 'other' to test all cases which don't use a pattern.
+   *
+   * @dataProvider allCasesProvider
+   */
+  public function testAllCases(string $mode): void {
+    $cases = static::markupRenderingProvider();
+    $n = count($cases);
+    foreach (array_keys($cases) as $i => $case_name) {
+      $restore_callbacks = [];
+      try {
+        $case = $cases[$case_name];
+        $render = $case['render'];
+        $render = PatternTestDataMassager::massageDataRecursive($render);
+        $assertions = $case['assertions'];
+        $backward_compatibility = $case['backward_compatibility'] ?? [];
+        if (!empty($backward_compatibility)) {
+          foreach ($backward_compatibility as $bc_name => $bc_value) {
+            $restore_callbacks[] = $this->setBackwardCompatibilitySetting($bc_name, $bc_value);
+          }
+        }
+
+        // Skip pattern case when in 'other' mode.
+        // Skip non-pattern case when not in 'other' mode.
+        if ($mode === 'other' xor ($render['#type'] ?? NULL) !== 'pattern') {
+          continue;
+        }
+
+        Html::resetSeenIds();
+
+        $html = RenderWrapperForm::renderInFormContext($render, $this->container);
+        $this->assertMarkupRendering($assertions, $html);
+      }
+      catch (\Throwable $e) {
+        throw new \Exception("Failure in '$case_name' ($i of $n).", previous: $e);
+      }
+      finally {
+        foreach ($restore_callbacks as $restore_callback) {
+          $restore_callback();
+        }
+      }
+    }
   }
 
   /**
@@ -163,7 +313,6 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
           $suffix++;
         } while (isset($test_cases[$candidate_key]));
         $key = $candidate_key;
-        $test_case['render'] = PatternTestDataMassager::massageDataRecursive($test_case['render']);
         $test_cases[$key] = $test_case;
       }
     }
@@ -263,60 +412,6 @@ class MarkupRenderingTest extends KernelTestBase implements FormInterface {
     /** @var \Drupal\Tests\oe_bootstrap_theme\PatternAssertion\PatternAssertInterface $pattern_assert */
     $pattern_assert = new $assertions['class']();
     $pattern_assert->assertPattern($assertions['expected'], $pattern_html);
-  }
-
-  /**
-   * Builds the form.
-   *
-   * @param array $form
-   *   An associative array containing the structure of the form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *   The current state of the form.
-   * @param array|null $render_array
-   *   The element render array.
-   *
-   * @return array
-   *   The form render array.
-   */
-  public function buildForm(array $form, FormStateInterface $form_state, ?array $render_array = NULL): array {
-    $form['test'] = $render_array;
-    return $form;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function validateForm(array &$form, FormStateInterface $form_state): void {
-    // Recurse through all the form elements and check if they have a property
-    // "#set_validation_error". If they have, set a generic error on the
-    // element.
-    $add_errors = function (array $element) use (&$add_errors, $form_state): void {
-      if (!empty($element['#set_validation_error'])) {
-        // When the title is not present for a form element, fallback to its
-        // path in the form.
-        $label = !empty($element['#title']) ? $element['#title'] : implode('][', $element['#array_parents']);
-        $form_state->setError($element, t('Validation error on @label', ['@label' => $label]));
-      }
-
-      foreach (Element::children($element) as $key) {
-        // Recursively call this closure on all the children elements.
-        $add_errors($element[$key]);
-      }
-    };
-
-    $add_errors($form['test']);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function submitForm(array &$form, FormStateInterface $form_state): void {}
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getFormId(): string {
-    return 'oe_bootstrap_theme_markup_rendering_test_form';
   }
 
 }
