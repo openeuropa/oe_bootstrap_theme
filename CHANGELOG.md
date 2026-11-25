@@ -1,10 +1,22 @@
 # Change Log
 
+## [1.41.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.41.0) (2026-11-18)
+
+[Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.40.0...1.41.0)
+
+**Merged pull requests:**
+
+- OEL-5227: Migrate theme and default kit from npm to pnpm. Fix CI. [\#683](https://github.com/openeuropa/oe_bootstrap_theme/pull/683) ([tibi2303](https://github.com/tibi2303))
+- OEL-0000: Change web container image. [\#679](https://github.com/openeuropa/oe_bootstrap_theme/pull/679) ([donquixote](https://github.com/donquixote))
+- OEL-5121: Fix navigation tab content rendering and add markup coverage. [\#675](https://github.com/openeuropa/oe_bootstrap_theme/pull/675) ([tibi2303](https://github.com/tibi2303))
+
 ## [1.40.0](https://github.com/openeuropa/oe_bootstrap_theme/tree/1.40.0) (2026-10-28)
 
 [Full Changelog](https://github.com/openeuropa/oe_bootstrap_theme/compare/1.39.0...1.40.0)
+
 **Merged pull requests:**
 
+- Prepare release 1.40.0. [\#662](https://github.com/openeuropa/oe_bootstrap_theme/pull/662) ([tibi2303](https://github.com/tibi2303))
 - OEL-4962: Add Carousel V2 UI Pattern. [\#661](https://github.com/openeuropa/oe_bootstrap_theme/pull/661) ([tibi2303](https://github.com/tibi2303))
 - OEL-5087: Fix PHPStan issues [\#646](https://github.com/openeuropa/oe_bootstrap_theme/pull/646) ([piotrsmykaj](https://github.com/piotrsmykaj))
 
