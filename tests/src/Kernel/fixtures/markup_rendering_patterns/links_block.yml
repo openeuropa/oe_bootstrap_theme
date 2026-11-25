@@ -147,3 +147,54 @@ links_block_no_title:
       'div.bg-light > ul > li.list-unstyled.me-4-5:nth-child(1) a[href="https://example.com"]': 'Link number one'
       'div.bg-light > ul > li.list-unstyled.me-4-5:nth-child(2) a[href="https://google.com"]': 'Link number two'
       'div.bg-light > ul > li.list-unstyled:nth-child(3) a[href="https://europa.eu"]': 'More channels'
+# Title as render array. Links with icons get 'icon_display: flex', unless
+# 'icon_display' is specified.
+links_block_horizontal_transparent_with_optional_parameters:
+  render:
+    '#type': 'pattern'
+    '#id': 'links_block'
+    '#fields':
+      settings:
+        background: 'transparent'
+        orientation: 'horizontal'
+      title:
+        '#markup': 'Related <em>information</em>'
+      title_tag: 'h3'
+      links:
+        - label:
+            '#markup': 'Disabled <strong>link</strong>'
+          path: '/disabled'
+          variant: 'warning'
+          id: 'disabled-link'
+          disabled: true
+          icon:
+            name: 'lock'
+          icon_position: 'before'
+          attributes: !Attribute
+            class:
+              - 'custom-link'
+            data-link-attribute: 'custom-value'
+        - label: 'Custom icon'
+          path: '/custom-icon'
+          icon:
+            name: 'custom-symbol'
+            path: '/other/icons.svg'
+            size: 'xl'
+            transformation: 'flip-vertical'
+            attributes: !Attribute
+              class:
+                - 'custom-link-icon'
+          icon_position: 'after'
+          icon_display: 'inline-flex'
+        - label: 'No icon spacing'
+          path: '/no-spacing'
+          icon:
+            name: 'arrow-right'
+          icon_display: 'inline-flex'
+          remove_icon_spacers: true
+      attributes: !AttributeOrArray
+        id: 'custom-links-block'
+        class:
+          - 'custom-links-block'
+        data-block-attribute: 'custom-value'
+  assertions: {}

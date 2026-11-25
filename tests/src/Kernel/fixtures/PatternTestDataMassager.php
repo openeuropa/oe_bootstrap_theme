@@ -22,16 +22,25 @@ final class PatternTestDataMassager {
   /**
    * Prepares a render element from yaml data.
    *
-   * @param array $data
+   * @param mixed $data
    *   The data from yaml, which does not contain any objects besides
    *   TaggedValue.
+   * @param bool $use_objects
+   *   TRUE, to return objects for `!AttributeOrArray`, `!DateTime` and `!Url`
+   *   tags in the yaml.
+   *   FALSE to return the plain values (array or string).
+   *   Note that `!Attribute` tags are not impacted, they always return the
+   *   Attribute object.
    *
-   * @return array
-   *   The massaged render element, with objects based on the TaggedValue itesm.
+   * @return mixed
+   *   The massaged data, with values based on the TaggedValue items.
    */
-  public static function massageDataRecursive(mixed $data): mixed {
+  public static function massageDataRecursive(mixed $data, bool $use_objects = TRUE): mixed {
     if (is_array($data)) {
-      return array_map(self::massageDataRecursive(...), $data);
+      return array_map(
+        static fn (mixed $value): mixed => self::massageDataRecursive($value, $use_objects),
+        $data,
+      );
     }
     if (!$data instanceof TaggedValue) {
       return $data;
@@ -40,9 +49,10 @@ final class PatternTestDataMassager {
       'Markup' => Markup::create($data->getValue()),
       'FileValueObject' => FileValueObject::fromArray($data->getValue()),
       'ImageValueObject' => ImageValueObject::fromArray($data->getValue()),
-      'DateTime' => new \DateTimeImmutable($data->getValue()),
+      'DateTime' => $use_objects ? new \DateTimeImmutable($data->getValue()) : $data->getValue(),
       'Attribute' => new Attribute($data->getValue()),
-      'Url' => Url::fromUri($data->getValue()),
+      'AttributeOrArray' => $use_objects ? new Attribute($data->getValue()) : $data->getValue(),
+      'Url' => $use_objects ? Url::fromUri($data->getValue()) : Url::fromUri($data->getValue())->toString(),
       default => throw new \RuntimeException(sprintf('Unexpected tag %s.', $data->getTag()))
     };
   }

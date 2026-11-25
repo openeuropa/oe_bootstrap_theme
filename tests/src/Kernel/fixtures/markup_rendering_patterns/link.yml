@@ -52,7 +52,7 @@ link_pattern_with_external_url_and_fragment:
     '#id': 'link'
     '#fields':
       label: 'Link to link_pattern_with_external_url_and_fragment'
-      path: 'https://example.com?x=baz#bar'
+      path: !Url 'https://example.com?x=baz#bar'
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\LinkPatternAssert
@@ -65,7 +65,7 @@ link_pattern_with_internal_url:
     '#id': 'link'
     '#fields':
       label: 'Link to link_pattern_with_internal_url'
-      path: '/some-path'
+      path: !Url 'internal:/some-path'
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\LinkPatternAssert
@@ -200,3 +200,33 @@ link_pattern_attributes:
           class: 'first second'
           id: 'link-id'
           data-attribute: 'some-value'
+# The label is a render array.
+link_with_render_array_label:
+  render:
+    '#type': 'pattern'
+    '#id': 'link'
+    '#fields':
+      label:
+        '#markup': 'Read <strong>more</strong>'
+      path: !Url 'https://example.com?type=link#details'
+  assertions: {}
+# The icon is an array with custom path, size, transformation and attributes.
+link_with_icon_object_after:
+  render:
+    '#type': 'pattern'
+    '#id': 'link'
+    '#fields':
+      settings:
+        icon_position: 'after'
+      label: 'Custom icon'
+      path: '/custom-icon'
+      icon:
+        name: 'custom-symbol'
+        path: '/custom/icons.svg'
+        size: 'xl'
+        transformation: 'rotate-90'
+        attributes: !Attribute
+          class:
+            - 'custom-icon-class'
+          data-icon-attribute: 'custom-value'
+  assertions: {}

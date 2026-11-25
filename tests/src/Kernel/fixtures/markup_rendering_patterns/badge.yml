@@ -91,7 +91,7 @@ badge_with_url:
         rounded_pill: true
         background: 'secondary'
       label: 'A simple badge!'
-      url: 'https://example.com'
+      url: !Url 'https://example.com'
   assertions:
     pattern:
       class: Drupal\Tests\oe_bootstrap_theme\PatternAssertion\BadgePatternAssert

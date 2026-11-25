@@ -191,3 +191,55 @@ navbar_pattern_medium_default_scheme_only_navigation:
       'div#bcl-navbar.navbar-collapse > a': 1
     equals:
       'div#bcl-navbar a': "I'm a link"
+# Without 'expanded_breakpoint', the collapse is disabled.
+navbar_default_props_omitted:
+  render:
+    '#type': 'pattern'
+    '#id': 'navbar'
+    '#fields': {}
+  assertions: {}
+# Content in the 'right' region.
+navbar_light_with_all_regions:
+  render:
+    '#type': 'pattern'
+    '#id': 'navbar'
+    '#fields':
+      expanded_breakpoint: 'lg'
+      branding:
+        '#type': 'html_tag'
+        '#tag': 'a'
+        '#value': 'OpenEuropa Site'
+        '#attributes':
+          href: 'https://europa.eu/'
+          rel: 'home'
+          class:
+            - 'navbar-brand'
+      navigation:
+        - '#markup': '<a class="nav-link" href="#priorities">Priorities</a>'
+        - '#type': 'html_tag'
+          '#tag': 'a'
+          '#value': 'Funding'
+          '#attributes':
+            href: '#funding'
+            class:
+              - 'nav-link'
+      right:
+        '#type': 'html_tag'
+        '#tag': 'form'
+        '#attributes':
+          class:
+            - 'd-flex'
+          action: '/search'
+        '#children': '<label for="navbar-search">Search</label><input id="navbar-search" name="search">'
+  assertions: {}
+# 'background' is set to false.
+navbar_without_background:
+  render:
+    '#type': 'pattern'
+    '#id': 'navbar'
+    '#fields':
+      expanded_breakpoint: 'sm'
+      background: false
+      navigation:
+        '#markup': '<a class="nav-link" href="/direct-link">Direct link</a>'
+  assertions: {}

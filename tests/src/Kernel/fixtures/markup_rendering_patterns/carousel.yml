@@ -277,3 +277,50 @@ carousel_with_title_default_tag:
       expected:
         title: 'Carousel title'
         title_tag: 'h2'
+# 'dark_mode' is enabled. 'active_item' is not declared in the pattern, but the template supports it.
+carousel_dark_mode_with_active_item:
+  render:
+    '#type': 'pattern'
+    '#id': 'carousel'
+    '#fields':
+      settings:
+        dark_mode: true
+        show_indicators: true
+      active_item: 2
+      slides:
+        - image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+        - image:
+            src: 'https://images.site.example2'
+            alt: 'alt image 2'
+  assertions: {}
+# Extra image keys become attributes of the img tag.
+# The pattern overrides the icon and icon position of the slide link.
+carousel_with_image_attributes_and_link_icon:
+  render:
+    '#type': 'pattern'
+    '#id': 'carousel'
+    '#fields':
+      slides:
+        - image:
+            src: 'https://images.site.example1'
+            alt: 'alt image 1'
+            title: 'Image title'
+            loading: 'lazy'
+            width: '1000'
+            height: '500'
+            class:
+              - 'custom-image-class'
+          caption_title: 'First slide title'
+          caption: 'First slide caption'
+          link:
+            label: 'First link'
+            path: 'https://link.one'
+            icon_position: 'after'
+            icon:
+              name: 'chevron-right'
+            attributes: !Attribute
+              class:
+                - 'custom-link-class'
+  assertions: {}
