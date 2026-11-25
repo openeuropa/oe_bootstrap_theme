@@ -93,14 +93,16 @@ class HtmlSnapshotFormatter {
         if ($text === '') {
           continue;
         }
-        if (trim($text) === '') {
+        // Only treat whitespace from template formatting as insignificant, so
+        // that e.g. a non-breaking space, a tab or a "\r" remains visible.
+        if (trim($text, " \n") === '') {
           $output .= "\n";
           continue;
         }
-        $text = preg_replace('#^\s+|\s+$#', "\n", $childNode->data);
+        $text = preg_replace('#^[ \n]+|[ \n]+$#', "\n", $childNode->data);
         $text = $indent . str_replace("\n", "\n$indent", $text) . "\n";
         $text = preg_replace("# +\n#", "\n", $text);
-        $output .= htmlspecialchars($text, ENT_NOQUOTES | ENT_SUBSTITUTE | ENT_HTML5, 'UTF-8');
+        $output .= static::encodeInvisibleChars(htmlspecialchars($text, ENT_NOQUOTES | ENT_SUBSTITUTE | ENT_HTML5, 'UTF-8'));
       }
       else {
         \assert($childNode instanceof \DOMNode);
@@ -143,11 +145,11 @@ class HtmlSnapshotFormatter {
           '%s  %s="%s"' . "\n",
           $indent,
           $attribute->name,
-          htmlspecialchars(
+          static::encodeInvisibleChars(htmlspecialchars(
             $attribute->value,
             ENT_QUOTES | ENT_SUBSTITUTE,
             'UTF-8'
-          ),
+          )),
         );
       }
       $output .= $indent;
@@ -167,6 +169,25 @@ class HtmlSnapshotFormatter {
       return $output . '/>' . "\n";
     }
     return $output . '></' . $element->tagName . '>' . "\n";
+  }
+
+  /**
+   * Encodes invisible characters as html entities, to make them visible.
+   *
+   * @param string $html
+   *   Html-escaped text.
+   *
+   * @return string
+   *   Text with invisible characters encoded, except regular space and "\n".
+   */
+  protected static function encodeInvisibleChars(string $html): string {
+    return preg_replace_callback(
+      '/(?![ \n])[\p{Z}\p{Cc}\p{Cf}]/u',
+      static fn (array $m): string => $m[0] === "\u{00A0}"
+        ? '&nbsp;'
+        : sprintf('&#x%X;', mb_ord($m[0], 'UTF-8')),
+      $html,
+    ) ?? throw new \RuntimeException('Invalid UTF-8.');
   }
 
   /**

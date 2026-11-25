@@ -121,6 +121,46 @@ class HtmlSnapshotFormatterTest extends UnitTestCase {
         '<div>Tom &amp; Jerry</div>',
         "<div>\n  Tom &amp; Jerry\n</div>\n",
       ],
+      'nbsp entity' => [
+        '<div>one&nbsp;two</div>',
+        "<div>\n  one&nbsp;two\n</div>\n",
+      ],
+      'nbsp character' => [
+        "<div>one\u{00A0}two</div>",
+        "<div>\n  one&nbsp;two\n</div>\n",
+      ],
+      'nbsp entity at text boundary' => [
+        '<div>&nbsp;one&nbsp;</div>',
+        "<div>\n  &nbsp;one&nbsp;\n</div>\n",
+      ],
+      'nbsp entity in attribute' => [
+        '<div title="one&nbsp;two"></div>',
+        "<div\n  title=\"one&nbsp;two\"\n></div>\n",
+      ],
+      'tab in text' => [
+        "<div>one\ttwo</div>",
+        "<div>\n  one&#x9;two\n</div>\n",
+      ],
+      'CR in text' => [
+        "<div>one\r two\r</div>",
+        "<div>\n  one&#xD; two&#xD;\n</div>\n",
+      ],
+      'other invisible characters in text' => [
+        "<div>a\u{200B}b\u{00AD}c\u{202F}d\u{2003}e\u{FEFF}f</div>",
+        "<div>\n  a&#x200B;b&#xAD;c&#x202F;d&#x2003;e&#xFEFF;f\n</div>\n",
+      ],
+      'invisible characters in attribute' => [
+        "<div title=\"a\tb\u{200B}c\u{00A0}d\"></div>",
+        "<div\n  title=\"a&#x9;b&#x200B;c&nbsp;d\"\n></div>\n",
+      ],
+      'line break in attribute' => [
+        "<div title=\"a\nb\"></div>",
+        "<div\n  title=\"a\nb\"\n></div>\n",
+      ],
+      'nbsp in pre is not encoded' => [
+        "<pre>a\u{00A0}b</pre>",
+        "<pre>a\u{00A0}b</pre>",
+      ],
       'comments' => [
         '<div><!-- A comment --><span>Text</span></div>',
         "<div>\n  <!-- A comment -->\n  <span>\n    Text\n  </span>\n</div>\n",

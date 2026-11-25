@@ -47,6 +47,14 @@ class HtmlSnapshotNormalizerTest extends TestCase {
         " \n\t ",
         '',
       ],
+      'preserves CR' => [
+        "<div>\r\n  Hello\r\n  World\r\n</div>",
+        "<div>\r Hello\r World\r</div>",
+      ],
+      'preserves tab' => [
+        "<div>\n  Hello\tWorld\t\n</div>",
+        "<div>Hello\tWorld\t</div>",
+      ],
       'simple HTML' => [
         '<div>Hello World</div>',
         '<div>Hello World</div>',
@@ -106,6 +114,27 @@ class HtmlSnapshotNormalizerTest extends TestCase {
       'preserves UTF-8 characters' => [
         '<div>© € ä ö ü Grüße</div>',
         '<div>© € ä ö ü Grüße</div>',
+      ],
+      // Non-breaking spaces are significant, and remain as raw U+00A0.
+      'nbsp entity' => [
+        '<div>one&nbsp;two</div>',
+        "<div>one\u{00A0}two</div>",
+      ],
+      'nbsp character' => [
+        "<div>one\u{00A0}two</div>",
+        "<div>one\u{00A0}two</div>",
+      ],
+      'nbsp entity at block boundary' => [
+        '<div>&nbsp;one&nbsp;</div>',
+        "<div>\u{00A0}one\u{00A0}</div>",
+      ],
+      'nbsp entity next to regular spaces' => [
+        '<div>one &nbsp; two</div>',
+        "<div>one \u{00A0} two</div>",
+      ],
+      'nbsp entity in attribute' => [
+        '<div title="one&nbsp;two"></div>',
+        "<div title=\"one\u{00A0}two\"></div>",
       ],
       // PHP DOMDocument does not treat 'required' as boolean, therefore it
       // becomes 'required=""'.

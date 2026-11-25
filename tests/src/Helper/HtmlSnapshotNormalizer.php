@@ -135,7 +135,9 @@ class HtmlSnapshotNormalizer {
       }
       elseif ($child instanceof \DOMText) {
         $text = $child->data;
-        $text = preg_replace('/\s+/u', ' ', $text) ?? Assert::fail();
+        // Only collapse whitespace expected from template formatting, so that
+        // e.g. '&nbsp;', a tab or a "\r" remains visible in the snapshot.
+        $text = preg_replace('/[ \n]+/', ' ', $text) ?? Assert::fail();
         if ($this->isBlockTag($child->previousSibling ?? $element)) {
           $text = ltrim($text, ' ');
         }
