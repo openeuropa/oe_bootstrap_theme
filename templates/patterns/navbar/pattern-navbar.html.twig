@@ -4,6 +4,8 @@
  * Navbar pattern.
  */
 #}
+{% set collapse_id = 'bcl-navbar'|clean_unique_id %}
+{% set attributes = create_attribute(attributes ?? {}) %}
 
 {% extends '@oe-bcl/navbar' %}
 

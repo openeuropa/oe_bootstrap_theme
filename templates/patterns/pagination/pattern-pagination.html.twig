@@ -5,9 +5,37 @@
  */
 #}
 
+{% set attributes = create_attribute(attributes ?? {}) %}
+
+{% if variant == 'glossary' %}
+  {% set attributes = attributes.setAttribute('aria-label', 'Glossary links'|t) %}
+{% endif %}
+
 {% set internal_items = (items ?? [])|map(item => item|merge({
   'attributes': create_attribute({'aria-label': item.label}).merge(create_attribute(item.attributes ?? {})),
 })) %}
+
+{% set _controls = {
+  first: { item: first, label: 'First'|t },
+  prev: { item: prev, label: 'Previous'|t },
+  next: { item: next, label: 'Next'|t },
+  last: { item: last, label: 'Last'|t },
+} %}
+{% set _controls = _controls|filter(_control => _control.item) %}
+{% set _control_items = _controls|map(_control => _control.item|merge({
+  'attributes': create_attribute({
+    'aria-label': _control.item.aria_label|default(_control.label),
+  }).merge(create_attribute(_control.item.attributes ?? {})),
+})) %}
+{% set _control_items = _control_items|map(_item => _item|merge(_item.icon.name ? {
+  'icon': {
+    'path': bcl_icon_path(),
+    'size': 'fluid',
+    ..._item.icon,
+  },
+} : {})) %}
+
+{% set _list_attributes = create_attribute(list_attributes ?? {}) %}
 
 {% include '@oe-bcl/pagination' with {
   'variant': variant,
@@ -16,20 +44,9 @@
   'aria_label': aria_label,
   'enable_prev_next_icon': enable_prev_next_icons,
   'enable_first_last_icon': enable_first_last_icons,
-  'first': first ? first|merge({
-    'attributes': create_attribute({'aria-label': first.aria_label|default('First'|t)}).merge(create_attribute(first.attributes ?? {})),
-  }),
-  'prev': prev ? prev|merge({
-    'attributes': create_attribute({'aria-label': prev.aria_label|default('Previous'|t)}).merge(create_attribute(prev.attributes ?? {})),
-  }),
-  'next': next ? next|merge({
-    'attributes': create_attribute({'aria-label': next.aria_label|default('Next'|t)}).merge(create_attribute(next.attributes ?? {})),
-  }),
-  'last': last ? last|merge({
-    'attributes': create_attribute({'aria-label': last.aria_label|default('Last'|t)}).merge(create_attribute(last.attributes ?? {})),
-  }),
+  ..._control_items,
   'items': internal_items,
   'attributes': attributes,
-  'icon_path': bcl_icon_path,
-  'list_attributes': list_attributes.addClass('js-pager__items'),
+  'icon_path': bcl_icon_path(),
+  'list_attributes': _list_attributes.addClass('js-pager__items'),
 } only %}

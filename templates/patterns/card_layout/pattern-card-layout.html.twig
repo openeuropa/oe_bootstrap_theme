@@ -6,11 +6,11 @@
 #}
 {% include '@oe-bcl/card-layout' with {
   'type': variant,
-  'items': items|bcl_card_list,
+  'items': (items ?? [])|bcl_card_list,
   'grid_columns': grid_columns,
   'responsive_columns': responsive_columns,
   'responsiveness': responsiveness,
   'gutter': gutter,
   'equal_height': type == 'group' ? true : equal_height,
-  'attributes': attributes,
+  'attributes': create_attribute(attributes ?? {}),
 } only %}
