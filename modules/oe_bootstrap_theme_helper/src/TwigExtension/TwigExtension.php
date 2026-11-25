@@ -5,18 +5,25 @@ declare(strict_types=1);
 namespace Drupal\oe_bootstrap_theme_helper\TwigExtension;
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Render\RenderableInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Template\TwigExtension as CoreTwigExtension;
+use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Url;
+use Drupal\oe_bootstrap_theme\DrupalCompatibility;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject;
+use Drupal\oe_bootstrap_theme\ValueObject\ImageValueObjectInterface;
 use Drupal\oe_bootstrap_theme_helper\EuropeanUnionLanguages;
 use Twig\Environment;
+use Twig\Error\RuntimeError;
 use Twig\Extension\AbstractExtension;
 use Twig\Markup as TwigMarkup;
 use Twig\TwigFilter;
@@ -27,42 +34,20 @@ use Twig\TwigFunction;
  */
 class TwigExtension extends AbstractExtension {
 
-  /**
-   * The language manager.
-   *
-   * @var \Drupal\Core\Language\LanguageManagerInterface
-   */
-  protected $languageManager;
+  public function __construct(
+    protected readonly LanguageManagerInterface $languageManager,
+    protected readonly TwigEnvironment $twigEnvironment,
+    protected readonly RendererInterface $renderer,
+    protected readonly ThemeExtensionList $themeList,
+    protected readonly ThemeManagerInterface $themeManager,
+  ) {}
 
   /**
-   * The renderer.
+   * BCL icon paths, keyed by active theme name.
    *
-   * @var \Drupal\Core\Render\RendererInterface
+   * @var array<string, string>
    */
-  protected RendererInterface $renderer;
-
-  /**
-   * The Drupal Twig environment.
-   *
-   * @var \Drupal\Core\Template\TwigEnvironment
-   */
-  protected TwigEnvironment $twigEnvironment;
-
-  /**
-   * Constructs a new TwigExtension object.
-   *
-   * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
-   *   The language manager.
-   * @param \Drupal\Core\Template\TwigEnvironment $twigEnvironment
-   *   The Drupal Twig environment.
-   * @param \Drupal\Core\Render\RendererInterface $renderer
-   *   The renderer.
-   */
-  public function __construct(LanguageManagerInterface $languageManager, TwigEnvironment $twigEnvironment, RendererInterface $renderer) {
-    $this->languageManager = $languageManager;
-    $this->twigEnvironment = $twigEnvironment;
-    $this->renderer = $renderer;
-  }
+  protected array $bclIconPathsByThemeName = [];
 
   /**
    * {@inheritdoc}
@@ -81,6 +66,8 @@ class TwigExtension extends AbstractExtension {
         'toInternalLanguageId',
       ]),
       new TwigFilter('element_children', [$this, 'elementChildren']),
+      new TwigFilter('oe_bt__to_image_value_object', [$this, 'toImageValueObject']),
+      new TwigFilter('oe_bt__to_render_array', [$this, 'toRenderArray']),
     ];
   }
 
@@ -93,6 +80,8 @@ class TwigExtension extends AbstractExtension {
         'needs_environment' => TRUE,
       ]),
       new TwigFunction('bcl_gallery_items', [$this, 'bclGalleryItems']),
+      new TwigFunction('bcl_icon_path', [$this, 'getBclIconPath']),
+      new TwigFunction('oe_bt__theme_setting', [DrupalCompatibility::class, 'themeGetSetting']),
     ];
   }
 
@@ -277,7 +266,7 @@ class TwigExtension extends AbstractExtension {
    *   The link text for the anchor tag as a translated string.
    * @param \Drupal\Core\Url|string $path
    *   The URL object or string used for the link.
-   * @param array|\Drupal\Core\Template\Attribute $attributes
+   * @param \Drupal\Core\Template\Attribute $attributes
    *   An optional array or Attribute object of link attributes.
    *
    * @return array
@@ -342,6 +331,39 @@ class TwigExtension extends AbstractExtension {
   }
 
   /**
+   * Returns the URL to the BCL icons SVG file for the active theme.
+   *
+   * The active theme or one of its base themes can override the path with
+   * 'openeuropa.bootstrap_component_library.icon_path' in its info file.
+   * The closest theme in the chain wins.
+   *
+   * This mirrors the logic for the 'bcl_icon_path' variable in
+   * oe_bootstrap_theme_preprocess().
+   *
+   * @return string
+   *   The relative URL to the BCL icons SVG file.
+   *
+   * @see oe_bootstrap_theme_preprocess()
+   */
+  public function getBclIconPath(): string {
+    $active_theme = $this->themeManager->getActiveTheme();
+    return $this->bclIconPathsByThemeName[$active_theme->getName()] ??= (function () use ($active_theme): string {
+      $extensions = [
+        $active_theme->getExtension(),
+        ...array_values($active_theme->getBaseThemeExtensions()),
+      ];
+      foreach ($extensions as $extension) {
+        $icon_path = $extension->info['openeuropa']['bootstrap_component_library']['icon_path'] ?? NULL;
+        if ($icon_path) {
+          return base_path() . $extension->getPath() . '/' . $icon_path;
+        }
+      }
+      $theme = $this->themeList->get('oe_bootstrap_theme');
+      return base_path() . $theme->getPath() . '/assets/icons/bcl-default-icons.svg';
+    })();
+  }
+
+  /**
    * Returns the children of an element array, optionally sorted by weight.
    *
    * This method does not return the keys, but the elements themselves.
@@ -370,6 +392,65 @@ class TwigExtension extends AbstractExtension {
     $this->renderer->render($bubbleable);
 
     return $children;
+  }
+
+  /**
+   * Converts an array to an ImageValueObject instance.
+   *
+   * @param mixed $argument
+   *   The argument, which should be an array or ImageValueObjectInterface.
+   *
+   * @return \Drupal\oe_bootstrap_theme\ValueObject\ImageValueObject
+   *   The ImageValueObject instance.
+   *   If the value was already an ImageValueObjectInterface object, it will be
+   *   copied as an ImageValueObject, including its cacheability metadata.
+   */
+  public function toImageValueObject(mixed $argument): ImageValueObject {
+    if (is_array($argument)) {
+      if ($argument === []) {
+        throw new RuntimeError("The image array is empty.");
+      }
+      elseif (!isset($argument['src'])) {
+        throw new RuntimeError("Missing array key 'src'.");
+      }
+      return ImageValueObject::fromArray($argument);
+    }
+    // Convert other implementations of the interface.
+    if ($argument instanceof ImageValueObjectInterface) {
+      $image = ImageValueObject::fromArray($argument->getArray());
+      $image->addCacheableDependency($argument);
+      return $image;
+    }
+    throw new RuntimeError(sprintf(
+      'Expected ImageValueObjectInterface|array, found %s',
+      get_debug_type($argument),
+    ));
+  }
+
+  /**
+   * Gets a render array from a RenderableInterface object.
+   *
+   * This allows using twig filters like `|add_class` from Drupal core, which
+   * operate on render arrays.
+   *
+   * @param mixed $argument
+   *   A RenderableInterface object.
+   *
+   * @return array
+   *   A render array.
+   *
+   * @see \Drupal\Core\Template\TwigExtension::addClass()
+   * @see \Drupal\Core\Template\TwigExtension::setAttribute()
+   */
+  public function toRenderArray(mixed $argument): array {
+    // Validate in a way that will report the line number in the template.
+    if (!$argument instanceof RenderableInterface) {
+      throw new RuntimeError(sprintf(
+        "Expected a RenderableInterface instance. Found %s",
+        get_debug_type($argument),
+      ));
+    }
+    return $argument->toRenderable();
   }
 
 }
