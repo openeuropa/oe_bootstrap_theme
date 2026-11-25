@@ -4,6 +4,9 @@
  * Blockquote pattern.
  */
 #}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set title = title|render %}
+{% set attribution = attribution|render %}
 {% if attribution and cite %}
   {#- Append a space between attribution and cite. #}
   {#- @todo This should be fixed in BCL eventually. #}

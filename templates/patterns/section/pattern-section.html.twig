@@ -13,6 +13,8 @@
  * - wrapper_attributes: Attributes of the content wrapper.
  */
 #}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set heading = heading|render %}
 
 {% set tag = tag|default('section') %}
 {% set heading_tag = heading_tag|default('h2') %}

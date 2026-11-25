@@ -4,6 +4,10 @@
  * Banner pattern.
  */
 #}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set title = title|render %}
+{% set description = description|render %}
+{% set copyright = copyright|render %}
 {% block attributes %}
   {% set attributes = attributes.addClass([
     'bg-lighter',

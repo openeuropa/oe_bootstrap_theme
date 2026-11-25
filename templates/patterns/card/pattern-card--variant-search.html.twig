@@ -4,6 +4,10 @@
  * Card pattern search variant.
  */
 #}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set title = title|render %}
+{% set text = text|render %}
+{% set image_copyright = image_copyright|render %}
 {% apply spaceless %}
 {% set _content %}
   {% if meta is not empty %}

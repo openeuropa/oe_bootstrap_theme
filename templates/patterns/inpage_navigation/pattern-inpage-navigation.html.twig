@@ -4,6 +4,8 @@
  * Inpage navigation pattern.
  */
 #}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set title = title|render %}
 {% if links is not empty %}
   {{ attach_library('oe_bootstrap_theme/inpage_navigation') }}
 {% endif %}

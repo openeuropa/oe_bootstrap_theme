@@ -16,6 +16,18 @@
   } only %}
 {% endmacro %}
 
+{#
+  Render slots before the emptiness checks below and in BCL.
+  Otherwise, a render array with empty output, e.g. ['#plain_text' => ''],
+  would be seen as not empty. Cache metadata still bubbles.
+#}
+{% set title = title|render %}
+{% set subtitle = subtitle|render %}
+{% set text = text|render %}
+{% set caption = caption|render %}
+{% set copyright = copyright|render %}
+{% set embedded_media = embedded_media|render %}
+
 <div{{ attributes.addClass('bcl-featured-media') }}>
   {% if subtitle or text or link %}
     {% set text_alignment_class = 'order-1' %}

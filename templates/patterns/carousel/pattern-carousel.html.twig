@@ -4,6 +4,8 @@
  * Carousel pattern.
  */
 #}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set title = title|render %}
 {% set _slides = [] %}
 {% for slide in slides %}
   {% set _image %}

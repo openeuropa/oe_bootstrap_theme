@@ -4,6 +4,9 @@
  * Modal pattern.
  */
 #}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set title = title|render %}
+{% set footer = footer|render %}
 {% set _id = attributes.id|default(modal_id) %}
 
 {% set _header %}
