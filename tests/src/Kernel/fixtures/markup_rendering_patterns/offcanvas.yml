@@ -204,3 +204,18 @@ offcanvas_end_with_render_arrays_and_toggle_options:
         aria-label: 'Detailed offcanvas'
         data-offcanvas: 'custom-value'
   assertions: {}
+# Same as 'offcanvas_start_with_body_scroll', but with empty slots.
+offcanvas_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': offcanvas
+    '#fields':
+      settings:
+        placement: start
+        body_scroll: true
+        backdrop: false
+      title:
+        '#markup': ''
+      body:
+        '#plain_text': ''
+  assertions: {}

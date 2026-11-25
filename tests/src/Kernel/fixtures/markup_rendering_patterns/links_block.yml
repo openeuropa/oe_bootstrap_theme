@@ -198,3 +198,22 @@ links_block_horizontal_transparent_with_optional_parameters:
           - 'custom-links-block'
         data-block-attribute: 'custom-value'
   assertions: {}
+# Same as 'links_block_horizontal_gray', but with empty slots.
+links_block_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': links_block
+    '#fields':
+      settings:
+        background: gray
+        orientation: horizontal
+      title:
+        '#markup': ''
+      links:
+        - label: 'Link number one'
+          path: 'https://example.com'
+        - label: 'Link number two'
+          path: 'https://google.com'
+        - label: 'More channels'
+          path: 'https://europa.eu'
+  assertions: {}

@@ -197,3 +197,55 @@ card_with_image_copyright:
       'article.card .bcl-card__image-footer .bcl-copyright': 1
     equals:
       'article.card .bcl-copyright': '<span class="visually-hidden">Image credit: </span>© 2024 Example Organisation'
+# Same as 'card_vertical', but with empty slots.
+card_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': card
+    '#fields':
+      orientation: vertical
+      title:
+        '#markup': ''
+      subtitle:
+        '#plain_text': ''
+      text: ''
+      image: !ImageValueObject
+        src: 'https://picsum.photos/1000/500/'
+        alt: 'Alternative text for card image'
+      content:
+        '#type': pattern
+        '#id': button
+        '#fields':
+          settings:
+            style: primary
+          label: 'Custom action'
+      header:
+        '#markup': 'No access'
+        '#access': false
+      footer:
+        '#markup': ''
+      image_copyright:
+        - '#markup': ''
+        - '#plain_text': ''
+  assertions: {}
+# Same as 'card_search_with_date', but with empty slots.
+card_variant_search_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': card
+    '#variant': search
+    '#fields':
+      title:
+        '#markup': ''
+      text:
+        '#plain_text': ''
+      date:
+        year: '2021'
+        month: Jan
+        day: '23'
+        date_time: '2021-01-23'
+      badges:
+        - label: 'Category 1'
+        - label: 'Category 2'
+      image_copyright: ''
+  assertions: {}

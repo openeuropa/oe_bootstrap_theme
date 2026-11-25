@@ -67,3 +67,18 @@ blockquote_with_no_cite_no_alignment_no_title:
       'figcaption.blockquote-footer': 'Someone famous in'
     equals:
       'blockquote.blockquote p': 'A well-known quote, contained in a blockquote element.'
+# Same as 'blockquote_right_alignment_no_title_tag', but with empty slots.
+blockquote_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': blockquote
+    '#fields':
+      title:
+        '#markup': ''
+      settings:
+        alignment: end
+      quote: 'A well-known quote, contained in a blockquote element.'
+      attribution:
+        '#plain_text': ''
+      cite: 'Source title'
+  assertions: {}

@@ -544,3 +544,22 @@ banner_with_custom_attributes_and_content_classes:
       description: 'Innovation, economy, environment and geopolitics'
       content_classes: 'custom-content-class another-content-class'
   assertions: {}
+# Same as 'image_page_banner_with_copyright_overlay', but with empty slots.
+banner_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': banner
+    '#variant': image
+    '#fields':
+      settings:
+        hero: false
+        shade: false
+        full_width: false
+        centered: false
+      title:
+        '#markup': ''
+      description:
+        '#plain_text': ''
+      copyright: ''
+      image: 'https://picsum.photos/1000/500/'
+  assertions: {}

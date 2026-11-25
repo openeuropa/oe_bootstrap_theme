@@ -161,3 +161,39 @@ description_list_horizontal_with_term_icon_array:
                 name: 'geo-alt-fill'
           definition: 'A definition.'
   assertions: {}
+# Same as 'description_list_default', but with empty slots.
+description_list_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': description_list
+    '#fields':
+      title:
+        '#markup': ''
+      title_tag: h4
+      items:
+        - term:
+            - label: 'Single label with icon'
+              icon: geo-alt-fill
+          definition: 'Description of first term text goes here.'
+        - term:
+            - label: 'First label without icon'
+            - label: 'Second label with icon'
+              icon: calendar-event
+          definition: 'Description of second term text goes here.'
+        - term:
+            - label:
+                - '#markup': 'A label with <em>some</em> markup.'
+          definition:
+            - label:
+                - '#markup': '<p class="mb-2">First line description of third term text goes here.</p>'
+            - label:
+                - '#markup': 'Second line description of third term text goes here.'
+        - term:
+            - label: 'Custom icon size'
+              icon:
+                name: bicycle
+                size: xl
+          definition: 'This is a bigger icon.'
+        - term: 'A single term without icon.'
+          definition: 'Yet another definition text.'
+  assertions: {}

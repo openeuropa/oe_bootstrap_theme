@@ -191,3 +191,41 @@ fact_figures_default_3col:
       'div > div.col.h-100:nth-child(5) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#puzzle-fill"></use>'
       'div > div.col.h-100:nth-child(6) > svg': '<use xlink:href="/themes/custom/oe_bootstrap_theme/assets/icons/bcl-default-icons.svg#eye-fill"></use>'
       'a[href="/example"]': 'Read more'
+# Same as 'fact_figures_default_3col', but with empty slots.
+fact_figures_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': fact_figures
+    '#fields':
+      columns: 3
+      link:
+        label: 'Read more'
+        path: /example
+      title:
+        '#markup': ''
+      items:
+        - icon: x-diamond-fill
+          subtitle: 'Jira Tickets'
+          title: '1529 JIRA Ticket'
+          description: 'Nunc condimentum sapien ut nibh finibus suscipit vitae at justo. Morbi quis odio faucibus, commodo tortor id, elementum liber'
+        - icon: ui-checks
+          subtitle: 'Feature tickets'
+          title: '337 Features'
+          description: 'Turpis varius congue venenatis, erat dui feugiat felis.'
+        - icon: wallet-fill
+          subtitle: 'Test tickets'
+          title: '107 Tests'
+          description: 'Cras vestibulum efficitur mi, quis porta tellus rutrum ut. Quisque at pulvinar sem.'
+        - icon: file-code-fill
+          subtitle: 'Test variants'
+          title: '5670 Variants'
+          description: 'Aliquam lacinia diam eu sem malesuada, in interdum ante bibendum.'
+        - icon: puzzle-fill
+          subtitle: 'Jira ticket'
+          title: '345 Dev Ticket'
+          description: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec lectus tortor. '
+        - icon: eye-fill
+          subtitle: 'Figma components'
+          title: '43 Components'
+          description: 'Sed efficitur bibendum rutrum. Nunc feugiat congue augue ac consectetur.'
+  assertions: {}

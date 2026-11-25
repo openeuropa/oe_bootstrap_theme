@@ -66,3 +66,18 @@ alert_not_dimissible:
       'div.alert-content': '<div class="alert-heading h4">Well done!</div>A simple alert. check it out!'
     contains:
       'svg': '#search'
+# Same as 'alert_dimissible_animated', but with empty slots.
+alert_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': alert
+    '#variant': danger
+    '#fields':
+      settings:
+        dismissible: true
+        animated_dismiss: true
+      heading:
+        '#markup': ''
+      message: 'A simple alert. check it out!'
+      icon: lock
+  assertions: {}

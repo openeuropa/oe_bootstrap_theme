@@ -135,3 +135,21 @@ modal_with_render_arrays_and_toggle_options:
             - 'custom-toggle'
           data-toggle: 'custom-value'
   assertions: {}
+# Same as 'modal_secondary_small', but with empty slots.
+modal_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': modal
+    '#fields':
+      settings:
+        size: sm
+      toggle:
+        variant: secondary
+        label: 'Open Modal'
+      title:
+        '#markup': ''
+      show_close_button: true
+      body: 'Lorem Ipsum dolor sit amet'
+      footer:
+        '#plain_text': ''
+  assertions: {}

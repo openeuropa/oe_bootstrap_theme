@@ -99,3 +99,13 @@ section_with_no_title:
       expected:
         heading: ~
         content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
+# Same as 'section_default', but with empty slots.
+section_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': section
+    '#fields':
+      heading:
+        '#markup': ''
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque.'
+  assertions: {}

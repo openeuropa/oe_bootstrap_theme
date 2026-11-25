@@ -324,3 +324,12 @@ carousel_with_image_attributes_and_link_icon:
               class:
                 - 'custom-link-class'
   assertions: {}
+# Same as 'carousel_with_title_default_tag', but with empty slots.
+carousel_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': carousel
+    '#fields':
+      title:
+        '#markup': ''
+  assertions: {}

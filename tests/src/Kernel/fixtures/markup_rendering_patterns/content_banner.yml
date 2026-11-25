@@ -154,3 +154,19 @@ content_banner_gray_background_without_image_with_badges_with_meta_without_links
             rounded_pill: true
           - label: 'Secondary badge'
             rounded_pill: true
+# Same as 'content_banner_white_background_with_image_and_copyright', but with empty slots.
+content_banner_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': content_banner
+    '#fields':
+      background: white
+      image: !ImageValueObject
+        src: 'https://picsum.photos/1200/600/'
+        alt: 'Alternative text for content banner image'
+      title:
+        '#markup': ''
+      content:
+        '#plain_text': ''
+      copyright: ''
+  assertions: {}

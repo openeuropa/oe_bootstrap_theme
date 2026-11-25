@@ -456,3 +456,15 @@ gallery_with_item_copyright_and_link:
               class:
                 - 'custom-gallery-link'
   assertions: {}
+# Same as 'gallery_title_default_tag', but with empty slots.
+gallery_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': gallery
+    '#fields':
+      title:
+        '#markup': ''
+      items:
+        - media: !Markup '<img src="https://picsum.photos/id/10/800/600/" alt="Cat media image alt" />'
+          thumbnail: !Markup '<img src="https://picsum.photos/id/10/400/300/" alt="Cat thumbnail alt" />'
+  assertions: {}

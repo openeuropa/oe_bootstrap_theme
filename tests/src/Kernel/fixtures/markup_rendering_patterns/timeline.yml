@@ -199,3 +199,30 @@ timeline_items_hide_from_zero:
         - title: 'Item 2'
           content: 'Lorem Ipsum 2'
   assertions: {}
+# Same as 'timeline_items_hide', but with empty slots.
+timeline_with_empty_slots:
+  render:
+    '#type': pattern
+    '#id': timeline
+    '#fields':
+      settings:
+        hide_from: 7
+        hide_to: 0
+      title:
+        '#markup': ''
+      title_tag: h3
+      items:
+        - label: '13 September 2017'
+          title: 'Item 1'
+          content:
+            '#markup': '<a href="/example" class="ecl-link">Economic and Monetary Union package of proposals</a>'
+        - label: '28-29 September 2017'
+          title: 'Item 2'
+          content: 'Lorem Ipsum 2'
+        - content: 'Lorem Ipsum 3'
+        - content: 'Lorem Ipsum 4'
+        - content: 'Lorem Ipsum 5'
+        - label: '6 February 2018'
+          title: 'Item 6'
+          content: 'Lorem Ipsum 6'
+  assertions: {}
