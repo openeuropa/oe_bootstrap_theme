@@ -11,9 +11,9 @@
   'url': url,
   'rounded_pill': rounded_pill,
   'background': background,
-  'icon_path': bcl_icon_path,
+  'icon_path': bcl_icon_path(),
   'dismissible': dismissible,
   'animated_dismiss': animated_dismiss,
   'outline': outline,
-  'attributes': attributes,
+  'attributes': create_attribute(attributes ?? {}),
 } only %}

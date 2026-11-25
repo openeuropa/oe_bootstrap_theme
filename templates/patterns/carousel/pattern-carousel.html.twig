@@ -20,10 +20,7 @@
     {% set _item = _item|merge({
       'link': slide.link|merge({
         'icon_position': 'before',
-        'icon': {
-          'name': 'link',
-          'path': bcl_icon_path,
-        },
+        'icon': 'link'|bcl_icon,
       }),
     }) %}
   {% endif %}
@@ -33,10 +30,9 @@
   'copyright_label': 'Image credit:'|t,
   'title': title,
   'title_tag': title_tag,
-  'id': carousel_id,
+  'id': 'bcl-carousel'|clean_unique_id,
   'autoplay': autoplay ?? true,
   'dark': dark_mode,
-  'active_item': active_item,
   'items': _slides,
   'fade': fade ?? false,
   'with_controls': show_controls ?? true,
@@ -44,5 +40,5 @@
   'next_label': 'Next'|t,
   'with_indicators': show_indicators ?? false,
   'disable_touch': disable_touch ?? false,
-  'attributes': attributes,
+  'attributes': create_attribute(attributes ?? {}),
 } only %}
