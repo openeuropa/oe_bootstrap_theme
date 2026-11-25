@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Offcanvas pattern preview.
+ */
+#}
+{% extends 'pattern-offcanvas.html.twig' %}
+{% block toggle_button %}
+{% if toggle is not empty %}
+  {% set _toggle_attributes = create_attribute(toggle.attributes|default({}))
+    .addClass('d-lg-none')
+    .setAttribute('data-bs-toggle', 'offcanvas')
+    .setAttribute('data-bs-target', '#' ~ offcanvas_id)
+    .setAttribute('aria-controls', offcanvas_id)
+  %}
+  {% set _toggle = toggle|merge({
+    attributes: _toggle_attributes
+  }) %}
+  {{ pattern('button', _toggle) }}
+{% endif %}
+
+<div class="mt-4">
+  {{ pattern('alert', {
+    'variant': 'info',
+    'message': 'The toggle button is only available on mobile (below the "lg" breakpoint). At "lg" and above, the offcanvas is displayed as a static, always-visible panel.',
+    'dismissible': false
+  }) }}
+</div>
+{% endblock %}
