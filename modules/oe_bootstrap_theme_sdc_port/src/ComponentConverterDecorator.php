@@ -46,6 +46,19 @@ class ComponentConverterDecorator extends ComponentConverter {
       $source['settings'][$field_name] = $field_definition;
       unset($source['fields'][$field_name]);
     }
+    // Mark some settings as required, so that the parent converter adds them
+    // to the required props. Only do this where omitting the value already
+    // broke the pattern, so that no previously working usage is broken.
+    $required_setting_names = match ($source['id']) {
+      'columns', 'listing', 'navigation' => ['items'],
+      default => [],
+    };
+    foreach ($required_setting_names as $name) {
+      if (!isset($source['settings'][$name])) {
+        throw new \Exception("Required setting '$name' not found in '$source[id]'.");
+      }
+      $source['settings'][$name]['required'] = TRUE;
+    }
     return $source;
   }
 
@@ -83,6 +96,23 @@ class ComponentConverterDecorator extends ComponentConverter {
     if (empty($target['slots'])) {
       unset($target['slots']);
     }
+    // Required settings should not be converted to slots.
+    $required_slot_names = array_diff(
+      $target['props']['required'] ?? [],
+      array_keys($target['props']['properties']),
+    );
+    if ($required_slot_names !== []) {
+      throw new \Exception(sprintf(
+        "Required props converted to slots in '%s': %s.",
+        $id,
+        implode(', ', $required_slot_names),
+      ));
+    }
+    // In any case, make sure 'properties' is the last key.
+    $target['props'] = [
+      ...array_diff_key($target['props'], ['properties' => NULL]),
+      ...$target['props'],
+    ];
     return $target;
   }
 
@@ -156,11 +186,17 @@ class ComponentConverterDecorator extends ComponentConverter {
       $prop['type'] = array_unique([...(array) $prop['type'], 'string']);
     }
     unset($prop['$ref']);
-    // For now, all props are optional, so we allow NULL.
-    if (!is_string($prop['type']) ||
-      (!str_contains($prop['type'], '\\') && !class_exists($prop['type']) && !interface_exists($prop['type']))
-    ) {
-      $prop['type'] = array_unique([...(array) $prop['type'], 'null']);
+    // Suggested values for props that are not restricted to an enum.
+    if (isset($source_setting['examples'])) {
+      $prop['examples'] = $source_setting['examples'];
+    }
+    // Allow NULL for optional props.
+    if (empty($source_setting['required'])) {
+      if (!is_string($prop['type']) ||
+        (!str_contains($prop['type'], '\\') && !class_exists($prop['type']) && !interface_exists($prop['type']))
+      ) {
+        $prop['type'] = array_unique([...(array) $prop['type'], 'null']);
+      }
     }
     // Change verb form in prop description.
     if (preg_match('#^(Add|Make|Enable|Display|Link|Use)( .*)#', $prop['description'] ?? '?', $matches)) {
@@ -174,8 +210,8 @@ class ComponentConverterDecorator extends ComponentConverter {
     foreach ($prop['meta:enum'] ?? [] as $enum_value => $enum_label) {
       $prop['meta:enum'][$enum_value] = ucfirst($enum_label);
     }
-    // Add null enum option.
-    if (isset($prop['enum']) && !in_array(NULL, $prop['enum'], TRUE)) {
+    // Add null enum option for optional props.
+    if (empty($source_setting['required']) && isset($prop['enum']) && !in_array(NULL, $prop['enum'], TRUE)) {
       $prop['enum'][] = NULL;
       if (isset($prop['meta:enum'])) {
         $prop['meta:enum'][''] ??= 'Default';
@@ -216,10 +252,12 @@ class ComponentConverterDecorator extends ComponentConverter {
       // Some hard-coded prop types for specific known fields.
       yield match ("$id.$name") {
         // Prevent some fields from becoming slots.
-        // Some props hold urls.
+        // Some props hold urls that end up in bcl_link(), which also accepts
+        // Url objects.
         'badge.url',
+        'link.path' => ['string', 'object'],
+        // Some props hold urls that are printed as strings.
         'banner.image',
-        'link.path',
         // Some props are passed as attribute values.
         'badge.title',
         'blockquote.cite',
@@ -229,9 +267,7 @@ class ComponentConverterDecorator extends ComponentConverter {
         'accordion.expand_button_label',
         'accordion.collapse_button_label',
         'file.link_label',
-        'pagination_v2.current_mobile_label',
-        // Some props hold enum-like values.
-        'content_banner.image_size' => 'string',
+        'pagination_v2.current_mobile_label' => 'string',
         default => NULL,
       };
       // Now, check if the parent converter class already set a prop type.
@@ -272,7 +308,7 @@ class ComponentConverterDecorator extends ComponentConverter {
         'text',
         'markup',
         'render' => 'SLOT',
-        'array' => 'array',
+        'array' => array_is_list($setting['preview'] ?? ['a' => 'A']) ? 'array' : 'object',
         'string' => 'string',
         // Object types.
         'object',

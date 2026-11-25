@@ -55,7 +55,7 @@ props:
     date:
       title: 'Date block'
       description: 'If set, presents a date block that uses the same parameters as the bcl date-block pattern. Optional.'
-      type: [array, 'null']
+      type: [object, 'null']
     meta:
       title: 'Meta items'
       description: 'Date or other meta information.'

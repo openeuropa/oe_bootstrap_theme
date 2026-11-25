@@ -46,7 +46,7 @@ props:
     url:
       title: 'Badge URL'
       description: 'Converts the badge in a link. Optional.'
-      type: [string, 'null']
+      type: [string, object, 'null']
     title:
       title: 'Link title'
       description: 'Title attribute if the badge is a link. Optional.'
