@@ -5,14 +5,8 @@
  */
 #}
 
-{% set attributes = create_attribute(attributes ?? {}) %}
-
-{% if variant == 'glossary' %}
-  {% set attributes = attributes.setAttribute('aria-label', 'Glossary links'|t) %}
-{% endif %}
-
-{% set internal_items = (items ?? [])|map(item => item|bcl_expand_attributes({
-  'aria-label': item.label,
+{% set internal_items = (items ?? [])|map(item => item|merge({
+  'attributes': create_attribute({'aria-label': item.label}).merge(create_attribute(item.attributes|default({}))),
 })) %}
 
 {% set _controls = {
@@ -22,11 +16,11 @@
   last: { item: last, label: 'Last'|t },
 } %}
 {% set _controls = _controls|filter(_control => _control.item) %}
-{% set _control_items = _controls|map(_control => _control.item|bcl_expand_attributes({
-  'aria-label': _control.item.aria_label|default(_control.label),
-})|bcl_expand_icon(size: 'fluid')) %}
-
-{% set _list_attributes = create_attribute(list_attributes ?? {}) %}
+{% set _control_items = _controls|map(_control => _control.item|merge({
+  'attributes': create_attribute({
+    'aria-label': _control.item.aria_label|default(_control.label),
+  }).merge(create_attribute(_control.item.attributes|default({}))),
+})) %}
 
 {% include '@oe-bcl/pagination' with {
   'variant': variant,
@@ -38,6 +32,6 @@
   ..._control_items,
   'items': internal_items,
   'attributes': attributes,
-  'icon_path': bcl_icon_path(),
-  'list_attributes': _list_attributes.addClass('js-pager__items'),
+  'icon_path': bcl_icon_path,
+  'list_attributes': list_attributes.addClass('js-pager__items'),
 } only %}

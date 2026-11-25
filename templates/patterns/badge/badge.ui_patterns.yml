@@ -15,6 +15,7 @@ badge:
         info: 'info'
         light: 'light'
         dark: 'dark'
+        link: 'link'
     rounded_pill:
       type: boolean
       label: 'Pill badge.'

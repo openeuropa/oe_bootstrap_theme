@@ -36,16 +36,7 @@ offcanvas:
       type: text
       label: 'Body'
       description: 'Offcanvas body content.'
-      preview: |
-        <div>
-          <p>An interesting content for this offcanvas.</p>
-          <div class="d-none d-lg-block">
-            <p><em>Resize to a narrower viewport to activate the offcanvas hide/show mechanism.</em></p>
-          </div>
-          <div class="d-lg-none">
-            <p><em>Resize to a wider viewport to deactivate the offcanvas hide/show mechanism.</em></p>
-          </div>
-        </div>
+      preview: 'An interesting content for this offcanvas'
     toggle:
       type: array
       label: 'Toggle button'
@@ -53,5 +44,3 @@ offcanvas:
       preview:
         label: 'Toggle'
         icon: 'filter'
-        attributes:
-          class: ['d-lg-none']

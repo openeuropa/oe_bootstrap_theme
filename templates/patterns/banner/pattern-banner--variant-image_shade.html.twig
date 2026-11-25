@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Banner pattern variant image shade.
+ */
+#}
+{% extends 'pattern-banner.html.twig' %}
+{% block attributes %}
+  {% set attributes = attributes.addClass([
+    'bg-lighter',
+  ])
+  %}
+{% endblock %}
+
