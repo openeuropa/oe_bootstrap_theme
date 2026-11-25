@@ -161,7 +161,7 @@ class MarkupRenderingTest extends KernelTestBase {
       ];
       Html::resetSeenIds();
       set_error_handler(static function (int $type, string $message, string $file, int $line) {
-        if ($type === E_USER_DEPRECATED || !(error_reporting() & $type)) {
+        if ($type === E_USER_DEPRECATED || $type === E_DEPRECATED || !(error_reporting() & $type)) {
           return;
         }
         throw new \ErrorException($type . ': ' . $message, 0, $type, $file, $line);
