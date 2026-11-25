@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Alert component.
+ */
+#}
+{# Render slots first, so that render arrays with empty output count as empty. #}
+{% set heading = heading|render %}
+{% include '@oe-bcl/alert' with {
+  heading: heading,
+  message: message,
+  variant: variant,
+  dismissible: dismissible,
+  animated_dismiss: animated_dismiss,
+  icon_path: bcl_icon_path(),
+  icon_name: icon,
+  attributes: create_attribute(attributes ?? {}),
+} only %}

@@ -5,10 +5,14 @@ declare(strict_types=1);
 namespace Drupal\Tests\oe_bootstrap_theme\Kernel;
 
 use Drupal\Component\Serialization\Yaml;
+use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Site\Settings;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Template\AttributeHelper;
+use Drupal\Core\Theme\ComponentPluginManager;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\oe_bootstrap_theme\Helper\HtmlSnapshotFormatter;
 use Drupal\Tests\oe_bootstrap_theme\Helper\HtmlSnapshotNormalizer;
@@ -116,8 +120,14 @@ class MarkupRenderingTest extends KernelTestBase {
 
   /**
    * Tests whether attributes are applied to patterns or components.
+   *
+   * @param 'components'|'patterns' $mode
+   *   Whether to render patterns or components.
+   *
+   * @testWith ["components"]
+   *           ["patterns"]
    */
-  public function testPatternAttributes(): void {
+  public function testPatternAttributes(string $mode): void {
     // Some patterns currently don't pass attributes to the BCL template.
     $known_non_attributes_passing_patterns = [
       'dropdown',
@@ -156,7 +166,10 @@ class MarkupRenderingTest extends KernelTestBase {
       };
       $render = [
         '#type' => 'inline_template',
-        '#template' => "{{ pattern('$pattern_name', values) }}",
+        '#template' => match ($mode) {
+          'components' => "{{ include_only('oe_bootstrap_theme:$pattern_name', values) }}",
+          'patterns' => "{{ pattern('$pattern_name', values) }}"
+        },
         '#context' => [
           'values' => [
             ...$values,
@@ -247,6 +260,15 @@ class MarkupRenderingTest extends KernelTestBase {
       'patterns, objects' => ['patterns'],
       'patterns, raw values' => ['patterns', FALSE],
       'patterns, fill nulls' => ['patterns', 'fill_nulls' => TRUE],
+      'patterns, include, objects' => ['patterns', 'use_template_include' => TRUE],
+      'patterns, include, raw values' => ['patterns', FALSE, 'use_template_include' => TRUE],
+      ...version_compare(\Drupal::VERSION, '11.3.0', '>=') ? [
+        'components, objects' => ['components'],
+        'components, raw values' => ['components', FALSE],
+        'components, fill nulls' => ['components', 'fill_nulls' => TRUE],
+        'components, include, objects' => ['components', 'use_template_include' => TRUE],
+        'components, include, raw values' => ['components', FALSE, 'use_template_include' => TRUE],
+      ] : [],
       'other' => ['other'],
     ];
   }
@@ -254,8 +276,10 @@ class MarkupRenderingTest extends KernelTestBase {
   /**
    * Tests all components in a single pass.
    *
-   * @param 'patterns'|'other' $mode
+   * @param 'patterns'|'components'|'other' $mode
    *   Pass 'patterns' to test all cases with patterns.
+   *   Pass 'components' to test all pattern cases, but with the pattern
+   *   converted to a component.
    *   Pass 'other' to test all cases which don't use a pattern.
    * @param bool $use_objects
    *   TRUE to use objects like Attribute, ImageValueObject etc.
@@ -263,48 +287,25 @@ class MarkupRenderingTest extends KernelTestBase {
    * @param bool $fill_nulls
    *   TRUE to fill all remaining optional parameters with NULL.
    *   FALSE to leave them empty (not passing them).
+   * @param bool $use_template_include
+   *   TRUE to render the pattern/component as template include.
+   *   FALSE to use render array as in the fixture.
    *
    * @dataProvider allCasesProvider
    */
-  public function testAllCases(string $mode, bool $use_objects = TRUE, bool $fill_nulls = FALSE): void {
+  public function testAllCases(string $mode, bool $use_objects = TRUE, bool $fill_nulls = FALSE, bool $use_template_include = FALSE): void {
     $cases = static::markupRenderingProvider();
     $n = count($cases);
     foreach (array_keys($cases) as $i => $case_name) {
-      $restore_callbacks = [];
       try {
-        $case = $cases[$case_name];
-        $render = $case['render'];
-        $render = PatternTestDataMassager::massageDataRecursive($render, $use_objects);
-        $assertions = $case['assertions'];
-        $backward_compatibility = $case['backward_compatibility'] ?? [];
-        if (!empty($backward_compatibility)) {
-          foreach ($backward_compatibility as $bc_name => $bc_value) {
-            $restore_callbacks[] = $this->setBackwardCompatibilitySetting($bc_name, $bc_value);
-          }
-        }
-
-        // Skip pattern case when in 'other' mode.
-        // Skip non-pattern case when not in 'other' mode.
-        if ($mode === 'other' xor ($render['#type'] ?? NULL) !== 'pattern') {
-          continue;
-        }
-
-        if ($fill_nulls) {
-          $render = $this->fillNulls($render);
-        }
-
-        Html::resetSeenIds();
-
-        $html = RenderWrapperForm::renderInFormContext($render, $this->container);
-        // Use UPDATE_TESTS=2 to skip assertions and only generate snapshots.
-        if ((string) getenv('UPDATE_TESTS') !== '2') {
-          $this->assertMarkupRendering($assertions, $html);
-        }
-
-        Html::resetSeenIds();
-        $variation_html = RenderWrapperForm::renderInFormContext($render, $this->container);
-
-        $this->assertHtmlSnapshot($case_name, $html, $variation_html);
+        $this->doTestOneCase(
+          $cases[$case_name],
+          $case_name,
+          $mode,
+          $use_objects,
+          $fill_nulls,
+          $use_template_include,
+        );
       }
       catch (ExpectationFailedException $e) {
         // Keep the comparison failure, so that PHPUnit prints the diff.
@@ -319,19 +320,246 @@ class MarkupRenderingTest extends KernelTestBase {
       catch (\Throwable $e) {
         throw new \Exception("Failure in '$case_name' ($i of $n).", previous: $e);
       }
-      finally {
-        foreach ($restore_callbacks as $restore_callback) {
-          $restore_callback();
-        }
-      }
     }
   }
 
   /**
-   * Populates optional pattern parameters with NULL.
+   * Tests a single case.
+   *
+   * @param array $case
+   *   The test case.
+   * @param string $case_name
+   *   The test case name.
+   * @param 'patterns'|'components'|'other' $mode
+   *   Pass 'patterns' to test all test cases with patterns.
+   *   Pass 'components' to test all pattern cases, but with the pattern
+   *   converted to a component.
+   *   Pass 'other' to test all cases which don't use a pattern.
+   * @param bool $use_objects
+   *   TRUE to use objects like Attribute, ImageValueObject etc.
+   *   FALSE to use string or array representations instead.
+   * @param bool $fill_nulls
+   *   TRUE to fill all remaining optional parameters with NULL.
+   *   FALSE to leave them empty (not passing them).
+   * @param bool $use_template_include
+   *   TRUE to render the pattern/component as template include.
+   *   FALSE to use render array as in the fixture.
+   */
+  protected function doTestOneCase(
+    array $case,
+    string $case_name,
+    string $mode,
+    bool $use_objects = TRUE,
+    bool $fill_nulls = FALSE,
+    bool $use_template_include = FALSE,
+  ): void {
+    $render = $case['render'];
+    $render = PatternTestDataMassager::massageDataRecursive($render, $use_objects);
+    $assertions = $case['assertions'];
+    // No support for BC in 'components' mode.
+    if (!empty($case['backward_compatibility']) && $mode === 'components') {
+      return;
+    }
+
+    // Skip pattern case when in 'other' mode.
+    // Skip non-pattern case when not in 'other' mode.
+    if ($mode === 'other' xor ($render['#type'] ?? NULL) !== 'pattern') {
+      return;
+    }
+
+    if ($mode === 'components') {
+      $render = $this->replacePatternsWithComponents($render, $use_objects);
+      $assertions = $this->replacePatternAssertionsWithComponentAssertions($assertions);
+    }
+
+    if ($fill_nulls) {
+      $render = $this->fillNulls($render);
+    }
+
+    if ($use_template_include) {
+      $render = $this->replaceWithInlineTemplates($render, $use_objects);
+      $assertions = $this->removeDataDrupalSelectorAssertions($assertions);
+    }
+
+    $do_render = function () use ($render): string {
+      Html::resetSeenIds();
+      return RenderWrapperForm::renderInFormContext($render, $this->container);
+    };
+
+    if (!empty($case['backward_compatibility'])) {
+      $do_render = fn () => $this->withBackwardCompatibilitySettings(
+        $case['backward_compatibility'] ?? [],
+        $do_render,
+      );
+    }
+
+    $html = $do_render();
+
+    // Use UPDATE_TESTS=2 to skip assertions and only generate snapshots.
+    if ((string) getenv('UPDATE_TESTS') !== '2') {
+      $this->assertMarkupRendering($assertions, $html);
+    }
+
+    $variation_html = $do_render();
+
+    $this->assertHtmlSnapshot($case_name, $html, $variation_html);
+  }
+
+  /**
+   * Replaces patterns with components in a render array, recursively.
    *
    * @param array $render
-   *   A render element which may contain pattern elements.
+   *   Original render array with pattern.
+   * @param bool $use_objects
+   *   TRUE, to pass attributes as Attribute object.
+   *   FALSE, to pass attributes as array.
+   *
+   * @return array
+   *   Modified render array.
+   */
+  protected function replacePatternsWithComponents(array $render, bool $use_objects): array {
+    if (($render['#type'] ?? NULL) === 'pattern') {
+      $render = $this->convertPatternToComponent($render, $use_objects);
+    }
+    foreach (Element::children($render) as $key) {
+      $render[$key] = $this->replacePatternsWithComponents($render[$key], $use_objects);
+    }
+    return $render;
+  }
+
+  /**
+   * Converts a pattern render element to a component render element.
+   *
+   * @param array $pattern_element
+   *   Render element with '#type' => 'pattern'.
+   * @param bool $use_objects
+   *   TRUE, to pass attributes as Attribute object.
+   *   FALSE, to pass attributes as array.
+   *
+   * @return array
+   *   Render element with '#type' => 'component'.
+   */
+  protected function convertPatternToComponent(array $pattern_element, bool $use_objects): array {
+    $component_id = 'oe_bootstrap_theme:' . $pattern_element['#id'];
+    $arguments = [
+      ...$pattern_element['#fields']['settings'] ?? [],
+      ...$pattern_element['#settings'] ?? [],
+      ...$pattern_element['#fields'] ?? [],
+    ];
+    unset($arguments['settings']);
+    // Pass slot values in '#slots', as e.g. ui_patterns 2.x or Canvas would.
+    // The render element treats these differently from '#props', so this
+    // reveals values that should not be slots.
+    $slot_definitions = $this->container->get(ComponentPluginManager::class)
+      ->getDefinition($component_id)['slots'] ?? [];
+    $slots = array_intersect_key($arguments, $slot_definitions);
+    // The render element does not accept NULL or [] for '#slots'.
+    // Calling code needs to omit these in '#slots'.
+    $slots = array_filter(
+      $slots,
+      static fn (mixed $value): bool => $value !== NULL && $value !== [],
+    );
+    foreach ($slots as $slot_name => $value) {
+      if ($value instanceof MarkupInterface) {
+        // The render element only accepts render arrays or scalars.
+        $slots[$slot_name] = ['#markup' => $value];
+        continue;
+      }
+      $this->assertTrue(
+        // Booleans would be accepted by the render element, but a boolean
+        // value indicates that this should be a prop.
+        is_string($value) || is_int($value) || is_float($value) || Element::isRenderArray($value),
+        sprintf(
+          "Value for slot '%s' in '%s' is not a string, number or render array: %s",
+          $slot_name,
+          $component_id,
+          get_debug_type($value),
+        ),
+      );
+    }
+    $props = array_diff_key($arguments, $slot_definitions);
+    // Convert attribute-like props to Attribute object or array.
+    $props = $this->convertFixtureAttributes($props, $use_objects);
+    return [
+      ...array_diff_key($pattern_element, array_flip(['#id', '#fields', '#settings'])),
+      // phpcs:ignore Squiz.Arrays.ArrayDeclaration.KeySpecified
+      '#type' => 'component',
+      '#component' => $component_id,
+      '#props' => $props,
+      '#slots' => $slots,
+    ];
+  }
+
+  /**
+   * Converts different attribute values from fixtures to object or array.
+   *
+   * @param array $values
+   *   Arguments for a pattern or component, which may contain '(*_)attributes'
+   *   keys. Each attributes property could be a string, array or Attribute
+   *   object.
+   * @param bool $use_objects
+   *   TRUE to convert to Attribute object, FALSE to convert to array.
+   *
+   * @return array
+   *   Modified arguments, with attributes replaced.
+   */
+  protected function convertFixtureAttributes(array $values, bool $use_objects): array {
+    // Support string attributes in fixtures.
+    foreach (preg_grep('#^([a-z]+_|)attributes$#', array_keys($values)) as $key) {
+      $value = $values[$key];
+      if (is_string($value)) {
+        $parse_html = '<div ' . $value . '></div>';
+        $attributes = [];
+        foreach (Html::load($parse_html)->getElementsByTagName('div') as $div) {
+          foreach ($div->attributes as $attr) {
+            $attributes[$attr->nodeName] = $attr->nodeValue;
+          }
+        }
+        $attributes_object = new Attribute($attributes);
+        $values[$key] = $use_objects ? $attributes_object : $attributes_object->toArray();
+      }
+      elseif (is_array($value) && $use_objects) {
+        $values[$key] = new Attribute($value);
+      }
+      elseif ($value instanceof Attribute && !$use_objects) {
+        $values[$key] = $value->toArray();
+      }
+    }
+    return $values;
+  }
+
+  /**
+   * Replaces assertions that were built for patterns, to work for components.
+   *
+   * @param array $assertions
+   *   Original assertions from a test fixture.
+   *
+   * @return array
+   *   Processed assertions.
+   */
+  protected function replacePatternAssertionsWithComponentAssertions(array $assertions): array {
+    foreach ($assertions as $type => $type_assertions) {
+      if ($type === 'pattern') {
+        continue;
+      }
+      $selectors = array_keys($type_assertions);
+      // Use the array form of preg_replace_callback(), which applies the
+      // transformation to every array value.
+      $selectors = preg_replace_callback(
+        '#\[data-drupal-selector\="?([\w\-]+)"?\]#',
+        fn (array $match) => '[data-component-id="oe_bootstrap_theme:' . str_replace('-', '_', $match[1]) . '"]',
+        $selectors,
+      );
+      $assertions[$type] = array_combine($selectors, $type_assertions);
+    }
+    return $assertions;
+  }
+
+  /**
+   * Populates optional pattern and component parameters with NULL.
+   *
+   * @param array $render
+   *   A render element which may contain component or pattern elements.
    *
    * @return array
    *   A processed render element.
@@ -348,10 +576,138 @@ class MarkupRenderingTest extends KernelTestBase {
       $render['#fields'] += $fn_fill_nulls($pattern_definition->getFields());
       $render['#settings'] += $fn_fill_nulls($pattern_definition['settings'] ?? []);
     }
+    elseif (($render['#type'] ?? NULL) === 'component') {
+      $manager = $this->container->get(ComponentPluginManager::class);
+      $component_definition = $manager->getDefinition($render['#component']);
+      assert(is_array($component_definition));
+      // Only props can be NULL, slots cannot.
+      $render += [
+        '#props' => [],
+      ];
+      $render['#props'] += $fn_fill_nulls($component_definition['props']['properties'] ?? []);
+    }
     foreach (Element::children($render) as $key) {
       $render[$key] = $this->fillNulls($render[$key]);
     }
     return $render;
+  }
+
+  /**
+   * Converts a render array to use template includes for patterns and sdc.
+   *
+   * @param array $render
+   *   Render array from the fixture.
+   * @param bool $use_objects
+   *   TRUE to have attributes as Attribute object.
+   *   FALSE to have attributes as arrays.
+   *
+   * @return array
+   *   Modified render array.
+   */
+  protected function replaceWithInlineTemplates(array $render, bool $use_objects): array {
+    $merge_render_attributes = function (array $values) use ($render, $use_objects): array {
+      $values = $this->convertFixtureAttributes($values, $use_objects);
+      if (isset($render['#attributes'])) {
+        if (isset($values['attributes'])) {
+          $values['attributes'] = AttributeHelper::mergeCollections($render['#attributes'], $values['attributes']);
+        }
+        else {
+          $values['attributes'] = $render['#attributes'];
+        }
+      }
+      if (isset($values['attributes'])) {
+        if ($use_objects && is_array($values['attributes'])) {
+          $values['attributes'] = new Attribute($values['attributes']);
+        }
+        elseif (!$use_objects && !is_array($values['attributes'])) {
+          assert($values['attributes'] instanceof Attribute);
+          $values['attributes'] = $values['attributes']->toArray();
+        }
+      }
+      return $values;
+    };
+    if (($render['#type'] ?? NULL) === 'pattern') {
+      $values = [
+        ...$render['#fields'] ?? [],
+        'settings' => [
+          ...$render['#settings'] ?? [],
+          ...$render['#fields']['settings'] ?? [],
+        ],
+        ...isset($render['#variant']) ? [
+          'variant' => $render['#variant'],
+        ] : [],
+      ];
+      if (is_string($values['attributes'] ?? NULL)) {
+        $parse_html = '<div ' . $values['attributes'] . '></div>';
+        $attributes = [];
+        foreach (Html::load($parse_html)->getElementsByTagName('div') as $div) {
+          foreach ($div->attributes as $attr) {
+            $attributes[$attr->nodeName] = $attr->nodeValue;
+          }
+        }
+        $values['attributes'] = new Attribute($attributes);
+      }
+      $values = $merge_render_attributes($values);
+      assert(!is_string($values['attributes'] ?? NULL));
+      return [
+        '#type' => 'inline_template',
+        '#template' => sprintf(
+          '{{ pattern(%s, values) }}',
+          var_export($render['#id'], TRUE),
+        ),
+        '#context' => [
+          'values' => $values,
+        ],
+      ];
+    }
+    elseif (($render['#type'] ?? NULL) === 'component') {
+      $values = [
+        ...$render['#props'] ?? [],
+        ...$render['#slots'] ?? [],
+        ...isset($render['#variant']) ? [
+          'variant' => $render['#variant'],
+        ] : [],
+      ];
+      $values = $merge_render_attributes($values);
+      assert(!is_string($values['attributes'] ?? NULL));
+      return [
+        '#type' => 'inline_template',
+        '#template' => sprintf(
+          '{{ include_only(%s, values) }}',
+          var_export($render['#component'], TRUE),
+        ),
+        '#context' => [
+          'values' => $values,
+        ],
+      ];
+    }
+    foreach (Element::children($render) as $key) {
+      $render[$key] = $this->replaceWithInlineTemplates($render[$key], $use_objects);
+    }
+    return $render;
+  }
+
+  /**
+   * Replaces assertions that use [data-drupal-selector=..] selector.
+   *
+   * @param array $assertions
+   *   Original assertions from a test fixture.
+   *
+   * @return array
+   *   Processed assertions.
+   */
+  protected function removeDataDrupalSelectorAssertions(array $assertions): array {
+    foreach ($assertions as $type => $type_assertions) {
+      if ($type === 'pattern') {
+        continue;
+      }
+      $assertions[$type] = array_filter(
+        $type_assertions,
+        fn ($key) => !str_contains($key, '[data-drupal-selector='),
+        ARRAY_FILTER_USE_KEY,
+      );
+    }
+    return $assertions;
   }
 
   /**

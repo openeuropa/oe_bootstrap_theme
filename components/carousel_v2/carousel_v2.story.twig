@@ -1,0 +1,43 @@
+{{ include_only('oe_bootstrap_theme:carousel_v2', {
+  layout: 'split',
+  full_bleed: false,
+  title_tag: 'p',
+  autoplay: true,
+  interval: 10000,
+  items: [
+    {
+      caption: 'First slide caption',
+      caption_title: 'First slide title',
+      image: {
+        src: 'https://picsum.photos/seed/oe-carousel-1/1000/500',
+        alt: 'Alt image 1',
+      },
+      copyright: '© 2024 Example Organisation',
+      link: {
+        label: 'First link',
+        path: 'https://link.one',
+      },
+    },
+    {
+      caption: 'Second slide caption',
+      caption_title: 'Second slide title',
+      image: {
+        src: 'https://picsum.photos/seed/oe-carousel-2/1000/500',
+        alt: 'Alt image 2',
+      },
+      link: {
+        label: 'Second link',
+        path: 'https://link.two',
+      },
+    },
+    {
+      caption: 'Third slide caption',
+      caption_title: 'Third slide title',
+      image: {
+        src: 'https://picsum.photos/seed/oe-carousel-3/1000/500',
+        alt: 'Alt image 3',
+      },
+      copyright: '© 2024 Example Organisation',
+    },
+  ],
+}) }}
